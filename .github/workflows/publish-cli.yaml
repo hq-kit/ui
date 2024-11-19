@@ -20,9 +20,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
           scope: "@dq-alhq"
       - name: Install dependencies
-        run: npm install --prefix cli
+        run: npm --filter=cli install
       - name: Build
-        run: npm run build --prefix cli
+        run: npm run --filter=cli build
       - name: Release Github
         run: npx changeset version
         env:
