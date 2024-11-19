@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import packageJson from '@/package.json'
-import { help } from '@/src/commands/help'
 import { program } from 'commander'
+import packageJson from '../package.json'
 import { add } from './commands/add'
 import { diff } from './commands/diff'
+import { help } from './commands/help'
 import { init } from './commands/init'
 
 const version = packageJson.version

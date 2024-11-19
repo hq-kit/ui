@@ -1,13 +1,13 @@
-import { components } from '@/src/resources/components'
-import { getWriteComponentPath, writeExports, writeFile } from '@/src/utils'
-import { additionalDeps } from '@/src/utils/additional-deps'
-import { getPackageManager } from '@/src/utils/get-package-manager'
-import { getRepoUrlForComponent } from '@/src/utils/repo'
 import { checkbox, Separator } from '@inquirer/prompts'
 import chalk from 'chalk'
 import fs from 'fs'
 import ora from 'ora'
 import path from 'path'
+import { components } from '../resources/components'
+import { getWriteComponentPath, writeExports, writeFile } from '../utils'
+import { additionalDeps } from '../utils/additional-deps'
+import { getPackageManager } from '../utils/get-package-manager'
+import { getRepoUrlForComponent } from '../utils/repo'
 
 async function createComponent(componentName: string) {
     const writePath = getWriteComponentPath(componentName)

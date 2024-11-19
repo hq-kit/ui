@@ -1,12 +1,12 @@
-import { isNextJs, isTypescript } from '@/src/utils/helpers'
-import { getRepoUrlForComponent } from '@/src/utils/repo'
-import { transformTsxToJsx } from '@/src/utils/transform-jsx'
 import { checkbox } from '@inquirer/prompts'
 import chalk from 'chalk'
 import { diffLines } from 'diff'
 import fs from 'fs'
 import fetch from 'node-fetch'
 import path from 'path'
+import { isNextJs, isTypescript } from '../utils/helpers'
+import { getRepoUrlForComponent } from '../utils/repo'
+import { transformTsxToJsx } from '../utils/transform-jsx'
 
 const getLocalComponentPath = (configPath: string, componentName: string) => {
     const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'))

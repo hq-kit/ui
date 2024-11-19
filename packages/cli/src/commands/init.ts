@@ -1,4 +1,11 @@
-import { getPackageManager } from '@/src/utils/get-package-manager'
+import { input } from '@inquirer/prompts'
+import chalk from 'chalk'
+import { spawn } from 'child_process'
+import fs from 'fs'
+import ora from 'ora'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { getPackageManager } from '../utils/get-package-manager'
 import {
     isLaravel,
     isNextJs,
@@ -7,15 +14,8 @@ import {
     possibilityComponentsPath,
     possibilityCssPath,
     possibilityLibPath,
-} from '@/src/utils/helpers'
-import { transformTsxToJsx } from '@/src/utils/transform-jsx'
-import { input } from '@inquirer/prompts'
-import chalk from 'chalk'
-import { spawn } from 'child_process'
-import fs from 'fs'
-import ora from 'ora'
-import path from 'path'
-import { fileURLToPath } from 'url'
+} from '../utils/helpers'
+import { transformTsxToJsx } from '../utils/transform-jsx'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 

@@ -1,5 +1,5 @@
-import packageJson from '@/package.json'
 import { Command } from 'commander'
+import packageJson from '../../package.json'
 
 const version = packageJson.version
 
