@@ -69,10 +69,10 @@ async function processComponent(
 
 export async function add(options: any) {
     const { component, override } = options
-    const configFilePath = path.join(process.cwd(), 'cleon.json')
+    const configFilePath = path.join(process.cwd(), 'hq.json')
     if (!fs.existsSync(configFilePath)) {
         console.error(
-            `${chalk.red('cleon.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx cleon init')} to initialize the project.`)}`,
+            `${chalk.red('hq.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx hq-kit init')} to initialize the project.`)}`,
         )
         return
     }

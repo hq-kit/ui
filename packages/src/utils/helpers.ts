@@ -95,10 +95,10 @@ export function isTypescript(): boolean {
 }
 
 export function getUIPathFromConfig() {
-    const configFile = path.join(process.cwd(), 'cleon.json')
+    const configFile = path.join(process.cwd(), 'hq.json')
     if (!fs.existsSync(configFile)) {
         console.error(
-            `${chalk.red('cleon.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx cleon@latest init')} to initialize the project.`)}`,
+            `${chalk.red('hq.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx hq-kit@latest init')} to initialize the project.`)}`,
         )
         return
     }
@@ -107,12 +107,12 @@ export function getUIPathFromConfig() {
 }
 
 export function getAliasFromConfig() {
-    const configFilePath = path.join(process.cwd(), 'cleon.json')
+    const configFilePath = path.join(process.cwd(), 'hq.json')
     if (!fs.existsSync(configFilePath)) {
-        throw new Error('cleon.json not found. Please initialize the project.')
+        throw new Error('hq.json not found. Please initialize the project.')
     }
     const config = JSON.parse(fs.readFileSync(configFilePath, 'utf-8'))
     return config.alias
 }
 
-export const cleonConfigFile = path.resolve(process.cwd(), 'cleon.json')
+export const hqConfigFile = path.resolve(process.cwd(), 'hq.json')

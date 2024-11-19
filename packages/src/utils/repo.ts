@@ -1,5 +1,5 @@
 export const getRepoUrlForComponent = (componentName: string) => {
-    const repoUrl = `https://raw.githubusercontent.com/dq-alhq/cleon-kit/main/components/ui/${componentName}.tsx`
+    const repoUrl = `https://raw.githubusercontent.com/hq-kit/ui/main/components/ui/${componentName}.tsx`
     if (!repoUrl) {
         throw new Error('REPO_URL environment variable is not set')
     }

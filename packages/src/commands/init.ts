@@ -93,13 +93,13 @@ export async function init() {
     }
 
     const config = {
-        $schema: 'https://cleon-ui.vercel.app',
+        $schema: 'https://hq-kit.vercel.app',
         ui: uiFolder,
         lib: libFolder,
         css: cssLocation,
     }
 
-    const spinner = ora(`Initializing Cleon...`).start()
+    const spinner = ora(`Initializing HQ...`).start()
 
     const tailwindConfigTarget = fs.existsSync('tailwind.config.js') ? 'tailwind.config.js' : 'tailwind.config.ts'
     try {
@@ -129,7 +129,7 @@ export async function init() {
     }
 
     const packageManager = await getPackageManager()
-    let mainPackages = ['react-aria-components', 'cleon-icons'].join(' ')
+    let mainPackages = ['react-aria-components', 'hq-icons'].join(' ')
     let devPackages = [
         'tailwindcss-react-aria-components',
         'tailwind-variants',
@@ -197,18 +197,18 @@ export async function init() {
         spinner.fail(`Failed to write Providers file: ${error.message}`)
     }
 
-    // Save configuration to cleon.json with relative path
-    if (fs.existsSync('cleon.json')) {
-        fs.unlinkSync('cleon.json')
+    // Save configuration to hq.json with relative path
+    if (fs.existsSync('hq.json')) {
+        fs.unlinkSync('hq.json')
     }
 
-    fs.writeFileSync('cleon.json', JSON.stringify(config, null, 2))
-    spinner.succeed('Configuration saved to cleon.json')
+    fs.writeFileSync('hq.json', JSON.stringify(config, null, 2))
+    spinner.succeed('Configuration saved to hq.json')
 
     // Wait for the installation to complete before proceeding
     spinner.succeed('Installation complete.')
 
-    const continuedToAddComponent = spawn('npx cleon add', {
+    const continuedToAddComponent = spawn('npx hq-kit add', {
         stdio: 'inherit',
         shell: true,
     })

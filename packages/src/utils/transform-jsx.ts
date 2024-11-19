@@ -1,6 +1,6 @@
 import { transformFromAstSync } from '@babel/core'
 import { ParserOptions, parse } from '@babel/parser'
-// @ts-ignore
+// @ts-expect-error unknown-import
 import transformTypescript from '@babel/plugin-transform-typescript'
 import { promises as fs } from 'fs'
 import { tmpdir } from 'os'
@@ -85,7 +85,7 @@ const project = new Project({
 })
 
 async function createTempSourceFile(filename: string) {
-    const dir = await fs.mkdtemp(path.join(tmpdir(), 'cleon-'))
+    const dir = await fs.mkdtemp(path.join(tmpdir(), 'hq-'))
     return path.join(dir, filename)
 }
 

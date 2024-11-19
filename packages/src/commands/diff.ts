@@ -30,7 +30,7 @@ const compareComponents = (localContent: string, remoteContent: string) => {
 
 export const diff = async (...args: string[]) => {
     try {
-        const configPath = path.resolve(process.cwd(), 'cleon.json')
+        const configPath = path.resolve(process.cwd(), 'hq.json')
         const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'))
         const componentsDir = config.ui
 

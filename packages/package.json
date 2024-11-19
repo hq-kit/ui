@@ -5,7 +5,7 @@
     "description": "The command line interface for HQ-KIT.",
     "main": "dist/index.js",
     "bin": {
-        "cleon": "dist/index.js"
+        "hq-kit": "dist/index.js"
     },
     "repository": {
         "type": "git",
@@ -15,8 +15,8 @@
     "homepage": "https://hq-kit.vercel.app",
     "scripts": {
         "dev": "tsup --watch",
-        "rp": "npm uninstall cleon-icons clsx cmdk embla-carousel-react framer-motion input-otp react-aria-components sonner tailwind-merge tailwind-variants tailwindcss-animate tailwindcss-react-aria-components",
-        "clean": "rimraf cleon.json && rimraf src/styles && rimraf src/index.css && rimraf src/app && rimraf app && rimraf styles/app.css && rimraf src/app/globals.css && rimraf app/globals.css && rimraf src/components && rimraf styles && rimraf resources && rimraf src/components && rimraf components && rimraf lib && rimraf src/lib && npm run rp",
+        "rp": "npm uninstall hq-icons clsx cmdk embla-carousel-react framer-motion input-otp react-aria-components sonner tailwind-merge tailwind-variants tailwindcss-animate tailwindcss-react-aria-components",
+        "clean": "rimraf hq.json && rimraf src/styles && rimraf src/index.css && rimraf src/app && rimraf app && rimraf styles/app.css && rimraf src/app/globals.css && rimraf app/globals.css && rimraf src/components && rimraf styles && rimraf resources && rimraf src/components && rimraf components && rimraf lib && rimraf src/lib && npm run rp",
         "build": "tsup && npm run format",
         "start": "tsc && npm link",
         "format": "prettier --write \"src/**/*.ts\"",
@@ -36,7 +36,7 @@
     "author": "Diqi Al-Haqqi",
     "license": "MIT",
     "devDependencies": {
-        "@changesets/cli": "^2.27.9",
+        "@changesets/cli": "^1.2.0",
         "@commitlint/cli": "^19.5.0",
         "@commitlint/config-conventional": "^19.5.0",
         "@release-it/conventional-changelog": "^8.0.2",

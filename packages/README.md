@@ -1,6 +1,6 @@
 # CLI for HQ-KIT
 
-This is a command line tool for add Cleon-UI Component Library to your React Project, You can see the documentation at [here](https://hq-ui.vercel.app/docs/getting-started/installation).
+This is a command line tool for add HQ-Kit UI Component Library to your React Project, You can see the documentation at [here](https://hq-ui.vercel.app/docs/getting-started/installation).
 
 ## Usage
 
