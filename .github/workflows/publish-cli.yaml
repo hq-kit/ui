@@ -1,0 +1,37 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/cli/**'
+    workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org/
+          scope: "@dq-alhq"
+      - name: Install dependencies
+        run: npm install --prefix cli
+      - name: Build
+        run: npm run build --prefix cli
+      - name: Release Github
+        run: npx changeset version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate with npm
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
+      - name: Publish to npm
+        run: |
+          cd packages/cli
+          npm run release
+          npm publish --access=public
