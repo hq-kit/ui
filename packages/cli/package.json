@@ -11,9 +11,9 @@
     "files": [
         "dist"
     ],
-    "main": "dist/index.js",
+    "main": "./dist/index.js",
     "bin": {
-        "hq-kit": "dist/index.js"
+        "hq-kit": "./dist/index.js"
     },
     "homepage": "https://hq-kit.vercel.app",
     "scripts": {

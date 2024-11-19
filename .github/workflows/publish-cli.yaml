@@ -19,6 +19,9 @@ jobs:
         with:
           registry-url: https://registry.npmjs.org/
           scope: "@dq-alhq"
+      - run: git config --global user.name "Diqi Al-Haqqi"
+      - run: git config --global user.email "dq.alhaqqi@gmail.com"
+      - run: yarn version --patch --message "Bump version to %s"
       - name: Install dependencies
         run: |
           cd packages/cli
