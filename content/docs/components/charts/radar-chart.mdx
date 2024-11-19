@@ -1,0 +1,80 @@
+---
+title: Radar Chart
+description: Radar chart uses multiple axes to compare values across different variables from a central point.
+order: 5
+published: true
+references: ['https://recharts.org/en-US/api/RadarChart']
+---
+## Basic
+Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
+<Demo center component="chart/radar/radar-chart-demo" />
+
+## Installation
+<Install component='chart' />
+
+## Colors
+If you're working on an existing project, you can use these variables. However, if you've just installed Justd, they will already be included during project initialization. You can also customize chart colors, check out the [theme page](/themes) for more options.
+```
+@layer base {
+  root: {
+      --primary-chart: 51.24% 0.222 261.097;
+      --secondary-chart: 76.58% 0.119 263.28;
+      --tertiary-chart: 63.25% 0.184 258.64;
+      --highlight-chart: 81.17% 0.097 249.1;
+      --accent-chart: 81.17% 0.097 249.1;
+  }
+  .dark: {
+      --primary-chart: 54.6% 0.215 262.87;
+      --secondary-chart: 72.11% 0.142 253.1;
+      --tertiary-chart: 63.25% 0.184 258.64;
+      --highlight-chart: 81.17% 0.097 249.1;
+      --accent-chart: 88.29% 0.057 251.91;
+  }
+}
+```
+
+## Tooltip
+Tooltips are used to provide additional information about a chart element when the user hovers over it. They can be used to display additional details, such as the value of a data point, or to provide context about the data.
+```
+import { Chart } from '@/components/ui'
+import { RadarChart } from 'recharts'
+
+<RadarChart accessibilityLayer data={data}>
+  <XAxis.../>
+  <Chart.Tooltip cursor={false} content={<Chart.TooltipContent />} />
+  <Bar.../>
+</RadarChart>
+```
+
+## Legend
+Legends are used to display a list of labels for different chart elements. They can be used to provide context about the data and help the user understand the meaning of different colors and shapes.
+```
+import { Chart } from '@/components/ui'
+import { RadarChart } from 'recharts'
+
+<RadarChart>
+  ...
+  <Chart.Legend content={<Chart.LegendContent />} />
+</RadarChart>
+```
+
+## Radar Chart
+Radar charts display multiple variables in relation to a central point, allowing you to compare several categories at once. It's useful for visualizing performance, skills, or capabilities across multiple metrics.
+
+### Multiple
+<Demo center component="chart/radar/radar-chart-multiple-demo" />
+
+### Dots
+<Demo center component="chart/radar/radar-chart-dots-demo" />
+
+### Icon
+<Demo center component="chart/radar/radar-chart-icon-demo" />
+
+### Line Only
+<Demo center component="chart/radar/radar-chart-line-only-demo" />
+
+## Accessibility
+For accessibility purposes, you can add the `accessibilityLayer` prop to the chart component. This will add a `role="img"` to the chart, which will make it accessible to screen readers.
+```
+<RadarChart accessibilityLayer />
+```
