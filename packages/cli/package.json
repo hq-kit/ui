@@ -38,7 +38,6 @@
     "author": "Diqi Al-Haqqi",
     "license": "MIT",
     "devDependencies": {
-        "@changesets/cli": "^1.2.0",
         "@commitlint/cli": "^19.5.0",
         "@commitlint/config-conventional": "^19.5.0",
         "@release-it/conventional-changelog": "^8.0.2",

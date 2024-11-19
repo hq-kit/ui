@@ -91,7 +91,7 @@ export async function add(options: any) {
         })
         selectedComponents = await checkbox({
             required: true,
-            message: 'Select components to add:',
+            message: 'Choose components to add:',
             choices: choices,
             pageSize: 17,
             loop: false,
