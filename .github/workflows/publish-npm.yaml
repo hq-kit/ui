@@ -20,10 +20,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
           scope: "@dq-alhq"
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefix packages
       - name: Build
-        run: npm run build
+        run: npm run build --prefix packages
       - name: Publish to npm
-        run: npm publish --access=public
+        run: npm publish --prefix packages --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
