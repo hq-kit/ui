@@ -72,7 +72,7 @@ export async function add(options: any) {
     const configFilePath = path.join(process.cwd(), 'hq.json')
     if (!fs.existsSync(configFilePath)) {
         console.error(
-            `${chalk.red('hq.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx hq-kit init')} to initialize the project.`)}`,
+            `${chalk.red('hq.json not found')}. ${chalk.gray(`Please run ${chalk.blue('npx hq-kit@latest init')} to initialize the project.`)}`,
         )
         return
     }
