@@ -9,7 +9,7 @@ on:
     workflow_dispatch:
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,7 +23,10 @@ jobs:
         run: npm install --prefix packages
       - name: Build
         run: npm run build --prefix packages
+      - name: Authenticate with npm
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
       - name: Publish to npm
-        run: npm publish --prefix packages --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        run: |
+          cd packages
+          npm publish --access=public

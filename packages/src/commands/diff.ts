@@ -87,7 +87,7 @@ export const diff = async (...args: string[]) => {
                         value: componentName,
                     })),
                 ],
-                // @ts-ignore - initial is not a valid option for checkbox
+                // @ts-expect-error - initial is not a valid option for checkbox
                 initial: changedComponents,
             })
 
