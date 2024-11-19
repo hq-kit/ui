@@ -1,0 +1,17 @@
+/.phpunit.cache
+/node_modules
+/.idea
+/.vscode
+.phpunit.result.cache
+.npmrc
+.env
+.github_token
+.env.local
+.DS_Store
+Homestead.json
+auth.json
+package-lock.json
+bun.lockb
+npm-debug.log
+rr
+.rr.yaml

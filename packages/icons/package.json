@@ -1,0 +1,104 @@
+{
+  "name": "hq-icons",
+  "version": "0.0.1",
+  "description": "A HQ icon library for your react projects",
+  "keywords": [
+    "icon",
+    "react",
+    "svg",
+    "hq-icons",
+    "hq-kit",
+    "dq-alhq",
+    "cleon-ui",
+    "cleon-kit",
+    "cleon-icons",
+    "react-icons",
+    "react-icons-library",
+    "react-icon-library",
+    "react-icon",
+    "react-icons-collection",
+    "react-icons-list",
+    "react-icon-list",
+    "icon-library",
+    "icon-list",
+    "icon-collection"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hq-kit/ui.git",
+    "directory": "packages/icons"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "format": "npx prettier --write .",
+    "addprefix": "node scripts/add-icon-prefix.js",
+    "prebuild": "rimraf src && rimraf dist",
+    "svgr": "svgr --icon --replace-attr-values '#000=currentColor' --replace-attr-values '1em={24}' --index-template index-template.js -d src -- ./svgs",
+    "build": "npm run svgr && node scripts/add-custom-attr.js && node scripts/generate-declarations.js && rollup -c",
+    "release": "export GITHUB_TOKEN=$(cat .github_token) && release-it"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@commitlint/cli": "^18.6.1",
+    "@release-it/conventional-changelog": "^8.0.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@svgr/cli": "^8.1.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "release-it": "^17.10.0",
+    "rimraf": "^5.0.10",
+    "rollup": "^4.27.2",
+    "rollup-plugin-filesize": "^10.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.26.0"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": "conventionalcommits",
+        "types": {
+          "feat": {
+            "description": "Add new features"
+          },
+          "icon": {
+            "description": "Add new icons"
+          },
+          "fix": {
+            "description": "Fix bugs"
+          },
+          "published": {
+            "description": "Published new version"
+          },
+          "chore": {
+            "description": "Build process or auxiliary tool changes"
+          }
+        }
+      }
+    }
+  }
+}

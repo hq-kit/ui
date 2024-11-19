@@ -1,0 +1,40 @@
+name: Publish Icons to NPM
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/icons/**'
+    workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org/
+          scope: "@dq-alhq"
+      - run: git config --global user.name "Diqi Al-Haqqi"
+      - run: git config --global user.email "dq.alhaqqi@gmail.com"
+      - run: yarn version --patch --message "Bump version to %s"
+      - name: Install dependencies
+        run: |
+          cd packages/icons
+          npm install
+      - name: Build
+        run: |
+          cd packages/icons
+          npm run build
+      - name: Authenticate with npm
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
+      - name: Publish to npm
+        run: |
+          cd packages/icons
+          npm run release
+          npm publish --access=public
