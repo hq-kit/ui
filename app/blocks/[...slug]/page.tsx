@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 export default async function BlocksPage({ params }: { params: Params }) {
     const { slug } = await params
     const component = `blocks/${slug.join('/')}`
-    const Block = previews[component] ? previews[component].component : null
+    const Block = previews[component] ? previews[component].component : () => null
 
     return (
         <React.Suspense
