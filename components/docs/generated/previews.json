@@ -469,7 +469,7 @@
   },
   "navigation/tabs/tabs-link-demo": {
     "component": "@/components/docs/navigation/tabs/tabs-link-demo",
-    "raw": "'use client'\n\nimport { Tabs } from '@/components/ui'\n\nconst navs = [\n    { url: '/', label: 'Home' },\n    { url: '/docs/getting-started/introduction', label: 'Docs' },\n    { url: '/components', label: 'Components' },\n    { url: 'https://cleon-ui.vercel.app/icons', label: 'Icons' }\n]\n\nexport default function TabsLinkDemo() {\n    return (\n        <Tabs aria-label='Navbar'>\n            <Tabs.List items={navs}>\n                {(item) => (\n                    <Tabs.Label id={item.label} href={item.url}>\n                        {item.label}\n                    </Tabs.Label>\n                )}\n            </Tabs.List>\n        </Tabs>\n    )\n}\n"
+    "raw": "'use client'\n\nimport { Tabs } from '@/components/ui'\n\nconst navs = [\n    { url: '/', label: 'Home' },\n    { url: '/docs/getting-started/introduction', label: 'Docs' },\n    { url: '/components', label: 'Components' },\n    { url: 'https://hq-ui.vercel.app/icons', label: 'Icons' }\n]\n\nexport default function TabsLinkDemo() {\n    return (\n        <Tabs aria-label='Navbar'>\n            <Tabs.List items={navs}>\n                {(item) => (\n                    <Tabs.Label id={item.label} href={item.url}>\n                        {item.label}\n                    </Tabs.Label>\n                )}\n            </Tabs.List>\n        </Tabs>\n    )\n}\n"
   },
   "navigation/tabs/tabs-orientation-demo": {
     "component": "@/components/docs/navigation/tabs/tabs-orientation-demo",

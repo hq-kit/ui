@@ -14,7 +14,7 @@ export default function Install({ component }: { component: string }) {
     const items: string[] = [item.name]
     if (item.components) items.push(...item.components)
 
-    const deps = ['react-aria-components', 'cleon-icons']
+    const deps = ['react-aria-components', 'hq-icons']
     if (item.deps) deps.push(...item.deps)
 
     return (
