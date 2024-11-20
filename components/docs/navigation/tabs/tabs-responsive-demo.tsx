@@ -1,6 +1,6 @@
 'use client'
 
-import { IconMenu } from 'cleon-icons'
+import { IconMenu } from 'hq-icons'
 import { Collection } from 'react-aria-components'
 
 import { Select, Tabs } from '@/components/ui'

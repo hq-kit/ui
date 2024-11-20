@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import { IconLoaderCircle } from 'cleon-icons'
+import { IconLoaderCircle } from 'hq-icons'
 
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'

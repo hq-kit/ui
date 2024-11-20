@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBell } from 'cleon-icons'
+import { IconBell } from 'hq-icons'
 
 import { Button, Popover } from '@/components/ui'
 

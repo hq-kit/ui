@@ -14,7 +14,7 @@ import {
     IconPencil,
     IconPencilRuler,
     IconPointer
-} from 'cleon-icons'
+} from 'hq-icons'
 
 import { Button, Menu, Toggle, Toolbar } from '@/components/ui'
 

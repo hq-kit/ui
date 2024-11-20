@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconClipboard } from 'cleon-icons'
+import { IconClipboard } from 'hq-icons'
 import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 

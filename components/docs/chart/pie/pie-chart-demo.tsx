@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import { IconTrendingUp } from 'cleon-icons'
+import { IconTrendingUp } from 'hq-icons'
 import { Label, Pie, PieChart } from 'recharts'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'

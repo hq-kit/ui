@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCheck, IconClipboard } from 'cleon-icons'
+import { IconCheck, IconClipboard } from 'hq-icons'
 import { Button, type ButtonProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

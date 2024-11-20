@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { IconMenu } from 'cleon-icons'
 import { LayoutGroup, motion } from 'framer-motion'
+import { IconMenu } from 'hq-icons'
 import { composeRenderProps, Link, type LinkProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

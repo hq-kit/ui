@@ -1,7 +1,7 @@
 'use client'
 
-import { IconTriangleAlert } from 'cleon-icons'
 import { motion } from 'framer-motion'
+import { IconTriangleAlert } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

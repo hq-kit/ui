@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCopy, IconFolder, IconHighlighter, IconTrash, IconUpload } from 'cleon-icons'
+import { IconCopy, IconFolder, IconHighlighter, IconTrash, IconUpload } from 'hq-icons'
 
 import { ContextMenu } from '@/components/ui'
 

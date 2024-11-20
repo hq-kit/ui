@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconLink, IconUnlink } from 'cleon-icons'
+import { IconLink, IconUnlink } from 'hq-icons'
 
 import { Toggle } from '@/components/ui'
 

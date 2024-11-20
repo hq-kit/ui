@@ -1,5 +1,6 @@
 'use client'
 
+import AppSidebar from 'components/app-sidebar'
 import {
     IconChevronDown,
     IconCircleUser,
@@ -7,11 +8,9 @@ import {
     IconSearch,
     IconSettings,
     IconShield
-} from 'cleon-icons'
+} from 'hq-icons'
 
 import { Avatar, Button, Menu, SearchField, Separator, Sidebar } from '@/components/ui'
-
-import AppSidebar from 'components/app-sidebar'
 
 export default function SidebarDefaultDemo() {
     return (

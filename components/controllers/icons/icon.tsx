@@ -1,4 +1,4 @@
-import * as icons from 'cleon-icons'
+import * as icons from 'hq-icons'
 
 import { cn } from '@/lib/utils'
 

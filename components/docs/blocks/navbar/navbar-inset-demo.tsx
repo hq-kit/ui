@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandLinux, IconSearch, IconShoppingBag } from 'cleon-icons'
+import { IconBrandLinux, IconSearch, IconShoppingBag } from 'hq-icons'
 
 import { Button, Heading, Navbar } from '@/components/ui'
 

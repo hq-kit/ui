@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBox, IconDollar, IconHome, IconNotebook, IconSettings, IconShield } from 'cleon-icons'
+import { IconBox, IconDollar, IconHome, IconNotebook, IconSettings, IconShield } from 'hq-icons'
 import Link from 'next/link'
 
 // Replace with your router link component

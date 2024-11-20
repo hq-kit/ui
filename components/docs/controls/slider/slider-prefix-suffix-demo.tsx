@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconVolume } from 'cleon-icons'
+import { IconVolume } from 'hq-icons'
 
 import { Slider } from '@/components/ui'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconApple, IconClock, IconScissors } from 'cleon-icons'
+import { IconApple, IconClock, IconScissors } from 'hq-icons'
 
 import { Tabs } from '@/components/ui'
 

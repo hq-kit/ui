@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { IconCircleCheck, IconKey } from 'cleon-icons'
+import { IconCircleCheck, IconKey } from 'hq-icons'
 
 import { Button, Loader } from '@/components/ui'
 

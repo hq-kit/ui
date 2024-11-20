@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconLoaderCircle, IconLock, IconLockOpen } from 'cleon-icons'
+import { IconLoaderCircle, IconLock, IconLockOpen } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

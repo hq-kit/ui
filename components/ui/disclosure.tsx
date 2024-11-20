@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconMinus } from 'cleon-icons'
+import { IconMinus } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

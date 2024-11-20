@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconCheck, IconPalette, IconX } from 'cleon-icons'
+import { IconCheck, IconPalette, IconX } from 'hq-icons'
 import { useTheme } from 'next-themes'
 import { ListBox, ListBoxItem, type ListBoxItemProps } from 'react-aria-components'
 

@@ -10,7 +10,7 @@ import {
     IconSearch,
     IconSettings,
     IconShoppingBag
-} from 'cleon-icons'
+} from 'hq-icons'
 
 import { Avatar, Button, Menu, Navbar, Separator } from '@/components/ui'
 

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconCalendarDays } from 'cleon-icons'
+import { IconCalendarDays } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

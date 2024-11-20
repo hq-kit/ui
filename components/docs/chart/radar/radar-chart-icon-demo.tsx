@@ -1,6 +1,6 @@
 'use client'
 
-import { IconArrowDownToLine, IconArrowUpToLine, IconTrendingUp } from 'cleon-icons'
+import { IconArrowDownToLine, IconArrowUpToLine, IconTrendingUp } from 'hq-icons'
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'

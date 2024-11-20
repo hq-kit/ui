@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBox } from 'cleon-icons'
+import { IconBox } from 'hq-icons'
 
 import { Button, Command } from '@/components/ui'
 

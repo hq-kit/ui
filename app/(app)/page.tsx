@@ -1,4 +1,4 @@
-import { IconBrandCleon } from 'cleon-icons'
+import { IconBrandCleon } from 'hq-icons'
 
 import {
     Hero,

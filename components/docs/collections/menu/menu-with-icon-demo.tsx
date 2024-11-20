@@ -9,7 +9,7 @@ import {
     IconMoon,
     IconSettings,
     IconSun
-} from 'cleon-icons'
+} from 'hq-icons'
 import { useTheme } from 'next-themes'
 
 import { Avatar, Menu } from '@/components/ui'

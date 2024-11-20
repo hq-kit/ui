@@ -14,7 +14,7 @@ import {
     IconPanelRight,
     IconPanelRightOpen,
     IconSun
-} from 'cleon-icons'
+} from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
 import { useTheme } from '@/components/providers'

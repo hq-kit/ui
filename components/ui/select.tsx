@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconChevronDown } from 'cleon-icons'
+import { IconChevronDown } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

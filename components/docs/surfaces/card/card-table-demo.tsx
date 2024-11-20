@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEllipsisVertical, IconEye, IconHighlighter, IconTrash } from 'cleon-icons'
+import { IconEllipsisVertical, IconEye, IconHighlighter, IconTrash } from 'hq-icons'
 
 import { Card, Menu, Pagination, Table } from '@/components/ui'
 

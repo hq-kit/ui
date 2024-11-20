@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCheck, IconCircleAlert, IconLoaderCircle, IconTriangleAlert } from 'cleon-icons'
+import { IconCheck, IconCircleAlert, IconLoaderCircle, IconTriangleAlert } from 'hq-icons'
 import { Toaster, type ToasterProps } from 'sonner'
 import { twJoin } from 'tailwind-merge'
 

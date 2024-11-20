@@ -1,6 +1,6 @@
 'use client'
 
-import { IconLaptop, IconMonitor, IconPhone } from 'cleon-icons'
+import { IconLaptop, IconMonitor, IconPhone } from 'hq-icons'
 
 import { Select } from '@/components/ui'
 

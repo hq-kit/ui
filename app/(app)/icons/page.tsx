@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconBrandFigma, IconBrandGithub } from 'cleon-icons'
+import { IconBrandFigma, IconBrandGithub } from 'hq-icons'
 
 import { IconsController } from '@/components/controllers/icons'
 import { IconComponent } from '@/components/controllers/icons/icon-component'

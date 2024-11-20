@@ -15,7 +15,7 @@ import {
     IconLink,
     IconStrikethrough,
     IconUnderline
-} from 'cleon-icons'
+} from 'hq-icons'
 
 import { Button, Checkbox, Menu, Toolbar } from '@/components/ui'
 

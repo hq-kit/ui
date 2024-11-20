@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'cleon-icons'
+import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 
 import { buttonVariants, Link, Tabs, Toggle } from '@/components/ui'
 import { cn } from '@/lib/utils'

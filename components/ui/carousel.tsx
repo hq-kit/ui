@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { IconChevronLeft, IconChevronRight } from 'cleon-icons'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
+import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { IconSearch, IconX } from 'cleon-icons'
 import { Command as CMDK } from 'cmdk'
+import { IconSearch, IconX } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn, useMediaQuery } from '@/lib/utils'

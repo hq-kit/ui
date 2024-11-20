@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconSwatchBook } from 'cleon-icons'
+import { IconSwatchBook } from 'hq-icons'
 import { type ColorFormat } from 'react-aria-components'
 
 import { buttonVariants, Menu } from '@/components/ui'

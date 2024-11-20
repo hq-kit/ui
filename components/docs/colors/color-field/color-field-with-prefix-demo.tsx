@@ -1,6 +1,6 @@
 'use client'
 
-import { IconSwatchBook } from 'cleon-icons'
+import { IconSwatchBook } from 'hq-icons'
 
 import { ColorField } from '@/components/ui'
 

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconPlus } from 'cleon-icons'
+import { IconPlus } from 'hq-icons'
 
 import { Button, ProgressCircle } from '@/components/ui'
 

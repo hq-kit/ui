@@ -1,6 +1,6 @@
 'use client'
 
-import { IconInfo } from 'cleon-icons'
+import { IconInfo } from 'hq-icons'
 
 import { buttonVariants, Tooltip } from '@/components/ui'
 

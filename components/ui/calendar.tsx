@@ -1,6 +1,6 @@
 'use client'
 
-import { IconChevronLeft, IconChevronRight } from 'cleon-icons'
+import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

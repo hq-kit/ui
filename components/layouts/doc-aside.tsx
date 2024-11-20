@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { IconBox, IconCircleHalf, IconHighlighter, IconLayers } from 'cleon-icons'
 import { LayoutGroup, motion } from 'framer-motion'
+import { IconBox, IconCircleHalf, IconHighlighter, IconLayers } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 import { tv } from 'tailwind-variants'
 import { deslugify, titleCase } from 'usemods'

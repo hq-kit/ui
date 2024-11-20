@@ -1,5 +1,6 @@
 'use client'
 
+import AppSidebar from 'components/app-sidebar'
 import {
     IconChevronDown,
     IconCircleUser,
@@ -7,8 +8,7 @@ import {
     IconSearch,
     IconSettings,
     IconShield
-} from 'cleon-icons'
-import AppSidebar from 'components/app-sidebar'
+} from 'hq-icons'
 
 import { Avatar, Breadcrumbs, Button, Menu, Sidebar } from '@/components/ui'
 

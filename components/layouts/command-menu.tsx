@@ -9,7 +9,7 @@ import {
     IconPalette,
     IconShapes,
     IconSwatchBook
-} from 'cleon-icons'
+} from 'hq-icons'
 import { usePathname, useRouter } from 'next/navigation'
 import { titleCase } from 'usemods'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconLoaderCircle, IconSearch, IconX } from 'cleon-icons'
+import { IconLoaderCircle, IconSearch, IconX } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

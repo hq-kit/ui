@@ -19,7 +19,7 @@ import {
     IconStar,
     IconUser,
     IconUsers
-} from 'cleon-icons'
+} from 'hq-icons'
 import { Group, Menu as MenuPrimitive } from 'react-aria-components'
 
 import {

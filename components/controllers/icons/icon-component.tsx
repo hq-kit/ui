@@ -1,6 +1,6 @@
 'use client'
 
-import * as icons from 'cleon-icons'
+import * as icons from 'hq-icons'
 import { renderToString } from 'react-dom/server'
 
 import { Menu } from '@/components/ui'

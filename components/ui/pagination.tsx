@@ -8,7 +8,7 @@ import {
     IconChevronsLeft,
     IconChevronsRight,
     IconEllipsis
-} from 'cleon-icons'
+} from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 

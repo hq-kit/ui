@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconChevronDown } from 'cleon-icons'
+import { IconChevronDown } from 'hq-icons'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import type { Selection } from 'react-aria-components'
 

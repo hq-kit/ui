@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconEllipsisVertical } from 'cleon-icons'
+import { IconEllipsisVertical } from 'hq-icons'
 
 import { Button, buttonVariants, Loader, Menu, Modal } from '@/components/ui'
 import { wait } from '@/lib/utils'

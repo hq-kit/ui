@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandX } from 'cleon-icons'
+import { IconBrandX } from 'hq-icons'
 
 import { TextField } from '@/components/ui'
 

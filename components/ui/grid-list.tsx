@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconMenu } from 'cleon-icons'
+import { IconMenu } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

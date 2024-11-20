@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { LayoutGroup, motion } from 'framer-motion'
 import {
     IconBox,
     IconBrandAdobe,
@@ -20,8 +21,7 @@ import {
     IconShapes,
     IconSun,
     IconSwatchBook
-} from 'cleon-icons'
-import { LayoutGroup, motion } from 'framer-motion'
+} from 'hq-icons'
 import { type LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Collection } from 'react-aria-components'

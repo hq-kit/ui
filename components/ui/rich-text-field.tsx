@@ -18,7 +18,7 @@ import {
     IconTextQuote,
     IconUnderline,
     IconUndo
-} from 'cleon-icons'
+} from 'hq-icons'
 import {
     $createParagraphNode,
     $getRoot,

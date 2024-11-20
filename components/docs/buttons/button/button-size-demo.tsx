@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandCleon } from 'cleon-icons'
+import { IconBrandCleon } from 'hq-icons'
 
 import { Button } from '@/components/ui'
 

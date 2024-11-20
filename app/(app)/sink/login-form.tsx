@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandGithub, IconBrandGoogle } from 'cleon-icons'
+import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
 import Link from 'next/link'
 import { toast } from 'sonner'
 

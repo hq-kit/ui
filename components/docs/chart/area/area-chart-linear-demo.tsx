@@ -1,6 +1,6 @@
 'use client'
 
-import { IconTrendingUp } from 'cleon-icons'
+import { IconTrendingUp } from 'hq-icons'
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'

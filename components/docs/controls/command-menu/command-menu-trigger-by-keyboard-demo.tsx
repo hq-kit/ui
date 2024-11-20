@@ -2,14 +2,7 @@
 
 import React from 'react'
 
-import {
-    IconBox,
-    IconCreditCard,
-    IconHome,
-    IconNotebook,
-    IconSettings,
-    IconShield
-} from 'cleon-icons'
+import { IconBox, IconCreditCard, IconHome, IconNotebook, IconSettings, IconShield } from 'hq-icons'
 import Link from 'next/link'
 
 import { Command } from '@/components/ui'

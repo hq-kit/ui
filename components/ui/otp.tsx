@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconDot } from 'cleon-icons'
+import { IconDot } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
 
 import { cn } from '@/lib/utils'

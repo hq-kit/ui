@@ -1,6 +1,6 @@
 'use client'
 
-import { IconLoader } from 'cleon-icons'
+import { IconLoader } from 'hq-icons'
 
 import { Card, Table } from '@/components/ui'
 import { useAsyncList } from '@react-stately/data'

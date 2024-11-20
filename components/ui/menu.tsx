@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconCheck, IconChevronRight, IconCircleCheck } from 'cleon-icons'
+import { IconCheck, IconChevronRight, IconCircleCheck } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 

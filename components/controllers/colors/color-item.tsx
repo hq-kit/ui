@@ -2,9 +2,8 @@
 
 import React from 'react'
 
-import { IconCheck, IconCopy } from 'cleon-icons'
-import { ListBoxItem, parseColor, type ListBoxItemProps } from 'react-aria-components'
-import { ColorFormat } from 'react-aria-components'
+import { IconCheck, IconCopy } from 'hq-icons'
+import { ColorFormat, ListBoxItem, parseColor, type ListBoxItemProps } from 'react-aria-components'
 import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 

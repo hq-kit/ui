@@ -1,6 +1,6 @@
 'use client'
 
-import { IconPower } from 'cleon-icons'
+import { IconPower } from 'hq-icons'
 
 import { Toggle } from '@/components/ui'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'cleon-icons'
+import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn, useMediaQuery } from '@/lib/utils'

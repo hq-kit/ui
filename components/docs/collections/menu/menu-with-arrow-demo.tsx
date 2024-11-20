@@ -1,6 +1,6 @@
 'use client'
 
-import { IconHash, IconHeadphones, IconLogOut, IconPlus, IconSettings } from 'cleon-icons'
+import { IconHash, IconHeadphones, IconLogOut, IconPlus, IconSettings } from 'hq-icons'
 
 import { Avatar, Menu } from '@/components/ui'
 

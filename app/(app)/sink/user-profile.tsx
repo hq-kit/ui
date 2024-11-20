@@ -1,6 +1,6 @@
 'use client'
 
-import { IconPhone } from 'cleon-icons'
+import { IconPhone } from 'hq-icons'
 
 import TimeFieldDemo from '@/components/docs/date-and-time/time-field/time-field-demo'
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'

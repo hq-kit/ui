@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEllipsis } from 'cleon-icons'
+import { IconEllipsis } from 'hq-icons'
 
 import { Breadcrumbs, Menu } from '@/components/ui'
 

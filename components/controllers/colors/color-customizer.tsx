@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBrandTailwind, IconPalette } from 'cleon-icons'
+import { IconBrandTailwind, IconPalette } from 'hq-icons'
 import { type ColorFormat } from 'react-aria-components'
 
 import { Button, Container, Popover, Toggle, Tooltip } from '@/components/ui'

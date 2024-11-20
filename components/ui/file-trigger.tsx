@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCamera, IconFolder, IconPaperclip } from 'cleon-icons'
+import { IconCamera, IconFolder, IconPaperclip } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { type VariantProps } from 'tailwind-variants'
 

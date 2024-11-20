@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEllipsisVertical } from 'cleon-icons'
+import { IconEllipsisVertical } from 'hq-icons'
 
 import { Card, Menu, Table } from '@/components/ui'
 import { NumberFormatter } from '@internationalized/number'

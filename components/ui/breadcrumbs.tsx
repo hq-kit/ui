@@ -1,6 +1,6 @@
 'use client'
 
-import { IconChevronRight, IconSlash } from 'cleon-icons'
+import { IconChevronRight, IconSlash } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

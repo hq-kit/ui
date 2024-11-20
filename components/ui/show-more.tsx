@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import { IconChevronDown } from 'cleon-icons'
 import { AnimatePresence, motion } from 'framer-motion'
+import { IconChevronDown } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

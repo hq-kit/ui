@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconCircleCheck, IconTrash } from 'cleon-icons'
+import { IconCircleCheck, IconTrash } from 'hq-icons'
 
 import { Button, Loader, Popover } from '@/components/ui'
 import { wait } from '@/lib/utils'

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandGithub } from 'cleon-icons'
+import { IconBrandGithub } from 'hq-icons'
 
 import { Button } from '@/components/ui'
 

@@ -7,7 +7,7 @@ import {
     IconLifeBuoy,
     IconSettings,
     IconShield
-} from 'cleon-icons'
+} from 'hq-icons'
 
 import { Accordion } from '@/components/ui'
 

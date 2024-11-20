@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconCircleAlert, IconCircleCheck, IconTriangleAlert } from 'cleon-icons'
+import { IconCircleAlert, IconCircleCheck, IconTriangleAlert } from 'hq-icons'
 import { Text } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 

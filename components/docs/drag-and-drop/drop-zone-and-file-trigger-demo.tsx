@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconImage } from 'cleon-icons'
+import { IconImage } from 'hq-icons'
 import { isFileDropItem } from 'react-aria-components'
 
 import { Description, DropZone, FileTrigger } from '@/components/ui'

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCheck } from 'cleon-icons'
+import { IconCheck } from 'hq-icons'
 import * as Aria from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

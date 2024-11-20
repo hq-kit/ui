@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconLoaderCircle } from 'cleon-icons'
+import { IconLoaderCircle } from 'hq-icons'
 import type { Metadata } from 'next'
 import { deslugify, titleCase } from 'usemods'
 

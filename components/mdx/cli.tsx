@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'cleon-icons'
+import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-icons'
 import { toast } from 'sonner'
 
 import { Description, Menu } from '@/components/ui'

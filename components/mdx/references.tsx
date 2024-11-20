@@ -20,7 +20,7 @@ import {
     IconChartBar,
     IconCommand,
     IconTextCursorInput
-} from 'cleon-icons'
+} from 'hq-icons'
 import { Menu, MenuItem } from 'react-aria-components'
 
 import { buttonVariants } from '@/components/ui'
