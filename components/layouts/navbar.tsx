@@ -252,7 +252,7 @@ export function NavbarDropdown() {
                 </Menu.Item>
                 <Menu.Separator />
                 <Menu.Header separator>Refs</Menu.Header>
-                <Menu.Item href='https://github.com/dq-alhq' target='_blank'>
+                <Menu.Item href='https://github.com/hq-kit/ui' target='_blank'>
                     <IconBrandGithub />
                     Github
                 </Menu.Item>
