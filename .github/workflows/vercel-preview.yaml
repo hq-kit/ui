@@ -2,8 +2,7 @@ name: Create vercel preview URL on pull request
 on:
   pull_request:
     branches: [main, feat]
-    paths-ignore:
-      - 'packages/**'
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest

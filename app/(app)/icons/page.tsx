@@ -63,7 +63,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         <br />
                         This Icon Libray used for{' '}
                         <Link target='_blank' href='/'>
-                            CLEON UI
+                            HQ UI
                         </Link>
                     </HeroDescription>
                     <HeroContent>

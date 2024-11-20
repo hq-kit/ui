@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBox, IconEclipse, IconHighlighter, IconLayers } from 'cleon-icons'
+import { IconBox, IconCircleHalf, IconHighlighter, IconLayers } from 'cleon-icons'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { tv } from 'tailwind-variants'
@@ -72,7 +72,7 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                         ) : key === 'prologue' ? (
                             <IconHighlighter className='icon' />
                         ) : key === 'dark-mode' ? (
-                            <IconEclipse className='icon' />
+                            <IconCircleHalf className='icon' />
                         ) : (
                             <IconBox className='icon' />
                         )}
