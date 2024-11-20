@@ -35,6 +35,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
             i.name.toLowerCase().includes(query?.toLowerCase()) ||
             i.keywords.some((k) => k.includes(query?.toLowerCase()))
     )
+
     return (
         <>
             <Hero>
@@ -97,12 +98,12 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                     }
                 >
                     <div className='flex items-center gap-2 flex-wrap justify-between'>
-                        {filteredIcons.map((item: any, i: number) => (
+                        {filteredIcons.map((item, i) => (
                             <IconComponent
                                 key={i}
                                 size={size as '4' | '5' | '6' | '7'}
                                 stroke={stroke as '1' | '2'}
-                                name={item.name}
+                                name={item.name as string}
                             />
                         ))}
                     </div>

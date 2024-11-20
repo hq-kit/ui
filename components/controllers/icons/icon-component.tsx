@@ -15,16 +15,15 @@ import {
 import { Icon } from './icon'
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
-    name: keyof typeof icons
+    name: string
     size: '4' | '5' | '6' | '7'
     stroke: '1' | '2'
 }
 
 export const IconComponent = ({ name, size, stroke }: IconProps) => {
-    const svgIcon = renderToString(<Icon icon={name} className={`size-${size}`} />).replaceAll(
-        'stroke-width="2"',
-        `stroke-width="${stroke}"`
-    )
+    const svgIcon = renderToString(
+        <Icon icon={name as keyof typeof icons} className={`size-${size}`} />
+    ).replaceAll('stroke-width="2"', `stroke-width="${stroke}"`)
     return (
         <Menu>
             <Menu.Trigger

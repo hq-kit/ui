@@ -1,0 +1,20 @@
+name: Create Vercel Preview
+on:
+  pull_request:
+    branches: [main, feat]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: vercel/actions@v25
+        id: vercel-deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Preview URL
+        run: |
+          echo ${{ steps.vercel-deploy.outputs.preview-url }}

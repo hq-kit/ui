@@ -5,7 +5,7 @@ import localFont from 'next/font/local'
 
 import { Providers } from '@/components/providers'
 import '@/lib/styles/app.css'
-import { Analytics } from '@vercel/analytics/react'
+import { OpenPanelComponent } from '@openpanel/nextjs'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
@@ -92,7 +92,14 @@ export default function RootLayout({
             >
                 <Providers>
                     {children}
-                    {process.env.NODE_ENV === 'production' && <Analytics />}
+                    {process.env.NODE_ENV === 'production' && (
+                        <OpenPanelComponent
+                            clientId={process.env.AN_CLIENT_ID as string}
+                            trackScreenViews={true}
+                            trackAttributes={true}
+                            trackOutgoingLinks={true}
+                        />
+                    )}
                 </Providers>
             </body>
         </html>

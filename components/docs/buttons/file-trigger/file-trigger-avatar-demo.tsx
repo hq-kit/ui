@@ -21,7 +21,7 @@ export default function FileTriggerAvatarDemo() {
         }
     }
 
-    async function onSelectHandler(e: any) {
+    async function onSelectHandler(e: FileList | null) {
         if (e) {
             const files = Array.from([...e])
             const item = files[0]
