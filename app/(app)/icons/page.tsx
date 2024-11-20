@@ -69,11 +69,11 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                     <HeroContent>
                         <CLI
                             command='install'
-                            items={['cleon-icons']}
+                            items={['hq-icons']}
                             noMessage
                             className='min-w-60'
                         />
-                        <HeroButton target='_blank' href='https://github.com/dq-alhq/cleon-icons'>
+                        <HeroButton target='_blank' href='https://github.com/hq-kit/icons'>
                             <IconBrandGithub className='size-5' />
                             Source
                         </HeroButton>

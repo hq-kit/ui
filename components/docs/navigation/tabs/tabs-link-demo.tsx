@@ -6,7 +6,7 @@ const navs = [
     { url: '/', label: 'Home' },
     { url: '/docs/getting-started/introduction', label: 'Docs' },
     { url: '/components', label: 'Components' },
-    { url: 'https://cleon-ui.vercel.app/icons', label: 'Icons' }
+    { url: 'https://hq-ui.vercel.app/icons', label: 'Icons' }
 ]
 
 export default function TabsLinkDemo() {

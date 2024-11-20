@@ -22,7 +22,7 @@ export default async function Page() {
         <>
             <Hero>
                 <HeroHeader>
-                    <HeroTitle>CLEON KIT</HeroTitle>
+                    <HeroTitle>HQ KIT</HeroTitle>
                     <HeroDescription>
                         This UI Design is basically built on top of{' '}
                         <strong className='text-foreground'>React Aria Components</strong>, all

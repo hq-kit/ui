@@ -24,28 +24,28 @@ export default function CLI({ items, message, command = 'init', noMessage, class
         switch (pm) {
             case 'bun':
                 return command === 'init'
-                    ? 'bunx cleon init'
+                    ? 'bunx hq-kit init'
                     : command === 'add'
-                      ? `bunx cleon add ${item}`
+                      ? `bunx hq-kit add ${item}`
                       : `bun add ${item}`
             case 'yarn':
                 return command === 'init'
-                    ? 'npx cleon init'
+                    ? 'npx hq-kit init'
                     : command === 'add'
-                      ? `npx cleon add ${item}`
+                      ? `npx hq-kit add ${item}`
                       : `yarn add ${item}`
             case 'pnpm':
                 return command === 'init'
-                    ? 'pnpm dlx cleon init'
+                    ? 'pnpm dlx hq-kit init'
                     : command === 'add'
-                      ? `pnpm dlx cleon add ${item}`
+                      ? `pnpm dlx hq-kit add ${item}`
                       : `pnpm add ${item}`
             case 'npm':
             default:
                 return command === 'init'
-                    ? 'npx cleon init'
+                    ? 'npx hq-kit init'
                     : command === 'add'
-                      ? `npx cleon add ${item}`
+                      ? `npx hq-kit add ${item}`
                       : `npm i ${item}`
         }
     }

@@ -10,10 +10,11 @@ import {
     IconShapes,
     IconSwatchBook
 } from 'hq-icons'
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { titleCase } from 'usemods'
 
-import { Command, Link } from '@/components/ui'
+import { Command } from '@/components/ui'
 import { useMediaQuery } from '@/lib/utils'
 import { docs } from '@docs'
 

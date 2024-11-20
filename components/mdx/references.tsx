@@ -64,8 +64,12 @@ export function DocRefs({ references }: { references: string[] }) {
                 title = 'Astro'
                 icon = IconBrandAstro
                 break
+            case url.includes('hq'):
+                title = 'HQ Icons'
+                icon = IconBrandCleon
+                break
             case url.includes('cleon'):
-                title = 'Cleon Icons'
+                title = 'HQ Icons'
                 icon = IconBrandCleon
                 break
             case url.includes('framer'):
