@@ -422,11 +422,7 @@ const Section = ({
 
     const { state } = React.useContext(SidebarContext)!
     return (
-        <Aria.UNSTABLE_Disclosure
-            className={cn('p-2', className)}
-            defaultExpanded={isExpanded}
-            {...props}
-        >
+        <Aria.Disclosure className={cn('p-2', className)} defaultExpanded={isExpanded} {...props}>
             {({ isExpanded }) => (
                 <>
                     {typeof title === 'string' && (
@@ -457,7 +453,7 @@ const Section = ({
                             )}
                         </span>
                     )}
-                    <Aria.UNSTABLE_DisclosurePanel>
+                    <Aria.DisclosurePanel>
                         <div
                             className={cn(
                                 'grid gap-y-0.5 group-data-[collapsible=dock]:place-content-center',
@@ -468,10 +464,10 @@ const Section = ({
                         >
                             {props.children}
                         </div>
-                    </Aria.UNSTABLE_DisclosurePanel>
+                    </Aria.DisclosurePanel>
                 </>
             )}
-        </Aria.UNSTABLE_Disclosure>
+        </Aria.Disclosure>
     )
 }
 
