@@ -2,7 +2,7 @@
 
 import { Toggle } from '@/components/ui'
 
-export default function ToggleAppearanceDemo() {
+export default function ToggleVariantDemo() {
     return (
         <div className='flex gap-2'>
             <Toggle>{({ isSelected }) => <>{isSelected ? 'ON' : 'OFF'}</>}</Toggle>

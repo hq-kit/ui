@@ -1,7 +1,51 @@
 'use client'
 
+import React from 'react'
+
 import * as Aria from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
+
+interface ToggleGroupContextProps {
+    variant?: 'solid' | 'outline' | 'ghost'
+}
+
+const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
+    variant: 'solid'
+})
+
+const toggleGroupStyles = tv({
+    base: ['flex gap-1'],
+    variants: {
+        orientation: {
+            horizontal:
+                'flex-row [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]',
+            vertical: 'flex-col items-start'
+        }
+    }
+})
+
+const ToggleGroup = ({
+    className,
+    orientation = 'horizontal',
+    variant = 'solid',
+    ...props
+}: Aria.ToggleButtonGroupProps & ToggleGroupContextProps) => {
+    return (
+        <ToggleGroupContext.Provider value={{ variant }}>
+            <Aria.ToggleButtonGroup
+                orientation={orientation}
+                className={Aria.composeRenderProps(className, (className, renderProps) =>
+                    toggleGroupStyles({
+                        ...renderProps,
+                        orientation,
+                        className
+                    })
+                )}
+                {...props}
+            />
+        </ToggleGroupContext.Provider>
+    )
+}
 
 const toggleStyles = tv({
     base: [
@@ -39,37 +83,25 @@ const toggleStyles = tv({
 
 type ToggleProps = Aria.ToggleButtonProps & VariantProps<typeof toggleStyles>
 
-const Toggle = ({ className, ...props }: ToggleProps) => {
+const Toggle = ({ className, variant, ...props }: ToggleProps) => {
+    const { variant: groupVariant } = React.useContext(ToggleGroupContext)
+
     return (
         <Aria.ToggleButton
             {...props}
             className={Aria.composeRenderProps(className, (className, renderProps) =>
                 toggleStyles({
                     ...renderProps,
-                    variant: props.variant,
+                    variant: variant ?? groupVariant,
                     size: props.size,
                     shape: props.shape,
                     className
                 })
             )}
-        >
-            {Aria.composeRenderProps(props.children, (children) => (
-                <TouchTarget>{children}</TouchTarget>
-            ))}
-        </Aria.ToggleButton>
+        />
     )
 }
 
-const TouchTarget = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <>
-            <span
-                className='absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden'
-                aria-hidden='true'
-            />
-            {children}
-        </>
-    )
-}
+Toggle.Group = ToggleGroup
 
 export { Toggle, toggleStyles, type ToggleProps }
