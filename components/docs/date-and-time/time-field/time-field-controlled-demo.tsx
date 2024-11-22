@@ -12,7 +12,11 @@ export default function TimeFieldValidationDemo() {
             <div className='[&_p]:py-2'>
                 <p>{value ? value.toString() : '--'}</p>
             </div>
-            <TimeField label='Event time' value={value} onChange={setValue} />
+            <TimeField
+                label='Event time'
+                value={value}
+                onChange={(newValue) => setValue(newValue!)}
+            />
         </div>
     )
 }

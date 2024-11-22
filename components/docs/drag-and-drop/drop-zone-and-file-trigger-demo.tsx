@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { IconImage } from 'hq-icons'
+import Image from 'next/image'
 import { isFileDropItem } from 'react-aria-components'
 
 import { Description, DropZone, FileTrigger } from '@/components/ui'
@@ -39,7 +40,13 @@ export default function DropZoneAndFileTriggerDemo() {
             onDrop={onDropHandler}
         >
             {droppedImage ? (
-                <img alt='' src={droppedImage} className='aspect-square size-full object-contain' />
+                <Image
+                    width={400}
+                    height={300}
+                    alt=''
+                    src={droppedImage}
+                    className='aspect-square size-full object-contain'
+                />
             ) : (
                 <div className='grid space-y-3'>
                     <div className='size-12 mx-auto grid place-content-center rounded-full border bg-muted/70 group-data-[drop-target]:bg-primary/20 group-data-[drop-target]:border-primary/70'>

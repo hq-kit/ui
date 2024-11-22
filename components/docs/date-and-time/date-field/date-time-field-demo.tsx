@@ -13,7 +13,7 @@ export default function DateTimeFieldDemo() {
             hideTimeZone
             hourCycle={24}
             value={value}
-            onChange={setValue}
+            onChange={(newValue) => setValue(newValue!)}
             label='Event date'
         />
     )

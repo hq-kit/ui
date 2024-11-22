@@ -1,6 +1,7 @@
 'use client'
 
 import { IconPhone } from 'hq-icons'
+import Image from 'next/image'
 
 import TimeFieldDemo from '@/components/docs/date-and-time/time-field/time-field-demo'
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
@@ -11,7 +12,7 @@ export default function UserProfileSink() {
     return (
         <Card className='p-2'>
             <div className='flex flex-col w-full'>
-                <img
+                <Image
                     width={320}
                     height={240}
                     className='h-40 object-cover w-full rounded-md'
