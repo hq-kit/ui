@@ -69,7 +69,7 @@ export default function ThemeCustomizer() {
         setDarkVars({ ...darkVars, ...Presets[preset as keyof typeof Presets].dark })
         setRadius(Presets[preset as keyof typeof Presets].radius ?? Presets.hq.radius)
         applyTheme(
-            document.getElementsByTagName('html')[0],
+            document.getElementById('theme-container') as HTMLHtmlElement,
             preset,
             resolvedTheme as 'dark' | 'light'
         )
@@ -248,7 +248,7 @@ export default function ThemeCustomizer() {
             </div>
             <div
                 className='bg-background mb-6 border-secondary-foreground/10 text-foreground'
-                // ref={themeContainerRef}
+                id='theme-container'
             >
                 <ThemeContainer />
             </div>
