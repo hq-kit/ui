@@ -26,7 +26,7 @@ const AvatarGroup = <T extends AvatarProps>({
         <div
             className={cn(
                 'flex items-center -space-x-2 justify-center [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:ring-background',
-                'hover:[&_.loo2ppvkxrcah38e]:scale-110 hover:[&_.loo2ppvkxrcah38e]:z-30 [&_.loo2ppvkxrcah38e]:transition',
+                'hover:[&_.avatar]:scale-110 hover:[&_.avatar]:z-30 [&_.avatar]:transition',
                 className
             )}
             {...props}
@@ -39,7 +39,7 @@ const AvatarGroup = <T extends AvatarProps>({
 const avatarStyles = tv({
     base: [
         'inline-grid relative shrink-0 bg-muted align-middle [--ring-opacity:20%] *:col-start-1 *:row-start-1',
-        'loo2ppvkxrcah38e outline outline-1 -outline-offset-1 outline-foreground/[--ring-opacity]'
+        'avatar outline outline-1 -outline-offset-1 outline-foreground/[--ring-opacity]'
     ],
     variants: {
         size: {

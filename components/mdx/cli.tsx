@@ -53,10 +53,10 @@ export default function CLI({ items, message, command = 'init', noMessage, class
     const [cli, setCli] = React.useState(getCommand('npm'))
     const [copied, setCopied] = React.useState(false)
 
-    const handleCopy = async (pm: string) => {
+    const handleCopy = (pm: string) => {
         setCli(getCommand(pm))
         if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(cli)
+            navigator.clipboard.writeText(getCommand(pm))
             setCopied(true)
             wait(2000).then(() => setCopied(false))
         } else {

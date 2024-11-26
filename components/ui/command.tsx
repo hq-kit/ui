@@ -57,14 +57,14 @@ const Command = ({
             <Aria.ModalOverlay
                 isDismissable
                 className={cn(
-                    'fixed inset-0 max-h-[--visual-viewport-height] z-50 bg-black/15 dark:bg-black/40 entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0',
+                    'fixed inset-0 max-h-[--visual-viewport-height] transition z-50 entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0',
                     isBlurred ? 'backdrop-blur' : 'bg-black/15 dark:bg-black/40'
                 )}
                 {...props}
             >
                 <Aria.Modal
                     className={cn(
-                        'fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg bg-background text-overlay-foreground shadow-lg ring-1 ring-dark/5 dark:ring-border sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
+                        'fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg bg-background text-overlay-foreground shadow-lg ring-1 ring-dark/5 dark:ring-muted sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
                         'sm:entering:slide-in-from-bottom-auto entering:animate-in entering:fade-in-0 entering:slide-in-from-bottom-1/2 entering:slide-in-from-left-1/2 entering:[transition-timing-function:ease-out] sm:entering:slide-in-from-top-[2rem]',
                         'exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[4rem]'
                     )}

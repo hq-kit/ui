@@ -2,6 +2,7 @@
 import { withTV } from 'tailwind-variants/transformer'
 import ta from 'tailwindcss-animate'
 import trac from 'tailwindcss-react-aria-components'
+import { fontFamily } from 'tailwindcss/defaultTheme'
 
 import tt from '@tailwindcss/typography'
 
@@ -18,6 +19,10 @@ const config = withTV({
             screens: {
                 '2xl': '1400px'
             }
+        },
+        fontFamily: {
+            sans: ['var(--font-sans)', ...fontFamily.sans],
+            mono: ['var(--font-mono)', ...fontFamily.mono]
         },
         extend: {
             colors: {
@@ -77,11 +82,6 @@ const config = withTV({
             },
             animation: {
                 blink: 'blink 1.4s both infinite'
-            },
-            transitionDuration: {
-                DEFAULT: '100ms',
-                medium: '200ms',
-                long: '300ms'
             }
         }
     },
