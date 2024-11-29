@@ -57,6 +57,7 @@ interface MultipleSelectProps<T extends object>
     max?: number
     min?: number
     errorMessage?: string | ((validation: ValidationResult) => string)
+    portal?: Element
 }
 
 const MultiSelect = <T extends SelectedKey>({
@@ -257,6 +258,7 @@ const MultiSelect = <T extends SelectedKey>({
                         </VisuallyHidden>
                     </div>
                     <Popover.Picker
+                        UNSTABLE_portalContainer={props.portal}
                         className='max-w-none'
                         style={{ width: `${width}px` }}
                         triggerRef={triggerRef}

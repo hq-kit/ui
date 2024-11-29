@@ -7,8 +7,6 @@ export const applyTheme = (
     theme: string,
     resolvedTheme: 'dark' | 'light'
 ) => {
-    console.log(theme, resolvedTheme)
-
     const themeVariables = resolvedTheme === 'dark' ? Presets[theme].dark : Presets[theme].light
     Object.keys(themeVariables).forEach((key) => {
         themeContainer.forEach((container) => {

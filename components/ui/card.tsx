@@ -1,17 +1,29 @@
-import React from 'react'
+import * as React from 'react'
 
-import { cn } from './utils'
+import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
+
+import { Heading } from './heading'
+
+const card = tv({
+    slots: {
+        root: [
+            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)_.t-hea]:bg-background [&:has(table)]:overflow-hidden border text-foreground shadow-sm [&_table]:overflow-hidden'
+        ],
+        header: 'flex flex-col space-y-1.5 px-6 py-5',
+        title: 'sm:leading-6 leading-none font-semibold tracking-tight',
+        description: 'text-base text-muted-foreground sm:text-sm',
+        content:
+            'px-6 pb-6 has-[.t-hea]:bg-secondary/40 has-[table]:p-0 [&:has(table)+.footer]:py-5 [&:has(table)]:border-t',
+        footer: 'footer flex items-center p-6 pt-0'
+    }
+})
+
+const { root, header, title, description, content, footer } = card()
 
 const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            className={cn(
-                'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)_.th]:bg-background [&:has(table)]:overflow-hidden border text-foreground shadow-sm [&_table]:overflow-hidden',
-                className
-            )}
-            {...props}
-        />
-    )
+    return <div className={root({ className })} {...props} />
 }
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -29,11 +41,7 @@ const Header = ({
     ...props
 }: HeaderProps) => (
     <div
-        className={cn(
-            'flex flex-col space-y-1.5 px-6 py-5',
-            withoutPadding && 'px-0 pt-0',
-            className
-        )}
+        className={header({ className: twMerge(clsx(className, withoutPadding && 'px-0 pt-0')) })}
         {...props}
     >
         {title && <Title>{title}</Title>}
@@ -42,40 +50,20 @@ const Header = ({
     </div>
 )
 
-const Title = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return (
-        <h3
-            className={cn('sm:leading-6 leading-none font-semibold tracking-tight', className)}
-            {...props}
-        />
-    )
+const Title = ({ className, level = 3, ...props }: React.ComponentProps<typeof Heading>) => {
+    return <Heading level={level} className={title({ className })} {...props} />
 }
 
 const Description = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            {...props}
-            slot='description'
-            className={cn('text-base text-muted-foreground sm:text-sm', className)}
-            {...props}
-        />
-    )
+    return <div {...props} slot='description' className={description({ className })} {...props} />
 }
 
 const Content = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            className={cn(
-                'px-6 pb-6 has-[.t-hea]:bg-secondary/40 has-[table]:p-0 [&:has(table)+.footer]:py-5 [&:has(table)]:border-t',
-                className
-            )}
-            {...props}
-        />
-    )
+    return <div className={content({ className })} {...props} />
 }
 
 const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div className={cn('footer flex items-center p-6 pt-0', className)} {...props} />
+    return <div className={footer({ className })} {...props} />
 }
 
 Card.Content = Content

@@ -61,7 +61,7 @@ const buttonVariants = tv({
                 '[--btn-icon:theme(colors.foreground)] shadow-none',
                 'dark:after:shadow-none dark:before:shadow-none before:shadow-none after:shadow-none'
             ],
-            ghost: 'text-foreground bg-transparent hover:bg-muted shadow-none border-none after:shadow-none before:shadow-none'
+            ghost: 'text-foreground bg-transparent hover:bg-muted dark:hover:bg-muted shadow-none border-none after:shadow-none before:shadow-none'
         },
         size: {
             xs: 'h-8 px-2 text-xs',

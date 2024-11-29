@@ -23,6 +23,7 @@ interface ComboBoxProps<T extends object> extends Omit<ComboboxPrimitiveProps<T>
     description?: string | null
     errorMessage?: string | ((validation: ValidationResult) => string)
     children: React.ReactNode | ((item: T) => React.ReactNode)
+    portal?: Element
 }
 
 const ComboBox = <T extends object>({
@@ -60,7 +61,7 @@ const ComboBox = <T extends object>({
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-            <Popover.Picker>
+            <Popover.Picker UNSTABLE_portalContainer={props.portal}>
                 <ListBox.Picker items={items}>{children}</ListBox.Picker>
             </Popover.Picker>
         </ComboboxPrimitive>

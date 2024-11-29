@@ -75,6 +75,7 @@ interface DatePickerProps<T extends DateValue> extends DatePickerPrimitiveProps<
     label?: string
     description?: string
     errorMessage?: string | ((validation: ValidationResult) => string)
+    portal?: Element
 }
 
 const DatePicker = <T extends DateValue>({
@@ -93,7 +94,7 @@ const DatePicker = <T extends DateValue>({
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-            <DatePickerOverlay />
+            <DatePickerOverlay UNSTABLE_portalContainer={props.portal} />
         </DatePickerPrimitive>
     )
 }

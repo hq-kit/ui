@@ -13,7 +13,7 @@ import type { TextInputDOMProps } from '@react-types/shared'
 
 import { Description, FieldError, FieldGroup, Input, Label, type FieldProps } from './field'
 import { Loader } from './loader'
-import { ctr } from './utils'
+import { cn, ctr } from './utils'
 
 type InputType = Exclude<TextInputDOMProps['type'], 'password'>
 
@@ -74,9 +74,20 @@ const TextField = ({
                         type='button'
                         aria-label='Toggle password visibility'
                         onPress={handleTogglePasswordVisibility}
-                        className='mr-2.5 relative [&>[data-slot=icon]]:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-lg'
+                        className='mr-2.5 relative flex items-center justify-center [&>[data-slot=icon]]:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-lg'
                     >
-                        <>{isPasswordVisible ? <IconEyeClosed /> : <IconEye />}</>
+                        <IconEyeClosed
+                            className={cn(
+                                'scale-100 transition-all',
+                                isPasswordVisible && 'scale-0'
+                            )}
+                        />
+                        <IconEye
+                            className={cn(
+                                'absolute scale-0 transition-all',
+                                isPasswordVisible && 'scale-100'
+                            )}
+                        />
                     </ButtonPrimitive>
                 ) : isPending ? (
                     <Loader variant='spin' data-slot='suffix' />

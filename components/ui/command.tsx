@@ -44,7 +44,7 @@ const commandStyles = tv({
             'exiting:duration-300 exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[4rem]'
         ],
         closeButton: [
-            'absolute right-3 top-1.5 [&>span>[data-slot=icon]]:text-muted-foreground pressed:[&_[data-slot=icon]]:text-foreground lg:top-3.5 rounded-lg border lg:border-border border-transparent lg:bg-secondary/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition-opacity data-[state=open]:bg-secondary data-[state=open]:text-muted-foreground lg:focus:border-foreground/70 focus:outline-none lg:focus:ring-2 lg:focus:ring-ring disabled:pointer-events-none',
+            'absolute right-3 top-1.5 [&>span>[data-slot=icon]]:text-muted-foreground pressed:[&_[data-slot=icon]]:text-foreground lg:top-3.5 rounded-lg border lg:border-border border-transparent lg:bg-muted/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition-opacity data-[state=open]:bg-muted data-[state=open]:text-muted-foreground lg:focus:border-foreground/70 focus:outline-none lg:focus:ring-2 lg:focus:ring-ring disabled:pointer-events-none',
             'focus:outline-none lg:focus:bg-primary/10 lg:focus:ring-2 lg:focus:ring-primary/20 lg:focus:border-primary/70',
             'disabled:pointer-events-none'
         ],

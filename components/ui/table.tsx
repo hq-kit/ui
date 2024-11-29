@@ -77,7 +77,7 @@ const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
             className
         )}
     >
-        <div className='bg-border h-full w-px py-3' />
+        <div className='bg-muted h-full w-px py-3' />
     </ColumnResizerPrimitive>
 )
 
@@ -137,8 +137,8 @@ const TableColumn = ({ children, isResizable = false, className, ...props }: Tab
                             <>
                                 <span
                                     className={cn(
-                                        'flex-none rounded-lg bg-muted text-foreground [&>svg]:shrink-0 [&>svg]:size-3.5 [&>svg]:transition-transform size-[1.15rem] grid place-content-center shrink-0',
-                                        isHovered ? 'bg-muted-foreground/10' : '',
+                                        'flex-none rounded-lg transition bg-transparent text-foreground [&>svg]:shrink-0 [&>svg]:size-3.5 [&>svg]:transition-transform size-[1.15rem] grid place-content-center shrink-0',
+                                        isHovered && 'bg-muted',
                                         className
                                     )}
                                 >
@@ -165,7 +165,7 @@ interface HeaderProps<T extends object> extends TableHeaderProps<T> {
 const Header = <T extends object>({ children, className, columns, ...props }: HeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <TableHeader {...props} className={cn('border-b th', className)}>
+        <TableHeader {...props} className={cn('border-b t-hea', className)}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
                 <Column className='pl-4 w-0'>
@@ -194,7 +194,7 @@ const TableRow = <T extends object>({
             id={id}
             {...props}
             className={cn(
-                'tr group relative cursor-default border-b text-foreground/70 outline-none ring-primary focus-visible:ring-1 selected:bg-primary/40 selected:hover:bg-primary/20',
+                'tr group relative cursor-default border-b text-foreground/70 outline-none ring-primary focus-visible:ring-1 selected:bg-primary/20 selected:hover:bg-primary/20',
                 'href' in props ? 'cursor-pointer hover:bg-secondary/50' : '',
                 className
             )}

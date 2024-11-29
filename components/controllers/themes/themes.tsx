@@ -67,12 +67,11 @@ export default function ThemeCustomizer() {
     const { resolvedTheme } = useTheme()
 
     React.useEffect(() => {
-        if (!resolvedTheme) return
         setLightVars({ ...lightVars, ...Presets[preset as keyof typeof Presets].light })
         setDarkVars({ ...darkVars, ...Presets[preset as keyof typeof Presets].dark })
         setRadius(Presets[preset as keyof typeof Presets].radius ?? Presets.hq.radius)
         applyTheme(
-            document.querySelectorAll('html') as unknown as HTMLHtmlElement[],
+            document.querySelectorAll('#theme-container') as unknown as HTMLHtmlElement[],
             preset,
             resolvedTheme as 'dark' | 'light'
         )
@@ -152,9 +151,9 @@ export default function ThemeCustomizer() {
     }
 
     return (
-        <Container>
-            <div className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-12 lg:top-14 py-6 z-10'>
-                <div className='container flex flex-row gap-3 justify-between items-center'>
+        <div>
+            <Container className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-0 lg:top-14 py-4 z-10'>
+                <div className='flex flex-row gap-3 justify-between items-center'>
                     <Popover>
                         <Button variant='outline'>
                             <IconPalette />
@@ -248,14 +247,14 @@ export default function ThemeCustomizer() {
                     </Popover>
                     <ThemeSnippet code={getStyleCss()} />
                 </div>
-            </div>
+            </Container>
             <div
                 className='bg-background mb-6 border-secondary-foreground/10 text-foreground'
                 id='theme-container'
             >
                 <ThemeContainer />
             </div>
-        </Container>
+        </div>
     )
 }
 

@@ -9,13 +9,7 @@ import {
     HeroTitle
 } from '@/components/layouts/hero'
 import CLI from '@/components/mdx/cli'
-import { Container } from '@/components/ui'
-
-import DataFormSink from './sink/data-form'
-import LoginFormSink from './sink/login-form'
-import OptionsSink from './sink/options'
-import TableSink from './sink/table-sink'
-import UserProfileSink from './sink/user-profile'
+import Sink from '@/components/sink'
 
 export default async function Page() {
     return (
@@ -38,17 +32,7 @@ export default async function Page() {
                     </HeroButton>
                 </HeroContent>
             </Hero>
-            <Container className='grid my-6 grid-cols-1 lg:grid-cols-3 gap-4 w-full'>
-                <LoginFormSink />
-                <DataFormSink />
-                <UserProfileSink />
-                <div className='lg:col-span-2'>
-                    <TableSink />
-                </div>
-                <div className='lg:col-span-1'>
-                    <OptionsSink />
-                </div>
-            </Container>
+            <Sink />
         </>
     )
 }

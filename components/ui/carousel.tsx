@@ -214,7 +214,7 @@ const CarouselButton = ({
     slot,
     className,
     variant = 'outline',
-    shape = 'circle',
+    shape = 'square',
     size = 'icon',
     ...props
 }: ButtonProps & { slot: 'previous' | 'next' }) => {

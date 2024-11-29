@@ -1,8 +1,8 @@
 'use client'
 
 import { IconMoon, IconSun } from 'hq-icons'
-import { useTheme } from 'next-themes'
 
+import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui'
 
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {

@@ -5,7 +5,7 @@ import { Button, Popover } from '@/components/ui'
 export default function PopoverDemo() {
     return (
         <Popover>
-            <Button>Forgot Password</Button>
+            <Button variant='danger'>Forgot Password</Button>
             <Popover.Content aria-label='Forgot Password' className='min-w-72'>
                 <Popover.Header>
                     <Popover.Title>Email</Popover.Title>

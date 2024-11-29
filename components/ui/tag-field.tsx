@@ -126,7 +126,7 @@ const TagField = ({
                 >
                     <div
                         className={cn(
-                            'relative flex min-h-10 bg-background flex-row flex-wrap items-center',
+                            'relative flex min-h-10 bg-background flex-row flex-wrap items-center transition',
                             'px-1 rounded-lg shadow-sm border',
                             'has-[input[data-focused=true]]:border-primary',
                             'has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20',

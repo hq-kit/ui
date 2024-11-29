@@ -29,7 +29,7 @@ const numberFieldStyles = tv({
     slots: {
         base: 'group flex flex-col gap-y-1.5',
         stepperButton:
-            'h-10 cursor-default px-3 text-muted-foreground pressed:bg-primary pressed:text-primary-foreground group-disabled:bg-secondary/70 forced-colors:group-disabled:text-[GrayText]'
+            'h-10 cursor-default px-3 text-muted-foreground pressed:bg-primary pressed:text-primary-foreground group-disabled:bg-muted/70 forced-colors:group-disabled:text-[GrayText]'
     }
 })
 

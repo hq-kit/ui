@@ -84,6 +84,7 @@ interface MenuContentProps<T>
     popoverClassName?: string
     showArrow?: boolean
     respectScreen?: boolean
+    portal?: Element
 }
 
 const Content = <T extends object>({
@@ -95,6 +96,7 @@ const Content = <T extends object>({
     const { respectScreen } = React.useContext(MenuContext)
     return (
         <Popover.Content
+            UNSTABLE_portalContainer={props.portal}
             respectScreen={respectScreen}
             showArrow={showArrow}
             className={popover({
@@ -148,7 +150,7 @@ const MenuHeader = ({ className, separator = false, ...props }: MenuHeaderProps)
     <Header
         className={cn(
             'p-2 text-base font-semibold sm:text-sm',
-            separator && '-mx-1 border-y px-3 pb-2 mb-1',
+            separator && '-mx-1 border-b px-3 pb-2 mb-1',
             className
         )}
         {...props}
@@ -156,7 +158,7 @@ const MenuHeader = ({ className, separator = false, ...props }: MenuHeaderProps)
 )
 
 const MenuSeparator = ({ className, ...props }: SeparatorProps) => (
-    <Separator className={cn('-mx-1 my-1 bg-muted', className)} {...props} />
+    <Separator className={cn('-mx-1 my-1 h-px bg-muted', className)} {...props} />
 )
 
 const Checkbox = ({ className, children, ...props }: MenuItemProps) => (

@@ -146,7 +146,7 @@ const RichTextField = ({
                                         'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
                                         'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
                                         'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
-                                        isDisabled && 'bg-muted opacity-50'
+                                        isDisabled && 'opacity-50'
                                     )}
                                 />
                                 {description && <Description>{description}</Description>}

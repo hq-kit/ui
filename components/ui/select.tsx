@@ -19,8 +19,7 @@ import { DropdownItem, DropdownItemDetails, DropdownSection } from './dropdown'
 import { Description, FieldError, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
-import { cn } from './utils'
-import { cr } from './utils'
+import { cn, cr } from './utils'
 
 const selectTriggerStyles = tv({
     base: [
@@ -43,6 +42,7 @@ interface SelectProps<T extends object> extends Omit<SelectPrimitiveProps<T>, 'c
     placement?: Placement
     prefix?: React.ReactNode
     className?: string
+    portal?: Element
 }
 
 const Select = <T extends object>({
@@ -78,7 +78,11 @@ const Select = <T extends object>({
             </Group>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-            <Popover.Picker trigger='Select' placement={placement}>
+            <Popover.Picker
+                UNSTABLE_portalContainer={props.portal}
+                trigger='Select'
+                placement={placement}
+            >
                 <ListBox.Picker aria-label='items' items={items}>
                     {children}
                 </ListBox.Picker>

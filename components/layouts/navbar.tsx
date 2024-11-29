@@ -12,13 +12,10 @@ import {
     IconChevronDown,
     IconHome,
     IconLayoutDashboard,
-    IconMonitor,
-    IconMoon,
     IconPackage,
     IconPalette,
     IconSearch,
     IconShapes,
-    IconSun,
     IconSwatchBook
 } from 'hq-icons'
 import { usePathname } from 'next/navigation'
@@ -27,7 +24,6 @@ import { Collection } from 'react-aria-components'
 import { CommandMenu } from '@/components/layouts/command-menu'
 import { NavLink } from '@/components/layouts/nav-link'
 import { ResponsiveAside } from '@/components/layouts/responsive-aside'
-import { useTheme } from '@/components/providers'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, buttonVariants, Link, Menu, Separator, useMediaQuery } from '@/components/ui'
 
@@ -105,7 +101,6 @@ export function Navbar() {
 }
 
 export function NavbarDropdown() {
-    const { theme, setTheme } = useTheme()
     return (
         <Menu>
             <Button aria-label='Menu' variant='ghost' className='group -ml-1 [&_svg]:size-4'>
@@ -162,33 +157,6 @@ export function NavbarDropdown() {
                     <IconBrandFramer />
                     Framer Motion
                 </Menu.Item>
-                <Menu.Separator />
-                <Menu.Submenu>
-                    <Menu.Item aria-label='Switch Theme'>
-                        {theme === 'system' ? (
-                            <IconMonitor />
-                        ) : theme === 'dark' ? (
-                            <IconMoon />
-                        ) : (
-                            <IconSun />
-                        )}
-                        <span>Switch Theme</span>
-                    </Menu.Item>
-                    <Menu.Content aria-labelledby='switch-theme'>
-                        <Menu.Item onAction={() => setTheme('system')}>
-                            <IconMonitor />
-                            <span>System</span>
-                        </Menu.Item>
-                        <Menu.Item onAction={() => setTheme('dark')}>
-                            <IconMoon />
-                            <span>Dark</span>
-                        </Menu.Item>
-                        <Menu.Item onAction={() => setTheme('light')}>
-                            <IconSun />
-                            <span>Light</span>
-                        </Menu.Item>
-                    </Menu.Content>
-                </Menu.Submenu>
             </Menu.Content>
         </Menu>
     )

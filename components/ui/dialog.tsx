@@ -32,7 +32,7 @@ const dialogStyles = tv({
         ],
         footer: 'mt-auto flex flex-col-reverse justify-between gap-3 pb-4 sm:pb-6 pt-4 sm:flex-row',
         closeIndicator:
-            'close absolute right-1 top-1 sm:right-2 sm:top-2 focus:outline-none focus:bg-secondary hover:bg-secondary grid place-content-center rounded-lg focus-visible:ring-1 focus-visible:ring-primary size-8 sm:size-7 z-50'
+            'close absolute right-1 top-1 sm:right-2 sm:top-2 focus:outline-none focus:bg-muted hover:bg-muted grid place-content-center rounded-lg focus-visible:ring-1 focus-visible:ring-primary size-8 sm:size-7 z-50'
     }
 })
 

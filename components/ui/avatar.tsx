@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { IconUser } from 'hq-icons'
 import { Collection } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
@@ -95,7 +96,7 @@ const Avatar = ({
                     {...props}
                     className={avatarStyles({ shape, size, className })}
                 >
-                    {initials && (
+                    {initials ? (
                         <svg
                             className='select-none fill-current text-[48px] font-medium uppercase'
                             viewBox='0 0 100 100'
@@ -113,6 +114,8 @@ const Avatar = ({
                                 {initials}
                             </text>
                         </svg>
+                    ) : (
+                        <IconUser />
                     )}
                     {src && <img src={src} alt={alt} />}
                     {status && <AvatarBadge size={size} status={status} aria-label={status} />}

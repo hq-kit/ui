@@ -28,7 +28,7 @@ export default function ColorCustomizer() {
 
     return (
         <>
-            <div className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-12 lg:top-14 py-6 z-10'>
+            <div className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-0 lg:top-14 py-6 z-10'>
                 <Container className='flex flex-row gap-3 justify-between items-center'>
                     <Popover>
                         <Button variant='outline'>

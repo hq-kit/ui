@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 import { useListData } from 'react-stately'
 import { toast } from 'sonner'
 
@@ -36,6 +38,12 @@ export default function DataFormSink() {
     const selectedList = useListData<SelectedKey>({
         initialItems: [items[0]]
     })
+    const [portal, setPortal] = React.useState<Element>()
+
+    React.useEffect(() => {
+        const portal = (document?.getElementById('theme-container') as Element) || document.body
+        setPortal(portal)
+    }, [])
     return (
         <Card>
             <Card.Header>
@@ -55,7 +63,7 @@ export default function DataFormSink() {
                         <Radio value='pnpm'>PNPM</Radio>
                         <Radio value='bun'>BUN</Radio>
                     </RadioGroup>
-                    <Select label='Framework' placeholder='Select an option'>
+                    <Select portal={portal} label='Framework' placeholder='Select an option'>
                         <Select.Item id='1'>Next Js</Select.Item>
                         <Select.Item id='2'>React Js</Select.Item>
                         <Select.Item id='3'>Svelte</Select.Item>
@@ -70,6 +78,7 @@ export default function DataFormSink() {
                         <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
                     </CheckboxGroup>
                     <MultiSelect
+                        portal={portal}
                         className='md:w-full'
                         label='Components'
                         selectedList={selectedList}

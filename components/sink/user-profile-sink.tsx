@@ -6,7 +6,7 @@ import Image from 'next/image'
 import TimeFieldDemo from '@/components/docs/date-and-time/time-field/time-field-demo'
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
 import TextareaDemo from '@/components/docs/forms/textarea/textarea-demo'
-import { Avatar, Card, DatePicker, Heading, NumberField, Tabs, TextField } from '@/components/ui'
+import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField } from '@/components/ui'
 
 export default function UserProfileSink() {
     return (
@@ -40,12 +40,12 @@ export default function UserProfileSink() {
                             <Tabs.Label id='t3'>Upload Files</Tabs.Label>
                         </Tabs.List>
                         <Tabs.Content id='t1'>
-                            <div className='w-full items-end flex gap-3 mb-7'>
-                                <DatePicker label='Birthdate' className='w-full' />
+                            <div className='w-full items-end flex gap-3 mb-4'>
+                                <DateField label='Birthdate' className='w-full' />
                                 <TimeFieldDemo />
                             </div>
-                            <div>
-                                <TextField label='Phone' prefix='+62 ' suffix={<IconPhone />} />
+                            <div className='my-2.5'>
+                                <TextField label='Phone' prefix='+62' suffix={<IconPhone />} />
                             </div>
                         </Tabs.Content>
                         <Tabs.Content id='t2'>
@@ -54,7 +54,7 @@ export default function UserProfileSink() {
                                 <NumberField label='Postal Code' />
                             </div>
                         </Tabs.Content>
-                        <Tabs.Content id='t3' className='w-full flex justify-center pb-1.5'>
+                        <Tabs.Content id='t3' className='w-full flex justify-center'>
                             <DropZoneAndFileTriggerDemo />
                         </Tabs.Content>
                     </Tabs>

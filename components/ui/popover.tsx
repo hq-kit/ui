@@ -48,7 +48,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
 
 const popoverContentStyles = tv({
     base: [
-        'max-w-xs min-w-80 p-4 rounded-lg border bg-background bg-clip-padding text-foreground shadow-sm dark:backdrop-saturate-200 lg:text-sm sm:max-w-3xl forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin]'
+        'max-w-xs min-w-80 p-4 rounded-lg border bg-background bg-clip-padding text-foreground shadow-sm dark:backdrop-saturate-200 lg:text-sm sm:max-w-3xl forced-colors:bg-[Canvas]'
     ],
     variants: {
         isMenu: {

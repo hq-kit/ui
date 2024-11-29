@@ -13,7 +13,7 @@ import { cr, ctr, focusStyles } from './utils'
 
 const textareaStyles = tv({
     extend: focusStyles,
-    base: 'w-full min-w-0 rounded-lg border border-muted bg-background px-2.5 py-2 text-base shadow-sm outline-none transition duration-200 disabled:bg-muted disabled:opacity-50 sm:text-sm'
+    base: 'w-full min-w-0 rounded-lg border border-muted bg-background px-2.5 py-2 text-base shadow-sm outline-none transition duration-200 disabled:opacity-50 sm:text-sm'
 })
 
 interface TextareaProps extends TextFieldPrimitiveProps {
