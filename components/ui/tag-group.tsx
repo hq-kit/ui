@@ -3,13 +3,20 @@
 import React from 'react'
 
 import { IconX } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Button,
+    TagGroup as TagGroupPrimitive,
+    TagList as TagListPrimitive,
+    Tag as TagPrimitive,
+    type TagGroupProps as TagGroupPrimitiveProps,
+    type TagListProps,
+    type TagProps as TagPrimitiveProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
-
-import { cn } from '@/lib/utils'
 
 import { badgeVariants } from './badge'
 import { Description, Label } from './field'
+import { cn, cr } from './utils'
 
 const { variant } = badgeVariants.variants
 
@@ -104,7 +111,7 @@ const TagGroupContext = React.createContext<TagGroupContextValue>({
     shape: 'square'
 })
 
-export interface TagGroupProps extends Aria.TagGroupProps {
+export interface TagGroupProps extends TagGroupPrimitiveProps {
     variant?: Variant
     shape?: Shape
     errorMessage?: string
@@ -114,7 +121,10 @@ export interface TagGroupProps extends Aria.TagGroupProps {
 
 const TagGroup = ({ children, ...props }: TagGroupProps) => {
     return (
-        <Aria.TagGroup {...props} className={cn('flex flex-wrap flex-col gap-1', props.className)}>
+        <TagGroupPrimitive
+            {...props}
+            className={cn('flex flex-wrap flex-col gap-1', props.className)}
+        >
             <TagGroupContext.Provider
                 value={{
                     variant: props.variant || 'primary',
@@ -125,12 +135,12 @@ const TagGroup = ({ children, ...props }: TagGroupProps) => {
                 {children}
                 {props.description && <Description>{props.description}</Description>}
             </TagGroupContext.Provider>
-        </Aria.TagGroup>
+        </TagGroupPrimitive>
     )
 }
 
-const TagList = <T extends object>({ className, ...props }: Aria.TagListProps<T>) => {
-    return <Aria.TagList {...props} className={cn('flex flex-wrap gap-2', className)} />
+const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => {
+    return <TagListPrimitive {...props} className={cn('flex flex-wrap gap-2', className)} />
 }
 
 const tagStyles = tv({
@@ -143,7 +153,7 @@ const tagStyles = tv({
     }
 })
 
-interface TagProps extends Aria.TagProps {
+interface TagProps extends TagPrimitiveProps {
     variant?: Variant
     shape?: Shape
 }
@@ -153,10 +163,10 @@ const TagItem = ({ children, className, variant, shape, ...props }: TagProps) =>
     const groupContext = React.useContext(TagGroupContext)
 
     return (
-        <Aria.Tag
+        <TagPrimitive
             textValue={textValue}
             {...props}
-            className={Aria.composeRenderProps(className, (_, renderProps) => {
+            className={cr(className, (_, renderProps) => {
                 const finalVariant = variant || groupContext.variant
                 const finalShape = shape || groupContext.shape
                 return tagStyles({
@@ -176,22 +186,22 @@ const TagItem = ({ children, className, variant, shape, ...props }: TagProps) =>
                     <>
                         {children as React.ReactNode}
                         {allowsRemoving && (
-                            <Aria.Button
+                            <Button
                                 slot='remove'
                                 className={cn(
-                                    'rounded focus:outline-none size-3.5 grid place-content-center -mr-0.5 focus-visible:ring-1 focus-visible:ring-primary',
+                                    'rounded-lg focus:outline-none size-3.5 grid place-content-center -mr-0.5 focus-visible:ring-1 focus-visible:ring-primary',
                                     className
                                 )}
                             >
                                 <span className='shrink-0 text-base/4 -mr-px'>
                                     <IconX className='size-3' />
                                 </span>
-                            </Aria.Button>
+                            </Button>
                         )}
                     </>
                 )
             }}
-        </Aria.Tag>
+        </TagPrimitive>
     )
 }
 

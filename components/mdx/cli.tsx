@@ -5,10 +5,9 @@ import React from 'react'
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-icons'
 import { toast } from 'sonner'
 
-import { Description, Menu } from '@/components/ui'
-import { cn, wait } from '@/lib/utils'
-
-import { CopyButton } from './copy-button'
+import { CopyButton } from '@/components/mdx/copy-button'
+import { Description, Menu, cn } from '@/components/ui'
+import { wait } from '@/lib/utils'
 
 interface CLIProps {
     items?: string | string[]

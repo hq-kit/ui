@@ -2,26 +2,40 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    SliderOutput,
+    Slider as SliderPrimitive,
+    SliderStateContext,
+    SliderThumb,
+    SliderTrack,
+    TextContext,
+    type LabelProps,
+    type SliderOutputProps,
+    type SliderProps as SliderPrimitiveProps,
+    type SliderThumbProps,
+    type SliderTrackProps,
+    type TextProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 import { useSlotId } from '@react-aria/utils'
 
 import { Description, Label } from './field'
+import { cr } from './utils'
 
 const sliderStyles = tv({
     slots: {
         root: 'flex disabled:opacity-50 flex-col gap-2 orientation-horizontal:w-full orientation-vertical:h-56 orientation-vertical:items-center',
         track: [
-            'relative group/track rounded-full bg-zinc-200 dark:bg-zinc-800 cursor-pointer disabled:cursor-default disabled:bg-background-disabled',
+            'relative group/track rounded-lg bg-zinc-200 dark:bg-zinc-800 cursor-pointer disabled:cursor-default disabled:bg-background-disabled',
             'grow orientation-vertical:flex-1 orientation-vertical:w-1.5 orientation-horizontal:w-full orientation-horizontal:h-1.5'
         ],
         filler: [
-            'rounded-full bg-primary group-disabled/track:bg-background-disabled',
+            'rounded-lg bg-primary group-disabled/track:bg-background-disabled',
             'pointer-events-none absolute group-orientation-horizontal/top-0 group-orientation-vertical/track:w-full group-orientation-vertical/track:bottom-0 group-orientation-horizontal/track:h-full'
         ],
         thumb: [
-            'outline-none dragging:cursor-grabbing focus:ring-4 border focus:ring-primary/20 focus:border-primary focus:outline-none',
+            'outline-none dragging:cursor-grabbing focus:ring-4 border border-zinc-200 focus:ring-primary/20 focus:border-primary focus:outline-none forced-colors:outline-[Highlight]',
             'rounded-full bg-white transition-[width,height]',
             'absolute left-[50%] top-[50%] block !-translate-x-1/2 !-translate-y-1/2',
             'disabled:bg-background-disabled disabled:border disabled:border-background',
@@ -34,27 +48,25 @@ const sliderStyles = tv({
 
 const { track, filler, thumb, root, valueLabel } = sliderStyles()
 
-type SliderRootProps = Aria.SliderProps
+type SliderRootProps = SliderPrimitiveProps
 
-const Root = (props: Aria.SliderProps) => {
+const Root = (props: SliderPrimitiveProps) => {
     const descriptionId = useSlotId()
     return (
-        <Aria.TextContext.Provider value={{ slots: { description: { id: descriptionId } } }}>
-            <Aria.Slider
+        <TextContext.Provider value={{ slots: { description: { id: descriptionId } } }}>
+            <SliderPrimitive
                 data-slot='root'
                 aria-describedby={descriptionId}
                 {...props}
-                className={Aria.composeRenderProps(props.className, (className) =>
-                    root({ className })
-                )}
+                className={cr(props.className, (className) => root({ className }))}
             />
-        </Aria.TextContext.Provider>
+        </TextContext.Provider>
     )
 }
 
 interface SliderProps extends SliderRootProps, VariantProps<typeof sliderStyles> {
-    label?: Aria.LabelProps['children']
-    description?: Aria.TextProps['children']
+    label?: LabelProps['children']
+    description?: TextProps['children']
     showValue?: boolean | ((value: number[]) => string)
 }
 
@@ -75,8 +87,8 @@ const Slider = ({ label, description, showValue = true, ...props }: SliderProps)
     </Root>
 )
 
-const Controls = (props: Aria.SliderTrackProps) => {
-    const state = React.useContext(Aria.SliderStateContext)
+const Controls = (props: SliderTrackProps) => {
+    const state = React.useContext(SliderStateContext)
     return (
         <Track {...props}>
             <Filler />
@@ -85,19 +97,17 @@ const Controls = (props: Aria.SliderTrackProps) => {
     )
 }
 
-const Track = (props: Aria.SliderTrackProps) => {
+const Track = (props: SliderTrackProps) => {
     return (
-        <Aria.SliderTrack
+        <SliderTrack
             {...props}
-            className={Aria.composeRenderProps(props.className, (className) =>
-                track({ className })
-            )}
+            className={cr(props.className, (className) => track({ className }))}
         />
     )
 }
 
 const Filler = (props: React.HTMLAttributes<HTMLDivElement>) => {
-    const state = React.useContext(Aria.SliderStateContext)
+    const state = React.useContext(SliderStateContext)
     const { orientation, getThumbPercent, values } = state || {}
 
     const getStyle = () => {
@@ -118,27 +128,22 @@ const Filler = (props: React.HTMLAttributes<HTMLDivElement>) => {
     return <div {...props} style={getStyle()} className={filler({ className: props.className })} />
 }
 
-const Thumb = ({ className, ...props }: Aria.SliderThumbProps) => {
-    return (
-        <Aria.SliderThumb
-            {...props}
-            className={Aria.composeRenderProps(className, (className) => thumb({ className }))}
-        />
-    )
+const Thumb = ({ className, ...props }: SliderThumbProps) => {
+    return <SliderThumb {...props} className={cr(className, (className) => thumb({ className }))} />
 }
 
-const Output = ({ className, ...props }: Aria.SliderOutputProps) => {
+const Output = ({ className, ...props }: SliderOutputProps) => {
     return (
-        <Aria.SliderOutput
+        <SliderOutput
             {...props}
-            className={Aria.composeRenderProps(className, (className) => valueLabel({ className }))}
+            className={cr(className, (className) => valueLabel({ className }))}
         >
-            {Aria.composeRenderProps(
+            {cr(
                 props.children,
                 (children, { state }) =>
                     children ?? state.values.map((_, i) => state.getThumbValueLabel(i)).join(' - ')
             )}
-        </Aria.SliderOutput>
+        </SliderOutput>
     )
 }
 

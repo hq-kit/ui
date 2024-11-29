@@ -23,8 +23,7 @@ import {
 } from 'hq-icons'
 import { Menu, MenuItem } from 'react-aria-components'
 
-import { buttonVariants } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { buttonVariants, cn } from '@/components/ui'
 
 export function DocRefs({ references }: { references: string[] }) {
     const urls = references.map((url: string) => {

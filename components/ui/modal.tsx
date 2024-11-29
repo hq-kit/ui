@@ -2,10 +2,18 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    DialogTrigger,
+    ModalOverlay as ModalOverlayPrimitive,
+    Modal as ModalPrimitive,
+    type DialogProps,
+    type DialogTriggerProps,
+    type ModalOverlayProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 import { Dialog } from './dialog'
+import { cr } from './utils'
 
 const modalOverlayStyles = tv({
     base: [
@@ -16,33 +24,33 @@ const modalOverlayStyles = tv({
     variants: {
         isBlurred: {
             true: 'backdrop-blur',
-            false: 'bg-black/15 dark:bg-black/40'
+            false: 'bg-dark/15 dark:bg-dark/40'
         },
         isEntering: {
             true: 'ease-out animate-in fade-in'
         },
         isExiting: {
-            true: 'ease-in animate-out fade-out'
+            true: 'duration-200 ease-in animate-out fade-out'
         }
     }
 })
 const modalContentStyles = tv({
     base: [
-        'max-h-full w-full rounded-t-lg ring-1 ring-dark/5 bg-background text-overlay-foreground text-left align-middle shadow-lg',
+        'max-h-full w-full rounded-t-lg ring-1 ring-dark/5 bg-background text-foreground text-left align-middle shadow-lg',
         'dark:ring-muted sm:rounded-lg overflow-hidden',
         'sm:fixed sm:left-[50vw] sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2'
     ],
     variants: {
         isEntering: {
             true: [
-                'animate-in ease-out slide-in-from-bottom-[20%]',
-                'sm:slide-in-from-bottom-auto sm:zoom-in-95 sm:slide-in-from-top-[48%] sm:slide-in-from-left-1/2'
+                'animate-in ease-out duration-200 slide-in-from-bottom-[20%]',
+                'sm:slide-in-from-bottom-auto sm:slide-in-from-top-[80%] sm:slide-in-from-left-1/2'
             ]
         },
         isExiting: {
             true: [
-                'ease-in animate-out slide-out-to-bottom-56',
-                'sm:exiting:slide-out-to-top-[48%] sm:zoom-out-95 sm:slide-out-to-left-1/2'
+                'duration-200 ease-in animate-out slide-out-to-bottom-56',
+                'sm:exiting:slide-out-to-top-[80%] sm:slide-out-to-left-1/2'
             ]
         },
         size: {
@@ -62,23 +70,23 @@ const modalContentStyles = tv({
     }
 })
 
-type ModalProps = Aria.DialogTriggerProps
-const Modal = ({ children, ...props }: ModalProps) => {
-    return <Aria.DialogTrigger {...props}>{children}</Aria.DialogTrigger>
+type ModalProps = DialogTriggerProps
+const Modal = (props: ModalProps) => {
+    return <DialogTrigger {...props} />
 }
 
 interface ModalContentProps
     extends Omit<React.ComponentProps<typeof Modal>, 'children'>,
-        Omit<Aria.ModalOverlayProps, 'className'>,
+        Omit<ModalOverlayProps, 'className'>,
         VariantProps<typeof modalContentStyles> {
-    'aria-label'?: Aria.DialogProps['aria-label']
-    'aria-labelledby'?: Aria.DialogProps['aria-labelledby']
-    role?: Aria.DialogProps['role']
+    'aria-label'?: DialogProps['aria-label']
+    'aria-labelledby'?: DialogProps['aria-labelledby']
+    role?: DialogProps['role']
     closeButton?: boolean
     isBlurred?: boolean
     classNames?: {
-        overlay?: Aria.ModalOverlayProps['className']
-        content?: Aria.ModalOverlayProps['className']
+        overlay?: ModalOverlayProps['className']
+        content?: ModalOverlayProps['className']
     }
 }
 
@@ -94,9 +102,9 @@ const ModalContent = ({
 }: ModalContentProps) => {
     const _isDismissable = role === 'alertdialog' ? false : isDismissable
     return (
-        <Aria.ModalOverlay
+        <ModalOverlayPrimitive
             isDismissable={_isDismissable}
-            className={Aria.composeRenderProps(classNames?.overlay, (className, renderProps) => {
+            className={cr(classNames?.overlay, (className, renderProps) => {
                 return modalOverlayStyles({
                     ...renderProps,
                     isBlurred,
@@ -105,8 +113,8 @@ const ModalContent = ({
             })}
             {...props}
         >
-            <Aria.Modal
-                className={Aria.composeRenderProps(classNames?.content, (className, renderProps) =>
+            <ModalPrimitive
+                className={cr(classNames?.content, (className, renderProps) =>
                     modalContentStyles({
                         ...renderProps,
                         size,
@@ -126,8 +134,8 @@ const ModalContent = ({
                         )}
                     </Dialog>
                 )}
-            </Aria.Modal>
-        </Aria.ModalOverlay>
+            </ModalPrimitive>
+        </ModalOverlayPrimitive>
     )
 }
 

@@ -6,10 +6,8 @@ import { IconLoaderCircle } from 'hq-icons'
 
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
-import { Tabs } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import Code from './code'
+import Code from '@/components/mdx/code'
+import { Tabs, cn } from '@/components/ui'
 
 interface DemoProps extends React.HTMLAttributes<HTMLDivElement> {
     component: string

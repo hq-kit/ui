@@ -2,15 +2,12 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
-import type { ListData } from 'react-stately'
+import { Group, TextField, type Key } from 'react-aria-components'
+import { type ListData } from 'react-stately'
 
-import { cn } from '@/lib/utils'
-
-import type { FieldProps } from './field'
-import { Description, Input, Label } from './field'
-import type { RestrictedVariant, TagGroupProps } from './tag-group'
-import { Tag } from './tag-group'
+import { Description, Input, Label, type FieldProps } from './field'
+import { Tag, type RestrictedVariant, type TagGroupProps } from './tag-group'
+import { cn } from './utils'
 
 interface TagItemProps {
     id: number
@@ -86,7 +83,7 @@ const TagField = ({
         }
     }
 
-    const onRemove = (keys: Set<Aria.Key>) => {
+    const onRemove = (keys: Set<Key>) => {
         list.remove(...keys)
         onItemCleared?.(list.getItem([...keys][0]))
         clearInvalidFeedback()
@@ -120,7 +117,7 @@ const TagField = ({
     return (
         <div className={cn('flex flex-col gap-1 w-full', className)}>
             {props.label && <Label>{props.label}</Label>}
-            <Aria.Group className={cn('flex flex-col', props.isDisabled && 'opacity-50')}>
+            <Group className={cn('flex flex-col', props.isDisabled && 'opacity-50')}>
                 <Tag.Group
                     variant={variant}
                     shape={props.shape}
@@ -148,7 +145,7 @@ const TagField = ({
                             >
                                 {(item) => <Tag.Item>{item.name}</Tag.Item>}
                             </Tag.List>
-                            <Aria.TextField
+                            <TextField
                                 isDisabled={props.isDisabled}
                                 aria-label={
                                     props?.label ?? (props['aria-label'] || props.placeholder)
@@ -167,7 +164,7 @@ const TagField = ({
                                             : props.placeholder
                                     }
                                 />
-                            </Aria.TextField>
+                            </TextField>
                         </div>
                     </div>
                 </Tag.Group>
@@ -179,7 +176,7 @@ const TagField = ({
                         readOnly
                     />
                 )}
-            </Aria.Group>
+            </Group>
             {props.description && <Description>{props.description}</Description>}
         </div>
     )

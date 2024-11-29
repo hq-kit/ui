@@ -3,21 +3,25 @@
 import React from 'react'
 
 import { IconChevronDown, IconX } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import {
+    ComboBox as ComboboxPrimitive,
+    type ComboBoxProps as ComboboxPrimitiveProps,
+    ComboBoxStateContext,
+    type ValidationResult
+} from 'react-aria-components'
 
 import { Button } from './button'
 import { DropdownItem, DropdownSection } from './dropdown'
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
+import { cn } from './utils'
 
-interface ComboBoxProps<T extends object> extends Omit<Aria.ComboBoxProps<T>, 'children'> {
+interface ComboBoxProps<T extends object> extends Omit<ComboboxPrimitiveProps<T>, 'children'> {
     label?: string
     placeholder?: string
     description?: string | null
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
     children: React.ReactNode | ((item: T) => React.ReactNode)
 }
 
@@ -32,7 +36,7 @@ const ComboBox = <T extends object>({
     ...props
 }: ComboBoxProps<T>) => {
     return (
-        <Aria.ComboBox
+        <ComboboxPrimitive
             menuTrigger='focus'
             {...props}
             className={cn('group w-full flex flex-col gap-1', className)}
@@ -43,7 +47,7 @@ const ComboBox = <T extends object>({
                 <Button
                     size='icon'
                     variant='ghost'
-                    className='size-7 rounded outline-offset-0 text-muted-foreground active:bg-transparent hover:bg-transparent pressed:bg-transparent'
+                    className='size-7 rounded-lg outline-offset-0 text-muted-foreground active:bg-transparent hover:bg-transparent pressed:bg-transparent'
                 >
                     {!props?.inputValue && (
                         <IconChevronDown
@@ -59,15 +63,15 @@ const ComboBox = <T extends object>({
             <Popover.Picker>
                 <ListBox.Picker items={items}>{children}</ListBox.Picker>
             </Popover.Picker>
-        </Aria.ComboBox>
+        </ComboboxPrimitive>
     )
 }
 
 const ComboBoxClearButton = () => {
-    const state = React.useContext(Aria.ComboBoxStateContext)
+    const state = React.useContext(ComboBoxStateContext)
 
     return (
-        <Aria.Button
+        <Button
             className='focus:outline-none absolute inset-y-0 right-0 flex items-center pr-2 text-muted-foreground hover:text-foreground'
             slot={null}
             aria-label='Clear'
@@ -77,7 +81,7 @@ const ComboBoxClearButton = () => {
             }}
         >
             <IconX className='size-4' />
-        </Aria.Button>
+        </Button>
     )
 }
 

@@ -1,26 +1,31 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import {
+    ColorArea as ColorAreaPrimitive,
+    type ColorAreaProps as ColorAreaPropsPrimitive
+} from 'react-aria-components'
 
 import { ColorThumb } from './color-thumb'
+import { ctr } from './utils'
 
-type ColorAreaProps = Aria.ColorAreaProps
+type ColorAreaProps = ColorAreaPropsPrimitive
 
 const ColorArea = ({ className, ...props }: ColorAreaProps) => {
     return (
-        <Aria.ColorArea
+        <ColorAreaPrimitive
             {...props}
             data-slot='color-area'
-            className={cn('size-56 shrink-0 rounded-md bg-muted', className)}
+            className={ctr(
+                className,
+                'size-56 shrink-0 rounded-lg bg-muted forced-colors:bg-[GrayText]'
+            )}
             style={({ defaultStyle, isDisabled }) => ({
                 ...defaultStyle,
                 background: isDisabled ? undefined : defaultStyle.background
             })}
         >
             <ColorThumb />
-        </Aria.ColorArea>
+        </ColorAreaPrimitive>
     )
 }
 

@@ -1,62 +1,67 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import type {
+    DateValue,
+    RangeCalendarProps as RangeCalendarPrimitiveProps
+} from 'react-aria-components'
+import {
+    CalendarCell,
+    CalendarGrid,
+    CalendarGridBody,
+    RangeCalendar as RangeCalendarPrimitive,
+    Text
+} from 'react-aria-components'
 import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { Calendar } from './calendar'
+import { ctr, focusRing } from './utils'
 
 const cellRangeStyles = tv({
-    base: [
-        'flex h-full w-full items-center tabular-nums justify-center rounded-lg',
-        'outline-none focus:outline-none'
-    ],
+    extend: focusRing,
+    base: 'flex h-full w-full items-center tabular-nums justify-center rounded-lg forced-color-adjust-none',
     variants: {
         selectionState: {
-            none: 'group-hover:bg-secondary-foreground/15 group-pressed:bg-secondary-foreground/20',
+            none: 'group-hover:bg-muted-foreground/15 group-pressed:bg-muted-foreground/20 forced-colors:group-pressed:bg-[Highlight]',
             middle: [
-                'group-hover:bg-primary/20',
-                'group-invalid:group-hover:bg-red-200 dark:group-invalid:group-hover:bg-red-900',
-                'group-pressed:bg-primary',
-                'group-invalid:group-pressed:bg-red-300 dark:group-invalid:group-pressed:bg-red-800'
+                'group-hover:bg-primary/20 forced-colors:group-hover:bg-[Highlight]',
+                'group-invalid:group-hover:bg-red-200 group-invalid:text-red-500 dark:group-invalid:group-hover:bg-red-900 forced-colors:group-invalid:group-hover:bg-[Mark]',
+                'group-pressed:bg-primary forced-colors:text-[HighlightText] forced-colors:group-pressed:bg-[Highlight]',
+                'group-invalid:group-pressed:bg-red-300 dark:group-invalid:group-pressed:bg-red-800 forced-colors:group-invalid:group-pressed:bg-[Mark]'
             ],
-            cap: 'bg-primary text-primary-foreground group-invalid:bg-danger group-invalid:text-danger-foreground'
+            cap: 'bg-primary text-primary-foreground group-invalid:bg-danger group-invalid:text-danger-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:group-invalid:bg-[Mark]'
         },
         isDisabled: {
-            true: 'text-muted-foreground/70'
-        },
-        isFocused: { true: 'ring-2 ring-primary/20' },
-        isInvalid: { true: 'ring-2 ring-danger/20' }
+            true: 'text-muted-foreground/70 forced-colors:text-[GrayText]'
+        }
     }
 })
 
-interface RangeCalendarProps<T extends Aria.DateValue>
-    extends Omit<Aria.RangeCalendarProps<T>, 'visibleDuration'> {
+interface RangeCalendarProps<T extends DateValue>
+    extends Omit<RangeCalendarPrimitiveProps<T>, 'visibleDuration'> {
     errorMessage?: string
 }
 
-const RangeCalendar = <T extends Aria.DateValue>({
+const RangeCalendar = <T extends DateValue>({
     errorMessage,
     className,
     ...props
 }: RangeCalendarProps<T>) => {
     return (
-        <Aria.RangeCalendar
-            className={cn('max-w-[17.5rem] sm:max-w-[15.8rem]', className)}
+        <RangeCalendarPrimitive
+            className={ctr(className, 'max-w-[17.5rem] sm:max-w-[15.8rem]')}
             {...props}
         >
             <Calendar.Header />
-            <Aria.CalendarGrid className='[&_td]:border-collapse [&_td]:px-0'>
+            <CalendarGrid className='[&_td]:border-collapse [&_td]:px-0'>
                 <Calendar.GridHeader />
-                <Aria.CalendarGridBody>
+                <CalendarGridBody>
                     {(date) => (
-                        <Aria.CalendarCell
+                        <CalendarCell
                             date={date}
                             className={twJoin([
-                                'group size-10 lg:size-9 cursor-default lg:text-sm outline outline-0 outside-month:text-zinc-300 selection-start:rounded-s-lg selection-end:rounded-e-lg',
-                                'selected:bg-primary/10 dark:selected:bg-primary/15 selected:text-primary',
+                                'group size-10 lg:size-9 cursor-default lg:text-sm outline outline-0 outside-month:text-zinc-300 selection-start:rounded-s-lg selection-end:rounded-e-lg forced-colors:selected:bg-[Highlight] forced-colors:invalid:selected:bg-[Mark]',
+                                'selected:bg-primary/10 dark:selected:bg-primary/15 selected:text-primary forced-colors:selected:text-[HighlightText]',
                                 '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
                                 'invalid:selected:bg-red-100 dark:invalid:selected:bg-red-700/30'
                             ])}
@@ -82,16 +87,16 @@ const RangeCalendar = <T extends Aria.DateValue>({
                                     {formattedDate}
                                 </span>
                             )}
-                        </Aria.CalendarCell>
+                        </CalendarCell>
                     )}
-                </Aria.CalendarGridBody>
-            </Aria.CalendarGrid>
+                </CalendarGridBody>
+            </CalendarGrid>
             {errorMessage && (
-                <Aria.Text slot='errorMessage' className='text-sm text-danger'>
+                <Text slot='errorMessage' className='text-sm text-danger'>
                     {errorMessage}
-                </Aria.Text>
+                </Text>
             )}
-        </Aria.RangeCalendar>
+        </RangeCalendarPrimitive>
     )
 }
 

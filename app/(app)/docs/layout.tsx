@@ -1,4 +1,4 @@
-import { Aside } from '@/components/layouts/doc-aside'
+import { Aside } from '@/components/layouts/aside'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (

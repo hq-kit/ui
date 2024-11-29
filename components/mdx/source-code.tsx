@@ -5,10 +5,8 @@ import * as React from 'react'
 import { Button } from 'react-aria-components'
 
 import previews from '@/components/docs/generated/previews.json'
-import { Description, Tabs } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import Code from './code'
+import Code from '@/components/mdx/code'
+import { Description, Tabs, cn } from '@/components/ui'
 
 interface SourceCodeProps extends React.HTMLAttributes<HTMLDivElement> {
     component: string | string[]

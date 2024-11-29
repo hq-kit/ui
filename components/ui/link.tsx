@@ -1,7 +1,9 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import { Link as LinkPrimitive, type LinkProps as LinkPrimitiveProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+
+import { cr } from './utils'
 
 const linkStyles = tv({
     base: 'relative focus-visible:outline-2 outline outline-offset-2 disabled:focus-visible:outline-0 outline-0 outline-primary disabled:opacity-60 border-transparent transition-colors disabled:cursor-default',
@@ -18,15 +20,15 @@ const linkStyles = tv({
     }
 })
 
-interface LinkProps extends Aria.LinkProps {
+interface LinkProps extends LinkPrimitiveProps {
     variant?: 'primary' | 'danger' | 'default' | 'unstyled'
 }
 
 const Link = ({ className, ...props }: LinkProps) => {
     return (
-        <Aria.Link
+        <LinkPrimitive
             {...props}
-            className={Aria.composeRenderProps(className, (className, ...renderProps) =>
+            className={cr(className, (className, ...renderProps) =>
                 linkStyles({ ...renderProps, variant: props.variant, className })
             )}
         >
@@ -35,7 +37,7 @@ const Link = ({ className, ...props }: LinkProps) => {
                     {typeof props.children === 'function' ? props.children(values) : props.children}
                 </>
             )}
-        </Aria.Link>
+        </LinkPrimitive>
     )
 }
 

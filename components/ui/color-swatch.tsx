@@ -1,8 +1,12 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import {
+    ColorSwatch as ColorSwatchPrimitive,
+    parseColor,
+    type ColorSwatchProps
+} from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
 const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
@@ -38,8 +42,13 @@ const luminance = (r: number, g: number, b: number): number => {
     return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isBrightColor = (color: any): boolean => {
+type HSBColor = {
+    hue: number
+    saturation: number
+    brightness: number
+}
+
+const isBrightColor = (color: string | HSBColor): boolean => {
     let r, g, b
 
     if (typeof color === 'string') {
@@ -98,16 +107,17 @@ const isBrightColor = (color: any): boolean => {
     return lum > 0.75
 }
 
-const defaultColor = Aria.parseColor('hsl(216, 98%, 52%)')
+const defaultColor = parseColor('hsl(216, 98%, 52%)')
 
-const ColorSwatch = ({ className, ...props }: Aria.ColorSwatchProps) => {
-    const needRing = props.color ? isBrightColor(props.color) : false
+const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => {
+    const color = props.color?.toString() ?? ''
+    const needRing = color ? isBrightColor(color) : false
     return (
-        <Aria.ColorSwatch
+        <ColorSwatchPrimitive
             data-slot='color-swatch'
             aria-label={props['aria-label'] ?? 'Color swatch'}
             className={cn(
-                'size-8 cs rounded-md shrink-0',
+                'size-8 cs rounded-lg shrink-0',
                 needRing && 'ring-1 ring-inset ring-foreground/10',
                 className
             )}

@@ -1,10 +1,13 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import type { GridListItemProps, GridListProps } from 'react-aria-components'
+import { GridList, GridListItem } from 'react-aria-components'
+import type { VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
 import { Checkbox } from './checkbox'
 import { Description, Label } from './field'
+import { cr } from './utils'
 
 const choiceboxStyles = tv({
     base: 'grid',
@@ -30,7 +33,7 @@ const choiceboxStyles = tv({
 })
 
 interface ChoiceboxProps<T extends object>
-    extends Aria.GridListProps<T>,
+    extends GridListProps<T>,
         VariantProps<typeof choiceboxStyles> {
     className?: string
 }
@@ -43,7 +46,7 @@ const Choicebox = <T extends object>({
     ...props
 }: ChoiceboxProps<T>) => {
     return (
-        <Aria.GridList
+        <GridList
             layout={columns === 1 ? 'stack' : 'grid'}
             selectionMode={selectionMode}
             className={choiceboxStyles({
@@ -55,7 +58,6 @@ const Choicebox = <T extends object>({
         />
     )
 }
-
 const choiceboxItemStyles = tv({
     base: 'rounded-lg cursor-pointer border p-4 [&_[slot=title]]:font-medium transition outline-none focus:outline-none',
     variants: {
@@ -79,9 +81,7 @@ const choiceboxItemStyles = tv({
     }
 })
 
-interface ChoiceboxItemProps
-    extends Aria.GridListItemProps,
-        VariantProps<typeof choiceboxItemStyles> {
+interface ChoiceboxItemProps extends GridListItemProps, VariantProps<typeof choiceboxItemStyles> {
     title: string
     description?: string
 }
@@ -89,10 +89,10 @@ interface ChoiceboxItemProps
 const ChoiceboxItem = ({ children, className, ...props }: ChoiceboxItemProps) => {
     const textValue = typeof children === 'string' ? children : undefined
     return (
-        <Aria.GridListItem
+        <GridListItem
             textValue={textValue}
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 choiceboxItemStyles({
                     ...renderProps,
                     className
@@ -113,7 +113,7 @@ const ChoiceboxItem = ({ children, className, ...props }: ChoiceboxItemProps) =>
                     </>
                 </div>
             )}
-        </Aria.GridListItem>
+        </GridListItem>
     )
 }
 

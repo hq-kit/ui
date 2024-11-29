@@ -2,8 +2,7 @@
 
 import { IconChevronDown } from 'hq-icons'
 
-import { ShowMore } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { ShowMore, cn } from '@/components/ui'
 
 export default function ShowMoreDemo() {
     return (

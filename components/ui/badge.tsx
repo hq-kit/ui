@@ -21,7 +21,7 @@ const badgeVariants = tv({
             outline: 'bg-transparent ring-inset ring-foreground/50 text-foreground'
         },
         shape: {
-            square: 'rounded-md px-1.5',
+            square: 'rounded-lg px-1.5',
             circle: 'px-2 rounded-full'
         }
     },

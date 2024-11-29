@@ -1,28 +1,34 @@
 'use client'
 
 import { IconCheck, IconMinus } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    CheckboxGroup as CheckboxGroupPrimitive,
+    Checkbox as CheckboxPrimitive,
+    type CheckboxGroupProps as CheckboxGroupPrimitiveProps,
+    type CheckboxProps as CheckboxPrimitiveProps,
+    type ValidationResult
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { Description, FieldError, Label } from './field'
+import { cn } from './utils'
+import { cr } from './utils'
 
-interface CheckboxGroupProps extends Omit<Aria.CheckboxGroupProps, 'children'> {
+interface CheckboxGroupProps extends Omit<CheckboxGroupPrimitiveProps, 'children'> {
     label?: string
     children?: React.ReactNode
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
 const CheckboxGroup = (props: CheckboxGroupProps) => {
     return (
-        <Aria.CheckboxGroup {...props} className={cn('flex flex-col gap-y-2', props.className)}>
+        <CheckboxGroupPrimitive {...props} className={cn('flex flex-col gap-y-2', props.className)}>
             <Label>{props.label}</Label>
             <>{props.children}</>
             {props.description && <Description className='block'>{props.description}</Description>}
             <FieldError>{props.errorMessage}</FieldError>
-        </Aria.CheckboxGroup>
+        </CheckboxGroupPrimitive>
     )
 }
 
@@ -58,7 +64,7 @@ const boxStyles = tv({
     }
 })
 
-interface CheckboxProps extends Aria.CheckboxProps {
+interface CheckboxProps extends CheckboxPrimitiveProps {
     description?: string
     label?: string
     children?: React.ReactNode
@@ -66,9 +72,9 @@ interface CheckboxProps extends Aria.CheckboxProps {
 
 const Checkbox = ({ className, description, label, children, ...props }: CheckboxProps) => {
     return (
-        <Aria.Checkbox
+        <CheckboxPrimitive
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 checkboxStyles({ ...renderProps, className })
             )}
         >
@@ -90,7 +96,7 @@ const Checkbox = ({ className, description, label, children, ...props }: Checkbo
                     </div>
                 </div>
             )}
-        </Aria.Checkbox>
+        </CheckboxPrimitive>
     )
 }
 

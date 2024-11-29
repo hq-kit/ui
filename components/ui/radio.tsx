@@ -2,38 +2,37 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import type {
+    RadioGroupProps as RadioGroupPrimitiveProps,
+    RadioProps as RadioPrimitiveProps,
+    ValidationResult
+} from 'react-aria-components'
+import { RadioGroup as RadioGroupPrimitive, Radio as RadioPrimitive } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { Description, FieldError, Label } from './field'
+import { ctr } from './utils'
 
-interface RadioGroupProps extends Omit<Aria.RadioGroupProps, 'children'> {
+interface RadioGroupProps extends Omit<RadioGroupPrimitiveProps, 'children'> {
     label?: string
     children?: React.ReactNode
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
-    className?: string
+    errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
-const RadioGroup = ({
-    label,
-    description,
-    errorMessage,
-    children,
-    className,
-    ...props
-}: RadioGroupProps) => {
+const RadioGroup = ({ label, description, errorMessage, children, ...props }: RadioGroupProps) => {
     return (
-        <Aria.RadioGroup {...props} className={cn('group flex flex-col gap-2', className)}>
+        <RadioGroupPrimitive
+            {...props}
+            className={ctr(props.className, 'group flex flex-col gap-2')}
+        >
             {label && <Label>{label}</Label>}
             <div className='flex select-none gap-2 group-orientation-horizontal:flex-wrap group-orientation-horizontal:gap-2 sm:group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col'>
                 {children}
             </div>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-        </Aria.RadioGroup>
+        </RadioGroupPrimitive>
     )
 }
 
@@ -59,20 +58,18 @@ const radioStyles = tv({
     }
 })
 
-interface RadioProps extends Aria.RadioProps {
+interface RadioProps extends RadioPrimitiveProps {
     description?: string
-    className?: string
-    children?: React.ReactNode
 }
 
-const Radio = ({ description, className, children, ...props }: RadioProps) => {
+const Radio = ({ description, ...props }: RadioProps) => {
     return (
         <>
-            <Aria.Radio
+            <RadioPrimitive
                 {...props}
-                className={cn(
-                    'group flex items-center gap-2 text-sm text-foreground transition disabled:text-foreground/50',
-                    className
+                className={ctr(
+                    props.className,
+                    'group flex items-center gap-2 text-sm text-foreground transition disabled:text-foreground/50 forced-colors:disabled:text-[GrayText]'
                 )}
             >
                 {(renderProps) => (
@@ -84,14 +81,14 @@ const Radio = ({ description, className, children, ...props }: RadioProps) => {
                             })}
                         />
                         <div className='flex flex-col gap-1'>
-                            <>{children}</>
+                            {props.children as React.ReactNode}
                             {description && (
                                 <Description className='block'>{description}</Description>
                             )}
                         </div>
                     </div>
                 )}
-            </Aria.Radio>
+            </RadioPrimitive>
         </>
     )
 }

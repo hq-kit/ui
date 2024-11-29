@@ -3,27 +3,30 @@
 import React from 'react'
 
 import { IconCheck, IconMenu } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    ListBoxItem as ListBoxItemPrimitive,
+    ListBox as ListBoxPrimitive,
+    type ListBoxItemProps as ListBoxItemPrimitiveProps,
+    type ListBoxProps as ListBoxPrimitiveProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { DropdownItemDetails, DropdownSection } from './dropdown'
+import { cn, cr } from './utils'
 
 const listBoxStyles = tv({
-    base: 'flex max-h-96 w-full gap-y-1 min-w-72 flex-col overflow-y-auto rounded-xl border p-1 shadow-lg outline-none'
+    base: 'flex max-h-96 [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] w-full gap-y-1 min-w-72 flex-col overflow-y-auto rounded-lg border p-1 shadow-lg outline-none'
 })
 
-interface ListBoxProps<T> extends Aria.ListBoxProps<T> {
+interface ListBoxProps<T> extends ListBoxPrimitiveProps<T> {
     className?: string
 }
 
 const ListBox = <T extends object>({ children, className, ...props }: ListBoxProps<T>) => (
-    <Aria.ListBox {...props} className={listBoxStyles({ className })}>
+    <ListBoxPrimitive {...props} className={listBoxStyles({ className })}>
         {children}
-    </Aria.ListBox>
+    </ListBoxPrimitive>
 )
-
 const listBoxItemStyles = tv({
     base: 'lbi cursor-pointer relative rounded-[calc(var(--radius)-1px)] p-2 text-base outline-none lg:text-sm',
     variants: {
@@ -45,8 +48,7 @@ const listBoxItemStyles = tv({
         }
     }
 })
-
-interface ListBoxItemProps<T extends object> extends Aria.ListBoxItemProps<T> {
+interface ListBoxItemProps<T extends object> extends ListBoxItemPrimitiveProps<T> {
     className?: string
 }
 
@@ -54,10 +56,10 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
     const textValue = typeof children === 'string' ? children : undefined
 
     return (
-        <Aria.ListBoxItem
+        <ListBoxItemPrimitive
             textValue={textValue}
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 listBoxItemStyles({
                     ...renderProps,
                     className
@@ -89,7 +91,7 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
                     </>
                 </div>
             )}
-        </Aria.ListBoxItem>
+        </ListBoxItemPrimitive>
     )
 }
 
@@ -97,7 +99,7 @@ type ListBoxPickerProps<T> = ListBoxProps<T>
 
 const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerProps<T>) => {
     return (
-        <Aria.ListBox
+        <ListBoxPrimitive
             className={cn('max-h-72 overflow-auto p-1 outline-none', className)}
             {...props}
         />

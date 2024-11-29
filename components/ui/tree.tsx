@@ -3,10 +3,17 @@
 import React from 'react'
 
 import { IconMinus } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import type { TreeItemProps, TreeProps } from 'react-aria-components'
+import {
+    Button,
+    UNSTABLE_TreeItemContent as TreeItemContent,
+    UNSTABLE_TreeItem as TreeItemPrimitive,
+    UNSTABLE_Tree as TreePrimitive
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { Checkbox } from './checkbox'
+import { cr } from './utils'
 
 const treeStyles = tv({
     base: 'flex border max-h-96 min-w-72 [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] py-2 rounded-lg bg-background cursor-default lg:text-sm flex-col overflow-auto outline-none',
@@ -17,10 +24,10 @@ const treeStyles = tv({
     }
 })
 
-const Tree = <T extends object>({ className, ...props }: Aria.TreeProps<T>) => {
+const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
     return (
-        <Aria.UNSTABLE_Tree
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+        <TreePrimitive
+            className={cr(className, (className, renderProps) =>
                 treeStyles({
                     ...renderProps,
                     className
@@ -29,7 +36,7 @@ const Tree = <T extends object>({ className, ...props }: Aria.TreeProps<T>) => {
             {...props}
         >
             {props.children}
-        </Aria.UNSTABLE_Tree>
+        </TreePrimitive>
     )
 }
 
@@ -52,10 +59,10 @@ const itemStyles = tv({
     }
 })
 
-const TreeItem = <T extends object>({ className, ...props }: Aria.TreeItemProps<T>) => {
+const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) => {
     return (
-        <Aria.UNSTABLE_TreeItem
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+        <TreeItemPrimitive
+            className={cr(className, (className, renderProps) =>
                 itemStyles({
                     ...renderProps,
                     className
@@ -64,28 +71,28 @@ const TreeItem = <T extends object>({ className, ...props }: Aria.TreeItemProps<
             {...props}
         >
             {props.children}
-        </Aria.UNSTABLE_TreeItem>
+        </TreeItemPrimitive>
     )
 }
 
-const ItemContent = (props: React.ComponentProps<typeof Aria.UNSTABLE_TreeItemContent>) => {
+const ItemContent = (props: React.ComponentProps<typeof TreeItemContent>) => {
     return (
-        <Aria.UNSTABLE_TreeItemContent {...props}>
+        <TreeItemContent {...props}>
             <div className='flex items-center'>
                 <>{props.children as React.ReactNode}</>
             </div>
-        </Aria.UNSTABLE_TreeItemContent>
+        </TreeItemContent>
     )
 }
 
 const Indicator = () => {
     return (
-        <Aria.Button className='shrink-0 relative' slot='chevron'>
+        <Button className='shrink-0 relative' slot='chevron'>
             <div className='ml-auto relative indicator flex items-center justify-center size-5'>
                 <IconMinus className='absolute size-3' />
                 <IconMinus className='absolute indicator size-3' />
             </div>
-        </Aria.Button>
+        </Button>
     )
 }
 

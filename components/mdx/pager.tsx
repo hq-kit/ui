@@ -2,9 +2,7 @@
 
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 
-import { cn } from '@/lib/utils'
-
-import { buttonVariants, Link } from '../ui'
+import { buttonVariants, cn, Link } from '@/components/ui'
 
 interface Doc {
     order: number

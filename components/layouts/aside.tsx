@@ -2,16 +2,16 @@
 
 import React from 'react'
 
+import { type Docs, docs } from '#docs'
 import { LayoutGroup, motion } from 'framer-motion'
-import { IconBox, IconCircleHalf, IconHighlighter, IconLayers } from 'hq-icons'
+import { IconCircleHalf, IconHighlighter, IconLayers, IconPackage } from 'hq-icons'
+import type { LinkProps as NextLinkProps } from 'next/link'
+import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { tv } from 'tailwind-variants'
-import { deslugify, titleCase } from 'usemods'
 
-import { Accordion, Link, LinkProps } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { sortDocs } from '@/lib/utils/docs'
-import { type Docs, docs } from '@docs'
+import { Accordion, cn } from '@/components/ui'
+import { goodTitle, sortDocs } from '@/lib/utils'
 
 export interface Doc {
     slug: string
@@ -30,9 +30,9 @@ export const createHierarchy = (docs: Array<Docs>): HierarchyNode => {
         const parts = doc.slug.split('/').slice(1)
         let currentLevel = hierarchy
 
-        parts.forEach((part, index) => {
+        parts.forEach((part: string, index: number) => {
             if (index === parts.length - 1) {
-                // @ts-expect-error no-type
+                // @ts-expect-error unknown-type
                 currentLevel[part] = doc
             } else {
                 if (!currentLevel[part]) {
@@ -48,25 +48,24 @@ export const createHierarchy = (docs: Array<Docs>): HierarchyNode => {
 
 const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
     const filteredNodeEntries = Object.entries(node).sort(([a], [b]) => {
-        const order = ['prologue', 'getting-started', 'dark-mode', 'components']
+        const order = ['getting-started', 'dark-mode', 'components']
         return order.indexOf(a) - order.indexOf(b)
     })
     return (
         <Accordion
             hideBorder
+            hideIndicator
             allowsMultipleExpanded
             defaultExpandedKeys={['getting-started', 'components']}
             className='w-full flex flex-col gap-y-0.5'
         >
             {filteredNodeEntries.map(([key, value]) => (
                 <Accordion.Item
-                    className={({ isExpanded }) =>
-                        cn(isExpanded && 'pb-0 [&_.icon]:text-primary [&_.icon]:fill-primary/10')
-                    }
+                    className={({ isExpanded }) => cn(isExpanded && 'pb-0')}
                     key={key}
                     id={key}
                 >
-                    <Trigger className='[&_.icon]:size-4 pl-2.5 pr-1 text-foreground'>
+                    <Trigger className='[&_.icon]:size-4 pl-2.5 pr-1 text-foreground group-data-[open]:text-primary [&_.icon]:text-foreground [&_.icon]:fill-foreground/10 dark:[&_.icon]:fill-foreground/30'>
                         {key === 'getting-started' ? (
                             <IconLayers className='icon' />
                         ) : key === 'prologue' ? (
@@ -74,9 +73,9 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                         ) : key === 'dark-mode' ? (
                             <IconCircleHalf className='icon' />
                         ) : (
-                            <IconBox className='icon' />
+                            <IconPackage className='icon' />
                         )}
-                        {titleCase(deslugify(key))}
+                        {goodTitle(key)}
                     </Trigger>
                     <Accordion.Content>
                         <Accordion
@@ -85,7 +84,7 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                             defaultExpandedKeys={defaultValues}
                             className='w-full relative'
                         >
-                            <div className='h-full absolute left-0 bg-muted w-px ml-4' />
+                            <div className='h-full absolute left-0 bg-zinc-200 dark:bg-zinc-800 w-px ml-4' />
                             {Object.entries(value as HierarchyNode).map(([subKey, subValue]) =>
                                 typeof subValue === 'object' && 'title' in subValue ? (
                                     <AsideLink
@@ -101,9 +100,8 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                                         key={subKey}
                                         id={subKey}
                                     >
-                                        {/* Trigger components: buttons, controls, etc. */}
-                                        <Trigger className='[--trigger-padding-left:2.2rem] pl-[--trigger-padding-left] pr-1'>
-                                            {titleCase(deslugify(subKey))}
+                                        <Trigger className='[--trigger-padding-left:2.2rem] pl-[--trigger-padding-left] pr-2'>
+                                            {goodTitle(subKey)}
                                         </Trigger>
                                         <Accordion.Content>
                                             {Object.entries(subValue as HierarchyNode).map(
@@ -111,16 +109,11 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                                                     typeof childValue === 'object' &&
                                                     'title' in childValue ? (
                                                         <AsideLink
-                                                            className={cn(
-                                                                'ml-[-0rem] flex justify-between h-9 items-center pl-12 pr-2',
-                                                                defaultValues.length > 0 && 'child'
-                                                            )}
+                                                            className='flex justify-between h-9 items-center pl-12 pr-2'
                                                             key={childKey}
                                                             href={`/${childValue.slug}`}
                                                         >
-                                                            {titleCase(
-                                                                deslugify((childValue as Doc).title)
-                                                            )}
+                                                            {goodTitle((childValue as Doc).title)}
                                                         </AsideLink>
                                                     ) : null
                                             )}
@@ -153,7 +146,7 @@ export const Aside = () => {
     const defaultValues = computeDefaultValuesFromURL()
 
     React.useEffect(() => {
-        const activeElement = document.querySelector('.child')
+        const activeElement = document.querySelector('.active-el')
 
         if (activeElement) {
             activeElement.scrollIntoView({
@@ -161,7 +154,7 @@ export const Aside = () => {
                 block: 'center'
             })
         }
-    }, [])
+    }, [pathname])
     return (
         <LayoutGroup id={id}>
             <aside>{renderHierarchy(hierarchicalDocs, defaultValues)}</aside>
@@ -173,10 +166,7 @@ const Trigger = ({ children, className }: { children: React.ReactNode; className
     return (
         <Accordion.Trigger
             className={cn(
-                'group hover:text-primary py-1.5 pressed:text-primary aria-expanded:text-primary',
-                '[&_svg]:text-foreground [&_svg]:fill-foreground/10',
-                '[&_svg]:hover:text-primary [&_svg]:hover:fill-primary/10',
-                '[&_.indicator]:aria-expanded:text-primary [&_.indicator]:aria-expanded:fill-primary/10',
+                'group hover:text-primary hover:bg-muted/60 py-1.5 pressed:text-primary aria-expanded:text-primary',
                 className
             )}
         >
@@ -185,7 +175,7 @@ const Trigger = ({ children, className }: { children: React.ReactNode; className
     )
 }
 
-interface AsideLinkProps extends LinkProps {
+interface AsideLinkProps extends NextLinkProps {
     active?: boolean
     children: React.ReactNode
     className?: string
@@ -193,11 +183,11 @@ interface AsideLinkProps extends LinkProps {
 }
 
 const asideLinkStyles = tv({
-    base: 'relative block group focus:outline-none focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-primary rounded-lg pl-2.5 h-9 text-base transition-colors hover:text-primary lg:text-sm',
+    base: 'relative block group focus:outline-none focus-visible:bg-muted/50 focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-primary rounded-lg pl-2.5 h-9 text-base transition-colors hover:bg-muted/60 hover:text-primary lg:text-sm',
     variants: {
         isActive: {
-            true: 'font-medium text-primary',
-            false: 'text-foreground'
+            false: 'text-foreground forced-colors:text-[Gray] hover:text-primary',
+            true: 'text-primary forced-colors:text-[LinkText]'
         }
     }
 })
@@ -206,7 +196,7 @@ function AsideLink({ indicatorClassName, className, children, ...props }: AsideL
     const pathname = usePathname()
     const isActive = pathname === props.href
     return (
-        <Link className={asideLinkStyles({ isActive, className })} {...props}>
+        <NextLink className={asideLinkStyles({ isActive, className })} {...props}>
             {children}
             {isActive && (
                 <motion.span
@@ -217,6 +207,6 @@ function AsideLink({ indicatorClassName, className, children, ...props }: AsideL
                     )}
                 />
             )}
-        </Link>
+        </NextLink>
     )
 }

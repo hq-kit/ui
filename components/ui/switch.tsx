@@ -1,6 +1,9 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import {
+    Switch as SwitchPrimitive,
+    type SwitchProps as SwitchPrimitiveProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const trackStyles = tv({
@@ -34,11 +37,11 @@ const switchStyles = tv({
 
 const { base, ball } = switchStyles()
 
-interface SwitchProps extends Aria.SwitchProps, VariantProps<typeof trackStyles> {}
+interface SwitchProps extends SwitchPrimitiveProps, VariantProps<typeof trackStyles> {}
 
 const Switch = ({ children, variant, className, ...props }: SwitchProps) => {
     return (
-        <Aria.Switch
+        <SwitchPrimitive
             {...props}
             className={(values) =>
                 base({ className: typeof className === 'function' ? className(values) : className })
@@ -53,7 +56,7 @@ const Switch = ({ children, variant, className, ...props }: SwitchProps) => {
                     {typeof children === 'function' ? children(values) : children}
                 </>
             )}
-        </Aria.Switch>
+        </SwitchPrimitive>
     )
 }
 

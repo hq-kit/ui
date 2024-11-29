@@ -39,7 +39,7 @@ export default function MultiSelectControlledDemo() {
                 }}
             </MultiSelect>
             {selectedList.items.length > 0 && (
-                <Description className='mt-2 max-w-xs block [&>strong]:text-fg text-muted-fg'>
+                <Description className='mt-2 max-w-xs block [&>strong]:text-foreground text-muted-foreground'>
                     You have selected:{' '}
                     <strong>{selectedList.items.map((item) => item.textValue).join(', ')}</strong>
                 </Description>

@@ -2,8 +2,15 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    ToggleButton,
+    ToggleButtonGroup,
+    type ToggleButtonGroupProps,
+    type ToggleButtonProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
+
+import { cr } from './utils'
 
 interface ToggleGroupContextProps {
     variant?: 'solid' | 'outline' | 'ghost'
@@ -29,12 +36,12 @@ const ToggleGroup = ({
     orientation = 'horizontal',
     variant = 'solid',
     ...props
-}: Aria.ToggleButtonGroupProps & ToggleGroupContextProps) => {
+}: ToggleButtonGroupProps & ToggleGroupContextProps) => {
     return (
         <ToggleGroupContext.Provider value={{ variant }}>
-            <Aria.ToggleButtonGroup
+            <ToggleButtonGroup
                 orientation={orientation}
-                className={Aria.composeRenderProps(className, (className, renderProps) =>
+                className={cr(className, (className, renderProps) =>
                     toggleGroupStyles({
                         ...renderProps,
                         orientation,
@@ -49,7 +56,7 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'inline-flex btn gap-x-2 whitespace-nowrap relative items-center bg-transparent justify-center border text-sm font-medium ring-offset-bg transition-colors hover:bg-muted',
+        'inline-flex btn gap-x-2 whitespace-nowrap relative items-center bg-transparent justify-center border text-sm font-medium ring-offset-background transition-colors hover:bg-muted',
         'outline-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
     ],
     variants: {
@@ -81,15 +88,15 @@ const toggleStyles = tv({
     }
 })
 
-type ToggleProps = Aria.ToggleButtonProps & VariantProps<typeof toggleStyles>
+type ToggleProps = ToggleButtonProps & VariantProps<typeof toggleStyles>
 
 const Toggle = ({ className, variant, ...props }: ToggleProps) => {
     const { variant: groupVariant } = React.useContext(ToggleGroupContext)
 
     return (
-        <Aria.ToggleButton
+        <ToggleButton
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 toggleStyles({
                     ...renderProps,
                     variant: variant ?? groupVariant,

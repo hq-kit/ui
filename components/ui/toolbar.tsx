@@ -2,13 +2,18 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    Group,
+    Toolbar as ToolbarPrimitive,
+    type GroupProps,
+    type SeparatorProps,
+    type ToolbarProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { Separator } from './separator'
-import { Toggle, toggleStyles, type ToggleProps } from './toggle'
+import { Toggle } from './toggle'
+import { cn, cr } from './utils'
 
 const toolbarStyles = tv({
     base: 'flex gap-2 group',
@@ -21,7 +26,7 @@ const toolbarStyles = tv({
     }
 })
 
-const ToolbarSeparator = ({ className, ...props }: Aria.SeparatorProps) => {
+const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
     const { orientation } = React.useContext(ToolbarContext)
     const effectiveOrientation = orientation === 'vertical' ? 'horizontal' : 'vertical'
     return (
@@ -33,17 +38,17 @@ const ToolbarSeparator = ({ className, ...props }: Aria.SeparatorProps) => {
     )
 }
 
-const ToolbarContext = React.createContext<{ orientation?: Aria.ToolbarProps['orientation'] }>({
+const ToolbarContext = React.createContext<{ orientation?: ToolbarProps['orientation'] }>({
     orientation: 'horizontal'
 })
 
-const Toolbar = ({ orientation = 'horizontal', ...props }: Aria.ToolbarProps) => {
+const Toolbar = ({ orientation = 'horizontal', ...props }: ToolbarProps) => {
     return (
         <ToolbarContext.Provider value={{ orientation }}>
-            <Aria.Toolbar
+            <ToolbarPrimitive
                 orientation={orientation}
                 {...props}
-                className={Aria.composeRenderProps(props.className, (className, renderProps) =>
+                className={cr(props.className, (className, renderProps) =>
                     toolbarStyles({ ...renderProps, className })
                 )}
             />
@@ -60,35 +65,21 @@ const toolbarGroupStyles = tv({
 
 const ToolbarGroupContext = React.createContext<{ isDisabled?: boolean }>({})
 
-const ToolbarGroup = ({ isDisabled, ...props }: Aria.GroupProps) => {
+const ToolbarGroup = ({ isDisabled, ...props }: GroupProps) => {
     return (
         <ToolbarGroupContext.Provider value={{ isDisabled }}>
-            <Aria.Group className={toolbarGroupStyles()} {...props}>
+            <Group className={toolbarGroupStyles()} {...props}>
                 {props.children}
-            </Aria.Group>
+            </Group>
         </ToolbarGroupContext.Provider>
     )
 }
 
-const Item = ({ isDisabled, ...props }: ToggleProps) => {
+const Item = ({ isDisabled, ...props }: React.ComponentProps<typeof Toggle>) => {
     const context = React.useContext(ToolbarGroupContext)
     const effectiveIsDisabled = isDisabled || context.isDisabled
 
-    return (
-        <Toggle
-            isDisabled={effectiveIsDisabled}
-            {...props}
-            className={Aria.composeRenderProps(props.className, (className, renderProps) =>
-                toggleStyles({
-                    ...renderProps,
-                    variant: props.variant,
-                    size: props.size,
-                    shape: props.shape,
-                    className
-                })
-            )}
-        />
-    )
+    return <Toggle isDisabled={effectiveIsDisabled} {...props} />
 }
 
 Toolbar.Group = ToolbarGroup

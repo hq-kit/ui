@@ -6,15 +6,18 @@ import { IconCheck, IconPalette, IconX } from 'hq-icons'
 import { useTheme } from 'next-themes'
 import { ListBox, ListBoxItem, type ListBoxItemProps } from 'react-aria-components'
 
-import { Button, buttonVariants, Container, Popover, Tabs } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import { getColorName } from '../colors/colors'
-import './color.css'
-import { applyTheme } from './controller'
-import ThemeContainer from './theme-container'
-import { BrandColors, Presets, RadixColors, TailwindColors } from './theme-presets'
-import ThemeSnippet from './theme-snippet'
+import { getColorName } from '@/components/controllers/colors/colors'
+import '@/components/controllers/themes/color.css'
+import { applyTheme } from '@/components/controllers/themes/controller'
+import ThemeContainer from '@/components/controllers/themes/theme-container'
+import {
+    BrandColors,
+    Presets,
+    RadixColors,
+    TailwindColors
+} from '@/components/controllers/themes/theme-presets'
+import ThemeSnippet from '@/components/controllers/themes/theme-snippet'
+import { Button, buttonVariants, cn, Container, Popover, Tabs } from '@/components/ui'
 
 export default function ThemeCustomizer() {
     const [lightVars, setLightVars] = React.useState({
@@ -69,7 +72,7 @@ export default function ThemeCustomizer() {
         setDarkVars({ ...darkVars, ...Presets[preset as keyof typeof Presets].dark })
         setRadius(Presets[preset as keyof typeof Presets].radius ?? Presets.hq.radius)
         applyTheme(
-            document.getElementById('theme-container') as HTMLHtmlElement,
+            document.querySelectorAll('html') as unknown as HTMLHtmlElement[],
             preset,
             resolvedTheme as 'dark' | 'light'
         )
@@ -182,7 +185,7 @@ export default function ThemeCustomizer() {
                                             className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
                                             disallowEmptySelection
                                             selectionMode='single'
-                                            selectedKeys={preset}
+                                            selectedKeys={[preset]}
                                             // @ts-expect-error unknown-type
                                             onSelectionChange={(v) => setPreset(v.currentKey)}
                                             items={TailwindColors}
@@ -203,7 +206,7 @@ export default function ThemeCustomizer() {
                                             className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
                                             disallowEmptySelection
                                             selectionMode='single'
-                                            selectedKeys={preset}
+                                            selectedKeys={[preset]}
                                             // @ts-expect-error unknown-type
                                             onSelectionChange={(v) => setPreset(v.currentKey)}
                                             items={RadixColors}
@@ -224,7 +227,7 @@ export default function ThemeCustomizer() {
                                             className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
                                             disallowEmptySelection
                                             selectionMode='single'
-                                            selectedKeys={preset}
+                                            selectedKeys={[preset]}
                                             // @ts-expect-error unknown-type
                                             onSelectionChange={(v) => setPreset(v.currentKey)}
                                             items={BrandColors}

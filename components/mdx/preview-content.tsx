@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { IconLoaderCircle } from 'hq-icons'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/components/ui'
 
 export default function PreviewContent({
     component,

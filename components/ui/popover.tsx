@@ -2,15 +2,29 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import type {
+    DialogTriggerProps,
+    ModalOverlayProps,
+    PopoverProps as PopoverPrimitiveProps
+} from 'react-aria-components'
+import {
+    type DialogProps,
+    DialogTrigger,
+    Modal,
+    ModalOverlay,
+    OverlayArrow,
+    PopoverContext,
+    Popover as PopoverPrimitive,
+    useSlottedContext
+} from 'react-aria-components'
+import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
-import { cn, useMediaQuery } from '@/lib/utils'
-
 import { Dialog } from './dialog'
+import { cn, cr, useMediaQuery } from './utils'
 
-const Popover = ({ children, ...props }: Aria.DialogTriggerProps) => {
-    return <Aria.DialogTrigger {...props}>{children}</Aria.DialogTrigger>
+const Popover = ({ children, ...props }: DialogTriggerProps) => {
+    return <DialogTrigger {...props}>{children}</DialogTrigger>
 }
 
 const Title = ({ level = 2, className, ...props }: React.ComponentProps<typeof Dialog.Title>) => (
@@ -21,20 +35,20 @@ const Title = ({ level = 2, className, ...props }: React.ComponentProps<typeof D
 )
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <Dialog.Header className={cn('p-1 sm:pt-0', className)} {...props} />
+    <Dialog.Header className={cn('p-0 sm:pt-0', className)} {...props} />
 )
 
 const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <Dialog.Footer className={cn('pt-4 pb-0 sm:pb-0 sm:px-1', className)} {...props} />
+    <Dialog.Footer className={cn('pb-0 pt-4 sm:pb-0', className)} {...props} />
 )
 
 const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <Dialog.Body className={cn('px-4 sm:p-1', className)} {...props} />
+    <Dialog.Body className={cn('sm:p-0', className)} {...props} />
 )
 
 const popoverContentStyles = tv({
     base: [
-        'max-w-xs min-w-80 p-4 rounded-lg border bg-background bg-clip-padding text-foreground shadow-sm dark:backdrop-blur-2xl dark:backdrop-saturate-200 lg:text-sm sm:max-w-3xl'
+        'max-w-xs min-w-80 p-4 rounded-lg border bg-background bg-clip-padding text-foreground shadow-sm dark:backdrop-saturate-200 lg:text-sm sm:max-w-3xl forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin]'
     ],
     variants: {
         isMenu: {
@@ -44,11 +58,11 @@ const popoverContentStyles = tv({
         },
         isEntering: {
             true: [
-                'ease-out animate-in fade-in placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
+                'duration-50 ease-out animate-in fade-in placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
             ]
         },
         isExiting: {
-            true: 'ease-in animate-out fade-out placement-left:slide-out-to-right-1 placement-right:slide-out-to-left-1 placement-top:slide-out-to-bottom-1 placement-bottom:slide-out-to-top-1'
+            true: 'duration-50 ease-in animate-out fade-out placement-left:slide-out-to-right-1 placement-right:slide-out-to-left-1 placement-top:slide-out-to-bottom-1 placement-bottom:slide-out-to-top-1'
         }
     }
 })
@@ -65,27 +79,27 @@ const drawerStyles = tv({
         isEntering: {
             true: [
                 '[will-change:transform] [transition:transform_0.5s_cubic-bezier(0.32,_0.72,_0,_1)]',
-                'animate-in fade-in-0 slide-in-from-bottom-56',
+                'animate-in duration-200 fade-in-0 slide-in-from-bottom-56',
                 '[transition:translate3d(0,_100%,_0)]',
                 'sm:slide-in-from-bottom-auto sm:slide-in-from-top-[20%]'
             ]
         },
         isExiting: {
-            true: 'ease-in animate-out slide-out-to-bottom-56'
+            true: 'duration-200 ease-in animate-out slide-out-to-bottom-56'
         }
     }
 })
 
 interface PopoverProps
-    extends Omit<React.ComponentProps<typeof Aria.Modal>, 'children'>,
-        Omit<Aria.PopoverProps, 'children' | 'className'>,
-        Omit<Aria.ModalOverlayProps, 'className'> {
+    extends Omit<React.ComponentProps<typeof Modal>, 'children'>,
+        Omit<PopoverPrimitiveProps, 'children' | 'className'>,
+        Omit<ModalOverlayProps, 'className'> {
     children: React.ReactNode
     showArrow?: boolean
     style?: React.CSSProperties
     respectScreen?: boolean
-    'aria-label'?: Aria.DialogProps['aria-label']
-    'aria-labelledby'?: Aria.DialogProps['aria-labelledby']
+    'aria-label'?: DialogProps['aria-label']
+    'aria-labelledby'?: DialogProps['aria-labelledby']
     className?: string | ((values: { defaultClassName?: string }) => string)
 }
 
@@ -97,23 +111,23 @@ const Content = ({
     ...props
 }: PopoverProps) => {
     const isMobile = useMediaQuery('(max-width: 600px)')
-    const popoverContext = Aria.useSlottedContext(Aria.PopoverContext)!
+    const popoverContext = useSlottedContext(PopoverContext)!
     const isMenuTrigger = popoverContext?.trigger === 'MenuTrigger'
     const isSubmenuTrigger = popoverContext?.trigger === 'SubmenuTrigger'
     const isMenu = isMenuTrigger || isSubmenuTrigger
     const offset = showArrow ? 12 : 8
     const effectiveOffset = isSubmenuTrigger ? offset - 5 : offset
     return isMobile && respectScreen ? (
-        <Aria.ModalOverlay
-            className={cn(
+        <ModalOverlay
+            className={twJoin(
                 'fixed left-0 top-0 isolate z-50 h-[--visual-viewport-height] w-full bg-background/10 [--visual-viewport-vertical-padding:16px]',
                 isSubmenuTrigger ? 'bg-background/10' : ''
             )}
             {...props}
             isDismissable
         >
-            <Aria.Modal
-                className={Aria.composeRenderProps(className, (className, renderProps) =>
+            <Modal
+                className={cr(className, (className, renderProps) =>
                     drawerStyles({ ...renderProps, isMenu, className })
                 )}
             >
@@ -123,13 +137,13 @@ const Content = ({
                 >
                     {children}
                 </Dialog>
-            </Aria.Modal>
-        </Aria.ModalOverlay>
+            </Modal>
+        </ModalOverlay>
     ) : (
-        <Aria.Popover
+        <PopoverPrimitive
             offset={effectiveOffset}
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 popoverContentStyles({
                     ...renderProps,
                     className
@@ -137,28 +151,28 @@ const Content = ({
             )}
         >
             {showArrow && (
-                <Aria.OverlayArrow className='group'>
+                <OverlayArrow className='group'>
                     <svg
                         width={12}
                         height={12}
                         viewBox='0 0 12 12'
-                        className='block fill-background stroke-muted group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
+                        className='block fill-background stroke-muted group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]'
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>
-                </Aria.OverlayArrow>
+                </OverlayArrow>
             )}
             {children}
-        </Aria.Popover>
+        </PopoverPrimitive>
     )
 }
 
 const Picker = ({ children, className, ...props }: PopoverProps) => {
     return (
-        <Aria.Popover
+        <PopoverPrimitive
             {...props}
-            className={Aria.composeRenderProps(
-                className as PopoverProps['className'],
+            className={cr(
+                className as PopoverPrimitiveProps['className'],
                 (className, renderProps) =>
                     popoverContentStyles({
                         ...renderProps,
@@ -170,10 +184,11 @@ const Picker = ({ children, className, ...props }: PopoverProps) => {
             )}
         >
             {children}
-        </Aria.Popover>
+        </PopoverPrimitive>
     )
 }
 
+Popover.Primitive = PopoverPrimitive
 Popover.Trigger = Dialog.Trigger
 Popover.Close = Dialog.Close
 Popover.Content = Content

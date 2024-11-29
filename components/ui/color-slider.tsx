@@ -1,46 +1,50 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import {
+    ColorSlider as ColorSliderPrimitive,
+    type ColorSliderProps as ColorSliderPrimitiveProps,
+    SliderOutput,
+    SliderTrack
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
-
-import { cn } from '@/lib/utils'
 
 import { ColorThumb } from './color-thumb'
 import { Label } from './field'
+import { ctr } from './utils'
 
 const trackStyles = tv({
     base: 'group col-span-2 orientation-horizontal:h-6 rounded-lg',
     variants: {
         orientation: {
             horizontal: 'w-full h-6',
-            vertical: 'w-6 h-56 mx-auto'
+            vertical: 'w-6 h-56 ml-[50%] -translate-x-[50%]'
         },
         isDisabled: {
-            true: 'opacity-75 bg-muted'
+            true: 'opacity-75 bg-muted forced-colors:bg-[GrayText]'
         }
     }
 })
 
-interface ColorSliderProps extends Aria.ColorSliderProps {
+interface ColorSliderProps extends ColorSliderPrimitiveProps {
     label?: string
     showOutput?: boolean
 }
 
 const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSliderProps) => {
     return (
-        <Aria.ColorSlider
+        <ColorSliderPrimitive
             {...props}
             data-slot='color-slider'
-            className={cn(
-                'group orientation-horizontal:grid orientation-vertical:flex relative orientation-horizontal:grid-cols-[1fr_auto] orientation-vertical:flex-col orientation-vertical:justify-center orientation-vertical:items-center gap-2 orientation-horizontal:w-56',
-                className
+            className={ctr(
+                className,
+                'group orientation-horizontal:grid orientation-vertical:flex relative orientation-horizontal:grid-cols-[1fr_auto] orientation-vertical:flex-col orientation-vertical:justify-center orientation-vertical:items-center gap-2 orientation-horizontal:w-56'
             )}
         >
-            <div className='flex items-center gap-x-1'>
+            <div className='flex items-center'>
                 {label && <Label className='text-sm [grid-area:label]'>{label}</Label>}
-                {showOutput && <Aria.SliderOutput className='text-sm ml-auto [grid-area:output]' />}
+                {showOutput && <SliderOutput className='text-sm ml-auto [grid-area:output]' />}
             </div>
-            <Aria.SliderTrack
+            <SliderTrack
                 className={trackStyles}
                 style={({ defaultStyle, isDisabled }) => ({
                     ...defaultStyle,
@@ -50,8 +54,8 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
                 })}
             >
                 <ColorThumb />
-            </Aria.SliderTrack>
-        </Aria.ColorSlider>
+            </SliderTrack>
+        </ColorSliderPrimitive>
     )
 }
 

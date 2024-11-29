@@ -4,31 +4,35 @@ import React from 'react'
 
 import { IconChevronDown } from 'hq-icons'
 import { useFilter } from 'react-aria'
-import * as Aria from 'react-aria-components'
+import {
+    ComboBox,
+    Group,
+    type ComboBoxProps,
+    type Key,
+    type ValidationResult
+} from 'react-aria-components'
 import { useListData, type ListData } from 'react-stately'
-
-import { cn } from '@/lib/utils'
 
 import { Button } from './button'
 import { Description, FieldError, Input, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
 import { Tag, type RestrictedVariant } from './tag-group'
-import { VisuallyHidden } from './visually-hidden'
+import { VisuallyHidden, cn } from './utils'
 
 interface FieldState {
-    selectedKey: Aria.Key | null
+    selectedKey: Key | null
     inputValue: string
 }
 
 interface SelectedKey {
-    id: Aria.Key
+    id: Key
     textValue: string
 }
 
 interface MultipleSelectProps<T extends object>
     extends Omit<
-        Aria.ComboBoxProps<T>,
+        ComboBoxProps<T>,
         | 'children'
         | 'validate'
         | 'allowsEmptyCollection'
@@ -45,14 +49,14 @@ interface MultipleSelectProps<T extends object>
     items: Array<T>
     selectedList: ListData<T>
     className?: string
-    onItemAdd?: (key: Aria.Key) => void
-    onItemRemove?: (key: Aria.Key) => void
+    onItemAdd?: (key: Key) => void
+    onItemRemove?: (key: Key) => void
     renderEmptyState?: (inputValue: string) => React.ReactNode
     tag: (item: T) => React.ReactNode
     children: React.ReactNode | ((item: T) => React.ReactNode)
     max?: number
     min?: number
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
 const MultiSelect = <T extends SelectedKey>({
@@ -94,21 +98,21 @@ const MultiSelect = <T extends SelectedKey>({
     })
 
     const onRemove = React.useCallback(
-        (keys: Set<Aria.Key>) => {
+        (keys: Set<Key>) => {
             if (min !== undefined && selectedList.items.length <= min) return
 
             const key = keys.values().next().value
-            selectedList.remove(key as Aria.Key)
+            selectedList.remove(key as Key)
             setFieldState({
                 inputValue: '',
                 selectedKey: null
             })
-            onItemRemove?.(key as Aria.Key)
+            onItemRemove?.(key as Key)
         },
         [selectedList, onItemRemove, min]
     )
 
-    const onSelectionChange = (id: Aria.Key | null) => {
+    const onSelectionChange = (id: Key | null) => {
         if (!id) return
 
         const item = accessibleList.getItem(id)
@@ -185,7 +189,7 @@ const MultiSelect = <T extends SelectedKey>({
     const triggerButtonRef = React.useRef<HTMLButtonElement | null>(null)
 
     return (
-        <Aria.Group className={cn('group flex w-full min-w-fit flex-col gap-1', className)}>
+        <Group className={cn('group flex w-full min-w-fit flex-col gap-1', className)}>
             {props.label && <Label>{props.label}</Label>}
             <div
                 ref={triggerRef}
@@ -213,7 +217,7 @@ const MultiSelect = <T extends SelectedKey>({
                         {props.tag}
                     </Tag.List>
                 </Tag.Group>
-                <Aria.ComboBox
+                <ComboBox
                     {...props}
                     aria-label='Available items'
                     allowsEmptyCollection
@@ -282,11 +286,11 @@ const MultiSelect = <T extends SelectedKey>({
                             {children}
                         </ListBox.Picker>
                     </Popover.Picker>
-                </Aria.ComboBox>
+                </ComboBox>
                 <div className='relative px-1 ml-auto flex items-center justify-center peer-data-[open]:[&_button>svg]:rotate-180 [&_button>svg]:transition'>
                     <button
                         type='button'
-                        className='size-8 -mr-2 grid place-content-center rounded-sm hover:text-foreground focus:text-foreground text-muted-foreground'
+                        className='size-8 -mr-2 grid place-content-center rounded-lg hover:text-foreground focus:text-foreground text-muted-foreground'
                         onClick={() => triggerButtonRef.current?.click()}
                         tabIndex={-1}
                     >
@@ -298,7 +302,7 @@ const MultiSelect = <T extends SelectedKey>({
             {name && <input hidden name={name} value={selectedKeys.join(',')} readOnly />}
 
             {props.description && <Description>{props.description}</Description>}
-        </Aria.Group>
+        </Group>
     )
 }
 

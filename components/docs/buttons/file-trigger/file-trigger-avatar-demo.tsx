@@ -4,8 +4,7 @@ import React from 'react'
 
 import { isFileDropItem } from 'react-aria-components'
 
-import { Avatar, DropZone, FileTrigger } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { Avatar, DropZone, FileTrigger, cn } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function FileTriggerAvatarDemo() {

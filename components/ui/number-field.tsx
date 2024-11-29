@@ -1,17 +1,45 @@
 'use client'
 
 import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Button,
+    type ButtonProps,
+    NumberField as NumberFieldPrimitive,
+    type NumberFieldProps as NumberFieldPrimitiveProps,
+    type ValidationResult
+} from 'react-aria-components'
+import { tv } from 'tailwind-variants'
 
-import { cn, useMediaQuery } from '@/lib/utils'
+import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import { ctr, useMediaQuery } from './utils'
 
-import { Description, fieldBorderStyles, FieldError, FieldGroup, Input, Label } from './field'
+const fieldBorderStyles = tv({
+    base: 'group-focus:border-primary/70 forced-colors:border-[Highlight]',
+    variants: {
+        isInvalid: {
+            true: 'group-focus:border-danger/70 forced-colors:border-[Mark]'
+        },
+        isDisabled: {
+            true: 'group-focus:border-muted/70'
+        }
+    }
+})
 
-interface NumberFieldProps extends Aria.NumberFieldProps {
+const numberFieldStyles = tv({
+    slots: {
+        base: 'group flex flex-col gap-y-1.5',
+        stepperButton:
+            'h-10 cursor-default px-3 text-muted-foreground pressed:bg-primary pressed:text-primary-foreground group-disabled:bg-secondary/70 forced-colors:group-disabled:text-[GrayText]'
+    }
+})
+
+const { base, stepperButton } = numberFieldStyles()
+
+interface NumberFieldProps extends NumberFieldPrimitiveProps {
     label?: string
     description?: string
     placeholder?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
 const NumberField = ({
@@ -24,9 +52,9 @@ const NumberField = ({
 }: NumberFieldProps) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     return (
-        <Aria.NumberField {...props} className={cn('group flex flex-col gap-1', className)}>
-            <Label>{label}</Label>
-            <FieldGroup className='group-disabled:bg-muted'>
+        <NumberFieldPrimitive {...props} className={ctr(className, base())}>
+            {label && <Label>{label}</Label>}
+            <FieldGroup className='overflow-hidden'>
                 {(renderProps) => (
                     <>
                         {isMobile ? <StepperButton slot='decrement' className='border-r' /> : null}
@@ -49,7 +77,7 @@ const NumberField = ({
                                     <div
                                         className={fieldBorderStyles({
                                             ...renderProps,
-                                            className: 'border-b'
+                                            className: 'border-b border-muted'
                                         })}
                                     />
                                     <StepperButton
@@ -65,11 +93,11 @@ const NumberField = ({
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-        </Aria.NumberField>
+        </NumberFieldPrimitive>
     )
 }
 
-interface StepperButtonProps extends Aria.ButtonProps {
+interface StepperButtonProps extends ButtonProps {
     slot: 'increment' | 'decrement'
     emblemType?: 'chevron' | 'default'
     className?: string
@@ -94,17 +122,10 @@ const StepperButton = ({
             <IconMinus />
         )
     return (
-        <Aria.Button
-            className={cn(
-                'h-10 cursor-default px-2 text-muted-foreground pressed:bg-primary pressed:text-primary-foreground group-disabled:bg-muted',
-                className
-            )}
-            slot={slot}
-            {...props}
-        >
+        <Button className={stepperButton({ className })} slot={slot} {...props}>
             {icon}
-        </Aria.Button>
+        </Button>
     )
 }
 
-export { NumberField, type NumberFieldProps }
+export { NumberField }

@@ -1,10 +1,19 @@
 'use client'
 
 import { IconCheck } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Collection,
+    Header,
+    ListBoxItem as ListBoxItemPrimitive,
+    type ListBoxItemProps,
+    ListBoxSection,
+    type ListBoxSectionProps,
+    Text,
+    type TextProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
+import { cn, cr } from './utils'
 
 const dropdownItemStyles = tv({
     base: [
@@ -37,10 +46,6 @@ const dropdownItemStyles = tv({
     ]
 })
 
-interface DropdownSectionProps<T> extends Aria.SectionProps<T> {
-    title?: string
-}
-
 const dropdownSectionStyles = tv({
     slots: {
         section:
@@ -51,27 +56,31 @@ const dropdownSectionStyles = tv({
 
 const { section, header } = dropdownSectionStyles()
 
+interface DropdownSectionProps<T> extends ListBoxSectionProps<T> {
+    title?: string
+}
+
 const DropdownSection = <T extends object>({ className, ...props }: DropdownSectionProps<T>) => {
     return (
-        <Aria.Section className={section({ className })}>
-            {'title' in props && <Aria.Header className={header()}>{props.title}</Aria.Header>}
-            <Aria.Collection items={props.items}>{props.children}</Aria.Collection>
-        </Aria.Section>
+        <ListBoxSection className={section({ className })}>
+            {'title' in props && <Header className={header()}>{props.title}</Header>}
+            <Collection items={props.items}>{props.children}</Collection>
+        </ListBoxSection>
     )
 }
 
-const DropdownItem = ({ className, ...props }: Aria.ListBoxItemProps) => {
+const DropdownItem = ({ className, ...props }: ListBoxItemProps) => {
     const textValue =
         props.textValue || (typeof props.children === 'string' ? props.children : undefined)
     return (
-        <Aria.ListBoxItem
+        <ListBoxItemPrimitive
             textValue={textValue}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 dropdownItemStyles({ ...renderProps, className })
             )}
             {...props}
         >
-            {Aria.composeRenderProps(props.children, (children, { isSelected }) => (
+            {cr(props.children, (children, { isSelected }) => (
                 <>
                     <span className='flex flex-1 items-center gap-2 truncate font-normal group-selected:font-medium'>
                         {children}
@@ -84,16 +93,16 @@ const DropdownItem = ({ className, ...props }: Aria.ListBoxItemProps) => {
                     )}
                 </>
             ))}
-        </Aria.ListBoxItem>
+        </ListBoxItemPrimitive>
     )
 }
 
-interface DropdownItemSlot extends Aria.TextProps {
-    label?: Aria.TextProps['children']
-    description?: Aria.TextProps['children']
+interface DropdownItemSlot extends TextProps {
+    label?: TextProps['children']
+    description?: TextProps['children']
     classNames?: {
-        label?: Aria.TextProps['className']
-        description?: Aria.TextProps['className']
+        label?: TextProps['className']
+        description?: TextProps['className']
     }
 }
 
@@ -101,29 +110,34 @@ const DropdownItemDetails = ({ label, description, classNames, ...props }: Dropd
     const { slot, children, title, ...restProps } = props
 
     return (
-        <div className='flex flex-col gap-1' {...restProps}>
+        <div className='flex flex-col gap-y-1' {...restProps}>
             {label && (
-                <Aria.Text
+                <Text
                     slot={slot ?? 'label'}
                     className={cn('font-medium lg:text-sm', classNames?.label)}
                     {...restProps}
                 >
                     {label}
-                </Aria.Text>
+                </Text>
             )}
             {description && (
-                <Aria.Text
+                <Text
                     slot={slot ?? 'description'}
                     className={cn('text-muted-foreground text-xs', classNames?.description)}
                     {...restProps}
                 >
                     {description}
-                </Aria.Text>
+                </Text>
             )}
             {!title && children}
         </div>
     )
 }
 
-// Note: This is not exposed component, but it's used in other components to render dropdowns.
-export { DropdownItem, DropdownItemDetails, dropdownItemStyles, DropdownSection }
+export {
+    DropdownItem,
+    DropdownItemDetails,
+    dropdownItemStyles,
+    DropdownSection,
+    dropdownSectionStyles
+}

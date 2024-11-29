@@ -1,8 +1,7 @@
+import { Search } from '@/components/controllers/icons/search-icon'
+import { SelectSize } from '@/components/controllers/icons/select-size'
+import { SelectStroke } from '@/components/controllers/icons/select-stroke'
 import { Container } from '@/components/ui'
-
-import { Search } from './search-icon'
-import { SelectSize } from './select-size'
-import { SelectStroke } from './select-stroke'
 
 export function IconsController() {
     return (

@@ -2,20 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { IconTriangleAlert } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import {
+    Meter as MeterPrimitive,
+    type MeterProps as MeterPrimitiveProps
+} from 'react-aria-components'
 
 import { Label } from './field'
+import { ctr } from './utils'
 
-export interface MeterProps extends Aria.MeterProps {
+export interface MeterProps extends MeterPrimitiveProps {
     label?: string
-    className?: string
 }
 
-const Meter = ({ label, className, ...props }: MeterProps) => {
+const Meter = ({ label, ...props }: MeterProps) => {
     return (
-        <Aria.Meter {...props} className={cn('flex flex-col gap-1', className)}>
+        <MeterPrimitive {...props} className={ctr(props.className, 'flex flex-col gap-1')}>
             {({ percentage, valueText }) => (
                 <>
                     <div className='flex w-full justify-between gap-2'>
@@ -34,7 +35,7 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                     </div>
                     <div className='relative h-2 min-w-64 rounded-lg bg-muted outline outline-1 -outline-offset-1 outline-transparent'>
                         <motion.div
-                            className='absolute left-0 top-0 h-full rounded-lg'
+                            className='absolute left-0 top-0 h-full rounded-lg forced-colors:bg-[Highlight]'
                             initial={{ width: '0%', backgroundColor: getColor(0) }}
                             animate={{
                                 width: `${percentage}%`,
@@ -45,10 +46,9 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                     </div>
                 </>
             )}
-        </Aria.Meter>
+        </MeterPrimitive>
     )
 }
-
 const getColor = (percentage: number) => {
     if (percentage < 30) {
         return 'hsl(var(--primary))' // Blue

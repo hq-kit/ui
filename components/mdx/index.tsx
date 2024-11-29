@@ -1,14 +1,13 @@
 import Image from 'next/image'
 
+import Block from '@/components/mdx/block'
+import CLI from '@/components/mdx/cli'
+import Code from '@/components/mdx/code'
+import Demo from '@/components/mdx/demo'
+import Install from '@/components/mdx/install'
+import Note from '@/components/mdx/note'
 import { Link, type LinkProps } from '@/components/ui'
 import { useMDXComponent } from '@/lib/hooks/use-mdx'
-
-import Block from './block'
-import CLI from './cli'
-import Code from './code'
-import Demo from './demo'
-import Install from './install'
-import Note from './note'
 
 interface MdxProps {
     code: string

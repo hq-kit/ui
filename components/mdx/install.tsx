@@ -1,10 +1,9 @@
 'use client'
 
+import CLI from '@/components/mdx/cli'
+import Components from '@/components/mdx/components.json'
+import SourceCode from '@/components/mdx/source-code'
 import { Tabs } from '@/components/ui'
-
-import CLI from './cli'
-import Components from './components.json'
-import SourceCode from './source-code'
 
 export default function Install({ component }: { component: string }) {
     const item = Components.find((c) => c.name === component)

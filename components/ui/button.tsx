@@ -2,10 +2,13 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    Button as ButtonPrimitive,
+    ButtonProps as ButtonPrimitiveProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
 const buttonVariants = tv({
     base: [
@@ -79,12 +82,12 @@ const buttonVariants = tv({
     }
 })
 
-export interface ButtonProps extends Aria.ButtonProps, VariantProps<typeof buttonVariants> {}
+export interface ButtonProps extends ButtonPrimitiveProps, VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, shape, ...props }, ref) => {
         return (
-            <Aria.Button
+            <ButtonPrimitive
                 className={(values) =>
                     cn(
                         buttonVariants({

@@ -3,7 +3,7 @@
 import { IconCheck, IconClipboard } from 'hq-icons'
 import { Button, type ButtonProps } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/components/ui'
 
 interface CopyButtonProps extends ButtonProps {
     isCopied?: boolean

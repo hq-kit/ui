@@ -5,9 +5,10 @@ import React from 'react'
 import { tv } from 'tailwind-variants'
 
 import { Menu, type MenuContentProps } from './menu'
+import { focusButtonStyles } from './utils'
 
 interface ContextMenuTriggerContextType {
-    buttonRef: React.RefObject<HTMLButtonElement>
+    buttonRef: React.RefObject<HTMLButtonElement | null>
     contextMenuOffset: { offset: number; crossOffset: number } | null
     setContextMenuOffset: React.Dispatch<
         React.SetStateAction<{ offset: number; crossOffset: number } | null>
@@ -47,14 +48,12 @@ const ContextMenu = ({ children }: ContextMenuRootComponent) => {
 }
 
 const contextMenuTriggerStyles = tv({
-    base: 'focus:outline-none cursor-default outline outline-ring outline-offset-2',
+    extend: focusButtonStyles,
+    base: 'focus:outline-none cursor-default',
     variants: {
-        isFocusVisible: {
-            false: 'outline-0',
-            true: 'outline-2'
-        },
         isDisabled: {
-            true: 'cursor-default opacity-60'
+            false: 'forced-colors:disabled:text-[GrayText]',
+            true: 'cursor-default opacity-60 forced-colors:disabled:text-[GrayText]'
         }
     }
 })
@@ -75,7 +74,7 @@ const ContextMenuTrigger = ({ className, ...props }: ContextMenuTriggerProps) =>
     return (
         <button
             className={contextMenuTriggerStyles({ isDisabled: props.disabled, className })}
-            ref={buttonRef}
+            ref={buttonRef as React.RefObject<HTMLButtonElement>}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
             {...props}

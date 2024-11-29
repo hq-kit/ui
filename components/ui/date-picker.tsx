@@ -3,9 +3,15 @@
 import React from 'react'
 
 import { IconCalendarDays } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import {
+    DatePicker as DatePickerPrimitive,
+    type DatePickerProps as DatePickerPrimitiveProps,
+    type DateValue,
+    type DialogProps,
+    type PopoverProps,
+    type ValidationResult
+} from 'react-aria-components'
+import { tv } from 'tailwind-variants'
 
 import { Button } from './button'
 import { Calendar } from './calendar'
@@ -13,10 +19,27 @@ import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, Label } from './field'
 import { Popover } from './popover'
 import { RangeCalendar } from './range-calendar'
+import { ctr } from './utils'
+
+const datePickerStyles = tv({
+    slots: {
+        base: 'group flex flex-col gap-y-1.5',
+        datePickerIcon:
+            'group mr-1 h-7 [&_[data-slot=icon]]:text-muted-foreground w-8 rounded-lg outline-offset-0 hover:bg-transparent pressed:bg-transparent',
+        calendarIcon: 'group-open:text-foreground',
+        datePickerInput: 'w-full px-2 text-base lg:text-sm',
+        dateRangePickerInputStart: 'px-2 lg:text-sm text-base',
+        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 lg:text-sm text-base',
+        dateRangePickerDash:
+            'text-foreground group-disabled:opacity-50 forced-colors:text-[ButtonText] group-disabled:forced-colors:text-[GrayText]'
+    }
+})
+
+const { base, datePickerIcon, calendarIcon, datePickerInput } = datePickerStyles()
 
 interface DatePickerOverlayProps
-    extends Omit<Aria.DialogProps, 'children' | 'className' | 'style'>,
-        Omit<Aria.PopoverProps, 'children' | 'className' | 'style'> {
+    extends Omit<DialogProps, 'children' | 'className' | 'style'>,
+        Omit<PopoverProps, 'children' | 'className' | 'style'> {
     className?: string | ((values: { defaultClassName?: string }) => string)
     children?: React.ReactNode
     closeButton?: boolean
@@ -43,25 +66,18 @@ const DatePickerOverlay = ({ closeButton = true, range, ...props }: DatePickerOv
 }
 
 const DatePickerIcon = () => (
-    <Button
-        size='icon'
-        variant='ghost'
-        className='group mr-1 h-7 [&>svg]:text-muted-foreground w-8 rounded outline-offset-0 hover:bg-transparent pressed:bg-transparent'
-    >
-        <IconCalendarDays
-            aria-hidden
-            className='size-4 text-muted-foreground group-open:text-foreground'
-        />
+    <Button size='icon' variant='ghost' className={datePickerIcon()}>
+        <IconCalendarDays aria-hidden className={calendarIcon()} />
     </Button>
 )
 
-interface DatePickerProps<T extends Aria.DateValue> extends Aria.DatePickerProps<T> {
+interface DatePickerProps<T extends DateValue> extends DatePickerPrimitiveProps<T> {
     label?: string
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
-const DatePicker = <T extends Aria.DateValue>({
+const DatePicker = <T extends DateValue>({
     label,
     className,
     description,
@@ -69,17 +85,24 @@ const DatePicker = <T extends Aria.DateValue>({
     ...props
 }: DatePickerProps<T>) => {
     return (
-        <Aria.DatePicker {...props} className={cn('group flex flex-col gap-1', className)}>
+        <DatePickerPrimitive {...props} className={ctr(className, base())}>
             {label && <Label>{label}</Label>}
             <FieldGroup className='min-w-40'>
-                <DateInput className='w-full px-2 uppercase text-base lg:text-sm' />
+                <DateInput className={datePickerInput()} />
                 <DatePickerIcon />
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
             <DatePickerOverlay />
-        </Aria.DatePicker>
+        </DatePickerPrimitive>
     )
 }
 
-export { DatePicker, DatePickerIcon, DatePickerOverlay, type DatePickerProps }
+export {
+    DatePicker,
+    DatePickerIcon,
+    DatePickerOverlay,
+    type DatePickerProps,
+    type DateValue,
+    type ValidationResult
+}

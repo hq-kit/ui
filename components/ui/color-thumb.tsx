@@ -1,6 +1,6 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import { ColorThumb as ColorThumbPrimitive, type ColorThumbProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const thumbStyles = tv({
@@ -10,17 +10,17 @@ const thumbStyles = tv({
             true: 'size-8'
         },
         isDragging: {
-            true: 'bg-gray-700 dark:bg-gray-300'
+            true: 'bg-gray-700 dark:bg-gray-300 forced-colors:bg-[ButtonBorder]'
         },
         isDisabled: {
-            true: 'opacity-50'
+            true: 'opacity-50 forced-colors:border-[GrayText] forced-colors:bg-[GrayText]'
         }
     }
 })
 
-const ColorThumb = (props: Aria.ColorThumbProps) => {
+const ColorThumb = (props: ColorThumbProps) => {
     return (
-        <Aria.ColorThumb
+        <ColorThumbPrimitive
             {...props}
             style={({ defaultStyle, isDisabled }) => ({
                 ...defaultStyle,

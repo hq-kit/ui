@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import { ColorFormat, ListBox } from 'react-aria-components'
 
-import { ColorItem } from './color-item'
+import { ColorItem } from '@/components/controllers/colors/color-item'
 
 export interface ColorProps {
     name: string

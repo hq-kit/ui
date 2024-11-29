@@ -2,8 +2,7 @@
 
 import { Header, Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
-import { buttonVariants, Container, Link } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { buttonVariants, cn, Container, Link } from '@/components/ui'
 
 const Hero = ({ children }: { children: React.ReactNode }) => (
     <div className='relative isolate overflow-hidden bg-background'>

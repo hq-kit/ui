@@ -2,9 +2,8 @@
 
 import React from 'react'
 
-import { LayoutGroup, motion } from 'framer-motion'
+import { LayoutGroup } from 'framer-motion'
 import {
-    IconBox,
     IconBrandAdobe,
     IconBrandCleon,
     IconBrandFramer,
@@ -12,27 +11,25 @@ import {
     IconBrandTailwind,
     IconChevronDown,
     IconHome,
-    IconLayoutTemplate,
-    IconMenu,
+    IconLayoutDashboard,
     IconMonitor,
     IconMoon,
+    IconPackage,
     IconPalette,
     IconSearch,
     IconShapes,
     IconSun,
     IconSwatchBook
 } from 'hq-icons'
-import { type LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Collection } from 'react-aria-components'
 
+import { CommandMenu } from '@/components/layouts/command-menu'
+import { NavLink } from '@/components/layouts/nav-link'
+import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { useTheme } from '@/components/providers'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, buttonVariants, Keyboard, Link, Menu, Separator, Sheet } from '@/components/ui'
-import { cn, useMediaQuery } from '@/lib/utils'
-
-import { CommandPalette, type OpenCloseProps } from './command-menu'
-import { Aside } from './doc-aside'
+import { Button, buttonVariants, Link, Menu, Separator, useMediaQuery } from '@/components/ui'
 
 export function Navbar() {
     const id = React.useId()
@@ -47,14 +44,14 @@ export function Navbar() {
     ]
 
     const [open, setOpen] = React.useState(false)
-
+    const isDesktop = useMediaQuery('(min-width: 1024px)')
     return (
         <>
-            <CommandPalette setOpen={setOpen} open={open} />
+            <CommandMenu setOpen={setOpen} openCommand={open} />
             <LayoutGroup id={`navigation-${id}`}>
-                <div className='sticky top-0 z-30 hidden overflow-hidden pb-1 lg:block'>
-                    <nav className='border-b bg-background/60 py-2 backdrop-blur-xl'>
-                        <div className='mx-auto max-w-screen-2xl px-4'>
+                <div className='sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block'>
+                    <nav className='border-b bg-background/95 py-2 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60'>
+                        <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
                             <div className='flex items-center justify-between'>
                                 <div className='flex items-center gap-x-6'>
                                     <NavbarDropdown />
@@ -68,32 +65,33 @@ export function Navbar() {
                                     </Collection>
                                 </div>
 
-                                <div className='flex items-center gap-x-2'>
+                                <div className='flex items-center gap-x-1'>
                                     <>
-                                        <Link
-                                            target='_blank'
-                                            variant='unstyled'
-                                            href='https://github.com/hq-kit/ui'
-                                            className={buttonVariants({
-                                                variant: 'outline',
-                                                size: 'icon'
-                                            })}
-                                        >
-                                            <IconBrandGithub />
-                                        </Link>
                                         <Button
-                                            className='flex-shrink-0'
                                             onPress={() => setOpen((open: boolean) => !open)}
                                             variant='outline'
                                             aria-label='Open command palette'
                                         >
                                             <IconSearch />
-                                            <Keyboard
-                                                className='-mr-2 [&_kbd]:min-w-[3ch]'
-                                                keys='⌘K'
-                                            />
+                                            <span className='text-muted-foreground'>Search..</span>
+                                            <Menu.Keyboard className='-mr-2' keys='⌘K' />
                                         </Button>
                                         <ThemeToggle />
+
+                                        <Separator orientation='vertical' className='h-7 mx-2' />
+
+                                        <Link
+                                            aria-label='Github Repository'
+                                            className={buttonVariants({
+                                                variant: 'outline',
+                                                size: 'icon',
+                                                className: '[&_[data-slot=icon]]:text-foreground'
+                                            })}
+                                            target='_blank'
+                                            href={'https://github.com/hq-kit/ui'}
+                                        >
+                                            <IconBrandGithub />
+                                        </Link>
                                     </>
                                 </div>
                             </div>
@@ -101,115 +99,8 @@ export function Navbar() {
                     </nav>
                 </div>
             </LayoutGroup>
-            <ResponsiveAside open={open} setOpen={setOpen} />
+            {!isDesktop && <ResponsiveAside openCmd={open} setOpenCmd={setOpen} />}
         </>
-    )
-}
-
-export function NavLink({
-    href,
-    isActive,
-    children,
-    ...props
-}: LinkProps & { children: React.ReactNode; isActive?: boolean }) {
-    return (
-        <Link
-            href={href as string}
-            className={cn(
-                'relative whitespace-nowrap flex items-center gap-x-3 py-2 text-sm transition-colors focus:outline-none focus:text-primary sm:py-3',
-                isActive ? 'text-primary' : 'text-foreground hover:text-primary'
-            )}
-            {...props}
-        >
-            <>
-                {children}
-                {isActive && (
-                    <motion.span
-                        layoutId='current-indicator-navlink'
-                        className='absolute inset-x-0 bottom-[-0.550rem] h-0.5 w-full rounded bg-primary'
-                    />
-                )}
-            </>
-        </Link>
-    )
-}
-
-export function ResponsiveAside({ open, setOpen }: OpenCloseProps) {
-    const id = React.useId()
-    const [openAside, setOpenAside] = React.useState(false)
-    const pathname = usePathname()
-
-    React.useEffect(() => {
-        setOpenAside(false)
-    }, [pathname])
-
-    const isDesktop = useMediaQuery('(min-width: 1024px)')
-    return (
-        <nav className='z-30 lg:hidden h-14 bg-background/60 backdrop-blur-xl rounded-b-lg sticky top-0'>
-            {!isDesktop && <CommandPalette setOpen={setOpen} open={open} />}
-            <div className={cn('-mb-2 flex items-center justify-between pl-4 pr-2 pt-2')}>
-                <Button
-                    aria-label='Open Menu'
-                    className='-ml-2 [&_[data-slot=icon]]:text-foreground'
-                    variant='outline'
-                    size='icon'
-                    onPress={() => setOpenAside((openAside) => !openAside)}
-                >
-                    <IconMenu />
-                </Button>
-                <Link
-                    className='rounded focus:outline-none focus:ring-1 focus:ring-primary/20'
-                    href='/'
-                    aria-label='Logo'
-                >
-                    <IconBrandCleon className='size-7' />
-                </Link>
-                <div className='flex items-center gap-x-1'>
-                    <Link
-                        target='_blank'
-                        variant='unstyled'
-                        href='https://github.com/hq-kit/ui'
-                        className={buttonVariants({
-                            variant: 'outline',
-                            size: 'icon'
-                        })}
-                    >
-                        <IconBrandGithub />
-                    </Link>
-                    <Button
-                        // @ts-expect-error invalid-arg
-                        onPress={() => setOpen((open: boolean) => !open)}
-                        size='icon'
-                        variant='outline'
-                        aria-label='Open command palette'
-                        className='flex-shrink-0'
-                    >
-                        <IconSearch />
-                        <Keyboard className='-mr-2 [&_kbd]:min-w-[3ch]' keys='⌘K' />
-                    </Button>
-                    <ThemeToggle />
-                </div>
-            </div>
-            {!isDesktop && (
-                <Sheet isOpen={openAside} onOpenChange={setOpenAside}>
-                    <Sheet.Trigger className='sr-only'>Open</Sheet.Trigger>
-                    <Sheet.Content
-                        classNames={{ content: 'w-[19rem]' }}
-                        side='left'
-                        closeButton={true}
-                    >
-                        <Sheet.Header className='mb-4 flex flex-row justify-between py-2'>
-                            <NavbarDropdown />
-                        </Sheet.Header>
-                        <Sheet.Body className='px-4'>
-                            <LayoutGroup id={id}>
-                                <Aside />
-                            </LayoutGroup>
-                        </Sheet.Body>
-                    </Sheet.Content>
-                </Sheet>
-            )}
-        </nav>
     )
 }
 
@@ -231,11 +122,11 @@ export function NavbarDropdown() {
                     Home
                 </Menu.Item>
                 <Menu.Item href='/docs'>
-                    <IconBox />
+                    <IconPackage />
                     Components
                 </Menu.Item>
                 <Menu.Item href='/blocks'>
-                    <IconLayoutTemplate />
+                    <IconLayoutDashboard />
                     Blocks
                 </Menu.Item>
                 <Menu.Item href='/icons'>

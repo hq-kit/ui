@@ -3,17 +3,16 @@ import React from 'react'
 import chroma from 'chroma-js'
 import { type ColorFormat, ListBox, parseColor } from 'react-aria-components'
 
-import ThemeSnippet from '@/components/controllers/themes/theme-snippet'
-import { ColorField, defaultColor } from '@/components/ui'
-
-import { ColorItem } from './color-item'
-import { ColorShades } from './color-shades'
+import { ColorItem } from '@/components/controllers/colors/color-item'
+import { ColorShades } from '@/components/controllers/colors/color-shades'
 import {
     formatColorForTailwind,
     generateColorScale,
     getColorName,
     getForegroundColor
-} from './colors'
+} from '@/components/controllers/colors/colors'
+import ThemeSnippet from '@/components/controllers/themes/theme-snippet'
+import { ColorField, defaultColor } from '@/components/ui'
 
 export interface CustomColorProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     selectedFormat?: ColorFormat

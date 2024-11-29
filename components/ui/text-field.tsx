@@ -2,23 +2,25 @@
 
 import React from 'react'
 
-import { IconLoaderCircle, IconLock, IconLockOpen } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import { IconEye, IconEyeClosed } from 'hq-icons'
+import {
+    Button as ButtonPrimitive,
+    TextField as TextFieldPrimitive,
+    type TextFieldProps as TextFieldPrimitiveProps
+} from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
 import type { TextInputDOMProps } from '@react-types/shared'
 
-import type { FieldProps } from './field'
-import { Description, FieldError, FieldGroup, fieldGroupPrefixStyles, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, Input, Label, type FieldProps } from './field'
 import { Loader } from './loader'
+import { ctr } from './utils'
 
 type InputType = Exclude<TextInputDOMProps['type'], 'password'>
 
-interface BaseTextFieldProps extends Aria.TextFieldProps, FieldProps {
+interface BaseTextFieldProps extends TextFieldPrimitiveProps, FieldProps {
     prefix?: React.ReactNode
     suffix?: React.ReactNode
     isPending?: boolean
-    indicatorPlace?: 'prefix' | 'suffix'
     className?: string
 }
 
@@ -42,7 +44,6 @@ const TextField = ({
     prefix,
     suffix,
     isPending,
-    indicatorPlace,
     className,
     isRevealable,
     type,
@@ -55,40 +56,38 @@ const TextField = ({
         setIsPasswordVisible((prev) => !prev)
     }
     return (
-        <Aria.TextField
+        <TextFieldPrimitive
             type={inputType}
             {...props}
-            className={cn('group flex flex-col gap-1', className)}
+            className={ctr(className, 'group flex flex-col gap-y-1.5')}
         >
             {label && <Label>{label}</Label>}
-            <FieldGroup
-                data-loading={isPending ? 'true' : undefined}
-                className={fieldGroupPrefixStyles({ className })}
-            >
-                {isPending && indicatorPlace === 'prefix' ? (
-                    <IconLoaderCircle className='animate-spin prefix' />
-                ) : prefix ? (
-                    <span className='attribute prefix x2e2'>{prefix}</span>
+            <FieldGroup data-loading={isPending ? 'true' : undefined}>
+                {prefix ? (
+                    <span data-slot='prefix' className='atrs x2e2'>
+                        {prefix}
+                    </span>
                 ) : null}
-                <Input className='px-2.5' placeholder={placeholder} />
+                <Input placeholder={placeholder} />
                 {isRevealable ? (
-                    <Aria.Button
+                    <ButtonPrimitive
                         type='button'
+                        aria-label='Toggle password visibility'
                         onPress={handleTogglePasswordVisibility}
-                        className='attribute relative suffix x2e2 [&_svg]:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded'
+                        className='mr-2.5 relative [&>[data-slot=icon]]:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-lg'
                     >
-                        <>{isPasswordVisible ? <IconLockOpen /> : <IconLock />}</>
-                    </Aria.Button>
-                ) : isPending && indicatorPlace === 'suffix' ? (
-                    <Loader variant='spin' className='suffix' />
+                        <>{isPasswordVisible ? <IconEyeClosed /> : <IconEye />}</>
+                    </ButtonPrimitive>
+                ) : isPending ? (
+                    <Loader variant='spin' data-slot='suffix' />
                 ) : suffix ? (
-                    <span className='attribute suffix x2e2'>{suffix}</span>
+                    <span data-slot='suffix'>{suffix}</span>
                 ) : null}
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-        </Aria.TextField>
+        </TextFieldPrimitive>
     )
 }
 
-export { TextField, type TextFieldProps }
+export { TextField, TextFieldPrimitive, type TextFieldProps }

@@ -2,38 +2,29 @@
 
 import React from 'react'
 
-import {
-    IconHome,
-    IconLayoutTemplate,
-    IconPackage,
-    IconPalette,
-    IconShapes,
-    IconSwatchBook
-} from 'hq-icons'
+import { docs } from '#docs'
+import { IconHome, IconPackage, IconPalette, IconShapes, IconSwatchBook } from 'hq-icons'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { titleCase } from 'usemods'
 
-import { Command } from '@/components/ui'
-import { useMediaQuery } from '@/lib/utils'
-import { docs } from '@docs'
-
-import { createHierarchy, type Doc, type HierarchyNode } from './doc-aside'
+import { createHierarchy, type Doc, type HierarchyNode } from '@/components/layouts/aside'
+import { Command, useMediaQuery } from '@/components/ui'
+import { goodTitle } from '@/lib/utils'
 
 export interface OpenCloseProps {
-    open: boolean
-    setOpen?: (isOpen: boolean) => void
+    openCommand: boolean
+    setOpen: (isOpen: boolean) => void
 }
 
-export function CommandPalette({ open, setOpen }: OpenCloseProps) {
+export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
     const router = useRouter()
     const pathname = usePathname()
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
             if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault()
-                // @ts-expect-error invalid-arg
-                setOpen((open: boolean) => !open)
+                // @ts-expect-error unknown-type
+                setOpen((isOpen: boolean) => !isOpen)
             }
         }
 
@@ -50,23 +41,14 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
 
     const isDesktop = useMediaQuery('(min-width: 1024px)')
 
-    const docsPage = docs.filter((doc) => doc.slug.indexOf('blocks') === -1)
-    const data = createHierarchy(docsPage)
+    const data = createHierarchy(docs)
     const filteredNodeEntries = Object.entries(data).sort(([a], [b]) => {
-        const order = ['getting-started', 'dark-mode', 'components']
+        const order = ['prologue', 'getting-started', 'dark-mode', 'components']
         return order.indexOf(a) - order.indexOf(b)
     })
 
-    const blocksPage = docs
-        .filter((doc) => doc.slug.indexOf('blocks') !== -1)
-        .map((doc) => ({
-            order: doc.order,
-            slug: doc.slugAsParams,
-            title: doc.title
-        }))
-
     return (
-        <Command isOpen={open} onOpenChange={setOpen}>
+        <Command isBlurred isOpen={openCommand} onOpenChange={setOpen}>
             <Command.Input autoFocus={isDesktop} placeholder='Quick search...' />
             <Command.List>
                 <Command.Section separator heading='Pages'>
@@ -76,13 +58,13 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                         </Link>
                     </Command.Item>
                     <Command.Item value='documenation' asChild>
-                        <Link href='/docs'>
-                            <IconPackage /> Components
+                        <Link href='/docs/getting-started/installation'>
+                            <IconPackage /> Docs
                         </Link>
                     </Command.Item>
-                    <Command.Item value='components' asChild>
-                        <Link href='/blocks'>
-                            <IconLayoutTemplate /> Blocks
+                    <Command.Item value='colors' asChild>
+                        <Link href='/colors'>
+                            <IconPalette /> Colors
                         </Link>
                     </Command.Item>
                     <Command.Item value='icons' asChild>
@@ -90,14 +72,9 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                             <IconShapes /> Icons
                         </Link>
                     </Command.Item>
-                    <Command.Item value='colors' asChild>
-                        <Link href='/colors'>
-                            <IconSwatchBook /> Colors
-                        </Link>
-                    </Command.Item>
                     <Command.Item value='themes' asChild>
                         <Link href='/themes'>
-                            <IconPalette /> Themes
+                            <IconSwatchBook /> Themes
                         </Link>
                     </Command.Item>
                 </Command.Section>
@@ -106,17 +83,17 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                     <React.Fragment key={key}>
                         <Command.Section
                             key={`${key}-section`}
-                            heading={key !== 'components' ? titleCase(key) : undefined}
+                            heading={key !== 'components' ? goodTitle(key) : undefined}
                         >
                             {Object.entries(value as HierarchyNode).map(([subKey, subValue]) =>
                                 typeof subValue === 'object' && 'title' in subValue ? (
                                     <Command.Item
-                                        value={titleCase(key + ' ' + (subValue as Doc).title)}
+                                        value={goodTitle(key + ' ' + (subValue as Doc).title)}
                                         className='pl-[2rem] flex justify-between items-center'
                                         key={`${key}-${subKey}`}
                                         onSelect={() => router.push(`/${subValue.slug}`)}
                                     >
-                                        {titleCase((subValue as Doc).title)}
+                                        {goodTitle((subValue as Doc).title)}
                                     </Command.Item>
                                 ) : null
                             )}
@@ -126,8 +103,8 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                             typeof subValue === 'object' && 'title' in subValue ? null : (
                                 <Command.Section
                                     key={`${key}-${subKey}-section`}
-                                    value={titleCase(subKey)}
-                                    heading={titleCase(subKey)}
+                                    value={goodTitle(subKey)}
+                                    heading={goodTitle(subKey)}
                                 >
                                     {Object.entries(subValue as HierarchyNode).map(
                                         ([childKey, childValue]) =>
@@ -138,7 +115,7 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                                                     value={
                                                         childValue.title === 'Text Field'
                                                             ? 'Text Field Input'
-                                                            : titleCase(
+                                                            : goodTitle(
                                                                   subKey +
                                                                       ' ' +
                                                                       (childValue as Doc).title
@@ -149,7 +126,7 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                                                         router.push(`/${childValue.slug}`)
                                                     }
                                                 >
-                                                    {titleCase((childValue as Doc).title)}
+                                                    {goodTitle((childValue as Doc).title)}
                                                 </Command.Item>
                                             ) : null
                                     )}
@@ -158,17 +135,6 @@ export function CommandPalette({ open, setOpen }: OpenCloseProps) {
                         )}
                     </React.Fragment>
                 ))}
-                <Command.Section heading='Blocks' separator={false}>
-                    {blocksPage.map((block) => (
-                        <Command.Item
-                            key={block.slug}
-                            value={block.title}
-                            onSelect={() => router.push(`/blocks/${block.slug}`)}
-                        >
-                            {block.title}
-                        </Command.Item>
-                    ))}
-                </Command.Section>
             </Command.List>
         </Command>
     )

@@ -1,16 +1,20 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import {
+    ColorWheel as ColorWheelPrimitive,
+    type ColorWheelProps as ColorWheelPrimitiveProps,
+    ColorWheelTrack
+} from 'react-aria-components'
 
 import { ColorThumb } from './color-thumb'
 
-export type ColorWheelProps = Omit<Aria.ColorWheelProps, 'outerRadius' | 'innerRadius'>
+export type ColorWheelProps = Omit<ColorWheelPrimitiveProps, 'outerRadius' | 'innerRadius'>
 
 const ColorWheel = (props: ColorWheelProps) => {
     return (
-        <Aria.ColorWheel {...props} outerRadius={100} innerRadius={74}>
-            <Aria.ColorWheelTrack
-                className='disabled:bg-muted/75'
+        <ColorWheelPrimitive {...props} outerRadius={100} innerRadius={74}>
+            <ColorWheelTrack
+                className='disabled:bg-muted/75 disabled:forced-colors:bg-[GrayText]'
                 style={({ defaultStyle, isDisabled }) => ({
                     ...defaultStyle,
                     background: isDisabled
@@ -19,7 +23,7 @@ const ColorWheel = (props: ColorWheelProps) => {
                 })}
             />
             <ColorThumb />
-        </Aria.ColorWheel>
+        </ColorWheelPrimitive>
     )
 }
 

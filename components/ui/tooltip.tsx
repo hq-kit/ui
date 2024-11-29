@@ -2,8 +2,17 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import {
+    Button,
+    OverlayArrow,
+    Tooltip as TooltipPrimitive,
+    type TooltipProps as TooltipPrimitiveProps,
+    TooltipTrigger
+} from 'react-aria-components'
+import type { VariantProps } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
+
+import { cr } from './utils'
 
 export const tooltipStyles = tv({
     base: [
@@ -13,9 +22,9 @@ export const tooltipStyles = tv({
     variants: {
         variant: {
             default:
-                'bg-background text-foreground [&_.tooltip]:fill-background [&_.tooltip]:stroke-muted',
+                'bg-background text-foreground [&_.tarrow]:fill-background [&_.tarrow]:stroke-muted',
             inverse:
-                'border-transparent bg-foreground text-background [&_.tooltip]:fill-foreground [&_.tooltip]:stroke-transparent'
+                'border-transparent bg-foreground text-background [&_.tarrow]:fill-foreground [&_.tarrow]:stroke-transparent'
         },
         isEntering: {
             true: 'animate-in fade-in'
@@ -26,12 +35,12 @@ export const tooltipStyles = tv({
     }
 })
 
-const Tooltip = (props: React.ComponentProps<typeof Aria.TooltipTrigger>) => (
-    <Aria.TooltipTrigger {...props}>{props.children}</Aria.TooltipTrigger>
+const Tooltip = (props: React.ComponentProps<typeof TooltipTrigger>) => (
+    <TooltipTrigger {...props}>{props.children}</TooltipTrigger>
 )
 
 interface ContentProps
-    extends Omit<Aria.TooltipProps, 'children'>,
+    extends Omit<TooltipPrimitiveProps, 'children'>,
         VariantProps<typeof tooltipStyles> {
     showArrow?: boolean
     children: React.ReactNode
@@ -39,10 +48,10 @@ interface ContentProps
 
 const Content = ({ showArrow = true, variant = 'default', children, ...props }: ContentProps) => {
     return (
-        <Aria.Tooltip
+        <TooltipPrimitive
             {...props}
             offset={10}
-            className={Aria.composeRenderProps(props.className, (className, renderProps) =>
+            className={cr(props.className, (className, renderProps) =>
                 tooltipStyles({
                     ...renderProps,
                     variant,
@@ -51,23 +60,23 @@ const Content = ({ showArrow = true, variant = 'default', children, ...props }: 
             )}
         >
             {showArrow && (
-                <Aria.OverlayArrow>
+                <OverlayArrow>
                     <svg
                         width={12}
                         height={12}
                         viewBox='0 0 12 12'
-                        className='tooltip group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
+                        className='tarrow group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]'
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>
-                </Aria.OverlayArrow>
+                </OverlayArrow>
             )}
             {children}
-        </Aria.Tooltip>
+        </TooltipPrimitive>
     )
 }
 
-Tooltip.Trigger = Aria.Button
+Tooltip.Trigger = Button
 Tooltip.Content = Content
 
 export { Tooltip }

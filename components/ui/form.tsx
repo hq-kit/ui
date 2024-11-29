@@ -1,9 +1,8 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import type { FormProps } from 'react-aria-components'
+import { Form as FormPrimitive } from 'react-aria-components'
 
-const Form = (props: Aria.FormProps) => {
-    return <Aria.Form {...props} />
-}
+const Form = (props: FormProps) => <FormPrimitive {...props} />
 
 export { Form }

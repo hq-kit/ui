@@ -3,14 +3,32 @@
 import React from 'react'
 
 import { IconChevronDown, IconMenu } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Button,
+    Cell,
+    type CellProps,
+    Collection,
+    Column,
+    type ColumnProps,
+    ColumnResizer as ColumnResizerPrimitive,
+    type ColumnResizerProps,
+    ResizableTableContainer,
+    Row,
+    type RowProps,
+    TableBody,
+    type TableBodyProps,
+    TableHeader,
+    type TableHeaderProps,
+    Table as TablePrimitive,
+    type TableProps as TablePrimitiveProps,
+    useTableOptions
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { Checkbox } from './checkbox'
+import { cn } from './utils'
 
-interface TableProps extends Aria.TableProps {
+interface TableProps extends TablePrimitiveProps {
     className?: string
     allowResize?: boolean
 }
@@ -25,8 +43,8 @@ const Table = ({ children, className, ...props }: TableProps) => (
     <TableContext.Provider value={props}>
         <div className='relative w-full overflow-auto'>
             {props.allowResize ? (
-                <Aria.ResizableTableContainer className='overflow-auto'>
-                    <Aria.Table
+                <ResizableTableContainer className='overflow-auto'>
+                    <TablePrimitive
                         {...props}
                         className={cn(
                             'table [&_[data-drop-target]]:border [&_[data-drop-target]]:border-primary w-full caption-bottom border-spacing-0 text-sm outline-none',
@@ -34,10 +52,10 @@ const Table = ({ children, className, ...props }: TableProps) => (
                         )}
                     >
                         {children}
-                    </Aria.Table>
-                </Aria.ResizableTableContainer>
+                    </TablePrimitive>
+                </ResizableTableContainer>
             ) : (
-                <Aria.Table
+                <TablePrimitive
                     {...props}
                     className={cn(
                         'table [&_[data-drop-target]]:border [&_[data-drop-target]]:border-primary w-full caption-bottom border-spacing-0 text-sm outline-none',
@@ -45,14 +63,14 @@ const Table = ({ children, className, ...props }: TableProps) => (
                     )}
                 >
                     {children}
-                </Aria.Table>
+                </TablePrimitive>
             )}
         </div>
     </TableContext.Provider>
 )
 
-const ColumnResizer = ({ className, ...props }: Aria.ColumnResizerProps) => (
-    <Aria.ColumnResizer
+const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
+    <ColumnResizerPrimitive
         {...props}
         className={cn(
             'touch-none absolute [&[data-resizing]>div]:bg-primary right-0 top-0 bottom-0 w-px px-1 grid place-content-center [&[data-resizable-direction=both]]:cursor-ew-resize &[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize',
@@ -60,14 +78,14 @@ const ColumnResizer = ({ className, ...props }: Aria.ColumnResizerProps) => (
         )}
     >
         <div className='bg-border h-full w-px py-3' />
-    </Aria.ColumnResizer>
+    </ColumnResizerPrimitive>
 )
 
-const Body = <T extends object>(props: Aria.TableBodyProps<T>) => (
-    <Aria.TableBody {...props} className={cn('[&_.tr:last-child]:border-0')} />
+const Body = <T extends object>(props: TableBodyProps<T>) => (
+    <TableBody {...props} className={cn('[&_.tr:last-child]:border-0')} />
 )
 
-interface TableCellProps extends Aria.CellProps {
+interface TableCellProps extends CellProps {
     className?: string
 }
 
@@ -82,9 +100,9 @@ const cellStyles = tv({
 const TableCell = ({ children, className, ...props }: TableCellProps) => {
     const { allowResize } = useTableContext()
     return (
-        <Aria.Cell {...props} className={cellStyles({ allowResize, className })}>
+        <Cell {...props} className={cellStyles({ allowResize, className })}>
             {children}
-        </Aria.Cell>
+        </Cell>
     )
 }
 
@@ -97,14 +115,14 @@ const columnStyles = tv({
     }
 })
 
-interface TableColumnProps extends Aria.ColumnProps {
+interface TableColumnProps extends ColumnProps {
     className?: string
     isResizable?: boolean
 }
 
 const TableColumn = ({ children, isResizable = false, className, ...props }: TableColumnProps) => {
     return (
-        <Aria.Column
+        <Column
             {...props}
             className={columnStyles({
                 isResizable,
@@ -119,7 +137,7 @@ const TableColumn = ({ children, isResizable = false, className, ...props }: Tab
                             <>
                                 <span
                                     className={cn(
-                                        'flex-none rounded bg-muted text-foreground [&>svg]:shrink-0 [&>svg]:size-3.5 [&>svg]:transition-transform size-[1.15rem] grid place-content-center shrink-0',
+                                        'flex-none rounded-lg bg-muted text-foreground [&>svg]:shrink-0 [&>svg]:size-3.5 [&>svg]:transition-transform size-[1.15rem] grid place-content-center shrink-0',
                                         isHovered ? 'bg-muted-foreground/10' : '',
                                         className
                                     )}
@@ -136,30 +154,30 @@ const TableColumn = ({ children, isResizable = false, className, ...props }: Tab
                     </>
                 </div>
             )}
-        </Aria.Column>
+        </Column>
     )
 }
 
-interface HeaderProps<T extends object> extends Aria.TableHeaderProps<T> {
+interface HeaderProps<T extends object> extends TableHeaderProps<T> {
     className?: string
 }
 
 const Header = <T extends object>({ children, className, columns, ...props }: HeaderProps<T>) => {
-    const { selectionBehavior, selectionMode, allowsDragging } = Aria.useTableOptions()
+    const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <Aria.TableHeader {...props} className={cn('border-b th', className)}>
-            {allowsDragging && <Aria.Column className='w-0' />}
+        <TableHeader {...props} className={cn('border-b th', className)}>
+            {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
-                <Aria.Column className='pl-4 w-0'>
+                <Column className='pl-4 w-0'>
                     {selectionMode === 'multiple' && <Checkbox slot='selection' />}
-                </Aria.Column>
+                </Column>
             )}
-            <Aria.Collection items={columns}>{children}</Aria.Collection>
-        </Aria.TableHeader>
+            <Collection items={columns}>{children}</Collection>
+        </TableHeader>
     )
 }
 
-interface TableRowProps<T extends object> extends Aria.RowProps<T> {
+interface TableRowProps<T extends object> extends RowProps<T> {
     className?: string
 }
 
@@ -170,9 +188,9 @@ const TableRow = <T extends object>({
     id,
     ...props
 }: TableRowProps<T>) => {
-    const { selectionBehavior, allowsDragging } = Aria.useTableOptions()
+    const { selectionBehavior, allowsDragging } = useTableOptions()
     return (
-        <Aria.Row
+        <Row
             id={id}
             {...props}
             className={cn(
@@ -182,26 +200,26 @@ const TableRow = <T extends object>({
             )}
         >
             {allowsDragging && (
-                <Aria.Cell className='ring-primary pr-0 group cursor-grab dragging:cursor-grabbing'>
-                    <Aria.Button
+                <Cell className='ring-primary pr-0 group cursor-grab dragging:cursor-grabbing'>
+                    <Button
                         className='relative bg-transparent pl-3.5 py-1.5 text-muted-foreground pressed:text-foreground'
                         slot='drag'
                     >
                         <IconMenu />
-                    </Aria.Button>
-                </Aria.Cell>
+                    </Button>
+                </Cell>
             )}
             {selectionBehavior === 'toggle' && (
-                <Aria.Cell className='pl-4'>
+                <Cell className='pl-4'>
                     <span
                         aria-hidden
                         className='absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-selected:block'
                     />
                     <Checkbox slot='selection' />
-                </Aria.Cell>
+                </Cell>
             )}
-            <Aria.Collection items={columns}>{children}</Aria.Collection>
-        </Aria.Row>
+            <Collection items={columns}>{children}</Collection>
+        </Row>
     )
 }
 

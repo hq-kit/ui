@@ -9,7 +9,7 @@ import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import { copyToClipboard } from 'usemods'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/components/ui'
 
 import { CopyButton } from './copy-button'
 

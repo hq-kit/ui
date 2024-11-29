@@ -2,9 +2,14 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    Button,
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerProps as ColorPickerPrimitiveProps,
+    Dialog
+} from 'react-aria-components'
+import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
 import type { Placement } from '@react-types/overlays'
 
 import { ColorArea } from './color-area'
@@ -13,15 +18,20 @@ import { ColorSlider } from './color-slider'
 import { ColorSwatch } from './color-swatch'
 import { Description } from './field'
 import { Popover } from './popover'
+import { focusButtonStyles } from './utils'
 
-export interface ColorPickerProps extends Aria.ColorPickerProps {
+const buttonStyles = tv({
+    extend: focusButtonStyles,
+    base: 'flex btn-trigger cursor-pointer disabled:cursor-default disabled:opacity-50 items-center rounded-lg text-sm'
+})
+
+export interface ColorPickerProps extends ColorPickerPrimitiveProps {
     label?: string
     children?: React.ReactNode
     showArrow?: boolean
     isDisabled?: boolean
     placement?: Placement
     description?: string
-    className?: string
 }
 
 const ColorPicker = ({
@@ -31,26 +41,22 @@ const ColorPicker = ({
     isDisabled,
     children,
     description,
-    className,
     ...props
 }: ColorPickerProps) => {
     return (
         <div className='flex gap-y-2 flex-col'>
-            <Aria.ColorPicker {...props}>
+            <ColorPickerPrimitive {...props}>
                 <Popover>
-                    <Aria.Button
-                        isDisabled={isDisabled}
-                        className='flex cursor-pointer disabled:cursor-default disabled:opacity-50 items-center rounded text-sm outline outline-primary outline-offset-2 outline-0 focus-visible:outline-2'
-                    >
-                        <ColorSwatch className={cn('size-6', className)} />
+                    <Button isDisabled={isDisabled} className={buttonStyles}>
+                        <ColorSwatch className='size-6' />
                         {label && <span className='ml-2'>{label}</span>}
-                    </Aria.Button>
+                    </Button>
                     <Popover.Content
                         className='overflow-y-auto [&_[data-slot=color-slider]]:w-full [&_[data-slot=color-area]]:w-full sm:[&_[data-slot=color-area]]:size-56 sm:max-w-56 sm:min-w-min px-0 pt-4 pb-3 sm:p-3'
                         showArrow={showArrow}
                         placement={placement}
                     >
-                        <Aria.Dialog className='flex flex-col gap-2 focus:outline-none'>
+                        <Dialog className='flex flex-col gap-2 focus:outline-none'>
                             {children || (
                                 <>
                                     <ColorArea
@@ -66,10 +72,10 @@ const ColorPicker = ({
                                     <ColorField aria-label='Hex' />
                                 </>
                             )}
-                        </Aria.Dialog>
+                        </Dialog>
                     </Popover.Content>
                 </Popover>
-            </Aria.ColorPicker>
+            </ColorPickerPrimitive>
             {description && <Description>{description}</Description>}
         </div>
     )

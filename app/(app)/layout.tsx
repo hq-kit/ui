@@ -7,10 +7,10 @@ import { Toast } from '@/components/ui'
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <Toast />
             <Navbar />
             {children}
             <Footer />
+            <Toast />
         </>
     )
 }

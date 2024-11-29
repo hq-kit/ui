@@ -3,16 +3,24 @@
 import React from 'react'
 
 import { IconChevronDown } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    type SelectProps as SelectPrimitiveProps,
+    type ValidationResult,
+    Button,
+    Group,
+    Select as SelectPrimitive,
+    SelectValue
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
 import type { Placement } from '@react-types/overlays'
 
 import { DropdownItem, DropdownItemDetails, DropdownSection } from './dropdown'
 import { Description, FieldError, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
+import { cn } from './utils'
+import { cr } from './utils'
 
 const selectTriggerStyles = tv({
     base: [
@@ -26,10 +34,10 @@ const selectTriggerStyles = tv({
     }
 })
 
-interface SelectProps<T extends object> extends Omit<Aria.SelectProps<T>, 'children'> {
+interface SelectProps<T extends object> extends Omit<SelectPrimitiveProps<T>, 'children'> {
     label?: string
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
     items?: Iterable<T>
     children: React.ReactNode | ((item: T) => React.ReactNode)
     placement?: Placement
@@ -48,11 +56,11 @@ const Select = <T extends object>({
     ...props
 }: SelectProps<T>) => {
     return (
-        <Aria.Select {...props} className={cn('group flex w-full flex-col gap-1', className)}>
+        <SelectPrimitive {...props} className={cn('group flex w-full flex-col gap-1', className)}>
             {label && <Label>{label}</Label>}
-            <Aria.Group className='relative'>
-                <Aria.Button
-                    className={Aria.composeRenderProps(className, (className, renderProps) =>
+            <Group className='relative'>
+                <Button
+                    className={cr(className, (className, renderProps) =>
                         selectTriggerStyles({
                             ...renderProps,
                             className
@@ -60,14 +68,14 @@ const Select = <T extends object>({
                     )}
                 >
                     {props.prefix && <span className='-mr-1'>{props.prefix}</span>}
-                    <Aria.SelectValue className='flex-1 [&_[slot=description]]:hidden text-base placeholder-shown:text-muted-foreground lg:text-sm' />
+                    <SelectValue className='flex-1 [&_[slot=description]]:hidden text-base placeholder-shown:text-muted-foreground lg:text-sm' />
 
                     <IconChevronDown
                         aria-hidden
                         className='size-4 text-muted-foreground group-open:rotate-180 group-open:text-foreground group-disabled:opacity-50'
                     />
-                </Aria.Button>
-            </Aria.Group>
+                </Button>
+            </Group>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
             <Popover.Picker trigger='Select' placement={placement}>
@@ -75,7 +83,7 @@ const Select = <T extends object>({
                     {children}
                 </ListBox.Picker>
             </Popover.Picker>
-        </Aria.Select>
+        </SelectPrimitive>
     )
 }
 

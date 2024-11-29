@@ -1,17 +1,21 @@
 'use client'
 
 import { IconChevronRight, IconSlash } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import type { BreadcrumbProps, BreadcrumbsProps } from 'react-aria-components'
+import {
+    Breadcrumb,
+    Breadcrumbs as BreadcrumbsPrimitive,
+    type LinkProps
+} from 'react-aria-components'
 
 import { Link } from './link'
+import { cn, ctr } from './utils'
 
-const Breadcrumbs = <T extends object>({ className, ...props }: Aria.BreadcrumbsProps<T>) => {
-    return <Aria.Breadcrumbs {...props} className={cn('flex items-center gap-2', className)} />
+const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps<T>) => {
+    return <BreadcrumbsPrimitive {...props} className={cn('flex items-center gap-2', className)} />
 }
 
-interface ItemProps extends Aria.BreadcrumbProps {
+interface ItemProps extends BreadcrumbProps {
     href?: string
     separator?: 'slash' | 'chevron' | boolean
 }
@@ -21,18 +25,18 @@ const Item = ({
     separator = true,
     className,
     ...props
-}: ItemProps & Partial<Omit<Aria.LinkProps, 'className'>>) => {
+}: ItemProps & Partial<Omit<LinkProps, 'className'>>) => {
     const separatorValue = separator === true ? 'chevron' : separator
 
     return (
-        <Aria.Breadcrumb {...props} className={cn('flex text-sm items-center gap-2', className)}>
+        <Breadcrumb {...props} className={ctr(className, 'flex text-sm items-center gap-2')}>
             {({ isCurrent }) => (
                 <>
-                    {<Link variant='unstyled' href={href} {...props} />}
+                    {<Link href={href} {...props} />}
                     {!isCurrent && separator !== false && <Separator separator={separatorValue} />}
                 </>
             )}
-        </Aria.Breadcrumb>
+        </Breadcrumb>
     )
 }
 
@@ -44,11 +48,7 @@ const Separator = ({ separator = 'chevron' }: { separator?: ItemProps['separator
             )}
         >
             {separator === 'chevron' && <IconChevronRight />}
-            {separator === 'slash' && (
-                <span className='text-muted-foreground'>
-                    <IconSlash />
-                </span>
-            )}
+            {separator === 'slash' && <IconSlash />}
         </span>
     )
 }

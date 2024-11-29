@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
-const dots = 'mx-[1px] inline-block size-[0.3125rem] animate-blink rounded-md'
+const dots = 'mx-[1px] inline-block size-[0.3125rem] animate-blink rounded-lg'
 
 export const LoadingDots = ({ className }: { className: string }) => {
     return (

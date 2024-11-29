@@ -2,10 +2,19 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
+import {
+    type DialogProps,
+    DialogTrigger as DialogTriggerPrimitive,
+    type DialogTriggerProps,
+    type Modal,
+    ModalOverlay,
+    type ModalOverlayProps as ModalOverlayPrimitiveProps,
+    Modal as ModalPrimitive
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 import { Dialog } from './dialog'
+import { cr } from './utils'
 
 const sheetOverlayStyles = tv({
     base: [
@@ -14,13 +23,13 @@ const sheetOverlayStyles = tv({
     variants: {
         isBlurred: {
             true: 'backdrop-blur',
-            false: 'bg-black/15 dark:bg-black/40'
+            false: 'bg-dark/15 dark:bg-dark/40'
         },
         isEntering: {
-            true: 'animate-in fade-in ease-out'
+            true: 'animate-in fade-in duration-200 ease-out'
         },
         isExiting: {
-            true: 'animate-out fade-out ease-in'
+            true: 'animate-out fade-out duration-200 ease-in'
         }
     }
 })
@@ -32,23 +41,23 @@ const generateCompoundVariants = (sides: Array<Sides>) => {
         isStack: true,
         className:
             side === 'top'
-                ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0 ring-dark/5 dark:ring-border'
+                ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0 ring-dark/5 dark:ring-muted'
                 : side === 'bottom'
-                  ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0 ring-dark/5 dark:ring-border'
+                  ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0 ring-dark/5 dark:ring-muted'
                   : side === 'left'
-                    ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0 ring-dark/5 dark:ring-border'
-                    : 'right-2 inset-y-2 rounded-lg ring-1 border-l-0 ring-dark/5 dark:ring-border'
+                    ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0 ring-dark/5 dark:ring-muted'
+                    : 'right-2 inset-y-2 rounded-lg ring-1 border-l-0 ring-dark/5 dark:ring-muted'
     }))
 }
 
 const sheetContentStyles = tv({
-    base: 'fixed z-50 grid gap-4 bg-background border-dark/5 dark:border-border text-foreground shadow-lg transition ease-in-out',
+    base: 'fixed z-50 grid gap-4 bg-background border-dark/5 dark:border-muted text-foreground shadow-lg transition ease-in-out',
     variants: {
         isEntering: {
-            true: 'animate-in '
+            true: 'duration-300 animate-in '
         },
         isExiting: {
-            true: 'animate-out'
+            true: 'duration-200 animate-out'
         },
         side: {
             top: 'inset-x-0 top-0 rounded-b-lg border-b entering:slide-in-from-top exiting:slide-out-to-top',
@@ -64,26 +73,25 @@ const sheetContentStyles = tv({
     compoundVariants: generateCompoundVariants(['top', 'bottom', 'left', 'right'])
 })
 
-const Sheet = ({ children, ...props }: Aria.DialogTriggerProps) => {
-    return <Aria.DialogTrigger {...props}>{children}</Aria.DialogTrigger>
+const Sheet = ({ children, ...props }: DialogTriggerProps) => {
+    return <DialogTriggerPrimitive {...props}>{children}</DialogTriggerPrimitive>
 }
 
 interface SheetContentProps
-    extends Omit<React.ComponentProps<typeof Aria.Modal>, 'children' | 'className'>,
-        Omit<Aria.ModalOverlayProps, 'className'>,
+    extends Omit<React.ComponentProps<typeof Modal>, 'children' | 'className'>,
+        Omit<ModalOverlayPrimitiveProps, 'className'>,
         VariantProps<typeof sheetOverlayStyles> {
-    'aria-label'?: Aria.DialogProps['aria-label']
-    'aria-labelledby'?: Aria.DialogProps['aria-labelledby']
-    role?: Aria.DialogProps['role']
+    'aria-label'?: DialogProps['aria-label']
+    'aria-labelledby'?: DialogProps['aria-labelledby']
+    role?: DialogProps['role']
     closeButton?: boolean
     isBlurred?: boolean
     isStack?: boolean
     side?: Sides
     classNames?: {
-        overlay?: Aria.ModalOverlayProps['className']
-        content?: Aria.ModalOverlayProps['className']
+        overlay?: ModalOverlayPrimitiveProps['className']
+        content?: ModalOverlayPrimitiveProps['className']
     }
-    children: React.ReactNode
 }
 
 const SheetContent = ({
@@ -94,14 +102,13 @@ const SheetContent = ({
     role = 'dialog',
     closeButton = true,
     isStack = true,
-    children,
     ...props
 }: SheetContentProps) => {
     const _isDismissable = role === 'alertdialog' ? false : isDismissable
     return (
-        <Aria.ModalOverlay
+        <ModalOverlay
             isDismissable={_isDismissable}
-            className={Aria.composeRenderProps(classNames?.overlay, (className, renderProps) => {
+            className={cr(classNames?.overlay, (className, renderProps) => {
                 return sheetOverlayStyles({
                     ...renderProps,
                     isBlurred,
@@ -110,8 +117,8 @@ const SheetContent = ({
             })}
             {...props}
         >
-            <Aria.Modal
-                className={Aria.composeRenderProps(classNames?.content, (className, renderProps) =>
+            <ModalPrimitive
+                className={cr(classNames?.content, (className, renderProps) =>
                     sheetContentStyles({
                         ...renderProps,
                         side,
@@ -128,7 +135,7 @@ const SheetContent = ({
                 >
                     {(values) => (
                         <>
-                            {children}
+                            {props.children as React.ReactNode}
                             {closeButton && (
                                 <Dialog.CloseIndicator
                                     className='top-2.5 right-2.5'
@@ -139,8 +146,8 @@ const SheetContent = ({
                         </>
                     )}
                 </Dialog>
-            </Aria.Modal>
-        </Aria.ModalOverlay>
+            </ModalPrimitive>
+        </ModalOverlay>
     )
 }
 

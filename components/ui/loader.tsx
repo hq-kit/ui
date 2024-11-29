@@ -3,10 +3,10 @@
 import React from 'react'
 
 import { IconLoaderCircle } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import { ProgressBar } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
 const loaderStyles = tv({
     base: 'relative',
@@ -189,7 +189,7 @@ const Loader = React.forwardRef<SVGSVGElement, LoaderProps>(
         const LoaderPrimitive = LOADERS[variant in LOADERS ? variant : DEFAULT_SPINNER]
 
         return (
-            <Aria.ProgressBar
+            <ProgressBar
                 aria-label={props['aria-label'] ?? 'Loading...'}
                 formatOptions={props.formatOptions}
                 isIndeterminate={isIndeterminate}
@@ -208,7 +208,7 @@ const Loader = React.forwardRef<SVGSVGElement, LoaderProps>(
                     ref={ref}
                     {...spinnerProps}
                 />
-            </Aria.ProgressBar>
+            </ProgressBar>
         )
     }
 )

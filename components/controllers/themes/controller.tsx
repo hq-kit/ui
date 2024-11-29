@@ -1,9 +1,9 @@
 'use client'
 
-import { Presets } from './theme-presets'
+import { Presets } from '@/components/controllers/themes/theme-presets'
 
 export const applyTheme = (
-    themeContainer: HTMLHtmlElement,
+    themeContainer: HTMLHtmlElement[],
     theme: string,
     resolvedTheme: 'dark' | 'light'
 ) => {
@@ -11,7 +11,11 @@ export const applyTheme = (
 
     const themeVariables = resolvedTheme === 'dark' ? Presets[theme].dark : Presets[theme].light
     Object.keys(themeVariables).forEach((key) => {
-        themeContainer.style.setProperty(key, themeVariables[key as keyof typeof themeVariables])
+        themeContainer.forEach((container) => {
+            container.style.setProperty(key, themeVariables[key as keyof typeof themeVariables])
+        })
     })
-    themeContainer.style.setProperty('--radius', `${Presets[theme].radius ?? Presets.hq.radius}rem`)
+    themeContainer.forEach((container) => {
+        container.style.setProperty('--radius', `${Presets[theme].radius ?? Presets.hq.radius}rem`)
+    })
 }

@@ -1,10 +1,10 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import { ProgressBar, type ProgressBarProps } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
-interface ProgressCircleProps extends Omit<Aria.ProgressBarProps, 'className'> {
+interface ProgressCircleProps extends Omit<ProgressBarProps, 'className'> {
     className?: string
 }
 
@@ -12,7 +12,7 @@ const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
     const c = '50%'
     const r = 'calc(50% - 2px)'
     return (
-        <Aria.ProgressBar {...props}>
+        <ProgressBar {...props}>
             {({ percentage, isIndeterminate }) => (
                 <svg
                     className={cn('size-4 shrink-0', className)}
@@ -58,7 +58,7 @@ const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
                     )}
                 </svg>
             )}
-        </Aria.ProgressBar>
+        </ProgressBar>
     )
 }
 

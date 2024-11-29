@@ -5,14 +5,13 @@ import React from 'react'
 import { IconBrandTailwind, IconPalette } from 'hq-icons'
 import { type ColorFormat } from 'react-aria-components'
 
+import { CustomColor } from '@/components/controllers/colors/color-create-preset'
+import { ColorShades } from '@/components/controllers/colors/color-shades'
+import { generateColorScale } from '@/components/controllers/colors/colors'
+import _radixcolors from '@/components/controllers/colors/radix-colors.json'
+import SelectFormat from '@/components/controllers/colors/select-format'
+import _tailwindcolors from '@/components/controllers/colors/tailwind-colors.json'
 import { Button, Container, Popover, Toggle, Tooltip } from '@/components/ui'
-
-import { CustomColor } from './color-create-preset'
-import { ColorShades } from './color-shades'
-import { generateColorScale } from './colors'
-import _radixcolors from './radix-colors.json'
-import SelectFormat from './select-format'
-import _tailwindcolors from './tailwind-colors.json'
 
 export default function ColorCustomizer() {
     const [selectedFormat, setSelectedFormat] = React.useState<ColorFormat>('hsl')

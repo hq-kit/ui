@@ -3,13 +3,22 @@
 import React from 'react'
 
 import { LayoutGroup, motion } from 'framer-motion'
-import * as Aria from 'react-aria-components'
+import {
+    TabList,
+    type TabListProps,
+    TabPanel,
+    type TabPanelProps,
+    Tab as TabPrimitive,
+    type TabProps,
+    Tabs as TabsPrimitive,
+    type TabsProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
+import { cn, cr } from './utils'
 
 const tabsStyles = tv({
-    base: 'group flex gap-4',
+    base: 'group flex gap-4 forced-color-adjust-none',
     variants: {
         orientation: {
             horizontal: 'flex-col',
@@ -18,11 +27,11 @@ const tabsStyles = tv({
     }
 })
 
-const Tabs = (props: Aria.TabsProps) => {
+const Tabs = (props: TabsProps) => {
     return (
-        <Aria.Tabs
+        <TabsPrimitive
             {...props}
-            className={Aria.composeRenderProps(props.className, (className, renderProps) =>
+            className={cr(props.className, (className, renderProps) =>
                 tabsStyles({
                     ...renderProps,
                     className
@@ -33,7 +42,7 @@ const Tabs = (props: Aria.TabsProps) => {
 }
 
 const tabListStyles = tv({
-    base: 'flex',
+    base: 'flex forced-color-adjust-none',
     variants: {
         orientation: {
             horizontal: 'flex-row gap-x-5 border-b',
@@ -42,13 +51,13 @@ const tabListStyles = tv({
     }
 })
 
-const List = <T extends object>(props: Aria.TabListProps<T>) => {
+const List = <T extends object>(props: TabListProps<T>) => {
     const id = React.useId()
     return (
         <LayoutGroup id={id}>
-            <Aria.TabList
+            <TabList
                 {...props}
-                className={Aria.composeRenderProps(props.className, (className, renderProps) =>
+                className={cr(props.className, (className, renderProps) =>
                     tabListStyles({ ...renderProps, className })
                 )}
             />
@@ -58,7 +67,7 @@ const List = <T extends object>(props: Aria.TabListProps<T>) => {
 
 const tabStyles = tv({
     base: [
-        'relative flex whitespace-nowrap cursor-default items-center rounded-full text-sm font-medium outline-none transition hover:text-foreground [&>svg]:size-4 [&>svg]:mr-2',
+        'relative flex whitespace-nowrap cursor-default items-center rounded-full text-sm font-medium outline-none transition hover:text-foreground [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:mr-2',
         // hor
         'group-orientation-vertical:w-full group-orientation-vertical:py-0 group-orientation-vertical:pl-4 group-orientation-vertical:pr-2',
         // ver
@@ -76,11 +85,11 @@ const tabStyles = tv({
     }
 })
 
-const Tab = ({ children, ...props }: Aria.TabProps) => {
+const Tab = ({ children, ...props }: TabProps) => {
     return (
-        <Aria.Tab
+        <TabPrimitive
             {...props}
-            className={Aria.composeRenderProps(props.className, (_className, renderProps) =>
+            className={cr(props.className, (_className, renderProps) =>
                 tabStyles({
                     ...renderProps,
                     className: cn('href' in props && 'cursor-pointer', _className)
@@ -93,7 +102,7 @@ const Tab = ({ children, ...props }: Aria.TabProps) => {
                     {isSelected && (
                         <motion.span
                             className={cn(
-                                'absolute rounded bg-foreground',
+                                'absolute rounded-lg bg-foreground',
                                 // horizontal
                                 'group-orientation-horizontal:inset-x-0 group-orientation-horizontal:-bottom-px group-orientation-horizontal:h-0.5 group-orientation-horizontal:w-full',
                                 // vertical
@@ -105,11 +114,11 @@ const Tab = ({ children, ...props }: Aria.TabProps) => {
                     )}
                 </>
             )}
-        </Aria.Tab>
+        </TabPrimitive>
     )
 }
 
-const tabContentStyles = tv({
+const tabPanelStyles = tv({
     base: 'flex-1 text-sm text-foreground',
     variants: {
         isFocusVisible: {
@@ -118,12 +127,12 @@ const tabContentStyles = tv({
     }
 })
 
-const Content = (props: Aria.TabPanelProps) => {
+const Panel = (props: TabPanelProps) => {
     return (
-        <Aria.TabPanel
+        <TabPanel
             {...props}
-            className={Aria.composeRenderProps(props.className, (className, renderProps) =>
-                tabContentStyles({ ...renderProps, className })
+            className={cr(props.className, (className, renderProps) =>
+                tabPanelStyles({ ...renderProps, className })
             )}
         />
     )
@@ -131,6 +140,6 @@ const Content = (props: Aria.TabPanelProps) => {
 
 Tabs.List = List
 Tabs.Label = Tab
-Tabs.Content = Content
+Tabs.Content = Panel
 
 export { Tabs }

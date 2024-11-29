@@ -7,10 +7,8 @@ import { ColorFormat, ListBoxItem, parseColor, type ListBoxItemProps } from 'rea
 import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 
-import { isBrightColor } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import { formatColorForTailwind, textForeground } from './colors'
+import { formatColorForTailwind, textForeground } from '@/components/controllers/colors/colors'
+import { cn, isBrightColor } from '@/components/ui'
 
 interface ColorItemProps extends ListBoxItemProps {
     item: {

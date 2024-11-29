@@ -45,12 +45,9 @@ This command will present a list of available components, which you can navigate
 
 ```bash
 ? Select components to add: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to proceed)
- ◯ dropdown
- ◯ dialog
- ◯ field
- ◯ forms
- ◯ collections
- ◯ date-and-time
+ ◯ button
+ ◯ menu
+ ◯ sheet
 ```
 
 ## Manual Installation
@@ -70,12 +67,12 @@ Following that, include the animation package for managing animations and icons:
 Start by adjusting your main CSS file. For example, if you are using Laravel, this would be **resources/css/app.css**.
 You should add the following code:
 
-You can customize your colors using these variables. By default, Justd utilizes HSL colors, but you have the option
+You can customize your colors using these variables. By default, HQ UI utilizes HSL colors, but you have the option
 to switch to RGB, HSL, or HSB.
 
-<Code lang='css' code={`@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+<Code lang='css' code={`@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
     :root {
@@ -264,9 +261,7 @@ import { Button, Sheet, Badge } from '@/components/ui'
 
 So, here's the scoop: your UI folder contains an index.ts file, right? This file consolidates all your components for
 straightforward access. Simply import them as needed, hassle-free!
-<Code lang='ts' code={`export * from './accordion'
-export * from './aside'
-export * from './avatar'
+<Code lang='ts' code={`export * from './avatar'
 export * from './badge'
 export * from './breadcrumbs'
 export * from './button'
@@ -320,11 +315,13 @@ export * from './progress-bar'
 export * from './progress-circle'
 export * from './radio'
 export * from './range-calendar'
+export * from './rich-text-field'
 export * from './search-field'
 export * from './select'
 export * from './separator'
 export * from './sheet'
 export * from './show-more'
+export * from './sidebar'
 export * from './skeleton'
 export * from './slider'
 export * from './switch'

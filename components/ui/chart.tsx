@@ -4,7 +4,7 @@ import React from 'react'
 
 import { ResponsiveContainer as Container, Legend, Tooltip, type LegendProps } from 'recharts'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
 interface Theme {
     readonly light: string

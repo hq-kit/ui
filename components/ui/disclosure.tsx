@@ -3,14 +3,24 @@
 import React from 'react'
 
 import { IconMinus } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Button,
+    DisclosureGroup as DisclosureGroupPrimitive,
+    DisclosurePanel,
+    Disclosure as DisclosurePrimitive,
+    type ButtonProps,
+    type DisclosureGroupProps as DisclosureGroupPrimitiveProps,
+    type DisclosurePanelProps,
+    type DisclosureProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
+import { cn, cr } from './utils'
 
-interface DisclosureGroupProps extends Aria.DisclosureGroupProps {
+interface DisclosureGroupProps extends DisclosureGroupPrimitiveProps {
     hideBorder?: boolean
     hideIndicator?: boolean
+    className?: string
 }
 
 const DisclosureGroupContext = React.createContext<DisclosureGroupProps>({})
@@ -23,41 +33,36 @@ const DisclosureGroup = ({
     ...props
 }: DisclosureGroupProps) => {
     return (
-        <Aria.DisclosureGroup
+        <DisclosureGroupPrimitive
             {...props}
             className={({ isDisabled }) =>
                 cn([
                     isDisabled ? 'cursor-not-allowed opacity-75' : 'cursor-pointer',
                     hideBorder
                         ? '[&_[data-slot=accordion-item]]:border-none'
-                        : '[&_[data-slot=accordion-item]]:border-b',
-                    className
+                        : '[&_[data-slot=accordion-item]]:border-b'
                 ])
             }
         >
             {(values) => (
-                <div data-slot='accordion-item-content'>
+                <div data-slot='accordion-item-content' className={className}>
                     <DisclosureGroupContext.Provider value={{ hideIndicator, hideBorder }}>
                         {typeof children === 'function' ? children(values) : children}
                     </DisclosureGroupContext.Provider>
                 </div>
             )}
-        </Aria.DisclosureGroup>
+        </DisclosureGroupPrimitive>
     )
 }
 
 const disclosureStyles = tv({
-    base: ['flex group relative w-full flex-col'],
+    base: 'flex group relative w-full flex-col',
     variants: {
         isDisabled: {
             true: 'cursor-not-allowed opacity-75'
         },
         isExpanded: {
             true: 'pb-3'
-        },
-        hideBorder: {
-            true: '[&>[slot=trigger]]:py-2',
-            false: '[&>[slot=trigger]]:py-3'
         }
     },
     compoundVariants: [
@@ -69,18 +74,17 @@ const disclosureStyles = tv({
     ]
 })
 
-const Disclosure = ({ className, ...props }: Aria.DisclosureProps) => {
-    const { hideBorder } = React.useContext(DisclosureGroupContext)
+const Disclosure = ({ className, ...props }: DisclosureProps) => {
     return (
-        <Aria.Disclosure
+        <DisclosurePrimitive
             data-slot='accordion-item'
             {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
-                disclosureStyles({ ...renderProps, hideBorder, className })
+            className={cr(className, (className, renderProps) =>
+                disclosureStyles({ ...renderProps, className })
             )}
         >
             {props.children}
-        </Aria.Disclosure>
+        </DisclosurePrimitive>
     )
 }
 
@@ -89,6 +93,10 @@ const accordionTriggerStyles = tv({
         'flex flex-1 group rounded-lg aria-expanded:text-foreground text-muted-foreground sm:text-sm items-center gap-x-2 font-medium'
     ],
     variants: {
+        hideBorder: {
+            true: 'py-2',
+            false: 'py-3'
+        },
         isFocused: {
             true: 'outline-none text-foreground'
         },
@@ -101,15 +109,16 @@ const accordionTriggerStyles = tv({
     }
 })
 
-const Trigger = ({ className, ...props }: Aria.ButtonProps) => {
-    const { hideIndicator } = React.useContext(DisclosureGroupContext)
+const Trigger = ({ className, ...props }: ButtonProps) => {
+    const { hideIndicator, hideBorder } = React.useContext(DisclosureGroupContext)
     return (
-        <Aria.Button
+        <Button
             {...props}
             slot='trigger'
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 accordionTriggerStyles({
                     ...renderProps,
+                    hideBorder,
                     className
                 })
             )}
@@ -137,39 +146,27 @@ const Trigger = ({ className, ...props }: Aria.ButtonProps) => {
                     )}
                 </>
             )}
-        </Aria.Button>
+        </Button>
     )
 }
 
-const disclosurePanelStyles = tv({
-    base: 'sm:text-sm transition-all duration-300 ease-in-out',
-    variants: {
-        hidden: {
-            true: 'animate-out fade-out-0',
-            false: 'animate-in fade-in-0'
-        }
-    }
-})
-
-const Panel = ({ className, ...props }: Aria.DisclosurePanelProps) => {
+const Panel = ({ className, ...props }: DisclosurePanelProps) => {
     return (
-        <Aria.DisclosurePanel
-            {...props}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
-                disclosurePanelStyles({ ...renderProps, className })
-            )}
-        >
-            <div className='animate-in fade-in-0'>{props.children}</div>
-        </Aria.DisclosurePanel>
+        <DisclosurePanel {...props} className={cn('sm:text-sm', className)}>
+            {props.children}
+        </DisclosurePanel>
     )
 }
+
+Disclosure.Trigger = Trigger
+Disclosure.Panel = Panel
 
 const Accordion = (props: DisclosureGroupProps) => <DisclosureGroup {...props} />
 Accordion.Item = Disclosure
 Accordion.Trigger = Trigger
 Accordion.Content = Panel
 
-const Collapsible = (props: Aria.DisclosureProps) => <Disclosure {...props} />
+const Collapsible = (props: DisclosureProps) => <Disclosure {...props} />
 Collapsible.Trigger = Trigger
 Collapsible.Content = Panel
 

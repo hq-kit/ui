@@ -2,14 +2,76 @@
 
 import React from 'react'
 
-import { Command as CMDK } from 'cmdk'
+import { Command as CommandPrimitive } from 'cmdk'
 import { IconSearch, IconX } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn, useMediaQuery } from '@/lib/utils'
+import {
+    Button,
+    Dialog,
+    Modal,
+    ModalOverlay,
+    Text,
+    type ModalOverlayProps,
+    type SeparatorProps,
+    type TextProps
+} from 'react-aria-components'
+import { twJoin } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
 import { Keyboard, type KeyboardProps } from './keyboard'
 import { Separator } from './separator'
+import { useMediaQuery } from './utils'
+
+const commandStyles = tv({
+    slots: {
+        command: [
+            'flex h-svh w-full flex-col overflow-hidden rounded-lg sm:h-full',
+            '[&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_[data-slot=icon]]:size-5 [&_[cmdk-input]]:h-12',
+            '[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pl-2.5 [&_[cmdk-item]]:pr-4'
+        ],
+        list: 'overflow-y-auto lg:pb-0 max-h-[calc(100vh-35%)] pb-16 [&:not(:has(.xda32kfseccmd))]:p-2 [&:not(:has(.xda32kfseccmd))_.s3xsprt]:my-2 overflow-x-hidden md:max-h-[456px]',
+        input: [
+            'flex w-full rounded-lg forced-colors:focus:outline-0 bg-transparent text-base placeholder:text-muted-foreground',
+            'focus:outline-none',
+            'disabled:opacity-50 disabled:cursor-not-allowed'
+        ],
+        section: [
+            'xda32kfseccmd overflow-hidden py-2 px-2 text-foreground',
+            '[&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:text-muted-foreground'
+        ],
+        modal: [
+            'fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg bg-background text-foreground shadow-lg forced-colors:border ring-1 ring-dark/5 dark:ring-border sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
+            'sm:entering:slide-in-from-bottom-auto entering:duration-300 entering:animate-in entering:fade-in-0 entering:slide-in-from-bottom-1/2 entering:slide-in-from-left-1/2 entering:[transition-timing-function:ease-out] sm:entering:duration-300 sm:entering:slide-in-from-top-[2rem]',
+            'exiting:duration-300 exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[4rem]'
+        ],
+        closeButton: [
+            'absolute right-3 top-1.5 [&>span>[data-slot=icon]]:text-muted-foreground pressed:[&_[data-slot=icon]]:text-foreground lg:top-3.5 rounded-lg border lg:border-border border-transparent lg:bg-secondary/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition-opacity data-[state=open]:bg-secondary data-[state=open]:text-muted-foreground lg:focus:border-foreground/70 focus:outline-none lg:focus:ring-2 lg:focus:ring-ring disabled:pointer-events-none',
+            'focus:outline-none lg:focus:bg-primary/10 lg:focus:ring-2 lg:focus:ring-primary/20 lg:focus:border-primary/70',
+            'disabled:pointer-events-none'
+        ],
+        empty: 'py-6 text-center text-sm text-muted-foreground x3tmpy',
+        kbdKeyboard: 'lg:block hidden group-data-[selected=true]:opacity-60',
+        description: 'sm:inline hidden text-sm ml-auto',
+        item: [
+            'group relative flex forced-colors:outline-0 cursor-default select-none text-foreground items-center rounded-lg py-2 text-sm outline-none',
+            'data-[selected=true]:bg-primary forced-colors:data-[selected=true]:bg-[Highlight] forced-colors:data-[selected=true]:text-[ActiveCaption] forced-colors:text-[WindowText] data-[selected=true]:text-primary-foreground [&[data-selected=true]_[data-slot=icon]]:text-primary-foreground',
+            'focus-visible:bg-primary focus-visible:text-primary-foreground [&:focus-visible_[data-slot=icon]]:text-primary-foreground',
+            'data-[danger=true]:text-danger data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-foreground',
+            'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
+            '[&_[data-slot=icon]]:mr-2 [&_[data-slot=icon]]:size-[1.10rem] [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:text-muted-foreground',
+            '[&_[data-slot=avatar]]:mr-2 [&_[data-slot=avatar]]:size-[1.10rem] [&_[data-slot=avatar]]:shrink-0',
+            'forced-colors:[&_[data-slot=icon]]:text-[CanvasText] forced-colors:[&_[data-slot=icon]]:group-data-[focus]:text-[Canvas] '
+        ]
+    },
+
+    variants: {
+        isDanger: {
+            true: 'text-danger data-[selected=true]:bg-danger data-[selected=true]:text-danger-foreground [&[data-selected=true]_[data-slot=icon]]:text-danger-foreground'
+        }
+    }
+})
+
+const { command, empty, section, list, item, closeButton, modal, input, kbdKeyboard, description } =
+    commandStyles()
 
 interface CommandContextProps {
     hideSearchIndicator?: boolean
@@ -31,16 +93,30 @@ interface CommandRootProps {
     CommandDescription?: typeof CommandDescription
 }
 
-interface CommandProps extends Aria.ModalOverlayProps, CommandRootProps, CommandContextProps {
+const modalOverlay = tv({
+    base: [
+        'fixed inset-0 max-h-[--visual-viewport-height] z-50 bg-dark/15 dark:bg-dark/40 entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0'
+    ],
+    variants: {
+        isBlurred: {
+            true: 'backdrop-blur',
+            false: 'bg-dark/15 dark:bg-dark/40'
+        }
+    }
+})
+interface CommandProps extends ModalOverlayProps, CommandRootProps, CommandContextProps {
     children: React.ReactNode
     value?: string
     messageOnEmpty?: boolean | string
     onValueChange?: (value: string) => void
-    className?: string
+    classNames?: {
+        overlay?: string
+        content?: string
+    }
 }
 
 const Command = ({
-    className,
+    classNames,
     hideSearchIndicator = false,
     hideCloseButton = false,
     messageOnEmpty,
@@ -54,211 +130,157 @@ const Command = ({
 
     return (
         <CommandContext.Provider value={{ hideSearchIndicator, hideCloseButton, messageOnEmpty }}>
-            <Aria.ModalOverlay
+            <ModalOverlay
                 isDismissable
-                className={cn(
-                    'fixed inset-0 max-h-[--visual-viewport-height] transition z-50 entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0',
-                    isBlurred ? 'backdrop-blur' : 'bg-black/15 dark:bg-black/40'
-                )}
+                className={modalOverlay({
+                    isBlurred,
+                    className: classNames?.overlay
+                })}
                 {...props}
             >
-                <Aria.Modal
-                    className={cn(
-                        'fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg bg-background text-overlay-foreground shadow-lg ring-1 ring-dark/5 dark:ring-muted sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
-                        'sm:entering:slide-in-from-bottom-auto entering:animate-in entering:fade-in-0 entering:slide-in-from-bottom-1/2 entering:slide-in-from-left-1/2 entering:[transition-timing-function:ease-out] sm:entering:slide-in-from-top-[2rem]',
-                        'exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[4rem]'
-                    )}
-                >
-                    <Aria.Dialog className='outline-none' aria-label='Command Palette'>
+                <Modal className={modal({ className: classNames?.content })}>
+                    <Dialog className='outline-none' aria-label='Command Palette'>
                         {({ close }) => (
                             <>
-                                <CMDK
+                                <CommandPrimitive
                                     value={value}
                                     onValueChange={onValueChange}
-                                    className={cn(
-                                        'flex h-svh w-full flex-col overflow-hidden rounded-lg sm:h-full',
-                                        '[&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12',
-                                        '[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pl-2.5 [&_[cmdk-item]]:pr-4',
-                                        className
-                                    )}
+                                    className={command()}
                                 >
                                     {children}
-                                </CMDK>
+                                </CommandPrimitive>
                                 {!hideCloseButton && (
-                                    <Aria.Button
+                                    <Button
                                         autoFocus={!isDesktop}
                                         onPress={close}
-                                        className={cn(
-                                            'absolute right-3 top-1.5 [&>span>svg]:text-muted-foreground pressed:[&_svg]:text-foreground lg:top-3.5 rounded-lg border lg:border-muted border-transparent lg:bg-muted/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition data-[state=open]:bg-muted data-[state=open]:text-muted-foreground lg:focus:border-foreground/70 focus:outline-none lg:focus:ring-2 lg:focus:ring-primary disabled:pointer-events-none',
-                                            'focus:outline-none lg:focus:bg-primary/10 lg:focus:ring-2 lg:focus:ring-primary/20 lg:focus:border-primary/70',
-                                            'disabled:pointer-events-none'
-                                        )}
+                                        className={closeButton()}
                                     >
                                         <span className='lg:block hidden'>Esc</span>
                                         <span className='lg:hidden -mr-2 block'>
                                             <IconX />
                                             <span className='sr-only'>Close command palette</span>
                                         </span>
-                                    </Aria.Button>
+                                    </Button>
                                 )}
                             </>
                         )}
-                    </Aria.Dialog>
-                </Aria.Modal>
-            </Aria.ModalOverlay>
+                    </Dialog>
+                </Modal>
+            </ModalOverlay>
         </CommandContext.Provider>
     )
 }
 
-type CommandInputProps = React.ComponentPropsWithoutRef<typeof CMDK.Input>
+type CommandInputProps = React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 
-const CommandInput = React.forwardRef<React.ElementRef<typeof CMDK.Input>, CommandInputProps>(
-    ({ className, ...props }, ref) => {
-        const { hideSearchIndicator } = React.useContext(CommandContext)
-        return (
-            <div className='flex border-b items-center px-3'>
-                {!hideSearchIndicator && <IconSearch className='mr-2 size-5 shrink-0 opacity-50' />}
-                <CMDK.Input
-                    autoFocus
-                    ref={ref}
-                    className={cn(
-                        'flex w-full rounded-lg bg-transparent text-base placeholder:text-muted-foreground',
-                        'focus:outline-none',
-                        'disabled:opacity-50 disabled:cursor-not-allowed',
-                        hideSearchIndicator && 'pl-1',
-                        className
-                    )}
-                    {...props}
-                />
-            </div>
-        )
-    }
-)
+const CommandInput = React.forwardRef<
+    React.ElementRef<typeof CommandPrimitive.Input>,
+    CommandInputProps
+>(({ className, ...props }, ref) => {
+    const { hideSearchIndicator } = React.useContext(CommandContext)
+    return (
+        <div className='flex border-b items-center px-3'>
+            {!hideSearchIndicator && <IconSearch className='mr-2 size-5 shrink-0 opacity-50' />}
+            <CommandPrimitive.Input
+                autoFocus
+                ref={ref}
+                className={input({ className: hideSearchIndicator ? 'pl-1' : className })}
+                {...props}
+            />
+        </div>
+    )
+})
 
-CommandInput.displayName = CMDK.Input.displayName
+CommandInput.displayName = CommandPrimitive.Input.displayName
 
-type CommandListProps = React.ComponentProps<typeof CMDK.List>
+type CommandListProps = React.ComponentProps<typeof CommandPrimitive.List>
 
 const CommandList = ({ className, ...props }: CommandListProps) => {
     const { messageOnEmpty } = React.useContext(CommandContext)
     return (
-        <CMDK.List
-            className={cn(
-                'overflow-y-auto lg:pb-0 max-h-[calc(100vh-35%)] pb-16 [&:not(:has(.section))]:p-2 [&:not(:has(.section))_.separator]:my-2 overflow-x-hidden md:max-h-[456px]',
-                className
-            )}
-            {...props}
-        >
+        <CommandPrimitive.List className={list({ className })} {...props}>
             {messageOnEmpty !== false && (
                 <CommandEmpty>
                     {typeof messageOnEmpty === 'string' ? messageOnEmpty : 'No results found.'}
                 </CommandEmpty>
             )}
             {props.children}
-        </CMDK.List>
+        </CommandPrimitive.List>
     )
 }
 
-type CommandEmptyProps = React.ComponentProps<typeof CMDK.Empty>
+type CommandEmptyProps = React.ComponentProps<typeof CommandPrimitive.Empty>
 
 const CommandEmpty = ({ className, ...props }: CommandEmptyProps) => {
-    return (
-        <CMDK.Empty
-            className={cn('py-6 text-center text-sm text-muted-foreground', className)}
-            {...props}
-        />
-    )
+    return <CommandPrimitive.Empty className={empty({ className })} {...props} />
 }
 
-interface CommandSectionProps extends React.ComponentProps<typeof CMDK.Group> {
+interface CommandSectionProps extends React.ComponentProps<typeof CommandPrimitive.Group> {
     separator?: boolean
 }
 
 const CommandSection = ({ className, separator, ...props }: CommandSectionProps) => {
     return (
         <>
-            <CMDK.Group
-                className={cn(
-                    'section overflow-hidden py-2 px-2 text-foreground',
-                    '[&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:text-muted-foreground',
-                    className
-                )}
-                {...props}
-            >
+            <CommandPrimitive.Group className={section({ className })} {...props}>
                 {props.children}
                 {separator && <CommandSeparator className='mt-2' />}
-            </CMDK.Group>
+            </CommandPrimitive.Group>
         </>
     )
 }
 
-const CommandSeparator = ({ className, ...props }: Aria.SeparatorProps) => {
+const CommandSeparator = ({ className, ...props }: SeparatorProps) => {
     return (
-        <div className='-mx-4 separator'>
+        <div className='-mx-4 s3xsprt'>
             <Separator className={className} {...props} orientation='horizontal' />
         </div>
     )
 }
 
-interface CommandItemProps extends React.ComponentProps<typeof CMDK.Item> {
+interface CommandItemProps extends React.ComponentProps<typeof CommandPrimitive.Item> {
     isDanger?: boolean
 }
 
 const CommandItem = ({ isDanger, className, ...props }: CommandItemProps) => {
     return (
-        <CMDK.Item
+        <CommandPrimitive.Item
             data-danger={isDanger ? 'true' : undefined}
-            className={cn(
-                'group relative flex cursor-default select-none items-center rounded-lg py-2 text-sm outline-none',
-                'data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground [&[data-selected=true]_svg]:text-primary-foreground',
-                'focus-visible:bg-primary focus-visible:text-primary-foreground [&:focus-visible_svg]:text-primary-foreground',
-                'data-[danger=true]:text-danger data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-foreground',
-                'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
-                '[&_svg]:mr-2 [&_svg]:size-[1.10rem] [&_svg]:shrink-0 [&_svg]:text-muted-foreground',
-                '[&_[data-slot=avatar]]:mr-2 [&_[data-slot=avatar]]:size-[1.10rem] [&_[data-slot=avatar]]:shrink-0',
-                isDanger &&
-                    'text-danger data-[selected=true]:bg-danger data-[selected=true]:text-danger-foreground [&[data-selected=true]_svg]:text-danger-foreground',
-                className
-            )}
+            className={item({ isDanger, className })}
             {...props}
         />
     )
 }
 
-interface CommandDescriptionProps extends Aria.TextProps {
-    color?: 'danger' | 'warning' | 'primary' | 'secondary' | 'success'
+interface CommandDescriptionProps extends TextProps {
+    intent?: 'danger' | 'warning' | 'primary' | 'secondary' | 'success'
 }
 
-const CommandDescription = ({ color, className, ...props }: CommandDescriptionProps) => {
+const CommandDescription = ({ intent, className, ...props }: CommandDescriptionProps) => {
     return (
-        <Aria.Text
+        <Text
             {...props}
             slot='description'
-            className={cn(
-                'sm:inline hidden text-sm ml-auto',
-                color === 'danger'
-                    ? 'group-data-[selected=true]:text-primary-foreground/70 text-danger/90'
-                    : color === 'warning'
-                      ? 'group-data-[selected=true]:text-primary-foreground/70 text-warning/90'
-                      : color === 'success'
-                        ? 'group-data-[selected=true]:text-primary-foreground/70 text-success/90'
-                        : color === 'primary'
-                          ? 'group-data-[selected=true]:text-white/70 text-primary/90'
-                          : 'group-data-[selected=true]:text-primary-foreground/70 text-muted-foreground',
-                className
-            )}
+            className={description({
+                className: twJoin(
+                    intent === 'danger'
+                        ? 'group-data-[selected=true]:text-primary-foreground/70 text-danger/90'
+                        : intent === 'warning'
+                          ? 'group-data-[selected=true]:text-primary-foreground/70 text-warning/90'
+                          : intent === 'success'
+                            ? 'group-data-[selected=true]:text-primary-foreground/70 text-success/90'
+                            : intent === 'primary'
+                              ? 'group-data-[selected=true]:text-white/70 text-primary/90'
+                              : 'group-data-[selected=true]:text-primary-foreground/70 text-muted-foreground',
+                    className
+                )
+            })}
         />
     )
 }
 
 const CommandKeyboard = (props: KeyboardProps) => (
-    <Keyboard
-        classNames={{
-            kbd: 'lg:block hidden group-data-[selected=true]:opacity-60',
-            base: '-mr-2.5'
-        }}
-        {...props}
-    />
+    <Keyboard classNames={{ kbd: kbdKeyboard(), base: '-mr-2.5' }} {...props} />
 )
 
 Command.Empty = CommandEmpty

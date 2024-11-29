@@ -3,16 +3,15 @@
 import * as icons from 'hq-icons'
 import { renderToString } from 'react-dom/server'
 
-import { Menu } from '@/components/ui'
-
 import {
     copyJsxSvgToClipboard,
     copyJsxToClipboard,
     copySvgToClipboard,
     downloadPng,
     downloadSvg
-} from './copy-to-clipboard'
-import { Icon } from './icon'
+} from '@/components/controllers/icons/copy-to-clipboard'
+import { Icon } from '@/components/controllers/icons/icon'
+import { Menu } from '@/components/ui'
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
     name: string

@@ -4,11 +4,16 @@ import React from 'react'
 
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import {
+    ListBox,
+    ListBoxItem,
+    ListBoxSection,
+    type ListBoxItemProps,
+    type ListBoxSectionProps
+} from 'react-aria-components'
 
 import { Button, type ButtonProps } from './button'
+import { cn } from './utils'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -147,18 +152,18 @@ const Carousel = ({
     )
 }
 
-const CarouselContent = <T extends object>({ className, ...props }: Aria.SectionProps<T>) => {
+const CarouselContent = <T extends object>({ className, ...props }: ListBoxSectionProps<T>) => {
     const { carouselRef, orientation } = useCarousel()
 
     return (
-        <Aria.ListBox
+        <ListBox
             layout={orientation === 'vertical' ? 'stack' : 'grid'}
             aria-label='Slides'
             orientation={orientation}
             ref={carouselRef}
             className='overflow-hidden'
         >
-            <Aria.Section
+            <ListBoxSection
                 className={cn(
                     'flex',
                     orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
@@ -166,15 +171,15 @@ const CarouselContent = <T extends object>({ className, ...props }: Aria.Section
                 )}
                 {...props}
             />
-        </Aria.ListBox>
+        </ListBox>
     )
 }
 
-const CarouselItem = ({ className, ...props }: Aria.ListBoxItemProps) => {
+const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
     const { orientation } = useCarousel()
 
     return (
-        <Aria.ListBoxItem
+        <ListBoxItem
             aria-label={`Slide ${props.id}`}
             aria-roledescription='slide'
             className={cn(
@@ -209,7 +214,7 @@ const CarouselButton = ({
     slot,
     className,
     variant = 'outline',
-    shape = 'square',
+    shape = 'circle',
     size = 'icon',
     ...props
 }: ButtonProps & { slot: 'previous' | 'next' }) => {

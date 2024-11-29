@@ -5,7 +5,7 @@ import React from 'react'
 import { IconDot } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
 
-import { cn } from '@/lib/utils'
+import { cn } from './utils'
 
 interface OTPType
     extends React.ForwardRefExoticComponent<
@@ -51,7 +51,7 @@ const OTPSlot = React.forwardRef<
         <div
             ref={ref}
             className={cn(
-                'relative flex tabular-nums size-10 items-center justify-center rounded-md border border-muted text-sm transition-all',
+                'relative flex tabular-nums size-10 items-center justify-center rounded-lg border border-muted text-sm transition-all',
                 isActive && 'z-10 border-primary/70 ring-4 ring-primary/20',
                 className
             )}

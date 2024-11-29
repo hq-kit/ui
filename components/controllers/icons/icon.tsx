@@ -1,6 +1,6 @@
 import * as icons from 'hq-icons'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/components/ui'
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
     icon: keyof typeof icons

@@ -4,13 +4,12 @@ import React from 'react'
 
 import { LayoutGroup, motion } from 'framer-motion'
 import { IconMenu } from 'hq-icons'
-import { composeRenderProps, Link, type LinkProps } from 'react-aria-components'
+import { Link, type LinkProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
-
-import { cn, useMediaQuery } from '@/lib/utils'
 
 import { Button } from './button'
 import { Sheet } from './sheet'
+import { cn, cr, useMediaQuery } from './utils'
 
 type NavbarOptions = {
     side?: 'left' | 'right'
@@ -118,7 +117,7 @@ const navStyles = tv({
             true: 'sticky z-20 top-0'
         },
         variant: {
-            floating: 'bg-background max-w-[1680px] mx-auto shadow-sm border rounded-xl sm:px-4',
+            floating: 'bg-background max-w-[1680px] mx-auto shadow-sm border rounded-lg sm:px-4',
             navbar: 'bg-background shadow-sm border-b sm:px-6',
             inset: [
                 'bg-muted mx-auto dark:bg-background sm:px-6',
@@ -227,7 +226,7 @@ const Item = ({ className, isCurrent, ...props }: ItemProps) => {
         <Link
             slot='navbar-item'
             aria-current={isCurrent ? 'page' : undefined}
-            className={composeRenderProps(className, (className, ...renderProps) =>
+            className={cr(className, (className, ...renderProps) =>
                 navItemStyles({ ...renderProps, isCurrent, className })
             )}
             {...props}

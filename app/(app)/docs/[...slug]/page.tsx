@@ -1,3 +1,4 @@
+import { docs } from '#docs'
 import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -7,7 +8,6 @@ import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
 import { Separator } from '@/components/ui'
 import '@/lib/styles/code.css'
-import { docs } from '@docs'
 
 export interface DocPageProps {
     params: Promise<{
@@ -75,7 +75,7 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
     return docs.map((doc) => ({ slug: doc.slugAsParams.split('/') }))
 }
 
-export default async function PostPage(props: DocPageProps) {
+export default async function DocsPage(props: DocPageProps) {
     const params = await props.params
     const doc = await getPostFromParams(params)
 

@@ -2,7 +2,7 @@ import chroma from 'chroma-js'
 import ntc from 'ntcjs'
 import { slugify } from 'usemods'
 
-import _colors from './colors.json'
+import _colors from '@/components/controllers/colors/colors.json'
 
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 type ColorData = Record<number, string>

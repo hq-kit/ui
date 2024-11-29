@@ -9,12 +9,20 @@ import {
     IconChevronsRight,
     IconEllipsis
 } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    ListBox,
+    ListBoxItem,
+    ListBoxSection,
+    Separator,
+    type ListBoxItemProps,
+    type ListBoxProps,
+    type ListBoxSectionProps
+} from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { buttonVariants } from './button'
+import { cn } from './utils'
+import { cr } from './utils'
 
 const paginationStyles = tv({
     slots: {
@@ -56,33 +64,33 @@ const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
     />
 )
 
-const PaginationSection = <T extends object>({ className, ...props }: Aria.SectionProps<T>) => (
-    <Aria.Section {...props} className={section({ className })} />
+const PaginationSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T>) => (
+    <ListBoxSection {...props} className={section({ className })} />
 )
 
-const List = <T extends object>({ className, ...props }: Aria.ListBoxProps<T>) => {
+const List = <T extends object>({ className, ...props }: ListBoxProps<T>) => {
     return (
-        <Aria.ListBox
+        <ListBox
             orientation='horizontal'
             aria-label={props['aria-label'] || 'Pagination'}
             layout='grid'
-            className={Aria.composeRenderProps(className, (className) => list({ className }))}
+            className={cr(className, (className) => list({ className }))}
             {...props}
         />
     )
 }
 
 const renderListItem = (
-    props: Aria.ListBoxItemProps & {
+    props: ListBoxItemProps & {
         textValue?: string
         'aria-current'?: string | undefined
         isDisabled?: boolean
         className?: string
     },
     children: React.ReactNode
-) => <Aria.ListBoxItem {...props}>{children}</Aria.ListBoxItem>
+) => <ListBoxItem {...props}>{children}</ListBoxItem>
 
-interface PaginationItemProps extends Aria.ListBoxItemProps, VariantProps<typeof buttonVariants> {
+interface PaginationItemProps extends ListBoxItemProps, VariantProps<typeof buttonVariants> {
     children?: React.ReactNode
     className?: string
     isCurrent?: boolean
@@ -141,7 +149,7 @@ const Item = ({
                     className: itemSeparator({ className }),
                     ...props
                 },
-                <Aria.Separator orientation='vertical' className={itemSeparatorLine()} />
+                <Separator orientation='vertical' className={itemSeparatorLine()} />
             )
         case 'ellipsis':
             return renderListItem(

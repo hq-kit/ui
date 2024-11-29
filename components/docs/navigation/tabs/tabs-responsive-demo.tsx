@@ -3,8 +3,7 @@
 import { IconMenu } from 'hq-icons'
 import { Collection } from 'react-aria-components'
 
-import { Select, Tabs } from '@/components/ui'
-import { useMediaQuery } from '@/lib/utils'
+import { Select, Tabs, useMediaQuery } from '@/components/ui'
 
 const tabs = [
     { id: 1, title: 'Overview', content: 'This is the overview tab content.' },

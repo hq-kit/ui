@@ -2,18 +2,21 @@
 
 import React from 'react'
 
-import * as Aria from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
+import type {
+    ColorFieldProps as ColorFieldPrimitiveProps,
+    ValidationResult
+} from 'react-aria-components'
+import { ColorField as ColorFieldPrimitive } from 'react-aria-components'
 
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import { Description, FieldError, FieldGroup, fieldGroupPrefixStyles, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import { ctr } from './utils'
 
-interface ColorFieldProps extends Aria.ColorFieldProps {
+interface ColorFieldProps extends ColorFieldPrimitiveProps {
     label?: string
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
     placeholder?: string
     prefix?: React.ReactNode
     suffix?: React.ReactNode
@@ -35,23 +38,24 @@ const ColorField = ({
 }: ColorFieldProps) => {
     const value = props.value ?? props.defaultValue
     return (
-        <Aria.ColorField
+        <ColorFieldPrimitive
             {...props}
             aria-label={props['aria-label'] ?? 'Color field'}
-            className={cn(
-                '[&_[data-slot=color-swatch]]:ml-2 group w-full flex flex-col gap-y-1',
-                className
+            className={ctr(
+                className,
+                '[&_[data-slot=color-swatch]]:-ml-0.5 group w-full flex flex-col gap-y-1'
             )}
         >
             {label && <Label>{label}</Label>}
-            <FieldGroup
-                data-loading={isLoading ? 'true' : undefined}
-                className={fieldGroupPrefixStyles()}
-            >
-                {prefix ? <span className='attribute prefix'>{prefix}</span> : null}
+            <FieldGroup data-loading={isLoading ? 'true' : undefined}>
+                {prefix ? (
+                    <span data-slot='prefix' className='atrs'>
+                        {prefix}
+                    </span>
+                ) : null}
                 <div className='flex items-center'>
                     {value && (
-                        <span>
+                        <span className='ml-2'>
                             {enableColorPicker ? (
                                 <ColorPicker onChange={props.onChange} defaultValue={value} />
                             ) : (
@@ -60,13 +64,17 @@ const ColorField = ({
                         </span>
                     )}
 
-                    <Input className='px-2.5' placeholder={placeholder} />
+                    <Input placeholder={placeholder} />
                 </div>
-                {suffix ? <span className='attribute ml-auto suffix'>{suffix}</span> : null}
+                {suffix ? (
+                    <span data-slot='suffix' className='atrs ml-auto'>
+                        {suffix}
+                    </span>
+                ) : null}
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-        </Aria.ColorField>
+        </ColorFieldPrimitive>
     )
 }
 

@@ -5,11 +5,10 @@ import React from 'react'
 import { Collection } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { Tooltip } from '@/components/ui/tooltip'
-import { cn } from '@/lib/utils'
 import { type CollectionProps } from '@react-aria/collections'
 
-import { VisuallyHidden } from './visually-hidden'
+import { Tooltip } from './tooltip'
+import { cn, VisuallyHidden } from './utils'
 
 interface AvatarGroupProps<T extends AvatarProps> extends Omit<CollectionProps<T>, 'children'> {
     children?: React.ReactNode

@@ -3,14 +3,20 @@
 import React from 'react'
 
 import { IconMenu, IconMinus, IconPanelLeftClose, IconPanelLeftOpen } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import {
+    Button as ButtonPrimitive,
+    Disclosure,
+    DisclosurePanel,
+    type DisclosureProps,
+    Link,
+    type LinkProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
-
-import { cn, useMediaQuery } from '@/lib/utils'
 
 import { Button } from './button'
 import { Sheet } from './sheet'
 import { Tooltip } from './tooltip'
+import { cn, cr, useMediaQuery } from './utils'
 
 type SidebarContextProps = {
     state: 'expanded' | 'collapsed'
@@ -123,7 +129,7 @@ const Inset = ({ className, ...props }: React.ComponentProps<'main'>) => {
             className={cn([
                 [
                     'relative overflow-hidden flex min-h-svh flex-1 flex-col bg-background',
-                    'md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:bg-background md:peer-data-[variant=inset]:rounded-xl',
+                    'md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:bg-background md:peer-data-[variant=inset]:rounded-lg',
                     'peer-data-[variant=inset]:overflow-hidden peer-data-[variant=inset]:border peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:my-2 md:peer-data-[variant=inset]:mr-2',
                     'md:peer-data-[variant=sidebar]:overflow-visible'
                 ],
@@ -260,7 +266,7 @@ const itemStyles = tv({
     }
 })
 
-interface ItemProps extends Aria.LinkProps {
+interface ItemProps extends LinkProps {
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     badge?: string | number | undefined
     isCurrent?: boolean
@@ -269,10 +275,10 @@ interface ItemProps extends Aria.LinkProps {
 const Item = ({ isCurrent, children, className, icon: Icon, ...props }: ItemProps) => {
     const { state, isMobile } = React.useContext(SidebarContext)!
     return (
-        <Aria.Link
+        <Link
             data-sidebar='menu-item'
             aria-current={isCurrent ? 'page' : undefined}
-            className={Aria.composeRenderProps(className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 itemStyles({
                     ...renderProps,
                     collapsed: state === 'collapsed',
@@ -308,14 +314,14 @@ const Item = ({ isCurrent, children, className, icon: Icon, ...props }: ItemProp
                     <span className='col-start-2 group-data-[collapsible=dock]:hidden'>
                         {typeof children === 'function' ? children(values) : children}
                         {props.badge && (
-                            <div className='side-item h-[1.30rem] px-1 rounded-md text-muted-foreground text-xs font-medium ring-1 ring-foreground/20 grid place-content-center w-auto inset-y-1/2 -translate-y-1/2 absolute right-1.5 bg-foreground/[0.02] dark:bg-foreground/10'>
+                            <div className='side-item h-[1.30rem] px-1 rounded-lg text-muted-foreground text-xs font-medium ring-1 ring-foreground/20 grid place-content-center w-auto inset-y-1/2 -translate-y-1/2 absolute right-1.5 bg-foreground/[0.02] dark:bg-foreground/10'>
                                 {props.badge}
                             </div>
                         )}
                     </span>
                 </>
             )}
-        </Aria.Link>
+        </Link>
     )
 }
 
@@ -404,7 +410,7 @@ const Footer = ({ className, ...props }: React.HtmlHTMLAttributes<HTMLDivElement
     )
 }
 
-interface CollapsibleProps extends Aria.DisclosureProps {
+interface CollapsibleProps extends DisclosureProps {
     children: React.ReactNode
     title?: string
     collapsible?: boolean
@@ -422,13 +428,13 @@ const Section = ({
 
     const { state } = React.useContext(SidebarContext)!
     return (
-        <Aria.Disclosure className={cn('p-2', className)} defaultExpanded={isExpanded} {...props}>
+        <Disclosure className={cn('p-2', className)} defaultExpanded={isExpanded} {...props}>
             {({ isExpanded }) => (
                 <>
                     {typeof title === 'string' && (
                         <span className='group-data-[collapsible=dock]:opacity-0 group-data-[collapsible=dock]:hidden'>
                             {collapsible ? (
-                                <Aria.Button
+                                <ButtonPrimitive
                                     slot='trigger'
                                     className='w-full focus:outline-none flex items-center justify-between text-sm text-muted-foreground px-3 py-2 has-[.indicator]:pr-2'
                                 >
@@ -447,13 +453,13 @@ const Section = ({
                                             )}
                                         />
                                     </div>
-                                </Aria.Button>
+                                </ButtonPrimitive>
                             ) : (
                                 <h4 className='text-sm text-muted-foreground px-3 py-2'>{title}</h4>
                             )}
                         </span>
                     )}
-                    <Aria.DisclosurePanel>
+                    <DisclosurePanel>
                         <div
                             className={cn(
                                 'grid gap-y-0.5 group-data-[collapsible=dock]:place-content-center',
@@ -464,10 +470,10 @@ const Section = ({
                         >
                             {props.children}
                         </div>
-                    </Aria.DisclosurePanel>
+                    </DisclosurePanel>
                 </>
             )}
-        </Aria.Disclosure>
+        </Disclosure>
     )
 }
 

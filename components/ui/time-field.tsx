@@ -1,25 +1,34 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import React from 'react'
+
+import {
+    TimeField as TimeFieldPrimitive,
+    type TimeFieldProps as TimeFieldPrimitiveProps,
+    type TimeValue,
+    type ValidationResult
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { DateInput } from './date-field'
-import { Description, FieldError, fieldGroupStyles, Label } from './field'
+import { Description, FieldError, FieldGroup, Label } from './field'
+import { ctr } from './utils'
 
-export interface TimeFieldProps<T extends Aria.TimeValue> extends Aria.TimeFieldProps<T> {
+export interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveProps<T> {
     label?: string
     description?: string
-    errorMessage?: string | ((validation: Aria.ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string)
+    prefix?: React.ReactNode
+    suffix?: React.ReactNode
 }
 
 const timeFieldStyles = tv({
-    extend: fieldGroupStyles,
     base: 'flex w-fit min-w-28 justify-around whitespace-nowrap p-2 lg:text-sm'
 })
 
-const TimeField = <T extends Aria.TimeValue>({
+const TimeField = <T extends TimeValue>({
+    prefix,
+    suffix,
     label,
     className,
     description,
@@ -27,12 +36,16 @@ const TimeField = <T extends Aria.TimeValue>({
     ...props
 }: TimeFieldProps<T>) => {
     return (
-        <Aria.TimeField {...props} className={cn('flex flex-col gap-1', className)}>
-            <Label>{label}</Label>
-            <DateInput className={timeFieldStyles} />
+        <TimeFieldPrimitive {...props} className={ctr(className, 'group flex flex-col gap-y-1.5')}>
+            {label && <Label>{label}</Label>}
+            <FieldGroup>
+                {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
+                <DateInput className={timeFieldStyles} />
+                {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
+            </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-        </Aria.TimeField>
+        </TimeFieldPrimitive>
     )
 }
 

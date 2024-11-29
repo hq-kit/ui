@@ -1,11 +1,11 @@
 'use client'
 
-import * as React from 'react'
+import React, { Suspense } from 'react'
 
 import { Heading } from 'react-aria-components'
+import scrollIntoView from 'scroll-into-view-if-needed'
 
-import { Link, Skeleton } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { Link, Skeleton, cn } from '@/components/ui'
 
 interface TableOfContentsProps {
     title: string
@@ -13,76 +13,125 @@ interface TableOfContentsProps {
     items?: TableOfContentsProps[]
 }
 
-export function TableOfContents({
-    className,
-    items
-}: {
+interface Props {
     className?: string
     items: TableOfContentsProps[]
-}) {
+}
+
+function useScrollPosition(ref: React.MutableRefObject<HTMLElement | null>) {
+    const [scrollPosition, setScrollPosition] = React.useState(0)
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setScrollPosition(ref.current?.scrollTop || 0)
+        }
+
+        ref.current?.addEventListener('scroll', handleScroll)
+
+        return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            ref.current?.removeEventListener('scroll', handleScroll)
+        }
+    }, [ref])
+
+    return scrollPosition
+}
+
+export function TableOfContents({ className, items }: Props) {
+    // const [thereIsAnAd, setThereIsAnAd] = React.useState(true)
+    const tocRef = React.useRef<HTMLDivElement>(null)
+    const scrollPosition = useScrollPosition(tocRef)
     const ids = items.flatMap((item) => [
         item.url.split('#')[1],
         ...(item.items ? item.items.map((subItem) => subItem.url.split('#')[1]) : [])
     ])
     const activeId = useActiveItem(ids)
+    const activeIndex = activeId?.length || 0
+    React.useEffect(() => {
+        if (!activeId || activeIndex < 2) return
+        const anchor = tocRef.current?.querySelector(`li > a[href="#${activeId}"]`)
+
+        if (anchor) {
+            scrollIntoView(anchor, {
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center',
+                scrollMode: 'always',
+                boundary: tocRef.current
+            })
+        }
+    }, [activeId, activeIndex])
     return (
-        <div className={cn('not-prose', className)}>
-            <aside className='xl:sticky xl:top-[1.75rem] xl:-mr-6 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6'>
-                <nav aria-labelledby='on-this-page-title' className='w-56'>
-                    <React.Suspense
-                        fallback={
-                            <div className='space-y-2'>
-                                <Skeleton className='h-3 w-20 animate-pulse' />
-                                <Skeleton className='h-3 w-32 animate-pulse' />
-                                <Skeleton className='h-3 w-12 animate-pulse bg-foreground/50' />
-                                <Skeleton className='h-3 w-16 animate-pulse' />
-                                <Skeleton className='h-3 w-8 animate-pulse' />
-                                <Skeleton className='h-3 w-24 animate-pulse' />
-                            </div>
-                        }
-                    >
-                        <>
-                            <Heading
-                                level={2}
-                                className='mb-6 text-base font-semibold leading-7 text-foreground lg:text-lg'
-                            >
-                                On this page
-                            </Heading>
-                            {items.length > 0 && (
-                                <ul className='flex flex-col gap-y-2.5'>
-                                    {items.map((item) => (
-                                        <React.Fragment key={item.title}>
-                                            <TocLink item={item} activeId={activeId} />
-                                            {item.items && item.items.length > 0 && (
-                                                <ul className='flex flex-col gap-y-2.5 pl-3'>
-                                                    {item.items.map((subItem) => (
-                                                        <TocLink
-                                                            key={subItem.title}
-                                                            item={subItem}
-                                                            activeId={activeId}
-                                                        />
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </React.Fragment>
-                                    ))}
-                                </ul>
-                            )}
-                        </>
-                    </React.Suspense>
-                </nav>
-            </aside>
-        </div>
+        <aside
+            ref={tocRef}
+            className={cn(
+                'not-prose forced-color-adjust-none',
+                'xl:sticky no-scrollbar xl:top-[1.75rem] xl:-mr-6 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
+                'top-20',
+                className
+            )}
+            style={{
+                WebkitMaskImage: `linear-gradient(to top, transparent 0%, #000 100px, #000 ${
+                    scrollPosition > 30 ? '90%' : '100%'
+                }, transparent 100%)`
+            }}
+        >
+            <nav aria-labelledby='on-this-page-title' className='w-56'>
+                <Suspense
+                    fallback={
+                        <div className='space-y-2'>
+                            <Skeleton className='h-3 w-20 animate-pulse' />
+                            <Skeleton className='h-3 w-32 animate-pulse' />
+                            <Skeleton className='h-3 w-12 animate-pulse bg-foreground/50' />
+                            <Skeleton className='h-3 w-16 animate-pulse' />
+                            <Skeleton className='h-3 w-8 animate-pulse' />
+                            <Skeleton className='h-3 w-24 animate-pulse' />
+                        </div>
+                    }
+                >
+                    <>
+                        <Heading
+                            level={2}
+                            className='text-base lg:text-lg font-medium leading-7 mb-6 text-foreground'
+                        >
+                            On this page
+                        </Heading>
+                        {items.length > 0 && (
+                            <ul className='flex flex-col gap-y-2.5'>
+                                {items.map((item) => (
+                                    <React.Fragment key={item.title}>
+                                        <TocLink item={item} activeId={activeId} />
+                                        {item.items && item.items.length > 0 && (
+                                            <ul className='flex pl-3 flex-col gap-y-2.5'>
+                                                {item.items.map((subItem) => (
+                                                    <TocLink
+                                                        key={subItem.title}
+                                                        item={subItem}
+                                                        activeId={activeId}
+                                                    />
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </ul>
+                        )}
+                    </>
+                </Suspense>
+            </nav>
+        </aside>
     )
 }
 
 function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: string | null }) {
     return (
-        <li>
+        <li key={item.title}>
             <Link
                 className={cn(
-                    'block font-medium no-underline outline-none lg:text-[0.885rem]',
-                    item.url.split('#')[1] === activeId ? 'text-primary' : 'text-foreground'
+                    'outline-none block no-underline tracking-tight lg:text-[0.885rem] duration-200 focus-visible:outline-none focus-visible:text-primary',
+                    item.url.split('#')[1] === activeId
+                        ? 'text-primary forced-colors:text-[Highlight]'
+                        : 'text-muted-foreground/90 forced-colors:text-[GrayText]'
                 )}
                 href={item.url}
             >
@@ -92,7 +141,7 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
     )
 }
 
-function useActiveItem(itemIds: string[]) {
+export function useActiveItem(itemIds: string[]) {
     const [activeId, setActiveId] = React.useState<string | null>(null)
 
     React.useEffect(() => {
@@ -109,7 +158,7 @@ function useActiveItem(itemIds: string[]) {
                     }
                 })
                 if (bestCandidate) {
-                    // @ts-expect-error no-type
+                    // @ts-expect-error unknown-type
                     setActiveId(bestCandidate.target.id)
                 }
             },

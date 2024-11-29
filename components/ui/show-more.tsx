@@ -4,12 +4,11 @@ import { useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { IconChevronDown } from 'hq-icons'
-import * as Aria from 'react-aria-components'
+import { Text, ToggleButton } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { buttonVariants } from './button'
+import { cn } from './utils'
 
 const showMoreStyles = tv({
     base: 'text-sm leading-6 after:border-muted before:border-muted',
@@ -36,7 +35,7 @@ const showMoreStyles = tv({
     }
 })
 
-interface ShowMoreProps extends React.ComponentProps<typeof Aria.ToggleButton> {
+interface ShowMoreProps extends React.ComponentProps<typeof ToggleButton> {
     className?: string
     orientation?: 'horizontal' | 'vertical'
     as?: 'text' | 'button'
@@ -52,7 +51,7 @@ const ShowMore = ({
     return (
         <div className={showMoreStyles({ orientation, className })}>
             {as === 'button' ? (
-                <Aria.ToggleButton
+                <ToggleButton
                     {...props}
                     className={buttonVariants({
                         variant: 'outline',
@@ -60,7 +59,7 @@ const ShowMore = ({
                     })}
                 />
             ) : (
-                <Aria.Text slot='description'>{props.text}</Aria.Text>
+                <Text slot='description'>{props.text}</Text>
             )}
         </div>
     )
@@ -108,7 +107,7 @@ function ContentReveal({
             {gradientTransparency && (
                 <div
                     className={cn(
-                        'absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-background to-background',
+                        'absolute inset-0 rounded-lg bg-gradient-to-b from-transparent via-background to-background',
                         isExpanded && 'hidden'
                     )}
                 ></div>

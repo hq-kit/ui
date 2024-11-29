@@ -36,7 +36,6 @@ import {
 } from 'lexical'
 import { TextField, type ValidationResult } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
 import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
@@ -74,6 +73,7 @@ import { Button } from './button'
 import { Description, FieldError, Label } from './field'
 import { Menu } from './menu'
 import { Toolbar } from './toolbar'
+import { cn } from './utils'
 
 interface RichTextFieldProps {
     className?: string
@@ -143,7 +143,7 @@ const RichTextField = ({
                                     aria-disabled={isDisabled}
                                     disabled={isDisabled}
                                     className={cn(
-                                        'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-md border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
+                                        'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
                                         'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
                                         'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
                                         isDisabled && 'bg-muted opacity-50'

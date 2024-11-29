@@ -4,11 +4,9 @@ import * as React from 'react'
 
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 
-import { buttonVariants, Link, Tabs, Toggle } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import PreviewContent from './preview-content'
-import SourceCode from './source-code'
+import PreviewContent from '@/components/mdx/preview-content'
+import SourceCode from '@/components/mdx/source-code'
+import { buttonVariants, cn, Link, Tabs, Toggle } from '@/components/ui'
 
 type screenWidthType = 'max-w-none' | 'max-w-3xl' | 'max-w-sm'
 

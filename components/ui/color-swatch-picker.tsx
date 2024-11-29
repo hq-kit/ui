@@ -1,45 +1,50 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import {
+    ColorSwatchPickerItem,
+    ColorSwatchPicker as ColorSwatchPickerPrimitive,
+    type ColorSwatchPickerItemProps,
+    type ColorSwatchPickerProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn } from '@/lib/utils'
-
 import { ColorSwatch } from './color-swatch'
+import { ctr, focusRing } from './utils'
 
 const ColorSwatchPicker = ({
     children,
     className,
     layout = 'grid',
     ...props
-}: Aria.ColorSwatchPickerProps) => {
+}: ColorSwatchPickerProps) => {
     return (
-        <Aria.ColorSwatchPicker layout={layout} {...props} className={cn('flex gap-1', className)}>
+        <ColorSwatchPickerPrimitive
+            layout={layout}
+            {...props}
+            className={ctr(className, 'flex gap-1')}
+        >
             {children}
-        </Aria.ColorSwatchPicker>
+        </ColorSwatchPickerPrimitive>
     )
 }
 
 const itemStyles = tv({
-    base: 'relative rounded disabled:opacity-50 outline-none focus:outline-none',
-    variants: {
-        isFocused: { true: 'ring-4 ring-primary/20' },
-        isInvalid: { true: 'ring-4 ring-danger/20' }
-    }
+    extend: focusRing,
+    base: 'relative rounded-lg disabled:opacity-50'
 })
 
-const SwatchPickerItem = (props: Aria.ColorSwatchPickerItemProps) => {
+const SwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
     return (
-        <Aria.ColorSwatchPickerItem {...props} className={itemStyles}>
+        <ColorSwatchPickerItem {...props} className={itemStyles}>
             {({ isSelected }) => (
                 <>
                     <ColorSwatch />
                     {isSelected && (
-                        <div className='absolute top-0 left-0 w-full h-full ring-1 ring-muted/30 outline-none rounded-[calc(var(--radius)-3.9px)] ring-inset' />
+                        <div className='absolute top-0 left-0 w-full h-full ring-1 ring-foreground/30 outline-none rounded-[calc(var(--radius)-3.9px)] ring-inset forced-color-adjust-none' />
                     )}
                 </>
             )}
-        </Aria.ColorSwatchPickerItem>
+        </ColorSwatchPickerItem>
     )
 }
 

@@ -3,9 +3,8 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { toast } from 'sonner'
 
-import { convertSvgToJsx } from '@/lib/utils/icons'
-
-import { Icon } from './icon'
+import { Icon } from '@/components/controllers/icons/icon'
+import { convertSvgToJsx } from '@/lib/utils'
 
 type IconProps = {
     name: string

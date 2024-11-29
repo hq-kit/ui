@@ -1,14 +1,15 @@
 'use client'
 
 import { IconCamera, IconFolder, IconPaperclip } from 'hq-icons'
-import * as Aria from 'react-aria-components'
-import { type VariantProps } from 'tailwind-variants'
+import {
+    FileTrigger as FileTriggerPrimitive,
+    type FileTriggerProps as FileTriggerPrimitiveProps
+} from 'react-aria-components'
 
-import { Button, type buttonVariants } from './button'
+import { Button, type ButtonProps } from './button'
 
-interface FileTriggerProps extends Aria.FileTriggerProps, VariantProps<typeof buttonVariants> {
+interface FileTriggerProps extends FileTriggerPrimitiveProps, Omit<ButtonProps, 'children'> {
     withIcon?: boolean
-    isDisabled?: boolean
 }
 
 const FileTrigger = ({
@@ -20,7 +21,7 @@ const FileTrigger = ({
 }: FileTriggerProps) => {
     return (
         <>
-            <Aria.FileTrigger {...props}>
+            <FileTriggerPrimitive {...props}>
                 <Button isDisabled={props.isDisabled} variant={variant} size={size} shape={shape}>
                     {withIcon && (
                         <>
@@ -46,7 +47,7 @@ const FileTrigger = ({
                         </>
                     )}
                 </Button>
-            </Aria.FileTrigger>
+            </FileTriggerPrimitive>
         </>
     )
 }

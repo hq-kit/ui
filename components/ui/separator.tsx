@@ -1,6 +1,6 @@
 'use client'
 
-import * as Aria from 'react-aria-components'
+import { Separator as SeparatorPrimitive, type SeparatorProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const separatorStyles = tv({
@@ -16,8 +16,8 @@ const separatorStyles = tv({
     }
 })
 
-const Separator = ({ className, ...props }: Aria.SeparatorProps) => (
-    <Aria.Separator
+const Separator = ({ className, ...props }: SeparatorProps) => (
+    <SeparatorPrimitive
         {...props}
         className={separatorStyles({
             orientation: props.orientation,
