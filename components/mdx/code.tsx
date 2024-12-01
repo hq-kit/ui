@@ -13,7 +13,15 @@ import { cn } from '@/components/ui'
 
 import { CopyButton } from './copy-button'
 
-export default function Code({ lang = 'tsx', code }: { lang?: string; code: string }) {
+export default function Code({
+    lang = 'tsx',
+    code,
+    className
+}: {
+    lang?: string
+    code: string
+    className?: string
+}) {
     const [copied, setCopied] = React.useState<boolean>(false)
 
     const copyCode = () => {
@@ -28,7 +36,7 @@ export default function Code({ lang = 'tsx', code }: { lang?: string; code: stri
     }
 
     return (
-        <div className='relative border overflow-hidden rounded-lg'>
+        <div className={cn('relative border overflow-hidden rounded-lg', className)}>
             <div className={cn('absolute bottom-auto right-4 top-3 z-20 flex gap-1.5')}>
                 <CopyButton isCopied={copied} onPress={copyCode} />
             </div>

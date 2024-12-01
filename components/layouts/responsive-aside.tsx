@@ -17,14 +17,14 @@ export function ResponsiveAside({
     setOpenCmd
 }: {
     openCmd: boolean
-    setOpenCmd: (open: boolean) => void
+    setOpenCmd: (openCmd: boolean) => void
 }) {
     const id = React.useId()
     const [openAside, setOpenAside] = React.useState(false)
     const pathname = usePathname()
     React.useEffect(() => setOpenAside(false), [pathname])
     return (
-        <nav className='lg:hidden z-10 relative'>
+        <nav className='lg:hidden z-10 md:h-14 relative'>
             <CommandMenu setOpen={setOpenCmd} openCommand={openCmd} />
             <div className='flex items-center justify-between pl-4 pr-2 -mb-2 pt-2'>
                 <Button

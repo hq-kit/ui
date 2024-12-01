@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 import {
     IconAppWindowMac,
     IconBrandLinux,
@@ -39,35 +41,35 @@ export default function AppSidebar({ ...props }) {
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section>
-                    <SidebarItem icon={IconGauge} href='/blocks/sidebar/sidebar-basic-demo'>
+                    <SidebarItem icon={IconGauge} href='/block/sidebar/sidebar-basic-demo'>
                         Sidebar
                     </SidebarItem>
                 </Sidebar.Section>
                 <Sidebar.Section collapsible title='Variant'>
-                    <SidebarItem icon={IconPanelRight} href='/blocks/sidebar/sidebar-default-demo'>
+                    <SidebarItem icon={IconPanelRight} href='/block/sidebar/sidebar-default-demo'>
                         Default
                     </SidebarItem>
                     <SidebarItem
                         icon={IconPanelLeftDashed}
-                        href='/blocks/sidebar/sidebar-floating-demo'
+                        href='/block/sidebar/sidebar-floating-demo'
                     >
                         Floating
                     </SidebarItem>
-                    <SidebarItem icon={IconAppWindowMac} href='/blocks/sidebar/sidebar-inset-demo'>
+                    <SidebarItem icon={IconAppWindowMac} href='/block/sidebar/sidebar-inset-demo'>
                         Inset
                     </SidebarItem>
                 </Sidebar.Section>
                 <Sidebar.Section collapsible title='Collapsible'>
-                    <SidebarItem icon={IconPanelLeftClose} href='/blocks/sidebar/sidebar-dock-demo'>
+                    <SidebarItem icon={IconPanelLeftClose} href='/block/sidebar/sidebar-dock-demo'>
                         Dock
                     </SidebarItem>
                     <Sidebar.Item
                         icon={IconPanelRightOpen}
-                        href='/blocks/sidebar/sidebar-off-canvas-demo'
+                        href='/block/sidebar/sidebar-off-canvas-demo'
                     >
                         Off Canvas
                     </Sidebar.Item>
-                    <Sidebar.Item icon={IconPanelLeft} href='/blocks/sidebar/sidebar-fixed-demo'>
+                    <Sidebar.Item icon={IconPanelLeft} href='/block/sidebar/sidebar-fixed-demo'>
                         Fixed
                     </Sidebar.Item>
                 </Sidebar.Section>
@@ -77,8 +79,8 @@ export default function AppSidebar({ ...props }) {
                     <Button
                         variant='ghost'
                         aria-label='Profile'
-                        slot='menu-trigger'
-                        className='group'
+                        slot='close'
+                        className='group w-full justify-start'
                     >
                         <Avatar size='sm' shape='square' src='https://github.com/dq-alhq.png' />
                         <span className='group-data-[collapsible=dock]:hidden flex items-center justify-center'>

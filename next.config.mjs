@@ -29,6 +29,11 @@ const config = {
                 source: '/docs',
                 destination: '/docs/getting-started/introduction',
                 permanent: false
+            },
+            {
+                source: '/blocks',
+                destination: '/blocks/examples/login-form',
+                permanent: false
             }
         ]
     }

@@ -3,7 +3,14 @@
 import React from 'react'
 
 import { docs } from '#docs'
-import { IconHome, IconPackage, IconPalette, IconShapes, IconSwatchBook } from 'hq-icons'
+import {
+    IconHome,
+    IconLayoutDashboard,
+    IconPackage,
+    IconPalette,
+    IconShapes,
+    IconSwatchBook
+} from 'hq-icons'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
@@ -13,7 +20,7 @@ import { goodTitle } from '@/lib/utils'
 
 export interface OpenCloseProps {
     openCommand: boolean
-    setOpen: (isOpen: boolean) => void
+    setOpen: (openCommand: boolean) => void
 }
 
 export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
@@ -24,7 +31,7 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
             if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault()
                 // @ts-expect-error unknown-type
-                setOpen((isOpen: boolean) => !isOpen)
+                setOpen((openCommand: boolean) => !openCommand)
             }
         }
 
@@ -58,18 +65,23 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                         </Link>
                     </Command.Item>
                     <Command.Item value='documenation' asChild>
-                        <Link href='/docs/getting-started/installation'>
-                            <IconPackage /> Docs
+                        <Link href='/docs'>
+                            <IconPackage /> Components
                         </Link>
                     </Command.Item>
-                    <Command.Item value='colors' asChild>
-                        <Link href='/colors'>
-                            <IconPalette /> Colors
+                    <Command.Item value='blocks' asChild>
+                        <Link href='/blocks'>
+                            <IconLayoutDashboard /> Blocks
                         </Link>
                     </Command.Item>
                     <Command.Item value='icons' asChild>
                         <Link href='/icons'>
                             <IconShapes /> Icons
+                        </Link>
+                    </Command.Item>
+                    <Command.Item value='colors' asChild>
+                        <Link href='/colors'>
+                            <IconPalette /> Colors
                         </Link>
                     </Command.Item>
                     <Command.Item value='themes' asChild>

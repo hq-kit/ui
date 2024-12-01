@@ -85,3 +85,6 @@ export function convertSvgToJsx(svgString: string): string {
 
     return transformNode(svgElement)
 }
+
+export const convertToKebabCase = (str: string): string =>
+    str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()

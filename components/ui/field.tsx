@@ -4,14 +4,14 @@ import React from 'react'
 
 import {
     FieldError as FieldErrorPrimitive,
-    Group,
-    Input as InputPrimitive,
-    Label as LabelPrimitive,
-    Text,
     type FieldErrorProps,
+    Group,
     type GroupProps,
+    Input as InputPrimitive,
     type InputProps,
+    Label as LabelPrimitive,
     type LabelProps,
+    Text,
     type TextFieldProps as TextFieldPrimitiveProps,
     type TextProps,
     type ValidationResult
@@ -32,7 +32,7 @@ interface FieldProps {
 const fieldStyles = tv({
     slots: {
         description: 'text-pretty text-base/6 text-muted-foreground sm:text-sm/6',
-        label: 'w-fit cursor-default font-medium text-muted-foreground text-sm',
+        label: 'w-fit cursor-default font-medium text-muted-foreground text-sm group-has-[[data-focus-within=true]]:text-primary group-has-[[aria-invalid=true]]:text-danger',
         fieldError: 'text-sm/6 text-danger forced-colors:text-[Mark]',
         input: [
             'w-full min-w-0 [&::-ms-reveal]:hidden bg-transparent p-2 text-base text-foreground placeholder-muted-foreground outline-none focus:outline-none lg:text-sm'

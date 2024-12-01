@@ -25,6 +25,14 @@ import { Menu, MenuItem } from 'react-aria-components'
 
 import { buttonVariants, cn } from '@/components/ui'
 
+function extractAndFormat(url: string): string {
+    const match = url.match(/\/([^/]+)\.html/)
+    if (match) {
+        return match[1].replace(/([a-z])([A-Z])/g, '$1 $2')
+    }
+    return ''
+}
+
 export function DocRefs({ references }: { references: string[] }) {
     const urls = references.map((url: string) => {
         let title = ''
@@ -32,7 +40,7 @@ export function DocRefs({ references }: { references: string[] }) {
 
         switch (true) {
             case url.includes('react-spectrum'):
-                title = 'Props Reference'
+                title = extractAndFormat(url) + ' Props'
                 icon = IconBrandAdobe
                 break
             case url.includes('laravel'):

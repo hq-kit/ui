@@ -1,6 +1,6 @@
 'use client'
 
-import AppSidebar from 'components/app-sidebar'
+import AppSidebar from 'layouts/app-sidebar'
 import {
     IconChevronDown,
     IconCircleUser,
@@ -10,23 +10,21 @@ import {
     IconShield
 } from 'hq-icons'
 
-import { Avatar, Breadcrumbs, Button, Menu, Separator, Sidebar } from '@/components/ui'
+import { Avatar, Breadcrumbs, Button, Menu, Sidebar } from '@/components/ui'
 
-export default function SidebarFloatingDemo() {
+export default function SidebarFixedDemo() {
     return (
-        <Sidebar.Provider>
-            <AppSidebar variant='floating' />
+        <Sidebar.Provider defaultOpen={true}>
+            <AppSidebar collapsible='fixed' />
             <Sidebar.Inset>
                 <header className='sticky justify-between sm:justify-start top-0 h-[3.57rem] px-4 flex items-center gap-x-2'>
                     <span className='flex items-center gap-x-4'>
-                        <Sidebar.Trigger className='-mx-2' />
-                        <Separator className='h-6 sm:block hidden' orientation='vertical' />
                         <Breadcrumbs className='md:flex hidden'>
                             <Breadcrumbs.Item href='/blocks/sidebar/sidebar-01'>
                                 Dashboard
                             </Breadcrumbs.Item>
 
-                            <Breadcrumbs.Item>Billing</Breadcrumbs.Item>
+                            <Breadcrumbs.Item>Newsletter</Breadcrumbs.Item>
                         </Breadcrumbs>
                     </span>
 

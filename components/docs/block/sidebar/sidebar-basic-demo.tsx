@@ -1,6 +1,5 @@
 'use client'
 
-import AppSidebar from 'components/app-sidebar'
 import {
     IconChevronDown,
     IconCircleUser,
@@ -9,6 +8,7 @@ import {
     IconSettings,
     IconShield
 } from 'hq-icons'
+import AppSidebar from 'layouts/app-sidebar'
 
 import { Avatar, Button, Menu, SearchField, Separator, Sidebar } from '@/components/ui'
 

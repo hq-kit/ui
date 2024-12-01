@@ -4,29 +4,27 @@ import * as React from 'react'
 
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 
+import FileExplorer from '@/components/mdx/file-explorer'
 import PreviewContent from '@/components/mdx/preview-content'
-import SourceCode from '@/components/mdx/source-code'
 import { buttonVariants, cn, Link, Tabs, Toggle } from '@/components/ui'
 
 type screenWidthType = 'max-w-none' | 'max-w-3xl' | 'max-w-sm'
 
 interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
-    component: string
-    partials?: string[]
+    page: string
     className?: string
+    height?: number
     zoomOut?: boolean
 }
 
 export default function Block({
-    component,
-    partials,
+    page,
     zoomOut = true,
+    height = 768,
     className,
     ...props
 }: BlockProps) {
     const [screenWidth, setScreenWidth] = React.useState<screenWidthType>('max-w-none')
-
-    const sourceCode = partials ? [component, ...partials] : [component]
 
     return (
         <div className={cn('not-prose group relative my-6', className)} {...props}>
@@ -46,7 +44,7 @@ export default function Block({
                             <Link
                                 target='_blank'
                                 className={buttonVariants({ size: 'icon', variant: 'outline' })}
-                                href={`/${component}`}
+                                href={`/${page}`}
                             >
                                 <IconFullscreen />
                             </Link>
@@ -76,14 +74,15 @@ export default function Block({
                             </Toggle>
                         </div>
                         <PreviewContent
+                            height={height}
                             zoomOut={zoomOut}
-                            component={component}
+                            component={page}
                             className={screenWidth}
                         />
                     </div>
                 </Tabs.Content>
                 <Tabs.Content id='code'>
-                    <SourceCode withMessage={false} component={sourceCode} />
+                    <FileExplorer style={{ height: height * 0.6 }} page={page} />
                 </Tabs.Content>
             </Tabs>
         </div>

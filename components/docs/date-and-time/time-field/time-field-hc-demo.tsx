@@ -2,8 +2,6 @@
 
 import React from 'react'
 
-import OptionPreview from 'components/option-preview'
-
 import { Switch, TimeField } from '@/components/ui'
 import { Time } from '@internationalized/date'
 
@@ -12,14 +10,14 @@ export default function TimeFieldHcDemo() {
     const [value, setValue] = React.useState(new Time(13, 45))
     return (
         <>
-            <OptionPreview>
+            <div className='absolute left-4 top-4 inline-flex min-w-32 flex-col gap-1'>
                 <Switch
                     isSelected={hc === 24}
                     onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}
                 >
                     {hc} hour
                 </Switch>
-            </OptionPreview>
+            </div>
             <TimeField
                 value={value}
                 onChange={(newValue) => setValue(newValue!)}

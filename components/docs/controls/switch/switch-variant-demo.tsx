@@ -2,8 +2,6 @@
 
 import React from 'react'
 
-import OptionPreview from 'components/option-preview'
-
 import { Select, Switch } from '@/components/ui'
 
 const items = ['primary', 'secondary', 'success', 'danger', 'warning', 'muted']
@@ -12,7 +10,7 @@ export default function SwitchVariantDemo() {
 
     return (
         <>
-            <OptionPreview>
+            <div className='absolute left-4 top-4 inline-flex min-w-32 flex-col gap-1'>
                 <Select
                     selectedKey={variant}
                     onSelectionChange={(v) => setVariant(v as string)}
@@ -24,7 +22,7 @@ export default function SwitchVariantDemo() {
                         </Select.Item>
                     )}
                 </Select>
-            </OptionPreview>
+            </div>
             <Switch defaultSelected variant={variant as keyof typeof Switch}>
                 Label
             </Switch>

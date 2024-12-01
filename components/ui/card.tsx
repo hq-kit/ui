@@ -9,7 +9,7 @@ import { Heading } from './heading'
 const card = tv({
     slots: {
         root: [
-            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)_.t-hea]:bg-background [&:has(table)]:overflow-hidden border text-foreground shadow-sm [&_table]:overflow-hidden'
+            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)_.t-hea]:bg-background [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden'
         ],
         header: 'flex flex-col space-y-1.5 px-6 py-5',
         title: 'sm:leading-6 leading-none font-semibold tracking-tight',
@@ -22,8 +22,19 @@ const card = tv({
 
 const { root, header, title, description, content, footer } = card()
 
-const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div className={root({ className })} {...props} />
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+    borderless?: boolean
+}
+
+const Card = ({ className, borderless = false, ...props }: CardProps) => {
+    return (
+        <div
+            className={root({
+                className: twMerge(clsx(className, !borderless && 'border shadow-sm'))
+            })}
+            {...props}
+        />
+    )
 }
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {

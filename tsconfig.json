@@ -29,8 +29,8 @@
             "#docs": [
                 "./.velite"
             ],
-            "components/*": [
-                "./components/docs/outside/*"
+            "layouts/*": [
+                "./components/docs/block/layouts/*"
             ]
         }
     },

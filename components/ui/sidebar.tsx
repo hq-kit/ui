@@ -157,8 +157,11 @@ const Sidebar = ({
     if (collapsible === 'fixed') {
         return (
             <div
+                data-state={state}
+                data-collapsible={state === 'collapsed' ? collapsible : ''}
                 className={cn(
-                    'flex h-full w-[--sidebar-width] flex-col bg-background text-foreground',
+                    'flex min-h-screen h-full w-[--sidebar-width] flex-col bg-background text-foreground',
+                    'data-[state=collapsed]:hidden',
                     className
                 )}
                 {...props}
@@ -171,6 +174,7 @@ const Sidebar = ({
     if (isMobile) {
         return (
             <Sheet isOpen={openMobile} onOpenChange={setOpenMobile} {...props}>
+                <Sheet.Trigger className='sr-only' />
                 <Sheet.Content
                     aria-label='Sidebar'
                     data-sidebar='sidebar'
@@ -358,7 +362,11 @@ const Trigger = ({ className, onPress, ...props }: React.ComponentProps<typeof B
             ) : (
                 <IconPanelLeftOpen className='md:inline hidden' />
             )}
-            <IconMenu className='md:hidden inline' />
+            {props.children ? (
+                <span className='md:hidden inline'>{props?.children as React.ReactNode}</span>
+            ) : (
+                <IconMenu className='md:hidden inline' />
+            )}
             <span className='sr-only'>Toggle Sidebar</span>
         </Button>
     )

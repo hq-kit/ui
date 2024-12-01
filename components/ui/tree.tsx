@@ -3,12 +3,12 @@
 import React from 'react'
 
 import { IconMinus } from 'hq-icons'
-import type { TreeItemProps, TreeProps } from 'react-aria-components'
+import type { ButtonProps, TreeItemProps, TreeProps } from 'react-aria-components'
 import {
     Button,
-    UNSTABLE_TreeItemContent as TreeItemContent,
+    UNSTABLE_Tree as TreePrimitive,
     UNSTABLE_TreeItem as TreeItemPrimitive,
-    UNSTABLE_Tree as TreePrimitive
+    UNSTABLE_TreeItemContent as TreeItemContent
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
@@ -75,34 +75,31 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
     )
 }
 
-const ItemContent = (props: React.ComponentProps<typeof TreeItemContent>) => {
-    return (
-        <TreeItemContent {...props}>
-            <div className='flex items-center'>
-                <>{props.children as React.ReactNode}</>
-            </div>
-        </TreeItemContent>
-    )
-}
+const ItemContent = (props: React.ComponentProps<typeof TreeItemContent>) => (
+    <TreeItemContent {...props}>
+        <div className='flex items-center'>
+            <>{props.children as React.ReactNode}</>
+        </div>
+    </TreeItemContent>
+)
 
-const Indicator = () => {
-    return (
-        <Button className='shrink-0 relative' slot='chevron'>
-            <div className='ml-auto relative indicator flex items-center justify-center size-5'>
-                <IconMinus className='absolute size-3' />
-                <IconMinus className='absolute indicator size-3' />
-            </div>
-        </Button>
-    )
-}
+const Indicator = () => (
+    <Button className='shrink-0 relative' slot='chevron'>
+        <div className='ml-auto relative indicator flex items-center justify-center size-5'>
+            <IconMinus className='absolute size-3' />
+            <IconMinus className='absolute indicator size-3' />
+        </div>
+    </Button>
+)
 
-const ItemCheckbox = () => {
-    return <Checkbox slot='selection' />
-}
+const ItemCheckbox = () => <Checkbox slot='selection' />
 
-const ItemLabel = (props: React.HtmlHTMLAttributes<HTMLSpanElement>) => {
-    return <span {...props} />
-}
+const ItemLabel = (props: ButtonProps) => (
+    <Button
+        style={{ outline: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+        {...props}
+    />
+)
 
 TreeItem.Label = ItemLabel
 TreeItem.Indicator = Indicator

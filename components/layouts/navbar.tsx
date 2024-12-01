@@ -129,11 +129,11 @@ export function NavbarDropdown() {
                     Icons
                 </Menu.Item>
                 <Menu.Item href='/colors'>
-                    <IconSwatchBook />
+                    <IconPalette />
                     Colors
                 </Menu.Item>
                 <Menu.Item href='/themes'>
-                    <IconPalette />
+                    <IconSwatchBook />
                     Themes
                 </Menu.Item>
                 <Menu.Separator />

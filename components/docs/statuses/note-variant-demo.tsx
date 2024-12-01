@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import OptionPreview from 'components/option-preview'
 import { type Key } from 'react-aria-components'
 
 import { Note, NoteProps, Select } from '@/components/ui'
@@ -16,7 +15,7 @@ export default function NoteIntentDemo() {
     const [selected, setSelected] = React.useState<Key>('primary')
     return (
         <>
-            <OptionPreview>
+            <div className='absolute left-4 top-4 inline-flex min-w-32 flex-col gap-1'>
                 <Select
                     className='[&_button]:h-9'
                     selectedKey={selected}
@@ -30,7 +29,7 @@ export default function NoteIntentDemo() {
                         </Select.Item>
                     )}
                 </Select>
-            </OptionPreview>
+            </div>
             <div className='max-w-md'>
                 <Note variant={selected as NoteProps['variant']}>
                     We hook you up with top-tier migration services in our startup plan. Wanna roll

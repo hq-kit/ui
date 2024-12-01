@@ -17,9 +17,7 @@ export interface DocPageProps {
 
 async function getPostFromParams(params: { slug: string[] }) {
     const slug = params?.slug?.join('/')
-    const doc = docs.find((doc) => doc.slugAsParams === slug)
-
-    return doc
+    return docs.find((doc) => doc.slugAsParams === slug)
 }
 
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
@@ -51,7 +49,8 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
             'UI Kit',
             'UI Library',
             'UI Framework',
-            'Justd',
+            'HQ-Kit',
+            'HQ-UI',
             'React Aria',
             'React Aria Components',
             'Server Components',
@@ -59,14 +58,14 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
             'Next UI Components',
             'UI Design System',
             'UI for Laravel Inertia',
-            'Justd Components',
-            'Justd UI Components',
-            'Justd UI Kit',
-            'Justd UI Library',
-            'Justd UI Framework',
-            'Justd Laravel Inertia',
-            'Justd Laravel',
-            'Justd Inertia'
+            'HQ Components',
+            'HQ UI Components',
+            'HQ UI Kit',
+            'HQ UI Library',
+            'HQ UI Framework',
+            'HQ Laravel Inertia',
+            'HQ Laravel',
+            'HQ Inertia'
         ]
     }
 }

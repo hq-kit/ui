@@ -8,7 +8,7 @@ references: ["https://react-spectrum.adobe.com/react-aria/Link.html#props"]
 
 ## Basic
 A navbar provides a variety of actions or options for users to select.
-<Block component="blocks/navbar/navbar-basic-demo" />
+<Block page="block/navbar/navbar-basic-demo" />
 
 ## Installation
 <Install component='navbar' />
@@ -56,7 +56,7 @@ Next, you'll need to create a layout component that includes the navbar. Here's 
 
 ### Done
 Great job! You've successfully created a navbar. Now, let's put it to use.
-<Block component="blocks/navbar/navbar-creating-demo" />
+<Block page="block/navbar/navbar-creating-demo" />
 
 ### Using the Layout
 There are several ways to use the layout, depending on your framework. Or, if you're not using any framework, you can simply apply the layout component.
@@ -89,26 +89,26 @@ app/
 
 ## Logo
 The logo is typically the first item in the navbar, usually representing the brand or company.
-<Block component="blocks/navbar/navbar-logo-demo" />
+<Block page="block/navbar/navbar-logo-demo" />
 
 ## Current
 Highlight the current page in the navbar for better navigation clarity.
-<Block component="blocks/navbar/navbar-current-demo" />
+<Block page="block/navbar/navbar-current-demo" />
 
 ## Variant
 There are three types of variants: `navbar`, `floating`, and `inset`, each with distinct behaviors.
 
 ### Navbar
 The default variant of the navbar is `navbar`. You can change it to `floating` or `inset` by setting the `variant` prop.
-<Block component="blocks/navbar/navbar-basic-demo" />
+<Block page="block/navbar/navbar-basic-demo" />
 
 ### Floating
 The floating variant will have a border inside the navbar itself, the wrapper will have a padding to the content.
-<Block component="blocks/navbar/navbar-floating-demo" />
+<Block page="block/navbar/navbar-floating-demo" />
 
 ### Inset
-The inset one will have the padding to inset main content. You can of course see what's going on the demo, but you can also see the [live example here](/blocks/navbar/navbar-03).
-<Block component="blocks/navbar/navbar-inset-demo" />
+The inset one will have the padding to inset main content. You can of course see what's going on the demo, but you can also see the [live example here](/block/navbar/navbar-03).
+<Block page="block/navbar/navbar-inset-demo" />
 
 ## Sticky
 You also make the navbar sticky by setting the `isSticky` prop to `true`.
@@ -133,11 +133,11 @@ If you prefer full control of your layout and don't want to use the `<Navbar.Ins
 ## Using Icons
 If you'd like to use icons on the navbar items, that's no problem at all. The navbar is already designed and optimized to accommodate icons seamlessly. First of all, you need to install the `hq-icons` package.
 <CLI command='install' items={['hq-icons']}/>
-<Block component="blocks/navbar/navbar-icon-demo" />
+<Block page="block/navbar/navbar-icon-demo" />
 
 ## Disabled
 Disable individual navbar items when needed.
-<Block component="blocks/navbar/navbar-disabled-demo" />
+<Block page="block/navbar/navbar-disabled-demo" />
 
 ## Controlled
 On mobile devices, the navbar is hidden by default. You can open it using `Navbar.Trigger`, but there are times when you might want to manage its state by clicking one of the links within the navbar. You can achieve this because it shares the sheet properties, specifically `isOpen` and `onOpenChange`. There are multiple ways to control the state, but the simplest method is to listen for path changes and set `isOpen` to `true` or `false` accordingly.

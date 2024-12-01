@@ -11,7 +11,7 @@ import {
 
 import type { TextInputDOMProps } from '@react-types/shared'
 
-import { Description, FieldError, FieldGroup, Input, Label, type FieldProps } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 import { Loader } from './loader'
 import { cn, ctr } from './utils'
 
