@@ -35,36 +35,44 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
     const [layout, setLayout] = React.useState<string | null>(null)
     React.useEffect(() => {
         // @ts-expect-error no-type
-        const componentData = previews[selected] ? previews[selected].raw : ''
+        const componentData = previews[page] ? previews[page].raw : ''
 
-        const uiComponentNames = componentData.match(
-            /import\s+{([^}]+)}\s+from\s+['"]@\/components\/ui['"]/
-        )
-
-        if (uiComponentNames) {
-            const uiComponents = uiComponentNames[1]
-                .split(',')
-                .map((name: string) => convertToKebabCase(name.trim()))
-            const componentExists = uiComponents.filter(
-                (component: string) => component in previews
-            )
-            componentExists.push('utils')
-            setUiComponents(componentExists)
-        }
         const componentNames: string[] = componentData.match(/'components\/(.*?[^'])'/g)
-        if (componentNames) {
-            const components = componentNames.map((c: string) => 'block/' + c.replaceAll("'", ''))
+        const layoutName: string = componentData.match(/'layouts\/([^']*?)'/g)
+
+        if (componentNames || layoutName) {
+            const components = componentNames
+                ? componentNames.map((c: string) => 'block/' + c.replaceAll("'", ''))
+                : []
             const componentExists = components.filter((component: string) => component in previews)
-            console.log(componentExists)
-
             setComponents(componentExists)
-        }
-
-        const layoutName = componentData.match(/'layouts\/([^']*?)'/g)
-        if (layoutName) {
             setLayout('block/' + layoutName[0].replaceAll("'", ''))
-        }
+            let allComponents = componentData
+            /* @ts-expect-error unknown-types */ // prettier-ignore
+            if (previews[`block/${layoutName[0].replaceAll("'", '')}`].raw)
+            /* @ts-expect-error unknown-types */ // prettier-ignore
+                allComponents += previews[`block/${layoutName[0].replaceAll("'", '')}`].raw
+            if (componentExists)
+                /* @ts-expect-error unknown-types */ // prettier-ignore
+                allComponents += componentExists.map((c) => previews[c as string].raw).join('')
 
+            /* @ts-expect-error unknown-types */ // prettier-ignore
+            const uiComponentNames = [...new Set((allComponents.match(/import\s+{([^}]+)}\s+from\s+'@\/components\/ui'/g) || []).flatMap(match => match.match(/{([^}]+)}/)[1].split(',').map(comp => comp.trim())))]
+            if (uiComponentNames) {
+                /* @ts-expect-error unknown-types */ // prettier-ignore
+                const uiComponents = uiComponentNames.map((name: string) => convertToKebabCase(name.trim()))
+                const componentExists = uiComponents.filter(
+                    (component: string) => component in previews
+                )
+                componentExists.push('utils')
+                setUiComponents(componentExists)
+            }
+        }
+    }, [page])
+
+    React.useEffect(() => {
+        // @ts-expect-error no-type
+        const componentData = previews[selected] ? previews[selected].raw : ''
         if (componentData) {
             setCode(componentData)
         } else {
@@ -74,8 +82,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 setCode(``)
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected])
+    }, [selected, uiComponents])
     const renderItem = (item: FileNode): React.ReactNode => {
         return (
             <TreeItem key={item.id} id={item.id} textValue={item.title}>
@@ -185,7 +192,9 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
                     'w-full lg:border-r transition-all rounded-b-none lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg max-h-none min-w-0 border-x-0 border-t-0 lg:border-b-0',
-                    !sidebarOpen && 'lg:w-0 lg:h-auto h-0 p-0 overflow-hidden border-none'
+                    !sidebarOpen
+                        ? 'lg:w-0 lg:h-auto h-0 p-0 overflow-hidden border-none'
+                        : 'min-h-40'
                 )}
                 aria-label='Files'
                 selectionMode='none'

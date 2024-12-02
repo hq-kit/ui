@@ -10,7 +10,7 @@ import { Card, Tabs } from '@/components/ui'
 
 export default function UserSetting() {
     return (
-        <NavbarLayout>
+        <NavbarLayout variant='floating'>
             <Card borderless>
                 <Card.Header withoutPadding>
                     <Card.Title>User Setting</Card.Title>
@@ -19,8 +19,8 @@ export default function UserSetting() {
                     </Card.Description>
                 </Card.Header>
             </Card>
-            <Tabs isResponsive aria-label='E-Learning Platform'>
-                <Tabs.List>
+            <Tabs className='w-full gap-x-24' isResponsive aria-label='E-Learning Platform'>
+                <Tabs.List className='h-fit'>
                     <Tabs.Label id='account'>Account</Tabs.Label>
                     <Tabs.Label id='security'>Security</Tabs.Label>
                     <Tabs.Label id='plan'>Plan & Billing</Tabs.Label>

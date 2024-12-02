@@ -18,7 +18,7 @@ import { tv } from 'tailwind-variants'
 import { cn, cr, useMediaQuery } from './utils'
 
 const tabsStyles = tv({
-    base: 'group flex gap-4 forced-color-adjust-none',
+    base: 'group/tabs flex gap-4 forced-color-adjust-none',
     variants: {
         orientation: {
             horizontal: 'flex-col',
@@ -77,9 +77,9 @@ const tabStyles = tv({
     base: [
         'relative flex whitespace-nowrap cursor-default items-center rounded-full text-sm font-medium outline-none transition hover:text-foreground [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:mr-2',
         // hor
-        'group-orientation-vertical:w-full group-orientation-vertical:py-0 group-orientation-vertical:pl-4 group-orientation-vertical:pr-2',
+        'group-orientation-vertical/tabs:w-full group-orientation-vertical/tabs:py-0 group-orientation-vertical/tabs:pl-4 group-orientation-vertical/tabs:pr-2',
         // ver
-        'group-orientation-horizontal:pb-3'
+        'group-orientation-horizontal/tabs:pb-3'
     ],
     variants: {
         isSelected: {
@@ -112,9 +112,9 @@ const Tab = ({ children, ...props }: TabProps) => {
                             className={cn(
                                 'absolute rounded-lg bg-foreground',
                                 // horizontal
-                                'group-orientation-horizontal:inset-x-0 group-orientation-horizontal:-bottom-px group-orientation-horizontal:h-0.5 group-orientation-horizontal:w-full',
+                                'group-orientation-horizontal/tabs:inset-x-0 group-orientation-horizontal/tabs:-bottom-px group-orientation-horizontal/tabs:h-0.5 group-orientation-horizontal/tabs:w-full',
                                 // vertical
-                                'group-orientation-vertical:left-0 group-orientation-vertical:h-[calc(100%-10%)] group-orientation-vertical:w-0.5 group-orientation-vertical:transform'
+                                'group-orientation-vertical/tabs:left-0 group-orientation-vertical/tabs:h-[calc(100%-10%)] group-orientation-vertical/tabs:w-0.5 group-orientation-vertical/tabs:transform'
                             )}
                             layoutId='current-selected'
                             transition={{ type: 'spring', stiffness: 500, damping: 40 }}

@@ -1,24 +1,40 @@
 'use client'
 
 import { IconBrandCleon, IconSearch, IconShoppingBag } from 'hq-icons'
+import { usePathname } from 'next/navigation'
 
 import { Button, Navbar } from '@/components/ui'
 
-export default function NavbarLayout({ children }: { children: React.ReactNode }) {
+export default function NavbarLayout({
+    variant,
+    children
+}: {
+    variant: 'inset' | 'navbar' | 'floating'
+    children: React.ReactNode
+}) {
+    const pathname = usePathname()
     return (
-        <Navbar variant='inset'>
+        <Navbar variant={variant}>
             <Navbar.Nav className='container'>
                 <Navbar.Logo href='#'>
                     <IconBrandCleon className='size-5' />
                 </Navbar.Logo>
                 <Navbar.Section>
-                    <Navbar.Item href='#'>Home</Navbar.Item>
-                    <Navbar.Item isCurrent href='#'>
+                    <Navbar.Item isCurrent={pathname.includes('dashboard')} href='#'>
                         Dashboard
                     </Navbar.Item>
-                    <Navbar.Item href='#'>Orders</Navbar.Item>
-                    <Navbar.Item href='#'>Products</Navbar.Item>
-                    <Navbar.Item href='#'>Customers</Navbar.Item>
+                    <Navbar.Item isCurrent={pathname.includes('setting')} href='#'>
+                        Setting
+                    </Navbar.Item>
+                    <Navbar.Item isCurrent={pathname.includes('orders')} href='#'>
+                        Orders
+                    </Navbar.Item>
+                    <Navbar.Item isCurrent={pathname.includes('products')} href='#'>
+                        Products
+                    </Navbar.Item>
+                    <Navbar.Item isCurrent={pathname.includes('customers')} href='#'>
+                        Customers
+                    </Navbar.Item>
                 </Navbar.Section>
             </Navbar.Nav>
             <Navbar.Compact>

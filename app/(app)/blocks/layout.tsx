@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconBrandLinux, IconClipboardPen, IconPanelLeftOpen } from 'hq-icons'
+import { IconAppWindowMac, IconBrandLinux, IconClipboardPen, IconPanelLeftOpen } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
 import previews from '@/components/docs/generated/previews.json'
@@ -56,7 +56,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 !block.includes('auth') && (
                                     <SidebarItem
                                         key={block}
-                                        icon={IconClipboardPen}
+                                        icon={IconAppWindowMac}
                                         href={`/${block}`}
                                     >
                                         {goodTitle(block.split('/').pop() || 'Sample Page')}

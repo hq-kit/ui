@@ -204,7 +204,7 @@ const Section = ({ className, ...props }: React.ComponentProps<'div'>) => {
 
 const navItemStyles = tv({
     base: [
-        'relative lg:text-sm px-2 flex items-center gap-x-2 [&>[data-slot=icon]]:-mx-0.5 text-muted-foreground outline-none transition-colors',
+        'relative rounded-lg lg:text-sm px-2 flex items-center gap-x-2 [&>[data-slot=icon]]:-mx-0.5 text-muted-foreground outline-none transition-colors',
         'hover:text-foreground focus:text-foreground pressed:text-foreground focus-visible:outline-1 focus-visible:outline-primary',
         'disabled:opacity-60 disabled:cursor-default',
         '[&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:shrink-0'
@@ -251,7 +251,7 @@ const Logo = ({ className, ...props }: LinkProps) => {
     return (
         <Link
             className={cn(
-                'lg:mr-4 focus:outline-none flex items-center gap-x-2 focus-visible:outline-1 focus-visible:outline-primary px-2 py-4 lg:px-0 lg:py-0 text-foreground',
+                'lg:mr-4 rounded-lg focus:outline-none flex items-center gap-x-2 focus-visible:outline-1 focus-visible:outline-primary px-2 py-4 lg:px-0 lg:py-0 text-foreground',
                 className
             )}
             {...props}

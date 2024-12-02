@@ -14,7 +14,7 @@ import { getInitials } from '@/lib/utils'
 
 export default function Dashboard() {
     return (
-        <NavbarLayout>
+        <NavbarLayout variant='inset'>
             <main className='flex flex-1 flex-col gap-4 md:gap-8'>
                 <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4'>
                     <Card>
@@ -165,17 +165,5 @@ const transactions = [
         name: 'Hewitt',
         email: 'hewittsavage@senmao.com',
         amount: 77237
-    },
-    {
-        id: 6,
-        name: 'Wallace',
-        email: 'wallacesavage@senmao.com',
-        amount: 25903
-    },
-    {
-        id: 7,
-        name: 'Black',
-        email: 'blacksavage@senmao.com',
-        amount: 82066
     }
 ]

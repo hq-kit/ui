@@ -16,7 +16,7 @@ import { Checkbox } from './checkbox'
 import { cr } from './utils'
 
 const treeStyles = tv({
-    base: 'flex border max-h-96 min-w-72 [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] py-2 rounded-lg bg-background cursor-default lg:text-sm flex-col overflow-auto outline-none',
+    base: 'flex border max-h-96 min-w-72 py-2 rounded-lg bg-background cursor-default lg:text-sm flex-col overflow-auto outline-none',
     variants: {
         isFocusVisible: {
             true: 'outline-offset-[-1px] outline-2 outline-primary'
