@@ -9,7 +9,6 @@ export const getInitials = (str: string): string =>
         .join('')
 
 export const wait = (number: number = 1000) => new Promise((resolve) => setTimeout(resolve, number))
-
 export const formatDate = (input: string | number): string => {
     const date = new Date(input)
     return date.toLocaleDateString('en-US', {

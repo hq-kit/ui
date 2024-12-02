@@ -48,15 +48,16 @@ import {
     REMOVE_LIST_COMMAND
 } from '@lexical/list'
 import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown'
-import { LexicalComposer, type InitialConfigType } from '@lexical/react/LexicalComposer'
+import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
-import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin'
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin'
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
+import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import type { HeadingTagType } from '@lexical/rich-text'
 import {
@@ -84,6 +85,8 @@ interface RichTextFieldProps {
     errorMessage?: string | ((validation: ValidationResult) => string)
     isDisabled?: boolean
     returnType?: 'markdown' | 'html'
+    hideToolbar?: boolean
+    as?: 'rich-text' | 'plain-text'
 }
 
 const RichTextField = ({
@@ -93,6 +96,8 @@ const RichTextField = ({
     errorMessage,
     isDisabled = false,
     returnType = 'html',
+    hideToolbar = false,
+    as = 'rich-text',
     ...props
 }: RichTextFieldProps) => {
     const config: InitialConfigType = {
@@ -123,43 +128,78 @@ const RichTextField = ({
         <LexicalComposer initialConfig={config}>
             <div>
                 <div className='relative'>
-                    <RichTextPlugin
-                        placeholder={
-                            <p className='absolute bottom-2 left-3 text-muted-foreground'>
-                                Write something...
-                            </p>
-                        }
-                        contentEditable={
-                            <TextField
-                                aria-label='Editor'
-                                id='parent'
-                                className={cn('group flex flex-col gap-1 relative', className)}
-                            >
-                                {label && <Label>{label}</Label>}
+                    {as === 'rich-text' ? (
+                        <RichTextPlugin
+                            placeholder={
+                                <p className='absolute bottom-2 left-3 text-muted-foreground'>
+                                    Write something...
+                                </p>
+                            }
+                            contentEditable={
+                                <TextField
+                                    aria-label='Editor'
+                                    id='parent'
+                                    className={cn('group flex flex-col gap-1 relative', className)}
+                                >
+                                    {label && <Label>{label}</Label>}
 
-                                <ToolbarPlugin />
-                                <ContentEditable
-                                    autoFocus
-                                    aria-disabled={isDisabled}
-                                    disabled={isDisabled}
-                                    className={cn(
-                                        'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
-                                        'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
-                                        'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
-                                        isDisabled && 'opacity-50'
-                                    )}
-                                />
-                                {description && <Description>{description}</Description>}
-                                <FieldError>{errorMessage}</FieldError>
-                            </TextField>
-                        }
-                        ErrorBoundary={LexicalErrorBoundary}
-                    />
+                                    {!hideToolbar && <Toolbar />}
+                                    <ContentEditable
+                                        autoFocus
+                                        aria-disabled={isDisabled}
+                                        disabled={isDisabled}
+                                        className={cn(
+                                            'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
+                                            'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            isDisabled && 'opacity-50'
+                                        )}
+                                    />
+                                    {description && <Description>{description}</Description>}
+                                    <FieldError>{errorMessage}</FieldError>
+                                </TextField>
+                            }
+                            ErrorBoundary={LexicalErrorBoundary}
+                        />
+                    ) : (
+                        <PlainTextPlugin
+                            placeholder={
+                                <p className='absolute bottom-2 left-3 text-muted-foreground'>
+                                    Write something...
+                                </p>
+                            }
+                            contentEditable={
+                                <TextField
+                                    aria-label='Editor'
+                                    id='parent'
+                                    className={cn('group flex flex-col gap-1 relative', className)}
+                                >
+                                    {label && <Label>{label}</Label>}
+
+                                    {!hideToolbar && <Toolbar />}
+                                    <ContentEditable
+                                        autoFocus
+                                        aria-disabled={isDisabled}
+                                        disabled={isDisabled}
+                                        className={cn(
+                                            'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
+                                            'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            isDisabled && 'opacity-50'
+                                        )}
+                                    />
+                                    {description && <Description>{description}</Description>}
+                                    <FieldError>{errorMessage}</FieldError>
+                                </TextField>
+                            }
+                            ErrorBoundary={LexicalErrorBoundary}
+                        />
+                    )}
                     <HistoryPlugin />
                 </div>
                 <ListPlugin />
                 <LinkPlugin />
-                <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+                {as === 'rich-text' && <MarkdownShortcutPlugin transformers={TRANSFORMERS} />}
                 <OnChange returnType={returnType} value={props.value} onChange={props.onChange} />
             </div>
         </LexicalComposer>

@@ -46,11 +46,11 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 : []
             const componentExists = components.filter((component: string) => component in previews)
             setComponents(componentExists)
-            setLayout('block/' + layoutName[0].replaceAll("'", ''))
+            const layoutExists = layoutName && `block/${layoutName[0].replaceAll("'", '')}`
+            setLayout(layoutExists)
             let allComponents = componentData
-            /* @ts-expect-error unknown-types */ // prettier-ignore
-            if (previews[`block/${layoutName[0].replaceAll("'", '')}`].raw)
-            /* @ts-expect-error unknown-types */ // prettier-ignore
+            if (layoutExists)
+                /* @ts-expect-error unknown-types */ // prettier-ignore
                 allComponents += previews[`block/${layoutName[0].replaceAll("'", '')}`].raw
             if (componentExists)
                 /* @ts-expect-error unknown-types */ // prettier-ignore

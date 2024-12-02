@@ -3,75 +3,52 @@
 import React from 'react'
 
 import {
-    IconAppWindowMac,
-    IconBrandLinux,
+    IconBrandCleon,
     IconChevronDown,
     IconCircleUser,
-    IconGauge,
+    IconFilm,
+    IconGroup,
     IconLogOut,
+    IconMessage,
     IconMoon,
-    IconPanelLeft,
-    IconPanelLeftClose,
-    IconPanelLeftDashed,
-    IconPanelRight,
-    IconPanelRightOpen,
+    IconRss,
     IconSun
 } from 'hq-icons'
-import { usePathname } from 'next/navigation'
 
 import { useTheme } from '@/components/providers'
 import { Avatar, Button, Link, Menu, Sidebar, useSidebar } from '@/components/ui'
 
-export default function AppSidebar({ ...props }) {
+export default function ChattingAppLayout() {
     const { theme, setTheme } = useTheme()
     const { state } = useSidebar()
     const collapsed = state === 'collapsed'
     return (
-        <Sidebar {...props}>
+        <Sidebar collapsible='dock' variant='floating'>
             <Sidebar.Header>
                 <Link
                     className='flex items-center group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center gap-x-2'
-                    href='/docs/components/layouts/sidebar'
+                    href='#'
                 >
-                    <IconBrandLinux className='size-5' />
+                    <IconBrandCleon className='size-5' />
                     <strong className='font-medium group-data-[collapsible=dock]:hidden'>
-                        Linux
+                        CHATTING APP
                     </strong>
                 </Link>
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section>
-                    <SidebarItem icon={IconGauge} href='/block/sidebar/sidebar-basic-demo'>
-                        Sidebar
+                    <SidebarItem isCurrent icon={IconMessage} href='#'>
+                        Chats
                     </SidebarItem>
-                </Sidebar.Section>
-                <Sidebar.Section collapsible title='Variant'>
-                    <SidebarItem icon={IconPanelRight} href='/block/sidebar/sidebar-default-demo'>
-                        Default
+                    <SidebarItem icon={IconRss} href='#'>
+                        Broadcast
                     </SidebarItem>
-                    <SidebarItem
-                        icon={IconPanelLeftDashed}
-                        href='/block/sidebar/sidebar-floating-demo'
-                    >
-                        Floating
+                    <SidebarItem icon={IconFilm} href='#'>
+                        Stories
                     </SidebarItem>
-                    <SidebarItem icon={IconAppWindowMac} href='/block/sidebar/sidebar-inset-demo'>
-                        Inset
+                    <SidebarItem icon={IconGroup} href='#'>
+                        Communities
                     </SidebarItem>
-                </Sidebar.Section>
-                <Sidebar.Section collapsible title='Collapsible'>
-                    <SidebarItem icon={IconPanelLeftClose} href='/block/sidebar/sidebar-dock-demo'>
-                        Dock
-                    </SidebarItem>
-                    <Sidebar.Item
-                        icon={IconPanelRightOpen}
-                        href='/block/sidebar/sidebar-off-canvas-demo'
-                    >
-                        Off Canvas
-                    </Sidebar.Item>
-                    <Sidebar.Item icon={IconPanelLeft} href='/block/sidebar/sidebar-fixed-demo'>
-                        Fixed
-                    </Sidebar.Item>
                 </Sidebar.Section>
             </Sidebar.Content>
             <Sidebar.Footer className='lg:flex lg:flex-row hidden items-center'>
@@ -96,7 +73,6 @@ export default function AppSidebar({ ...props }) {
                             <IconCircleUser />
                             Profile
                         </Menu.Item>
-                        <Menu.Separator />
                         <Menu.Item onAction={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                             {theme === 'light' ? <IconMoon /> : <IconSun />}
                             Dark Mode
@@ -109,12 +85,10 @@ export default function AppSidebar({ ...props }) {
                     </Menu.Content>
                 </Menu>
             </Sidebar.Footer>
-            <Sidebar.Rail />
         </Sidebar>
     )
 }
 
 function SidebarItem({ icon: Icon, ...props }: React.ComponentProps<typeof Sidebar.Item>) {
-    const pathname = usePathname()
-    return <Sidebar.Item isCurrent={pathname === props.href} icon={Icon} {...props} />
+    return <Sidebar.Item isCurrent={props.isCurrent} icon={Icon} {...props} />
 }

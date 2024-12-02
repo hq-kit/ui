@@ -102,6 +102,7 @@ export const previews: Record<string, { component: React.LazyExoticComponent<() 
 "block/sidebar/sidebar-dock-demo": { component: React.lazy(() => import("@/components/docs/block/sidebar/sidebar-dock-demo")) },
 "block/sidebar/sidebar-off-canvas-demo": { component: React.lazy(() => import("@/components/docs/block/sidebar/sidebar-off-canvas-demo")) },
 "block/examples/auth-form-classic": { component: React.lazy(() => import("@/components/docs/block/examples/auth-form-classic")) },
+"block/examples/chatting-app": { component: React.lazy(() => import("@/components/docs/block/examples/chatting-app")) },
 "block/examples/auth-form-modern": { component: React.lazy(() => import("@/components/docs/block/examples/auth-form-modern")) },
 "block/examples/auth-form-overlay": { component: React.lazy(() => import("@/components/docs/block/examples/auth-form-overlay")) },
 "block/examples/dashboard": { component: React.lazy(() => import("@/components/docs/block/examples/dashboard")) },
