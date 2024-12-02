@@ -165,7 +165,7 @@ interface HeaderProps<T extends object> extends TableHeaderProps<T> {
 const Header = <T extends object>({ children, className, columns, ...props }: HeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <TableHeader {...props} className={cn('border-b t-hea', className)}>
+        <TableHeader {...props} className={cn('border-b', className)}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
                 <Column className='pl-4 w-0'>

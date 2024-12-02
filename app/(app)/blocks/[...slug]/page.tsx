@@ -52,5 +52,5 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
 
 export default async function BlockPage(props: BlockProps) {
     const params = await props.params
-    return <Block height={1080} page={'block/' + params.slug.join('/')} />
+    return <Block zoomOut={0.9} height={768} page={'block/' + params.slug.join('/')} />
 }

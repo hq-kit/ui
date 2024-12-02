@@ -14,12 +14,12 @@ interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
     page: string
     className?: string
     height?: number
-    zoomOut?: boolean
+    zoomOut: number
 }
 
 export default function Block({
     page,
-    zoomOut = true,
+    zoomOut = 0.6,
     height = 768,
     className,
     ...props
@@ -82,7 +82,7 @@ export default function Block({
                     </div>
                 </Tabs.Content>
                 <Tabs.Content id='code'>
-                    <FileExplorer style={{ height: height * 0.6 }} page={page} />
+                    <FileExplorer style={{ height: height * zoomOut }} page={page} />
                 </Tabs.Content>
             </Tabs>
         </div>

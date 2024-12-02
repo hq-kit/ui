@@ -13,7 +13,7 @@
         "preview": "bun run build && npm run start"
     },
     "dependencies": {
-        "@lexical/react": "^0.20.0",
+        "@lexical/react": "^0.20.2",
         "@openpanel/nextjs": "^1.0.6",
         "chroma-js": "^3.1.2",
         "cmdk": "^1.0.4",
@@ -22,7 +22,7 @@
         "framer-motion": "12.0.0-alpha.1",
         "hq-icons": "^0.0.3",
         "input-otp": "^1.4.1",
-        "lexical": "^0.20.0",
+        "lexical": "^0.20.2",
         "next": "15.0.3",
         "ntcjs": "^1.1.3",
         "react": "19.0.0-rc-02c0e824-20241028",

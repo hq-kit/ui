@@ -9,13 +9,13 @@ import { Heading } from './heading'
 const card = tv({
     slots: {
         root: [
-            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)_.t-hea]:bg-background [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden'
+            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden'
         ],
         header: 'flex flex-col space-y-1.5 px-6 py-5',
         title: 'sm:leading-6 leading-none font-semibold tracking-tight',
         description: 'text-base text-muted-foreground sm:text-sm',
         content:
-            'px-6 pb-6 has-[.t-hea]:bg-secondary/40 has-[table]:p-0 [&:has(table)+.footer]:py-5 [&:has(table)]:border-t',
+            'px-6 pb-6 [&:has(table)_thead]:bg-muted/40 has-[table]:p-0 [&:has(table)+.footer]:py-5 [&:has(table)]:border-t',
         footer: 'footer flex items-center p-6 pt-0'
     }
 })

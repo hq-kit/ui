@@ -11,11 +11,11 @@ import {
     Tab as TabPrimitive,
     type TabProps,
     Tabs as TabsPrimitive,
-    type TabsProps
+    type TabsProps as TabsPrimitiveProps
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn, cr } from './utils'
+import { cn, cr, useMediaQuery } from './utils'
 
 const tabsStyles = tv({
     base: 'group flex gap-4 forced-color-adjust-none',
@@ -27,9 +27,16 @@ const tabsStyles = tv({
     }
 })
 
+interface TabsProps extends TabsPrimitiveProps {
+    isResponsive?: boolean
+}
+
 const Tabs = (props: TabsProps) => {
+    const isDesktop = useMediaQuery('(min-width: 1024px)')
+    const orientation = isDesktop ? 'vertical' : 'horizontal'
     return (
         <TabsPrimitive
+            orientation={props.isResponsive ? orientation : props.orientation}
             {...props}
             className={cr(props.className, (className, renderProps) =>
                 tabsStyles({
@@ -45,8 +52,9 @@ const tabListStyles = tv({
     base: 'flex forced-color-adjust-none',
     variants: {
         orientation: {
-            horizontal: 'flex-row gap-x-5 border-b',
-            vertical: 'flex-col items-start gap-y-4 border-l'
+            horizontal:
+                'flex-row items-center gap-x-5 border-b overflow-x-auto overflow-y-hidden no-scrollbar',
+            vertical: 'flex-col items-start gap-y-4 border-l overflow-y-auto no-scrollbar'
         }
     }
 })

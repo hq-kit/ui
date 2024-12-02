@@ -2,22 +2,22 @@
 
 import React from 'react'
 
-import {
-    IconAppWindowMac,
-    IconBrandLinux,
-    IconGauge,
-    IconPanelLeft,
-    IconPanelLeftClose,
-    IconPanelLeftDashed,
-    IconPanelLeftOpen,
-    IconPanelRight,
-    IconPanelRightOpen
-} from 'hq-icons'
+import { IconBrandLinux, IconClipboardPen, IconPanelLeftOpen } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
+import previews from '@/components/docs/generated/previews.json'
 import { Link, Sidebar } from '@/components/ui'
+import { goodTitle } from '@/lib/utils'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+    const [blocks, setBlocks] = React.useState<string[]>([])
+    React.useEffect(() => {
+        const blocks = Object.keys(previews)
+            .filter((c) => c.includes('examples'))
+            .map((c) => c.replace('block/', 'blocks/'))
+        setBlocks(blocks)
+    }, [])
+
     return (
         <Sidebar.Provider>
             <Sidebar variant='inset'>
@@ -33,47 +33,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
                 </Sidebar.Header>
                 <Sidebar.Content>
-                    <Sidebar.Section>
-                        <SidebarItem icon={IconGauge} href='/block/sidebar/sidebar-basic-demo'>
-                            Sidebar
-                        </SidebarItem>
+                    <Sidebar.Section title='Auth Section' collapsible>
+                        {blocks?.map(
+                            (block) =>
+                                block.includes('auth') && (
+                                    <SidebarItem
+                                        key={block}
+                                        icon={IconClipboardPen}
+                                        href={`/${block}`}
+                                    >
+                                        {goodTitle(
+                                            block.split('/').pop()?.replace('auth-form-', '') ||
+                                                'Sample Page'
+                                        )}
+                                    </SidebarItem>
+                                )
+                        )}
                     </Sidebar.Section>
-                    <Sidebar.Section collapsible title='Variant'>
-                        <SidebarItem
-                            icon={IconPanelRight}
-                            href='/block/sidebar/sidebar-default-demo'
-                        >
-                            Default
-                        </SidebarItem>
-                        <SidebarItem
-                            icon={IconPanelLeftDashed}
-                            href='/block/sidebar/sidebar-floating-demo'
-                        >
-                            Floating
-                        </SidebarItem>
-                        <SidebarItem
-                            icon={IconAppWindowMac}
-                            href='/block/sidebar/sidebar-inset-demo'
-                        >
-                            Inset
-                        </SidebarItem>
-                    </Sidebar.Section>
-                    <Sidebar.Section collapsible title='Collapsible'>
-                        <SidebarItem
-                            icon={IconPanelLeftClose}
-                            href='/block/sidebar/sidebar-dock-demo'
-                        >
-                            Dock
-                        </SidebarItem>
-                        <Sidebar.Item
-                            icon={IconPanelRightOpen}
-                            href='/block/sidebar/sidebar-off-canvas-demo'
-                        >
-                            Off Canvas
-                        </Sidebar.Item>
-                        <Sidebar.Item icon={IconPanelLeft} href='/block/sidebar/sidebar-fixed-demo'>
-                            Fixed
-                        </Sidebar.Item>
+                    <Sidebar.Section title='Pages' collapsible>
+                        {blocks?.map(
+                            (block) =>
+                                !block.includes('auth') && (
+                                    <SidebarItem
+                                        key={block}
+                                        icon={IconClipboardPen}
+                                        href={`/${block}`}
+                                    >
+                                        {goodTitle(block.split('/').pop() || 'Sample Page')}
+                                    </SidebarItem>
+                                )
+                        )}
                     </Sidebar.Section>
                 </Sidebar.Content>
             </Sidebar>

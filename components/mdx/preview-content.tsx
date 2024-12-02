@@ -11,7 +11,7 @@ export default function PreviewContent({
     height
 }: {
     component: string
-    zoomOut: boolean
+    zoomOut: number
     className?: string
     height: number
 }) {
@@ -26,7 +26,7 @@ export default function PreviewContent({
             <iframe
                 className={cn('w-full border rounded-xl relative z-20', className)}
                 height={height || 768}
-                style={{ zoom: zoomOut ? 0.6 : 1 }}
+                style={{ zoom: zoomOut || 1 }}
                 allowFullScreen
                 src={`/${component}`}
             />

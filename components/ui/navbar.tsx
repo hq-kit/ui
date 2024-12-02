@@ -280,7 +280,7 @@ const Compact = ({ className, ...props }: React.ComponentProps<'div'>) => {
 }
 
 const insetStyles = tv({
-    base: 'grow p-4 lg:py-10',
+    base: 'grow px-0 py-4 lg:px-4 lg:py-10',
     variants: {
         variant: {
             floating: '',

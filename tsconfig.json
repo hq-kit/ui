@@ -31,6 +31,9 @@
             ],
             "layouts/*": [
                 "./components/docs/block/layouts/*"
+            ],
+            "components/*": [
+                "./components/docs/block/components/*"
             ]
         }
     },

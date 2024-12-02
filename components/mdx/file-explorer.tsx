@@ -31,20 +31,32 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
     const [selected, setSelected] = React.useState<string>(page)
     const [code, setCode] = React.useState<string>('')
     const [components, setComponents] = React.useState<string[]>([])
+    const [uiComponents, setUiComponents] = React.useState<string[]>([])
     const [layout, setLayout] = React.useState<string | null>(null)
     React.useEffect(() => {
         // @ts-expect-error no-type
         const componentData = previews[selected] ? previews[selected].raw : ''
 
-        const componentNames = componentData.match(
+        const uiComponentNames = componentData.match(
             /import\s+{([^}]+)}\s+from\s+['"]@\/components\/ui['"]/
         )
-        if (componentNames) {
-            const components = componentNames[1]
+
+        if (uiComponentNames) {
+            const uiComponents = uiComponentNames[1]
                 .split(',')
                 .map((name: string) => convertToKebabCase(name.trim()))
-            const componentExists = components.filter((component: string) => component in previews)
+            const componentExists = uiComponents.filter(
+                (component: string) => component in previews
+            )
             componentExists.push('utils')
+            setUiComponents(componentExists)
+        }
+        const componentNames: string[] = componentData.match(/'components\/(.*?[^'])'/g)
+        if (componentNames) {
+            const components = componentNames.map((c: string) => 'block/' + c.replaceAll("'", ''))
+            const componentExists = components.filter((component: string) => component in previews)
+            console.log(componentExists)
+
             setComponents(componentExists)
         }
 
@@ -57,7 +69,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             setCode(componentData)
         } else {
             if (selected === 'index') {
-                setCode(`${components.map((c) => `export * from './${c}'`).join('\n')}`)
+                setCode(`${uiComponents.map((c) => `export * from './${c}'`).join('\n')}`)
             } else {
                 setCode(``)
             }
@@ -107,7 +119,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             children: [
                 {
                     id: page,
-                    title: page.split('/').reverse()[0] + '.tsx' || 'page.tsx',
+                    title: page.split('/').pop() + '.tsx' || 'page.tsx',
                     children: []
                 }
             ]
@@ -120,26 +132,34 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             children: [
                 {
                     id: layout,
-                    title: layout.split('/').reverse()[0] + '.tsx' || 'page.tsx',
+                    title: layout.split('/').pop() + '.tsx' || 'page.tsx',
                     children: []
                 }
             ]
         })
     }
 
-    if (components) {
-        const renderComponents = components.sort().map((component: string) => {
+    if (uiComponents || components) {
+        const componentsUsed = components.sort().map((component: string) => {
+            return {
+                id: component,
+                title: component.split('/').pop() + '.tsx',
+                children: []
+            }
+        })
+        const uiComponentsUsed = uiComponents.sort().map((component: string) => {
             return {
                 id: component,
                 title: component + '.tsx',
                 children: []
             }
         })
-        renderComponents.push({
+        uiComponentsUsed.push({
             id: 'index',
             title: 'index.ts',
             children: []
         })
+
         files.push({
             id: 3,
             title: 'components',
@@ -147,8 +167,9 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 {
                     id: 4,
                     title: 'ui',
-                    children: renderComponents
-                }
+                    children: uiComponentsUsed
+                },
+                ...componentsUsed
             ]
         } as FileNode)
     }
@@ -181,7 +202,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                         {sidebarOpen ? <IconPanelLeftClose /> : <IconPanelRightClose />}
                     </Button>
                     <IconBrandReact className='size-4' />
-                    {selected.split('/').reverse()[0] + '.tsx'}
+                    {selected.split('/').pop() + '.tsx'}
                 </div>
                 <Code
                     code={code}
