@@ -32,7 +32,7 @@ const config = {
             },
             {
                 source: '/blocks',
-                destination: '/blocks/examples/login-form',
+                destination: '/blocks/examples/dashboard',
                 permanent: false
             }
         ]

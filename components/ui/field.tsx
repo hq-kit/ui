@@ -32,7 +32,7 @@ interface FieldProps {
 const fieldStyles = tv({
     slots: {
         description: 'text-pretty text-base/6 text-muted-foreground sm:text-sm/6',
-        label: 'w-fit cursor-default font-medium text-muted-foreground text-sm group-has-[[data-focus-within=true]]:text-primary group-has-[[aria-invalid=true]]:text-danger',
+        label: 'w-fit cursor-default font-medium text-muted-foreground text-sm group-focus:text-primary group-data-[focus-within=true]:text-primary group-has-[[data-focus-within=true]]:text-primary group-has-[[data-focused=true]]:text-primary group-has-[[aria-invalid=true]]:text-danger',
         fieldError: 'text-sm/6 text-danger forced-colors:text-[Mark]',
         input: [
             'w-full min-w-0 [&::-ms-reveal]:hidden bg-transparent p-2 text-base text-foreground placeholder-muted-foreground outline-none focus:outline-none lg:text-sm'

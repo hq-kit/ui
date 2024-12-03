@@ -2,9 +2,18 @@
 
 import React from 'react'
 
-import { IconCheck, IconCheckDouble, IconClock, IconTrash } from 'hq-icons'
+import {
+    IconCheck,
+    IconCheckDouble,
+    IconChevronRight,
+    IconClock,
+    IconForward,
+    IconInfo,
+    IconReply,
+    IconTrash
+} from 'hq-icons'
 
-import { Button, cn, Popover } from '@/components/ui'
+import { Button, cn, Menu } from '@/components/ui'
 
 export interface BubbleChatProps {
     message: string
@@ -36,9 +45,9 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                     )}
                 >
                     <div
-                        className='text-left text-sm'
-                        dangerouslySetInnerHTML={{ __html: message }}
-                    ></div>
+                        className='text-left text-foreground text-sm'
+                        dangerouslySetInnerHTML={{ __html: convertToHtml(message) }}
+                    />
                 </div>
                 <small
                     className={cn(
@@ -50,28 +59,49 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                     {role === 'send' && status && statusIcon[status]}
                 </small>
             </div>
-            <Popover>
+            <Menu>
                 <Button
-                    variant='danger'
+                    variant='outline'
                     size='icon'
-                    className='size-8 mx-2 opacity-0 pressed:opacity-100 group-hover:opacity-100 transition p-1 sm:size-8'
+                    className='mx-2 size-7 opacity-0 pressed:opacity-100 group-hover:opacity-100 transition p-1'
                 >
-                    <IconTrash className='size-3' />
+                    <IconChevronRight
+                        className={cn('size-3', role === 'send' ? 'rotate-180' : '')}
+                    />
                 </Button>
-                <Popover.Content>
-                    <Popover.Header>
-                        <Popover.Title>Delete Chat</Popover.Title>
-                        <Popover.Description>
-                            This action will permanently delete this chat. Continue?
-                        </Popover.Description>
-                    </Popover.Header>
-                    <Popover.Footer>
-                        <Button onPress={onDelete} variant='danger'>
-                            Delete
-                        </Button>
-                    </Popover.Footer>
-                </Popover.Content>
-            </Popover>
+                <Menu.Content placement={role === 'send' ? 'left' : 'right'} aria-label='Actions'>
+                    <Menu.Item>
+                        <IconReply />
+                        Reply
+                    </Menu.Item>
+                    <Menu.Item>
+                        <IconForward />
+                        Forward
+                    </Menu.Item>
+                    <Menu.Item>
+                        <IconInfo />
+                        Message Info
+                    </Menu.Item>
+                    <Menu.Item onAction={onDelete} isDanger>
+                        <IconTrash /> Delete
+                    </Menu.Item>
+                </Menu.Content>
+            </Menu>
         </div>
     )
+}
+
+const convertToHtml = (text: string) => {
+    let html = text
+    html = html.replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<a href="$1" target="_blank" class="text-primary underline" rel="noopener noreferrer">$1</a>'
+    )
+    html = html.replace(/`([^`]+)`/g, '<code class="font-mono">$1</code>')
+    html = html.replace(/\*(.*?)\*/g, '<strong class="text-bold">$1</strong>')
+    html = html.replace(/_(.*?)_/g, '<em>$1</em>')
+    html = html.replace(/~(.*?)~/g, '<del>$1</del>')
+    html = html.replace(/^(.*?)^/g, '<sup>$1</sup>')
+    html = html.replace(/\n/g, '<br />')
+    return html
 }

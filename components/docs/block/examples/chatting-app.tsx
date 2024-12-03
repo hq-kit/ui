@@ -4,6 +4,7 @@ import React, { FormEvent } from 'react'
 
 import BubbleChat, { type BubbleChatProps } from 'components/chatting-app/bubble-chat'
 import ContactList from 'components/chatting-app/contact-list'
+import MessageForm from 'components/chatting-app/message-form'
 import {
     IconCircleX,
     IconContact,
@@ -12,25 +13,12 @@ import {
     IconMessageDashed,
     IconMessageMore,
     IconMessagePlus,
-    IconMic,
-    IconSend,
     IconTrash,
     IconUser
 } from 'hq-icons'
 import ChattingAppLayout from 'layouts/chatting-app-layout'
 
-import {
-    Avatar,
-    Button,
-    buttonVariants,
-    cn,
-    Form,
-    Menu,
-    Popover,
-    RichTextField,
-    Sidebar,
-    Tooltip
-} from '@/components/ui'
+import { Avatar, Button, buttonVariants, cn, Menu, Popover, Sidebar } from '@/components/ui'
 import { formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
@@ -55,7 +43,7 @@ export default function ChatApp() {
         }
     ])
 
-    const [message, setMessage] = React.useState('')
+    const [message, setMessage] = React.useState<string>('')
 
     function sendMessage(e: FormEvent) {
         e.preventDefault()
@@ -73,6 +61,7 @@ export default function ChatApp() {
     function deleteChat(index: number) {
         setChats([...chats.slice(0, index), ...chats.slice(index + 1)])
     }
+
     return (
         <Sidebar.Provider isOpen={false}>
             <ChattingAppLayout />
@@ -169,38 +158,7 @@ export default function ChatApp() {
                             </div>
                         )}
                     </div>
-                    <Form className='p-2' onSubmit={sendMessage}>
-                        <RichTextField
-                            className='resize-none max-h-36'
-                            hideToolbar
-                            value={message}
-                            onChange={setMessage}
-                            returnType='html'
-                        />
-                        <div className='flex items-center pt-2'>
-                            <Tooltip>
-                                <Tooltip.Trigger
-                                    className={buttonVariants({
-                                        variant: 'ghost',
-                                        size: 'icon'
-                                    })}
-                                >
-                                    <IconMic className='size-4' />
-                                    <span className='sr-only'>Use Microphone</span>
-                                </Tooltip.Trigger>
-                                <Tooltip.Content placement='top'>Use Microphone</Tooltip.Content>
-                            </Tooltip>
-                            <Button
-                                isDisabled={!message}
-                                type='submit'
-                                size='sm'
-                                className='ml-auto gap-1.5'
-                            >
-                                Send Message
-                                <IconSend />
-                            </Button>
-                        </div>
-                    </Form>
+                    <MessageForm value={message} onChange={setMessage} onSend={sendMessage} />
                 </div>
             </main>
         </Sidebar.Provider>

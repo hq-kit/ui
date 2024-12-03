@@ -90,7 +90,7 @@ export default function ThemeCustomizer() {
                 (key) =>
                     `${key}: ${lightVars[key as keyof typeof lightVars]}; /* ${getColorName({ color: lightVars[key as keyof typeof lightVars], type: 'hsl' })} */`
             )
-            .join('\n\t\t')}
+            .join('\n        ')}
         --radius: ${radius}rem;
     }
     .dark {
@@ -99,54 +99,74 @@ export default function ThemeCustomizer() {
                 (key) =>
                     `${key}: ${darkVars[key as keyof typeof darkVars]}; /* ${getColorName({ color: darkVars[key as keyof typeof darkVars], type: 'hsl' })} */`
             )
-            .join('\n\t\t')}
+            .join('\n        ')}
     }
 }
 
+
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
-
-  * {
-    @apply border-muted;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 850;
-    text-rendering: optimizeLegibility;
-    scrollbar-width: thin;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  /* dark mode */
-  .dark {
-    scrollbar-width: thin;
-
-    @media (prefers-color-scheme: dark) {
-      * {
-        scrollbar-width: thin;
-      }
+    html {
+        @apply scroll-smooth;
     }
-  }
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+    * {
+        @apply border-muted;
+        font-feature-settings: 'cv11', 'ss01';
+        font-variation-settings: 'opsz' 850;
+        text-rendering: optimizeLegibility;
+    }
 
-  *::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 5px;
-  }
+    body {
+        @apply bg-background text-foreground;
+    }
 
-  *::-webkit-scrollbar-thumb {
-    @apply bg-muted;
-    border-radius: 14px;
-    border: 3px solid transparent;
-  }
+    *::-webkit-scrollbar {
+        @apply size-1.5 rounded-lg;
+    }
+
+    *::-webkit-scrollbar-track {
+        @apply rounded-lg bg-transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @apply rounded-lg border border-transparent bg-muted;
+    }
+}
+
+@layer components {
+    .recharts-rectangle.recharts-tooltip-cursor {
+        @apply fill-foreground/10;
+    }
+
+    .overflow-auto,
+    .overflow-x-auto,
+    .overflow-y-auto,
+    .overflow-scroll,
+    .overflow-x-scroll,
+    .overflow-y-scroll {
+        @apply [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-inherit;
+    }
+    .overflow-auto:hover,
+    .overflow-x-auto:hover,
+    .overflow-y-auto:hover,
+    .overflow-scroll:hover,
+    .overflow-x-scroll:hover,
+    .overflow-y-scroll:hover {
+        @apply [&::-webkit-scrollbar-thumb]:bg-muted;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* Internet Explorer and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    pre::-webkit-scrollbar {
+        display: none;
+    }
 }`
     }
 

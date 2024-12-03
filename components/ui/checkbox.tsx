@@ -2,8 +2,8 @@
 
 import { IconCheck, IconMinus } from 'hq-icons'
 import {
-    CheckboxGroup as CheckboxGroupPrimitive,
     Checkbox as CheckboxPrimitive,
+    CheckboxGroup as CheckboxGroupPrimitive,
     type CheckboxGroupProps as CheckboxGroupPrimitiveProps,
     type CheckboxProps as CheckboxPrimitiveProps,
     type ValidationResult
@@ -11,8 +11,7 @@ import {
 import { tv } from 'tailwind-variants'
 
 import { Description, FieldError, Label } from './field'
-import { cn } from './utils'
-import { cr } from './utils'
+import { cn, cr } from './utils'
 
 interface CheckboxGroupProps extends Omit<CheckboxGroupPrimitiveProps, 'children'> {
     label?: string
@@ -23,7 +22,10 @@ interface CheckboxGroupProps extends Omit<CheckboxGroupPrimitiveProps, 'children
 
 const CheckboxGroup = (props: CheckboxGroupProps) => {
     return (
-        <CheckboxGroupPrimitive {...props} className={cn('flex flex-col gap-y-2', props.className)}>
+        <CheckboxGroupPrimitive
+            {...props}
+            className={cn('group flex flex-col gap-y-2', props.className)}
+        >
             <Label>{props.label}</Label>
             <>{props.children}</>
             {props.description && <Description className='block'>{props.description}</Description>}
