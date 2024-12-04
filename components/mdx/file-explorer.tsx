@@ -213,10 +213,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     <IconBrandReact className='size-4' />
                     {selected.split('/').pop() + '.tsx'}
                 </div>
-                <Code
-                    code={code}
-                    className='[&_pre]:max-h-[38rem] [&_pre]:min-h-[38rem] border-none'
-                />
+                <Code code={code} className='[&_pre]:min-h-[38rem] border-none' />
             </div>
         </div>
     )

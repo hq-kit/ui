@@ -3,25 +3,48 @@
 import React from 'react'
 
 import { IconMenu } from 'hq-icons'
-import type { GridListItemProps, GridListProps } from 'react-aria-components'
-import { Button, GridListItem, GridList as GridListPrimitive } from 'react-aria-components'
+import {
+    Button,
+    GridList as GridListPrimitive,
+    GridListItem,
+    type GridListItemProps,
+    type GridListProps
+} from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { Checkbox } from './checkbox'
-import { cr, ctr } from './utils'
+import { cr } from './utils'
 
 const gridListStyles = tv({
-    base: 'relative [&>[data-drop-target]]:border [&>[data-drop-target]]:border-primary [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] max-h-96 overflow-auto rounded-lg border'
+    base: 'relative group flex [&>[data-drop-target]]:border [&>[data-drop-target]]:border-primary has-[[data-slot=icon]]:[&_[slot=drag]]:sr-only',
+    variants: {
+        layout: {
+            stack: 'flex-col',
+            grid: 'flex-wrap gap-2'
+        }
+    }
 })
 
-const GridList = <T extends object>({ children, className, ...props }: GridListProps<T>) => (
-    <GridListPrimitive className={ctr(className, gridListStyles())} {...props}>
-        {children}
-    </GridListPrimitive>
-)
+const GridList = <T extends object>({ children, className, ...props }: GridListProps<T>) => {
+    return (
+        <GridListPrimitive
+            className={cr(className, (className, renderProps) =>
+                gridListStyles({ ...renderProps, className })
+            )}
+            {...props}
+        >
+            {children}
+        </GridListPrimitive>
+    )
+}
 
 const itemStyles = tv({
-    base: 'relative group transition outline-none flex cursor-default select-none gap-3 border-y px-3 -mb-px py-2 lg:text-sm text-foreground -outline-offset-2 first:rounded-t-lg first:border-t-0 last:mb-0 last:rounded-b-lg last:border-b-0',
+    base: [
+        'relative group transition outline-none flex items-center cursor-default h-fit select-none gap-3 px-3 -mb-px py-2 lg:text-sm text-foreground -outline-offset-2',
+        'group-data-[layout=stack]:last:mb-0 group-data-[layout=stack]:border-y',
+        'group-data-[layout=grid]:has-[[data-slot=icon]]:w-32 group-data-[layout=grid]:has-[[data-slot=icon]]:p-2',
+        'group-data-[layout=grid]:rounded-lg group-data-[layout=grid]:flex-col group-data-[layout=grid]:text-center group-data-[layout=grid]:text-wrap group-data-[layout=grid]:[&>div>[data-slot=icon]]:size-10 group-data-[layout=grid]:[&_[data-slot=icon]]:shrink-0'
+    ],
     variants: {
         isHovered: { true: 'bg-primary/10' },
         isSelected: {
@@ -54,16 +77,11 @@ const Item = ({ className, ...props }: GridListItemProps) => {
                     {allowsDragging && (
                         <Button
                             slot='drag'
-                            className='cursor-grab dragging:cursor-grabbing [&>[data-slot=icon]]:text-muted-foreground'
+                            className='cursor-grab group-data-[layout=grid]:sr-only dragging:cursor-grabbing [&>[data-slot=icon]]:text-muted-foreground'
                         >
                             <IconMenu />
                         </Button>
                     )}
-
-                    <span
-                        aria-hidden
-                        className='absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-selected:block'
-                    />
                     {selectionMode === 'multiple' && selectionBehavior === 'toggle' && (
                         <Checkbox className='-mr-2' slot='selection' />
                     )}

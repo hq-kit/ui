@@ -1,6 +1,6 @@
 'use client'
 
-import { IconChevronRight, IconSlash } from 'hq-icons'
+import { IconChevronRight } from 'hq-icons'
 import type { BreadcrumbProps, BreadcrumbsProps } from 'react-aria-components'
 import {
     Breadcrumb,
@@ -48,7 +48,7 @@ const Separator = ({ separator = 'chevron' }: { separator?: ItemProps['separator
             )}
         >
             {separator === 'chevron' && <IconChevronRight />}
-            {separator === 'slash' && <IconSlash />}
+            {separator === 'slash' && <span className='select-none'>/</span>}
         </span>
     )
 }
