@@ -46,7 +46,7 @@ const navbarStyles = tv({
     variants: {
         variant: {
             floating: 'pt-2 px-2.5',
-            navbar: '',
+            navbar: 'md:divide-y',
             inset: 'bg-muted dark:bg-background'
         }
     }
@@ -109,7 +109,7 @@ const Navbar = ({
 
 const navStyles = tv({
     base: [
-        'hidden h-[--navbar-height] [--navbar-height:3.5rem] px-4 group peer lg:flex items-center w-full',
+        'hidden nav h-[--navbar-height] [--navbar-height:3.5rem] px-4 group peer lg:flex items-center w-full',
         '[&>div]:max-w-[1680px] lg:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto'
     ],
     variants: {
@@ -118,7 +118,7 @@ const navStyles = tv({
         },
         variant: {
             floating: 'bg-background max-w-[1680px] mx-auto shadow-sm border rounded-lg sm:px-4',
-            navbar: 'bg-background shadow-sm border-b sm:px-6',
+            navbar: 'bg-background sm:px-6',
             inset: [
                 'bg-muted mx-auto dark:bg-background sm:px-6',
                 '[&>div]:max-w-[1680px] lg:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto'

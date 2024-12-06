@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation'
 import { Button, Navbar } from '@/components/ui'
 
 export default function NavbarLayout({
-    variant,
+    variant = 'navbar',
     children
 }: {
-    variant: 'inset' | 'navbar' | 'floating'
+    variant?: 'inset' | 'navbar' | 'floating'
     children: React.ReactNode
 }) {
     const pathname = usePathname()
@@ -32,8 +32,8 @@ export default function NavbarLayout({
                     <Navbar.Item isCurrent={pathname.includes('products')} href='#'>
                         Products
                     </Navbar.Item>
-                    <Navbar.Item isCurrent={pathname.includes('customers')} href='#'>
-                        Customers
+                    <Navbar.Item isCurrent={pathname.includes('profile')} href='#'>
+                        Profile
                     </Navbar.Item>
                 </Navbar.Section>
             </Navbar.Nav>

@@ -9,7 +9,8 @@ import { Heading } from './heading'
 const card = tv({
     slots: {
         root: [
-            'bg-background card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden'
+            'bg-background w-full card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden',
+            '[&_img]:rounded-lg'
         ],
         header: 'flex flex-col space-y-1.5 px-6 py-5',
         title: 'sm:leading-6 leading-none font-semibold tracking-tight',

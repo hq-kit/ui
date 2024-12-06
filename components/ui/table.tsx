@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconChevronDown, IconMenu } from 'hq-icons'
+import { IconChevronDown, IconLoader, IconMenu } from 'hq-icons'
 import {
     Button,
     Cell,
@@ -223,10 +223,17 @@ const TableRow = <T extends object>({
     )
 }
 
+const TableEmpty = () => (
+    <div className='grid place-content-center p-10'>
+        <IconLoader className='animate-spin' />
+    </div>
+)
+
 Table.Body = Body
 Table.Cell = TableCell
 Table.Column = TableColumn
 Table.Header = Header
 Table.Row = TableRow
+Table.Empty = TableEmpty
 
 export { Table }
