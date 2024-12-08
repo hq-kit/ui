@@ -143,7 +143,7 @@ const RichTextField = ({
                                 >
                                     {label && <Label>{label}</Label>}
 
-                                    {!hideToolbar && <Toolbar />}
+                                    {!hideToolbar && <ToolbarPlugin />}
                                     <ContentEditable
                                         autoFocus
                                         aria-disabled={isDisabled}

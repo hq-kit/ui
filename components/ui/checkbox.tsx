@@ -24,7 +24,7 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
     return (
         <CheckboxGroupPrimitive
             {...props}
-            className={cn('group flex flex-col gap-y-2', props.className)}
+            className={cn('group flex flex-col gap-y-1.5', props.className)}
         >
             <Label>{props.label}</Label>
             <>{props.children}</>
@@ -35,7 +35,7 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
 }
 
 const checkboxStyles = tv({
-    base: 'racc group flex items-center gap-2 text-sm transition',
+    base: 'racc group flex items-center gap-1.5 text-sm transition',
     variants: {
         isDisabled: {
             false: 'opacity-100',
@@ -81,7 +81,7 @@ const Checkbox = ({ className, description, label, children, ...props }: Checkbo
             )}
         >
             {({ isSelected, isIndeterminate, ...renderProps }) => (
-                <div className={cn('flex gap-x-2', description ? 'items-start' : 'items-center')}>
+                <div className={cn('flex gap-x-1.5', description ? 'items-start' : 'items-center')}>
                     <div
                         className={boxStyles({
                             ...renderProps,

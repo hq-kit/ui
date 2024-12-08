@@ -7,7 +7,7 @@ import type {
     RadioProps as RadioPrimitiveProps,
     ValidationResult
 } from 'react-aria-components'
-import { RadioGroup as RadioGroupPrimitive, Radio as RadioPrimitive } from 'react-aria-components'
+import { Radio as RadioPrimitive, RadioGroup as RadioGroupPrimitive } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { Description, FieldError, Label } from './field'
@@ -24,10 +24,10 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
     return (
         <RadioGroupPrimitive
             {...props}
-            className={ctr(props.className, 'group flex flex-col gap-2')}
+            className={ctr(props.className, 'group flex flex-col gap-1.5')}
         >
             {label && <Label>{label}</Label>}
-            <div className='flex select-none gap-2 group-orientation-horizontal:flex-wrap group-orientation-horizontal:gap-2 sm:group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col'>
+            <div className='flex select-none gap-1.5 group-orientation-horizontal:flex-wrap group-orientation-horizontal:gap-1.5 sm:group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col'>
                 {children}
             </div>
             {description && <Description>{description}</Description>}
@@ -69,11 +69,11 @@ const Radio = ({ description, ...props }: RadioProps) => {
                 {...props}
                 className={ctr(
                     props.className,
-                    'group flex items-center gap-2 text-sm text-foreground transition disabled:text-foreground/50 forced-colors:disabled:text-[GrayText]'
+                    'group flex items-center gap-1.5 text-sm text-foreground transition disabled:text-foreground/50 forced-colors:disabled:text-[GrayText]'
                 )}
             >
                 {(renderProps) => (
-                    <div className='flex gap-2'>
+                    <div className='flex gap-1.5'>
                         <div
                             className={radioStyles({
                                 ...renderProps,

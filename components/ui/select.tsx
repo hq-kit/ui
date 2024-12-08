@@ -56,7 +56,7 @@ const Select = <T extends object>({
     ...props
 }: SelectProps<T>) => {
     return (
-        <SelectPrimitive {...props} className={cn('group flex w-full flex-col gap-1', className)}>
+        <SelectPrimitive {...props} className={cn('group flex w-full flex-col gap-1.5', className)}>
             {label && <Label>{label}</Label>}
             <Group className='relative'>
                 <Button

@@ -52,7 +52,7 @@ const RangeCalendar = <T extends DateValue>({
             className={ctr(className, 'max-w-[17.5rem] sm:max-w-[15.8rem]')}
             {...props}
         >
-            <Calendar.Header />
+            <Calendar.Header type='range-calendar' />
             <CalendarGrid className='[&_td]:border-collapse [&_td]:px-0'>
                 <Calendar.GridHeader />
                 <CalendarGridBody>

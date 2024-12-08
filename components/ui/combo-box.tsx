@@ -40,7 +40,7 @@ const ComboBox = <T extends object>({
         <ComboboxPrimitive
             menuTrigger='focus'
             {...props}
-            className={cn('group w-full flex flex-col gap-1', className)}
+            className={cn('group w-full flex flex-col gap-1.5', className)}
         >
             <Label>{label}</Label>
             <FieldGroup className='pl-0 relative'>

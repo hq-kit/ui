@@ -190,7 +190,7 @@ const MultiSelect = <T extends SelectedKey>({
     const triggerButtonRef = React.useRef<HTMLButtonElement | null>(null)
 
     return (
-        <Group className={cn('group flex w-full min-w-fit flex-col gap-1', className)}>
+        <Group className={cn('group flex w-full min-w-fit flex-col gap-1.5', className)}>
             {props.label && <Label>{props.label}</Label>}
             <div
                 ref={triggerRef}

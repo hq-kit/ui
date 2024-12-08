@@ -5,10 +5,10 @@ import React from 'react'
 import { IconX } from 'hq-icons'
 import {
     Button,
-    TagGroup as TagGroupPrimitive,
-    TagList as TagListPrimitive,
     Tag as TagPrimitive,
+    TagGroup as TagGroupPrimitive,
     type TagGroupProps as TagGroupPrimitiveProps,
+    TagList as TagListPrimitive,
     type TagListProps,
     type TagProps as TagPrimitiveProps
 } from 'react-aria-components'
@@ -123,7 +123,7 @@ const TagGroup = ({ children, ...props }: TagGroupProps) => {
     return (
         <TagGroupPrimitive
             {...props}
-            className={cn('flex flex-wrap flex-col gap-1', props.className)}
+            className={cn('flex flex-wrap flex-col gap-1.5', props.className)}
         >
             <TagGroupContext.Provider
                 value={{

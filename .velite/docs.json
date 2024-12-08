@@ -2517,7 +2517,7 @@
     "references": [
       "https://lexical.dev/docs/intro"
     ],
-    "body": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(a){const t={a:\"a\",code:\"code\",h2:\"h2\",h3:\"h3\",p:\"p\",span:\"span\",...a.components},{Demo:r,Install:l}=t;return r||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),i(e,{children:[n(t.h2,{id:\"basic\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(t.p,{children:[\"This rich text editor is using \",n(t.a,{href:\"https://lexical.dev/docs/intro\",children:\"Lexical\"}),\", of course you can register for Pro account then re-customize this component.\"]}),\"\\n\",n(r,{center:!0,component:\"forms/rich-text-field/rich-text-field-demo\"}),\"\\n\",n(t.h2,{id:\"installation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",n(l,{component:\"rich-text-field\"}),\"\\n\",n(t.h2,{id:\"controlled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:\"Controlled\"})}),\"\\n\",n(t.h3,{id:\"return-as-html\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#return-as-html\",children:\"Return as HTML\"})}),\"\\n\",i(t.p,{children:[\"You can control the rich text field value with the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"value\"})})})}),\" prop. By default it returns \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"HTML\"})})})})]}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-controlled-html-demo\"}),\"\\n\",n(t.h3,{id:\"return-as-markdown\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#return-as-markdown\",children:\"Return as Markdown\"})}),\"\\n\",i(t.p,{children:[\"You can return as Markdown by passing the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"returnType\"})})})}),\" props to \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"markdown\"})})})})]}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-controlled-markdown-demo\"}),\"\\n\",n(t.h2,{id:\"disabled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:\"Disabled\"})}),\"\\n\",n(t.p,{children:\"When the rich text field is disabled, it cannot be edited.\"}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-disabled-demo\"}),\"\\n\",n(t.h2,{id:\"additional-features\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#additional-features\",children:\"Additional Features\"})}),\"\\n\",n(t.p,{children:\"The component above only contains a very minimal features.\\nLexical has so many features which can fully customize as we want.\"}),\"\\n\",i(t.p,{children:[\"Give a look at \",n(t.a,{href:\"https://hq-editor.vercel.app\",children:\"HQ Editor\"}),\".\"]})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "body": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(a){const t={a:\"a\",code:\"code\",h2:\"h2\",h3:\"h3\",p:\"p\",span:\"span\",...a.components},{Demo:r,Install:l}=t;return r||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),i(e,{children:[n(t.h2,{id:\"basic\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(t.p,{children:[\"This rich text editor is using \",n(t.a,{href:\"https://lexical.dev/docs/intro\",children:\"Lexical\"}),\", of course you can register for Pro account then re-customize this component.\"]}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-demo\"}),\"\\n\",n(t.h2,{id:\"installation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",n(l,{component:\"rich-text-field\"}),\"\\n\",n(t.h2,{id:\"controlled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:\"Controlled\"})}),\"\\n\",n(t.h3,{id:\"return-as-html\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#return-as-html\",children:\"Return as HTML\"})}),\"\\n\",i(t.p,{children:[\"You can control the rich text field value with the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"value\"})})})}),\" prop. By default it returns \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"HTML\"})})})})]}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-controlled-html-demo\"}),\"\\n\",n(t.h3,{id:\"return-as-markdown\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#return-as-markdown\",children:\"Return as Markdown\"})}),\"\\n\",i(t.p,{children:[\"You can return as Markdown by passing the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"returnType\"})})})}),\" props to \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"markdown\"})})})})]}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-controlled-markdown-demo\"}),\"\\n\",n(t.h2,{id:\"disabled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:\"Disabled\"})}),\"\\n\",n(t.p,{children:\"When the rich text field is disabled, it cannot be edited.\"}),\"\\n\",n(r,{component:\"forms/rich-text-field/rich-text-field-disabled-demo\"}),\"\\n\",n(t.h2,{id:\"additional-features\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#additional-features\",children:\"Additional Features\"})}),\"\\n\",n(t.p,{children:\"The component above only contains a very minimal features.\\nLexical has so many features which can fully customize as we want.\"}),\"\\n\",i(t.p,{children:[\"Give a look at \",n(t.a,{href:\"https://hq-editor.vercel.app\",children:\"HQ Editor\"}),\".\"]})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
     "toc": [
       {
         "title": "Basic",
@@ -3769,6 +3769,220 @@
     "slugAsParams": "components/pickers/select"
   },
   {
+    "slug": "docs/components/surfaces/card",
+    "title": "Card",
+    "description": "Cards are a flexible and extensible content container. They are commonly used within a page layout or as part of a related group of content.",
+    "order": 1,
+    "published": true,
+    "body": "const{Fragment:e,jsx:i,jsxs:n}=arguments[0];function _createMdxContent(t){const a={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...t.components},{Demo:s,Install:r}=a;return s||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),n(e,{children:[i(a.h2,{id:\"basic\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(a.p,{children:\"Top spots to hit in 2024, no cap!\"}),\"\\n\",i(s,{center:!0,component:\"surfaces/card/card-demo\"}),\"\\n\",i(a.h2,{id:\"installation\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",i(r,{component:\"card\"}),\"\\n\",i(a.h2,{id:\"with-form\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-form\",children:\"With Form\"})}),\"\\n\",i(a.p,{children:\"Peep this for a slick login setup, easy peesy.\"}),\"\\n\",i(s,{component:\"surfaces/card/card-login-form-demo\"}),\"\\n\",i(a.h2,{id:\"with-table\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-table\",children:\"With Table\"})}),\"\\n\",i(a.p,{children:\"Check out the lowdown with all the deets laid out.\"}),\"\\n\",i(s,{component:\"surfaces/card/card-table-demo\"}),\"\\n\",i(a.h2,{id:\"section-title\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#section-title\",children:\"Section Title\"})}),\"\\n\",n(a.p,{children:[\"Sometimes, you may only need a card header without wrapping container itself. Of course, you need don't want the default padding, right? So I have prop called \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"withoutPadding\"})})})}),\" to help you out.\"]}),\"\\n\",i(a.figure,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.pre,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"dark-plus light-plus\",children:i(a.code,{\"data-language\":\"tsx\",\"data-theme\":\"dark-plus light-plus\",style:{display:\"grid\"},children:n(a.span,{\"data-line\":\"\",children:[i(a.span,{style:{\"--shiki-dark\":\"#808080\",\"--shiki-light\":\"#800000\"},children:\"<\"}),i(a.span,{style:{\"--shiki-dark\":\"#4EC9B0\",\"--shiki-light\":\"#267F99\"},children:\"Card.Header\"}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" withoutPadding\"}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" title\"}),i(a.span,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\"},children:\"=\"}),i(a.span,{style:{\"--shiki-dark\":\"#CE9178\",\"--shiki-light\":\"#A31515\"},children:'\"List Daemons\"'}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" description\"}),i(a.span,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\"},children:\"=\"}),i(a.span,{style:{\"--shiki-dark\":\"#CE9178\",\"--shiki-light\":\"#A31515\"},children:'\"List of daemons to use in your sites.\"'}),i(a.span,{style:{\"--shiki-dark\":\"#808080\",\"--shiki-light\":\"#800000\"},children:\" />\"})]})})})}),\"\\n\",n(a.p,{children:[\"For table docs, check out the \",i(a.a,{href:\"/docs/components/collections/table\",children:\"Table\"}),\" docs.\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?i(n,{...e,children:i(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,i){throw new Error(\"Expected \"+(i?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "toc": [
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "With Form",
+        "url": "#with-form",
+        "items": []
+      },
+      {
+        "title": "With Table",
+        "url": "#with-table",
+        "items": []
+      },
+      {
+        "title": "Section Title",
+        "url": "#section-title",
+        "items": []
+      }
+    ],
+    "slugAsParams": "components/surfaces/card"
+  },
+  {
+    "slug": "docs/components/surfaces/description-list",
+    "title": "Description List",
+    "description": "A description list is typically used to display pairs of terms and details, like in invoices or product specifications, enhancing clarity and organization of information.",
+    "order": 6,
+    "published": true,
+    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",p:\"p\",...t.components},{Demo:s,Install:a}=o;return s||_missingMdxReference(\"Demo\",!0),a||_missingMdxReference(\"Install\",!0),i(n,{children:[e(o.h2,{id:\"basic\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",e(o.p,{children:\"A description list is typically used to display pairs of terms and details, like in invoices or product specifications, enhancing clarity and organization of information.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-demo\"}),\"\\n\",e(o.h2,{id:\"installation\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",e(a,{component:\"description-list\"}),\"\\n\",e(o.h2,{id:\"with-heading\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-heading\",children:\"With Heading\"})}),\"\\n\",e(o.p,{children:\"This example shows with heading.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-heading-demo\"}),\"\\n\",e(o.h2,{id:\"with-card\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-card\",children:\"With Card\"})}),\"\\n\",e(o.p,{children:\"Sometimes, you may want to use a card to display the description list. This example shows how to do it.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-card-demo\"})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "toc": [
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "With Heading",
+        "url": "#with-heading",
+        "items": []
+      },
+      {
+        "title": "With Card",
+        "url": "#with-card",
+        "items": []
+      }
+    ],
+    "status": "new",
+    "slugAsParams": "components/surfaces/description-list"
+  },
+  {
+    "slug": "docs/components/surfaces/grid",
+    "title": "Grid",
+    "description": "Check out this Responsive Grid component! It adjusts columns and gaps for any device, enhancing your UI’s vibe and usability across all screen sizes.",
+    "order": 2,
+    "published": true,
+    "body": "const{Fragment:e,jsx:i,jsxs:n}=arguments[0];function _createMdxContent(t){const a={a:\"a\",code:\"code\",h2:\"h2\",h3:\"h3\",p:\"p\",span:\"span\",table:\"table\",tbody:\"tbody\",td:\"td\",th:\"th\",thead:\"thead\",tr:\"tr\",...t.components},{Demo:r,Install:d,Note:h}=a;return r||_missingMdxReference(\"Demo\",!0),d||_missingMdxReference(\"Install\",!0),h||_missingMdxReference(\"Note\",!0),n(e,{children:[i(a.h2,{id:\"basic\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(a.p,{children:\"Grid's your go-to layout wizard, making it a breeze to whip up responsive and slick layouts. Whether it's jazzing up your blog, showcasing your portfolio, or rocking a landing page, this component keeps everything neat and stylish on any device.\"}),\"\\n\",i(r,{component:\"surfaces/grid/grid-basic-demo\"}),\"\\n\",i(a.h2,{id:\"installation\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",i(d,{component:\"grid\"}),\"\\n\",i(a.h2,{id:\"responsive\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#responsive\",children:\"Responsive\"})}),\"\\n\",i(a.p,{children:\"Grid's responsiveness is a breeze, with the ability to define your columns and gaps for any screen size. Whether you're designing for mobile, tablet, or desktop, Grid ensures that your content looks great on all devices.\"}),\"\\n\",i(h,{children:n(a.p,{children:[\"This grid ain't got no default variants, so if you don't set an initial value, it's a big fat nothing. When you're\\nsetting up a responsive prop like \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"sm\"})})})}),\" or \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"md\"})})})}),\", make sure to slap an initial value for the breakpoint.\"]})}),\"\\n\",i(r,{component:\"surfaces/grid/grid-responsive-demo\"}),\"\\n\",i(a.h2,{id:\"gaps\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#gaps\",children:\"Gaps\"})}),\"\\n\",i(a.p,{children:\"Grid's gaps are configurable, allowing you to define the space between each item. Whether you're designing for mobile, tablet, or desktop, Grid ensures that your content looks great on all devices.\"}),\"\\n\",i(r,{component:\"surfaces/grid/grid-gap-demo\"}),\"\\n\",i(a.h2,{id:\"gaps-x-and-y\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#gaps-x-and-y\",children:\"Gaps X and Y\"})}),\"\\n\",n(a.p,{children:[\"Sometimes you need make diffrent gaps for the x and y axis. Grid's \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"gapX\"})})})}),\" and \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"gapY\"})})})}),\" props allow you to do just that.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-gap-x-y-demo\"}),\"\\n\",i(a.h2,{id:\"collections\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:\"Collections\"})}),\"\\n\",n(a.p,{children:[\"You might wanna render this grid on the fly for stuff like articles, podcasts, or whatever. It's a breeze to just toss in items as props like this. Not sure why we roll with collections? Check it out \",i(a.a,{href:\"https://react-spectrum.adobe.com/react-aria/collections.html#why-not-array-map\",children:\"here\"}),\".\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-collections-demo\"}),\"\\n\",i(a.h2,{id:\"debugging\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#debugging\",children:\"Debugging\"})}),\"\\n\",n(a.p,{children:[\"Sometimes you need to know what's going on in your grid. Grid has a \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"debug\"})})})}),\" prop that will add a border around each item.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-debug-demo\"}),\"\\n\",i(a.h2,{id:\"grid-item\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#grid-item\",children:\"Grid Item\"})}),\"\\n\",n(a.p,{children:[\"Grid Item is the component that makes up the grid. It's a wrapper around the \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"ListBoxItem\"})})})}),\" component from \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"react-aria-components\"})})})}),\". Grid Item has all the same props as \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"ListBoxItem\"})})})}),\", but with a few extra props to help you define column and row spans.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-item-demo\"}),\"\\n\",i(a.h2,{id:\"props\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#props\",children:\"Props\"})}),\"\\n\",i(a.p,{children:\"Aight, just a heads up, all them props got that responsive mojo. You can tweak the prop for each breakpoint like a boss.\"}),\"\\n\",i(a.h3,{id:\"grid\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#grid\",children:\"Grid\"})}),\"\\n\",i(a.p,{children:\"These props let you tweak the grid to your vibe.\"}),\"\\n\",n(a.table,{children:[i(a.thead,{children:n(a.tr,{children:[i(a.th,{children:\"Property\"}),i(a.th,{children:\"Type\"}),i(a.th,{children:\"Description\"})]})}),n(a.tbody,{children:[n(a.tr,{children:[i(a.td,{children:\"columns\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of columns in the grid. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gap\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gapX\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid on the x-axis.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gapY\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid on the y-axis.\"})]}),n(a.tr,{children:[i(a.td,{children:\"flow\"}),i(a.td,{children:\"'row' | 'col' | 'rowDense' | 'colDense' | 'dense'\"}),i(a.td,{children:\"Defines the flow direction of the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rows\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of rows in the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"debug\"}),i(a.td,{children:\"boolean\"}),i(a.td,{children:\"Adds a border around each item in the grid.\"})]})]})]}),\"\\n\",i(a.h3,{id:\"griditem\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#griditem\",children:\"GridItem\"})}),\"\\n\",n(a.p,{children:[\"Props like \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colSpan\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowSpan\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colStart\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colEnd\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowStart\"})})})}),\", and \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowEnd\"})})})}),\" let you position grid items exactly where you want 'em in the grid layout.\"]}),\"\\n\",n(a.table,{children:[i(a.thead,{children:n(a.tr,{children:[i(a.th,{children:\"Property\"}),i(a.th,{children:\"Type\"}),i(a.th,{children:\"Description\"})]})}),n(a.tbody,{children:[n(a.tr,{children:[i(a.td,{children:\"colSpan\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of columns the item spans. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowSpan\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of rows the item spans. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"colStart\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the column the item starts at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"colEnd\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the column the item ends at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowStart\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the row the item starts at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowEnd\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the row the item ends at. Can be a number or an object with breakpoints.\"})]})]})]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?i(n,{...e,children:i(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,i){throw new Error(\"Expected \"+(i?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "toc": [
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Responsive",
+        "url": "#responsive",
+        "items": []
+      },
+      {
+        "title": "Gaps",
+        "url": "#gaps",
+        "items": []
+      },
+      {
+        "title": "Gaps X and Y",
+        "url": "#gaps-x-and-y",
+        "items": []
+      },
+      {
+        "title": "Collections",
+        "url": "#collections",
+        "items": []
+      },
+      {
+        "title": "Debugging",
+        "url": "#debugging",
+        "items": []
+      },
+      {
+        "title": "Grid Item",
+        "url": "#grid-item",
+        "items": []
+      },
+      {
+        "title": "Props",
+        "url": "#props",
+        "items": [
+          {
+            "title": "Grid",
+            "url": "#grid",
+            "items": []
+          },
+          {
+            "title": "GridItem",
+            "url": "#griditem",
+            "items": []
+          }
+        ]
+      }
+    ],
+    "status": "beta",
+    "slugAsParams": "components/surfaces/grid"
+  },
+  {
+    "slug": "docs/components/surfaces/separator",
+    "title": "Separator",
+    "description": "Lays down the access creds for a separator. It’s the visual boss that splits up chunks of content, like menu items or page sections.",
+    "order": 3,
+    "published": true,
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/useSeparator.html"
+    ],
+    "body": "const{Fragment:e,jsx:a,jsxs:i}=arguments[0];function _createMdxContent(n){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...n.components},{Demo:r,Install:s}=t;return r||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),i(e,{children:[a(t.h2,{id:\"basic\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(t.p,{children:[\"Sometimes you need a separator to separate content. This component is a simple wrapper around the \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"Separator\"})})})}),\" component from \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"react-aria-components\"})})})}),\". It's a breeze to use.\"]}),\"\\n\",a(r,{component:\"surfaces/separator/separator-demo\"}),\"\\n\",a(t.h2,{id:\"installation\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",a(s,{component:\"separator\"}),\"\\n\",a(t.h2,{id:\"orientation\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:\"Orientation\"})}),\"\\n\",i(t.p,{children:[\"Separator has two orientations: \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"horizontal\"})})})}),\" and \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"vertical\"})})})}),\". The default is \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"horizontal\"})})})}),\".\"]}),\"\\n\",a(r,{center:!0,component:\"surfaces/separator/separator-orientation-demo\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?a(i,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "toc": [
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      }
+    ],
+    "slugAsParams": "components/surfaces/separator"
+  },
+  {
+    "slug": "docs/components/surfaces/show-more",
+    "title": "Show More",
+    "description": "When you need to toggle visibility of additional content in a responsive and accessible manner, the ShowMore component provides the functionality.",
+    "order": 5,
+    "published": true,
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ToggleButton.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),a(e,{children:[n(t.h2,{id:\"basic\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",a(t.p,{children:[\"The \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component is primarily used to encapsulate content that can be expanded or collapsed. It renders the content as initially hidden, and it expands to show more when interacted with by the user.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-demo\"}),\"\\n\",n(t.h2,{id:\"installation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",n(r,{component:\"show-more\"}),\"\\n\",n(t.h2,{id:\"as-text\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#as-text\",children:\"As Text\"})}),\"\\n\",a(t.p,{children:[\"While the default behavior utilizes a button for interactions, the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component can also be configured to function as a clickable text element.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-as-text-demo\"}),\"\\n\",n(t.h2,{id:\"controlled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:\"Controlled\"})}),\"\\n\",a(t.p,{children:[\"Gain fine-grained control over the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component's behavior. This setup ensures you can manage the expanded state externally, ideal for more complex interactions.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-controlled-demo\"}),\"\\n\",n(t.h2,{id:\"orientation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:\"Orientation\"})}),\"\\n\",a(t.p,{children:[\"The default orientation for the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component is horizontal. However, it can easily be adjusted to a vertical layout to suit different design needs.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-orientation-demo\"}),\"\\n\",n(t.h2,{id:\"content-reveal\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#content-reveal\",children:\"Content Reveal\"})}),\"\\n\",n(t.p,{children:\"Sometimes you want to hide part of a content, use the Content Reveal!\"}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-content-reveal-demo\"}),\"\\n\",n(t.h2,{id:\"initial-appearance\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#initial-appearance\",children:\"Initial Appearance\"})}),\"\\n\",a(t.p,{children:[\"You can specify the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"initialHeight\"})})})}),\" and \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"initialOpacity\"})})})}),\" by provide the props\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-content-reveal-initial-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
+    "toc": [
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "As Text",
+        "url": "#as-text",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      },
+      {
+        "title": "Content Reveal",
+        "url": "#content-reveal",
+        "items": []
+      },
+      {
+        "title": "Initial Appearance",
+        "url": "#initial-appearance",
+        "items": []
+      }
+    ],
+    "slugAsParams": "components/surfaces/show-more"
+  },
+  {
     "slug": "docs/components/statuses/badge",
     "title": "Badge",
     "description": "Small count or info chip, like a merit badge, highlighting status or providing quick alerts at a glance.",
@@ -4082,219 +4296,5 @@
       }
     ],
     "slugAsParams": "components/statuses/toast"
-  },
-  {
-    "slug": "docs/components/surfaces/card",
-    "title": "Card",
-    "description": "Cards are a flexible and extensible content container. They are commonly used within a page layout or as part of a related group of content.",
-    "order": 1,
-    "published": true,
-    "body": "const{Fragment:e,jsx:i,jsxs:n}=arguments[0];function _createMdxContent(t){const a={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...t.components},{Demo:s,Install:r}=a;return s||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),n(e,{children:[i(a.h2,{id:\"basic\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(a.p,{children:\"Top spots to hit in 2024, no cap!\"}),\"\\n\",i(s,{center:!0,component:\"surfaces/card/card-demo\"}),\"\\n\",i(a.h2,{id:\"installation\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",i(r,{component:\"card\"}),\"\\n\",i(a.h2,{id:\"with-form\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-form\",children:\"With Form\"})}),\"\\n\",i(a.p,{children:\"Peep this for a slick login setup, easy peesy.\"}),\"\\n\",i(s,{component:\"surfaces/card/card-login-form-demo\"}),\"\\n\",i(a.h2,{id:\"with-table\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-table\",children:\"With Table\"})}),\"\\n\",i(a.p,{children:\"Check out the lowdown with all the deets laid out.\"}),\"\\n\",i(s,{component:\"surfaces/card/card-table-demo\"}),\"\\n\",i(a.h2,{id:\"section-title\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#section-title\",children:\"Section Title\"})}),\"\\n\",n(a.p,{children:[\"Sometimes, you may only need a card header without wrapping container itself. Of course, you need don't want the default padding, right? So I have prop called \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"withoutPadding\"})})})}),\" to help you out.\"]}),\"\\n\",i(a.figure,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.pre,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"dark-plus light-plus\",children:i(a.code,{\"data-language\":\"tsx\",\"data-theme\":\"dark-plus light-plus\",style:{display:\"grid\"},children:n(a.span,{\"data-line\":\"\",children:[i(a.span,{style:{\"--shiki-dark\":\"#808080\",\"--shiki-light\":\"#800000\"},children:\"<\"}),i(a.span,{style:{\"--shiki-dark\":\"#4EC9B0\",\"--shiki-light\":\"#267F99\"},children:\"Card.Header\"}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" withoutPadding\"}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" title\"}),i(a.span,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\"},children:\"=\"}),i(a.span,{style:{\"--shiki-dark\":\"#CE9178\",\"--shiki-light\":\"#A31515\"},children:'\"List Daemons\"'}),i(a.span,{style:{\"--shiki-dark\":\"#9CDCFE\",\"--shiki-light\":\"#E50000\"},children:\" description\"}),i(a.span,{style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\"},children:\"=\"}),i(a.span,{style:{\"--shiki-dark\":\"#CE9178\",\"--shiki-light\":\"#A31515\"},children:'\"List of daemons to use in your sites.\"'}),i(a.span,{style:{\"--shiki-dark\":\"#808080\",\"--shiki-light\":\"#800000\"},children:\" />\"})]})})})}),\"\\n\",n(a.p,{children:[\"For table docs, check out the \",i(a.a,{href:\"/docs/components/collections/table\",children:\"Table\"}),\" docs.\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?i(n,{...e,children:i(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,i){throw new Error(\"Expected \"+(i?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
-    "toc": [
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "With Form",
-        "url": "#with-form",
-        "items": []
-      },
-      {
-        "title": "With Table",
-        "url": "#with-table",
-        "items": []
-      },
-      {
-        "title": "Section Title",
-        "url": "#section-title",
-        "items": []
-      }
-    ],
-    "slugAsParams": "components/surfaces/card"
-  },
-  {
-    "slug": "docs/components/surfaces/description-list",
-    "title": "Description List",
-    "description": "A description list is typically used to display pairs of terms and details, like in invoices or product specifications, enhancing clarity and organization of information.",
-    "order": 6,
-    "published": true,
-    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",p:\"p\",...t.components},{Demo:s,Install:a}=o;return s||_missingMdxReference(\"Demo\",!0),a||_missingMdxReference(\"Install\",!0),i(n,{children:[e(o.h2,{id:\"basic\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",e(o.p,{children:\"A description list is typically used to display pairs of terms and details, like in invoices or product specifications, enhancing clarity and organization of information.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-demo\"}),\"\\n\",e(o.h2,{id:\"installation\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",e(a,{component:\"description-list\"}),\"\\n\",e(o.h2,{id:\"with-heading\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-heading\",children:\"With Heading\"})}),\"\\n\",e(o.p,{children:\"This example shows with heading.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-heading-demo\"}),\"\\n\",e(o.h2,{id:\"with-card\",children:e(o.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-card\",children:\"With Card\"})}),\"\\n\",e(o.p,{children:\"Sometimes, you may want to use a card to display the description list. This example shows how to do it.\"}),\"\\n\",e(s,{component:\"surfaces/description-list/description-list-card-demo\"})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
-    "toc": [
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "With Heading",
-        "url": "#with-heading",
-        "items": []
-      },
-      {
-        "title": "With Card",
-        "url": "#with-card",
-        "items": []
-      }
-    ],
-    "status": "new",
-    "slugAsParams": "components/surfaces/description-list"
-  },
-  {
-    "slug": "docs/components/surfaces/grid",
-    "title": "Grid",
-    "description": "Check out this Responsive Grid component! It adjusts columns and gaps for any device, enhancing your UI’s vibe and usability across all screen sizes.",
-    "order": 2,
-    "published": true,
-    "body": "const{Fragment:e,jsx:i,jsxs:n}=arguments[0];function _createMdxContent(t){const a={a:\"a\",code:\"code\",h2:\"h2\",h3:\"h3\",p:\"p\",span:\"span\",table:\"table\",tbody:\"tbody\",td:\"td\",th:\"th\",thead:\"thead\",tr:\"tr\",...t.components},{Demo:r,Install:d,Note:h}=a;return r||_missingMdxReference(\"Demo\",!0),d||_missingMdxReference(\"Install\",!0),h||_missingMdxReference(\"Note\",!0),n(e,{children:[i(a.h2,{id:\"basic\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(a.p,{children:\"Grid's your go-to layout wizard, making it a breeze to whip up responsive and slick layouts. Whether it's jazzing up your blog, showcasing your portfolio, or rocking a landing page, this component keeps everything neat and stylish on any device.\"}),\"\\n\",i(r,{component:\"surfaces/grid/grid-basic-demo\"}),\"\\n\",i(a.h2,{id:\"installation\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",i(d,{component:\"grid\"}),\"\\n\",i(a.h2,{id:\"responsive\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#responsive\",children:\"Responsive\"})}),\"\\n\",i(a.p,{children:\"Grid's responsiveness is a breeze, with the ability to define your columns and gaps for any screen size. Whether you're designing for mobile, tablet, or desktop, Grid ensures that your content looks great on all devices.\"}),\"\\n\",i(h,{children:n(a.p,{children:[\"This grid ain't got no default variants, so if you don't set an initial value, it's a big fat nothing. When you're\\nsetting up a responsive prop like \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"sm\"})})})}),\" or \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"md\"})})})}),\", make sure to slap an initial value for the breakpoint.\"]})}),\"\\n\",i(r,{component:\"surfaces/grid/grid-responsive-demo\"}),\"\\n\",i(a.h2,{id:\"gaps\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#gaps\",children:\"Gaps\"})}),\"\\n\",i(a.p,{children:\"Grid's gaps are configurable, allowing you to define the space between each item. Whether you're designing for mobile, tablet, or desktop, Grid ensures that your content looks great on all devices.\"}),\"\\n\",i(r,{component:\"surfaces/grid/grid-gap-demo\"}),\"\\n\",i(a.h2,{id:\"gaps-x-and-y\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#gaps-x-and-y\",children:\"Gaps X and Y\"})}),\"\\n\",n(a.p,{children:[\"Sometimes you need make diffrent gaps for the x and y axis. Grid's \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"gapX\"})})})}),\" and \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"gapY\"})})})}),\" props allow you to do just that.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-gap-x-y-demo\"}),\"\\n\",i(a.h2,{id:\"collections\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:\"Collections\"})}),\"\\n\",n(a.p,{children:[\"You might wanna render this grid on the fly for stuff like articles, podcasts, or whatever. It's a breeze to just toss in items as props like this. Not sure why we roll with collections? Check it out \",i(a.a,{href:\"https://react-spectrum.adobe.com/react-aria/collections.html#why-not-array-map\",children:\"here\"}),\".\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-collections-demo\"}),\"\\n\",i(a.h2,{id:\"debugging\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#debugging\",children:\"Debugging\"})}),\"\\n\",n(a.p,{children:[\"Sometimes you need to know what's going on in your grid. Grid has a \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"debug\"})})})}),\" prop that will add a border around each item.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-debug-demo\"}),\"\\n\",i(a.h2,{id:\"grid-item\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#grid-item\",children:\"Grid Item\"})}),\"\\n\",n(a.p,{children:[\"Grid Item is the component that makes up the grid. It's a wrapper around the \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"ListBoxItem\"})})})}),\" component from \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"react-aria-components\"})})})}),\". Grid Item has all the same props as \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"ListBoxItem\"})})})}),\", but with a few extra props to help you define column and row spans.\"]}),\"\\n\",i(r,{component:\"surfaces/grid/grid-item-demo\"}),\"\\n\",i(a.h2,{id:\"props\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#props\",children:\"Props\"})}),\"\\n\",i(a.p,{children:\"Aight, just a heads up, all them props got that responsive mojo. You can tweak the prop for each breakpoint like a boss.\"}),\"\\n\",i(a.h3,{id:\"grid\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#grid\",children:\"Grid\"})}),\"\\n\",i(a.p,{children:\"These props let you tweak the grid to your vibe.\"}),\"\\n\",n(a.table,{children:[i(a.thead,{children:n(a.tr,{children:[i(a.th,{children:\"Property\"}),i(a.th,{children:\"Type\"}),i(a.th,{children:\"Description\"})]})}),n(a.tbody,{children:[n(a.tr,{children:[i(a.td,{children:\"columns\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of columns in the grid. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gap\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gapX\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid on the x-axis.\"})]}),n(a.tr,{children:[i(a.td,{children:\"gapY\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the gap between each item in the grid on the y-axis.\"})]}),n(a.tr,{children:[i(a.td,{children:\"flow\"}),i(a.td,{children:\"'row' | 'col' | 'rowDense' | 'colDense' | 'dense'\"}),i(a.td,{children:\"Defines the flow direction of the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rows\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of rows in the grid.\"})]}),n(a.tr,{children:[i(a.td,{children:\"debug\"}),i(a.td,{children:\"boolean\"}),i(a.td,{children:\"Adds a border around each item in the grid.\"})]})]})]}),\"\\n\",i(a.h3,{id:\"griditem\",children:i(a.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#griditem\",children:\"GridItem\"})}),\"\\n\",n(a.p,{children:[\"Props like \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colSpan\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowSpan\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colStart\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"colEnd\"})})})}),\", \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowStart\"})})})}),\", and \",i(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:i(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:i(a.span,{\"data-line\":\"\",children:i(a.span,{children:\"rowEnd\"})})})}),\" let you position grid items exactly where you want 'em in the grid layout.\"]}),\"\\n\",n(a.table,{children:[i(a.thead,{children:n(a.tr,{children:[i(a.th,{children:\"Property\"}),i(a.th,{children:\"Type\"}),i(a.th,{children:\"Description\"})]})}),n(a.tbody,{children:[n(a.tr,{children:[i(a.td,{children:\"colSpan\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of columns the item spans. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowSpan\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the number of rows the item spans. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"colStart\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the column the item starts at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"colEnd\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the column the item ends at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowStart\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the row the item starts at. Can be a number or an object with breakpoints.\"})]}),n(a.tr,{children:[i(a.td,{children:\"rowEnd\"}),i(a.td,{children:\"number | object\"}),i(a.td,{children:\"Defines the row the item ends at. Can be a number or an object with breakpoints.\"})]})]})]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?i(n,{...e,children:i(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,i){throw new Error(\"Expected \"+(i?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
-    "toc": [
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Responsive",
-        "url": "#responsive",
-        "items": []
-      },
-      {
-        "title": "Gaps",
-        "url": "#gaps",
-        "items": []
-      },
-      {
-        "title": "Gaps X and Y",
-        "url": "#gaps-x-and-y",
-        "items": []
-      },
-      {
-        "title": "Collections",
-        "url": "#collections",
-        "items": []
-      },
-      {
-        "title": "Debugging",
-        "url": "#debugging",
-        "items": []
-      },
-      {
-        "title": "Grid Item",
-        "url": "#grid-item",
-        "items": []
-      },
-      {
-        "title": "Props",
-        "url": "#props",
-        "items": [
-          {
-            "title": "Grid",
-            "url": "#grid",
-            "items": []
-          },
-          {
-            "title": "GridItem",
-            "url": "#griditem",
-            "items": []
-          }
-        ]
-      }
-    ],
-    "status": "beta",
-    "slugAsParams": "components/surfaces/grid"
-  },
-  {
-    "slug": "docs/components/surfaces/separator",
-    "title": "Separator",
-    "description": "Lays down the access creds for a separator. It’s the visual boss that splits up chunks of content, like menu items or page sections.",
-    "order": 3,
-    "published": true,
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/useSeparator.html"
-    ],
-    "body": "const{Fragment:e,jsx:a,jsxs:i}=arguments[0];function _createMdxContent(n){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...n.components},{Demo:r,Install:s}=t;return r||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),i(e,{children:[a(t.h2,{id:\"basic\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",i(t.p,{children:[\"Sometimes you need a separator to separate content. This component is a simple wrapper around the \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"Separator\"})})})}),\" component from \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"react-aria-components\"})})})}),\". It's a breeze to use.\"]}),\"\\n\",a(r,{component:\"surfaces/separator/separator-demo\"}),\"\\n\",a(t.h2,{id:\"installation\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",a(s,{component:\"separator\"}),\"\\n\",a(t.h2,{id:\"orientation\",children:a(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:\"Orientation\"})}),\"\\n\",i(t.p,{children:[\"Separator has two orientations: \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"horizontal\"})})})}),\" and \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"vertical\"})})})}),\". The default is \",a(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:a(t.span,{\"data-line\":\"\",children:a(t.span,{children:\"horizontal\"})})})}),\".\"]}),\"\\n\",a(r,{center:!0,component:\"surfaces/separator/separator-orientation-demo\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?a(i,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
-    "toc": [
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      }
-    ],
-    "slugAsParams": "components/surfaces/separator"
-  },
-  {
-    "slug": "docs/components/surfaces/show-more",
-    "title": "Show More",
-    "description": "When you need to toggle visibility of additional content in a responsive and accessible manner, the ShowMore component provides the functionality.",
-    "order": 5,
-    "published": true,
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ToggleButton.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),a(e,{children:[n(t.h2,{id:\"basic\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:\"Basic\"})}),\"\\n\",a(t.p,{children:[\"The \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component is primarily used to encapsulate content that can be expanded or collapsed. It renders the content as initially hidden, and it expands to show more when interacted with by the user.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-demo\"}),\"\\n\",n(t.h2,{id:\"installation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:\"Installation\"})}),\"\\n\",n(r,{component:\"show-more\"}),\"\\n\",n(t.h2,{id:\"as-text\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#as-text\",children:\"As Text\"})}),\"\\n\",a(t.p,{children:[\"While the default behavior utilizes a button for interactions, the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component can also be configured to function as a clickable text element.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-as-text-demo\"}),\"\\n\",n(t.h2,{id:\"controlled\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:\"Controlled\"})}),\"\\n\",a(t.p,{children:[\"Gain fine-grained control over the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component's behavior. This setup ensures you can manage the expanded state externally, ideal for more complex interactions.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-controlled-demo\"}),\"\\n\",n(t.h2,{id:\"orientation\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:\"Orientation\"})}),\"\\n\",a(t.p,{children:[\"The default orientation for the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"ShowMore\"})})})}),\" component is horizontal. However, it can easily be adjusted to a vertical layout to suit different design needs.\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-orientation-demo\"}),\"\\n\",n(t.h2,{id:\"content-reveal\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#content-reveal\",children:\"Content Reveal\"})}),\"\\n\",n(t.p,{children:\"Sometimes you want to hide part of a content, use the Content Reveal!\"}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-content-reveal-demo\"}),\"\\n\",n(t.h2,{id:\"initial-appearance\",children:n(t.a,{className:\"not-prose subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#initial-appearance\",children:\"Initial Appearance\"})}),\"\\n\",a(t.p,{children:[\"You can specify the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"initialHeight\"})})})}),\" and \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"dark-plus light-plus\",style:{\"--shiki-dark\":\"#D4D4D4\",\"--shiki-light\":\"#000000\",\"--shiki-dark-bg\":\"#1E1E1E\",\"--shiki-light-bg\":\"#FFFFFF\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{children:\"initialOpacity\"})})})}),\" by provide the props\"]}),\"\\n\",n(o,{component:\"surfaces/show-more/show-more-content-reveal-initial-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}",
-    "toc": [
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "As Text",
-        "url": "#as-text",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      },
-      {
-        "title": "Content Reveal",
-        "url": "#content-reveal",
-        "items": []
-      },
-      {
-        "title": "Initial Appearance",
-        "url": "#initial-appearance",
-        "items": []
-      }
-    ],
-    "slugAsParams": "components/surfaces/show-more"
   }
 ]
