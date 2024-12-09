@@ -6,6 +6,7 @@ import Paginator from 'components/paginator'
 import { IconEllipsisVertical, IconEye, IconHighlighter, IconPlus, IconTrash } from 'hq-icons'
 import NavbarLayout from 'layouts/navbar-layout'
 import { Key } from 'react-aria-components'
+import { useDebouncedCallback } from 'use-debounce'
 
 import { Card, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
 
@@ -22,15 +23,24 @@ export default function ProductManagement() {
     const [page, setPage] = React.useState<number>(1)
     const [total, setTotal] = React.useState<number>(0)
 
-    React.useEffect(() => {
-        const getProducts = async () => {
-            const response = await fetch(
-                `https://dummyjson.com/products?limit=${show}&skip=${(page - 1) * Number(show)}&select=title,category,price`
-            )
-            const data = await response.json()
-            setItems(data.products)
-            setTotal(data.total)
+    const getProducts = async ({ query = '' }: { query?: string } = {}) => {
+        const response = await fetch(
+            `https://dummyjson.com/products/search?q=${query}&limit=${show}&skip=${(page - 1) * Number(show)}&select=title,category,price`
+        )
+        const data = await response.json()
+        setItems(data.products)
+        setTotal(data.total)
+    }
+
+    const handleSearch = useDebouncedCallback((e) => {
+        if (e) {
+            getProducts({ query: e })
+        } else {
+            getProducts()
         }
+    }, 300)
+
+    React.useEffect(() => {
         getProducts()
     }, [show, page])
 
@@ -39,7 +49,7 @@ export default function ProductManagement() {
             <Card>
                 <Card.Header>
                     <Card.Title>Product Management</Card.Title>
-                    <Card.Description>Manage your products.</Card.Description>
+                    <Card.Description>Manage your products</Card.Description>
                     <Toolbar className='flex justify-between pt-2'>
                         <Toolbar.Group aria-label='Filters'>
                             <Select
@@ -59,7 +69,11 @@ export default function ProductManagement() {
                             </Select>
                         </Toolbar.Group>
                         <Toolbar.Group aria-label='Actions'>
-                            <SearchField placeholder='Search...' aria-label='Search' />
+                            <SearchField
+                                onChange={handleSearch}
+                                placeholder='Search...'
+                                aria-label='Search'
+                            />
                             <Toolbar.Item aria-label='Create' size='icon' variant='outline'>
                                 <IconPlus />
                             </Toolbar.Item>

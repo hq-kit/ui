@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { IconUser } from 'hq-icons'
-import { Collection } from 'react-aria-components'
+import { Collection, Text } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 import { type CollectionProps } from '@react-aria/collections'
@@ -11,17 +11,11 @@ import { type CollectionProps } from '@react-aria/collections'
 import { Tooltip } from './tooltip'
 import { cn, VisuallyHidden } from './utils'
 
-interface AvatarGroupProps<T extends AvatarProps> extends Omit<CollectionProps<T>, 'children'> {
-    children?: React.ReactNode
+interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string
 }
 
-const AvatarGroup = <T extends AvatarProps>({
-    className,
-    items,
-    children,
-    ...props
-}: AvatarGroupProps<T>) => {
+const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps<T>) => {
     return (
         <div
             className={cn(
@@ -29,16 +23,15 @@ const AvatarGroup = <T extends AvatarProps>({
                 'hover:[&_.avatar]:scale-110 hover:[&_.avatar]:z-30 [&_.avatar]:transition',
                 className
             )}
-            {...props}
         >
-            <Collection items={items}>{children ?? ((item) => <Avatar {...item} />)}</Collection>
+            <Collection {...props} />
         </div>
     )
 }
 
 const avatarStyles = tv({
     base: [
-        'inline-grid relative shrink-0 bg-muted align-middle [--ring-opacity:20%] *:col-start-1 *:row-start-1',
+        'inline-grid items-center justify-center relative shrink-0 bg-muted align-middle [--ring-opacity:20%] *:col-start-1 *:row-start-1',
         'avatar outline outline-1 -outline-offset-1 outline-foreground/[--ring-opacity]'
     ],
     variants: {
@@ -50,7 +43,7 @@ const avatarStyles = tv({
         },
         shape: {
             square: 'rounded-lg *:rounded-lg [&_[data-slot=badge]]:rounded-full',
-            circle: 'rounded-full *:rounded-full'
+            circle: 'rounded-full *:rounded-full [&_[data-slot=badge]]:rounded-full'
         }
     },
 
@@ -97,25 +90,21 @@ const Avatar = ({
                     className={avatarStyles({ shape, size, className })}
                 >
                     {initials ? (
-                        <svg
-                            className='select-none fill-current text-[48px] font-medium uppercase'
-                            viewBox='0 0 100 100'
-                            aria-hidden={alt ? undefined : 'true'}
-                        >
-                            {alt && <title>{alt}</title>}
-                            <text
-                                x='50%'
-                                y='50%'
-                                alignmentBaseline='middle'
-                                dominantBaseline='middle'
-                                textAnchor='middle'
-                                dy='.125em'
-                            >
-                                {initials}
-                            </text>
-                        </svg>
+                        <>
+                            {initials ? (
+                                <Text>{initials}</Text>
+                            ) : (
+                                <Text>
+                                    {alt
+                                        .split(' ')
+                                        .slice(0, 2)
+                                        .map((part) => part.charAt(0))
+                                        .join('')}
+                                </Text>
+                            )}
+                        </>
                     ) : (
-                        <IconUser />
+                        <IconUser className='text-5xl text-muted-foreground' />
                     )}
                     {src && <img src={src} alt={alt} />}
                     {status && <AvatarBadge size={size} status={status} aria-label={status} />}

@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 import { IconSearch, IconX } from 'hq-icons'
 import {
     SearchField as SearchFieldPrimitive,
