@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import {
     IconArchive,
     IconDisc,
@@ -9,9 +7,6 @@ import {
     IconFileVideo,
     IconFolder
 } from 'hq-icons'
-import { Collection } from 'react-aria-components'
-
-import { Tree, TreeItem } from '@/components/ui'
 
 export type FileNode = {
     file: string
@@ -139,24 +134,4 @@ export const getFileIcon = (ext: string) => {
             break
     }
     return <Icon />
-}
-
-export function FileList() {
-    const renderItem = (item: FileNode): React.ReactNode => {
-        return (
-            <TreeItem key={item.file} textValue={item.file}>
-                <TreeItem.Content>
-                    {item.children && <TreeItem.Indicator />}
-                    <TreeItem.Checkbox />
-                    <TreeItem.Label>{item.file}</TreeItem.Label>
-                </TreeItem.Content>
-                {item.children && <Collection items={item.children}>{renderItem}</Collection>}
-            </TreeItem>
-        )
-    }
-    return (
-        <Tree aria-label='Files' selectionMode='multiple' items={rootFolders}>
-            {rootFolders.map(renderItem)}
-        </Tree>
-    )
 }

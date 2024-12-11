@@ -2,21 +2,11 @@
 
 import React from 'react'
 
-import { IconMenu, IconMinus, IconPanelLeftClose, IconPanelLeftOpen } from 'hq-icons'
-import {
-    Button as ButtonPrimitive,
-    Disclosure,
-    DisclosurePanel,
-    type DisclosureProps,
-    Link,
-    type LinkProps
-} from 'react-aria-components'
+import { IconMenu, IconPanelLeftClose, IconPanelLeftOpen } from 'hq-icons'
+import { Collection, Link, LinkProps, ListBoxSectionProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { Button } from './button'
-import { Sheet } from './sheet'
-import { Tooltip } from './tooltip'
-import { cn, cr, useMediaQuery } from './utils'
+import { Accordion, Button, cn, Popover, Sheet, Tooltip, useMediaQuery } from '@/components/ui'
 
 type SidebarContextProps = {
     state: 'expanded' | 'collapsed'
@@ -224,7 +214,7 @@ const Sidebar = ({
                 <div
                     data-sidebar='sidebar'
                     className={cn(
-                        'flex h-full w-full flex-col bg-background group-data-[variant=inset]:bg-transparent group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:bg-muted/50',
+                        'flex h-full w-full flex-col bg-background group-data-[variant=inset]:bg-transparent group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-muted',
                         variant === 'inset' || state === 'collapsed'
                             ? '[&_[data-sidebar=header]]:border-transparent [&_[data-sidebar=footer]]:border-transparent'
                             : '[&_[data-sidebar=header]]:border-b [&_[data-sidebar=footer]]:border-t'
@@ -234,111 +224,6 @@ const Sidebar = ({
                 </div>
             </div>
         </div>
-    )
-}
-
-const itemStyles = tv({
-    base: 'group/menu-item grid [&>[data-slot=icon]]:size-4 col-span-full [&>[data-slot=icon]]:shrink-0 items-center [&>[data-slot=icon]]:text-muted-foreground relative rounded-lg lg:text-sm leading-6',
-    variants: {
-        collapsed: {
-            true: [
-                'justify-start px-3 [&>[data-slot=icon]]:mr-2 py-2 col-span-full',
-                'md:place-content-center md:grid-cols-[auto] md:[&>[data-slot=icon]]:mr-0 md:px-0 md:py-0 md:size-9'
-            ],
-            false: 'grid-cols-subgrid [&>[data-slot=icon]]:mr-2 px-3 py-2'
-        },
-        isFocused: {
-            true: 'outline-none'
-        },
-        isFocusVisible: {
-            true: 'bg-muted [&:focus-visible_[slot=label]]:text-primary-foreground [&:focus-visible_[slot=description]]:text-primary-foreground/70 text-muted-foreground'
-        },
-        isHovered: {
-            true: [
-                'bg-muted [&:focus-visible_[slot=label]]:text-primary-foreground [&:focus-visible_[slot=description]]:text-primary-foreground/70 text-muted-foreground [&_.text-muted-foreground]:text-muted-foreground/80'
-            ]
-        },
-        isCurrent: {
-            true: [
-                '[&_[data-slot=icon]]:text-primary-foreground [&_[data-slot=label]]:text-primary-foreground [&_.text-muted-foreground]:text-primary-foreground/80 bg-primary text-primary-foreground',
-                '[&_.side-item]:bg-primary-foreground/20 [&_.side-item]:ring-primary-foreground/30'
-            ]
-        },
-        isDisabled: {
-            true: 'opacity-70 cursor-default text-muted-foreground'
-        }
-    }
-})
-
-interface ItemProps extends LinkProps {
-    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
-    badge?: string | number | undefined
-    isCurrent?: boolean
-}
-
-const Item = ({ isCurrent, children, className, icon: Icon, ...props }: ItemProps) => {
-    const { state, isMobile } = React.useContext(SidebarContext)!
-    return (
-        <Link
-            data-sidebar='menu-item'
-            aria-current={isCurrent ? 'page' : undefined}
-            className={cr(className, (className, renderProps) =>
-                itemStyles({
-                    ...renderProps,
-                    collapsed: state === 'collapsed',
-                    isCurrent,
-                    className
-                })
-            )}
-            {...props}
-        >
-            {(values) => (
-                <>
-                    {Icon && (
-                        <>
-                            {state === 'collapsed' && !isMobile ? (
-                                <Tooltip closeDelay={0} delay={0}>
-                                    <Tooltip.Trigger className='focus:outline-none size-full absolute inset-0 grid place-content-center'>
-                                        {<Icon data-slot='icon' />}
-                                        <span className='sr-only'>{children as string}</span>
-                                    </Tooltip.Trigger>
-                                    <Tooltip.Content
-                                        variant='inverse'
-                                        showArrow={false}
-                                        placement='right'
-                                    >
-                                        {children as string}
-                                    </Tooltip.Content>
-                                </Tooltip>
-                            ) : (
-                                <Icon data-slot='icon' />
-                            )}
-                        </>
-                    )}
-                    <span className='col-start-2 group-data-[collapsible=dock]:hidden'>
-                        {typeof children === 'function' ? children(values) : children}
-                        {props.badge && (
-                            <div className='side-item h-[1.30rem] px-1 rounded-lg text-muted-foreground text-xs font-medium ring-1 ring-foreground/20 grid place-content-center w-auto inset-y-1/2 -translate-y-1/2 absolute right-1.5 bg-foreground/[0.02] dark:bg-foreground/10'>
-                                {props.badge}
-                            </div>
-                        )}
-                    </span>
-                </>
-            )}
-        </Link>
-    )
-}
-
-const Content = ({ className, ...props }: React.ComponentProps<'div'>) => {
-    return (
-        <div
-            data-sidebar='content'
-            className={cn([
-                'flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=dock]:items-center group-data-[collapsible=dock]:overflow-hidden [&>section+section]:mt-4',
-                className
-            ])}
-            {...props}
-        />
     )
 }
 
@@ -387,21 +272,19 @@ const Header = ({ className, ...props }: React.HtmlHTMLAttributes<HTMLDivElement
     return (
         <div
             data-sidebar='header'
-            {...props}
             className={header({ collapsed: state === 'collapsed', className })}
             {...props}
         />
     )
 }
-
 const footer = tv({
-    base: 'flex flex-col mt-auto [&>section+section]:mt-2.5',
+    base: 'flex flex-col mt-auto',
     variants: {
         collapsed: {
             false: [
-                'p-2 [&_[slot=menu-trigger]>[data-slot=avatar]]:-ml-1.5 [&_[slot=menu-trigger]]:w-full [&_[slot=menu-trigger]]:hover:bg-muted [&_[slot=menu-trigger]]:justify-start [&_[slot=menu-trigger]]:flex [&_[slot=menu-trigger]]:items-center'
+                'p-2.5 [&_[data-slot=menu-trigger]>[data-slot=avatar]]:-ml-1.5 [&_[data-slot=menu-trigger]]:w-full [&_[data-slot=menu-trigger]]:hover:bg-muted [&_[data-slot=menu-trigger]]:justify-start [&_[data-slot=menu-trigger]]:flex [&_[data-slot=menu-trigger]]:items-center'
             ],
-            true: 'size-12 p-1 [&_[slot=menu-trigger]]:size-9 justify-center items-center'
+            true: 'size-12 p-1 [&_[data-slot=menu-trigger]]:size-9 justify-center items-center'
         }
     }
 })
@@ -411,80 +294,171 @@ const Footer = ({ className, ...props }: React.HtmlHTMLAttributes<HTMLDivElement
     return (
         <div
             {...props}
-            data-sidebar='footer'
+            data-slot='sidebar-footer'
             className={footer({ collapsed: state === 'collapsed', className })}
             {...props}
         />
     )
 }
 
-interface CollapsibleProps extends DisclosureProps {
-    children: React.ReactNode
+const Content = ({ children, className, ...props }: React.HTMLProps<HTMLDivElement>) => (
+    <nav
+        className={cn(
+            'flex flex-col overflow-y-auto p-2 space-y-2 [&>section+section]:mt-8',
+            className
+        )}
+        {...props}
+    >
+        {children}
+    </nav>
+)
+
+interface SidebarSectionProps<T> extends ListBoxSectionProps<T> {
     title?: string
-    collapsible?: boolean
-    defaultExpanded?: boolean
 }
 
-const Section = ({
-    title,
-    className,
-    collapsible,
-    defaultExpanded,
-    ...props
-}: CollapsibleProps) => {
-    const isExpanded = title ? (collapsible ? (defaultExpanded ?? true) : true) : true
-
-    const { state } = React.useContext(SidebarContext)!
+const Section = <T extends object>({ className, ...props }: SidebarSectionProps<T>) => {
     return (
-        <Disclosure className={cn('p-2', className)} defaultExpanded={isExpanded} {...props}>
-            {({ isExpanded }) => (
-                <>
-                    {typeof title === 'string' && (
-                        <span className='group-data-[collapsible=dock]:opacity-0 group-data-[collapsible=dock]:hidden'>
-                            {collapsible ? (
-                                <ButtonPrimitive
-                                    slot='trigger'
-                                    className='w-full focus:outline-none flex items-center justify-between text-sm text-muted-foreground px-3 py-2 has-[.indicator]:pr-2'
-                                >
-                                    {title}
-                                    <div
-                                        className={cn(
-                                            'relative flex items-center transition pr-0 justify-center size-3 indicator',
-                                            !isExpanded ? '-rotate-90' : 'rotate-0'
-                                        )}
-                                    >
-                                        <IconMinus className={cn('transition absolute size-3')} />
-                                        <IconMinus
-                                            className={cn(
-                                                'transition absolute size-3',
-                                                !isExpanded ? '-rotate-90' : 'rotate-0'
-                                            )}
-                                        />
-                                    </div>
-                                </ButtonPrimitive>
-                            ) : (
-                                <h4 className='text-sm text-muted-foreground px-3 py-2'>{title}</h4>
-                            )}
-                        </span>
-                    )}
-                    <DisclosurePanel>
-                        <div
-                            className={cn(
-                                'grid gap-y-0.5 group-data-[collapsible=dock]:place-content-center',
-                                state === 'collapsed'
-                                    ? 'group-data-[collapsible=dock]:place-content-center'
-                                    : 'grid-cols-[auto_1fr]'
-                            )}
-                        >
-                            {props.children}
-                        </div>
-                    </DisclosurePanel>
-                </>
+        <div className={cn('flex text-sm flex-col space-y-0.5 section', className)}>
+            {props.title && (
+                <Header
+                    slot='title'
+                    className='p-1 group-data-[collapsible=dock]:hidden border-transparent text-muted-foreground'
+                >
+                    {props.title}
+                </Header>
             )}
-        </Disclosure>
+            <Collection {...props} />
+        </div>
     )
 }
 
+interface ItemProps extends LinkProps {
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+    isCurrent?: boolean
+    textValue: string
+    children?: React.ReactNode
+    isDanger?: boolean
+    className?: string
+}
+
+const Item = ({ icon: Icon, isCurrent, isDanger = false, className, ...props }: ItemProps) => {
+    const { state, isMobile } = useSidebar()
+
+    if (typeof props.children !== 'undefined') {
+        const isExpanded = React.Children.toArray(props.children)
+            .map((child) => (child as React.ReactElement).props as ItemProps)
+            .some(
+                (props) =>
+                    props?.isCurrent ||
+                    (props?.children &&
+                        React.Children.toArray(props.children)
+                            .map(
+                                (descendant) =>
+                                    (descendant as React.ReactElement).props as ItemProps
+                            )
+                            .some((props) => props?.isCurrent))
+            )
+
+        if (state === 'expanded') {
+            return (
+                <Accordion defaultExpandedKeys={isExpanded ? [1] : []} hideBorder>
+                    <Accordion.Item key={1} id={1} className='border-0 pb-0.5 space-y-0.5'>
+                        <Accordion.Trigger
+                            className={cn(
+                                'flex items-center gap-3 outline-none hover:bg-muted focus:bg-muted cursor-pointer rounded-lg px-3 py-2 text-foreground transition-all',
+                                className
+                            )}
+                        >
+                            {Icon && <Icon className='shrink-0 size-4' />}
+                            {props.textValue}
+                        </Accordion.Trigger>
+                        <Accordion.Content className='p-0 space-y-0.5 group-data-[collapsible=dock]:hidden [&_.acrt]:ml-4 [&_.subitem]:ml-4 [&_.acrt+&_.subitem]:ml-8'>
+                            <Collection {...props} />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
+            )
+        } else {
+            return (
+                <Popover>
+                    <Tooltip closeDelay={0} delay={0}>
+                        <Popover.Trigger
+                            className={cn(
+                                'flex focus:bg-muted h-9 overflow-hidden focus:outline-none hover:bg-muted outline-none items-center gap-3 cursor-pointer rounded-lg -mx-0.5 p-2.5 text-foreground transition-all',
+                                className
+                            )}
+                        >
+                            {Icon && <Icon className='shrink-0 size-4' />}
+                        </Popover.Trigger>
+                        <Tooltip.Content variant='inverse' showArrow={false} placement='right'>
+                            {props.textValue}
+                        </Tooltip.Content>
+                    </Tooltip>
+                    <Popover.Content
+                        className='p-1.5 min-w-0 flex-col inline-flex gap-0.5'
+                        placement='right'
+                        aria-label={props.textValue}
+                    >
+                        <Collection aria-label={props.textValue} {...props} />
+                    </Popover.Content>
+                </Popover>
+            )
+        }
+    } else {
+        if (state === 'collapsed' && !isMobile) {
+            return (
+                <Tooltip closeDelay={0} delay={0}>
+                    <Link
+                        aria-current={isCurrent ? 'page' : undefined}
+                        data-slot='sidebar-item'
+                        href={props.href ?? '#'}
+                        className={cn(
+                            'focus:outline-none focus:bg-muted hover:bg-muted h-9 inline-flex text-foreground rounded-lg -mx-0.5 p-2.5',
+                            {
+                                'bg-primary focus:bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground':
+                                    isCurrent
+                            },
+                            {
+                                'hover:bg-danger focus:bg-danger/80 hover:text-danger-foreground':
+                                    isDanger
+                            }
+                        )}
+                    >
+                        {Icon && <Icon data-slot='icon' />}
+                        <span className='sr-only'>{props.textValue}</span>
+                    </Link>
+                    <Tooltip.Content variant='inverse' showArrow={false} placement='right'>
+                        {props.textValue}
+                    </Tooltip.Content>
+                </Tooltip>
+            )
+        } else {
+            return (
+                <Link
+                    {...props}
+                    data-slot='sidebar-item'
+                    aria-current={isCurrent ? 'page' : undefined}
+                    href={props.href ?? '#'}
+                    className={cn(
+                        'subitem flex items-center h-9 overflow-hidden gap-3 focus:bg-muted hover:bg-muted outline-none focus:outline-none cursor-pointer rounded-lg px-3 py-2 text-foreground transition-all disabled:opacity-70 disabled:pointer-events-none',
+                        {
+                            'bg-primary focus:bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground':
+                                isCurrent
+                        },
+                        {
+                            'hover:bg-danger focus:bg-danger/80 hover:text-danger-foreground':
+                                isDanger
+                        }
+                    )}
+                >
+                    {Icon && <Icon className='shrink-0 size-4' />}
+                    {props.textValue}
+                </Link>
+            )
+        }
+    }
+}
 const Rail = ({ className, ...props }: React.ComponentProps<'button'>) => {
     const { toggleSidebar } = useSidebar()
 
@@ -513,9 +487,9 @@ Sidebar.Provider = Provider
 Sidebar.Inset = Inset
 Sidebar.Header = Header
 Sidebar.Content = Content
+Sidebar.Section = Section
 Sidebar.Footer = Footer
 Sidebar.Item = Item
-Sidebar.Section = Section
 Sidebar.Rail = Rail
 Sidebar.Trigger = Trigger
 

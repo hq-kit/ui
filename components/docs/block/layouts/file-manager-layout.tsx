@@ -37,56 +37,50 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                 </Sidebar.Header>
                 <Sidebar.Content>
                     <Sidebar.Section>
-                        <SidebarItem
+                        <Sidebar.Item
                             onPress={() => setRootDir('')}
                             isCurrent={rootDir === ''}
                             icon={IconHome}
                             href='#'
-                        >
-                            Home
-                        </SidebarItem>
-                        <SidebarItem
+                            textValue='Home'
+                        />
+                        <Sidebar.Item
                             onPress={() => setRootDir('Downloads/')}
                             isCurrent={rootDir.startsWith('Downloads/')}
                             icon={IconDownload}
                             href='#'
-                        >
-                            Downloads
-                        </SidebarItem>
-                        <SidebarItem
+                            textValue='Downloads'
+                        />
+                        <Sidebar.Item
                             onPress={() => setRootDir('Documents/')}
                             isCurrent={rootDir.startsWith('Documents/')}
                             icon={IconFolders}
                             href='#'
-                        >
-                            Documents
-                        </SidebarItem>
-                        <SidebarItem
+                            textValue='Documents'
+                        />
+                        <Sidebar.Item
                             onPress={() => setRootDir('Music/')}
                             isCurrent={rootDir.startsWith('Music/')}
                             icon={IconImages}
                             href='#'
-                        >
-                            Music
-                        </SidebarItem>
-                        <SidebarItem
+                            textValue='Music'
+                        />
+                        <Sidebar.Item
                             onPress={() => setRootDir('Videos/')}
                             isCurrent={rootDir.startsWith('Videos/')}
                             icon={IconFilm}
                             href='#'
-                        >
-                            Videos
-                        </SidebarItem>
+                            textValue='Videos'
+                        />
                     </Sidebar.Section>
                     <Sidebar.Section>
-                        <SidebarItem
+                        <Sidebar.Item
                             onPress={() => setRootDir('Trash/')}
                             isCurrent={rootDir === 'Trash/'}
                             icon={IconTrash}
                             href='#'
-                        >
-                            Trash
-                        </SidebarItem>
+                            textValue='Trash'
+                        />
                     </Sidebar.Section>
                 </Sidebar.Content>
                 <Sidebar.Rail />
@@ -94,8 +88,4 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
             <Sidebar.Inset>{children}</Sidebar.Inset>
         </Sidebar.Provider>
     )
-}
-
-function SidebarItem({ icon: Icon, ...props }: React.ComponentProps<typeof Sidebar.Item>) {
-    return <Sidebar.Item isCurrent={props.isCurrent} icon={Icon} {...props} />
 }

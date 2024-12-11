@@ -41,37 +41,45 @@ export default function AppSidebar({ ...props }) {
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section>
-                    <SidebarItem icon={IconGauge} href='/block/sidebar/sidebar-basic-demo'>
-                        Sidebar
-                    </SidebarItem>
+                    <SidebarItem
+                        icon={IconGauge}
+                        href='/block/sidebar/sidebar-basic-demo'
+                        textValue='Sidebar'
+                    />
                 </Sidebar.Section>
-                <Sidebar.Section collapsible title='Variant'>
-                    <SidebarItem icon={IconPanelRight} href='/block/sidebar/sidebar-default-demo'>
-                        Default
-                    </SidebarItem>
+                <Sidebar.Section title='Variant'>
+                    <SidebarItem
+                        icon={IconPanelRight}
+                        href='/block/sidebar/sidebar-default-demo'
+                        textValue='Default'
+                    />
                     <SidebarItem
                         icon={IconPanelLeftDashed}
                         href='/block/sidebar/sidebar-floating-demo'
-                    >
-                        Floating
-                    </SidebarItem>
-                    <SidebarItem icon={IconAppWindowMac} href='/block/sidebar/sidebar-inset-demo'>
-                        Inset
-                    </SidebarItem>
+                        textValue='Floating'
+                    />
+                    <SidebarItem
+                        icon={IconAppWindowMac}
+                        href='/block/sidebar/sidebar-inset-demo'
+                        textValue='Inset'
+                    />
                 </Sidebar.Section>
-                <Sidebar.Section collapsible title='Collapsible'>
-                    <SidebarItem icon={IconPanelLeftClose} href='/block/sidebar/sidebar-dock-demo'>
-                        Dock
-                    </SidebarItem>
+                <Sidebar.Section title='Collapsible'>
+                    <SidebarItem
+                        icon={IconPanelLeftClose}
+                        href='/block/sidebar/sidebar-dock-demo'
+                        textValue='Dock'
+                    />
                     <Sidebar.Item
                         icon={IconPanelRightOpen}
                         href='/block/sidebar/sidebar-off-canvas-demo'
-                    >
-                        Off Canvas
-                    </Sidebar.Item>
-                    <Sidebar.Item icon={IconPanelLeft} href='/block/sidebar/sidebar-fixed-demo'>
-                        Fixed
-                    </Sidebar.Item>
+                        textValue='Off Canvas'
+                    />
+                    <Sidebar.Item
+                        icon={IconPanelLeft}
+                        href='/block/sidebar/sidebar-fixed-demo'
+                        textValue='Fixed'
+                    />
                 </Sidebar.Section>
             </Sidebar.Content>
             <Sidebar.Footer className='lg:flex lg:flex-row hidden items-center'>

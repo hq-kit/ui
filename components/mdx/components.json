@@ -43,6 +43,9 @@
         ]
     },
     {
+        "name": "grid"
+    },
+    {
         "name": "grid-list",
         "components": [
             "checkbox"
@@ -259,6 +262,8 @@
         "name": "sidebar",
         "components": [
             "sheet",
+            "popover",
+            "disclosure",
             "tooltip",
             "button"
         ]

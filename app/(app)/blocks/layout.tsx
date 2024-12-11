@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
                 </Sidebar.Header>
                 <Sidebar.Content>
-                    <Sidebar.Section title='Auth Section' collapsible>
+                    <Sidebar.Section title='Auth Section'>
                         {blocks?.map(
                             (block) =>
                                 block.includes('auth') && (
@@ -41,16 +41,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         key={block}
                                         icon={IconClipboardPen}
                                         href={`/${block}`}
-                                    >
-                                        {goodTitle(
+                                        textValue={goodTitle(
                                             block.split('/').pop()?.replace('auth-form-', '') ||
                                                 'Sample Page'
                                         )}
-                                    </SidebarItem>
+                                    />
                                 )
                         )}
                     </Sidebar.Section>
-                    <Sidebar.Section title='Pages' collapsible>
+                    <Sidebar.Section title='Pages'>
                         {blocks?.map(
                             (block) =>
                                 !block.includes('auth') && (
@@ -58,9 +57,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         key={block}
                                         icon={IconAppWindowMac}
                                         href={`/${block}`}
-                                    >
-                                        {goodTitle(block.split('/').pop() || 'Sample Page')}
-                                    </SidebarItem>
+                                        textValue={goodTitle(
+                                            block.split('/').pop() || 'Sample Page'
+                                        )}
+                                    />
                                 )
                         )}
                     </Sidebar.Section>

@@ -90,7 +90,7 @@ const Disclosure = ({ className, ...props }: DisclosureProps) => {
 
 const accordionTriggerStyles = tv({
     base: [
-        'flex flex-1 group rounded-lg aria-expanded:text-foreground text-muted-foreground sm:text-sm items-center gap-x-2 font-medium'
+        'acrt flex flex-1 group rounded-lg aria-expanded:text-foreground text-muted-foreground sm:text-sm items-center gap-x-2 font-medium'
     ],
     variants: {
         hideBorder: {

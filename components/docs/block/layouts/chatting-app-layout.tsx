@@ -37,18 +37,10 @@ export default function ChattingAppLayout() {
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section>
-                    <SidebarItem isCurrent icon={IconMessage} href='#'>
-                        Chats
-                    </SidebarItem>
-                    <SidebarItem icon={IconRss} href='#'>
-                        Broadcast
-                    </SidebarItem>
-                    <SidebarItem icon={IconFilm} href='#'>
-                        Stories
-                    </SidebarItem>
-                    <SidebarItem icon={IconGroup} href='#'>
-                        Communities
-                    </SidebarItem>
+                    <SidebarItem isCurrent icon={IconMessage} href='#' textValue='Chats' />
+                    <SidebarItem icon={IconRss} href='#' textValue='Broadcast' />
+                    <SidebarItem icon={IconFilm} href='#' textValue='Stories' />
+                    <SidebarItem icon={IconGroup} href='#' textValue='Communities' />
                 </Sidebar.Section>
             </Sidebar.Content>
             <Sidebar.Footer className='lg:flex lg:flex-row hidden items-center'>
