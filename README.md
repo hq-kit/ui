@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HQ UI
 
-## Getting Started
+![OG](https://raw.githubusercontent.com/hq-kit/ui/main/app/opengraph-image.png)
 
-First, run the development server:
+Cleon-UI is a UI Components library, built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html), designed to make your project looks nice. Easy to use, just copy paste to your project, fully accessible and customizable. Feel free to make them yours.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Documentation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [HQ UI](https://hq-ui.vercel.app/docs/getting-started/introduction) to view documentation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you desire to contribute in this project, Make sure to check out the [contributing guide](/CONTRIBUTING.md).
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Licensed under the [MIT license](https://github.com/hq-kit/ui/blob/main/LICENSE), so feel free to tweak, share, and remix as long as you give the proper shout-out!
