@@ -33,6 +33,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
     const [components, setComponents] = React.useState<string[]>([])
     const [uiComponents, setUiComponents] = React.useState<string[]>([])
     const [layout, setLayout] = React.useState<string | null>(null)
+
     React.useEffect(() => {
         // @ts-expect-error no-type
         const componentData = previews[page] ? previews[page].raw : ''
@@ -40,7 +41,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         const componentNames: string[] = componentData.match(/'components\/(.*?[^'])'/g)
         const layoutName: string = componentData.match(/'layouts\/([^']*?)'/g)
 
-        if (componentNames || layoutName) {
+        if (componentNames || layoutName || componentData) {
             const components = componentNames
                 ? componentNames.map((c: string) => 'block/' + c.replaceAll("'", ''))
                 : []
@@ -58,6 +59,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
 
             /* @ts-expect-error unknown-types */ // prettier-ignore
             const uiComponentNames = [...new Set((allComponents.match(/import\s+{([^}]+)}\s+from\s+'@\/components\/ui'/g) || []).flatMap(match => match.match(/{([^}]+)}/)[1].split(',').map(comp => comp.trim())))]
+
             if (uiComponentNames) {
                 /* @ts-expect-error unknown-types */ // prettier-ignore
                 const uiComponents = uiComponentNames.map((name: string) => convertToKebabCase(name.trim()))

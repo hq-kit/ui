@@ -42,12 +42,12 @@ interface NavbarProviderProps extends React.ComponentProps<'header'>, NavbarOpti
 }
 
 const navbarStyles = tv({
-    base: 'relative isolate flex w-full min-h-svh flex-col',
+    base: 'relative isolate flex w-full flex-col',
     variants: {
         variant: {
             floating: 'pt-2 px-2.5',
-            navbar: 'md:divide-y',
-            inset: 'bg-muted dark:bg-background'
+            navbar: '',
+            inset: 'bg-muted dark:bg-background min-h-svh'
         }
     }
 })
@@ -118,7 +118,7 @@ const navStyles = tv({
         },
         variant: {
             floating: 'bg-background max-w-[1680px] mx-auto shadow-sm border rounded-lg sm:px-4',
-            navbar: 'bg-background sm:px-6',
+            navbar: 'bg-background border-b sm:px-6 ',
             inset: [
                 'bg-muted mx-auto dark:bg-background sm:px-6',
                 '[&>div]:max-w-[1680px] lg:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto'
