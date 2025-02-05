@@ -6,13 +6,14 @@ import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/
 
 export default function TeamManagementSink() {
     return (
-        <Card className='p-2 flex items-center justify-around gap-4'>
+        <Card className='flex items-center justify-around gap-4 p-2'>
             <AvatarGroup items={roles}>
                 {(item) => (
                     <Avatar
                         id={item.id}
-                        tooltip={item.name}
-                        src={`https://i.pravatar.cc/150?img=3${item.id}`}
+                        alt={item.name}
+                        tooltip
+                        src={`https://i.pravatar.cc/150?img=2${item.id}`}
                     />
                 )}
             </AvatarGroup>

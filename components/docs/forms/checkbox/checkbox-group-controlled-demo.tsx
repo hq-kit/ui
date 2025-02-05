@@ -14,7 +14,7 @@ export default function CheckboxGroupControlledDemo() {
                 <Checkbox value='sync'>Sync</Checkbox>
             </CheckboxGroup>
 
-            <Description className='flex flex-col gap-y-1 h-10 mt-2 [&>strong]:text-foreground [&>strong]:font-medium'>
+            <Description className='[&>strong]:text-fg mt-2 flex h-10 flex-col gap-y-1 [&>strong]:font-medium'>
                 {values.length > 0 ? (
                     <>
                         Selected values <strong className='font-medium'>{values.join(', ')}</strong>

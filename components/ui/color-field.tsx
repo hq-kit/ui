@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import type {
     ColorFieldProps as ColorFieldPrimitiveProps,
     ValidationResult
@@ -43,7 +41,7 @@ const ColorField = ({
             aria-label={props['aria-label'] ?? 'Color field'}
             className={ctr(
                 className,
-                '[&_[data-slot=color-swatch]]:-ml-0.5 group w-full flex flex-col gap-y-1.5'
+                'group flex w-full flex-col gap-y-1 **:data-[slot=color-swatch]:-ml-0.5'
             )}
         >
             {label && <Label>{label}</Label>}
@@ -53,7 +51,7 @@ const ColorField = ({
                         {prefix}
                     </span>
                 ) : null}
-                <div className='flex items-center'>
+                <div className='flex w-full items-center'>
                     {value && (
                         <span className='ml-2'>
                             {enableColorPicker ? (
@@ -79,3 +77,4 @@ const ColorField = ({
 }
 
 export { ColorField }
+export type { ColorFieldProps }

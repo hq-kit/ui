@@ -1,11 +1,4 @@
-'use client'
-
-import React from 'react'
-
-import { Collection } from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
-
-import { CollectionProps } from '@react-aria/collections'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 import { cn } from './utils'
 
@@ -134,23 +127,15 @@ const gridStyles = tv(
     }
 )
 
-interface GridProps<T extends object> extends CollectionProps<T>, VariantProps<typeof gridStyles> {
+interface GridProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof gridStyles> {
     className?: string
     debug?: boolean
 }
 
-const Grid = <T extends object>({
-    className,
-    gap,
-    gapX,
-    gapY,
-    flow,
-    columns,
-    rows,
-    ...props
-}: GridProps<T>) => {
+const Grid = ({ className, gap, gapX, gapY, flow, columns, rows, ...props }: GridProps) => {
     return (
         <div
+            aria-label={props['aria-label'] || 'grid'}
             className={gridStyles({
                 gap: gap ?? gapX ?? gapY,
                 gapX: gapX ?? gap,
@@ -160,18 +145,22 @@ const Grid = <T extends object>({
                 rows: rows ?? 1,
                 className:
                     'debug' in props
-                        ? cn('[&>.grid-cell]:border [&>.grid-cell]:border-warning', className)
+                        ? cn(
+                              '*:data-[slot=grid-cell]:border-warning *:data-[slot=grid-cell]:border',
+                              className
+                          )
                         : className
             })}
+            {...props}
         >
-            <Collection {...props} />
+            {props.children}
         </div>
     )
 }
 
 const gridItemStyles = tv(
     {
-        base: 'grid-cell focus:outline-none',
+        base: 'grid-cell data-focused:outline-hidden',
         variants: {
             colSpan: {
                 auto: 'col-auto',
@@ -295,6 +284,7 @@ const GridItem = ({
 }: GridItemProps) => {
     return (
         <div
+            data-slot='grid-cell'
             className={gridItemStyles({
                 colSpan,
                 rowSpan,
@@ -313,4 +303,4 @@ const GridItem = ({
 
 Grid.Item = GridItem
 
-export { Grid, gridStyles, gridItemStyles }
+export { Grid, gridItemStyles, gridStyles }

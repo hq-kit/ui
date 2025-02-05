@@ -8,7 +8,7 @@ export default function ModalCustomStyleDemo() {
             <Button variant='danger'>Delete Project</Button>
             <Modal.Content role='alertdialog'>
                 <Modal.Header
-                    className='bg-background border-b mb-4'
+                    className='bg-bg mb-4 border-b'
                     title='Delete Project'
                     description='This project’s gonna get wiped, including all its Deployments, Domains, Env Variables, Serverless Functions, and Settings.'
                 >

@@ -3,103 +3,93 @@
 import React from 'react'
 
 import { IconX } from 'hq-icons'
+import type {
+    TagGroupProps as TagGroupPrimitiveProps,
+    TagListProps,
+    TagProps as TagPrimitiveProps
+} from 'react-aria-components'
 import {
     Button,
-    Tag as TagPrimitive,
     TagGroup as TagGroupPrimitive,
-    type TagGroupProps as TagGroupPrimitiveProps,
     TagList as TagListPrimitive,
-    type TagListProps,
-    type TagProps as TagPrimitiveProps
+    Tag as TagPrimitive
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { badgeVariants } from './badge'
+import { badgeStyles } from './badge'
 import { Description, Label } from './field'
-import { cn, cr } from './utils'
+import { cn, cr, ctr, focusStyles } from './utils'
 
-const { variant } = badgeVariants.variants
+const { variant, shape: badgeShape } = badgeStyles.variants
 
 const variants = {
     primary: {
         base: [
             variant.primary,
-            '[&_[slot=remove]:hover]:bg-primary [&_[slot=remove]:hover]:text-primary-foreground'
+            '**:[[slot=remove]]:data-hovered:bg-primary **:[[slot=remove]]:data-hovered:text-primary-fg'
         ],
         selected: [
-            'bg-primary dark:hover:bg-primary dark:bg-primary hover:bg-primary ring-primary ring-inset text-primary-foreground dark:text-primary-foreground hover:text-primary-foreground',
-            '[&_[slot=remove]:hover]:bg-primary-foreground/80 [&_[slot=remove]:hover]:text-primary'
+            'bg-primary dark:data-hovered:bg-primary dark:bg-primary data-hovered:bg-primary ring-primary ring-inset text-primary-fg dark:text-primary-fg data-hovered:text-primary-fg',
+            '**:[[slot=remove]]:data-hovered:bg-primary-fg/50 **:[[slot=remove]]:data-hovered:text-primary'
         ]
     },
     secondary: {
         base: [
             variant.secondary,
-            '[&_[slot=remove]:hover]:bg-foreground [&_[slot=remove]:hover]:text-background'
+            '**:[[slot=remove]]:data-hovered:bg-secondary-fg **:[[slot=remove]]:data-hovered:text-secondary'
         ],
         selected: [
-            'bg-foreground ring-foreground/50 text-background dark:bg-foreground/90 dark:text-secondary ring-inset',
-            '[&_[slot=remove]:hover]:bg-background [&_[slot=remove]:hover]:text-secondary-foreground'
+            'bg-secondary dark:bg-secondary/80 dark:text-secondary-fg text-secondary-fg ring-secondary ring-inset',
+            '**:[[slot=remove]]:data-hovered:bg-secondary-fg/80 **:[[slot=remove]]:data-hovered:text-secondary'
         ]
     },
     success: {
         base: [
             variant.success,
-            '[&_[slot=remove]:hover]:bg-success [&_[slot=remove]:hover]:text-success-foreground'
+            '**:[[slot=remove]]:data-hovered:bg-success **:[[slot=remove]]:data-hovered:text-success-fg'
         ],
         selected: [
-            'bg-success dark:bg-success ring-success ring-inset dark:text-success-foreground dark:hover:bg-success hover:bg-success text-success-foreground hover:text-success-foreground',
-            '[&_[slot=remove]:hover]:bg-success-foreground/80 [&_[slot=remove]:hover]:text-success'
+            'bg-success dark:bg-success ring-success ring-inset dark:text-success-fg dark:data-hovered:bg-success data-hovered:bg-success text-success-fg data-hovered:text-success-fg',
+            '**:[[slot=remove]]:data-hovered:bg-success-fg/80 **:[[slot=remove]]:data-hovered:text-success'
         ]
     },
     warning: {
         base: [
             variant.warning,
-            '[&_[slot=remove]:hover]:bg-warning [&_[slot=remove]:hover]:text-warning-foreground'
+            '**:[[slot=remove]]:data-hovered:bg-warning **:[[slot=remove]]:data-hovered:text-warning-fg'
         ],
         selected: [
-            'bg-warning dark:hover:bg-warning dark:bg-warning dark:text-background hover:bg-warning text-warning-foreground hover:text-warning-foreground',
-            '[&_[slot=remove]:hover]:bg-warning-foreground/80 [&_[slot=remove]:hover]:text-warning'
+            'bg-warning dark:data-hovered:bg-warning dark:bg-warning dark:text-bg data-hovered:bg-warning text-warning-fg data-hovered:text-warning-fg',
+            '**:[[slot=remove]]:data-hovered:bg-warning-fg/80 **:[[slot=remove]]:data-hovered:text-warning'
         ]
     },
     danger: {
         base: [
             variant.danger,
-            '[&_[slot=remove]:hover]:bg-danger [&_[slot=remove]:hover]:text-danger-foreground'
+            '**:[[slot=remove]]:data-hovered:bg-danger **:[[slot=remove]]:data-hovered:text-danger-fg'
         ],
         selected: [
-            'bg-danger dark:bg-danger dark:hover:bg-danger/90 hover:bg-danger text-danger-foreground ring-danger hover:text-danger-foreground',
-            '[&_[slot=remove]:hover]:bg-danger-foreground/80 [&_[slot=remove]:hover]:text-danger'
-        ]
-    },
-    info: {
-        base: [
-            variant.info,
-            '[&_[slot=remove]:hover]:bg-info [&_[slot=remove]:hover]:text-info-foreground'
-        ],
-        selected: [
-            'bg-info dark:bg-info dark:hover:bg-info/90 hover:bg-info text-info-foreground ring-info hover:text-info-foreground',
-            '[&_[slot=remove]:hover]:bg-info-foreground/80 [&_[slot=remove]:hover]:text-info'
+            'bg-danger dark:bg-danger dark:data-hovered:bg-danger/90 data-hovered:bg-danger text-danger-fg ring-danger dark:text-danger-fg data-hovered:text-danger-fg',
+            '**:[[slot=remove]]:data-hovered:bg-danger-fg/80 **:[[slot=remove]]:data-hovered:text-danger'
         ]
     },
     dark: {
-        base: [variant.dark],
+        base: [
+            variant.dark,
+            '**:[[slot=remove]]:data-hovered:bg-fg/40 **:[[slot=remove]]:data-hovered:text-fg'
+        ],
         selected: [
-            'bg-dark hover:bg-dark/90 ring-inset ring-dark/50 text-dark-foreground',
-            '[&_[slot=remove]:hover]:bg-dark-foreground/80 [&_[slot=remove]:hover]:text-dark'
-        ]
-    },
-    outline: {
-        base: [variant.outline],
-        selected: [
-            'bg-transparent ring-inset ring-foreground/50 text-foreground',
-            '[&_[slot=remove]:hover]:bg-foreground/80 [&_[slot=remove]:hover]:text-foreground'
+            'bg-fg/90 dark:bg-fg/90 dark:data-hovered:bg-fg/90 data-hovered:bg-fg/90 text-bg dark:text-bg data-hovered:text-bg',
+            '**:[[slot=remove]]:data-hovered:bg-bg/80 **:[[slot=remove]]:data-hovered:text-fg'
         ]
     }
 }
 
-type RestrictedVariant = 'primary' | 'secondary'
+type RestrictedVariant = 'primary' | 'secondary' | 'dark'
+
 type Variant = keyof typeof variant
-type Shape = keyof typeof badgeVariants.variants.shape
+
+type Shape = keyof typeof badgeShape
 
 type TagGroupContextValue = {
     variant: Variant
@@ -108,30 +98,32 @@ type TagGroupContextValue = {
 
 const TagGroupContext = React.createContext<TagGroupContextValue>({
     variant: 'primary',
-    shape: 'square'
+    shape: 'rounded'
 })
 
-export interface TagGroupProps extends TagGroupPrimitiveProps {
+interface TagGroupProps extends TagGroupPrimitiveProps {
     variant?: Variant
-    shape?: Shape
+    shape?: 'rounded' | 'sharp' | 'circle'
     errorMessage?: string
     label?: string
     description?: string
+    ref?: React.RefObject<HTMLDivElement>
 }
 
-const TagGroup = ({ children, ...props }: TagGroupProps) => {
+const TagGroup = ({ children, ref, ...props }: TagGroupProps) => {
     return (
         <TagGroupPrimitive
+            ref={ref}
+            className={cn('flex flex-col flex-wrap', props.className)}
             {...props}
-            className={cn('flex flex-wrap flex-col gap-1.5', props.className)}
         >
             <TagGroupContext.Provider
                 value={{
                     variant: props.variant || 'primary',
-                    shape: props.shape || 'square'
+                    shape: props.shape || 'rounded'
                 }}
             >
-                {props.label && <Label>{props.label}</Label>}
+                {props.label && <Label className='mb-1'>{props.label}</Label>}
                 {children}
                 {props.description && <Description>{props.description}</Description>}
             </TagGroupContext.Provider>
@@ -140,15 +132,15 @@ const TagGroup = ({ children, ...props }: TagGroupProps) => {
 }
 
 const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => {
-    return <TagListPrimitive {...props} className={cn('flex flex-wrap gap-2', className)} />
+    return <TagListPrimitive {...props} className={ctr(className, 'flex flex-wrap gap-2')} />
 }
 
 const tagStyles = tv({
-    base: [badgeVariants.base, 'cursor-pointer tag'],
+    extend: focusStyles,
+    base: [badgeStyles.base, 'tag cursor-pointer'],
     variants: {
-        isFocused: { true: 'border-ring/85 ring-1' },
-        isInvalid: { true: 'border-danger' },
-        isDisabled: { true: 'opacity-50 cursor-default' },
+        isFocused: { true: 'ring-1' },
+        isDisabled: { true: 'cursor-default opacity-50' },
         allowsRemoving: { true: 'pr-1' }
     }
 })
@@ -158,8 +150,8 @@ interface TagProps extends TagPrimitiveProps {
     shape?: Shape
 }
 
-const TagItem = ({ children, className, variant, shape, ...props }: TagProps) => {
-    const textValue = typeof children === 'string' ? children : undefined
+const Tag = ({ className, variant, shape, ...props }: TagProps) => {
+    const textValue = typeof props.children === 'string' ? props.children : undefined
     const groupContext = React.useContext(TagGroupContext)
 
     return (
@@ -169,14 +161,13 @@ const TagItem = ({ children, className, variant, shape, ...props }: TagProps) =>
             className={cr(className, (_, renderProps) => {
                 const finalVariant = variant || groupContext.variant
                 const finalShape = shape || groupContext.shape
+
                 return tagStyles({
                     ...renderProps,
                     className: cn([
-                        variants[finalVariant as Variant]?.base,
-                        badgeVariants.variants.shape[finalShape as Shape],
-                        renderProps.isSelected
-                            ? variants[finalVariant as Variant].selected
-                            : undefined
+                        variants[finalVariant]?.base,
+                        badgeShape[finalShape],
+                        renderProps.isSelected ? variants[finalVariant].selected : undefined
                     ])
                 })
             })}
@@ -184,18 +175,13 @@ const TagItem = ({ children, className, variant, shape, ...props }: TagProps) =>
             {({ allowsRemoving }) => {
                 return (
                     <>
-                        {children as React.ReactNode}
+                        {props.children as React.ReactNode}
                         {allowsRemoving && (
                             <Button
                                 slot='remove'
-                                className={cn(
-                                    'rounded-lg focus:outline-none size-3.5 grid place-content-center -mr-0.5 focus-visible:ring-1 focus-visible:ring-primary',
-                                    className
-                                )}
+                                className='data-focus-visible:ring-primary -mr-0.5 grid size-3.5 place-content-center rounded data-focus-visible:ring-1 data-focused:outline-none'
                             >
-                                <span className='shrink-0 text-base/4 -mr-px'>
-                                    <IconX className='size-3' />
-                                </span>
+                                <IconX className='size-3 shrink-0' />
                             </Button>
                         )}
                     </>
@@ -205,10 +191,8 @@ const TagItem = ({ children, className, variant, shape, ...props }: TagProps) =>
     )
 }
 
-const Tag = {
-    Group: TagGroup,
-    Item: TagItem,
-    List: TagList
-}
+Tag.Group = TagGroup
+Tag.List = TagList
 
-export { Tag, type RestrictedVariant }
+export { Tag }
+export type { RestrictedVariant, TagGroupProps, TagListProps, TagProps }

@@ -65,8 +65,8 @@ export function TableOfContents({ className, items }: Props) {
         <aside
             ref={tocRef}
             className={cn(
-                'not-prose forced-color-adjust-none',
-                'xl:sticky no-scrollbar xl:top-[1.75rem] xl:-mr-6 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
+                'not-pros',
+                'no-scrollbar xl:sticky xl:top-[1.75rem] xl:-mr-6 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
                 'top-20',
                 className
             )}
@@ -82,7 +82,7 @@ export function TableOfContents({ className, items }: Props) {
                         <div className='space-y-2'>
                             <Skeleton className='h-3 w-20 animate-pulse' />
                             <Skeleton className='h-3 w-32 animate-pulse' />
-                            <Skeleton className='h-3 w-12 animate-pulse bg-foreground/50' />
+                            <Skeleton className='bg-fg/50 h-3 w-12 animate-pulse' />
                             <Skeleton className='h-3 w-16 animate-pulse' />
                             <Skeleton className='h-3 w-8 animate-pulse' />
                             <Skeleton className='h-3 w-24 animate-pulse' />
@@ -92,7 +92,7 @@ export function TableOfContents({ className, items }: Props) {
                     <>
                         <Heading
                             level={2}
-                            className='text-base lg:text-lg font-medium leading-7 mb-6 text-foreground'
+                            className='text-fg mb-6 text-base leading-7 font-medium lg:text-lg'
                         >
                             On this page
                         </Heading>
@@ -102,7 +102,7 @@ export function TableOfContents({ className, items }: Props) {
                                     <React.Fragment key={item.title}>
                                         <TocLink item={item} activeId={activeId} />
                                         {item.items && item.items.length > 0 && (
-                                            <ul className='flex pl-3 flex-col gap-y-2.5'>
+                                            <ul className='flex flex-col gap-y-2.5 pl-3'>
                                                 {item.items.map((subItem) => (
                                                     <TocLink
                                                         key={subItem.title}
@@ -128,10 +128,8 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
         <li key={item.title}>
             <Link
                 className={cn(
-                    'outline-none block no-underline tracking-tight lg:text-[0.885rem] duration-200 focus-visible:outline-none focus-visible:text-primary',
-                    item.url.split('#')[1] === activeId
-                        ? 'text-primary forced-colors:text-[Highlight]'
-                        : 'text-muted-foreground/90 forced-colors:text-[GrayText]'
+                    'data-focus-visible:text-primary block tracking-tight no-underline duration-200 outline-none data-focus-visible:outline-none lg:text-[0.885rem]',
+                    item.url.split('#')[1] === activeId ? 'text-primary' : 'text-muted-fg/90'
                 )}
                 href={item.url}
             >

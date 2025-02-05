@@ -1,58 +1,52 @@
 'use client'
 
-import React from 'react'
+import { use } from 'react'
 
-import { IconDot } from 'hq-icons'
+import { IconCircle } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
 
 import { cn } from './utils'
 
-interface OTPType
-    extends React.ForwardRefExoticComponent<
-        React.ComponentPropsWithoutRef<typeof OTPInput> & React.RefAttributes<HTMLInputElement>
-    > {
-    Group: typeof OTPGroup
-    Slot: typeof OTPSlot
-    Separator: typeof OTPSeparator
-}
-
-const OTP = React.forwardRef<
-    React.ElementRef<typeof OTPInput>,
-    React.ComponentPropsWithoutRef<typeof OTPInput>
->(({ className, containerClassName, ...props }, ref) => (
+type OTPInputProps = React.ComponentProps<typeof OTPInput>
+const OTP = ({ className, autoFocus = true, containerClassName, ref, ...props }: OTPInputProps) => (
     <OTPInput
         data-1p-ignore
         ref={ref}
+        autoFocus={autoFocus}
         containerClassName={cn(
-            'flex items-center gap-2 has-[:disabled]:opacity-50',
+            'flex items-center gap-2 has-disabled:opacity-50',
             containerClassName
         )}
-        className={cn('disabled:cursor-not-allowed', className)}
+        className={cn('bg-danger mt-auto h-[2.5rem] disabled:cursor-not-allowed', className)}
         {...props}
     />
-)) as OTPType
-OTP.displayName = 'OTP'
-
-const OTPGroup = React.forwardRef<React.ElementRef<'div'>, React.ComponentPropsWithoutRef<'div'>>(
-    ({ className, ...props }, ref) => (
-        <div ref={ref} className={cn('flex items-center gap-x-1.5', className)} {...props} />
-    )
 )
-OTPGroup.displayName = 'OTPGroup'
 
-const OTPSlot = React.forwardRef<
-    React.ElementRef<'div'>,
-    React.ComponentPropsWithoutRef<'div'> & { index: number }
->(({ index, className, ...props }, ref) => {
-    const inputOTPContext = React.useContext(OTPInputContext)
-    const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+type OTPGroupProps = React.ComponentProps<'div'>
+const OTPGroup = ({ className, ref, ...props }: OTPGroupProps) => (
+    <div ref={ref} className={cn('flex items-center gap-x-1.5', className)} {...props} />
+)
+
+interface OTPSlotProps extends React.ComponentProps<'div'> {
+    index: number
+}
+
+const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
+    const OTPContext = use(OTPInputContext)
+    const slot = OTPContext.slots[index]
+
+    if (!slot) {
+        throw new Error('Slot not found')
+    }
+
+    const { char, hasFakeCaret, isActive } = slot
 
     return (
         <div
             ref={ref}
             className={cn(
-                'relative flex tabular-nums size-10 items-center justify-center rounded-lg border border-muted text-sm transition-all',
-                isActive && 'z-10 border-primary/70 ring-4 ring-primary/20',
+                'border-muted relative flex size-10 items-center justify-center rounded-md border text-sm tabular-nums transition-all',
+                isActive && 'border-primary/70 ring-primary/20 z-10 ring-4',
                 className
             )}
             {...props}
@@ -60,26 +54,23 @@ const OTPSlot = React.forwardRef<
             {char}
             {hasFakeCaret && (
                 <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
-                    <div className='h-4 w-px animate-caret-blink bg-foreground duration-1000' />
+                    <div className='animate-caret-blink bg-fg h-4 w-px duration-1000' />
                 </div>
             )}
         </div>
     )
-})
-OTPSlot.displayName = 'OTPSlot'
+}
 
-const OTPSeparator = React.forwardRef<
-    React.ElementRef<'div'>,
-    React.ComponentPropsWithoutRef<'div'>
->(({ ...props }, ref) => (
-    <div ref={ref} role='separator' {...props}>
-        <IconDot className='size-2' />
+type OTPSeparatorProps = React.ComponentProps<'div'>
+const OTPSeparator = ({ ref, ...props }: OTPSeparatorProps) => (
+    <div ref={ref} {...props}>
+        <IconCircle className='fill-fg size-2' />
     </div>
-))
-OTPSeparator.displayName = 'OTPSeparator'
+)
 
 OTP.Group = OTPGroup
 OTP.Slot = OTPSlot
 OTP.Separator = OTPSeparator
 
 export { OTP }
+export type { OTPGroupProps, OTPSeparatorProps, OTPSlotProps }

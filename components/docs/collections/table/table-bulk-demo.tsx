@@ -37,7 +37,7 @@ export default function TableBulkDemo() {
                     </Table.Body>
                 </Table>
             </Card>
-            <Description className='block mt-2 [&>strong]:text-foreground text-muted-foreground'>
+            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
                 {Array.from(selectedKeys).length > 0 ? (
                     <>
                         You have selected: <strong>{Array.from(selectedKeys).join(', ')}</strong>

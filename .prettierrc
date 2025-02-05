@@ -1,6 +1,6 @@
 {
     "tailwindFunctions": ["twJoin", "clsx", "tw", "tv", "cn", "twMerge", "tm", "cx"],
-    "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
+    "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
     "printWidth": 100,
     "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^[@/]", "^[./]"],
     "importOrderSeparation": true,

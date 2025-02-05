@@ -1,24 +1,26 @@
 'use client'
 
-import React from 'react'
+import { useId } from 'react'
 
-import { LayoutGroup, motion } from 'framer-motion'
+import { LayoutGroup, motion } from 'motion/react'
+import type {
+    TabListProps as TabListPrimitiveProps,
+    TabPanelProps as TabPanelPrimitiveProps,
+    TabProps as TabPrimitiveProps,
+    TabsProps as TabsPrimitiveProps
+} from 'react-aria-components'
 import {
     TabList,
-    type TabListProps,
     TabPanel,
-    type TabPanelProps,
     Tab as TabPrimitive,
-    type TabProps,
-    Tabs as TabsPrimitive,
-    type TabsProps as TabsPrimitiveProps
+    Tabs as TabsPrimitive
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn, cr, useMediaQuery } from './utils'
+import { cn, cr } from './utils'
 
 const tabsStyles = tv({
-    base: 'group/tabs flex gap-4 forced-color-adjust-none',
+    base: 'group/tabs flex gap-4',
     variants: {
         orientation: {
             horizontal: 'flex-col',
@@ -28,44 +30,44 @@ const tabsStyles = tv({
 })
 
 interface TabsProps extends TabsPrimitiveProps {
-    isResponsive?: boolean
+    ref?: React.RefObject<HTMLDivElement>
 }
-
-const Tabs = (props: TabsProps) => {
-    const isDesktop = useMediaQuery('(min-width: 1024px)')
-    const orientation = isDesktop ? 'vertical' : 'horizontal'
+const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
         <TabsPrimitive
-            orientation={props.isResponsive ? orientation : props.orientation}
-            {...props}
-            className={cr(props.className, (className, renderProps) =>
+            className={cr(className, (className, renderProps) =>
                 tabsStyles({
                     ...renderProps,
                     className
                 })
             )}
+            ref={ref}
+            {...props}
         />
     )
 }
 
 const tabListStyles = tv({
-    base: 'flex forced-color-adjust-none',
+    base: 'flex',
     variants: {
         orientation: {
-            horizontal:
-                'flex-row items-center gap-x-5 border-b overflow-x-auto overflow-y-hidden no-scrollbar',
-            vertical: 'flex-col items-start gap-y-4 border-l overflow-y-auto no-scrollbar'
+            horizontal: 'border-muted flex-row gap-x-5 border-b',
+            vertical: 'flex-col items-start gap-y-4 border-l'
         }
     }
 })
 
-const List = <T extends object>(props: TabListProps<T>) => {
-    const id = React.useId()
+interface TabListProps<T extends object> extends TabListPrimitiveProps<T> {
+    ref?: React.RefObject<HTMLDivElement>
+}
+const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
+    const id = useId()
     return (
         <LayoutGroup id={id}>
             <TabList
+                ref={ref}
                 {...props}
-                className={cr(props.className, (className, renderProps) =>
+                className={cr(className, (className, renderProps) =>
                     tabListStyles({ ...renderProps, className })
                 )}
             />
@@ -75,27 +77,30 @@ const List = <T extends object>(props: TabListProps<T>) => {
 
 const tabStyles = tv({
     base: [
-        'relative flex whitespace-nowrap cursor-default items-center rounded-full text-sm font-medium outline-none transition hover:text-foreground [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:mr-2',
-        // hor
-        'group-orientation-vertical/tabs:w-full group-orientation-vertical/tabs:py-0 group-orientation-vertical/tabs:pl-4 group-orientation-vertical/tabs:pr-2',
-        // ver
-        'group-orientation-horizontal/tabs:pb-3'
+        'relative flex cursor-default items-center text-sm font-medium whitespace-nowrap outline-hidden transition *:data-[slot=icon]:mr-2 *:data-[slot=icon]:size-4',
+        'group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:py-0 group-data-[orientation=vertical]/tabs:pr-2 group-data-[orientation=vertical]/tabs:pl-4',
+        'group-data-[orientation=horizontal]/tabs:pb-3'
     ],
     variants: {
         isSelected: {
-            false: 'text-muted-foreground',
-            true: 'text-foreground'
+            false: 'text-muted-fg',
+            true: 'text-primary'
         },
-        isFocused: { false: 'ring-0', true: 'text-foreground' },
+        isFocusVisible: { true: 'text-primary **:first:ring-1 **:first:ring-offset-2' },
+        isHovered: { false: 'ring-0', true: 'text-primary' },
         isDisabled: {
-            true: 'text-muted-foreground/50'
+            true: 'text-muted-fg/50'
         }
     }
 })
 
-const Tab = ({ children, ...props }: TabProps) => {
+interface TabProps extends TabPrimitiveProps {
+    ref?: React.RefObject<HTMLButtonElement>
+}
+const Tab = ({ children, ref, ...props }: TabProps) => {
     return (
         <TabPrimitive
+            ref={ref}
             {...props}
             className={cr(props.className, (_className, renderProps) =>
                 tabStyles({
@@ -110,11 +115,11 @@ const Tab = ({ children, ...props }: TabProps) => {
                     {isSelected && (
                         <motion.span
                             className={cn(
-                                'absolute rounded-lg bg-foreground',
+                                'bg-primary absolute rounded',
                                 // horizontal
-                                'group-orientation-horizontal/tabs:inset-x-0 group-orientation-horizontal/tabs:-bottom-px group-orientation-horizontal/tabs:h-0.5 group-orientation-horizontal/tabs:w-full',
+                                'group-data-[orientation=horizontal]/tabs:inset-x-0 group-data-[orientation=horizontal]/tabs:-bottom-px group-data-[orientation=horizontal]/tabs:h-0.5 group-data-[orientation=horizontal]/tabs:w-full',
                                 // vertical
-                                'group-orientation-vertical/tabs:left-0 group-orientation-vertical/tabs:h-[calc(100%-10%)] group-orientation-vertical/tabs:w-0.5 group-orientation-vertical/tabs:transform'
+                                'group-data-[orientation=vertical]/tabs:left-0 group-data-[orientation=vertical]/tabs:h-[calc(100%-10%)] group-data-[orientation=vertical]/tabs:w-0.5 group-data-[orientation=vertical]/tabs:transform'
                             )}
                             layoutId='current-selected'
                             transition={{ type: 'spring', stiffness: 500, damping: 40 }}
@@ -126,22 +131,15 @@ const Tab = ({ children, ...props }: TabProps) => {
     )
 }
 
-const tabPanelStyles = tv({
-    base: 'flex-1 text-sm text-foreground',
-    variants: {
-        isFocusVisible: {
-            true: 'outline-none'
-        }
-    }
-})
-
-const Panel = (props: TabPanelProps) => {
+interface TabPanelProps extends TabPanelPrimitiveProps {
+    ref?: React.RefObject<HTMLDivElement>
+}
+const Panel = ({ className, ref, ...props }: TabPanelProps) => {
     return (
         <TabPanel
             {...props}
-            className={cr(props.className, (className, renderProps) =>
-                tabPanelStyles({ ...renderProps, className })
-            )}
+            ref={ref}
+            className={cn(className, 'text-fg flex-1 text-sm data-focus-visible:outline-hidden')}
         />
     )
 }
@@ -151,3 +149,4 @@ Tabs.Label = Tab
 Tabs.Content = Panel
 
 export { Tabs }
+export type { TabListProps, TabPanelProps, TabProps, TabsProps }

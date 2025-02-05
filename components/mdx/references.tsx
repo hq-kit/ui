@@ -23,7 +23,7 @@ import {
 } from 'hq-icons'
 import { Menu, MenuItem } from 'react-aria-components'
 
-import { buttonVariants, cn } from '@/components/ui'
+import { buttonStyles } from '@/components/ui'
 
 function extractAndFormat(url: string): string {
     const match = url.match(/\/([^/]+)\.html/)
@@ -131,13 +131,11 @@ export function DocRefs({ references }: { references: string[] }) {
             {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
                 <MenuItem
                     target='_blank'
-                    className={cn(
-                        buttonVariants({
-                            variant: 'outline',
-                            size: 'sm',
-                            className: 'focus:outline-0'
-                        })
-                    )}
+                    className={buttonStyles({
+                        variant: 'outline',
+                        size: 'sm',
+                        className: 'data-focus-visible:outline-2'
+                    })}
                     id={item.url}
                     href={item.url}
                 >

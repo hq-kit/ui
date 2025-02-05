@@ -8,7 +8,7 @@ import { copyToClipboard } from 'usemods'
 
 import { CodeHighlighter } from '@/components/mdx/code'
 import { CopyButton } from '@/components/mdx/copy-button'
-import { buttonVariants, Modal } from '@/components/ui'
+import { buttonStyles, Modal } from '@/components/ui'
 import '@/lib/styles/code.css'
 import { wait } from '@/lib/utils'
 
@@ -29,7 +29,7 @@ export default function ThemeSnippet({ code = 'TEST' }: { code: string }) {
     }
     return (
         <Modal>
-            <Modal.Trigger className={buttonVariants({ variant: 'outline' })}>
+            <Modal.Trigger className={buttonStyles({ variant: 'outline' })}>
                 <IconClipboard /> Copy
             </Modal.Trigger>
             <Modal.Content size='3xl' isBlurred aria-label='Theme Snippet'>
@@ -38,10 +38,10 @@ export default function ThemeSnippet({ code = 'TEST' }: { code: string }) {
                     <Modal.Description>Copy this code to your .css file</Modal.Description>
                 </Modal.Header>
                 <Modal.Body className='relative'>
-                    <div className='absolute right-9 top-4 z-20'>
+                    <div className='absolute top-4 right-9 z-20'>
                         <CopyButton isCopied={isCopied} onPress={() => handleCopy()} />
                     </div>
-                    <div className='[&_pre]:my-0 border rounded-lg mb-4 font-mono [&_pre]:!border-0 [&_pre]:max-h-[32rem] [&_pre]:mb-4 no-scrollbar [&_pre]:overflow-auto [&_pre]:no-scrollbar'>
+                    <div className='no-scrollbar [&_pre]:no-scrollbar mb-4 rounded-lg border font-mono [&_pre]:my-0 [&_pre]:mb-4 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0'>
                         <CodeHighlighter code={code} lang='css' />
                     </div>
                 </Modal.Body>

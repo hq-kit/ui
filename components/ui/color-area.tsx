@@ -15,10 +15,7 @@ const ColorArea = ({ className, ...props }: ColorAreaProps) => {
         <ColorAreaPrimitive
             {...props}
             data-slot='color-area'
-            className={ctr(
-                className,
-                'size-56 shrink-0 rounded-lg bg-muted forced-colors:bg-[GrayText]'
-            )}
+            className={ctr(className, 'bg-muted size-56 shrink-0 rounded-lg')}
             style={({ defaultStyle, isDisabled }) => ({
                 ...defaultStyle,
                 background: isDisabled ? undefined : defaultStyle.background

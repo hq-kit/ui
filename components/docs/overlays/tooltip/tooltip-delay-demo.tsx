@@ -2,7 +2,7 @@
 
 import { IconBrandGithub } from 'hq-icons'
 
-import { buttonVariants, Tooltip } from '@/components/ui'
+import { buttonStyles, Tooltip } from '@/components/ui'
 
 export default function TooltipDelayDemo() {
     return (
@@ -10,7 +10,7 @@ export default function TooltipDelayDemo() {
             <Tooltip delay={0}>
                 <Tooltip.Trigger
                     aria-label='Check My Github'
-                    className={buttonVariants({
+                    className={buttonStyles({
                         variant: 'outline',
                         size: 'icon'
                     })}

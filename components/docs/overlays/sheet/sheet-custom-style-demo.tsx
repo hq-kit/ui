@@ -8,7 +8,7 @@ export default function SheetCustomStyleDemo() {
             <Button variant='warning'>Archive Project</Button>
             <Sheet.Content role='dialog'>
                 <Sheet.Header
-                    className='bg-background border-b mb-4'
+                    className='bg-bg mb-4 border-b'
                     title='Archive Project'
                     description='Archiving this project will disable access and hide it from active projects.'
                 >
@@ -16,7 +16,7 @@ export default function SheetCustomStyleDemo() {
                         You can restore the project anytime from the archive!
                     </Note>
                 </Sheet.Header>
-                <Form className='overflow-y-auto flex-1' onSubmit={() => {}}>
+                <Form className='flex-1 overflow-y-auto' onSubmit={() => {}}>
                     <Sheet.Body className='space-y-4'>
                         <TextField
                             isRequired

@@ -2,14 +2,14 @@
 
 import { IconBrandX } from 'hq-icons'
 
-import { buttonVariants, Tooltip } from '@/components/ui'
+import { buttonStyles, Tooltip } from '@/components/ui'
 
 export default function TooltipDemo() {
     return (
         <Tooltip>
             <Tooltip.Trigger
                 aria-label='Follow My Twitter'
-                className={buttonVariants({
+                className={buttonStyles({
                     variant: 'outline',
                     size: 'icon'
                 })}

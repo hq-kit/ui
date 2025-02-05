@@ -1,7 +1,5 @@
 'use client'
 
-import { IconBrandCleon } from 'hq-icons'
-
 import { Button } from '@/components/ui'
 
 export default function ButtonSizeDemo() {
@@ -10,9 +8,6 @@ export default function ButtonSizeDemo() {
             <Button size='xs'>xs</Button>
             <Button size='sm'>sm</Button>
             <Button>md (default)</Button>
-            <Button size='icon'>
-                <IconBrandCleon />
-            </Button>
             <Button size='lg'>lg</Button>
         </div>
     )

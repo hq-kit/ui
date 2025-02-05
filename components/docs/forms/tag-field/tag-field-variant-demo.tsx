@@ -18,20 +18,20 @@ export default function TagFieldVariantDemo() {
             {
                 id: 3,
                 name: 'React'
-            },
-            {
-                id: 4,
-                name: 'Tailwind CSS'
             }
         ]
     })
 
     return (
-        <TagField
-            variant='secondary'
-            className='max-w-xs'
-            aria-label='Add tag'
-            list={selectedItems}
-        />
+        <div className='space-y-2'>
+            <TagField variant='primary' className='max-w-xs' label='Primary' list={selectedItems} />
+            <TagField
+                variant='secondary'
+                className='max-w-xs'
+                label='Secondary'
+                list={selectedItems}
+            />
+            <TagField variant='dark' className='max-w-xs' label='Dark' list={selectedItems} />
+        </div>
     )
 }

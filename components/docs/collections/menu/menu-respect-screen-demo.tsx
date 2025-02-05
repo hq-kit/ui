@@ -1,18 +1,35 @@
 'use client'
 
-import { buttonVariants, Menu } from '@/components/ui'
+import { IconGauge, IconSettings, IconShield } from 'hq-icons'
+
+import { Button, Menu } from '@/components/ui'
 
 export default function MenuRespectScreenDemo() {
     return (
         <Menu respectScreen={false}>
-            <Menu.Trigger className={buttonVariants({ variant: 'outline' })}>Open</Menu.Trigger>
+            <Button variant='outline'>Open</Button>
             <Menu.Content placement='bottom' className='min-w-48'>
-                <Menu.Item>Dashboard</Menu.Item>
-                <Menu.Item>Reports</Menu.Item>
-                <Menu.Item>Settings</Menu.Item>
-                <Menu.Item>Security</Menu.Item>
-                <Menu.Item>Privacy</Menu.Item>
-                <Menu.Item>Help</Menu.Item>
+                <Menu.Item>
+                    <IconGauge />
+                    <Menu.Label>Dashboard</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <IconSettings />
+                    <Menu.Label>Settings</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <IconShield />
+                    <Menu.Label>Security</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <Menu.Label>Reports</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <Menu.Label>Privacy</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <Menu.Label>Help</Menu.Label>
+                </Menu.Item>
             </Menu.Content>
         </Menu>
     )

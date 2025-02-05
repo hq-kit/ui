@@ -1,17 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { Keyboard as KeyboardPrimitive } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const keyboardStyles = tv({
     slots: {
-        base: '-mr-1 ml-auto hidden items-center gap-[0.25rem] px-1 lg:inline-flex',
-        kbd: [
-            'text-center font-sans capitalize text-muted-foreground group-focus:text-foreground',
-            'inline-grid min-h-5 min-w-5 place-content-center rounded-lg bg-background font-sans text-[.75rem] uppercase text-foreground ring-1 ring-foreground/10 group-focus:opacity-60'
-        ]
+        base: 'group-data-focused:text-fg group-data-hovered:text-fg hidden text-current/70 group-data-disabled:opacity-50 group-data-focused:opacity-90 lg:inline-flex',
+        kbd: 'inline-grid min-h-5 min-w-[2ch] place-content-center rounded text-center font-sans text-[.75rem] uppercase'
     }
 })
 
@@ -45,4 +40,5 @@ const Keyboard = ({ keys, classNames, className, ...props }: KeyboardProps) => {
     )
 }
 
-export { Keyboard, type KeyboardProps }
+export { Keyboard }
+export type { KeyboardProps }

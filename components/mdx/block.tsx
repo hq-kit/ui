@@ -3,12 +3,11 @@
 import * as React from 'react'
 
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
+import type { Key } from 'react-aria-components'
 
 import FileExplorer from '@/components/mdx/file-explorer'
 import PreviewContent from '@/components/mdx/preview-content'
-import { buttonVariants, cn, Link, Tabs, Toggle } from '@/components/ui'
-
-type screenWidthType = 'max-w-none' | 'max-w-3xl' | 'max-w-sm'
+import { buttonStyles, cn, Link, Tabs, Toggle } from '@/components/ui'
 
 interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
     page: string
@@ -24,7 +23,7 @@ export default function Block({
     className,
     ...props
 }: BlockProps) {
-    const [screenWidth, setScreenWidth] = React.useState<screenWidthType>('max-w-none')
+    const [screenWidth, setScreenWidth] = React.useState(new Set<Key>(['max-w-none']))
 
     return (
         <div className={cn('not-prose group relative my-6', className)} {...props}>
@@ -36,48 +35,44 @@ export default function Block({
                 <Tabs.Content className='w-full' id='preview'>
                     <div
                         className={cn(
-                            'relative bg-background',
+                            'bg-bg relative',
                             'flex min-h-56 items-center justify-center lg:min-h-80'
                         )}
                     >
-                        <div className='absolute hidden sm:-top-14 right-0 sm:flex gap-1 [&_.btn]:!size-8'>
+                        <div className='absolute right-0 hidden gap-1 sm:-top-14 sm:flex'>
                             <Link
                                 target='_blank'
-                                className={buttonVariants({ size: 'icon', variant: 'outline' })}
+                                className={buttonStyles({
+                                    size: 'icon',
+                                    variant: 'outline',
+                                    className: '!size-9'
+                                })}
                                 href={`/${page}`}
                             >
                                 <IconFullscreen />
                             </Link>
-                            <Toggle
-                                variant='solid'
-                                size='icon'
-                                isSelected={screenWidth === 'max-w-sm'}
-                                onChange={() => setScreenWidth('max-w-sm')}
+                            <Toggle.Group
+                                size='sm'
+                                selectionMode='single'
+                                selectedKeys={screenWidth}
+                                onSelectionChange={setScreenWidth}
                             >
-                                <IconSmartphone />
-                            </Toggle>
-                            <Toggle
-                                variant='solid'
-                                size='icon'
-                                isSelected={screenWidth === 'max-w-3xl'}
-                                onChange={() => setScreenWidth('max-w-3xl')}
-                            >
-                                <IconTablet />
-                            </Toggle>
-                            <Toggle
-                                variant='solid'
-                                size='icon'
-                                isSelected={screenWidth === 'max-w-none'}
-                                onChange={() => setScreenWidth('max-w-none')}
-                            >
-                                <IconMonitor />
-                            </Toggle>
+                                <Toggle id='max-w-sm'>
+                                    <IconSmartphone />
+                                </Toggle>
+                                <Toggle id='max-w-3xl'>
+                                    <IconTablet />
+                                </Toggle>
+                                <Toggle id='max-w-none'>
+                                    <IconMonitor />
+                                </Toggle>
+                            </Toggle.Group>
                         </div>
                         <PreviewContent
                             height={height}
                             zoomOut={zoomOut}
                             component={page}
-                            className={screenWidth}
+                            className={[...screenWidth].join(' ')}
                         />
                     </div>
                 </Tabs.Content>

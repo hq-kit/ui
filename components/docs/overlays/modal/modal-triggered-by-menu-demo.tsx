@@ -4,7 +4,7 @@ import React from 'react'
 
 import { IconEllipsisVertical } from 'hq-icons'
 
-import { Button, buttonVariants, Loader, Menu, Modal } from '@/components/ui'
+import { Button, buttonStyles, Loader, Menu, Modal } from '@/components/ui'
 import { wait } from '@/lib/utils'
 
 export default function ModalTriggeredByMenuDemo() {
@@ -52,7 +52,7 @@ export default function ModalTriggeredByMenuDemo() {
     return (
         <>
             <Menu>
-                <Menu.Trigger className={buttonVariants({ variant: 'outline' })}>
+                <Menu.Trigger className={buttonStyles({ variant: 'outline' })}>
                     <IconEllipsisVertical />
                 </Menu.Trigger>
                 <Menu.Content placement='bottom'>

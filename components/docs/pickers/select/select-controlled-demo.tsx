@@ -31,7 +31,7 @@ export default function SelectControlledDemo() {
                     </Select.Item>
                 )}
             </Select>
-            <Description className='mt-2 block [&>strong]:text-foreground text-muted-foreground'>
+            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
                 You have selected: <strong>{movie}</strong>
             </Description>
         </>

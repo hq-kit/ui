@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { IconEye, IconEyeClosed } from 'hq-icons'
 import {
@@ -8,12 +8,14 @@ import {
     TextField as TextFieldPrimitive,
     type TextFieldProps as TextFieldPrimitiveProps
 } from 'react-aria-components'
+import { twJoin } from 'tailwind-merge'
 
 import type { TextInputDOMProps } from '@react-types/shared'
 
-import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
+import type { FieldProps } from './field'
+import { Description, FieldError, FieldGroup, Input, Label } from './field'
 import { Loader } from './loader'
-import { cn, ctr } from './utils'
+import { ctr } from './utils'
 
 type InputType = Exclude<TextInputDOMProps['type'], 'password'>
 
@@ -49,9 +51,8 @@ const TextField = ({
     type,
     ...props
 }: TextFieldProps) => {
-    const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
     const inputType = isRevealable ? (isPasswordVisible ? 'text' : 'password') : type
-
     const handleTogglePasswordVisibility = () => {
         setIsPasswordVisible((prev) => !prev)
     }
@@ -61,44 +62,49 @@ const TextField = ({
             {...props}
             className={ctr(className, 'group flex flex-col gap-y-1.5')}
         >
-            {label && <Label>{label}</Label>}
-            <FieldGroup data-loading={isPending ? 'true' : undefined}>
-                {prefix ? (
-                    <span data-slot='prefix' className='atrs x2e2'>
-                        {prefix}
-                    </span>
-                ) : null}
-                <Input placeholder={placeholder} />
-                {isRevealable ? (
-                    <ButtonPrimitive
-                        type='button'
-                        aria-label='Toggle password visibility'
-                        onPress={handleTogglePasswordVisibility}
-                        className='mr-2.5 relative flex items-center justify-center [&>[data-slot=icon]]:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-lg'
+            {!props.children ? (
+                <>
+                    {label && <Label>{label}</Label>}
+                    <FieldGroup
+                        isInvalid={!!errorMessage}
+                        isDisabled={props.isDisabled}
+                        className={twJoin(
+                            '**:[button]:h-8 **:[button]:rounded-[calc(var(--radius-lg)*0.5)] **:[button]:px-3.5 **:[button]:inset-ring-0 **:[button]:inset-shadow-none **:[button]:has-data-[slot=icon]:w-8 **:[button]:has-data-[slot=icon]:p-0 dark:**:[button]:inset-ring-0',
+                            '[&>[data-slot=suffix]>button]:mr-[calc(var(--spacing)*-1.7)] [&>[data-slot=suffix]>button]:data-focus-visible:outline-1 [&>[data-slot=suffix]>button]:data-focus-visible:outline-offset-1',
+                            '[&>[data-slot=prefix]>button]:ml-[calc(var(--spacing)*-1.7)] [&>[data-slot=prefix]>button]:data-focus-visible:outline-1 [&>[data-slot=prefix]>button]:data-focus-visible:outline-offset-1'
+                        )}
+                        data-loading={isPending ? 'true' : undefined}
                     >
-                        <IconEyeClosed
-                            className={cn(
-                                'scale-100 transition-all',
-                                isPasswordVisible && 'scale-0'
-                            )}
-                        />
-                        <IconEye
-                            className={cn(
-                                'absolute scale-0 transition-all',
-                                isPasswordVisible && 'scale-100'
-                            )}
-                        />
-                    </ButtonPrimitive>
-                ) : isPending ? (
-                    <Loader variant='spin' data-slot='suffix' />
-                ) : suffix ? (
-                    <span data-slot='suffix'>{suffix}</span>
-                ) : null}
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
+                        {prefix ? (
+                            <span data-slot='prefix' className='atrs x2e2'>
+                                {prefix}
+                            </span>
+                        ) : null}
+                        <Input placeholder={placeholder} />
+                        {isRevealable ? (
+                            <ButtonPrimitive
+                                type='button'
+                                aria-label='Toggle password visibility'
+                                onPress={handleTogglePasswordVisibility}
+                                className='data-focus-visible:*:data-[slot=icon]:text-primary *:data-[slot=icon]:text-muted-fg relative mr-1 grid shrink-0 place-content-center rounded-sm border-transparent outline-hidden'
+                            >
+                                {isPasswordVisible ? <IconEyeClosed /> : <IconEye />}
+                            </ButtonPrimitive>
+                        ) : isPending ? (
+                            <Loader variant='spin' data-slot='suffix' />
+                        ) : suffix ? (
+                            <span data-slot='suffix'>{suffix}</span>
+                        ) : null}
+                    </FieldGroup>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            ) : (
+                props.children
+            )}
         </TextFieldPrimitive>
     )
 }
 
-export { TextField, TextFieldPrimitive, type TextFieldProps }
+export { TextField }
+export type { TextFieldProps }

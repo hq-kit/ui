@@ -6,8 +6,8 @@ import { IconBrandX, IconTrash } from 'hq-icons'
 
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
 import PaginationDemo from '@/components/docs/navigation/pagination/pagination-demo'
-import MeterDemo from '@/components/docs/statuses/meter-demo'
-import ProgressDemo from '@/components/docs/statuses/progress-bar-demo'
+import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
+import ProgressDemo from '@/components/docs/statuses/progress-bar/progress-bar-demo'
 import {
     Breadcrumbs,
     Button,
@@ -34,7 +34,7 @@ export default function OptionsSink() {
                 <Breadcrumbs.Item href='/docs'>Docs</Breadcrumbs.Item>
                 <Breadcrumbs.Item>Components</Breadcrumbs.Item>
             </Breadcrumbs>
-            <div className='flex flex-col w-full lg:flex-row gap-2 items-center mt-6'>
+            <div className='mt-6 flex w-full flex-col items-center gap-2 lg:flex-row'>
                 <Select
                     portal={portal}
                     aria-labelledby='per-page'
@@ -49,7 +49,7 @@ export default function OptionsSink() {
                 </Select>
                 <DatePicker portal={portal} className='w-full' aria-label='Event date' />
             </div>
-            <div className='flex gap-1 items-end mt-4'>
+            <div className='mt-4 flex items-end gap-1'>
                 <ComboBox portal={portal} placeholder='Select a user' label='Users' items={users}>
                     {(item) => (
                         <ComboBox.Item id={item.id} textValue={item.name}>
@@ -81,7 +81,7 @@ export default function OptionsSink() {
                 <ProgressDemo />
                 <MeterDemo />
             </div>
-            <div className='flex justify-center gap-5 mt-4'>
+            <div className='mt-4 flex justify-center gap-5'>
                 <Tooltip>
                     <Button aria-label='Follow My Twitter' variant='dark' size='icon'>
                         <IconBrandX />

@@ -31,11 +31,11 @@ interface FieldProps {
 
 const fieldStyles = tv({
     slots: {
-        description: 'text-pretty text-base/6 text-muted-foreground sm:text-sm/6',
-        label: 'w-fit cursor-default font-medium text-muted-foreground text-sm group-focus:text-primary group-data-[focus-within=true]:text-primary group-has-[[data-focus-within=true]]:text-primary group-has-[[data-focused=true]]:text-primary group-has-[[aria-invalid=true]]:text-danger',
-        fieldError: 'text-sm/6 text-danger forced-colors:text-[Mark]',
+        description: 'text-muted-fg text-base/6 text-pretty sm:text-sm/6',
+        label: 'text-fg group-data-focused:text-primary group-data-[focus-within=true]:text-primary group-has-data-[focus-within=true]:text-primary group-data-[open=true]:text-primary group-has-data-[focused=true]:text-primary group-has-aria-[invalid=true]:text-danger w-fit cursor-default text-sm font-medium transition-colors duration-200',
+        fieldError: 'text-danger text-sm/6',
         input: [
-            'w-full min-w-0 [&::-ms-reveal]:hidden bg-transparent p-2 text-base text-foreground placeholder-muted-foreground outline-none focus:outline-none lg:text-sm'
+            'text-fg placeholder-muted-fg w-full min-w-0 bg-transparent p-2 text-base outline-none data-focused:outline-none lg:text-sm [&::-ms-reveal]:hidden'
         ]
     }
 })
@@ -70,14 +70,15 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
         <Group
             {...props}
             className={cn([
-                'border border-muted transition h-10 duration-200 ease-out rounded-lg flex items-center',
-                'focus-within:border-primary/70 focus-within:ring-4 focus-within:ring-primary/20',
-                'group-invalid:focus-within:border-danger focus-within:ring-4 group-invalid:focus-within:ring-danger/20',
+                'flex h-10 items-center rounded-lg border transition duration-200 ease-out',
+                'data-hovered:border-primary/60',
+                'data-focus-within:border-primary/70 data-focus-within:ring-primary/20 data-focus-within:ring-4',
+                'group-data-invalid:focus-within:border-danger group-data-invalid:focus-within:ring-danger/20 data-focus-within:ring-4',
                 '[&>[role=progressbar]]:mr-2.5',
-                '[&_[data-slot=icon]]:size-4 [&_[data-slot=icon]]:shrink-0',
-                '[&>[data-slot=suffix]]:mr-2.5 [&>[data-slot=suffix]]:text-muted-foreground',
-                '[&>[data-slot=prefix]]:ml-2.5 [&>[data-slot=prefix]]:text-muted-foreground',
-                'group-disabled:opacity-50',
+                '**:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0',
+                '[&>[data-slot=suffix]]:text-muted-fg [&>[data-slot=suffix]]:mr-2.5',
+                '[&>[data-slot=prefix]]:text-muted-fg [&>[data-slot=prefix]]:ml-2.5',
+                'data-disabled:data-hovered:border-muted data-invalid:data-hovered:border-danger/60 group-data-disabled:opacity-50',
                 className
             ])}
         />

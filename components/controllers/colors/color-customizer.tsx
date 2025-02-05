@@ -28,8 +28,8 @@ export default function ColorCustomizer() {
 
     return (
         <>
-            <div className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-0 lg:top-14 py-6 z-10'>
-                <Container className='flex flex-row gap-3 justify-between items-center'>
+            <div className='bg-bg/60 sticky top-0 z-10 w-full rounded-b-lg py-6 backdrop-blur-xl lg:top-14'>
+                <Container className='flex flex-row items-center justify-between gap-3'>
                     <Popover>
                         <Button variant='outline'>
                             <IconPalette /> Presets
@@ -45,9 +45,7 @@ export default function ColorCustomizer() {
                             >
                                 {({ isSelected }) => (
                                     <IconBrandTailwind
-                                        className={
-                                            isSelected ? '!text-sky-500' : '!text-foreground'
-                                        }
+                                        className={isSelected ? '!text-sky-500' : '!text-fg'}
                                     />
                                 )}
                             </Toggle>
@@ -62,8 +60,8 @@ export default function ColorCustomizer() {
             </div>
             <Container className='w-full space-y-2'>
                 <CustomColor {...{ selectedFormat, tailwindVariable }} />
-                <h2 className='text-muted-foreground pt-2 font-semibold'>Tailwind Colors</h2>
-                <div className='grid sm:grid-cols-2 gap-2'>
+                <h2 className='text-muted-fg pt-2 font-semibold'>Tailwind Colors</h2>
+                <div className='grid gap-2 sm:grid-cols-2'>
                     {tailwindColors.map((color, i) => (
                         <ColorShades
                             key={i}
@@ -75,8 +73,8 @@ export default function ColorCustomizer() {
                     ))}
                 </div>
 
-                <h2 className='text-muted-foreground pt-2 font-semibold'>Radix Colors</h2>
-                <div className='grid sm:grid-cols-2 gap-2'>
+                <h2 className='text-muted-fg pt-2 font-semibold'>Radix Colors</h2>
+                <div className='grid gap-2 sm:grid-cols-2'>
                     {radixColors.map((color, i) => (
                         <ColorShades
                             key={i}

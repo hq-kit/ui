@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconSearch, IconX } from 'hq-icons'
 import {
     SearchField as SearchFieldPrimitive,
@@ -18,10 +16,9 @@ import { ctr } from './utils'
 const searchFieldStyles = tv({
     slots: {
         base: 'group flex min-w-10 flex-col gap-y-1.5',
-        searchIcon:
-            'ml-2.5 size-4 shrink-0 text-muted-foreground group-disabled:text-muted-foreground forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]',
+        searchIcon: 'text-muted-fg group-data-disabled:text-muted-fg ml-2.5 size-4 shrink-0',
         clearButton: [
-            'mr-1 size-8 text-muted-foreground group-empty:invisible pressed:bg-transparent hover:bg-transparent hover:text-foreground pressed:text-foreground'
+            'text-muted-fg data-hovered:text-fg data-pressed:text-fg mr-1 size-8 group-data-empty:invisible data-hovered:bg-transparent data-pressed:bg-transparent'
         ],
         input: '[&::-webkit-search-cancel-button]:hidden'
     }
@@ -57,7 +54,7 @@ const SearchField = ({
                 <IconSearch aria-hidden className={searchIcon()} />
                 <Input placeholder={placeholder ?? 'Search...'} className={input()} />
                 {isPending ? (
-                    <Loader variant='spin' className='mr-2.5' />
+                    <Loader variant='spin' />
                 ) : (
                     <Button size='icon' variant='ghost' className={clearButton()}>
                         <IconX aria-hidden />
@@ -70,4 +67,5 @@ const SearchField = ({
     )
 }
 
-export { SearchField, type SearchFieldProps }
+export { SearchField }
+export type { SearchFieldProps }

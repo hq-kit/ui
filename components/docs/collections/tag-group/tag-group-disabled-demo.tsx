@@ -13,14 +13,12 @@ export default function TagGroupDisabledDemo() {
                 label='Disabled Key'
                 selectionMode='multiple'
             >
-                <Tag.List items={androidBrands}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
+                <Tag.List items={androidBrands}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
             </Tag.Group>
 
             <Tag.Group label='Disabled by Tag' selectionMode='multiple'>
                 <Tag.List items={androidBrands}>
-                    {(item) => <Tag.Item isDisabled={item.available}>{item.name}</Tag.Item>}
+                    {(item) => <Tag isDisabled={item.available}>{item.name}</Tag>}
                 </Tag.List>
             </Tag.Group>
         </div>

@@ -5,12 +5,12 @@ import React from 'react'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import { useDateFormatter } from 'react-aria'
 import {
-    Calendar as CalendarPrimitive,
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
     CalendarGridHeader as CalendarGridHeaderPrimitive,
     CalendarHeaderCell,
+    Calendar as CalendarPrimitive,
     type CalendarProps as CalendarPrimitiveProps,
     CalendarStateContext,
     type DateValue,
@@ -28,14 +28,17 @@ import { cr, ctr, focusRing } from './utils'
 
 const cellStyles = tv({
     extend: focusRing,
-    base: 'flex size-10 sm:size-9 cursor-default tabular-nums items-center justify-center rounded-lg lg:text-sm forced-colors:outline-0',
+    base: 'flex size-10 cursor-default items-center justify-center rounded-lg tabular-nums sm:size-9 lg:text-sm',
     variants: {
         isSelected: {
-            false: 'text-foreground forced-colors:text-[ButtonText] hover:bg-secondary-foreground/15 pressed:bg-secondary-foreground/20',
-            true: 'bg-primary text-primary-foreground invalid:bg-danger invalid:text-danger-foreground forced-colors:bg-[Highlight] forced-colors:text-[Highlight] forced-colors:invalid:bg-[Mark]'
+            false: 'text-fg hover:bg-muted-fg/15 pressed:bg-muted-fg/20',
+            true: 'bg-primary text-primary-fg'
         },
         isDisabled: {
-            true: 'text-muted-foreground/70 forced-colors:text-[GrayText]'
+            true: 'text-muted-fg/70'
+        },
+        isInvalid: {
+            true: 'bg-danger text-danger-fg'
         }
     }
 })
@@ -53,7 +56,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
             {...props}
         >
             <CalendarHeader type='calendar' />
-            <CalendarGrid className='[&_td]:border-collapse [&_td]:px-0'>
+            <CalendarGrid className='[&_td]:border-muted [&_td]:border-collapse [&_td]:px-0'>
                 <CalendarGridHeader />
                 <CalendarGridBody>
                     {(date) => (
@@ -70,7 +73,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
                 </CalendarGridBody>
             </CalendarGrid>
             {errorMessage && (
-                <Text slot='errorMessage' className='text-sm text-red-600'>
+                <Text slot='errorMessage' className='text-danger text-sm'>
                     {errorMessage}
                 </Text>
             )}
@@ -81,8 +84,8 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
 const calendarHeaderStyles = tv({
     slots: {
         header: 'flex w-full justify-center gap-1 px-1 pb-5 sm:pb-4',
-        heading: 'mr-2 space-x-1 text-muted-foreground tracking-tight flex-1 text-left font-medium',
-        calendarGridHeaderCell: 'text-sm lg:text-xs font-semibold text-muted-foreground'
+        heading: 'text-muted-fg mr-2 flex-1 space-x-1 text-left font-medium tracking-tight',
+        calendarGridHeaderCell: 'text-muted-fg text-sm font-semibold lg:text-xs'
     }
 })
 
@@ -112,7 +115,7 @@ const CalendarHeader = ({
             <div className='flex items-center gap-1'>
                 <Button
                     size='icon'
-                    className='[&_[data-slot=icon]]:text-foreground size-8 sm:size-7'
+                    className='[&_[data-slot=icon]]:text-fg size-8 sm:size-7'
                     shape='circle'
                     variant='ghost'
                     slot='previous'
@@ -121,7 +124,7 @@ const CalendarHeader = ({
                 </Button>
                 <Button
                     size='icon'
-                    className='[&_[data-slot=icon]]:text-foreground size-8 sm:size-7'
+                    className='[&_[data-slot=icon]]:text-fg size-8 sm:size-7'
                     shape='circle'
                     variant='ghost'
                     slot='next'
@@ -167,11 +170,16 @@ const MonthDropdown = (state: CalendarState | RangeCalendarState) => {
         <Menu aria-label='Month'>
             <Menu.Trigger slot={null}>{months[focusedDate.month - 1]}</Menu.Trigger>
             <Menu.Content
+                selectionMode='single'
                 onAction={(e) => onChange(Number(e))}
                 selectedKeys={[focusedDate.month]}
                 items={months.map((month, i) => ({ value: i + 1, formatted: month }))}
             >
-                {(item) => <Menu.Item id={item.value}>{item.formatted}</Menu.Item>}
+                {(item) => (
+                    <Menu.Item id={item.value}>
+                        <Menu.Label>{item.formatted}</Menu.Label>
+                    </Menu.Item>
+                )}
             </Menu.Content>
         </Menu>
     )
@@ -199,11 +207,16 @@ const YearDropdown = (state: CalendarState | RangeCalendarState) => {
         <Menu aria-label='Year'>
             <Menu.Trigger slot={null}>{years[20]}</Menu.Trigger>
             <Menu.Content
+                selectionMode='single'
                 onAction={(e) => onChange(Number(e))}
                 selectedKeys={[focusedDate.year]}
                 items={years.map((year) => ({ value: year }))}
             >
-                {(item) => <Menu.Item id={item.value}>{item.value}</Menu.Item>}
+                {(item) => (
+                    <Menu.Item id={item.value}>
+                        <Menu.Label>{item.value}</Menu.Label>
+                    </Menu.Item>
+                )}
             </Menu.Content>
         </Menu>
     )
@@ -212,3 +225,4 @@ const YearDropdown = (state: CalendarState | RangeCalendarState) => {
 Calendar.Header = CalendarHeader
 Calendar.GridHeader = CalendarGridHeader
 export { Calendar }
+export type { CalendarProps }

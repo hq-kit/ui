@@ -5,10 +5,10 @@ import React from 'react'
 import About from 'components/user-profile/about'
 import Media from 'components/user-profile/media'
 import Posts from 'components/user-profile/posts'
-import NavbarLayout from 'layouts/navbar-layout'
 import Image from 'next/image'
 import { Key } from 'react-aria-components'
 
+import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Avatar, Card, Description, Heading, Tabs } from '@/components/ui'
 
 export default function UserProfile() {
@@ -27,22 +27,22 @@ export default function UserProfile() {
                         />
                     </Card.Content>
                 </Card>
-                <div className='flex flex-col lg:flex-row relative items-center gap-4 mt-12 lg:mt-4'>
+                <div className='relative mt-12 flex flex-col items-center gap-4 lg:mt-4 lg:flex-row'>
                     <Avatar
                         alt='logo'
                         src='https://github.com/dq-alhq.png'
-                        className='absolute p-1 -translate-x-1/2 border rounded-full lg:translate-x-0 left-1/2 lg:left-20 size-24 lg:size-44 bottom-32 lg:-bottom-4 bg-background'
+                        className='bg-bg absolute bottom-32 left-1/2 size-24 -translate-x-1/2 rounded-full border p-1 lg:-bottom-4 lg:left-20 lg:size-44 lg:translate-x-0'
                     />
-                    <div className='flex flex-col w-full gap-1 lg:ml-72'>
-                        <Heading className='text-lg font-bold text-center lg:text-left lg:text-4xl'>
+                    <div className='flex w-full flex-col gap-1 lg:ml-72'>
+                        <Heading className='text-center text-lg font-bold lg:text-left lg:text-4xl'>
                             Diqi Al-Haqqi
                         </Heading>
-                        <Description className='text-sm text-center uppercase lg:text-lg lg:text-left'>
+                        <Description className='text-center text-sm uppercase lg:text-left lg:text-lg'>
                             East Java, Indonesia
                         </Description>
                     </div>
                     <Tabs
-                        className='lg:ml-auto mx-20'
+                        className='mx-20 lg:ml-auto'
                         selectedKey={panel}
                         onSelectionChange={setPanel}
                     >
@@ -60,7 +60,7 @@ export default function UserProfile() {
                     </Tabs>
                 </div>
             </div>
-            <div className='flex flex-col gap-6 mt-2 lg:mt-12 lg:flex-row'>
+            <div className='mt-2 flex flex-col gap-6 lg:mt-12 lg:flex-row'>
                 {panel === 1 && <Posts />}
                 {panel === 2 && <About />}
                 {panel === 3 && <Media />}

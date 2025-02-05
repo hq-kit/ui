@@ -3,8 +3,8 @@
 import React from 'react'
 
 import { type Docs, docs } from '#docs'
-import { LayoutGroup, motion } from 'framer-motion'
-import { IconCircleHalf, IconHighlighter, IconLayers, IconPackage } from 'hq-icons'
+import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
+import { LayoutGroup, motion } from 'motion/react'
 import type { LinkProps as NextLinkProps } from 'next/link'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -57,7 +57,7 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
             hideIndicator
             allowsMultipleExpanded
             defaultExpandedKeys={['getting-started', 'components']}
-            className='w-full flex flex-col gap-y-0.5'
+            className='flex w-full flex-col gap-y-0.5'
         >
             {filteredNodeEntries.map(([key, value]) => (
                 <Accordion.Item
@@ -65,15 +65,13 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                     key={key}
                     id={key}
                 >
-                    <Trigger className='[&_.icon]:size-4 pl-2.5 pr-1 text-foreground group-data-[open]:text-primary [&_.icon]:text-foreground [&_.icon]:fill-foreground/10 dark:[&_.icon]:fill-foreground/30'>
+                    <Trigger className='text-fg group-data-[open]:text-primary **:data-[slot=icon]:text-fg **:data-[slot=icon]:fill-primary/20 px-3 **:data-[slot=icon]:size-4'>
                         {key === 'getting-started' ? (
-                            <IconLayers className='icon' />
-                        ) : key === 'prologue' ? (
-                            <IconHighlighter className='icon' />
+                            <IconLayers />
                         ) : key === 'dark-mode' ? (
-                            <IconCircleHalf className='icon' />
+                            <IconCircleHalf />
                         ) : (
-                            <IconPackage className='icon' />
+                            <IconPackage />
                         )}
                         {goodTitle(key)}
                     </Trigger>
@@ -82,13 +80,13 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                             allowsMultipleExpanded
                             hideBorder
                             defaultExpandedKeys={defaultValues}
-                            className='w-full relative'
+                            className='relative w-full'
                         >
-                            <div className='h-full absolute left-0 bg-zinc-200 dark:bg-zinc-800 w-px ml-4' />
+                            <div className='absolute left-0 ml-4 h-full w-px bg-zinc-200 dark:bg-zinc-800' />
                             {Object.entries(value as HierarchyNode).map(([subKey, subValue]) =>
                                 typeof subValue === 'object' && 'title' in subValue ? (
                                     <AsideLink
-                                        className='pl-[2.1rem] flex justify-between items-center'
+                                        className='flex items-center justify-between pl-8'
                                         key={subKey}
                                         href={`/${subValue.slug}`}
                                     >
@@ -100,16 +98,14 @@ const renderHierarchy = (node: HierarchyNode, defaultValues: string[]) => {
                                         key={subKey}
                                         id={subKey}
                                     >
-                                        <Trigger className='[--trigger-padding-left:2.2rem] pl-[--trigger-padding-left] pr-2'>
-                                            {goodTitle(subKey)}
-                                        </Trigger>
-                                        <Accordion.Content>
+                                        <Trigger className='!px-8'>{goodTitle(subKey)}</Trigger>
+                                        <Accordion.Content className='*:px-0'>
                                             {Object.entries(subValue as HierarchyNode).map(
                                                 ([childKey, childValue]) =>
                                                     typeof childValue === 'object' &&
                                                     'title' in childValue ? (
                                                         <AsideLink
-                                                            className='flex justify-between h-9 items-center pl-12 pr-2'
+                                                            className='flex h-9 items-center justify-between pl-12'
                                                             key={childKey}
                                                             href={`/${childValue.slug}`}
                                                         >
@@ -166,7 +162,7 @@ const Trigger = ({ children, className }: { children: React.ReactNode; className
     return (
         <Accordion.Trigger
             className={cn(
-                'group hover:text-primary hover:bg-muted/60 py-1.5 pressed:text-primary aria-expanded:text-primary',
+                'group data-hovered:text-primary data-hovered:bg-primary/10 data-pressed:text-primary aria-expanded:text-primary rounded-lg py-1.5 whitespace-nowrap',
                 className
             )}
         >
@@ -183,11 +179,11 @@ interface AsideLinkProps extends NextLinkProps {
 }
 
 const asideLinkStyles = tv({
-    base: 'relative block group focus:outline-none focus-visible:bg-muted/50 focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-primary rounded-lg pl-2.5 h-9 text-base transition-colors hover:bg-muted/60 hover:text-primary lg:text-sm',
+    base: 'group focus-visible:bg-primary/5 focus-visible:ring-primary hover:bg-primary/10 hover:text-primary relative block h-9 w-full rounded-lg pl-2.5 text-base font-medium transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-inset lg:text-sm',
     variants: {
         isActive: {
-            false: 'text-foreground forced-colors:text-[Gray] hover:text-primary',
-            true: 'text-primary forced-colors:text-[LinkText]'
+            false: 'text-muted-fg hover:text-primary',
+            true: 'text-primary'
         }
     }
 })
@@ -202,7 +198,7 @@ function AsideLink({ indicatorClassName, className, children, ...props }: AsideL
                 <motion.span
                     layoutId='current-indicator-sidebar'
                     className={cn(
-                        'absolute inset-y-1 left-[1rem] w-0.5 rounded-full bg-primary',
+                        'bg-primary absolute inset-y-1 left-[1rem] w-0.5 rounded-full',
                         indicatorClassName
                     )}
                 />

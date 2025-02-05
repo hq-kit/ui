@@ -167,7 +167,7 @@ import { router } from '@inertiajs/react'
 import React from 'react'
 import { RouterProvider } from 'react-aria-components'
 
-export function Provider({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
       <ThemeProvider defaultTheme="system" storageKey="theme">
@@ -181,11 +181,11 @@ export function Provider({ children }: { children: React.ReactNode }) {
 Next up, tweak your `resources/js/app.tsx` file to includwe this:
 
 ```tsx {1} {4-6}
-import { Provider } from './provider'
+import { Provider } from './providers'
 
 const appElement = (
-  <Provider>
+  <Providers>
     <App {...props} />
-  </Provider>
+  </Providers>
 )
 ```

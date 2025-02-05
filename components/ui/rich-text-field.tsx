@@ -131,7 +131,7 @@ const RichTextField = ({
                     {as === 'rich-text' ? (
                         <RichTextPlugin
                             placeholder={
-                                <p className='absolute bottom-2 left-3 text-muted-foreground'>
+                                <p className='text-muted-fg absolute bottom-2 left-3'>
                                     Write something...
                                 </p>
                             }
@@ -139,7 +139,7 @@ const RichTextField = ({
                                 <TextField
                                     aria-label='Editor'
                                     id='parent'
-                                    className={cn('group flex flex-col gap-1 relative', className)}
+                                    className={cn('group relative flex flex-col gap-1', className)}
                                 >
                                     {label && <Label>{label}</Label>}
 
@@ -149,9 +149,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
-                                            'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition outline-none focus:outline-none sm:text-sm',
+                                            'focus:border-primary/70 hover:border-primary/60 focus:ring-primary/20 focus:ring-4',
+                                            'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
                                             isDisabled && 'opacity-50'
                                         )}
                                     />
@@ -164,7 +164,7 @@ const RichTextField = ({
                     ) : (
                         <PlainTextPlugin
                             placeholder={
-                                <p className='absolute bottom-2 left-3 text-muted-foreground'>
+                                <p className='text-muted-fg absolute bottom-2 left-3'>
                                     Write something...
                                 </p>
                             }
@@ -172,7 +172,7 @@ const RichTextField = ({
                                 <TextField
                                     aria-label='Editor'
                                     id='parent'
-                                    className={cn('group flex flex-col gap-1 relative', className)}
+                                    className={cn('group relative flex flex-col gap-1', className)}
                                 >
                                     {label && <Label>{label}</Label>}
 
@@ -182,9 +182,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'w-full min-h-32 outline-none focus:outline-none min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm transition sm:text-sm',
-                                            'focus:border-primary/85 focus:ring-4 focus:ring-primary/20',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base shadow-sm transition outline-none focus:outline-none sm:text-sm',
+                                            'focus:border-primary/70 focus:ring-primary/20 hover:border-primary/60 focus:ring-4',
+                                            'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
                                             isDisabled && 'opacity-50'
                                         )}
                                     />
@@ -308,27 +308,34 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
                 {blockIcons[blockType as keyof typeof blockIcons]}
             </Button>
             <Menu.Content selectionMode='single' aria-label='Block type' selectedKeys={[blockType]}>
-                <Menu.Radio id='paragraph' onAction={formatParagraph}>
-                    <IconParagraph /> Paragraph
-                </Menu.Radio>
-                <Menu.Radio id='h1' onAction={() => formatHeading('h1')}>
-                    <IconHeading1 /> Heading 1
-                </Menu.Radio>
-                <Menu.Radio id='h2' onAction={() => formatHeading('h2')}>
-                    <IconHeading2 /> Heading 2
-                </Menu.Radio>
-                <Menu.Radio id='h3' onAction={() => formatHeading('h3')}>
-                    <IconHeading3 /> Heading 3
-                </Menu.Radio>
-                <Menu.Radio id='bullet' onAction={formatUnorderedList}>
-                    <IconList /> Unordered List
-                </Menu.Radio>
-                <Menu.Radio id='number' onAction={formatOrderedList}>
-                    <IconListOrdered /> Ordered List
-                </Menu.Radio>
-                <Menu.Radio id='quote' onAction={formatQuote}>
-                    <IconTextQuote /> Quote
-                </Menu.Radio>
+                <Menu.Item id='paragraph' onAction={formatParagraph}>
+                    <IconParagraph />
+                    <Menu.Label>Paragraph</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='h1' onAction={() => formatHeading('h1')}>
+                    <IconHeading1 />
+                    <Menu.Label>Heading 1</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='h2' onAction={() => formatHeading('h2')}>
+                    <IconHeading2 />
+                    <Menu.Label>Heading 2</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='h3' onAction={() => formatHeading('h3')}>
+                    <IconHeading3 />
+                    <Menu.Label>Heading 3</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='bullet' onAction={formatUnorderedList}>
+                    <IconList />
+                    <Menu.Label>Unordered List</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='number' onAction={formatOrderedList}>
+                    <IconListOrdered />
+                    <Menu.Label>Ordered List</Menu.Label>
+                </Menu.Item>
+                <Menu.Item id='quote' onAction={formatQuote}>
+                    <IconTextQuote />
+                    <Menu.Label>Quote</Menu.Label>
+                </Menu.Item>
             </Menu.Content>
         </Menu>
     )

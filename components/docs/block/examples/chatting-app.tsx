@@ -18,7 +18,7 @@ import {
 } from 'hq-icons'
 import ChattingAppLayout from 'layouts/chatting-app-layout'
 
-import { Avatar, Button, buttonVariants, cn, Menu, Popover, Sidebar } from '@/components/ui'
+import { Avatar, Button, buttonStyles, cn, Menu, Popover, Sidebar } from '@/components/ui'
 import { formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
@@ -65,17 +65,17 @@ export default function ChatApp() {
     return (
         <Sidebar.Provider isOpen={false}>
             <ChattingAppLayout />
-            <main className='grid flex-1 gap-3 overflow-auto md:p-2 md:grid-cols-2 lg:grid-cols-4'>
-                <div className='relative hidden flex-col gap-4 items-start md:flex border rounded-lg'>
-                    <div className='flex w-full rounded-lg justify-between items-center sticky top-0 z-20 bg-background p-4'>
+            <main className='grid flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
+                <div className='relative hidden flex-col items-start gap-4 rounded-lg border md:flex'>
+                    <div className='bg-bg sticky top-0 z-20 flex w-full items-center justify-between rounded-lg p-4'>
                         <h1 className='text-2xl font-bold'>Chats</h1>
-                        <div className='flex justify-between items-center gap-2'>
+                        <div className='flex items-center justify-between gap-2'>
                             <Button variant='ghost' size='icon'>
                                 <IconMessageMore className='!size-6' />
                             </Button>
                             <Menu>
                                 <Menu.Trigger
-                                    className={buttonVariants({
+                                    className={buttonStyles({
                                         variant: 'ghost',
                                         size: 'icon'
                                     })}
@@ -95,12 +95,12 @@ export default function ChatApp() {
                             </Menu>
                         </div>
                     </div>
-                    <div className='px-4 w-full'>
+                    <div className='w-full px-4'>
                         <ContactList />
                     </div>
                 </div>
-                <div className='relative flex h-full min-h-[50vh] flex-col rounded-lg bg-background lg:col-span-3'>
-                    <div className='p-2 md:px-4 rounded-lg flex flex-row gap-3 items-center border-b md:border'>
+                <div className='bg-bg relative flex h-full min-h-[50vh] flex-col rounded-lg lg:col-span-3'>
+                    <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
                         <Popover>
                             <Button variant='ghost' size='icon' className='md:hidden'>
                                 <IconContact />
@@ -114,12 +114,12 @@ export default function ChatApp() {
                         <Avatar initials='HB' status='success' src='https://i.pravatar.cc/77' />
                         <div className='grid'>
                             <span className='text-sm'>Hebert</span>
-                            <small className='text-muted-foreground text-xs'>Online</small>
+                            <small className='text-muted-fg text-xs'>Online</small>
                         </div>
                         <Menu>
                             <Menu.Trigger
                                 className={cn(
-                                    buttonVariants({
+                                    buttonStyles({
                                         variant: 'ghost',
                                         size: 'icon'
                                     }),
@@ -144,15 +144,15 @@ export default function ChatApp() {
                             </Menu.Content>
                         </Menu>
                     </div>
-                    <div className='flex-1 flex-col space-y-2 text-muted-foreground p-4  overflow-y-scroll overflow-x-hidden'>
+                    <div className='text-muted-fg flex-1 flex-col space-y-2 overflow-x-hidden overflow-y-scroll p-4'>
                         {chats.length > 0 ? (
                             chats?.map((chat: BubbleChatProps, i: number) => (
                                 <BubbleChat key={i} {...chat} onDelete={() => deleteChat(i)} />
                             ))
                         ) : (
-                            <div className='flex flex-col items-center justify-center h-full'>
+                            <div className='flex h-full flex-col items-center justify-center'>
                                 <IconMessageDashed className='!size-6' />
-                                <p className='text-center font-bold text-xl'>
+                                <p className='text-center text-xl font-bold'>
                                     Start a conversation
                                 </p>
                             </div>

@@ -7,9 +7,9 @@ import {
     IconSquareArrowUpRight,
     IconUsers
 } from 'hq-icons'
-import NavbarLayout from 'layouts/navbar-layout'
 
-import { Avatar, buttonVariants, Card, Link, Table } from '@/components/ui'
+import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
+import { Avatar, buttonStyles, Card, Link, Table } from '@/components/ui'
 import { getInitials } from '@/lib/utils'
 
 export default function Dashboard() {
@@ -20,41 +20,41 @@ export default function Dashboard() {
                     <Card>
                         <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
                             <Card.Title className='text-sm font-medium'>Total Revenue</Card.Title>
-                            <IconRupiah className='size-4 text-muted-foreground' />
+                            <IconRupiah className='text-muted-fg size-4' />
                         </Card.Header>
                         <Card.Content>
                             <div className='text-2xl font-bold'>Rp 45,231.89</div>
-                            <p className='text-xs text-muted-foreground'>+20.1% from last month</p>
+                            <p className='text-muted-fg text-xs'>+20.1% from last month</p>
                         </Card.Content>
                     </Card>
                     <Card>
                         <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
                             <Card.Title className='text-sm font-medium'>Subscriptions</Card.Title>
-                            <IconUsers className='size-4 text-muted-foreground' />
+                            <IconUsers className='text-muted-fg size-4' />
                         </Card.Header>
                         <Card.Content>
                             <div className='text-2xl font-bold'>+2350</div>
-                            <p className='text-xs text-muted-foreground'>+180.1% from last month</p>
+                            <p className='text-muted-fg text-xs'>+180.1% from last month</p>
                         </Card.Content>
                     </Card>
                     <Card>
                         <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
                             <Card.Title className='text-sm font-medium'>Sales</Card.Title>
-                            <IconChartColumn className='size-4 text-muted-foreground' />
+                            <IconChartColumn className='text-muted-fg size-4' />
                         </Card.Header>
                         <Card.Content>
                             <div className='text-2xl font-bold'>+12,234</div>
-                            <p className='text-xs text-muted-foreground'>+19% from last month</p>
+                            <p className='text-muted-fg text-xs'>+19% from last month</p>
                         </Card.Content>
                     </Card>
                     <Card>
                         <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
                             <Card.Title className='text-sm font-medium'>Active Now</Card.Title>
-                            <IconActivity className='size-4 text-muted-foreground' />
+                            <IconActivity className='text-muted-fg size-4' />
                         </Card.Header>
                         <Card.Content>
                             <div className='text-2xl font-bold'>+573</div>
-                            <p className='text-xs text-muted-foreground'>+201 since last hour</p>
+                            <p className='text-muted-fg text-xs'>+201 since last hour</p>
                         </Card.Content>
                     </Card>
                 </div>
@@ -67,7 +67,7 @@ export default function Dashboard() {
                             </div>
                             <Link
                                 variant='unstyled'
-                                className={buttonVariants({ variant: 'outline' })}
+                                className={buttonStyles({ variant: 'outline' })}
                                 href='#'
                             >
                                 All
@@ -89,7 +89,7 @@ export default function Dashboard() {
                                                 <div className='font-medium'>
                                                     {transaction.name}
                                                 </div>
-                                                <div className='hidden text-sm text-muted-foreground md:inline'>
+                                                <div className='text-muted-fg hidden text-sm md:inline'>
                                                     {transaction.email}
                                                 </div>
                                             </Table.Cell>
@@ -115,12 +115,10 @@ export default function Dashboard() {
                                         initials={getInitials(transaction.name)}
                                     />
                                     <div className='grid gap-1'>
-                                        <p className='text-sm font-medium leading-none'>
+                                        <p className='text-sm leading-none font-medium'>
                                             {transaction.name}
                                         </p>
-                                        <p className='text-sm text-muted-foreground'>
-                                            {transaction.email}
-                                        </p>
+                                        <p className='text-muted-fg text-sm'>{transaction.email}</p>
                                     </div>
                                     <div className='ml-auto font-medium'>
                                         +Rp {transaction.amount}

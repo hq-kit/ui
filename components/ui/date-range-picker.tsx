@@ -16,10 +16,9 @@ import { ctr } from './utils'
 const dateRangePickerStyles = tv({
     slots: {
         base: 'group flex flex-col gap-y-1.5',
-        dateRangePickerInputStart: 'px-2 lg:text-sm tabular-nums text-base',
-        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 tabular-nums text-base lg:text-sm',
-        dateRangePickerDash:
-            'text-foreground group-disabled:text-muted-foreground forced-colors:text-[ButtonText] group-disabled:forced-colors:text-[GrayText]'
+        dateRangePickerInputStart: 'px-2 text-base tabular-nums lg:text-sm',
+        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm',
+        dateRangePickerDash: 'text-fg group-disabled:text-muted-fg'
     }
 })
 const { base, dateRangePickerInputStart, dateRangePickerInputEnd, dateRangePickerDash } =

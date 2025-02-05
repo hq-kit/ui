@@ -1,128 +1,255 @@
 'use client'
 
-import React from 'react'
+import {
+    IconArchive,
+    IconArrowDown,
+    IconArrowUp,
+    IconBrandApple,
+    IconBuilding,
+    IconCheck,
+    IconChevronDown,
+    IconClock,
+    IconCommand,
+    IconCreditCard,
+    IconEllipsis,
+    IconGauge,
+    IconHash,
+    IconHeadphones,
+    IconList,
+    IconLogOut,
+    IconMessage,
+    IconNotebook,
+    IconPackage,
+    IconPlus,
+    IconSettings,
+    IconShield,
+    IconShieldQuestion,
+    IconShoppingBag,
+    IconTicket
+} from 'hq-icons'
 
 import {
-    IconAppWindowMac,
-    IconBrandLinux,
-    IconChevronDown,
-    IconCircleUser,
-    IconGauge,
-    IconLogOut,
-    IconMoon,
-    IconPanelLeft,
-    IconPanelLeftClose,
-    IconPanelLeftDashed,
-    IconPanelRight,
-    IconPanelRightOpen,
-    IconSun
-} from 'hq-icons'
-import { usePathname } from 'next/navigation'
+    Avatar,
+    Link,
+    Menu,
+    Sidebar,
+    SidebarContent,
+    SidebarDisclosure,
+    SidebarDisclosureGroup,
+    SidebarDisclosurePanel,
+    SidebarDisclosureTrigger,
+    SidebarFooter,
+    SidebarHeader,
+    SidebarItem,
+    SidebarLabel,
+    SidebarLink,
+    SidebarRail,
+    SidebarSection,
+    SidebarSectionGroup
+} from '@/components/ui'
 
-import { useTheme } from '@/components/providers'
-import { Avatar, Button, Link, Menu, Sidebar, useSidebar } from '@/components/ui'
-
-export default function AppSidebar({ ...props }) {
-    const { theme, setTheme } = useTheme()
-    const { state } = useSidebar()
-    const collapsed = state === 'collapsed'
+export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar {...props}>
-            <Sidebar.Header>
+            <SidebarHeader>
                 <Link
-                    className='flex items-center group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center gap-x-2'
-                    href='/docs/components/layouts/sidebar'
+                    className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
+                    href='/docs/2.x/components/layouts/sidebar'
                 >
-                    <IconBrandLinux className='size-5' />
-                    <strong className='font-medium group-data-[collapsible=dock]:hidden'>
-                        Linux
-                    </strong>
+                    <IconBrandApple className='size-5' />
+                    <SidebarLabel className='font-medium'>Apple</SidebarLabel>
                 </Link>
-            </Sidebar.Header>
-            <Sidebar.Content>
-                <Sidebar.Section>
-                    <SidebarItem
-                        icon={IconGauge}
-                        href='/block/sidebar/sidebar-basic-demo'
-                        textValue='Sidebar'
-                    />
-                </Sidebar.Section>
-                <Sidebar.Section title='Variant'>
-                    <SidebarItem
-                        icon={IconPanelRight}
-                        href='/block/sidebar/sidebar-default-demo'
-                        textValue='Default'
-                    />
-                    <SidebarItem
-                        icon={IconPanelLeftDashed}
-                        href='/block/sidebar/sidebar-floating-demo'
-                        textValue='Floating'
-                    />
-                    <SidebarItem
-                        icon={IconAppWindowMac}
-                        href='/block/sidebar/sidebar-inset-demo'
-                        textValue='Inset'
-                    />
-                </Sidebar.Section>
-                <Sidebar.Section title='Collapsible'>
-                    <SidebarItem
-                        icon={IconPanelLeftClose}
-                        href='/block/sidebar/sidebar-dock-demo'
-                        textValue='Dock'
-                    />
-                    <Sidebar.Item
-                        icon={IconPanelRightOpen}
-                        href='/block/sidebar/sidebar-off-canvas-demo'
-                        textValue='Off Canvas'
-                    />
-                    <Sidebar.Item
-                        icon={IconPanelLeft}
-                        href='/block/sidebar/sidebar-fixed-demo'
-                        textValue='Fixed'
-                    />
-                </Sidebar.Section>
-            </Sidebar.Content>
-            <Sidebar.Footer className='lg:flex lg:flex-row hidden items-center'>
+            </SidebarHeader>
+            <SidebarContent>
+                <SidebarSectionGroup>
+                    <SidebarSection title='Overview'>
+                        <SidebarItem tooltip='Overview' isCurrent href='#'>
+                            <IconGauge />
+                            <SidebarLabel>Overview</SidebarLabel>
+                        </SidebarItem>
+
+                        <SidebarItem tooltip='Orders'>
+                            {({ isHovered, isCollapsed }) => (
+                                <>
+                                    <SidebarLink href='#'>
+                                        <IconShoppingBag />
+                                        <SidebarLabel>Orders</SidebarLabel>
+                                    </SidebarLink>
+                                    {!isCollapsed && isHovered && (
+                                        <Menu>
+                                            <Menu.Trigger aria-label='Manage'>
+                                                <IconEllipsis />
+                                            </Menu.Trigger>
+                                            <Menu.Content offset={0} placement='right top'>
+                                                <Menu.Item href='#new-order'>
+                                                    <IconPlus />
+                                                    Create New Order
+                                                </Menu.Item>
+                                                <Menu.Item href='#view-all'>
+                                                    <IconList />
+                                                    View All Orders
+                                                </Menu.Item>
+                                                <Menu.Item href='#pending-orders'>
+                                                    <IconClock />
+                                                    Pending Orders
+                                                </Menu.Item>
+                                                <Menu.Item href='#completed-orders'>
+                                                    <IconCheck />
+                                                    Completed Orders
+                                                </Menu.Item>
+                                                <Menu.Item href='#export-orders'>
+                                                    <IconArrowUp />
+                                                    Export Orders
+                                                </Menu.Item>
+                                            </Menu.Content>
+                                        </Menu>
+                                    )}
+                                </>
+                            )}
+                        </SidebarItem>
+                        <SidebarItem tooltip='Products'>
+                            {({ isHovered, isCollapsed }) => (
+                                <>
+                                    <SidebarLink href='#'>
+                                        <SidebarLabel>Products</SidebarLabel>
+                                    </SidebarLink>
+                                    {!isCollapsed && isHovered && (
+                                        <Menu>
+                                            <Menu.Trigger aria-label='Manage'>
+                                                <IconEllipsis />
+                                            </Menu.Trigger>
+                                            <Menu.Content offset={0} placement='right top'>
+                                                <Menu.Item href='#new-product'>
+                                                    <IconPlus />
+                                                    Add New Product
+                                                </Menu.Item>
+                                                <Menu.Item href='#archive'>
+                                                    <IconArchive />
+                                                    Archive Product
+                                                </Menu.Item>
+                                                <Menu.Item href='#manage-categories'>
+                                                    <IconHash />
+                                                    Manage Categories
+                                                </Menu.Item>
+                                                <Menu.Item href='#import'>
+                                                    <IconArrowDown />
+                                                    Import Products
+                                                </Menu.Item>
+                                                <Menu.Item href='#export'>
+                                                    <IconArrowUp />
+                                                    Export Products
+                                                </Menu.Item>
+                                            </Menu.Content>
+                                        </Menu>
+                                    )}
+                                </>
+                            )}
+                        </SidebarItem>
+                        <SidebarItem href='#' badge='4 Pending' tooltip='Payments'>
+                            <IconCreditCard />
+                            <SidebarLabel>Payments</SidebarLabel>
+                        </SidebarItem>
+                    </SidebarSection>
+
+                    <SidebarDisclosureGroup defaultExpandedKeys={[1]}>
+                        <SidebarDisclosure id={1}>
+                            <SidebarDisclosureTrigger>
+                                <IconEllipsis />
+                                <SidebarLabel>Support</SidebarLabel>
+                            </SidebarDisclosureTrigger>
+                            <SidebarDisclosurePanel>
+                                <SidebarItem href='#' tooltip='Tickets'>
+                                    <IconTicket />
+                                    <SidebarLabel>Tickets</SidebarLabel>
+                                </SidebarItem>
+                                <SidebarItem href='#' tooltip='Chat Support'>
+                                    <IconMessage />
+                                    <SidebarLabel>Chat Support</SidebarLabel>
+                                </SidebarItem>
+                                <SidebarItem href='#' tooltip='FAQ'>
+                                    <IconShieldQuestion />
+                                    <SidebarLabel>FAQ</SidebarLabel>
+                                </SidebarItem>
+                                <SidebarItem href='#' tooltip='Documentation'>
+                                    <IconNotebook />
+                                    <SidebarLabel>Documentation</SidebarLabel>
+                                </SidebarItem>
+                            </SidebarDisclosurePanel>
+                        </SidebarDisclosure>
+                        <SidebarDisclosure id={2}>
+                            <SidebarDisclosureTrigger>
+                                <IconPackage />
+                                <SidebarLabel>Inventory</SidebarLabel>
+                            </SidebarDisclosureTrigger>
+                            <SidebarDisclosurePanel>
+                                <SidebarItem href='#' tooltip='Warehouse'>
+                                    <IconBuilding />
+                                    <SidebarLabel>Warehouse</SidebarLabel>
+                                </SidebarItem>
+                                <SidebarItem href='#' tooltip='Stock Levels'>
+                                    <SidebarLabel>Stock Levels</SidebarLabel>
+                                </SidebarItem>
+                                <SidebarItem href='#' tooltip='Shipping'>
+                                    <SidebarLabel>Shipping</SidebarLabel>
+                                </SidebarItem>
+                            </SidebarDisclosurePanel>
+                        </SidebarDisclosure>
+                    </SidebarDisclosureGroup>
+                </SidebarSectionGroup>
+            </SidebarContent>
+
+            <SidebarFooter>
                 <Menu>
-                    <Button
-                        variant='ghost'
-                        aria-label='Profile'
-                        slot='close'
-                        className='group w-full justify-start group-data-[collapsible=dock]:justify-center'
-                    >
-                        <Avatar size='sm' shape='square' src='https://github.com/dq-alhq.png' />
-                        <span className='group-data-[collapsible=dock]:hidden flex items-center justify-center'>
-                            DQ Al-Haqqi
-                            <IconChevronDown className='right-3 size-4 absolute group-pressed:rotate-180 transition-transform' />
-                        </span>
-                    </Button>
-                    <Menu.Content
-                        placement={collapsed ? 'right' : 'top'}
-                        className={collapsed ? 'sm:min-w-56' : 'min-w-[--trigger-width]'}
-                    >
-                        <Menu.Item href='#'>
-                            <IconCircleUser />
-                            Profile
+                    <Menu.Trigger className='group' aria-label='Profile' data-slot='menu-trigger'>
+                        <Avatar shape='square' src='https://github.com/dq-alhq.png' />
+                        <div className='text-sm in-data-[sidebar-collapsible=dock]:hidden'>
+                            <SidebarLabel>DQ Al Haqqi</SidebarLabel>
+                            <span className='text-muted-fg -mt-0.5 block'>@dq-alhq</span>
+                        </div>
+                        <IconChevronDown
+                            data-slot='chevron'
+                            className='group-pressed:rotate-180 absolute right-3 size-4 transition-transform'
+                        />
+                    </Menu.Trigger>
+                    <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
+                        <Menu.Section>
+                            <Menu.Header separator>
+                                <span className='block'>Kurt Cobain</span>
+                                <span className='text-muted-fg font-normal'>@cobain</span>
+                            </Menu.Header>
+                        </Menu.Section>
+
+                        <Menu.Item href='#dashboard'>
+                            <IconGauge />
+                            Dashboard
+                        </Menu.Item>
+                        <Menu.Item href='#settings'>
+                            <IconSettings />
+                            Settings
+                        </Menu.Item>
+                        <Menu.Item href='#security'>
+                            <IconShield />
+                            Security
                         </Menu.Item>
                         <Menu.Separator />
-                        <Menu.Item onAction={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                            {theme === 'light' ? <IconMoon /> : <IconSun />}
-                            Dark Mode
+                        <Menu.Item>
+                            <IconCommand />
+                            Command Menu
+                        </Menu.Item>
+
+                        <Menu.Item href='#contact'>
+                            <IconHeadphones />
+                            Customer Support
                         </Menu.Item>
                         <Menu.Separator />
-                        <Menu.Item isDanger href='#'>
+                        <Menu.Item href='#logout'>
                             <IconLogOut />
                             Log out
                         </Menu.Item>
                     </Menu.Content>
                 </Menu>
-            </Sidebar.Footer>
-            <Sidebar.Rail />
+            </SidebarFooter>
+            <SidebarRail />
         </Sidebar>
     )
-}
-
-function SidebarItem({ icon: Icon, ...props }: React.ComponentProps<typeof Sidebar.Item>) {
-    const pathname = usePathname()
-    return <Sidebar.Item isCurrent={pathname === props.href} icon={Icon} {...props} />
 }

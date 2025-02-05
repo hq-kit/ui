@@ -66,13 +66,13 @@ export default function CLI({ items, message, command = 'init', noMessage, class
     return (
         <section className='space-y-2'>
             {!noMessage && (
-                <Description className='text-base max-w-none'>
+                <Description className='max-w-none text-base'>
                     {message ? message : 'In the terminal, run the following command to begin:'}
                 </Description>
             )}
             <div
                 className={cn(
-                    'text-foreground bg-background font-mono gap-4 text-sm border flex items-center justify-between p-3 rounded-lg w-full h-12',
+                    'text-fg bg-bg flex h-12 w-full items-center justify-between gap-4 rounded-lg border p-3 font-mono text-sm',
                     className
                 )}
             >
@@ -82,19 +82,19 @@ export default function CLI({ items, message, command = 'init', noMessage, class
                     <Menu.Content showArrow placement='bottom end'>
                         <Menu.Item onAction={() => handleCopy('npm')}>
                             <IconBrandNpm />
-                            NPM
+                            <Menu.Label>NPM</Menu.Label>
                         </Menu.Item>
                         <Menu.Item onAction={() => handleCopy('bun')}>
                             <IconBrandBun />
-                            Bun
+                            <Menu.Label>Bun</Menu.Label>
                         </Menu.Item>
                         <Menu.Item onAction={() => handleCopy('yarn')}>
                             <IconBrandYarn />
-                            Yarn
+                            <Menu.Label>Yarn</Menu.Label>
                         </Menu.Item>
                         <Menu.Item onAction={() => handleCopy('pnpm')}>
                             <IconBrandPnpm />
-                            PNPM
+                            <Menu.Label>PNPM</Menu.Label>
                         </Menu.Item>
                     </Menu.Content>
                 </Menu>

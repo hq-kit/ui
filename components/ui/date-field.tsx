@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import {
     DateField as DateFieldPrimitive,
     type DateFieldProps as DateFieldPrimitiveProps,
@@ -14,7 +12,7 @@ import {
 import { tv } from 'tailwind-variants'
 
 import { Description, FieldError, FieldGroup, Label } from './field'
-import { cn, ctr } from './utils'
+import { ctr } from './utils'
 
 interface DateFieldProps<T extends DateValue> extends DateFieldPrimitiveProps<T> {
     label?: string
@@ -35,7 +33,7 @@ const DateField = <T extends DateValue>({
     return (
         <DateFieldPrimitive
             {...props}
-            className={ctr(props.className, 'flex group flex-col gap-y-1.5')}
+            className={ctr(props.className, 'group flex flex-col gap-y-1.5')}
         >
             {label && <Label>{label}</Label>}
             <FieldGroup>
@@ -50,18 +48,18 @@ const DateField = <T extends DateValue>({
 }
 
 const segmentStyles = tv({
-    base: 'inline shrink-0 sm:uppercase tabular-nums rounded-lg p-0.5 tracking-wider text-foreground caret-transparent outline outline-0 forced-color-adjust-none type-literal:px-0 lg:text-sm forced-colors:text-[ButtonText]',
+    base: 'type-literal:px-0 text-fg inline shrink-0 rounded p-0.5 tracking-wider tabular-nums caret-transparent outline-0 sm:text-sm sm:uppercase',
     variants: {
         isPlaceholder: {
-            true: 'text-muted-foreground'
+            true: 'text-muted-fg'
         },
         isDisabled: {
-            true: 'text-foreground/50 forced-colors:text-[GrayText]'
+            true: 'text-fg/50'
         },
         isFocused: {
             true: [
-                'bg-primary text-primary-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
-                'invalid:bg-danger invalid:text-danger-foreground'
+                'bg-primary text-primary-fg',
+                'data-invalid:bg-danger data-invalid:text-danger-fg'
             ]
         }
     }
@@ -70,9 +68,9 @@ const segmentStyles = tv({
 const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) => {
     return (
         <DateInputPrimitive
-            className={cn(
-                'bg-transparent p-2 text-base text-foreground placeholder-muted-foreground lg:text-sm',
-                className
+            className={ctr(
+                className,
+                'text-fg placeholder-muted-fg bg-transparent p-2 text-base sm:text-sm'
             )}
             {...props}
         >
@@ -81,4 +79,5 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
     )
 }
 
-export { DateField, DateInput, segmentStyles, type DateFieldProps }
+export { DateField, DateInput, segmentStyles }
+export type { DateFieldProps }

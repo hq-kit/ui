@@ -18,13 +18,13 @@ export default function PreviewContent({
     return (
         <React.Suspense
             fallback={
-                <div className='w-full flex items-center justify-center'>
-                    <IconLoaderCircle className='size-20 bg-muted' />
+                <div className='flex w-full items-center justify-center'>
+                    <IconLoaderCircle className='bg-muted size-20' />
                 </div>
             }
         >
             <iframe
-                className={cn('w-full border rounded-xl relative z-20', className)}
+                className={cn('relative z-20 w-full rounded-xl border', className)}
                 height={height || 768}
                 style={{ zoom: zoomOut || 1 }}
                 allowFullScreen

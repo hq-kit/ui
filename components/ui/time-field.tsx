@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import {
     TimeField as TimeFieldPrimitive,
     type TimeFieldProps as TimeFieldPrimitiveProps,
@@ -14,7 +12,7 @@ import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, Label } from './field'
 import { ctr } from './utils'
 
-export interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveProps<T> {
+interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveProps<T> {
     label?: string
     description?: string
     errorMessage?: string | ((validation: ValidationResult) => string)
@@ -23,7 +21,7 @@ export interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveP
 }
 
 const timeFieldStyles = tv({
-    base: 'flex w-fit min-w-28 justify-around whitespace-nowrap p-2 lg:text-sm'
+    base: 'flex w-fit min-w-28 justify-around p-2 whitespace-nowrap sm:text-sm'
 })
 
 const TimeField = <T extends TimeValue>({
@@ -50,3 +48,4 @@ const TimeField = <T extends TimeValue>({
 }
 
 export { TimeField }
+export type { TimeFieldProps }

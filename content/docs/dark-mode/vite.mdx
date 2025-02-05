@@ -6,7 +6,7 @@ published: true
 ---
 
 ## Theme Provider
-First, you need to create a provider called `theme-provider.tsx` in your components folder.
+First, you need to create a provider called `providers.tsx` in your components folder.
 
 <Code code={`import { createContext, useContext, useEffect, useState } from 'react'
 
@@ -88,7 +88,7 @@ const useTheme = () => {
   return context
 }
 
-export { ThemeProvider, useTheme, type Theme, type ThemeProviderProps, type ThemeProviderState }
+export { ThemeProvider as Providers, useTheme, type Theme, type ThemeProviderProps, type ThemeProviderState }
 `}/>
 
 
@@ -100,13 +100,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { ThemeProvider } from './components/theme-provider.tsx'
+import { Providers } from './components/providers.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <Providers>
       <App />
-    </ThemeProvider>
+    </Providers>
   </React.StrictMode>,
 )
 ```

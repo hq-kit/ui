@@ -22,9 +22,9 @@ export interface ColorRowProps extends React.HtmlHTMLAttributes<HTMLDivElement> 
 
 export function ColorShades({ item, selectedFormat, tailwindVariable }: ColorRowProps) {
     return (
-        <div className='p-2 bg-background border rounded-lg overflow-hidden'>
-            <div className='flex mb-2 items-center justify-center'>
-                <h3 className='tracking-tight text-muted-foreground font-mono text-sm font-medium sm:text-sm'>
+        <div className='bg-bg overflow-hidden rounded-lg border p-2'>
+            <div className='mb-2 flex items-center justify-center'>
+                <h3 className='text-muted-fg font-mono text-sm font-medium tracking-tight sm:text-sm'>
                     {item.name}
                 </h3>
             </div>
@@ -32,7 +32,7 @@ export function ColorShades({ item, selectedFormat, tailwindVariable }: ColorRow
             <ListBox
                 layout='grid'
                 orientation='horizontal'
-                className='grid grid-cols-7 lg:grid-cols-11 gap-x-1 gap-y-2 sm:gap-y-1'
+                className='grid grid-cols-7 gap-x-1 gap-y-2 sm:gap-y-1 lg:grid-cols-11'
                 aria-label={`${item.name} 50-950 colors`}
                 items={item.children}
             >

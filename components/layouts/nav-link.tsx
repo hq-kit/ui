@@ -8,11 +8,11 @@ import { Link as LinkPrimitive } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 const navLinkStyles = tv({
-    base: 'relative flex focus-visible:text-foreground items-center gap-x-3 tracking-tight py-2 text-sm text-muted-foreground transition-colors focus:outline-none sm:py-3',
+    base: 'data-focus-visible:text-fg text-muted-fg relative flex items-center gap-x-3 py-2 text-sm tracking-tight transition-colors data-focused:outline-none sm:py-3',
     variants: {
         isActive: {
-            false: 'text-foreground hover:text-primary forced-colors:text-[Gray]',
-            true: 'text-primary forced-colors:text-[Highlight]'
+            false: 'text-fg hover:text-primary',
+            true: 'text-primary'
         }
     }
 })
@@ -35,7 +35,7 @@ const NavLink = ({ href, isActive, className, isNextLink, ...props }: NavLinkPro
                 {isActive && (
                     <motion.span
                         layoutId='current-indicator-navlink'
-                        className='absolute inset-x-0 bottom-[-0.550rem] h-0.5 w-full rounded bg-primary'
+                        className='bg-primary absolute inset-x-0 bottom-[-0.550rem] h-0.5 w-full rounded'
                     />
                 )}
             </>

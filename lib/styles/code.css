@@ -1,22 +1,25 @@
+@reference './app.css';
 code[data-theme*=' '],
 code[data-theme*=' '] span {
     color: var(--shiki-light);
-    background-color: var(--background);
+    background-color: var(--bg);
 }
 
 .dark {
     code[data-theme*=' '],
     code[data-theme*=' '] span {
         color: var(--shiki-dark);
-        background-color: var(--background);
+        background-color: var(--bg);
     }
 }
 
 [data-rehype-pretty-code-figure] {
-    @apply m-0;
+    margin: 0;
 }
 
 [data-rehype-pretty-code-figure] pre {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--muted);
     @apply rounded-lg border !bg-transparent px-0 py-2;
 }
 
@@ -25,11 +28,11 @@ code[data-theme*=' '] span {
 }
 
 span[data-rehype-pretty-code-figure] > code {
-    @apply bg-transparent !important;
+    @apply !bg-transparent;
 }
 
 span[data-rehype-pretty-code-figure] > code span {
-    @apply px-0.5 font-normal !important;
+    @apply !px-0.5 !font-normal;
 }
 
 pre code {
@@ -39,7 +42,7 @@ pre code {
 pre code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
-    @apply inline-block mr-8 w-4 text-right text-muted-foreground;
+    @apply text-muted-fg mr-8 inline-block w-4 text-right;
 }
 
 pre code[data-line-numbers-max-digits='2'] > [data-line]::before {
@@ -70,7 +73,7 @@ pre code[data-line-numbers-max-digits='3'] > [data-line]::before {
 }
 
 [data-rehype-pretty-code-figure] [data-highlighted-chars] {
-    @apply rounded bg-muted/50;
+    @apply bg-muted/50 rounded;
     box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
 }
 
@@ -79,16 +82,16 @@ pre code[data-line-numbers-max-digits='3'] > [data-line]::before {
 }
 
 .subheading-anchor {
-    @apply font-semibold text-primary no-underline hover:no-underline;
+    @apply text-primary font-semibold no-underline hover:no-underline;
 }
 
 .prose-headings\:scroll-mt-24
-:is(
+    :is(
         :where(h1, h2, h3, h4, h5, h6, th):not(:where([class~='not-prose'], [class~='not-prose'] *))
     )
-> a {
+    > a {
     text-decoration: none !important;
-    @apply text-foreground !important;
+    color: var(--fg);
 }
 
 .prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *))::before,

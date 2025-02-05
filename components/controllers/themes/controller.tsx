@@ -10,10 +10,13 @@ export const applyTheme = (
     const themeVariables = resolvedTheme === 'dark' ? Presets[theme].dark : Presets[theme].light
     Object.keys(themeVariables).forEach((key) => {
         themeContainer.forEach((container) => {
-            container.style.setProperty(key, themeVariables[key as keyof typeof themeVariables])
+            container.style.setProperty(
+                `--color-${key.replace('--', '')}`,
+                themeVariables[key as keyof typeof themeVariables]
+            )
         })
     })
     themeContainer.forEach((container) => {
-        container.style.setProperty('--radius', `${Presets[theme].radius ?? Presets.hq.radius}rem`)
+        container.style.setProperty('--radius-lg', `${Presets[theme].radius ?? Presets.hq.radius}rem`)
     })
 }

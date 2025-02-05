@@ -1,101 +1,151 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 
+import type { SliderProps as SliderPrimitiveProps, SliderThumbProps } from 'react-aria-components'
 import {
     SliderOutput,
     Slider as SliderPrimitive,
     SliderStateContext,
     SliderThumb,
     SliderTrack,
-    TextContext,
-    type LabelProps,
-    type SliderOutputProps,
-    type SliderProps as SliderPrimitiveProps,
-    type SliderThumbProps,
-    type SliderTrackProps,
-    type TextProps
+    type SliderTrackProps
 } from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
-
-import { useSlotId } from '@react-aria/utils'
+import { tv } from 'tailwind-variants'
 
 import { Description, Label } from './field'
+import { Tooltip } from './tooltip'
 import { cr } from './utils'
 
 const sliderStyles = tv({
-    slots: {
-        root: 'flex disabled:opacity-50 flex-col gap-2 orientation-horizontal:w-full orientation-vertical:h-56 orientation-vertical:items-center',
-        track: [
-            'relative group/track rounded-lg bg-zinc-200 dark:bg-zinc-800 cursor-pointer disabled:cursor-default disabled:bg-background-disabled',
-            'grow orientation-vertical:flex-1 orientation-vertical:w-1.5 orientation-horizontal:w-full orientation-horizontal:h-1.5'
-        ],
-        filler: [
-            'rounded-lg bg-primary group-disabled/track:bg-background-disabled',
-            'pointer-events-none absolute group-orientation-horizontal/top-0 group-orientation-vertical/track:w-full group-orientation-vertical/track:bottom-0 group-orientation-horizontal/track:h-full'
-        ],
-        thumb: [
-            'outline-none dragging:cursor-grabbing focus:ring-4 border border-zinc-200 focus:ring-primary/20 focus:border-primary focus:outline-none forced-colors:outline-[Highlight]',
-            'rounded-full bg-white transition-[width,height]',
-            'absolute left-[50%] top-[50%] block !-translate-x-1/2 !-translate-y-1/2',
-            'disabled:bg-background-disabled disabled:border disabled:border-background',
-            'orientation-vertical:w-2 orientation-horizontal:h-2',
-            'size-[1.15rem] dragging:size-[1.30rem] dragging:border-primary'
-        ],
-        valueLabel: 'text-muted-foreground tabular-nums text-sm'
+    base: 'group relative flex touch-none flex-col select-none',
+    variants: {
+        orientation: {
+            horizontal: 'w-full min-w-56 gap-y-2',
+            vertical: 'h-full min-h-56 w-1.5 items-center gap-y-2'
+        },
+        isDisabled: {
+            true: 'opacity-50'
+        }
     }
 })
 
-const { track, filler, thumb, root, valueLabel } = sliderStyles()
+interface SliderProps extends SliderPrimitiveProps {
+    output?: 'inline' | 'tooltip' | 'none'
+    label?: string
+    description?: string
+    thumbLabels?: string[]
+}
 
-type SliderRootProps = SliderPrimitiveProps
+const Slider = ({
+    output = 'inline',
+    orientation = 'horizontal',
+    className,
+    ...props
+}: SliderProps) => {
+    const showTooltip = output === 'tooltip'
+    const [showTooltipState, setShowTooltipState] = useState(false)
 
-const Root = (props: SliderPrimitiveProps) => {
-    const descriptionId = useSlotId()
-    return (
-        <TextContext.Provider value={{ slots: { description: { id: descriptionId } } }}>
-            <SliderPrimitive
-                data-slot='root'
-                aria-describedby={descriptionId}
-                {...props}
-                className={cr(props.className, (className) => root({ className }))}
+    const onFocusChange = () => {
+        if (showTooltip) {
+            setShowTooltipState(true)
+        }
+    }
+
+    const onHoverStart = () => {
+        if (showTooltip) {
+            setShowTooltipState(true)
+        }
+    }
+
+    const onFocusEnd = React.useCallback(() => {
+        setShowTooltipState(false)
+    }, [])
+
+    React.useEffect(() => {
+        if (showTooltip) {
+            window.addEventListener('pointerup', onFocusEnd)
+            return () => {
+                window.removeEventListener('pointerup', onFocusEnd)
+            }
+        }
+    }, [showTooltip, onFocusEnd])
+
+    const renderThumb = (value: number) => {
+        const thumb = (
+            <Thumb
+                index={value}
+                aria-label={props.thumbLabels?.[value]}
+                onFocusChange={onFocusChange}
+                onHoverStart={onHoverStart}
             />
-        </TextContext.Provider>
-    )
-}
+        )
 
-interface SliderProps extends SliderRootProps, VariantProps<typeof sliderStyles> {
-    label?: LabelProps['children']
-    description?: TextProps['children']
-    showValue?: boolean | ((value: number[]) => string)
-}
+        if (!showTooltip) return thumb
 
-const Slider = ({ label, description, showValue = true, ...props }: SliderProps) => (
-    <Root {...props}>
-        <div className='flex items-center justify-between gap-2'>
-            {label && <Label>{label}</Label>}
-            {(showValue || typeof showValue === 'function') && (
-                <Output>
-                    {({ state }) =>
-                        typeof showValue === 'function' ? showValue(state.values) : undefined
-                    }
-                </Output>
-            )}
-        </div>
-        <Controls />
-        {description && <Description>{description}</Description>}
-    </Root>
-)
+        return (
+            <Tooltip delay={0} isOpen={showTooltipState} onOpenChange={setShowTooltipState}>
+                {thumb}
+                <Tooltip.Content
+                    showArrow={false}
+                    offset={orientation === 'horizontal' ? 8 : -140}
+                    crossOffset={orientation === 'horizontal' ? -85 : 0}
+                    className='min-w-6 px-1.5 py-1 text-xs'
+                    placement={orientation === 'vertical' ? 'right' : 'top'}
+                >
+                    <SliderOutput />
+                </Tooltip.Content>
+            </Tooltip>
+        )
+    }
 
-const Controls = (props: SliderTrackProps) => {
-    const state = React.useContext(SliderStateContext)
     return (
-        <Track {...props}>
-            <Filler />
-            {state?.values.map((_, i) => <Thumb key={i} index={i} />)}
-        </Track>
+        <SliderPrimitive
+            orientation={orientation}
+            className={cr(className, (className, renderProps) =>
+                sliderStyles({ ...renderProps, className })
+            )}
+            {...props}
+        >
+            <div className='text-fg flex'>
+                {props.label && <Label>{props.label}</Label>}
+                {output === 'inline' && (
+                    <SliderOutput className='text-muted-fg text-sm tabular-nums data-[orientation=horizontal]:ml-auto data-[orientation=vertical]:mx-auto'>
+                        {({ state }) =>
+                            state.values.map((_, i) => state.getThumbValueLabel(i)).join(' – ')
+                        }
+                    </SliderOutput>
+                )}
+            </div>
+            <Track>
+                {({ state }) => (
+                    <>
+                        <Filler />
+                        {state.values.map((_, i) => (
+                            <React.Fragment key={i}>{renderThumb(i)}</React.Fragment>
+                        ))}
+                    </>
+                )}
+            </Track>
+            {props.description && <Description>{props.description}</Description>}
+        </SliderPrimitive>
     )
 }
+
+const controlsStyles = tv({
+    slots: {
+        filler: [
+            'bg-primary rounded-full group-data-disabled/track:opacity-60',
+            'group-data-[orientation=horizontal]/top-0 pointer-events-none absolute group-data-[orientation=horizontal]/track:h-full group-data-[orientation=vertical]/track:bottom-0 group-data-[orientation=vertical]/track:w-full'
+        ],
+        track: [
+            'group/track bg-border relative cursor-pointer rounded-full data-disabled:cursor-default data-disabled:opacity-60',
+            'grow group-data-[orientation=horizontal]:h-1.5 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-1.5 group-data-[orientation=vertical]:flex-1'
+        ]
+    }
+})
+
+const { track, filler } = controlsStyles()
 
 const Track = (props: SliderTrackProps) => {
     return (
@@ -106,7 +156,7 @@ const Track = (props: SliderTrackProps) => {
     )
 }
 
-const Filler = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const Filler = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     const state = React.useContext(SliderStateContext)
     const { orientation, getThumbPercent, values } = state || {}
 
@@ -125,32 +175,35 @@ const Filler = (props: React.HTMLAttributes<HTMLDivElement>) => {
             : { bottom: `${percent0}%`, height: `${Math.abs(percent0 - percent1)}%` }
     }
 
-    return <div {...props} style={getStyle()} className={filler({ className: props.className })} />
+    return <div {...props} style={getStyle()} className={filler({ className })} />
 }
 
+const thumbStyles = tv({
+    base: [
+        'border-fg/10 top-[50%] left-[50%] size-[1.25rem] rounded-full border bg-white ring-black outline-hidden transition-[width,height]'
+    ],
+    variants: {
+        isFocusVisible: {
+            true: 'border-primary ring-primary/20 outline-hidden'
+        },
+        isDragging: {
+            true: 'border-primary size-[1.35rem] cursor-grabbing'
+        },
+        isDisabled: {
+            true: 'opacity-50'
+        }
+    }
+})
 const Thumb = ({ className, ...props }: SliderThumbProps) => {
-    return <SliderThumb {...props} className={cr(className, (className) => thumb({ className }))} />
-}
-
-const Output = ({ className, ...props }: SliderOutputProps) => {
     return (
-        <SliderOutput
+        <SliderThumb
             {...props}
-            className={cr(className, (className) => valueLabel({ className }))}
-        >
-            {cr(
-                props.children,
-                (children, { state }) =>
-                    children ?? state.values.map((_, i) => state.getThumbValueLabel(i)).join(' - ')
+            className={cr(className, (className, renderProps) =>
+                thumbStyles({ ...renderProps, className })
             )}
-        </SliderOutput>
+        />
     )
 }
 
-Slider.Controls = Controls
-Slider.Filler = Filler
-Slider.Root = Root
-Slider.Thumb = Thumb
-Slider.Track = Track
-Slider.Output = Output
 export { Slider }
+export type { SliderProps }

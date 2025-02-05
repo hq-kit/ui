@@ -5,76 +5,61 @@ order: 5
 published: true
 references: ['https://recharts.org/en-US/api/RadarChart']
 ---
-## Basic
-Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
-<Demo center component="chart/radar/radar-chart-demo" />
-
 ## Installation
 <Install component='chart' />
 
-## Colors
-If you're working on an existing project, you can use these variables. However, if you've just installed Justd, they will already be included during project initialization. You can also customize chart colors, check out the [theme page](/themes) for more options.
-```
-@layer base {
-  root: {
-      --primary-chart: 51.24% 0.222 261.097;
-      --secondary-chart: 76.58% 0.119 263.28;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 81.17% 0.097 249.1;
-  }
-  .dark: {
-      --primary-chart: 54.6% 0.215 262.87;
-      --secondary-chart: 72.11% 0.142 253.1;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 88.29% 0.057 251.91;
-  }
-}
-```
+## Basic
+Visualize data in a basic radar chart for a simple and effective presentation.
+<Demo center className='w-full' component="charts/radar/radar-chart-basic-demo"/>
 
-## Tooltip
-Tooltips are used to provide additional information about a chart element when the user hovers over it. They can be used to display additional details, such as the value of a data point, or to provide context about the data.
-```
-import { Chart } from '@/components/ui'
-import { RadarChart } from 'recharts'
+## Custom Label
+Add custom labels to your radar chart to provide additional context and clarity.
+<Demo center className='w-full' component="charts/radar/radar-chart-custom-label-demo"/>
 
-<RadarChart accessibilityLayer data={data}>
-  <XAxis.../>
-  <Chart.Tooltip cursor={false} content={<Chart.TooltipContent />} />
-  <Bar.../>
-</RadarChart>
-```
+## Dots
+Highlight specific data points in your radar chart using dots for better emphasis.
+<Demo center className='w-full' component="charts/radar/radar-chart-dots-demo"/>
+
+## Grid Circle
+Use a grid circle to organize and display your radar chart data effectively.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-circle-demo"/>
+
+## Grid Circle Filled
+Enhance your radar chart with filled grid circles for a bolder visual effect.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-circle-filled-demo"/>
+
+## Grid Circle No Lines
+Create a minimalist radar chart by removing grid lines and focusing on the data.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-circle-no-lines-demo"/>
+
+## Grid Custom
+Customize the grid of your radar chart to align with your specific design requirements.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-custom-demo"/>
+
+## Grid Filled
+Fill the grid of your radar chart to make it visually distinct and engaging.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-filled-demo"/>
+
+## Grid None
+Simplify your radar chart by removing the grid for a cleaner appearance.
+<Demo center className='w-full' component="charts/radar/radar-chart-grid-none-demo"/>
 
 ## Legend
-Legends are used to display a list of labels for different chart elements. They can be used to provide context about the data and help the user understand the meaning of different colors and shapes.
-```
-import { Chart } from '@/components/ui'
-import { RadarChart } from 'recharts'
+Add a legend to your radar chart to improve data interpretation and readability.
+<Demo center className='w-full' component="charts/radar/radar-chart-legend-demo"/>
 
-<RadarChart>
-  ...
-  <Chart.Legend content={<Chart.LegendContent />} />
-</RadarChart>
-```
+## Lines Only
+Focus on the lines of your radar chart to emphasize the relationships between data points.
+<Demo center className='w-full' component="charts/radar/radar-chart-lines-only-demo"/>
 
-## Radar Chart
-Radar charts display multiple variables in relation to a central point, allowing you to compare several categories at once. It's useful for visualizing performance, skills, or capabilities across multiple metrics.
+## Multiple
+Visualize multiple datasets in your radar chart for comparative analysis.
+<Demo center className='w-full' component="charts/radar/radar-chart-multiple-demo"/>
 
-### Multiple
-<Demo center component="chart/radar/radar-chart-multiple-demo" />
+## Radius Axis
+Use a radius axis to better organize and display data in your radar chart.
+<Demo center className='w-full' component="charts/radar/radar-chart-radius-axis-demo"/>
 
-### Dots
-<Demo center component="chart/radar/radar-chart-dots-demo" />
-
-### Icon
-<Demo center component="chart/radar/radar-chart-icon-demo" />
-
-### Line Only
-<Demo center component="chart/radar/radar-chart-line-only-demo" />
-
-## Accessibility
-For accessibility purposes, you can add the `accessibilityLayer` prop to the chart component. This will add a `role="img"` to the chart, which will make it accessible to screen readers.
-```
-<RadarChart accessibilityLayer />
-```
+## Icons
+Enhance your radar chart by adding icons for a more engaging and intuitive design.
+<Demo center className='w-full' component="charts/radar/radar-chart-icons-demo"/>

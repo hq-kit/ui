@@ -4,7 +4,7 @@ import { Accordion } from '@/components/ui'
 
 export default function AccordionHideEverythingDemo() {
     return (
-        <Accordion hideIndicator hideBorder>
+        <Accordion hideBorder hideIndicator>
             {faqs.map((item, index) => (
                 <Accordion.Item key={index} id={index}>
                     <Accordion.Trigger>{item.q}</Accordion.Trigger>

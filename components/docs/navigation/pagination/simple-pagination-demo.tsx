@@ -11,7 +11,7 @@ export default function SimplePaginationDemo() {
                 <Pagination.Section aria-label='Pagination Segment' className='rounded-lg border'>
                     <Pagination.Item role='label'>1</Pagination.Item>
                     <Pagination.Item role='separator' />
-                    <Pagination.Item className='text-muted-foreground' role='label'>
+                    <Pagination.Item className='text-muted-fg' role='label'>
                         10
                     </Pagination.Item>
                 </Pagination.Section>

@@ -4,13 +4,13 @@ import React from 'react'
 
 import { IconChevronDown, IconX } from 'hq-icons'
 import {
+    Button,
     ComboBox as ComboboxPrimitive,
     type ComboBoxProps as ComboboxPrimitiveProps,
     ComboBoxStateContext,
     type ValidationResult
 } from 'react-aria-components'
 
-import { Button } from './button'
 import { DropdownItem, DropdownSection } from './dropdown'
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 import { ListBox } from './list-box'
@@ -40,20 +40,16 @@ const ComboBox = <T extends object>({
         <ComboboxPrimitive
             menuTrigger='focus'
             {...props}
-            className={cn('group w-full flex flex-col gap-1.5', className)}
+            className={cn('group flex w-full flex-col gap-1.5', className)}
         >
             <Label>{label}</Label>
-            <FieldGroup className='pl-0 relative'>
+            <FieldGroup className='relative pl-0'>
                 <Input className='pl-2.5' placeholder={placeholder} />
-                <Button
-                    size='icon'
-                    variant='ghost'
-                    className='size-7 rounded-lg outline-offset-0 text-muted-foreground active:bg-transparent hover:bg-transparent pressed:bg-transparent'
-                >
+                <Button className='text-muted-fg size-7 rounded-lg outline-offset-0 active:bg-transparent data-hovered:bg-transparent data-pressed:bg-transparent'>
                     {!props?.inputValue && (
                         <IconChevronDown
                             aria-hidden
-                            className='text-muted-foreground transition group-open:rotate-180 group-open:text-foreground'
+                            className='text-muted-fg group-open:text-fg transition group-data-open:rotate-180'
                         />
                     )}
                 </Button>
@@ -69,11 +65,11 @@ const ComboBox = <T extends object>({
 }
 
 const ComboBoxClearButton = () => {
-    const state = React.useContext(ComboBoxStateContext)
+    const state = React.use(ComboBoxStateContext)
 
     return (
         <Button
-            className='focus:outline-none absolute inset-y-0 right-0 flex items-center pr-2 text-muted-foreground hover:text-foreground'
+            className='text-muted-fg data-hovered:text-fg absolute inset-y-0 right-0 flex items-center pr-2.5 focus:outline-none'
             slot={null}
             aria-label='Clear'
             onPress={() => {

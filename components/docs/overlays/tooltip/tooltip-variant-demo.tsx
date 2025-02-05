@@ -2,14 +2,14 @@
 
 import { IconInfo } from 'hq-icons'
 
-import { buttonVariants, Tooltip } from '@/components/ui'
+import { buttonStyles, Tooltip } from '@/components/ui'
 
 export default function TooltipVariantDemo() {
     return (
         <Tooltip>
             <Tooltip.Trigger
                 aria-label='Attention Message'
-                className={buttonVariants({
+                className={buttonStyles({
                     variant: 'outline',
                     size: 'icon'
                 })}

@@ -36,11 +36,11 @@ export default function Code({
     }
 
     return (
-        <div className={cn('relative border overflow-hidden rounded-lg', className)}>
-            <div className={cn('absolute bottom-auto right-4 top-3 z-20 flex gap-1.5')}>
+        <div className={cn('relative overflow-hidden rounded-lg border', className)}>
+            <div className={cn('not-prose absolute top-3 right-4 bottom-auto z-20 flex gap-1.5')}>
                 <CopyButton isCopied={copied} onPress={copyCode} />
             </div>
-            <div className='[&_pre]:!my-0 font-mono [&_pre]:!border-0 [&_pre]:max-h-[32rem] [&_pre]:pb-[100px] no-scrollbar [&_pre]:overflow-auto [&_pre]:no-scrollbar'>
+            <div className='no-scrollbar [&_pre]:no-scrollbar font-mono [&_pre]:!my-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0 [&_pre]:pb-[100px]'>
                 <CodeHighlighter lang={lang} code={code} />
             </div>
         </div>

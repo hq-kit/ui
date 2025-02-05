@@ -1,33 +1,31 @@
 'use client'
 
 import { IconCheck, IconMinus } from 'hq-icons'
+import type {
+    CheckboxGroupProps as CheckboxGroupPrimitiveProps,
+    CheckboxProps as CheckboxPrimitiveProps,
+    ValidationResult
+} from 'react-aria-components'
 import {
-    Checkbox as CheckboxPrimitive,
     CheckboxGroup as CheckboxGroupPrimitive,
-    type CheckboxGroupProps as CheckboxGroupPrimitiveProps,
-    type CheckboxProps as CheckboxPrimitiveProps,
-    type ValidationResult
+    Checkbox as CheckboxPrimitive
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { Description, FieldError, Label } from './field'
-import { cn, cr } from './utils'
+import { cn, cr, ctr } from './utils'
 
-interface CheckboxGroupProps extends Omit<CheckboxGroupPrimitiveProps, 'children'> {
+interface CheckboxGroupProps extends CheckboxGroupPrimitiveProps {
     label?: string
-    children?: React.ReactNode
     description?: string
     errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
-const CheckboxGroup = (props: CheckboxGroupProps) => {
+const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
     return (
-        <CheckboxGroupPrimitive
-            {...props}
-            className={cn('group flex flex-col gap-y-1.5', props.className)}
-        >
+        <CheckboxGroupPrimitive {...props} className={ctr(className, 'flex flex-col gap-y-2')}>
             <Label>{props.label}</Label>
-            <>{props.children}</>
+            {props.children as React.ReactNode}
             {props.description && <Description className='block'>{props.description}</Description>}
             <FieldError>{props.errorMessage}</FieldError>
         </CheckboxGroupPrimitive>
@@ -35,33 +33,32 @@ const CheckboxGroup = (props: CheckboxGroupProps) => {
 }
 
 const checkboxStyles = tv({
-    base: 'racc group flex items-center gap-1.5 text-sm transition',
+    base: 'group flex items-center gap-2 text-sm transition',
     variants: {
         isDisabled: {
-            false: 'opacity-100',
             true: 'opacity-50'
         }
     }
 })
 
 const boxStyles = tv({
-    base: 'flex size-4 [&>svg]:size-3 flex-shrink-0 items-center justify-center rounded-[calc(var(--radius)*0.5)] border text-background transition',
+    base: 'text-bg border-fg/40 flex size-4 shrink-0 items-center justify-center rounded border transition *:data-[slot=icon]:size-3',
     variants: {
         isSelected: {
-            false: 'border-muted',
+            false: 'bg-bg group-data-hovered:border-primary/60 group-data-hovered:bg-primary/10',
             true: [
-                'border-primary/70 bg-primary text-primary-foreground',
-                'group-invalid:border-danger/70 group-invalid:bg-danger group-invalid:text-danger-foreground'
+                'border-primary bg-primary text-primary-fg',
+                'group-data-invalid:border-danger/70 group-data-invalid:bg-danger group-data-invalid:text-danger-fg'
             ]
         },
         isFocused: {
             true: [
-                'border-primary/70 ring-4 ring-primary/20',
-                'group-invalid:border-danger/70 group-invalid:text-danger-foreground group-invalid:ring-danger/20'
+                'border-primary ring-primary/20 ring-4',
+                'group-data-invalid:border-danger/70 group-data-invalid:text-danger-fg group-data-invalid:ring-danger/20'
             ]
         },
         isInvalid: {
-            true: 'border-danger/70 bg-danger/20 text-danger-foreground ring-danger/20'
+            true: 'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20'
         }
     }
 })
@@ -69,10 +66,9 @@ const boxStyles = tv({
 interface CheckboxProps extends CheckboxPrimitiveProps {
     description?: string
     label?: string
-    children?: React.ReactNode
 }
 
-const Checkbox = ({ className, description, label, children, ...props }: CheckboxProps) => {
+const Checkbox = ({ className, ...props }: CheckboxProps) => {
     return (
         <CheckboxPrimitive
             {...props}
@@ -81,20 +77,32 @@ const Checkbox = ({ className, description, label, children, ...props }: Checkbo
             )}
         >
             {({ isSelected, isIndeterminate, ...renderProps }) => (
-                <div className={cn('flex gap-x-1.5', description ? 'items-start' : 'items-center')}>
+                <div
+                    className={cn(
+                        'flex gap-x-2',
+                        props.description ? 'items-start' : 'items-center'
+                    )}
+                >
                     <div
                         className={boxStyles({
                             ...renderProps,
-                            isSelected: isSelected || isIndeterminate,
-                            className: description ? 'mt-1' : 'mt-px'
+                            isSelected: isSelected || isIndeterminate
                         })}
                     >
                         {isIndeterminate ? <IconMinus /> : isSelected ? <IconCheck /> : null}
                     </div>
 
                     <div className='flex flex-col gap-1'>
-                        {label ? <Label>{label}</Label> : children}
-                        {description && <Description>{description}</Description>}
+                        <>
+                            {props.label ? (
+                                <Label className={cn(props.description && 'text-sm/4')}>
+                                    {props.label}
+                                </Label>
+                            ) : (
+                                (props.children as React.ReactNode)
+                            )}
+                            {props.description && <Description>{props.description}</Description>}
+                        </>
                     </div>
                 </div>
             )}
@@ -103,3 +111,4 @@ const Checkbox = ({ className, description, label, children, ...props }: Checkbo
 }
 
 export { Checkbox, CheckboxGroup }
+export type { CheckboxGroupProps, CheckboxProps }
