@@ -1,7 +1,3 @@
-import * as React from 'react'
-
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
 import { Heading } from './heading'
@@ -9,52 +5,30 @@ import { Heading } from './heading'
 const card = tv({
     slots: {
         root: [
-            'bg-background w-full card rounded-lg [&:has(table)_.footer]:border-t [&:has(table)]:overflow-hidden text-foreground [&_table]:overflow-hidden'
+            'bg-bg text-fg **:data-[slot=table-header]:bg-muted/50 rounded-lg border shadow-xs has-[table]:overflow-hidden has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden'
         ],
-        header: 'flex flex-col space-y-1.5 px-6 py-5',
-        title: 'sm:leading-6 leading-none font-semibold tracking-tight',
-        description: 'text-base text-muted-foreground sm:text-sm',
+        header: 'flex flex-col gap-y-1 px-6 py-5',
+        title: 'leading-none font-semibold tracking-tight sm:leading-6',
+        description: 'text-muted-fg text-sm',
         content:
-            'px-6 pb-6 [&:has(table)_thead]:bg-muted/40 has-[table]:p-0 [&:has(table)+.footer]:py-5 [&:has(table)]:border-t',
-        footer: 'footer flex items-center p-6 pt-0'
+            'has-[[data-slot=table-header]]:bg-muted/40 px-6 pb-6 has-[table]:border-t has-[table]:p-0 **:data-[slot=table-cell]:px-6 **:data-[slot=table-column]:px-6 [&:has(table)+[data-slot=card-footer]]:py-5',
+        footer: 'flex items-center p-6 pt-0'
     }
 })
 
 const { root, header, title, description, content, footer } = card()
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-    borderless?: boolean
-}
-
-const Card = ({ className, borderless = false, ...props }: CardProps) => {
-    return (
-        <div
-            className={root({
-                className: twMerge(clsx(className, !borderless && 'border shadow-sm'))
-            })}
-            {...props}
-        />
-    )
+const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return <div data-slot='card' className={root({ className })} {...props} />
 }
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
     title?: string
     description?: string
-    withoutPadding?: boolean
 }
 
-const Header = ({
-    withoutPadding = false,
-    className,
-    title,
-    description,
-    children,
-    ...props
-}: HeaderProps) => (
-    <div
-        className={header({ className: twMerge(clsx(className, withoutPadding && 'px-0 pt-0')) })}
-        {...props}
-    >
+const Header = ({ className, title, description, children, ...props }: HeaderProps) => (
+    <div data-slot='card-header' className={header({ className })} {...props}>
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         {!title && typeof children === 'string' ? <Title>{children}</Title> : children}
@@ -62,19 +36,23 @@ const Header = ({
 )
 
 const Title = ({ className, level = 3, ...props }: React.ComponentProps<typeof Heading>) => {
-    return <Heading level={level} className={title({ className })} {...props} />
+    return (
+        <Heading data-slot='card-title' level={level} className={title({ className })} {...props} />
+    )
 }
 
 const Description = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div {...props} slot='description' className={description({ className })} {...props} />
+    return (
+        <div {...props} data-slot='description' className={description({ className })} {...props} />
+    )
 }
 
 const Content = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div className={content({ className })} {...props} />
+    return <div data-slot='card-content' className={content({ className })} {...props} />
 }
 
 const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div className={footer({ className })} {...props} />
+    return <div data-slot='card-footer' className={footer({ className })} {...props} />
 }
 
 Card.Content = Content

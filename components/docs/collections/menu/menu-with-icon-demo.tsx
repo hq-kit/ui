@@ -25,7 +25,7 @@ export default function MenuWithIconDemo() {
                 <Menu.Section>
                     <Menu.Header separator>
                         <span className='block'>DQ Al-Haqqi</span>
-                        <span className='font-normal text-muted-foreground'>@dq-alhq</span>
+                        <span className='text-muted-fg font-normal'>@dq-alhq</span>
                     </Menu.Header>
                 </Menu.Section>
 

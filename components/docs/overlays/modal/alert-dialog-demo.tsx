@@ -1,11 +1,11 @@
 'use client'
 
-import { buttonVariants, Modal } from '@/components/ui'
+import { buttonStyles, Modal } from '@/components/ui'
 
 export default function AlertDialogDemo() {
     return (
         <Modal>
-            <Modal.Trigger className={buttonVariants({ variant: 'danger' })}>Delete</Modal.Trigger>
+            <Modal.Trigger className={buttonStyles({ variant: 'danger' })}>Delete</Modal.Trigger>
             <Modal.Content role='alertdialog'>
                 <Modal.Header>
                     <Modal.Title>Delete file</Modal.Title>

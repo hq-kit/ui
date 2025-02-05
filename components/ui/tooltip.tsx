@@ -1,56 +1,63 @@
 'use client'
 
-import React from 'react'
-
+import type { TooltipProps as TooltipPrimitiveProps } from 'react-aria-components'
 import {
     Button,
     OverlayArrow,
     Tooltip as TooltipPrimitive,
-    type TooltipProps as TooltipPrimitiveProps,
-    TooltipTrigger
+    TooltipTrigger as TooltipTriggerPrimitive
 } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import { cr } from './utils'
 
-export const tooltipStyles = tv({
-    base: [
-        'group rounded-lg [&_strong]:font-medium border text-background px-3 py-1.5 text-sm will-change-transform dark:shadow-none',
-        'placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
-    ],
+const tooltipStyles = tv({
+    base: 'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
     variants: {
         variant: {
-            default:
-                'bg-background text-foreground [&_.tarrow]:fill-background [&_.tarrow]:stroke-muted',
-            inverse:
-                'border-transparent bg-foreground text-background [&_.tarrow]:fill-foreground [&_.tarrow]:stroke-transparent'
+            default: 'bg-bg text-fg **:data-arrow:fill-bg **:data-arrow:stroke-border',
+            inverse: 'bg-fg text-bg **:data-arrow:fill-fg'
         },
         isEntering: {
-            true: 'animate-in fade-in'
+            true: [
+                'fade-in animate-in',
+                'data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1'
+            ]
         },
         isExiting: {
-            true: 'animate-in fade-in direction-reverse'
+            true: [
+                'fade-in direction-reverse animate-in',
+                'data-[placement=left]:slide-out-to-right-1 data-[placement=right]:slide-out-to-left-1 data-[placement=top]:slide-out-to-bottom-1 data-[placement=bottom]:slide-out-to-top-1'
+            ]
         }
+    },
+    defaultVariants: {
+        variant: 'default'
     }
 })
 
-const Tooltip = (props: React.ComponentProps<typeof TooltipTrigger>) => (
-    <TooltipTrigger {...props}>{props.children}</TooltipTrigger>
-)
+type TooltipProps = React.ComponentProps<typeof TooltipTriggerPrimitive>
+const Tooltip = (props: TooltipProps) => <TooltipTriggerPrimitive {...props} />
 
-interface ContentProps
+interface TooltipContentProps
     extends Omit<TooltipPrimitiveProps, 'children'>,
         VariantProps<typeof tooltipStyles> {
     showArrow?: boolean
     children: React.ReactNode
 }
 
-const Content = ({ showArrow = true, variant = 'default', children, ...props }: ContentProps) => {
+const TooltipContent = ({
+    offset = 10,
+    showArrow = true,
+    variant = 'default',
+    children,
+    ...props
+}: TooltipContentProps) => {
     return (
         <TooltipPrimitive
             {...props}
-            offset={10}
+            offset={offset}
             className={cr(props.className, (className, renderProps) =>
                 tooltipStyles({
                     ...renderProps,
@@ -62,10 +69,11 @@ const Content = ({ showArrow = true, variant = 'default', children, ...props }: 
             {showArrow && (
                 <OverlayArrow>
                     <svg
+                        data-arrow
                         width={12}
                         height={12}
                         viewBox='0 0 12 12'
-                        className='tarrow group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]'
+                        className='group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90'
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>
@@ -76,7 +84,10 @@ const Content = ({ showArrow = true, variant = 'default', children, ...props }: 
     )
 }
 
-Tooltip.Trigger = Button
-Tooltip.Content = Content
+const TooltipTrigger = Button
+
+Tooltip.Trigger = TooltipTrigger
+Tooltip.Content = TooltipContent
 
 export { Tooltip }
+export type { TooltipContentProps, TooltipProps }

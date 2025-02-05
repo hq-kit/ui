@@ -26,7 +26,7 @@ export default function TagGroupWithRemoveDemo() {
             className='max-w-sm'
             onRemove={(keys) => list.remove(...keys)}
         >
-            <Tag.List items={list.items}>{(item) => <Tag.Item>{item.name}</Tag.Item>}</Tag.List>
+            <Tag.List items={list.items}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
         </Tag.Group>
     )
 }

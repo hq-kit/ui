@@ -1,49 +1,44 @@
 'use client'
 
-import React from 'react'
+import { type VariantProps, tv } from 'tailwind-variants'
 
-import { tv, type VariantProps } from 'tailwind-variants'
-
-const badgeVariants = tv({
-    base: 'inline-flex items-center outline-none transition-colors gap-x-1.5 py-0.5 text-xs/5 font-medium [&_svg]:size-3',
+const badgeStyles = tv({
+    base: 'inline-flex items-center gap-x-1.5 px-2 py-0.5 text-xs/5 font-medium ring-1 **:data-[slot=icon]:size-3',
     variants: {
         variant: {
-            primary:
-                'ring-primary/30 bg-primary/10 dark:bg-primary/15 text-primary hover:bg-primary/15 dark:hover:bg-primary/10',
-            secondary: 'bg-secondary/50 ring-secondary-foreground/20 text-secondary-foreground',
-            success:
-                'dark:ring-success/30 ring-success/40 bg-success/10 dark:bg-success/15 text-success hover:bg-success/15 dark:hover:bg-success/10',
-            info: 'dark:ring-info/30 ring-info/80 bg-info/20 dark:bg-info/15 text-info hover:bg-info/15 dark:hover:bg-info/10',
-            warning:
-                'dark:ring-warning/40 ring-warning/50 bg-warning/10 dark:bg-warning/15 text-warning hover:bg-warning/15 dark:hover:bg-warning/10',
-            danger: 'dark:ring-danger/30 ring-danger/40 bg-danger/10 dark:bg-danger/15 text-danger hover:bg-danger/15 dark:hover:bg-danger/10',
-            dark: 'bg-dark hover:bg-dark/90 ring-inset ring-dark/50 text-dark-foreground',
-            outline: 'bg-transparent ring-inset ring-foreground/50 text-foreground'
+            primary: 'ring-primary/20 bg-primary/5 text-primary',
+            secondary: 'ring-secondary-fg/20 bg-secondary/20 text-secondary-fg',
+            success: 'ring-success/20 bg-success/5 text-success',
+            warning: 'ring-warning/20 bg-warning/5 text-warning',
+            danger: 'ring-danger/20 bg-danger/5 text-danger',
+            dark: 'ring-fg/20 bg-fg/5 text-fg'
         },
         shape: {
-            square: 'rounded-lg px-1.5',
-            circle: 'px-2 rounded-full'
+            rounded: 'rounded-md',
+            sharp: 'rounded-none',
+            circle: 'rounded-full'
         }
     },
     defaultVariants: {
         variant: 'primary',
-        shape: 'square'
+        shape: 'rounded'
     }
 })
 
 interface BadgeProps
     extends React.HTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof badgeVariants> {
+        VariantProps<typeof badgeStyles> {
     className?: string
     children: React.ReactNode
 }
 
 const Badge = ({ children, variant, shape, className, ...props }: BadgeProps) => {
     return (
-        <span {...props} className={badgeVariants({ variant, shape, className })}>
+        <span {...props} className={badgeStyles({ variant, shape, className })}>
             {children}
         </span>
     )
 }
 
-export { Badge, badgeVariants }
+export { Badge, badgeStyles }
+export type { BadgeProps }

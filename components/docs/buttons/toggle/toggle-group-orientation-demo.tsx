@@ -5,7 +5,7 @@ import { Toggle } from '@/components/ui'
 export default function App() {
     return (
         <div>
-            <Toggle.Group orientation='vertical' variant='ghost'>
+            <Toggle.Group orientation='vertical'>
                 <Toggle>
                     {({ isSelected }) => (
                         <>

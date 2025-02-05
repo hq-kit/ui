@@ -53,7 +53,7 @@ This command will present a list of available components, which you can navigate
 ## Manual Installation
 To begin setting up the design system, start by installing these packages:
 
-<CLI command='install' items={['react-aria-components', 'tailwindcss-react-aria-components']} />
+<CLI command='install' items={['react-aria-components']} />
 
 Next, add Tailwind Variant, Tailwind Merge, and clsx for utility functions:
 
@@ -70,101 +70,166 @@ You should add the following code:
 You can customize your colors using these variables. By default, HQ UI utilizes HSL colors, but you have the option
 to switch to RGB, HSL, or HSB.
 
-<Code lang='css' code={`@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<Code lang='css' code={`@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: var(--font-geist-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco',
+        'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
+
+    --color-bg: var(--bg);
+    --color-fg: var(--fg);
+
+    --color-primary: var(--primary);
+    --color-primary-fg: var(--primary-fg);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-fg: var(--secondary-fg);
+
+    --color-success: var(--success);
+    --color-success-fg: var(--success-fg);
+
+    --color-danger: var(--danger);
+    --color-danger-fg: var(--danger-fg);
+
+    --color-warning: var(--warning);
+    --color-warning-fg: var(--warning-fg);
+
+    --color-muted: var(--muted);
+    --color-muted-fg: var(--muted-fg);
+
+    --color-border: var(--secondary);
+    --color-input: var(--secondary);
+    --color-ring: var(--primary);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+}
 
 @layer base {
     :root {
-        --background: 0 0% 98.04%; /* zinc-50 */
-        --foreground: 240 10% 3.92%; /* zinc-950 */
-        --primary: 224.3 76.3% 48%; /* blue-700 */
-        --primary-foreground: 0 0% 98.04%; /* zinc-50 */
-        --secondary: 211.7 96.4% 78.4%; /* blue-300 */
-        --secondary-foreground: 226.2 57% 21%; /* blue-950 */
-        --danger: 0 72.22% 50.59%; /* red-600 */
-        --danger-foreground: 0 0% 98.04%; /* zinc-50 */
-        --success: 142.1 76.2% 36.3%; /* green-700 */
-        --success-foreground: 0 0% 98.04%; /* zinc-50 */
-        --warning: 24.6 95% 53.1%; /* orange-500 */
-        --warning-foreground: 0 0% 98.04%; /* zinc-50 */
-        --info: 294.7 72.4% 39.8%; /* fuchsia-500 */
-        --info-foreground: 0 0% 98.04%;
-        --dark: 240 10% 4%; /* zinc-950 */
-        --dark-foreground: 0 0% 98.04%; /* zinc-50 */
-        --muted: 240 4.88% 83.92%; /* zinc-300 */
-        --muted-foreground: 240 3.83% 46.08%; /* zinc-500 */
-        --radius: 0.5rem;
+        --bg: oklch(0.985 0 0);
+        --fg: oklch(0.141 0.005 285.823);
 
-        --primary-chart: 216.74 100% 45%;
-        --secondary-chart: 219.83 100% 77%;
-        --tertiary-chart: 216.01 92% 60%;
-        --highlight-chart: 210 98% 78%;
-        --accent-chart: 210 98% 78%;
+        --primary: oklch(0.546 0.245 262.881);
+        --primary-fg: oklch(1 0 0);
+
+        --secondary: oklch(0.92 0.004 286.32);
+        --secondary-fg: oklch(0.141 0.005 285.823);
+
+        --success: oklch(0.596 0.145 163.225);
+        --success-fg: oklch(1 0 0);
+
+        --warning: oklch(0.828 0.189 84.429);
+        --warning-fg: oklch(0.279 0.077 45.635);
+
+        --danger: oklch(0.577 0.245 27.325);
+        --danger-fg: oklch(0.971 0.013 17.38);
+
+        --muted: oklch(0.967 0.001 286.375);
+        --muted-fg: oklch(0.552 0.016 285.938);
+
+        --chart-1: oklch(0.546 0.245 262.881);
+        --chart-2: oklch(0.707 0.165 254.624);
+        --chart-3: oklch(0.809 0.105 251.813);
+        --chart-4: oklch(0.882 0.059 254.128);
+        --chart-5: oklch(0.932 0.032 255.585);
+
+        --radius-lg: 0.5rem;
+        --radius-xs: calc(var(--radius-lg) * 0.5);
+        --radius-sm: calc(var(--radius-lg) * 0.75);
+        --radius-md: calc(var(--radius-lg) * 0.9);
+        --radius-xl: calc(var(--radius-lg) * 1.25);
+        --radius-2xl: calc(var(--radius-lg) * 1.5);
+        --radius-3xl: calc(var(--radius-lg) * 2);
+        --radius-4xl: calc(var(--radius-lg) * 3);
     }
 
     .dark {
-        --background: 240 10% 3.92%; /* zinc-950 */
-        --foreground: 0 0% 98.04%; /* zinc-50 */
-        --primary: 221.2 83.2% 53.3%; /* blue-600 */
-        --primary-foreground: 0 0% 98.04%; /* zinc-50 */
-        --secondary: 226.2 57% 21%; /* blue-950 */
-        --secondary-foreground: 211.7 96.4% 78.4%; /* blue-300 */
-        --danger: 0 72.2% 50.6%; /* red-600 */
-        --danger-foreground: 0 0% 98.04%;
-        --success: 142.1 76.2% 36.3%; /* green-700 */
-        --success-foreground: 0 0% 98.04%;
-        --warning: 17.5 88.3% 40.4%; /* orange-700 */
-        --warning-foreground: 0 0% 98.04%;
-        --info: 294.7 72.4% 39.8%; /* fuchsia-700 */
-        --info-foreground: 0 0% 98.04%;
-        --dark: 0 0% 98.04%;
-        --dark-foreground: 240 10% 3.92%;
-        --muted: 240 5.2% 33.92%; /* zinc-800 */
-        --muted-foreground: 240 5.03% 64.9%; /* zinc-400 */
+        --bg: oklch(0.141 0.005 285.823);
+        --fg: oklch(0.985 0 0);
 
-        --primary-chart: 221.19 83% 53%;
-        --secondary-chart: 211.99 95% 68%;
-        --tertiary-chart: 216.01 92% 60%;
-        --highlight-chart: 210 98% 78%;
-        --accent-chart: 212 96% 87%;
+        --primary: oklch(0.546 0.245 262.881);
+        --primary-fg: oklch(1 0 0);
+
+        --secondary: oklch(0.234 0.006 286.033);
+        --secondary-fg: oklch(0.985 0 0);
+
+        --muted: oklch(0.21 0.006 285.885);
+        --muted-fg: oklch(0.705 0.015 286.067);
+
+        --success: oklch(0.596 0.145 163.225);
+        --success-fg: oklch(1 0 0);
+
+        --warning: oklch(0.828 0.189 84.429);
+        --warning-fg: oklch(0.279 0.077 45.635);
+
+        --danger: oklch(0.577 0.245 27.325);
+        --danger-fg: oklch(0.971 0.013 17.38);
+
+        --chart-1: oklch(0.488 0.243 264.376);
+        --chart-2: oklch(0.623 0.214 259.815);
+        --chart-3: oklch(0.707 0.165 254.624);
+        --chart-4: oklch(0.809 0.105 251.813);
+        --chart-5: oklch(0.882 0.059 254.128);
     }
 }
 
 @layer base {
     html {
-        @apply scroll-smooth;
+        scroll-behavior: smooth;
+    }
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--secondary, currentColor);
+    }
+
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+
+    body {
+        background-color: var(--bg);
+        color: var(--fg);
     }
 
     * {
-        @apply border-muted;
         font-feature-settings: 'cv11', 'ss01';
         font-variation-settings: 'opsz' 850;
         text-rendering: optimizeLegibility;
     }
 
-    body {
-        @apply bg-background text-foreground;
-    }
-
     *::-webkit-scrollbar {
-        @apply size-1.5 rounded-lg;
+        border-radius: var(--radius-lg);
+        width: 7px;
+        height: 7px;
     }
 
     *::-webkit-scrollbar-track {
-        @apply rounded-lg bg-transparent;
+        border-radius: var(--radius-lg);
+        background: transparent;
     }
 
     *::-webkit-scrollbar-thumb {
-        @apply rounded-lg border border-transparent bg-muted;
+        background: var(--muted-fg);
+        border-radius: var(--radius-lg);
     }
 }
 
 @layer components {
-    .recharts-rectangle.recharts-tooltip-cursor {
-        @apply fill-foreground/10;
-    }
-
     .overflow-auto,
     .overflow-x-auto,
     .overflow-y-auto,
@@ -173,13 +238,14 @@ to switch to RGB, HSL, or HSB.
     .overflow-y-scroll {
         @apply [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-inherit;
     }
+
     .overflow-auto:hover,
     .overflow-x-auto:hover,
     .overflow-y-auto:hover,
     .overflow-scroll:hover,
     .overflow-x-scroll:hover,
     .overflow-y-scroll:hover {
-        @apply [&::-webkit-scrollbar-thumb]:bg-muted;
+        @apply [&::-webkit-scrollbar-thumb]:bg-secondary;
     }
 
     .no-scrollbar {
@@ -194,101 +260,7 @@ to switch to RGB, HSL, or HSB.
     pre::-webkit-scrollbar {
         display: none;
     }
-}`} />
-
-### Default Utilities
-Include this for the default set of utilities:
-
-```
-@layer base {
-  * {
-    @apply border-muted;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 850;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
 }
-```
-
-### Tailwind Configuration
-
-Configure your Tailwind setup by wrapping your tailwind config with withTV from tailwind-variants. Also, make sure to
-integrate the plugins we've just installed.
-
-<Code lang='js' code={`/** @type {import('tailwindcss').Config} */
-import { withTV } from 'tailwind-variants/transformer'
-import ta from 'tailwindcss-animate'
-import trac from 'tailwindcss-react-aria-components'
-
-const config = withTV({
-    content: [], // based on your project framework
-    darkMode: 'class',
-    theme: {
-        container: {
-            center: true,
-            padding: {
-                DEFAULT: '1rem',
-                sm: '2rem'
-            },
-            screens: {
-                '2xl': '1400px'
-            }
-        },
-        fontFamily: {
-            sans: ['var(--font-sans)', ...fontFamily.sans],
-            mono: ['var(--font-mono)', ...fontFamily.mono]
-        },
-        extend: {
-            colors: {
-                background: 'hsl(var(--background))',
-                foreground: 'hsl(var(--foreground))',
-                primary: {
-                    DEFAULT: 'hsl(var(--primary))',
-                    foreground: 'hsl(var(--primary-foreground))'
-                },
-                secondary: {
-                    DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))'
-                },
-                danger: {
-                    DEFAULT: 'hsl(var(--danger))',
-                    foreground: 'hsl(var(--danger-foreground))'
-                },
-                success: {
-                    DEFAULT: 'hsl(var(--success))',
-                    foreground: 'hsl(var(--success-foreground))'
-                },
-                info: {
-                    DEFAULT: 'hsl(var(--info))',
-                    foreground: 'hsl(var(--info-foreground))'
-                },
-                warning: {
-                    DEFAULT: 'hsl(var(--warning))',
-                    foreground: 'hsl(var(--warning-foreground))'
-                },
-                dark: {
-                    DEFAULT: 'hsl(var(--dark))',
-                    foreground: 'hsl(var(--dark-foreground))'
-                },
-                muted: {
-                    DEFAULT: 'hsl(var(--muted))',
-                    foreground: 'hsl(var(--muted-foreground))'
-                }
-            },
-            borderRadius: {
-                lg: 'var(--radius)',
-                md: 'calc(var(--radius) - 2px)',
-                sm: 'calc(var(--radius) - 4px)'
-            }
-        }
-    },
-    plugins: [ta, trac]
-})
-
-export default config
 `} />
 
 ### Utils
@@ -315,27 +287,37 @@ function composeTailwindRenderProps<T>(
 }
 
 const focusRing = tv({
-    base: 'outline-none focus:outline-none forced-colors:outline-1 forced-colors:outline-[Highlight]',
     variants: {
-        isFocused: { true: 'ring-4 ring-primary/20' },
-        isInvalid: { true: 'ring-4 ring-danger/20' }
+        isFocused: { true: 'ring-primary/20 data-invalid:ring-danger/20 ring-4 outline-hidden' },
+        isFocusVisible: { true: 'ring-primary/20 ring-4 outline-hidden' },
+        isInvalid: { true: 'ring-danger/20 ring-4' }
     }
 })
 
 const focusStyles = tv({
     extend: focusRing,
     variants: {
-        isFocused: { true: 'border-primary/85' },
-        isInvalid: { true: 'border-danger' }
+        isFocused: { true: 'border-primary/70' },
+        isInvalid: { true: 'border-danger/70' }
     }
 })
 
 const focusButtonStyles = tv({
-    base: 'outline outline-primary forced-colors:outline-[Highlight] outline-offset-2',
+    base: 'outline-primary outline outline-offset-2',
     variants: {
         isFocusVisible: {
             false: 'outline-0',
             true: 'outline-2'
+        },
+        isDisabled: {
+            false: 'cursor-pointer',
+            true: 'cursor-default opacity-50'
+        },
+        isHovered: {
+            true: 'brightness-90'
+        },
+        isPressed: {
+            true: 'brightness-95'
         }
     }
 })
@@ -493,65 +475,6 @@ the UI folder, adjust your paths accordingly like this:
   }
 }
 ```
-
-## Fonts
-This is is currently using the [Geist font](https://vercel.com/font). If you want to use a different font, you can define your font-family in your js or css file.
-
-### Stylesheet
-When you're working with a stylesheet, you can define your `@font-face` in your css file.
-
-```
-@font-face {
-  font-family: 'Geist';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("GeistVF.woff") format("woff");
-}
-```
-
-### Next.js
-If you're using Next.js, you don't event need css files. Just define your font in your layout file.
-
-```
-import localFont from 'next/font/local'
-
-const fontSans = localFont({
-  src: [{path: './fonts/GeistVF.woff'}],
-  variable: '--font-sans'
-})
-```
-
-Then, apply the `fontSans` to the `body` tag like this:
-
-```
-import { cn } from '@/lib/utils'
-
-<body
-className={cn(
-  'min-h-svh font-sans antialiased',
-  fontSans.variable,
-)}
->
-```
-
-Then, you can use the variable in your tailwind config like this:
-
-```ts
-import { fontFamily } from 'tailwindcss/defaultTheme'
-
-theme: {
-  // ...
-  extend: {
-    fontFamily: {
-      sans: ['var(--font-sans)', ...fontFamily.sans],
-    },
-  },
-  // ...
-}
-```
-
-For more information, refer to the [Tailwind documentation](https://tailwindcss.com/docs/font-family#customizing-the-default-font) and [Next.js documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
 
 ## InteliSense
 If you want your development environment to be more intelligent, you can follow instructions here at [Tailwind Variants](https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional).

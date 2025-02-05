@@ -1,90 +1,105 @@
 'use client'
 
-import React from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 
 import { IconChevronDown } from 'hq-icons'
 import { useFilter } from 'react-aria'
-import {
-    ComboBox,
-    Group,
-    type ComboBoxProps,
-    type Key,
-    type ValidationResult
+import type {
+    ComboBoxProps as ComboBoxPrimitiveProps,
+    Key,
+    ValidationResult
 } from 'react-aria-components'
-import { useListData, type ListData } from 'react-stately'
+import { ComboBox } from 'react-aria-components'
+import type { ListData } from 'react-stately'
+import { useListData } from 'react-stately'
+import { tv } from 'tailwind-variants'
 
 import { Button } from './button'
+import type { FieldProps } from './field'
 import { Description, FieldError, Input, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
-import { Tag, type RestrictedVariant } from './tag-group'
+import type { RestrictedVariant, TagGroupProps } from './tag-group'
+import { Tag } from './tag-group'
 import { VisuallyHidden, cn } from './utils'
 
-interface FieldState {
-    selectedKey: Key | null
-    inputValue: string
-}
+const multiSelectStyles = tv({
+    slots: {
+        multiSelectField: 'group flex w-full min-w-80 flex-col',
+        multiSelect: [
+            'border-muted relative flex min-h-10 flex-row flex-wrap items-center rounded-lg border px-1 transition',
+            'has-[input[data-focused=true]]:border-primary/70',
+            'has-[input[data-invalid=true][data-focused=true]]:border-primary/70',
+            'has-[input[data-invalid=true]]:border-danger',
+            'has-[input[data-focused=true]]:ring-primary/20 has-[input[data-focused=true]]:ring-4',
+            'has-[input[data-disabled=false][data-focused=true]]:border-primary/60'
+        ],
+        chevronButton:
+            'text-muted-fg data-focused:text-fg data-hovered:text-fg -mr-2 grid size-8 place-content-center rounded-sm',
+        input: 'ml-1 flex-1 px-0.5 py-1 ring-0 shadow-none',
+        comboBoxChild: 'inline-flex flex-1 flex-wrap items-center px-0',
+        comboBox: 'group peer flex flex-1'
+    }
+})
+
+const { multiSelectField, multiSelect, chevronButton, input, comboBox, comboBoxChild } =
+    multiSelectStyles()
 
 interface SelectedKey {
     id: Key
-    textValue: string
+    name: string
 }
 
-interface MultipleSelectProps<T extends object>
-    extends Omit<
-        ComboBoxProps<T>,
-        | 'children'
-        | 'validate'
-        | 'allowsEmptyCollection'
-        | 'selectedKey'
-        | 'inputValue'
-        | 'className'
-        | 'value'
-        | 'onSelectionChange'
-        | 'onInputChange'
-    > {
-    label?: string
-    description?: string
+interface MultiSelectProps<T extends object>
+    extends FieldProps,
+        Omit<
+            ComboBoxPrimitiveProps<T>,
+            | 'children'
+            | 'validate'
+            | 'allowsEmptyCollection'
+            | 'inputValue'
+            | 'selectedKey'
+            | 'className'
+            | 'value'
+            | 'onSelectionChange'
+            | 'onInputChange'
+        >,
+        Pick<TagGroupProps, 'shape'> {
     variant?: RestrictedVariant
     items: Array<T>
-    selectedList: ListData<T>
+    selectedItems: ListData<T>
     className?: string
-    onItemAdd?: (key: Key) => void
-    onItemRemove?: (key: Key) => void
+    onItemInserted?: (key: Key) => void
+    onItemCleared?: (key: Key) => void
     renderEmptyState?: (inputValue: string) => React.ReactNode
     tag: (item: T) => React.ReactNode
     children: React.ReactNode | ((item: T) => React.ReactNode)
-    max?: number
-    min?: number
     errorMessage?: string | ((validation: ValidationResult) => string)
-    portal?: Element
 }
 
 const MultiSelect = <T extends SelectedKey>({
     children,
-    variant = 'primary',
     items,
-    selectedList,
-    onItemRemove,
-    onItemAdd,
+    selectedItems,
+    onItemCleared,
+    onItemInserted,
     className,
     name,
     renderEmptyState,
-    max,
-    min,
     errorMessage,
     ...props
-}: MultipleSelectProps<T>) => {
-    const tagGroupId = React.useId()
-    const triggerRef = React.useRef<HTMLDivElement | null>(null)
-    const [width, setWidth] = React.useState(0)
+}: MultiSelectProps<T>) => {
+    const tagGroupIdentifier = useId()
+    const triggerRef = useRef<HTMLDivElement | null>(null)
+    const [width, setWidth] = useState(0)
 
     const { contains } = useFilter({ sensitivity: 'base' })
-    const selectedKeys = selectedList.items.map((i) => i.id)
+    const selectedKeys = selectedItems.items.map((i) => i.id)
 
-    const filter = React.useCallback(
-        (item: T, filterText: string) =>
-            !selectedKeys.includes(item.id) && contains(item.textValue, filterText),
+    const filter = useCallback(
+        (item: T, filterText: string) => {
+            return !selectedKeys.includes(item.id) && contains(item.name, filterText)
+        },
         [contains, selectedKeys]
     )
 
@@ -93,85 +108,89 @@ const MultiSelect = <T extends SelectedKey>({
         filter
     })
 
-    const [fieldState, setFieldState] = React.useState<FieldState>({
+    const [fieldState, setFieldState] = useState<{
+        selectedKey: Key | null
+        inputValue: string
+    }>({
         selectedKey: null,
         inputValue: ''
     })
 
-    const onRemove = React.useCallback(
+    const onRemove = useCallback(
         (keys: Set<Key>) => {
-            if (min !== undefined && selectedList.items.length <= min) return
-
             const key = keys.values().next().value
-            selectedList.remove(key as Key)
-            setFieldState({
-                inputValue: '',
-                selectedKey: null
-            })
-            onItemRemove?.(key as Key)
+            if (key) {
+                selectedItems.remove(key)
+                setFieldState({
+                    inputValue: '',
+                    selectedKey: null
+                })
+                onItemCleared?.(key)
+            }
         },
-        [selectedList, onItemRemove, min]
+        [selectedItems, onItemCleared]
     )
 
     const onSelectionChange = (id: Key | null) => {
-        if (!id) return
+        if (!id) {
+            return
+        }
 
         const item = accessibleList.getItem(id)
 
-        if (!item) return
+        if (!item) {
+            return
+        }
 
-        if (!selectedKeys.includes(id) && (max === undefined || selectedList.items.length < max)) {
-            selectedList.append(item)
+        if (!selectedKeys.includes(id)) {
+            selectedItems.append(item)
             setFieldState({
                 inputValue: '',
                 selectedKey: id
             })
-            onItemAdd?.(id)
+            onItemInserted?.(id)
         }
 
         accessibleList.setFilterText('')
     }
 
-    const onInputChange = (v: string) => {
-        setFieldState((prevState) => ({
-            inputValue: v,
-            selectedKey: v === '' ? null : prevState.selectedKey
+    const onInputChange = (value: string) => {
+        setFieldState((prev) => ({
+            inputValue: value,
+            selectedKey: value === '' ? null : prev.selectedKey
         }))
 
-        accessibleList.setFilterText(v)
+        accessibleList.setFilterText(value)
     }
 
-    const deleteLast = React.useCallback(() => {
-        if (
-            selectedList.items.length == 0 ||
-            (min !== undefined && selectedList.items.length <= min)
-        ) {
+    const popLast = useCallback(() => {
+        if (selectedItems.items.length === 0) {
             return
         }
 
-        const lastKey = selectedList.items[selectedList.items.length - 1]
+        const endKey = selectedItems.items[selectedItems.items.length - 1]
 
-        if (lastKey !== null) {
-            selectedList.remove(lastKey.id)
-            onItemRemove?.(lastKey.id)
+        if (endKey) {
+            selectedItems.remove(endKey.id)
+            onItemCleared?.(endKey.id)
         }
 
         setFieldState({
             inputValue: '',
             selectedKey: null
         })
-    }, [selectedList, onItemRemove, min])
+    }, [selectedItems, onItemCleared])
 
-    const onKeyDownCapture = React.useCallback(
+    const onKeyDownCapture = useCallback(
         (e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Backspace' && fieldState.inputValue === '') {
-                deleteLast()
+                popLast()
             }
         },
-        [deleteLast, fieldState.inputValue]
+        [popLast, fieldState.inputValue]
     )
 
-    React.useEffect(() => {
+    useEffect(() => {
         const trigger = triggerRef.current
         if (!trigger) return
 
@@ -185,132 +204,136 @@ const MultiSelect = <T extends SelectedKey>({
         return () => {
             observer.unobserve(trigger)
         }
-    }, [triggerRef])
+    }, [])
 
-    const triggerButtonRef = React.useRef<HTMLButtonElement | null>(null)
+    const triggerButtonRef = useRef<HTMLButtonElement | null>(null)
 
     return (
-        <Group className={cn('group flex w-full min-w-fit flex-col gap-1.5', className)}>
-            {props.label && <Label>{props.label}</Label>}
-            <div
-                ref={triggerRef}
-                className={cn(
-                    'relative px-1 flex min-h-10 flex-row flex-wrap items-center rounded-lg shadow-sm border transition',
-                    'has-[input[data-focused=true]]:border-primary',
-                    'has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger',
-                    'has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-primary/20',
-                    className
-                )}
-            >
-                <Tag.Group
-                    aria-label='Selected items'
-                    variant={variant}
-                    id={tagGroupId}
-                    onRemove={onRemove}
+        <div className={multiSelectField({ className })}>
+            {props.label && <Label className='mb-1'>{props.label}</Label>}
+            <div className={props.isDisabled ? 'opacity-50' : ''}>
+                <div
+                    ref={triggerRef}
+                    className={cn(
+                        multiSelect({ className }),
+                        !props.isDisabled && 'group-hover:border-primary/60'
+                    )}
                 >
-                    <Tag.List
-                        items={selectedList.items}
-                        className={cn(
-                            selectedList.items.length !== 0 && 'px-1 py-1.5',
-                            '[&_.tag]:rounded-[calc(var(--radius)-2.5px)] last:[&_.tag]:-mr-1 outline-none gap-1.5'
-                        )}
+                    <Tag.Group
+                        shape={props.shape}
+                        variant={props.variant}
+                        aria-label='Selected items'
+                        id={tagGroupIdentifier}
+                        onRemove={onRemove}
                     >
-                        {props.tag}
-                    </Tag.List>
-                </Tag.Group>
-                <ComboBox
-                    {...props}
-                    aria-label='Available items'
-                    allowsEmptyCollection
-                    className={cn('group peer flex flex-1', className)}
-                    items={accessibleList.items}
-                    selectedKey={fieldState.selectedKey}
-                    inputValue={fieldState.inputValue}
-                    onSelectionChange={onSelectionChange}
-                    onInputChange={onInputChange}
-                >
-                    <div
-                        className={cn('inline-flex flex-1 flex-wrap items-center px-0', className)}
-                    >
-                        <FieldError>{errorMessage}</FieldError>
-                        <Input
-                            className='flex-1 py-1 px-0.5 ml-1 shadow-none ring-0'
-                            onBlur={() => {
-                                setFieldState({
-                                    inputValue: '',
-                                    selectedKey: null
-                                })
-                                accessibleList.setFilterText('')
-                            }}
-                            onKeyDownCapture={onKeyDownCapture}
-                        />
-
-                        <VisuallyHidden>
-                            <Button
-                                slot='remove'
-                                aria-label='Remove'
-                                variant='ghost'
-                                size='icon'
-                                ref={triggerButtonRef}
-                            >
-                                <IconChevronDown />
-                            </Button>
-                        </VisuallyHidden>
-                    </div>
-                    <Popover.Picker
-                        UNSTABLE_portalContainer={props.portal}
-                        className='max-w-none'
-                        style={{ width: `${width}px` }}
-                        triggerRef={triggerRef}
-                        trigger='ComboBox'
-                    >
-                        <ListBox.Picker
-                            renderEmptyState={() =>
-                                renderEmptyState ? (
-                                    renderEmptyState(fieldState.inputValue)
-                                ) : (
-                                    <Description className='p-3 block'>
-                                        {fieldState.inputValue ? (
-                                            <>
-                                                No results found for:{' '}
-                                                <strong className='font-semibold'>
-                                                    {fieldState.inputValue}
-                                                </strong>
-                                            </>
-                                        ) : (
-                                            `No options`
-                                        )}
-                                    </Description>
-                                )
-                            }
-                            selectionMode='multiple'
+                        <Tag.List
+                            items={selectedItems.items}
+                            className={cn(
+                                selectedItems.items.length !== 0 && 'px-1 py-1.5',
+                                'gap-1.5 outline-hidden [&_.tag]:last:-mr-1',
+                                props.shape === 'rounded' &&
+                                    '[&_.tag]:rounded-[calc(var(--radius-lg)-4px)]'
+                            )}
                         >
-                            {children}
-                        </ListBox.Picker>
-                    </Popover.Picker>
-                </ComboBox>
-                <div className='relative px-1 ml-auto flex items-center justify-center peer-data-[open]:[&_button>svg]:rotate-180 [&_button>svg]:transition'>
-                    <button
-                        type='button'
-                        className='size-8 -mr-2 grid place-content-center rounded-lg hover:text-foreground focus:text-foreground text-muted-foreground'
-                        onClick={() => triggerButtonRef.current?.click()}
-                        tabIndex={-1}
+                            {props.tag}
+                        </Tag.List>
+                    </Tag.Group>
+                    <ComboBox
+                        menuTrigger='focus'
+                        {...props}
+                        allowsEmptyCollection
+                        aria-label='Available items'
+                        className={comboBox()}
+                        items={accessibleList.items}
+                        selectedKey={fieldState.selectedKey}
+                        inputValue={fieldState.inputValue}
+                        onSelectionChange={onSelectionChange}
+                        onInputChange={onInputChange}
                     >
-                        <IconChevronDown className='size-4' />
-                    </button>
+                        <div className={comboBoxChild({ className })}>
+                            <Input
+                                placeholder={props.placeholder}
+                                className={input()}
+                                onBlur={() => {
+                                    setFieldState({
+                                        inputValue: '',
+                                        selectedKey: null
+                                    })
+                                    accessibleList.setFilterText('')
+                                }}
+                                onKeyDownCapture={onKeyDownCapture}
+                            />
+
+                            <VisuallyHidden>
+                                <Button
+                                    slot='remove'
+                                    type='button'
+                                    aria-label='Remove'
+                                    size='icon'
+                                    variant='ghost'
+                                    ref={triggerButtonRef}
+                                >
+                                    <IconChevronDown />
+                                </Button>
+                            </VisuallyHidden>
+                        </div>
+                        <Popover.Picker
+                            isNonModal
+                            className='max-w-none'
+                            style={{ width: `${width}px` }}
+                            triggerRef={triggerRef}
+                            trigger='ComboBox'
+                        >
+                            <ListBox.Picker
+                                className='grid-cols-none'
+                                renderEmptyState={() =>
+                                    renderEmptyState ? (
+                                        renderEmptyState(fieldState.inputValue)
+                                    ) : (
+                                        <Description className='block p-3'>
+                                            {fieldState.inputValue ? (
+                                                <>
+                                                    No results found for:{' '}
+                                                    <strong className='text-fg font-medium'>
+                                                        {fieldState.inputValue}
+                                                    </strong>
+                                                </>
+                                            ) : (
+                                                'No options'
+                                            )}
+                                        </Description>
+                                    )
+                                }
+                                selectionMode='multiple'
+                            >
+                                {children}
+                            </ListBox.Picker>
+                        </Popover.Picker>
+                    </ComboBox>
+                    <div
+                        className='relative ml-auto flex items-center justify-center px-1 [&_button>svg]:transition peer-data-[open]:[&_button>svg]:rotate-180'
+                        aria-hidden
+                    >
+                        <button
+                            type='button'
+                            className={chevronButton()}
+                            onClick={() => triggerButtonRef.current?.click()}
+                            tabIndex={-1}
+                        >
+                            <IconChevronDown className='size-4' />
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            {name && <input hidden name={name} value={selectedKeys.join(',')} readOnly />}
-
             {props.description && <Description>{props.description}</Description>}
-        </Group>
+            {<FieldError>{errorMessage}</FieldError>}
+            {name && <input hidden name={name} value={selectedKeys.join(',')} readOnly />}
+        </div>
     )
 }
 
-const MultiSelectItem = ListBox.Item
+MultiSelect.Tag = Tag
+MultiSelect.Item = ListBox.Item
 
-MultiSelect.Item = MultiSelectItem
-MultiSelect.Tag = Tag.Item
-
-export { MultiSelect, type SelectedKey }
+export { MultiSelect }
+export type { MultiSelectProps, SelectedKey }

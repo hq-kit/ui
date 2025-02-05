@@ -42,7 +42,7 @@ export const generateColorScale = (color: string): { shade: number; color: strin
     }))
 }
 
-export const getForegroundColor = (color: string): string => {
+export const getfgColor = (color: string): string => {
     const luminance = chroma(color).luminance()
     return luminance > 0.5
         ? chroma(color).luminance(0.05).hex()
@@ -57,7 +57,7 @@ export const getDangerColor = (color: string): string => {
     return chroma(color).set('hsl.h', '-250').hex()
 }
 
-export const textForeground = (backgroundColor: string): string => {
+export const textfg = (backgroundColor: string): string => {
     const luminance = chroma(backgroundColor).luminance()
     return luminance > 0.3 ? '#000000' : '#FFFFFF'
 }

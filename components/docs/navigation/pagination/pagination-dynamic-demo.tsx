@@ -11,11 +11,11 @@ export default function PaginationDynamicDemo() {
                 <Pagination.Item role='previous' href='#' />
                 <Pagination.Section
                     aria-label='Pagination Segment'
-                    className='rounded-lg lg:hidden border'
+                    className='rounded-lg border lg:hidden'
                 >
                     <Pagination.Item role='label'>1</Pagination.Item>
                     <Pagination.Item role='separator' />
-                    <Pagination.Item className='text-muted-foreground' role='label'>
+                    <Pagination.Item className='text-muted-fg' role='label'>
                         10
                     </Pagination.Item>
                 </Pagination.Section>

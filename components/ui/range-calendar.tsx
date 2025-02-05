@@ -15,84 +15,95 @@ import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
 import { Calendar } from './calendar'
-import { ctr, focusRing } from './utils'
+import { focusRing } from './utils'
 
-const cellRangeStyles = tv({
+const cell = tv({
     extend: focusRing,
-    base: 'flex h-full w-full items-center tabular-nums justify-center rounded-lg forced-color-adjust-none',
+    base: 'flex size-full items-center justify-center rounded-lg tabular-nums',
     variants: {
         selectionState: {
-            none: 'group-hover:bg-muted-foreground/15 group-pressed:bg-muted-foreground/20 forced-colors:group-pressed:bg-[Highlight]',
+            none: 'group-data-hovered/calendar-cell:bg-muted-fg/15 group-data-pressed/calendar-cell:bg-muted-fg/20',
             middle: [
-                'group-hover:bg-primary/20 forced-colors:group-hover:bg-[Highlight]',
-                'group-invalid:group-hover:bg-red-200 group-invalid:text-red-500 dark:group-invalid:group-hover:bg-red-900 forced-colors:group-invalid:group-hover:bg-[Mark]',
-                'group-pressed:bg-primary forced-colors:text-[HighlightText] forced-colors:group-pressed:bg-[Highlight]',
-                'group-invalid:group-pressed:bg-red-300 dark:group-invalid:group-pressed:bg-red-800 forced-colors:group-invalid:group-pressed:bg-[Mark]'
+                'group-data-hovered/calendar-cell:bg-(--cell)',
+                'group-data-pressed/calendar-cell:bg-(--cell)',
+                'group-data-invalid/calendar-cell:group-data-pressed/calendar-cell:bg-danger/30',
+                'group-data-invalid:group-data-hovered/calendar-cell:bg-danger/30 group-data-invalid/calendar-cell:text-danger'
             ],
-            cap: 'bg-primary text-primary-foreground group-invalid:bg-danger group-invalid:text-danger-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:group-invalid:bg-[Mark]'
+            cap: 'bg-primary text-primary-fg group-data-invalid/calendar-cell:bg-danger group-data-invalid/calendar-cell:text-danger-fg'
         },
         isDisabled: {
-            true: 'text-muted-foreground/70 forced-colors:text-[GrayText]'
+            true: 'opacity-50'
         }
     }
 })
 
-interface RangeCalendarProps<T extends DateValue>
-    extends Omit<RangeCalendarPrimitiveProps<T>, 'visibleDuration'> {
+interface RangeCalendarProps<T extends DateValue> extends RangeCalendarPrimitiveProps<T> {
     errorMessage?: string
 }
 
 const RangeCalendar = <T extends DateValue>({
     errorMessage,
-    className,
+    visibleDuration = { months: 1 },
     ...props
 }: RangeCalendarProps<T>) => {
     return (
-        <RangeCalendarPrimitive
-            className={ctr(className, 'max-w-[17.5rem] sm:max-w-[15.8rem]')}
-            {...props}
-        >
+        <RangeCalendarPrimitive visibleDuration={visibleDuration} {...props}>
             <Calendar.Header type='range-calendar' />
-            <CalendarGrid className='[&_td]:border-collapse [&_td]:px-0'>
-                <Calendar.GridHeader />
-                <CalendarGridBody>
-                    {(date) => (
-                        <CalendarCell
-                            date={date}
-                            className={twJoin([
-                                'group size-10 lg:size-9 cursor-default lg:text-sm outline outline-0 outside-month:text-zinc-300 selection-start:rounded-s-lg selection-end:rounded-e-lg forced-colors:selected:bg-[Highlight] forced-colors:invalid:selected:bg-[Mark]',
-                                'selected:bg-primary/10 dark:selected:bg-primary/15 selected:text-primary forced-colors:selected:text-[HighlightText]',
-                                '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
-                                'invalid:selected:bg-red-100 dark:invalid:selected:bg-red-700/30'
-                            ])}
+            <div className='flex gap-2 overflow-auto'>
+                {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
+                    const id = index + 1
+                    return (
+                        <CalendarGrid
+                            key={index}
+                            offset={id >= 2 ? { months: id - 1 } : undefined}
+                            className='**:[td]:px-0 **:[td]:py-[1.5px]'
                         >
-                            {({
-                                formattedDate,
-                                isSelected,
-                                isSelectionStart,
-                                isSelectionEnd,
-                                ...renderProps
-                            }) => (
-                                <span
-                                    className={cellRangeStyles({
-                                        ...renderProps,
-                                        selectionState:
-                                            isSelected && (isSelectionStart || isSelectionEnd)
-                                                ? 'cap'
-                                                : isSelected
-                                                  ? 'middle'
-                                                  : 'none'
-                                    })}
-                                >
-                                    {formattedDate}
-                                </span>
-                            )}
-                        </CalendarCell>
-                    )}
-                </CalendarGridBody>
-            </CalendarGrid>
+                            <Calendar.GridHeader />
+                            <CalendarGridBody>
+                                {(date) => (
+                                    <CalendarCell
+                                        date={date}
+                                        className={twJoin([
+                                            'group/calendar-cell data-outside-month:text-muted-fg size-10 cursor-default [line-height:2.286rem] outline-hidden data-selection-end:rounded-e-lg data-selection-start:rounded-s-lg sm:text-sm lg:size-9',
+                                            'data-selected:bg-primary/20 data-selected:text-primary',
+                                            'data-invalid:data-selected:bg-danger/30',
+                                            '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg'
+                                        ])}
+                                    >
+                                        {({
+                                            formattedDate,
+                                            isSelected,
+                                            isSelectionStart,
+                                            isSelectionEnd,
+                                            isFocusVisible,
+                                            isDisabled
+                                        }) => (
+                                            <span
+                                                className={cell({
+                                                    selectionState:
+                                                        isSelected &&
+                                                        (isSelectionStart || isSelectionEnd)
+                                                            ? 'cap'
+                                                            : isSelected
+                                                              ? 'middle'
+                                                              : 'none',
+                                                    isFocusVisible,
+                                                    isDisabled
+                                                })}
+                                            >
+                                                {formattedDate}
+                                            </span>
+                                        )}
+                                    </CalendarCell>
+                                )}
+                            </CalendarGridBody>
+                        </CalendarGrid>
+                    )
+                })}
+            </div>
+
             {errorMessage && (
-                <Text slot='errorMessage' className='text-sm text-danger'>
+                <Text slot='errorMessage' className='text-danger text-sm'>
                     {errorMessage}
                 </Text>
             )}
@@ -101,3 +112,4 @@ const RangeCalendar = <T extends DateValue>({
 }
 
 export { RangeCalendar }
+export type { RangeCalendarProps }

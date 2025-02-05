@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { IconTriangleAlert } from 'hq-icons'
+import { IconCircleAlert } from 'hq-icons'
+import { motion } from 'motion/react'
 import {
     Meter as MeterPrimitive,
     type MeterProps as MeterPrimitiveProps
@@ -10,7 +10,7 @@ import {
 import { Label } from './field'
 import { ctr } from './utils'
 
-export interface MeterProps extends MeterPrimitiveProps {
+interface MeterProps extends MeterPrimitiveProps {
     label?: string
 }
 
@@ -22,20 +22,20 @@ const Meter = ({ label, ...props }: MeterProps) => {
                     <div className='flex w-full justify-between gap-2'>
                         <Label>{label}</Label>
                         <span
-                            className={`text-sm tabular-nums ${percentage >= 80 ? 'text-danger' : 'text-muted-foreground'}`}
+                            className={`text-sm tabular-nums ${percentage >= 80 ? 'text-danger' : 'text-muted-fg'}`}
                         >
                             {percentage >= 80 && (
-                                <IconTriangleAlert
+                                <IconCircleAlert
                                     aria-label='Alert'
-                                    className='inline-block fill-danger/20 text-danger size-4 align-text-bottom'
+                                    className='fill-danger/20 text-danger inline-block size-4 align-text-bottom'
                                 />
                             )}
-                            {' ' + valueText}
+                            {` ${valueText}`}
                         </span>
                     </div>
-                    <div className='relative h-2 min-w-64 rounded-lg bg-muted outline outline-1 -outline-offset-1 outline-transparent'>
+                    <div className='bg-muted relative h-2 min-w-64 rounded-full outline -outline-offset-1 outline-transparent'>
                         <motion.div
-                            className='absolute left-0 top-0 h-full rounded-lg forced-colors:bg-[Highlight]'
+                            className='absolute top-0 left-0 h-full rounded-full'
                             initial={{ width: '0%', backgroundColor: getColor(0) }}
                             animate={{
                                 width: `${percentage}%`,
@@ -49,24 +49,26 @@ const Meter = ({ label, ...props }: MeterProps) => {
         </MeterPrimitive>
     )
 }
+
 const getColor = (percentage: number) => {
     if (percentage < 30) {
-        return 'hsl(var(--primary))' // Blue
+        return 'var(--primary)'
     }
 
     if (percentage < 50) {
-        return 'hsl(var(--success))' // Green
+        return 'var(--success)'
     }
 
     if (percentage < 70) {
-        return 'hsl(var(--info))' // Yellow
+        return '#eab308'
     }
 
     if (percentage < 80) {
-        return 'hsl(var(--warning))' // Orange
+        return 'var(--warning)'
     }
 
-    return 'hsl(var(--danger))' // Red
+    return 'var(--danger)'
 }
 
 export { Meter }
+export type { MeterProps }

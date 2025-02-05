@@ -25,47 +25,46 @@ const commandStyles = tv({
     slots: {
         command: [
             'flex h-svh w-full flex-col overflow-hidden rounded-lg sm:h-full',
-            '[&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_[data-slot=icon]]:size-5 [&_[cmdk-input]]:h-12',
-            '[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pl-2.5 [&_[cmdk-item]]:pr-4'
+            '[&_[cmdk-group-heading]]:text-muted-fg [&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_[data-slot=icon]]:size-5 [&_[cmdk-input]]:h-12',
+            '[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pr-4 [&_[cmdk-item]]:pl-2.5'
         ],
-        list: 'overflow-y-auto lg:pb-0 max-h-[calc(100vh-35%)] pb-16 [&:not(:has(.xda32kfseccmd))]:p-2 [&:not(:has(.xda32kfseccmd))_.s3xsprt]:my-2 overflow-x-hidden md:max-h-[456px]',
+        list: 'max-h-[calc(100vh-35%)] overflow-x-hidden overflow-y-auto pb-16 md:max-h-[456px] lg:pb-0 [&:not(:has(.csec))]:p-2 [&:not(:has(.csec))_.csep]:my-2',
         input: [
-            'flex w-full rounded-lg forced-colors:focus:outline-0 bg-transparent text-base placeholder:text-muted-foreground',
-            'focus:outline-none',
-            'disabled:opacity-50 disabled:cursor-not-allowed'
+            'placeholder:text-muted-fg flex w-full rounded-lg bg-transparent text-base',
+            'outline-none data-focused:outline-none',
+            'disabled:cursor-not-allowed disabled:opacity-50'
         ],
         section: [
-            'xda32kfseccmd overflow-hidden py-2 px-2 text-foreground',
-            '[&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:text-muted-foreground'
+            'csec text-fg overflow-hidden px-2 py-2',
+            '[&_[cmdk-group-heading]]:text-muted-fg [&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:select-none'
         ],
         modal: [
-            'fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg bg-background text-foreground shadow-lg forced-colors:border ring-1 ring-dark/5 dark:ring-border sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
-            'sm:entering:slide-in-from-bottom-auto entering:duration-300 entering:animate-in entering:fade-in-0 entering:slide-in-from-bottom-1/2 entering:slide-in-from-left-1/2 entering:[transition-timing-function:ease-out] sm:entering:duration-300 sm:entering:slide-in-from-top-[2rem]',
-            'exiting:duration-300 exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[4rem]'
+            'bg-bg text-fg ring-fg/5 dark:ring-border fixed top-auto bottom-0 left-[50%] z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-lg ring-1 shadow-lg sm:top-[6rem] sm:bottom-auto sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-lg',
+            'data-entering:fade-in data-entering:slide-in-from-bottom data-entering:animate-in data-entering:sm:zoom-in-95 data-entering:sm:slide-in-from-bottom-0 data-entering:duration-200 data-entering:ease-out',
+            'data-exiting:slide-out-to-bottom data-exiting:sm:slide-out-to-bottom-0 data-exiting:sm:zoom-out-95 data-exiting:fade-out data-exiting:animate-out data-exiting:duration-150'
         ],
         closeButton: [
-            'absolute right-3 top-1.5 [&>span>[data-slot=icon]]:text-muted-foreground pressed:[&_[data-slot=icon]]:text-foreground lg:top-3.5 rounded-lg border lg:border-border border-transparent lg:bg-muted/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition-opacity data-[state=open]:bg-muted data-[state=open]:text-muted-foreground lg:focus:border-foreground/70 focus:outline-none lg:focus:ring-2 lg:focus:ring-ring disabled:pointer-events-none',
-            'focus:outline-none lg:focus:bg-primary/10 lg:focus:ring-2 lg:focus:ring-primary/20 lg:focus:border-primary/70',
+            '[&>span>[data-slot=icon]]:text-muted-fg data-pressed:[&_[data-slot=icon]]:text-fg lg:border-muted lg:bg-muted/50 data-[state=open]:bg-muted data-[state=open]:text-muted-fg lg:data-focused:border-fg/30 lg:data-focused:ring-ring absolute top-1.5 right-3 rounded-lg border border-transparent px-2.5 py-2.5 text-xs transition-opacity disabled:pointer-events-none data-focused:outline-none lg:top-3.5 lg:py-0.5 lg:data-focused:ring-2',
+            'lg:data-focused:bg-primary/10 lg:data-focused:ring-primary/20 lg:data-focused:border-primary/70 data-focused:outline-none lg:data-focused:ring-2',
             'disabled:pointer-events-none'
         ],
-        empty: 'py-6 text-center text-sm text-muted-foreground x3tmpy',
-        kbdKeyboard: 'lg:block hidden group-data-[selected=true]:opacity-60',
-        description: 'sm:inline hidden text-sm ml-auto',
+        empty: 'text-muted-fg py-6 text-center text-sm',
+        kbdKeyboard: 'hidden group-data-[selected=true]:opacity-50 lg:block',
+        description: 'ml-auto hidden text-sm sm:inline',
         item: [
-            'group relative flex forced-colors:outline-0 cursor-default select-none text-foreground items-center rounded-lg py-2 text-sm outline-none',
-            'data-[selected=true]:bg-primary forced-colors:data-[selected=true]:bg-[Highlight] forced-colors:data-[selected=true]:text-[ActiveCaption] forced-colors:text-[WindowText] data-[selected=true]:text-primary-foreground [&[data-selected=true]_[data-slot=icon]]:text-primary-foreground',
-            'focus-visible:bg-primary focus-visible:text-primary-foreground [&:focus-visible_[data-slot=icon]]:text-primary-foreground',
-            'data-[danger=true]:text-danger data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-foreground',
+            'group text-fg relative flex cursor-default items-center rounded-lg py-2 text-sm outline-none select-none',
+            'data-[selected=true]:bg-primary data-[selected=true]:text-primary-fg [&[data-selected=true]_[data-slot=icon]]:text-primary-fg',
+            'focus-visible:bg-primary focus-visible:text-primary-fg [&:focus-visible_[data-slot=icon]]:text-primary-fg',
+            'data-[danger=true]:text-danger data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-fg',
             'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
-            '[&_[data-slot=icon]]:mr-2 [&_[data-slot=icon]]:size-[1.10rem] [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:text-muted-foreground',
-            '[&_[data-slot=avatar]]:mr-2 [&_[data-slot=avatar]]:size-[1.10rem] [&_[data-slot=avatar]]:shrink-0',
-            'forced-colors:[&_[data-slot=icon]]:text-[CanvasText] forced-colors:[&_[data-slot=icon]]:group-data-[focus]:text-[Canvas] '
+            '[&_[data-slot=icon]]:text-muted-fg [&_[data-slot=icon]]:mr-2 [&_[data-slot=icon]]:size-[1.10rem] [&_[data-slot=icon]]:shrink-0',
+            '**:data-avatar:mr-2 **:data-avatar:size-[1.10rem] **:data-avatar:shrink-0'
         ]
     },
 
     variants: {
         isDanger: {
-            true: 'text-danger data-[selected=true]:bg-danger data-[selected=true]:text-danger-foreground [&[data-selected=true]_[data-slot=icon]]:text-danger-foreground'
+            true: 'text-danger data-[selected=true]:bg-danger data-[selected=true]:text-danger-fg [&[data-selected=true]_[data-slot=icon]]:text-danger-fg'
         }
     }
 })
@@ -94,13 +93,16 @@ interface CommandRootProps {
 }
 
 const modalOverlay = tv({
-    base: [
-        'fixed inset-0 max-h-[--visual-viewport-height] z-50 bg-dark/15 dark:bg-dark/40 entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0'
-    ],
+    base: ['bg-fg/15 dark:bg-fg/40 fixed inset-0 z-50 max-h-(--visual-viewport-height)'],
     variants: {
         isBlurred: {
-            true: 'backdrop-blur',
-            false: 'bg-dark/15 dark:bg-dark/40'
+            true: 'bg-bg supports-backdrop-filter:bg-bg/15 dark:supports-backdrop-filter:bg-bg/40 supports-backdrop-filter:backdrop-blur'
+        },
+        isEntering: {
+            true: 'fade-in animate-in duration-200 ease-out'
+        },
+        isExiting: {
+            true: 'fade-out animate-out duration-150 ease-in'
         }
     }
 })
@@ -155,8 +157,8 @@ const Command = ({
                                         onPress={close}
                                         className={closeButton()}
                                     >
-                                        <span className='lg:block hidden'>Esc</span>
-                                        <span className='lg:hidden -mr-2 block'>
+                                        <span className='hidden lg:block'>Esc</span>
+                                        <span className='-mr-2 block lg:hidden'>
                                             <IconX />
                                             <span className='sr-only'>Close command palette</span>
                                         </span>
@@ -179,7 +181,7 @@ const CommandInput = React.forwardRef<
 >(({ className, ...props }, ref) => {
     const { hideSearchIndicator } = React.useContext(CommandContext)
     return (
-        <div className='flex border-b items-center px-3'>
+        <div className='flex items-center border-b px-3'>
             {!hideSearchIndicator && <IconSearch className='mr-2 size-5 shrink-0 opacity-50' />}
             <CommandPrimitive.Input
                 autoFocus
@@ -232,7 +234,7 @@ const CommandSection = ({ className, separator, ...props }: CommandSectionProps)
 
 const CommandSeparator = ({ className, ...props }: SeparatorProps) => {
     return (
-        <div className='-mx-4 s3xsprt'>
+        <div className='csep -mx-4'>
             <Separator className={className} {...props} orientation='horizontal' />
         </div>
     )
@@ -264,14 +266,14 @@ const CommandDescription = ({ intent, className, ...props }: CommandDescriptionP
             className={description({
                 className: twJoin(
                     intent === 'danger'
-                        ? 'group-data-[selected=true]:text-primary-foreground/70 text-danger/90'
+                        ? 'group-data-[selected=true]:text-primary-fg/70 text-danger/90'
                         : intent === 'warning'
-                          ? 'group-data-[selected=true]:text-primary-foreground/70 text-warning/90'
+                          ? 'group-data-[selected=true]:text-primary-fg/70 text-warning/90'
                           : intent === 'success'
-                            ? 'group-data-[selected=true]:text-primary-foreground/70 text-success/90'
+                            ? 'group-data-[selected=true]:text-primary-fg/70 text-success/90'
                             : intent === 'primary'
-                              ? 'group-data-[selected=true]:text-white/70 text-primary/90'
-                              : 'group-data-[selected=true]:text-primary-foreground/70 text-muted-foreground',
+                              ? 'text-primary/90 group-data-[selected=true]:text-white/70'
+                              : 'group-data-[selected=true]:text-primary-fg/70 text-muted-fg',
                     className
                 )
             })}

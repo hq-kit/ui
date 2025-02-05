@@ -44,7 +44,7 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
     return (
         <section className={cn('not-prose space-y-2', withMessage ? 'my-4' : 'my-2')}>
             {withMessage && (
-                <Description className='-mt-2 mb-4 prose text-base max-w-none'>
+                <Description className='prose -mt-2 mb-4 max-w-none text-base'>
                     Copy the code below and paste it into your component folder.
                 </Description>
             )}
@@ -69,12 +69,12 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
                             </div>
                             <div
                                 className={cn(
-                                    'absolute inset-0 rounded-md bg-gradient-to-b from-transparent to-background',
+                                    'to-background absolute inset-0 rounded-md bg-gradient-to-b from-transparent',
                                     isOpened && 'hidden'
                                 )}
                             ></div>
                             <Button
-                                className='sticky bottom-4 left-1/2 right-1/2 outline-none focus:outline-none rounded-lg p-2 transition border -translate-x-1/2 bg-background hover:bg-background hover:ring-offset-4 hover:ring-4 pressed:bg-background'
+                                className='bg-bg hover:bg-bg pressed:bg-bg sticky right-1/2 bottom-4 left-1/2 -translate-x-1/2 rounded-lg border p-2 transition outline-none hover:ring-4 hover:ring-offset-4 focus:outline-none'
                                 onPress={open}
                             >
                                 {isOpened ? 'Hide' : 'Reveal'}

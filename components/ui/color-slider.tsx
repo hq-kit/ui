@@ -10,17 +10,17 @@ import { tv } from 'tailwind-variants'
 
 import { ColorThumb } from './color-thumb'
 import { Label } from './field'
-import { ctr } from './utils'
+import { cr } from './utils'
 
 const trackStyles = tv({
-    base: 'group col-span-2 orientation-horizontal:h-6 rounded-lg',
+    base: 'group col-span-2 rounded-lg',
     variants: {
         orientation: {
-            horizontal: 'w-full h-6',
-            vertical: 'w-6 h-56 ml-[50%] -translate-x-[50%]'
+            horizontal: 'h-6 w-full',
+            vertical: 'h-56 w-6'
         },
         isDisabled: {
-            true: 'opacity-75 bg-muted forced-colors:bg-[GrayText]'
+            true: 'bg-muted opacity-75'
         }
     }
 })
@@ -30,19 +30,32 @@ interface ColorSliderProps extends ColorSliderPrimitiveProps {
     showOutput?: boolean
 }
 
+const colorSliderStyles = tv({
+    base: 'group relative gap-2',
+    variants: {
+        orientation: {
+            horizontal: 'grid min-w-56 grid-cols-[1fr_auto]',
+            vertical: 'flex flex-col items-center justify-center'
+        },
+        isDisabled: {
+            true: 'bg-muted opacity-75'
+        }
+    }
+})
 const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSliderProps) => {
     return (
         <ColorSliderPrimitive
             {...props}
             data-slot='color-slider'
-            className={ctr(
-                className,
-                'group orientation-horizontal:grid orientation-vertical:flex relative orientation-horizontal:grid-cols-[1fr_auto] orientation-vertical:flex-col orientation-vertical:justify-center orientation-vertical:items-center gap-2 orientation-horizontal:w-56'
+            className={cr(className, (className, renderProps) =>
+                colorSliderStyles({ ...renderProps, className })
             )}
         >
             <div className='flex items-center'>
                 {label && <Label className='text-sm [grid-area:label]'>{label}</Label>}
-                {showOutput && <SliderOutput className='text-sm ml-auto [grid-area:output]' />}
+                {showOutput && (
+                    <SliderOutput className='text-sm [grid-area:output] data-[orientation=horizontal]:ml-auto' />
+                )}
             </div>
             <SliderTrack
                 className={trackStyles}
@@ -60,3 +73,4 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
 }
 
 export { ColorSlider }
+export type { ColorSliderProps }

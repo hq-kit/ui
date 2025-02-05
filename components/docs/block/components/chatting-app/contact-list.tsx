@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Avatar, cn } from '@/components/ui'
 
 interface ContactProps {
@@ -23,7 +21,7 @@ const Contact = ({ name, avatar, status, lastSeen, active }: ContactProps) => {
     return (
         <div
             className={cn(
-                'p-2 md:px-4 rounded-lg flex flex-row gap-3 items-center cursor-pointer border',
+                'flex cursor-pointer flex-row items-center gap-3 rounded-lg border p-2 md:px-4',
                 active ? 'bg-primary/20' : ''
             )}
         >
@@ -37,7 +35,7 @@ const Contact = ({ name, avatar, status, lastSeen, active }: ContactProps) => {
                 {status === 'online' ? (
                     <small className='text-success text-xs'>Online</small>
                 ) : (
-                    <small className='text-muted-foreground text-xs'>Last seen {lastSeen}</small>
+                    <small className='text-muted-fg text-xs'>Last seen {lastSeen}</small>
                 )}
             </div>
         </div>

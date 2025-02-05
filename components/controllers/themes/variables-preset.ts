@@ -131,7 +131,7 @@ export const background = {
     }
 }
 
-export const foreground = {
+export const fg = {
     light: {
         slate: '#020617',
         gray: '#030712',
@@ -153,23 +153,23 @@ export const foreground = {
 export interface VariablesPresetProps {
     variable:
         | '--background'
-        | '--foreground'
+        | '--fg'
         | '--primary'
-        | '--primary-foreground'
+        | '--primary-fg'
         | '--secondary'
-        | '--secondary-foreground'
+        | '--secondary-fg'
         | '--muted'
-        | '--muted-foreground'
+        | '--muted-fg'
         | '--danger'
-        | '--danger-foreground'
+        | '--danger-fg'
         | '--warning'
-        | '--warning-foreground'
+        | '--warning-fg'
         | '--info'
-        | '--info-foreground'
+        | '--info-fg'
         | '--success'
-        | '--success-foreground'
+        | '--success-fg'
         | '--dark'
-        | '--dark-foreground'
+        | '--dark-fg'
     theme: 'light' | 'dark'
 }
 
@@ -195,9 +195,9 @@ export const VariablesPreset = ({ variable, theme }: VariablesPresetProps) => {
         case '--muted':
             colorPreset = Object.values(secondary[theme])
             break
-        case '--foreground':
+        case '--fg':
         case '--dark':
-            colorPreset = Object.values(foreground[theme])
+            colorPreset = Object.values(fg[theme])
             break
         default:
         case '--background':

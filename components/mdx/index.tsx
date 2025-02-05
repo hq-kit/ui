@@ -23,7 +23,7 @@ export function MDXContent({ code }: MdxProps) {
                     <Link
                         target='_blank'
                         {...props}
-                        className='not-prose font-medium text-primary hover:underline'
+                        className='not-prose mdxlink text-primary font-medium hover:underline'
                     />
                 ),
                 Note,

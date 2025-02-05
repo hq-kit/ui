@@ -3,16 +3,17 @@
 import { Link as LinkPrimitive, type LinkProps as LinkPrimitiveProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cr } from './utils'
+import { cr, focusButtonStyles } from './utils'
 
 const linkStyles = tv({
-    base: 'relative focus-visible:outline-2 outline outline-offset-2 disabled:focus-visible:outline-0 outline-0 outline-primary disabled:opacity-60 border-transparent transition-colors disabled:cursor-default',
+    extend: focusButtonStyles,
+    base: 'outline-primary relative cursor-pointer border-transparent outline-0 transition-colors data-disabled:cursor-default data-disabled:opacity-50',
     variants: {
         variant: {
-            default: 'text-foreground hover:text-primary',
+            default: 'text-fg data-hovered:text-primary',
             unstyled: 'text-current',
-            primary: 'text-primary hover:text-primary/80',
-            danger: 'text-danger hover:text-danger/80'
+            primary: 'text-primary data-hovered:text-primary/80',
+            danger: 'text-danger data-hovered:text-danger/80'
         }
     },
     defaultVariants: {
@@ -25,11 +26,13 @@ interface LinkProps extends LinkPrimitiveProps {
 }
 
 const Link = ({ className, ...props }: LinkProps) => {
+    const { variant } = props
+    const linkVariant = className ? 'unstyled' : variant
     return (
         <LinkPrimitive
             {...props}
             className={cr(className, (className, ...renderProps) =>
-                linkStyles({ ...renderProps, variant: props.variant, className })
+                linkStyles({ ...renderProps, variant: linkVariant, className })
             )}
         >
             {(values) => (

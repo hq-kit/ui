@@ -6,7 +6,6 @@ import { IconCheck, IconPalette, IconX } from 'hq-icons'
 import { useTheme } from 'next-themes'
 import { ListBox, ListBoxItem, type ListBoxItemProps } from 'react-aria-components'
 
-import { getColorName } from '@/components/controllers/colors/colors'
 import '@/components/controllers/themes/color.css'
 import { applyTheme } from '@/components/controllers/themes/controller'
 import ThemeContainer from '@/components/controllers/themes/theme-container'
@@ -17,48 +16,40 @@ import {
     TailwindColors
 } from '@/components/controllers/themes/theme-presets'
 import ThemeSnippet from '@/components/controllers/themes/theme-snippet'
-import { Button, buttonVariants, cn, Container, Popover, Tabs } from '@/components/ui'
+import { Button, buttonStyles, cn, Container, Popover, Tabs } from '@/components/ui'
 
 export default function ThemeCustomizer() {
     const [lightVars, setLightVars] = React.useState({
-        '--background': Presets.hq.light['--background'],
-        '--foreground': Presets.hq.light['--foreground'],
+        '--bg': Presets.hq.light['--bg'],
+        '--fg': Presets.hq.light['--fg'],
         '--primary': Presets.hq.light['--primary'],
-        '--primary-foreground': Presets.hq.light['--primary-foreground'],
+        '--primary-fg': Presets.hq.light['--primary-fg'],
         '--secondary': Presets.hq.light['--secondary'],
-        '--secondary-foreground': Presets.hq.light['--secondary-foreground'],
+        '--secondary-fg': Presets.hq.light['--secondary-fg'],
         '--danger': Presets.hq.light['--danger'],
-        '--danger-foreground': Presets.hq.light['--danger-foreground'],
+        '--danger-fg': Presets.hq.light['--danger-fg'],
         '--success': Presets.hq.light['--success'],
-        '--success-foreground': Presets.hq.light['--success-foreground'],
+        '--success-fg': Presets.hq.light['--success-fg'],
         '--warning': Presets.hq.light['--warning'],
-        '--warning-foreground': Presets.hq.light['--warning-foreground'],
-        '--info': Presets.hq.light['--info'],
-        '--info-foreground': Presets.hq.light['--info-foreground'],
-        '--dark': Presets.hq.light['--dark'],
-        '--dark-foreground': Presets.hq.light['--dark-foreground'],
+        '--warning-fg': Presets.hq.light['--warning-fg'],
         '--muted': Presets.hq.light['--muted'],
-        '--muted-foreground': Presets.hq.light['--muted-foreground']
+        '--muted-fg': Presets.hq.light['--muted-fg']
     })
     const [darkVars, setDarkVars] = React.useState({
-        '--background': Presets.hq.dark['--background'],
-        '--foreground': Presets.hq.dark['--foreground'],
+        '--bg': Presets.hq.dark['--bg'],
+        '--fg': Presets.hq.dark['--fg'],
         '--primary': Presets.hq.dark['--primary'],
-        '--primary-foreground': Presets.hq.dark['--primary-foreground'],
+        '--primary-fg': Presets.hq.dark['--primary-fg'],
         '--secondary': Presets.hq.dark['--secondary'],
-        '--secondary-foreground': Presets.hq.dark['--secondary-foreground'],
+        '--secondary-fg': Presets.hq.dark['--secondary-fg'],
         '--danger': Presets.hq.dark['--danger'],
-        '--danger-foreground': Presets.hq.dark['--danger-foreground'],
+        '--danger-fg': Presets.hq.dark['--danger-fg'],
         '--success': Presets.hq.dark['--success'],
-        '--success-foreground': Presets.hq.dark['--success-foreground'],
+        '--success-fg': Presets.hq.dark['--success-fg'],
         '--warning': Presets.hq.dark['--warning'],
-        '--warning-foreground': Presets.hq.dark['--warning-foreground'],
-        '--info': Presets.hq.dark['--info'],
-        '--info-foreground': Presets.hq.dark['--info-foreground'],
-        '--dark': Presets.hq.dark['--dark'],
-        '--dark-foreground': Presets.hq.dark['--dark-foreground'],
+        '--warning-fg': Presets.hq.dark['--warning-fg'],
         '--muted': Presets.hq.dark['--muted'],
-        '--muted-foreground': Presets.hq.dark['--muted-foreground']
+        '--muted-fg': Presets.hq.dark['--muted-fg']
     })
     const [radius, setRadius] = React.useState<number | undefined>(Presets.hq.radius)
 
@@ -79,101 +70,33 @@ export default function ThemeCustomizer() {
     }, [preset, resolvedTheme])
 
     function getStyleCss() {
-        return `@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
+        return `@layer base {
     :root {
         ${Object.keys(lightVars)
-            .map(
-                (key) =>
-                    `${key}: ${lightVars[key as keyof typeof lightVars]}; /* ${getColorName({ color: lightVars[key as keyof typeof lightVars], type: 'hsl' })} */`
-            )
+            .map((key) => `${key}: ${lightVars[key as keyof typeof lightVars]};`)
             .join('\n        ')}
-        --radius: ${radius}rem;
+        --radius-lg: ${radius}rem;
+        --radius-xs: calc(var(--radius-lg) * 0.5);
+        --radius-sm: calc(var(--radius-lg) * 0.75);
+        --radius-md: calc(var(--radius-lg) * 0.9);
+        --radius-xl: calc(var(--radius-lg) * 1.25);
+        --radius-2xl: calc(var(--radius-lg) * 1.5);
+        --radius-3xl: calc(var(--radius-lg) * 2);
+        --radius-4xl: calc(var(--radius-lg) * 3);
     }
     .dark {
         ${Object.keys(darkVars)
-            .map(
-                (key) =>
-                    `${key}: ${darkVars[key as keyof typeof darkVars]}; /* ${getColorName({ color: darkVars[key as keyof typeof darkVars], type: 'hsl' })} */`
-            )
+            .map((key) => `${key}: ${darkVars[key as keyof typeof darkVars]};`)
             .join('\n        ')}
     }
-}
 
-
-@layer base {
-    html {
-        @apply scroll-smooth;
-    }
-
-    * {
-        @apply border-muted;
-        font-feature-settings: 'cv11', 'ss01';
-        font-variation-settings: 'opsz' 850;
-        text-rendering: optimizeLegibility;
-    }
-
-    body {
-        @apply bg-background text-foreground;
-    }
-
-    *::-webkit-scrollbar {
-        @apply size-1.5 rounded-lg;
-    }
-
-    *::-webkit-scrollbar-track {
-        @apply rounded-lg bg-transparent;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        @apply rounded-lg border border-transparent bg-muted;
-    }
-}
-
-@layer components {
-    .recharts-rectangle.recharts-tooltip-cursor {
-        @apply fill-foreground/10;
-    }
-
-    .overflow-auto,
-    .overflow-x-auto,
-    .overflow-y-auto,
-    .overflow-scroll,
-    .overflow-x-scroll,
-    .overflow-y-scroll {
-        @apply [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-inherit;
-    }
-    .overflow-auto:hover,
-    .overflow-x-auto:hover,
-    .overflow-y-auto:hover,
-    .overflow-scroll:hover,
-    .overflow-x-scroll:hover,
-    .overflow-y-scroll:hover {
-        @apply [&::-webkit-scrollbar-thumb]:bg-muted;
-    }
-
-    .no-scrollbar {
-        -ms-overflow-style: none; /* Internet Explorer and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-
-    .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
-    }
-
-    pre::-webkit-scrollbar {
-        display: none;
-    }
 }`
     }
 
     return (
         <div>
-            <Container className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-0 lg:top-14 py-4 z-10'>
-                <div className='flex flex-row gap-3 justify-between items-center'>
+            <Container className='bg-bg/60 sticky top-0 z-10 w-full rounded-b-lg py-4 backdrop-blur-xl lg:top-14'>
+                <div className='flex flex-row items-center justify-between gap-3'>
                     <Popover>
                         <Button variant='outline'>
                             <IconPalette />
@@ -186,7 +109,7 @@ export default function ThemeCustomizer() {
                                 <Popover.Close
                                     variant='ghost'
                                     size='icon'
-                                    className='absolute right-4 top-2 sm:hidden'
+                                    className='absolute top-2 right-4 sm:hidden'
                                 >
                                     <IconX />
                                 </Popover.Close>
@@ -201,7 +124,7 @@ export default function ThemeCustomizer() {
                                     <Tabs.Content id='tailwind'>
                                         <ListBox
                                             aria-label='Tailwind Colors'
-                                            className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
+                                            className='mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3'
                                             disallowEmptySelection
                                             selectionMode='single'
                                             selectedKeys={[preset]}
@@ -222,7 +145,7 @@ export default function ThemeCustomizer() {
                                     <Tabs.Content id='radix'>
                                         <ListBox
                                             aria-label='Radix Colors'
-                                            className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
+                                            className='mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3'
                                             disallowEmptySelection
                                             selectionMode='single'
                                             selectedKeys={[preset]}
@@ -243,7 +166,7 @@ export default function ThemeCustomizer() {
                                     <Tabs.Content id='brands'>
                                         <ListBox
                                             aria-label='Brand Colors'
-                                            className='grid grid-cols-2 gap-2 sm:grid-cols-3 mt-2'
+                                            className='mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3'
                                             disallowEmptySelection
                                             selectionMode='single'
                                             selectedKeys={[preset]}
@@ -268,10 +191,7 @@ export default function ThemeCustomizer() {
                     <ThemeSnippet code={getStyleCss()} />
                 </div>
             </Container>
-            <div
-                className='bg-background mb-6 border-secondary-foreground/10 text-foreground'
-                id='theme-container'
-            >
+            <div className='bg-bg text-fg mb-6' id='theme-container'>
                 <ThemeContainer />
             </div>
         </div>
@@ -288,10 +208,10 @@ const ColorPresetPicker = ({ color, textValue, ...props }: ColorPresetPickerProp
             {...props}
             textValue={textValue}
             className={cn(
-                buttonVariants({
+                buttonStyles({
                     size: 'sm',
                     variant: 'outline',
-                    className: 'justify-start text-xs cursor-pointer [&_svg]:size-3'
+                    className: 'cursor-pointer justify-start text-xs [&_svg]:size-3'
                 })
             )}
         >
@@ -300,7 +220,7 @@ const ColorPresetPicker = ({ color, textValue, ...props }: ColorPresetPickerProp
                     <span
                         style={{ backgroundColor: color }}
                         className={cn(
-                            'mr-1 text-white flex size-4 shrink-0 border -translate-x-1 items-center justify-center rounded'
+                            'mr-1 flex size-4 shrink-0 -translate-x-1 items-center justify-center rounded border text-white'
                         )}
                     >
                         {isSelected && <IconCheck />}

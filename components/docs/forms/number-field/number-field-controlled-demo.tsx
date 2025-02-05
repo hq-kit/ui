@@ -10,7 +10,7 @@ export default function NumberFieldControlledDemo() {
         <div>
             <NumberField label='Width' value={number} onChange={setNumber} />
 
-            <Description className='mt-2 block [&>strong]:text-foreground'>
+            <Description className='[&>strong]:text-fg mt-2 block'>
                 You have typed: <strong>{number ?? '-'}</strong>
             </Description>
         </div>

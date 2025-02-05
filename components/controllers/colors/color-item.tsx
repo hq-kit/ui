@@ -7,7 +7,7 @@ import { ColorFormat, ListBoxItem, parseColor, type ListBoxItemProps } from 'rea
 import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 
-import { formatColorForTailwind, textForeground } from '@/components/controllers/colors/colors'
+import { formatColorForTailwind, textfg } from '@/components/controllers/colors/colors'
 import { cn, isBrightColor } from '@/components/ui'
 
 interface ColorItemProps extends ListBoxItemProps {
@@ -41,10 +41,10 @@ const ColorItem = ({ item, textColor, name, selectedFormat, tailwindVariable }: 
         <ListBoxItem
             textValue={name}
             className={cn(
-                'w-full h-14 group focus:outline-none cursor-pointer rounded-lg relative',
+                'group relative h-14 w-full cursor-pointer rounded-lg focus:outline-none',
                 isBrightColor(item.color)
-                    ? 'ring-1 ring-inset ring-black/10'
-                    : 'dark:ring-1 dark:ring-inset dark:ring-white/10'
+                    ? 'ring-1 ring-black/10 ring-inset'
+                    : 'dark:ring-1 dark:ring-white/10 dark:ring-inset'
             )}
             onAction={() =>
                 handleCopy(
@@ -52,19 +52,19 @@ const ColorItem = ({ item, textColor, name, selectedFormat, tailwindVariable }: 
                 )
             }
             style={{
-                color: textColor ?? textForeground(item.color),
+                color: textColor ?? textfg(item.color),
                 backgroundColor: item.color
             }}
         >
             <span
                 className={cn(
-                    'group-hover:block hidden left-1/2 -translate-x-1/2 top-2 absolute',
+                    'absolute top-2 left-1/2 hidden -translate-x-1/2 group-hover:block',
                     copied && 'block'
                 )}
             >
                 {copied ? <IconCheck /> : <IconCopy />}
             </span>
-            <span className='text-xs left-1/2 -translate-x-1/2 bottom-2 absolute font-mono flex flex-col justify-center'>
+            <span className='absolute bottom-2 left-1/2 flex -translate-x-1/2 flex-col justify-center font-mono text-xs'>
                 {item.shade}
             </span>
         </ListBoxItem>

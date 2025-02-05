@@ -7,7 +7,11 @@ export default function MenuCollectionDemo() {
         <Menu>
             <Button variant='outline'>Open</Button>
             <Menu.Content className='min-w-64' placement='bottom' items={categories}>
-                {(item) => <Menu.Item id={item.slug}>{item.name}</Menu.Item>}
+                {(item) => (
+                    <Menu.Item id={item.slug}>
+                        <Menu.Label>{item.name}</Menu.Label>
+                    </Menu.Item>
+                )}
             </Menu.Content>
         </Menu>
     )

@@ -25,33 +25,33 @@ export interface BubbleChatProps {
 
 export default function BubbleChat({ message, time, role, status, onDelete }: BubbleChatProps) {
     const statusIcon: Record<string, React.ReactNode> = {
-        pending: <IconClock className='size-5 text-foreground' />,
-        sent: <IconCheck className='size-5 text-foreground' />,
-        delivered: <IconCheckDouble className='size-5 text-foreground' />,
-        read: <IconCheckDouble className='size-5 text-success' />
+        pending: <IconClock className='text-fg size-5' />,
+        sent: <IconCheck className='text-fg size-5' />,
+        delivered: <IconCheckDouble className='text-fg size-5' />,
+        read: <IconCheckDouble className='text-success size-5' />
     }
     return (
         <div
             className={cn(
-                'flex items-start group',
+                'group flex items-start',
                 role === 'send' ? 'flex-row-reverse' : 'flex-row'
             )}
         >
             <div>
                 <div
                     className={cn(
-                        'rounded-lg text-right [&_strong]:font-medium px-2 py-1.5 text-sm border',
+                        'rounded-lg border px-2 py-1.5 text-right text-sm [&_strong]:font-medium',
                         role === 'send' ? 'rounded-br-none' : 'rounded-bl-none'
                     )}
                 >
                     <div
-                        className='text-left text-foreground text-sm'
+                        className='text-fg text-left text-sm'
                         dangerouslySetInnerHTML={{ __html: convertToHtml(message) }}
                     />
                 </div>
                 <small
                     className={cn(
-                        'flex gap-1 mt-0.5 text-muted-foreground items-center',
+                        'text-muted-fg mt-0.5 flex items-center gap-1',
                         role === 'send' ? 'justify-end' : 'justify-start'
                     )}
                 >
@@ -63,7 +63,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                 <Button
                     variant='outline'
                     size='icon'
-                    className='mx-2 size-7 opacity-0 pressed:opacity-100 group-hover:opacity-100 transition p-1'
+                    className='pressed:opacity-100 mx-2 size-7 p-1 opacity-0 transition group-hover:opacity-100'
                 >
                     <IconChevronRight
                         className={cn('size-3', role === 'send' ? 'rotate-180' : '')}

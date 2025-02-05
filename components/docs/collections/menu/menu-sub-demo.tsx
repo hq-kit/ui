@@ -1,25 +1,66 @@
 'use client'
 
-import { buttonVariants, Menu } from '@/components/ui'
+import { Button, Menu } from '@/components/ui'
 
 export default function MenuSubDemo() {
     return (
         <Menu>
-            <Menu.Trigger className={buttonVariants({ variant: 'outline' })}>Open</Menu.Trigger>
-            <Menu.Content placement='bottom' className='sm:min-w-48'>
-                <Menu.Item>Dashboard</Menu.Item>
-                <Menu.Item>Reports</Menu.Item>
+            <Button variant='outline'>Open</Button>
+            <Menu.Content placement='bottom'>
+                <Menu.Item>
+                    <Menu.Label>Dashboard</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <Menu.Label>Reports</Menu.Label>
+                </Menu.Item>
                 <Menu.Separator />
                 <Menu.Submenu>
-                    <Menu.Item>Settings</Menu.Item>
+                    <Menu.Item>
+                        <Menu.Label>Settings</Menu.Label>
+                    </Menu.Item>
                     <Menu.Content>
-                        <Menu.Item>General</Menu.Item>
-                        <Menu.Item>Security</Menu.Item>
-                        <Menu.Item>Privacy</Menu.Item>
-                        <Menu.Item>Data Sharing</Menu.Item>
+                        <Menu.Item>
+                            <Menu.Label>General</Menu.Label>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Menu.Label>Security</Menu.Label>
+                        </Menu.Item>
+                        <Menu.Separator />
+                        <Menu.Submenu>
+                            <Menu.Item>
+                                <Menu.Label>Privacy</Menu.Label>
+                            </Menu.Item>
+                            <Menu.Content>
+                                <Menu.Item>
+                                    <Menu.Label>Data Sharing</Menu.Label>
+                                </Menu.Item>
+                                <Menu.Item>
+                                    <Menu.Label>Cookies</Menu.Label>
+                                </Menu.Item>
+                                <Menu.Separator />
+                                <Menu.Submenu>
+                                    <Menu.Item>
+                                        <Menu.Label>Advanced</Menu.Label>
+                                    </Menu.Item>
+                                    <Menu.Content>
+                                        <Menu.Item>
+                                            <Menu.Label>Encryption</Menu.Label>
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            <Menu.Label>Access Logs</Menu.Label>
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            <Menu.Label>API Keys</Menu.Label>
+                                        </Menu.Item>
+                                    </Menu.Content>
+                                </Menu.Submenu>
+                            </Menu.Content>
+                        </Menu.Submenu>
                     </Menu.Content>
                 </Menu.Submenu>
-                <Menu.Item>Help</Menu.Item>
+                <Menu.Item>
+                    <Menu.Label>Help</Menu.Label>
+                </Menu.Item>
             </Menu.Content>
         </Menu>
     )

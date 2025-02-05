@@ -44,15 +44,15 @@ export default function CarouselDApiDemo() {
                     </Carousel.Item>
                 )}
             </Carousel.Content>
-            <div className='flex justify-between mt-4 items-center'>
-                <div className='py-2 gap-1 flex text-center text-sm text-muted-foreground'>
+            <div className='mt-4 flex items-center justify-between'>
+                <div className='text-muted-fg flex gap-1 py-2 text-center text-sm'>
                     {Array.from({ length: 10 }).map((_, index) => (
                         <Button
                             className={twJoin(
-                                'focus:outline-none transition rounded-xl',
+                                'rounded-xl transition focus:outline-none',
                                 current === index + 1
-                                    ? 'w-5 h-3 transition-all bg-primary hover:bg-primary/80'
-                                    : 'bg-foreground/10 hover:bg-foreground/15 w-3 h-3'
+                                    ? 'bg-primary hover:bg-primary/80 h-3 w-5 transition-all'
+                                    : 'bg-fg/10 hover:bg-fg/15 h-3 w-3'
                             )}
                             aria-label={`Slide ${current} of ${count}`}
                             onPress={() => handleSelect(index)}

@@ -8,13 +8,13 @@ import {
 
 import { ColorThumb } from './color-thumb'
 
-export type ColorWheelProps = Omit<ColorWheelPrimitiveProps, 'outerRadius' | 'innerRadius'>
+type ColorWheelProps = Omit<ColorWheelPrimitiveProps, 'outerRadius' | 'innerRadius'>
 
 const ColorWheel = (props: ColorWheelProps) => {
     return (
         <ColorWheelPrimitive {...props} outerRadius={100} innerRadius={74}>
             <ColorWheelTrack
-                className='disabled:bg-muted/75 disabled:forced-colors:bg-[GrayText]'
+                className='data-disabled:bg-muted/75'
                 style={({ defaultStyle, isDisabled }) => ({
                     ...defaultStyle,
                     background: isDisabled
@@ -28,3 +28,4 @@ const ColorWheel = (props: ColorWheelProps) => {
 }
 
 export { ColorWheel }
+export type { ColorWheelProps }

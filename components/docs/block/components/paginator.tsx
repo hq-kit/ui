@@ -33,7 +33,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
     return (
         <div
             className={cn(
-                'flex flex-col-reverse items-center mt-6 w-full gap-3 xl:justify-between xl:flex-row',
+                'mt-6 flex w-full flex-col-reverse items-center gap-3 xl:flex-row xl:justify-between',
                 className
             )}
         >
@@ -104,11 +104,11 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                             />
                             <Pagination.Section
                                 aria-label='Pagination. Segment'
-                                className='border rounded-lg'
+                                className='rounded-lg border'
                             >
                                 <Pagination.Item role='label'>{meta.page}</Pagination.Item>
                                 <Pagination.Item role='separator' />
-                                <Pagination.Item className='text-muted-foreground' role='label'>
+                                <Pagination.Item className='text-muted-fg' role='label'>
                                     {meta.last_page}
                                 </Pagination.Item>
                             </Pagination.Section>

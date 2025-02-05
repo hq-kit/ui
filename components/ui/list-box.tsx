@@ -1,53 +1,54 @@
 'use client'
 
-import React from 'react'
-
 import { IconCheck, IconMenu } from 'hq-icons'
+import type {
+    ListBoxItemProps as ListBoxItemPrimitiveProps,
+    ListBoxProps
+} from 'react-aria-components'
 import {
     ListBoxItem as ListBoxItemPrimitive,
-    ListBox as ListBoxPrimitive,
-    type ListBoxItemProps as ListBoxItemPrimitiveProps,
-    type ListBoxProps as ListBoxPrimitiveProps
+    ListBox as ListBoxPrimitive
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { DropdownItemDetails, DropdownSection } from './dropdown'
-import { cn, cr } from './utils'
+import { cn, cr, ctr } from './utils'
 
 const listBoxStyles = tv({
-    base: 'flex max-h-96 w-full gap-y-1 min-w-72 flex-col overflow-y-auto rounded-lg border p-1 shadow-lg outline-none'
+    base: 'flex max-h-96 w-full min-w-56 flex-col gap-y-1 overflow-y-auto rounded-xl border p-1 outline-hidden'
 })
 
-interface ListBoxProps<T> extends ListBoxPrimitiveProps<T> {
-    className?: string
-}
-
-const ListBox = <T extends object>({ children, className, ...props }: ListBoxProps<T>) => (
-    <ListBoxPrimitive {...props} className={listBoxStyles({ className })}>
-        {children}
-    </ListBoxPrimitive>
+const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
+    <ListBoxPrimitive
+        {...props}
+        className={cr(className, (className, renderProps) =>
+            listBoxStyles({ ...renderProps, className })
+        )}
+    />
 )
+
 const listBoxItemStyles = tv({
-    base: 'lbi cursor-pointer relative rounded-[calc(var(--radius)-1px)] p-2 text-base outline-none lg:text-sm',
+    base: 'lbi relative cursor-pointer rounded-[calc(var(--radius-lg)-1px)] p-2 text-base outline-hidden sm:text-sm',
     variants: {
         isFocusVisible: {
-            true: 'bg-secondary [&:focus-visible_[slot=label]]:text-primary-foreground [&:focus-visible_[slot=description]]:text-primary-foreground/70 text-secondary-foreground'
+            true: 'bg-muted text-primary-fg'
         },
         isHovered: {
-            true: 'bg-primary [&:hover_[slot=label]]:text-primary-foreground [&:hover_[slot=description]]:text-primary-foreground/70 text-primary-foreground [&_.text-muted-foreground]:text-primary-foreground/80'
+            true: 'bg-primary text-primary-fg [&:hover_[slot=description]]:text-primary-fg/70 [&:hover_[slot=label]]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
         },
         isFocused: {
-            true: '[&_svg]:text-primary-foreground [&_[data-slot=label]]:text-primary-foreground [&_.text-muted-foreground]:text-primary-foreground/80 bg-primary text-primary-foreground'
+            true: 'bg-primary text-primary-fg **:data-[slot=icon]:text-primary-fg **:data-[slot=label]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
         },
         isSelected: {
-            true: '[&_svg]:text-primary-foreground [&_[data-slot=label]]:text-primary-foreground [&_.text-muted-foreground]:text-primary-foreground/80 bg-primary text-primary-foreground'
+            true: 'bg-primary text-primary-fg **:data-[slot=icon]:text-primary-fg **:data-[slot=label]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
         },
-        isDragging: { true: 'cursor-grabbing bg-secondary text-secondary-foreground' },
+        isDragging: { true: 'bg-muted text-secondary-fg cursor-grabbing' },
         isDisabled: {
-            true: 'opacity-70 cursor-default text-muted-foreground'
+            true: 'text-muted-fg cursor-default opacity-70'
         }
     }
 })
+
 interface ListBoxItemProps<T extends object> extends ListBoxItemPrimitiveProps<T> {
     className?: string
 }
@@ -72,10 +73,10 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
                         {values.allowsDragging && (
                             <IconMenu
                                 className={cn(
-                                    'size-4 shrink-0 text-muted-foreground transition',
-                                    values.isFocused && 'text-foreground',
-                                    values.isDragging && 'text-foreground',
-                                    values.isSelected && 'text-primary-foreground/70'
+                                    'text-muted-fg size-4 shrink-0 transition',
+                                    values.isFocused && 'text-fg',
+                                    values.isDragging && 'text-fg',
+                                    values.isSelected && 'text-primary-fg/70'
                                 )}
                             />
                         )}
@@ -83,7 +84,7 @@ const ListBoxItem = <T extends object>({ children, className, ...props }: ListBo
                             {typeof children === 'function' ? children(values) : children}
 
                             {values.isSelected && (
-                                <span className='animate-in absolute right-2 top-3 lg:top-2.5'>
+                                <span className='animate-in absolute top-3 right-2 lg:top-2.5'>
                                     <IconCheck />
                                 </span>
                             )}
@@ -100,24 +101,30 @@ type ListBoxPickerProps<T> = ListBoxProps<T>
 const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerProps<T>) => {
     return (
         <ListBoxPrimitive
-            className={cn('max-h-72 overflow-auto p-1 outline-none', className)}
+            className={ctr(
+                className,
+                "grid max-h-72 grid-cols-[auto_1fr] overflow-auto p-1 outline-hidden *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1"
+            )}
             {...props}
         />
     )
 }
 
-const Section = ({ className, ...props }: React.ComponentProps<typeof DropdownSection>) => {
+const ListBoxSection = ({ className, ...props }: React.ComponentProps<typeof DropdownSection>) => {
     return (
         <DropdownSection
-            className={cn(className, '[&_.lbi:last-child]:-mb-1.5 gap-y-1')}
+            className={cn(className, 'gap-y-1 [&_.lbi:last-child]:-mb-1.5')}
             {...props}
         />
     )
 }
 
-ListBox.Section = Section
-ListBox.ItemDetails = DropdownItemDetails
+const ListBoxItemDetails = DropdownItemDetails
+
+ListBox.Section = ListBoxSection
+ListBox.ItemDetails = ListBoxItemDetails
 ListBox.Item = ListBoxItem
 ListBox.Picker = ListBoxPicker
 
-export { ListBox, listBoxStyles, type ListBoxPickerProps }
+export { ListBox, ListBoxPicker, listBoxStyles }
+export type { ListBoxItemProps, ListBoxPickerProps }

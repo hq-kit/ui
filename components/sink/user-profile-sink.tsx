@@ -11,28 +11,28 @@ import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField } from '
 export default function UserProfileSink() {
     return (
         <Card className='p-2'>
-            <div className='flex flex-col w-full'>
+            <div className='flex w-full flex-col'>
                 <Image
                     width={320}
                     height={240}
-                    className='h-40 object-cover w-full rounded-md'
+                    className='h-40 w-full rounded-md object-cover'
                     src='https://picsum.photos/640/320'
                     alt='Profile Cover'
                 />
-                <div className='flex flex-col flex-shrink-0 items-center w-full mx-auto -mt-20 mb-3'>
+                <div className='mx-auto -mt-20 mb-3 flex w-full flex-shrink-0 flex-col items-center'>
                     <Avatar
                         src='https://github.com/dq-alhq.png'
                         initials='DQ'
                         className='!size-32'
                     />
-                    <div className='flex flex-col items-center text-center mt-2'>
+                    <div className='mt-2 flex flex-col items-center text-center'>
                         <Heading level={3}>Diqi Al-Haqqi</Heading>
-                        <Heading level={4} className='text-muted-foreground'>
+                        <Heading level={4} className='text-muted-fg'>
                             Developer
                         </Heading>
                     </div>
                 </div>
-                <div className='border rounded-lg p-2'>
+                <div className='rounded-lg border p-2'>
                     <Tabs aria-label='Packages'>
                         <Tabs.List className='w-full justify-center'>
                             <Tabs.Label id='t1'>Identity</Tabs.Label>
@@ -40,7 +40,7 @@ export default function UserProfileSink() {
                             <Tabs.Label id='t3'>Upload Files</Tabs.Label>
                         </Tabs.List>
                         <Tabs.Content id='t1'>
-                            <div className='w-full items-end flex gap-3 mb-4'>
+                            <div className='mb-4 flex w-full items-end gap-3'>
                                 <DateField label='Birthdate' className='w-full' />
                                 <TimeFieldDemo />
                             </div>
@@ -54,7 +54,7 @@ export default function UserProfileSink() {
                                 <NumberField label='Postal Code' />
                             </div>
                         </Tabs.Content>
-                        <Tabs.Content id='t3' className='w-full flex justify-center'>
+                        <Tabs.Content id='t3' className='flex w-full justify-center'>
                             <DropZoneAndFileTriggerDemo />
                         </Tabs.Content>
                     </Tabs>

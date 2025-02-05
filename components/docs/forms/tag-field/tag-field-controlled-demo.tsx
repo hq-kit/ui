@@ -19,7 +19,7 @@ export default function TagFieldControlledDemo() {
                 description='You can add multiple tags'
                 list={selectedItems}
             />
-            <Description className='max-w-xs block [&>strong]:text-foreground [&>strong]:text-medium mt-4'>
+            <Description className='[&>strong]:text-fg [&>strong]:text-medium mt-4 block max-w-xs'>
                 {JSON.stringify(selectedItems.items)}
             </Description>
         </div>

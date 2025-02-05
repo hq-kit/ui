@@ -2,6 +2,7 @@
 
 import { Avatar } from '@/components/ui'
 
+type Sizes = keyof typeof avatarStyles.variants.variant
 export default function AvatarSizeDemo() {
     return (
         <div className='flex gap-4'>

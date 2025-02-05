@@ -20,9 +20,8 @@ import {
 } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { buttonVariants } from './button'
-import { cn } from './utils'
-import { cr } from './utils'
+import { buttonStyles } from './button'
+import { cn, cr } from './utils'
 
 const paginationStyles = tv({
     slots: {
@@ -30,15 +29,15 @@ const paginationStyles = tv({
         section: 'flex h-9 gap-[5px]',
         list: 'flex flex-row items-center gap-[5px]',
         itemButton:
-            'focus-visible:border-primary text-foreground font-normal cursor-pointer focus:outline-none focus-visible:bg-primary/10 focus-visible:ring-4 focus-visible:ring-primary/20',
-        itemLabel: 'h-9 px-3.5 tabular-nums grid place-content-center',
-        itemSeparator: 'h-9 grid place-content-center',
+            'data-focus-visible:border-primary text-fg data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 cursor-pointer font-normal data-focus-visible:ring-4 data-focused:outline-none',
+        itemLabel: 'grid h-9 place-content-center px-3.5 tabular-nums',
+        itemSeparator: 'grid h-9 place-content-center',
         itemEllipsis:
-            'flex items-center justify-center focus-visible:border-primary rounded-lg border border-transparent focus:outline-none size-9 focus-visible:bg-primary/10 focus-visible:ring-4 focus-visible:ring-primary/20',
+            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 flex size-9 items-center justify-center rounded-lg border border-transparent data-focus-visible:ring-4 data-focused:outline-none',
         itemEllipsisIcon: 'flex size-9 items-center justify-center',
         defaultItem:
-            'focus-visible:border-primary focus:outline-none size-9 tabular-nums font-normal cursor-pointer disabled:cursor-default focus-visible:bg-primary/10 focus-visible:ring-4 focus-visible:ring-primary/20 disabled:opacity-100',
-        itemSeparatorLine: 'h-5 w-[1.5px] bg-secondary-foreground/40 rotate-[14deg] shrink-0'
+            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 size-9 cursor-pointer font-normal tabular-nums disabled:cursor-default disabled:opacity-100 data-focus-visible:ring-4 data-focused:outline-none',
+        itemSeparatorLine: 'bg-muted-fg/40 h-5 w-[1.5px] shrink-0 rotate-[14deg]'
     }
 })
 
@@ -90,7 +89,7 @@ const renderListItem = (
     children: React.ReactNode
 ) => <ListBoxItem {...props}>{children}</ListBoxItem>
 
-interface PaginationItemProps extends ListBoxItemProps, VariantProps<typeof buttonVariants> {
+interface PaginationItemProps extends ListBoxItemProps, VariantProps<typeof buttonStyles> {
     children?: React.ReactNode
     className?: string
     isCurrent?: boolean
@@ -120,7 +119,7 @@ const Item = ({
                 'aria-current': isCurrent ? 'page' : undefined,
                 isDisabled: isCurrent,
                 className: cn(
-                    buttonVariants({
+                    buttonStyles({
                         variant: 'outline',
                         size: 'sm',
                         className: itemButton()
@@ -177,7 +176,7 @@ const Item = ({
                     'aria-current': isCurrent ? 'page' : undefined,
                     isDisabled: isCurrent,
                     className: cn(
-                        buttonVariants({
+                        buttonStyles({
                             variant: isCurrent ? 'primary' : variant,
                             size,
                             className: defaultItem({ className })

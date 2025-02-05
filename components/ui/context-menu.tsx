@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import { createContext, use, useRef, useState } from 'react'
 
 import { tv } from 'tailwind-variants'
 
-import { Menu, type MenuContentProps } from './menu'
+import type { MenuContentProps } from './menu'
+import { Menu } from './menu'
 import { focusButtonStyles } from './utils'
 
 interface ContextMenuTriggerContextType {
@@ -15,28 +16,28 @@ interface ContextMenuTriggerContextType {
     >
 }
 
-const ContextMenuTriggerContext = React.createContext<ContextMenuTriggerContextType | undefined>(
+const ContextMenuTriggerContext = createContext<ContextMenuTriggerContextType | undefined>(
     undefined
 )
 
 const useContextMenuTrigger = () => {
-    const context = React.useContext(ContextMenuTriggerContext)
+    const context = use(ContextMenuTriggerContext)
     if (!context) {
         throw new Error('useContextMenuTrigger must be used within a ContextMenuTrigger')
     }
     return context
 }
 
-interface ContextMenuRootComponent {
+interface ContextMenuProps {
     children: React.ReactNode
 }
 
-const ContextMenu = ({ children }: ContextMenuRootComponent) => {
-    const [contextMenuOffset, setContextMenuOffset] = React.useState<{
+const ContextMenu = ({ children }: ContextMenuProps) => {
+    const [contextMenuOffset, setContextMenuOffset] = useState<{
         offset: number
         crossOffset: number
     } | null>(null)
-    const buttonRef = React.useRef<HTMLButtonElement>(null)
+    const buttonRef = useRef<HTMLButtonElement>(null)
 
     return (
         <ContextMenuTriggerContext.Provider
@@ -49,11 +50,10 @@ const ContextMenu = ({ children }: ContextMenuRootComponent) => {
 
 const contextMenuTriggerStyles = tv({
     extend: focusButtonStyles,
-    base: 'focus:outline-none cursor-default',
+    base: 'cursor-default data-focused:outline-hidden',
     variants: {
         isDisabled: {
-            false: 'forced-colors:disabled:text-[GrayText]',
-            true: 'cursor-default opacity-60 forced-colors:disabled:text-[GrayText]'
+            true: 'cursor-default opacity-50'
         }
     }
 })
@@ -74,7 +74,7 @@ const ContextMenuTrigger = ({ className, ...props }: ContextMenuTriggerProps) =>
     return (
         <button
             className={contextMenuTriggerStyles({ isDisabled: props.disabled, className })}
-            ref={buttonRef as React.RefObject<HTMLButtonElement>}
+            ref={buttonRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
             {...props}
@@ -104,13 +104,23 @@ const ContextMenuContent = <T extends object>(props: ContextMenuContentProps<T>)
     ) : null
 }
 
+const ContextMenuItem = Menu.Item
+const ContextMenuSeparator = Menu.Separator
+const ContextMenuItemDetails = Menu.ItemDetails
+const ContextMenuSection = Menu.Section
+const ContextMenuHeader = Menu.Header
+const ContextMenuKeyboard = Menu.Keyboard
+const ContextMenuLabel = Menu.Label
+
 ContextMenu.Trigger = ContextMenuTrigger
 ContextMenu.Content = ContextMenuContent
-ContextMenu.Item = Menu.Item
-ContextMenu.Separator = Menu.Separator
-ContextMenu.ItemDetails = Menu.ItemDetails
-ContextMenu.Section = Menu.Section
-ContextMenu.Header = Menu.Header
-ContextMenu.Keyboard = Menu.Keyboard
+ContextMenu.Item = ContextMenuItem
+ContextMenu.Label = ContextMenuLabel
+ContextMenu.Separator = ContextMenuSeparator
+ContextMenu.ItemDetails = ContextMenuItemDetails
+ContextMenu.Section = ContextMenuSection
+ContextMenu.Header = ContextMenuHeader
+ContextMenu.Keyboard = ContextMenuKeyboard
 
 export { ContextMenu }
+export type { ContextMenuProps }

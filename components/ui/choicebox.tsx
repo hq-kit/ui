@@ -7,7 +7,7 @@ import { tv } from 'tailwind-variants'
 
 import { Checkbox } from './checkbox'
 import { Description, Label } from './field'
-import { cr } from './utils'
+import { cr, focusStyles } from './utils'
 
 const choiceboxStyles = tv({
     base: 'grid',
@@ -21,6 +21,7 @@ const choiceboxStyles = tv({
             6: 'sm:grid-cols-6'
         },
         gap: {
+            0: 'gap-0',
             2: 'gap-2',
             4: 'gap-4',
             6: 'gap-6'
@@ -28,8 +29,16 @@ const choiceboxStyles = tv({
     },
     defaultVariants: {
         columns: 2,
-        gap: 6
-    }
+        gap: 4
+    },
+    compoundVariants: [
+        {
+            gap: 0,
+            columns: 1,
+            className:
+                'rounded-lg *:data-[slot=choicebox-item]:-mt-px *:data-[slot=choicebox-item]:rounded-none *:data-[slot=choicebox-item]:inset-ring-1 *:data-[slot=choicebox-item]:first:rounded-t-[calc(var(--radius-lg)-1px)] *:data-[slot=choicebox-item]:last:rounded-b-[calc(var(--radius-lg)-1px)]'
+        }
+    ]
 })
 
 interface ChoiceboxProps<T extends object>
@@ -58,59 +67,71 @@ const Choicebox = <T extends object>({
         />
     )
 }
+
 const choiceboxItemStyles = tv({
-    base: 'rounded-lg cursor-pointer border p-4 [&_[slot=title]]:font-medium transition outline-none focus:outline-none',
+    extend: focusStyles,
+    base: [
+        'bg-bg [--choicebox-fg:var(--color-primary)] [--choicebox:color-mix(in_oklab,var(--color-primary)_4%,white_96%)]',
+        '[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_15%,white_85%)]',
+        'dark:[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_25%,black_75%)]',
+        'dark:[--choicebox-fg:color-mix(in_oklab,var(--color-primary)_45%,white_55%)] dark:[--choicebox:color-mix(in_oklab,var(--color-primary)_20%,black_70%)]',
+        'inset-ring-border cursor-pointer rounded-lg p-4 inset-ring [&_[slot=title]]:font-medium',
+        '**:data-[slot=choicebox-icon]:size-5 **:data-[slot=choicebox-icon]:shrink-0 **:data-[slot=choicebox-icon]:text-current/60 data-selected:**:data-[slot=choicebox-icon]:text-current/90'
+    ],
     variants: {
-        isSelected: {
+        init: {
             true: [
-                'z-20 bg-primary/10 hover:border-primary border-primary/75',
-                '[&_[slot=title]]:text-primary',
-                '[&_[slot=description]]:text-primary/70'
+                'bg-(--choicebox) text-(--choicebox-fg)',
+                'inset-ring-primary/70 z-20 data-hovered:bg-(--choicebox-selected-hovered)',
+                '[&_[slot=title]]:text-(--choicebox-fg)',
+                '[&_[slot=description]]:text-(--choicebox-fg)'
             ]
         },
-        isInvalid: { true: 'border-danger' },
-        isFocused: {
-            true: 'border-primary/80 ring-4 ring-primary/20'
-        },
-        isHovered: {
-            true: 'bg-primary/10'
-        },
         isDisabled: {
-            true: 'z-10 cursor-default opacity-80 [&_[slot=title]]:text-muted-foreground'
+            true: '[&_[slot=description]]:text-muted-fg/70 [&_[slot=title]]:text-muted-fg z-10 cursor-default opacity-50'
         }
     }
 })
 
 interface ChoiceboxItemProps extends GridListItemProps, VariantProps<typeof choiceboxItemStyles> {
-    title: string
+    title?: string
     description?: string
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
-const ChoiceboxItem = ({ children, className, ...props }: ChoiceboxItemProps) => {
-    const textValue = typeof children === 'string' ? children : undefined
+const ChoiceboxItem = ({ icon: Icon, className, ...props }: ChoiceboxItemProps) => {
+    const textValue = props.title ?? props.textValue
     return (
         <GridListItem
             textValue={textValue}
+            data-slot='choicebox-item'
             {...props}
             className={cr(className, (className, renderProps) =>
                 choiceboxItemStyles({
                     ...renderProps,
+                    init:
+                        renderProps.isSelected ||
+                        renderProps.isHovered ||
+                        renderProps.isFocusVisible,
                     className
                 })
             )}
         >
             {(values) => (
-                <div className='flex items-center w-full justify-between gap-1.5'>
-                    <div className='pr-8 flex flex-col'>
-                        <Label slot='title' htmlFor={textValue}>
-                            {props.title}
-                        </Label>
-                        {props.description && <Description>{props.description}</Description>}
+                <div className='flex w-full items-center justify-between gap-2'>
+                    <div className='flex gap-x-2.5'>
+                        {Icon && <Icon data-slot='choicebox-icon' />}
+                        <div className='flex flex-col gap-y-1 pr-8'>
+                            <Label slot='title' className='text-sm/4' htmlFor={textValue}>
+                                {props.title}
+                            </Label>
+                            {props.description && (
+                                <Description className='text-sm/5'>{props.description}</Description>
+                            )}
+                        </div>
                     </div>
-                    <>
-                        {values.selectionMode === 'multiple' &&
-                            values.selectionBehavior === 'toggle' && <Checkbox slot='selection' />}
-                    </>
+                    {values.selectionMode === 'multiple' &&
+                        values.selectionBehavior === 'toggle' && <Checkbox slot='selection' />}
                 </div>
             )}
         </GridListItem>
@@ -118,4 +139,6 @@ const ChoiceboxItem = ({ children, className, ...props }: ChoiceboxItemProps) =>
 }
 
 Choicebox.Item = ChoiceboxItem
+
 export { Choicebox }
+export type { ChoiceboxItemProps, ChoiceboxProps }

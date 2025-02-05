@@ -18,5 +18,11 @@ export default function TagFieldShapeDemo() {
         ]
     })
 
-    return <TagField shape='circle' className='max-w-xs' label='Add tag' list={selectedItems} />
+    return (
+        <div className='space-y-2'>
+            <TagField shape='rounded' className='max-w-xs' label='Rounded' list={selectedItems} />
+            <TagField shape='sharp' className='max-w-xs' label='Sharp' list={selectedItems} />
+            <TagField shape='circle' className='max-w-xs' label='Circle' list={selectedItems} />
+        </div>
+    )
 }

@@ -1,15 +1,15 @@
 import Sink from '@/components/sink'
-import { Button, buttonVariants, Card, Container } from '@/components/ui'
+import { Button, buttonStyles, Card, Container } from '@/components/ui'
 
 export default function ThemeContainer() {
     return (
         <>
-            <Container className='w-full flex flex-col gap-6 items-center pt-6'>
-                <Card className='w-full flex gap-2 items-center justify-around flex-wrap p-4'>
-                    {Object.keys(buttonVariants.variants.variant).map((variant) => (
+            <Container className='flex w-full flex-col items-center gap-6 pt-6'>
+                <Card className='flex w-full flex-wrap items-center justify-around gap-2 p-4'>
+                    {Object.keys(buttonStyles.variants.variant).map((variant) => (
                         <Button
                             key={variant}
-                            variant={variant as keyof typeof buttonVariants.variants.variant}
+                            variant={variant as keyof typeof buttonStyles.variants.variant}
                         >
                             {variant}
                         </Button>

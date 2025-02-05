@@ -20,7 +20,7 @@ export default function GridListControlledDemo() {
             >
                 {(item) => <GridList.Item id={item.id}>{item.name}</GridList.Item>}
             </GridList>
-            <Description className='mt-2 block [&>strong]:text-foreground text-muted-foreground'>
+            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
                 You have selected: <strong>{Array.from(selectedKeys).join(', ')}</strong>
             </Description>
         </div>

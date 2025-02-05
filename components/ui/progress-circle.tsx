@@ -6,13 +6,14 @@ import { cn } from './utils'
 
 interface ProgressCircleProps extends Omit<ProgressBarProps, 'className'> {
     className?: string
+    ref?: React.RefObject<HTMLDivElement>
 }
 
-const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
+const ProgressCircle = ({ className, ref, ...props }: ProgressCircleProps) => {
     const c = '50%'
     const r = 'calc(50% - 2px)'
     return (
-        <ProgressBar {...props}>
+        <ProgressBar {...props} ref={ref}>
             {({ percentage, isIndeterminate }) => (
                 <svg
                     className={cn('size-4 shrink-0', className)}
@@ -53,7 +54,7 @@ const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
                             strokeDasharray='100 200'
                             strokeDashoffset={100 - 30}
                             strokeLinecap='round'
-                            className='animate-[spin_1s_cubic-bezier(0.4,_0,_0.2,_1)_infinite] origin-center'
+                            className='origin-center animate-[spin_1s_cubic-bezier(0.4,_0,_0.2,_1)_infinite]'
                         />
                     )}
                 </svg>
@@ -63,3 +64,4 @@ const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
 }
 
 export { ProgressCircle }
+export type { ProgressCircleProps }

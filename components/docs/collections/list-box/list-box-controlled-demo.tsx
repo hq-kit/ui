@@ -25,7 +25,7 @@ export default function ListBoxControlledDemo() {
             </ListBox>
 
             {selected && (
-                <Description className='mt-4 block [&>strong]:font-medium [&>strong]:text-foreground'>
+                <Description className='[&>strong]:text-fg mt-4 block [&>strong]:font-medium'>
                     Selected: <strong>{selected}</strong>
                 </Description>
             )}

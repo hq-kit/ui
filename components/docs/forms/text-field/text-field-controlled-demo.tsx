@@ -9,7 +9,7 @@ export default function TextFieldControlledDemo() {
     return (
         <>
             <TextField value={value} onChange={setValue} label='Name' className='mb-2' />
-            <Description className='mt-2 block [&>strong]:text-foreground'>
+            <Description className='[&>strong]:text-fg mt-2 block'>
                 You have typed: <strong>{value ?? '-'}</strong>
             </Description>
         </>

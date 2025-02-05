@@ -29,14 +29,14 @@ export default function Demo({ component, className, center = false, ...props }:
                 <Tabs.Content className='w-full' id='preview'>
                     <div
                         className={cn(
-                            'relative gap-4 w-full rounded-lg border border-dashed bg-background p-6',
+                            'border-muted bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6',
                             center &&
                                 'preview flex min-h-20 items-center justify-center py-6 sm:py-12'
                         )}
                     >
                         <React.Suspense
                             fallback={
-                                <div className='flex w-full justify-center items-center text-sm text-muted-foreground'>
+                                <div className='text-muted-fg flex w-full items-center justify-center text-sm'>
                                     <IconLoaderCircle className='size-12 animate-spin' />
                                 </div>
                             }

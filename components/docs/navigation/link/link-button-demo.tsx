@@ -1,23 +1,18 @@
 'use client'
 
-import { buttonVariants, Link } from '@/components/ui'
+import { buttonStyles, Link } from '@/components/ui'
 
 export default function LinkButtonDemo() {
     return (
         <div className='flex gap-2'>
-            <Link variant='unstyled' className={buttonVariants()} href='#use-as-button'>
+            <Link className={buttonStyles()} href='#use-as-button'>
+                Link
+            </Link>
+            <Link className={buttonStyles({ variant: 'outline' })} href='#use-as-button'>
                 Link
             </Link>
             <Link
-                variant='unstyled'
-                className={buttonVariants({ variant: 'outline' })}
-                href='#use-as-button'
-            >
-                Link
-            </Link>
-            <Link
-                variant='unstyled'
-                className={buttonVariants({ variant: 'ghost', shape: 'circle' })}
+                className={buttonStyles({ variant: 'ghost', shape: 'circle' })}
                 href='#use-as-button'
             >
                 Link

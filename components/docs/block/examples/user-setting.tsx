@@ -4,8 +4,8 @@ import AccountSetting from 'components/user-setting/account-setting'
 import DangerArea from 'components/user-setting/danger-area'
 import PlanBillingSetting from 'components/user-setting/plan-billing-setting'
 import SecuritySetting from 'components/user-setting/security-setting'
-import NavbarLayout from 'layouts/navbar-layout'
 
+import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Card, Tabs } from '@/components/ui'
 
 export default function UserSetting() {

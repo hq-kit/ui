@@ -2,16 +2,16 @@
 
 import { useState } from 'react'
 
-import { AnimatePresence, motion } from 'framer-motion'
 import { IconChevronDown } from 'hq-icons'
+import { AnimatePresence, motion } from 'motion/react'
 import { Text, ToggleButton } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { buttonVariants } from './button'
+import { buttonStyles } from './button'
 import { cn } from './utils'
 
 const showMoreStyles = tv({
-    base: 'text-sm leading-6 after:border-muted before:border-muted',
+    base: 'after:border-muted before:border-muted text-sm leading-6',
     variants: {
         orientation: {
             vertical: 'mx-1 h-auto self-stretch',
@@ -22,12 +22,12 @@ const showMoreStyles = tv({
         {
             orientation: 'vertical',
             className:
-                'mx-2 flex flex-col items-center before:border-l before:flex-1 before:mb-2 after:border-r after:flex-1 after:mt-2'
+                'mx-2 flex flex-col items-center before:mb-2 before:flex-1 before:border-l after:mt-2 after:flex-1 after:border-r'
         },
         {
             orientation: 'horizontal',
             className:
-                'self-stretch my-2 flex items-center before:border-t before:flex-1 before:mr-2 after:border-t after:flex-1 after:ml-2'
+                'my-2 flex items-center self-stretch before:mr-2 before:flex-1 before:border-t after:ml-2 after:flex-1 after:border-t'
         }
     ],
     defaultVariants: {
@@ -53,7 +53,7 @@ const ShowMore = ({
             {as === 'button' ? (
                 <ToggleButton
                     {...props}
-                    className={buttonVariants({
+                    className={buttonStyles({
                         variant: 'outline',
                         size: 'sm'
                     })}
@@ -107,7 +107,7 @@ function ContentReveal({
             {gradientTransparency && (
                 <div
                     className={cn(
-                        'absolute inset-0 rounded-lg bg-gradient-to-b from-transparent via-background to-background',
+                        'via-bg to-bg absolute inset-0 rounded-lg bg-gradient-to-b from-transparent',
                         isExpanded && 'hidden'
                     )}
                 ></div>

@@ -24,12 +24,12 @@ export function ResponsiveAside({
     const pathname = usePathname()
     React.useEffect(() => setOpenAside(false), [pathname])
     return (
-        <nav className='lg:hidden z-10 md:h-14 relative'>
+        <nav className='relative z-10 md:h-14 lg:hidden'>
             <CommandMenu setOpen={setOpenCmd} openCommand={openCmd} />
-            <div className='flex items-center justify-between pl-4 pr-2 -mb-2 pt-2'>
+            <div className='-mb-2 flex items-center justify-between pt-2 pr-2 pl-4'>
                 <Button
                     aria-label='Open Menu.'
-                    className='-ml-2 [&_[data-slot=icon]]:text-foreground'
+                    className='[&_[data-slot=icon]]:text-fg -ml-2'
                     variant='outline'
                     size='icon'
                     onPress={() => {
@@ -38,7 +38,7 @@ export function ResponsiveAside({
                 >
                     <IconMenu />
                 </Button>
-                <Link className='focus:outline-none -mr-6 rounded' href='/' aria-label='Logo'>
+                <Link className='-mr-6 rounded focus:outline-none' href='/' aria-label='Logo'>
                     <IconBrandCleon className='size-6' />
                 </Link>
                 <div className='flex items-center gap-x-1'>

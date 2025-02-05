@@ -86,10 +86,12 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html dir='ltr' lang='en' suppressHydrationWarning>
-            <body
-                className={`${fontSans.variable} ${fontMono.variable} antialiased min-h-screen font-sans`}
-            >
+        <html
+            lang='en'
+            suppressHydrationWarning={true}
+            className={`${fontSans.variable} ${fontMono.variable}`}
+        >
+            <body className='min-h-screen font-sans antialiased'>
                 <Providers>
                     {children}
                     {process.env.NODE_ENV === 'production' && (

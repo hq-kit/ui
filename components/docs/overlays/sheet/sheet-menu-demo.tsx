@@ -84,75 +84,76 @@ export default function SheetMenuDemo() {
                     <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' />
                 </Sheet.Trigger>
                 <Sheet.Content closeButton={false}>
-                    <Sheet.Header className='flex border-b p-4 sticky top-0 bg-overlay flex-row items-center gap-x-3 mb-2'>
-                        <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' />
+                    <Sheet.Header className='bg-background sticky top-0 flex flex-row items-center p-4 sm:gap-3'>
+                        <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' size='xl' />
                         <div>
                             <Sheet.Title>dq-alhq</Sheet.Title>
                             <Sheet.Description>DQ Al-Haqqi</Sheet.Description>
                         </div>
                     </Sheet.Header>
-                    <Sheet.Body className='px-0 sm:px-0'>
-                        <MenuPrimitive className='divide-y [&_.xss3]:p-2'>
+                    <Sheet.Body className='border-t px-0 sm:px-0'>
+                        <MenuPrimitive className='divide-y'>
                             <Menu.Section>
                                 <Menu.Item onAction={openModal}>
                                     <IconBrandGithub />
-                                    Edit Status
+                                    <Menu.Label>Edit Status</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
                                     <IconUser />
-                                    Your profile
+                                    <Menu.Label>Your profile</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconBook /> Your repositories
+                                    <IconBook />
+                                    <Menu.Label>Your repositories</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconBrandGithubCopilot /> Your Copilot
+                                    <IconBrandGithubCopilot /> <Menu.Label>Your Copilot</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconChartBar /> Your projects
+                                    <IconChartBar /> <Menu.Label>Your projects</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconStar /> Your stars
+                                    <IconStar /> <Menu.Label>Your stars</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconFileCode /> Your gists
+                                    <IconFileCode /> <Menu.Label>Your gists</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconBuilding /> Your organizations
+                                    <IconBuilding /> <Menu.Label>Your organizations</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconGlobe /> Your enterprises
+                                    <IconGlobe /> <Menu.Label>Your enterprises</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <IconHeart />
-                                    Your sponsors
+                                    <Menu.Label>Your sponsors</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
-                                    <IconFilter /> Feature preview
+                                    <IconFilter /> <Menu.Label>Feature preview</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <IconSettings />
-                                    Settings
+                                    <Menu.Label>Settings</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
-                                    <IconBookOpen /> GitHub Docs
+                                    <IconBookOpen /> <Menu.Label>GitHub Docs</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconUsers /> GitHub Support
+                                    <IconUsers /> <Menu.Label>GitHub Support</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <IconMessage /> GitHub Community
+                                    <IconMessage /> <Menu.Label>GitHub Community</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
-                                    <IconLogOut /> Sign out
+                                    <IconLogOut /> <Menu.Label>Sign out</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                         </MenuPrimitive>

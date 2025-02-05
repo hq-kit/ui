@@ -25,13 +25,12 @@ const datePickerStyles = tv({
     slots: {
         base: 'group flex flex-col gap-y-1.5',
         datePickerIcon:
-            'group mr-1 h-7 [&_[data-slot=icon]]:text-muted-foreground w-8 rounded-lg outline-offset-0 hover:bg-transparent pressed:bg-transparent',
-        calendarIcon: 'group-open:text-foreground',
+            'group [&_[data-slot=icon]]:text-muted-fg pressed:bg-transparent mr-1 h-7 w-8 rounded-lg outline-offset-0 hover:bg-transparent',
+        calendarIcon: 'group-open:text-fg',
         datePickerInput: 'w-full px-2 text-base lg:text-sm',
-        dateRangePickerInputStart: 'px-2 lg:text-sm text-base',
-        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 lg:text-sm text-base',
-        dateRangePickerDash:
-            'text-foreground group-disabled:opacity-50 forced-colors:text-[ButtonText] group-disabled:forced-colors:text-[GrayText]'
+        dateRangePickerInputStart: 'px-2 text-base lg:text-sm',
+        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 text-base lg:text-sm',
+        dateRangePickerDash: 'text-fg group-disabled:opacity-50'
     }
 })
 
@@ -50,12 +49,12 @@ const DatePickerOverlay = ({ closeButton = true, range, ...props }: DatePickerOv
     return (
         <Popover.Content
             showArrow={false}
-            className='flex justify-center p-4 sm:p-2 sm:pt-3 sm:max-w-[17.2rem] sm:min-w-[17rem]'
+            className='flex justify-center p-4 sm:max-w-[17.2rem] sm:min-w-[17rem] sm:p-2 sm:pt-3'
             {...props}
         >
             {range ? <RangeCalendar /> : <Calendar />}
             {closeButton && (
-                <div className='sm:hidden py-2.5 flex justify-center mx-auto w-full max-w-[inherit]'>
+                <div className='mx-auto flex w-full max-w-[inherit] justify-center py-2.5 sm:hidden'>
                     <Popover.Close shape='circle' className='w-full'>
                         Close
                     </Popover.Close>

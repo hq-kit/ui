@@ -5,73 +5,49 @@ order: 4
 published: true
 references: ['https://recharts.org/en-US/api/PieChart']
 ---
-## Basic
-Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
-<Demo center className='w-full' component="chart/pie/pie-chart-demo" />
-
 ## Installation
 <Install component='chart' />
 
-## Colors
-If you're working on an existing project, you can use these variables. However, if you've just installed Justd, they will already be included during project initialization. You can also customize chart colors, check out the [theme page](/themes) for more options.
-```
-@layer base {
-  root: {
-      --primary-chart: 51.24% 0.222 261.097;
-      --secondary-chart: 76.58% 0.119 263.28;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 81.17% 0.097 249.1;
-  }
-  .dark: {
-      --primary-chart: 54.6% 0.215 262.87;
-      --secondary-chart: 72.11% 0.142 253.1;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 88.29% 0.057 251.91;
-  }
-}
-```
+## Basic
+Present data in a simple and visually appealing way using a basic pie chart.
+<Demo center className='w-full' component="charts/pie/pie-chart-basic-demo"/>
 
-## Tooltip
-Tooltips are used to provide additional information about a chart element when the user hovers over it. They can be used to display additional details, such as the value of a data point, or to provide context about the data.
-```
-import { Chart } from '@/components/ui'
-import { PieChart } from 'recharts'
+## Donut
+Visualize data with a donut chart for a modern and clean look.
+<Demo center className='w-full' component="charts/pie/pie-chart-donut-demo"/>
 
-<PieChart accessibilityLayer data={data}>
-  <XAxis.../>
-  <Chart.Tooltip cursor={false} content={<Chart.TooltipContent />} />
-  <Bar.../>
-</PieChart>
-```
+## Donut Active
+Highlight active segments in a donut chart to emphasize specific data points.
+<Demo center className='w-full' component="charts/pie/pie-chart-donut-active-demo"/>
+
+## Donut with Text
+Enhance your donut chart by adding descriptive text for better understanding.
+<Demo center className='w-full' component="charts/pie/pie-chart-donut-with-text-demo"/>
+
+## Custom Label
+Add custom labels to your pie chart to provide additional context and clarity.
+<Demo center className='w-full' component="charts/pie/pie-chart-custom-label-demo"/>
+
+## Controlled
+Sometimes you might want to control the chart data dynamically.
+<Demo center className='w-full' component="charts/pie/pie-chart-controlled-demo"/>
+
+## Label
+Include labels in your pie chart for a clearer and more informative representation.
+<Demo center className='w-full' component="charts/pie/pie-chart-label-demo"/>
+
+## Label List
+Display a list of labels alongside your pie chart for improved data interpretation.
+<Demo center className='w-full' component="charts/pie/pie-chart-label-list-demo"/>
 
 ## Legend
-Legends are used to display a list of labels for different chart elements. They can be used to provide context about the data and help the user understand the meaning of different colors and shapes.
-```
-import { Chart } from '@/components/ui'
-import { PieChart } from 'recharts'
+Add a legend to your pie chart to make it easier to identify and understand data segments.
+<Demo center className='w-full' component="charts/pie/pie-chart-legend-demo"/>
 
-<PieChart>
-  ...
-  <Chart.Legend content={<Chart.LegendContent />} />
-</PieChart>
-```
+## None Separator
+Create a seamless pie chart without separators for a smooth appearance.
+<Demo center className='w-full' component="charts/pie/pie-chart-none-separator-demo"/>
 
-## Pie Chart
-A pie chart divides data into proportional slices to represent parts of a whole. It's ideal for displaying relative sizes of categories, especially when you need a visual comparison of percentages.
-
-### Interactive
-<Demo center className='w-full' component="chart/pie/pie-chart-interactive-demo" />
-
-### Label
-<Demo center className='w-full' component="chart/pie/pie-chart-label-demo" />
-
-### Stacked
-<Demo center className='w-full' component="chart/pie/pie-chart-stacked-demo" />
-
-## Accessibility
-For accessibility purposes, you can add the `accessibilityLayer` prop to the chart component. This will add a `role="img"` to the chart, which will make it accessible to screen readers.
-```
-<PieChart accessibilityLayer />
-```
+## Stacked
+Visualize grouped data with a stacked pie chart for comparative analysis.
+<Demo center className='w-full' component="charts/pie/pie-chart-stacked-demo"/>

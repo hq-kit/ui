@@ -36,7 +36,7 @@ export function SelectSize() {
     return (
         <Menu aria-label='Select Icon Size'>
             <Button
-                className='[&[data-pressed]_[data-slot=icon]]:rotate-180 bg-background [&_[data-slot=icon]]:transition-transform w-full sm:max-w-sm'
+                className='bg-bg w-full sm:max-w-sm [&_[data-slot=icon]]:transition-transform [&[data-pressed]_[data-slot=icon]]:rotate-180'
                 variant='outline'
             >
                 <span>Size {[...selectedSize].join(', ').replace('size-', '')}</span>
@@ -50,16 +50,18 @@ export function SelectSize() {
                 items={sizes}
             >
                 {(item) => (
-                    <Menu.Radio textValue={item.name}>
-                        {item.name} /{' '}
-                        {item.name === 'Size 4'
-                            ? '20px'
-                            : item.name === 'Size 5'
-                              ? '24px'
-                              : item.name === 'Size 6'
-                                ? '28px'
-                                : '32px'}
-                    </Menu.Radio>
+                    <Menu.Item id={item.id} textValue={item.name}>
+                        <Menu.Label>
+                            {item.name} /{' '}
+                            {item.name === 'Size 4'
+                                ? '20px'
+                                : item.name === 'Size 5'
+                                  ? '24px'
+                                  : item.name === 'Size 6'
+                                    ? '28px'
+                                    : '32px'}
+                        </Menu.Label>
+                    </Menu.Item>
                 )}
             </Menu.Content>
         </Menu>

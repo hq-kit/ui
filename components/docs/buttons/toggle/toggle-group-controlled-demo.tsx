@@ -21,11 +21,9 @@ export default function ToggleGroupControlledDemo() {
                 <Toggle id='underline'>Underline</Toggle>
             </Toggle.Group>
             {[...selected].length > 0 && (
-                <p className='text-muted-foreground mt-4'>
+                <p className='text-muted-fg mt-4'>
                     Selected:{' '}
-                    <strong className='text-foreground font-semibold'>
-                        {[...selected].join(', ')}
-                    </strong>
+                    <strong className='text-fg font-semibold'>{[...selected].join(', ')}</strong>
                 </p>
             )}
         </>

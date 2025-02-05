@@ -28,7 +28,7 @@ export const IconComponent = ({ name, size, stroke }: IconProps) => {
             <Menu.Trigger
                 aria-label={name}
                 id={name}
-                className='bg-transparent focus:outline-none transition flex items-center justify-center cursor-pointer hover:bg-muted pressed:ring-2 pressed:ring-primary size-10 rounded-lg'
+                className='data-hovered:bg-muted data-pressed:ring-primary flex size-10 cursor-pointer items-center justify-center rounded-lg bg-transparent transition data-focused:outline-none data-pressed:ring-2'
             >
                 <div
                     dangerouslySetInnerHTML={{
@@ -49,7 +49,7 @@ export const IconComponent = ({ name, size, stroke }: IconProps) => {
                         })
                     }
                 >
-                    <icons.IconFileCode /> Copy SVG
+                    <icons.IconFileCode /> <Menu.Label>Copy SVG</Menu.Label>
                 </Menu.Item>
                 <Menu.Item
                     onAction={() =>
@@ -60,19 +60,19 @@ export const IconComponent = ({ name, size, stroke }: IconProps) => {
                         })
                     }
                 >
-                    <icons.IconBrandReact /> Copy JSX
+                    <icons.IconBrandReact /> <Menu.Label>Copy JSX</Menu.Label>
                 </Menu.Item>
                 <Menu.Item onAction={() => copyJsxToClipboard(name)}>
-                    <icons.IconTextCursorInput /> Copy Name
+                    <icons.IconTextCursorInput /> <Menu.Label>Copy Name</Menu.Label>
                 </Menu.Item>
                 <Menu.Separator />
                 <Menu.Item onAction={() => downloadSvg(svgIcon, name)}>
                     <icons.IconDownload />
-                    Download SVG
+                    <Menu.Label>Download SVG</Menu.Label>
                 </Menu.Item>
                 <Menu.Item onAction={async () => await downloadPng(svgIcon, name)}>
                     <icons.IconDownload />
-                    Download PNG
+                    <Menu.Label>Download PNG</Menu.Label>
                 </Menu.Item>
             </Menu.Content>
         </Menu>

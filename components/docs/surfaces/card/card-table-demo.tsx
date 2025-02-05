@@ -58,14 +58,14 @@ export default function CardTableDemo() {
                     <Pagination.List>
                         <Pagination.Item role='first' />
                         <Pagination.Item role='previous' />
-                        <Pagination.Section className='lg:hidden rounded-lg border'>
+                        <Pagination.Section className='rounded-lg border lg:hidden'>
                             <Pagination.Item role='label'>1</Pagination.Item>
                             <Pagination.Item role='separator' />
-                            <Pagination.Item className='text-muted-foreground' role='label'>
+                            <Pagination.Item className='text-muted-fg' role='label'>
                                 {users.length}
                             </Pagination.Item>
                         </Pagination.Section>
-                        <Pagination.Section className='lg:flex hidden' items={pages}>
+                        <Pagination.Section className='hidden lg:flex' items={pages}>
                             {(item) => (
                                 <Pagination.Item
                                     id={item.value.toString()}

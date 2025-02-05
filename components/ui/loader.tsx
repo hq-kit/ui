@@ -14,7 +14,7 @@ const loaderStyles = tv({
         color: {
             current: 'text-current',
             primary: 'text-primary',
-            secondary: 'text-muted-foreground',
+            secondary: 'text-secondary',
             success: 'text-success',
             warning: 'text-warning',
             danger: 'text-danger'

@@ -97,8 +97,8 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     )}
                     <TreeItem.Label
                         className={cn(
-                            '-ml-4 px-4 py-1 -my-1 rounded w-full text-xs',
-                            selected === item.id && 'text-primary-foreground bg-primary/80'
+                            '-my-1 -ml-4 w-full rounded px-4 py-1 text-xs overflow-ellipsis whitespace-nowrap',
+                            selected === item.id && 'text-primary-fg bg-primary/80'
                         )}
                         slot={item.children.length > 0 ? 'chevron' : null}
                         onPress={() => {
@@ -106,9 +106,9 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                         }}
                     >
                         {item.title.includes('.tsx') ? (
-                            <IconBrandReact />
+                            <IconBrandReact className='size-4 shrink-0' />
                         ) : item.title.includes('.ts') ? (
-                            <IconBrandTypescript />
+                            <IconBrandTypescript className='size-4 shrink-0' />
                         ) : null}
                         {item.title}
                     </TreeItem.Label>
@@ -187,15 +187,15 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
 
     return (
         <div
-            className={cn('flex flex-col lg:flex-row w-full border rounded-lg', className)}
+            className={cn('flex w-full flex-col rounded-lg border lg:flex-row', className)}
             {...props}
         >
             <Tree
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
-                    'w-full lg:border-r transition-all rounded-b-none lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg max-h-none min-w-0 border-x-0 border-t-0 lg:border-b-0',
+                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-l-lg lg:rounded-r-none lg:border-r lg:border-b-0',
                     !sidebarOpen
-                        ? 'lg:w-0 lg:h-auto h-0 p-0 overflow-hidden border-none'
+                        ? 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
                         : 'min-h-40'
                 )}
                 aria-label='Files'
@@ -204,18 +204,18 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             >
                 {files.map(renderItem)}
             </Tree>
-            <div className='w-full grid'>
-                <div className='px-4 py-1.5 max-h-12 border-b flex items-center gap-2 relative'>
+            <div className='grid w-full'>
+                <div className='relative flex max-h-12 items-center gap-2 border-b px-4 py-1.5'>
                     <Button
                         onPress={() => setSidebarOpen(!sidebarOpen)}
-                        className='size-6 lg:-ml-7 absolute lg:relative lg:left-0 lg:translate-x-0 left-1/2 -translate-x-1/2 rotate-90 lg:rotate-0 flex items-center justify-center -mt-7 lg:mt-0'
+                        className='absolute left-1/2 -mt-7 flex size-6 -translate-x-1/2 rotate-90 items-center justify-center lg:relative lg:left-0 lg:mt-0 lg:-ml-7 lg:translate-x-0 lg:rotate-0'
                     >
                         {sidebarOpen ? <IconPanelLeftClose /> : <IconPanelRightClose />}
                     </Button>
                     <IconBrandReact className='size-4' />
                     {selected.split('/').pop() + '.tsx'}
                 </div>
-                <Code code={code} className='[&_pre]:min-h-[38rem] border-none' />
+                <Code code={code} className='border-none [&_pre]:min-h-[38rem]' />
             </div>
         </div>
     )

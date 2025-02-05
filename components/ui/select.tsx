@@ -19,16 +19,18 @@ import { DropdownItem, DropdownItemDetails, DropdownSection } from './dropdown'
 import { Description, FieldError, Label } from './field'
 import { ListBox } from './list-box'
 import { Popover } from './popover'
-import { cn, cr } from './utils'
+import { cn, cr, focusStyles } from './utils'
 
 const selectTriggerStyles = tv({
+    extend: focusStyles,
     base: [
-        'outline-none group-disabled:bg-muted group-disabled:opacity-50 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 group-open:border-primary group-open:ring-4 group-open:ring-primary/20 flex h-10 w-full cursor-default items-center gap-4 rounded-lg border border-muted bg-background py-2 pl-3 pr-2 text-start shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition dark:shadow-none'
+        'border-muted flex h-10 w-full cursor-default items-center gap-4 gap-x-2 rounded-lg border py-2 pr-2 pl-3 text-start transition group-data-disabled:opacity-50 **:data-[slot=icon]:size-4',
+        'group-data-open:border-primary/70 data-hovered:border-primary/60 group-data-open:ring-primary/20 group-data-open:ring-4',
+        'text-fg group-data-invalid:border-danger group-data-invalid:ring-danger/20'
     ],
     variants: {
         isDisabled: {
-            false: 'text-foreground group-invalid:border-danger group-invalid:ring-danger/20',
-            true: 'bg-muted text-muted-foreground'
+            true: 'opacity-50'
         }
     }
 })
@@ -68,12 +70,9 @@ const Select = <T extends object>({
                     )}
                 >
                     {props.prefix && <span className='-mr-1'>{props.prefix}</span>}
-                    <SelectValue className='flex-1 [&_[slot=description]]:hidden text-base placeholder-shown:text-muted-foreground lg:text-sm' />
+                    <SelectValue className='data-placeholder:text-muted-fg grid flex-1 grid-cols-[auto_1fr] items-center text-base *:data-avatar:*:-mx-0.5 *:data-avatar:-mx-0.5 *:data-avatar:*:mr-2 *:data-avatar:mr-2 *:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:mr-2 sm:text-sm [&_[slot=description]]:hidden' />
 
-                    <IconChevronDown
-                        aria-hidden
-                        className='size-4 text-muted-foreground group-open:rotate-180 group-open:text-foreground group-disabled:opacity-50'
-                    />
+                    <IconChevronDown className='text-muted-fg group-data-open:text-fg size-4 shrink-0 duration-300 group-data-disabled:opacity-50 group-data-open:rotate-180' />
                 </Button>
             </Group>
             {description && <Description>{description}</Description>}

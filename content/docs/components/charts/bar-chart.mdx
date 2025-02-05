@@ -5,76 +5,50 @@ order: 1
 published: true
 references: ['https://recharts.org/en-US/api/BarChart']
 ---
-## Basic
-Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
-<Demo center component="chart/bar/bar-chart-demo" />
 
 ## Installation
 <Install component='chart' />
+## Basic
+Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
+<Demo center className='w-full' component='charts/bar/bar-chart-basic-demo' />
 
-## Colors
-If you're working on an existing project, you can use these variables. However, if you've just installed Justd, they will already be included during project initialization. You can also customize chart colors, check out the [theme page](/themes) for more options.
-```
-@layer base {
-  root: {
-      --primary-chart: 51.24% 0.222 261.097;
-      --secondary-chart: 76.58% 0.119 263.28;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 81.17% 0.097 249.1;
-  }
-  .dark: {
-      --primary-chart: 54.6% 0.215 262.87;
-      --secondary-chart: 72.11% 0.142 253.1;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 88.29% 0.057 251.91;
-  }
-}
-```
+## Horizontal
+Use horizontal to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-horizontal-demo' />
 
-## Tooltip
-Tooltips are used to provide additional information about a chart element when the user hovers over it. They can be used to display additional details, such as the value of a data point, or to provide context about the data.
-```
-import { Chart } from '@/components/ui'
-import { BarChart } from 'recharts'
 
-<BarChart accessibilityLayer data={data}>
-  <XAxis.../>
-  <Chart.Tooltip cursor={false} content={<Chart.TooltipContent />} />
-  <Bar.../>
-</BarChart>
-```
+## Label
+Use label to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-label-demo' />
 
-## Legend
-Legends are used to display a list of labels for different chart elements. They can be used to provide context about the data and help the user understand the meaning of different colors and shapes.
-```
-import { Chart } from '@/components/ui'
-import { BarChart } from 'recharts'
+## Inset Label
+Use horizontal to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-horizontal-label-inset-demo' />
 
-<BarChart>
-  ...
-  <Chart.Legend content={<Chart.LegendContent />} />
-</BarChart>
-```
+## Custom Label
+Use custom label to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-custom-label-demo' />
 
-## Bar Chart
-Bar charts are perfect for comparing different categories. The lengths of the bars make it easy to compare quantities side by side, showing differences between groups clearly.
+## Mixed
+Use mixed to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-mixed-demo' />
 
-### Horizontal
-<Demo center component="chart/bar/bar-chart-horizontal-demo" />
+## Negative
+Use negative to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-negative-demo' />
 
-### Multiple
-<Demo center component="chart/bar/bar-chart-multiple-demo" />
+## Multiple
+Use multiple to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-multiple-demo' />
 
-### Custom Label
-<Demo center component="chart/bar/bar-chart-analytic-demo" />
+## Stacked Legend
+Use stackedLegend to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-stacked-legend-demo' />
 
-### Mixed
-<Demo center component="chart/bar/bar-chart-mixed-demo" />
+## Active
+Use active to display multiple data sets on the same chart.
+<Demo center className='w-full' component='charts/bar/bar-chart-active-demo' />
 
-## Accessibility
-For accessibility purposes, you can add the `accessibilityLayer` prop to the chart component. This will add a `role="img"` to the chart, which will make it accessible to screen readers.
-```
-<BarChart accessibilityLayer />
-```
+## Controlled
+Sometimes you might want to control the chart data dynamically.
+<Demo center className='w-full' component='charts/bar/bar-chart-controlled-demo' />

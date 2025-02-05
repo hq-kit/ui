@@ -89,17 +89,15 @@ export default async function DocsPage(props: DocPageProps) {
                     <h1 className='mb-2 font-semibold tracking-tight sm:tracking-tight text-2xl sm:text-3xl'>
                         {doc.title}
                     </h1>
-                    {doc.description ? (
-                        <p className='text-xl mt-0 text-muted-foreground'>{doc.description}</p>
-                    ) : null}
+                    {doc.description && <p className='text-xl mt-0'>{doc.description}</p>}
 
-                    <div className='not-prose'>
+                    <div>
                         <div className='flex gap-2 mt-0'>
                             {doc.references && doc.references?.length > 0 && (
                                 <DocRefs references={doc.references} />
                             )}
                         </div>
-                        <Separator className='my-4 lg:my-10 not-prose' />
+                        <Separator className='my-4 lg:my-10' />
                     </div>
                     <TableOfContents className='mt-8 block xl:hidden' items={doc.toc} />
                     <MDXContent code={doc.body} />

@@ -43,11 +43,11 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                     <HeroTitle>ICONS</HeroTitle>
                     <HeroDescription>
                         This UI Icon Library for Project, currently only for
-                        <strong className='text-foreground'> React</strong>, most of these icons are
-                        forked from{' '}
+                        <strong className='text-fg'> React</strong>, most of these icons are forked
+                        from{' '}
                         <Link
                             target='_blank'
-                            className='text-foreground font-semibold hover:text-primary'
+                            className='text-fg hover:text-primary font-semibold'
                             href='https://tabler.io/icons'
                         >
                             Tabler Icons
@@ -55,7 +55,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         and{' '}
                         <Link
                             target='_blank'
-                            className='text-foreground font-semibold hover:text-primary'
+                            className='text-fg hover:text-primary font-semibold'
                             href='https://lucide.dev/icons/'
                         >
                             Lucide Icons
@@ -89,15 +89,15 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                 </HeroHeader>
             </Hero>
             <IconsController />
-            <Container className='py-4 flex w-full flex-col lg:flex-row gap-8 items-start'>
+            <Container className='flex w-full flex-col items-start gap-8 py-4 lg:flex-row'>
                 <React.Suspense
                     fallback={
-                        <div className='flex justify-center items-center min-h-96'>
+                        <div className='flex min-h-96 items-center justify-center'>
                             <Loader size='xl' />
                         </div>
                     }
                 >
-                    <div className='flex items-center gap-2 flex-wrap justify-between'>
+                    <div className='flex flex-wrap items-center justify-between gap-2'>
                         {filteredIcons.map((item, i) => (
                             <IconComponent
                                 key={i}

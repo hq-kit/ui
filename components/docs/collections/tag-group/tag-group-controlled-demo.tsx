@@ -22,10 +22,10 @@ export default function TagGroupControlledDemo() {
                 selectedKeys={selected}
                 onSelectionChange={setSelected}
             >
-                <Tag.List items={fruitList}>{(item) => <Tag.Item>{item.name}</Tag.Item>}</Tag.List>
+                <Tag.List items={fruitList}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
             </Tag.Group>
 
-            <Description className='mt-2 block [&>strong]:text-foreground text-muted-foreground'>
+            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
                 You have selected: <strong>{Array.from(selected).join(', ')}</strong>
             </Description>
         </div>

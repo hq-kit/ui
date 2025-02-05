@@ -14,13 +14,13 @@ import { Description, FieldError, FieldGroup, Input, Label } from './field'
 import { ctr, useMediaQuery } from './utils'
 
 const fieldBorderStyles = tv({
-    base: 'group-focus:border-primary/70 forced-colors:border-[Highlight]',
+    base: 'group-data-focused:border-primary/70 group-data-hovered:border-primary/60',
     variants: {
         isInvalid: {
-            true: 'group-focus:border-danger/70 forced-colors:border-[Mark]'
+            true: 'group-data-focused:border-danger/70'
         },
         isDisabled: {
-            true: 'group-focus:border-muted/70'
+            true: 'group-data-focused:border-muted'
         }
     }
 })
@@ -29,7 +29,7 @@ const numberFieldStyles = tv({
     slots: {
         base: 'group flex flex-col gap-y-1.5',
         stepperButton:
-            'h-10 cursor-default px-3 text-muted-foreground pressed:bg-primary pressed:text-primary-foreground group-disabled:bg-muted/70 forced-colors:group-disabled:text-[GrayText]'
+            'text-muted-fg data-pressed:bg-primary data-pressed:text-primary-fg group-data-disabled:bg-muted/70 h-10 cursor-default px-3'
     }
 })
 
@@ -77,7 +77,7 @@ const NumberField = ({
                                     <div
                                         className={fieldBorderStyles({
                                             ...renderProps,
-                                            className: 'border-b border-muted'
+                                            className: 'border-muted border-b'
                                         })}
                                     />
                                     <StepperButton
@@ -129,3 +129,4 @@ const StepperButton = ({
 }
 
 export { NumberField }
+export type { NumberFieldProps }

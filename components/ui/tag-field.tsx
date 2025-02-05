@@ -1,13 +1,33 @@
 'use client'
 
-import React from 'react'
+import { useCallback, useState } from 'react'
 
-import { Group, TextField, type Key } from 'react-aria-components'
-import { type ListData } from 'react-stately'
+import type { Key } from 'react-aria-components'
+import { Group, TextField } from 'react-aria-components'
+import type { ListData } from 'react-stately'
+import { twJoin } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-import { Description, Input, Label, type FieldProps } from './field'
-import { Tag, type RestrictedVariant, type TagGroupProps } from './tag-group'
+import type { FieldProps } from './field'
+import { Description, Input, Label } from './field'
+import type { RestrictedVariant, TagGroupProps } from './tag-group'
+import { Tag } from './tag-group'
 import { cn } from './utils'
+
+const tagFieldsStyles = tv({
+    base: ['relative flex min-h-10 flex-row flex-wrap items-center transition'],
+    variants: {
+        appearance: {
+            outline: [
+                'rounded-lg border px-1',
+                'has-[input[data-focused=true]]:border-primary/70',
+                'has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20',
+                'has-[input[data-focused=true]]:ring-primary/20 has-[input[data-focused=true]]:ring-4'
+            ],
+            plain: ['has-[input[data-focused=true]]:border-transparent']
+        }
+    }
+})
 
 interface TagItemProps {
     id: number
@@ -24,10 +44,11 @@ interface TagFieldProps extends Pick<TagGroupProps, 'shape'>, FieldProps {
     list: ListData<TagItemProps>
     onItemInserted?: (tag: TagItemProps) => void
     onItemCleared?: (tag: TagItemProps | undefined) => void
+    appearance?: 'outline' | 'plain'
 }
 
 const TagField = ({
-    variant = 'primary',
+    appearance = 'outline',
     name,
     className,
     list,
@@ -35,11 +56,11 @@ const TagField = ({
     onItemInserted,
     ...props
 }: TagFieldProps) => {
-    const [isInvalid, setIsInvalid] = React.useState(false)
-    const [inputValue, setInputValue] = React.useState('')
+    const [isInvalid, setIsInvalid] = useState(false)
+    const [inputValue, setInputValue] = useState('')
 
     const existingTagCount = list.items.length
-    const maxTags = props.max !== undefined ? props.max : Infinity
+    const maxTags = props.max !== undefined ? props.max : Number.POSITIVE_INFINITY
     const maxTagsToAdd = maxTags - existingTagCount
 
     const insertTag = () => {
@@ -54,7 +75,7 @@ const TagField = ({
             return () => clearTimeout(timeoutId)
         }
 
-        tagNames.slice(0, maxTagsToAdd).forEach((tagName) => {
+        for (const tagName of tagNames.slice(0, maxTagsToAdd)) {
             const formattedName = tagName
                 .trim()
                 .replace(/\s+/g, ' ')
@@ -72,7 +93,7 @@ const TagField = ({
                 list.append(tag)
                 onItemInserted?.(tag)
             }
-        })
+        }
 
         setInputValue('')
     }
@@ -85,7 +106,12 @@ const TagField = ({
 
     const onRemove = (keys: Set<Key>) => {
         list.remove(...keys)
-        onItemCleared?.(list.getItem([...keys][0]))
+
+        const firstKey = [...keys][0]
+        if (firstKey !== undefined) {
+            onItemCleared?.(list.getItem(firstKey))
+        }
+
         clearInvalidFeedback()
     }
 
@@ -101,12 +127,12 @@ const TagField = ({
         }
     }
 
-    const popLast = React.useCallback(() => {
-        if (list.items.length == 0) {
+    const popLast = useCallback(() => {
+        if (list.items.length === 0) {
             return
         }
 
-        const endKey = list.items[list.items.length - 1]
+        const endKey = list.items[list.items.length - 1]!
 
         if (endKey !== null) {
             list.remove(endKey.id)
@@ -115,35 +141,34 @@ const TagField = ({
     }, [list, onItemCleared])
 
     return (
-        <div className={cn('flex flex-col gap-1 w-full', className)}>
+        <div className={cn('flex w-full flex-col gap-y-1.5', className)}>
             {props.label && <Label>{props.label}</Label>}
-            <Group className={cn('flex flex-col', props.isDisabled && 'opacity-50')}>
+            <Group className={twJoin('flex flex-col', props.isDisabled && 'opacity-50')}>
                 <Tag.Group
-                    variant={variant}
+                    variant={props.variant}
                     shape={props.shape}
                     aria-label='List item inserted'
                     onRemove={onRemove}
                 >
                     <div
                         className={cn(
-                            'relative flex min-h-10 bg-background flex-row flex-wrap items-center transition',
-                            'px-1 rounded-lg shadow-sm border',
-                            'has-[input[data-focused=true]]:border-primary',
-                            'has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20',
-                            'has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-primary/20'
+                            tagFieldsStyles({ appearance }),
+                            !props.isDisabled && 'has-[input[data-hovered=true]]:border-primary/60'
                         )}
                     >
                         <div className='flex flex-1 flex-wrap items-center'>
                             <Tag.List
                                 items={list.items}
-                                className={cn(
-                                    list.items.length !== 0 ? 'py-1.5 px-0.5 gap-1.5' : 'gap-0',
-                                    props.shape === 'square' &&
-                                        '[&_.tag]:rounded-[calc(var(--radius)-4px)]',
-                                    '[&_.tag]:cursor-default last:[&_.tag]:-mr-1 outline-none'
+                                className={twJoin(
+                                    list.items.length !== 0
+                                        ? appearance === 'outline' && 'gap-1.5 px-1 py-1.5'
+                                        : 'gap-0',
+                                    props.shape === 'rounded' &&
+                                        '[&_.tag]:rounded-[calc(var(--radius-lg)-4px)]',
+                                    'outline-hidden [&_.tag]:cursor-default [&_.tag]:last:-mr-1'
                                 )}
                             >
-                                {(item) => <Tag.Item>{item.name}</Tag.Item>}
+                                {(item) => <Tag>{item.name}</Tag>}
                             </Tag.List>
                             <TextField
                                 isDisabled={props.isDisabled}
@@ -154,10 +179,11 @@ const TagField = ({
                                 onKeyDown={onKeyDown}
                                 onChange={setInputValue}
                                 value={inputValue}
+                                className='flex-1'
                                 {...props}
                             >
                                 <Input
-                                    className='w-auto inline'
+                                    className='inline'
                                     placeholder={
                                         maxTagsToAdd <= 0
                                             ? 'Remove one to add more'
@@ -182,4 +208,5 @@ const TagField = ({
     )
 }
 
-export { TagField, type TagItemProps }
+export { TagField }
+export type { TagFieldProps, TagItemProps }

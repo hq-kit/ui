@@ -2,7 +2,7 @@
 
 import { useListData } from 'react-stately'
 
-import { Tag } from '@/components/ui'
+import { badgeStyles, Tag, TagGroupProps } from '@/components/ui'
 
 const shoes = [
     { id: '1', name: 'Nike', available: true },
@@ -11,62 +11,25 @@ const shoes = [
     { id: '4', name: 'Reebok', available: true }
 ]
 
+type Appearance = TagGroupProps['variant']
+
 export default function TagGroupVariantDemo() {
     const shoesList = useListData({
         initialItems: shoes
     })
     return (
-        <div className='space-y-2 max-w-sm'>
-            <Tag.Group
-                variant='primary'
-                aria-label='Primary Variant'
-                selectionMode='multiple'
-                onRemove={(keys) => shoesList.remove(...keys)}
-            >
-                <Tag.List items={shoesList.items}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
-            </Tag.Group>
-            <Tag.Group
-                variant='secondary'
-                aria-label='Secondary Variant'
-                selectionMode='multiple'
-                onRemove={(keys) => shoesList.remove(...keys)}
-            >
-                <Tag.List items={shoesList.items}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
-            </Tag.Group>
-            <Tag.Group
-                variant='success'
-                aria-label='Success Variant'
-                selectionMode='multiple'
-                onRemove={(keys) => shoesList.remove(...keys)}
-            >
-                <Tag.List items={shoesList.items}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
-            </Tag.Group>
-            <Tag.Group
-                variant='warning'
-                aria-label='Warning Variant'
-                selectionMode='multiple'
-                onRemove={(keys) => shoesList.remove(...keys)}
-            >
-                <Tag.List items={shoesList.items}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
-            </Tag.Group>
-            <Tag.Group
-                variant='danger'
-                aria-label='Danger Variant'
-                selectionMode='multiple'
-                onRemove={(keys) => shoesList.remove(...keys)}
-            >
-                <Tag.List items={shoesList.items}>
-                    {(item) => <Tag.Item>{item.name}</Tag.Item>}
-                </Tag.List>
-            </Tag.Group>
+        <div className='max-w-sm space-y-2'>
+            {Object.keys(badgeStyles.variants.variant).map((variant) => (
+                <Tag.Group
+                    key={variant}
+                    aria-label={variant}
+                    selectionMode='multiple'
+                    onRemove={(keys) => shoesList.remove(...keys)}
+                    variant={variant as Appearance}
+                >
+                    <Tag.List items={shoesList.items}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
+                </Tag.Group>
+            ))}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { buttonVariants, Card, DescriptionList, Link } from '@/components/ui'
+import { buttonStyles, Card, DescriptionList, Link } from '@/components/ui'
 
 export default function DescriptionListCardDemo() {
     return (
@@ -26,7 +26,7 @@ export default function DescriptionListCardDemo() {
                 </DescriptionList>
             </Card.Content>
             <Card.Footer>
-                <Link className={buttonVariants()} href='#'>
+                <Link className={buttonStyles()} href='#'>
                     Edit
                 </Link>
             </Card.Footer>

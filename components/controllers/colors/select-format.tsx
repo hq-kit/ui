@@ -5,7 +5,7 @@ import React from 'react'
 import { IconSwatchBook } from 'hq-icons'
 import { type ColorFormat } from 'react-aria-components'
 
-import { buttonVariants, Menu } from '@/components/ui'
+import { buttonStyles, Menu } from '@/components/ui'
 
 const ColorSelectors = [
     { type: 'hex', sample: '#3B82F6' },
@@ -21,7 +21,7 @@ type SelectFormatProps = {
 export default function SelectFormat({ selectedFormat, setSelectedFormat }: SelectFormatProps) {
     return (
         <Menu>
-            <Menu.Trigger className={buttonVariants({ variant: 'outline' })}>
+            <Menu.Trigger className={buttonStyles({ variant: 'outline' })}>
                 <IconSwatchBook /> Format : {selectedFormat}
             </Menu.Trigger>
             <Menu.Content items={ColorSelectors}>

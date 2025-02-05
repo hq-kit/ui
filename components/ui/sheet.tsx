@@ -1,35 +1,25 @@
 'use client'
 
-import React from 'react'
-
-import {
-    type DialogProps,
-    DialogTrigger as DialogTriggerPrimitive,
-    type DialogTriggerProps,
-    type Modal,
-    ModalOverlay,
-    type ModalOverlayProps as ModalOverlayPrimitiveProps,
-    Modal as ModalPrimitive
-} from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import type { DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
+import { DialogTrigger, Modal, ModalOverlay } from 'react-aria-components'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 import { Dialog } from './dialog'
 import { cr } from './utils'
 
-const sheetOverlayStyles = tv({
+const overlayStyles = tv({
     base: [
-        'fixed top-0 left-0 w-full h-[--visual-viewport-height] isolate z-50 flex items-center justify-center p-4'
+        'bg-fg/15 dark:bg-bg/40 fixed top-0 left-0 isolate z-50 flex h-(--visual-viewport-height) w-full items-center justify-center p-4'
     ],
     variants: {
         isBlurred: {
-            true: 'backdrop-blur',
-            false: 'bg-dark/15 dark:bg-dark/40'
+            true: 'bg-bg/15 dark:bg-bg/40 backdrop-blur'
         },
         isEntering: {
-            true: 'animate-in fade-in duration-200 ease-out'
+            true: 'fade-in animate-in duration-300 ease-out'
         },
         isExiting: {
-            true: 'animate-out fade-out duration-200 ease-in'
+            true: 'fade-out animate-out duration-200 ease-in'
         }
     }
 })
@@ -38,59 +28,60 @@ type Sides = 'top' | 'bottom' | 'left' | 'right'
 const generateCompoundVariants = (sides: Array<Sides>) => {
     return sides.map((side) => ({
         side,
-        isStack: true,
+        isFloat: true,
         className:
             side === 'top'
-                ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0 ring-dark/5 dark:ring-muted'
+                ? 'top-2 inset-x-2 rounded-xl ring-1 border-b-0'
                 : side === 'bottom'
-                  ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0 ring-dark/5 dark:ring-muted'
+                  ? 'bottom-2 inset-x-2 rounded-xl ring-1 border-t-0'
                   : side === 'left'
-                    ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0 ring-dark/5 dark:ring-muted'
-                    : 'right-2 inset-y-2 rounded-lg ring-1 border-l-0 ring-dark/5 dark:ring-muted'
+                    ? 'left-2 inset-y-2 rounded-xl ring-1 border-r-0'
+                    : 'right-2 inset-y-2 rounded-xl ring-1 border-l-0'
     }))
 }
 
-const sheetContentStyles = tv({
-    base: 'fixed z-50 grid gap-4 bg-background border-dark/5 dark:border-muted text-foreground shadow-lg transition ease-in-out',
+const contentStyles = tv({
+    base: 'border-fg/5 bg-bg text-fg dark:border-muted fixed z-50 grid gap-4 shadow-lg transition ease-in-out',
     variants: {
         isEntering: {
-            true: 'duration-300 animate-in '
+            true: 'animate-in duration-300'
         },
         isExiting: {
-            true: 'duration-200 animate-out'
+            true: 'animate-out duration-200'
         },
         side: {
-            top: 'inset-x-0 top-0 rounded-b-lg border-b entering:slide-in-from-top exiting:slide-out-to-top',
-            bottom: 'inset-x-0 bottom-0 rounded-t-lg border-t entering:slide-in-from-bottom exiting:slide-out-to-bottom',
-            left: 'inset-y-0 left-0 h-auto w-[19rem] sm:w-3/4 overflow-y-auto border-r entering:slide-in-from-left exiting:slide-out-to-left sm:max-w-xs',
-            right: 'inset-y-0 right-0 h-auto w-[19rem] sm:w-3/4 overflow-y-auto border-l entering:slide-in-from-right exiting:slide-out-to-right sm:max-w-xs'
+            top: 'data-entering:slide-in-from-top data-exiting:slide-out-to-top inset-x-0 top-0 rounded-b-2xl border-b',
+            bottom: 'data-entering:slide-in-from-bottom data-exiting:slide-out-to-bottom inset-x-0 bottom-0 rounded-t-2xl border-t',
+            left: 'data-entering:slide-in-from-left data-exiting:slide-out-to-left inset-y-0 left-0 h-auto w-full max-w-xs overflow-y-auto border-r',
+            right: 'data-entering:slide-in-from-right data-exiting:slide-out-to-right inset-y-0 right-0 h-auto w-full max-w-xs overflow-y-auto border-l'
         },
-        isStack: {
-            true: '',
-            false: ''
+        isFloat: {
+            false: 'border-fg/20 dark:border-muted',
+            true: 'ring-fg/5 dark:ring-border'
         }
     },
     compoundVariants: generateCompoundVariants(['top', 'bottom', 'left', 'right'])
 })
 
-const Sheet = ({ children, ...props }: DialogTriggerProps) => {
-    return <DialogTriggerPrimitive {...props}>{children}</DialogTriggerPrimitive>
+type SheetProps = DialogTriggerProps
+const Sheet = (props: SheetProps) => {
+    return <DialogTrigger {...props} />
 }
 
 interface SheetContentProps
     extends Omit<React.ComponentProps<typeof Modal>, 'children' | 'className'>,
-        Omit<ModalOverlayPrimitiveProps, 'className'>,
-        VariantProps<typeof sheetOverlayStyles> {
+        Omit<ModalOverlayProps, 'className'>,
+        VariantProps<typeof overlayStyles> {
     'aria-label'?: DialogProps['aria-label']
     'aria-labelledby'?: DialogProps['aria-labelledby']
     role?: DialogProps['role']
     closeButton?: boolean
     isBlurred?: boolean
-    isStack?: boolean
+    isFloat?: boolean
     side?: Sides
     classNames?: {
-        overlay?: ModalOverlayPrimitiveProps['className']
-        content?: ModalOverlayPrimitiveProps['className']
+        overlay?: ModalOverlayProps['className']
+        content?: ModalOverlayProps['className']
     }
 }
 
@@ -101,7 +92,8 @@ const SheetContent = ({
     side = 'right',
     role = 'dialog',
     closeButton = true,
-    isStack = true,
+    isFloat = true,
+    children,
     ...props
 }: SheetContentProps) => {
     const _isDismissable = role === 'alertdialog' ? false : isDismissable
@@ -109,7 +101,7 @@ const SheetContent = ({
         <ModalOverlay
             isDismissable={_isDismissable}
             className={cr(classNames?.overlay, (className, renderProps) => {
-                return sheetOverlayStyles({
+                return overlayStyles({
                     ...renderProps,
                     isBlurred,
                     className
@@ -117,47 +109,55 @@ const SheetContent = ({
             })}
             {...props}
         >
-            <ModalPrimitive
+            <Modal
                 className={cr(classNames?.content, (className, renderProps) =>
-                    sheetContentStyles({
+                    contentStyles({
                         ...renderProps,
                         side,
-                        isStack,
+                        isFloat,
                         className
                     })
                 )}
                 {...props}
             >
-                <Dialog
-                    role={role}
-                    aria-label={props['aria-label'] ?? undefined}
-                    className='h-full'
-                >
-                    {(values) => (
+                {(values) => (
+                    <Dialog
+                        role={role}
+                        aria-label={props['aria-label'] ?? undefined}
+                        className='h-full'
+                    >
                         <>
-                            {props.children as React.ReactNode}
+                            {typeof children === 'function' ? children(values) : children}
                             {closeButton && (
                                 <Dialog.CloseIndicator
                                     className='top-2.5 right-2.5'
-                                    close={values.close}
                                     isDismissable={_isDismissable}
                                 />
                             )}
                         </>
-                    )}
-                </Dialog>
-            </ModalPrimitive>
+                    </Dialog>
+                )}
+            </Modal>
         </ModalOverlay>
     )
 }
 
-Sheet.Trigger = Dialog.Trigger
-Sheet.Footer = Dialog.Footer
+const SheetTrigger = Dialog.Trigger
+const SheetFooter = Dialog.Footer
+const SheetHeader = Dialog.Header
+const SheetTitle = Dialog.Title
+const SheetDescription = Dialog.Description
+const SheetBody = Dialog.Body
+const SheetClose = Dialog.Close
+
+Sheet.Trigger = SheetTrigger
+Sheet.Footer = SheetFooter
+Sheet.Header = SheetHeader
+Sheet.Title = SheetTitle
+Sheet.Description = SheetDescription
+Sheet.Body = SheetBody
+Sheet.Close = SheetClose
 Sheet.Content = SheetContent
-Sheet.Header = Dialog.Header
-Sheet.Title = Dialog.Title
-Sheet.Description = Dialog.Description
-Sheet.Body = Dialog.Body
-Sheet.Close = Dialog.Close
 
 export { Sheet }
+export type { SheetContentProps, SheetProps, Sides }

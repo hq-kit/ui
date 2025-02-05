@@ -6,10 +6,10 @@ import { Container } from '@/components/ui'
 export function IconsController() {
     return (
         <>
-            <div className='w-full rounded-b-lg bg-background/60 backdrop-blur-xl sticky top-0 lg:top-14 py-6 z-10'>
-                <Container className='flex flex-col relative sm:flex-row items-center justify-between gap-2'>
+            <div className='bg-bg/60 sticky top-0 z-10 w-full rounded-b-lg py-6 backdrop-blur-xl lg:top-14'>
+                <Container className='relative flex flex-col items-center justify-between gap-2 sm:flex-row'>
                     <Search />
-                    <div className='flex gap-2 w-full sm:w-auto items-center'>
+                    <div className='flex w-full items-center gap-2 sm:w-auto'>
                         <SelectStroke />
                         <SelectSize />
                     </div>

@@ -101,7 +101,7 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                                 typeof subValue === 'object' && 'title' in subValue ? (
                                     <Command.Item
                                         value={goodTitle(key + ' ' + (subValue as Doc).title)}
-                                        className='pl-[2rem] flex justify-between items-center'
+                                        className='flex items-center justify-between pl-[2rem]'
                                         key={`${key}-${subKey}`}
                                         onSelect={() => router.push(`/${subValue.slug}`)}
                                     >

@@ -1,12 +1,13 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
+
+import type { Selection } from 'react-aria-components'
 
 import { Button, Menu } from '@/components/ui'
-import { type Selection } from '@react-types/shared'
 
 export default function MultipleMenuDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set(['autoPlay']))
+    const [selected, setSelected] = useState<Selection>(new Set(['autoPlay']))
     return (
         <Menu>
             <Button variant='outline'>Open</Button>
@@ -18,9 +19,9 @@ export default function MultipleMenuDemo() {
                 items={items}
             >
                 {(item) => (
-                    <Menu.Checkbox id={item.slug} textValue={item.name}>
-                        {item.name}
-                    </Menu.Checkbox>
+                    <Menu.Item id={item.slug} textValue={item.name}>
+                        <Menu.Label>{item.name}</Menu.Label>
+                    </Menu.Item>
                 )}
             </Menu.Content>
         </Menu>

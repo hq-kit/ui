@@ -4,10 +4,10 @@ import React from 'react'
 
 import Paginator from 'components/paginator'
 import { IconEllipsisVertical, IconEye, IconHighlighter, IconPlus, IconTrash } from 'hq-icons'
-import NavbarLayout from 'layouts/navbar-layout'
 import { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
 
+import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Card, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
 
 type product = {

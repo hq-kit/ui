@@ -5,79 +5,45 @@ order: 3
 published: true
 references: ['https://recharts.org/en-US/api/LineChart']
 ---
-## Basic
-Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
-<Demo center component="chart/line/line-chart-demo" />
-
 ## Installation
 <Install component='chart' />
 
-## Colors
-If you're working on an existing project, you can use these variables. However, if you've just installed Justd, they will already be included during project initialization. You can also customize chart colors, check out the [theme page](/themes) for more options.
-```
-@layer base {
-  root: {
-      --primary-chart: 51.24% 0.222 261.097;
-      --secondary-chart: 76.58% 0.119 263.28;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 81.17% 0.097 249.1;
-  }
-  .dark: {
-      --primary-chart: 54.6% 0.215 262.87;
-      --secondary-chart: 72.11% 0.142 253.1;
-      --tertiary-chart: 63.25% 0.184 258.64;
-      --highlight-chart: 81.17% 0.097 249.1;
-      --accent-chart: 88.29% 0.057 251.91;
-  }
-}
-```
+## Basic
+Charts are used to display data in a clear and concise manner. They are ideal for presenting information in a visually appealing and easy-to-understand format.
+<Demo center className='w-full' component='charts/line/line-chart-basic-demo'/>
 
-## Tooltip
-Tooltips are used to provide additional information about a chart element when the user hovers over it. They can be used to display additional details, such as the value of a data point, or to provide context about the data.
-```
-import { Chart } from '@/components/ui'
-import { LineChart } from 'recharts'
+## Dots
+Display dots on your chart to highlight specific data points and enhance clarity.
+<Demo center className='w-full' component='charts/line/line-chart-dots-demo'/>
 
-<LineChart accessibilityLayer data={data}>
-  <XAxis.../>
-  <Chart.Tooltip cursor={false} content={<Chart.TooltipContent />} />
-  <Bar.../>
-</LineChart>
-```
+## Dots Color
+Change the color of chart dots to align with your branding or make the data stand out.
+<Demo center className='w-full' component='charts/line/line-chart-dots-color-demo'/>
 
-## Legend
-Legends are used to display a list of labels for different chart elements. They can be used to provide context about the data and help the user understand the meaning of different colors and shapes.
-```
-import { Chart } from '@/components/ui'
-import { LineChart } from 'recharts'
+## Custom Dots
+Enhance your charts by customizing the dots for better visual impact and data representation.
+<Demo center className='w-full' component='charts/line/line-chart-custom-dots-demo'/>
 
-<LineChart>
-  ...
-  <Chart.Legend content={<Chart.LegendContent />} />
-</LineChart>
-```
+## Label
+Add labels to your chart to provide additional context and improve data visualization.
+<Demo center className='w-full' component='charts/line/line-chart-label-demo'/>
 
-## Line Chart
-A line chart is used to display data points connected by a straight line, showing trends or changes over time. It's ideal for visualizing continuous data, especially when you want to emphasize the direction of change (upward or downward trends) over a period.
+## Custom Label
+Add custom labels to your charts to provide additional context and improve readability.
+<Demo center className='w-full' component='charts/line/line-chart-custom-label-demo'/>
 
-### Multiple
-<Demo center component="chart/line/line-chart-multiple-demo" />
+## Linear
+Show data trends with a linear chart for a straightforward and clean presentation.
+<Demo center className='w-full' component='charts/line/line-chart-linear-demo'/>
 
-### Dots
-<Demo center component="chart/line/line-chart-dots-demo" />
+## Multiple
+Visualize multiple datasets in one chart for comparison and analysis.
+<Demo center className='w-full' component='charts/line/line-chart-multiple-demo'/>
 
-### Dots Color
-<Demo center component="chart/line/line-chart-dots-color-demo" />
+## Step
+Highlight discrete changes in your data with a step chart for clarity.
+<Demo center className='w-full' component='charts/line/line-chart-step-demo'/>
 
-### Custom Label
-<Demo center component="chart/line/line-chart-label-demo" />
-
-### Linear
-<Demo center component="chart/line/line-chart-linear-demo" />
-
-## Accessibility
-For accessibility purposes, you can add the `accessibilityLayer` prop to the chart component. This will add a `role="img"` to the chart, which will make it accessible to screen readers.
-```
-<LineChart accessibilityLayer />
-```
+## Controlled
+Make your charts interactive to allow users to engage and explore data in detail.
+<Demo center className='w-full' component='charts/line/line-chart-controlled-demo'/>

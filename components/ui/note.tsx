@@ -1,24 +1,21 @@
-'use client'
-
-import React from 'react'
-
-import { IconCircleAlert, IconCircleCheck, IconTriangleAlert } from 'hq-icons'
-import { Text } from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { IconCircleAlert, IconCircleCheck, IconInfo } from 'hq-icons'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 const noteStyles = tv({
     base: [
-        'my-4 px-4 [&_.nd]:block [&_.nd]:text-sm py-4 leading-4 overflow-hidden rounded-lg border [&_strong]:font-medium',
-        '[&_svg]:size-5 [&_svg]:shrink-0 [&_a]:underline [&_a]:hover:underline'
+        'w-full overflow-hidden rounded-lg p-4 inset-ring-1 inset-ring-current/10 sm:text-sm/6',
+        '[&_a]:underline data-hovered:[&_a]:underline **:[strong]:font-semibold'
     ],
     variants: {
         variant: {
-            primary: ['border-primary/35 [&_a]:text-primary text-primary bg-primary/10 leading-4'],
+            primary: [
+                'border-primary/35 [&_a]:text-primary text-primary bg-primary/10 leading-4',
+                'dark:[&_a]:text-primary'
+            ],
             secondary: [
-                'border-border [&_a]:text-secondary-foreground text-secondary-foreground bg-secondary/50 [&_svg]:text-secondary-foreground',
+                'border-muted [&_a]:text-secondary-foreground text-secondary-foreground bg-secondary/50 [&_svg]:text-secondary-foreground',
                 'dark:[&_a]:text-secondary-foreground dark:[&_svg]:text-secondary-foreground'
             ],
-            info: ['border-info/20 text-info bg-info/5 dark:bg-info/10 leading-4'],
             warning:
                 'border-warning/50 dark:border-warning/25 bg-warning/5 text-warning dark:text-warning',
             danger: 'border-danger/30 bg-danger/5 dark:bg-danger/10 text-danger',
@@ -35,30 +32,33 @@ const noteStyles = tv({
 interface NoteProps
     extends React.HtmlHTMLAttributes<HTMLDivElement>,
         VariantProps<typeof noteStyles> {
-    hideIndicator?: boolean
+    indicator?: boolean
 }
 
-const Note = ({ hideIndicator = false, variant = 'primary', className, ...props }: NoteProps) => {
+const Note = ({ indicator = true, variant, className, ...props }: NoteProps) => {
+    const iconMap: Record<string, React.ElementType | null> = {
+        primary: IconInfo,
+        warning: IconCircleAlert,
+        danger: IconCircleAlert,
+        success: IconCircleCheck,
+        secondary: null
+    }
+
+    const IconComponent = iconMap[variant as string] || null
+
     return (
         <div className={noteStyles({ variant, className })} {...props}>
-            <div className='flex items-start gap-x-2.5'>
-                {!hideIndicator && (
-                    <div className='w-5 shrink-0 mt-px'>
-                        {['info', 'primary', 'secondary'].includes(variant) ? (
-                            <IconCircleAlert />
-                        ) : variant === 'success' ? (
-                            <IconCircleCheck />
-                        ) : (
-                            <IconTriangleAlert />
-                        )}
+            <div className='flex grow items-start'>
+                {IconComponent && indicator && (
+                    <div className='shrink-0'>
+                        <IconComponent className='mr-3 size-5 rounded-full leading-loose ring ring-current/30' />
                     </div>
                 )}
-                <Text slot='description' {...props} className='nd'>
-                    {props.children}
-                </Text>
+                <div className='text-pretty'>{props.children}</div>
             </div>
         </div>
     )
 }
 
-export { Note, type NoteProps }
+export { Note }
+export type { NoteProps }

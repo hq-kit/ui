@@ -8,11 +8,11 @@ import { Container } from '@/components/ui'
 
 export default function Sink() {
     return (
-        <Container className='grid my-6 grid-cols-1 lg:grid-cols-3 gap-4 w-full'>
+        <Container className='my-6 grid w-full grid-cols-1 gap-4 lg:grid-cols-3'>
             <LoginFormSink />
             <DataFormSink />
             <UserProfileSink />
-            <div className='lg:col-span-2 grid gap-4'>
+            <div className='grid gap-4 lg:col-span-2'>
                 <TeamManagementSink />
                 <TableSink />
             </div>

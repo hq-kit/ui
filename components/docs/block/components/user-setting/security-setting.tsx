@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconKey } from 'hq-icons'
 
 import { Button, Card, Form, Switch, TextField } from '@/components/ui'
@@ -43,7 +41,7 @@ export default function SecuritySetting() {
                         name='new_password_confirm'
                         isRequired
                     />
-                    <div className='text-muted-foreground'>Account Preferences</div>
+                    <div className='text-muted-fg'>Account Preferences</div>
                     <Switch>Enable 2FA</Switch>
                     <Switch>Auto Logout</Switch>
                 </Card.Content>

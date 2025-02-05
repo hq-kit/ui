@@ -16,22 +16,21 @@ import {
     RadioGroup,
     Select,
     type SelectedKey,
-    Switch,
-    Tag
+    Switch
 } from '@/components/ui'
 
 const items = [
-    { id: 1, textValue: 'Buttons' },
-    { id: 2, textValue: 'Collections' },
-    { id: 3, textValue: 'Colors' },
-    { id: 4, textValue: 'Date' },
-    { id: 5, textValue: 'Dropzone' },
-    { id: 6, textValue: 'Forms' },
-    { id: 7, textValue: 'Media' },
-    { id: 8, textValue: 'Navigation' },
-    { id: 9, textValue: 'Overlays' },
-    { id: 10, textValue: 'Pickers' },
-    { id: 11, textValue: 'Statuses' }
+    { id: 1, name: 'Buttons' },
+    { id: 2, name: 'Collections' },
+    { id: 3, name: 'Colors' },
+    { id: 4, name: 'Date' },
+    { id: 5, name: 'Dropzone' },
+    { id: 6, name: 'Forms' },
+    { id: 7, name: 'Media' },
+    { id: 8, name: 'Navigation' },
+    { id: 9, name: 'Overlays' },
+    { id: 10, name: 'Pickers' },
+    { id: 11, name: 'Statuses' }
 ]
 
 export default function DataFormSink() {
@@ -78,19 +77,18 @@ export default function DataFormSink() {
                         <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
                     </CheckboxGroup>
                     <MultiSelect
-                        portal={portal}
-                        className='md:w-full'
+                        className='w-full'
                         label='Components'
-                        selectedList={selectedList}
+                        selectedItems={selectedList}
                         items={items}
                         tag={(item) => (
-                            <Tag.Item textValue={item.textValue}>{item.textValue}</Tag.Item>
+                            <MultiSelect.Tag textValue={item.name}>{item.name}</MultiSelect.Tag>
                         )}
                     >
                         {(item) => {
                             return (
-                                <MultiSelect.Item textValue={item.textValue}>
-                                    {item.textValue}
+                                <MultiSelect.Item textValue={item.name}>
+                                    {item.name}
                                 </MultiSelect.Item>
                             )
                         }}

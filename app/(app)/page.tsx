@@ -19,9 +19,9 @@ export default async function Page() {
                     <HeroTitle>HQ KIT</HeroTitle>
                     <HeroDescription>
                         This UI Design is basically built on top of{' '}
-                        <strong className='text-foreground'>React Aria Components</strong>, all
-                        about keeping the web accessible. Easy to customize and just copy & paste
-                        into your React projects.
+                        <strong className='text-fg'>React Aria Components</strong>, all about
+                        keeping the web accessible. Easy to customize and just copy & paste into
+                        your React projects.
                     </HeroDescription>
                 </HeroHeader>
                 <HeroContent>

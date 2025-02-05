@@ -12,7 +12,7 @@ export default function SwitchControlledDemo() {
                 Enable Dark Mode
             </Switch>
 
-            <Description className='mt-2 block [&>strong]:text-foreground'>
+            <Description className='[&>strong]:text-fg mt-2 block'>
                 Dark Mode is <strong>{darkMode ? 'enabled' : 'disabled'}</strong>
             </Description>
         </>

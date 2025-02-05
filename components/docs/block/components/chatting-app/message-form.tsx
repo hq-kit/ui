@@ -52,7 +52,7 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
     return (
         <Form
             onSubmit={onSubmit}
-            className='relative overflow-hidden rounded-lg border-t md:border bg-background'
+            className='bg-bg relative overflow-hidden rounded-lg border-t md:border'
         >
             <div
                 contentEditable
@@ -64,7 +64,7 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
                 }}
                 aria-label='Message'
                 id='message'
-                className='min-h-32 w-full no-scrollbar resize-none border-0 outline-none p-3'
+                className='no-scrollbar min-h-32 w-full resize-none border-0 p-3 outline-none'
             />
             <div className='flex items-center p-2'>
                 <Button variant='ghost' size='icon' type='button'>
@@ -96,13 +96,13 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
 const formatText = (text: string) => {
     return text
         .replace(/_(.*?)_/g, '<em>_$1_</em>')
-        .replace(/_/g, '<span class="text-muted-foreground">_</span>')
+        .replace(/_/g, '<span class="text-muted-fg">_</span>')
         .replace(/\*(.*?)\*/g, '<strong>*$1*</strong>')
-        .replace(/\*/g, '<span class="text-muted-foreground">*</span>')
+        .replace(/\*/g, '<span class="text-muted-fg">*</span>')
         .replace(/~(.*?)~/g, '<del>~$1~</del>')
-        .replace(/~/g, '<span class="text-muted-foreground">~</span>')
+        .replace(/~/g, '<span class="text-muted-fg">~</span>')
         .replace(/\^(.*?)\^/g, '<sup>^$1^</sup>')
-        .replace(/\^/g, '<span class="text-muted-foreground">^</span>')
+        .replace(/\^/g, '<span class="text-muted-fg">^</span>')
         .replace(
             /(https?:\/\/[^\s]+)/g,
             '<a href="$1" class="text-primary underline" target="_blank" rel="noopener noreferrer">$1</a>'

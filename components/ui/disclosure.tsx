@@ -1,86 +1,71 @@
 'use client'
 
-import React from 'react'
-
 import { IconMinus } from 'hq-icons'
+import type {
+    ButtonProps,
+    DisclosureGroupProps as DisclosureGroupPrimitiveProps,
+    DisclosurePanelProps as DisclosurePanelPrimitiveProps,
+    DisclosureProps as DisclosurePrimitiveProps
+} from 'react-aria-components'
 import {
     Button,
     DisclosureGroup as DisclosureGroupPrimitive,
-    DisclosurePanel,
     Disclosure as DisclosurePrimitive,
-    type ButtonProps,
-    type DisclosureGroupProps as DisclosureGroupPrimitiveProps,
-    type DisclosurePanelProps,
-    type DisclosureProps
+    DisclosurePanel as DisclosurePrimitivePanel,
+    Heading
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn, cr } from './utils'
+import { cn, cr, ctr } from './utils'
 
-interface DisclosureGroupProps extends DisclosureGroupPrimitiveProps {
-    hideBorder?: boolean
+interface AccordionProps extends DisclosureGroupPrimitiveProps {
+    ref?: React.RefObject<HTMLDivElement>
     hideIndicator?: boolean
-    className?: string
+    hideBorder?: boolean
 }
-
-const DisclosureGroupContext = React.createContext<DisclosureGroupProps>({})
-
-const DisclosureGroup = ({
-    children,
-    hideIndicator,
-    hideBorder,
-    className,
-    ...props
-}: DisclosureGroupProps) => {
+const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
     return (
         <DisclosureGroupPrimitive
+            ref={ref}
+            data-slot='disclosure-group'
             {...props}
-            className={({ isDisabled }) =>
-                cn([
-                    isDisabled ? 'cursor-not-allowed opacity-75' : 'cursor-pointer',
-                    hideBorder
-                        ? '[&_[data-slot=accordion-item]]:border-none'
-                        : '[&_[data-slot=accordion-item]]:border-b'
-                ])
-            }
+            className={cn(
+                className,
+                props.hideIndicator && '**:data-[slot=disclosure-chevron]:text-transparent',
+                props.hideBorder &&
+                    '**:data-[slot=disclosure]:border-b-0 **:data-[slot=disclosure-group]:border-t-0',
+                'peer cursor-pointer data-disabled:cursor-not-allowed data-disabled:opacity-75'
+            )}
         >
             {(values) => (
-                <div data-slot='accordion-item-content' className={className}>
-                    <DisclosureGroupContext.Provider value={{ hideIndicator, hideBorder }}>
-                        {typeof children === 'function' ? children(values) : children}
-                    </DisclosureGroupContext.Provider>
+                <div data-slot='disclosure-content'>
+                    {typeof children === 'function' ? children(values) : children}
                 </div>
             )}
         </DisclosureGroupPrimitive>
     )
 }
 
-const disclosureStyles = tv({
-    base: 'flex group relative w-full flex-col',
+const disclosure = tv({
+    base: ['peer group/disclosure w-full min-w-60 border-b'],
     variants: {
         isDisabled: {
-            true: 'cursor-not-allowed opacity-75'
-        },
-        isExpanded: {
-            true: 'pb-3'
+            true: 'cursor-not-allowed opacity-70'
         }
-    },
-    compoundVariants: [
-        {
-            hideBorder: true,
-            isExpanded: true,
-            className: 'pb-2'
-        }
-    ]
+    }
 })
 
-const Disclosure = ({ className, ...props }: DisclosureProps) => {
+interface CollapsibleProps extends DisclosurePrimitiveProps {
+    ref?: React.Ref<HTMLDivElement>
+}
+const Disclosure = ({ className, ref, ...props }: CollapsibleProps) => {
     return (
         <DisclosurePrimitive
-            data-slot='accordion-item'
+            ref={ref}
+            data-slot='disclosure'
             {...props}
             className={cr(className, (className, renderProps) =>
-                disclosureStyles({ ...renderProps, className })
+                disclosure({ ...renderProps, className })
             )}
         >
             {props.children}
@@ -88,86 +73,104 @@ const Disclosure = ({ className, ...props }: DisclosureProps) => {
     )
 }
 
-const accordionTriggerStyles = tv({
+const disclosureTrigger = tv({
     base: [
-        'acrt flex flex-1 group rounded-lg aria-expanded:text-foreground text-muted-foreground sm:text-sm items-center gap-x-2 font-medium'
+        'group/trigger **:svg:text-muted-fg flex w-full items-center justify-between gap-x-2 py-3 font-medium whitespace-nowrap **:data-[slot=disclosure-chevron]:size-4 **:data-[slot=icon]:-mx-0.5 **:data-[slot=icon]:shrink-0 sm:text-sm **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1 [&[aria-expanded=true]_[data-slot=disclosure-chevron]]:rotate-0'
     ],
     variants: {
-        hideBorder: {
-            true: 'py-2',
-            false: 'py-3'
-        },
         isFocused: {
-            true: 'outline-none text-foreground'
+            true: 'text-fg outline-hidden'
         },
         isOpen: {
-            true: 'text-foreground'
+            true: 'text-fg'
         },
         isDisabled: {
-            true: 'opacity-50 cursor-default'
+            true: 'cursor-default opacity-50'
         }
     }
 })
 
-const Trigger = ({ className, ...props }: ButtonProps) => {
-    const { hideIndicator, hideBorder } = React.useContext(DisclosureGroupContext)
+interface DisclosureTriggerProps extends ButtonProps {
+    ref?: React.Ref<HTMLButtonElement>
+}
+const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps) => {
     return (
-        <Button
+        <Heading>
+            <Button
+                ref={ref}
+                slot='trigger'
+                className={cr(className, (className, renderProps) =>
+                    disclosureTrigger({
+                        ...renderProps,
+                        className
+                    })
+                )}
+                {...props}
+            >
+                {(values) => (
+                    <>
+                        {typeof props.children === 'function'
+                            ? props.children(values)
+                            : props.children}
+                        <Indicator
+                            slot='disclosure-chevron'
+                            className='internal-chevron ml-auto shrink-0'
+                        />
+                    </>
+                )}
+            </Button>
+        </Heading>
+    )
+}
+
+interface DisclosureContentProps extends DisclosurePanelPrimitiveProps {
+    ref?: React.Ref<HTMLDivElement>
+}
+const DisclosurePanel = ({ className, ref, ...props }: DisclosureContentProps) => {
+    return (
+        <DisclosurePrimitivePanel
+            ref={ref}
+            data-slot='disclosure-panel'
+            className={ctr(
+                className,
+                'text-muted-fg overflow-hidden text-sm transition-all **:data-[slot=disclosure-group]:border-t **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden has-data-[slot=disclosure-group]:**:[button]:px-4'
+            )}
             {...props}
-            slot='trigger'
-            className={cr(className, (className, renderProps) =>
-                accordionTriggerStyles({
-                    ...renderProps,
-                    hideBorder,
-                    className
-                })
-            )}
         >
-            {(values) => (
-                <>
-                    {typeof props.children === 'function' ? props.children(values) : props.children}
-                    {!hideIndicator && (
-                        <div
-                            className={cn(
-                                'ml-auto relative flex items-center justify-center size-3 indicator',
-                                '-rotate-90 group-aria-expanded:rotate-0 transition-transform duration-300'
-                            )}
-                        >
-                            <IconMinus
-                                className={cn('transition-opacity absolute size-3 indicator')}
-                            />
-                            <IconMinus
-                                className={cn(
-                                    'transition-all absolute size-3',
-                                    '-rotate-90 group-aria-expanded:rotate-0 indicator'
-                                )}
-                            />
-                        </div>
-                    )}
-                </>
-            )}
-        </Button>
+            <div
+                data-slot='disclosure-panel-content'
+                className='pt-0 not-has-data-[slot=disclosure-group]:group-data-expanded/disclosure:pb-3'
+            >
+                {props.children}
+            </div>
+        </DisclosurePrimitivePanel>
     )
 }
 
-const Panel = ({ className, ...props }: DisclosurePanelProps) => {
-    return (
-        <DisclosurePanel {...props} className={cn('sm:text-sm', className)}>
-            {props.children}
-        </DisclosurePanel>
-    )
-}
+const Indicator = ({ className, slot = 'chevron' }: { className?: string; slot?: string }) => (
+    <div
+        data-slot={slot}
+        className={cn(
+            className,
+            'relative inline-flex size-5 -rotate-90 items-center justify-center transition-transform duration-300'
+        )}
+    >
+        <IconMinus data-slot='chevron-passive' className='absolute size-3.5' />
+        <IconMinus
+            data-slot={slot}
+            className='absolute size-3.5 -rotate-90 transition-transform duration-300'
+        />
+    </div>
+)
 
-Disclosure.Trigger = Trigger
-Disclosure.Panel = Panel
-
-const Accordion = (props: DisclosureGroupProps) => <DisclosureGroup {...props} />
+const Accordion = (props: AccordionProps) => <DisclosureGroup {...props} />
 Accordion.Item = Disclosure
-Accordion.Trigger = Trigger
-Accordion.Content = Panel
+Accordion.Trigger = DisclosureTrigger
+Accordion.Content = DisclosurePanel
 
-const Collapsible = (props: DisclosureProps) => <Disclosure {...props} />
-Collapsible.Trigger = Trigger
-Collapsible.Content = Panel
+const Collapsible = (props: CollapsibleProps) => <Disclosure {...props} />
+Collapsible.Trigger = DisclosureTrigger
+Collapsible.Content = DisclosurePanel
 
-export { Accordion, Collapsible }
+export { Accordion, Collapsible, Indicator }
+export type { AccordionProps, CollapsibleProps, DisclosureContentProps, DisclosureTriggerProps }

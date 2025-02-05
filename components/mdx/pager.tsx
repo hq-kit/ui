@@ -2,7 +2,7 @@
 
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 
-import { buttonVariants, cn, Link } from '@/components/ui'
+import { buttonStyles, cn, Link } from '@/components/ui'
 
 interface Doc {
     order: number
@@ -46,13 +46,13 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
     }
 
     return (
-        <div className='flex mt-6 flex-row items-center justify-between'>
+        <div className='mt-6 flex flex-row items-center justify-between'>
             {pager.prev && (
                 <Link
                     aria-label={`Previous page: ${pager.prev.title}`}
                     href={pager.prev.href}
                     variant='unstyled'
-                    className={buttonVariants({ variant: 'outline' })}
+                    className={buttonStyles({ variant: 'outline' })}
                 >
                     <IconChevronLeft />
                     {pager.prev.title}
@@ -63,7 +63,7 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
                     aria-label={`Next page: ${pager.next.title}`}
                     href={pager.next.href}
                     variant='unstyled'
-                    className={cn(buttonVariants({ variant: 'outline' }), 'ml-auto')}
+                    className={cn(buttonStyles({ variant: 'outline' }), 'ml-auto')}
                 >
                     {pager.next.title}
                     <IconChevronRight />

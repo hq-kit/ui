@@ -14,7 +14,7 @@ export default function MenuWithArrowDemo() {
                 <Menu.Content placement='bottom' showArrow className='min-w-64'>
                     <Menu.Header separator>
                         <span className='block'>DQ Al-Haqqi</span>
-                        <span className='font-normal text-muted-foreground'>@dq-alhq</span>
+                        <span className='text-muted-fg font-normal'>@dq-alhq</span>
                     </Menu.Header>
                     <Menu.Item>
                         <IconSettings />
