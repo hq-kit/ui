@@ -2,11 +2,11 @@
 
 import React from 'react'
 
-import { IconAppWindowMac, IconBrandLinux, IconClipboardPen, IconPanelLeftOpen } from 'hq-icons'
+import { IconAppWindowMac, IconBrandLinux } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
 import previews from '@/components/docs/generated/previews.json'
-import { Link, Sidebar } from '@/components/ui'
+import { Link, Sidebar, SidebarInset, SidebarProvider } from '@/components/ui'
 import { goodTitle } from '@/lib/utils'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -19,11 +19,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }, [])
 
     return (
-        <Sidebar.Provider>
+        <SidebarProvider>
             <Sidebar variant='inset'>
                 <Sidebar.Header>
                     <Link
-                        className='flex items-center group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center gap-x-2'
+                        className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
                         href='/docs/components/layouts/sidebar'
                     >
                         <IconBrandLinux className='size-5' />
@@ -33,52 +33,63 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
                 </Sidebar.Header>
                 <Sidebar.Content>
-                    <Sidebar.Section title='Auth Section'>
-                        {blocks?.map(
-                            (block) =>
-                                block.includes('auth') && (
-                                    <SidebarItem
-                                        key={block}
-                                        icon={IconClipboardPen}
-                                        href={`/${block}`}
-                                        textValue={goodTitle(
-                                            block.split('/').pop()?.replace('auth-form-', '') ||
-                                                'Sample Page'
-                                        )}
-                                    />
-                                )
-                        )}
-                    </Sidebar.Section>
-                    <Sidebar.Section title='Pages'>
-                        {blocks?.map(
-                            (block) =>
-                                !block.includes('auth') && (
-                                    <SidebarItem
-                                        key={block}
-                                        icon={IconAppWindowMac}
-                                        href={`/${block}`}
-                                        textValue={goodTitle(
-                                            block.split('/').pop() || 'Sample Page'
-                                        )}
-                                    />
-                                )
-                        )}
-                    </Sidebar.Section>
+                    <Sidebar.SectionGroup>
+                        <Sidebar.Section title='Auth Section'>
+                            {blocks?.map(
+                                (block) =>
+                                    block.includes('auth') && (
+                                        <Sidebar.Item
+                                            key={block}
+                                            href={`/${block}`}
+                                            tooltip={goodTitle(
+                                                block.split('/').pop()?.replace('auth-form-', '') ||
+                                                    'Sample Page'
+                                            )}
+                                        >
+                                            <Sidebar.Label>
+                                                {goodTitle(block.split('/').pop() || 'Sample Page')}
+                                            </Sidebar.Label>
+                                        </Sidebar.Item>
+                                    )
+                            )}
+                        </Sidebar.Section>
+                        <Sidebar.Section title='Pages'>
+                            {blocks?.map(
+                                (block) =>
+                                    !block.includes('auth') && (
+                                        <SidebarItem
+                                            icon={IconAppWindowMac}
+                                            key={block}
+                                            href={`/${block}`}
+                                            tooltip={goodTitle(
+                                                block.split('/').pop() || 'Sample Page'
+                                            )}
+                                        />
+                                    )
+                            )}
+                        </Sidebar.Section>
+                    </Sidebar.SectionGroup>
                 </Sidebar.Content>
             </Sidebar>
-            <header className='md:sticky ml-12 md:ml-0 z-50 absolute justify-between sm:justify-start top-0 md:top-16 h-[3.57rem] px-4 flex items-center gap-x-2'>
-                <Sidebar.Trigger className='-mx-2'>
-                    <IconPanelLeftOpen />
-                </Sidebar.Trigger>
+            <header className='absolute top-0 z-50 ml-12 flex h-[3.57rem] items-center justify-between gap-x-2 px-4 sm:justify-start md:sticky md:top-16 md:ml-0'>
+                <Sidebar.Trigger className='-mx-2' />
             </header>
-            <Sidebar.Inset>
+            <SidebarInset>
                 <div className='p-4 md:p-6'>{children}</div>
-            </Sidebar.Inset>
-        </Sidebar.Provider>
+            </SidebarInset>
+        </SidebarProvider>
     )
 }
 
-function SidebarItem({ icon: Icon, ...props }: React.ComponentProps<typeof Sidebar.Item>) {
+function SidebarItem({
+    icon: Icon,
+    ...props
+}: React.ComponentProps<typeof Sidebar.Item> & { icon: React.FC }) {
     const pathname = usePathname()
-    return <Sidebar.Item isCurrent={pathname === props.href} icon={Icon} {...props} />
+    return (
+        <Sidebar.Item isCurrent={pathname === props.href} {...props}>
+            <Icon />
+            <Sidebar.Label>{props.tooltip}</Sidebar.Label>
+        </Sidebar.Item>
+    )
 }

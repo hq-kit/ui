@@ -8,7 +8,7 @@ import { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
-import { Card, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
+import { Card, Container, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
 
 type product = {
     id: number
@@ -42,90 +42,98 @@ export default function ProductManagement() {
 
     React.useEffect(() => {
         getProducts()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [show, page])
 
     return (
         <NavbarLayout>
-            <Card>
-                <Card.Header>
-                    <Card.Title>Product Management</Card.Title>
-                    <Card.Description>Manage your products</Card.Description>
-                    <Toolbar className='flex justify-between pt-2'>
-                        <Toolbar.Group aria-label='Filters'>
-                            <Select
-                                aria-label='Show'
-                                selectedKey={show}
-                                onSelectionChange={setShow}
-                            >
-                                <Select.Item id={5} textValue='5'>
-                                    5
-                                </Select.Item>
-                                <Select.Item id={10} textValue='10'>
-                                    10
-                                </Select.Item>
-                                <Select.Item id={20} textValue='20'>
-                                    20
-                                </Select.Item>
-                            </Select>
-                        </Toolbar.Group>
-                        <Toolbar.Group aria-label='Actions'>
-                            <SearchField
-                                onChange={handleSearch}
-                                placeholder='Search...'
-                                aria-label='Search'
-                            />
-                            <Toolbar.Item aria-label='Create' size='icon' variant='outline'>
-                                <IconPlus />
-                            </Toolbar.Item>
-                        </Toolbar.Group>
-                    </Toolbar>
-                </Card.Header>
-                <Card.Content>
-                    <Table aria-label='Product'>
-                        <Table.Header>
-                            <Table.Column>#</Table.Column>
-                            <Table.Column id='title' isRowHeader>
-                                Title
-                            </Table.Column>
-                            <Table.Column>Category</Table.Column>
-                            <Table.Column>Price</Table.Column>
-                            <Table.Column />
-                        </Table.Header>
-                        <Table.Body items={items} renderEmptyState={() => <Table.Empty />}>
-                            {(item) => (
-                                <Table.Row id={item.id}>
-                                    <Table.Cell>{item.id}</Table.Cell>
-                                    <Table.Cell>{item.title}</Table.Cell>
-                                    <Table.Cell>{item.category}</Table.Cell>
-                                    <Table.Cell>{item.price}</Table.Cell>
-                                    <Table.Cell className='flex justify-end'>
-                                        <Menu>
-                                            <Menu.Trigger>
-                                                <IconEllipsisVertical />
-                                            </Menu.Trigger>
-                                            <Menu.Content showArrow placement='left top'>
-                                                <Menu.Item>
-                                                    <IconEye /> View
-                                                </Menu.Item>
-                                                <Menu.Item>
-                                                    <IconHighlighter /> Edit
-                                                </Menu.Item>
-                                                <Menu.Separator />
-                                                <Menu.Item isDanger>
-                                                    <IconTrash /> Delete
-                                                </Menu.Item>
-                                            </Menu.Content>
-                                        </Menu>
-                                    </Table.Cell>
-                                </Table.Row>
-                            )}
-                        </Table.Body>
-                    </Table>
-                </Card.Content>
-                <Card.Footer>
-                    <Paginator total={total} page={page} show={Number(show)} setPage={setPage} />
-                </Card.Footer>
-            </Card>
+            <Container className='py-6 @xl:py-12'>
+                <Card>
+                    <Card.Header>
+                        <Card.Title>Product Management</Card.Title>
+                        <Card.Description>Manage your products</Card.Description>
+                        <Toolbar className='flex justify-between pt-2'>
+                            <Toolbar.Group aria-label='Filters'>
+                                <Select
+                                    aria-label='Show'
+                                    selectedKey={show}
+                                    onSelectionChange={setShow}
+                                >
+                                    <Select.Item id={5} textValue='5'>
+                                        5
+                                    </Select.Item>
+                                    <Select.Item id={10} textValue='10'>
+                                        10
+                                    </Select.Item>
+                                    <Select.Item id={20} textValue='20'>
+                                        20
+                                    </Select.Item>
+                                </Select>
+                            </Toolbar.Group>
+                            <Toolbar.Group aria-label='Actions'>
+                                <SearchField
+                                    onChange={handleSearch}
+                                    placeholder='Search...'
+                                    aria-label='Search'
+                                />
+                                <Toolbar.Item aria-label='Create' size='icon' variant='outline'>
+                                    <IconPlus />
+                                </Toolbar.Item>
+                            </Toolbar.Group>
+                        </Toolbar>
+                    </Card.Header>
+                    <Card.Content>
+                        <Table aria-label='Product'>
+                            <Table.Header>
+                                <Table.Column>#</Table.Column>
+                                <Table.Column id='title' isRowHeader>
+                                    Title
+                                </Table.Column>
+                                <Table.Column>Category</Table.Column>
+                                <Table.Column>Price</Table.Column>
+                                <Table.Column />
+                            </Table.Header>
+                            <Table.Body items={items} renderEmptyState={() => <Table.Empty />}>
+                                {(item) => (
+                                    <Table.Row id={item.id}>
+                                        <Table.Cell>{item.id}</Table.Cell>
+                                        <Table.Cell>{item.title}</Table.Cell>
+                                        <Table.Cell>{item.category}</Table.Cell>
+                                        <Table.Cell>{item.price}</Table.Cell>
+                                        <Table.Cell className='flex justify-end'>
+                                            <Menu>
+                                                <Menu.Trigger>
+                                                    <IconEllipsisVertical />
+                                                </Menu.Trigger>
+                                                <Menu.Content showArrow placement='left top'>
+                                                    <Menu.Item>
+                                                        <IconEye /> View
+                                                    </Menu.Item>
+                                                    <Menu.Item>
+                                                        <IconHighlighter /> Edit
+                                                    </Menu.Item>
+                                                    <Menu.Separator />
+                                                    <Menu.Item isDanger>
+                                                        <IconTrash /> Delete
+                                                    </Menu.Item>
+                                                </Menu.Content>
+                                            </Menu>
+                                        </Table.Cell>
+                                    </Table.Row>
+                                )}
+                            </Table.Body>
+                        </Table>
+                    </Card.Content>
+                    <Card.Footer>
+                        <Paginator
+                            total={total}
+                            page={page}
+                            show={Number(show)}
+                            setPage={setPage}
+                        />
+                    </Card.Footer>
+                </Card>
+            </Container>
         </NavbarLayout>
     )
 }

@@ -12,9 +12,9 @@ export default function AuthLayoutSplit({
     children: React.ReactNode
 }) {
     return (
-        <div className='w-full justify-center items-center flex min-h-screen'>
-            <div className='flex w-full max-w-xl px-4 lg:px-8 items-center justify-center py-12'>
-                <Card className='w-full mx-auto lg:border-none lg:shadow-none'>
+        <div className='flex min-h-screen w-full items-center justify-center'>
+            <div className='flex w-full max-w-xl items-center justify-center px-4 py-12 lg:px-8'>
+                <Card className='mx-auto w-full lg:border-none lg:shadow-none'>
                     <Card.Header>
                         <Card.Title>{title}</Card.Title>
                         <Card.Description>{description}</Card.Description>
@@ -22,7 +22,7 @@ export default function AuthLayoutSplit({
                     <Card.Content>{children}</Card.Content>
                 </Card>
             </div>
-            <div className='hidden bg-muted lg:w-full lg:block lg:h-screen'>
+            <div className='bg-muted hidden lg:block lg:h-screen lg:w-full'>
                 <Image
                     src='https://picsum.photos/1920/1080'
                     alt='Image'

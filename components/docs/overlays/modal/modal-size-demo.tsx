@@ -16,7 +16,7 @@ export default function ModalSizeDemo() {
     }
     return (
         <>
-            <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2'>
+            <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4'>
                 {sizes.map((size, idx) => (
                     <Button variant='outline' key={idx} onPress={() => handlePress(size, true)}>
                         Open {size}

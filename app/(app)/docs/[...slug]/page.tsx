@@ -6,8 +6,7 @@ import { MDXContent } from '@/components/mdx'
 import Pager from '@/components/mdx/pager'
 import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
-import { Separator } from '@/components/ui'
-import '@/lib/styles/code.css'
+import { Card } from '@/components/ui'
 
 export interface DocPageProps {
     params: Promise<{
@@ -84,21 +83,23 @@ export default async function DocsPage(props: DocPageProps) {
 
     return (
         <>
-            <div className='min-w-0 max-w-2xl flex-auto pt-16 pb-32 lg:max-w-none px-4 lg:pl-8 lg:pr-0 xl:px-16'>
-                <main className='prose prose-img:rounded-lg prose-pre:p-0 prose-headings:mb-[0.3rem] prose-headings:scroll-mt-24 prose-blue dark:prose-invert max-w-[inherit]'>
-                    <h1 className='mb-2 font-semibold tracking-tight sm:tracking-tight text-2xl sm:text-3xl'>
-                        {doc.title}
-                    </h1>
-                    {doc.description && <p className='text-xl mt-0'>{doc.description}</p>}
-
-                    <div>
-                        <div className='flex gap-2 mt-0'>
-                            {doc.references && doc.references?.length > 0 && (
-                                <DocRefs references={doc.references} />
+            <div className='max-w-2xl min-w-0 flex-auto px-4 pt-12 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'>
+                <main className='prose prose-img:rounded-lg prose-h2:mb-4 prose-pre:p-0 prose-headings:mb-[0.3rem] prose-headings:scroll-mt-24 prose-blue dark:prose-invert max-w-[inherit]'>
+                    <Card className='not-prose'>
+                        <Card.Header>
+                            <Card.Title level={1}>{doc.title}</Card.Title>
+                            {doc.description && (
+                                <Card.Description className='mt-3 leading-tight sm:text-base'>
+                                    {doc.description}
+                                </Card.Description>
                             )}
-                        </div>
-                        <Separator className='my-4 lg:my-10' />
-                    </div>
+                        </Card.Header>
+                        {doc.references && doc.references?.length > 0 && (
+                            <Card.Content className='flex flex-row gap-2'>
+                                <DocRefs references={doc.references} />
+                            </Card.Content>
+                        )}
+                    </Card>
                     <TableOfContents className='mt-8 block xl:hidden' items={doc.toc} />
                     <MDXContent code={doc.body} />
                     <Pager

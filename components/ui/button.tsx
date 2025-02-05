@@ -23,7 +23,7 @@ const buttonStyles = tv({
             warning: 'bg-warning text-warning-fg border-warning',
             dark: 'bg-fg text-bg border-fg',
             outline: 'bg-bg/80 text-fg border-muted data-hovered:bg-muted',
-            ghost: 'text-fg data-hovered:bg-secondary border-transparent bg-transparent'
+            ghost: 'text-fg data-hovered:bg-muted border-transparent bg-transparent'
         },
         size: {
             xs: 'h-8 px-2 text-xs',

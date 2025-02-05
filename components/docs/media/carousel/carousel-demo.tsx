@@ -6,7 +6,7 @@ import { Carousel } from '@/components/ui'
 
 export default function CarouselDemo() {
     return (
-        <Carousel className='w-full [&_.card]:h-56 [&_.card]:overflow-hidden [&_.card]:flex [&_.card]:flex-col max-w-xs'>
+        <Carousel className='w-full max-w-xs [&_.card]:flex [&_.card]:h-56 [&_.card]:flex-col [&_.card]:overflow-hidden'>
             <Carousel.Content>
                 <Carousel.Item className='basis-1/2'>
                     <Image

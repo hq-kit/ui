@@ -6,13 +6,13 @@ import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselWithCollectionDemo() {
     return (
-        <Carousel className='w-full [&_.card]:overflow-hidden [&_.card]:flex [&_.card]:flex-col max-w-xs'>
+        <Carousel className='w-full max-w-xs [&_.card]:flex [&_.card]:flex-col [&_.card]:overflow-hidden'>
             <Carousel.Content items={items}>
                 {(item) => (
                     <Carousel.Item id={item.id}>
                         <Card className='p-1'>
                             <Image
-                                className='rounded-lg h-40 object-center object-cover'
+                                className='h-40 rounded-lg object-cover object-center'
                                 src={`https://picsum.photos/id/${item.id}/400/300`}
                                 alt={`image ${item.id}`}
                                 width={400}

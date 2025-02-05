@@ -10,7 +10,7 @@ export default function TimeFieldHcDemo() {
     const [value, setValue] = React.useState(new Time(13, 45))
     return (
         <>
-            <div className='absolute left-4 top-4 inline-flex min-w-32 flex-col gap-1'>
+            <div className='absolute top-4 left-4 inline-flex min-w-32 flex-col gap-1'>
                 <Switch
                     isSelected={hc === 24}
                     onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}

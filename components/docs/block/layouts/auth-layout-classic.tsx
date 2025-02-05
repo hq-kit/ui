@@ -10,7 +10,7 @@ export default function AuthLayoutClassic({
     children: React.ReactNode
 }) {
     return (
-        <div className='w-full min-h-screen flex items-center justify-center p-4 lg:p-8'>
+        <div className='flex min-h-screen w-full items-center justify-center p-4 lg:p-8'>
             <Card className='w-full max-w-lg'>
                 <Card.Header>
                     <Card.Title>{title}</Card.Title>

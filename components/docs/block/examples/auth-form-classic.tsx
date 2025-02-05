@@ -25,10 +25,10 @@ export default function AuthForm() {
                     placeholder='Enter your password'
                 />
                 <Checkbox>I agree to the terms and conditions</Checkbox>
-                <Button className='w-full mt-2' type='submit'>
+                <Button className='mt-2 w-full' type='submit'>
                     Register
                 </Button>
-                <Link href='#' className='text-center text-sm mb-4'>
+                <Link href='#' className='mb-4 text-center text-sm'>
                     Already have an account?
                 </Link>
                 <ShowMore as='text' text='Or continue with' />

@@ -18,7 +18,16 @@ import {
 } from 'hq-icons'
 import ChattingAppLayout from 'layouts/chatting-app-layout'
 
-import { Avatar, Button, buttonStyles, cn, Menu, Popover, Sidebar } from '@/components/ui'
+import {
+    Avatar,
+    Button,
+    buttonStyles,
+    cn,
+    Menu,
+    Popover,
+    SidebarInset,
+    SidebarProvider
+} from '@/components/ui'
 import { formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
@@ -63,104 +72,106 @@ export default function ChatApp() {
     }
 
     return (
-        <Sidebar.Provider isOpen={false}>
+        <SidebarProvider defaultOpen={false}>
             <ChattingAppLayout />
-            <main className='grid flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
-                <div className='relative hidden flex-col items-start gap-4 rounded-lg border md:flex'>
-                    <div className='bg-bg sticky top-0 z-20 flex w-full items-center justify-between rounded-lg p-4'>
-                        <h1 className='text-2xl font-bold'>Chats</h1>
-                        <div className='flex items-center justify-between gap-2'>
-                            <Button variant='ghost' size='icon'>
-                                <IconMessageMore className='!size-6' />
-                            </Button>
+            <SidebarInset>
+                <main className='grid flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
+                    <div className='relative hidden flex-col items-start gap-4 rounded-lg border md:flex'>
+                        <div className='bg-bg sticky top-0 z-20 flex w-full items-center justify-between rounded-lg p-4'>
+                            <h1 className='text-2xl font-bold'>Chats</h1>
+                            <div className='flex items-center justify-between gap-2'>
+                                <Button variant='ghost' size='icon'>
+                                    <IconMessageMore className='!size-6' />
+                                </Button>
+                                <Menu>
+                                    <Menu.Trigger
+                                        className={buttonStyles({
+                                            variant: 'ghost',
+                                            size: 'icon'
+                                        })}
+                                    >
+                                        <IconEllipsisVertical />
+                                    </Menu.Trigger>
+                                    <Menu.Content placement='bottom end'>
+                                        <Menu.Item>
+                                            <IconMessagePlus />
+                                            New Group
+                                        </Menu.Item>
+                                        <Menu.Item isDanger>
+                                            <IconLogOut />
+                                            Logout
+                                        </Menu.Item>
+                                    </Menu.Content>
+                                </Menu>
+                            </div>
+                        </div>
+                        <div className='w-full px-4'>
+                            <ContactList />
+                        </div>
+                    </div>
+                    <div className='bg-bg relative flex h-full min-h-[50vh] flex-col rounded-lg lg:col-span-3'>
+                        <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
+                            <Popover>
+                                <Button variant='ghost' size='icon' className='md:hidden'>
+                                    <IconContact />
+                                </Button>
+                                <Popover.Content aria-label='Contact List'>
+                                    <Popover.Body>
+                                        <ContactList />
+                                    </Popover.Body>
+                                </Popover.Content>
+                            </Popover>
+                            <Avatar initials='HB' src='https://i.pravatar.cc/77' />
+                            <div className='grid'>
+                                <span className='text-sm'>Hebert</span>
+                                <small className='text-muted-fg text-xs'>Online</small>
+                            </div>
                             <Menu>
                                 <Menu.Trigger
-                                    className={buttonStyles({
-                                        variant: 'ghost',
-                                        size: 'icon'
-                                    })}
+                                    className={cn(
+                                        buttonStyles({
+                                            variant: 'ghost',
+                                            size: 'icon'
+                                        }),
+                                        'ml-auto'
+                                    )}
                                 >
                                     <IconEllipsisVertical />
                                 </Menu.Trigger>
                                 <Menu.Content placement='bottom end'>
                                     <Menu.Item>
-                                        <IconMessagePlus />
-                                        New Group
+                                        <IconUser />
+                                        Contact Info
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <IconTrash />
+                                        Clear Chat
                                     </Menu.Item>
                                     <Menu.Item isDanger>
-                                        <IconLogOut />
-                                        Logout
+                                        <IconCircleX />
+                                        Block
                                     </Menu.Item>
                                 </Menu.Content>
                             </Menu>
                         </div>
-                    </div>
-                    <div className='w-full px-4'>
-                        <ContactList />
-                    </div>
-                </div>
-                <div className='bg-bg relative flex h-full min-h-[50vh] flex-col rounded-lg lg:col-span-3'>
-                    <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
-                        <Popover>
-                            <Button variant='ghost' size='icon' className='md:hidden'>
-                                <IconContact />
-                            </Button>
-                            <Popover.Content aria-label='Contact List'>
-                                <Popover.Body>
-                                    <ContactList />
-                                </Popover.Body>
-                            </Popover.Content>
-                        </Popover>
-                        <Avatar initials='HB' status='success' src='https://i.pravatar.cc/77' />
-                        <div className='grid'>
-                            <span className='text-sm'>Hebert</span>
-                            <small className='text-muted-fg text-xs'>Online</small>
+                        <div className='text-muted-fg flex-1 flex-col space-y-2 overflow-x-hidden overflow-y-scroll p-4'>
+                            {chats.length > 0 ? (
+                                chats?.map((chat: BubbleChatProps, i: number) => (
+                                    <BubbleChat key={i} {...chat} onDelete={() => deleteChat(i)} />
+                                ))
+                            ) : (
+                                <div className='flex h-full flex-col items-center justify-center'>
+                                    <IconMessageDashed className='!size-6' />
+                                    <p className='text-center text-xl font-bold'>
+                                        Start a conversation
+                                    </p>
+                                </div>
+                            )}
                         </div>
-                        <Menu>
-                            <Menu.Trigger
-                                className={cn(
-                                    buttonStyles({
-                                        variant: 'ghost',
-                                        size: 'icon'
-                                    }),
-                                    'ml-auto'
-                                )}
-                            >
-                                <IconEllipsisVertical />
-                            </Menu.Trigger>
-                            <Menu.Content placement='bottom end'>
-                                <Menu.Item>
-                                    <IconUser />
-                                    Contact Info
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <IconTrash />
-                                    Clear Chat
-                                </Menu.Item>
-                                <Menu.Item isDanger>
-                                    <IconCircleX />
-                                    Block
-                                </Menu.Item>
-                            </Menu.Content>
-                        </Menu>
+                        <MessageForm value={message} onChange={setMessage} onSend={sendMessage} />
                     </div>
-                    <div className='text-muted-fg flex-1 flex-col space-y-2 overflow-x-hidden overflow-y-scroll p-4'>
-                        {chats.length > 0 ? (
-                            chats?.map((chat: BubbleChatProps, i: number) => (
-                                <BubbleChat key={i} {...chat} onDelete={() => deleteChat(i)} />
-                            ))
-                        ) : (
-                            <div className='flex h-full flex-col items-center justify-center'>
-                                <IconMessageDashed className='!size-6' />
-                                <p className='text-center text-xl font-bold'>
-                                    Start a conversation
-                                </p>
-                            </div>
-                        )}
-                    </div>
-                    <MessageForm value={message} onChange={setMessage} onSend={sendMessage} />
-                </div>
-            </main>
-        </Sidebar.Provider>
+                </main>
+            </SidebarInset>
+        </SidebarProvider>
     )
 }
