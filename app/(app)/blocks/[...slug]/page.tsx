@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 
 import previews from '@/components/docs/generated/previews.json'
 import Block from '@/components/mdx/block'
-import '@/lib/styles/code.css'
 import { goodTitle } from '@/lib/utils'
 
 export interface BlockProps {

@@ -15,7 +15,7 @@ export default function NoteIntentDemo() {
     const [selected, setSelected] = React.useState<Key>('primary')
     return (
         <>
-            <div className='absolute left-4 top-4 inline-flex min-w-32 flex-col gap-1'>
+            <div className='absolute top-4 left-4 inline-flex min-w-32 flex-col gap-1'>
                 <Select
                     className='[&_button]:h-9'
                     selectedKey={selected}

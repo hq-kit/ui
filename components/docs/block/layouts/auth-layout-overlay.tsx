@@ -12,7 +12,7 @@ export default function AuthLayoutOverlay({
     children: React.ReactNode
 }) {
     return (
-        <div className='flex w-full items-center justify-center h-screen'>
+        <div className='flex h-screen w-full items-center justify-center'>
             <Modal>
                 <Button>Register</Button>
                 <Modal.Content>

@@ -303,7 +303,7 @@ const SidebarHeader = ({ className, ref, ...props }: React.ComponentProps<'div'>
 
 const footer = tv({
     base: [
-        'mt-auto flex flex-col p-2',
+        'no-scrollbar mt-auto flex flex-col p-2',
         'in-data-[sidebar-variant=fleet]:mt-0 in-data-[sidebar-variant=fleet]:p-0',
         'in-data-[sidebar-variant=fleet]:**:data-[slot=menu-trigger]:rounded-none',
         '**:data-[slot=menu-trigger]:relative **:data-[slot=menu-trigger]:overflow-hidden',
@@ -318,9 +318,9 @@ const footer = tv({
                 '**:data-[slot=menu-trigger]:w-full **:data-[slot=menu-trigger]:data-pressed:**:data-[slot=chevron]:rotate-0'
             ],
             true: [
-                '**:data-avatar:size-6 **:data-avatar:*:size-6',
+                '**:data-avatar:size-8 **:data-avatar:*:size-8',
                 '**:data-[slot=chevron]:hidden **:data-[slot=menu-label]:hidden',
-                '**:data-[slot=menu-trigger]:grid **:data-[slot=menu-trigger]:size-8 **:data-[slot=menu-trigger]:place-content-center'
+                '**:data-[slot=menu-trigger]:grid **:data-[slot=menu-trigger]:size-10 **:data-[slot=menu-trigger]:place-content-center'
             ]
         }
     }
@@ -340,8 +340,8 @@ const SidebarContent = ({ className, ...props }: React.ComponentProps<'div'>) =>
         <div
             data-sidebar-content='true'
             className={cn(
-                'flex max-h-[calc(100svh-9rem)] min-h-0 flex-1 scroll-mb-96 flex-col overflow-auto *:data-sidebar-section:border-l-0',
-                state === 'collapsed' && 'items-center',
+                'flex max-h-[calc(100svh-9rem)] min-h-0 flex-1 scroll-mb-96 flex-col overflow-x-hidden overflow-y-scroll *:data-sidebar-section:border-l-0',
+                state === 'collapsed' && 'no-scrollbar items-center',
                 className
             )}
             {...props}
@@ -758,6 +758,23 @@ const SidebarNav = ({ isSticky = false, className, ...props }: SidebarNavProps) 
     return <nav data-slot='sidebar-nav' {...props} className={nav({ isSticky, className })} />
 }
 
+Sidebar.Content = SidebarContent
+Sidebar.Disclosure = SidebarDisclosure
+Sidebar.DisclosureGroup = SidebarDisclosureGroup
+Sidebar.DisclosurePanel = SidebarDisclosurePanel
+Sidebar.DisclosureTrigger = SidebarDisclosureTrigger
+Sidebar.Footer = SidebarFooter
+Sidebar.Header = SidebarHeader
+Sidebar.Item = SidebarItem
+Sidebar.Label = SidebarLabel
+Sidebar.Link = SidebarLink
+Sidebar.Nav = SidebarNav
+Sidebar.Rail = SidebarRail
+Sidebar.Section = SidebarSection
+Sidebar.SectionGroup = SidebarSectionGroup
+Sidebar.Separator = SidebarSeparator
+Sidebar.Trigger = SidebarTrigger
+
 export type {
     SidebarDisclosureGroupProps,
     SidebarDisclosureProps,
@@ -771,25 +788,4 @@ export type {
     SidebarSeparatorProps
 }
 
-export {
-    Sidebar,
-    SidebarContent,
-    SidebarDisclosure,
-    SidebarDisclosureGroup,
-    SidebarDisclosurePanel,
-    SidebarDisclosureTrigger,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarInset,
-    SidebarItem,
-    SidebarLabel,
-    SidebarLink,
-    SidebarNav,
-    SidebarProvider,
-    SidebarRail,
-    SidebarSection,
-    SidebarSectionGroup,
-    SidebarSeparator,
-    SidebarTrigger,
-    useSidebar
-}
+export { Sidebar, SidebarInset, SidebarProvider, useSidebar }

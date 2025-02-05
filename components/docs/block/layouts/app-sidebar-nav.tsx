@@ -11,20 +11,20 @@ import {
 } from 'hq-icons'
 import { useTheme } from 'next-themes'
 
-import { Avatar, Breadcrumbs, Menu, SidebarNav, SidebarTrigger } from '@/components/ui'
+import { Avatar, Breadcrumbs, Menu, Sidebar } from '@/components/ui'
 
 export default function AppSidebarNav() {
     return (
-        <SidebarNav className='border-b'>
+        <Sidebar.Nav className='border-b'>
             <span className='flex items-center gap-x-4'>
-                <SidebarTrigger />
+                <Sidebar.Trigger />
                 <Breadcrumbs className='hidden @md:flex'>
                     <Breadcrumbs.Item href='/blocks/sidebar/sidebar-01'>Dashboard</Breadcrumbs.Item>
                     <Breadcrumbs.Item>Newsletter</Breadcrumbs.Item>
                 </Breadcrumbs>
             </span>
             <UserMenu />
-        </SidebarNav>
+        </Sidebar.Nav>
     )
 }
 

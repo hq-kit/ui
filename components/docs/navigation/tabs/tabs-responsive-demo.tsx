@@ -18,11 +18,11 @@ const tabs = [
 export default function TabsResponsiveDemo() {
     const isMobile = useMediaQuery('(max-width: 600px)')
     return isMobile ? (
-        <Select className='sm:hidden flex' prefix={<IconMenu />} items={tabs}>
+        <Select className='flex sm:hidden' prefix={<IconMenu />} items={tabs}>
             {(item) => <Select.Item textValue={item.title}>{item.title}</Select.Item>}
         </Select>
     ) : (
-        <Tabs className='sm:flex hidden' aria-label='Project Management'>
+        <Tabs className='hidden sm:flex' aria-label='Project Management'>
             <Tabs.List aria-label='Dynamic tabs' items={tabs}>
                 {(item) => <Tabs.Label>{item.title}</Tabs.Label>}
             </Tabs.List>

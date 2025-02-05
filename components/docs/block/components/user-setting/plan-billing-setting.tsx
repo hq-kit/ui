@@ -54,7 +54,7 @@ export default function PlanBillingSetting() {
                         name='card_holder'
                         id='card_holder'
                     />
-                    <div className='grid md:grid-cols-4 gap-4'>
+                    <div className='grid gap-4 md:grid-cols-4'>
                         <TextField
                             className='md:col-span-2'
                             prefix={<IconCreditCard />}
@@ -69,7 +69,7 @@ export default function PlanBillingSetting() {
                         />
                         <TextField prefix={<IconLock />} label='CVC / CVC2' name='cvc' id='cvc' />
                     </div>
-                    <div className='grid lg:grid-cols-2 gap-4'>
+                    <div className='grid gap-4 lg:grid-cols-2'>
                         <TextField
                             prefix={<IconMap />}
                             label='Country'

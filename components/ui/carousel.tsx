@@ -10,7 +10,7 @@ import {
     ListBoxItem,
     type ListBoxItemProps,
     ListBoxSection,
-    type ListBoxSectionProps,
+    type ListBoxSectionProps
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 

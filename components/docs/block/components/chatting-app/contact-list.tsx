@@ -25,11 +25,7 @@ const Contact = ({ name, avatar, status, lastSeen, active }: ContactProps) => {
                 active ? 'bg-primary/20' : ''
             )}
         >
-            {status === 'online' ? (
-                <Avatar src={avatar} status='success' />
-            ) : (
-                <Avatar src={avatar} />
-            )}
+            {status === 'online' ? <Avatar src={avatar} /> : <Avatar src={avatar} />}
             <div className='grid'>
                 <span className='text-sm'>{name}</span>
                 {status === 'online' ? (

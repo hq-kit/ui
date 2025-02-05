@@ -37,7 +37,7 @@ export default function FileTriggerAvatarDemo() {
                 getDropOperation={() => 'copy'}
                 onDrop={onDropHandler}
                 className={cn(
-                    '[&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none rounded-full p-0 overflow-hidden size-10'
+                    'size-10 overflow-hidden rounded-full p-0 [&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none'
                 )}
             >
                 {droppedImage ? (
@@ -49,7 +49,6 @@ export default function FileTriggerAvatarDemo() {
             </DropZone>
             <FileTrigger
                 size='sm'
-                withIcon={false}
                 acceptedFileTypes={['image/png', 'image/jpeg']}
                 onSelect={onSelectHandler}
             >

@@ -49,10 +49,10 @@ export default function DropZoneAndFileTriggerDemo() {
                 />
             ) : (
                 <div className='grid space-y-3'>
-                    <div className='size-12 mx-auto grid place-content-center rounded-full border bg-muted/70 group-data-[drop-target]:bg-primary/20 group-data-[drop-target]:border-primary/70'>
+                    <div className='bg-muted/70 group-data-[drop-target]:bg-primary/20 group-data-[drop-target]:border-primary/70 mx-auto grid size-12 place-content-center rounded-full border'>
                         <IconImage className='size-5' />
                     </div>
-                    <div className='justify-center flex'>
+                    <div className='flex justify-center'>
                         <FileTrigger
                             acceptedFileTypes={['image/png', 'image/jpeg']}
                             allowsMultiple={false}

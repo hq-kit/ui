@@ -17,6 +17,9 @@ export const applyTheme = (
         })
     })
     themeContainer.forEach((container) => {
-        container.style.setProperty('--radius-lg', `${Presets[theme].radius ?? Presets.hq.radius}rem`)
+        container.style.setProperty(
+            '--radius-lg',
+            `${Presets[theme].radius ?? Presets.hq.radius}rem`
+        )
     })
 }

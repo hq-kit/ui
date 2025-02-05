@@ -5,9 +5,9 @@ import { Heading } from './heading'
 const card = tv({
     slots: {
         root: [
-            'bg-bg text-fg **:data-[slot=table-header]:bg-muted/50 rounded-lg border shadow-xs has-[table]:overflow-hidden has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden'
+            'bg-bg text-fg **:data-[slot=table-header]:bg-muted/50 rounded-lg has-[table]:overflow-hidden has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden'
         ],
-        header: 'flex flex-col gap-y-1 px-6 py-5',
+        header: 'flex flex-col gap-y-1',
         title: 'leading-none font-semibold tracking-tight sm:leading-6',
         description: 'text-muted-fg text-sm',
         content:
@@ -17,18 +17,39 @@ const card = tv({
 })
 
 const { root, header, title, description, content, footer } = card()
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+    borderless?: boolean
+}
 
-const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div data-slot='card' className={root({ className })} {...props} />
+const Card = ({ borderless = false, className, ...props }: CardProps) => {
+    return (
+        <div
+            data-slot='card'
+            className={root({ className }) + (borderless ? '' : ' border shadow-xs')}
+            {...props}
+        />
+    )
 }
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
     title?: string
     description?: string
+    withoutPadding?: boolean
 }
 
-const Header = ({ className, title, description, children, ...props }: HeaderProps) => (
-    <div data-slot='card-header' className={header({ className })} {...props}>
+const Header = ({
+    withoutPadding = false,
+    className,
+    title,
+    description,
+    children,
+    ...props
+}: HeaderProps) => (
+    <div
+        data-slot='card-header'
+        className={header({ className }) + (withoutPadding ? ' p-0 pt-0 pb-5' : ' px-6 py-5')}
+        {...props}
+    >
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         {!title && typeof children === 'string' ? <Title>{children}</Title> : children}

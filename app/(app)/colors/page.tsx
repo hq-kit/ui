@@ -14,7 +14,7 @@ export default function Page() {
                     <HeroDescription>
                         Let&apos;s generate color palette based on your favor.
                     </HeroDescription>
-                    <HeroDescription className='mt-4 text-warning'>
+                    <HeroDescription className='text-warning mt-4'>
                         This project still in experimental state
                     </HeroDescription>
                 </HeroHeader>

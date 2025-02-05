@@ -4,7 +4,7 @@ import {
     IconArchive,
     IconArrowDown,
     IconArrowUp,
-    IconBrandApple,
+    IconBrandCleon,
     IconBuilding,
     IconCheck,
     IconChevronDown,
@@ -28,53 +28,35 @@ import {
     IconTicket
 } from 'hq-icons'
 
-import {
-    Avatar,
-    Link,
-    Menu,
-    Sidebar,
-    SidebarContent,
-    SidebarDisclosure,
-    SidebarDisclosureGroup,
-    SidebarDisclosurePanel,
-    SidebarDisclosureTrigger,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarItem,
-    SidebarLabel,
-    SidebarLink,
-    SidebarRail,
-    SidebarSection,
-    SidebarSectionGroup
-} from '@/components/ui'
+import { Avatar, Link, Menu, Sidebar } from '@/components/ui'
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar {...props}>
-            <SidebarHeader>
+            <Sidebar.Header>
                 <Link
                     className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
-                    href='/docs/2.x/components/layouts/sidebar'
+                    href='/docs/components/layouts/sidebar'
                 >
-                    <IconBrandApple className='size-5' />
-                    <SidebarLabel className='font-medium'>Apple</SidebarLabel>
+                    <IconBrandCleon className='size-5' />
+                    <Sidebar.Label className='font-medium'>HQ UI</Sidebar.Label>
                 </Link>
-            </SidebarHeader>
-            <SidebarContent>
-                <SidebarSectionGroup>
-                    <SidebarSection title='Overview'>
-                        <SidebarItem tooltip='Overview' isCurrent href='#'>
+            </Sidebar.Header>
+            <Sidebar.Content>
+                <Sidebar.SectionGroup>
+                    <Sidebar.Section title='Overview'>
+                        <Sidebar.Item tooltip='Overview' isCurrent href='#'>
                             <IconGauge />
-                            <SidebarLabel>Overview</SidebarLabel>
-                        </SidebarItem>
+                            <Sidebar.Label>Overview</Sidebar.Label>
+                        </Sidebar.Item>
 
-                        <SidebarItem tooltip='Orders'>
+                        <Sidebar.Item tooltip='Orders'>
                             {({ isHovered, isCollapsed }) => (
                                 <>
-                                    <SidebarLink href='#'>
+                                    <Sidebar.Link href='#'>
                                         <IconShoppingBag />
-                                        <SidebarLabel>Orders</SidebarLabel>
-                                    </SidebarLink>
+                                        <Sidebar.Label>Orders</Sidebar.Label>
+                                    </Sidebar.Link>
                                     {!isCollapsed && isHovered && (
                                         <Menu>
                                             <Menu.Trigger aria-label='Manage'>
@@ -106,13 +88,13 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                                     )}
                                 </>
                             )}
-                        </SidebarItem>
-                        <SidebarItem tooltip='Products'>
+                        </Sidebar.Item>
+                        <Sidebar.Item tooltip='Products'>
                             {({ isHovered, isCollapsed }) => (
                                 <>
-                                    <SidebarLink href='#'>
-                                        <SidebarLabel>Products</SidebarLabel>
-                                    </SidebarLink>
+                                    <Sidebar.Link href='#'>
+                                        <Sidebar.Label>Products</Sidebar.Label>
+                                    </Sidebar.Link>
                                     {!isCollapsed && isHovered && (
                                         <Menu>
                                             <Menu.Trigger aria-label='Manage'>
@@ -144,66 +126,66 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                                     )}
                                 </>
                             )}
-                        </SidebarItem>
-                        <SidebarItem href='#' badge='4 Pending' tooltip='Payments'>
+                        </Sidebar.Item>
+                        <Sidebar.Item href='#' badge='4 Pending' tooltip='Payments'>
                             <IconCreditCard />
-                            <SidebarLabel>Payments</SidebarLabel>
-                        </SidebarItem>
-                    </SidebarSection>
+                            <Sidebar.Label>Payments</Sidebar.Label>
+                        </Sidebar.Item>
+                    </Sidebar.Section>
 
-                    <SidebarDisclosureGroup defaultExpandedKeys={[1]}>
-                        <SidebarDisclosure id={1}>
-                            <SidebarDisclosureTrigger>
+                    <Sidebar.DisclosureGroup defaultExpandedKeys={[1]}>
+                        <Sidebar.Disclosure id={1}>
+                            <Sidebar.DisclosureTrigger>
                                 <IconEllipsis />
-                                <SidebarLabel>Support</SidebarLabel>
-                            </SidebarDisclosureTrigger>
-                            <SidebarDisclosurePanel>
-                                <SidebarItem href='#' tooltip='Tickets'>
+                                <Sidebar.Label>Support</Sidebar.Label>
+                            </Sidebar.DisclosureTrigger>
+                            <Sidebar.DisclosurePanel>
+                                <Sidebar.Item href='#' tooltip='Tickets'>
                                     <IconTicket />
-                                    <SidebarLabel>Tickets</SidebarLabel>
-                                </SidebarItem>
-                                <SidebarItem href='#' tooltip='Chat Support'>
+                                    <Sidebar.Label>Tickets</Sidebar.Label>
+                                </Sidebar.Item>
+                                <Sidebar.Item href='#' tooltip='Chat Support'>
                                     <IconMessage />
-                                    <SidebarLabel>Chat Support</SidebarLabel>
-                                </SidebarItem>
-                                <SidebarItem href='#' tooltip='FAQ'>
+                                    <Sidebar.Label>Chat Support</Sidebar.Label>
+                                </Sidebar.Item>
+                                <Sidebar.Item href='#' tooltip='FAQ'>
                                     <IconShieldQuestion />
-                                    <SidebarLabel>FAQ</SidebarLabel>
-                                </SidebarItem>
-                                <SidebarItem href='#' tooltip='Documentation'>
+                                    <Sidebar.Label>FAQ</Sidebar.Label>
+                                </Sidebar.Item>
+                                <Sidebar.Item href='#' tooltip='Documentation'>
                                     <IconNotebook />
-                                    <SidebarLabel>Documentation</SidebarLabel>
-                                </SidebarItem>
-                            </SidebarDisclosurePanel>
-                        </SidebarDisclosure>
-                        <SidebarDisclosure id={2}>
-                            <SidebarDisclosureTrigger>
+                                    <Sidebar.Label>Documentation</Sidebar.Label>
+                                </Sidebar.Item>
+                            </Sidebar.DisclosurePanel>
+                        </Sidebar.Disclosure>
+                        <Sidebar.Disclosure id={2}>
+                            <Sidebar.DisclosureTrigger>
                                 <IconPackage />
-                                <SidebarLabel>Inventory</SidebarLabel>
-                            </SidebarDisclosureTrigger>
-                            <SidebarDisclosurePanel>
-                                <SidebarItem href='#' tooltip='Warehouse'>
+                                <Sidebar.Label>Inventory</Sidebar.Label>
+                            </Sidebar.DisclosureTrigger>
+                            <Sidebar.DisclosurePanel>
+                                <Sidebar.Item href='#' tooltip='Warehouse'>
                                     <IconBuilding />
-                                    <SidebarLabel>Warehouse</SidebarLabel>
-                                </SidebarItem>
-                                <SidebarItem href='#' tooltip='Stock Levels'>
-                                    <SidebarLabel>Stock Levels</SidebarLabel>
-                                </SidebarItem>
-                                <SidebarItem href='#' tooltip='Shipping'>
-                                    <SidebarLabel>Shipping</SidebarLabel>
-                                </SidebarItem>
-                            </SidebarDisclosurePanel>
-                        </SidebarDisclosure>
-                    </SidebarDisclosureGroup>
-                </SidebarSectionGroup>
-            </SidebarContent>
+                                    <Sidebar.Label>Warehouse</Sidebar.Label>
+                                </Sidebar.Item>
+                                <Sidebar.Item href='#' tooltip='Stock Levels'>
+                                    <Sidebar.Label>Stock Levels</Sidebar.Label>
+                                </Sidebar.Item>
+                                <Sidebar.Item href='#' tooltip='Shipping'>
+                                    <Sidebar.Label>Shipping</Sidebar.Label>
+                                </Sidebar.Item>
+                            </Sidebar.DisclosurePanel>
+                        </Sidebar.Disclosure>
+                    </Sidebar.DisclosureGroup>
+                </Sidebar.SectionGroup>
+            </Sidebar.Content>
 
-            <SidebarFooter>
+            <Sidebar.Footer>
                 <Menu>
                     <Menu.Trigger className='group' aria-label='Profile' data-slot='menu-trigger'>
                         <Avatar shape='square' src='https://github.com/dq-alhq.png' />
                         <div className='text-sm in-data-[sidebar-collapsible=dock]:hidden'>
-                            <SidebarLabel>DQ Al Haqqi</SidebarLabel>
+                            <Sidebar.Label>DQ Al Haqqi</Sidebar.Label>
                             <span className='text-muted-fg -mt-0.5 block'>@dq-alhq</span>
                         </div>
                         <IconChevronDown
@@ -214,8 +196,8 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                     <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
                         <Menu.Section>
                             <Menu.Header separator>
-                                <span className='block'>Kurt Cobain</span>
-                                <span className='text-muted-fg font-normal'>@cobain</span>
+                                <span className='block'>DQ Al Haqqi</span>
+                                <span className='text-muted-fg font-normal'>@dq-alhq</span>
                             </Menu.Header>
                         </Menu.Section>
 
@@ -248,8 +230,8 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                         </Menu.Item>
                     </Menu.Content>
                 </Menu>
-            </SidebarFooter>
-            <SidebarRail />
+            </Sidebar.Footer>
+            <Sidebar.Rail />
         </Sidebar>
     )
 }

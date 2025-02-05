@@ -52,7 +52,7 @@ export default function AccountSetting() {
                                 getDropOperation={() => 'copy'}
                                 onDrop={onDropHandler}
                                 className={cn(
-                                    '[&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none rounded-full p-0 overflow-hidden size-10'
+                                    'size-10 overflow-hidden rounded-full p-0 [&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none'
                                 )}
                             >
                                 {droppedImage ? (
@@ -99,7 +99,7 @@ export default function AccountSetting() {
                     <Card.Description>Your social accounts.</Card.Description>
                 </Card.Header>
                 <Form>
-                    <Card.Content className='grid lg:grid-cols-2 gap-4'>
+                    <Card.Content className='grid gap-4 lg:grid-cols-2'>
                         <TextField
                             label='Github Username'
                             prefix={<IconBrandGithub />}

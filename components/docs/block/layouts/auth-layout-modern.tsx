@@ -12,10 +12,10 @@ export default function AuthLayoutModern({
     children: React.ReactNode
 }) {
     return (
-        <div className='w-full justify-center items-center flex min-h-screen'>
-            <div className='lg:border rounded-lg lg:shadow-sm flex justify-center w-full lg:max-w-screen-xl'>
-                <div className='flex w-full max-w-xl px-4 lg:px-8 items-center justify-center py-12'>
-                    <Card className='w-full mx-auto lg:border-none lg:shadow-none'>
+        <div className='flex min-h-screen w-full items-center justify-center'>
+            <div className='flex w-full justify-center rounded-lg lg:max-w-screen-xl lg:border lg:shadow-sm'>
+                <div className='flex w-full max-w-xl items-center justify-center px-4 py-12 lg:px-8'>
+                    <Card className='mx-auto w-full lg:border-none lg:shadow-none'>
                         <Card.Header>
                             <Card.Title>{title}</Card.Title>
                             <Card.Description>{description}</Card.Description>
@@ -23,7 +23,7 @@ export default function AuthLayoutModern({
                         <Card.Content>{children}</Card.Content>
                     </Card>
                 </div>
-                <div className='hidden bg-muted lg:block'>
+                <div className='bg-muted hidden lg:block'>
                     <Image
                         src='https://picsum.photos/1920/1080'
                         alt='Image'

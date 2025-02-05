@@ -32,16 +32,17 @@ export default function FileManager() {
 
     React.useEffect(() => {
         setFiles(paths.filter((path) => path.startsWith(dir)))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dir])
 
     return (
         <FileManagerLayout rootDir={dir} setRootDir={setDir}>
-            <header className='sticky justify-between top-0 h-[3.57rem] px-4 flex items-center gap-x-2'>
+            <header className='sticky top-0 flex h-[3.57rem] items-center justify-between gap-x-2 px-4'>
                 <span className='flex items-center gap-x-4'>
                     <Sidebar.Trigger className='-mx-2' />
-                    <Separator className='h-6 md:block hidden' orientation='vertical' />
+                    <Separator className='hidden h-6 md:block' orientation='vertical' />
                     <Breadcrumbs
-                        className='md:flex hidden'
+                        className='hidden md:flex'
                         items={dir
                             .split('/')
                             .filter((item) => item !== '')
@@ -78,7 +79,6 @@ export default function FileManager() {
                     </Button>
                     <Toggle
                         size='icon'
-                        variant='ghost'
                         aria-label='Selection Mode'
                         isSelected={selectionMode === 'multiple'}
                         onChange={() =>

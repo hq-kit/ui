@@ -1,4 +1,11 @@
-import { type VariantProps, tv } from 'tailwind-variants'
+'use client'
+
+import React from 'react'
+
+import { Collection } from 'react-aria-components'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+import { CollectionProps } from '@react-aria/collections'
 
 import { cn } from './utils'
 
@@ -127,15 +134,23 @@ const gridStyles = tv(
     }
 )
 
-interface GridProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof gridStyles> {
+interface GridProps<T extends object> extends CollectionProps<T>, VariantProps<typeof gridStyles> {
     className?: string
     debug?: boolean
 }
 
-const Grid = ({ className, gap, gapX, gapY, flow, columns, rows, ...props }: GridProps) => {
+const Grid = <T extends object>({
+    className,
+    gap,
+    gapX,
+    gapY,
+    flow,
+    columns,
+    rows,
+    ...props
+}: GridProps<T>) => {
     return (
         <div
-            aria-label={props['aria-label'] || 'grid'}
             className={gridStyles({
                 gap: gap ?? gapX ?? gapY,
                 gapX: gapX ?? gap,
@@ -145,22 +160,18 @@ const Grid = ({ className, gap, gapX, gapY, flow, columns, rows, ...props }: Gri
                 rows: rows ?? 1,
                 className:
                     'debug' in props
-                        ? cn(
-                              '*:data-[slot=grid-cell]:border-warning *:data-[slot=grid-cell]:border',
-                              className
-                          )
+                        ? cn('[&>.grid-cell]:border-warning [&>.grid-cell]:border', className)
                         : className
             })}
-            {...props}
         >
-            {props.children}
+            <Collection {...props} />
         </div>
     )
 }
 
 const gridItemStyles = tv(
     {
-        base: 'grid-cell data-focused:outline-hidden',
+        base: 'grid-cell focus:outline-none',
         variants: {
             colSpan: {
                 auto: 'col-auto',
@@ -284,7 +295,6 @@ const GridItem = ({
 }: GridItemProps) => {
     return (
         <div
-            data-slot='grid-cell'
             className={gridItemStyles({
                 colSpan,
                 rowSpan,

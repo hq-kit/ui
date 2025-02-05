@@ -9,7 +9,6 @@ import { copyToClipboard } from 'usemods'
 import { CodeHighlighter } from '@/components/mdx/code'
 import { CopyButton } from '@/components/mdx/copy-button'
 import { buttonStyles, Modal } from '@/components/ui'
-import '@/lib/styles/code.css'
 import { wait } from '@/lib/utils'
 
 export default function ThemeSnippet({ code = 'TEST' }: { code: string }) {

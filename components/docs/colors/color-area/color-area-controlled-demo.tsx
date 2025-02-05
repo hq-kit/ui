@@ -10,7 +10,7 @@ export default function ColorAreaControlledDemo() {
     const [color, setColor] = React.useState(parseColor('hsl(0, 100%, 50%)'))
 
     return (
-        <div className='flex flex-col lg:flex-row gap-2 lg:gap-4'>
+        <div className='flex flex-col gap-2 lg:flex-row lg:gap-4'>
             <ColorArea value={color} onChange={setColor}>
                 <ColorThumb />
             </ColorArea>

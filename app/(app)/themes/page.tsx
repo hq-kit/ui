@@ -15,7 +15,7 @@ export default function Page() {
                     <HeroDescription>
                         You can always fully customize this UI design with your favor
                         <br />
-                        head to <code className='font-semibold text-primary'>.css</code> file and
+                        head to <code className='text-primary font-semibold'>.css</code> file and
                         add your own styles
                     </HeroDescription>
                     <HeroDescription className='mt-4'>

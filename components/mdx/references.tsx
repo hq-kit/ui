@@ -133,7 +133,7 @@ export function DocRefs({ references }: { references: string[] }) {
                     target='_blank'
                     className={buttonStyles({
                         variant: 'outline',
-                        size: 'sm',
+                        size: 'xs',
                         className: 'data-focus-visible:outline-2'
                     })}
                     id={item.url}

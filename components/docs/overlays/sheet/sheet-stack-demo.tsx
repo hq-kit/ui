@@ -6,7 +6,7 @@ export default function SheetStackDemo() {
     return (
         <Sheet>
             <Button variant='outline'>Stack</Button>
-            <Sheet.Content isStack={false}>
+            <Sheet.Content isFloat>
                 <Sheet.Header>
                     <Sheet.Title>Not Stacked</Sheet.Title>
                     <Sheet.Description>This sheet is not stacked.</Sheet.Description>

@@ -4,73 +4,66 @@ import React from 'react'
 
 import {
     IconBrandCleon,
-    IconChevronDown,
-    IconCircleUser,
     IconFilm,
     IconGroup,
+    IconHeadphones,
     IconLogOut,
     IconMessage,
-    IconMoon,
     IconRss,
-    IconSun
+    IconSettings
 } from 'hq-icons'
 
-import { useTheme } from '@/components/providers'
-import { Avatar, Button, Link, Menu, Sidebar, useSidebar } from '@/components/ui'
+import { Avatar, Link, Menu, Sidebar } from '@/components/ui'
 
 export default function ChattingAppLayout() {
-    const { theme, setTheme } = useTheme()
-    const { state } = useSidebar()
-    const collapsed = state === 'collapsed'
     return (
-        <Sidebar collapsible='dock' variant='floating'>
+        <Sidebar collapsible='dock'>
             <Sidebar.Header>
                 <Link
-                    className='flex items-center group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center gap-x-2'
+                    className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
                     href='#'
                 >
                     <IconBrandCleon className='size-5' />
-                    <strong className='font-medium group-data-[collapsible=dock]:hidden'>
-                        CHATTING APP
-                    </strong>
+                    <Sidebar.Label className='font-medium'>Chat App</Sidebar.Label>
                 </Link>
             </Sidebar.Header>
             <Sidebar.Content>
-                <Sidebar.Section>
-                    <SidebarItem isCurrent icon={IconMessage} href='#' textValue='Chats' />
-                    <SidebarItem icon={IconRss} href='#' textValue='Broadcast' />
-                    <SidebarItem icon={IconFilm} href='#' textValue='Stories' />
-                    <SidebarItem icon={IconGroup} href='#' textValue='Communities' />
-                </Sidebar.Section>
+                <Sidebar.SectionGroup>
+                    <Sidebar.Section>
+                        <SidebarItem isCurrent icon={IconMessage} href='#' tooltip='Chats' />
+                        <SidebarItem icon={IconRss} href='#' tooltip='Broadcast' />
+                        <SidebarItem icon={IconFilm} href='#' tooltip='Stories' />
+                        <SidebarItem icon={IconGroup} href='#' tooltip='Communities' />
+                    </Sidebar.Section>
+                </Sidebar.SectionGroup>
             </Sidebar.Content>
-            <Sidebar.Footer className='lg:flex lg:flex-row hidden items-center'>
+            <Sidebar.Footer>
                 <Menu>
-                    <Button
-                        variant='ghost'
-                        aria-label='Profile'
-                        slot='close'
-                        className='group w-full justify-start group-data-[collapsible=dock]:justify-center'
-                    >
-                        <Avatar size='sm' shape='square' src='https://github.com/dq-alhq.png' />
-                        <span className='group-data-[collapsible=dock]:hidden flex items-center justify-center'>
-                            DQ Al-Haqqi
-                            <IconChevronDown className='right-3 size-4 absolute group-pressed:rotate-180 transition-transform' />
-                        </span>
-                    </Button>
-                    <Menu.Content
-                        placement={collapsed ? 'right' : 'top'}
-                        className={collapsed ? 'sm:min-w-56' : 'min-w-[--trigger-width]'}
-                    >
-                        <Menu.Item href='#'>
-                            <IconCircleUser />
-                            Profile
+                    <Menu.Trigger className='group' aria-label='Profile' data-slot='menu-trigger'>
+                        <Avatar shape='square' src='https://github.com/dq-alhq.png' />
+                        <div className='text-sm in-data-[sidebar-collapsible=dock]:hidden'>
+                            <Sidebar.Label>DQ Al Haqqi</Sidebar.Label>
+                            <span className='text-muted-fg -mt-0.5 block'>@dq-alhq</span>
+                        </div>
+                    </Menu.Trigger>
+                    <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
+                        <Menu.Section>
+                            <Menu.Header separator>
+                                <span className='block'>DQ Al Haqqi</span>
+                                <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                            </Menu.Header>
+                        </Menu.Section>
+
+                        <Menu.Item href='#setting'>
+                            <IconSettings />
+                            Setting
                         </Menu.Item>
-                        <Menu.Item onAction={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                            {theme === 'light' ? <IconMoon /> : <IconSun />}
-                            Dark Mode
+                        <Menu.Item href='#contact'>
+                            <IconHeadphones />
+                            Customer Support
                         </Menu.Item>
                         <Menu.Separator />
-                        <Menu.Item isDanger href='#'>
+                        <Menu.Item href='#logout'>
                             <IconLogOut />
                             Log out
                         </Menu.Item>
@@ -81,6 +74,14 @@ export default function ChattingAppLayout() {
     )
 }
 
-function SidebarItem({ icon: Icon, ...props }: React.ComponentProps<typeof Sidebar.Item>) {
-    return <Sidebar.Item isCurrent={props.isCurrent} icon={Icon} {...props} />
+function SidebarItem({
+    icon: Icon,
+    ...props
+}: React.ComponentProps<typeof Sidebar.Item> & { icon: React.FC<React.SVGProps<SVGSVGElement>> }) {
+    return (
+        <Sidebar.Item tooltip={props.tooltip} isCurrent href='#' {...props}>
+            <Icon />
+            <Sidebar.Label>{props.tooltip}</Sidebar.Label>
+        </Sidebar.Item>
+    )
 }

@@ -17,7 +17,7 @@ import {
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { cn, cr } from './utils'
+import { cn, cr, useMediaQuery } from './utils'
 
 const tabsStyles = tv({
     base: 'group/tabs flex gap-4',
@@ -31,10 +31,14 @@ const tabsStyles = tv({
 
 interface TabsProps extends TabsPrimitiveProps {
     ref?: React.RefObject<HTMLDivElement>
+    isResponsive?: boolean
 }
-const Tabs = ({ className, ref, ...props }: TabsProps) => {
+const Tabs = ({ className, isResponsive = false, ref, ...props }: TabsProps) => {
+    const isDesktop = useMediaQuery('(min-width: 1024px)')
+    const orientation = isDesktop ? 'vertical' : 'horizontal'
     return (
         <TabsPrimitive
+            orientation={isResponsive ? orientation : props.orientation}
             className={cr(className, (className, renderProps) =>
                 tabsStyles({
                     ...renderProps,

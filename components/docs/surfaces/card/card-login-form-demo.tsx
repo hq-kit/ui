@@ -4,7 +4,7 @@ import { Button, Card, Checkbox, Link, TextField } from '@/components/ui'
 
 export default function CardLoginFormDemo() {
     return (
-        <Card className='max-w-md mx-auto'>
+        <Card className='mx-auto max-w-md'>
             <Card.Header>
                 <Card.Title>Login</Card.Title>
                 <Card.Description>Don&apos;t loose the level, just keep on going.</Card.Description>
@@ -18,7 +18,7 @@ export default function CardLoginFormDemo() {
                     type='password'
                     placeholder='Enter your password'
                 />
-                <div className='flex justify-between items-center'>
+                <div className='flex items-center justify-between'>
                     <Checkbox>Remember me</Checkbox>
                     <Link variant='primary' href='#'>
                         Forgot password?

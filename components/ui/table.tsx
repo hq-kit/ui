@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconChevronDown, IconMenu } from 'hq-icons'
+import { IconChevronDown, IconLoaderCircle, IconMenu } from 'hq-icons'
 import type {
     CellProps,
     ColumnProps,
@@ -249,12 +249,25 @@ const TableRow = <T extends object>({
         </Row>
     )
 }
+const TableEmpty = () => (
+    <div className='grid place-content-center p-10'>
+        <span className='text-muted-foreground'>No results.</span>
+    </div>
+)
 
+const TableLoading = () => (
+    <div className='grid place-content-center p-10'>
+        <IconLoaderCircle className='animate-spin' />
+    </div>
+)
 Table.Body = TableBody
 Table.Cell = TableCell
 Table.Column = TableColumn
 Table.Header = TableHeader
 Table.Row = TableRow
+
+Table.Empty = TableEmpty
+Table.Loading = TableLoading
 
 export { Table }
 export type { TableBodyProps, TableCellProps, TableColumnProps, TableProps, TableRowProps }
