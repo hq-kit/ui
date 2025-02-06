@@ -28,7 +28,7 @@ const overlay = tv({
 const content = tv({
     base: [
         'bg-bg text-fg ring-fg/5 max-h-full w-full rounded-t-2xl text-left align-middle ring-1 shadow-lg',
-        'dark:ring-border overflow-hidden sm:rounded-2xl'
+        'dark:ring-border overflow-hidden sm:rounded-lg'
     ],
     variants: {
         isEntering: {

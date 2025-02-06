@@ -61,7 +61,7 @@ const MenuSubMenu = ({ delay = 0, ...props }) => (
 
 const menuStyles = tv({
     slots: {
-        menu: "grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr] overflow-auto rounded-xl p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit] *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1",
+        menu: "grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr] overflow-auto rounded-lg p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit] *:[[role='group']+[role=group]]:mt-1 *:[[role='group']+[role=separator]]:mt-1",
         popover: 'z-50 p-0 shadow-xs outline-hidden sm:min-w-40',
         trigger: [
             'data-focus-visible:ring-primary relative inline text-left outline-hidden data-focus-visible:ring-1'
@@ -145,16 +145,13 @@ const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemP
                             {values.selectionMode === 'single' && (
                                 <span
                                     data-slot='bullet-icon'
-                                    className='-mx-0.5 mr-2 flex size-4 shrink-0 items-center justify-center **:data-[slot=indicator]:size-4 **:data-[slot=indicator]:shrink-0'
+                                    className='mr-2 flex size-4 shrink-0 items-center justify-center **:data-[slot=indicator]:size-4 **:data-[slot=indicator]:shrink-0'
                                 >
-                                    <IconCheck data-slot='indicator' />
+                                    <IconCheck data-slot='indicator' className='mr-2 size-4' />
                                 </span>
                             )}
                             {values.selectionMode === 'multiple' && (
-                                <IconCheck
-                                    className='-mx-0.5 mr-2 size-4'
-                                    data-slot='checked-icon'
-                                />
+                                <IconCheck className='mr-2 size-4' data-slot='checked-icon' />
                             )}
                         </>
                     )}

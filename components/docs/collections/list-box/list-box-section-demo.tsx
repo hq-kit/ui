@@ -6,9 +6,19 @@ export default function ListBoxSectionDemo() {
     return (
         <ListBox items={bands} aria-label='Bands' selectionMode='multiple'>
             {(item) => (
-                <ListBox.Section items={item.albums} title={item.name} id={item.id}>
-                    {/*@ts-expect-error: ts ^5.5.4*/}
-                    {(album) => <ListBox.Item id={album.id} textValue={album.name}>{album.name}</ListBox.Item>}
+                <ListBox.Section
+                    className='grid w-full gap-1'
+                    items={item.albums}
+                    title={item.name}
+                    id={item.id}
+                >
+                    {(album) => (
+                        // @ts-expect-error unknown-type
+                        <ListBox.Item id={album.id} textValue={album.name}>
+                            {/* @ts-expect-error unknown-type */}
+                            {album.name}
+                        </ListBox.Item>
+                    )}
                 </ListBox.Section>
             )}
         </ListBox>

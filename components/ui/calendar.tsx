@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconChevronLeft, IconChevronRight } from 'hq-icons'
+import { IconChevronLeft, IconChevronRight, IconMinus, IconPlus } from 'hq-icons'
 import { useDateFormatter } from 'react-aria'
 import {
     CalendarCell,
@@ -14,7 +14,12 @@ import {
     type CalendarProps as CalendarPrimitiveProps,
     CalendarStateContext,
     type DateValue,
+    Group,
     Heading,
+    Input,
+    ListBox,
+    ListBoxItem,
+    NumberField,
     RangeCalendarStateContext,
     Text,
     useLocale
@@ -23,7 +28,7 @@ import { CalendarState, RangeCalendarState } from 'react-stately'
 import { tv } from 'tailwind-variants'
 
 import { Button } from './button'
-import { Menu } from './menu'
+import { Popover } from './popover'
 import { cr, ctr, focusRing } from './utils'
 
 const cellStyles = tv({
@@ -31,7 +36,7 @@ const cellStyles = tv({
     base: 'flex size-10 cursor-default items-center justify-center rounded-lg tabular-nums sm:size-9 lg:text-sm',
     variants: {
         isSelected: {
-            false: 'text-fg data-hovered:bg-muted-fg/15 data-pressed:bg-muted-fg/20',
+            false: 'text-fg data-hovered:bg-primary/10 data-pressed:bg-primary/10',
             true: 'bg-primary text-primary-fg'
         },
         isDisabled: {
@@ -56,7 +61,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
             {...props}
         >
             <CalendarHeader type='calendar' />
-            <CalendarGrid className='**:[td]border-muted **:[td]:border-collapse **:[td]:px-0 **:[td]:py-[1.5px]'>
+            <CalendarGrid className='**:[td]border **:[td]:border-collapse **:[td]:px-0 **:[td]:py-[1.5px]'>
                 <CalendarGridHeader />
                 <CalendarGridBody>
                     {(date) => (
@@ -167,21 +172,48 @@ const MonthDropdown = (state: CalendarState | RangeCalendarState) => {
     }
 
     return (
-        <Menu aria-label='Month'>
-            <Menu.Trigger slot={null}>{months[focusedDate.month - 1]}</Menu.Trigger>
-            <Menu.Content
-                selectionMode='single'
-                onAction={(e) => onChange(Number(e))}
-                selectedKeys={[focusedDate.month]}
-                items={months.map((month, i) => ({ value: i + 1, formatted: month }))}
+        <Popover>
+            <Popover.Trigger
+                className='data-focus-visible:ring-primary relative inline rounded-lg text-left ring-offset-2 outline-hidden data-focus-visible:ring-1'
+                slot={null}
             >
-                {(item) => (
-                    <Menu.Item id={item.value}>
-                        <Menu.Label>{item.formatted}</Menu.Label>
-                    </Menu.Item>
-                )}
-            </Menu.Content>
-        </Menu>
+                {months[focusedDate.month - 1]}
+            </Popover.Trigger>
+            <Popover.Content
+                className='min-w-0'
+                aria-label='Month'
+                shouldCloseOnInteractOutside={() => false}
+            >
+                <Popover.Body>
+                    <ListBox
+                        autoFocus
+                        aria-labelledby='Month'
+                        selectionMode='single'
+                        layout='grid'
+                        className='grid grid-cols-4 gap-1 pt-4 outline-hidden'
+                        // @ts-expect-error unknown-type
+                        onSelectionChange={(e) => onChange(e.currentKey)}
+                        selectedKeys={[focusedDate.month]}
+                        items={months.map((month, i) => ({ value: i + 1, formatted: month }))}
+                    >
+                        {(item) => (
+                            <ListBoxItem
+                                className='data-hovered:bg-primary/10 data-selected:bg-primary data-selected:text-primary-fg data-pressed:bg-primary/20 data-focus-visible:inset-ring-primary data-focus-visible:bg-primary/10 cursor-pointer rounded-lg p-2 text-center font-medium outline-hidden data-focus-visible:inset-ring'
+                                id={item.value}
+                                textValue={item.formatted}
+                            >
+                                {item.formatted.substring(0, 3).toUpperCase()}
+                            </ListBoxItem>
+                        )}
+                    </ListBox>
+                </Popover.Body>
+                <Popover.Footer className='sm:pt-2'>
+                    <Popover.Close type='button' className='w-full'>
+                        Confirm
+                    </Popover.Close>
+                </Popover.Footer>
+            </Popover.Content>
+        </Popover>
     )
 }
 
@@ -204,21 +236,43 @@ const YearDropdown = (state: CalendarState | RangeCalendarState) => {
     }
 
     return (
-        <Menu aria-label='Year'>
-            <Menu.Trigger slot={null}>{years[20]}</Menu.Trigger>
-            <Menu.Content
-                selectionMode='single'
-                onAction={(e) => onChange(Number(e))}
-                selectedKeys={[focusedDate.year]}
-                items={years.map((year) => ({ value: year }))}
+        <Popover>
+            <Popover.Trigger
+                className='data-focus-visible:ring-primary relative inline rounded-lg text-left ring-offset-2 outline-hidden data-focus-visible:ring-1'
+                slot={null}
             >
-                {(item) => (
-                    <Menu.Item id={item.value}>
-                        <Menu.Label>{item.value}</Menu.Label>
-                    </Menu.Item>
-                )}
-            </Menu.Content>
-        </Menu>
+                {formatter.format(focusedDate.toDate(timeZone))}
+            </Popover.Trigger>
+            <Popover.Content
+                shouldCloseOnInteractOutside={() => false}
+                className='sm:w-48 sm:min-w-0'
+                aria-label='Year'
+            >
+                <Popover.Body>
+                    <NumberField
+                        aria-labelledby='Year'
+                        onChange={onChange}
+                        value={focusedDate.year}
+                        autoFocus
+                        className='flex h-16 w-full items-center justify-center pt-4 sm:h-auto'
+                        formatOptions={{ useGrouping: false }}
+                    >
+                        <Group className='flex w-full items-center justify-between gap-1'>
+                            <Button variant='ghost' size='icon' slot='decrement'>
+                                <IconMinus />
+                            </Button>
+                            <Input className='h-8 w-full text-center text-2xl outline-hidden sm:text-xl' />
+                            <Button variant='ghost' size='icon' slot='increment'>
+                                <IconPlus />
+                            </Button>
+                        </Group>
+                    </NumberField>
+                </Popover.Body>
+                <Popover.Footer className='pt-0 sm:pt-0'>
+                    <Popover.Close className='w-full'>Confirm</Popover.Close>
+                </Popover.Footer>
+            </Popover.Content>
+        </Popover>
     )
 }
 

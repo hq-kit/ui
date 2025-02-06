@@ -83,7 +83,7 @@ const DropdownItem = ({ className, ...props }: DropdownItemProps) => {
         >
             {cr(props.children, (children, { isSelected }) => (
                 <>
-                    {isSelected && <IconCheck data-slot='checked-icon' className='-mx-0.5 mr-2' />}
+                    {isSelected && <IconCheck data-slot='checked-icon' className='mr-2 size-4' />}
                     {typeof children === 'string' ? (
                         <DropdownLabel>{children}</DropdownLabel>
                     ) : (

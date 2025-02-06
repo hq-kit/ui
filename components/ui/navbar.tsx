@@ -118,7 +118,7 @@ const navStyles = tv({
             true: 'sticky top-0 z-40'
         },
         variant: {
-            float: 'bg-bg text-fg mx-auto w-full max-w-7xl rounded-xl border md:px-4 2xl:max-w-(--breakpoint-2xl)',
+            float: 'bg-bg text-fg mx-auto w-full max-w-7xl rounded-lg border md:px-4 2xl:max-w-(--breakpoint-2xl)',
             navbar: 'bg-bg text-fg border-b md:px-6',
             inset: [
                 'mx-auto md:px-6',

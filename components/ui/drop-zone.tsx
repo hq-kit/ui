@@ -8,7 +8,7 @@ import { cr, focusStyles } from './utils'
 
 const dropZoneStyles = tv({
     extend: focusStyles,
-    base: 'group flex max-h-[200px] max-w-xl flex-col items-center justify-center gap-2 rounded-md border border-dashed p-6 text-sm transition duration-200 has-[slot=description]:text-center',
+    base: 'group flex max-h-[200px] max-w-xl flex-col items-center justify-center gap-2 rounded-lg border border-dashed p-6 text-sm transition duration-200 has-[slot=description]:text-center',
     variants: {
         isDropTarget: {
             true: 'border-primary bg-primary/10 ring-primary/20 [&_.text-muted-fg]:text-primary-fg border-solid ring-4'

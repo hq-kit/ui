@@ -12,7 +12,7 @@ const buttonStyles = tv({
     extend: focusButtonStyles,
     base: [
         'relative inline-flex items-center justify-center gap-x-2 border font-medium whitespace-nowrap no-underline transition',
-        '*:svg:-mx-0.5 *:svg:my-1 *:svg:size-4 *:svg:shrink-0'
+        '**:data-[slot=icon]:my-1 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0'
     ],
     variants: {
         variant: {
@@ -22,8 +22,8 @@ const buttonStyles = tv({
             danger: 'bg-danger text-danger-fg border-danger',
             warning: 'bg-warning text-warning-fg border-warning',
             dark: 'bg-fg text-bg border-fg',
-            outline: 'bg-bg/80 text-fg border-muted data-hovered:bg-muted',
-            ghost: 'text-fg data-hovered:bg-muted border-transparent bg-transparent'
+            outline: 'bg-bg/80 text-fg data-hovered:bg-muted/60 data-hovered:text-fg',
+            ghost: 'text-fg data-hovered:bg-muted/60 border-transparent bg-transparent'
         },
         size: {
             xs: 'h-8 px-2 text-xs',

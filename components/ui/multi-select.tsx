@@ -27,7 +27,7 @@ const multiSelectStyles = tv({
     slots: {
         multiSelectField: 'group flex w-full min-w-80 flex-col',
         multiSelect: [
-            'border-muted relative flex min-h-10 flex-row flex-wrap items-center rounded-lg border px-1 transition',
+            'relative flex min-h-10 flex-row flex-wrap items-center rounded-lg border px-1 transition',
             'has-[input[data-focused=true]]:border-primary/70',
             'has-[input[data-invalid=true][data-focused=true]]:border-primary/70',
             'has-[input[data-invalid=true]]:border-danger',
@@ -35,7 +35,7 @@ const multiSelectStyles = tv({
             'has-[input[data-disabled=false][data-focused=true]]:border-primary/60'
         ],
         chevronButton:
-            'text-muted-fg cursor-pointer focus:text-fg hover:text-fg -mr-2 grid size-8 place-content-center rounded-sm',
+            'text-muted-fg focus:text-fg hover:text-fg -mr-2 grid size-8 cursor-pointer place-content-center rounded-lg',
         input: 'ml-1 flex-1 px-0.5 py-1 ring-0 shadow-none',
         comboBoxChild: 'inline-flex flex-1 flex-wrap items-center px-0',
         comboBox: 'group peer flex flex-1'
@@ -75,6 +75,7 @@ interface MultiSelectProps<T extends object>
     tag: (item: T) => React.ReactNode
     children: React.ReactNode | ((item: T) => React.ReactNode)
     errorMessage?: string | ((validation: ValidationResult) => string)
+    portal?: Element
 }
 
 const MultiSelect = <T extends SelectedKey>({
@@ -278,6 +279,7 @@ const MultiSelect = <T extends SelectedKey>({
                             </VisuallyHidden>
                         </div>
                         <Popover.Picker
+                            UNSTABLE_portalContainer={props?.portal}
                             isNonModal
                             className='max-w-none'
                             style={{ width: `${width}px` }}
@@ -310,9 +312,7 @@ const MultiSelect = <T extends SelectedKey>({
                             </ListBox.Picker>
                         </Popover.Picker>
                     </ComboBox>
-                    <div
-                        className='relative ml-auto flex items-center justify-center px-1 [&_button>svg]:transition peer-data-[open]:[&_button]:pointer-events-none peer-data-[open]:[&_button>svg]:rotate-180'
-                    >
+                    <div className='relative ml-auto flex items-center justify-center px-1 peer-data-[open]:[&_button]:pointer-events-none [&_button>svg]:transition peer-data-[open]:[&_button>svg]:rotate-180'>
                         <button
                             type='button'
                             className={chevronButton()}

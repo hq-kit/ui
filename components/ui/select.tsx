@@ -24,7 +24,7 @@ import { cn, cr, focusStyles } from './utils'
 const selectTriggerStyles = tv({
     extend: focusStyles,
     base: [
-        'border-muted flex h-10 w-full cursor-default items-center gap-4 gap-x-2 rounded-lg border py-2 pr-2 pl-3 text-start transition group-data-disabled:opacity-50 **:data-[slot=icon]:size-4',
+        'flex h-10 w-full cursor-default items-center gap-4 gap-x-2 rounded-lg border py-2 pr-2 pl-3 text-start transition group-data-disabled:opacity-50 **:data-[slot=icon]:size-4',
         'group-data-open:border-primary/70 data-hovered:border-primary/60 group-data-open:ring-primary/20 group-data-open:ring-4',
         'text-fg group-data-invalid:border-danger group-data-invalid:ring-danger/20'
     ],
@@ -70,9 +70,12 @@ const Select = <T extends object>({
                     )}
                 >
                     {props.prefix && <span className='-mr-1'>{props.prefix}</span>}
-                    <SelectValue className='data-placeholder:text-muted-fg grid flex-1 grid-cols-[auto_1fr] items-center text-base *:data-avatar:*:-mx-0.5 *:data-avatar:-mx-0.5 *:data-avatar:*:mr-2 *:data-avatar:mr-2 *:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:mr-2 sm:text-sm [&_[slot=description]]:hidden' />
+                    <SelectValue className='data-placeholder:text-muted-fg grid flex-1 grid-cols-[auto_1fr] items-center text-base *:data-avatar:*:-mx-0.5 *:data-avatar:-mx-0.5 *:data-avatar:*:mr-2 *:data-avatar:mr-2 **:data-[slot=icon]:mr-2 sm:text-sm [&_[slot=description]]:hidden' />
 
-                    <IconChevronDown className='text-muted-fg group-data-open:text-fg size-4 shrink-0 duration-300 group-data-disabled:opacity-50 group-data-open:rotate-180' />
+                    <IconChevronDown
+                        data-slot='chevron'
+                        className='text-muted-fg size-4 transition group-data-open:rotate-180'
+                    />
                 </Button>
             </Group>
             {description && <Description>{description}</Description>}

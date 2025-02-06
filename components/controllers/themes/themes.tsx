@@ -114,7 +114,7 @@ export default function ThemeCustomizer() {
                                     <IconX />
                                 </Popover.Close>
                             </Popover.Header>
-                            <Popover.Body className='mt-2 space-y-2'>
+                            <Popover.Body className='mt-2 space-y-2 pb-6'>
                                 <Tabs>
                                     <Tabs.List>
                                         <Tabs.Label id='tailwind'>Tailwind</Tabs.Label>

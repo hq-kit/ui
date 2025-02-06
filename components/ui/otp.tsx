@@ -45,7 +45,7 @@ const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
         <div
             ref={ref}
             className={cn(
-                'border-muted relative flex size-10 items-center justify-center rounded-md border text-sm tabular-nums transition-all',
+                'relative flex size-10 items-center justify-center rounded-lg border text-sm tabular-nums transition-all',
                 isActive && 'border-primary/70 ring-primary/20 z-10 ring-4',
                 className
             )}

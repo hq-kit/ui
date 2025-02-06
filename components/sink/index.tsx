@@ -12,10 +12,8 @@ export default function Sink() {
             <LoginFormSink />
             <DataFormSink />
             <UserProfileSink />
-            <div className='grid gap-4 lg:col-span-2'>
-                <TeamManagementSink />
-                <TableSink />
-            </div>
+            <TeamManagementSink />
+            <TableSink />
             <div className='lg:col-span-1'>
                 <OptionsSink />
             </div>

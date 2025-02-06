@@ -14,7 +14,7 @@ const badgeStyles = tv({
             dark: 'ring-fg/20 bg-fg/5 text-fg'
         },
         shape: {
-            rounded: 'rounded-md',
+            rounded: 'rounded-lg',
             sharp: 'rounded-none',
             circle: 'rounded-full'
         }

@@ -15,7 +15,7 @@ export default function UserProfileSink() {
                 <Image
                     width={320}
                     height={240}
-                    className='h-40 w-full rounded-md object-cover'
+                    className='h-40 w-full rounded-lg object-cover'
                     src='https://picsum.photos/640/320'
                     alt='Profile Cover'
                 />

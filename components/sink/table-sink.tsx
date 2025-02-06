@@ -6,10 +6,12 @@ import type { Selection } from 'react-aria-components'
 
 import { Card, Table } from '@/components/ui'
 
+import PaginationDemo from '../docs/navigation/pagination/pagination-demo'
+
 export default function TableSink() {
     const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set())
     return (
-        <Card>
+        <Card className='lg:col-span-2'>
             <Table
                 aria-label='Books'
                 selectionMode='multiple'
@@ -35,6 +37,9 @@ export default function TableSink() {
                     )}
                 </Table.Body>
             </Table>
+            <div className='my-[13px]'>
+                <PaginationDemo />
+            </div>
         </Card>
     )
 }

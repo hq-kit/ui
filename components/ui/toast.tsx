@@ -32,7 +32,7 @@ const Toast = ({ ...props }: ToasterProps) => {
                         'has-data-description:**:data-title:font-medium [&:has([data-description])_[data-title]]:text-base!',
                         'has-data-[slot=icon]:**:data-content:pl-0',
                         'has-data-button:*:data-content:mb-10',
-                        'flex w-full rounded-xl p-4 has-data-button:**:data-close-button:hidden!',
+                        'flex w-full rounded-lg p-4 has-data-button:**:data-close-button:hidden!',
                         'inset-ring-1 inset-ring-current/10 backdrop-blur-3xl'
                     ),
                     icon: 'absolute top-[0.2rem] [--toast-icon-margin-end:7px] *:data-[slot=icon]:text-fg *:data-[slot=icon]:size-4.5 **:data-[slot=icon]:text-current',
@@ -57,7 +57,7 @@ const Toast = ({ ...props }: ToasterProps) => {
                         size: 'xs'
                     }),
                     closeButton:
-                        '*:[svg]:size-12 size-6! rounded-md! [--gray1:transparent] [--gray4:transparent] [--gray5:transparent] [--gray12:current] [--toast-close-button-start:full] [--toast-close-button-end:-6px] [--toast-close-button-transform:translate(-75%,60%)] absolute'
+                        '*:[svg]:size-12 !size-6 !rounded-lg [--gray1:transparent] [--gray4:transparent] [--gray5:transparent] [--gray12:current] [--toast-close-button-start:full] [--toast-close-button-end:-6px] [--toast-close-button-transform:translate(-75%,60%)] absolute'
                 }
             }}
             {...props}

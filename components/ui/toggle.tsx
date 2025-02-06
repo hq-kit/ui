@@ -106,7 +106,7 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'border-muted inline-flex cursor-pointer items-center gap-x-2 rounded-lg border outline-hidden transition sm:text-sm',
+        'inline-flex cursor-pointer items-center gap-x-2 rounded-lg border outline-hidden transition sm:text-sm',
         '*:svg:-mx-0.5 *:svg:my-1 *:svg:size-4 *:svg:shrink-0'
     ],
     variants: {

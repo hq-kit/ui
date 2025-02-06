@@ -25,17 +25,17 @@ const GridList = <T extends object>({ children, className, ...props }: GridListP
 )
 
 const itemStyles = tv({
-    base: 'group text-fg [--selected-item-hovered:theme(--color-muted/70%)] [--selected-item:theme(--color-muted/80%)] relative -mb-px flex cursor-default gap-3 border-y px-3 py-2 outline-hidden -outline-offset-2 transition select-none first:rounded-t-md first:border-t-0 last:mb-0 last:rounded-b-md last:border-b-0 sm:text-sm',
+    base: 'group text-fg relative -mb-px flex cursor-default gap-3 border-y px-3 py-2 outline-hidden -outline-offset-2 transition select-none first:rounded-t-md first:border-t-0 last:mb-0 last:rounded-b-md last:border-b-0 sm:text-sm',
     variants: {
-        isHovered: { true: 'bg-subtle' },
+        isHovered: { true: 'bg-primary/5' },
         isSelected: {
-            true: 'border-muted/50 z-20 bg-(--selected-item) data-hovered:bg-(--selected-item-hovered)'
+            true: 'border-primary/50 bg-primary/10 data-hovered:bg-primary/5 z-20'
         },
         isFocused: {
             true: 'outline-hidden'
         },
         isFocusVisible: {
-            true: 'ring-primary bg-(--selected-item) ring-1 outline-hidden data-hovered:bg-(--selected-item-hovered) data-selected:bg-(--selected-item)'
+            true: 'ring-primary bg-primary/10 data-hovered:bg-primary/5 data-selected:bg-primary/10 ring-1 outline-hidden'
         },
         isDisabled: {
             true: 'text-muted-fg/70'

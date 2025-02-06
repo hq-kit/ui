@@ -20,8 +20,8 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
         >
             {(values) => (
                 <>
-                    <span className='group-data-selected:bg-primary group-data-focused:ring-primary/20 group-data-invalid:ring-danger/20 bg-border mr-2 h-5 w-8 cursor-pointer rounded-full border-2 border-transparent transition duration-200 group-data-disabled:cursor-default group-data-disabled:opacity-50 group-data-focused:ring-2'>
-                        <span className='bg-primary-fg block size-4 origin-right rounded-full shadow-sm transition-all duration-200 group-data-pressed:w-5 group-data-selected:ml-3 group-data-selected:group-data-[pressed]:ml-2' />
+                    <span className='group-data-selected:bg-primary group-data-focused:ring-primary/20 group-data-invalid:ring-danger/20 bg-border mr-2 h-5 w-8 cursor-pointer rounded-[calc(var(--radius-lg)+2px)] border-2 border-transparent transition duration-200 group-data-disabled:cursor-default group-data-disabled:opacity-50 group-data-focused:ring-2'>
+                        <span className='bg-primary-fg block size-4 origin-right rounded-[calc(var(--radius-lg)+2px)] shadow-sm transition-all duration-200 group-data-pressed:w-5 group-data-selected:ml-3 group-data-selected:group-data-[pressed]:ml-2' />
                     </span>
                     {typeof children === 'function' ? children(values) : children}
                 </>

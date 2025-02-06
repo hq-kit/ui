@@ -69,7 +69,7 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
                             </div>
                             <div
                                 className={cn(
-                                    'to-background absolute inset-0 rounded-md bg-gradient-to-b from-transparent',
+                                    'to-background absolute inset-0 rounded-lg bg-gradient-to-b from-transparent',
                                     isOpened && 'hidden'
                                 )}
                             ></div>

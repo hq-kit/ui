@@ -53,7 +53,7 @@ const PopoverBody = ({ className, ref, ...props }: DialogBodyProps) => (
 
 const content = tv({
     base: [
-        'peer/popover-content bg-bg text-fg max-w-xs rounded-xl border bg-clip-padding shadow-xs transition-transform sm:max-w-3xl sm:text-sm dark:backdrop-saturate-200'
+        'peer/popover-content bg-bg text-fg max-w-xs rounded-lg border bg-clip-padding shadow-xs transition-transform sm:max-w-3xl sm:text-sm dark:backdrop-saturate-200'
     ],
     variants: {
         isPicker: {
@@ -84,7 +84,7 @@ const drawer = tv({
     ],
     variants: {
         isMenu: {
-            true: 'rounded-t-xl p-0 [&_[role=dialog]]:*:not-has-[[data-slot=dialog-body]]:px-1',
+            true: 'rounded-t-lg p-0 [&_[role=dialog]]:*:not-has-[[data-slot=dialog-body]]:px-1',
             false: 'rounded-t-2xl'
         },
         isEntering: {

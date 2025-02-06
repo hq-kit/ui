@@ -179,7 +179,7 @@ const Tag = ({ className, variant, shape, ...props }: TagProps) => {
                         {allowsRemoving && (
                             <Button
                                 slot='remove'
-                                className='data-focus-visible:ring-primary -mr-0.5 grid size-3.5 place-content-center rounded data-focus-visible:ring-1 data-focused:outline-none'
+                                className='data-focus-visible:ring-primary -mr-0.5 grid size-3.5 place-content-center rounded-lg data-focus-visible:ring-1 data-focused:outline-none'
                             >
                                 <IconX className='size-3 shrink-0' />
                             </Button>

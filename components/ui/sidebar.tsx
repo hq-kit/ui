@@ -380,7 +380,7 @@ const SidebarSection = ({
             {...props}
         >
             {state !== 'collapsed' && 'title' in props && (
-                <Header className='text-fg/70 ring-sidebar-ring mb-1 flex shrink-0 items-center rounded-md px-2.5 text-xs font-medium transition-[margin,opa] duration-200 ease-linear outline-none group-data-[sidebar-collapsible=dock]/sidebar-container:-mt-8 group-data-[sidebar-collapsible=dock]/sidebar-container:opacity-0 data-focus-visible:ring-2 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0'>
+                <Header className='text-fg/70 ring-sidebar-ring mb-1 flex shrink-0 items-center rounded-lg px-2.5 text-xs font-medium transition-[margin,opa] duration-200 ease-linear outline-none group-data-[sidebar-collapsible=dock]/sidebar-container:-mt-8 group-data-[sidebar-collapsible=dock]/sidebar-container:opacity-0 data-focus-visible:ring-2 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0'>
                     {props.title}
                 </Header>
             )}
@@ -536,7 +536,7 @@ const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<'main'>
             className={cn(
                 'relative flex min-h-svh w-full flex-1 flex-col peer-data-[sidebar-variant=inset]:border peer-data-[sidebar-variant=inset]:border-(--sidebar-border)',
                 'bg-bg dark:peer-data-[sidebar-variant=inset]:bg-bg peer-data-[sidebar-variant=inset]:overflow-hidden',
-                'peer-data-[sidebar-variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[sidebar-variant=inset]:m-2 md:peer-data-[sidebar-variant=inset]:ml-0 md:peer-data-[sidebar-variant=inset]:rounded-xl md:peer-data-[sidebar-variant=inset]:shadow-xs md:peer-data-[sidebar-state=collapsed]:peer-data-[sidebar-variant=inset]:ml-2',
+                'peer-data-[sidebar-variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[sidebar-variant=inset]:m-2 md:peer-data-[sidebar-variant=inset]:ml-0 md:peer-data-[sidebar-variant=inset]:rounded-lg md:peer-data-[sidebar-variant=inset]:shadow-xs md:peer-data-[sidebar-state=collapsed]:peer-data-[sidebar-variant=inset]:ml-2',
                 className
             )}
             {...props}

@@ -13,7 +13,7 @@ import { cr, ctr, focusStyles } from './utils'
 
 const textareaStyles = tv({
     extend: focusStyles,
-    base: 'border-muted bg-background w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition duration-200 outline-none sm:text-sm',
+    base: 'bg-background w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition duration-200 outline-none sm:text-sm',
     variants: {
         isDisabled: {
             false: 'data-hovered:border-primary/60',

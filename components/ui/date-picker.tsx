@@ -25,12 +25,12 @@ const datePickerStyles = tv({
     slots: {
         base: 'group flex flex-col gap-y-1.5',
         datePickerIcon:
-            'group [&_[data-slot=icon]]:text-muted-fg pressed:bg-transparent mr-1 h-7 w-8 rounded-lg outline-offset-0 hover:bg-transparent',
+            'group **:data-[slot=icon]:text-muted-fg mr-1 h-7 w-8 rounded-lg outline-offset-0 data-hovered:bg-transparent data-pressed:bg-transparent',
         calendarIcon: 'group-open:text-fg',
         datePickerInput: 'w-full px-2 text-base lg:text-sm',
         dateRangePickerInputStart: 'px-2 text-base lg:text-sm',
         dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 text-base lg:text-sm',
-        dateRangePickerDash: 'text-fg group-disabled:opacity-50'
+        dateRangePickerDash: 'text-fg group-data-disabled:opacity-50'
     }
 })
 
@@ -49,7 +49,7 @@ const DatePickerOverlay = ({ closeButton = true, range, ...props }: DatePickerOv
     return (
         <Popover.Content
             showArrow={false}
-            className='flex justify-center p-4 sm:max-w-[17.2rem] sm:min-w-[17rem] sm:p-2 sm:pt-3'
+            className='flex justify-center p-4 **:overflow-visible sm:max-w-[17.2rem] sm:min-w-[17rem] sm:p-2 sm:pt-3'
             {...props}
         >
             {range ? <RangeCalendar /> : <Calendar />}

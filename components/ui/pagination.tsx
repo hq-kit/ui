@@ -26,17 +26,17 @@ import { cn, cr } from './utils'
 const paginationStyles = tv({
     slots: {
         pagination: 'mx-auto flex w-full justify-center gap-[5px]',
-        section: 'flex h-9 gap-[5px]',
+        section: 'flex h-10 gap-[5px]',
         list: 'flex flex-row items-center gap-[5px]',
         itemButton:
             'data-focus-visible:border-primary text-fg data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 cursor-pointer font-normal data-focus-visible:ring-4 data-focused:outline-none',
-        itemLabel: 'grid h-9 place-content-center px-3.5 tabular-nums',
-        itemSeparator: 'grid h-9 place-content-center',
+        itemLabel: 'grid h-10 place-content-center px-3.5 tabular-nums',
+        itemSeparator: 'grid h-10 place-content-center',
         itemEllipsis:
-            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 flex size-9 items-center justify-center rounded-lg border border-transparent data-focus-visible:ring-4 data-focused:outline-none',
-        itemEllipsisIcon: 'flex size-9 items-center justify-center',
+            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 flex size-10 items-center justify-center rounded-lg border border-transparent data-focus-visible:ring-4 data-focused:outline-none',
+        itemEllipsisIcon: 'flex size-10 items-center justify-center',
         defaultItem:
-            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 size-9 cursor-pointer font-normal tabular-nums disabled:cursor-default disabled:opacity-100 data-focus-visible:ring-4 data-focused:outline-none',
+            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 size-10 cursor-pointer font-normal tabular-nums disabled:cursor-default disabled:opacity-100 data-focus-visible:ring-4 data-focused:outline-none',
         itemSeparatorLine: 'bg-muted-fg/40 h-5 w-[1.5px] shrink-0 rotate-[14deg]'
     }
 })
@@ -98,7 +98,7 @@ interface PaginationItemProps extends ListBoxItemProps, VariantProps<typeof butt
 
 const Item = ({
     role = 'default',
-    size = 'sm',
+    size = 'icon',
     variant = 'outline',
     className,
     isCurrent,
@@ -121,7 +121,7 @@ const Item = ({
                 className: cn(
                     buttonStyles({
                         variant: 'outline',
-                        size: 'sm',
+                        size: 'icon',
                         className: itemButton()
                     }),
                     className

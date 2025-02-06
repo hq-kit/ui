@@ -49,7 +49,7 @@ const ComboBox = <T extends object>({
                     {!props?.inputValue && (
                         <IconChevronDown
                             aria-hidden
-                            className='text-muted-fg group-open:text-fg transition group-data-open:rotate-180'
+                            className='text-muted-fg transition group-data-open:rotate-180'
                         />
                     )}
                 </Button>

@@ -36,7 +36,7 @@ const table = tv({
         header: 'border-b',
         row: 'tr data-focus-visible-within:bg-primary/10 group bg-bg text-muted-fg ring-primary data-selected:bg-primary/5 data-selected:data-hovered:bg-primary/10 data-focused:bg-primary/10 data-hovered:bg-primary/5 relative cursor-default border-b outline-hidden data-focus-visible:ring-1 data-focused:ring-0',
         cellIcon:
-            'bg-muted text-fg grid size-[1.15rem] flex-none shrink-0 place-content-center rounded *:data-[slot=icon]:size-3.5 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:transition-transform *:data-[slot=icon]:duration-200',
+            'bg-muted text-fg grid size-[1.15rem] flex-none shrink-0 place-content-center rounded-lg *:data-[slot=icon]:size-3.5 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:transition-transform *:data-[slot=icon]:duration-200',
         columnResizer: [
             '[&[data-resizing]>div]:bg-primary absolute top-0 right-0 bottom-0 grid w-px touch-none place-content-center px-1',
             '&[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize data-[resizable-direction=both]:cursor-ew-resize'

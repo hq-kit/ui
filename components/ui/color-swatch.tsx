@@ -123,7 +123,7 @@ const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => {
             aria-label={props['aria-label'] ?? 'Color swatch'}
             className={ctr(
                 className,
-                twMerge('size-8 shrink-0 rounded-md', needRing && 'inset-ring-fg/10 inset-ring-1')
+                twMerge('size-8 shrink-0 rounded-lg', needRing && 'inset-ring-fg/10 inset-ring-1')
             )}
             {...props}
         />

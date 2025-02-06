@@ -40,7 +40,7 @@ export function DocRefs({ references }: { references: string[] }) {
 
         switch (true) {
             case url.includes('react-spectrum'):
-                title = extractAndFormat(url) + ' Props'
+                title = extractAndFormat(url)
                 icon = IconBrandAdobe
                 break
             case url.includes('laravel'):

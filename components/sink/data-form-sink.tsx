@@ -77,6 +77,7 @@ export default function DataFormSink() {
                         <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
                     </CheckboxGroup>
                     <MultiSelect
+                        portal={portal}
                         className='w-full'
                         label='Components'
                         selectedItems={selectedList}

@@ -5,7 +5,6 @@ import React from 'react'
 import { IconBrandX, IconTrash } from 'hq-icons'
 
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
-import PaginationDemo from '@/components/docs/navigation/pagination/pagination-demo'
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
 import ProgressDemo from '@/components/docs/statuses/progress-bar/progress-bar-demo'
 import {
@@ -111,9 +110,6 @@ export default function OptionsSink() {
             </div>
             <div className='mt-4 flex justify-center'>
                 <InputOtpControlledDemo />
-            </div>
-            <div className='mt-[13px]'>
-                <PaginationDemo />
             </div>
         </Card>
     )

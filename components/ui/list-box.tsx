@@ -15,7 +15,7 @@ import { DropdownItemDetails, DropdownSection } from './dropdown'
 import { cn, cr, ctr } from './utils'
 
 const listBoxStyles = tv({
-    base: 'flex max-h-96 w-full min-w-56 flex-col gap-y-1 overflow-y-auto rounded-xl border p-1 outline-hidden'
+    base: 'flex max-h-96 w-full min-w-56 flex-col gap-y-1 overflow-y-auto rounded-lg border p-1 outline-hidden *:[[role=group]+[role=group]]:mt-4'
 })
 
 const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
@@ -31,18 +31,18 @@ const listBoxItemStyles = tv({
     base: 'lbi relative cursor-pointer rounded-[calc(var(--radius-lg)-1px)] p-2 text-base outline-hidden sm:text-sm',
     variants: {
         isFocusVisible: {
-            true: 'bg-muted text-primary-fg'
+            true: 'bg-primary/5 text-primary-fg inset-ring-primary/60 inset-ring'
         },
         isHovered: {
-            true: 'bg-primary text-primary-fg [&:hover_[slot=description]]:text-primary-fg/70 [&:hover_[slot=label]]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
+            true: 'bg-primary/5 text-primary [&:hover_[slot=description]]:text-primary/80 [&:hover_[slot=label]]:text-primary/90 [&_.text-muted-fg]:text-primary/80'
         },
         isFocused: {
-            true: 'bg-primary text-primary-fg **:data-[slot=icon]:text-primary-fg **:data-[slot=label]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
+            true: 'bg-primary/5 text-primary **:data-[slot=icon]:text-primary **:data-[slot=label]:text-primary [&_.text-muted-fg]:text-primary/80'
         },
         isSelected: {
-            true: 'bg-primary text-primary-fg **:data-[slot=icon]:text-primary-fg **:data-[slot=label]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
+            true: 'bg-primary/10 text-primary **:data-[slot=icon]:text-primary **:data-[slot=label]:text-primary [&_.text-muted-fg]:text-primary/80'
         },
-        isDragging: { true: 'bg-muted text-secondary-fg cursor-grabbing' },
+        isDragging: { true: 'bg-primary/5 text-secondary-fg cursor-grabbing' },
         isDisabled: {
             true: 'text-muted-fg cursor-default opacity-70'
         }
@@ -111,12 +111,7 @@ const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerP
 }
 
 const ListBoxSection = ({ className, ...props }: React.ComponentProps<typeof DropdownSection>) => {
-    return (
-        <DropdownSection
-            className={cn(className, 'gap-y-1 [&_.lbi:last-child]:-mb-1.5')}
-            {...props}
-        />
-    )
+    return <DropdownSection className={cn(className, 'grid grid-cols-1 gap-y-1')} {...props} />
 }
 
 const ListBoxItemDetails = DropdownItemDetails

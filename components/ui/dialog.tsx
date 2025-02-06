@@ -28,7 +28,7 @@ const dialogStyles = tv({
         ],
         footer: 'isolate mt-auto flex flex-col-reverse justify-between gap-3 p-4 sm:flex-row sm:p-6',
         closeIndicator:
-            'close data-focused:bg-muted data-hovered:bg-muted data-focus-visible:ring-primary absolute top-1 right-1 z-50 grid size-8 place-content-center rounded-xl data-focus-visible:ring-1 data-focused:outline-hidden sm:top-2 sm:right-2 sm:size-7 sm:rounded-md'
+            'close data-focused:bg-muted/40 data-hovered:bg-muted/40 data-focus-visible:ring-primary absolute top-1 right-1 z-50 grid size-8 place-content-center rounded-md data-focus-visible:ring-1 data-focused:outline-hidden sm:top-2 sm:right-2 sm:size-7 sm:rounded-lg'
     }
 })
 
