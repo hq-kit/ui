@@ -6,7 +6,7 @@ export default function ContextMenuDisabledDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content>
+            <ContextMenu.Content aria-label='Actions'>
                 <ContextMenu.Item id='view'>View</ContextMenu.Item>
                 <ContextMenu.Item id='edit'>Edit</ContextMenu.Item>
                 <ContextMenu.Item id='gsu' isDisabled>

@@ -48,7 +48,7 @@ export default function BarChartControlledDemo() {
                     </Card.Description>
                 </div>
                 <div>
-                    <Select
+                    <Select aria-label='Select a chart'
                         selectedKey={activeChart}
                         onSelectionChange={setActiveChart}
                         placement='bottom end'

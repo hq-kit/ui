@@ -6,7 +6,7 @@ export default function ContextMenuDangerDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content>
+            <ContextMenu.Content aria-label='Options'>
                 <ContextMenu.Item>Open</ContextMenu.Item>
                 <ContextMenu.Item>Rename</ContextMenu.Item>
                 <ContextMenu.Item>Duplicate</ContextMenu.Item>

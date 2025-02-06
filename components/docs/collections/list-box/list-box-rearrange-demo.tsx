@@ -35,7 +35,7 @@ export default function ListBoxRearrangeDemo() {
             selectionMode='multiple'
             dragAndDropHooks={dragAndDropHooks}
         >
-            {(item) => <ListBox.Item key={item.id}>{item.name}</ListBox.Item>}
+            {(item) => <ListBox.Item key={item.id} textValue={item.name}>{item.name}</ListBox.Item>}
         </ListBox>
     )
 }

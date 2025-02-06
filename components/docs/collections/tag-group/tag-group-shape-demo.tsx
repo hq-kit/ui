@@ -22,7 +22,7 @@ export default function TagGroupShapeDemo() {
             {Object.keys(badgeStyles.variants.shape).map((shape) => (
                 <Tag.Group
                     key={shape}
-                    aria-label={shape}
+                    label={shape}
                     selectionMode='multiple'
                     onRemove={(keys) => carList.remove(...keys)}
                     shape={shape as Shapes}

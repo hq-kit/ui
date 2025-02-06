@@ -5,7 +5,7 @@ import { ListBox } from '@/components/ui'
 export default function ListBoxDemo() {
     return (
         <ListBox items={rockPopBands} selectionMode='single' aria-label='Bands'>
-            {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
+            {(item) => <ListBox.Item id={item.id} textValue={item.name}>{item.name}</ListBox.Item>}
         </ListBox>
     )
 }

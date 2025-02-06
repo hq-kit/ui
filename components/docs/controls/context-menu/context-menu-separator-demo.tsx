@@ -6,7 +6,7 @@ export default function ContextMenuSeparatorDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content>
+            <ContextMenu.Content aria-label='Context menu'>
                 <ContextMenu.Item id='view'>View</ContextMenu.Item>
                 <ContextMenu.Item id='edit'>Edit</ContextMenu.Item>
                 <ContextMenu.Separator />

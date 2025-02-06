@@ -22,7 +22,7 @@ export default function TagGroupVariantDemo() {
             {Object.keys(badgeStyles.variants.variant).map((variant) => (
                 <Tag.Group
                     key={variant}
-                    aria-label={variant}
+                    label={variant}
                     selectionMode='multiple'
                     onRemove={(keys) => shoesList.remove(...keys)}
                     variant={variant as Appearance}

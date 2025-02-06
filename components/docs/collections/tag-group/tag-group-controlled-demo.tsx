@@ -17,7 +17,7 @@ export default function TagGroupControlledDemo() {
     const [selected, setSelected] = React.useState<Selection>(new Set([]))
     return (
         <div>
-            <Tag.Group
+            <Tag.Group label='Fruits'
                 selectionMode='multiple'
                 selectedKeys={selected}
                 onSelectionChange={setSelected}

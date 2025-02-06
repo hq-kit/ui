@@ -10,7 +10,7 @@ const articles = [
 
 export default function TagGroupControlledDemo() {
     return (
-        <Tag.Group>
+        <Tag.Group label='Articles'>
             <Tag.List items={articles}>
                 {(item) => (
                     <Tag id={item.name} href={item.url}>

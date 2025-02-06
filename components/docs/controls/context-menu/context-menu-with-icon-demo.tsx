@@ -8,7 +8,7 @@ export default function ContextMenuWithIconDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content>
+            <ContextMenu.Content aria-label='Options'>
                 <ContextMenu.Item>
                     <IconFolder />
                     Open

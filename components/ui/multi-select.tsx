@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 
 import { IconChevronDown } from 'hq-icons'
 import { useFilter } from 'react-aria'
@@ -35,7 +35,7 @@ const multiSelectStyles = tv({
             'has-[input[data-disabled=false][data-focused=true]]:border-primary/60'
         ],
         chevronButton:
-            'text-muted-fg data-focused:text-fg data-hovered:text-fg -mr-2 grid size-8 place-content-center rounded-sm',
+            'text-muted-fg cursor-pointer focus:text-fg hover:text-fg -mr-2 grid size-8 place-content-center rounded-sm',
         input: 'ml-1 flex-1 px-0.5 py-1 ring-0 shadow-none',
         comboBoxChild: 'inline-flex flex-1 flex-wrap items-center px-0',
         comboBox: 'group peer flex flex-1'
@@ -311,13 +311,16 @@ const MultiSelect = <T extends SelectedKey>({
                         </Popover.Picker>
                     </ComboBox>
                     <div
-                        className='relative ml-auto flex items-center justify-center px-1 [&_button>svg]:transition peer-data-[open]:[&_button>svg]:rotate-180'
-                        aria-hidden
+                        className='relative ml-auto flex items-center justify-center px-1 [&_button>svg]:transition peer-data-[open]:[&_button]:pointer-events-none peer-data-[open]:[&_button>svg]:rotate-180'
                     >
                         <button
                             type='button'
                             className={chevronButton()}
-                            onClick={() => triggerButtonRef.current?.click()}
+                            onClick={() => {
+                                if (triggerButtonRef.current) {
+                                    triggerButtonRef.current.click()
+                                }
+                            }}
                             tabIndex={-1}
                         >
                             <IconChevronDown className='size-4' />

@@ -16,7 +16,7 @@ export default function ListBoxItemDetailsDemo() {
             aria-label='Bands'
         >
             {(item) => (
-                <ListBox.Item id={item.id}>
+                <ListBox.Item id={item.id} textValue={item.name}>
                     <ListBox.ItemDetails label={item.name} description={item.description} />
                 </ListBox.Item>
             )}

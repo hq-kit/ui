@@ -6,7 +6,7 @@ export default function ContextMenuItemDetailsDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content items={roles}>
+            <ContextMenu.Content items={roles} aria-label='Bands'>
                 {(item) => (
                     <ContextMenu.Item id={item.id} textValue={item.name}>
                         <ContextMenu.ItemDetails label={item.name} description={item.description} />

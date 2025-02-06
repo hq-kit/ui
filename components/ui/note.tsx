@@ -13,7 +13,7 @@ const noteStyles = tv({
                 'dark:[&_a]:text-primary'
             ],
             secondary: [
-                'border-muted [&_a]:text-secondary-foreground text-secondary-foreground bg-secondary/50 [&_svg]:text-secondary-foreground',
+                'border-muted [&_a]:text-secondary-foreground text-secondary-foreground bg-secondary/20 [&_svg]:text-secondary-foreground',
                 'dark:[&_a]:text-secondary-foreground dark:[&_svg]:text-secondary-foreground'
             ],
             warning:
@@ -21,7 +21,8 @@ const noteStyles = tv({
             danger: 'border-danger/30 bg-danger/5 dark:bg-danger/10 text-danger',
             success: [
                 'border-success/20 [&_a]:text-success text-success bg-success/10 [&_svg]:text-success leading-4'
-            ]
+            ],
+            dark: 'border-fg/30 bg-fg text-bg'
         }
     },
     defaultVariants: {
@@ -41,7 +42,8 @@ const Note = ({ indicator = true, variant, className, ...props }: NoteProps) => 
         warning: IconCircleAlert,
         danger: IconCircleAlert,
         success: IconCircleCheck,
-        secondary: null
+        secondary: null,
+        dark: null
     }
 
     const IconComponent = iconMap[variant as string] || null

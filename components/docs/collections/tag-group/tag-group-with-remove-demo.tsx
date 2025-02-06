@@ -21,7 +21,7 @@ export default function TagGroupWithRemoveDemo() {
     })
 
     return (
-        <Tag.Group
+        <Tag.Group label='Cars'
             selectionMode='multiple'
             className='max-w-sm'
             onRemove={(keys) => list.remove(...keys)}

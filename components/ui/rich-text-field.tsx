@@ -150,9 +150,9 @@ const RichTextField = ({
                                         disabled={isDisabled}
                                         className={cn(
                                             'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition outline-none focus:outline-none sm:text-sm',
-                                            'focus:border-primary/70 hover:border-primary/60 focus:ring-primary/20 focus:ring-4',
+                                            'focus:border-primary/70 focus:ring-primary/20 focus:ring-4',
                                             'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
-                                            isDisabled && 'opacity-50'
+                                            isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
                                     {description && <Description>{description}</Description>}
@@ -183,9 +183,9 @@ const RichTextField = ({
                                         disabled={isDisabled}
                                         className={cn(
                                             'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base shadow-sm transition outline-none focus:outline-none sm:text-sm',
-                                            'focus:border-primary/70 focus:ring-primary/20 hover:border-primary/60 focus:ring-4',
+                                            'focus:border-primary/70 focus:ring-primary/20 focus:ring-4',
                                             'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
-                                            isDisabled && 'opacity-50'
+                                            isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
                                     {description && <Description>{description}</Description>}

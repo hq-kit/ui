@@ -8,7 +8,7 @@ export default function ListBoxSectionDemo() {
             {(item) => (
                 <ListBox.Section items={item.albums} title={item.name} id={item.id}>
                     {/*@ts-expect-error: ts ^5.5.4*/}
-                    {(album) => <ListBox.Item id={album.id}>{album.name}</ListBox.Item>}
+                    {(album) => <ListBox.Item id={album.id} textValue={album.name}>{album.name}</ListBox.Item>}
                 </ListBox.Section>
             )}
         </ListBox>

@@ -32,7 +32,7 @@ const cell = tv({
             cap: 'bg-primary text-primary-fg group-data-invalid/calendar-cell:bg-danger group-data-invalid/calendar-cell:text-danger-fg'
         },
         isDisabled: {
-            true: 'opacity-50'
+            true: 'text-muted-fg/70'
         }
     }
 })

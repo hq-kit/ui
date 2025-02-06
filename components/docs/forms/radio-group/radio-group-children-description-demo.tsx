@@ -4,7 +4,7 @@ import { Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupChildrenDescriptionDemo() {
     return (
-        <RadioGroup>
+        <RadioGroup label='Plan'>
             <Radio value='basic' description='Basic plan with limited features'>
                 Basic
             </Radio>

@@ -8,14 +8,14 @@ type Placement = Pick<TooltipProps, 'placement'>['placement']
 const placements: Placement[] = ['bottom', 'top', 'left', 'start', 'right', 'end']
 export default function PopoverPlacementDemo() {
     return (
-        <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 [&_.kbt32x]:w-full'>
+        <div className='grid grid-cols-2 gap-2 sm:grid-cols-3'>
             {placements.map((placement, idx) => (
                 <Popover key={idx}>
                     <Button className='mx-auto' size='sm' variant='outline'>
                         {placement}
                     </Button>
-                    <Popover.Content aria-label='Placement' placement={placement}>
-                        Popover shown at <strong>{placement}</strong>.
+                    <Popover.Content aria-label='Placement' placement={placement} className='p-4'>
+                        Popover shown at <strong>{placement}</strong>
                     </Popover.Content>
                 </Popover>
             ))}

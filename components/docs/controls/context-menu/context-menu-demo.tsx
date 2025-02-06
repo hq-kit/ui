@@ -6,7 +6,7 @@ export default function ContextMenuDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content className='sm:min-w-56'>
+            <ContextMenu.Content className='sm:min-w-56' aria-label='Context menu'>
                 <ContextMenu.Item>Back</ContextMenu.Item>
                 <ContextMenu.Item isDisabled>Forward</ContextMenu.Item>
                 <ContextMenu.Item>Reload</ContextMenu.Item>

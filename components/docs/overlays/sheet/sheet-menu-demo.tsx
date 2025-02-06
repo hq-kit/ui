@@ -92,7 +92,7 @@ export default function SheetMenuDemo() {
                         </div>
                     </Sheet.Header>
                     <Sheet.Body className='border-t px-0 sm:px-0'>
-                        <MenuPrimitive className='divide-y'>
+                        <MenuPrimitive aria-label='Menu' className='divide-y'>
                             <Menu.Section>
                                 <Menu.Item onAction={openModal}>
                                     <IconBrandGithub />

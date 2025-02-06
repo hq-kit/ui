@@ -31,7 +31,7 @@ const cellStyles = tv({
     base: 'flex size-10 cursor-default items-center justify-center rounded-lg tabular-nums sm:size-9 lg:text-sm',
     variants: {
         isSelected: {
-            false: 'text-fg hover:bg-muted-fg/15 pressed:bg-muted-fg/20',
+            false: 'text-fg data-hovered:bg-muted-fg/15 data-pressed:bg-muted-fg/20',
             true: 'bg-primary text-primary-fg'
         },
         isDisabled: {
@@ -56,7 +56,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
             {...props}
         >
             <CalendarHeader type='calendar' />
-            <CalendarGrid className='[&_td]:border-muted [&_td]:border-collapse [&_td]:px-0'>
+            <CalendarGrid className='**:[td]border-muted **:[td]:border-collapse **:[td]:px-0 **:[td]:py-[1.5px]'>
                 <CalendarGridHeader />
                 <CalendarGridBody>
                     {(date) => (
@@ -115,7 +115,7 @@ const CalendarHeader = ({
             <div className='flex items-center gap-1'>
                 <Button
                     size='icon'
-                    className='[&_[data-slot=icon]]:text-fg size-8 sm:size-7'
+                    className='**:data-[slot=icon]:text-fg size-8 sm:size-7'
                     shape='circle'
                     variant='ghost'
                     slot='previous'
@@ -124,7 +124,7 @@ const CalendarHeader = ({
                 </Button>
                 <Button
                     size='icon'
-                    className='[&_[data-slot=icon]]:text-fg size-8 sm:size-7'
+                    className='**:data-[slot=icon]:text-fg size-8 sm:size-7'
                     shape='circle'
                     variant='ghost'
                     slot='next'

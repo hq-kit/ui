@@ -10,7 +10,7 @@ export default function PopoverArrowDemo() {
             <Button variant='outline' size='icon'>
                 <IconBell />
             </Button>
-            <Popover.Content aria-label='Notifications' showArrow={false} className='min-w-72'>
+            <Popover.Content aria-label='Notifications' showArrow={false} className='min-w-72 p-4'>
                 You have 3 new notifications.
             </Popover.Content>
         </Popover>

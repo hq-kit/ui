@@ -7,7 +7,7 @@ import { cr, focusButtonStyles } from './utils'
 
 const linkStyles = tv({
     extend: focusButtonStyles,
-    base: 'outline-primary relative cursor-pointer border-transparent outline-0 transition-colors data-disabled:cursor-default data-disabled:opacity-50',
+    base: 'outline-primary relative data-focus-visible:outline-1 rounded cursor-pointer border-transparent transition-colors data-disabled:cursor-default data-disabled:opacity-50',
     variants: {
         variant: {
             default: 'text-fg data-hovered:text-primary',
