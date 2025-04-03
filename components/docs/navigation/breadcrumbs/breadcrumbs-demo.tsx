@@ -4,10 +4,10 @@ import { Breadcrumbs } from '@/components/ui'
 
 export default function BreadcrumbsDemo() {
     return (
-        <Breadcrumbs onAction={() => {}}>
+        <Breadcrumbs>
             <Breadcrumbs.Item href='#'>Home</Breadcrumbs.Item>
-            <Breadcrumbs.Item href='#'>Design System</Breadcrumbs.Item>
-            <Breadcrumbs.Item>Collections</Breadcrumbs.Item>
+            <Breadcrumbs.Item href='#'>Docs</Breadcrumbs.Item>
+            <Breadcrumbs.Item>Components</Breadcrumbs.Item>
         </Breadcrumbs>
     )
 }

@@ -3,9 +3,9 @@
 import * as React from 'react'
 
 import { Button } from 'react-aria-components'
-import { twJoin } from 'tailwind-merge'
 
 import { Card, Carousel, type CarouselApi } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export default function CarouselDApiDemo() {
     const [api, setApi] = React.useState<CarouselApi>()
@@ -16,7 +16,6 @@ export default function CarouselDApiDemo() {
         if (!api) {
             return
         }
-
         setCount(api.scrollSnapList().length)
         setCurrent(api.selectedScrollSnap() + 1)
         api.on('select', () => {
@@ -44,15 +43,15 @@ export default function CarouselDApiDemo() {
                     </Carousel.Item>
                 )}
             </Carousel.Content>
-            <div className='mt-4 flex items-center justify-between'>
+            <div className='flex items-center justify-between'>
                 <div className='text-muted-fg flex gap-1 py-2 text-center text-sm'>
                     {Array.from({ length: 10 }).map((_, index) => (
                         <Button
-                            className={twJoin(
-                                'rounded-xl transition focus:outline-none',
+                            className={cn(
+                                'rounded-full transition size-3',
                                 current === index + 1
-                                    ? 'bg-primary hover:bg-primary/80 h-3 w-5 transition-all'
-                                    : 'bg-fg/10 hover:bg-fg/15 h-3 w-3'
+                                    ? 'bg-primary'
+                                    : 'bg-muted hover:bg-primary/50'
                             )}
                             aria-label={`Slide ${current} of ${count}`}
                             onPress={() => handleSelect(index)}
@@ -61,10 +60,7 @@ export default function CarouselDApiDemo() {
                     ))}
                 </div>
 
-                <div className='space-x-2'>
-                    <Carousel.Button slot='previous' />
-                    <Carousel.Button slot='next' />
-                </div>
+                <Carousel.Handler />
             </div>
         </Carousel>
     )

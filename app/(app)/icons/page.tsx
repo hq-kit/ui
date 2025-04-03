@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconBrandFigma, IconBrandGithub } from 'hq-icons'
+import { IconBrandFigma, IconBrandGithub, IconLoader } from 'hq-icons'
 
 import { IconsController } from '@/components/controllers/icons'
 import { IconComponent } from '@/components/controllers/icons/icon-component'
@@ -14,7 +14,7 @@ import {
     HeroTitle
 } from '@/components/layouts/hero'
 import CLI from '@/components/mdx/cli'
-import { Container, Link, Loader } from '@/components/ui'
+import { Container, Link } from '@/components/ui'
 
 export async function generateMetadata() {
     return {
@@ -93,7 +93,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                 <React.Suspense
                     fallback={
                         <div className='flex min-h-96 items-center justify-center'>
-                            <Loader size='xl' />
+                            <IconLoader className='animate-spin size-7' />
                         </div>
                     }
                 >

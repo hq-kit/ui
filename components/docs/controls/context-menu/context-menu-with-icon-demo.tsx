@@ -7,7 +7,9 @@ import { ContextMenu } from '@/components/ui'
 export default function ContextMenuWithIconDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
+            <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
+                Right click me
+            </ContextMenu.Trigger>
             <ContextMenu.Content aria-label='Options'>
                 <ContextMenu.Item>
                     <IconFolder />

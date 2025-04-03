@@ -1,29 +1,21 @@
-import type React from 'react'
+import React from 'react'
 
-import { type VariantProps, tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
-const skeletonStyles = tv({
-    base: 'shrink-0 animate-pulse',
-    variants: {
-        variant: {
-            muted: 'bg-fg/20',
-            lighter: 'bg-fg/15'
-        },
-        shape: {
-            circle: 'rounded-full',
-            square: 'rounded-lg'
-        }
-    },
-    defaultVariants: {
-        variant: 'muted',
-        shape: 'square'
-    }
-})
-
-type SkeletonProps = React.ComponentProps<'div'> & VariantProps<typeof skeletonStyles>
-const Skeleton = ({ shape, ref, variant, className, ...props }: SkeletonProps) => {
-    return <div ref={ref} className={skeletonStyles({ shape, variant, className })} {...props} />
+interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
+    shape?: 'square' | 'circle'
+}
+const Skeleton = ({ shape, className, ...props }: SkeletonProps) => {
+    return (
+        <div
+            className={cn(
+                'shrink-0 animate-pulse bg-muted/50',
+                shape === 'circle' ? 'rounded-full' : 'rounded-lg',
+                className
+            )}
+            {...props}
+        />
+    )
 }
 
 export { Skeleton }
-export type { SkeletonProps }

@@ -1,31 +1,23 @@
 'use client'
 
 import {
-    ColorWheel as ColorWheelPrimitive,
-    type ColorWheelProps as ColorWheelPrimitiveProps,
-    ColorWheelTrack
+    ColorWheelTrack,
+    ColorWheel as RACColorWheel,
+    type ColorWheelProps as RACColorWheelProps
 } from 'react-aria-components'
 
 import { ColorThumb } from './color-thumb'
 
-type ColorWheelProps = Omit<ColorWheelPrimitiveProps, 'outerRadius' | 'innerRadius'>
-
-const ColorWheel = (props: ColorWheelProps) => {
+const ColorWheel = (props: Omit<RACColorWheelProps, 'outerRadius' | 'innerRadius'>) => {
     return (
-        <ColorWheelPrimitive {...props} outerRadius={100} innerRadius={74}>
+        <RACColorWheel {...props} outerRadius={100} innerRadius={70}>
             <ColorWheelTrack
-                className='data-disabled:bg-muted/75'
-                style={({ defaultStyle, isDisabled }) => ({
-                    ...defaultStyle,
-                    background: isDisabled
-                        ? undefined
-                        : `${defaultStyle.background}, repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 16px 16px`
-                })}
+                className='disabled:opacity-50'
+                style={({ defaultStyle }) => ({ ...defaultStyle })}
             />
             <ColorThumb />
-        </ColorWheelPrimitive>
+        </RACColorWheel>
     )
 }
 
 export { ColorWheel }
-export type { ColorWheelProps }

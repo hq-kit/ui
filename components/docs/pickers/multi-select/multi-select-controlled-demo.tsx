@@ -1,48 +1,39 @@
 'use client'
 
-import { useListData } from 'react-stately'
+import React from 'react'
 
-import type { SelectedKey } from '@/components/ui'
-import { Description, MultiSelect } from '@/components/ui'
+import { Selection } from 'react-aria-components'
 
-const tags = [
-    { id: 1, name: 'Travel' },
-    { id: 2, name: 'Food' },
-    { id: 3, name: 'Fashion' },
-    { id: 4, name: 'Music' },
-    { id: 5, name: 'Photography' }
+import { MultiSelect } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' },
+    { id: 5, name: 'CentOS' },
+    { id: 6, name: 'Gentoo' },
+    { id: 7, name: 'OpenSuse' },
+    { id: 8, name: 'Redhat' },
+    { id: 9, name: 'FreeBSD' },
+    { id: 10, name: 'NetBSD' }
 ]
 
-export default function MultiSelectControlledDemo() {
-    const selectedItems = useListData<SelectedKey>({
-        initialItems: []
-    })
-
+export default function MultiSelectDemo() {
+    const [selected, setSelected] = React.useState<Selection>(new Set([2, 4]))
     return (
-        <>
+        <div className='space-y-6'>
             <MultiSelect
-                className='max-w-xs'
-                onItemInserted={(key) => console.info('onItemInserted', key)}
-                onItemCleared={(key) => console.info('onItemCleared', key)}
-                label='Select tags'
-                selectedItems={selectedItems}
-                items={tags}
-                tag={(item) => <MultiSelect.Tag textValue={item.name}>{item.name}</MultiSelect.Tag>}
+                label='Linux Distro'
+                selectedKeys={selected}
+                onSelectionChange={setSelected}
+                items={items}
             >
                 {(item) => {
-                    return (
-                        <MultiSelect.Item id={item.id} textValue={item.name}>
-                            {item.name}
-                        </MultiSelect.Item>
-                    )
+                    return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
                 }}
             </MultiSelect>
-            {selectedItems.items.length > 0 && (
-                <Description className='text-muted-fg [&>strong]:text-fg mt-2 block max-w-xs'>
-                    You have selected:{' '}
-                    <strong>{selectedItems.items.map((item) => item.name).join(', ')}</strong>
-                </Description>
-            )}
-        </>
+            <code>selected: {JSON.stringify([...selected])}</code>
+        </div>
     )
 }

@@ -5,7 +5,6 @@ import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import { buttonStyles, cn, Link } from '@/components/ui'
 
 interface Doc {
-    order: number
     slug: string
     title: string
 }
@@ -33,7 +32,7 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
         const groupB = b.slug.split('/')[2]
 
         if (groupA === groupB) {
-            return a.order - b.order
+            return a.title.localeCompare(b.title)
         }
 
         return groupA.localeCompare(groupB)
@@ -51,7 +50,6 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
                 <Link
                     aria-label={`Previous page: ${pager.prev.title}`}
                     href={pager.prev.href}
-                    variant='unstyled'
                     className={buttonStyles({ variant: 'outline' })}
                 >
                     <IconChevronLeft />
@@ -62,7 +60,6 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
                 <Link
                     aria-label={`Next page: ${pager.next.title}`}
                     href={pager.next.href}
-                    variant='unstyled'
                     className={cn(buttonStyles({ variant: 'outline' }), 'ml-auto')}
                 >
                     {pager.next.title}

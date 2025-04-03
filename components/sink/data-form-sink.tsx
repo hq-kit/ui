@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { useListData } from 'react-stately'
 import { toast } from 'sonner'
 
 import {
@@ -15,7 +14,6 @@ import {
     Radio,
     RadioGroup,
     Select,
-    type SelectedKey,
     Switch
 } from '@/components/ui'
 
@@ -34,9 +32,6 @@ const items = [
 ]
 
 export default function DataFormSink() {
-    const selectedList = useListData<SelectedKey>({
-        initialItems: [items[0]]
-    })
     const [portal, setPortal] = React.useState<Element>()
 
     React.useEffect(() => {
@@ -80,11 +75,7 @@ export default function DataFormSink() {
                         portal={portal}
                         className='w-full'
                         label='Components'
-                        selectedItems={selectedList}
                         items={items}
-                        tag={(item) => (
-                            <MultiSelect.Tag textValue={item.name}>{item.name}</MultiSelect.Tag>
-                        )}
                     >
                         {(item) => {
                             return (

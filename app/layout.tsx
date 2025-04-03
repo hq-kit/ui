@@ -71,12 +71,12 @@ export const viewport: Viewport = {
 }
 
 const fontSans = localFont({
-    src: [{ path: './fonts/GeistVF.woff' }],
+    src: [{ path: './fonts/SFProMed.woff2' }],
     variable: '--font-sans'
 })
 
 const fontMono = localFont({
-    src: [{ path: './fonts/GeistMonoVF.woff' }],
+    src: [{ path: './fonts/SFMono.woff2' }],
     variable: '--font-mono'
 })
 

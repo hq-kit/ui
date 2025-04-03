@@ -2,19 +2,17 @@
 
 import React from 'react'
 
-import { Description, Switch } from '@/components/ui'
+import { Switch } from '@/components/ui'
 
 export default function SwitchControlledDemo() {
-    const [darkMode, setDarkMode] = React.useState(false)
+    const [value, setValue] = React.useState<boolean>(false)
     return (
-        <>
-            <Switch isSelected={darkMode} onChange={setDarkMode} value='dark_mode'>
-                Enable Dark Mode
+        <div className='flex flex-col gap-6'>
+            <Switch isSelected={value} onChange={setValue} value='selected'>
+                Switch
             </Switch>
 
-            <Description className='[&>strong]:text-fg mt-2 block'>
-                Dark Mode is <strong>{darkMode ? 'enabled' : 'disabled'}</strong>
-            </Description>
-        </>
+            <code>value: {JSON.stringify(value)}</code>
+        </div>
     )
 }

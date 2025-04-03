@@ -1,34 +1,52 @@
 'use client'
 
 import {
-    Switch as SwitchPrimitive,
-    type SwitchProps as SwitchPrimitiveProps
+    composeRenderProps,
+    Switch as RACSwitch,
+    type SwitchProps as RACSwitchProps
 } from 'react-aria-components'
 
-import { ctr } from './utils'
+import { cn } from '@/lib/utils'
 
-interface SwitchProps extends SwitchPrimitiveProps {
+import { Label } from './field'
+
+interface SwitchProps extends RACSwitchProps {
     ref?: React.RefObject<HTMLLabelElement>
 }
+
 const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
     return (
-        <SwitchPrimitive
+        <RACSwitch
             ref={ref}
+            className={composeRenderProps(className, (className) =>
+                cn('group inline-flex touch-none items-center sm:text-sm', className)
+            )}
             {...props}
-            className={ctr(className, 'group inline-flex touch-none items-center sm:text-sm')}
-            style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-            {(values) => (
+            {({ isSelected, isFocused, isFocusVisible, isDisabled, isPressed }) => (
                 <>
-                    <span className='group-data-selected:bg-primary group-data-focused:ring-primary/20 group-data-invalid:ring-danger/20 bg-border mr-2 h-5 w-8 cursor-pointer rounded-[calc(var(--radius-lg)+2px)] border-2 border-transparent transition duration-200 group-data-disabled:cursor-default group-data-disabled:opacity-50 group-data-focused:ring-2'>
-                        <span className='bg-primary-fg block size-4 origin-right rounded-[calc(var(--radius-lg)+2px)] shadow-sm transition-all duration-200 group-data-pressed:w-5 group-data-selected:ml-3 group-data-selected:group-data-[pressed]:ml-2' />
+                    <span
+                        className={cn(
+                            'mr-2 inline-flex h-5 w-8 items-center rounded-xl border-2 border-transparent bg-muted transition',
+                            { 'ring-4 ring-primary/20': isFocused || isFocusVisible },
+                            isSelected && 'bg-primary',
+                            isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer'
+                        )}
+                    >
+                        <span
+                            className={cn(
+                                'bg-primary-fg block size-4 origin-right rounded-lg shadow-sm transition',
+                                isSelected && 'ml-3',
+                                isPressed && 'w-5',
+                                isSelected && isPressed && 'ml-2'
+                            )}
+                        />
                     </span>
-                    {typeof children === 'function' ? children(values) : children}
+                    <Label>{children as React.ReactNode}</Label>
                 </>
             )}
-        </SwitchPrimitive>
+        </RACSwitch>
     )
 }
 
 export { Switch }
-export type { SwitchProps }

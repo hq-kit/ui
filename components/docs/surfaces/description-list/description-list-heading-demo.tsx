@@ -1,23 +1,19 @@
-'use client'
-
-import { DescriptionList, Heading } from '@/components/ui'
+import { DL, Heading } from '@/components/ui'
 
 export default function DescriptionListHeadingDemo() {
     return (
         <div>
-            <Heading className='sm:text-lg'>Product Details</Heading>
-            <DescriptionList>
-                <DescriptionList.Term>Product Name</DescriptionList.Term>
-                <DescriptionList.Details>Wireless Headphones</DescriptionList.Details>
-                <DescriptionList.Term>Battery Life</DescriptionList.Term>
-                <DescriptionList.Details>20 hours</DescriptionList.Details>
-                <DescriptionList.Term>Weight</DescriptionList.Term>
-                <DescriptionList.Details>250 grams</DescriptionList.Details>
-                <DescriptionList.Term>Color</DescriptionList.Term>
-                <DescriptionList.Details>Black</DescriptionList.Details>
-                <DescriptionList.Term>Warranty</DescriptionList.Term>
-                <DescriptionList.Details>2 years</DescriptionList.Details>
-            </DescriptionList>
+            <Heading className='sm:text-lg'>PC Gaming</Heading>
+            <DL>
+                <DL.T>Processor</DL.T>
+                <DL.D>Intel Core i7-12700K</DL.D>
+                <DL.T>Memory</DL.T>
+                <DL.D>32GB DDR5 4800MHz</DL.D>
+                <DL.T>Storage</DL.T>
+                <DL.D>1TB SSD M.2 NVMe</DL.D>
+                <DL.T>Graphics Card</DL.T>
+                <DL.D>RTX 4090 24GB</DL.D>
+            </DL>
         </div>
     )
 }

@@ -20,9 +20,7 @@ export default function Page() {
                     </HeroDescription>
                     <HeroDescription className='mt-4'>
                         Feel free to find an inspiration from{' '}
-                        <Link variant='primary' href='/colors'>
-                            Colors Page
-                        </Link>
+                        <Link href='/colors'>Colors Page</Link>
                     </HeroDescription>
                 </HeroHeader>
             </Hero>

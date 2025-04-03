@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React from 'react'
 
 import {
     IconAlignCenter,
@@ -18,12 +18,12 @@ import type { Selection } from 'react-aria-components'
 import { Menu } from '@/components/ui'
 
 export default function MenuSectionLevelDemo() {
-    const [style, setStyle] = useState<Selection>(new Set(['bold']))
-    const [align, setAlign] = useState<Selection>(new Set(['left']))
+    const [style, setStyle] = React.useState<Selection>(new Set(['bold']))
+    const [align, setAlign] = React.useState<Selection>(new Set(['left']))
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
-            <Menu.Content placement='bottom' className='sm:min-w-52'>
+            <Menu.Content>
                 <Menu.Section title='Actions'>
                     <Menu.Item textValue='Cut'>
                         <IconScissors />
@@ -38,6 +38,7 @@ export default function MenuSectionLevelDemo() {
                         <Menu.Label>Paste</Menu.Label>
                     </Menu.Item>
                 </Menu.Section>
+                <Menu.Separator />
                 <Menu.Section
                     selectionMode='multiple'
                     selectedKeys={style}
@@ -57,6 +58,7 @@ export default function MenuSectionLevelDemo() {
                         <Menu.Label>Underline</Menu.Label>
                     </Menu.Item>
                 </Menu.Section>
+                <Menu.Separator />
                 <Menu.Section
                     selectionMode='single'
                     selectedKeys={align}

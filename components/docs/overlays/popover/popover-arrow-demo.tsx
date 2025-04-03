@@ -1,17 +1,17 @@
 'use client'
 
-import { IconBell } from 'hq-icons'
+import { IconMousePointerClick } from 'hq-icons'
 
 import { Button, Popover } from '@/components/ui'
 
 export default function PopoverArrowDemo() {
     return (
         <Popover>
-            <Button variant='outline' size='icon'>
-                <IconBell />
+            <Button>
+                <IconMousePointerClick />
             </Button>
-            <Popover.Content aria-label='Notifications' showArrow={false} className='min-w-72 p-4'>
-                You have 3 new notifications.
+            <Popover.Content showArrow={false} className='p-4'>
+                This popover doesn&apos;t have an arrow
             </Popover.Content>
         </Popover>
     )

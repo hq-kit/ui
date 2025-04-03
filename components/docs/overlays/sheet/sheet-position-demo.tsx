@@ -11,9 +11,9 @@ export default function SheetPositionDemo() {
     const [sheetSide, setSheetSide] = React.useState<Side>('left')
     const [isOpen, setIsOpen] = React.useState(false)
 
-    const sides: Side[] = ['left', 'right', 'top', 'bottom']
+    const sides: Side[] = ['top', 'left', 'right', 'bottom']
 
-    const pressHandler = (side: Side, open: boolean) => {
+    const openSheet = (side: Side, open: boolean) => {
         setSheetSide(side)
         setIsOpen(open)
     }
@@ -21,9 +21,14 @@ export default function SheetPositionDemo() {
     return (
         <>
             <div className='grid grid-cols-2 gap-2'>
-                {sides.map((side, idx) => (
-                    <Button variant='outline' onPress={() => pressHandler(side, true)} key={idx}>
-                        {titleCase(side)}
+                {sides.map((side, i) => (
+                    <Button
+                        variant='outline'
+                        onPress={() => openSheet(side, true)}
+                        key={i}
+                        className='first:col-span-full last:col-span-full'
+                    >
+                        {side}
                     </Button>
                 ))}
             </div>

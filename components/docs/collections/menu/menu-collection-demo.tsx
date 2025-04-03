@@ -1,14 +1,33 @@
 'use client'
 
-import { Button, Menu } from '@/components/ui'
+import {
+    IconBrandArch,
+    IconBrandDebian,
+    IconBrandFedora,
+    IconBrandMint,
+    IconBrandRedhat,
+    IconBrandUbuntu
+} from 'hq-icons'
+
+import { Menu } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Debian', icon: IconBrandDebian },
+    { id: 2, name: 'Ubuntu', icon: IconBrandUbuntu },
+    { id: 3, name: 'Fedora', icon: IconBrandFedora },
+    { id: 4, name: 'Arch', icon: IconBrandArch },
+    { id: 5, name: 'Mint', icon: IconBrandMint },
+    { id: 6, name: 'Red Hat', icon: IconBrandRedhat }
+]
 
 export default function MenuCollectionDemo() {
     return (
         <Menu>
-            <Button variant='outline'>Open</Button>
-            <Menu.Content className='min-w-64' placement='bottom' items={categories}>
+            <Menu.Trigger>Open</Menu.Trigger>
+            <Menu.Content items={items}>
                 {(item) => (
-                    <Menu.Item id={item.slug}>
+                    <Menu.Item id={item.id}>
+                        <item.icon />
                         <Menu.Label>{item.name}</Menu.Label>
                     </Menu.Item>
                 )}
@@ -16,46 +35,3 @@ export default function MenuCollectionDemo() {
         </Menu>
     )
 }
-
-const categories = [
-    {
-        name: 'Technology',
-        slug: 'technology'
-    },
-    {
-        name: 'Health',
-        slug: 'health'
-    },
-    {
-        name: 'Business',
-        slug: 'business'
-    },
-    {
-        name: 'Travel',
-        slug: 'travel'
-    },
-    {
-        name: 'Education',
-        slug: 'education'
-    },
-    {
-        name: 'Entertainment',
-        slug: 'entertainment'
-    },
-    {
-        name: 'Sports',
-        slug: 'sports'
-    },
-    {
-        name: 'Fashion',
-        slug: 'fashion'
-    },
-    {
-        name: 'Food',
-        slug: 'food'
-    },
-    {
-        name: 'Science',
-        slug: 'science'
-    }
-]

@@ -6,7 +6,7 @@ import { IconBrandX, IconTrash } from 'hq-icons'
 
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
-import ProgressDemo from '@/components/docs/statuses/progress-bar/progress-bar-demo'
+import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
 import {
     Breadcrumbs,
     Button,
@@ -49,7 +49,13 @@ export default function OptionsSink() {
                 <DatePicker portal={portal} className='w-full' aria-label='Event date' />
             </div>
             <div className='mt-4 flex items-end gap-1'>
-                <ComboBox portal={portal} placeholder='Select a user' label='Users' items={users}>
+                <ComboBox
+                    className='w-full'
+                    portal={portal}
+                    placeholder='Select a user'
+                    label='Users'
+                    items={users}
+                >
                     {(item) => (
                         <ComboBox.Item id={item.id} textValue={item.name}>
                             {item.name}
@@ -60,7 +66,7 @@ export default function OptionsSink() {
                     <Button variant='danger' size='icon'>
                         <IconTrash />
                     </Button>
-                    <Modal.Content UNSTABLE_portalContainer={portal}>
+                    <Modal.Content size='lg' UNSTABLE_portalContainer={portal}>
                         <Modal.Header>
                             <Modal.Title>Delete User?</Modal.Title>
                             <Modal.Description>
@@ -68,7 +74,9 @@ export default function OptionsSink() {
                             </Modal.Description>
                         </Modal.Header>
                         <Modal.Footer>
-                            <Modal.Close>Cancel</Modal.Close>
+                            <Button slot='close' variant='outline'>
+                                Cancel
+                            </Button>
                             <Button variant='danger' className='min-w-24'>
                                 <IconTrash /> Delete
                             </Button>
@@ -82,7 +90,7 @@ export default function OptionsSink() {
             </div>
             <div className='mt-4 flex justify-center gap-5'>
                 <Tooltip>
-                    <Button aria-label='Follow My Twitter' variant='dark' size='icon'>
+                    <Button aria-label='Follow My Twitter' size='icon'>
                         <IconBrandX />
                     </Button>
                     <Tooltip.Content UNSTABLE_portalContainer={portal}>

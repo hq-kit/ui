@@ -1,59 +1,20 @@
 ---
 title: Multi Select
-description: Multi select lets you pick more than one option from a list. It's like checking off items on your to-do list just click, click, click, and you're good to go!
-order: 3
-published: true
-references:
-    [
-        'https://react-spectrum.adobe.com/react-aria/ComboBox.html#props',
-        'https://react-spectrum.adobe.com/react-aria/TagGroup.html#props'
-    ]
+description: Multi select lets you pick more than one option from a list.
+references: ['https://react-spectrum.adobe.com/react-aria/ComboBox.html#props', 'https://react-spectrum.adobe.com/react-aria/TagGroup.html#props']
 ---
 
-## Basic
-
-The basic multi select component lets you select multiple options from a list. It displays selected options with Tag components.
-
-<Demo center component='pickers/multi-select/multi-select-demo' />
-
 ## Installation
-
 <Install component='multi-select' />
 
-## Variant
-
-By default, the multiple select component uses the `primary` variant. But it has a `secondary` variant as well.
-
-<Demo center component='pickers/multi-select/multi-select-variant-demo' />
+## Basic
+<Demo center component='pickers/multi-select/multi-select-demo' />
 
 ## Controlled
-
-This component lets you select tags dynamically, updating the list with callbacks on add and remove. It displays selected tags with Tag components and logs each action.
-
 <Demo center component='pickers/multi-select/multi-select-controlled-demo' />
 
-## Disabled
-
-When the component is disabled, it prevents the user from adding or removing tags.
-
-<Demo center component='pickers/multi-select/multi-select-disabled-demo' />
-
-## Props
-
-Here's the fixed table:
-
-| Prop           | Type                        | Default   | Description                                  |
-| -------------- | --------------------------- | --------- | -------------------------------------------- |
-| label          | string                      | -         | The label of the tag field                   |
-| description    | string                      | -         | The description of the tag field             |
-| placeholder    | string                      | -         | The placeholder of the tag field             |
-| min            | number                      | -         | The minimum number of tags that can be added |
-| max            | number                      | -         | The maximum number of tags that can be added |
-| className      | string                      | -         | The class name of the tag field              |
-| name           | string                      | -         | The name of the tag field                    |
-| list           | ListData                    | -         | The list of tags                             |
-| onItemInserted | (tag: TagItemProps) => void | -         | The callback function when a tag is inserted |
-| onItemCleared  | (tag: TagItemProps) => void | -         | The callback function when a tag is cleared  |
-| isDisabled     | boolean                     | -         | The disabled state of the tag field          |
-| intent         | string                      | 'primary' | 'primary', 'secondary'                       |
-| shape          | string                      | 'square'  | 'square', 'circle'                           |
+## Validation
+<Note variant='danger'>
+    React Aria Components don't support validation for `MultiSelect` yet, but you can use the `errorMessage` prop to display an error message if the value is invalid
+</Note>
+<Demo center component='pickers/multi-select/multi-select-validation-demo' />

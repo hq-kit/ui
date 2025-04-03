@@ -2,25 +2,37 @@
 
 import { ContextMenu } from '@/components/ui'
 
+const items = [
+    {
+        id: 1,
+        name: 'React',
+        description: 'Component-based JavaScript library'
+    },
+    {
+        id: 2,
+        name: 'Angular',
+        description: 'Comprehensive TypeScript-based framework'
+    },
+    {
+        id: 3,
+        name: 'Vue.Js',
+        description: 'Flexible and progressive UI framework'
+    }
+]
+
 export default function ContextMenuItemDetailsDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content items={roles} aria-label='Bands'>
+            <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
+                Right click me
+            </ContextMenu.Trigger>
+            <ContextMenu.Content items={items} aria-label='Bands'>
                 {(item) => (
                     <ContextMenu.Item id={item.id} textValue={item.name}>
-                        <ContextMenu.ItemDetails label={item.name} description={item.description} />
+                        <ContextMenu.Details label={item.name} description={item.description} />
                     </ContextMenu.Item>
                 )}
             </ContextMenu.Content>
         </ContextMenu>
     )
 }
-
-const roles = [
-    { id: 1, name: 'Admin', description: 'Has full access to all resources' },
-    { id: 2, name: 'Editor', description: 'Can edit content but has limited access to settings' },
-    { id: 3, name: 'Viewer', description: 'Can view content but cannot make changes' },
-    { id: 4, name: 'Contributor', description: 'Can contribute content for review' },
-    { id: 5, name: 'Guest', description: 'Limited access, mostly for viewing purposes' }
-]

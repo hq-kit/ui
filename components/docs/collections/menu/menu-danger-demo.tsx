@@ -6,7 +6,7 @@ export default function MenuDangerDemo() {
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
-            <Menu.Content className='min-w-48' placement='bottom'>
+            <Menu.Content>
                 <Menu.Item>
                     <Menu.Label>View</Menu.Label>
                 </Menu.Item>

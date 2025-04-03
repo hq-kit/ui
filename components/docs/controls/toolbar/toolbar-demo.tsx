@@ -58,7 +58,7 @@ export default function ToolbarDemo() {
                         Options...
                         <IconChevronDown />
                     </Button>
-                    <Menu.Content showArrow placement='bottom right'>
+                    <Menu.Content placement='bottom right'>
                         <Menu.Item>
                             <IconCircleArrowLeft />
                             Undo

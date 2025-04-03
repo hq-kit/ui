@@ -14,7 +14,7 @@ import {
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { createHierarchy, type Doc, type HierarchyNode } from '@/components/layouts/aside'
+import { createHierarchy, type Doc, type Hierarchy } from '@/components/layouts/aside'
 import { Command, useMediaQuery } from '@/components/ui'
 import { goodTitle } from '@/lib/utils'
 
@@ -97,7 +97,7 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                             key={`${key}-section`}
                             heading={key !== 'components' ? goodTitle(key) : undefined}
                         >
-                            {Object.entries(value as HierarchyNode).map(([subKey, subValue]) =>
+                            {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
                                 typeof subValue === 'object' && 'title' in subValue ? (
                                     <Command.Item
                                         value={goodTitle(key + ' ' + (subValue as Doc).title)}
@@ -111,14 +111,14 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                             )}
                         </Command.Section>
 
-                        {Object.entries(value as HierarchyNode).map(([subKey, subValue]) =>
+                        {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
                             typeof subValue === 'object' && 'title' in subValue ? null : (
                                 <Command.Section
                                     key={`${key}-${subKey}-section`}
                                     value={goodTitle(subKey)}
                                     heading={goodTitle(subKey)}
                                 >
-                                    {Object.entries(subValue as HierarchyNode).map(
+                                    {Object.entries(subValue as Hierarchy).map(
                                         ([childKey, childValue]) =>
                                             typeof childValue === 'object' &&
                                             'title' in childValue ? (

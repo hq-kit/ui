@@ -1,5 +1,9 @@
 import { type Docs } from '#docs'
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 import { slugify, titleCase } from 'usemods'
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
 export const getInitials = (str: string): string =>
     str
@@ -23,18 +27,15 @@ export const formatTime = (date: Date): string => {
     return `${hours}:${minutes}`
 }
 
-export const sortDocs = (docs: Array<Docs>) => docs.sort((a, b) => a.order - b.order)
+export const sortDocs = (docs: Array<Docs>) => docs.sort((a, b) => a.title.localeCompare(b.title))
 
 export const getAllRefs = (docs: Array<Docs>) => {
     const references: Record<string, number> = {}
     docs.forEach((doc) => {
-        if (doc.published) {
-            doc.references?.forEach((tag: string) => {
-                references[tag] = (references[tag] ?? 0) + 1
-            })
-        }
+        doc.references?.forEach((tag: string) => {
+            references[tag] = (references[tag] ?? 0) + 1
+        })
     })
-
     return references
 }
 

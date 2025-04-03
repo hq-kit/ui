@@ -2,30 +2,56 @@
 
 import React from 'react'
 
-import { ComboBox, Description } from '@/components/ui'
+import { IconSquareCheckBig, IconTextCursorInput } from 'hq-icons'
+import { Key, Selection } from 'react-aria-components'
 
-const sports = [
-    { id: 1, name: 'Football' },
-    { id: 2, name: 'Basketball' },
-    { id: 3, name: 'Baseball' },
-    { id: 4, name: 'Soccer' },
-    { id: 5, name: 'Tennis' },
-    { id: 6, name: 'Cricket' },
-    { id: 7, name: 'Hockey' },
-    { id: 8, name: 'Rugby' },
-    { id: 9, name: 'Golf' }
+import { ComboBox, Toggle } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' },
+    { id: 5, name: 'CentOS' },
+    { id: 6, name: 'Gentoo' },
+    { id: 7, name: 'OpenSuse' },
+    { id: 8, name: 'Redhat' },
+    { id: 9, name: 'FreeBSD' },
+    { id: 10, name: 'NetBSD' }
 ]
 
 export default function ComboBoxControlledDemo() {
-    const [sport, setSport] = React.useState('')
+    const [mode, setMode] = React.useState<Selection>(new Set(['selection']))
     return (
-        <>
+        <div className='space-y-4'>
+            <Toggle.Group selectionMode='single' selectedKeys={mode} onSelectionChange={setMode}>
+                <Toggle id='selection'>
+                    <IconSquareCheckBig />
+                    Selection
+                </Toggle>
+                <Toggle id='input'>
+                    <IconTextCursorInput />
+                    Input
+                </Toggle>
+            </Toggle.Group>
+            {Array.from(mode).includes('selection') ? (
+                <ComboBoxControlledSelected />
+            ) : (
+                <ComboBoxControlledInput />
+            )}
+        </div>
+    )
+}
+
+const ComboBoxControlledInput = () => {
+    const [value, setValue] = React.useState<string>('')
+    return (
+        <div className='space-y-4 grid'>
             <ComboBox
-                onInputChange={setSport}
-                inputValue={sport}
-                placeholder='Select a sports'
-                label='Sports'
-                items={sports}
+                label='Linux Distro'
+                inputValue={value}
+                onInputChange={setValue}
+                items={items}
             >
                 {(item) => (
                     <ComboBox.Item id={item.id} textValue={item.name}>
@@ -33,9 +59,24 @@ export default function ComboBoxControlledDemo() {
                     </ComboBox.Item>
                 )}
             </ComboBox>
-            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
-                You have selected: <strong>{sport}</strong>
-            </Description>
-        </>
+            <code>value: {JSON.stringify(value)}</code>
+        </div>
+    )
+}
+
+const ComboBoxControlledSelected = () => {
+    const [selected, setSelected] = React.useState<Key | null>(null)
+    return (
+        <div className='space-y-4 grid'>
+            <ComboBox
+                label='Linux Distro'
+                selectedKey={selected}
+                onSelectionChange={setSelected}
+                items={items}
+            >
+                {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
+            </ComboBox>
+            <code>selected: {JSON.stringify(selected)}</code>
+        </div>
     )
 }

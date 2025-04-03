@@ -1,85 +1,57 @@
 'use client'
 
-import { createContext, useContext } from 'react'
-
 import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
-import { Group, Toolbar as ToolbarPrimitive } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+import { composeRenderProps, Group, Toolbar as RACToolbar, Separator } from 'react-aria-components'
 
-import { Separator } from './separator'
-import { Toggle, type ToggleProps } from './toggle'
-import { cn, cr, ctr } from './utils'
+import { cn } from '@/lib/utils'
 
-const ToolbarContext = createContext<{ orientation?: ToolbarProps['orientation'] }>({
-    orientation: 'horizontal'
-})
+import { Toggle } from './toggle'
 
-const toolbarStyles = tv({
-    base: 'group flex gap-2',
-    variants: {
-        orientation: {
-            horizontal: 'flex-row [-ms-overflow-style:none]',
-            vertical: 'flex-col items-start'
-        }
-    }
-})
+const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => (
+    <RACToolbar
+        orientation={orientation}
+        className={composeRenderProps(className, (className, { orientation }) =>
+            cn(
+                'group flex gap-2',
+                orientation === 'vertical'
+                    ? 'flex-col items-start'
+                    : 'flex-row [-ms-overflow-style:none]',
+                className
+            )
+        )}
+        {...props}
+    />
+)
 
-const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => {
-    return (
-        <ToolbarContext.Provider value={{ orientation }}>
-            <ToolbarPrimitive
-                orientation={orientation}
-                {...props}
-                className={cr(className, (className, renderProps) =>
-                    toolbarStyles({ ...renderProps, className })
-                )}
-            />
-        </ToolbarContext.Provider>
-    )
-}
+const ToolbarGroup = ({ className, ...props }: GroupProps) => (
+    <Group
+        className={composeRenderProps(className, (className, { isDisabled }) =>
+            cn(
+                'flex gap-2 items-center group-orientation-vertical:flex-col group-orientation-vertical:items-start',
+                isDisabled && 'opacity-50 pointer-events-none',
+                className
+            )
+        )}
+        {...props}
+    >
+        {props.children}
+    </Group>
+)
 
-const ToolbarGroupContext = createContext<{ isDisabled?: boolean }>({})
-
-type ToolbarGroupProps = GroupProps
-const ToolbarGroup = ({ isDisabled, className, ...props }: ToolbarGroupProps) => {
-    return (
-        <ToolbarGroupContext.Provider value={{ isDisabled }}>
-            <Group
-                className={ctr(
-                    className,
-                    'flex gap-2 group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-start'
-                )}
-                {...props}
-            >
-                {props.children}
-            </Group>
-        </ToolbarGroupContext.Provider>
-    )
-}
-
-type ToggleItemProps = ToggleProps
-const ToolbarItem = ({ isDisabled, ref, ...props }: ToggleItemProps) => {
-    const context = useContext(ToolbarGroupContext)
-    const effectiveIsDisabled = isDisabled || context.isDisabled
-
-    return <Toggle ref={ref} isDisabled={effectiveIsDisabled} {...props} />
-}
-type ToolbarSeparatorProps = SeparatorProps
-const ToolbarSeparator = ({ className, ...props }: ToolbarSeparatorProps) => {
-    const { orientation } = useContext(ToolbarContext)
-    const effectiveOrientation = orientation === 'vertical' ? 'horizontal' : 'vertical'
+const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
     return (
         <Separator
-            orientation={effectiveOrientation}
-            className={cn(effectiveOrientation === 'vertical' ? 'mx-1.5' : 'my-1.5 w-9', className)}
+            className={cn(
+                'bg-muted group-orientation-horizontal:mx-1.5 group-orientation-horizontal:h-10 group-orientation-horizontal:w-px group-orientation-vertical:my-1.5 group-orientation-vertical:w-10 group-orientation-vertical:h-px',
+                className
+            )}
             {...props}
         />
     )
 }
 
 Toolbar.Group = ToolbarGroup
+Toolbar.Item = Toggle
 Toolbar.Separator = ToolbarSeparator
-Toolbar.Item = ToolbarItem
 
 export { Toolbar }
-export type { ToggleItemProps, ToolbarGroupProps, ToolbarProps, ToolbarSeparatorProps }

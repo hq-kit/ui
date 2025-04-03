@@ -8,7 +8,7 @@ import { Avatar, DropZone, FileTrigger, cn } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function FileTriggerAvatarDemo() {
-    const [droppedImage, setDroppedImage] = React.useState<string | undefined>(undefined)
+    const [droppedImage, setDroppedImage] = React.useState<string | null>(null)
 
     const onDropHandler = async (e: DropEvent) => {
         const item = e.items
@@ -20,7 +20,7 @@ export default function FileTriggerAvatarDemo() {
         }
     }
 
-    async function onSelectHandler(e: FileList | null) {
+    const onSelectHandler = async (e: FileList | null) => {
         if (e) {
             const files = Array.from([...e])
             const item = files[0]
@@ -34,18 +34,14 @@ export default function FileTriggerAvatarDemo() {
     return (
         <div className='flex items-center gap-2'>
             <DropZone
-                getDropOperation={() => 'copy'}
+                getDropOperation={(types) =>
+                    types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel'
+                }
                 onDrop={onDropHandler}
-                className={cn(
-                    'size-10 overflow-hidden rounded-full p-0 [&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none'
-                )}
+                className={cn('size-10 overflow-hidden rounded-full p-0')}
             >
-                {droppedImage ? (
-                    <Avatar src={droppedImage} size='lg' />
-                ) : (
-                    <Avatar initials='DQ' size='lg' />
-                )}
-                <input type='hidden' name='image' value={droppedImage} />
+                <Avatar src={droppedImage ?? ''} size='lg' />
+                <input type='hidden' name='image' value={droppedImage ?? ''} />
             </DropZone>
             <FileTrigger
                 size='sm'

@@ -1,101 +1,71 @@
 'use client'
 
-import React from 'react'
-
-import type { ButtonProps, TreeItemProps, TreeProps } from 'react-aria-components'
+import { IconChevronRight } from 'hq-icons'
+import type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'
 import {
     Button,
-    UNSTABLE_TreeItemContent as TreeItemContent,
-    UNSTABLE_TreeItem as TreeItemPrimitive,
-    UNSTABLE_Tree as TreePrimitive
+    composeRenderProps,
+    Tree as RACTree,
+    TreeItem as RACTreeItem,
+    TreeItemContent
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
-import { Checkbox } from './checkbox'
-import { Indicator } from './disclosure'
-import { cr } from './utils'
-
-const treeStyles = tv({
-    base: 'bg-bg flex max-h-96 min-w-72 cursor-default flex-col overflow-auto rounded-lg border py-2 outline-none lg:text-sm',
-    variants: {
-        isFocusVisible: {
-            true: 'outline-primary outline-2 outline-offset-[-1px]'
-        }
-    }
-})
+import { cn } from '@/lib/utils'
 
 const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
     return (
-        <TreePrimitive
-            className={cr(className, (className, renderProps) =>
-                treeStyles({
-                    ...renderProps,
-                    className
-                })
+        <RACTree
+            className={composeRenderProps(className, (className) =>
+                cn('flex flex-col cursor-default gap-0.5 p-2 text-sm outline-hidden', className)
             )}
             {...props}
-        >
-            {props.children}
-        </TreePrimitive>
+        />
     )
 }
-
-const itemStyles = tv({
-    base: [
-        'p-[0.286rem_0.286rem_0.286rem_0.571rem] pl-[calc((var(--tree-item-level)-1)*20px+0.571rem+var(--padding))] [--padding:20px] outline-none',
-        '**:data-[slot=chevron]:text-muted-fg **:data-[slot=chevron]:outline-none',
-        'data-[has-child-rows]:[--padding:0px]'
-    ],
-    variants: {
-        isExpanded: {
-            true: '**:data-[slot=chevron]:text-fg **:data-[slot=chevron]:rotate-0'
-        },
-        isFocusVisible: {
-            true: '**:data-[slot=chevron]:text-fg ring-primary ring-1 outline-none'
-        },
-        isDisabled: {
-            true: 'opacity-50'
-        }
-    }
-})
 
 const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) => {
     return (
-        <TreeItemPrimitive
-            className={cr(className, (className, renderProps) =>
-                itemStyles({
-                    ...renderProps,
-                    className
-                })
+        <RACTreeItem
+            className={composeRenderProps(
+                className,
+                (className, { isFocusVisible, isDisabled, isSelected, hasChildItems }) =>
+                    cn(
+                        'p-1 outline-hidden relative flex items-center gap-1.5 rounded-lg py-2 text-sm',
+                        hasChildItems
+                            ? 'pl-[calc((var(--tree-item-level)-1)*20px+8px)]'
+                            : 'pl-[calc((var(--tree-item-level)-1)*20px+32px)]',
+                        isFocusVisible && 'ring-primary/20 ring-2',
+                        isSelected && 'bg-accent text-accent-fg',
+                        isDisabled && 'opacity-50',
+                        className
+                    )
             )}
             {...props}
-        >
-            {props.children}
-        </TreeItemPrimitive>
+        />
     )
 }
 
-const ItemContent = (props: React.ComponentProps<typeof TreeItemContent>) => (
+const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
     <TreeItemContent {...props}>
-        <div className='flex items-center'>
-            <>{props.children as React.ReactNode}</>
-        </div>
+        {composeRenderProps(children, (children, { hasChildItems, isExpanded }) => (
+            <>
+                {hasChildItems && (
+                    <Button
+                        slot='chevron'
+                        className='inline-flex size-4 text-muted-fg items-center justify-center outline-hidden'
+                    >
+                        <IconChevronRight
+                            data-slot='indicator'
+                            className={cn('transition-transform', isExpanded && 'rotate-90')}
+                        />
+                    </Button>
+                )}
+                {children}
+            </>
+        ))}
     </TreeItemContent>
 )
 
-const ItemCheckbox = () => <Checkbox slot='selection' />
-
-const ItemLabel = (props: ButtonProps) => (
-    <Button
-        slot='chevron'
-        style={{ outline: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-        {...props}
-    />
-)
-
-TreeItem.Label = ItemLabel
-TreeItem.Indicator = Indicator
-TreeItem.Checkbox = ItemCheckbox
 TreeItem.Content = ItemContent
 
 export { Tree, TreeItem }

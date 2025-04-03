@@ -8,7 +8,7 @@ export default function PopoverTriggerDemo() {
             <Popover.Trigger aria-label='Open Popover'>
                 <Avatar alt='dq-alhq' src='https://github.com/dq-alhq.png' />
             </Popover.Trigger>
-            <Popover.Content aria-label='Login' className='min-w-72'>
+            <Popover.Content>
                 <Popover.Header>
                     <Popover.Title>Email</Popover.Title>
                     <Popover.Description>

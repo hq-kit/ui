@@ -8,34 +8,14 @@ import {
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
-    RangeCalendar as RangeCalendarPrimitive,
-    Text
+    RangeCalendar as RangeCalendarPrimitive
 } from 'react-aria-components'
-import { twJoin } from 'tailwind-merge'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
+import { getLocalTimeZone, today } from '@internationalized/date'
 
 import { Calendar } from './calendar'
-import { focusRing } from './utils'
-
-const cell = tv({
-    extend: focusRing,
-    base: 'flex size-full items-center justify-center rounded-lg tabular-nums',
-    variants: {
-        selectionState: {
-            none: 'group-data-hovered/calendar-cell:bg-muted-fg/15 group-data-pressed/calendar-cell:bg-muted-fg/20',
-            middle: [
-                'group-data-hovered/calendar-cell:bg-(--cell)',
-                'group-data-pressed/calendar-cell:bg-(--cell)',
-                'group-data-invalid/calendar-cell:group-data-pressed/calendar-cell:bg-danger/30',
-                'group-data-invalid:group-data-hovered/calendar-cell:bg-danger/30 group-data-invalid/calendar-cell:text-danger'
-            ],
-            cap: 'bg-primary text-primary-fg group-data-invalid/calendar-cell:bg-danger group-data-invalid/calendar-cell:text-danger-fg'
-        },
-        isDisabled: {
-            true: 'text-muted-fg/70'
-        }
-    }
-})
+import { FieldError } from './field'
 
 interface RangeCalendarProps<T extends DateValue> extends RangeCalendarPrimitiveProps<T> {
     errorMessage?: string
@@ -46,9 +26,10 @@ const RangeCalendar = <T extends DateValue>({
     visibleDuration = { months: 1 },
     ...props
 }: RangeCalendarProps<T>) => {
+    const now = today(getLocalTimeZone())
     return (
         <RangeCalendarPrimitive visibleDuration={visibleDuration} {...props}>
-            <Calendar.Header type='range-calendar' />
+            <Calendar.Header isRange />
             <div className='flex gap-2 overflow-auto'>
                 {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
                     const id = index + 1
@@ -56,40 +37,52 @@ const RangeCalendar = <T extends DateValue>({
                         <CalendarGrid
                             key={index}
                             offset={id >= 2 ? { months: id - 1 } : undefined}
-                            className='**:[td]:px-0 **:[td]:py-[1.5px]'
+                            className='**:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg w-full'
                         >
                             <Calendar.GridHeader />
                             <CalendarGridBody>
                                 {(date) => (
                                     <CalendarCell
                                         date={date}
-                                        className={twJoin([
-                                            'group/calendar-cell data-outside-month:text-muted-fg size-10 cursor-default [line-height:2.286rem] outline-hidden data-selection-end:rounded-e-lg data-selection-start:rounded-s-lg sm:text-sm lg:size-9',
-                                            'data-selected:bg-primary/20 data-selected:text-primary',
-                                            'data-invalid:data-selected:bg-danger/30',
-                                            '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg'
-                                        ])}
+                                        className={({
+                                            isSelected,
+                                            isSelectionStart,
+                                            isSelectionEnd,
+                                            isOutsideMonth,
+                                            isInvalid,
+                                            isDisabled
+                                        }) =>
+                                            cn([
+                                                'shrink-0 relative size-10 cursor-default outline-hidden',
+                                                '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
+                                                isSelectionStart && 'rounded-s-lg',
+                                                isSelectionEnd && 'rounded-e-lg',
+                                                isOutsideMonth && 'text-muted-fg',
+                                                isSelected &&
+                                                    `${isInvalid ? 'bg-danger/15 text-danger' : 'bg-primary/10 text-primary'}`,
+                                                isDisabled && 'opacity-50 pointer-events-none',
+                                                date.compare(now) === 0 &&
+                                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-muted-fg'
+                                            ])
+                                        }
                                     >
                                         {({
                                             formattedDate,
                                             isSelected,
+                                            isHovered,
                                             isSelectionStart,
                                             isSelectionEnd,
-                                            isFocusVisible,
                                             isDisabled
                                         }) => (
                                             <span
-                                                className={cell({
-                                                    selectionState:
-                                                        isSelected &&
-                                                        (isSelectionStart || isSelectionEnd)
-                                                            ? 'cap'
-                                                            : isSelected
-                                                              ? 'middle'
-                                                              : 'none',
-                                                    isFocusVisible,
-                                                    isDisabled
-                                                })}
+                                                className={cn(
+                                                    'flex size-full items-center justify-center rounded-lg tabular-nums',
+                                                    isHovered && 'bg-primary/10 text-primary',
+                                                    isSelected &&
+                                                        (isSelectionStart || isSelectionEnd) &&
+                                                        'bg-primary text-primary-fg',
+                                                    isDisabled && 'opacity-50'
+                                                )}
                                             >
                                                 {formattedDate}
                                             </span>
@@ -101,15 +94,9 @@ const RangeCalendar = <T extends DateValue>({
                     )
                 })}
             </div>
-
-            {errorMessage && (
-                <Text slot='errorMessage' className='text-danger text-sm'>
-                    {errorMessage}
-                </Text>
-            )}
+            <FieldError className='px-2'>{errorMessage}</FieldError>
         </RangeCalendarPrimitive>
     )
 }
 
 export { RangeCalendar }
-export type { RangeCalendarProps }

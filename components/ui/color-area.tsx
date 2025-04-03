@@ -1,28 +1,31 @@
 'use client'
 
 import {
-    ColorArea as ColorAreaPrimitive,
-    type ColorAreaProps as ColorAreaPropsPrimitive
+    composeRenderProps,
+    ColorArea as RACColorArea,
+    type ColorAreaProps
 } from 'react-aria-components'
 
-import { ColorThumb } from './color-thumb'
-import { ctr } from './utils'
+import { cn } from '@/lib/utils'
 
-type ColorAreaProps = ColorAreaPropsPrimitive
+import { ColorThumb } from './color-thumb'
 
 const ColorArea = ({ className, ...props }: ColorAreaProps) => {
     return (
-        <ColorAreaPrimitive
+        <RACColorArea
+            slot='color-area'
+            className={composeRenderProps(className, (className, { isDisabled }) =>
+                cn(
+                    'bg-muted min-w-56 min-h-56 rounded-lg',
+                    isDisabled && 'opacity-50 grayscale-50',
+                    className
+                )
+            )}
+            style={({ defaultStyle }) => ({ ...defaultStyle })}
             {...props}
-            data-slot='color-area'
-            className={ctr(className, 'bg-muted size-56 shrink-0 rounded-lg')}
-            style={({ defaultStyle, isDisabled }) => ({
-                ...defaultStyle,
-                background: isDisabled ? undefined : defaultStyle.background
-            })}
         >
             <ColorThumb />
-        </ColorAreaPrimitive>
+        </RACColorArea>
     )
 }
 

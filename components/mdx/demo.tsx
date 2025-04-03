@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React from 'react'
 
 import { IconLoaderCircle } from 'hq-icons'
 
@@ -29,7 +29,7 @@ export default function Demo({ component, className, center = false, ...props }:
                 <Tabs.Content className='w-full' id='preview'>
                     <div
                         className={cn(
-                            'border-muted bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6',
+                            'border-muted bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6 overflow-auto',
                             center &&
                                 'preview flex min-h-20 items-center justify-center py-6 sm:py-12'
                         )}

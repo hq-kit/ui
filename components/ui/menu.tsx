@@ -1,221 +1,265 @@
 'use client'
 
-import { createContext, use } from 'react'
+import React from 'react'
 
 import { IconCheck, IconChevronRight } from 'hq-icons'
 import type {
-    ButtonProps,
-    MenuItemProps as MenuItemPrimitiveProps,
-    MenuProps as MenuPrimitiveProps,
-    MenuSectionProps as MenuSectionPrimitiveProps,
-    MenuTriggerProps as MenuTriggerPrimitiveProps,
-    PopoverProps
+    MenuItemProps,
+    MenuProps,
+    MenuSectionProps,
+    MenuTriggerProps,
+    PopoverProps,
+    SeparatorProps,
+    TextProps
 } from 'react-aria-components'
 import {
     Button,
     Collection,
+    composeRenderProps,
     Header,
-    MenuItem as MenuItemPrimitive,
-    Menu as MenuPrimitive,
-    MenuSection as MenuSectionPrimitive,
-    MenuTrigger as MenuTriggerPrimitive,
-    SubmenuTrigger as SubmenuTriggerPrimitive
+    MenuTrigger,
+    Modal,
+    ModalOverlay,
+    Popover,
+    PopoverContext,
+    Menu as RACMenu,
+    MenuItem as RACMenuItem,
+    MenuSection as RACMenuSection,
+    Separator,
+    SubmenuTrigger,
+    Text,
+    useSlottedContext
 } from 'react-aria-components'
-import type { VariantProps } from 'tailwind-variants'
-import { tv } from 'tailwind-variants'
 
-import {
-    DropdownItemDetails,
-    DropdownKeyboard,
-    DropdownLabel,
-    DropdownSeparator,
-    dropdownItemStyles,
-    dropdownSectionStyles
-} from './dropdown'
-import { Popover } from './popover'
-import { cn, cr } from './utils'
+import { cn } from '@/lib/utils'
 
-interface MenuContextProps {
-    respectScreen: boolean
-}
+import { useMediaQuery } from './utils'
 
-const MenuContext = createContext<MenuContextProps>({ respectScreen: true })
-
-interface MenuProps extends MenuTriggerPrimitiveProps {
-    respectScreen?: boolean
-}
-
-const Menu = ({ respectScreen = true, ...props }: MenuProps) => {
-    return (
-        <MenuContext value={{ respectScreen }}>
-            <MenuTriggerPrimitive {...props}>{props.children}</MenuTriggerPrimitive>
-        </MenuContext>
-    )
-}
-
-const MenuSubMenu = ({ delay = 0, ...props }) => (
-    <SubmenuTriggerPrimitive {...props} delay={delay}>
-        {props.children}
-    </SubmenuTriggerPrimitive>
-)
-
-const menuStyles = tv({
-    slots: {
-        menu: "grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr] overflow-auto rounded-lg p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit] *:[[role='group']+[role=group]]:mt-1 *:[[role='group']+[role=separator]]:mt-1",
-        popover: 'z-50 p-0 shadow-xs outline-hidden sm:min-w-40',
-        trigger: [
-            'data-focus-visible:ring-primary relative inline text-left outline-hidden data-focus-visible:ring-1'
-        ]
-    }
-})
-
-const { menu, popover, trigger } = menuStyles()
-
-interface MenuTriggerProps extends ButtonProps {
-    className?: string
-    ref?: React.Ref<HTMLButtonElement>
-}
-
-const MenuTrigger = ({ className, ref, ...props }: MenuTriggerProps) => (
-    <Button ref={ref} data-slot='menu-trigger' className={trigger({ className })} {...props}>
-        {(values) => (
-            <>{typeof props.children === 'function' ? props.children(values) : props.children}</>
-        )}
-    </Button>
-)
+const Menu = ({ ...props }: MenuTriggerProps) => <MenuTrigger {...props} />
 
 interface MenuContentProps<T>
-    extends Omit<PopoverProps, 'children' | 'style'>,
-        MenuPrimitiveProps<T> {
+    extends Pick<
+            PopoverProps,
+            | 'placement'
+            | 'offset'
+            | 'crossOffset'
+            | 'arrowBoundaryOffset'
+            | 'triggerRef'
+            | 'isOpen'
+            | 'onOpenChange'
+            | 'shouldFlip'
+        >,
+        MenuProps<T> {
     className?: string
-    popoverClassName?: string
-    showArrow?: boolean
     respectScreen?: boolean
+    portal?: Element
 }
 
 const MenuContent = <T extends object>({
     className,
-    showArrow = false,
-    popoverClassName,
+    respectScreen = true,
     ...props
 }: MenuContentProps<T>) => {
-    const { respectScreen } = use(MenuContext)
-    return (
-        <Popover.Content
-            respectScreen={respectScreen}
-            showArrow={showArrow}
-            className={popover({
-                className: popoverClassName
-            })}
-            {...props}
-        >
-            <MenuPrimitive className={menu({ className })} {...props} />
-        </Popover.Content>
-    )
+    const isMobile = useMediaQuery('(max-width: 768px)')
+    const popoverContext = useSlottedContext(PopoverContext)!
+    if (isMobile && respectScreen) {
+        return (
+            <ModalOverlay
+                UNSTABLE_portalContainer={props.portal}
+                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
+                    cn(
+                        'fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full',
+                        'flex sm:block items-end justify-end bg-fg/50 backdrop-blur',
+                        '[--visual-viewport-vertical-padding:16px] sm:[--visual-viewport-vertical-padding:32px]',
+                        isEntering && 'fade-in animate-in duration-200 ease-out',
+                        isExiting && 'fade-out animate-out ease-in',
+                        className
+                    )
+                )}
+                isDismissable
+            >
+                <Modal
+                    UNSTABLE_portalContainer={props.portal}
+                    className={composeRenderProps(
+                        className,
+                        (className, { isEntering, isExiting }) =>
+                            cn(
+                                'bg-bg text-fg fixed top-auto bottom-0 z-50 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
+                                isEntering &&
+                                    'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
+                                isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
+                                className
+                            )
+                    )}
+                >
+                    <RACMenu
+                        className={cn(
+                            'grid max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
+                            className
+                        )}
+                        {...props}
+                    />
+                </Modal>
+            </ModalOverlay>
+        )
+    } else {
+        const isSubmenuTrigger = popoverContext?.trigger === 'SubmenuTrigger'
+        const optimalOffset = isSubmenuTrigger ? 0 : 8
+        return (
+            <Popover
+                UNSTABLE_portalContainer={props.portal}
+                isOpen={props.isOpen}
+                onOpenChange={props.onOpenChange}
+                shouldFlip={props.shouldFlip}
+                offset={props.offset ?? optimalOffset}
+                placement={props.placement}
+                crossOffset={props.crossOffset}
+                triggerRef={props.triggerRef}
+                arrowBoundaryOffset={props.arrowBoundaryOffset}
+                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
+                    cn(
+                        'group min-w-40 bg-bg max-w-xs sm:max-w-3xl rounded-lg border bg-clip-padding shadow transition-transform outline-hidden',
+                        isEntering &&
+                            'fade-in animate-in zoom-in-95 placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2',
+                        isExiting &&
+                            'fade-out animate-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2',
+                        className
+                    )
+                )}
+            >
+                <RACMenu
+                    className={cn(
+                        'grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
+                        className
+                    )}
+                    {...props}
+                />
+            </Popover>
+        )
+    }
 }
 
-interface MenuItemProps extends MenuItemPrimitiveProps, VariantProps<typeof dropdownItemStyles> {
-    isDanger?: boolean
-}
-
-const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemProps) => {
+const MenuItem = ({
+    className,
+    isDanger = false,
+    children,
+    ...props
+}: MenuItemProps & { isDanger?: boolean }) => {
     const textValue = props.textValue || (typeof children === 'string' ? children : undefined)
     return (
-        <MenuItemPrimitive
-            className={cr(className, (className, renderProps) =>
-                dropdownItemStyles({
-                    ...renderProps,
-                    className: renderProps.hasSubmenu
-                        ? cn([
-                              'data-open:data-danger:bg-danger/10 data-open:data-danger:text-danger',
-                              'data-open:bg-primary data-open:text-primary-fg data-open:*:data-[slot=icon]:text-primary-fg data-open:*:[.text-muted-fg]:text-primary-fg',
-                              className
-                          ])
-                        : className
-                })
+        <RACMenuItem
+            className={composeRenderProps(
+                className,
+                (className, { isOpen, isFocused, isSelected, isDisabled }) =>
+                    cn(
+                        'group relative grid grid-cols-[auto_1fr_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full items-center',
+                        'rounded-md px-2 py-1.5 text-base sm:text-sm outline-hidden select-none',
+                        '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
+                        isDanger
+                            ? 'text-danger **:text-danger focus:bg-danger/10 open:bg-danger/10 open:text-danger focus:text-danger focus:**:text-danger'
+                            : 'text-fg',
+                        isOpen && 'bg-accent text-accent-fg *:[.text-muted-fg]:text-accent-fg',
+                        isFocused && 'bg-accent text-accent-fg',
+                        isSelected &&
+                            '**:data-avatar:hidden **:data-avatar:*:hidden **:data-[slot=icon]:hidden',
+                        isDisabled && 'pointer-events-none opacity-50',
+                        className
+                    )
             )}
             textValue={textValue}
-            data-danger={isDanger ? 'true' : undefined}
             {...props}
         >
             {(values) => (
                 <>
-                    {values.isSelected && (
-                        <>
-                            {values.selectionMode === 'single' && (
-                                <span
-                                    data-slot='bullet-icon'
-                                    className='mr-2 flex size-4 shrink-0 items-center justify-center **:data-[slot=indicator]:size-4 **:data-[slot=indicator]:shrink-0'
-                                >
-                                    <IconCheck data-slot='indicator' className='mr-2 size-4' />
-                                </span>
-                            )}
-                            {values.selectionMode === 'multiple' && (
-                                <IconCheck className='mr-2 size-4' data-slot='checked-icon' />
-                            )}
-                        </>
-                    )}
-
+                    {values.isSelected && <IconCheck className='mr-2 size-4' data-slot='checked' />}
                     {typeof children === 'function' ? children(values) : children}
-
                     {values.hasSubmenu && (
-                        <IconChevronRight
-                            data-slot='chevron'
-                            className='absolute right-2 size-3.5'
-                        />
+                        <IconChevronRight data-slot='chevron' className='ml-auto size-4' />
                     )}
                 </>
             )}
-        </MenuItemPrimitive>
+        </RACMenuItem>
     )
 }
 
-export interface MenuHeaderProps extends React.ComponentProps<typeof Header> {
-    separator?: boolean
-}
-
-const MenuHeader = ({ className, separator = false, ...props }: MenuHeaderProps) => (
+const MenuHeader = ({ className, ...props }: React.ComponentProps<typeof Header>) => (
     <Header
         className={cn(
-            'col-span-full px-2.5 py-2 text-base font-semibold sm:text-sm',
-            separator && '-mx-1 mb-1 border-b sm:px-3 sm:pb-[0.625rem]',
+            'col-span-full px-2.5 py-2 text-base font-semibold sm:text-sm -mx-1 mb-1 border-b sm:px-3 sm:pb-2.5',
             className
         )}
         {...props}
     />
 )
 
-const { section, header } = dropdownSectionStyles()
-
-interface MenuSectionProps<T> extends MenuSectionPrimitiveProps<T> {
-    ref?: React.Ref<HTMLDivElement>
-    title?: string
-}
-
-const MenuSection = <T extends object>({ className, ref, ...props }: MenuSectionProps<T>) => {
+const MenuSection = <T extends object>({
+    className,
+    ...props
+}: MenuSectionProps<T> & { title?: string }) => {
     return (
-        <MenuSectionPrimitive ref={ref} className={section({ className })} {...props}>
-            {'title' in props && <Header className={header()}>{props.title}</Header>}
+        <RACMenuSection
+            className={cn('col-span-full grid grid-cols-[auto_1fr] mt-2', className)}
+            {...props}
+        >
+            {'title' in props && (
+                <Header className='text-muted-fg text-xs col-span-full px-2 py-1 pointer-events-none'>
+                    {props.title}
+                </Header>
+            )}
             <Collection items={props.items}>{props.children}</Collection>
-        </MenuSectionPrimitive>
+        </RACMenuSection>
     )
 }
 
-const MenuSeparator = DropdownSeparator
-const MenuItemDetails = DropdownItemDetails
-const MenuKeyboard = DropdownKeyboard
-const MenuLabel = DropdownLabel
+interface DropdownItemDetailProps extends TextProps {
+    label?: TextProps['children']
+    description?: TextProps['children']
+}
 
-Menu.Keyboard = MenuKeyboard
+const MenuDetails = ({ label, description, ...props }: DropdownItemDetailProps) => {
+    const { children, title, ...restProps } = props
+
+    return (
+        <div data-slot='item-details' className='col-start-2 flex flex-col gap-y-1' {...restProps}>
+            {label && (
+                <Text slot='label' className='font-medium sm:text-sm'>
+                    {label}
+                </Text>
+            )}
+            {description && (
+                <Text slot='description' className='text-muted-fg text-xs' {...restProps}>
+                    {description}
+                </Text>
+            )}
+            {!title && children}
+        </div>
+    )
+}
+
+interface MenuLabelProps extends TextProps {
+    ref?: React.Ref<HTMLDivElement>
+}
+
+const MenuLabel = ({ className, ref, ...props }: MenuLabelProps) => (
+    <Text slot='label' ref={ref} className={cn('col-start-2', className)} {...props} />
+)
+
+const MenuSeparator = ({ className, ...props }: SeparatorProps) => (
+    <Separator
+        orientation='horizontal'
+        className={cn('bg-muted col-span-full -mx-1 my-1 h-px', className)}
+        {...props}
+    />
+)
+
+Menu.Trigger = Button
+Menu.Submenu = SubmenuTrigger
+Menu.Item = MenuItem
 Menu.Content = MenuContent
 Menu.Header = MenuHeader
-Menu.Item = MenuItem
 Menu.Section = MenuSection
-Menu.Separator = MenuSeparator
-Menu.ItemDetails = MenuItemDetails
+Menu.Details = MenuDetails
 Menu.Label = MenuLabel
-Menu.Trigger = MenuTrigger
-Menu.Submenu = MenuSubMenu
+Menu.Separator = MenuSeparator
 
 export { Menu }
-export type { MenuContentProps, MenuItemProps, MenuProps, MenuSectionProps, MenuTriggerProps }

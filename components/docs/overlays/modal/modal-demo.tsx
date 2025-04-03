@@ -1,35 +1,43 @@
 'use client'
 
-import { Button, Form, Modal, TextField } from '@/components/ui'
+import { Button, Checkbox, Form, Link, Modal, TextField } from '@/components/ui'
 
 export default function ModalDemo() {
     return (
         <Modal>
-            <Button>Turn on 2FA</Button>
-            <Modal.Content>
-                <Modal.Header>
-                    <Modal.Title>Nice! Let&apos;s beef up your account.</Modal.Title>
-                    <Modal.Description>
-                        2FA beefs up your account&apos;s defense. Pop in your password to keep
-                        going.
-                    </Modal.Description>
-                </Modal.Header>
-                <Form onSubmit={() => {}}>
-                    <Modal.Body>
+            <Button>Login</Button>
+            <Form onSubmit={() => {}}>
+                <Modal.Content>
+                    <Modal.Header>
+                        <Modal.Title>Login</Modal.Title>
+                        <Modal.Description>Enter your credentials to sign in.</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body className='space-y-4'>
                         <TextField
                             isRequired
-                            autoFocus
+                            type='email'
+                            label='Email'
+                            placeholder='Enter your email'
+                        />
+                        <TextField
+                            isRequired
                             label='Password'
                             type='password'
                             placeholder='Enter your password'
                         />
+                        <div className='flex items-center justify-between'>
+                            <Checkbox name='remember-me'>Remember me</Checkbox>
+                            <Link href='#'>Forgot password?</Link>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Modal.Close>Cancel</Modal.Close>
-                        <Button type='submit'>Turn on 2FA</Button>
+                        <Button slot='close' variant='outline'>
+                            Cancel
+                        </Button>
+                        <Button type='submit'>Login</Button>
                     </Modal.Footer>
-                </Form>
-            </Modal.Content>
+                </Modal.Content>
+            </Form>
         </Modal>
     )
 }

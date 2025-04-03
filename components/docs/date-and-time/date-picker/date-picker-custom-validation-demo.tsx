@@ -9,8 +9,13 @@ export default function DatePickerInvalidDemo() {
     const ly = startOfYear(today(getLocalTimeZone()))
     const now = today(getLocalTimeZone())
     const [value, setValue] = React.useState(parseDate(ly.toString()))
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        alert(value)
+    }
+
     return (
-        <Form onSubmit={(e) => e.preventDefault()}>
+        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
             <DatePicker
                 validate={(date) => (date < now ? 'Select a future date, please.' : null)}
                 value={value}

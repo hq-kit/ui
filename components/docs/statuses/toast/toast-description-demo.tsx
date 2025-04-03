@@ -8,12 +8,12 @@ export default function ToastDescriptionDemo() {
     return (
         <Button
             onPress={() =>
-                toast('Cart Updated', {
-                    description: 'Your item’s in the cart. Tap here to check it out.'
+                toast('This is Toast Message', {
+                    description: 'And this is Message Description'
                 })
             }
         >
-            Add to Cart
+            Toast
         </Button>
     )
 }

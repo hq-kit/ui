@@ -118,7 +118,9 @@ export default function SheetStickyDemo() {
                     </div>
                 </Sheet.Body>
                 <Sheet.Footer>
-                    <Sheet.Close>Close</Sheet.Close>
+                    <Button slot='close' variant='outline'>
+                        Close
+                    </Button>
                     <Button>Accept</Button>
                 </Sheet.Footer>
             </Sheet.Content>

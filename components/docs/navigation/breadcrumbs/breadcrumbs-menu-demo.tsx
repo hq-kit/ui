@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEllipsis } from 'hq-icons'
+import { IconChevronDown } from 'hq-icons'
 
 import { Breadcrumbs, Menu } from '@/components/ui'
 
@@ -8,25 +8,21 @@ export default function BreadcrumbsMenuDemo() {
     return (
         <Breadcrumbs>
             <Breadcrumbs.Item href='#'>Home</Breadcrumbs.Item>
-
-            <Breadcrumbs.Item separator>
+            <Breadcrumbs.Item>
                 <Menu>
-                    <Menu.Trigger>
-                        <IconEllipsis />
+                    <Menu.Trigger className='inline-flex items-center'>
+                        Docs
+                        <IconChevronDown className='ml-1' />
                     </Menu.Trigger>
-                    <Menu.Content placement='bottom'>
-                        <Menu.Item href='/docs/components/layouts/sidebar'>Sidebar</Menu.Item>
-                        <Menu.Item href='/docs/components/controls/toolbar'>Toolbar</Menu.Item>
-                        <Menu.Item href='/docs/components/collections/menu'>Menu</Menu.Item>
-                        <Menu.Item href='/docs/components/layouts/container'>Container</Menu.Item>
-                        <Menu.Item href='/docs/components/surfaces/chart'>Chart</Menu.Item>
-                        <Menu.Item href='/docs/components/collections/table'>Table</Menu.Item>
-                        <Menu.Item href='/docs/components/overlays/modal'>Modal</Menu.Item>
+                    <Menu.Content>
+                        <Menu.Item href='/blocks'>Blocks</Menu.Item>
+                        <Menu.Item href='/icons'>Icons</Menu.Item>
+                        <Menu.Item href='/colors'>Colors</Menu.Item>
+                        <Menu.Item href='/themes'>Themes</Menu.Item>
                     </Menu.Content>
                 </Menu>
             </Breadcrumbs.Item>
-
-            <Breadcrumbs.Item>Navbar</Breadcrumbs.Item>
+            <Breadcrumbs.Item>Components</Breadcrumbs.Item>
         </Breadcrumbs>
     )
 }

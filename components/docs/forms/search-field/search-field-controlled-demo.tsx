@@ -2,16 +2,14 @@
 
 import React from 'react'
 
-import { Description, SearchField } from '@/components/ui'
+import { SearchField } from '@/components/ui'
 
 export default function SearchFieldControlledDemo() {
     const [value, setValue] = React.useState('')
     return (
-        <>
+        <div className='space-y-2'>
             <SearchField value={value} onChange={setValue} className='mb-2' />
-            <Description className='[&>strong]:text-fg mt-2 block'>
-                You have typed: <strong>{value ?? '-'}</strong>
-            </Description>
-        </>
+            <code>value: {JSON.stringify(value)}</code>
+        </div>
     )
 }

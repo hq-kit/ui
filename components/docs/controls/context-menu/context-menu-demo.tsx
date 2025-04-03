@@ -1,12 +1,14 @@
 'use client'
 
-import { ContextMenu } from '@/components/ui'
+import { ContextMenu, Keyboard } from '@/components/ui'
 
 export default function ContextMenuDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content className='sm:min-w-56' aria-label='Context menu'>
+            <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
+                Right click me
+            </ContextMenu.Trigger>
+            <ContextMenu.Content aria-label='Context menu'>
                 <ContextMenu.Item>Back</ContextMenu.Item>
                 <ContextMenu.Item isDisabled>Forward</ContextMenu.Item>
                 <ContextMenu.Item>Reload</ContextMenu.Item>
@@ -15,7 +17,7 @@ export default function ContextMenuDemo() {
                 <ContextMenu.Item>Save as</ContextMenu.Item>
                 <ContextMenu.Item>
                     Select all
-                    <ContextMenu.Keyboard keys='⌘A' />
+                    <Keyboard keys='⌘A' />
                 </ContextMenu.Item>
                 <ContextMenu.Separator />
                 <ContextMenu.Item>View source</ContextMenu.Item>

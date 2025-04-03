@@ -1,21 +1,35 @@
 'use client'
 
-import { Avatar, Button, ComboBox, Form } from '@/components/ui'
+import React from 'react'
 
-const users = [
-    { id: 1, name: 'Barbara Kirlin Sr.', image_url: 'https://i.pravatar.cc/150?img=1' }
-    //...
+import { Key } from 'react-aria-components'
+
+import { Button, ComboBox, Form } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' },
+    { id: 5, name: 'Redhat' }
 ]
+
 export default function ComboBoxValidationDemo() {
+    const [value, setValue] = React.useState<Key | null>('')
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        alert(value)
+    }
     return (
-        <Form onSubmit={(e) => e.preventDefault()} className='space-y-2'>
-            <ComboBox placeholder='Select a user' label='Users' items={users} isRequired>
-                {(item) => (
-                    <ComboBox.Item key={item.id} id={item.id} textValue={item.name}>
-                        <Avatar src={item.image_url} />
-                        {item.name}
-                    </ComboBox.Item>
-                )}
+        <Form onSubmit={onSubmit} className='space-y-4'>
+            <ComboBox
+                label='Linux Distro'
+                items={items}
+                selectedKey={value}
+                onSelectionChange={setValue}
+                isRequired
+            >
+                {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
             <Button type='submit'>Submit</Button>
         </Form>

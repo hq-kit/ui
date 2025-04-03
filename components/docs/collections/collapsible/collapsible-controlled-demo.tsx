@@ -8,18 +8,12 @@ export default function CollapsibleControlledDemo() {
     const [expanded, setExpanded] = React.useState(false)
 
     return (
-        <div>
-            The Collapsible is{' '}
-            <strong className='text-info'>{expanded ? 'expanded' : 'collapsed'}</strong>.
+        <div className='space-y-6'>
             <Collapsible isExpanded={expanded} onExpandedChange={setExpanded}>
-                <Collapsible.Trigger>What is your return policy?</Collapsible.Trigger>
-                <Collapsible.Content>
-                    <p>
-                        You can return any item within 30 days of purchase, provided it is in its
-                        original condition with proof of purchase.
-                    </p>
-                </Collapsible.Content>
+                <Collapsible.Trigger>System Requirements</Collapsible.Trigger>
+                <Collapsible.Content>Details about system requirements here.</Collapsible.Content>
             </Collapsible>
+            <code>expanded: {JSON.stringify(expanded)}</code>
         </div>
     )
 }

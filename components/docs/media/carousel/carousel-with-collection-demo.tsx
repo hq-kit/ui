@@ -6,7 +6,7 @@ import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselWithCollectionDemo() {
     return (
-        <Carousel className='w-full max-w-xs [&_.card]:flex [&_.card]:flex-col [&_.card]:overflow-hidden'>
+        <Carousel className='w-full max-w-xs'>
             <Carousel.Content items={items}>
                 {(item) => (
                     <Carousel.Item id={item.id}>
@@ -31,10 +31,7 @@ export default function CarouselWithCollectionDemo() {
                 )}
             </Carousel.Content>
 
-            <Carousel.Handler>
-                <Carousel.Button slot='previous' />
-                <Carousel.Button slot='next' />
-            </Carousel.Handler>
+            <Carousel.Handler />
         </Carousel>
     )
 }

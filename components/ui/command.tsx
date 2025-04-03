@@ -14,10 +14,11 @@ import {
     type SeparatorProps,
     type TextProps
 } from 'react-aria-components'
-import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
-import { Keyboard, type KeyboardProps } from './keyboard'
+import { cn } from '@/lib/utils'
+
+import { Keyboard } from './keyboard'
 import { Separator } from './separator'
 import { useMediaQuery } from './utils'
 
@@ -49,7 +50,6 @@ const commandStyles = tv({
             'disabled:pointer-events-none'
         ],
         empty: 'text-muted-fg py-6 text-center text-sm',
-        kbdKeyboard: 'hidden group-data-[selected=true]:opacity-50 lg:block',
         description: 'ml-auto hidden text-sm sm:inline',
         item: [
             'group text-fg relative flex cursor-default items-center rounded-lg py-2 text-sm outline-none select-none',
@@ -69,7 +69,7 @@ const commandStyles = tv({
     }
 })
 
-const { command, empty, section, list, item, closeButton, modal, input, kbdKeyboard, description } =
+const { command, empty, section, list, item, closeButton, modal, input, description } =
     commandStyles()
 
 interface CommandContextProps {
@@ -85,7 +85,6 @@ interface CommandRootProps {
     CommandEmpty?: typeof CommandEmpty
     CommandInput?: typeof CommandInput
     CommandItem?: typeof CommandItem
-    CommandKeyboard?: typeof CommandKeyboard
     CommandList?: typeof CommandList
     CommandSection?: typeof CommandSection
     CommandSeparator?: typeof CommandSeparator
@@ -264,7 +263,7 @@ const CommandDescription = ({ intent, className, ...props }: CommandDescriptionP
             {...props}
             slot='description'
             className={description({
-                className: twJoin(
+                className: cn(
                     intent === 'danger'
                         ? 'group-data-[selected=true]:text-primary-fg/70 text-danger/90'
                         : intent === 'warning'
@@ -281,17 +280,13 @@ const CommandDescription = ({ intent, className, ...props }: CommandDescriptionP
     )
 }
 
-const CommandKeyboard = (props: KeyboardProps) => (
-    <Keyboard classNames={{ kbd: kbdKeyboard(), base: '-mr-2.5' }} {...props} />
-)
-
 Command.Empty = CommandEmpty
 Command.Input = CommandInput
 Command.Item = CommandItem
-Command.Keyboard = CommandKeyboard
 Command.List = CommandList
 Command.Section = CommandSection
 Command.Separator = CommandSeparator
 Command.Description = CommandDescription
+Command.Keyboard = Keyboard
 
 export { Command }

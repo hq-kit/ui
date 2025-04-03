@@ -10,7 +10,7 @@ import { Description, DropZone, FileTrigger } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function DropZoneAndFileTriggerDemo() {
-    const [droppedImage, setDroppedImage] = React.useState<string | undefined>(undefined)
+    const [droppedImage, setDroppedImage] = React.useState<string | null>(null)
 
     const onDropHandler = async (e: DropEvent) => {
         const item = e.items
@@ -32,6 +32,7 @@ export default function DropZoneAndFileTriggerDemo() {
             }
         }
     }
+
     return (
         <DropZone
             getDropOperation={(types) =>
@@ -39,32 +40,32 @@ export default function DropZoneAndFileTriggerDemo() {
             }
             onDrop={onDropHandler}
         >
-            {droppedImage ? (
-                <Image
-                    width={400}
-                    height={300}
-                    alt=''
-                    src={droppedImage}
-                    className='aspect-square size-full object-contain'
-                />
-            ) : (
-                <div className='grid space-y-3'>
-                    <div className='bg-muted/70 group-data-[drop-target]:bg-primary/20 group-data-[drop-target]:border-primary/70 mx-auto grid size-12 place-content-center rounded-full border'>
+            <div className='grid space-y-3'>
+                <div className='bg-muted/70 group-drop-target:bg-primary/20 group-drop-target:border-primary/70 mx-auto grid size-12 place-content-center rounded-full overflow-hidden border'>
+                    {droppedImage ? (
+                        <Image
+                            width={20}
+                            height={20}
+                            alt='Uploaded Image'
+                            src={droppedImage}
+                            className='aspect-square size-full object-cover'
+                        />
+                    ) : (
                         <IconImage className='size-5' />
-                    </div>
-                    <div className='flex justify-center'>
-                        <FileTrigger
-                            acceptedFileTypes={['image/png', 'image/jpeg']}
-                            allowsMultiple={false}
-                            onSelect={onSelectHandler}
-                        >
-                            Upload a file
-                        </FileTrigger>
-                    </div>
-                    <Description>Or drag and drop PNG, JPG, GIF up to 10MB</Description>
+                    )}
                 </div>
-            )}
-            <input type='hidden' name='image' value={droppedImage} />
+                <div className='flex justify-center'>
+                    <FileTrigger
+                        acceptedFileTypes={['image/png', 'image/jpeg']}
+                        allowsMultiple={false}
+                        onSelect={onSelectHandler}
+                    >
+                        Upload an image
+                    </FileTrigger>
+                </div>
+                <Description>Or drag and drop PNG, JPG, GIF up to 10MB</Description>
+            </div>
+            <input type='hidden' name='image' value={droppedImage ?? ''} />
         </DropZone>
     )
 }

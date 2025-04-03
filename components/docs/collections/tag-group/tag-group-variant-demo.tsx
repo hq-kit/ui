@@ -1,35 +1,34 @@
 'use client'
 
-import { useListData } from 'react-stately'
+import { Tag } from '@/components/ui'
 
-import { badgeStyles, Tag, TagGroupProps } from '@/components/ui'
-
-const shoes = [
-    { id: '1', name: 'Nike', available: true },
-    { id: '2', name: 'Adidas', available: false },
-    { id: '3', name: 'Puma', available: true },
-    { id: '4', name: 'Reebok', available: true }
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' }
 ]
-
-type Appearance = TagGroupProps['variant']
-
 export default function TagGroupVariantDemo() {
-    const shoesList = useListData({
-        initialItems: shoes
-    })
     return (
-        <div className='max-w-sm space-y-2'>
-            {Object.keys(badgeStyles.variants.variant).map((variant) => (
-                <Tag.Group
-                    key={variant}
-                    label={variant}
-                    selectionMode='multiple'
-                    onRemove={(keys) => shoesList.remove(...keys)}
-                    variant={variant as Appearance}
-                >
-                    <Tag.List items={shoesList.items}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
-                </Tag.Group>
-            ))}
+        <div className='max-w-sm space-y-6'>
+            <Tag.Group variant='primary' label='Primary' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
+            <Tag.Group variant='secondary' label='Secondary' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
+            <Tag.Group variant='danger' label='Danger' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
+            <Tag.Group variant='info' label='Info' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
+            <Tag.Group variant='success' label='Success' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
+            <Tag.Group variant='warning' label='Warning' items={items} selectionMode='multiple'>
+                {(item) => <Tag>{item.name}</Tag>}
+            </Tag.Group>
         </div>
     )
 }

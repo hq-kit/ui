@@ -1,24 +1,16 @@
 'use client'
 
-import React from 'react'
-
-import type { Key } from 'react-aria-components'
-
 import { Breadcrumbs } from '@/components/ui'
 
-export default function BreadcrumbsCollectionsDemo() {
-    const [breadcrumbs, setBreadcrumbs] = React.useState([
-        { id: 1, label: 'Dashboard', href: '#' },
-        { id: 2, label: 'Reports', href: '#' },
-        { id: 3, label: '2024 Quarterly Review' }
-    ])
+const urls = [
+    { id: 1, label: 'Home', href: '#' },
+    { id: 2, label: 'Docs', href: '#' },
+    { id: 3, label: 'Components' }
+]
 
-    const navigate = (id: Key) => {
-        const i = breadcrumbs.findIndex((item) => item.id === id)
-        setBreadcrumbs(breadcrumbs.slice(0, i + 1))
-    }
+export default function BreadcrumbsCollectionsDemo() {
     return (
-        <Breadcrumbs items={breadcrumbs} onAction={navigate}>
+        <Breadcrumbs items={urls}>
             {(item) => <Breadcrumbs.Item href={item.href}>{item.label}</Breadcrumbs.Item>}
         </Breadcrumbs>
     )

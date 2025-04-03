@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { LayoutGroup } from 'framer-motion'
 import {
     IconBrandAdobe,
     IconBrandCleon,
@@ -18,6 +17,7 @@ import {
     IconShapes,
     IconSwatchBook
 } from 'hq-icons'
+import { LayoutGroup } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { Collection } from 'react-aria-components'
 
@@ -57,9 +57,8 @@ export function Navbar() {
                     <nav className='bg-bg/95 supports-[backdrop-filter]:bg-bg/60 border-b py-2 backdrop-blur-lg'>
                         <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
                             <div className='flex items-center justify-between'>
-                                <div className='flex items-center gap-x-6'>
+                                <div className='flex items-center gap-x-2'>
                                     <NavbarDropdown />
-                                    <Separator orientation='vertical' className='h-6' />
                                     <Collection items={menuItems}>
                                         {(item) => (
                                             <NavLink href={item.url} isActive={item.active}>
@@ -76,8 +75,8 @@ export function Navbar() {
                                             variant='outline'
                                         >
                                             <IconSearch />
-                                            <span className='text-muted-fg'>Search...</span>
-                                            <Keyboard className='-mr-1' keys='⌘K' />
+                                            <span className='text-muted-fg mr-2'>Search...</span>
+                                            <Keyboard keys='⌘K' />
                                         </Button>
                                         <ThemeToggle />
 
@@ -144,7 +143,7 @@ export function NavbarDropdown() {
                     <Menu.Label>Themes</Menu.Label>
                 </Menu.Item>
                 <Menu.Separator />
-                <Menu.Header separator>Refs</Menu.Header>
+                <Menu.Header>Refs</Menu.Header>
                 <Menu.Item href='https://github.com/hq-kit/ui' target='_blank'>
                     <IconBrandGithub />
                     <Menu.Label>Github</Menu.Label>

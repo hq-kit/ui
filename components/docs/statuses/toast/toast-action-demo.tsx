@@ -8,10 +8,8 @@ export default function ToastActionDemo() {
     return (
         <div className='flex gap-3'>
             <Button
-                variant='outline'
-                size='sm'
                 onPress={() =>
-                    toast('New comment on your post!', {
+                    toast('Your post has been published!', {
                         action: {
                             label: 'View',
                             onClick: () => alert('Viewed')
@@ -22,10 +20,8 @@ export default function ToastActionDemo() {
                 Action
             </Button>
             <Button
-                variant='outline'
-                size='sm'
                 onPress={() =>
-                    toast('New comment on your post!', {
+                    toast('Your message has been sent!', {
                         action: {
                             label: 'View',
                             onClick: () => alert('Viewed')
@@ -40,10 +36,8 @@ export default function ToastActionDemo() {
                 Do or Not
             </Button>
             <Button
-                variant='outline'
-                size='sm'
                 onPress={() =>
-                    toast('New comment on your post!', {
+                    toast('Your data has been deleted!', {
                         cancel: {
                             label: 'Cancel',
                             onClick: () => alert('Cancelled')

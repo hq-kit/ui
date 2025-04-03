@@ -1,26 +1,6 @@
 import React from 'react'
 
-import { tv } from 'tailwind-variants'
-
-const headingStyles = tv({
-    base: 'text-fg font-sans tracking-tight',
-    variants: {
-        level: {
-            1: 'text-xl font-bold sm:text-2xl',
-            2: 'text-lg font-semibold sm:text-xl',
-            3: 'text-base font-semibold sm:text-lg',
-            4: 'text-base font-semibold'
-        },
-        tracking: {
-            tighter: 'tracking-tighter',
-            tight: 'tracking-tight',
-            normal: 'tracking-normal',
-            wide: 'tracking-wide',
-            wider: 'tracking-wider',
-            widest: 'tracking-widest'
-        }
-    }
-})
+import { cn } from '@/lib/utils'
 
 type HeadingType = { level?: 1 | 2 | 3 | 4 } & React.ComponentPropsWithoutRef<
     'h1' | 'h2' | 'h3' | 'h4'
@@ -35,11 +15,20 @@ const Heading = ({ className, tracking = 'normal', level = 1, ...props }: Headin
     const Element: `h${typeof level}` = `h${level}`
     return (
         <Element
-            className={headingStyles({
-                level,
-                tracking,
+            className={cn(
+                'text-fg font-sans',
+                level === 1 && 'text-xl font-bold sm:text-2xl',
+                level === 2 && 'text-lg font-semibold sm:text-xl',
+                level === 3 && 'text-base font-semibold sm:text-lg',
+                level === 4 && 'text-base font-semibold',
+                tracking === 'tighter' && 'tracking-tighter',
+                tracking === 'tight' && 'tracking-tight',
+                tracking === 'normal' && 'tracking-normal',
+                tracking === 'wide' && 'tracking-wide',
+                tracking === 'wider' && 'tracking-wider',
+                tracking === 'widest' && 'tracking-widest',
                 className
-            })}
+            )}
             {...props}
         />
     )

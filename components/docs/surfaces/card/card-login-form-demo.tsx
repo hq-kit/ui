@@ -1,5 +1,3 @@
-'use client'
-
 import { Button, Card, Checkbox, Link, TextField } from '@/components/ui'
 
 export default function CardLoginFormDemo() {
@@ -14,15 +12,12 @@ export default function CardLoginFormDemo() {
                 <TextField
                     isRequired
                     label='Password'
-                    isRevealable
                     type='password'
                     placeholder='Enter your password'
                 />
                 <div className='flex items-center justify-between'>
                     <Checkbox>Remember me</Checkbox>
-                    <Link variant='primary' href='#'>
-                        Forgot password?
-                    </Link>
+                    <Link href='#'>Forgot password?</Link>
                 </div>
             </Card.Content>
             <Card.Footer>

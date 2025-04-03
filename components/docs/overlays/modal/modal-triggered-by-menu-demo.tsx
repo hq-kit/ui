@@ -1,31 +1,31 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
-import { IconEllipsisVertical } from 'hq-icons'
+import { IconBan, IconRotateCcw, IconTrash } from 'hq-icons'
+import { Key } from 'react-aria-components'
 
-import { Button, buttonStyles, Loader, Menu, Modal } from '@/components/ui'
-import { wait } from '@/lib/utils'
+import { Button, Menu, Modal } from '@/components/ui'
 
-export default function ModalTriggeredByMenuDemo() {
-    const [state, setState] = React.useState<string | null>(null)
-    const [loading, setLoading] = React.useState<boolean>(false)
-    const closeModal = () => setState(null)
+export default function ModalMenuDemo() {
+    const [state, setState] = useState<Key>('')
+    const [loading, setLoading] = useState<boolean>(false)
+
     const executeAction = (action: string) => {
-        console.log(`${action} is executing`)
         setLoading(true)
-        wait(2000).then(() => {
+        setTimeout(() => {
             setLoading(false)
-            closeModal()
-        })
+            setState('')
+            alert(action)
+        }, 3000)
     }
 
-    const actionType = (t: string | null) => {
+    const actions = (t: Key) => {
         switch (t) {
             case 'delete':
                 return {
                     title: 'Delete User',
-                    description: 'Are you sure you want to delete this item?',
+                    description: 'Are you sure you want to delete this user?',
                     confirmText: 'Delete',
                     action: () => executeAction(t)
                 }
@@ -52,32 +52,39 @@ export default function ModalTriggeredByMenuDemo() {
     return (
         <>
             <Menu>
-                <Menu.Trigger className={buttonStyles({ variant: 'outline' })}>
-                    <IconEllipsisVertical />
-                </Menu.Trigger>
-                <Menu.Content placement='bottom'>
-                    <Menu.Item onAction={() => setState('delete')}>Delete</Menu.Item>
-                    <Menu.Item isDanger onAction={() => setState('ban')}>
-                        Ban
+                <Button>Options</Button>
+                <Menu.Content onAction={setState}>
+                    <Menu.Item id='delete' isDanger>
+                        <IconTrash />
+                        <Menu.Label>Delete</Menu.Label>
                     </Menu.Item>
-                    <Menu.Item onAction={() => setState('restore')}>Restore</Menu.Item>
+                    <Menu.Item id='ban' isDanger>
+                        <IconBan />
+                        <Menu.Label>Ban</Menu.Label>
+                    </Menu.Item>
+                    <Menu.Item id='restore'>
+                        <IconRotateCcw />
+                        <Menu.Label>Restore</Menu.Label>
+                    </Menu.Item>
                 </Menu.Content>
             </Menu>
 
-            <Modal.Content isOpen={state !== null} onOpenChange={closeModal}>
+            <Modal.Content isOpen={state !== ''} onOpenChange={() => setState('')}>
                 <Modal.Header>
-                    <Modal.Title>{actionType(state)?.title}</Modal.Title>
-                    <Modal.Description>{actionType(state)?.description}</Modal.Description>
+                    <Modal.Title>{actions(state)?.title}</Modal.Title>
+                    <Modal.Description>{actions(state)?.description}</Modal.Description>
                 </Modal.Header>
                 <Modal.Footer>
-                    <Modal.Close>Cancel</Modal.Close>
+                    <Button slot='close' variant='outline'>
+                        Cancel
+                    </Button>
                     <Button
-                        variant={state === 'ban' ? 'danger' : 'primary'}
-                        className='min-w-24'
+                        variant={state === 'restore' ? 'primary' : 'danger'}
                         isDisabled={loading}
-                        onPress={actionType(state)?.action}
+                        isPending={loading}
+                        onPress={actions(state)?.action}
                     >
-                        {loading ? <Loader variant='spin' /> : actionType(state)?.confirmText}
+                        {actions(state)?.confirmText}
                     </Button>
                 </Modal.Footer>
             </Modal.Content>

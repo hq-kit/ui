@@ -1,31 +1,13 @@
-import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
-import { Heading } from './heading'
-
-const card = tv({
-    slots: {
-        root: [
-            'bg-bg text-fg **:data-[slot=table-header]:bg-muted/50 rounded-lg has-[table]:overflow-hidden has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden'
-        ],
-        header: 'flex flex-col gap-y-1',
-        title: 'leading-none font-semibold tracking-tight sm:leading-6',
-        description: 'text-muted-fg text-sm',
-        content:
-            'has-[[data-slot=table-header]]:bg-muted/40 px-6 pb-6 has-[table]:border-t has-[table]:p-0 **:data-[slot=table-cell]:px-6 **:data-[slot=table-column]:px-6 [&:has(table)+[data-slot=card-footer]]:py-5',
-        footer: 'flex items-center p-6 pt-0'
-    }
-})
-
-const { root, header, title, description, content, footer } = card()
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-    borderless?: boolean
-}
-
-const Card = ({ borderless = false, className, ...props }: CardProps) => {
+const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
-            data-slot='card'
-            className={root({ className }) + (borderless ? '' : ' border shadow-xs')}
+            slot='card'
+            className={cn(
+                'flex flex-col gap-6 rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:border-x-0 **:[[slot=table]]:rounded-none',
+                className
+            )}
             {...props}
         />
     )
@@ -34,52 +16,78 @@ const Card = ({ borderless = false, className, ...props }: CardProps) => {
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
     title?: string
     description?: string
-    withoutPadding?: boolean
 }
 
-const Header = ({
-    withoutPadding = false,
-    className,
-    title,
-    description,
-    children,
-    ...props
-}: HeaderProps) => (
+const CardHeader = ({ className, title, description, children, ...props }: HeaderProps) => (
     <div
-        data-slot='card-header'
-        className={header({ className }) + (withoutPadding ? ' p-0 pt-0 pb-5' : ' px-6 py-5')}
+        slot='header'
+        className={cn(
+            'grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 p-6 has-[[slot=action]]:grid-cols-[1fr_auto]',
+            className
+        )}
         {...props}
     >
-        {title && <Title>{title}</Title>}
-        {description && <Description>{description}</Description>}
-        {!title && typeof children === 'string' ? <Title>{children}</Title> : children}
+        {title && <CardTitle>{title}</CardTitle>}
+        {description && <CardDescription>{description}</CardDescription>}
+        {!title && typeof children === 'string' ? <CardTitle>{children}</CardTitle> : children}
     </div>
 )
 
-const Title = ({ className, level = 3, ...props }: React.ComponentProps<typeof Heading>) => {
+const CardTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
     return (
-        <Heading data-slot='card-title' level={level} className={title({ className })} {...props} />
+        <div
+            slot='title'
+            className={cn('font-semibold text-lg leading-none tracking-tight', className)}
+            {...props}
+        />
     )
 }
 
-const Description = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const CardDescription = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <div {...props} data-slot='description' className={description({ className })} {...props} />
+        <div
+            slot='description'
+            className={cn('row-start-2 text-muted-fg text-sm', className)}
+            {...props}
+        />
     )
 }
 
-const Content = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div data-slot='card-content' className={content({ className })} {...props} />
+const CardAction = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return (
+        <div
+            slot='action'
+            className={cn(
+                'col-start-2 row-span-2 row-start-1 self-start justify-self-end',
+                className
+            )}
+            {...props}
+        />
+    )
 }
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div data-slot='card-footer' className={footer({ className })} {...props} />
+const CardContent = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return <div slot='content' className={cn('px-6 has-[table]:p-0', className)} {...props} />
 }
 
-Card.Content = Content
-Card.Description = Description
-Card.Footer = Footer
-Card.Header = Header
-Card.Title = Title
+const CardFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return (
+        <div
+            slot='footer'
+            className={cn(
+                'flex flex-col-reverse lg:flex-row items-center justify-end p-6',
+                className
+            )}
+            {...props}
+        />
+    )
+}
 
-export { Card }
+Card.Content = CardContent
+Card.Description = CardDescription
+Card.Footer = CardFooter
+Card.Header = CardHeader
+Card.Title = CardTitle
+Card.Action = CardAction
+
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

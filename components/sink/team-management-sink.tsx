@@ -20,7 +20,6 @@ export default function TeamManagementSink() {
                     <Avatar
                         id={item.id}
                         alt={item.name}
-                        tooltip
                         src={`https://i.pravatar.cc/150?img=2${item.id}`}
                     />
                 )}
@@ -28,10 +27,10 @@ export default function TeamManagementSink() {
             <ColorPicker defaultValue={'#ff0000'} label='Color' />
             <Menu>
                 <Button variant='success'>Options</Button>
-                <Menu.Content UNSTABLE_portalContainer={portal} items={roles}>
+                <Menu.Content portal={portal} items={roles}>
                     {(item) => (
                         <Menu.Item id={item.id} textValue={item.name}>
-                            <Menu.ItemDetails label={item.name} description={item.description} />
+                            <Menu.Details label={item.name} description={item.description} />
                         </Menu.Item>
                     )}
                 </Menu.Content>

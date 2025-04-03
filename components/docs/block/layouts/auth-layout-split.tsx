@@ -14,12 +14,12 @@ export default function AuthLayoutSplit({
     return (
         <div className='grid w-full lg:max-h-screen lg:min-h-screen lg:grid-cols-2'>
             <div className='flex items-center justify-center px-4 py-12 lg:px-8'>
-                <Card className='mx-auto w-full max-w-lg' borderless>
+                <Card className='mx-auto w-full max-w-lg'>
                     <Card.Header>
                         <Card.Title>{title}</Card.Title>
                         <Card.Description>{description}</Card.Description>
                     </Card.Header>
-                    <Card.Content>{children}</Card.Content>
+                    <Card.Content className='pb-6'>{children}</Card.Content>
                 </Card>
             </div>
             <div className='bg-muted hidden lg:block'>

@@ -1,74 +1,55 @@
 'use client'
 
 import {
-    ColorSlider as ColorSliderPrimitive,
-    type ColorSliderProps as ColorSliderPrimitiveProps,
+    composeRenderProps,
+    ColorSlider as RACColorSlider,
     SliderOutput,
-    SliderTrack
+    SliderTrack,
+    type ColorSliderProps as RACColorSliderProps
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 
 import { ColorThumb } from './color-thumb'
 import { Label } from './field'
-import { cr } from './utils'
 
-const trackStyles = tv({
-    base: 'group col-span-2 rounded-lg',
-    variants: {
-        orientation: {
-            horizontal: 'h-6 w-full',
-            vertical: 'h-56 w-6'
-        },
-        isDisabled: {
-            true: 'bg-muted opacity-75'
-        }
-    }
-})
-
-interface ColorSliderProps extends ColorSliderPrimitiveProps {
+interface ColorSliderProps extends RACColorSliderProps {
     label?: string
     showOutput?: boolean
 }
 
-const colorSliderStyles = tv({
-    base: 'group relative gap-2',
-    variants: {
-        orientation: {
-            horizontal: 'grid min-w-56 grid-cols-[1fr_auto]',
-            vertical: 'flex flex-col items-center justify-center'
-        },
-        isDisabled: {
-            true: 'bg-muted opacity-75'
-        }
-    }
-})
 const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSliderProps) => {
     return (
-        <ColorSliderPrimitive
+        <RACColorSlider
             {...props}
-            data-slot='color-slider'
-            className={cr(className, (className, renderProps) =>
-                colorSliderStyles({ ...renderProps, className })
+            slot='color-slider'
+            className={composeRenderProps(className, (className, { orientation, isDisabled }) =>
+                cn(
+                    'group relative gap-2 flex flex-col items-center',
+                    orientation === 'horizontal' ? 'min-w-56 justify-between' : 'justify-center',
+                    isDisabled && 'opacity-50',
+                    className
+                )
             )}
         >
-            <div className='flex items-center'>
-                {label && <Label className='text-sm [grid-area:label]'>{label}</Label>}
-                {showOutput && (
-                    <SliderOutput className='text-sm [grid-area:output] data-[orientation=horizontal]:ml-auto' />
-                )}
-            </div>
-            <SliderTrack
-                className={trackStyles}
-                style={({ defaultStyle, isDisabled }) => ({
-                    ...defaultStyle,
-                    background: isDisabled
-                        ? undefined
-                        : `${defaultStyle.background}, repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 16px 16px`
-                })}
-            >
-                <ColorThumb />
-            </SliderTrack>
-        </ColorSliderPrimitive>
+            {({ isDisabled, orientation }) => (
+                <>
+                    <div className='flex items-center justify-between w-full has-only:justify-center'>
+                        {label && <Label isDisabled={isDisabled}>{label}</Label>}
+                        {showOutput && <SliderOutput />}
+                    </div>
+                    <SliderTrack
+                        className={cn(
+                            'rounded-lg',
+                            orientation === 'horizontal' ? 'h-6 w-full' : 'h-56 w-6'
+                        )}
+                        style={({ defaultStyle }) => ({ ...defaultStyle })}
+                    >
+                        <ColorThumb />
+                    </SliderTrack>
+                </>
+            )}
+        </RACColorSlider>
     )
 }
 

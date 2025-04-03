@@ -4,38 +4,18 @@ import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
 import {
     Button,
     type ButtonProps,
-    NumberField as NumberFieldPrimitive,
-    type NumberFieldProps as NumberFieldPrimitiveProps,
+    composeRenderProps,
+    NumberField as RACNumberField,
+    type NumberFieldProps as RACNumberFieldProps,
     type ValidationResult
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
-import { ctr, useMediaQuery } from './utils'
+import { useMediaQuery } from './utils'
 
-const fieldBorderStyles = tv({
-    base: 'group-data-focused:border-primary/70 group-data-hovered:border-primary/60',
-    variants: {
-        isInvalid: {
-            true: 'group-data-focused:border-danger/70'
-        },
-        isDisabled: {
-            true: 'group-data-focused:border-muted'
-        }
-    }
-})
-
-const numberFieldStyles = tv({
-    slots: {
-        base: 'group flex flex-col gap-y-1.5',
-        stepperButton:
-            'text-muted-fg data-pressed:bg-primary data-pressed:text-primary-fg group-data-disabled:bg-muted/70 h-10 cursor-default px-3'
-    }
-})
-
-const { base, stepperButton } = numberFieldStyles()
-
-interface NumberFieldProps extends NumberFieldPrimitiveProps {
+interface NumberFieldProps extends RACNumberFieldProps {
     label?: string
     description?: string
     placeholder?: string
@@ -52,81 +32,81 @@ const NumberField = ({
 }: NumberFieldProps) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     return (
-        <NumberFieldPrimitive {...props} className={ctr(className, base())}>
-            {label && <Label>{label}</Label>}
-            <FieldGroup className='overflow-hidden'>
-                {(renderProps) => (
-                    <>
-                        {isMobile ? <StepperButton slot='decrement' className='border-r' /> : null}
-                        <Input className='tabular-nums' placeholder={placeholder} />
+        <RACNumberField
+            {...props}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-y-1.5', className)
+            )}
+        >
+            {({ isInvalid, isDisabled }) => (
+                <>
+                    {label && (
+                        <Label isInvalid={isInvalid || !!errorMessage} isDisabled={isDisabled}>
+                            {label}
+                        </Label>
+                    )}
+                    <FieldGroup isDisabled={isDisabled} className='overflow-hidden'>
+                        {isMobile && (
+                            <Stepper slot='decrement' className='border-r'>
+                                <IconMinus />
+                            </Stepper>
+                        )}
+                        <Input
+                            className='tabular-nums text-center sm:text-left'
+                            placeholder={placeholder}
+                        />
                         <div
-                            className={fieldBorderStyles({
-                                ...renderProps,
-                                className: 'grid h-10 place-content-center border-s'
-                            })}
+                            className={cn(
+                                'grid h-10 place-content-center border-s',
+                                'group-focus:border-primary/70 group-hover:border-primary/60',
+                                isInvalid && 'group-focus:border-danger/70',
+                                isDisabled && 'group-focus:border-muted'
+                            )}
                         >
                             {isMobile ? (
-                                <StepperButton slot='increment' />
+                                <Stepper slot='increment'>
+                                    <IconPlus />
+                                </Stepper>
                             ) : (
-                                <div className='flex h-full flex-col'>
-                                    <StepperButton
-                                        slot='increment'
-                                        emblemType='chevron'
-                                        className='h-5 px-1'
-                                    />
-                                    <div
-                                        className={fieldBorderStyles({
-                                            ...renderProps,
-                                            className: 'border-muted border-b'
-                                        })}
-                                    />
-                                    <StepperButton
-                                        slot='decrement'
-                                        emblemType='chevron'
-                                        className='h-5 px-1'
-                                    />
+                                <div className='flex h-full flex-col divide-y'>
+                                    <Stepper slot='increment' className='h-5 px-1'>
+                                        <IconChevronUp />
+                                    </Stepper>
+                                    <Stepper slot='decrement' className='h-5 px-1'>
+                                        <IconChevronDown />
+                                    </Stepper>
                                 </div>
                             )}
                         </div>
-                    </>
-                )}
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </NumberFieldPrimitive>
+                    </FieldGroup>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            )}
+        </RACNumberField>
     )
 }
 
-interface StepperButtonProps extends ButtonProps {
+interface StepperProps extends ButtonProps {
     slot: 'increment' | 'decrement'
-    emblemType?: 'chevron' | 'default'
     className?: string
 }
 
-const StepperButton = ({
-    slot,
-    className,
-    emblemType = 'default',
-    ...props
-}: StepperButtonProps) => {
-    const icon =
-        emblemType === 'chevron' ? (
-            slot === 'increment' ? (
-                <IconChevronUp className='size-5' />
-            ) : (
-                <IconChevronDown className='size-5' />
-            )
-        ) : slot === 'increment' ? (
-            <IconPlus />
-        ) : (
-            <IconMinus />
-        )
+const Stepper = ({ slot, className, ...props }: StepperProps) => {
     return (
-        <Button className={stepperButton({ className })} slot={slot} {...props}>
-            {icon}
-        </Button>
+        <Button
+            className={composeRenderProps(className, (className, { isDisabled, isPressed }) =>
+                cn(
+                    'text-muted-fg h-10 px-3 outline-hidden',
+                    isPressed && 'bg-primary text-primary-fg',
+                    isDisabled && 'opacity-50',
+                    className
+                )
+            )}
+            slot={slot}
+            {...props}
+        />
     )
 }
 
 export { NumberField }
-export type { NumberFieldProps }

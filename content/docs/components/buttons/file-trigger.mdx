@@ -1,51 +1,34 @@
 ---
-title: 'File Trigger'
-description: File Triggers are your go-to for grabbing files from the file system, acting like a digital fishing rod to hook up goodies from local or cloud storage.
-order: 2
-published: true
+title: File Trigger
+description: A FileTrigger allows a user to access the file system with any pressable React Aria or React Spectrum component, or custom components built with usePress.
 references: ['https://react-spectrum.adobe.com/react-aria/FileTrigger.html#props']
 ---
 
-## Basic
-
-A FileTrigger lets users dive into the file system with any clickable React Aria or React Spectrum part, or custom bits made with usePress.
-
-<Demo center component='buttons/file-trigger/file-trigger-demo' />
-
 ## Installation
-
 <Install component='file-trigger' />
 
+## Basic
+<Demo center component='buttons/file-trigger/file-trigger-demo' />
+
 ## Folder
-
-A FileTrigger that lets users select a folder from the file system.
-
 <Demo center component='buttons/file-trigger/file-trigger-folder-demo' />
 
 ## Multiple
-
-A FileTrigger that allows users to select multiple files from the file system.
-
 <Demo center component='buttons/file-trigger/file-trigger-multiple-demo' />
 
 ## Camera
-
-A FileTrigger that lets users capture images using their device's camera.
-
 <Demo center component='buttons/file-trigger/file-trigger-camera-demo' />
 
-## Avatar
+## Variants
+File Trigger uses Button component so you can use all the variants that Button supports
+<Demo center component='buttons/file-trigger/file-trigger-variant-demo' />
 
+## Avatar
 <Demo center component='buttons/file-trigger/file-trigger-avatar-demo' />
 
 ## Controlled
-
 You can use the `onSelect` prop to snag the selected files.
-
 <Demo center component='buttons/file-trigger/file-trigger-controlled-demo' />
 
 ## Disabled
-
-A FileTrigger that is disabled.
-
 <Demo center component='buttons/file-trigger/file-trigger-disabled-demo' />

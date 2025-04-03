@@ -19,7 +19,7 @@ export default function AuthLayoutSplit({
                         <Card.Title>{title}</Card.Title>
                         <Card.Description>{description}</Card.Description>
                     </Card.Header>
-                    <Card.Content>{children}</Card.Content>
+                    <Card.Content className='pb-6'>{children}</Card.Content>
                 </Card>
             </div>
             <div className='bg-muted hidden lg:block lg:h-screen lg:w-full'>

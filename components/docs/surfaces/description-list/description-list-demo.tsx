@@ -1,20 +1,18 @@
-import { DescriptionList } from '@/components/ui/description-list'
+import { DL } from '@/components/ui/description-list'
 
 export default function DescriptionListDemo() {
     return (
-        <DescriptionList>
-            <DescriptionList.Term>Invoice Number</DescriptionList.Term>
-            <DescriptionList.Details>INV-12345</DescriptionList.Details>
-            <DescriptionList.Term>Invoice Date</DescriptionList.Term>
-            <DescriptionList.Details>September 21, 2024</DescriptionList.Details>
-            <DescriptionList.Term>Due Date</DescriptionList.Term>
-            <DescriptionList.Details>October 21, 2024</DescriptionList.Details>
-            <DescriptionList.Term>Customer Name</DescriptionList.Term>
-            <DescriptionList.Details>John Doe</DescriptionList.Details>
-            <DescriptionList.Term>Total Amount</DescriptionList.Term>
-            <DescriptionList.Details>$1,250.00</DescriptionList.Details>
-            <DescriptionList.Term>Status</DescriptionList.Term>
-            <DescriptionList.Details>Pending</DescriptionList.Details>
-        </DescriptionList>
+        <DL>
+            <DL.T>Product Name</DL.T>
+            <DL.D>PC Gaming Mid End</DL.D>
+            <DL.T>Processor</DL.T>
+            <DL.D>Intel Core i7-12700K</DL.D>
+            <DL.T>Memory</DL.T>
+            <DL.D>32GB DDR5 4800MHz</DL.D>
+            <DL.T>Storage</DL.T>
+            <DL.D>1TB SSD M.2 NVMe</DL.D>
+            <DL.T>Graphics Card</DL.T>
+            <DL.D>RTX 4090 24GB</DL.D>
+        </DL>
     )
 }

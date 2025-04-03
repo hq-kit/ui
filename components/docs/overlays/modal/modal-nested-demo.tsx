@@ -7,17 +7,17 @@ import { toast } from 'sonner'
 import { Button, Form, Modal, Textarea } from '@/components/ui'
 
 export default function ModalNestedDemo() {
-    const [isRegistrationModalOpen, setIsRegistrationModalOpen] = React.useState(false)
-    const [isProfileSetupModalOpen, setIsProfileSetupModalOpen] = React.useState(false)
-    const [isTyping, setIsTyping] = React.useState(false)
+    const [firstModal, setFirstModal] = React.useState<boolean>(false)
+    const [secondModal, setSecondModal] = React.useState<boolean>(false)
+    const [filled, setFilled] = React.useState(false)
 
     return (
         <>
-            <Button onPress={() => setIsRegistrationModalOpen(true)}>Register</Button>
+            <Button onPress={() => setFirstModal(true)}>Register</Button>
 
             <Modal.Content
-                isOpen={isRegistrationModalOpen}
-                onOpenChange={() => setIsRegistrationModalOpen(false)}
+                isOpen={firstModal}
+                onOpenChange={() => setFirstModal(false)}
                 aria-label='Confirm Registration'
             >
                 <Modal.Header>
@@ -25,10 +25,12 @@ export default function ModalNestedDemo() {
                     <Modal.Description>Please confirm your registration details.</Modal.Description>
                 </Modal.Header>
                 <Modal.Footer>
-                    <Modal.Close>Cancel</Modal.Close>
+                    <Button slot='close' variant='outline'>
+                        Cancel
+                    </Button>
                     <Button
                         onPress={() => {
-                            setIsProfileSetupModalOpen(true)
+                            setSecondModal(true)
                         }}
                     >
                         Confirm
@@ -37,12 +39,12 @@ export default function ModalNestedDemo() {
             </Modal.Content>
 
             <Modal.Content
-                isOpen={isProfileSetupModalOpen}
-                onOpenChange={(isOpen) => {
-                    if (!isOpen && isTyping) {
+                isOpen={secondModal}
+                onOpenChange={(open) => {
+                    if (!open && !filled) {
                         toast('Profile setup incomplete')
                     }
-                    setIsProfileSetupModalOpen(isOpen)
+                    setSecondModal(open)
                 }}
                 aria-label='Profile Setup'
             >
@@ -56,20 +58,22 @@ export default function ModalNestedDemo() {
                     onSubmit={(e) => {
                         e.preventDefault()
                         toast.success('Profile setup complete')
-                        setIsProfileSetupModalOpen(false)
-                        setIsRegistrationModalOpen(false)
+                        setSecondModal(false)
+                        setFirstModal(false)
                     }}
                 >
-                    <Modal.Body className='space-y-4'>
+                    <Modal.Body>
                         <Textarea
                             isRequired
                             label='Bio'
                             placeholder='Tell us something about yourself'
-                            onInput={() => setIsTyping(true)}
+                            onInput={() => setFilled(true)}
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Modal.Close>Skip for now</Modal.Close>
+                        <Button slot='close' variant='outline'>
+                            Skip for now
+                        </Button>
                         <Button type='submit'>Complete Setup</Button>
                     </Modal.Footer>
                 </Form>

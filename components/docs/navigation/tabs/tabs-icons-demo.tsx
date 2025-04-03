@@ -1,32 +1,34 @@
 'use client'
 
-import { IconApple, IconClock, IconScissors } from 'hq-icons'
+import { IconBadgeDollar, IconBinoculars, IconGift, IconMessageHeart } from 'hq-icons'
 
 import { Tabs } from '@/components/ui'
 
 export default function TabsIconsDemo() {
     return (
-        <Tabs aria-label='Fitness App'>
+        <Tabs aria-label='Project Management'>
             <Tabs.List>
-                <Tabs.Label id='w'>
-                    <IconScissors /> Workouts
+                <Tabs.Label id='1'>
+                    <IconBinoculars />
+                    Overview
                 </Tabs.Label>
-                <Tabs.Label id='n'>
-                    <IconApple /> Nutrition
+                <Tabs.Label id='2'>
+                    <IconGift />
+                    Features
                 </Tabs.Label>
-                <Tabs.Label id='t'>
-                    <IconClock /> Tracker
+                <Tabs.Label id='3'>
+                    <IconBadgeDollar />
+                    Pricing
+                </Tabs.Label>
+                <Tabs.Label id='4'>
+                    <IconMessageHeart />
+                    Reviews
                 </Tabs.Label>
             </Tabs.List>
-            <Tabs.Content id='w'>
-                Find a variety of workout plans tailored to your fitness level and goals.
-            </Tabs.Content>
-            <Tabs.Content id='n'>
-                Get nutrition tips and meal plans to complement your fitness journey.
-            </Tabs.Content>
-            <Tabs.Content id='t'>
-                Track your progress with detailed statistics and analytics.
-            </Tabs.Content>
+            <Tabs.Content id='1'>This is the overview tab content.</Tabs.Content>
+            <Tabs.Content id='2'>Details about the features are listed here.</Tabs.Content>
+            <Tabs.Content id='3'>Find the pricing information on this tab.</Tabs.Content>
+            <Tabs.Content id='4'>Read user reviews and ratings here.</Tabs.Content>
         </Tabs>
     )
 }

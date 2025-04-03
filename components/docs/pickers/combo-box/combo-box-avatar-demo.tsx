@@ -1,5 +1,3 @@
-'use client'
-
 import { Avatar, ComboBox } from '@/components/ui'
 
 export default function ComboBoxAvatarDemo() {

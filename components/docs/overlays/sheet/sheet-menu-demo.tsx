@@ -75,7 +75,9 @@ export default function SheetMenuDemo() {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Modal.Close>Clear Status</Modal.Close>
+                    <Button variant='outline' onPress={closeModal}>
+                        Clear Status
+                    </Button>
                     <Button onPress={closeModal}>Set Status</Button>
                 </Modal.Footer>
             </Modal.Content>

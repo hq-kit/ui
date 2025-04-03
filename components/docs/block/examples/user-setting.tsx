@@ -6,22 +6,26 @@ import PlanBillingSetting from 'components/user-setting/plan-billing-setting'
 import SecuritySetting from 'components/user-setting/security-setting'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
-import { Card, Container, Tabs } from '@/components/ui'
+import { Card, Container, Tabs, useMediaQuery } from '@/components/ui'
 
 export default function UserSetting() {
+    const isMobile = useMediaQuery('(max-width: 767px)')
     return (
         <NavbarLayout variant='float'>
             <Container className='py-6 @xl:py-12'>
-                <Card borderless>
-                    <Card.Header withoutPadding>
+                <Card className='mb-6'>
+                    <Card.Header>
                         <Card.Title>User Setting</Card.Title>
                         <Card.Description>
                             Manage your account settings and preferences.
                         </Card.Description>
                     </Card.Header>
                 </Card>
-                <Tabs className='w-full gap-x-24' isResponsive aria-label='E-Learning Platform'>
-                    <Tabs.List className='h-fit'>
+                <Tabs
+                    orientation={isMobile ? 'horizontal' : 'vertical'}
+                    aria-label='E-Learning Platform'
+                >
+                    <Tabs.List>
                         <Tabs.Label id='account'>Account</Tabs.Label>
                         <Tabs.Label id='security'>Security</Tabs.Label>
                         <Tabs.Label id='plan'>Plan & Billing</Tabs.Label>

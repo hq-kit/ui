@@ -96,7 +96,6 @@ const HeroButton = ({
     ...props
 }: HeroButtonProps) => (
     <Link
-        variant='unstyled'
         className={cn(
             buttonStyles({
                 size: size,

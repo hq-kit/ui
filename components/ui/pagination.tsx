@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import {
     IconChevronLeft,
     IconChevronRight,
@@ -9,189 +7,135 @@ import {
     IconChevronsRight,
     IconEllipsis
 } from 'hq-icons'
+import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps } from 'react-aria-components'
 import {
+    composeRenderProps,
     ListBox,
     ListBoxItem,
     ListBoxSection,
-    Separator,
-    type ListBoxItemProps,
-    type ListBoxProps,
-    type ListBoxSectionProps
+    Text
 } from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { TextProps } from 'recharts'
 
-import { buttonStyles } from './button'
-import { cn, cr } from './utils'
+import { cn } from '@/lib/utils'
 
-const paginationStyles = tv({
-    slots: {
-        pagination: 'mx-auto flex w-full justify-center gap-[5px]',
-        section: 'flex h-10 gap-[5px]',
-        list: 'flex flex-row items-center gap-[5px]',
-        itemButton:
-            'data-focus-visible:border-primary text-fg data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 cursor-pointer font-normal data-focus-visible:ring-4 data-focused:outline-none',
-        itemLabel: 'grid h-10 place-content-center px-3.5 tabular-nums',
-        itemSeparator: 'grid h-10 place-content-center',
-        itemEllipsis:
-            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 flex size-10 items-center justify-center rounded-lg border border-transparent data-focus-visible:ring-4 data-focused:outline-none',
-        itemEllipsisIcon: 'flex size-10 items-center justify-center',
-        defaultItem:
-            'data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-primary/20 size-10 cursor-pointer font-normal tabular-nums disabled:cursor-default disabled:opacity-100 data-focus-visible:ring-4 data-focused:outline-none',
-        itemSeparatorLine: 'bg-muted-fg/40 h-5 w-[1.5px] shrink-0 rotate-[14deg]'
-    }
-})
-
-const {
-    pagination,
-    section,
-    list,
-    itemButton,
-    itemLabel,
-    itemSeparator,
-    itemEllipsis,
-    itemEllipsisIcon,
-    defaultItem,
-    itemSeparatorLine
-} = paginationStyles()
-
-const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
-    <nav
-        role='navigation'
-        aria-label='pagination'
-        className={pagination({ className })}
-        {...props}
-    />
-)
-
-const PaginationSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T>) => (
-    <ListBoxSection {...props} className={section({ className })} />
-)
-
-const List = <T extends object>({ className, ...props }: ListBoxProps<T>) => {
+interface PaginationProps<T> extends ListBoxProps<T> {
+    ref?: React.RefObject<HTMLDivElement>
+    shape?: 'square' | 'circle'
+}
+const Pagination = <T extends object>({
+    className,
+    shape = 'square',
+    ref,
+    ...props
+}: PaginationProps<T>) => {
     return (
         <ListBox
+            ref={ref}
             orientation='horizontal'
             aria-label={props['aria-label'] || 'Pagination'}
             layout='grid'
-            className={cr(className, (className) => list({ className }))}
+            data-shape={shape}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex gap-1.5', className)
+            )}
             {...props}
         />
     )
 }
 
-const renderListItem = (
-    props: ListBoxItemProps & {
-        textValue?: string
-        'aria-current'?: string | undefined
-        isDisabled?: boolean
-        className?: string
-    },
-    children: React.ReactNode
-) => <ListBoxItem {...props}>{children}</ListBoxItem>
+interface PaginationPagesProps<T> extends ListBoxSectionProps<T> {
+    ref?: React.RefObject<HTMLElement>
+}
+const PaginationPages = <T extends object>({
+    className,
+    ref,
+    ...props
+}: PaginationPagesProps<T>) => (
+    <ListBoxSection ref={ref} {...props} className={cn('flex gap-1.5', className)} />
+)
 
-interface PaginationItemProps extends ListBoxItemProps, VariantProps<typeof buttonStyles> {
+interface PaginationItemProps extends ListBoxItemProps {
     children?: React.ReactNode
     className?: string
     isCurrent?: boolean
-    role?: 'label' | 'separator' | 'ellipsis' | 'default' | 'last' | 'first' | 'previous' | 'next'
+    role?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
 }
-
-const Item = ({
-    role = 'default',
-    size = 'icon',
-    variant = 'outline',
+const PaginationItem = ({
+    role = 'page',
     className,
     isCurrent,
     children,
     ...props
 }: PaginationItemProps) => {
-    const textValue =
-        typeof children === 'string'
-            ? children
-            : typeof children === 'number'
-              ? children.toString()
-              : undefined
-
-    const renderPaginationIndicator = (indicator: React.ReactNode) =>
-        renderListItem(
-            {
-                textValue: variant,
-                'aria-current': isCurrent ? 'page' : undefined,
-                isDisabled: isCurrent,
-                className: cn(
-                    buttonStyles({
-                        variant: 'outline',
-                        size: 'icon',
-                        className: itemButton()
-                    }),
-                    className
-                ),
-                ...props
-            },
-            indicator
-        )
-
-    switch (role) {
-        case 'label':
-            return renderListItem(
-                {
-                    textValue: textValue,
-                    className: itemLabel({ className }),
-                    ...props
-                },
-                children
-            )
-        case 'separator':
-            return renderListItem(
-                {
-                    textValue: 'Separator',
-                    className: itemSeparator({ className }),
-                    ...props
-                },
-                <Separator orientation='vertical' className={itemSeparatorLine()} />
-            )
-        case 'ellipsis':
-            return renderListItem(
-                {
-                    textValue: 'More pages',
-                    className: itemEllipsis({ className }),
-                    ...props
-                },
-                <span aria-hidden className={itemEllipsisIcon({ className })}>
-                    <IconEllipsis />
-                </span>
-            )
-        case 'previous':
-            return renderPaginationIndicator(<IconChevronLeft />)
-        case 'next':
-            return renderPaginationIndicator(<IconChevronRight />)
-        case 'first':
-            return renderPaginationIndicator(<IconChevronsLeft />)
-        case 'last':
-            return renderPaginationIndicator(<IconChevronsRight />)
-        default:
-            return renderListItem(
-                {
-                    textValue: textValue,
-                    'aria-current': isCurrent ? 'page' : undefined,
-                    isDisabled: isCurrent,
-                    className: cn(
-                        buttonStyles({
-                            variant: isCurrent ? 'primary' : variant,
-                            size,
-                            className: defaultItem({ className })
-                        }),
+    const textValue = role === 'page' ? children?.toString() : role
+    return (
+        <ListBoxItem
+            isDisabled={props.isDisabled || role === 'ellipsis'}
+            textValue={textValue}
+            className={composeRenderProps(
+                className,
+                (className, { isHovered, isPressed, isSelected, isDisabled, isFocusVisible }) =>
+                    cn(
+                        'inline-flex size-10 text-sm items-center justify-center gap-x-2 font-medium whitespace-nowrap transition outline-hidden',
+                        'group-data-[shape=circle]:rounded-full group-data-[shape=square]:rounded-lg',
+                        isHovered && 'bg-primary/10 text-primary',
+                        isPressed && 'bg-primary/20 text-primary',
+                        isFocusVisible && 'ring-4 border-primary ring-primary/20',
+                        {
+                            'bg-primary text-primary-fg pointer-events-none':
+                                isCurrent || isSelected
+                        },
+                        isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
+                        role !== 'ellipsis' && 'border',
                         className
-                    ),
-                    ...props
-                },
+                    )
+            )}
+            {...props}
+        >
+            {role === 'ellipsis' ? (
+                <IconEllipsis />
+            ) : role === 'first' ? (
+                <IconChevronsLeft />
+            ) : role === 'last' ? (
+                <IconChevronsRight />
+            ) : role === 'previous' ? (
+                <IconChevronLeft />
+            ) : role === 'next' ? (
+                <IconChevronRight />
+            ) : (
                 children
-            )
-    }
+            )}
+        </ListBoxItem>
+    )
 }
 
-Pagination.Item = Item
-Pagination.List = List
-Pagination.Section = PaginationSection
+interface PaginationLabelProps extends TextProps {
+    current: number | string
+    total?: number | string
+}
+const PaginationLabel = ({ className, current, total, ...props }: PaginationLabelProps) => (
+    <ListBoxItem
+        textValue={`${String(current)}/${String(total)}`}
+        isDisabled
+        className={cn(
+            'inline-flex select-none px-4 h-10 text-sm items-center text-muted-fg justify-center gap-x-2 font-medium whitespace-nowrap transition outline-hidden',
+            className
+        )}
+        {...props}
+    >
+        <Text className='text-primary'>{current}</Text>
+        {total && (
+            <>
+                <span>/</span>
+                <Text>{total}</Text>
+            </>
+        )}
+    </ListBoxItem>
+)
+
+Pagination.Item = PaginationItem
+Pagination.Pages = PaginationPages
+Pagination.Label = PaginationLabel
 
 export { Pagination }

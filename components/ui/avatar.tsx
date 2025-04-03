@@ -1,15 +1,12 @@
 'use client'
 
-import React, { ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 
 import { IconUser } from 'hq-icons'
-import { Collection } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { type CollectionProps } from '@react-aria/collections'
-
-import { Tooltip } from './tooltip'
-import { cn } from './utils'
+import { cn } from '@/lib/utils'
+import { Collection, type CollectionProps } from '@react-aria/collections'
 
 interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string
@@ -34,21 +31,22 @@ const avatar = tv({
         'inline-grid shrink-0 items-center justify-center align-middle *:col-start-1 *:row-start-1',
         'outline-fg/20 text-center outline-1 -outline-offset-1'
     ],
+
     variants: {
         shape: {
             square: 'rounded-lg *:rounded-lg',
             circle: 'rounded-full *:rounded-full'
         },
         size: {
-            xs: '*:img:size-5 size-5',
-            sm: '*:img:size-6 size-6',
-            md: '*:img:size-8 size-8',
-            lg: '*:img:size-10 size-10',
-            xl: '*:img:size-12 size-12',
-            '2xl': '*:img:size-14 size-14',
-            '3xl': '*:img:size-16 size-16',
-            '4xl': '*:img:size-20 size-20',
-            '5xl': '*:img:size-24 size-24'
+            xs: 'size-5',
+            sm: 'size-6',
+            md: 'size-8',
+            lg: 'size-10',
+            xl: 'size-12',
+            '2xl': 'size-14',
+            '3xl': 'size-16',
+            '4xl': 'size-20',
+            '5xl': 'size-24'
         }
     },
     defaultVariants: {
@@ -61,7 +59,6 @@ interface AvatarProps extends VariantProps<typeof avatar> {
     src?: string | undefined
     initials?: string
     alt?: string
-    tooltip?: boolean
     className?: string
 }
 
@@ -72,14 +69,17 @@ const Avatar = ({
     initials,
     alt = '',
     className,
-    tooltip = false,
     ...props
-}: AvatarProps & ComponentPropsWithoutRef<'span'>) => {
+}: AvatarProps & React.ComponentPropsWithoutRef<'img'>) => {
     const [error, setError] = React.useState(!src)
 
     function handleError() {
         setError(true)
     }
+
+    React.useEffect(() => {
+        setError(!src)
+    }, [src])
 
     if (error) {
         return (
@@ -88,21 +88,15 @@ const Avatar = ({
             </span>
         )
     }
-    return tooltip ? (
-        <Tooltip delay={0}>
-            <Tooltip.Trigger>
-                <span data-avatar {...props} className={avatar({ shape, size, className })}>
-                    <img src={src} alt={alt} onError={handleError} />
-                </span>
-            </Tooltip.Trigger>
-            <Tooltip.Content variant='inverse'>
-                <span className='font-medium'>{initials ?? alt}</span>
-            </Tooltip.Content>
-        </Tooltip>
-    ) : (
-        <span data-avatar {...props} className={avatar({ shape, size, className })}>
-            <img src={src} alt={alt} onError={handleError} />
-        </span>
+    return (
+        <img
+            src={src}
+            alt={alt}
+            onError={handleError}
+            data-avatar
+            className={avatar({ shape, size, className })}
+            {...props}
+        />
     )
 }
 
@@ -156,9 +150,8 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
             </text>
         </svg>
     ) : (
-        <IconUser className='bg-bg size-full place-self-center p-1' />
+        <IconUser className='bg-bg size-full place-self-center p-1.5' />
     )
 }
 
-export { Avatar, AvatarGroup }
-export type { AvatarProps }
+export { Avatar, AvatarGroup, type AvatarProps }

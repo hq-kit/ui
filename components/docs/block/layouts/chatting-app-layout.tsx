@@ -47,13 +47,10 @@ export default function ChattingAppLayout() {
                         </div>
                     </Menu.Trigger>
                     <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
-                        <Menu.Section>
-                            <Menu.Header separator>
-                                <span className='block'>DQ Al Haqqi</span>
-                                <span className='text-muted-fg font-normal'>@dq-alhq</span>
-                            </Menu.Header>
-                        </Menu.Section>
-
+                        <Menu.Header>
+                            <span className='block'>DQ Al Haqqi</span>
+                            <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                        </Menu.Header>
                         <Menu.Item href='#setting'>
                             <IconSettings />
                             Setting

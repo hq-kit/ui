@@ -31,7 +31,7 @@ export default function SelectFormat({ selectedFormat, setSelectedFormat }: Sele
                         id={item.type}
                         textValue={item.type}
                     >
-                        <Menu.ItemDetails label={item.type} description={item.sample} />
+                        <Menu.Details label={item.type} description={item.sample} />
                     </Menu.Item>
                 )}
             </Menu.Content>

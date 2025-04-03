@@ -4,30 +4,30 @@ import React from 'react'
 
 import type { Selection } from 'react-aria-components'
 
-import { Description, Tag } from '@/components/ui'
+import { Tag } from '@/components/ui'
 
-const fruitList = [
-    { id: '1', name: 'Apple', available: false },
-    { id: '2', name: 'Banana', available: true },
-    { id: '3', name: 'Cherry', available: true },
-    { id: '4', name: 'Date', available: false }
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' }
 ]
 
 export default function TagGroupControlledDemo() {
     const [selected, setSelected] = React.useState<Selection>(new Set([]))
     return (
-        <div>
-            <Tag.Group label='Fruits'
+        <div className='space-y-6'>
+            <Tag.Group
+                label='Linux Distros'
                 selectionMode='multiple'
                 selectedKeys={selected}
                 onSelectionChange={setSelected}
+                items={items}
             >
-                <Tag.List items={fruitList}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
+                {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
 
-            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
-                You have selected: <strong>{Array.from(selected).join(', ')}</strong>
-            </Description>
+            <code>selected: {JSON.stringify(Array.from(selected))}</code>
         </div>
     )
 }

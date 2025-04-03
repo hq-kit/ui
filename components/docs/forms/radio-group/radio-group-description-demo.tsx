@@ -1,18 +1,12 @@
-'use client'
-
 import { Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupDescriptionDemo() {
     return (
-        <RadioGroup
-            description='Select your preferred shipping method for the delivery of your items.'
-            label='Shipping Method'
-        >
-            <Radio value='standard'>Standard</Radio>
-            <Radio value='express'>Express</Radio>
-            <Radio value='overnight'>Overnight</Radio>
-            <Radio value='international'>International</Radio>
-            <Radio value='pickup'>Pickup</Radio>
+        <RadioGroup label='Plan' description='Choose a plan that fits your needs and budget'>
+            <Radio value='bronze'>Bronze</Radio>
+            <Radio value='silver'>Silver</Radio>
+            <Radio value='gold'>Gold</Radio>
+            <Radio value='platinum'>Platinum</Radio>
         </RadioGroup>
     )
 }

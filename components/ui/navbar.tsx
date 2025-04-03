@@ -1,16 +1,17 @@
 'use client'
 
-import { createContext, use, useCallback, useId, useMemo, useState } from 'react'
+import React from 'react'
 
 import { IconMenu } from 'hq-icons'
 import { LayoutGroup, motion } from 'motion/react'
 import type { LinkProps } from 'react-aria-components'
-import { Link } from 'react-aria-components'
-import { type VariantProps, tv } from 'tailwind-variants'
+import { composeRenderProps, Link } from 'react-aria-components'
+
+import { cn } from '@/lib/utils'
 
 import { Button, type ButtonProps } from './button'
 import { Sheet } from './sheet'
-import { cn, cr, ctr, useMediaQuery } from './utils'
+import { useMediaQuery } from './utils'
 
 type NavbarOptions = {
     side?: 'left' | 'right'
@@ -25,10 +26,10 @@ type NavbarContextProps = {
     toggleNavbar: () => void
 } & NavbarOptions
 
-const NavbarContext = createContext<NavbarContextProps | null>(null)
+const NavbarContext = React.createContext<NavbarContextProps | null>(null)
 
 function useNavbar() {
-    const context = use(NavbarContext)
+    const context = React.use(NavbarContext)
     if (!context) {
         throw new Error('useNavbar must be used within a Navbar.')
     }
@@ -42,17 +43,6 @@ interface NavbarProps extends React.ComponentProps<'header'>, NavbarOptions {
     onOpenChange?: (open: boolean) => void
 }
 
-const navbarStyles = tv({
-    base: 'relative isolate flex w-full flex-col',
-    variants: {
-        variant: {
-            float: 'px-2.5 pt-2',
-            navbar: '',
-            inset: 'bg-bg min-h-svh'
-        }
-    }
-})
-
 const Navbar = ({
     children,
     isOpen: openProp,
@@ -65,10 +55,10 @@ const Navbar = ({
     ...props
 }: NavbarProps) => {
     const isCompact = useMediaQuery('(max-width: 768px)')
-    const [_open, _setOpen] = useState(defaultOpen)
+    const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
 
-    const setOpen = useCallback(
+    const setOpen = React.useCallback(
         (value: boolean | ((value: boolean) => boolean)) => {
             if (setOpenProp) {
                 return setOpenProp?.(typeof value === 'function' ? value(open) : value)
@@ -79,11 +69,11 @@ const Navbar = ({
         [setOpenProp, open]
     )
 
-    const toggleNavbar = useCallback(() => {
+    const toggleNavbar = React.useCallback(() => {
         setOpen((open) => !open)
     }, [setOpen])
 
-    const contextValue = useMemo<NavbarContextProps>(
+    const contextValue = React.useMemo<NavbarContextProps>(
         () => ({
             open,
             setOpen,
@@ -99,7 +89,12 @@ const Navbar = ({
         <NavbarContext value={contextValue}>
             <header
                 data-navbar-variant={variant}
-                className={navbarStyles({ variant, className })}
+                className={cn(
+                    'relative isolate flex w-full flex-col',
+                    variant === 'float' && 'px-2.5 pt-2',
+                    variant === 'inset' && 'bg-bg min-h-svh',
+                    className
+                )}
                 {...props}
             >
                 {children}
@@ -107,26 +102,6 @@ const Navbar = ({
         </NavbarContext>
     )
 }
-
-const navStyles = tv({
-    base: [
-        'group peer hidden h-(--navbar-height) w-full items-center px-4 [--navbar-height:3.5rem] md:flex',
-        '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-[1680px] [&>div]:items-center md:[&>div]:flex'
-    ],
-    variants: {
-        isSticky: {
-            true: 'sticky top-0 z-40'
-        },
-        variant: {
-            float: 'bg-bg text-fg mx-auto w-full max-w-7xl rounded-lg border md:px-4 2xl:max-w-(--breakpoint-2xl)',
-            navbar: 'bg-bg text-fg border-b md:px-6',
-            inset: [
-                'mx-auto md:px-6',
-                '[&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex 2xl:[&>div]:max-w-(--breakpoint-2xl)'
-            ]
-        }
-    }
-})
 
 interface NavbarNavProps extends React.ComponentProps<'div'> {
     variant?: 'navbar' | 'float' | 'inset'
@@ -146,10 +121,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
                     side={side}
                     aria-label='Compact Navbar'
                     data-navbar='compact'
-                    classNames={{
-                        content: 'text-fg [&>button]:hidden'
-                    }}
-                    isFloat={variant === 'float'}
+                    isFloating={variant === 'float'}
                 >
                     <Sheet.Body className='px-2 md:px-4'>{props.children}</Sheet.Body>
                 </Sheet.Content>
@@ -161,7 +133,17 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
         <div
             data-navbar-nav='true'
             ref={ref}
-            className={navStyles({ isSticky, variant, className })}
+            className={cn(
+                'group peer hidden h-(--navbar-height) w-full items-center px-4 [--navbar-height:3.5rem] md:flex',
+                '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-[1680px] [&>div]:items-center md:[&>div]:flex',
+                isSticky && 'sticky top-0 z-40',
+                variant === 'float' &&
+                    'bg-bg text-fg mx-auto w-full max-w-7xl rounded-lg border md:px-4 2xl:max-w-(--breakpoint-2xl)',
+                variant === 'navbar' && 'bg-bg text-fg border-b md:px-6',
+                variant === 'inset' &&
+                    'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex 2xl:[&>div]:max-w-(--breakpoint-2xl)',
+                className
+            )}
             {...props}
         >
             <div>{props.children}</div>
@@ -196,7 +178,7 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
 
 const NavbarSection = ({ className, ...props }: React.ComponentProps<'div'>) => {
     const { isCompact } = useNavbar()
-    const id = useId()
+    const id = React.useId()
     return (
         <LayoutGroup id={id}>
             <div
@@ -214,21 +196,6 @@ const NavbarSection = ({ className, ...props }: React.ComponentProps<'div'>) => 
     )
 }
 
-const navItemStyles = tv({
-    base: [
-        'text-muted-fg relative flex cursor-pointer items-center gap-x-2 px-2 no-underline outline-hidden transition-colors *:data-[slot=icon]:-mx-0.5 md:text-sm',
-        'data-focused:text-fg data-hovered:text-fg data-pressed:text-fg data-focus-visible:outline-primary data-focus-visible:outline-1',
-        '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
-        'data-pressed:**:data-[slot=chevron]:rotate-180 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
-        'data-disabled:cursor-default data-disabled:opacity-50'
-    ],
-    variants: {
-        isCurrent: {
-            true: 'text-fg cursor-default'
-        }
-    }
-})
-
 interface NavbarItemProps extends LinkProps {
     isCurrent?: boolean
 }
@@ -237,10 +204,23 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
     const { variant, isCompact } = useNavbar()
     return (
         <Link
-            data-navbar-item='true'
+            data-navbar-item
             aria-current={isCurrent ? 'page' : undefined}
-            className={cr(className, (className, ...renderProps) =>
-                navItemStyles({ ...renderProps, isCurrent, className })
+            className={composeRenderProps(
+                className,
+                (className, { isFocused, isHovered, isPressed, isFocusVisible, isDisabled }) =>
+                    cn(
+                        'text-muted-fg relative flex cursor-pointer items-center gap-x-2 px-2 no-underline outline-hidden transition-colors md:text-sm',
+                        '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
+                        '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
+                        isFocused && 'text-fg',
+                        isHovered && 'text-fg',
+                        isPressed && 'text-fg **:data-[slot=chevron]:rotate-180',
+                        isFocusVisible && 'ring-2 ring-primary/20',
+                        isDisabled && 'cursor-default opacity-50',
+                        isCurrent && 'text-fg cursor-default',
+                        className
+                    )
             )}
             {...props}
         >
@@ -264,9 +244,11 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
 const NavbarLogo = ({ className, ...props }: LinkProps) => {
     return (
         <Link
-            className={ctr(
-                className,
-                'text-fg data-focus-visible:outline-primary relative flex items-center gap-x-2 px-2 py-4 data-focus-visible:outline-1 data-focused:outline-hidden md:mr-4 md:px-0 md:py-0'
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'text-fg data-focus-visible:outline-primary relative flex items-center gap-x-2 px-2 py-4 data-focus-visible:outline-1 data-focused:outline-hidden md:mr-4 md:px-0 md:py-0',
+                    className
+                )
             )}
             {...props}
         />
@@ -279,37 +261,26 @@ const NavbarFlex = ({ className, ref, ...props }: React.ComponentProps<'div'>) =
     )
 }
 
-const compactStyles = tv({
-    base: 'bg-bg text-fg flex justify-between peer-has-[[data-navbar-variant=float]]:border md:hidden',
-    variants: {
-        variant: {
-            float: 'h-12 rounded-lg border px-3.5',
-            inset: 'h-14 border-b px-4',
-            navbar: 'h-14 border-b px-4'
-        }
-    }
-})
-
-interface NavbarCompactProps
-    extends React.ComponentProps<'div'>,
-        VariantProps<typeof compactStyles> {
+interface NavbarCompactProps extends React.ComponentProps<'div'> {
     ref?: React.RefObject<HTMLDivElement>
+    variant?: 'float' | 'inset' | 'navbar'
 }
 const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     const { variant } = useNavbar()
-    return <div ref={ref} className={compactStyles({ variant, className })} {...props} />
+    return (
+        <div
+            ref={ref}
+            className={cn(
+                'bg-bg text-fg flex justify-between peer-has-[[data-navbar-variant=float]]:border md:hidden',
+                variant === 'float' && 'h-12 rounded-lg border px-3.5',
+                variant === 'inset' && 'h-14 border-b px-4',
+                variant === 'navbar' && 'h-14 border-b px-4',
+                className
+            )}
+            {...props}
+        />
+    )
 }
-
-const insetStyles = tv({
-    base: 'grow',
-    variants: {
-        variant: {
-            float: '',
-            inset: 'bg-bg md:ring-fg/15 md:dark:ring-border md:rounded-lg md:ring-1 md:shadow-xs',
-            navbar: ''
-        }
-    }
-})
 
 const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
     const { variant } = useNavbar()
@@ -323,7 +294,15 @@ const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<'div'>) 
                 className
             )}
         >
-            <div className={insetStyles({ variant, className })}>{props.children}</div>
+            <div
+                className={cn(
+                    'grow',
+                    variant === 'inset' &&
+                        'bg-bg md:ring-fg/15 md:dark:ring-border md:rounded-lg md:ring-1 md:shadow-xs'
+                )}
+            >
+                {props.children}
+            </div>
         </main>
     )
 }
@@ -338,4 +317,3 @@ Navbar.Item = NavbarItem
 Navbar.Section = NavbarSection
 
 export { Navbar }
-export type { NavbarCompactProps, NavbarItemProps, NavbarNavProps, NavbarProps, NavbarTriggerProps }

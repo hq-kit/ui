@@ -4,30 +4,29 @@ import { toast, type ToastT } from 'sonner'
 
 import { Button } from '@/components/ui'
 
-const positions: ToastT['position'][] = [
+const placements: ToastT['position'][] = [
     'top-left',
+    'top-center',
     'top-right',
     'bottom-left',
-    'bottom-right',
-    'top-center',
-    'bottom-center'
+    'bottom-center',
+    'bottom-right'
 ]
 
 export default function ToastPositionsDemo() {
     return (
-        <div className='grid grid-cols-2 gap-4 sm:grid-cols-3'>
-            {positions.map((position) => (
+        <div className='grid grid-cols-3 gap-2'>
+            {placements.map((place) => (
                 <Button
-                    variant='outline'
                     size='sm'
-                    key={position}
+                    key={place}
                     onPress={() =>
-                        toast('The registration is successful, click here to continue.', {
-                            position
+                        toast(`Toast from ${place} position`, {
+                            position: place
                         })
                     }
                 >
-                    {position}
+                    {place}
                 </Button>
             ))}
         </div>

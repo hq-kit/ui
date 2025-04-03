@@ -1,14 +1,12 @@
-'use client'
-
 import { Button } from '@/components/ui'
 
 export default function ButtonSizeDemo() {
     return (
-        <div className='flex gap-2'>
-            <Button size='xs'>xs</Button>
-            <Button size='sm'>sm</Button>
-            <Button>md (default)</Button>
-            <Button size='lg'>lg</Button>
+        <div className='flex flex-col gap-2 md:flex-row md:flex-wrap'>
+            <Button size='xs'>Extra Small</Button>
+            <Button size='sm'>Small</Button>
+            <Button>Medium</Button>
+            <Button size='lg'>Large</Button>
         </div>
     )
 }

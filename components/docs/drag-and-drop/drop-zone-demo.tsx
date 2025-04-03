@@ -9,7 +9,7 @@ export default function DropZoneDemo() {
 
     return (
         <DropZone onDrop={() => setDropped(true)}>
-            <Label>{dropped ? 'Drop nailed' : 'Toss your stuff here'}</Label>
+            <Label>{dropped ? 'Item dropped!' : 'Drop an Item here'}</Label>
         </DropZone>
     )
 }

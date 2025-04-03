@@ -55,6 +55,7 @@ export default function ProductManagement() {
                         <Toolbar className='flex justify-between pt-2'>
                             <Toolbar.Group aria-label='Filters'>
                                 <Select
+                                    className='w-16'
                                     aria-label='Show'
                                     selectedKey={show}
                                     onSelectionChange={setShow}
@@ -93,7 +94,14 @@ export default function ProductManagement() {
                                 <Table.Column>Price</Table.Column>
                                 <Table.Column />
                             </Table.Header>
-                            <Table.Body items={items} renderEmptyState={() => <Table.Empty />}>
+                            <Table.Body
+                                items={items}
+                                renderEmptyState={() => (
+                                    <div className='w-full justify-center items-center flex h-10'>
+                                        No products found
+                                    </div>
+                                )}
+                            >
                                 {(item) => (
                                     <Table.Row id={item.id}>
                                         <Table.Cell>{item.id}</Table.Cell>
@@ -105,7 +113,7 @@ export default function ProductManagement() {
                                                 <Menu.Trigger>
                                                     <IconEllipsisVertical />
                                                 </Menu.Trigger>
-                                                <Menu.Content showArrow placement='left top'>
+                                                <Menu.Content placement='left top'>
                                                     <Menu.Item>
                                                         <IconEye /> View
                                                     </Menu.Item>

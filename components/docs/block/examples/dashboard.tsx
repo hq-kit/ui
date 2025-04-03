@@ -20,7 +20,7 @@ export default function Dashboard() {
                     <main className='flex flex-1 flex-col gap-4 md:gap-8'>
                         <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4'>
                             <Card>
-                                <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                                <Card.Header className='flex flex-row items-center justify-between space-y-0'>
                                     <Card.Title className='text-sm font-medium'>
                                         Total Revenue
                                     </Card.Title>
@@ -32,7 +32,7 @@ export default function Dashboard() {
                                 </Card.Content>
                             </Card>
                             <Card>
-                                <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                                <Card.Header className='flex flex-row items-center justify-between space-y-0'>
                                     <Card.Title className='text-sm font-medium'>
                                         Subscriptions
                                     </Card.Title>
@@ -44,7 +44,7 @@ export default function Dashboard() {
                                 </Card.Content>
                             </Card>
                             <Card>
-                                <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                                <Card.Header className='flex flex-row items-center justify-between space-y-0'>
                                     <Card.Title className='text-sm font-medium'>Sales</Card.Title>
                                     <IconChartColumn className='text-muted-fg size-4' />
                                 </Card.Header>
@@ -54,7 +54,7 @@ export default function Dashboard() {
                                 </Card.Content>
                             </Card>
                             <Card>
-                                <Card.Header className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                                <Card.Header className='flex flex-row items-center justify-between space-y-0'>
                                     <Card.Title className='text-sm font-medium'>
                                         Active Now
                                     </Card.Title>
@@ -73,11 +73,7 @@ export default function Dashboard() {
                                         <Card.Title>Transactions</Card.Title>
                                         <Card.Description>Recent transactions.</Card.Description>
                                     </div>
-                                    <Link
-                                        variant='unstyled'
-                                        className={buttonStyles({ variant: 'outline' })}
-                                        href='#'
-                                    >
+                                    <Link className={buttonStyles({ variant: 'outline' })} href='#'>
                                         All
                                         <IconSquareArrowUpRight />
                                     </Link>

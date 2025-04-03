@@ -7,12 +7,12 @@ import { ToggleButton, ToggleButtonGroup } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
-import { cr } from './utils'
+import { compose } from './utils'
 
 type ToggleGroupContextProps = {
     isDisabled?: boolean
     gap?: 0 | 1 | 2 | 3 | 4
-    variant?: 'primary' | 'outline' | 'dark'
+    variant?: 'solid' | 'outline' | 'ghost'
     orientation?: 'horizontal' | 'vertical'
     size?: 'sm' | 'md' | 'lg' | 'icon'
 }
@@ -90,12 +90,11 @@ const ToggleGroup = ({
             <ToggleButtonGroup
                 ref={ref}
                 orientation={orientation}
-                className={cr(className, (className, renderProps) =>
+                className={compose(
+                    className,
                     toggleGroupStyles({
-                        ...renderProps,
                         gap,
-                        orientation,
-                        className
+                        orientation
                     })
                 )}
                 {...props}
@@ -106,22 +105,17 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'inline-flex cursor-pointer items-center gap-x-2 rounded-lg border outline-hidden transition sm:text-sm',
-        '*:svg:-mx-0.5 *:svg:my-1 *:svg:size-4 *:svg:shrink-0'
+        'inline-flex cursor-pointer items-center gap-x-2 outline-hidden rounded-lg border transition sm:text-sm',
+        '*:svg:-mx-0.5 *:svg:my-1 *:svg:size-4 *:svg:shrink-0',
+        'focus-visible:ring-4 ring-primary/20',
+        'disabled:cursor-default disabled:opacity-50'
     ],
     variants: {
-        isDisabled: {
-            true: 'cursor-default opacity-50'
-        },
-        isFocusVisible: {
-            true: 'ring-primary/20 z-20 ring-4'
-        },
         variant: {
-            primary:
-                'data-hovered:bg-primary/20 data-pressed:bg-primary/90 data-selected:bg-primary data-selected:text-primary-fg',
-            dark: 'data-hovered:bg-muted/80 data-pressed:bg-muted/90 data-selected:bg-fg data-selected:text-bg',
+            solid: 'hover:bg-accent/40 pressed:bg-accent/50 selected:bg-primary selected:text-primary-fg',
+            ghost: 'text-fg hover:bg-accent/40 pressed:bg-accent/50 border-transparent bg-transparent selected:bg-accent selected:text-accent-fg',
             outline:
-                'data-hovered:bg-muted/40 data-pressed:bg-muted/60 data-selected:bg-muted data-selected:text-secondary-fg'
+                'hover:bg-accent/40 pressed:bg-accent/50 selected:bg-accent selected:text-accent-fg'
         },
         noGap: { true: '' },
         orientation: {
@@ -140,7 +134,7 @@ const toggleStyles = tv({
         }
     },
     defaultVariants: {
-        variant: 'primary',
+        variant: 'solid',
         size: 'sm',
         shape: 'square'
     },
@@ -169,15 +163,14 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
         <ToggleButton
             ref={ref}
             isDisabled={props.isDisabled ?? isGroupDisabled}
-            className={cr(className, (className, renderProps) =>
+            className={compose(
+                className,
                 toggleStyles({
-                    ...renderProps,
                     variant: variant ?? groupvariant,
                     size: props.size ?? size,
                     orientation,
                     shape: props.shape,
-                    noGap: gap === 0,
-                    className
+                    noGap: gap === 0
                 })
             )}
             {...props}

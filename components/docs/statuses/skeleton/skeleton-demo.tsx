@@ -1,5 +1,3 @@
-'use client'
-
 import { Card, Skeleton } from '@/components/ui'
 
 export default function SkeletonDemo() {

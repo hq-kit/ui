@@ -5,14 +5,20 @@ import { ContextMenu } from '@/components/ui'
 export default function ContextMenuDangerDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger>Right click me</ContextMenu.Trigger>
-            <ContextMenu.Content aria-label='Options'>
-                <ContextMenu.Item>Open</ContextMenu.Item>
-                <ContextMenu.Item>Rename</ContextMenu.Item>
-                <ContextMenu.Item>Duplicate</ContextMenu.Item>
-                <ContextMenu.Item>Share</ContextMenu.Item>
+            <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
+                Right click me
+            </ContextMenu.Trigger>
+            <ContextMenu.Content>
+                <ContextMenu.Item>
+                    <ContextMenu.Label>View</ContextMenu.Label>
+                </ContextMenu.Item>
+                <ContextMenu.Item>
+                    <ContextMenu.Label>Edit</ContextMenu.Label>
+                </ContextMenu.Item>
                 <ContextMenu.Separator />
-                <ContextMenu.Item isDanger>Delete</ContextMenu.Item>
+                <ContextMenu.Item isDanger>
+                    <ContextMenu.Label>Delete</ContextMenu.Label>
+                </ContextMenu.Item>
             </ContextMenu.Content>
         </ContextMenu>
     )

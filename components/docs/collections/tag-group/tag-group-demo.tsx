@@ -2,17 +2,17 @@
 
 import { Tag } from '@/components/ui'
 
-export const androidBrands = [
-    { id: '1', name: 'Samsung', available: false },
-    { id: '2', name: 'OnePlus', available: true },
-    { id: '3', name: 'Google', available: true },
-    { id: '4', name: 'Xiaomi', available: false }
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' }
 ]
 
 export default function TagGroupDemo() {
     return (
-        <Tag.Group label='Android Brands' selectionMode='multiple'>
-            <Tag.List items={androidBrands}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
+        <Tag.Group label='Linux Distros' selectionMode='multiple' items={items}>
+            {(item) => <Tag>{item.name}</Tag>}
         </Tag.Group>
     )
 }

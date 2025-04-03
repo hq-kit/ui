@@ -1,25 +1,20 @@
 'use client'
 
-import type {
-    ColorFieldProps as ColorFieldPrimitiveProps,
-    ValidationResult
-} from 'react-aria-components'
-import { ColorField as ColorFieldPrimitive } from 'react-aria-components'
+import { IconLoaderPinwheel } from 'hq-icons'
+import type { ColorFieldProps as RACColorFieldProps } from 'react-aria-components'
+import { ColorField as RACColorField, composeRenderProps } from 'react-aria-components'
+
+import { cn } from '@/lib/utils'
 
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import { Description, FieldError, FieldGroup, Input, Label } from './field'
-import { ctr } from './utils'
+import { Description, FieldError, FieldGroup, FieldProps, Input, Label } from './field'
 
-interface ColorFieldProps extends ColorFieldPrimitiveProps {
-    label?: string
-    description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
-    placeholder?: string
+interface ColorFieldProps extends RACColorFieldProps, FieldProps {
     prefix?: React.ReactNode
     suffix?: React.ReactNode
     isLoading?: boolean
-    enableColorPicker?: boolean
+    withPicker?: boolean
 }
 
 const ColorField = ({
@@ -27,52 +22,70 @@ const ColorField = ({
     description,
     errorMessage,
     placeholder,
-    prefix,
-    suffix,
     isLoading,
-    enableColorPicker = true,
+    withPicker = true,
     className,
     ...props
 }: ColorFieldProps) => {
     const value = props.value ?? props.defaultValue
     return (
-        <ColorFieldPrimitive
-            {...props}
+        <RACColorField
             aria-label={props['aria-label'] ?? 'Color field'}
-            className={ctr(
-                className,
-                'group flex w-full flex-col gap-y-1 **:data-[slot=color-swatch]:-ml-0.5'
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'group flex w-full flex-col gap-y-1.5 **:data-[slot=color-swatch]:-ml-0.5',
+                    className
+                )
             )}
+            {...props}
         >
-            {label && <Label>{label}</Label>}
-            <FieldGroup data-loading={isLoading ? 'true' : undefined}>
-                {prefix ? (
-                    <span data-slot='prefix' className='atrs'>
-                        {prefix}
-                    </span>
-                ) : null}
-                <div className='flex w-full items-center'>
-                    {value && (
-                        <span className='ml-2'>
-                            {enableColorPicker ? (
-                                <ColorPicker onChange={props.onChange} defaultValue={value} />
-                            ) : (
-                                <ColorSwatch className='size-6' color={value.toString('hex')} />
-                            )}
-                        </span>
+            {({ isInvalid, isDisabled }) => (
+                <>
+                    {label && (
+                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
+                            {label}
+                        </Label>
                     )}
-
-                    <Input placeholder={placeholder} />
-                </div>
-                {suffix ? (
-                    <span data-slot='suffix' className='atrs ml-auto'>
-                        {suffix}
-                    </span>
-                ) : null}
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </ColorFieldPrimitive>
+                    <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
+                        {props.prefix ? (
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
+                                {props.prefix}
+                            </span>
+                        ) : null}
+                        {isLoading ? (
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
+                                <IconLoaderPinwheel className='animate-spin size-4' />
+                            </span>
+                        ) : null}
+                        <div className='flex w-full items-center'>
+                            {value && (
+                                <span className='ml-2'>
+                                    {withPicker ? (
+                                        <ColorPicker
+                                            onChange={props.onChange}
+                                            value={value.toString('hex')}
+                                        />
+                                    ) : (
+                                        <ColorSwatch
+                                            className='size-6'
+                                            color={value.toString('hex')}
+                                        />
+                                    )}
+                                </span>
+                            )}
+                            <Input placeholder={placeholder} />
+                        </div>
+                        {props.suffix ? (
+                            <span data-suffix className='mr-2 has-[button]:mr-0 text-muted-fg'>
+                                {props.suffix}
+                            </span>
+                        ) : null}
+                    </FieldGroup>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            )}
+        </RACColorField>
     )
 }
 

@@ -1,93 +1,83 @@
 'use client'
 
-import type { TooltipProps as TooltipPrimitiveProps } from 'react-aria-components'
+import type { TooltipProps as RACTooltipProps } from 'react-aria-components'
 import {
-    Button,
+    composeRenderProps,
     OverlayArrow,
-    Tooltip as TooltipPrimitive,
-    TooltipTrigger as TooltipTriggerPrimitive
+    Pressable,
+    Tooltip as RACTooltip,
+    TooltipTrigger as RACTooltipTrigger
 } from 'react-aria-components'
-import type { VariantProps } from 'tailwind-variants'
-import { tv } from 'tailwind-variants'
 
-import { cr } from './utils'
+import { cn } from '@/lib/utils'
 
-const tooltipStyles = tv({
-    base: 'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
-    variants: {
-        variant: {
-            default: 'bg-bg text-fg **:data-arrow:fill-bg **:data-arrow:stroke-border',
-            inverse: 'bg-fg text-bg **:data-arrow:fill-fg'
-        },
-        isEntering: {
-            true: [
-                'fade-in animate-in',
-                'data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1'
-            ]
-        },
-        isExiting: {
-            true: [
-                'fade-in direction-reverse animate-in',
-                'data-[placement=left]:slide-out-to-right-1 data-[placement=right]:slide-out-to-left-1 data-[placement=top]:slide-out-to-bottom-1 data-[placement=bottom]:slide-out-to-top-1'
-            ]
-        }
-    },
-    defaultVariants: {
-        variant: 'default'
-    }
-})
+type TooltipProps = React.ComponentProps<typeof RACTooltipTrigger>
+const Tooltip = (props: TooltipProps) => <RACTooltipTrigger {...props} />
 
-type TooltipProps = React.ComponentProps<typeof TooltipTriggerPrimitive>
-const Tooltip = (props: TooltipProps) => <TooltipTriggerPrimitive {...props} />
-
-interface TooltipContentProps
-    extends Omit<TooltipPrimitiveProps, 'children'>,
-        VariantProps<typeof tooltipStyles> {
+interface TooltipContentProps extends Omit<RACTooltipProps, 'children'> {
     showArrow?: boolean
     children: React.ReactNode
+    isInverse?: boolean
 }
 
 const TooltipContent = ({
     offset = 10,
     showArrow = true,
-    variant = 'default',
+    isInverse = false,
     children,
     ...props
 }: TooltipContentProps) => {
     return (
-        <TooltipPrimitive
+        <RACTooltip
             {...props}
             offset={offset}
-            className={cr(props.className, (className, renderProps) =>
-                tooltipStyles({
-                    ...renderProps,
-                    variant,
-                    className
-                })
+            className={composeRenderProps(
+                props.className,
+                (className, { isEntering, isExiting, placement }) =>
+                    cn(
+                        'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
+                        isInverse ? 'bg-fg text-bg' : 'bg-bg text-fg',
+                        isEntering && `fade-in animate-in`,
+                        isExiting && 'fade-in direction-reverse animate-in',
+                        placement === 'top' &&
+                            `${isEntering ? 'slide-in-from-bottom-1' : 'slide-out-to-bottom-1'}`,
+                        placement === 'right' &&
+                            `${isEntering ? 'slide-in-from-left-1' : 'slide-out-to-left-1'}`,
+                        placement === 'bottom' &&
+                            `${isEntering ? 'slide-in-from-top-1' : 'slide-out-to-top-1'}`,
+                        placement === 'left' &&
+                            `${isEntering ? 'slide-in-from-right-1' : 'slide-out-to-right-1'}`,
+                        className
+                    )
             )}
         >
             {showArrow && (
-                <OverlayArrow>
+                <OverlayArrow className='group'>
                     <svg
-                        data-arrow
                         width={12}
                         height={12}
                         viewBox='0 0 12 12'
-                        className='group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90'
+                        className={cn(
+                            'block group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180',
+                            isInverse ? 'fill-fg' : 'fill-bg stroke-border'
+                        )}
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>
                 </OverlayArrow>
             )}
             {children}
-        </TooltipPrimitive>
+        </RACTooltip>
     )
 }
 
-const TooltipTrigger = Button
+const TooltipTrigger = (props: React.HTMLAttributes<HTMLDivElement>) => (
+    <Pressable>
+        <div style={{ cursor: 'default' }} {...props} />
+    </Pressable>
+)
 
 Tooltip.Trigger = TooltipTrigger
 Tooltip.Content = TooltipContent
 
 export { Tooltip }
-export type { TooltipContentProps, TooltipProps }

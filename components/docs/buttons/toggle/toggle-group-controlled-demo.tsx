@@ -10,7 +10,7 @@ export default function ToggleGroupControlledDemo() {
     const [selected, setSelected] = React.useState(new Set<Key>(['bold']))
 
     return (
-        <>
+        <div className='space-y-6 flex flex-col items-center'>
             <Toggle.Group
                 selectionMode='multiple'
                 selectedKeys={selected}
@@ -20,12 +20,7 @@ export default function ToggleGroupControlledDemo() {
                 <Toggle id='italic'>Italic</Toggle>
                 <Toggle id='underline'>Underline</Toggle>
             </Toggle.Group>
-            {[...selected].length > 0 && (
-                <p className='text-muted-fg mt-4'>
-                    Selected:{' '}
-                    <strong className='text-fg font-semibold'>{[...selected].join(', ')}</strong>
-                </p>
-            )}
-        </>
+            <code>selected: {JSON.stringify([...selected])}</code>
+        </div>
     )
 }

@@ -1,21 +1,38 @@
 'use client'
 
-import { type TooltipProps } from 'react-aria-components'
+import { PopoverProps } from 'react-aria-components'
 
 import { Button, Popover } from '@/components/ui'
 
-type Placement = Pick<TooltipProps, 'placement'>['placement']
-const placements: Placement[] = ['bottom', 'top', 'left', 'start', 'right', 'end']
+const placements: PopoverProps['placement'][] = [
+    'left top',
+    'top left',
+    'top',
+    'top right',
+    'right top',
+    'left',
+    'right',
+    'left bottom',
+    'bottom left',
+    'bottom',
+    'bottom right',
+    'right bottom'
+]
+
 export default function PopoverPlacementDemo() {
     return (
-        <div className='grid grid-cols-2 gap-2 sm:grid-cols-3'>
-            {placements.map((placement, idx) => (
-                <Popover key={idx}>
-                    <Button className='mx-auto' size='sm' variant='outline'>
-                        {placement}
+        <div className='grid grid-cols-6 gap-2'>
+            {placements.map((place, i) => (
+                <Popover key={i}>
+                    <Button
+                        size='xs'
+                        variant='outline'
+                        className='nth-3:col-span-2 nth-10:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
+                    >
+                        {place}
                     </Button>
-                    <Popover.Content aria-label='Placement' placement={placement} className='p-4'>
-                        Popover shown at <strong>{placement}</strong>
+                    <Popover.Content placement={place} className='p-4 min-w-64'>
+                        Popover shown at <strong>{place}</strong>
                     </Popover.Content>
                 </Popover>
             ))}

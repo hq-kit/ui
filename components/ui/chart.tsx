@@ -1,11 +1,11 @@
 'use client'
 
-import { createContext, use, useId, useMemo } from 'react'
+import React from 'react'
 
 import type { LegendProps } from 'recharts'
 import { Legend, ResponsiveContainer, Tooltip } from 'recharts'
 
-import { cn } from './utils'
+import { cn } from '@/lib/utils'
 
 const THEMES = { light: '', dark: '.dark' } as const
 
@@ -23,10 +23,10 @@ type ChartContextProps = {
     config: ChartConfig
 }
 
-const ChartContext = createContext<ChartContextProps | null>(null)
+const ChartContext = React.createContext<ChartContextProps | null>(null)
 
 function useChart() {
-    const context = use(ChartContext)
+    const context = React.use(ChartContext)
 
     if (!context) {
         throw new Error('useChart must be used within a <Chart />')
@@ -46,7 +46,7 @@ const Chart = ({
     config: ChartConfig
     children: React.ComponentProps<typeof ResponsiveContainer>['children']
 }) => {
-    const uniqueId = useId()
+    const uniqueId = React.useId()
     const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`
 
     return (
@@ -123,7 +123,7 @@ const ChartTooltipContent = ({
     }) => {
     const { config } = useChart()
 
-    const tooltipLabel = useMemo(() => {
+    const tooltipLabel = React.useMemo(() => {
         if (hideLabel || !payload?.length) {
             return null
         }

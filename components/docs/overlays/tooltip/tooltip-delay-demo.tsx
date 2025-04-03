@@ -1,24 +1,23 @@
 'use client'
 
-import { IconBrandGithub } from 'hq-icons'
+import { Button, Tooltip } from '@/components/ui'
 
-import { buttonStyles, Tooltip } from '@/components/ui'
+const delays = [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
 
 export default function TooltipDelayDemo() {
     return (
         <div className='flex gap-2'>
-            <Tooltip delay={0}>
-                <Tooltip.Trigger
-                    aria-label='Check My Github'
-                    className={buttonStyles({
-                        variant: 'outline',
-                        size: 'icon'
-                    })}
-                >
-                    <IconBrandGithub />
-                </Tooltip.Trigger>
-                <Tooltip.Content>Follow me on Github @dq-alhq</Tooltip.Content>
-            </Tooltip>
+            {delays.map((delay, i) => (
+                <Tooltip key={i} delay={delay}>
+                    <Button>
+                        {delay}
+                        {delay === 1500 && ' (default)'}
+                    </Button>
+                    <Tooltip.Content>
+                        This tooltip shown after <strong>{delay}</strong>ms.
+                    </Tooltip.Content>
+                </Tooltip>
+            ))}
         </div>
     )
 }

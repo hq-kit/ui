@@ -1,23 +1,35 @@
-'use client'
-
-import { IconLaptop, IconMonitor, IconPhone } from 'hq-icons'
+import {
+    IconBrandArch,
+    IconBrandDebian,
+    IconBrandFedora,
+    IconBrandRedhat,
+    IconBrandUbuntu
+} from 'hq-icons'
 
 import { Select } from '@/components/ui'
 
 export default function SelectWithIconDemo() {
     return (
-        <Select aria-label='Devices' defaultSelectedKey='desktop' placeholder='Select a device'>
-            <Select.Item id='desktop' textValue='Desktop'>
-                <IconMonitor />
-                Desktop
+        <Select label='Linux Distro'>
+            <Select.Item id='ubuntu' textValue='Ubuntu'>
+                <IconBrandUbuntu />
+                Ubuntu
             </Select.Item>
-            <Select.Item id='laptop' textValue='Laptop'>
-                <IconLaptop />
-                Laptop
+            <Select.Item id='debian' textValue='Debian'>
+                <IconBrandDebian />
+                Debian
             </Select.Item>
-            <Select.Item id='smartphone' textValue='Smartphone'>
-                <IconPhone />
-                Smartphone
+            <Select.Item id='fedora' textValue='Fedora'>
+                <IconBrandFedora />
+                Fedora
+            </Select.Item>
+            <Select.Item id='arch' textValue='Arch'>
+                <IconBrandArch />
+                Arch
+            </Select.Item>
+            <Select.Item id='red-hat' textValue='RedHat'>
+                <IconBrandRedhat />
+                RedHat
             </Select.Item>
         </Select>
     )

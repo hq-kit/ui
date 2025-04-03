@@ -52,13 +52,6 @@
         ]
     },
     {
-        "name": "choicebox",
-        "components": [
-            "checkbox",
-            "field"
-        ]
-    },
-    {
         "name": "color-picker",
         "components": [
             "color-area",
@@ -278,7 +271,13 @@
     {
         "name": "avatar",
         "components": [
-            "visually-hidden"
+            "tooltip"
+        ]
+    },
+    {
+        "name": "user",
+        "components": [
+            "avatar"
         ]
     },
     {
@@ -361,7 +360,6 @@
             "list-box",
             "popover",
             "tag-group",
-            "visually-hidden",
             "button"
         ]
     },
@@ -439,8 +437,5 @@
     },
     {
         "name": "description-list"
-    },
-    {
-        "name": "visually-hidden"
     }
 ]

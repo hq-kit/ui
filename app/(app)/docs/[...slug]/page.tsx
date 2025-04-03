@@ -77,7 +77,7 @@ export default async function DocsPage(props: DocPageProps) {
     const params = await props.params
     const doc = await getPostFromParams(params)
 
-    if (!doc || !doc.published) {
+    if (!doc) {
         notFound()
     }
 
@@ -87,15 +87,13 @@ export default async function DocsPage(props: DocPageProps) {
                 <main className='prose prose-img:rounded-lg prose-h2:mb-4 prose-pre:p-0 prose-headings:mb-[0.3rem] prose-headings:scroll-mt-24 prose-blue dark:prose-invert max-w-[inherit]'>
                     <Card className='not-prose'>
                         <Card.Header>
-                            <Card.Title level={1}>{doc.title}</Card.Title>
+                            <Card.Title>{doc.title}</Card.Title>
                             {doc.description && (
-                                <Card.Description className='mt-3 leading-tight sm:text-base'>
-                                    {doc.description}
-                                </Card.Description>
+                                <Card.Description>{doc.description}</Card.Description>
                             )}
                         </Card.Header>
                         {doc.references && doc.references?.length > 0 && (
-                            <Card.Content className='flex flex-row gap-2'>
+                            <Card.Content className='flex flex-row gap-2 pb-6'>
                                 <DocRefs references={doc.references} />
                             </Card.Content>
                         )}
@@ -105,12 +103,11 @@ export default async function DocsPage(props: DocPageProps) {
                     <Pager
                         doc={{
                             title: doc.title,
-                            slug: doc.slug,
-                            order: doc.order
+                            slug: doc.slug
                         }}
                         docs={docs
                             .filter((doc) => doc.slug.startsWith('docs/components'))
-                            .map((doc) => ({ order: doc.order, slug: doc.slug, title: doc.title }))}
+                            .map((doc) => ({ slug: doc.slug, title: doc.title }))}
                     />
                 </main>
             </div>

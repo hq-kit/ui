@@ -1,17 +1,16 @@
 'use client'
 
-import { Badge, Description, Tooltip } from '@/components/ui'
+import { IconSquareMousePointer } from 'hq-icons'
+
+import { Button, Tooltip } from '@/components/ui'
 
 export default function TooltipWithoutArrowDemo() {
     return (
         <Tooltip>
-            <Tooltip.Trigger aria-label='Fresh drop alert'>
-                <Badge shape='circle'>New</Badge>
-            </Tooltip.Trigger>
-            <Tooltip.Content showArrow={false}>
-                <strong className='font-semibold'>Fresh drop alert</strong> <br />
-                <Description>Scope the newest addition to our stash.</Description>
-            </Tooltip.Content>
+            <Button aria-label='Hover Me!'>
+                <IconSquareMousePointer />
+            </Button>
+            <Tooltip.Content showArrow={false}>Hello, This is Tooltip!</Tooltip.Content>
         </Tooltip>
     )
 }

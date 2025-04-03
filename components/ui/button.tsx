@@ -1,59 +1,64 @@
 'use client'
 
-import {
-    Button as ButtonPrimitive,
-    ButtonProps as ButtonPrimitiveProps
-} from 'react-aria-components'
+import { IconLoaderCircle } from 'hq-icons'
+import type { ButtonProps as RACButtonProps } from 'react-aria-components'
+import { composeRenderProps, Button as RACButton } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cr, focusButtonStyles } from './utils'
-
 const buttonStyles = tv({
-    extend: focusButtonStyles,
     base: [
-        'relative inline-flex items-center justify-center gap-x-2 border font-medium whitespace-nowrap no-underline transition',
-        '**:data-[slot=icon]:my-1 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0'
+        'inline-flex items-center justify-center gap-x-2 border font-medium whitespace-nowrap backdrop-blur-2xl transition outline-hidden',
+        '**:data-[slot=icon]:size-4',
+        'focus-visible:ring-4 ring-primary/20',
+        'cursor-pointer disabled:cursor-default disabled:opacity-50'
     ],
     variants: {
         variant: {
-            primary: 'bg-primary text-primary-fg border-primary',
-            secondary: 'bg-secondary text-secondary-fg border-secondary',
-            success: 'bg-success text-success-fg border-success',
-            danger: 'bg-danger text-danger-fg border-danger',
-            warning: 'bg-warning text-warning-fg border-warning',
-            dark: 'bg-fg text-bg border-fg',
-            outline: 'bg-bg/80 text-fg data-hovered:bg-muted/60 data-hovered:text-fg',
-            ghost: 'text-fg data-hovered:bg-muted/60 border-transparent bg-transparent'
+            primary:
+                'bg-primary text-primary-fg border-primary hover:bg-primary/85 pressed:bg-primary/95',
+            secondary:
+                'bg-secondary text-secondary-fg border-secondary hover:bg-secondary/85 pressed:bg-secondary/95',
+            info: 'bg-info text-info-fg border-info hover:bg-info/85 pressed:bg-info/95',
+            success:
+                'bg-success text-success-fg border-success hover:bg-success/85 pressed:bg-success/95',
+            danger: 'bg-danger text-danger-fg border-danger hover:bg-danger/85 pressed:bg-danger/95',
+            warning:
+                'bg-warning text-warning-fg border-warning hover:bg-warning/85 pressed:bg-warning/95',
+            outline:
+                'bg-bg/80 hover:bg-accent/40 pressed:bg-accent/50 text-fg hover:text-accent-fg',
+            ghost: 'text-fg hover:bg-accent/40 pressed:bg-accent/50 hover:text-accent-fg border-transparent bg-transparent'
         },
         size: {
-            xs: 'h-8 px-2 text-xs',
-            sm: 'h-9 px-3 text-sm',
-            md: 'h-10 px-4 py-2 text-sm',
-            lg: 'h-11 px-8 text-base',
-            icon: 'size-10 shrink-0'
+            xs: 'h-6 px-2 py-1.5 text-xs',
+            sm: 'h-8 px-3 py-2 text-sm',
+            md: 'h-10 px-4 py-3 text-sm',
+            lg: 'h-12 px-5 py-3.5 text-base',
+            icon: 'size-10 shrink-0 text-base'
         },
         shape: {
-            rounded: 'rounded-lg',
-            sharp: 'rounded-none',
+            square: 'rounded-lg',
             circle: 'rounded-full'
+        },
+        isPending: {
+            true: 'pointer-events-none cursor-default opacity-50 *:data-[slot=icon]:hidden'
         }
     },
     defaultVariants: {
         variant: 'primary',
         size: 'md',
-        shape: 'rounded'
+        shape: 'square'
     }
 })
 
-export interface ButtonProps extends ButtonPrimitiveProps, VariantProps<typeof buttonStyles> {
+export interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyles> {
     ref?: React.Ref<HTMLButtonElement>
 }
 
 const Button = ({ className, variant, size, shape, ref, ...props }: ButtonProps) => (
-    <ButtonPrimitive
+    <RACButton
         ref={ref}
         {...props}
-        className={cr(className, (className, renderProps) =>
+        className={composeRenderProps(className, (className, renderProps) =>
             buttonStyles({
                 ...renderProps,
                 variant,
@@ -64,9 +69,14 @@ const Button = ({ className, variant, size, shape, ref, ...props }: ButtonProps)
         )}
     >
         {(values) => (
-            <>{typeof props.children === 'function' ? props.children(values) : props.children}</>
+            <>
+                {values.isPending && (
+                    <IconLoaderCircle data-slot='loader' className='animate-spin size-4' />
+                )}
+                {typeof props.children === 'function' ? props.children(values) : props.children}
+            </>
         )}
-    </ButtonPrimitive>
+    </RACButton>
 )
 
 export { Button, buttonStyles }

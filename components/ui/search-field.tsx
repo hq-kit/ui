@@ -1,32 +1,19 @@
 'use client'
 
-import { IconSearch, IconX } from 'hq-icons'
+import { IconLoaderCircle, IconSearch, IconX } from 'hq-icons'
 import {
-    SearchField as SearchFieldPrimitive,
-    type SearchFieldProps as SearchFieldPrimitiveProps,
+    Button,
+    composeRenderProps,
+    SearchField as RACSearchField,
+    type SearchFieldProps as RACSearchFieldProps,
     type ValidationResult
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
-import { Button } from './button'
+import { cn } from '@/lib/utils'
+
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
-import { Loader } from './loader'
-import { ctr } from './utils'
 
-const searchFieldStyles = tv({
-    slots: {
-        base: 'group flex min-w-10 flex-col gap-y-1.5',
-        searchIcon: 'text-muted-fg group-data-disabled:text-muted-fg ml-2.5 size-4 shrink-0',
-        clearButton: [
-            'text-muted-fg data-hovered:text-fg data-pressed:text-fg mr-1 size-8 group-data-empty:invisible data-hovered:bg-transparent data-pressed:bg-transparent'
-        ],
-        input: '[&::-webkit-search-cancel-button]:hidden'
-    }
-})
-
-const { base, searchIcon, clearButton, input } = searchFieldStyles()
-
-interface SearchFieldProps extends SearchFieldPrimitiveProps {
+interface SearchFieldProps extends RACSearchFieldProps {
     label?: string
     placeholder?: string
     description?: string
@@ -44,26 +31,40 @@ const SearchField = ({
     ...props
 }: SearchFieldProps) => {
     return (
-        <SearchFieldPrimitive
+        <RACSearchField
             aria-label={placeholder ?? props['aria-label'] ?? 'Search...'}
             {...props}
-            className={ctr(className, base())}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-y-1.5', className)
+            )}
         >
-            {label && <Label>{label}</Label>}
-            <FieldGroup>
-                <IconSearch aria-hidden className={searchIcon()} />
-                <Input placeholder={placeholder ?? 'Search...'} className={input()} />
-                {isPending ? (
-                    <Loader variant='spin' />
-                ) : (
-                    <Button size='icon' variant='ghost' className={clearButton()}>
-                        <IconX aria-hidden />
-                    </Button>
-                )}
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </SearchFieldPrimitive>
+            {({ isEmpty }) => (
+                <>
+                    {label && <Label>{label}</Label>}
+                    <FieldGroup>
+                        <IconSearch aria-hidden className='text-muted-fg ml-2 size-4 shrink-0' />
+                        <Input
+                            placeholder={placeholder ?? 'Search...'}
+                            className='[&::-webkit-search-cancel-button]:hidden'
+                        />
+                        {isPending && (
+                            <IconLoaderCircle className='animate-spin size-4 mr-2 to-muted-fg' />
+                        )}
+                        {!isEmpty && (
+                            <Button
+                                type='button'
+                                aria-label='Clear'
+                                className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
+                            >
+                                <IconX aria-hidden />
+                            </Button>
+                        )}
+                    </FieldGroup>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            )}
+        </RACSearchField>
     )
 }
 

@@ -2,51 +2,36 @@
 
 import React from 'react'
 
-import { IconChevronDown, IconLoaderCircle, IconMenu } from 'hq-icons'
+import { IconChevronDown, IconMenu } from 'hq-icons'
 import type {
     CellProps,
     ColumnProps,
     ColumnResizerProps,
     TableHeaderProps as HeaderProps,
+    TableProps as RACTableProps,
     RowProps,
-    TableBodyProps,
-    TableProps as TablePrimitiveProps
+    TableBodyProps
 } from 'react-aria-components'
 import {
     Button,
     Cell,
     Collection,
     Column,
-    ColumnResizer as ColumnResizerPrimitive,
+    composeRenderProps,
+    ColumnResizer as RACColumnResizer,
+    Table as RACTable,
+    TableBody as RACTableBody,
+    TableHeader as RACTableHeader,
     ResizableTableContainer,
     Row,
-    TableBody as TableBodyPrimitive,
-    TableHeader as TableHeaderPrimitive,
-    Table as TablePrimitive,
     useTableOptions
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 
 import { Checkbox } from './checkbox'
-import { cn, cr } from './utils'
 
-const table = tv({
-    slots: {
-        root: '**:data-drop-target:border-primary table w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden **:data-drop-target:border',
-        header: 'border-b',
-        row: 'tr data-focus-visible-within:bg-primary/10 group bg-bg text-muted-fg ring-primary data-selected:bg-primary/5 data-selected:data-hovered:bg-primary/10 data-focused:bg-primary/10 data-hovered:bg-primary/5 relative cursor-default border-b outline-hidden data-focus-visible:ring-1 data-focused:ring-0',
-        cellIcon:
-            'bg-muted text-fg grid size-[1.15rem] flex-none shrink-0 place-content-center rounded-lg *:data-[slot=icon]:size-3.5 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:transition-transform *:data-[slot=icon]:duration-200',
-        columnResizer: [
-            '[&[data-resizing]>div]:bg-primary absolute top-0 right-0 bottom-0 grid w-px touch-none place-content-center px-1',
-            '&[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize data-[resizable-direction=both]:cursor-ew-resize'
-        ]
-    }
-})
-
-const { root, header, row, cellIcon, columnResizer } = table()
-
-interface TableProps extends TablePrimitiveProps {
+interface TableProps extends RACTableProps {
     className?: string
     allowResize?: boolean
 }
@@ -57,43 +42,59 @@ const TableContext = React.createContext<TableProps>({
 
 const useTableContext = () => React.useContext(TableContext)
 
-const Table = ({ children, className, ...props }: TableProps) => (
-    <TableContext.Provider value={props}>
-        <div className='relative w-full overflow-auto'>
-            {props.allowResize ? (
-                <ResizableTableContainer className='overflow-auto'>
-                    <TablePrimitive {...props} className={root({ className })}>
-                        {children}
-                    </TablePrimitive>
-                </ResizableTableContainer>
-            ) : (
-                <TablePrimitive {...props} className={root({ className })}>
-                    {children}
-                </TablePrimitive>
-            )}
-        </div>
-    </TableContext.Provider>
-)
+const Table = ({ className, ...props }: TableProps) => {
+    return (
+        <TableContext.Provider value={props}>
+            <div slot='table' className='relative w-full overflow-auto border rounded-lg'>
+                {props.allowResize ? (
+                    <ResizableTableContainer className='overflow-auto'>
+                        <RACTable
+                            className={cn(
+                                'w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden',
+                                className
+                            )}
+                            {...props}
+                        />
+                    </ResizableTableContainer>
+                ) : (
+                    <RACTable
+                        className={cn(
+                            'w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden',
+                            className
+                        )}
+                        {...props}
+                    />
+                )}
+            </div>
+        </TableContext.Provider>
+    )
+}
 
 const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
-    <ColumnResizerPrimitive
+    <RACColumnResizer
         {...props}
-        className={cr(className, (className, renderProps) =>
-            columnResizer({
-                ...renderProps,
+        className={composeRenderProps(className, (className, { isResizing, resizableDirection }) =>
+            cn(
+                'absolute top-0 right-0 bottom-0 w-px touch-none px-1.5',
+                resizableDirection === 'left' && 'cursor-w-resize',
+                resizableDirection === 'right' && 'cursor-e-resize',
+                resizableDirection === 'both' && 'cursor-ew-resize',
+                isResizing ? '*:bg-primary' : '*:bg-muted',
                 className
-            })
+            )
         )}
     >
-        <div className='bg-border h-full w-px py-3' />
-    </ColumnResizerPrimitive>
+        <div className='w-px h-full' />
+    </RACColumnResizer>
 )
 
 const TableBody = <T extends object>(props: TableBodyProps<T>) => (
-    <TableBodyPrimitive
-        data-slot='table-body'
+    <RACTableBody
         {...props}
-        className={cn('[&_.tr:last-child]:border-0')}
+        className={cn(
+            '**:data-drop-target:outline **:data-drop-target:outline-primary **:data-drop-target:py-2',
+            props.className
+        )}
     />
 )
 
@@ -101,31 +102,24 @@ interface TableCellProps extends CellProps {
     className?: string
 }
 
-const cellStyles = tv({
-    base: 'group px-3 py-3 whitespace-nowrap outline-hidden',
-    variants: {
-        allowResize: {
-            true: 'truncate overflow-hidden'
-        }
-    }
-})
 const TableCell = ({ children, className, ...props }: TableCellProps) => {
     const { allowResize } = useTableContext()
     return (
-        <Cell data-slot='table-cell' {...props} className={cellStyles({ allowResize, className })}>
+        <Cell
+            {...props}
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'group whitespace-nowrap px-3 py-3 outline-hidden',
+                    'first:pl-6 last:pr-6',
+                    allowResize && 'overflow-hidden truncate',
+                    className
+                )
+            )}
+        >
             {children}
         </Cell>
     )
 }
-
-const columnStyles = tv({
-    base: 'allows-sorting:cursor-pointer relative px-3 py-3 text-left font-medium whitespace-nowrap outline-hidden data-dragging:cursor-grabbing [&:has([slot=selection])]:pr-0',
-    variants: {
-        isResizable: {
-            true: 'truncate overflow-hidden'
-        }
-    }
-})
 
 interface TableColumnProps extends ColumnProps {
     className?: string
@@ -135,27 +129,29 @@ interface TableColumnProps extends ColumnProps {
 const TableColumn = ({ isResizable = false, className, ...props }: TableColumnProps) => {
     return (
         <Column
-            data-slot='table-column'
             {...props}
-            className={columnStyles({
-                isResizable,
-                className
-            })}
+            className={composeRenderProps(className, (className, { isResizing, allowsSorting }) =>
+                cn(
+                    'relative whitespace-nowrap p-3 text-left font-medium outline-hidden **:has-[slot=selection]:pr-0 first:pl-6 last:pr-6',
+                    isResizable && 'overflow-hidden truncate',
+                    isResizing && 'cursor-grabbing',
+                    allowsSorting && 'cursor-pointer',
+                    className
+                )
+            )}
         >
             {({ allowsSorting, sortDirection, isHovered }) => (
-                <div className='flex items-center gap-2 **:data-[slot=icon]:shrink-0'>
+                <div className='flex items-center gap-2'>
                     <>
                         {props.children as React.ReactNode}
                         {allowsSorting && (
-                            <span
-                                className={cellIcon({
-                                    className: isHovered ? 'bg-muted-fg/10' : ''
-                                })}
-                            >
-                                <IconChevronDown
-                                    className={sortDirection === 'ascending' ? 'rotate-180' : ''}
-                                />
-                            </span>
+                            <IconChevronDown
+                                className={cn(
+                                    'size-3.5 shrink-0 text-muted-fg transition-transform',
+                                    sortDirection === 'ascending' ? '-rotate-180' : '',
+                                    isHovered && 'text-primary'
+                                )}
+                            />
                         )}
                         {isResizable && <ColumnResizer />}
                     </>
@@ -179,10 +175,9 @@ const TableHeader = <T extends object>({
 }: TableHeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <TableHeaderPrimitive
-            data-slot='table-header'
+        <RACTableHeader
             ref={ref}
-            className={header({ className })}
+            className={cn('border-b bg-primary/10 text-fg', className)}
             {...props}
         >
             {allowsDragging && <Column className='w-0' />}
@@ -192,7 +187,7 @@ const TableHeader = <T extends object>({
                 </Column>
             )}
             <Collection items={columns}>{children}</Collection>
-        </TableHeaderPrimitive>
+        </RACTableHeader>
     )
 }
 
@@ -213,25 +208,31 @@ const TableRow = <T extends object>({
     return (
         <Row
             ref={ref}
-            data-slot='table-row'
             id={id}
+            className={composeRenderProps(
+                className,
+                (
+                    className,
+                    { isSelected, isHovered, isFocusVisible, isDisabled, isFocusVisibleWithin }
+                ) =>
+                    cn(
+                        'group relative cursor-default not-last:border-b',
+                        'href' in props && 'cursor-pointer',
+                        isSelected && 'bg-accent text-accent-fg',
+                        isHovered && 'bg-accent/30 text-accent-fg',
+                        {
+                            'outline outline-primary bg-accent/30 text-accent-fg':
+                                isFocusVisible || isFocusVisibleWithin
+                        },
+                        isDisabled && 'pointer-events-none opacity-50',
+                        className
+                    )
+            )}
             {...props}
-            className={row({
-                className:
-                    'href' in props
-                        ? cn(
-                              'data-hovered:bg-primary/10 data-hovered:text-primary cursor-pointer',
-                              className
-                          )
-                        : ''
-            })}
         >
             {allowsDragging && (
-                <Cell className='group ring-primary cursor-grab pr-0 data-dragging:cursor-grabbing'>
-                    <Button
-                        className='text-muted-fg data-pressed:text-fg relative bg-transparent py-1.5 pl-3.5'
-                        slot='drag'
-                    >
+                <Cell className='cursor-grab pr-0 outline-primary data-dragging:cursor-grabbing'>
+                    <Button className='py-1.5 pl-3.5' slot='drag'>
                         <IconMenu />
                     </Button>
                 </Cell>
@@ -240,7 +241,7 @@ const TableRow = <T extends object>({
                 <Cell className='pl-4'>
                     <span
                         aria-hidden
-                        className='bg-primary absolute inset-y-0 left-0 hidden h-full w-0.5 group-data-selected:block'
+                        className='absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-selected:block'
                     />
                     <Checkbox slot='selection' />
                 </Cell>
@@ -249,25 +250,12 @@ const TableRow = <T extends object>({
         </Row>
     )
 }
-const TableEmpty = () => (
-    <div className='grid place-content-center p-10'>
-        <span className='text-muted-foreground'>No results.</span>
-    </div>
-)
 
-const TableLoading = () => (
-    <div className='grid place-content-center p-10'>
-        <IconLoaderCircle className='animate-spin' />
-    </div>
-)
 Table.Body = TableBody
 Table.Cell = TableCell
 Table.Column = TableColumn
 Table.Header = TableHeader
 Table.Row = TableRow
-
-Table.Empty = TableEmpty
-Table.Loading = TableLoading
 
 export { Table }
 export type { TableBodyProps, TableCellProps, TableColumnProps, TableProps, TableRowProps }

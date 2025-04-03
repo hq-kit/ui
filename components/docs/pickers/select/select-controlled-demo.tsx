@@ -4,36 +4,29 @@ import React from 'react'
 
 import type { Key } from 'react-aria-components'
 
-import { Description, Select } from '@/components/ui'
+import { Select } from '@/components/ui'
 
-export const movies = [
-    { id: 1, title: 'Inception' },
-    { id: 2, title: 'The Dark Knight' },
-    { id: 3, title: 'Interstellar' },
-    { id: 4, title: 'The Matrix' },
-    { id: 5, title: 'Pulp Fiction' }
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' },
+    { id: 5, name: 'Redhat' }
 ]
 
 export default function SelectControlledDemo() {
-    const [movie, setMovie] = React.useState<Key>('')
+    const [selected, setSelected] = React.useState<Key>('')
     return (
-        <>
+        <div className='space-y-6'>
             <Select
-                selectedKey={movie}
-                onSelectionChange={setMovie}
-                label='Movies'
-                placeholder='Select a movie'
-                items={movies}
+                selectedKey={selected}
+                onSelectionChange={setSelected}
+                label='Linux Distro'
+                items={items}
             >
-                {(item) => (
-                    <Select.Item id={item.id} textValue={item.title}>
-                        {item.title}
-                    </Select.Item>
-                )}
+                {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
-            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
-                You have selected: <strong>{movie}</strong>
-            </Description>
-        </>
+            <code>selected: {JSON.stringify(selected)}</code>
+        </div>
     )
 }

@@ -1,25 +1,28 @@
 import Image from 'next/image'
+import { Collection } from 'react-aria-components'
 
-import { Card, Grid } from '@/components/ui'
+import { Card } from '@/components/ui'
 
 export default function Posts() {
     return (
-        <Grid columns={{ initial: 1, sm: 2, '2xl': 3 }} gap={2} items={posts}>
-            {(item) => (
-                <Grid.Item key={item.id}>
-                    <Card>
-                        <Card.Header>
-                            <Card.Title>{item.title}</Card.Title>
-                            <Card.Description>{item.date}</Card.Description>
-                        </Card.Header>
-                        <Card.Content className='space-y-2 text-justify'>
-                            <Image alt={item.title} src={item.image} width={400} height={300} />
-                            <p>{item.content}</p>
-                        </Card.Content>
-                    </Card>
-                </Grid.Item>
-            )}
-        </Grid>
+        <div className='grid grid-cols-1 2xl:grid-cols-3 gap-2'>
+            <Collection items={posts}>
+                {(item) => (
+                    <div key={item.id}>
+                        <Card>
+                            <Card.Header>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Card.Description>{item.date}</Card.Description>
+                            </Card.Header>
+                            <Card.Content className='space-y-2 text-justify'>
+                                <Image alt={item.title} src={item.image} width={400} height={300} />
+                                <p>{item.content}</p>
+                            </Card.Content>
+                        </Card>
+                    </div>
+                )}
+            </Collection>
+        </div>
     )
 }
 

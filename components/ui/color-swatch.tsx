@@ -1,12 +1,10 @@
 'use client'
 
 import type { ColorSwatchProps } from 'react-aria-components'
-import { ColorSwatch as ColorSwatchPrimitive } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
+import { ColorSwatch as RACColorSwatch, composeRenderProps } from 'react-aria-components'
 
+import { cn } from '@/lib/utils'
 import { parseColor } from '@react-stately/color'
-
-import { ctr } from './utils'
 
 const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {
     const normalizeHex = hex.replace(
@@ -116,14 +114,13 @@ const defaultColor = parseColor('hsl(216, 98%, 52%)')
 
 const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => {
     const color = props.color?.toString() ?? ''
-    const needRing = color ? isBrightColor(color) : false
+    const ring = color ? isBrightColor(color) : false
     return (
-        <ColorSwatchPrimitive
+        <RACColorSwatch
             data-slot='color-swatch'
             aria-label={props['aria-label'] ?? 'Color swatch'}
-            className={ctr(
-                className,
-                twMerge('size-8 shrink-0 rounded-lg', needRing && 'inset-ring-fg/10 inset-ring-1')
+            className={composeRenderProps(className, (className) =>
+                cn('size-8 shrink-0 rounded-lg', ring && 'inset-ring-fg/10 inset-ring-1', className)
             )}
             {...props}
         />

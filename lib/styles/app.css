@@ -1,16 +1,15 @@
 @import 'tailwindcss';
 @import './code.css';
 
+@plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';
 
 @variant dark (&:is(.dark *));
 
-@theme {
-    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-mono: var(--font-geist-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco',
-        'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
+@theme inline {
+    --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-mono), ui-monospace, monospace;
 
     --color-bg: var(--bg);
     --color-fg: var(--fg);
@@ -20,6 +19,12 @@
 
     --color-secondary: var(--secondary);
     --color-secondary-fg: var(--secondary-fg);
+
+    --color-accent: var(--accent);
+    --color-accent-fg: var(--accent-fg);
+
+    --color-info: var(--info);
+    --color-info-fg: var(--info-fg);
 
     --color-success: var(--success);
     --color-success-fg: var(--success-fg);
@@ -42,16 +47,26 @@
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
+
+    --radius-xs: calc(var(--radius-lg) - 4px);
+    --radius-sm: calc(var(--radius-lg) - 2px);
+    --radius-md: calc(var(--radius-lg) - 1px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius-lg) + 4px);
 }
 
 @layer base {
     :root {
         --bg: hsl(0 0% 98.04%);
         --fg: hsl(240 10% 3.92%);
-        --primary: hsl(224.3 76.3% 48%);
+        --primary: hsl(240 10% 3.92%);
         --primary-fg: hsl(0 0% 98.04%);
-        --secondary: hsl(211.7 96.4% 78.4%);
-        --secondary-fg: hsl(226.2 57% 21%);
+        --secondary: hsl(208.24 7.3% 45.69%);
+        --secondary-fg: hsl(0 0% 100%);
+        --accent: hsl(240, 4.88%, 83.92%);
+        --accent-fg: hsl(240 10% 3.92%);
+        --info: hsl(224.3 76.3% 48%);
+        --info-fg: hsl(0 0% 98.04%);
         --danger: hsl(0 72.22% 50.59%);
         --danger-fg: hsl(0 0% 98.04%);
         --success: hsl(142.1 76.2% 36.3%);
@@ -67,22 +82,19 @@
         --chart-4: oklch(0.882 0.059 254.128);
         --chart-5: oklch(0.932 0.032 255.585);
 
-        --radius-lg: 0.5rem;
-        --radius-xs: calc(var(--radius-lg) * 0.5);
-        --radius-sm: calc(var(--radius-lg) * 0.75);
-        --radius-md: calc(var(--radius-lg) * 0.9);
-        --radius-xl: calc(var(--radius-lg) * 1.25);
-        --radius-2xl: calc(var(--radius-lg) * 1.5);
-        --radius-3xl: calc(var(--radius-lg) * 2);
-        --radius-4xl: calc(var(--radius-lg) * 3);
+        --radius: 0.5rem;
     }
     .dark {
         --bg: hsl(240 10% 3.92%);
         --fg: hsl(0 0% 98.04%);
-        --primary: hsl(221.2 83.2% 53.3%);
-        --primary-fg: hsl(0 0% 98.04%);
-        --secondary: hsl(226.2 57% 21%);
-        --secondary-fg: hsl(211.7 96.4% 78.4%);
+        --primary: hsl(0 0% 98.04%);
+        --primary-fg: hsl(240 10% 3.92%);
+        --secondary: hsl(208.24 7.36% 54.71%);
+        --secondary-fg: hsl(0 0% 100%);
+        --accent: hsl(240, 5.26%, 26.08%);
+        --accent-fg: hsl(0 0% 98.04%);
+        --info: hsl(221.2 83.2% 53.3%);
+        --info-fg: hsl(0 0% 98.04%);
         --danger: hsl(0 72.2% 50.6%);
         --danger-fg: hsl(0 0% 98.04%);
         --success: hsl(142.1 76.2% 36.3%);
@@ -101,10 +113,6 @@
 }
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-    }
-
     *,
     ::after,
     ::before,
@@ -113,20 +121,9 @@
         border-color: var(--muted, currentColor);
     }
 
-    button:not(:disabled),
-    [role='button']:not(:disabled) {
-        cursor: pointer;
-    }
-
     body {
         background-color: var(--bg);
         color: var(--fg);
-    }
-
-    * {
-        font-feature-settings: 'cv11', 'ss01';
-        font-variation-settings: 'opsz' 850;
-        text-rendering: optimizeLegibility;
     }
 
     *::-webkit-scrollbar {
@@ -147,31 +144,13 @@
 }
 
 @layer components {
-    .overflow-auto,
-    .overflow-x-auto,
-    .overflow-y-auto,
-    .overflow-scroll,
-    .overflow-x-scroll,
-    .overflow-y-scroll {
-        @apply [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-inherit;
-    }
-
-    .overflow-auto:hover,
-    .overflow-x-auto:hover,
-    .overflow-y-auto:hover,
-    .overflow-scroll:hover,
-    .overflow-x-scroll:hover,
-    .overflow-y-scroll:hover {
-        @apply [&::-webkit-scrollbar-thumb]:bg-muted;
-    }
-
     .no-scrollbar {
         -ms-overflow-style: none; /* Internet Explorer and Edge */
         scrollbar-width: none; /* Firefox */
-    }
 
-    .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
+        ::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
+        }
     }
 
     pre::-webkit-scrollbar {

@@ -42,17 +42,14 @@ export default function FileManager() {
                     <Sidebar.Trigger className='-mx-2' />
                     <Separator className='hidden h-6 md:block' orientation='vertical' />
                     <Breadcrumbs
+                        onAction={(v) => setDir(v + '/')}
                         className='hidden md:flex'
                         items={dir
                             .split('/')
                             .filter((item) => item !== '')
                             .map((item) => ({ id: item }))}
                     >
-                        {(item) => (
-                            <Breadcrumbs.Item onPress={() => setDir(item.id + '/')} id={item.id}>
-                                {item.id}
-                            </Breadcrumbs.Item>
-                        )}
+                        {(item) => <Breadcrumbs.Item id={item.id}>{item.id}</Breadcrumbs.Item>}
                     </Breadcrumbs>
                 </span>
                 <div className='flex items-center gap-x-2'>
@@ -93,7 +90,6 @@ export default function FileManager() {
                 <GridList
                     aria-label='Files'
                     selectionBehavior='toggle'
-                    layout={view}
                     selectionMode={selectionMode}
                     items={[
                         ...new Map(

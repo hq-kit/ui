@@ -2,113 +2,113 @@
 
 import { IconCheck, IconMinus } from 'hq-icons'
 import type {
-    CheckboxGroupProps as CheckboxGroupPrimitiveProps,
-    CheckboxProps as CheckboxPrimitiveProps,
-    ValidationResult
+    CheckboxGroupProps as RACCheckboxGroupProps,
+    CheckboxProps as RACCheckboxProps
 } from 'react-aria-components'
 import {
-    CheckboxGroup as CheckboxGroupPrimitive,
-    Checkbox as CheckboxPrimitive
+    composeRenderProps,
+    Checkbox as RACCheckbox,
+    CheckboxGroup as RACCheckboxGroup
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
-import { Description, FieldError, Label } from './field'
-import { cn, cr, ctr } from './utils'
+import { cn } from '@/lib/utils'
 
-interface CheckboxGroupProps extends CheckboxGroupPrimitiveProps {
-    label?: string
-    description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
-}
+import { Description, FieldError, FieldProps, Label } from './field'
 
-const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
+interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
+
+const CheckboxGroup = ({
+    className,
+    children,
+    description,
+    errorMessage,
+    ...props
+}: CheckboxGroupProps) => {
     return (
-        <CheckboxGroupPrimitive {...props} className={ctr(className, 'flex flex-col gap-y-2')}>
-            <Label>{props.label}</Label>
-            {props.children as React.ReactNode}
-            {props.description && <Description className='block'>{props.description}</Description>}
-            <FieldError>{props.errorMessage}</FieldError>
-        </CheckboxGroupPrimitive>
+        <RACCheckboxGroup
+            {...props}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-2', className)
+            )}
+        >
+            {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
+                <>
+                    <Label isInvalid={isInvalid} isDisabled={isDisabled}>
+                        {props.label}
+                    </Label>
+                    {children}
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            ))}
+        </RACCheckboxGroup>
     )
 }
 
-const checkboxStyles = tv({
-    base: 'group flex items-center gap-2 text-sm transition',
-    variants: {
-        isDisabled: {
-            true: 'opacity-50'
-        }
-    }
-})
-
-const boxStyles = tv({
-    base: 'text-bg border-fg/40 flex size-4 shrink-0 items-center justify-center rounded border transition *:data-[slot=icon]:size-3',
-    variants: {
-        isSelected: {
-            false: 'bg-bg group-data-hovered:border-primary/60 group-data-hovered:bg-primary/10',
-            true: [
-                'border-primary bg-primary text-primary-fg',
-                'group-data-invalid:border-danger/70 group-data-invalid:bg-danger group-data-invalid:text-danger-fg'
-            ]
-        },
-        isFocused: {
-            true: [
-                'border-primary ring-primary/20 ring-4',
-                'group-data-invalid:border-danger/70 group-data-invalid:text-danger-fg group-data-invalid:ring-danger/20'
-            ]
-        },
-        isInvalid: {
-            true: 'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20'
-        }
-    }
-})
-
-interface CheckboxProps extends CheckboxPrimitiveProps {
-    description?: string
-    label?: string
+interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'placeholder'> {
+    children?: React.ReactNode
 }
 
-const Checkbox = ({ className, ...props }: CheckboxProps) => {
+const Checkbox = ({
+    className,
+    label,
+    children,
+    description,
+    errorMessage,
+    ...props
+}: CheckboxProps) => {
     return (
-        <CheckboxPrimitive
+        <RACCheckbox
             {...props}
-            className={cr(className, (className, renderProps) =>
-                checkboxStyles({ ...renderProps, className })
+            className={composeRenderProps(className, (className, { isDisabled }) =>
+                cn(
+                    'group flex items-center gap-2 text-sm transition',
+                    isDisabled && 'opacity-50',
+                    className
+                )
             )}
         >
-            {({ isSelected, isIndeterminate, ...renderProps }) => (
+            {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired }) => (
                 <div
-                    className={cn(
-                        'flex gap-x-2',
-                        props.description ? 'items-start' : 'items-center'
-                    )}
+                    className={cn('flex gap-2 items-center', {
+                        'items-start': description || (isInvalid && isRequired)
+                    })}
                 >
                     <div
-                        className={boxStyles({
-                            ...renderProps,
-                            isSelected: isSelected || isIndeterminate
-                        })}
+                        className={cn(
+                            'flex size-4 shrink-0 items-center justify-center rounded-sm border text-bg transition',
+                            isSelected || isIndeterminate
+                                ? 'border-primary bg-primary text-primary-fg group-invalid:border-danger/70 group-invalid:bg-danger group-invalid:text-danger-fg'
+                                : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',
+                            isFocused &&
+                                'border-primary ring-primary/20 ring-4 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                            isInvalid &&
+                                'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
+                            className
+                        )}
                     >
-                        {isIndeterminate ? <IconMinus /> : isSelected ? <IconCheck /> : null}
+                        {isIndeterminate ? (
+                            <IconMinus className='size-3' />
+                        ) : isSelected ? (
+                            <IconCheck className='size-3' />
+                        ) : null}
                     </div>
 
-                    <div className='flex flex-col gap-1'>
-                        <>
-                            {props.label ? (
-                                <Label className={cn(props.description && 'text-sm/4')}>
-                                    {props.label}
-                                </Label>
-                            ) : (
-                                (props.children as React.ReactNode)
-                            )}
-                            {props.description && <Description>{props.description}</Description>}
-                        </>
+                    <div className='flex flex-col'>
+                        <Label
+                            isInvalid={isInvalid || !!errorMessage}
+                            isDisabled={props.isDisabled}
+                            className='not-last:text-sm/4'
+                        >
+                            {label ?? children}
+                        </Label>
+                        {description && <Description>{description}</Description>}
+                        {isRequired && <FieldError>{errorMessage}</FieldError>}
                     </div>
                 </div>
             )}
-        </CheckboxPrimitive>
+        </RACCheckbox>
     )
 }
 
 export { Checkbox, CheckboxGroup }
-export type { CheckboxGroupProps, CheckboxProps }

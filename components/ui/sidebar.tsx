@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react'
+import React from 'react'
 
-import { IconMenu, IconPanelLeftClose } from 'hq-icons'
+import { IconMenu, IconMinus, IconPanelLeftClose } from 'hq-icons'
 import type {
     ButtonProps,
     DisclosureGroupProps,
@@ -27,7 +27,6 @@ import { tv } from 'tailwind-variants'
 
 import { Badge } from './badge'
 import { Button } from './button'
-import { Indicator } from './disclosure'
 import { Sheet } from './sheet'
 import { Tooltip } from './tooltip'
 import { cn, cr, ctr, useMediaQuery } from './utils'
@@ -45,10 +44,10 @@ type SidebarContextProps = {
     fixed: boolean
 }
 
-const SidebarContext = createContext<SidebarContextProps | null>(null)
+const SidebarContext = React.createContext<SidebarContextProps | null>(null)
 
 const useSidebar = () => {
-    const context = use(SidebarContext)
+    const context = React.use(SidebarContext)
     if (!context) {
         throw new Error('useSidebar must be used within a Sidebar.')
     }
@@ -76,11 +75,11 @@ const SidebarProvider = ({
     ...props
 }: SidebarProviderProps) => {
     const isMobile = useMediaQuery('(max-width: 767px)')
-    const [openMobile, setOpenMobile] = useState(false)
+    const [openMobile, setOpenMobile] = React.useState(false)
 
-    const [internalOpenState, setInternalOpenState] = useState(defaultOpen)
+    const [internalOpenState, setInternalOpenState] = React.useState(defaultOpen)
     const open = openProp ?? internalOpenState
-    const setOpen = useCallback(
+    const setOpen = React.useCallback(
         (value: boolean | ((value: boolean) => boolean)) => {
             const openState = typeof value === 'function' ? value(open) : value
 
@@ -95,11 +94,11 @@ const SidebarProvider = ({
         [setOpenProp, open]
     )
 
-    const toggleSidebar = useCallback(() => {
+    const toggleSidebar = React.useCallback(() => {
         return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
     }, [isMobile, setOpen])
 
-    useEffect(() => {
+    React.useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === shortcut && (event.metaKey || event.ctrlKey) && !fixed) {
                 event.preventDefault()
@@ -113,7 +112,7 @@ const SidebarProvider = ({
 
     const state = open ? 'expanded' : 'collapsed'
 
-    const contextValue = useMemo<SidebarContextProps>(
+    const contextValue = React.useMemo<SidebarContextProps>(
         () => ({
             fixed,
             state,
@@ -234,10 +233,7 @@ const Sidebar = ({
                     closeButton={closeButton}
                     aria-label='Sidebar'
                     data-sidebar-variant='default'
-                    classNames={{
-                        content: 'w-(--sidebar-width-mobile) [&>button]:hidden'
-                    }}
-                    isFloat={variant === 'float'}
+                    isFloating={variant === 'float'}
                     side={side}
                 >
                     <Sheet.Body className='px-0 sm:px-0'>{props.children}</Sheet.Body>
@@ -290,7 +286,7 @@ const header = tv({
 })
 
 const SidebarHeader = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
-    const { state } = use(SidebarContext)!
+    const { state } = React.use(SidebarContext)!
     return (
         <div
             ref={ref}
@@ -463,7 +459,7 @@ const SidebarItem = ({
                     {badge &&
                         (state !== 'collapsed' ? (
                             <Badge
-                                shape='rounded'
+                                shape='square'
                                 variant='primary'
                                 data-slot='sidebar-badge'
                                 className='inset-ring-primary/20 absolute inset-y-1/2 right-1.5 h-5.5 w-auto -translate-y-1/2 text-[10px] inset-ring-1 transition-colors group-data-current:inset-ring-transparent'
@@ -485,8 +481,8 @@ const SidebarItem = ({
         <Tooltip delay={0}>
             {link}
             <Tooltip.Content
+                isInverse
                 className='**:data-[slot=icon]:hidden **:data-[slot=sidebar-label-mask]:hidden'
-                variant='inverse'
                 showArrow={false}
                 placement='right'
             >
@@ -757,6 +753,23 @@ interface SidebarNavProps extends React.ComponentProps<'nav'> {
 const SidebarNav = ({ isSticky = false, className, ...props }: SidebarNavProps) => {
     return <nav data-slot='sidebar-nav' {...props} className={nav({ isSticky, className })} />
 }
+
+const Indicator = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div
+        data-slot='chevron'
+        className={cn(
+            className,
+            'relative inline-flex size-5 -rotate-90 items-center justify-center transition-transform duration-300'
+        )}
+        {...props}
+    >
+        <IconMinus data-slot='indicator-passive' className='absolute size-3.5' />
+        <IconMinus
+            data-slot='chevron'
+            className='absolute size-3.5 -rotate-90 transition-transform duration-300'
+        />
+    </div>
+)
 
 Sidebar.Content = SidebarContent
 Sidebar.Disclosure = SidebarDisclosure

@@ -1,30 +1,23 @@
 'use client'
 
+import { Collection } from 'react-aria-components'
+
 import { Tabs } from '@/components/ui'
+
+const items = [
+    { id: 1, title: 'Overview', content: 'This is the overview tab content.' },
+    { id: 2, title: 'Features', content: 'Details about the features are listed here.' },
+    { id: 3, title: 'Pricing', content: 'Find the pricing information on this tab.' },
+    { id: 4, title: 'Reviews', content: 'Read user reviews and ratings here.' }
+]
 
 export default function TabsOrientationDemo() {
     return (
-        <Tabs orientation='vertical' aria-label='E-Learning Platform'>
-            <Tabs.List>
-                <Tabs.Label id='c'>Courses</Tabs.Label>
-                <Tabs.Label id='e'>Exams</Tabs.Label>
-                <Tabs.Label id='g'>Grades</Tabs.Label>
-                <Tabs.Label id='f'>Forums</Tabs.Label>
-                <Tabs.Label id='p'>Profile</Tabs.Label>
-            </Tabs.List>
-            <Tabs.Content id='c'>
-                Enroll in courses and access learning materials on various subjects.
-            </Tabs.Content>
-            <Tabs.Content id='e'>
-                Take practice exams and quizzes to test your knowledge.
-            </Tabs.Content>
-            <Tabs.Content id='g'>View your grades and track your academic progress.</Tabs.Content>
-            <Tabs.Content id='f'>
-                Participate in discussion forums with other students and instructors.
-            </Tabs.Content>
-            <Tabs.Content id='p'>
-                Update your profile and customize your learning preferences.
-            </Tabs.Content>
+        <Tabs orientation='vertical' aria-label='Project Management'>
+            <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
+            <Collection items={items}>
+                {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
+            </Collection>
         </Tabs>
     )
 }

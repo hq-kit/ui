@@ -59,7 +59,7 @@ export default function ToolbarOrientationDemo() {
                     <Button aria-label='Other options' variant='outline' size='icon'>
                         <IconEllipsisVertical />
                     </Button>
-                    <Menu.Content showArrow placement='right'>
+                    <Menu.Content placement='right'>
                         <Menu.Item>
                             <IconCircleArrowLeft />
                             Undo

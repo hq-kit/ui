@@ -36,8 +36,8 @@ export const IconComponent = ({ name, size, stroke }: IconProps) => {
                     }}
                 />
             </Menu.Trigger>
-            <Menu.Content showArrow>
-                <Menu.Header separator className='text-xs'>
+            <Menu.Content>
+                <Menu.Header className='text-xs'>
                     {name}
                 </Menu.Header>
                 <Menu.Item

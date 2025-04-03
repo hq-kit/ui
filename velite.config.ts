@@ -18,12 +18,9 @@ const docs = defineCollection({
             slug: s.path(),
             title: s.string().max(99),
             description: s.string().max(999).optional(),
-            order: s.number(),
-            published: s.boolean().default(true),
             references: s.array(s.string()).optional(),
             body: s.mdx(),
-            toc: s.toc(),
-            status: s.string().optional()
+            toc: s.toc()
         })
         .transform(computedFields)
 })

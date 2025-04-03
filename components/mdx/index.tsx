@@ -5,8 +5,7 @@ import CLI from '@/components/mdx/cli'
 import Code from '@/components/mdx/code'
 import Demo from '@/components/mdx/demo'
 import Install from '@/components/mdx/install'
-import Note from '@/components/mdx/note'
-import { Link, type LinkProps } from '@/components/ui'
+import { Note } from '@/components/ui'
 import { useMDXComponent } from '@/lib/hooks/use-mdx'
 
 interface MdxProps {
@@ -19,13 +18,6 @@ export function MDXContent({ code }: MdxProps) {
         <Component
             components={{
                 Image,
-                a: (props: LinkProps) => (
-                    <Link
-                        target='_blank'
-                        {...props}
-                        className='not-prose mdxlink text-primary font-medium hover:underline'
-                    />
-                ),
                 Note,
                 Install,
                 Demo: (props: React.ComponentProps<typeof Demo>) => (

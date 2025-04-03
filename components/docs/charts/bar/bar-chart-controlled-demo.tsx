@@ -48,7 +48,8 @@ export default function BarChartControlledDemo() {
                     </Card.Description>
                 </div>
                 <div>
-                    <Select aria-label='Select a chart'
+                    <Select
+                        aria-label='Select a chart'
                         selectedKey={activeChart}
                         onSelectionChange={setActiveChart}
                         placement='bottom end'
@@ -63,7 +64,7 @@ export default function BarChartControlledDemo() {
                                     id={key}
                                     textValue={chartConfig[chart].label}
                                 >
-                                    <Select.ItemDetails
+                                    <Select.Details
                                         label={chartConfig[chart].label}
                                         description={total[
                                             key as keyof typeof total

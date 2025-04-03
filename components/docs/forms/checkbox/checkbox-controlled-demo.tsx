@@ -2,18 +2,16 @@
 
 import React from 'react'
 
-import { Checkbox, Description } from '@/components/ui'
+import { Checkbox } from '@/components/ui'
 
 export default function CheckboxControlledDemo() {
     const [selected, setSelection] = React.useState(false)
     return (
-        <>
+        <div className='space-y-2'>
             <Checkbox isSelected={selected} onChange={setSelection} value='updates'>
-                Receive Updates
+                Accept terms and conditions
             </Checkbox>
-            <Description className='[&>strong]:text-fg mt-2 block'>
-                You have <strong>{selected ? 'enabled' : 'disabled'}</strong> the option.
-            </Description>
-        </>
+            <code>selected: {JSON.stringify(selected)}</code>
+        </div>
     )
 }

@@ -91,19 +91,19 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 <TreeItem.Content>
                     {item.children.length > 0 && (
                         <>
-                            <TreeItem.Indicator />
                             <IconFolder className='mx-1 size-4' />
                         </>
                     )}
-                    <TreeItem.Label
+                    <TreeItem
+                        id={item.id}
                         className={cn(
                             '-my-1 -ml-4 w-full rounded px-4 py-1 text-xs overflow-ellipsis whitespace-nowrap',
                             selected === item.id && 'text-primary-fg bg-primary/80'
                         )}
-                        slot={item.children.length > 0 ? 'chevron' : null}
-                        onPress={() => {
+                        onAction={() => {
                             if (item.children.length === 0) setSelected(item.id as string)
                         }}
+                        textValue={item.title}
                     >
                         {item.title.includes('.tsx') ? (
                             <IconBrandReact className='size-4 shrink-0' />
@@ -111,7 +111,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                             <IconBrandTypescript className='size-4 shrink-0' />
                         ) : null}
                         {item.title}
-                    </TreeItem.Label>
+                    </TreeItem>
                 </TreeItem.Content>
                 {item.children.length > 0 && (
                     <Collection items={item.children}>{renderItem}</Collection>

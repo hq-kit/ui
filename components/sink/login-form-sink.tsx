@@ -39,7 +39,6 @@ export default function LoginFormSink() {
                         placeholder='Enter your email'
                     />
                     <TextField
-                        isRevealable
                         isRequired
                         label='Password'
                         type='password'

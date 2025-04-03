@@ -1,11 +1,12 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React from 'react'
 
 import { Heading } from 'react-aria-components'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
-import { Link, Skeleton, cn } from '@/components/ui'
+import { Link, Skeleton } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface TableOfContentsProps {
     title: string
@@ -18,29 +19,8 @@ interface Props {
     items: TableOfContentsProps[]
 }
 
-function useScrollPosition(ref: React.MutableRefObject<HTMLElement | null>) {
-    const [scrollPosition, setScrollPosition] = React.useState(0)
-
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setScrollPosition(ref.current?.scrollTop || 0)
-        }
-
-        ref.current?.addEventListener('scroll', handleScroll)
-
-        return () => {
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-            ref.current?.removeEventListener('scroll', handleScroll)
-        }
-    }, [ref])
-
-    return scrollPosition
-}
-
 export function TableOfContents({ className, items }: Props) {
-    // const [thereIsAnAd, setThereIsAnAd] = React.useState(true)
     const tocRef = React.useRef<HTMLDivElement>(null)
-    const scrollPosition = useScrollPosition(tocRef)
     const ids = items.flatMap((item) => [
         item.url.split('#')[1],
         ...(item.items ? item.items.map((subItem) => subItem.url.split('#')[1]) : [])
@@ -70,14 +50,9 @@ export function TableOfContents({ className, items }: Props) {
                 'top-20',
                 className
             )}
-            style={{
-                WebkitMaskImage: `linear-gradient(to top, transparent 0%, #000 100px, #000 ${
-                    scrollPosition > 30 ? '90%' : '100%'
-                }, transparent 100%)`
-            }}
         >
             <nav aria-labelledby='on-this-page-title' className='xl:w-56'>
-                <Suspense
+                <React.Suspense
                     fallback={
                         <div className='space-y-2'>
                             <Skeleton className='h-3 w-20 animate-pulse' />
@@ -117,7 +92,7 @@ export function TableOfContents({ className, items }: Props) {
                             </ul>
                         )}
                     </>
-                </Suspense>
+                </React.Suspense>
             </nav>
         </aside>
     )

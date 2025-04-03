@@ -4,35 +4,27 @@ import React from 'react'
 
 import { IconCircleCheck, IconTrash } from 'hq-icons'
 
-import { Button, Loader, Popover } from '@/components/ui'
-import { wait } from '@/lib/utils'
+import { Button, Popover } from '@/components/ui'
 
 export default function PopoverControlledDemo() {
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [open, setOpen] = React.useState<boolean>(false)
     const [loading, setLoading] = React.useState<'idle' | 'loading' | 'success'>('idle')
-    const triggerRef = React.useRef(null)
+    const triggerRef = React.useRef<HTMLButtonElement>(null)
 
     const deleteAccount = async () => {
         setLoading('loading')
-        await wait(3000)
+        await new Promise((resolve) => setTimeout(resolve, 2000))
         setLoading('success')
-
-        await wait(2000)
+        await new Promise((resolve) => setTimeout(resolve, 500))
         setLoading('idle')
-        setIsOpen(false)
+        setOpen(false)
     }
     return (
         <>
-            <Button ref={triggerRef} onPress={() => setIsOpen(true)} variant='danger'>
+            <Button ref={triggerRef} onPress={() => setOpen(true)} variant='danger'>
                 Delete Account
             </Button>
-            <Popover.Content
-                aria-label='Delete Account'
-                triggerRef={triggerRef}
-                isOpen={isOpen}
-                onOpenChange={setIsOpen}
-                className='sm:max-w-sm'
-            >
+            <Popover.Content triggerRef={triggerRef} isOpen={open} onOpenChange={setOpen}>
                 <Popover.Header>
                     <Popover.Title>Confirm Deletion</Popover.Title>
                     <Popover.Description>
@@ -40,30 +32,20 @@ export default function PopoverControlledDemo() {
                     </Popover.Description>
                 </Popover.Header>
                 <Popover.Footer>
-                    <Button variant='outline' onPress={() => setIsOpen(false)} className='mr-2'>
+                    <Button variant='outline' onPress={() => setOpen(false)}>
                         Cancel
                     </Button>
                     <Button
-                        isDisabled={loading === 'loading'}
+                        isPending={loading === 'loading'}
+                        variant={loading === 'success' ? 'success' : 'danger'}
                         onPress={deleteAccount}
-                        variant={['loading', 'idle'].includes(loading) ? 'danger' : 'primary'}
                     >
-                        {loading === 'loading' ? (
-                            <>
-                                <Loader variant='spin' />
-                                Deleting...
-                            </>
-                        ) : loading === 'success' ? (
-                            <>
-                                <IconCircleCheck />
-                                Deleted
-                            </>
-                        ) : (
-                            <>
-                                <IconTrash />
-                                Delete
-                            </>
-                        )}
+                        {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
+                        {loading === 'loading'
+                            ? 'Deleting...'
+                            : loading === 'success'
+                              ? 'Deleted'
+                              : 'Delete'}
                     </Button>
                 </Popover.Footer>
             </Popover.Content>

@@ -12,7 +12,7 @@ export default function ColorPickerEnableSelectionFormatDemo() {
     const [space, setSpace] = React.useState<ColorSpace>('rgb')
     return (
         <ColorPicker label={color.toString(space)} value={color} onChange={setColor}>
-            <>
+            <section className='space-y-2'>
                 <ColorArea />
                 <Select
                     aria-label='Color Space'
@@ -38,7 +38,7 @@ export default function ColorPickerEnableSelectionFormatDemo() {
                         ))}
                     </div>
                 ) : null}
-            </>
+            </section>
         </ColorPicker>
     )
 }

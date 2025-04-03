@@ -1,44 +1,34 @@
 'use client'
 
-import { Keyboard as KeyboardPrimitive } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+import React from 'react'
 
-const keyboardStyles = tv({
-    slots: {
-        base: 'group-data-focused:text-fg group-data-hovered:text-fg hidden text-current/70 group-data-disabled:opacity-50 group-data-focused:opacity-90 lg:inline-flex',
-        kbd: 'inline-grid min-h-5 min-w-[2ch] place-content-center rounded text-center font-sans text-[.75rem] uppercase'
-    }
-})
+import { Keyboard as RACKeyboard } from 'react-aria-components'
 
-const { base, kbd } = keyboardStyles()
+import { cn } from '@/lib/utils'
 
-interface KeyboardProps extends React.HTMLAttributes<HTMLElement> {
-    keys: string | string[]
-    classNames?: {
-        base?: string
-        kbd?: string
-    }
-}
-
-const Keyboard = ({ keys, classNames, className, ...props }: KeyboardProps) => {
+const Keyboard = ({
+    keys,
+    className,
+    ...props
+}: React.ComponentProps<typeof RACKeyboard> & { keys: string | string[] }) => {
     return (
-        <KeyboardPrimitive
-            className={base({ className: classNames?.base ?? className })}
+        <RACKeyboard
+            className={cn(
+                'hidden text-current/70 group-hover:text-fg group-focus:text-fg group-focus:opacity-90 group-disabled:opacity-50 sm:inline-flex',
+                className
+            )}
             {...props}
         >
             {(Array.isArray(keys) ? keys : keys.split('')).map((char, index) => (
                 <kbd
                     key={index}
-                    className={kbd({
-                        className: index > 0 && char.length > 1 ? 'pl-1' : classNames?.kbd
-                    })}
+                    className='inline-grid min-h-5 w-fit place-content-center rounded-lg text-center font-sans text-xs uppercase'
                 >
                     {char}
                 </kbd>
             ))}
-        </KeyboardPrimitive>
+        </RACKeyboard>
     )
 }
 
 export { Keyboard }
-export type { KeyboardProps }

@@ -15,7 +15,6 @@ export default function SecuritySetting() {
                 <Card.Content className='grid gap-4'>
                     <TextField
                         prefix={<IconKey />}
-                        isRevealable
                         autoFocus
                         type='password'
                         label='Current Password'
@@ -25,7 +24,6 @@ export default function SecuritySetting() {
                     />
                     <TextField
                         prefix={<IconKey />}
-                        isRevealable
                         type='password'
                         label='New Password'
                         id='new_password'
@@ -34,7 +32,6 @@ export default function SecuritySetting() {
                     />
                     <TextField
                         prefix={<IconKey />}
-                        isRevealable
                         type='password'
                         label='Confirm New Password'
                         id='new_password_confirm'

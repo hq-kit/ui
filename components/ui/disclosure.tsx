@@ -1,167 +1,126 @@
 'use client'
 
+import React from 'react'
+
 import { IconMinus } from 'hq-icons'
 import type {
     ButtonProps,
-    DisclosureGroupProps as DisclosureGroupPrimitiveProps,
-    DisclosurePanelProps as DisclosurePanelPrimitiveProps,
-    DisclosureProps as DisclosurePrimitiveProps
+    DisclosureGroupProps as RACDisclosureGroupProps,
+    DisclosurePanelProps as RACDisclosurePanelProps,
+    DisclosureProps as RACDisclosureProps
 } from 'react-aria-components'
 import {
     Button,
-    DisclosureGroup as DisclosureGroupPrimitive,
-    Disclosure as DisclosurePrimitive,
-    DisclosurePanel as DisclosurePrimitivePanel,
-    Heading
+    composeRenderProps,
+    Disclosure as RACDisclosure,
+    DisclosureGroup as RACDisclosureGroup,
+    DisclosurePanel as RACDisclosurePanel
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
-import { cn, cr, ctr } from './utils'
+import { cn } from '@/lib/utils'
 
-interface AccordionProps extends DisclosureGroupPrimitiveProps {
+interface AccordionProps extends RACDisclosureGroupProps {
     ref?: React.RefObject<HTMLDivElement>
     hideIndicator?: boolean
-    hideBorder?: boolean
 }
 const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
     return (
-        <DisclosureGroupPrimitive
+        <RACDisclosureGroup
             ref={ref}
             data-slot='disclosure-group'
             {...props}
-            className={cn(
-                className,
-                props.hideIndicator && '**:data-[slot=disclosure-chevron]:text-transparent',
-                props.hideBorder &&
-                    '**:data-[slot=disclosure]:border-b-0 **:data-[slot=disclosure-group]:border-t-0',
-                'peer cursor-pointer data-disabled:cursor-not-allowed data-disabled:opacity-75'
+            className={composeRenderProps(className, (className, { isDisabled }) =>
+                cn(
+                    'space-y-1',
+                    props.hideIndicator && '**:data-[slot=indicator]:text-transparent',
+                    isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
+                    className
+                )
             )}
         >
-            {(values) => (
-                <div data-slot='disclosure-content'>
-                    {typeof children === 'function' ? children(values) : children}
-                </div>
-            )}
-        </DisclosureGroupPrimitive>
+            {(values) => <>{typeof children === 'function' ? children(values) : children}</>}
+        </RACDisclosureGroup>
     )
 }
 
-const disclosure = tv({
-    base: ['peer group/disclosure w-full min-w-60 border-b'],
-    variants: {
-        isDisabled: {
-            true: 'cursor-not-allowed opacity-70'
-        }
-    }
-})
-
-interface CollapsibleProps extends DisclosurePrimitiveProps {
+interface CollapsibleProps extends RACDisclosureProps {
     ref?: React.Ref<HTMLDivElement>
 }
 const Disclosure = ({ className, ref, ...props }: CollapsibleProps) => {
     return (
-        <DisclosurePrimitive
+        <RACDisclosure
             ref={ref}
             data-slot='disclosure'
             {...props}
-            className={cr(className, (className, renderProps) =>
-                disclosure({ ...renderProps, className })
+            className={composeRenderProps(className, (className, { isDisabled }) =>
+                cn(
+                    'w-full min-w-60',
+                    isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
+                    className
+                )
             )}
         >
             {props.children}
-        </DisclosurePrimitive>
+        </RACDisclosure>
     )
 }
-
-const disclosureTrigger = tv({
-    base: [
-        'group/trigger **:svg:text-muted-fg flex w-full items-center justify-between gap-x-2 py-3 font-medium whitespace-nowrap **:data-[slot=disclosure-chevron]:size-4 **:data-[slot=icon]:-mx-0.5 **:data-[slot=icon]:shrink-0 sm:text-sm **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1 [&[aria-expanded=true]_[data-slot=disclosure-chevron]]:rotate-0'
-    ],
-    variants: {
-        isFocused: {
-            true: 'text-fg outline-hidden'
-        },
-        isOpen: {
-            true: 'text-fg'
-        },
-        isDisabled: {
-            true: 'cursor-default opacity-50'
-        }
-    }
-})
 
 interface DisclosureTriggerProps extends ButtonProps {
     ref?: React.Ref<HTMLButtonElement>
 }
 const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps) => {
     return (
-        <Heading>
-            <Button
-                ref={ref}
-                slot='trigger'
-                className={cr(className, (className, renderProps) =>
-                    disclosureTrigger({
-                        ...renderProps,
-                        className
-                    })
-                )}
-                {...props}
-            >
-                {(values) => (
-                    <>
-                        {typeof props.children === 'function'
-                            ? props.children(values)
-                            : props.children}
-                        <Indicator
-                            slot='disclosure-chevron'
-                            className='internal-chevron ml-auto shrink-0'
-                        />
-                    </>
-                )}
-            </Button>
-        </Heading>
-    )
-}
-
-interface DisclosureContentProps extends DisclosurePanelPrimitiveProps {
-    ref?: React.Ref<HTMLDivElement>
-}
-const DisclosurePanel = ({ className, ref, ...props }: DisclosureContentProps) => {
-    return (
-        <DisclosurePrimitivePanel
+        <Button
             ref={ref}
-            data-slot='disclosure-panel'
-            className={ctr(
-                className,
-                'text-muted-fg overflow-hidden text-sm transition-all **:data-[slot=disclosure-group]:border-t **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden has-data-[slot=disclosure-group]:**:[button]:px-4'
+            slot='trigger'
+            className={composeRenderProps(className, (className, { isFocusVisible, isDisabled }) =>
+                cn(
+                    'flex w-full rounded-lg items-center justify-between gap-2 py-2 font-medium whitespace-nowrap sm:text-sm aria-expanded:**:data-[slot=indicator]:rotate-0',
+                    isFocusVisible && 'text-fg outline-2 outline-offset-2 outline-primary',
+                    isDisabled && 'cursor-default opacity-50',
+                    className
+                )
             )}
             {...props}
         >
-            <div
-                data-slot='disclosure-panel-content'
-                className='pt-0 not-has-data-[slot=disclosure-group]:group-data-expanded/disclosure:pb-3'
-            >
-                {props.children}
-            </div>
-        </DisclosurePrimitivePanel>
+            {(values) => (
+                <>
+                    {typeof props.children === 'function' ? props.children(values) : props.children}
+                    <div
+                        data-slot='indicator'
+                        className={cn(
+                            className,
+                            'relative ml-auto inline-flex size-5 -rotate-90 items-center justify-center transition-transform duration-300'
+                        )}
+                    >
+                        <IconMinus data-slot='indicator-static' className='absolute size-3.5' />
+                        <IconMinus
+                            data-slot='indicator'
+                            className='absolute size-3.5 -rotate-90 transition-transform duration-300'
+                        />
+                    </div>
+                </>
+            )}
+        </Button>
     )
 }
 
-const Indicator = ({ className, slot = 'chevron' }: { className?: string; slot?: string }) => (
-    <div
-        data-slot={slot}
-        className={cn(
-            className,
-            'relative inline-flex size-5 -rotate-90 items-center justify-center transition-transform duration-300'
-        )}
-    >
-        <IconMinus data-slot='chevron-passive' className='absolute size-3.5' />
-        <IconMinus
-            data-slot={slot}
-            className='absolute size-3.5 -rotate-90 transition-transform duration-300'
-        />
-    </div>
-)
+interface DisclosureContentProps extends RACDisclosurePanelProps {
+    ref?: React.Ref<HTMLDivElement>
+}
+
+const DisclosurePanel = ({ className, ref, children, ...props }: DisclosureContentProps) => {
+    return (
+        <RACDisclosurePanel
+            ref={ref}
+            data-slot='disclosure-content'
+            className={cn('text-sm', className)}
+            {...props}
+        >
+            {children}
+        </RACDisclosurePanel>
+    )
+}
 
 const Accordion = (props: AccordionProps) => <DisclosureGroup {...props} />
 Accordion.Item = Disclosure
@@ -172,5 +131,4 @@ const Collapsible = (props: CollapsibleProps) => <Disclosure {...props} />
 Collapsible.Trigger = DisclosureTrigger
 Collapsible.Content = DisclosurePanel
 
-export { Accordion, Collapsible, Indicator }
-export type { AccordionProps, CollapsibleProps, DisclosureContentProps, DisclosureTriggerProps }
+export { Accordion, Collapsible }

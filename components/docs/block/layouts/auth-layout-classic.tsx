@@ -16,7 +16,7 @@ export default function AuthLayoutClassic({
                     <Card.Title>{title}</Card.Title>
                     <Card.Description>{description}</Card.Description>
                 </Card.Header>
-                <Card.Content>{children}</Card.Content>
+                <Card.Content className='pb-6'>{children}</Card.Content>
             </Card>
         </div>
     )

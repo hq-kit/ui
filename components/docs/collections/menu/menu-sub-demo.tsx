@@ -1,56 +1,41 @@
 'use client'
 
-import { Button, Menu } from '@/components/ui'
+import { Menu } from '@/components/ui'
 
 export default function MenuSubDemo() {
     return (
         <Menu>
-            <Button variant='outline'>Open</Button>
-            <Menu.Content placement='bottom'>
+            <Menu.Trigger>Open</Menu.Trigger>
+            <Menu.Content>
                 <Menu.Item>
-                    <Menu.Label>Dashboard</Menu.Label>
+                    <Menu.Label>View</Menu.Label>
                 </Menu.Item>
-                <Menu.Item>
-                    <Menu.Label>Reports</Menu.Label>
-                </Menu.Item>
-                <Menu.Separator />
                 <Menu.Submenu>
                     <Menu.Item>
-                        <Menu.Label>Settings</Menu.Label>
+                        <Menu.Label>Options</Menu.Label>
                     </Menu.Item>
                     <Menu.Content>
                         <Menu.Item>
-                            <Menu.Label>General</Menu.Label>
+                            <Menu.Label>Edit</Menu.Label>
                         </Menu.Item>
-                        <Menu.Item>
-                            <Menu.Label>Security</Menu.Label>
-                        </Menu.Item>
-                        <Menu.Separator />
                         <Menu.Submenu>
-                            <Menu.Item>
-                                <Menu.Label>Privacy</Menu.Label>
+                            <Menu.Item isDanger>
+                                <Menu.Label>Delete</Menu.Label>
                             </Menu.Item>
                             <Menu.Content>
                                 <Menu.Item>
-                                    <Menu.Label>Data Sharing</Menu.Label>
+                                    <Menu.Label>For Everyone</Menu.Label>
                                 </Menu.Item>
-                                <Menu.Item>
-                                    <Menu.Label>Cookies</Menu.Label>
-                                </Menu.Item>
-                                <Menu.Separator />
                                 <Menu.Submenu>
                                     <Menu.Item>
-                                        <Menu.Label>Advanced</Menu.Label>
+                                        <Menu.Label>For Me</Menu.Label>
                                     </Menu.Item>
                                     <Menu.Content>
                                         <Menu.Item>
-                                            <Menu.Label>Encryption</Menu.Label>
+                                            <Menu.Label>Permanently</Menu.Label>
                                         </Menu.Item>
                                         <Menu.Item>
-                                            <Menu.Label>Access Logs</Menu.Label>
-                                        </Menu.Item>
-                                        <Menu.Item>
-                                            <Menu.Label>API Keys</Menu.Label>
+                                            <Menu.Label>Temporary</Menu.Label>
                                         </Menu.Item>
                                     </Menu.Content>
                                 </Menu.Submenu>

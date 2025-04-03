@@ -48,7 +48,7 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
                     Copy the code below and paste it into your component folder.
                 </Description>
             )}
-            <Tabs onSelectionChange={() => setIsOpened(false)}>
+            <Tabs className='mt-2' onSelectionChange={() => setIsOpened(false)}>
                 <Tabs.List items={codeStrings}>
                     {(item) => (
                         <Tabs.Label key={item.name} id={`tab-${item.name}`}>

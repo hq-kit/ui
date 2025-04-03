@@ -57,8 +57,8 @@ const useMediaQuery = (query: string) => {
     const [value, setValue] = React.useState(false)
 
     React.useEffect(() => {
-        const onChange = (event: MediaQueryListEvent) => {
-            setValue(event.matches)
+        const onChange = (e: MediaQueryListEvent) => {
+            setValue(e.matches)
         }
 
         const result = matchMedia(query)
@@ -78,6 +78,7 @@ const VisuallyHidden = ({ children }: { children: React.ReactNode }) => {
 
 export {
     cn,
+    composeTailwindRenderProps as compose,
     composeRenderProps as cr,
     composeTailwindRenderProps as ctr,
     focusButtonStyles,

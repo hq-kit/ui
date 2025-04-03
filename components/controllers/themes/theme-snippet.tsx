@@ -31,7 +31,7 @@ export default function ThemeSnippet({ code = 'TEST' }: { code: string }) {
             <Modal.Trigger className={buttonStyles({ variant: 'outline' })}>
                 <IconClipboard /> Copy
             </Modal.Trigger>
-            <Modal.Content size='3xl' isBlurred aria-label='Theme Snippet'>
+            <Modal.Content size='3xl' aria-label='Theme Snippet'>
                 <Modal.Header>
                     <Modal.Title>Custom Styles</Modal.Title>
                     <Modal.Description>Copy this code to your .css file</Modal.Description>

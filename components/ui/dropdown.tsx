@@ -4,9 +4,9 @@ import { IconCheck } from 'hq-icons'
 import {
     Collection,
     Header,
-    ListBoxItem as ListBoxItemPrimitive,
     type ListBoxItemProps,
     ListBoxSection,
+    ListBoxItem as RACListBoxItem,
     type SectionProps,
     Separator,
     type SeparatorProps,
@@ -16,53 +16,45 @@ import {
 import { tv } from 'tailwind-variants'
 
 import { Keyboard } from './keyboard'
-import { cn, cr } from './utils'
+import { cn, compose, cr } from './utils'
 
-const dropdownItemStyles = tv({
+const itemStyles = tv({
     base: [
-        'col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] not-has-data-[slot=dropdown-item-details]:items-center has-data-[slot=dropdown-item-details]:**:data-[slot=checked-icon]:mt-[1.5px] supports-[grid-template-columns:subgrid]:grid-cols-subgrid',
-        'group text-fg relative cursor-default rounded-[calc(var(--radius-lg)-1px)] px-[calc(var(--spacing)*2.3)] py-[calc(var(--spacing)*1.3)] text-base outline-0 select-none sm:text-sm/6',
-        '**:data-avatar:mr-2 **:data-avatar:size-6 **:data-avatar:*:mr-2 **:data-avatar:*:size-6 sm:**:data-avatar:size-5 sm:**:data-avatar:*:size-5',
-        'data-danger:**:data-[slot=icon]:text-danger/60 **:data-[slot=icon]:text-muted-fg data-focused:data-danger:**:data-[slot=icon]:text-danger **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0',
-        '*:data-[slot=icon]:mr-2 data-[slot=menu-radio]:*:data-[slot=icon]:size-4',
-        '[&>[slot=label]+[data-slot=icon]]:absolute [&>[slot=label]+[data-slot=icon]]:right-0'
+        'group relative grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] *:grid-cols-subgrid col-span-full items-center',
+        'rounded-md px-2 py-1.5 text-base sm:text-sm/6 outline-hidden select-none',
+        '**:[svg]:size-4 *:data-[slot=icon]:mr-2'
     ],
     variants: {
-        isDisabled: {
-            true: 'text-muted-fg'
+        isDanger: {
+            true: 'text-danger **:text-danger focus:bg-danger/20',
+            false: 'text-fg **:text-fg'
         },
+        isOpen: { true: 'bg-accent text-accent-fg *:[.text-muted-fg]:text-accent-fg' },
+        isFocused: { true: 'bg-accent text-accent-fg' },
         isSelected: {
             true: '**:data-avatar:hidden **:data-avatar:*:hidden **:data-[slot=icon]:hidden'
         },
-        isFocused: {
-            false: 'data-danger:text-danger',
-            true: [
-                '**:data-[slot=icon]:text-primary-fg **:[kbd]:text-primary-fg',
-                'bg-primary text-primary-fg',
-                'data-danger:bg-danger/10 data-danger:text-danger',
-                'data-[slot=description]:text-primary-fg data-[slot=label]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80'
-            ]
+        isDisabled: {
+            true: 'pointer-events-none opacity-50'
         }
     }
 })
 
-const dropdownSectionStyles = tv({
-    slots: {
-        section: 'sect col-span-full grid grid-cols-[auto_1fr]',
-        header: 'text-muted-fg col-span-full px-2.5 py-1 text-sm font-medium sm:text-xs'
-    }
+const sectionStyles = tv({
+    base: 'col-span-full grid grid-cols-[auto_1fr] mt-2 *:[header]:text-muted-fg *:[header]:col-span-full *:[header]:px-2 *:[header]:pointer-events-none'
 })
-
-const { section, header } = dropdownSectionStyles()
 
 interface DropdownSectionProps<T> extends SectionProps<T> {
     title?: string
 }
 
-const DropdownSection = <T extends object>({ className, ...props }: DropdownSectionProps<T>) => {
+const DropdownSection = <T extends object>({
+    className,
+    ...props
+}: SectionProps<T> & { title?: string }) => {
     return (
-        <ListBoxSection className={section({ className })}>
-            {'title' in props && <Header className={header()}>{props.title}</Header>}
+        <ListBoxSection className={sectionStyles({ className })}>
+            {'title' in props && <Header>{props.title}</Header>}
             <Collection items={props.items}>{props.children}</Collection>
         </ListBoxSection>
     )
@@ -74,16 +66,14 @@ const DropdownItem = ({ className, ...props }: DropdownItemProps) => {
     const textValue =
         props.textValue || (typeof props.children === 'string' ? props.children : undefined)
     return (
-        <ListBoxItemPrimitive
+        <RACListBoxItem
             textValue={textValue}
-            className={cr(className, (className, renderProps) =>
-                dropdownItemStyles({ ...renderProps, className })
-            )}
+            className={compose(className, itemStyles())}
             {...props}
         >
             {cr(props.children, (children, { isSelected }) => (
                 <>
-                    {isSelected && <IconCheck data-slot='checked-icon' className='mr-2 size-4' />}
+                    {isSelected && <IconCheck role='checked' className='mr-2 size-4' />}
                     {typeof children === 'string' ? (
                         <DropdownLabel>{children}</DropdownLabel>
                     ) : (
@@ -91,7 +81,7 @@ const DropdownItem = ({ className, ...props }: DropdownItemProps) => {
                     )}
                 </>
             ))}
-        </ListBoxItemPrimitive>
+        </RACListBoxItem>
     )
 }
 
@@ -113,11 +103,7 @@ const DropdownItemDetails = ({
     const { slot, children, title, ...restProps } = props
 
     return (
-        <div
-            data-slot='dropdown-item-details'
-            className='col-start-2 flex flex-col gap-y-1'
-            {...restProps}
-        >
+        <div data-slot='item-details' className='col-start-2 flex flex-col gap-y-1' {...restProps}>
             {label && (
                 <Text
                     slot={slot ?? 'label'}
@@ -164,11 +150,11 @@ const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof K
 export {
     DropdownItem,
     DropdownItemDetails,
-    dropdownItemStyles,
     DropdownKeyboard,
     DropdownLabel,
     DropdownSection,
-    dropdownSectionStyles,
-    DropdownSeparator
+    DropdownSeparator,
+    itemStyles,
+    sectionStyles
 }
 export type { DropdownItemDetailProps, DropdownItemProps, DropdownSectionProps }

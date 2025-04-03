@@ -1,14 +1,13 @@
 'use client'
 
-import { useTheme } from 'next-themes'
-
 import { Switch } from '@/components/ui'
 
 export default function SwitchDemo() {
-    const { resolvedTheme, setTheme } = useTheme()
     return (
-        <Switch onChange={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}>
-            Switch Theme
-        </Switch>
+        <div className='grid grid-cols-3 gap-3'>
+            <Switch>Default</Switch>
+            <Switch isReadOnly>Read Only</Switch>
+            <Switch isDisabled>Disabled</Switch>
+        </div>
     )
 }

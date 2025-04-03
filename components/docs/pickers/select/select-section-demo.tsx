@@ -1,169 +1,88 @@
-'use client'
-
 import { Select } from '@/components/ui'
 
-export default function SelectSectionDemo() {
-    return (
-        <Select
-            defaultSelectedKey={1}
-            aria-label='Countries'
-            placeholder='Select a country'
-            items={countries}
-        >
-            {(country) => (
-                <Select.Section title={country.name} items={country.cities}>
-                    {(city) => <Select.Item textValue={city.name}>{city.name}</Select.Item>}
-                </Select.Section>
-            )}
-        </Select>
-    )
-}
-
-const countries = [
+const items = [
     {
-        id: 1,
-        name: 'Egypt',
-        cities: [
+        id: '1',
+        name: 'Debian',
+        distros: [
             {
-                id: 101,
-                name: 'Cairo'
+                id: '1-1',
+                name: 'MX'
             },
             {
-                id: 102,
-                name: 'Alexandria'
+                id: '1-2',
+                name: 'Kali'
             },
             {
-                id: 103,
-                name: 'Giza'
-            },
-            {
-                id: 104,
-                name: 'Luxor'
+                id: '1-3',
+                name: 'Deepin'
             }
         ]
     },
     {
-        id: 2,
-        name: 'Indonesia',
-        cities: [
+        id: '2',
+        name: 'Ubuntu',
+        distros: [
             {
-                id: 201,
-                name: 'Jakarta'
+                id: '2-1',
+                name: 'Mint'
             },
             {
-                id: 202,
-                name: 'Bali'
+                id: '2-2',
+                name: 'KDE Neon'
             },
             {
-                id: 203,
-                name: 'Surabaya'
-            },
-            {
-                id: 204,
-                name: 'Bandung'
-            },
-            {
-                id: 205,
-                name: 'Medan'
+                id: '2-3',
+                name: 'Zorin'
             }
         ]
     },
     {
-        id: 3,
-        name: 'United States',
-        cities: [
+        id: '3',
+        name: 'Fedora',
+        distros: [
             {
-                id: 301,
-                name: 'New York City'
+                id: '3-1',
+                name: 'CentOS'
             },
             {
-                id: 302,
-                name: 'Los Angeles'
+                id: '3-2',
+                name: 'Alma'
             },
             {
-                id: 303,
-                name: 'Chicago'
-            },
-            {
-                id: 304,
-                name: 'Houston'
+                id: '3-3',
+                name: 'Nobara'
             }
         ]
     },
     {
         id: 4,
-        name: 'Canada',
-        cities: [
+        name: 'Arch',
+        distros: [
             {
-                id: 401,
-                name: 'Toronto'
+                id: '4-1',
+                name: 'Endeavour'
             },
             {
-                id: 402,
-                name: 'Vancouver'
+                id: '4-2',
+                name: 'Garuda'
             },
             {
-                id: 403,
-                name: 'Montreal'
-            }
-        ]
-    },
-    {
-        id: 5,
-        name: 'Australia',
-        cities: [
-            {
-                id: 501,
-                name: 'Sydney'
-            },
-            {
-                id: 502,
-                name: 'Melbourne'
-            },
-            {
-                id: 503,
-                name: 'Brisbane'
-            }
-        ]
-    },
-    {
-        id: 6,
-        name: 'Germany',
-        cities: [
-            {
-                id: 601,
-                name: 'Berlin'
-            },
-            {
-                id: 602,
-                name: 'Munich'
-            },
-            {
-                id: 603,
-                name: 'Frankfurt'
-            },
-            {
-                id: 604,
-                name: 'Hamburg'
-            }
-        ]
-    },
-    {
-        id: 7,
-        name: 'Japan',
-        cities: [
-            {
-                id: 701,
-                name: 'Tokyo'
-            },
-            {
-                id: 702,
-                name: 'Osaka'
-            },
-            {
-                id: 703,
-                name: 'Kyoto'
+                id: '4-3',
+                name: 'CachyOS'
             }
         ]
     }
 ]
+
+export default function SelectSectionDemo() {
+    return (
+        <Select label='Linux Distro' items={items}>
+            {(item) => (
+                <Select.Section title={item.name} items={item.distros}>
+                    {(distro) => <Select.Item id={distro.id}>{distro.name}</Select.Item>}
+                </Select.Section>
+            )}
+        </Select>
+    )
+}

@@ -1,6 +1,4 @@
-'use client'
-
-import { IconEllipsisVertical, IconEye, IconHighlighter, IconTrash } from 'hq-icons'
+import { IconEllipsisVertical, IconEye, IconPencil, IconTrash } from 'hq-icons'
 
 import { Card, Menu, Pagination, Table } from '@/components/ui'
 
@@ -34,16 +32,19 @@ export default function CardTableDemo() {
                                         <Menu.Trigger>
                                             <IconEllipsisVertical />
                                         </Menu.Trigger>
-                                        <Menu.Content showArrow placement='left top'>
+                                        <Menu.Content placement='left top'>
                                             <Menu.Item>
-                                                <IconEye /> View
+                                                <IconEye />
+                                                <Menu.Label>View</Menu.Label>
                                             </Menu.Item>
                                             <Menu.Item>
-                                                <IconHighlighter /> Edit
+                                                <IconPencil />
+                                                <Menu.Label>Edit</Menu.Label>
                                             </Menu.Item>
                                             <Menu.Separator />
                                             <Menu.Item isDanger>
-                                                <IconTrash /> Delete
+                                                <IconTrash />
+                                                <Menu.Label>Delete</Menu.Label>
                                             </Menu.Item>
                                         </Menu.Content>
                                     </Menu>
@@ -53,32 +54,23 @@ export default function CardTableDemo() {
                     </Table.Body>
                 </Table>
             </Card.Content>
-            <Card.Footer>
+            <Card.Footer className='justify-between gap-2'>
+                <div className='text-muted-fg text-sm'>Showing 1 to 10 of 50 entries</div>
                 <Pagination>
-                    <Pagination.List>
-                        <Pagination.Item role='first' />
-                        <Pagination.Item role='previous' />
-                        <Pagination.Section className='rounded-lg border lg:hidden'>
-                            <Pagination.Item role='label'>1</Pagination.Item>
-                            <Pagination.Item role='separator' />
-                            <Pagination.Item className='text-muted-fg' role='label'>
-                                {users.length}
-                            </Pagination.Item>
-                        </Pagination.Section>
-                        <Pagination.Section className='hidden lg:flex' items={pages}>
-                            {(item) => (
-                                <Pagination.Item
-                                    id={item.value.toString()}
-                                    isCurrent={item.value === 4}
-                                    href='#'
-                                >
-                                    {item.value}
-                                </Pagination.Item>
-                            )}
-                        </Pagination.Section>
-                        <Pagination.Item role='next' />
-                        <Pagination.Item role='last' />
-                    </Pagination.List>
+                    <Pagination.Item role='first' href='#first' />
+                    <Pagination.Item role='previous' href='#previous' />
+                    <Pagination.Label className='lg:hidden' current={2} total={5} />
+                    <Pagination.Pages className='hidden lg:flex'>
+                        <Pagination.Item href='#1'>1</Pagination.Item>
+                        <Pagination.Item isCurrent href='#2'>
+                            2
+                        </Pagination.Item>
+                        <Pagination.Item href='#3'>3</Pagination.Item>
+                        <Pagination.Item role='ellipsis' />
+                        <Pagination.Item href='#5'>5</Pagination.Item>
+                    </Pagination.Pages>
+                    <Pagination.Item role='next' href='#next' />
+                    <Pagination.Item role='last' href='#last' />
                 </Pagination>
             </Card.Footer>
         </Card>
@@ -157,4 +149,3 @@ const users = [
         occupation: 'Writer'
     }
 ]
-const pages = Array.from({ length: users.length / 2 }, (_, i) => ({ value: i + 1 }))

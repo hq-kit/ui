@@ -20,7 +20,7 @@ export default function AuthLayoutOverlay({
                         <Modal.Title>{title}</Modal.Title>
                         <Modal.Description>{description}</Modal.Description>
                     </Modal.Header>
-                    <Modal.Body>{children}</Modal.Body>
+                    <Modal.Body className='pb-4'>{children}</Modal.Body>
                 </Modal.Content>
             </Modal>
         </div>

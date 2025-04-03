@@ -35,13 +35,11 @@ function UserMenu() {
             <Menu.Trigger className='ml-auto md:hidden' aria-label='Open Menu'>
                 <Avatar alt='DQ Al-Haqqi' src='https://github.com/dq-alhq.png' />
             </Menu.Trigger>
-            <Menu.Content placement='bottom' showArrow className='sm:min-w-64'>
-                <Menu.Section>
-                    <Menu.Header separator>
-                        <span className='block'>DQ Al-Haqqi</span>
-                        <span className='text-muted-fg font-normal'>@dq-alhq</span>
-                    </Menu.Header>
-                </Menu.Section>
+            <Menu.Content placement='bottom' className='sm:min-w-64'>
+                <Menu.Header>
+                    <span className='block'>DQ Al-Haqqi</span>
+                    <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                </Menu.Header>
                 <Menu.Item href='#dashboard'>
                     <IconGauge />
                     <Menu.Label>Dashboard</Menu.Label>

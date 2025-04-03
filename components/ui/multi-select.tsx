@@ -1,342 +1,261 @@
 'use client'
 
-import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
+import React from 'react'
 
-import { IconChevronDown } from 'hq-icons'
-import { useFilter } from 'react-aria'
+import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
 import type {
-    ComboBoxProps as ComboBoxPrimitiveProps,
+    ComboBoxProps,
+    GroupProps,
     Key,
-    ValidationResult
+    ListBoxItemProps,
+    ListBoxProps,
+    Selection
 } from 'react-aria-components'
-import { ComboBox } from 'react-aria-components'
-import type { ListData } from 'react-stately'
-import { useListData } from 'react-stately'
-import { tv } from 'tailwind-variants'
+import {
+    Button,
+    ComboBox,
+    composeRenderProps,
+    Group,
+    Input,
+    ListBox,
+    ListBoxItem,
+    Popover,
+    Tag,
+    TagGroup,
+    TagList,
+    Text
+} from 'react-aria-components'
 
-import { Button } from './button'
-import type { FieldProps } from './field'
-import { Description, FieldError, Input, Label } from './field'
-import { ListBox } from './list-box'
-import { Popover } from './popover'
-import type { RestrictedVariant, TagGroupProps } from './tag-group'
-import { Tag } from './tag-group'
-import { VisuallyHidden, cn } from './utils'
+import { cn } from '@/lib/utils'
 
-const multiSelectStyles = tv({
-    slots: {
-        multiSelectField: 'group flex w-full min-w-80 flex-col',
-        multiSelect: [
-            'relative flex min-h-10 flex-row flex-wrap items-center rounded-lg border px-1 transition',
-            'has-[input[data-focused=true]]:border-primary/70',
-            'has-[input[data-invalid=true][data-focused=true]]:border-primary/70',
-            'has-[input[data-invalid=true]]:border-danger',
-            'has-[input[data-focused=true]]:ring-primary/20 has-[input[data-focused=true]]:ring-4',
-            'has-[input[data-disabled=false][data-focused=true]]:border-primary/60'
-        ],
-        chevronButton:
-            'text-muted-fg focus:text-fg hover:text-fg -mr-2 grid size-8 cursor-pointer place-content-center rounded-lg',
-        input: 'ml-1 flex-1 px-0.5 py-1 ring-0 shadow-none',
-        comboBoxChild: 'inline-flex flex-1 flex-wrap items-center px-0',
-        comboBox: 'group peer flex flex-1'
-    }
-})
+import { Description, FieldGroup, FieldProps, Label } from './field'
 
-const { multiSelectField, multiSelect, chevronButton, input, comboBox, comboBoxChild } =
-    multiSelectStyles()
-
-interface SelectedKey {
-    id: Key
-    name: string
-}
-
-interface MultiSelectProps<T extends object>
-    extends FieldProps,
-        Omit<
-            ComboBoxPrimitiveProps<T>,
-            | 'children'
-            | 'validate'
-            | 'allowsEmptyCollection'
-            | 'inputValue'
-            | 'selectedKey'
-            | 'className'
-            | 'value'
-            | 'onSelectionChange'
-            | 'onInputChange'
+interface MultiSelectProps<T>
+    extends ListBoxProps<T>,
+        Pick<
+            ComboBoxProps<T & { selectedKeys: Selection }>,
+            'isRequired' | 'validate' | 'validationBehavior'
         >,
-        Pick<TagGroupProps, 'shape'> {
-    variant?: RestrictedVariant
-    items: Array<T>
-    selectedItems: ListData<T>
+        FieldProps,
+        Pick<GroupProps, 'isDisabled' | 'isInvalid'> {
     className?: string
-    onItemInserted?: (key: Key) => void
-    onItemCleared?: (key: Key) => void
-    renderEmptyState?: (inputValue: string) => React.ReactNode
-    tag: (item: T) => React.ReactNode
-    children: React.ReactNode | ((item: T) => React.ReactNode)
-    errorMessage?: string | ((validation: ValidationResult) => string)
+    errorMessage?: string
     portal?: Element
 }
 
-const MultiSelect = <T extends SelectedKey>({
-    children,
-    items,
-    selectedItems,
-    onItemCleared,
-    onItemInserted,
-    className,
-    name,
-    renderEmptyState,
-    errorMessage,
-    ...props
-}: MultiSelectProps<T>) => {
-    const tagGroupIdentifier = useId()
-    const triggerRef = useRef<HTMLDivElement | null>(null)
-    const [width, setWidth] = useState(0)
+const MultiSelect = <T extends object>({ className, children, ...props }: MultiSelectProps<T>) => {
+    const triggerRef = React.useRef<HTMLDivElement>(null)
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const [inputValue, setInputValue] = React.useState('')
+    const [selectedKeys, onSelectionChange] = React.useState<Selection>(new Set(props.selectedKeys))
 
-    const { contains } = useFilter({ sensitivity: 'base' })
-    const selectedKeys = selectedItems.items.map((i) => i.id)
+    React.useEffect(() => {
+        setInputValue('')
+    }, [props.selectedKeys, selectedKeys])
 
-    const filter = useCallback(
-        (item: T, filterText: string) => {
-            return !selectedKeys.includes(item.id) && contains(item.name, filterText)
-        },
-        [contains, selectedKeys]
-    )
-
-    const accessibleList = useListData({
-        initialItems: items,
-        filter
-    })
-
-    const [fieldState, setFieldState] = useState<{
-        selectedKey: Key | null
-        inputValue: string
-    }>({
-        selectedKey: null,
-        inputValue: ''
-    })
-
-    const onRemove = useCallback(
-        (keys: Set<Key>) => {
-            const key = keys.values().next().value
-            if (key) {
-                selectedItems.remove(key)
-                setFieldState({
-                    inputValue: '',
-                    selectedKey: null
-                })
-                onItemCleared?.(key)
-            }
-        },
-        [selectedItems, onItemCleared]
-    )
-
-    const onSelectionChange = (id: Key | null) => {
-        if (!id) {
-            return
-        }
-
-        const item = accessibleList.getItem(id)
-
-        if (!item) {
-            return
-        }
-
-        if (!selectedKeys.includes(id)) {
-            selectedItems.append(item)
-            setFieldState({
-                inputValue: '',
-                selectedKey: id
-            })
-            onItemInserted?.(id)
-        }
-
-        accessibleList.setFilterText('')
+    const addItem = (e: Key | null) => {
+        if (!e) return
+        onSelectionChange?.((s) => new Set([...s, e!]))
+        // @ts-expect-error incompatible type Key and Selection
+        props.onSelectionChange?.((s) => new Set([...s, e!]))
     }
 
-    const onInputChange = (value: string) => {
-        setFieldState((prev) => ({
-            inputValue: value,
-            selectedKey: value === '' ? null : prev.selectedKey
-        }))
-
-        accessibleList.setFilterText(value)
+    const removeItem = (e: Set<Key>) => {
+        onSelectionChange?.((s) => new Set([...s].filter((i) => i !== e.values().next().value)))
+        props.onSelectionChange?.(
+            // @ts-expect-error incompatible type Key and Selection
+            (s) => new Set([...s].filter((i) => i !== e.values().next().value))
+        )
     }
 
-    const popLast = useCallback(() => {
-        if (selectedItems.items.length === 0) {
-            return
+    const onKeyDownCapture = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Backspace' && inputValue === '') {
+            onSelectionChange?.((s) => new Set([...s].slice(0, -1)))
+            // @ts-expect-error incompatible type Key and Selection
+            props.onSelectionChange?.((s) => new Set([...s].slice(0, -1)))
         }
+    }
 
-        const endKey = selectedItems.items[selectedItems.items.length - 1]
-
-        if (endKey) {
-            selectedItems.remove(endKey.id)
-            onItemCleared?.(endKey.id)
-        }
-
-        setFieldState({
-            inputValue: '',
-            selectedKey: null
-        })
-    }, [selectedItems, onItemCleared])
-
-    const onKeyDownCapture = useCallback(
-        (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Backspace' && fieldState.inputValue === '') {
-                popLast()
-            }
-        },
-        [popLast, fieldState.inputValue]
-    )
-
-    useEffect(() => {
-        const trigger = triggerRef.current
-        if (!trigger) return
-
-        const observer = new ResizeObserver((entries) => {
-            for (const entry of entries) {
-                setWidth(entry.target.clientWidth)
-            }
-        })
-
-        observer.observe(trigger)
-        return () => {
-            observer.unobserve(trigger)
-        }
-    }, [])
-
-    const triggerButtonRef = useRef<HTMLButtonElement | null>(null)
+    const items = props.items
+        ? // @ts-expect-error unknown type
+          props.items.map((item) => ({ id: item.id, name: item.name }))
+        : React.Children.map(
+              children as React.ReactNode,
+              (child) => React.isValidElement(child) && child.props
+              // @ts-expect-error unknown type
+          )?.map((item) => ({ id: item.id, name: item.textValue }))
 
     return (
-        <div className={multiSelectField({ className })}>
-            {props.label && <Label className='mb-1'>{props.label}</Label>}
-            <div className={props.isDisabled ? 'opacity-50' : ''}>
-                <div
-                    ref={triggerRef}
-                    className={cn(
-                        multiSelect({ className }),
-                        !props.isDisabled && 'group-hover:border-primary/60'
+        <Group
+            isInvalid={props.isInvalid}
+            isDisabled={props.isDisabled}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex h-fit flex-col gap-y-1.5', className)
+            )}
+            ref={triggerRef}
+        >
+            {({ isInvalid, isDisabled }) => (
+                <>
+                    {props.label && (
+                        <Label
+                            onClick={() => inputRef.current?.focus()}
+                            isInvalid={isInvalid}
+                            isDisabled={isDisabled}
+                        >
+                            {props.label}
+                        </Label>
                     )}
-                >
-                    <Tag.Group
-                        shape={props.shape}
-                        variant={props.variant}
-                        aria-label='Selected items'
-                        id={tagGroupIdentifier}
-                        onRemove={onRemove}
+                    <FieldGroup
+                        isDisabled={isDisabled}
+                        isInvalid={isInvalid}
+                        className='flex min-h-10 h-fit flex-wrap items-center py-1'
                     >
-                        <Tag.List
-                            items={selectedItems.items}
-                            className={cn(
-                                selectedItems.items.length !== 0 && 'px-1 py-1.5',
-                                'gap-1.5 outline-hidden [&_.tag]:last:-mr-1',
-                                props.shape === 'rounded' &&
-                                    '[&_.tag]:rounded-[calc(var(--radius-lg)-4px)]'
-                            )}
+                        <TagGroup onRemove={removeItem} aria-hidden aria-label='Selected'>
+                            <TagList
+                                className='flex flex-1 flex-wrap gap-1 pl-2 empty:pl-0'
+                                items={items.filter((i: { id: Key }) =>
+                                    [...selectedKeys].includes(i.id)
+                                )}
+                            >
+                                {(item: { id: Key; name: string }) => (
+                                    <Tag
+                                        isDisabled={isDisabled}
+                                        id={item.id}
+                                        className={({ isFocusVisible }) =>
+                                            cn(
+                                                'inline-flex items-center justify-between gap-1 rounded-lg border px-2 py-0.5 text-sm outline-hidden',
+                                                isInvalid
+                                                    ? 'bg-danger/10 text-danger border-danger/70'
+                                                    : 'bg-primary/10 text-primary border-primary/70',
+                                                isFocusVisible &&
+                                                    `ring-2 ${isInvalid ? 'ring-danger/70' : 'ring-primary/70'}`
+                                            )
+                                        }
+                                        textValue={item.name}
+                                    >
+                                        {item.name}
+                                        <Button
+                                            slot='remove'
+                                            className={({ isHovered, isPressed }) =>
+                                                cn(
+                                                    '-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-lg outline-hidden',
+                                                    isHovered && 'bg-accent/70 text-accent-fg',
+                                                    isPressed && 'bg-accent text-accent-fg'
+                                                )
+                                            }
+                                        >
+                                            <IconX className='size-3 shrink-0' />
+                                        </Button>
+                                    </Tag>
+                                )}
+                            </TagList>
+                        </TagGroup>
+                        <ComboBox
+                            isRequired={props.isRequired}
+                            validate={props.validate}
+                            validationBehavior={props.validationBehavior}
+                            isInvalid={isInvalid}
+                            isDisabled={isDisabled}
+                            className='flex-1 px-2 text-sm/7'
+                            aria-label='Search'
+                            onSelectionChange={addItem}
+                            inputValue={inputValue}
+                            onInputChange={setInputValue}
                         >
-                            {props.tag}
-                        </Tag.List>
-                    </Tag.Group>
-                    <ComboBox
-                        menuTrigger='focus'
-                        {...props}
-                        allowsEmptyCollection
-                        aria-label='Available items'
-                        className={comboBox()}
-                        items={accessibleList.items}
-                        selectedKey={fieldState.selectedKey}
-                        inputValue={fieldState.inputValue}
-                        onSelectionChange={onSelectionChange}
-                        onInputChange={onInputChange}
-                    >
-                        <div className={comboBoxChild({ className })}>
-                            <Input
-                                placeholder={props.placeholder}
-                                className={input()}
-                                onBlur={() => {
-                                    setFieldState({
-                                        inputValue: '',
-                                        selectedKey: null
-                                    })
-                                    accessibleList.setFilterText('')
-                                }}
-                                onKeyDownCapture={onKeyDownCapture}
-                            />
-
-                            <VisuallyHidden>
+                            <div className='flex flex-row items-center'>
+                                <Input
+                                    ref={inputRef}
+                                    onKeyDownCapture={onKeyDownCapture}
+                                    placeholder='Pick something'
+                                    className='w-full text-sm/7 outline-hidden'
+                                />
                                 <Button
-                                    slot='remove'
-                                    type='button'
-                                    aria-label='Remove'
-                                    size='icon'
-                                    variant='ghost'
-                                    ref={triggerButtonRef}
+                                    aria-label='Chevron'
+                                    className='text-muted-fg ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg outline-hidden'
                                 >
-                                    <IconChevronDown />
+                                    <IconChevronDown
+                                        className={cn(
+                                            'size-4 transition group-has-open:-rotate-180'
+                                        )}
+                                    />
                                 </Button>
-                            </VisuallyHidden>
-                        </div>
-                        <Popover.Picker
-                            UNSTABLE_portalContainer={props?.portal}
-                            isNonModal
-                            className='max-w-none'
-                            style={{ width: `${width}px` }}
-                            triggerRef={triggerRef}
-                            trigger='ComboBox'
-                        >
-                            <ListBox.Picker
-                                className='grid-cols-none'
-                                renderEmptyState={() =>
-                                    renderEmptyState ? (
-                                        renderEmptyState(fieldState.inputValue)
-                                    ) : (
-                                        <Description className='block p-3'>
-                                            {fieldState.inputValue ? (
-                                                <>
-                                                    No results found for:{' '}
-                                                    <strong className='text-fg font-medium'>
-                                                        {fieldState.inputValue}
-                                                    </strong>
-                                                </>
-                                            ) : (
-                                                'No options'
-                                            )}
-                                        </Description>
+                            </div>
+                            <Popover
+                                style={{
+                                    minWidth: triggerRef.current?.offsetWidth,
+                                    width: triggerRef.current?.offsetWidth
+                                }}
+                                triggerRef={triggerRef}
+                                className={({ isEntering, isExiting }) =>
+                                    cn(
+                                        'group bg-bg max-h-72 w-full max-w-(--trigger-width) overflow-y-auto rounded-lg border p-1 shadow outline-hidden transition',
+                                        isEntering &&
+                                            'fade-in animate-in zoom-in-95 placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2',
+                                        isExiting &&
+                                            'fade-out animate-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2'
                                     )
                                 }
-                                selectionMode='multiple'
+                                UNSTABLE_portalContainer={props.portal}
                             >
-                                {children}
-                            </ListBox.Picker>
-                        </Popover.Picker>
-                    </ComboBox>
-                    <div className='relative ml-auto flex items-center justify-center px-1 peer-data-[open]:[&_button]:pointer-events-none [&_button>svg]:transition peer-data-[open]:[&_button>svg]:rotate-180'>
-                        <button
-                            type='button'
-                            className={chevronButton()}
-                            onClick={() => {
-                                if (triggerButtonRef.current) {
-                                    triggerButtonRef.current.click()
-                                }
-                            }}
-                            tabIndex={-1}
-                        >
-                            <IconChevronDown className='size-4' />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            {props.description && <Description>{props.description}</Description>}
-            {<FieldError>{errorMessage}</FieldError>}
-            {name && <input hidden name={name} value={selectedKeys.join(',')} readOnly />}
-        </div>
+                                <ListBox
+                                    className='grid w-full grid-cols-[auto_1fr] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+                                    selectionMode='multiple'
+                                    renderEmptyState={() => <div>No Items</div>}
+                                    {...props}
+                                >
+                                    {children}
+                                </ListBox>
+                            </Popover>
+                        </ComboBox>
+                    </FieldGroup>
+                    {props.description && <Description>{props.description}</Description>}
+                    {props.errorMessage && isInvalid && (
+                        <Description className='text-danger text-sm/5'>
+                            {props.errorMessage}
+                        </Description>
+                    )}
+                </>
+            )}
+        </Group>
     )
 }
 
-MultiSelect.Tag = Tag
-MultiSelect.Item = ListBox.Item
+const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
+    const textValue = typeof children === 'string' ? children : undefined
+
+    return (
+        <ListBoxItem
+            textValue={textValue}
+            {...props}
+            className={composeRenderProps(
+                className,
+                (className, { isHovered, isFocused, isDisabled, isFocusVisible }) =>
+                    cn(
+                        'group relative col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid',
+                        'rounded-md px-2 py-1.5 text-base select-none sm:text-sm/6',
+                        '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
+                        { 'bg-accent text-accent-fg': isFocused || isFocusVisible || isHovered },
+                        isDisabled && 'pointer-events-none opacity-50',
+                        className
+                    )
+            )}
+        >
+            {({ isSelected }) => (
+                <>
+                    {isSelected && <IconCheck data-slot='checked' />}
+                    {typeof children === 'string' ? (
+                        <Text slot='label' className='col-start-2'>
+                            {children}
+                        </Text>
+                    ) : (
+                        children
+                    )}
+                </>
+            )}
+        </ListBoxItem>
+    )
+}
+
+MultiSelect.Item = MultiSelectItem
 
 export { MultiSelect }
-export type { MultiSelectProps, SelectedKey }

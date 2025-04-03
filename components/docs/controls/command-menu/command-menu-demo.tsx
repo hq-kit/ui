@@ -3,10 +3,9 @@
 import React from 'react'
 
 import { IconBox, IconDollar, IconHome, IconNotebook, IconSettings, IconShield } from 'hq-icons'
-import Link from 'next/link'
 
 // Replace with your router link component
-import { Avatar, Button, Command } from '@/components/ui'
+import { Avatar, Button, Command, Link } from '@/components/ui'
 
 export default function CommandDemo() {
     const [isOpen, setIsOpen] = React.useState(false)

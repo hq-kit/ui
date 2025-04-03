@@ -4,7 +4,7 @@ import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
 import AuthLayoutFull from 'layouts/auth-layout-full'
 import { toast } from 'sonner'
 
-import { Button, Checkbox, Form, Link, ShowMore, TextField } from '@/components/ui'
+import { Button, Checkbox, Form, Link, Separator, TextField } from '@/components/ui'
 
 export default function AuthForm() {
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -18,7 +18,6 @@ export default function AuthForm() {
                 <TextField isRequired label='Name' placeholder='Enter your Name' />
                 <TextField isRequired label='Email' type='email' placeholder='Enter your email' />
                 <TextField
-                    isRevealable
                     isRequired
                     label='Password'
                     type='password'
@@ -31,7 +30,7 @@ export default function AuthForm() {
                 <Link href='#' className='mb-4 text-center text-sm'>
                     Already have an account?
                 </Link>
-                <ShowMore as='text' text='Or continue with' />
+                <Separator>Or continue with</Separator>
                 <div className='flex gap-4'>
                     <Button variant='outline' className='w-full'>
                         <IconBrandGithub className='size-4' />

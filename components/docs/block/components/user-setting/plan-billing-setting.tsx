@@ -1,19 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { IconCircleUser, IconCreditCard, IconHash, IconLock, IconMap } from 'hq-icons'
 
-import {
-    Button,
-    Card,
-    Choicebox,
-    DatePicker,
-    Form,
-    Heading,
-    Note,
-    TextField
-} from '@/components/ui'
+import { Button, Card, DatePicker, Form, GridList, Heading, Note, TextField } from '@/components/ui'
 
 export default function PlanBillingSetting() {
     return (
@@ -28,24 +17,12 @@ export default function PlanBillingSetting() {
                         Changing the plan will take effect immediately. You will be charged for the
                         rest of the current month.
                     </Note>
-                    <Choicebox aria-label='Select items' selectionMode='single'>
-                        <Choicebox.Item
-                            title='Basic'
-                            description='Just the essentials to get started.'
-                        />
-                        <Choicebox.Item
-                            title='Standard'
-                            description='A step up with more features and support.'
-                        />
-                        <Choicebox.Item
-                            title='Deluxe'
-                            description='Top-tier features for maximum performance.'
-                        />
-                        <Choicebox.Item
-                            title='Ultimate'
-                            description='All-inclusive plan with every feature available.'
-                        />
-                    </Choicebox>
+                    <GridList aria-label='Select items' selectionMode='single'>
+                        <GridList.Item textValue='Basic'>Basic</GridList.Item>
+                        <GridList.Item textValue='Standard'>Standard</GridList.Item>
+                        <GridList.Item textValue='Deluxe'>Deluxe</GridList.Item>
+                        <GridList.Item textValue='Ultimate'>Ultimate</GridList.Item>
+                    </GridList>
                     <Heading level={4}>Payment Details</Heading>
                     <TextField
                         autoFocus

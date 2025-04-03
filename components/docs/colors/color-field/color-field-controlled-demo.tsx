@@ -4,20 +4,14 @@ import React from 'react'
 
 import { type Color, parseColor } from 'react-aria-components'
 
-import { ColorField, Description } from '@/components/ui'
+import { ColorField } from '@/components/ui'
 
 export default function ColorFieldControlledDemo() {
-    const [color, setColor] = React.useState(parseColor('#FAFAFA'))
+    const [color, setColor] = React.useState<Color | null>(parseColor('#FAFAFA'))
     return (
-        <div className='flex flex-col items-center gap-2'>
-            <ColorField
-                className='min-w-56'
-                value={color}
-                aria-label='Pick a color'
-                onChange={(newColor: Color | null) => newColor && setColor(newColor)}
-                placeholder='#FAFAFA'
-            />
-            <Description>{color.toString('css')}</Description>
+        <div className='flex flex-col items-center gap-4'>
+            <ColorField value={color} label='Color' onChange={setColor} />
+            <code>color: {JSON.stringify(color)}</code>
         </div>
     )
 }

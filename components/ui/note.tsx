@@ -1,66 +1,54 @@
 import { IconCircleAlert, IconCircleCheck, IconInfo } from 'hq-icons'
-import { type VariantProps, tv } from 'tailwind-variants'
 
-const noteStyles = tv({
-    base: [
-        'w-full overflow-hidden rounded-lg p-4 inset-ring-1 inset-ring-current/10 sm:text-sm/6',
-        '[&_a]:underline data-hovered:[&_a]:underline **:[strong]:font-semibold'
-    ],
-    variants: {
-        variant: {
-            primary: [
-                'border-primary/35 [&_a]:text-primary text-primary bg-primary/10 leading-4',
-                'dark:[&_a]:text-primary'
-            ],
-            secondary: [
-                'border-muted [&_a]:text-secondary-foreground text-secondary-foreground bg-secondary/20 [&_svg]:text-secondary-foreground',
-                'dark:[&_a]:text-secondary-foreground dark:[&_svg]:text-secondary-foreground'
-            ],
-            warning:
-                'border-warning/50 dark:border-warning/25 bg-warning/5 text-warning dark:text-warning',
-            danger: 'border-danger/30 bg-danger/5 dark:bg-danger/10 text-danger',
-            success: [
-                'border-success/20 [&_a]:text-success text-success bg-success/10 [&_svg]:text-success leading-4'
-            ],
-            dark: 'border-fg/30 bg-fg text-bg'
-        }
-    },
-    defaultVariants: {
-        variant: 'primary'
-    }
-})
+import { cn } from '@/lib/utils'
 
-interface NoteProps
-    extends React.HtmlHTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof noteStyles> {
-    indicator?: boolean
+interface NoteProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+    variant?: 'primary' | 'secondary' | 'danger' | 'info' | 'success' | 'warning' | 'outline'
+    hideIndicator?: boolean
 }
 
-const Note = ({ indicator = true, variant, className, ...props }: NoteProps) => {
+const Note = ({
+    hideIndicator = false,
+    variant = 'primary',
+    className,
+    children,
+    ...props
+}: NoteProps) => {
     const iconMap: Record<string, React.ElementType | null> = {
         primary: IconInfo,
+        info: IconInfo,
         warning: IconCircleAlert,
         danger: IconCircleAlert,
         success: IconCircleCheck,
         secondary: null,
-        dark: null
+        outline: null
     }
 
-    const IconComponent = iconMap[variant as string] || null
+    const Icon = iconMap[variant] || null
 
     return (
-        <div className={noteStyles({ variant, className })} {...props}>
+        <div
+            className={cn(
+                'w-full overflow-hidden rounded-lg p-4 text-sm/6 border backdrop-blur-2xl',
+                variant === 'primary' && 'border-primary/20 text-primary bg-primary/10',
+                variant === 'secondary' && 'border-muted text-secondary-foreground bg-secondary/25',
+                variant === 'warning' && 'border-warning/40 bg-warning/5 text-warning',
+                variant === 'danger' && 'border-danger/30 bg-danger/10 text-danger',
+                variant === 'success' && 'border-success/20 text-success bg-success/10',
+                variant === 'info' && 'border-info/35 text-info bg-info/10',
+                variant === 'outline' && 'border-muted text-fg bg-bg/10',
+                className
+            )}
+            {...props}
+        >
             <div className='flex grow items-start'>
-                {IconComponent && indicator && (
-                    <div className='shrink-0'>
-                        <IconComponent className='mr-3 size-5 rounded-full leading-loose ring ring-current/30' />
-                    </div>
+                {Icon && !hideIndicator && (
+                    <Icon className='mr-3 shrink-0 size-5 rounded-full ring-2 ring-current/30 my-0.5' />
                 )}
-                <div className='text-pretty'>{props.children}</div>
+                <div>{children}</div>
             </div>
         </div>
     )
 }
 
 export { Note }
-export type { NoteProps }

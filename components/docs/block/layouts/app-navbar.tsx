@@ -152,13 +152,10 @@ function UserMenu() {
                 <Avatar alt='DQ' size='sm' shape='square' src='https://github.com/dq-alhq.png' />
             </Menu.Trigger>
             <Menu.Content placement='bottom right' className='sm:min-w-56'>
-                <Menu.Section>
-                    <Menu.Header separator>
-                        <span className='block'>DQ Al-Haqqi</span>
-                        <span className='text-muted-fg font-normal'>@dq-alhq</span>
-                    </Menu.Header>
-                </Menu.Section>
-
+                <Menu.Header>
+                    <span className='block'>DQ Al-Haqqi</span>
+                    <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                </Menu.Header>
                 <Menu.Item href='#dashboard'>
                     <IconGauge />
                     Dashboard
@@ -176,7 +173,6 @@ function UserMenu() {
                     <IconCommand />
                     Command Menu
                 </Menu.Item>
-
                 <Menu.Item href='#contact'>
                     <IconHeadphones />
                     Customer Support

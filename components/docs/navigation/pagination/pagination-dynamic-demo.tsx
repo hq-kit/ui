@@ -1,42 +1,30 @@
-'use client'
-
 import { Pagination } from '@/components/ui'
 
-const pages = Array.from({ length: 6 }, (_, i) => ({ value: i + 1 }))
+const pages = [
+    { page: 1, href: '#', current: false },
+    { page: 2, href: '#', current: false },
+    { page: 3, href: '#', current: true },
+    { page: 4, href: '#', current: false },
+    { page: 5, href: '#', current: false },
+    { page: 6, href: '#', current: false },
+    { page: 7, href: '#', current: false }
+]
+
 export default function PaginationDynamicDemo() {
     return (
         <Pagination>
-            <Pagination.List>
-                <Pagination.Item role='first' href='#' />
-                <Pagination.Item role='previous' href='#' />
-                <Pagination.Section
-                    aria-label='Pagination Segment'
-                    className='rounded-lg border lg:hidden'
-                >
-                    <Pagination.Item role='label'>1</Pagination.Item>
-                    <Pagination.Item role='separator' />
-                    <Pagination.Item className='text-muted-fg' role='label'>
-                        10
+            <Pagination.Item role='first' href='#' />
+            <Pagination.Item role='previous' href='#' />
+            <Pagination.Label className='lg:hidden' current={3} total={pages.length} />
+            <Pagination.Pages items={pages} className='hidden lg:flex'>
+                {(item) => (
+                    <Pagination.Item id={item.page} href={item.href} isCurrent={item.current}>
+                        {item.page}
                     </Pagination.Item>
-                </Pagination.Section>
-                <Pagination.Section
-                    aria-label='Pagination Segment'
-                    className='hidden lg:flex'
-                    items={pages}
-                >
-                    {(item) => (
-                        <Pagination.Item
-                            id={item.value.toString()}
-                            isCurrent={item.value === 4}
-                            href='#'
-                        >
-                            {item.value}
-                        </Pagination.Item>
-                    )}
-                </Pagination.Section>
-                <Pagination.Item role='next' href='#' />
-                <Pagination.Item role='last' href='#' />
-            </Pagination.List>
+                )}
+            </Pagination.Pages>
+            <Pagination.Item role='next' href='#' />
+            <Pagination.Item role='last' href='#' />
         </Pagination>
     )
 }

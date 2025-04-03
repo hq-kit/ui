@@ -4,11 +4,9 @@ import React from 'react'
 
 import {
     Button,
-    ColorPicker as ColorPickerPrimitive,
-    Dialog,
-    type ColorPickerProps as ColorPickerPrimitiveProps
+    ColorPicker as RACColorPicker,
+    type ColorPickerProps as RACColorPickerProps
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
 import type { Placement } from '@react-types/overlays'
 
@@ -16,16 +14,10 @@ import { ColorArea } from './color-area'
 import { ColorField } from './color-field'
 import { ColorSlider } from './color-slider'
 import { ColorSwatch } from './color-swatch'
-import { Description } from './field'
+import { Description, Label } from './field'
 import { Popover } from './popover'
-import { focusButtonStyles } from './utils'
 
-const buttonStyles = tv({
-    extend: focusButtonStyles,
-    base: 'btn-trigger flex cursor-pointer items-center rounded-lg text-sm data-disabled:cursor-default data-disabled:opacity-50'
-})
-
-export interface ColorPickerProps extends ColorPickerPrimitiveProps {
+export interface ColorPickerProps extends RACColorPickerProps {
     label?: string
     children?: React.ReactNode
     showArrow?: boolean
@@ -44,38 +36,36 @@ const ColorPicker = ({
     ...props
 }: ColorPickerProps) => {
     return (
-        <div className='flex flex-col gap-y-2'>
-            <ColorPickerPrimitive {...props}>
+        <div className='flex flex-col gap-y-2 group'>
+            <RACColorPicker {...props}>
                 <Popover>
-                    <Button isDisabled={isDisabled} className={buttonStyles}>
+                    <Button
+                        isDisabled={isDisabled}
+                        className='flex items-center gap-2 outline-hidden'
+                    >
                         <ColorSwatch className='size-6' />
-                        {label && <span className='ml-2'>{label}</span>}
+                        {label && <Label className='ml-2'>{label}</Label>}
                     </Button>
                     <Popover.Content
-                        className='overflow-y-auto px-0 pt-4 pb-3 outline-none **:aria-[expanded=true]:ring-transparent **:data-dialog:gap-2 **:data-focus-within:ring-transparent data-focused:outline-none **:data-focused:ring-transparent **:data-[slot=color-area]:w-full **:data-[slot=color-slider]:w-full sm:max-w-56 sm:min-w-min sm:p-3 sm:**:data-[slot=color-area]:size-56'
+                        className='p-4 sm:p-2'
                         showArrow={showArrow}
                         placement={placement}
                     >
-                        <Dialog className='flex flex-col gap-2 outline-hidden'>
-                            {children || (
-                                <>
-                                    <ColorArea
-                                        colorSpace='hsb'
-                                        xChannel='saturation'
-                                        yChannel='brightness'
-                                    />
-                                    <ColorSlider
-                                        showOutput={false}
-                                        colorSpace='hsb'
-                                        channel='hue'
-                                    />
-                                    <ColorField aria-label='Hex' />
-                                </>
-                            )}
-                        </Dialog>
+                        {children || (
+                            <section className='space-y-2'>
+                                <ColorArea
+                                    className='w-full'
+                                    colorSpace='hsb'
+                                    xChannel='saturation'
+                                    yChannel='brightness'
+                                />
+                                <ColorSlider showOutput={false} colorSpace='hsb' channel='hue' />
+                                <ColorField aria-label='Hex' />
+                            </section>
+                        )}
                     </Popover.Content>
                 </Popover>
-            </ColorPickerPrimitive>
+            </RACColorPicker>
             {description && <Description>{description}</Description>}
         </div>
     )

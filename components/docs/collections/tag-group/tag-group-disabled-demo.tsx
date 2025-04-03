@@ -1,25 +1,28 @@
 'use client'
 
-import { androidBrands } from '@/components/docs/collections/tag-group/tag-group-demo'
 import { Tag } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Ubuntu', active: true },
+    { id: 2, name: 'Debian', active: false },
+    { id: 3, name: 'Fedora', active: true },
+    { id: 4, name: 'Arch', active: false }
+]
 
 export default function TagGroupDisabledDemo() {
     return (
         <div className='space-y-6'>
             <Tag.Group
-                disabledKeys={androidBrands
-                    .filter((brand) => !brand.available)
-                    .map((brand) => brand.id)}
+                disabledKeys={items.filter((item) => !item.active).map((item) => item.id)}
                 label='Disabled Key'
                 selectionMode='multiple'
+                items={items}
             >
-                <Tag.List items={androidBrands}>{(item) => <Tag>{item.name}</Tag>}</Tag.List>
+                {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
 
-            <Tag.Group label='Disabled by Tag' selectionMode='multiple'>
-                <Tag.List items={androidBrands}>
-                    {(item) => <Tag isDisabled={item.available}>{item.name}</Tag>}
-                </Tag.List>
+            <Tag.Group label='Disabled by Tag' selectionMode='multiple' items={items}>
+                {(item) => <Tag isDisabled={!item.active}>{item.name}</Tag>}
             </Tag.Group>
         </div>
     )

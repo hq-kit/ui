@@ -1,217 +1,182 @@
 'use client'
 
+import React from 'react'
+
 import type {
+    DialogProps,
     DialogTriggerProps,
+    HeadingProps,
     ModalOverlayProps,
-    PopoverProps as PopoverPrimitiveProps
+    PopoverProps,
+    TextProps
 } from 'react-aria-components'
 import {
-    type DialogProps,
+    Button,
+    composeRenderProps,
+    Dialog,
     DialogTrigger,
+    Heading,
     Modal,
     ModalOverlay,
     OverlayArrow,
-    PopoverContext,
-    Popover as PopoverPrimitive,
-    useSlottedContext
+    Popover as RACPopover,
+    Text
 } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
-import { tv } from 'tailwind-variants'
 
-import type {
-    DialogBodyProps,
-    DialogFooterProps,
-    DialogHeaderProps,
-    DialogTitleProps
-} from './dialog'
-import { Dialog } from './dialog'
-import { cn, cr, useMediaQuery } from './utils'
+import { cn } from '@/lib/utils'
 
-type PopoverProps = DialogTriggerProps
-const Popover = (props: PopoverProps) => {
-    return <DialogTrigger {...props} />
-}
+import { useMediaQuery } from './utils'
 
-const PopoverTitle = ({ level = 2, className, ...props }: DialogTitleProps) => (
-    <Dialog.Title
-        className={twMerge('sm:leading-none', level === 2 && 'sm:text-lg', className)}
+const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
+
+const DrawerMode = ({ className, ...props }: ModalOverlayProps & Pick<DialogProps, 'children'>) => (
+    <ModalOverlay
+        isDismissable
+        className={({ isEntering, isExiting }) =>
+            cn(
+                'fixed top-0 left-0 isolate z-50 flex h-(--visual-viewport-height) w-full bg-fg/50 backdrop-blur [--visual-viewport-vertical-padding:16px]',
+                isEntering && 'fade-in animate-in duration-200 ease-out',
+                isExiting && 'fade-out animate-out ease-in'
+            )
+        }
         {...props}
-    />
+    >
+        <Modal
+            className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
+                cn(
+                    'bg-bg text-fg rounded-t-lg fixed top-auto bottom-0 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
+                    isEntering &&
+                        'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
+                    isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
+                    className
+                )
+            )}
+        >
+            <Dialog className='relative flex max-h-[inherit] flex-col gap-4 overflow-hidden outline-hidden'>
+                {props.children}
+            </Dialog>
+        </Modal>
+    </ModalOverlay>
 )
 
-const PopoverHeader = ({ className, ...props }: DialogHeaderProps) => (
-    <Dialog.Header className={twMerge('sm:p-4', className)} {...props} />
+const PopoverMode = ({
+    className,
+    children,
+    showArrow,
+    ...props
+}: PopoverProps & { showArrow?: boolean }) => (
+    <RACPopover
+        className={composeRenderProps(
+            className,
+            (className, { isEntering, isExiting, placement }) =>
+                cn(
+                    'group max-w-sm bg-bg rounded-lg border shadow transition outline-hidden',
+                    isEntering && 'fade-in animate-in zoom-in-95',
+                    isExiting && 'fade-out animate-out zoom-out-95',
+                    placement === 'top' &&
+                        `mb-2 ${isEntering ? 'slide-in-from-bottom-2' : 'slide-out-to-bottom-2'}`,
+                    placement === 'right' &&
+                        `ml-2 ${isEntering ? 'slide-in-from-left-2' : 'slide-out-to-left-2'}`,
+                    placement === 'bottom' &&
+                        `mt-2 ${isEntering ? 'slide-in-from-top-2' : 'slide-out-to-top-2'}`,
+                    placement === 'left' &&
+                        `mr-2 ${isEntering ? 'slide-in-from-right-2' : 'slide-out-to-right-2'}`,
+                    className
+                )
+        )}
+        {...props}
+    >
+        {(values) => (
+            <>
+                {showArrow && (
+                    <OverlayArrow className='group'>
+                        <svg
+                            width={12}
+                            height={12}
+                            viewBox='0 0 12 12'
+                            className='block fill-bg stroke-muted group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
+                        >
+                            <path d='M0 0 L6 6 L12 0' />
+                        </svg>
+                    </OverlayArrow>
+                )}
+                {typeof children === 'function' ? children(values) : children}
+            </>
+        )}
+    </RACPopover>
 )
-
-const PopoverFooter = ({ className, ...props }: DialogFooterProps) => (
-    <Dialog.Footer className={cn('sm:p-4', className)} {...props} />
-)
-
-const PopoverBody = ({ className, ref, ...props }: DialogBodyProps) => (
-    <Dialog.Body ref={ref} className={cn('sm:px-4 sm:pt-0', className)} {...props} />
-)
-
-const content = tv({
-    base: [
-        'peer/popover-content bg-bg text-fg max-w-xs rounded-lg border bg-clip-padding shadow-xs transition-transform sm:max-w-3xl sm:text-sm dark:backdrop-saturate-200'
-    ],
-    variants: {
-        isPicker: {
-            true: 'max-h-72 min-w-(--trigger-width) overflow-y-auto p-0',
-            false: 'min-w-80'
-        },
-        isMenu: {
-            true: 'p-0'
-        },
-        isEntering: {
-            true: [
-                'fade-in animate-in duration-150 ease-out',
-                'data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1'
-            ]
-        },
-        isExiting: {
-            true: [
-                'fade-out animate-out duration-100 ease-in',
-                'data-[placement=left]:slide-out-to-right-1 data-[placement=right]:slide-out-to-left-1 data-[placement=top]:slide-out-to-bottom-1 data-[placement=bottom]:slide-out-to-top-1'
-            ]
-        }
-    }
-})
-
-const drawer = tv({
-    base: [
-        'bg-bg fixed top-auto bottom-0 z-50 max-h-full w-full max-w-2xl border border-b-transparent outline-hidden'
-    ],
-    variants: {
-        isMenu: {
-            true: 'rounded-t-lg p-0 [&_[role=dialog]]:*:not-has-[[data-slot=dialog-body]]:px-1',
-            false: 'rounded-t-2xl'
-        },
-        isEntering: {
-            true: [
-                '[will-change:transform] [transition:transform_0.5s_cubic-bezier(0.32,_0.72,_0,_1)]',
-                'fade-in-0 slide-in-from-bottom-56 animate-in duration-200',
-                '[transition:translate3d(0,_100%,_0)]',
-                'sm:slide-in-from-bottom-auto sm:slide-in-from-top-[20%]'
-            ]
-        },
-        isExiting: {
-            true: 'slide-out-to-bottom-56 animate-out duration-200 ease-in'
-        }
-    }
-})
 
 interface PopoverContentProps
-    extends Omit<React.ComponentProps<typeof Modal>, 'children'>,
-        Omit<PopoverPrimitiveProps, 'children' | 'className'>,
-        Omit<ModalOverlayProps, 'className'> {
-    children: React.ReactNode
-    showArrow?: boolean
+    extends Omit<ModalOverlayProps, 'children' | 'className'>,
+        Omit<PopoverProps, 'children' | 'className'> {
     style?: React.CSSProperties
+    showArrow?: boolean
     respectScreen?: boolean
-    'aria-label'?: DialogProps['aria-label']
-    'aria-labelledby'?: DialogProps['aria-labelledby']
+    children: React.ReactNode
     className?: string | ((values: { defaultClassName?: string }) => string)
 }
 
 const PopoverContent = ({
-    respectScreen = true,
-    children,
     showArrow = true,
-    className,
+    respectScreen = true,
     ...props
 }: PopoverContentProps) => {
-    const isMobile = useMediaQuery('(max-width: 600px)')
-    const popoverContext = useSlottedContext(PopoverContext)!
-    const isMenuTrigger = popoverContext?.trigger === 'MenuTrigger'
-    const isSubmenuTrigger = popoverContext?.trigger === 'SubmenuTrigger'
-    const isMenu = isMenuTrigger || isSubmenuTrigger
-    const offset = showArrow ? 12 : 8
-    const effectiveOffset = isSubmenuTrigger ? offset - 5 : offset
+    const isMobile = useMediaQuery('(max-width: 768px)')
     return isMobile && respectScreen ? (
-        <ModalOverlay
-            className='bg-bg/10 fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full [--visual-viewport-vertical-padding:16px]'
-            {...props}
-            isDismissable
-        >
-            <Modal
-                className={cr(className, (className, renderProps) =>
-                    drawer({ ...renderProps, isMenu, className })
-                )}
-            >
-                <Dialog
-                    data-dialog
-                    aria-label={props['aria-label'] || isMenu ? 'Menu' : undefined}
-                    className='has-input:overflow-visible outline-hidden'
-                >
-                    {children}
-                </Dialog>
-            </Modal>
-        </ModalOverlay>
+        <DrawerMode {...props} />
     ) : (
-        <PopoverPrimitive
-            offset={effectiveOffset}
-            {...props}
-            className={cr(className, (className, renderProps) =>
-                content({
-                    ...renderProps,
-                    className
-                })
-            )}
-        >
-            {showArrow && (
-                <OverlayArrow className='group'>
-                    <svg
-                        width={12}
-                        height={12}
-                        viewBox='0 0 12 12'
-                        className='fill-bg stroke-border block group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90'
-                    >
-                        <path d='M0 0 L6 6 L12 0' />
-                    </svg>
-                </OverlayArrow>
-            )}
-            <Dialog
-                role='dialog'
-                aria-label={props['aria-label'] || isMenu ? 'Menu' : undefined}
-                className='outline-hidden'
-            >
-                {children}
-            </Dialog>
-        </PopoverPrimitive>
+        <PopoverMode showArrow={showArrow} {...props} />
     )
 }
 
-const PopoverPicker = ({ children, className, ...props }: PopoverContentProps) => {
+const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <PopoverPrimitive
+        <div
+            slot='header'
+            className={cn('flex flex-col p-4 text-center sm:text-left', className)}
             {...props}
-            className={cr(className, (className, renderProps) =>
-                content({
-                    ...renderProps,
-                    isPicker: true,
-                    className
-                })
-            )}
-        >
-            {children}
-        </PopoverPrimitive>
+        />
     )
 }
 
-const PopoverTrigger = Dialog.Trigger
-const PopoverClose = Dialog.Close
-const PopoverDescription = Dialog.Description
+const Title = ({ className, ...props }: HeadingProps) => (
+    <Heading slot='title' className={cn('font-semibold text-lg/8', className)} {...props} />
+)
 
-Popover.Trigger = PopoverTrigger
-Popover.Close = PopoverClose
-Popover.Description = PopoverDescription
+const Description = ({ className, ...props }: TextProps) => (
+    <Text slot='description' className={cn('text-muted-fg text-sm', className)} {...props} />
+)
+
+const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div
+        slot='body'
+        className={cn(
+            'isolate flex flex-col overflow-auto px-4 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
+            className
+        )}
+        {...props}
+    />
+)
+
+const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return (
+        <div
+            slot='footer'
+            className={cn(
+                'isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4',
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+Popover.Trigger = Button
 Popover.Content = PopoverContent
-Popover.Body = PopoverBody
-Popover.Footer = PopoverFooter
-Popover.Header = PopoverHeader
-Popover.Picker = PopoverPicker
-Popover.Title = PopoverTitle
+Popover.Header = Header
+Popover.Title = Title
+Popover.Description = Description
+Popover.Body = Body
+Popover.Footer = Footer
 
 export { Popover }
-export type { PopoverContentProps, PopoverProps }

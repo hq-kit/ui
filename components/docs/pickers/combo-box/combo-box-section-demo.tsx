@@ -1,88 +1,88 @@
-'use client'
-
 import { ComboBox } from '@/components/ui'
 
-export default function ComboBoxSectionDemo() {
-    return (
-        <ComboBox placeholder='Select a author' label='Authors' selectedKey={1} items={movies}>
-            {(movie) => (
-                <ComboBox.Section title={movie.title} items={movie.genres}>
-                    {(genre) => <ComboBox.Item textValue={genre.name}>{genre.name}</ComboBox.Item>}
-                </ComboBox.Section>
-            )}
-        </ComboBox>
-    )
-}
-
-const movies = [
+const items = [
     {
-        id: 1,
-        title: 'Inception',
-        genres: [
+        id: '1',
+        name: 'Debian',
+        distros: [
             {
-                id: 101,
-                name: 'Sci-Fi'
+                id: '1-1',
+                name: 'MX'
             },
             {
-                id: 102,
-                name: 'Thriller'
+                id: '1-2',
+                name: 'Kali'
+            },
+            {
+                id: '1-3',
+                name: 'Deepin'
             }
         ]
     },
     {
-        id: 2,
-        title: 'Titanic',
-        genres: [
+        id: '2',
+        name: 'Ubuntu',
+        distros: [
             {
-                id: 201,
-                name: 'Romance'
+                id: '2-1',
+                name: 'Mint'
             },
             {
-                id: 202,
-                name: 'Drama'
+                id: '2-2',
+                name: 'KDE Neon'
+            },
+            {
+                id: '2-3',
+                name: 'Zorin'
             }
         ]
     },
     {
-        id: 3,
-        title: 'The Matrix',
-        genres: [
+        id: '3',
+        name: 'Fedora',
+        distros: [
             {
-                id: 301,
-                name: 'Action'
+                id: '3-1',
+                name: 'CentOS'
             },
             {
-                id: 302,
-                name: 'Sci-Fi'
+                id: '3-2',
+                name: 'Alma'
+            },
+            {
+                id: '3-3',
+                name: 'Nobara'
             }
         ]
     },
     {
         id: 4,
-        title: 'Gladiator',
-        genres: [
+        name: 'Arch',
+        distros: [
             {
-                id: 401,
-                name: 'Action'
+                id: '4-1',
+                name: 'Endeavour'
             },
             {
-                id: 402,
-                name: 'Drama'
-            }
-        ]
-    },
-    {
-        id: 5,
-        title: 'Casablanca',
-        genres: [
-            {
-                id: 501,
-                name: 'Romance'
+                id: '4-2',
+                name: 'Garuda'
             },
             {
-                id: 502,
-                name: 'Drama'
+                id: '4-3',
+                name: 'CachyOS'
             }
         ]
     }
 ]
+
+export default function ComboBoxSectionDemo() {
+    return (
+        <ComboBox label='Linux Distro' items={items}>
+            {(item) => (
+                <ComboBox.Section title={item.name} items={item.distros}>
+                    {(distro) => <ComboBox.Item id={distro.id}>{distro.name}</ComboBox.Item>}
+                </ComboBox.Section>
+            )}
+        </ComboBox>
+    )
+}

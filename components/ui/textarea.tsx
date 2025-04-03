@@ -1,36 +1,18 @@
 'use client'
 
 import {
-    TextArea as TextAreaPrimitive,
-    TextField as TextFieldPrimitive,
-    type TextFieldProps as TextFieldPrimitiveProps,
-    type ValidationResult
+    composeRenderProps,
+    TextArea as RACTextArea,
+    TextField as RACTextField,
+    type TextFieldProps as RACTextFieldProps
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
 
-import { Description, FieldError, Label } from './field'
-import { cr, ctr, focusStyles } from './utils'
+import { cn } from '@/lib/utils'
 
-const textareaStyles = tv({
-    extend: focusStyles,
-    base: 'bg-background w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition duration-200 outline-none sm:text-sm',
-    variants: {
-        isDisabled: {
-            false: 'data-hovered:border-primary/60',
-            true: 'opacity-50'
-        },
-        isInvalid: {
-            true: 'border-danger/70 text-danger'
-        }
-    }
-})
+import { Description, FieldError, FieldProps, Label } from './field'
 
-interface TextareaProps extends TextFieldPrimitiveProps {
+interface TextareaProps extends RACTextFieldProps, FieldProps {
     autoSize?: boolean
-    label?: string
-    placeholder?: string
-    description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
     className?: string
 }
 
@@ -43,22 +25,41 @@ const Textarea = ({
     ...props
 }: TextareaProps) => {
     return (
-        <TextFieldPrimitive {...props} className={ctr(className, 'group flex flex-col gap-y-1.5')}>
-            {label && <Label>{label}</Label>}
-            <TextAreaPrimitive
-                placeholder={placeholder}
-                className={cr(className, (className, renderProps) =>
-                    textareaStyles({
-                        ...renderProps,
-                        className
-                    })
-                )}
-            />
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </TextFieldPrimitive>
+        <RACTextField
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-y-1.5', className)
+            )}
+            {...props}
+        >
+            {({ isInvalid, isDisabled }) => (
+                <>
+                    {label && (
+                        <Label isInvalid={isInvalid || !!errorMessage} isDisabled={isDisabled}>
+                            {label}
+                        </Label>
+                    )}
+                    <RACTextArea
+                        placeholder={placeholder}
+                        className={({ isFocused, isFocusVisible, isHovered }) =>
+                            cn(
+                                'min-h-14 w-full min-w-0 rounded-lg border bg-transparent p-2 text-base outline-hidden transition duration-200 sm:text-sm',
+                                isInvalid ? 'border-danger/30' : 'border-muted',
+                                isHovered && 'border-primary/70 invalid:border-danger/70',
+                                isDisabled && 'opacity-50 pointer-events-none',
+                                {
+                                    'border-primary/70 ring-4 ring-primary/20 invalid:border-danger/70 invalid:ring-danger/20':
+                                        isFocused || isFocusVisible
+                                },
+                                props.autoSize && 'resize-none field-sizing-content'
+                            )
+                        }
+                    />
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            )}
+        </RACTextField>
     )
 }
 
 export { Textarea }
-export type { TextareaProps }

@@ -3,12 +3,13 @@
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
 import {
     ColorSwatchPickerItem,
-    ColorSwatchPicker as ColorSwatchPickerPrimitive
+    composeRenderProps,
+    ColorSwatchPicker as RACColorSwatchPicker
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 
 import { ColorSwatch } from './color-swatch'
-import { ctr, focusRing } from './utils'
 
 const ColorSwatchPicker = ({
     children,
@@ -17,24 +18,32 @@ const ColorSwatchPicker = ({
     ...props
 }: ColorSwatchPickerProps) => {
     return (
-        <ColorSwatchPickerPrimitive
+        <RACColorSwatchPicker
             layout={layout}
+            className={composeRenderProps(className, (className) => cn('flex gap-1', className))}
             {...props}
-            className={ctr(className, 'flex gap-1')}
         >
             {children}
-        </ColorSwatchPickerPrimitive>
+        </RACColorSwatchPicker>
     )
 }
 
-const itemStyles = tv({
-    extend: focusRing,
-    base: 'relative rounded-lg data-disabled:opacity-50'
-})
-
-const SwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
+const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) => {
     return (
-        <ColorSwatchPickerItem {...props} className={itemStyles}>
+        <ColorSwatchPickerItem
+            {...props}
+            className={composeRenderProps(
+                className,
+                (className, { isDisabled, isFocusVisible, isFocused }) =>
+                    cn(
+                        'relative rounded-lg disabled:opacity-50',
+                        isFocused && 'ring-primary/20 ring-4',
+                        isFocusVisible && 'ring-primary/20 ring-4',
+                        isDisabled && 'opacity-50',
+                        className
+                    )
+            )}
+        >
             {({ isSelected }) => (
                 <>
                     <ColorSwatch />

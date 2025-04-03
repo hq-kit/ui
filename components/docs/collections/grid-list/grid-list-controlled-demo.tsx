@@ -4,33 +4,35 @@ import React from 'react'
 
 import type { Selection } from 'react-aria-components'
 
-import { Description, GridList } from '@/components/ui'
+import { GridList } from '@/components/ui'
+
+const items = [
+    { id: 1, name: 'Ubuntu' },
+    { id: 2, name: 'Debian' },
+    { id: 3, name: 'Fedora' },
+    { id: 4, name: 'Arch' },
+    { id: 5, name: 'CentOS' },
+    { id: 6, name: 'Gentoo' },
+    { id: 7, name: 'OpenSuse' },
+    { id: 8, name: 'Redhat' },
+    { id: 9, name: 'FreeBSD' },
+    { id: 10, name: 'NetBSD' }
+]
 
 export default function GridListControlledDemo() {
-    const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set([]))
+    const [selected, setSelected] = React.useState<Selection>(new Set([]))
     return (
-        <div>
+        <div className='space-y-6'>
             <GridList
-                selectedKeys={selectedKeys}
-                onSelectionChange={setSelectedKeys}
+                selectedKeys={selected}
+                onSelectionChange={setSelected}
                 items={items}
-                aria-label='Select items'
+                aria-label='Linux Distros'
                 selectionMode='multiple'
-                className='min-w-64'
             >
                 {(item) => <GridList.Item id={item.id}>{item.name}</GridList.Item>}
             </GridList>
-            <Description className='[&>strong]:text-fg text-muted-fg mt-2 block'>
-                You have selected: <strong>{Array.from(selectedKeys).join(', ')}</strong>
-            </Description>
+            <code>selected: {JSON.stringify(Array.from(selected))}</code>
         </div>
     )
 }
-
-const items = [
-    { id: '1', name: 'The Beatles' },
-    { id: '2', name: 'Led Zeppelin' },
-    { id: '3', name: 'Pink Floyd' },
-    { id: '4', name: 'Queen' },
-    { id: '5', name: 'The Rolling Stones' }
-]

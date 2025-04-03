@@ -1,29 +1,31 @@
 'use client'
 
-import { createContext, use, useRef, useState } from 'react'
+import React from 'react'
 
-import { tv } from 'tailwind-variants'
+import { MenuProps } from 'react-aria-components'
 
-import type { MenuContentProps } from './menu'
+import { cn } from '@/lib/utils'
+
 import { Menu } from './menu'
-import { focusButtonStyles } from './utils'
 
-interface ContextMenuTriggerContextType {
-    buttonRef: React.RefObject<HTMLButtonElement | null>
+interface ContextMenuContextProps {
+    triggerRef: React.RefObject<HTMLDivElement | null>
     contextMenuOffset: { offset: number; crossOffset: number } | null
     setContextMenuOffset: React.Dispatch<
         React.SetStateAction<{ offset: number; crossOffset: number } | null>
     >
 }
 
-const ContextMenuTriggerContext = createContext<ContextMenuTriggerContextType | undefined>(
-    undefined
-)
+const ContextMenuContext = React.createContext<ContextMenuContextProps>({
+    triggerRef: React.createRef(),
+    contextMenuOffset: null,
+    setContextMenuOffset: () => {}
+})
 
-const useContextMenuTrigger = () => {
-    const context = use(ContextMenuTriggerContext)
+const useContextMenu = () => {
+    const context = React.use(ContextMenuContext)
     if (!context) {
-        throw new Error('useContextMenuTrigger must be used within a ContextMenuTrigger')
+        throw new Error('useContextMenu must be used within a ContextMenu')
     }
     return context
 }
@@ -33,37 +35,24 @@ interface ContextMenuProps {
 }
 
 const ContextMenu = ({ children }: ContextMenuProps) => {
-    const [contextMenuOffset, setContextMenuOffset] = useState<{
+    const [contextMenuOffset, setContextMenuOffset] = React.useState<{
         offset: number
         crossOffset: number
     } | null>(null)
-    const buttonRef = useRef<HTMLButtonElement>(null)
-
+    const triggerRef = React.useRef<HTMLDivElement>(null)
     return (
-        <ContextMenuTriggerContext.Provider
-            value={{ buttonRef, contextMenuOffset, setContextMenuOffset }}
+        <ContextMenuContext.Provider
+            value={{ triggerRef, contextMenuOffset, setContextMenuOffset }}
         >
             {children}
-        </ContextMenuTriggerContext.Provider>
+        </ContextMenuContext.Provider>
     )
 }
 
-const contextMenuTriggerStyles = tv({
-    extend: focusButtonStyles,
-    base: 'cursor-default data-focused:outline-hidden',
-    variants: {
-        isDisabled: {
-            true: 'cursor-default opacity-50'
-        }
-    }
-})
+const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    const { triggerRef, setContextMenuOffset } = useContextMenu()
 
-type ContextMenuTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>
-
-const ContextMenuTrigger = ({ className, ...props }: ContextMenuTriggerProps) => {
-    const { buttonRef, setContextMenuOffset } = useContextMenuTrigger()
-
-    const onContextMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault()
         const rect = e.currentTarget.getBoundingClientRect()
         setContextMenuOffset({
@@ -72,9 +61,9 @@ const ContextMenuTrigger = ({ className, ...props }: ContextMenuTriggerProps) =>
         })
     }
     return (
-        <button
-            className={contextMenuTriggerStyles({ isDisabled: props.disabled, className })}
-            ref={buttonRef}
+        <div
+            className={cn('cursor-default outline-hidden disabled:opacity-50', className)}
+            ref={triggerRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
             {...props}
@@ -82,45 +71,45 @@ const ContextMenuTrigger = ({ className, ...props }: ContextMenuTriggerProps) =>
     )
 }
 
-type ContextMenuContentProps<T> = Omit<
-    MenuContentProps<T>,
-    'showArrow' | 'isOpen' | 'onOpenChange' | 'triggerRef' | 'placement' | 'shouldFlip'
->
+interface ContextMenuContentProps<T>
+    extends Omit<
+        MenuProps<T>,
+        | 'showArrow'
+        | 'isOpen'
+        | 'onOpenChange'
+        | 'triggerRef'
+        | 'placement'
+        | 'shouldFlip'
+        | 'className'
+    > {
+    className?: string
+}
 
 const ContextMenuContent = <T extends object>(props: ContextMenuContentProps<T>) => {
-    const { contextMenuOffset, setContextMenuOffset, buttonRef } = useContextMenuTrigger()
+    const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
         <Menu.Content
+            aria-label={props['aria-label'] ?? 'Context Menu'}
             isOpen={!!contextMenuOffset}
-            onOpenChange={() => setContextMenuOffset(null)}
-            triggerRef={buttonRef}
-            shouldFlip={false}
-            placement='bottom left'
             offset={contextMenuOffset?.offset}
             crossOffset={contextMenuOffset?.crossOffset}
+            onOpenChange={() => setContextMenuOffset(null)}
+            triggerRef={triggerRef}
+            placement='bottom left'
             onClose={() => setContextMenuOffset(null)}
             {...props}
         />
     ) : null
 }
 
-const ContextMenuItem = Menu.Item
-const ContextMenuSeparator = Menu.Separator
-const ContextMenuItemDetails = Menu.ItemDetails
-const ContextMenuSection = Menu.Section
-const ContextMenuHeader = Menu.Header
-const ContextMenuKeyboard = Menu.Keyboard
-const ContextMenuLabel = Menu.Label
-
 ContextMenu.Trigger = ContextMenuTrigger
 ContextMenu.Content = ContextMenuContent
-ContextMenu.Item = ContextMenuItem
-ContextMenu.Label = ContextMenuLabel
-ContextMenu.Separator = ContextMenuSeparator
-ContextMenu.ItemDetails = ContextMenuItemDetails
-ContextMenu.Section = ContextMenuSection
-ContextMenu.Header = ContextMenuHeader
-ContextMenu.Keyboard = ContextMenuKeyboard
+ContextMenu.Item = Menu.Item
+ContextMenu.Label = Menu.Label
+ContextMenu.Separator = Menu.Separator
+ContextMenu.Details = Menu.Details
+ContextMenu.Section = Menu.Section
+ContextMenu.Submenu = Menu.Submenu
+ContextMenu.Header = Menu.Header
 
 export { ContextMenu }
-export type { ContextMenuProps }

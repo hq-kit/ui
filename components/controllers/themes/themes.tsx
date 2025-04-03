@@ -106,13 +106,14 @@ export default function ThemeCustomizer() {
                             <Popover.Header>
                                 <Popover.Title>Presets</Popover.Title>
                                 <Popover.Description>Select a preset</Popover.Description>
-                                <Popover.Close
+                                <Button
+                                    slot='close'
                                     variant='ghost'
                                     size='icon'
                                     className='absolute top-2 right-4 sm:hidden'
                                 >
                                     <IconX />
-                                </Popover.Close>
+                                </Button>
                             </Popover.Header>
                             <Popover.Body className='mt-2 space-y-2 pb-6'>
                                 <Tabs>

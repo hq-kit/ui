@@ -1,16 +1,21 @@
 'use client'
 
-import { createContext, use } from 'react'
+import React from 'react'
 
-import { IconChevronRight } from 'hq-icons'
+import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
 import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
-import { Breadcrumb, Breadcrumbs as BreadcrumbsPrimitive } from 'react-aria-components'
+import {
+    Breadcrumb,
+    composeRenderProps,
+    Link,
+    Breadcrumbs as RACBreadcrumbs
+} from 'react-aria-components'
 
-import { Link } from './link'
-import { cn } from './utils'
+import { cn } from '@/lib/utils'
 
-type BreadcrumbsContextProps = { separator?: 'chevron' | 'slash' | boolean }
-const BreadcrumbsProvider = createContext<BreadcrumbsContextProps>({
+type BreadcrumbsContextProps = { separator?: 'chevron' | 'slash' | 'dash' | 'dot' }
+
+const BreadcrumbsProvider = React.createContext<BreadcrumbsContextProps>({
     separator: 'chevron'
 })
 
@@ -20,31 +25,36 @@ const Breadcrumbs = <T extends object>({
 }: BreadcrumbsProps<T> & BreadcrumbsContextProps) => {
     return (
         <BreadcrumbsProvider value={{ separator: props.separator }}>
-            <BreadcrumbsPrimitive {...props} className={cn('flex items-center gap-2', className)} />
+            <RACBreadcrumbs
+                {...props}
+                className={cn('flex items-center gap-1.5 **:data-[slot=icon]:size-3.5', className)}
+            />
         </BreadcrumbsProvider>
     )
 }
 
-interface BreadcrumbsItemProps extends BreadcrumbProps, BreadcrumbsContextProps {
+interface BreadcrumbsItemProps extends BreadcrumbProps, Pick<LinkProps, 'href'> {
     href?: string
 }
 
-const BreadcrumbsItem = ({
-    href,
-    separator = true,
-    className,
-    ...props
-}: BreadcrumbsItemProps & Partial<Omit<LinkProps, 'className'>>) => {
-    const { separator: contextSeparator } = use(BreadcrumbsProvider)
-    separator = contextSeparator ?? separator
-    const separatorValue = separator === true ? 'chevron' : separator
+const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) => {
+    const { separator } = React.use(BreadcrumbsProvider)
 
     return (
-        <Breadcrumb {...props} className={cn(className, 'flex items-center gap-2 text-sm')}>
-            {({ isCurrent }) => (
+        <Breadcrumb
+            {...props}
+            className={composeRenderProps(className, (className) =>
+                cn('inline-flex items-center gap-2 text-muted-fg data-current:text-fg', className)
+            )}
+        >
+            {(values) => (
                 <>
-                    <Link href={href} {...props} />
-                    {!isCurrent && separator !== false && <Separator separator={separatorValue} />}
+                    {href ? (
+                        <Link href={href} className='inline-flex items-center gap-2' {...props} />
+                    ) : (
+                        props.children
+                    )}
+                    {!values.isCurrent && <Separator separator={separator} />}
                 </>
             )}
         </Breadcrumb>
@@ -54,12 +64,14 @@ const BreadcrumbsItem = ({
 const Separator = ({
     separator = 'chevron'
 }: {
-    separator?: BreadcrumbsItemProps['separator']
+    separator?: BreadcrumbsContextProps['separator']
 }) => {
     return (
-        <span className='*:text-muted-fg *:shrink-0 *:data-[slot=icon]:size-3.5'>
+        <span className='*:text-muted-fg select-none'>
             {separator === 'chevron' && <IconChevronRight />}
-            {separator === 'slash' && <span className='text-muted-fg'>/</span>}
+            {separator === 'slash' && <IconSlash />}
+            {separator === 'dash' && <IconMinus />}
+            {separator === 'dot' && <IconDot />}
         </span>
     )
 }
@@ -67,4 +79,3 @@ const Separator = ({
 Breadcrumbs.Item = BreadcrumbsItem
 
 export { Breadcrumbs }
-export type { BreadcrumbsItemProps, BreadcrumbsProps }

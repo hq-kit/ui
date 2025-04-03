@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import { parseColor } from 'react-aria-components'
 
-import { ColorSwatchPicker, Description } from '@/components/ui'
+import { ColorSwatchPicker } from '@/components/ui'
 
 export default function ColorSwatchPickerDemo() {
     const [color, setColor] = React.useState(parseColor('#0d6efd'))
@@ -22,7 +22,7 @@ export default function ColorSwatchPickerDemo() {
                 <ColorSwatchPicker.Item color='#ec4899' />
                 <ColorSwatchPicker.Item color='#f43f5e' />
             </ColorSwatchPicker>
-            <Description>{color.toString('css')}</Description>
+            <code>color: {JSON.stringify(color)}</code>
         </div>
     )
 }

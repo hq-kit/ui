@@ -21,10 +21,7 @@ export default function CarouselOptionsDemo() {
                 )}
             </Carousel.Content>
 
-            <Carousel.Handler>
-                <Carousel.Button slot='previous' />
-                <Carousel.Button slot='next' />
-            </Carousel.Handler>
+            <Carousel.Handler />
         </Carousel>
     )
 }

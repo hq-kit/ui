@@ -33,7 +33,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
     return (
         <div
             className={cn(
-                'mt-6 flex w-full flex-col-reverse items-center gap-3 xl:flex-row xl:justify-between',
+                'flex w-full flex-col-reverse items-center gap-3 xl:flex-row xl:justify-between',
                 className
             )}
         >
@@ -43,7 +43,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
             <div>
                 <Pagination>
                     {isDesktop ? (
-                        <Pagination.List>
+                        <>
                             <Pagination.Item
                                 role='first'
                                 isDisabled={meta.page === 1}
@@ -54,64 +54,27 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                                 isDisabled={meta.page === 1}
                                 onAction={actions.prev}
                             />
-                            <Pagination.Section>
-                                {meta.page > 2 && (
-                                    <Pagination.Item onAction={actions.first}>1</Pagination.Item>
-                                )}
-                                {meta.page > 3 && <Pagination.Item role='ellipsis' />}
-                                {meta.page !== 1 && (
-                                    <Pagination.Item onAction={() => setPage(meta.page - 1)}>
-                                        {meta.page - 1}
-                                    </Pagination.Item>
-                                )}
-                                <Pagination.Item isCurrent>{meta.page}</Pagination.Item>
-                                {meta.page !== meta.last_page && (
-                                    <Pagination.Item onAction={() => setPage(meta.page + 1)}>
-                                        {meta.page + 1}
-                                    </Pagination.Item>
-                                )}
-                                {meta.page < meta.last_page - 2 && (
-                                    <Pagination.Item role='ellipsis' />
-                                )}
-                                {meta.page <= meta.last_page - 2 && (
-                                    <Pagination.Item onAction={actions.last}>
-                                        {meta.last_page}
-                                    </Pagination.Item>
-                                )}
-                            </Pagination.Section>
-                            <Pagination.Item
-                                role='next'
-                                isDisabled={meta.page === meta.last_page}
-                                onAction={actions.next}
-                            />
-                            <Pagination.Item
-                                role='last'
-                                isDisabled={meta.page === meta.last_page}
-                                onAction={actions.last}
-                            />
-                        </Pagination.List>
-                    ) : (
-                        <Pagination.List>
-                            <Pagination.Item
-                                role='first'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.first}
-                            />
-                            <Pagination.Item
-                                role='previous'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.prev}
-                            />
-                            <Pagination.Section
-                                aria-label='Pagination. Segment'
-                                className='rounded-lg border'
-                            >
-                                <Pagination.Item role='label'>{meta.page}</Pagination.Item>
-                                <Pagination.Item role='separator' />
-                                <Pagination.Item className='text-muted-fg' role='label'>
+                            {meta.page > 2 && (
+                                <Pagination.Item onAction={actions.first}>1</Pagination.Item>
+                            )}
+                            {meta.page > 3 && <Pagination.Item role='ellipsis' />}
+                            {meta.page !== 1 && (
+                                <Pagination.Item onAction={() => setPage(meta.page - 1)}>
+                                    {meta.page - 1}
+                                </Pagination.Item>
+                            )}
+                            <Pagination.Item isCurrent>{meta.page}</Pagination.Item>
+                            {meta.page !== meta.last_page && (
+                                <Pagination.Item onAction={() => setPage(meta.page + 1)}>
+                                    {meta.page + 1}
+                                </Pagination.Item>
+                            )}
+                            {meta.page < meta.last_page - 2 && <Pagination.Item role='ellipsis' />}
+                            {meta.page <= meta.last_page - 2 && (
+                                <Pagination.Item onAction={actions.last}>
                                     {meta.last_page}
                                 </Pagination.Item>
-                            </Pagination.Section>
+                            )}
                             <Pagination.Item
                                 role='next'
                                 isDisabled={meta.page === meta.last_page}
@@ -122,7 +85,31 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.last}
                             />
-                        </Pagination.List>
+                        </>
+                    ) : (
+                        <>
+                            <Pagination.Item
+                                role='first'
+                                isDisabled={meta.page === 1}
+                                onAction={actions.first}
+                            />
+                            <Pagination.Item
+                                role='previous'
+                                isDisabled={meta.page === 1}
+                                onAction={actions.prev}
+                            />
+                            <Pagination.Label current={meta.page} total={meta.last_page} />
+                            <Pagination.Item
+                                role='next'
+                                isDisabled={meta.page === meta.last_page}
+                                onAction={actions.next}
+                            />
+                            <Pagination.Item
+                                role='last'
+                                isDisabled={meta.page === meta.last_page}
+                                onAction={actions.last}
+                            />
+                        </>
                     )}
                 </Pagination>
             </div>

@@ -57,7 +57,6 @@ export function ResponsiveAside({
                 aria-label='Docs Menu'
                 isOpen={openAside}
                 onOpenChange={setOpenAside}
-                classNames={{ content: 'w-[19rem]' }}
                 side='left'
                 closeButton={true}
             >

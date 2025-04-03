@@ -1,110 +1,90 @@
 'use client'
 
-import { useState } from 'react'
+import React from 'react'
 
-import { IconEye, IconEyeClosed } from 'hq-icons'
+import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
 import {
-    Button as ButtonPrimitive,
-    TextField as TextFieldPrimitive,
-    type TextFieldProps as TextFieldPrimitiveProps
+    Button,
+    composeRenderProps,
+    TextField as RACTextField,
+    type TextFieldProps as RACTextFieldProps
 } from 'react-aria-components'
-import { twJoin } from 'tailwind-merge'
 
-import type { TextInputDOMProps } from '@react-types/shared'
+import { cn } from '@/lib/utils'
 
 import type { FieldProps } from './field'
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
-import { Loader } from './loader'
-import { ctr } from './utils'
 
-type InputType = Exclude<TextInputDOMProps['type'], 'password'>
-
-interface BaseTextFieldProps extends TextFieldPrimitiveProps, FieldProps {
+interface TextFieldProps extends RACTextFieldProps, FieldProps {
     prefix?: React.ReactNode
     suffix?: React.ReactNode
     isPending?: boolean
-    className?: string
 }
-
-interface RevealableTextFieldProps extends BaseTextFieldProps {
-    isRevealable: true
-    type: 'password'
-}
-
-interface NonRevealableTextFieldProps extends BaseTextFieldProps {
-    isRevealable?: never
-    type?: InputType
-}
-
-type TextFieldProps = RevealableTextFieldProps | NonRevealableTextFieldProps
 
 const TextField = ({
-    placeholder,
     label,
+    placeholder,
     description,
     errorMessage,
-    prefix,
-    suffix,
-    isPending,
     className,
-    isRevealable,
     type,
     ...props
 }: TextFieldProps) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-    const inputType = isRevealable ? (isPasswordVisible ? 'text' : 'password') : type
-    const handleTogglePasswordVisibility = () => {
-        setIsPasswordVisible((prev) => !prev)
-    }
+    const [masked, setMasked] = React.useState<boolean>(type === 'password')
+    const inputType = type === 'password' ? (masked ? 'password' : 'text') : type
+
     return (
-        <TextFieldPrimitive
+        <RACTextField
             type={inputType}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-y-1.5', className)
+            )}
             {...props}
-            className={ctr(className, 'group flex flex-col gap-y-1.5')}
         >
-            {!props.children ? (
+            {({ isInvalid, isDisabled }) => (
                 <>
-                    {label && <Label>{label}</Label>}
+                    {label && (
+                        <Label isInvalid={isInvalid || !!errorMessage} isDisabled={isDisabled}>
+                            {label}
+                        </Label>
+                    )}
                     <FieldGroup
-                        isInvalid={!!errorMessage}
-                        isDisabled={props.isDisabled}
-                        className={twJoin(
-                            '**:[button]:h-8 **:[button]:rounded-[calc(var(--radius-lg)*0.5)] **:[button]:px-3.5 **:[button]:inset-ring-0 **:[button]:inset-shadow-none **:[button]:has-data-[slot=icon]:w-8 **:[button]:has-data-[slot=icon]:p-0 dark:**:[button]:inset-ring-0',
-                            '[&>[data-slot=suffix]>button]:mr-[calc(var(--spacing)*-1.7)] [&>[data-slot=suffix]>button]:data-focus-visible:outline-1 [&>[data-slot=suffix]>button]:data-focus-visible:outline-offset-1',
-                            '[&>[data-slot=prefix]>button]:ml-[calc(var(--spacing)*-1.7)] [&>[data-slot=prefix]>button]:data-focus-visible:outline-1 [&>[data-slot=prefix]>button]:data-focus-visible:outline-offset-1'
-                        )}
-                        data-loading={isPending ? 'true' : undefined}
+                        isInvalid={isInvalid || !!errorMessage}
+                        isDisabled={isDisabled}
+                        data-loading={props.isPending ? 'true' : undefined}
                     >
-                        {prefix ? (
-                            <span data-slot='prefix' className='atrs x2e2'>
-                                {prefix}
+                        {props.prefix ? (
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
+                                {props.prefix}
                             </span>
                         ) : null}
                         <Input placeholder={placeholder} />
-                        {isRevealable ? (
-                            <ButtonPrimitive
+                        {type === 'password' ? (
+                            <Button
                                 type='button'
-                                aria-label='Toggle password visibility'
-                                onPress={handleTogglePasswordVisibility}
-                                className='data-focus-visible:*:data-[slot=icon]:text-primary *:data-[slot=icon]:text-muted-fg relative mr-1 grid shrink-0 place-content-center rounded-lg border-transparent outline-hidden'
+                                aria-label='Toggle visibility'
+                                onPress={() => setMasked((e) => !e)}
+                                className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
                             >
-                                {isPasswordVisible ? <IconEyeClosed /> : <IconEye />}
-                            </ButtonPrimitive>
-                        ) : isPending ? (
-                            <Loader variant='spin' data-slot='suffix' />
-                        ) : suffix ? (
-                            <span data-slot='suffix'>{suffix}</span>
+                                {masked ? <IconEyeClosed /> : <IconEye />}
+                            </Button>
+                        ) : props.isPending ? (
+                            <IconLoaderCircle
+                                className='animate-spin size-3.5 mr-2 text-muted-fg'
+                                data-suffix
+                            />
+                        ) : props.suffix ? (
+                            <span data-suffix className='mr-2 has-[button]:mr-0 text-muted-fg'>
+                                {props.suffix}
+                            </span>
                         ) : null}
                     </FieldGroup>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
                 </>
-            ) : (
-                props.children
             )}
-        </TextFieldPrimitive>
+        </RACTextField>
     )
 }
 
 export { TextField }
-export type { TextFieldProps }

@@ -1,33 +1,23 @@
 'use client'
 
+import { IconCalendarDays } from 'hq-icons'
 import {
-    DateRangePicker as DateRangePickerPrimitive,
-    type DateRangePickerProps as DateRangePickerPrimitiveProps,
+    Button,
+    composeRenderProps,
+    DateRangePicker as RACDateRangePicker,
     type DateValue,
-    type ValidationResult
+    type DateRangePickerProps as RACDateRangePickerProps
 } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 
 import { DateInput } from './date-field'
-import { DatePickerIcon, DatePickerOverlay } from './date-picker'
-import { Description, FieldError, FieldGroup, Label } from './field'
-import { ctr } from './utils'
+import { Description, FieldError, FieldGroup, FieldProps, Label } from './field'
+import { Popover } from './popover'
+import { RangeCalendar } from './range-calendar'
 
-const dateRangePickerStyles = tv({
-    slots: {
-        base: 'group flex flex-col gap-y-1.5',
-        dateRangePickerInputStart: 'px-2 text-base tabular-nums lg:text-sm',
-        dateRangePickerInputEnd: 'flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm',
-        dateRangePickerDash: 'text-fg group-data-disabled:opacity-50'
-    }
-})
-const { base, dateRangePickerInputStart, dateRangePickerInputEnd, dateRangePickerDash } =
-    dateRangePickerStyles()
-
-interface DateRangePickerProps<T extends DateValue> extends DateRangePickerPrimitiveProps<T> {
-    label?: string
-    description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
+interface DateRangePickerProps<T extends DateValue> extends RACDateRangePickerProps<T>, FieldProps {
+    portal?: Element
 }
 
 const DateRangePicker = <T extends DateValue>({
@@ -38,25 +28,62 @@ const DateRangePicker = <T extends DateValue>({
     ...props
 }: DateRangePickerProps<T>) => {
     return (
-        <DateRangePickerPrimitive
+        <RACDateRangePicker
             shouldCloseOnSelect={false}
             {...props}
-            className={ctr(className, base())}
+            className={composeRenderProps(className, (className) =>
+                cn('group flex flex-col gap-y-1.5', className)
+            )}
         >
-            {label && <Label>{label}</Label>}
-            <FieldGroup className='w-auto min-w-40'>
-                <DateInput slot='start' className={dateRangePickerInputStart()} />
-                <span aria-hidden='true' className={dateRangePickerDash()}>
-                    –
-                </span>
-                <DateInput slot='end' className={dateRangePickerInputEnd()} />
-                <DatePickerIcon />
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-            <DatePickerOverlay range />
-        </DateRangePickerPrimitive>
+            {({ isOpen, isInvalid, isDisabled }) => (
+                <>
+                    {label && (
+                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
+                            {label}
+                        </Label>
+                    )}
+                    <FieldGroup className='w-auto min-w-40'>
+                        <DateInput
+                            slot='start'
+                            className='px-2 text-base tabular-nums lg:text-sm'
+                        />
+                        <span
+                            aria-hidden='true'
+                            className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm'
+                        >
+                            –
+                        </span>
+                        <DateInput
+                            slot='end'
+                            className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm'
+                        />
+                        <Button className='mr-1 cursor-pointer size-8 rounded-lg outline-hidden inline-flex items-center justify-center'>
+                            <IconCalendarDays
+                                aria-hidden
+                                className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-fg')}
+                            />
+                        </Button>
+                    </FieldGroup>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                    <Popover.Content
+                        showArrow={false}
+                        className='p-4'
+                        UNSTABLE_portalContainer={props.portal}
+                    >
+                        <RangeCalendar />
+                        <Button
+                            type='button'
+                            slot='close'
+                            className='mt-2 w-full sm:hidden rounded-lg p-2 text-center border hover:bg-accent/40 pressed:bg-accent/50'
+                        >
+                            Close
+                        </Button>
+                    </Popover.Content>
+                </>
+            )}
+        </RACDateRangePicker>
     )
 }
 
-export { DateRangePicker, type DateRangePickerProps }
+export { DateRangePicker }

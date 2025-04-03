@@ -1,6 +1,8 @@
 import Image from 'next/image'
+import { Collection } from 'react-aria-components'
 
-import { Card, Grid } from '@/components/ui'
+import { Card } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export default function Media() {
     const items = Array.from({ length: 17 }, (_, id) => ({
@@ -8,19 +10,21 @@ export default function Media() {
         title: 'Image ' + id
     }))
     return (
-        <Grid columns={{ initial: 2, '2xl': 4 }} gap={2} items={items}>
-            {(item) => (
-                <Grid.Item key={item.id} colSpan={item.id % 5 === 0 ? 2 : 1}>
-                    <Card>
-                        <Image
-                            width={item.id % 5 === 0 ? 800 : 400}
-                            height={300}
-                            src={`https://picsum.photos/${item.id % 5 === 0 ? 800 : 400}/300?random=${item.id}`}
-                            alt={item.title}
-                        />
-                    </Card>
-                </Grid.Item>
-            )}
-        </Grid>
+        <div className='grid grid-cols-2 2xl:grid-cols-4 gap-2'>
+            <Collection items={items}>
+                {(item) => (
+                    <div key={item.id} className={cn(item.id % 5 === 0 && 'col-span-2')}>
+                        <Card>
+                            <Image
+                                width={item.id % 5 === 0 ? 800 : 400}
+                                height={300}
+                                src={`https://picsum.photos/${item.id % 5 === 0 ? 800 : 400}/300?random=${item.id}`}
+                                alt={item.title}
+                            />
+                        </Card>
+                    </div>
+                )}
+            </Collection>
+        </div>
     )
 }

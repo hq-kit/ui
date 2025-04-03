@@ -72,14 +72,14 @@ export default function CLI({ items, message, command = 'init', noMessage, class
             )}
             <div
                 className={cn(
-                    'text-fg bg-bg flex h-12 w-full items-center justify-between gap-4 rounded-lg border p-3 font-mono text-sm',
+                    'text-fg mt-2 bg-bg flex h-12 w-full items-center justify-between gap-4 rounded-lg border p-3 font-mono text-sm',
                     className
                 )}
             >
                 {cli}
                 <Menu>
                     <CopyButton isCopied={copied} />
-                    <Menu.Content showArrow placement='bottom end'>
+                    <Menu.Content placement='bottom end'>
                         <Menu.Item onAction={() => handleCopy('npm')}>
                             <IconBrandNpm />
                             <Menu.Label>NPM</Menu.Label>

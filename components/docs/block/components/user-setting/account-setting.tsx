@@ -49,18 +49,16 @@ export default function AccountSetting() {
                     <Card.Content className='space-y-4'>
                         <div className='flex items-center gap-2'>
                             <DropZone
-                                getDropOperation={() => 'copy'}
+                                getDropOperation={(types) =>
+                                    types.has('image/jpeg') || types.has('image/png')
+                                        ? 'copy'
+                                        : 'cancel'
+                                }
                                 onDrop={onDropHandler}
-                                className={cn(
-                                    'size-10 overflow-hidden rounded-full p-0 [&_[data-slot=avatar]]:bg-transparent [&_[data-slot=avatar]]:outline-none'
-                                )}
+                                className={cn('size-10 overflow-hidden rounded-full p-0')}
                             >
-                                {droppedImage ? (
-                                    <Avatar src={droppedImage} size='lg' />
-                                ) : (
-                                    <Avatar initials='DQ' size='lg' />
-                                )}
-                                <input type='hidden' name='image' value={droppedImage} />
+                                <Avatar src={droppedImage ?? ''} size='lg' />
+                                <input type='hidden' name='image' value={droppedImage ?? ''} />
                             </DropZone>
                             <FileTrigger
                                 size='sm'
@@ -94,11 +92,11 @@ export default function AccountSetting() {
                 </Form>
             </Card>
             <Card>
-                <Card.Header>
-                    <Card.Title>Social Accounts</Card.Title>
-                    <Card.Description>Your social accounts.</Card.Description>
-                </Card.Header>
                 <Form>
+                    <Card.Header>
+                        <Card.Title>Social Accounts</Card.Title>
+                        <Card.Description>Your social accounts.</Card.Description>
+                    </Card.Header>
                     <Card.Content className='grid gap-4 lg:grid-cols-2'>
                         <TextField
                             label='Github Username'

@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconUserX } from 'hq-icons'
 
 import { Button, Card, Form, Modal, Note, TextField } from '@/components/ui'
@@ -20,24 +18,21 @@ export default function SecuritySetting() {
                         Delete Account
                     </Button>
                     <Modal.Content role='alertdialog'>
-                        <Modal.Header
-                            title='Delete Account'
-                            description='This will permanently delete your account and all your data'
-                        >
+                        <Modal.Header>
+                            <Modal.Title>Delete Account</Modal.Title>
+                            <Modal.Description>
+                                This will permanently delete your account and all your data
+                            </Modal.Description>
                             <Note variant='danger'>No undo button here, so be sure!</Note>
                         </Modal.Header>
                         <Form onSubmit={() => {}}>
                             <Modal.Body>
-                                <TextField
-                                    isRequired
-                                    autoFocus
-                                    label='Password'
-                                    type='password'
-                                    isRevealable
-                                />
+                                <TextField isRequired autoFocus label='Password' type='password' />
                             </Modal.Body>
                             <Modal.Footer>
-                                <Modal.Close>Cancel</Modal.Close>
+                                <Button slot='close' variant='outline'>
+                                    Cancel
+                                </Button>
                                 <Button variant='danger'>Confirm</Button>
                             </Modal.Footer>
                         </Form>

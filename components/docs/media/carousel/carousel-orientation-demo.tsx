@@ -4,10 +4,10 @@ import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselOrientationDemo() {
     return (
-        <Carousel orientation='vertical' className='relative w-full max-w-xs'>
-            <Carousel.Content items={items} className='h-64 snap-y py-4'>
+        <Carousel orientation='vertical'>
+            <Carousel.Content items={items} className='h-32'>
                 {(item) => (
-                    <Carousel.Item className='basis-1/2 snap-center pt-1 md:basis-1/3'>
+                    <Carousel.Item className='basis-1/2 md:basis-1/3'>
                         <Card>
                             <Card.Header>
                                 <Card.Title>{item.title}</Card.Title>
@@ -18,10 +18,7 @@ export default function CarouselOrientationDemo() {
                 )}
             </Carousel.Content>
 
-            <Carousel.Handler>
-                <Carousel.Button slot='previous' />
-                <Carousel.Button slot='next' />
-            </Carousel.Handler>
+            <Carousel.Handler />
         </Carousel>
     )
 }

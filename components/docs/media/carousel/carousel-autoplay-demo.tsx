@@ -18,32 +18,26 @@ export default function CarouselAutoplayDemo() {
                 loop: true,
                 align: 'center'
             }}
-            className='w-full max-w-xs [&_.card]:flex [&_.card]:h-56 [&_.card]:flex-col [&_.card]:overflow-hidden'
+            className='w-full max-w-xs'
         >
             <Carousel.Content items={items}>
                 {(item) => (
                     <Carousel.Item id={item.id}>
-                        <div className='p-1'>
-                            <Card>
-                                <div className='bg-fg/5 relative flex-1 border-b' />
-                                <Card.Header>
-                                    <Card.Title className='line-clamp-1 sm:text-lg'>
-                                        {item.title}
-                                    </Card.Title>
-                                    <Card.Description className='line-clamp-2'>
-                                        {item.description}
-                                    </Card.Description>
-                                </Card.Header>
-                            </Card>
-                        </div>
+                        <Card>
+                            <Card.Header>
+                                <Card.Title className='line-clamp-1 sm:text-lg'>
+                                    {item.title}
+                                </Card.Title>
+                                <Card.Description className='line-clamp-2'>
+                                    {item.description}
+                                </Card.Description>
+                            </Card.Header>
+                        </Card>
                     </Carousel.Item>
                 )}
             </Carousel.Content>
 
-            <Carousel.Handler>
-                <Carousel.Button slot='previous' />
-                <Carousel.Button slot='next' />
-            </Carousel.Handler>
+            <Carousel.Handler />
         </Carousel>
     )
 }

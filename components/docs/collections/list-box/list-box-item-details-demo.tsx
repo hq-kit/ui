@@ -6,28 +6,38 @@ import type { Selection } from 'react-aria-components'
 
 import { ListBox } from '@/components/ui'
 
+const items = [
+    {
+        id: 1,
+        name: 'React',
+        description: 'Component-based JavaScript library'
+    },
+    {
+        id: 2,
+        name: 'Angular',
+        description: 'Comprehensive TypeScript-based framework'
+    },
+    {
+        id: 3,
+        name: 'Vue.Js',
+        description: 'Flexible and progressive UI framework'
+    }
+]
+
 export default function ListBoxItemDetailsDemo() {
     const [selected, setSelected] = React.useState<Selection>(new Set([1]))
     return (
         <ListBox
             selectedKeys={selected}
             onSelectionChange={setSelected}
-            items={roles}
-            aria-label='Bands'
+            items={items}
+            aria-label='Javascript Frameworks'
         >
             {(item) => (
                 <ListBox.Item id={item.id} textValue={item.name}>
-                    <ListBox.ItemDetails label={item.name} description={item.description} />
+                    <ListBox.Details label={item.name} description={item.description} />
                 </ListBox.Item>
             )}
         </ListBox>
     )
 }
-
-const roles = [
-    { id: 1, name: 'Admin', description: 'Has full access to all resources' },
-    { id: 2, name: 'Editor', description: 'Can edit content but has limited access to settings' },
-    { id: 3, name: 'Viewer', description: 'Can view content but cannot make changes' },
-    { id: 4, name: 'Contributor', description: 'Can contribute content for review' },
-    { id: 5, name: 'Guest', description: 'Limited access, mostly for viewing purposes' }
-]

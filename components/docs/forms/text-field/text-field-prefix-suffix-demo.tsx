@@ -1,13 +1,11 @@
-'use client'
-
-import { IconBrandX } from 'hq-icons'
+import { IconBrandTiktok } from 'hq-icons'
 
 import { TextField } from '@/components/ui'
 
 export default function TextFieldPrefixSuffixDemo() {
     return (
-        <div className='flex flex-col gap-4'>
-            <TextField label='Twitter' suffix={<IconBrandX />} />
+        <div className='space-y-2'>
+            <TextField label='Tiktok' suffix={<IconBrandTiktok />} />
             <TextField label='Sites' prefix='https://' suffix='.com' />
         </div>
     )
