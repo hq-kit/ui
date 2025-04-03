@@ -57,7 +57,18 @@ const Content = ({
                 className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
                     cn(
                         'max-h-full w-full rounded-t-lg sm:rounded-lg bg-bg text-fg align-middle shadow-lg overflow-hidden dark:border',
-                        `sm:max-w-${size}`,
+                        {
+                            'max-w-xs': size === 'xs',
+                            'max-w-sm': size === 'sm',
+                            'max-w-md': size === 'md',
+                            'max-w-lg': size === 'lg',
+                            'max-w-xl': size === 'xl',
+                            'max-w-2xl': size === '2xl',
+                            'max-w-3xl': size === '3xl',
+                            'max-w-4xl': size === '4xl',
+                            'max-w-5xl': size === '5xl',
+                            'max-w-full': size === 'full'
+                        },
                         'sm:-translate-x-1/2 sm:-translate-y-1/2 sm:fixed sm:top-1/2 sm:left-[50vw]',
                         isEntering &&
                             'fade-in slide-in-from-bottom animate-in duration-200 ease-out sm:zoom-in-95 sm:slide-in-from-bottom-0',

@@ -5,7 +5,7 @@ const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
         <div
             slot='card'
             className={cn(
-                'flex flex-col gap-6 rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:border-x-0 **:[[slot=table]]:rounded-none',
+                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:border-x-0 **:[[slot=table]]:rounded-none',
                 className
             )}
             {...props}

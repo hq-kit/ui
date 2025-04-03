@@ -3,10 +3,18 @@
 import { IconPhone } from 'hq-icons'
 import Image from 'next/image'
 
-import TimeFieldDemo from '@/components/docs/date-and-time/time-field/time-field-demo'
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
-import TextareaDemo from '@/components/docs/forms/textarea/textarea-demo'
-import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField } from '@/components/ui'
+import {
+    Avatar,
+    Card,
+    DateField,
+    Heading,
+    NumberField,
+    Tabs,
+    Textarea,
+    TextField,
+    TimeField
+} from '@/components/ui'
 
 export default function UserProfileSink() {
     return (
@@ -42,14 +50,14 @@ export default function UserProfileSink() {
                         <Tabs.Content id='t1'>
                             <div className='mb-4 flex w-full items-end gap-3'>
                                 <DateField label='Birthdate' className='w-full' />
-                                <TimeFieldDemo />
+                                <TimeField label='Birthtime' />
                             </div>
                             <div className='my-2.5'>
                                 <TextField label='Phone' prefix='+62' suffix={<IconPhone />} />
                             </div>
                         </Tabs.Content>
                         <Tabs.Content id='t2'>
-                            <TextareaDemo />
+                            <Textarea label='Address' />
                             <div className='mt-2'>
                                 <NumberField label='Postal Code' />
                             </div>
