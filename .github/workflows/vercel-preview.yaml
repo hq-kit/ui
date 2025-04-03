@@ -19,7 +19,7 @@ jobs:
         run: bun install --global vercel@latest
 
       - name: Generate Source Code Preview
-        run: bun run generate-preview
+        run: bun run b
 
       - uses: amondnet/vercel-action@v25
         id: vercel-deploy
