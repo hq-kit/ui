@@ -54,12 +54,12 @@ export function SelectSize() {
                         <Menu.Label>
                             {item.name} /{' '}
                             {item.name === 'Size 4'
-                                ? '20px'
+                                ? '16px'
                                 : item.name === 'Size 5'
-                                  ? '24px'
+                                  ? '20px'
                                   : item.name === 'Size 6'
-                                    ? '28px'
-                                    : '32px'}
+                                    ? '24px'
+                                    : '28px'}
                         </Menu.Label>
                     </Menu.Item>
                 )}

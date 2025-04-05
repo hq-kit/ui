@@ -2,7 +2,8 @@
 
 import { Header, Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
-import { buttonStyles, cn, Container, Link } from '@/components/ui'
+import { buttonStyles, Container, Link } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 const Hero = ({ children }: { children: React.ReactNode }) => (
     <div className='bg-bg relative isolate overflow-hidden'>
@@ -92,7 +93,7 @@ const HeroButton = ({
     children,
     className,
     variant = 'primary',
-    size = 'lg',
+    size = 'md',
     ...props
 }: HeroButtonProps) => (
     <Link
@@ -101,7 +102,6 @@ const HeroButton = ({
                 size: size,
                 variant: variant
             }),
-            'min-h-12 rounded-lg',
             className
         )}
         {...props}

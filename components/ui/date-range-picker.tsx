@@ -75,7 +75,7 @@ const DateRangePicker = <T extends DateValue>({
                         <Button
                             type='button'
                             slot='close'
-                            className='mt-2 w-full sm:hidden rounded-lg p-2 text-center border hover:bg-accent/40 pressed:bg-accent/50'
+                            className='mt-2 w-full sm:hidden rounded-lg p-2 text-center border hover:bg-primary/40 pressed:bg-primary/50'
                         >
                             Close
                         </Button>

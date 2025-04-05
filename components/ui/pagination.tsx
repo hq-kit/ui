@@ -7,7 +7,12 @@ import {
     IconChevronsRight,
     IconEllipsis
 } from 'hq-icons'
-import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps } from 'react-aria-components'
+import type {
+    ListBoxItemProps,
+    ListBoxProps,
+    ListBoxSectionProps,
+    TextProps
+} from 'react-aria-components'
 import {
     composeRenderProps,
     ListBox,
@@ -15,7 +20,6 @@ import {
     ListBoxSection,
     Text
 } from 'react-aria-components'
-import { TextProps } from 'recharts'
 
 import { cn } from '@/lib/utils'
 

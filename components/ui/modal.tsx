@@ -90,18 +90,12 @@ const Content = ({
                                 <Button
                                     aria-label='Close'
                                     slot='close'
-                                    className={({
-                                        isPressed,
-                                        isHovered,
-                                        isFocusVisible,
-                                        isDisabled
-                                    }) =>
+                                    className={({ isPressed, isHovered, isFocusVisible }) =>
                                         cn(
                                             'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
-                                            isHovered && 'bg-accent/40',
+                                            isHovered && 'bg-muted/40',
                                             isFocusVisible && 'ring-4 ring-primary/20',
-                                            isPressed && 'bg-accent/50',
-                                            isDisabled && 'opacity-50'
+                                            isPressed && 'bg-muted/50'
                                         )
                                     }
                                 >

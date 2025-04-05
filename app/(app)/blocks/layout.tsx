@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { IconAppWindowMac, IconBrandLinux } from 'hq-icons'
+import { IconAppWindowMac, IconBlocks, IconPanelLeftOpen } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
 import previews from '@/components/docs/generated/previews.json'
@@ -24,11 +24,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Sidebar.Header>
                     <Link
                         className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
-                        href='/docs/components/layouts/sidebar'
+                        href='#'
                     >
-                        <IconBrandLinux className='size-5' />
+                        <IconBlocks className='size-5' />
                         <strong className='font-medium group-data-[collapsible=dock]:hidden'>
-                            Linux
+                            HQ Blocks
                         </strong>
                     </Link>
                 </Sidebar.Header>
@@ -71,8 +71,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Sidebar.SectionGroup>
                 </Sidebar.Content>
             </Sidebar>
-            <header className='absolute top-0 z-50 ml-12 flex h-[3.57rem] items-center justify-between gap-x-2 px-4 sm:justify-start md:sticky md:top-16 md:ml-0'>
-                <Sidebar.Trigger className='-mx-2' />
+            <header className='fixed top-16 z-50 md:h-16 md:sticky md:pt-1 md:top-16 md:ml-0 md:flex md:px-2 md:justify-center'>
+                <Sidebar.Trigger variant='primary' className='rounded-l-none sm:rounded-lg'>
+                    <IconPanelLeftOpen />
+                </Sidebar.Trigger>
             </header>
             <SidebarInset>
                 <div className='p-4 md:p-6'>{children}</div>

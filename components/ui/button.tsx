@@ -7,7 +7,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 const buttonStyles = tv({
     base: [
-        'inline-flex items-center justify-center gap-x-2 border font-medium whitespace-nowrap backdrop-blur-2xl transition outline-hidden',
+        'inline-flex items-center justify-center gap-x-2 border border-muted font-medium whitespace-nowrap backdrop-blur-2xl transition outline-hidden',
         '**:data-[slot=icon]:size-4',
         'focus-visible:ring-4 ring-primary/20',
         'cursor-pointer disabled:cursor-default disabled:opacity-50'
@@ -24,9 +24,8 @@ const buttonStyles = tv({
             danger: 'bg-danger text-danger-fg border-danger hover:bg-danger/85 pressed:bg-danger/95',
             warning:
                 'bg-warning text-warning-fg border-warning hover:bg-warning/85 pressed:bg-warning/95',
-            outline:
-                'bg-bg/80 hover:bg-accent/40 pressed:bg-accent/50 text-fg hover:text-accent-fg',
-            ghost: 'text-fg hover:bg-accent/40 pressed:bg-accent/50 hover:text-accent-fg border-transparent bg-transparent'
+            outline: 'bg-bg/80 hover:bg-muted/40 pressed:bg-muted/50 text-fg hover:text-muted-fg',
+            ghost: 'text-fg hover:bg-muted/40 pressed:bg-muted/50 hover:text-muted-fg border-transparent bg-transparent backdrop-blur-none'
         },
         size: {
             xs: 'h-6 px-2 py-1.5 text-xs',

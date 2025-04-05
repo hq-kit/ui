@@ -31,9 +31,8 @@ import {
     useSlottedContext
 } from 'react-aria-components'
 
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { cn } from '@/lib/utils'
-
-import { useMediaQuery } from './utils'
 
 const Menu = ({ ...props }: MenuTriggerProps) => <MenuTrigger {...props} />
 
@@ -158,8 +157,8 @@ const MenuItem = ({
                         isDanger
                             ? 'text-danger **:text-danger focus:bg-danger/10 open:bg-danger/10 open:text-danger focus:text-danger focus:**:text-danger'
                             : 'text-fg',
-                        isOpen && 'bg-accent text-accent-fg *:[.text-muted-fg]:text-accent-fg',
-                        isFocused && 'bg-accent text-accent-fg',
+                        isOpen && 'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary',
+                        isFocused && 'bg-primary/10 text-primary',
                         isSelected &&
                             '**:data-avatar:hidden **:data-avatar:*:hidden **:data-[slot=icon]:hidden',
                         isDisabled && 'pointer-events-none opacity-50',

@@ -20,8 +20,8 @@
     --color-secondary: var(--secondary);
     --color-secondary-fg: var(--secondary-fg);
 
-    --color-accent: var(--accent);
-    --color-accent-fg: var(--accent-fg);
+    --color-primary: var(--primary);
+    --color-primary-fg: var(--primary-fg);
 
     --color-info: var(--info);
     --color-info-fg: var(--info-fg);
@@ -57,24 +57,22 @@
 
 @layer base {
     :root {
-        --bg: hsl(0 0% 98.04%);
-        --fg: hsl(240 10% 3.92%);
-        --primary: hsl(240 10% 3.92%);
+        --bg: oklch(0.985 0 0);
+        --fg: oklch(0.21 0.006 285.885);
+        --primary: hsl(224.3 76.3% 48%);
         --primary-fg: hsl(0 0% 98.04%);
-        --secondary: hsl(208.24 7.3% 45.69%);
-        --secondary-fg: hsl(0 0% 100%);
-        --accent: hsl(240, 4.88%, 83.92%);
-        --accent-fg: hsl(240 10% 3.92%);
-        --info: hsl(224.3 76.3% 48%);
-        --info-fg: hsl(0 0% 98.04%);
+        --secondary: hsl(211.7 96.4% 78.4%);
+        --secondary-fg: hsl(226.2 57% 21%);
         --danger: hsl(0 72.22% 50.59%);
         --danger-fg: hsl(0 0% 98.04%);
         --success: hsl(142.1 76.2% 36.3%);
         --success-fg: hsl(0 0% 98.04%);
+        --info: hsl(293.41, 69.48%, 48.82%);
+        --info-fg: hsl(0 0% 98.04%);
         --warning: hsl(24.6 95% 53.1%);
         --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240 4.88% 83.92%);
-        --muted-fg: hsl(240 3.83% 46.08%);
+        --muted: oklch(0.871 0.006 286.286);
+        --muted-fg: oklch(0.552 0.016 285.938);
 
         --chart-1: oklch(0.546 0.245 262.881);
         --chart-2: oklch(0.707 0.165 254.624);
@@ -84,31 +82,22 @@
 
         --radius: 0.5rem;
     }
+
     .dark {
-        --bg: hsl(240 10% 3.92%);
-        --fg: hsl(0 0% 98.04%);
-        --primary: hsl(0 0% 98.04%);
-        --primary-fg: hsl(240 10% 3.92%);
-        --secondary: hsl(208.24 7.36% 54.71%);
-        --secondary-fg: hsl(0 0% 100%);
-        --accent: hsl(240, 5.26%, 26.08%);
-        --accent-fg: hsl(0 0% 98.04%);
-        --info: hsl(221.2 83.2% 53.3%);
-        --info-fg: hsl(0 0% 98.04%);
+        --bg: oklch(0.21 0.006 285.885);
+        --fg: oklch(0.985 0 0);
+        --secondary: hsl(226.2 57% 21%);
+        --secondary-fg: hsl(211.7 96.4% 78.4%);
         --danger: hsl(0 72.2% 50.6%);
         --danger-fg: hsl(0 0% 98.04%);
         --success: hsl(142.1 76.2% 36.3%);
         --success-fg: hsl(0 0% 98.04%);
+        --info: hsl(292.19, 84.08%, 60.59%);
+        --info-fg: hsl(0 0% 98.04%);
         --warning: hsl(17.5 88.3% 40.4%);
         --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240 3.7% 15.88%);
-        --muted-fg: hsl(240 5.03% 64.9%);
-
-        --chart-1: oklch(0.488 0.243 264.376);
-        --chart-2: oklch(0.623 0.214 259.815);
-        --chart-3: oklch(0.707 0.165 254.624);
-        --chart-4: oklch(0.809 0.105 251.813);
-        --chart-5: oklch(0.882 0.059 254.128);
+        --muted: oklch(0.37 0.013 285.805);
+        --muted-fg: oklch(0.871 0.006 286.286);
     }
 }
 
@@ -119,6 +108,7 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--muted, currentColor);
+        scroll-behavior: smooth;
     }
 
     body {

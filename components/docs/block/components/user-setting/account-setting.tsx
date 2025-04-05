@@ -9,7 +9,6 @@ import {
     Avatar,
     Button,
     Card,
-    cn,
     DropZone,
     FileTrigger,
     Form,
@@ -55,7 +54,7 @@ export default function AccountSetting() {
                                         : 'cancel'
                                 }
                                 onDrop={onDropHandler}
-                                className={cn('size-10 overflow-hidden rounded-full p-0')}
+                                className='size-10 overflow-hidden rounded-full p-0'
                             >
                                 <Avatar src={droppedImage ?? ''} size='lg' />
                                 <input type='hidden' name='image' value={droppedImage ?? ''} />

@@ -47,7 +47,7 @@ export default function UserProfileSink() {
                             <Tabs.Label id='t2'>Address</Tabs.Label>
                             <Tabs.Label id='t3'>Upload Files</Tabs.Label>
                         </Tabs.List>
-                        <Tabs.Content id='t1'>
+                        <Tabs.Content id='t1' className='p-1'>
                             <div className='mb-4 flex w-full items-end gap-3'>
                                 <DateField label='Birthdate' className='w-full' />
                                 <TimeField label='Birthtime' />
@@ -56,13 +56,13 @@ export default function UserProfileSink() {
                                 <TextField label='Phone' prefix='+62' suffix={<IconPhone />} />
                             </div>
                         </Tabs.Content>
-                        <Tabs.Content id='t2'>
+                        <Tabs.Content id='t2' className='p-1'>
                             <Textarea label='Address' />
                             <div className='mt-2'>
                                 <NumberField label='Postal Code' />
                             </div>
                         </Tabs.Content>
-                        <Tabs.Content id='t3' className='flex w-full justify-center'>
+                        <Tabs.Content id='t3' className='p-1'>
                             <DropZoneAndFileTriggerDemo />
                         </Tabs.Content>
                     </Tabs>

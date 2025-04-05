@@ -1,9 +1,9 @@
 import React from 'react'
 
 import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
 
 import { Providers } from '@/components/providers'
+import { fontMono, fontSans } from '@/lib/fonts'
 import '@/lib/styles/app.css'
 import { OpenPanelComponent } from '@openpanel/nextjs'
 
@@ -70,16 +70,6 @@ export const viewport: Viewport = {
     initialScale: 1
 }
 
-const fontSans = localFont({
-    src: [{ path: './fonts/SFProMed.woff2' }],
-    variable: '--font-sans'
-})
-
-const fontMono = localFont({
-    src: [{ path: './fonts/SFMono.woff2' }],
-    variable: '--font-mono'
-})
-
 export default function RootLayout({
     children
 }: Readonly<{
@@ -89,7 +79,13 @@ export default function RootLayout({
         <html
             lang='en'
             suppressHydrationWarning={true}
-            className={`${fontSans.variable} ${fontMono.variable}`}
+            className={`${fontSans} ${fontMono}`}
+            style={
+                {
+                    '--font-sans': 'var(--font-geist)',
+                    '--font-mono': 'var(--font-geist-mono)'
+                } as React.CSSProperties
+            }
         >
             <body className='min-h-screen font-sans antialiased'>
                 <Providers>

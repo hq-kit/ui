@@ -143,7 +143,7 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
                         'group relative grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:[svg]:mr-2 *:[svg]:my-1 *:data-avatar:mr-2 *:data-avatar:size-6',
-                        { 'bg-accent text-accent-fg': isFocused || isFocusVisible || isHovered },
+                        { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
                         isSelected && '**:data-[slot=icon]:hidden **:data-avatar:hidden',
                         isDisabled && 'pointer-events-none opacity-50',
                         className

@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 
 import { IconLoaderCircle } from 'hq-icons'
 
-import { cn } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export default function PreviewContent({
     component,
@@ -24,7 +24,7 @@ export default function PreviewContent({
             }
         >
             <iframe
-                className={cn('relative z-20 w-full rounded-xl border', className)}
+                className={cn('relative z-20 w-full rounded-lg border', className)}
                 height={height || 768}
                 style={{ zoom: zoomOut || 1 }}
                 allowFullScreen

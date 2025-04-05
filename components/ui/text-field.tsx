@@ -66,7 +66,7 @@ const TextField = ({
                                 onPress={() => setMasked((e) => !e)}
                                 className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
                             >
-                                {masked ? <IconEyeClosed /> : <IconEye />}
+                                {masked ? <IconEye /> : <IconEyeClosed />}
                             </Button>
                         ) : props.isPending ? (
                             <IconLoaderCircle

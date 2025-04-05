@@ -7,11 +7,11 @@ import { LayoutGroup, motion } from 'motion/react'
 import type { LinkProps } from 'react-aria-components'
 import { composeRenderProps, Link } from 'react-aria-components'
 
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 
 import { Button, type ButtonProps } from './button'
 import { Sheet } from './sheet'
-import { useMediaQuery } from './utils'
 
 type NavbarOptions = {
     side?: 'left' | 'right'

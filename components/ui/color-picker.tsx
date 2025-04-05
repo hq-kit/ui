@@ -46,23 +46,25 @@ const ColorPicker = ({
                         <ColorSwatch className='size-6' />
                         {label && <Label className='ml-2'>{label}</Label>}
                     </Button>
-                    <Popover.Content
-                        className='p-4 sm:p-2'
-                        showArrow={showArrow}
-                        placement={placement}
-                    >
-                        {children || (
-                            <section className='space-y-2'>
-                                <ColorArea
-                                    className='w-full'
-                                    colorSpace='hsb'
-                                    xChannel='saturation'
-                                    yChannel='brightness'
-                                />
-                                <ColorSlider showOutput={false} colorSpace='hsb' channel='hue' />
-                                <ColorField aria-label='Hex' />
-                            </section>
-                        )}
+                    <Popover.Content showArrow={showArrow} placement={placement}>
+                        <Popover.Body className='space-y-2 py-4'>
+                            {children || (
+                                <>
+                                    <ColorArea
+                                        className='w-full'
+                                        colorSpace='hsb'
+                                        xChannel='saturation'
+                                        yChannel='brightness'
+                                    />
+                                    <ColorSlider
+                                        showOutput={false}
+                                        colorSpace='hsb'
+                                        channel='hue'
+                                    />
+                                    <ColorField aria-label='Hex' />
+                                </>
+                            )}
+                        </Popover.Body>
                     </Popover.Content>
                 </Popover>
             </RACColorPicker>

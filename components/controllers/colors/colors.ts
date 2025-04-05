@@ -53,10 +53,6 @@ export const getBackgroundColor = (color: string): string => {
     return luminance < 0.5 ? chroma(color).luminance(0.1).hex() : chroma(color).luminance(0.9).hex()
 }
 
-export const getDangerColor = (color: string): string => {
-    return chroma(color).set('hsl.h', '-250').hex()
-}
-
 export const textfg = (backgroundColor: string): string => {
     const luminance = chroma(backgroundColor).luminance()
     return luminance > 0.3 ? '#000000' : '#FFFFFF'

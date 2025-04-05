@@ -48,7 +48,10 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                         'group relative grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full items-center',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
-                        { 'bg-accent text-accent-fg': isFocused || isFocusVisible || isHovered },
+                        {
+                            'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary':
+                                isFocused || isFocusVisible || isHovered
+                        },
                         isSelected && '**:data-[slot=icon]:hidden',
                         isDragging && 'cursor-grabbing outline outline-primary',
                         isDisabled && 'pointer-events-none opacity-50',
@@ -64,7 +67,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                                 'size-4 shrink-0 text-muted-fg transition',
                                 isFocused && 'text-fg',
                                 isDragging && 'text-muted-fg',
-                                isSelected && 'text-accent-fg/70'
+                                isSelected && 'text-primary-fg/70'
                             )}
                         />
                     )}

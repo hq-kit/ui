@@ -6,6 +6,7 @@ import {
     IconBrandReact,
     IconBrandTypescript,
     IconFolder,
+    IconFolderOpen,
     IconPanelLeftClose,
     IconPanelRightClose
 } from 'hq-icons'
@@ -13,8 +14,8 @@ import { Button, Collection } from 'react-aria-components'
 
 import previews from '@/components/docs/generated/previews.json'
 import Code from '@/components/mdx/code'
-import { cn, Tree, TreeItem } from '@/components/ui'
-import { convertToKebabCase } from '@/lib/utils'
+import { Tree, TreeItem } from '@/components/ui'
+import { cn, convertToKebabCase } from '@/lib/utils'
 
 type FileNode = {
     id: string | number
@@ -85,40 +86,41 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             }
         }
     }, [selected, uiComponents])
-    const renderItem = (item: FileNode): React.ReactNode => {
-        return (
-            <TreeItem key={item.id} id={item.id} textValue={item.title}>
-                <TreeItem.Content>
-                    {item.children.length > 0 && (
-                        <>
-                            <IconFolder className='mx-1 size-4' />
-                        </>
-                    )}
-                    <TreeItem
-                        id={item.id}
-                        className={cn(
-                            '-my-1 -ml-4 w-full rounded px-4 py-1 text-xs overflow-ellipsis whitespace-nowrap',
-                            selected === item.id && 'text-primary-fg bg-primary/80'
-                        )}
-                        onAction={() => {
-                            if (item.children.length === 0) setSelected(item.id as string)
-                        }}
-                        textValue={item.title}
-                    >
-                        {item.title.includes('.tsx') ? (
-                            <IconBrandReact className='size-4 shrink-0' />
+
+    const renderItem = (item: FileNode): React.ReactNode => (
+        <TreeItem
+            className={cn(
+                selected === item.id && 'bg-primary/10 text-primary',
+                'hover:bg-primary/10 hover:text-primary cursor-pointer transition'
+            )}
+            key={item.id}
+            id={item.id}
+            textValue={item.title}
+            onAction={() => {
+                if (item.children.length === 0) setSelected(item.id as string)
+            }}
+        >
+            <TreeItem.Content>
+                {({ isExpanded, hasChildItems }) => (
+                    <>
+                        {isExpanded ? (
+                            <IconFolderOpen />
+                        ) : hasChildItems ? (
+                            <IconFolder />
+                        ) : item.title.includes('.tsx') ? (
+                            <IconBrandReact />
                         ) : item.title.includes('.ts') ? (
-                            <IconBrandTypescript className='size-4 shrink-0' />
+                            <IconBrandTypescript />
                         ) : null}
                         {item.title}
-                    </TreeItem>
-                </TreeItem.Content>
-                {item.children.length > 0 && (
-                    <Collection items={item.children}>{renderItem}</Collection>
+                    </>
                 )}
-            </TreeItem>
-        )
-    }
+            </TreeItem.Content>
+            {item.children.length > 0 && (
+                <Collection items={item.children}>{renderItem}</Collection>
+            )}
+        </TreeItem>
+    )
 
     const files: FileNode[] = []
     if (page) {
@@ -204,7 +206,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             >
                 {files.map(renderItem)}
             </Tree>
-            <div className='grid w-full'>
+            <div className='grid w-full grid-cols-1 place-content-start'>
                 <div className='relative flex max-h-12 items-center gap-2 border-b px-4 py-1.5'>
                     <Button
                         onPress={() => setSidebarOpen(!sidebarOpen)}
@@ -215,7 +217,10 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     <IconBrandReact className='size-4' />
                     {selected.split('/').pop() + '.tsx'}
                 </div>
-                <Code code={code} className='border-none [&_pre]:min-h-[38rem]' />
+                <Code
+                    code={code}
+                    className='border-none [&_pre]:pb-0 [&_pre]:max-h-full overflow-y-auto'
+                />
             </div>
         </div>
     )

@@ -107,7 +107,7 @@ const isBrightColor = (color: string | HSBColor): boolean => {
     }
 
     const lum = luminance(r, g, b)
-    return lum > 0.75
+    return lum > 0.5
 }
 
 const defaultColor = parseColor('hsl(216, 98%, 52%)')

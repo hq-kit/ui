@@ -15,7 +15,7 @@ const badgeStyles = tv({
             danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
             warning: '[--bg:var(--color-warning)] [--fg:var(--color-warning-fg)]',
             outline:
-                'bg-bg/80 text-fg hover:bg-accent/40 pressed:bg-accent/50 hover:text-accent-fg border-accent'
+                'bg-bg/80 text-fg hover:bg-primary/40 pressed:bg-primary/50 hover:text-primary-fg border-primary'
         },
         shape: {
             square: 'rounded-lg',

@@ -10,6 +10,7 @@ import {
     CalendarGridBody,
     CalendarHeaderCell,
     CalendarStateContext,
+    FieldError,
     Calendar as RACCalendar,
     CalendarGridHeader as RACCalendarGridHeader,
     RangeCalendarStateContext,
@@ -22,7 +23,6 @@ import { useDateFormatter } from '@react-aria/i18n'
 import type { CalendarState, RangeCalendarState } from '@react-stately/calendar'
 
 import { Button } from './button'
-import { FieldError } from './field'
 import { Menu } from './menu'
 
 interface CalendarProps<T extends DateValue> extends Omit<RACCalendarProps<T>, 'visibleDuration'> {
@@ -65,7 +65,7 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
                     )}
                 </CalendarGridBody>
             </CalendarGrid>
-            <FieldError className='px-2'>{errorMessage}</FieldError>
+            <FieldError className='text-danger text-sm/5 px-2'>{errorMessage}</FieldError>
         </RACCalendar>
     )
 }

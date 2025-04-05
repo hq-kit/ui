@@ -70,7 +70,7 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
                 (className, { isSelected, isFocusVisible, isHovered, isDisabled }) =>
                     cn(
                         'relative cursor-pointer py-1.5 px-4 flex gap-x-2 items-center text-sm font-medium whitespace-nowrap outline-hidden transition',
-                        'group-orientation-horizontal:rounded-t-md group-orientation-vertical:rounded-r-md  group-orientation-horizontal:border-b-2 group-orientation-vertical:border-l-2',
+                        'group-orientation-horizontal:rounded-t-md group-orientation-vertical:rounded-r-md group-orientation-horizontal:border-b-2 group-orientation-vertical:border-l-2',
                         isSelected ? 'text-primary bg-primary/10 border-primary' : 'text-muted-fg',
                         isFocusVisible && 'text-primary ring-1 ring-offset-2 ring-primary',
                         isHovered && 'text-primary',
@@ -90,10 +90,7 @@ const Panel = ({ className, ref, ...props }: TabPanelProps) => {
         <TabPanel
             {...props}
             ref={ref}
-            className={cn(
-                className,
-                'text-fg flex-1 overflow-auto text-sm data-focus-visible:outline-hidden'
-            )}
+            className={cn(className, 'text-fg flex-1 text-sm outline-hidden')}
         />
     )
 }

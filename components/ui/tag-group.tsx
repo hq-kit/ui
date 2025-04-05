@@ -17,9 +17,10 @@ import {
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
+import { cn } from '@/lib/utils'
+
 import { badgeStyles } from './badge'
 import { Description, Label } from './field'
-import { cn } from './utils'
 
 type TagGroupStyles = {
     variant: keyof Omit<typeof badgeStyles.variants.variant, 'outline'>

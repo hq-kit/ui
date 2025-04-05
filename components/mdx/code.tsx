@@ -9,9 +9,8 @@ import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import { copyToClipboard } from 'usemods'
 
-import { cn } from '@/components/ui'
-
-import { CopyButton } from './copy-button'
+import { CopyButton } from '@/components/mdx/copy-button'
+import { cn } from '@/lib/utils'
 
 export default function Code({
     lang = 'tsx',
@@ -37,10 +36,10 @@ export default function Code({
 
     return (
         <div className={cn('relative overflow-hidden rounded-lg border', className)}>
-            <div className={cn('not-prose absolute top-3 right-4 bottom-auto z-20 flex gap-1.5')}>
+            <div className={cn('not-prose absolute top-3 right-3 bottom-auto z-20 flex gap-1.5')}>
                 <CopyButton isCopied={copied} onPress={copyCode} />
             </div>
-            <div className='no-scrollbar [&_pre]:no-scrollbar font-mono [&_pre]:!my-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0 [&_pre]:pb-[100px]'>
+            <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0 [&_pre]:pb-[100px]'>
                 <CodeHighlighter lang={lang} code={code} />
             </div>
         </div>
@@ -88,5 +87,5 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
         return <p>Error: {error}</p>
     }
 
-    return <div dangerouslySetInnerHTML={{ __html: formattedCode }} />
+    return <div className='!font-mono' dangerouslySetInnerHTML={{ __html: formattedCode }} />
 }

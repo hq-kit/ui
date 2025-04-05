@@ -35,7 +35,7 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
                             ? 'pl-[calc((var(--tree-item-level)-1)*20px+8px)]'
                             : 'pl-[calc((var(--tree-item-level)-1)*20px+32px)]',
                         isFocusVisible && 'ring-primary/20 ring-2',
-                        isSelected && 'bg-accent text-accent-fg',
+                        isSelected && 'bg-primary text-primary-fg',
                         isDisabled && 'opacity-50',
                         className
                     )

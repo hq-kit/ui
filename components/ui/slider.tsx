@@ -120,7 +120,7 @@ const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
                 className,
                 (className, { isFocusVisible, isDragging, isDisabled }) =>
                     cn(
-                        'top-1/2 left-1/2 size-5 rounded-full border-2 border-fg bg-bg outline-hidden transition',
+                        'top-1/2 left-1/2 size-5 rounded-full border border-muted-fg bg-bg outline-hidden transition',
                         isFocusVisible && 'border-primary ring-4 ring-primary/20',
                         isDragging && 'cursor-grabbing border-primary ring-4 ring-primary/20',
                         isDisabled && 'opacity-50',

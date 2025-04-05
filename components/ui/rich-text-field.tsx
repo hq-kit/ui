@@ -36,6 +36,7 @@ import {
 } from 'lexical'
 import { TextField, type ValidationResult } from 'react-aria-components'
 
+import { cn } from '@/lib/utils'
 import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
@@ -74,7 +75,6 @@ import { Button } from './button'
 import { Description, FieldError, Label } from './field'
 import { Menu } from './menu'
 import { Toolbar } from './toolbar'
-import { cn } from './utils'
 
 interface RichTextFieldProps {
     className?: string

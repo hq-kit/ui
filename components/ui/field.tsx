@@ -18,7 +18,7 @@ import {
     type ValidationResult
 } from 'react-aria-components'
 
-import { cn } from './utils'
+import { cn } from '@/lib/utils'
 
 interface FieldProps {
     label?: string

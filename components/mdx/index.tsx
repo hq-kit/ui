@@ -18,7 +18,9 @@ export function MDXContent({ code }: MdxProps) {
         <Component
             components={{
                 Image,
-                Note,
+                Note: (props: React.ComponentProps<typeof Note>) => (
+                    <Note className={props.className + ' not-prose'} {...props} />
+                ),
                 Install,
                 Demo: (props: React.ComponentProps<typeof Demo>) => (
                     <Demo className={props.className} {...props} />

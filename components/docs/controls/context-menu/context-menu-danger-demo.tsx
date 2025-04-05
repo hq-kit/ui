@@ -6,7 +6,8 @@ export default function ContextMenuDangerDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
-                Right click me
+                <p className='sm:flex hidden'>Right click here!</p>
+                <p className='sm:hidden flex'>Hold your finger here!</p>
             </ContextMenu.Trigger>
             <ContextMenu.Content>
                 <ContextMenu.Item>

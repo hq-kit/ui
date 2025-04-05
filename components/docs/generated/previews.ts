@@ -346,7 +346,6 @@ export const previews: Record<string, { component: React.LazyExoticComponent<() 
 "controls/context-menu/context-menu-item-details-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-item-details-demo")) },
 "controls/context-menu/context-menu-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-demo")) },
 "controls/context-menu/context-menu-disabled-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-disabled-demo")) },
-"controls/context-menu/context-menu-sub-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-sub-demo")) },
 "controls/context-menu/context-menu-with-icon-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-with-icon-demo")) },
 "controls/context-menu/context-menu-danger-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-danger-demo")) },
 "controls/context-menu/context-menu-separator-demo": { component: React.lazy(() => import("@/components/docs/controls/context-menu/context-menu-separator-demo")) },

@@ -126,7 +126,7 @@ const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
             href={href}
             className={composeRenderProps(className, (className, { isHovered }) =>
                 cn(
-                    'relative text-muted-fg w-full px-4 py-2 rounded-r-lg transition-colors',
+                    'relative text-muted-fg w-full px-4 py-1 rounded-r-lg transition-colors',
                     isActive && 'text-primary pointer-events-none is-active',
                     isHovered && 'text-primary bg-primary/5',
                     className

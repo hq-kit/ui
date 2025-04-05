@@ -8,6 +8,7 @@ import {
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
+    FieldError,
     RangeCalendar as RangeCalendarPrimitive
 } from 'react-aria-components'
 
@@ -15,7 +16,6 @@ import { cn } from '@/lib/utils'
 import { getLocalTimeZone, today } from '@internationalized/date'
 
 import { Calendar } from './calendar'
-import { FieldError } from './field'
 
 interface RangeCalendarProps<T extends DateValue> extends RangeCalendarPrimitiveProps<T> {
     errorMessage?: string
@@ -94,7 +94,7 @@ const RangeCalendar = <T extends DateValue>({
                     )
                 })}
             </div>
-            <FieldError className='px-2'>{errorMessage}</FieldError>
+            <FieldError className='text-danger text-sm/5 px-2'>{errorMessage}</FieldError>
         </RangeCalendarPrimitive>
     )
 }

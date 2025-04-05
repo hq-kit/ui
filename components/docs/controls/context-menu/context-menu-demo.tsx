@@ -5,8 +5,9 @@ import { ContextMenu, Keyboard } from '@/components/ui'
 export default function ContextMenuDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger className='w-md h-32 rounded-lg border border-dashed flex items-center justify-center'>
-                Right click me
+            <ContextMenu.Trigger className='h-32 rounded-lg border border-dashed flex items-center justify-center'>
+                <p className='sm:flex hidden'>Right click here!</p>
+                <p className='sm:hidden flex'>Hold your finger here!</p>
             </ContextMenu.Trigger>
             <ContextMenu.Content aria-label='Context menu'>
                 <ContextMenu.Item>Back</ContextMenu.Item>

@@ -3,11 +3,11 @@
 import { createContext, use } from 'react'
 
 import type { ToggleButtonGroupProps, ToggleButtonProps } from 'react-aria-components'
-import { ToggleButton, ToggleButtonGroup } from 'react-aria-components'
+import { composeRenderProps, ToggleButton, ToggleButtonGroup } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
-import { compose } from './utils'
+import { cn } from '@/lib/utils'
 
 type ToggleGroupContextProps = {
     isDisabled?: boolean
@@ -90,12 +90,14 @@ const ToggleGroup = ({
             <ToggleButtonGroup
                 ref={ref}
                 orientation={orientation}
-                className={compose(
-                    className,
-                    toggleGroupStyles({
-                        gap,
-                        orientation
-                    })
+                className={composeRenderProps(className, (className) =>
+                    cn(
+                        toggleGroupStyles({
+                            gap,
+                            orientation
+                        }),
+                        className
+                    )
                 )}
                 {...props}
             />
@@ -112,10 +114,10 @@ const toggleStyles = tv({
     ],
     variants: {
         variant: {
-            solid: 'hover:bg-accent/40 pressed:bg-accent/50 selected:bg-primary selected:text-primary-fg',
-            ghost: 'text-fg hover:bg-accent/40 pressed:bg-accent/50 border-transparent bg-transparent selected:bg-accent selected:text-accent-fg',
+            solid: 'hover:bg-primary/40 pressed:bg-primary/50 selected:bg-primary selected:text-primary-fg',
+            ghost: 'text-fg hover:bg-primary/40 pressed:bg-primary/50 border-transparent bg-transparent selected:bg-primary selected:text-primary-fg',
             outline:
-                'hover:bg-accent/40 pressed:bg-accent/50 selected:bg-accent selected:text-accent-fg'
+                'hover:bg-primary/40 pressed:bg-primary/50 selected:bg-primary selected:text-primary-fg'
         },
         noGap: { true: '' },
         orientation: {
@@ -163,15 +165,17 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
         <ToggleButton
             ref={ref}
             isDisabled={props.isDisabled ?? isGroupDisabled}
-            className={compose(
-                className,
-                toggleStyles({
-                    variant: variant ?? groupvariant,
-                    size: props.size ?? size,
-                    orientation,
-                    shape: props.shape,
-                    noGap: gap === 0
-                })
+            className={composeRenderProps(className, (classname) =>
+                cn(
+                    toggleStyles({
+                        variant: variant ?? groupvariant,
+                        size: props.size ?? size,
+                        orientation,
+                        shape: props.shape,
+                        noGap: gap === 0
+                    }),
+                    classname
+                )
             )}
             {...props}
         />

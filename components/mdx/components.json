@@ -9,25 +9,13 @@
         ]
     },
     {
-        "name": "toggle",
-        "components": [
-            "button"
-        ]
+        "name": "toggle"
     },
     {
-        "name": "menu",
-        "components": [
-            "dropdown",
-            "keyboard",
-            "popover"
-        ]
+        "name": "menu"
     },
     {
-        "name": "list-box",
-        "components": [
-            "dropdown",
-            "field"
-        ]
+        "name": "list-box"
     },
     {
         "name": "tag-group",
@@ -41,9 +29,6 @@
         "components": [
             "checkbox"
         ]
-    },
-    {
-        "name": "grid"
     },
     {
         "name": "grid-list",
@@ -105,13 +90,15 @@
         ]
     },
     {
-        "name": "switch"
+        "name": "switch",
+        "components": [
+            "field"
+        ]
     },
     {
         "name": "toolbar",
         "components": [
-            "toggle",
-            "separator"
+            "toggle"
         ]
     },
     {
@@ -133,12 +120,14 @@
     {
         "name": "calendar",
         "components": [
-            "button","menu"
+            "button",
+            "menu"
         ]
     },
     {
         "name": "range-calendar",
         "components": [
+            "calendar",
             "button"
         ]
     },
@@ -158,27 +147,26 @@
     {
         "name": "date-picker",
         "components": [
-            "button",
-            "popover",
-            "field",
             "calendar",
             "date-field",
-            "range-calendar"
+            "popover",
+            "button",
+            "field"
         ]
     },
     {
         "name": "date-range-picker",
         "components": [
+            "calendar",
+            "range-calendar",
             "date-field",
-            "range-picker",
+            "popover",
+            "button",
             "field"
         ]
     },
     {
-        "name": "tree",
-        "components": [
-            "checkbox"
-        ]
+        "name": "tree"
     },
     {
         "name": "drop-zone"
@@ -195,8 +183,7 @@
     {
         "name": "search-field",
         "components": [
-            "field",
-            "button"
+            "field"
         ]
     },
     {
@@ -230,21 +217,26 @@
         ]
     },
     {
+        "name": "selection-box",
+        "components": [
+            "field"
+        ]
+    },
+    {
         "name": "tag-group",
         "components": [
-            "field",
-            "tag-group"
+            "badge",
+            "field"
         ]
     },
     {
         "name": "rich-text-field",
         "components": [
+            "toolbar",
+            "toggle",
             "field",
             "button",
-            "separator",
-            "toggle",
-            "menu",
-            "toolbar"
+            "menu"
         ],
         "deps": [
             "lexical",
@@ -255,10 +247,9 @@
         "name": "sidebar",
         "components": [
             "sheet",
-            "popover",
-            "disclosure",
-            "tooltip",
-            "button"
+            "button",
+            "badge",
+            "tooltip"
         ]
     },
     {
@@ -269,10 +260,7 @@
         ]
     },
     {
-        "name": "avatar",
-        "components": [
-            "tooltip"
-        ]
+        "name": "avatar"
     },
     {
         "name": "user",
@@ -282,9 +270,6 @@
     },
     {
         "name": "carousel",
-        "components": [
-            "button"
-        ],
         "deps": [
             "embla-carousel-react"
         ]
@@ -293,43 +278,25 @@
         "name": "link"
     },
     {
-        "name": "breadcrumbs",
-        "components": [
-            "link"
-        ]
+        "name": "breadcrumbs"
     },
     {
-        "name": "pagination",
-        "components": [
-            "button"
-        ]
+        "name": "pagination"
     },
     {
-        "name": "tabs",
-        "deps": [
-            "framer-motion"
-        ]
+        "name": "tabs"
     },
     {
         "name": "disclosure"
     },
     {
-        "name": "modal",
-        "components": [
-            "dialog"
-        ]
+        "name": "modal"
     },
     {
-        "name": "sheet",
-        "components": [
-            "dialog"
-        ]
+        "name": "sheet"
     },
     {
-        "name": "popover",
-        "components": [
-            "dialog"
-        ]
+        "name": "popover"
     },
     {
         "name": "tooltip"
@@ -337,48 +304,31 @@
     {
         "name": "combo-box",
         "components": [
-            "dropdown",
-            "field",
-            "list-box",
-            "popover",
-            "button"
+            "field"
         ]
     },
     {
         "name": "select",
         "components": [
-            "dropdown",
-            "field",
-            "list-box",
-            "popover"
+            "field"
         ]
     },
     {
         "name": "multi-select",
         "components": [
-            "field",
-            "list-box",
-            "popover",
-            "tag-group",
-            "button"
+            "field"
         ]
     },
     {
         "name": "badge"
     },
     {
-        "name": "progress-bar",
+        "name": "progress",
         "components": [
             "field"
         ],
         "deps": [
-            "framer-motion"
-        ]
-    },
-    {
-        "name": "progress-circle",
-        "deps": [
-            "framer-motion"
+            "motion"
         ]
     },
     {
@@ -387,7 +337,7 @@
             "field"
         ],
         "deps": [
-            "framer-motion"
+            "motion"
         ]
     },
     {
@@ -395,26 +345,17 @@
     },
     {
         "name": "toast",
-        "components": [
-            "button"
-        ],
         "deps": [
             "sonner"
         ]
     },
     {
-        "name": "loader"
-    },
-    {
         "name": "meter",
         "components": [
             "field"
-        ]
-    },
-    {
-        "name": "rating",
-        "components": [
-            "field"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -430,7 +371,7 @@
         "name": "separator"
     },
     {
-        "name": "show-more",
+        "name": "spoiler",
         "components": [
             "button"
         ]

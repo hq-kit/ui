@@ -139,8 +139,8 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                             className={({ isHovered, isPressed }) =>
                                                 cn(
                                                     '-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-lg outline-hidden',
-                                                    isHovered && 'bg-accent/70 text-accent-fg',
-                                                    isPressed && 'bg-accent text-accent-fg'
+                                                    isHovered && 'bg-primary/70 text-primary-fg',
+                                                    isPressed && 'bg-primary text-primary-fg'
                                                 )
                                             }
                                         >
@@ -234,7 +234,7 @@ const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) =>
                         'group relative col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid',
                         'rounded-md px-2 py-1.5 text-base select-none sm:text-sm/6',
                         '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
-                        { 'bg-accent text-accent-fg': isFocused || isFocusVisible || isHovered },
+                        { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
                         isDisabled && 'pointer-events-none opacity-50',
                         className
                     )

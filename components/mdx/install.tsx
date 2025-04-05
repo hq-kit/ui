@@ -10,8 +10,7 @@ export default function Install({ component }: { component: string }) {
     if (!item) {
         return null
     }
-    const items: string[] = [item.name]
-    if (item.components) items.push(...item.components)
+    const items = item.components ? [item.name, ...item.components] : [item.name]
 
     const deps = ['react-aria-components', 'hq-icons']
     if (item.deps) deps.push(...item.deps)

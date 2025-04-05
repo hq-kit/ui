@@ -6,8 +6,8 @@ import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-ico
 import { toast } from 'sonner'
 
 import { CopyButton } from '@/components/mdx/copy-button'
-import { Description, Menu, cn } from '@/components/ui'
-import { wait } from '@/lib/utils'
+import { Description, Menu } from '@/components/ui'
+import { cn, wait } from '@/lib/utils'
 
 interface CLIProps {
     items?: string | string[]

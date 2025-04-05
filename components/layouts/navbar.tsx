@@ -14,8 +14,7 @@ import {
     IconPackage,
     IconPalette,
     IconSearch,
-    IconShapes,
-    IconSwatchBook
+    IconShapes
 } from 'hq-icons'
 import { LayoutGroup } from 'motion/react'
 import { usePathname } from 'next/navigation'
@@ -25,15 +24,8 @@ import { CommandMenu } from '@/components/layouts/command-menu'
 import { NavLink } from '@/components/layouts/nav-link'
 import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { ThemeToggle } from '@/components/theme-toggle'
-import {
-    Button,
-    buttonStyles,
-    Keyboard,
-    Link,
-    Menu,
-    Separator,
-    useMediaQuery
-} from '@/components/ui'
+import { Button, buttonStyles, Keyboard, Link, Menu, Separator } from '@/components/ui'
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 
 export function Navbar() {
     const id = React.useId()
@@ -43,8 +35,7 @@ export function Navbar() {
         { id: 2, label: 'Components', url: '/docs', active: pathname.startsWith('/docs') },
         { id: 3, label: 'Blocks', url: '/blocks', active: pathname.startsWith('/blocks') },
         { id: 4, label: 'Icons', url: '/icons', active: pathname.startsWith('/icons') },
-        { id: 5, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') },
-        { id: 6, label: 'Themes', url: '/themes', active: pathname.startsWith('/themes') }
+        { id: 5, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') }
     ]
 
     const [open, setOpen] = React.useState(false)
@@ -137,10 +128,6 @@ export function NavbarDropdown() {
                 <Menu.Item href='/colors'>
                     <IconPalette />
                     <Menu.Label>Colors</Menu.Label>
-                </Menu.Item>
-                <Menu.Item href='/themes'>
-                    <IconSwatchBook />
-                    <Menu.Label>Themes</Menu.Label>
                 </Menu.Item>
                 <Menu.Separator />
                 <Menu.Header>Refs</Menu.Header>

@@ -1,4 +1,5 @@
-import { Avatar, cn } from '@/components/ui'
+import { Avatar } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface ContactProps {
     id: number

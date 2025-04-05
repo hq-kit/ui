@@ -22,13 +22,12 @@ import {
     Avatar,
     Button,
     buttonStyles,
-    cn,
     Menu,
     Popover,
     SidebarInset,
     SidebarProvider
 } from '@/components/ui'
-import { formatTime } from '@/lib/utils'
+import { cn, formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
     const [chats, setChats] = React.useState<BubbleChatProps[]>([

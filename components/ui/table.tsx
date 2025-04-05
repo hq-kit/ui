@@ -218,10 +218,10 @@ const TableRow = <T extends object>({
                     cn(
                         'group relative cursor-default not-last:border-b',
                         'href' in props && 'cursor-pointer',
-                        isSelected && 'bg-accent text-accent-fg',
-                        isHovered && 'bg-accent/30 text-accent-fg',
+                        isSelected && 'bg-primary text-primary-fg',
+                        isHovered && 'bg-primary/30 text-primary-fg',
                         {
-                            'outline outline-primary bg-accent/30 text-accent-fg':
+                            'outline outline-primary bg-primary/30 text-primary-fg':
                                 isFocusVisible || isFocusVisibleWithin
                         },
                         isDisabled && 'pointer-events-none opacity-50',

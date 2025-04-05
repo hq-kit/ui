@@ -7,7 +7,8 @@ import { IconLoaderCircle } from 'hq-icons'
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import Code from '@/components/mdx/code'
-import { Tabs, cn } from '@/components/ui'
+import { Tabs } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface DemoProps extends React.HTMLAttributes<HTMLDivElement> {
     component: string
@@ -15,7 +16,7 @@ interface DemoProps extends React.HTMLAttributes<HTMLDivElement> {
     center?: boolean
 }
 
-export default function Demo({ component, className, center = false, ...props }: DemoProps) {
+export default function Demo({ component, center = false, ...props }: DemoProps) {
     const Preview = previews[component] ? previews[component].component : React.Fragment
     // @ts-expect-error no-type
     const codeString = jsonPreviews[component].raw ?? ''
@@ -26,12 +27,11 @@ export default function Demo({ component, className, center = false, ...props }:
                     <Tabs.Label id='preview'>Preview</Tabs.Label>
                     <Tabs.Label id='code'>Code</Tabs.Label>
                 </Tabs.List>
-                <Tabs.Content className='w-full' id='preview'>
+                <Tabs.Content id='preview'>
                     <div
                         className={cn(
                             'border-muted bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6 overflow-auto',
-                            center &&
-                                'preview flex min-h-20 items-center justify-center py-6 sm:py-12'
+                            center && 'grid min-h-20 place-content-center py-6 sm:py-12'
                         )}
                     >
                         <React.Suspense
@@ -41,9 +41,7 @@ export default function Demo({ component, className, center = false, ...props }:
                                 </div>
                             }
                         >
-                            <div className={cn('not-prose', className)}>
-                                <Preview />
-                            </div>
+                            <Preview />
                         </React.Suspense>
                     </div>
                 </Tabs.Content>

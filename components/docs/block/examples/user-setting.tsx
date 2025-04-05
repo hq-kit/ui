@@ -6,7 +6,8 @@ import PlanBillingSetting from 'components/user-setting/plan-billing-setting'
 import SecuritySetting from 'components/user-setting/security-setting'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
-import { Card, Container, Tabs, useMediaQuery } from '@/components/ui'
+import { Card, Container, Tabs } from '@/components/ui'
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 
 export default function UserSetting() {
     const isMobile = useMediaQuery('(max-width: 767px)')

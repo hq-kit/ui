@@ -212,9 +212,9 @@ const CarouselHandler = ({ className, ...props }: React.HTMLAttributes<HTMLDivEl
                     (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
                         cn(
                             'bg-bg border inline-flex size-8 items-center justify-center rounded-lg text-muted-fg outline-hidden',
-                            isHovered && 'bg-accent/40',
+                            isHovered && 'bg-primary/40',
                             isFocusVisible && 'ring-4 ring-primary/20',
-                            isPressed && 'bg-accent/50',
+                            isPressed && 'bg-primary/50',
                             isDisabled && 'opacity-50',
                             orientation === 'vertical' ? 'rotate-90' : '',
                             className
@@ -233,9 +233,9 @@ const CarouselHandler = ({ className, ...props }: React.HTMLAttributes<HTMLDivEl
                     (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
                         cn(
                             'bg-bg border inline-flex size-8 items-center justify-center rounded-lg text-muted-fg outline-hidden',
-                            isHovered && 'bg-accent/40',
+                            isHovered && 'bg-primary/40',
                             isFocusVisible && 'ring-4 ring-primary/20',
-                            isPressed && 'bg-accent/50',
+                            isPressed && 'bg-primary/50',
                             isDisabled && 'opacity-50',
                             orientation === 'vertical' ? 'rotate-90' : '',
                             className

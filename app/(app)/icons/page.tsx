@@ -3,7 +3,7 @@ import React from 'react'
 import { IconBrandFigma, IconBrandGithub, IconLoader } from 'hq-icons'
 
 import { IconsController } from '@/components/controllers/icons'
-import { IconComponent } from '@/components/controllers/icons/icon-component'
+import IconList from '@/components/controllers/icons/icon-list'
 import Icons from '@/components/controllers/icons/icons.json'
 import {
     Hero,
@@ -27,8 +27,6 @@ type SearchParams = Promise<{ [key: string]: string }>
 export default async function IconsPage(props: { searchParams: SearchParams }) {
     const searchParams = await props.searchParams
     const query = searchParams.q || ''
-    const size = searchParams.s || '5'
-    const stroke = searchParams.t || '2'
 
     const filteredIcons = Icons.filter(
         (i) =>
@@ -47,7 +45,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         from{' '}
                         <Link
                             target='_blank'
-                            className='text-fg hover:text-primary font-semibold'
+                            className='text-fg hover:text-primary font-semibold text-base'
                             href='https://tabler.io/icons'
                         >
                             Tabler Icons
@@ -55,14 +53,18 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         and{' '}
                         <Link
                             target='_blank'
-                            className='text-fg hover:text-primary font-semibold'
+                            className='text-fg hover:text-primary font-semibold text-base'
                             href='https://lucide.dev/icons/'
                         >
                             Lucide Icons
                         </Link>
                         <br />
                         This Icon Libray used for{' '}
-                        <Link target='_blank' href='/'>
+                        <Link
+                            className='text-fg hover:text-primary font-semibold text-base'
+                            target='_blank'
+                            href='/'
+                        >
                             HQ UI
                         </Link>
                     </HeroDescription>
@@ -74,7 +76,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                             className='min-w-60'
                         />
                         <HeroButton target='_blank' href='https://github.com/hq-kit/icons'>
-                            <IconBrandGithub className='size-5' />
+                            <IconBrandGithub />
                             Source
                         </HeroButton>
                         <HeroButton
@@ -82,31 +84,22 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                             target='_blank'
                             href='https://www.figma.com/design/LyFwmlkNXFWIkCUMvxTLQm/Cleon-UI-Icons?m=auto&t=9IvlYFDBF75mOpKf-6'
                         >
-                            <IconBrandFigma className='size-5 [&_*]:stroke-1' />
+                            <IconBrandFigma />
                             Figma
                         </HeroButton>
                     </HeroContent>
                 </HeroHeader>
             </Hero>
             <IconsController />
-            <Container className='flex w-full flex-col items-start gap-8 py-4 lg:flex-row'>
+            <Container className='flex w-full flex-col py-4'>
                 <React.Suspense
                     fallback={
-                        <div className='flex min-h-96 items-center justify-center'>
+                        <div className='flex min-h-96 w-full items-center justify-center'>
                             <IconLoader className='animate-spin size-7' />
                         </div>
                     }
                 >
-                    <div className='flex flex-wrap items-center justify-between gap-2'>
-                        {filteredIcons.map((item, i) => (
-                            <IconComponent
-                                key={i}
-                                size={size as '4' | '5' | '6' | '7'}
-                                stroke={stroke as '1' | '2'}
-                                name={item.name as string}
-                            />
-                        ))}
-                    </div>
+                    <IconList items={filteredIcons} />
                 </React.Suspense>
             </Container>
         </>

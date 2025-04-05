@@ -60,12 +60,35 @@ const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDi
             crossOffset: e.clientX - rect.left
         })
     }
+    const longPressTimer = React.useRef<NodeJS.Timeout | null>(null)
+
+    const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        const touch = e.touches[0]
+        const rect = e.currentTarget.getBoundingClientRect()
+        longPressTimer.current = setTimeout(() => {
+            setContextMenuOffset({
+                offset: touch.clientY - rect.bottom,
+                crossOffset: touch.clientX - rect.left
+            })
+        }, 600)
+    }
+    const onTouchEnd = () => {
+        if (longPressTimer.current) {
+            clearTimeout(longPressTimer.current)
+        }
+    }
     return (
         <div
-            className={cn('cursor-default outline-hidden disabled:opacity-50', className)}
+            className={cn(
+                'cursor-default outline-hidden disabled:opacity-50 select-none',
+                className
+            )}
             ref={triggerRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
             {...props}
         />
     )
@@ -89,13 +112,14 @@ const ContextMenuContent = <T extends object>(props: ContextMenuContentProps<T>)
     const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
         <Menu.Content
+            respectScreen={false}
             aria-label={props['aria-label'] ?? 'Context Menu'}
             isOpen={!!contextMenuOffset}
             offset={contextMenuOffset?.offset}
             crossOffset={contextMenuOffset?.crossOffset}
-            onOpenChange={() => setContextMenuOffset(null)}
             triggerRef={triggerRef}
             placement='bottom left'
+            onOpenChange={() => setContextMenuOffset(null)}
             onClose={() => setContextMenuOffset(null)}
             {...props}
         />
@@ -109,7 +133,6 @@ ContextMenu.Label = Menu.Label
 ContextMenu.Separator = Menu.Separator
 ContextMenu.Details = Menu.Details
 ContextMenu.Section = Menu.Section
-ContextMenu.Submenu = Menu.Submenu
 ContextMenu.Header = Menu.Header
 
 export { ContextMenu }

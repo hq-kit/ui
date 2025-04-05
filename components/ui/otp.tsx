@@ -5,10 +5,16 @@ import { use } from 'react'
 import { IconCircle } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
 
-import { cn } from './utils'
+import { cn } from '@/lib/utils'
 
 type OTPInputProps = React.ComponentProps<typeof OTPInput>
-const OTP = ({ className, autoFocus = true, containerClassName, ref, ...props }: OTPInputProps) => (
+const OTP = ({
+    className,
+    autoFocus = false,
+    containerClassName,
+    ref,
+    ...props
+}: OTPInputProps) => (
     <OTPInput
         data-1p-ignore
         ref={ref}

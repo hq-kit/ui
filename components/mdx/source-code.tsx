@@ -2,20 +2,20 @@
 
 import * as React from 'react'
 
-import { Button } from 'react-aria-components'
+import { IconBrandReact } from 'hq-icons'
 
 import previews from '@/components/docs/generated/previews.json'
 import Code from '@/components/mdx/code'
-import { Description, Tabs, cn } from '@/components/ui'
+import { Description, Tabs } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface SourceCodeProps extends React.HTMLAttributes<HTMLDivElement> {
     component: string | string[]
     withMessage?: boolean
 }
 
-export default function SourceCode({ component, withMessage = true, ...props }: SourceCodeProps) {
+export default function SourceCode({ component, withMessage = true }: SourceCodeProps) {
     const [codeStrings, setCodeStrings] = React.useState<{ name: string; code: string }[]>([])
-    const [isOpened, setIsOpened] = React.useState<boolean>(false)
 
     React.useEffect(() => {
         const componentArray = Array.isArray(component) ? component : [component]
@@ -25,10 +25,7 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
             if (componentData) {
                 return {
                     name: show,
-                    code: componentData.raw.replace(
-                        /export default function \w+\(\) \{/g,
-                        'export default function App() {'
-                    )
+                    code: componentData.raw
                 }
             } else {
                 console.error('Component not found:', show)
@@ -36,10 +33,7 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
             }
         })
         setCodeStrings(updatedCodeStrings)
-        setIsOpened(false)
     }, [component])
-
-    const open = () => setIsOpened(!isOpened)
 
     return (
         <section className={cn('not-prose space-y-2', withMessage ? 'my-4' : 'my-2')}>
@@ -48,38 +42,18 @@ export default function SourceCode({ component, withMessage = true, ...props }: 
                     Copy the code below and paste it into your component folder.
                 </Description>
             )}
-            <Tabs className='mt-2' onSelectionChange={() => setIsOpened(false)}>
+            <Tabs className='mt-2 gap-0'>
                 <Tabs.List items={codeStrings}>
                     {(item) => (
                         <Tabs.Label key={item.name} id={`tab-${item.name}`}>
+                            <IconBrandReact />
                             {item.name.includes('demo') ? `main` : item.name}.tsx
                         </Tabs.Label>
                     )}
                 </Tabs.List>
                 {codeStrings.map((item) => (
                     <Tabs.Content key={item.name} id={`tab-${item.name}`}>
-                        <div className={'relative overflow-hidden'} {...props}>
-                            <div
-                                className={cn(
-                                    'my-0 overflow-hidden transition',
-                                    !isOpened && 'h-32'
-                                )}
-                            >
-                                <Code code={item.code} />
-                            </div>
-                            <div
-                                className={cn(
-                                    'to-background absolute inset-0 rounded-lg bg-gradient-to-b from-transparent',
-                                    isOpened && 'hidden'
-                                )}
-                            ></div>
-                            <Button
-                                className='bg-bg hover:bg-bg pressed:bg-bg sticky right-1/2 bottom-4 left-1/2 -translate-x-1/2 rounded-lg border p-2 transition outline-none hover:ring-4 hover:ring-offset-4 focus:outline-none'
-                                onPress={open}
-                            >
-                                {isOpened ? 'Hide' : 'Reveal'}
-                            </Button>
-                        </div>
+                        <Code code={item.code} />
                     </Tabs.Content>
                 ))}
             </Tabs>

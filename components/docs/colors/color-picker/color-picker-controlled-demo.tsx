@@ -8,9 +8,9 @@ export default function ColorPickerControlledDemo() {
     const [color, setColor] = React.useState(defaultColor)
 
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 items-center'>
             <ColorPicker value={color} onChange={setColor} />
-            <code>color: {JSON.stringify(color)}</code>
+            <code>{JSON.stringify(color)}</code>
         </div>
     )
 }

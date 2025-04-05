@@ -8,7 +8,8 @@ import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 
 import { formatColorForTailwind, textfg } from '@/components/controllers/colors/colors'
-import { cn, isBrightColor } from '@/components/ui'
+import { isBrightColor } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface ColorItemProps extends ListBoxItemProps {
     item: {

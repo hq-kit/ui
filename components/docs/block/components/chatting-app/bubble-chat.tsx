@@ -13,7 +13,8 @@ import {
     IconTrash
 } from 'hq-icons'
 
-import { Button, cn, Menu } from '@/components/ui'
+import { Button, Menu } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export interface BubbleChatProps {
     message: string

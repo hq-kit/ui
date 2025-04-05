@@ -3,19 +3,13 @@
 import React from 'react'
 
 import { docs } from '#docs'
-import {
-    IconHome,
-    IconLayoutDashboard,
-    IconPackage,
-    IconPalette,
-    IconShapes,
-    IconSwatchBook
-} from 'hq-icons'
+import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
 import { createHierarchy, type Doc, type Hierarchy } from '@/components/layouts/aside'
-import { Command, useMediaQuery } from '@/components/ui'
+import { Command } from '@/components/ui'
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { goodTitle } from '@/lib/utils'
 
 export interface OpenCloseProps {
@@ -82,11 +76,6 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                     <Command.Item value='colors' asChild>
                         <Link href='/colors'>
                             <IconPalette /> Colors
-                        </Link>
-                    </Command.Item>
-                    <Command.Item value='themes' asChild>
-                        <Link href='/themes'>
-                            <IconSwatchBook /> Themes
                         </Link>
                     </Command.Item>
                 </Command.Section>

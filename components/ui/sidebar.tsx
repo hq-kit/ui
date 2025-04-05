@@ -12,6 +12,7 @@ import type {
     SeparatorProps as SidebarSeparatorProps
 } from 'react-aria-components'
 import {
+    composeRenderProps,
     Disclosure,
     DisclosureGroup,
     DisclosurePanel,
@@ -25,11 +26,13 @@ import {
 import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { cn } from '@/lib/utils'
+
 import { Badge } from './badge'
 import { Button } from './button'
 import { Sheet } from './sheet'
 import { Tooltip } from './tooltip'
-import { cn, cr, ctr, useMediaQuery } from './utils'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -134,8 +137,8 @@ const SidebarProvider = ({
                     '[--sidebar-width-dock:3.25rem] [--sidebar-width-mobile:18rem] [--sidebar-width:17rem]',
                     '[--sidebar-border:color-mix(in_oklch,var(--color-bg)_25%,black_6%)]',
                     'dark:[--sidebar-border:color-mix(in_oklch,var(--color-bg)_55%,white_10%)]',
-                    '[--sidebar-accent:color-mix(in_oklab,var(--color-bg)_95%,black_5%)]',
-                    'dark:[--sidebar-accent:color-mix(in_oklab,var(--color-bg)_90%,white_10%)]',
+                    '[--sidebar-primary:color-mix(in_oklab,var(--color-bg)_95%,black_5%)]',
+                    'dark:[--sidebar-primary:color-mix(in_oklab,var(--color-bg)_90%,white_10%)]',
                     'text-fg flex min-h-svh w-full',
                     'group/sidebar-root has-data-[sidebar-variant=inset]:bg-bg',
                     className
@@ -280,7 +283,7 @@ const header = tv({
     variants: {
         collapsed: {
             false: 'px-4 py-[calc(var(--spacing)*4)]',
-            true: 'mt-2 p-5 group-data-[sidebar-variant=float]/sidebar-container:mt-2 md:mx-auto md:size-9 md:items-center md:justify-center md:rounded-lg md:p-0 md:hover:bg-(--sidebar-accent)'
+            true: 'mt-2 p-5 group-data-[sidebar-variant=float]/sidebar-container:mt-2 md:mx-auto md:size-9 md:items-center md:justify-center md:rounded-lg md:p-0 md:hover:bg-(--sidebar-primary)'
         }
     }
 })
@@ -305,7 +308,7 @@ const footer = tv({
         '**:data-[slot=menu-trigger]:relative **:data-[slot=menu-trigger]:overflow-hidden',
         '**:data-[slot=menu-trigger]:rounded-lg',
         '**:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:cursor-default **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:p-2 **:data-[slot=menu-trigger]:outline-hidden sm:**:data-[slot=menu-trigger]:text-sm',
-        '**:data-[slot=menu-trigger]:data-hovered:text-fg **:data-[slot=menu-trigger]:data-hovered:bg-(--sidebar-accent)'
+        '**:data-[slot=menu-trigger]:data-hovered:text-fg **:data-[slot=menu-trigger]:data-hovered:bg-(--sidebar-primary)'
     ],
     variants: {
         collapsed: {
@@ -398,10 +401,10 @@ const sidebarItemStyles = tv({
             true: 'flex size-9 items-center justify-center gap-x-0 p-0 not-has-data-[slot=icon]:hidden **:data-[slot=menu-trigger]:hidden'
         },
         isCurrent: {
-            true: 'text-fg data-hovered:text-fg **:data-[slot=icon]:text-fg [&_.text-muted-fg]:text-fg/80 bg-(--sidebar-accent) data-hovered:bg-(--sidebar-accent)/90 **:data-[slot=menu-trigger]:from-(--sidebar-accent)'
+            true: 'text-fg data-hovered:text-fg **:data-[slot=icon]:text-fg [&_.text-muted-fg]:text-fg/80 bg-(--sidebar-primary) data-hovered:bg-(--sidebar-primary)/90 **:data-[slot=menu-trigger]:from-(--sidebar-primary)'
         },
         isActive: {
-            true: 'text-fg bg-(--sidebar-accent) **:data-[slot=menu-trigger]:flex'
+            true: 'text-fg bg-(--sidebar-primary) **:data-[slot=menu-trigger]:flex'
         },
         isDisabled: {
             true: 'cursor-default opacity-50'
@@ -436,7 +439,7 @@ const SidebarItem = ({
             ref={ref}
             data-sidebar-item='true'
             aria-current={isCurrent ? 'page' : undefined}
-            className={cr(className, (cls, renderProps) =>
+            className={composeRenderProps(className, (className, renderProps) =>
                 sidebarItemStyles({
                     ...renderProps,
                     isCurrent,
@@ -445,7 +448,7 @@ const SidebarItem = ({
                         renderProps.isPressed ||
                         renderProps.isFocusVisible ||
                         renderProps.isHovered,
-                    className: cls
+                    className: className
                 })
             )}
             {...props}
@@ -513,7 +516,7 @@ const SidebarLink = ({ className, ref, ...props }: SidebarLinkProps) => {
     return (
         <Link
             ref={ref}
-            className={cr(className, (className, renderProps) =>
+            className={composeRenderProps(className, (className, renderProps) =>
                 sidebarLink({
                     ...renderProps,
                     collapsed,
@@ -550,7 +553,9 @@ const SidebarDisclosureGroup = ({
         <DisclosureGroup
             data-sidebar-disclosure-group='true'
             allowsMultipleExpanded={allowsMultipleExpanded}
-            className={ctr(className, 'col-span-full flex flex-col gap-y-6')}
+            className={composeRenderProps(className, (className) =>
+                cn('col-span-full flex flex-col gap-y-6', className)
+            )}
             {...props}
         />
     )
@@ -565,11 +570,11 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
         <Disclosure
             ref={ref}
             data-sidebar-disclosure='true'
-            className={ctr(
-                className,
+            className={composeRenderProps(className, (className) =>
                 cn(
                     'px-2.5 in-data-[sidebar-variant=fleet]:px-0',
-                    state !== 'collapsed' && 'col-span-full'
+                    state !== 'collapsed' && 'col-span-full',
+                    className
                 )
             )}
             {...props}
@@ -588,7 +593,7 @@ const sidebarDisclosureTrigger = tv({
             true: 'size-9 justify-center p-0'
         },
         isActive: {
-            true: 'text-fg bg-(--sidebar-accent)'
+            true: 'text-fg bg-(--sidebar-primary)'
         },
         isDisabled: {
             true: 'cursor-default opacity-50'
@@ -607,7 +612,7 @@ const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosur
             <Trigger
                 ref={ref}
                 slot='trigger'
-                className={cr(className, (className, renderProps) =>
+                className={composeRenderProps(className, (className, renderProps) =>
                     sidebarDisclosureTrigger({
                         ...renderProps,
                         collapsed,

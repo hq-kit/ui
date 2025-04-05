@@ -16,11 +16,11 @@ import {
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 
 import { Keyboard } from './keyboard'
 import { Separator } from './separator'
-import { useMediaQuery } from './utils'
 
 const commandStyles = tv({
     slots: {

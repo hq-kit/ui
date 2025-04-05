@@ -28,6 +28,7 @@ interface SheetContentProps
         Pick<DialogProps, 'aria-label' | 'aria-labelledby' | 'role' | 'children' | 'className'> {
     closeButton?: boolean
     isFloating?: boolean
+    isBlurred?: boolean
     className?: string
     side?: 'top' | 'bottom' | 'left' | 'right'
 }
@@ -36,6 +37,7 @@ const SheetContent = ({
     side = 'right',
     closeButton = true,
     isFloating = false,
+    isBlurred = true,
     children,
     className,
     ...props
@@ -45,9 +47,10 @@ const SheetContent = ({
             isDismissable
             className={({ isEntering, isExiting }) =>
                 cn(
-                    'fixed outline-hidden top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full items-end justify-end bg-black/80 backdrop-blur [--visual-viewport-vertical-padding:32px] sm:block',
+                    'fixed outline-hidden top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full items-end justify-end [--visual-viewport-vertical-padding:32px] sm:block',
                     isEntering && 'fade-in animate-in duration-200 ease-out',
-                    isExiting && 'fade-out animate-out ease-in'
+                    isExiting && 'fade-out animate-out ease-in',
+                    isBlurred && 'bg-black/80 backdrop-blur'
                 )
             }
             {...props}
@@ -55,10 +58,8 @@ const SheetContent = ({
             <Modal
                 className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
                     cn(
-                        'bg-bg text-fg dark:border fixed z-50 shadow-lg transition ease-in-out',
-                        isFloating
-                            ? 'ring-fg/5 dark:ring-border'
-                            : 'border-fg/20 dark:border-muted',
+                        'bg-bg text-fg fixed z-50 shadow-lg transition ease-in-out',
+                        isFloating ? 'ring-fg/5' : 'border-fg/20',
                         isEntering && 'animate-in',
                         isExiting && 'animate-out',
                         side === 'top' &&
@@ -90,9 +91,9 @@ const SheetContent = ({
                                     }) =>
                                         cn(
                                             'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
-                                            isHovered && 'bg-accent/40',
+                                            isHovered && 'bg-primary/40',
                                             isFocusVisible && 'ring-4 ring-primary/20',
-                                            isPressed && 'bg-accent/50',
+                                            isPressed && 'bg-primary/50',
                                             isDisabled && 'opacity-50'
                                         )
                                     }

@@ -1,6 +1,8 @@
 'use client'
 
-import { cn, Pagination, useMediaQuery } from '@/components/ui'
+import { Pagination } from '@/components/ui'
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { cn } from '@/lib/utils'
 
 interface PaginateProps {
     className?: string

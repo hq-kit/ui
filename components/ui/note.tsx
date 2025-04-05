@@ -29,8 +29,8 @@ const Note = ({
     return (
         <div
             className={cn(
-                'w-full overflow-hidden rounded-lg p-4 text-sm/6 border backdrop-blur-2xl',
-                variant === 'primary' && 'border-primary/20 text-primary bg-primary/10',
+                'w-full overflow-hidden rounded-lg p-4 text-sm border backdrop-blur-2xl',
+                variant === 'primary' && 'border-primary/30 text-primary bg-primary/10',
                 variant === 'secondary' && 'border-muted text-secondary-foreground bg-secondary/25',
                 variant === 'warning' && 'border-warning/40 bg-warning/5 text-warning',
                 variant === 'danger' && 'border-danger/30 bg-danger/10 text-danger',
@@ -45,7 +45,7 @@ const Note = ({
                 {Icon && !hideIndicator && (
                     <Icon className='mr-3 shrink-0 size-5 rounded-full ring-2 ring-current/30 my-0.5' />
                 )}
-                <div>{children}</div>
+                {children}
             </div>
         </div>
     )

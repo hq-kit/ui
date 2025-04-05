@@ -1,15 +1,13 @@
 ---
-title: "Installation"
+title: Installation
 description: Install the necessary packages and set up your project. This tool automates the process, streamlining your setup with no extra steps required.
-order: 2
-published: true
 ---
 
 ## Installation via CLI
 Before executing the command, ensure that **tailwind-css** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
 
-<Note variant='primary'>
-  This CLI will overwrite your **tailwind.config** and **css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
+<Note variant='warning'>
+  This CLI will overwrite your **css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
 </Note>
 
 ### Initial Setup
@@ -28,7 +26,6 @@ This command will ensure all necessary components are installed:
 ```bash
 ✓ combo-box created
 ✓ select created
-✓ dropdown created
 ✓ field created
 ✓ list-box created
 ✓ popover created
@@ -53,11 +50,11 @@ Select components to add: (Press <space> to select, <a> to toggle all, <i> to in
 ## Manual Installation
 To begin setting up the design system, make sure `tailwindcss` is already installed. Then, start by installing these packages:
 
-<CLI command='install' items={['react-aria-components']} />
+<CLI command='install' items={['react-aria-components', 'tailwindcss-react-aria-components']} />
 
 Next, add Tailwind Variant, Tailwind Merge, and clsx for utility functions:
 
-<CLI command='install' items={['tailwind-variants', 'tailwind-merge', 'clsx']} />
+<CLI command='install' items={['tailwind-variants', 'clsx']} />
 
 Following that, include the animation package for managing animations and icons:
 
@@ -68,19 +65,18 @@ Start by adjusting your main CSS file. For example, if you are using Laravel, th
 You should add the following code:
 
 You can customize your colors using these variables. By default, HQ UI utilizes HSL colors, but you have the option
-to switch to RGB, HSL, or HSB.
+to switch to RGB, HSL, HSB, or oklch.
 
 <Code lang='css' code={`@import 'tailwindcss';
 
+@plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
 @variant dark (&:is(.dark *));
 
-@theme {
-    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-mono: var(--font-geist-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco',
-        'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
+@theme inline {
+    --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-mono), ui-monospace, monospace;
 
     --color-bg: var(--bg);
     --color-fg: var(--fg);
@@ -91,42 +87,11 @@ to switch to RGB, HSL, or HSB.
     --color-secondary: var(--secondary);
     --color-secondary-fg: var(--secondary-fg);
 
-    --color-success: var(--success);
-    --color-success-fg: var(--success-fg);
-
-    --color-danger: var(--danger);
-    --color-danger-fg: var(--danger-fg);
-
-    --color-warning: var(--warning);
-    --color-warning-fg: var(--warning-fg);
-
-    --color-muted: var(--muted);
-    --color-muted-fg: var(--muted-fg);
-
-    --color-border: var(--secondary);
-    --color-input: var(--secondary);
-    --color-ring: var(--primary);
-
-    --color-chart-1: var(--chart-1);
-    --color-chart-2: var(--chart-2);
-    --color-chart-3: var(--chart-3);
-    --color-chart-4: var(--chart-4);
-    --color-chart-5: var(--chart-5);
-}
-@theme {
-    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-mono: var(--font-geist-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco',
-        'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
-
-    --color-bg: var(--bg);
-    --color-fg: var(--fg);
-
     --color-primary: var(--primary);
     --color-primary-fg: var(--primary-fg);
 
-    --color-secondary: var(--secondary);
-    --color-secondary-fg: var(--secondary-fg);
+    --color-info: var(--info);
+    --color-info-fg: var(--info-fg);
 
     --color-success: var(--success);
     --color-success-fg: var(--success-fg);
@@ -149,35 +114,83 @@ to switch to RGB, HSL, or HSB.
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
+
+    --radius-xs: calc(var(--radius-lg) - 4px);
+    --radius-sm: calc(var(--radius-lg) - 2px);
+    --radius-md: calc(var(--radius-lg) - 1px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius-lg) + 4px);
 }
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-    }
+    :root {
+        --bg: hsl(0 0% 98.04%);
+        --fg: hsl(240 10% 3.92%);
+        --primary: hsl(240 10% 3.92%);
+        --primary-fg: hsl(0 0% 98.04%);
+        --secondary: hsl(208.24 7.3% 45.69%);
+        --secondary-fg: hsl(0 0% 100%);
+        --primary: hsl(240, 4.88%, 83.92%);
+        --primary-fg: hsl(240 10% 3.92%);
+        --info: hsl(224.3 76.3% 48%);
+        --info-fg: hsl(0 0% 98.04%);
+        --danger: hsl(0 72.22% 50.59%);
+        --danger-fg: hsl(0 0% 98.04%);
+        --success: hsl(142.1 76.2% 36.3%);
+        --success-fg: hsl(0 0% 98.04%);
+        --warning: hsl(24.6 95% 53.1%);
+        --warning-fg: hsl(0 0% 98.04%);
+        --muted: hsl(240 4.88% 83.92%);
+        --muted-fg: hsl(240 3.83% 46.08%);
 
+        --chart-1: oklch(0.546 0.245 262.881);
+        --chart-2: oklch(0.707 0.165 254.624);
+        --chart-3: oklch(0.809 0.105 251.813);
+        --chart-4: oklch(0.882 0.059 254.128);
+        --chart-5: oklch(0.932 0.032 255.585);
+
+        --radius: 0.5rem;
+    }
+    .dark {
+        --bg: hsl(240 10% 3.92%);
+        --fg: hsl(0 0% 98.04%);
+        --primary: hsl(0 0% 98.04%);
+        --primary-fg: hsl(240 10% 3.92%);
+        --secondary: hsl(208.24 7.36% 54.71%);
+        --secondary-fg: hsl(0 0% 100%);
+        --primary: hsl(240, 5.26%, 26.08%);
+        --primary-fg: hsl(0 0% 98.04%);
+        --info: hsl(221.2 83.2% 53.3%);
+        --info-fg: hsl(0 0% 98.04%);
+        --danger: hsl(0 72.2% 50.6%);
+        --danger-fg: hsl(0 0% 98.04%);
+        --success: hsl(142.1 76.2% 36.3%);
+        --success-fg: hsl(0 0% 98.04%);
+        --warning: hsl(17.5 88.3% 40.4%);
+        --warning-fg: hsl(0 0% 98.04%);
+        --muted: hsl(240 3.7% 15.88%);
+        --muted-fg: hsl(240 5.03% 64.9%);
+
+        --chart-1: oklch(0.488 0.243 264.376);
+        --chart-2: oklch(0.623 0.214 259.815);
+        --chart-3: oklch(0.707 0.165 254.624);
+        --chart-4: oklch(0.809 0.105 251.813);
+        --chart-5: oklch(0.882 0.059 254.128);
+    }
+}
+
+@layer base {
     *,
     ::after,
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--secondary, currentColor);
-    }
-
-    button:not(:disabled),
-    [role='button']:not(:disabled) {
-        cursor: pointer;
+        border-color: var(--muted, currentColor);
     }
 
     body {
         background-color: var(--bg);
         color: var(--fg);
-    }
-
-    * {
-        font-feature-settings: 'cv11', 'ss01';
-        font-variation-settings: 'opsz' 850;
-        text-rendering: optimizeLegibility;
     }
 
     *::-webkit-scrollbar {
@@ -198,132 +211,52 @@ to switch to RGB, HSL, or HSB.
 }
 
 @layer components {
-    .overflow-auto,
-    .overflow-x-auto,
-    .overflow-y-auto,
-    .overflow-scroll,
-    .overflow-x-scroll,
-    .overflow-y-scroll {
-        @apply [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-inherit;
-    }
-
-    .overflow-auto:hover,
-    .overflow-x-auto:hover,
-    .overflow-y-auto:hover,
-    .overflow-scroll:hover,
-    .overflow-x-scroll:hover,
-    .overflow-y-scroll:hover {
-        @apply [&::-webkit-scrollbar-thumb]:bg-secondary;
-    }
-
     .no-scrollbar {
         -ms-overflow-style: none; /* Internet Explorer and Edge */
         scrollbar-width: none; /* Firefox */
-    }
 
-    .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
+        ::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
+        }
     }
 
     pre::-webkit-scrollbar {
         display: none;
     }
-}
-`} />
+}`} />
 
-### Utils
+### cn Helper
+Create a helper function called `cn`. Usually located in `lib/utils.ts`:
 
-All of the components need this utility, You need to create this file inside your UI folder as `utils.tsx`:
+<Code  lang='ts' code={`import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-<Code lang='ts' code={`'use client'
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}`}/>
 
-import React from 'react'
+### useMediaQuery Hooks
+Create a hook called `useMediaQuery` (some components which Responsive are need it). Usually located in `hooks/use-media-query.tsx`:
 
-import { type ClassValue, clsx } from 'clsx'
-import { useVisuallyHidden } from 'react-aria'
-import { composeRenderProps } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
-import { tv } from 'tailwind-variants'
+<Code lang='tsx' code={`import React from 'react';
 
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
-
-function composeTailwindRenderProps<T>(
-    className: string | ((v: T) => string) | undefined,
-    tw: string | Array<string | undefined>
-): string | ((v: T) => string) {
-    return composeRenderProps(className, (className) => twMerge(tw, className))
-}
-
-const focusRing = tv({
-    variants: {
-        isFocused: { true: 'ring-primary/20 data-invalid:ring-danger/20 ring-4 outline-hidden' },
-        isFocusVisible: { true: 'ring-primary/20 ring-4 outline-hidden' },
-        isInvalid: { true: 'ring-danger/20 ring-4' }
-    }
-})
-
-const focusStyles = tv({
-    extend: focusRing,
-    variants: {
-        isFocused: { true: 'border-primary/70' },
-        isInvalid: { true: 'border-danger/70' }
-    }
-})
-
-const focusButtonStyles = tv({
-    base: 'outline-primary outline outline-offset-2',
-    variants: {
-        isFocusVisible: {
-            false: 'outline-0',
-            true: 'outline-2'
-        },
-        isDisabled: {
-            false: 'cursor-pointer',
-            true: 'cursor-default opacity-50'
-        },
-        isHovered: {
-            true: 'brightness-90'
-        },
-        isPressed: {
-            true: 'brightness-95'
-        }
-    }
-})
-
-const useMediaQuery = (query: string) => {
-    const [value, setValue] = React.useState(false)
+export const useMediaQuery = (query: string) => {
+    const [value, setValue] = React.useState(false);
 
     React.useEffect(() => {
-        const onChange = (event: MediaQueryListEvent) => {
-            setValue(event.matches)
+        const onChange = (e: MediaQueryListEvent) => {
+            setValue(e.matches);
         }
 
-        const result = matchMedia(query)
-        result.addEventListener('change', onChange)
-        setValue(result.matches)
+        const result = matchMedia(query);
+        result.addEventListener('change', onChange);
+        setValue(result.matches);
 
-        return () => result.removeEventListener('change', onChange)
+        return () => result.removeEventListener('change', onChange);
     }, [query])
 
-    return value
-}
-
-const VisuallyHidden = ({ children }: { children: React.ReactNode }) => {
-    const { visuallyHiddenProps } = useVisuallyHidden()
-    return <span {...visuallyHiddenProps}>{children}</span>
-}
-
-export {
-    cn,
-    composeRenderProps as cr,
-    composeTailwindRenderProps as ctr,
-    focusButtonStyles,
-    focusRing,
-    focusStyles,
-    useMediaQuery,
-    VisuallyHidden
-}
-`}/>
+    return value;
+}`}/>
 
 ## Simple Import
 Indeed, it's efficient because the index.ts file in your UI folder serves as a hub. Even if the button and badge
@@ -333,88 +266,81 @@ components are in separate files, you can import them together easily:
 import { Button, Sheet, Badge } from '@/components/ui'
 ```
 
-So, here's the scoop: your UI folder contains an index.ts file, right? This file consolidates all your components for
-straightforward access. Simply import them as needed, hassle-free!
-<Code lang='ts' code={`export * from './avatar'
-export * from './badge'
-export * from './breadcrumbs'
-export * from './button'
-export * from './calendar'
-export * from './card'
-export * from './carousel'
-export * from './chart'
-export * from './checkbox'
-export * from './choicebox'
-export * from './color-area'
-export * from './color-field'
-export * from './color-picker'
-export * from './color-slider'
-export * from './color-swatch'
-export * from './color-swatch-picker'
-export * from './color-thumb'
-export * from './color-wheel'
-export * from './combo-box'
-export * from './command'
-export * from './container'
-export * from './context-menu'
-export * from './date-field'
-export * from './date-picker'
-export * from './date-range-picker'
-export * from './description-list'
-export * from './dialog'
-export * from './disclosure'
-export * from './drop-zone'
-export * from './dropdown'
-export * from './field'
-export * from './file-trigger'
-export * from './form'
-export * from './grid-list'
-export * from './heading'
-export * from './keyboard'
-export * from './link'
-export * from './list-box'
-export * from './loader'
-export * from './loading-dots'
-export * from './menu'
-export * from './meter'
-export * from './modal'
-export * from './multi-select'
-export * from './navbar'
-export * from './note'
-export * from './number-field'
-export * from './otp'
-export * from './pagination'
-export * from './popover'
-export * from './progress-bar'
-export * from './progress-circle'
-export * from './radio'
-export * from './range-calendar'
-export * from './rich-text-field'
-export * from './search-field'
-export * from './select'
-export * from './separator'
-export * from './sheet'
-export * from './show-more'
-export * from './sidebar'
-export * from './skeleton'
-export * from './slider'
-export * from './switch'
-export * from './table'
-export * from './tabs'
-export * from './tag-field'
-export * from './tag-group'
-export * from './text-field'
-export * from './textarea'
-export * from './time-field'
-export * from './toast'
-export * from './toggle'
-export * from './toolbar'
-export * from './tooltip'
-export * from './tree'
-export * from './utils'`} />
-
-If you're not using all those components, feel free to remove the ones you don't need. Later, when you introduce a new
-component, simply add it to your setup. It's straightforward!
+Create a file called index.ts in your UI folder, and add the following code to it:
+<Code lang='ts' code={`export * from './avatar';
+export * from './badge';
+export * from './breadcrumbs';
+export * from './button';
+export * from './calendar';
+export * from './card';
+export * from './carousel';
+export * from './chart';
+export * from './checkbox';
+export * from './collections';
+export * from './color-area';
+export * from './color-field';
+export * from './color-picker';
+export * from './color-slider';
+export * from './color-swatch';
+export * from './color-swatch-picker';
+export * from './color-thumb';
+export * from './color-wheel';
+export * from './combo-box';
+export * from './command';
+export * from './container';
+export * from './context-menu';
+export * from './date-field';
+export * from './date-picker';
+export * from './date-range-picker';
+export * from './description-list';
+export * from './disclosure';
+export * from './drop-zone';
+export * from './dropdown';
+export * from './field';
+export * from './file-trigger';
+export * from './form';
+export * from './grid-list';
+export * from './heading';
+export * from './keyboard';
+export * from './link';
+export * from './list-box';
+export * from './menu';
+export * from './meter';
+export * from './modal';
+export * from './multi-select';
+export * from './navbar';
+export * from './note';
+export * from './number-field';
+export * from './otp';
+export * from './pagination';
+export * from './popover';
+export * from './progress';
+export * from './progress-circle';
+export * from './radio';
+export * from './range-calendar';
+export * from './rich-text-field';
+export * from './search-field';
+export * from './select';
+export * from './selection-box';
+export * from './separator';
+export * from './sheet';
+export * from './sidebar';
+export * from './skeleton';
+export * from './slider';
+export * from './spoiler';
+export * from './switch';
+export * from './table';
+export * from './tabs';
+export * from './tag-group';
+export * from './text-field';
+export * from './textarea';
+export * from './time-field';
+export * from './toast';
+export * from './toggle';
+export * from './toolbar';
+export * from './tooltip';
+export * from './tree';
+export * from './user';`} />
 
 ### TS Config
 Next, incorporate the following settings into your `tsconfig.json` file:
@@ -443,9 +369,6 @@ the UI folder, adjust your paths accordingly like this:
   }
 }
 ```
-
-## InteliSense
-If you want your development environment to be more intelligent, you can follow instructions here at [Tailwind Variants](https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional).
 
 ## Dark Mode
 HQ-UI supports dark mode out of the box. Every framework has its own way of implementing dark mode. So you better check the docs list below:
