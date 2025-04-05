@@ -93,7 +93,7 @@ const MenuContent = <T extends object>({
                 >
                     <RACMenu
                         className={cn(
-                            'grid max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
+                            'grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
                             className
                         )}
                         {...props}
@@ -151,7 +151,7 @@ const MenuItem = ({
                 className,
                 (className, { isOpen, isFocused, isSelected, isDisabled }) =>
                     cn(
-                        'group relative grid grid-cols-[auto_1fr_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full items-center',
+                        'group relative grid  grid-cols-subgrid col-span-full items-center',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm outline-hidden select-none',
                         '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
                         isDanger

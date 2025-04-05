@@ -6,7 +6,7 @@ import { ThemeProvider, useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { RouterProvider } from 'react-aria-components'
 
-import { Toast } from './ui'
+import { ToastProvider } from '@/components/ui'
 
 declare module 'react-aria-components' {
     interface RouterConfig {
@@ -19,8 +19,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
         <RouterProvider navigate={router.push}>
             <ThemeProvider storageKey='hq-theme' attribute='class' enableSystem>
+                <ToastProvider />
                 {children}
-                <Toast />
             </ThemeProvider>
         </RouterProvider>
     )

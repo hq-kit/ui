@@ -196,9 +196,9 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
                     'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-l-lg lg:rounded-r-none lg:border-r lg:border-b-0',
-                    !sidebarOpen
-                        ? 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
-                        : 'min-h-40'
+                    sidebarOpen
+                        ? 'min-h-40 overflow-y-auto'
+                        : 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
                 )}
                 aria-label='Files'
                 selectionMode='none'
@@ -206,8 +206,8 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             >
                 {files.map(renderItem)}
             </Tree>
-            <div className='grid w-full grid-cols-1 place-content-start'>
-                <div className='relative flex max-h-12 items-center gap-2 border-b px-4 py-1.5'>
+            <div className='grid w-full grid-cols-1 place-content-start relative'>
+                <div className='relative flex h-12 items-center gap-2 border-b px-4 py-1 bg-primary/10 text-primary'>
                     <Button
                         onPress={() => setSidebarOpen(!sidebarOpen)}
                         className='absolute left-1/2 -mt-7 flex size-6 -translate-x-1/2 rotate-90 items-center justify-center lg:relative lg:left-0 lg:mt-0 lg:-ml-7 lg:translate-x-0 lg:rotate-0'
@@ -219,7 +219,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 </div>
                 <Code
                     code={code}
-                    className='border-none [&_pre]:pb-0 [&_pre]:max-h-full overflow-y-auto'
+                    className='border-none static [&_pre]:max-h-full overflow-y-auto'
                 />
             </div>
         </div>

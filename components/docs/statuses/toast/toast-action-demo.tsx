@@ -1,8 +1,8 @@
 'use client'
 
-import { toast } from 'sonner'
+import { IconEye } from 'hq-icons'
 
-import { Button } from '@/components/ui'
+import { Button, toast } from '@/components/ui'
 
 export default function ToastActionDemo() {
     return (
@@ -10,10 +10,12 @@ export default function ToastActionDemo() {
             <Button
                 onPress={() =>
                     toast('Your post has been published!', {
-                        action: {
-                            label: 'View',
-                            onClick: () => alert('Viewed')
-                        }
+                        action: () => alert('Viewed'),
+                        actionLabel: (
+                            <>
+                                <IconEye /> View
+                            </>
+                        )
                     })
                 }
             >
@@ -22,14 +24,14 @@ export default function ToastActionDemo() {
             <Button
                 onPress={() =>
                     toast('Your message has been sent!', {
-                        action: {
-                            label: 'View',
-                            onClick: () => alert('Viewed')
-                        },
-                        cancel: {
-                            label: 'Cancel',
-                            onClick: () => alert('Cancelled')
-                        }
+                        action: () => alert('Viewed'),
+                        actionLabel: (
+                            <>
+                                <IconEye /> View
+                            </>
+                        ),
+                        altAction: () => alert('Cancelled'),
+                        altActionLabel: 'Cancel'
                     })
                 }
             >
@@ -38,10 +40,8 @@ export default function ToastActionDemo() {
             <Button
                 onPress={() =>
                     toast('Your data has been deleted!', {
-                        cancel: {
-                            label: 'Cancel',
-                            onClick: () => alert('Cancelled')
-                        }
+                        altAction: () => alert('Cancelled'),
+                        altActionLabel: 'Cancel'
                     })
                 }
             >

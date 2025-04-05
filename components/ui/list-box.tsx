@@ -24,7 +24,7 @@ const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => 
         {...props}
         className={composeRenderProps(className, (className) =>
             cn(
-                'grid outline-hidden w-full grid-cols-[auto_1fr] gap-y-1 overflow-y-auto rounded-lg border p-1',
+                'grid outline-hidden w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg border p-1',
                 className
             )
         )}
@@ -45,7 +45,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                     { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }
                 ) =>
                     cn(
-                        'group relative grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full items-center',
+                        'group relative grid grid-cols-subgrid col-span-full items-center',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
                         {

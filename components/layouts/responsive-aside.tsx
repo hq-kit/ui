@@ -24,9 +24,9 @@ export function ResponsiveAside({
     const pathname = usePathname()
     React.useEffect(() => setOpenAside(false), [pathname])
     return (
-        <nav className='relative z-10 md:h-14 lg:hidden'>
+        <nav className='z-10 bg-bg/10 backdrop-blur-lg sticky top-0 md:h-14 lg:hidden'>
             <CommandMenu setOpen={setOpenCmd} openCommand={openCmd} />
-            <div className='-mb-2 flex items-center justify-between pt-2 pr-2 pl-4'>
+            <div className='flex items-center justify-between py-2 pr-2 pl-4'>
                 <Button
                     aria-label='Open Menu.'
                     className='[&_[data-slot=icon]]:text-fg -ml-2'

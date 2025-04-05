@@ -3,7 +3,6 @@
 import type { FC, SVGProps } from 'react'
 
 import {
-    IconBell,
     IconBrandAdobe,
     IconBrandAstro,
     IconBrandCleon,
@@ -79,7 +78,7 @@ export function DocRefs({ references }: { references: string[] }) {
                 title = 'HQ Icons'
                 icon = IconBrandCleon
                 break
-            case url.includes('framer'):
+            case url.includes('motion'):
                 title = 'Framer Motion'
                 icon = IconBrandFramer
                 break
@@ -98,10 +97,6 @@ export function DocRefs({ references }: { references: string[] }) {
             case url.includes('cmdk'):
                 title = 'CMDK'
                 icon = IconCommand
-                break
-            case url.includes('sonner'):
-                title = 'Sonner'
-                icon = IconBell
                 break
             case url.includes('embla'):
                 title = 'Embla Carousel'

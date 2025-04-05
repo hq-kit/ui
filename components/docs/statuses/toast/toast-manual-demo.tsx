@@ -1,25 +1,16 @@
 'use client'
 
-import { toast } from 'sonner'
+import { Button, toast } from '@/components/ui'
 
-import { Button } from '@/components/ui'
-
-export default function ToastManualDemo() {
+export default function ToastAutoDismissDemo() {
     return (
         <div className='flex gap-2'>
             <Button
                 onPress={() =>
                     toast('Manually Close', {
                         description: 'Click the action or cancel button to close',
-                        duration: Infinity,
-                        action: {
-                            label: 'Okay',
-                            onClick: () => alert('Okay')
-                        },
-                        cancel: {
-                            label: 'Close',
-                            onClick: () => alert('Closed')
-                        }
+                        actionLabel: 'Cancel',
+                        altActionLabel: 'Close'
                     })
                 }
             >
@@ -27,17 +18,15 @@ export default function ToastManualDemo() {
             </Button>
             <Button
                 onPress={() =>
-                    toast('Automatically Close', {
-                        description: 'Just leave it for 4 seconds',
-                        action: {
-                            label: 'Okay',
-                            onClick: () => alert('Okay')
+                    toast(
+                        'Automatically Close',
+                        {
+                            description: 'Just leave it for 3 seconds',
+                            actionLabel: 'Cancel',
+                            altActionLabel: 'Close'
                         },
-                        cancel: {
-                            label: 'Close',
-                            onClick: () => alert('Closed')
-                        }
-                    })
+                        { timeout: 3000 }
+                    )
                 }
             >
                 Automatically Close

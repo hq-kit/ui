@@ -24,9 +24,14 @@ export default function GridListLayoutDemo() {
     const [gap, setGap] = React.useState<Key>(4)
 
     return (
-        <div className='space-y-6'>
-            <div className='flex gap-2'>
-                <Select label='Columns' selectedKey={columns} onSelectionChange={setColumns}>
+        <div className='flex flex-col gap-4'>
+            <div className='flex gap-2 w-full'>
+                <Select
+                    className='w-full'
+                    label='Columns'
+                    selectedKey={columns}
+                    onSelectionChange={setColumns}
+                >
                     <Select.Item id={1}>1</Select.Item>
                     <Select.Item id={2}>2</Select.Item>
                     <Select.Item id={3}>3</Select.Item>
@@ -34,7 +39,7 @@ export default function GridListLayoutDemo() {
                     <Select.Item id={5}>5</Select.Item>
                     <Select.Item id={6}>6</Select.Item>
                 </Select>
-                <Select label='Gap' selectedKey={gap} onSelectionChange={setGap}>
+                <Select className='w-full' label='Gap' selectedKey={gap} onSelectionChange={setGap}>
                     <Select.Item id={0}>0</Select.Item>
                     <Select.Item id={2}>2</Select.Item>
                     <Select.Item id={4}>4</Select.Item>

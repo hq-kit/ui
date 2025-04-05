@@ -59,7 +59,7 @@ export const fontSans = cn(
 export const fontSansFamilies = [
     {
         label: 'Geist',
-        value: '--font-geist-sans',
+        value: '--font-geist',
         link: 'https://vercel.com/font'
     },
     {

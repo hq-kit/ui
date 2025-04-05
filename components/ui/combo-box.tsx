@@ -100,7 +100,7 @@ const ComboBox = <T extends object>({
                         <ListBox
                             aria-label='items'
                             items={items}
-                            className='grid outline-hidden w-full grid-cols-[auto_1fr] gap-y-1 overflow-y-auto rounded-lg'
+                            className='grid outline-hidden w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg'
                         >
                             {children}
                         </ListBox>
@@ -140,7 +140,7 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
                 className,
                 (className, { isHovered, isFocused, isSelected, isDisabled, isFocusVisible }) =>
                     cn(
-                        'group relative grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid col-span-full',
+                        'group relative grid grid-cols-subgrid col-span-full',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:[svg]:mr-2 *:[svg]:my-1 *:data-avatar:mr-2 *:data-avatar:size-6',
                         { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },

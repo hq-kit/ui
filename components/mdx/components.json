@@ -344,10 +344,7 @@
         "name": "note"
     },
     {
-        "name": "toast",
-        "deps": [
-            "sonner"
-        ]
+        "name": "toast"
     },
     {
         "name": "meter",

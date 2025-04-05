@@ -265,7 +265,6 @@ export const previews: Record<string, { component: React.LazyExoticComponent<() 
 "statuses/skeleton/skeleton-shape-demo": { component: React.lazy(() => import("@/components/docs/statuses/skeleton/skeleton-shape-demo")) },
 "statuses/toast/toast-description-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-description-demo")) },
 "statuses/toast/toast-manual-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-manual-demo")) },
-"statuses/toast/toast-positions-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-positions-demo")) },
 "statuses/toast/toast-action-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-action-demo")) },
 "statuses/toast/toast-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-demo")) },
 "statuses/toast/toast-status-demo": { component: React.lazy(() => import("@/components/docs/statuses/toast/toast-status-demo")) },

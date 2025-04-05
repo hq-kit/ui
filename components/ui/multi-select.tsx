@@ -198,7 +198,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                 UNSTABLE_portalContainer={props.portal}
                             >
                                 <ListBox
-                                    className='grid w-full grid-cols-[auto_1fr] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+                                    className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
                                     selectionMode='multiple'
                                     renderEmptyState={() => <div>No Items</div>}
                                     {...props}
@@ -231,7 +231,7 @@ const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) =>
                 className,
                 (className, { isHovered, isFocused, isDisabled, isFocusVisible }) =>
                     cn(
-                        'group relative col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid',
+                        'group relative col-span-full grid grid-cols-subgrid',
                         'rounded-md px-2 py-1.5 text-base select-none sm:text-sm/6',
                         '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
                         { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
