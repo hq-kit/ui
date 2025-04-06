@@ -27,7 +27,7 @@ const config = {
         return [
             {
                 source: '/docs',
-                destination: '/docs/getting-started/introduction',
+                destination: '/docs/getting-started/greetings',
                 permanent: false
             },
             {

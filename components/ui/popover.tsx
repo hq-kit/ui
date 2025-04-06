@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { motion } from 'motion/react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -16,15 +17,17 @@ import {
     Dialog,
     DialogTrigger,
     Heading,
-    Modal,
     ModalOverlay,
     OverlayArrow,
+    Modal as RACModal,
     Popover as RACPopover,
     Text
 } from 'react-aria-components'
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
+
+const Modal = motion.create(RACModal)
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
@@ -40,21 +43,34 @@ const DrawerMode = ({ className, ...props }: ModalOverlayProps & Pick<DialogProp
         }
         {...props}
     >
-        <Modal
-            className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                cn(
-                    'bg-bg text-fg rounded-t-lg fixed top-auto bottom-0 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
-                    isEntering &&
-                        'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
-                    isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
-                    className
-                )
-            )}
-        >
-            <Dialog className='relative flex max-h-[inherit] flex-col gap-4 overflow-hidden outline-hidden'>
-                {props.children}
-            </Dialog>
-        </Modal>
+        {({ state }) => (
+            <Modal
+                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
+                    cn(
+                        'bg-bg text-fg pt-2 rounded-t-lg fixed top-auto bottom-0 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
+                        isEntering &&
+                            'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
+                        isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
+                        className
+                    )
+                )}
+                drag={'y'}
+                transition={{ duration: 0.2 }}
+                dragConstraints={{ top: 0, bottom: 0 }}
+                onDragEnd={(_, { offset, velocity }) => {
+                    if (offset.y > window.innerHeight * 0.5 || velocity.y > 25) {
+                        state.close()
+                    }
+                }}
+            >
+                <div className='h-4 w-full'>
+                    <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                </div>
+                <Dialog className='relative flex max-h-[inherit] flex-col gap-4 overflow-hidden outline-hidden'>
+                    {props.children}
+                </Dialog>
+            </Modal>
+        )}
     </ModalOverlay>
 )
 

@@ -218,7 +218,7 @@ const TableRow = <T extends object>({
                     cn(
                         'group relative cursor-default not-last:border-b',
                         'href' in props && 'cursor-pointer',
-                        isSelected && 'bg-primary text-primary-fg',
+                        isSelected && 'bg-primary/40 text-primary-fg',
                         isHovered && 'bg-primary/30 text-primary-fg',
                         {
                             'outline outline-primary bg-primary/30 text-primary-fg':

@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { IconCheck, IconChevronRight } from 'hq-icons'
+import { motion } from 'motion/react'
 import type {
     MenuItemProps,
     MenuProps,
@@ -18,13 +19,13 @@ import {
     composeRenderProps,
     Header,
     MenuTrigger,
-    Modal,
     ModalOverlay,
     Popover,
     PopoverContext,
     Menu as RACMenu,
     MenuItem as RACMenuItem,
     MenuSection as RACMenuSection,
+    Modal as RACModal,
     Separator,
     SubmenuTrigger,
     Text,
@@ -33,6 +34,8 @@ import {
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
+
+const Modal = motion.create(RACModal)
 
 const Menu = ({ ...props }: MenuTriggerProps) => <MenuTrigger {...props} />
 
@@ -68,7 +71,7 @@ const MenuContent = <T extends object>({
                 className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
                     cn(
                         'fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full',
-                        'flex sm:block items-end justify-end bg-fg/50 backdrop-blur',
+                        'flex sm:block items-end justify-end bg-black/50 backdrop-blur',
                         '[--visual-viewport-vertical-padding:16px] sm:[--visual-viewport-vertical-padding:32px]',
                         isEntering && 'fade-in animate-in duration-200 ease-out',
                         isExiting && 'fade-out animate-out ease-in',
@@ -77,28 +80,43 @@ const MenuContent = <T extends object>({
                 )}
                 isDismissable
             >
-                <Modal
-                    UNSTABLE_portalContainer={props.portal}
-                    className={composeRenderProps(
-                        className,
-                        (className, { isEntering, isExiting }) =>
-                            cn(
-                                'bg-bg text-fg fixed top-auto bottom-0 z-50 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
-                                isEntering &&
-                                    'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
-                                isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
-                                className
-                            )
-                    )}
-                >
-                    <RACMenu
-                        className={cn(
-                            'grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
-                            className
+                {({ state }) => (
+                    <Modal
+                        isDismissable
+                        UNSTABLE_portalContainer={props.portal}
+                        className={composeRenderProps(
+                            className,
+                            (className, { isEntering, isExiting }) =>
+                                cn(
+                                    'bg-bg text-fg pt-2 rounded-t-lg fixed top-auto bottom-0 z-50 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
+                                    isEntering &&
+                                        'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
+                                    isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
+                                    className
+                                )
                         )}
-                        {...props}
-                    />
-                </Modal>
+                        drag={'y'}
+                        transition={{ duration: 0.2 }}
+                        dragConstraints={{ top: 0, bottom: 0 }}
+                        onDragEnd={(_, { offset, velocity }) => {
+                            if (offset.y > window.innerHeight * 0.5 || velocity.y > 25) {
+                                state.close()
+                            }
+                        }}
+                    >
+                        <div className='h-4 w-full'>
+                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                        </div>
+                        <RACMenu
+                            aria-label='Menu'
+                            className={cn(
+                                'grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
+                                className
+                            )}
+                            {...props}
+                        />
+                    </Modal>
+                )}
             </ModalOverlay>
         )
     } else {

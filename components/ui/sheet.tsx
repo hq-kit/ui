@@ -1,6 +1,7 @@
 'use client'
 
 import { IconX } from 'hq-icons'
+import { motion } from 'motion/react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -21,6 +22,8 @@ import {
 
 import { cn } from '@/lib/utils'
 
+const MModal = motion.create(Modal)
+
 const Sheet = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
 interface SheetContentProps
@@ -30,6 +33,7 @@ interface SheetContentProps
     isFloating?: boolean
     isBlurred?: boolean
     className?: string
+    style?: React.CSSProperties
     side?: 'top' | 'bottom' | 'left' | 'right'
 }
 
@@ -55,56 +59,116 @@ const SheetContent = ({
             }
             {...props}
         >
-            <Modal
-                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                    cn(
-                        'bg-bg text-fg fixed z-50 shadow-lg transition ease-in-out',
-                        isFloating ? 'ring-fg/5' : 'border-fg/20',
-                        isEntering && 'animate-in',
-                        isExiting && 'animate-out',
-                        side === 'top' &&
-                            `${isEntering && 'slide-in-from-top'} ${isExiting && 'slide-out-to-top'} ${isFloating ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0' : 'inset-x-0 top-0 rounded-b-2xl border-b'}`,
-                        side === 'right' &&
-                            `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-right'} ${isExiting && 'slide-out-to-right'} ${isFloating ? 'right-2 inset-y-2 rounded-lg ring-1 border-l-0' : 'inset-y-0 right-0 h-auto w-full max-w-xs overflow-y-auto border-l'}`,
-                        side === 'bottom' &&
-                            `${isEntering && 'slide-in-from-bottom'} ${isExiting && 'slide-out-to-bottom'} ${isFloating ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0' : 'inset-x-0 bottom-0 rounded-t-2xl border-t'}`,
-                        side === 'left' &&
-                            `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-left'} ${isExiting && 'slide-out-to-left'} ${isFloating ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0' : 'inset-y-0 left-0 h-auto w-full max-w-xs overflow-y-auto border-r'}`,
-                        className
-                    )
-                )}
-                {...props}
-            >
-                <Dialog className='relative flex flex-col h-full overflow-hidden outline-hidden'>
-                    {composeRenderProps(children, (children) => (
-                        <>
-                            {children}
-                            {closeButton && (
-                                <Button
-                                    aria-label='Close'
-                                    slot='close'
-                                    className={({
-                                        isPressed,
-                                        isHovered,
-                                        isFocusVisible,
-                                        isDisabled
-                                    }) =>
-                                        cn(
-                                            'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
-                                            isHovered && 'bg-primary/40',
-                                            isFocusVisible && 'ring-4 ring-primary/20',
-                                            isPressed && 'bg-primary/50',
-                                            isDisabled && 'opacity-50'
-                                        )
-                                    }
-                                >
-                                    <IconX />
-                                </Button>
-                            )}
-                        </>
-                    ))}
-                </Dialog>
-            </Modal>
+            {({ state }) => (
+                <MModal
+                    className={composeRenderProps(
+                        className,
+                        (className, { isEntering, isExiting }) =>
+                            cn(
+                                'bg-bg text-fg fixed z-50 shadow-lg ease-in-out',
+                                isFloating ? 'ring-fg/5' : 'border-fg/20',
+                                isEntering && 'animate-in',
+                                isExiting && 'animate-out',
+                                side === 'top' &&
+                                    `${isEntering && 'slide-in-from-top'} ${isExiting && 'slide-out-to-top'} ${
+                                        isFloating
+                                            ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0'
+                                            : 'inset-x-0 top-0 rounded-b-2xl border-b'
+                                    }`,
+                                side === 'right' &&
+                                    `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-right'} ${
+                                        isExiting && 'slide-out-to-right'
+                                    } ${
+                                        isFloating
+                                            ? 'right-2 inset-y-2 rounded-lg ring-1 border-l-0'
+                                            : 'inset-y-0 right-0 h-auto w-full max-w-xs overflow-y-auto border-l'
+                                    }`,
+                                side === 'bottom' &&
+                                    `pt-2 ${isEntering && 'slide-in-from-bottom'} ${isExiting && 'slide-out-to-bottom'} ${
+                                        isFloating
+                                            ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0'
+                                            : 'inset-x-0 bottom-0 rounded-t-2xl border-t'
+                                    }`,
+                                side === 'left' &&
+                                    `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-left'} ${
+                                        isExiting && 'slide-out-to-left'
+                                    } ${
+                                        isFloating
+                                            ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0'
+                                            : 'inset-y-0 left-0 h-auto w-full max-w-xs overflow-y-auto border-r'
+                                    }`,
+                                className
+                            )
+                    )}
+                    drag={side === 'left' || side === 'right' ? 'x' : 'y'}
+                    dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                    transition={{ duration: 0.3 }}
+                    onDragEnd={(_, { offset, velocity }) => {
+                        if (
+                            side === 'bottom' &&
+                            (offset.y > window.innerHeight * 0.5 || velocity.y > 25)
+                        ) {
+                            state.close()
+                        }
+                        if (
+                            side === 'top' &&
+                            (offset.y > window.innerHeight * 0.5 || velocity.y < -25)
+                        ) {
+                            state.close()
+                        }
+                        if (
+                            side === 'left' &&
+                            (offset.x < window.innerWidth * -0.5 || velocity.x < -25)
+                        ) {
+                            state.close()
+                        }
+                        if (
+                            side === 'right' &&
+                            (offset.x > window.innerWidth * 0.5 || velocity.x > 25)
+                        ) {
+                            state.close()
+                        }
+                    }}
+                    {...props}
+                >
+                    {side === 'bottom' && (
+                        <div className='h-4 w-full'>
+                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                        </div>
+                    )}
+                    <Dialog
+                        aria-label='Sheet'
+                        className='relative flex flex-col h-full overflow-hidden outline-hidden'
+                    >
+                        {composeRenderProps(children, (children) => (
+                            <>
+                                {children}
+                                {closeButton && (
+                                    <Button
+                                        aria-label='Close'
+                                        slot='close'
+                                        className={({ isPressed, isHovered, isFocusVisible }) =>
+                                            cn(
+                                                'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
+                                                isHovered && 'bg-muted/40',
+                                                isFocusVisible && 'ring-4 ring-primary/20',
+                                                isPressed && 'bg-muted/50'
+                                            )
+                                        }
+                                    >
+                                        <IconX />
+                                    </Button>
+                                )}
+                            </>
+                        ))}
+                    </Dialog>
+                    {side === 'top' && (
+                        <div className='h-4 w-full'>
+                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                        </div>
+                    )}
+                </MModal>
+            )}
         </ModalOverlay>
     )
 }

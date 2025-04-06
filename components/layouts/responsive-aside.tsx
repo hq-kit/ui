@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { LayoutGroup } from 'framer-motion'
 import { IconBrandCleon, IconMenu, IconSearch } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
@@ -19,7 +18,6 @@ export function ResponsiveAside({
     openCmd: boolean
     setOpenCmd: (openCmd: boolean) => void
 }) {
-    const id = React.useId()
     const [openAside, setOpenAside] = React.useState(false)
     const pathname = usePathname()
     React.useEffect(() => setOpenAside(false), [pathname])
@@ -63,10 +61,8 @@ export function ResponsiveAside({
                 <Sheet.Header className='mb-4 flex flex-row justify-between py-2'>
                     <NavbarDropdown />
                 </Sheet.Header>
-                <Sheet.Body className='px-2'>
-                    <LayoutGroup id={id}>
-                        <Aside />
-                    </LayoutGroup>
+                <Sheet.Body className='px-6'>
+                    <Aside />
                 </Sheet.Body>
             </Sheet.Content>
         </nav>

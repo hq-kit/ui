@@ -15,6 +15,7 @@ const docs = defineCollection({
     pattern: '**/*.mdx',
     schema: s
         .object({
+            order: s.number().optional(),
             slug: s.path(),
             title: s.string().max(99),
             description: s.string().max(999).optional(),

@@ -32,8 +32,8 @@ export default function ModalSizeDemo() {
 
             <Modal.Content isOpen={isOpen} onOpenChange={setIsOpen} size={modalSize}>
                 <Modal.Header>
-                    <Modal.Title>Modal Size Variant</Modal.Title>
-                    <Modal.Description>This is a {modalSize} modal.</Modal.Description>
+                    <Modal.Title>Modal {modalSize}</Modal.Title>
+                    <Modal.Description>This won&apos;t affect on small screen</Modal.Description>
                 </Modal.Header>
                 <Modal.Footer>
                     <Button variant='outline' onPress={() => setIsOpen(false)}>

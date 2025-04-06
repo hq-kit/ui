@@ -93,7 +93,7 @@ const HeroButton = ({
     children,
     className,
     variant = 'primary',
-    size = 'md',
+    size = 'lg',
     ...props
 }: HeroButtonProps) => (
     <Link

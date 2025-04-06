@@ -30,7 +30,7 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                 <Tabs.Content id='preview'>
                     <div
                         className={cn(
-                            'border-muted bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6 overflow-auto',
+                            'border-muted not-prose bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6 overflow-auto',
                             center && 'grid min-h-20 place-content-center py-6 sm:py-12'
                         )}
                     >

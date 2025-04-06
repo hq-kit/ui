@@ -1,108 +1,32 @@
 ---
 title: Command
 description: A command is like a button with a twist, it opens a menu of options. It's a cooler version of a combobox, ideal for command palettes, menus, and more.
-references: ['https://cmdk.paco.me/', 'https://react-spectrum.adobe.com/react-aria/Modal.html#props']
+references: ['https://react-spectrum.adobe.com/react-aria/Autocomplete.html#props','https://react-spectrum.adobe.com/react-aria/Modal.html#props']
 ---
 
 ## Installation
 <Install component='command' />
 
 ## Basic
-<Demo center component='controls/command-menu/command-menu-demo' />
-
-## Separator
-<Demo center component='controls/command-menu/command-menu-separator-demo' />
-
-## Section
-<Demo center component='controls/command-menu/command-menu-section-demo' />
-
-## Keyboard
-<Note variant='warning'>
-Note that keyboard functionality may be limited on smaller screens.
+<Note>
+    Note that if your `Command.Item` has an Icon, you should wrap the label with `Command.Label` and pass the `textValue` prop so it can be filtered by search.
 </Note>
+<Demo center component='controls/command/command-demo' />
 
-<Demo center component='controls/command-menu/command-menu-keyboard-demo' />
+## Collection and Section
+<Demo center component='controls/command/command-section-demo' />
 
 ## Trigger by Keyboard
-
-Activate the command menu via keyboard commands, ideal for initiating command palettes.
-
-<Demo center component='controls/command-menu/command-menu-trigger-by-keyboard-demo' />
+<Demo center component='controls/command/command-trigger-by-keyboard-demo' />
 
 ## Danger
-<Demo center component='controls/command-menu/command-menu-danger-item-demo' />
+<Demo center component='controls/command/command-danger-item-demo' />
 
-## Controlled
-Manage the command palette dynamically using the `value` and `onValueChange` props, making it responsive to changes in a parent component.
-<Demo center component='controls/command-menu/command-menu-controlled-demo' />
-Additionally, control the execution of an action upon selecting an item:
+## Asycn Loading
+<Demo center component='controls/command/command-async-demo' />
+
+## Action on Select
 
 ```tsx
-<Command.Item onSelect={() => console.log('share this component')} />
-```
-
-## Disabled
-<Demo center component='controls/command-menu/command-menu-disabled-demo' />
-
-## Hide Indicator
-
-Eliminate the search indicator and close button for a cleaner interface by using `hideSearchIndicator` and `hideCloseButton`. View this setup in the [Command Description](#description) section.
-
-```
-<Command
-  hideCloseButton
-  hideSearchIndicator
-  isOpen={isOpen}
-  onOpenChange={setIsOpen}
-/>
-```
-
-## Description
-<Demo center component='controls/command-menu/command-menu-description-demo' />
-
-## Navigating
-
-### Inertia.js
-In Inertia.js, utilize the `router.on('navigate')` event to automatically close the command palette when navigation occurs. Here is an example:
-This setup ensures that the command palette closes seamlessly when the user navigates to a new page, maintaining a clean and distraction-free user interface.
-
-```tsx {14}
-export function CommandPalette({ open, setOpen }: Props) {
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open: boolean) => !open)
-      }
-    }
-
-    document.addEventListener('keydown', down)
-
-    return () => document.removeEventListener('keydown', down)
-
-    router.on('navigate', () => setOpen(false))
-  }, [pathname, setOpen])
-  return (...)
-```
-
-### Next.js
-
-When using Next.js, you can use the `usePathname` hook to close the command palette when you navigate to a new page.
-
-```tsx {2} {14}
-export function CommandPalette({ open, setOpen }: Props) {
-  const pathname = usePathname()
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open: boolean) => !open)
-      }
-    }
-
-    document.addEventListener('keydown', down)
-
-    return () => document.removeEventListener('keydown', down)
-  }, [pathname, setOpen])
-  return (...)
+<Command.Item onAction={() => console.log('Hello World!')} />
 ```

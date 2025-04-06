@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Button, Command } from '@/components/ui'
+import { Avatar, Button, Command } from '@/components/ui'
 
 export default function CommandSectionDemo() {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -12,23 +12,23 @@ export default function CommandSectionDemo() {
                 Open
             </Button>
             <Command isOpen={isOpen} onOpenChange={setIsOpen}>
-                <Command.Input placeholder='Quick search...' />
-                <Command.List>
-                    <Command.Section heading='Pages'>
-                        <Command.Item asChild>
-                            <a href='/public'>Home</a>
+                <Command.Section title='Pages'>
+                    <Command.Item textValue='home'>
+                        <Command.Label>Home</Command.Label>
+                    </Command.Item>
+                    <Command.Item textValue='documenation'>
+                        <Command.Label>Documentation</Command.Label>
+                    </Command.Item>
+                </Command.Section>
+                <Command.Separator />
+                <Command.Section title='Users' items={users}>
+                    {(item) => (
+                        <Command.Item id={item.id} textValue={item.name}>
+                            <Avatar src={item.image_url} />
+                            <Command.Label>{item.name}</Command.Label>
                         </Command.Item>
-                        <Command.Item asChild>
-                            <a href='/components'>Components</a>
-                        </Command.Item>
-                    </Command.Section>
-                    <Command.Separator />
-                    <Command.Section heading='Users'>
-                        {users.map((user) => (
-                            <Command.Item key={user.id}>{user.name}</Command.Item>
-                        ))}
-                    </Command.Section>
-                </Command.List>
+                    )}
+                </Command.Section>
             </Command>
         </>
     )

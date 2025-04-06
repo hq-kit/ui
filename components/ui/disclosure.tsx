@@ -5,8 +5,8 @@ import React from 'react'
 import { IconMinus } from 'hq-icons'
 import type {
     ButtonProps,
+    DisclosurePanelProps,
     DisclosureGroupProps as RACDisclosureGroupProps,
-    DisclosurePanelProps as RACDisclosurePanelProps,
     DisclosureProps as RACDisclosureProps
 } from 'react-aria-components'
 import {
@@ -46,7 +46,7 @@ const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps)
 interface CollapsibleProps extends RACDisclosureProps {
     ref?: React.Ref<HTMLDivElement>
 }
-const Disclosure = ({ className, ref, ...props }: CollapsibleProps) => {
+const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) => {
     return (
         <RACDisclosure
             ref={ref}
@@ -54,13 +54,13 @@ const Disclosure = ({ className, ref, ...props }: CollapsibleProps) => {
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
-                    'w-full min-w-60',
+                    'w-full rounded-lg min-w-60 transition duration-300 ease-in-out overflow-hidden',
                     isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                     className
                 )
             )}
         >
-            {props.children}
+            {(values) => (typeof children === 'function' ? children(values) : children)}
         </RACDisclosure>
     )
 }
@@ -104,24 +104,21 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
         </Button>
     )
 }
-
-interface DisclosureContentProps extends RACDisclosurePanelProps {
-    ref?: React.Ref<HTMLDivElement>
-}
-
-const DisclosurePanel = ({ className, ref, children, ...props }: DisclosureContentProps) => {
+const DisclosurePanel = ({ className, children, ...props }: DisclosurePanelProps) => {
     return (
         <RACDisclosurePanel
-            ref={ref}
             data-slot='disclosure-content'
-            className={cn('text-sm', className)}
+            className={cn(
+                'transition-all duration-300 ease-in-out overflow-hidden',
+                'max-h-0 opacity-0 aria-[hidden=false]:max-h-[1000px] aria-[hidden=false]:opacity-100',
+                className
+            )}
             {...props}
         >
             {children}
         </RACDisclosurePanel>
     )
 }
-
 const Accordion = (props: AccordionProps) => <DisclosureGroup {...props} />
 Accordion.Item = Disclosure
 Accordion.Trigger = DisclosureTrigger
