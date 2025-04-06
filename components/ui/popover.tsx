@@ -23,7 +23,7 @@ import {
     Text
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />

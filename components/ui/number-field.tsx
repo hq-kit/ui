@@ -10,7 +10,7 @@ import {
     type ValidationResult
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 import { Description, FieldError, FieldGroup, Input, Label } from './field'

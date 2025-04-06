@@ -4,10 +4,10 @@ import React from 'react'
 
 import { IconCheck, IconCopy } from 'hq-icons'
 import { ColorFormat, ListBoxItem, parseColor, type ListBoxItemProps } from 'react-aria-components'
-import { toast } from 'sonner'
 import { copyToClipboard } from 'usemods'
 
 import { formatColorForTailwind, textfg } from '@/components/controllers/colors/colors'
+import { toast } from '@/components/ui'
 import { isBrightColor } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
@@ -31,12 +31,7 @@ const ColorItem = ({ item, textColor, name, selectedFormat, tailwindVariable }: 
         await copyToClipboard(toCopy)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
-        toast(`Copy ${toCopy} to clipboard.`, {
-            classNames: {
-                toast: '[&:has([data-icon])_[data-content]]:!ml-0',
-                icon: 'hidden'
-            }
-        })
+        toast(`Copy ${toCopy} to clipboard.`)
     }
     return (
         <ListBoxItem

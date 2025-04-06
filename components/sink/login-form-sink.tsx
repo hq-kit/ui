@@ -2,9 +2,8 @@
 
 import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
 import Link from 'next/link'
-import { toast } from 'sonner'
 
-import { Button, Card, Checkbox, Form, Separator, TextField } from '@/components/ui'
+import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 
 export default function LoginFormSink() {
     return (

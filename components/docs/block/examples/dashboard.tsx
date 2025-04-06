@@ -26,7 +26,7 @@ export default function Dashboard() {
                                     </Card.Title>
                                     <IconRupiah className='text-muted-fg size-4' />
                                 </Card.Header>
-                                <Card.Content>
+                                <Card.Content className='pb-4'>
                                     <div className='text-2xl font-bold'>Rp 45,231.89</div>
                                     <p className='text-muted-fg text-xs'>+20.1% from last month</p>
                                 </Card.Content>
@@ -38,7 +38,7 @@ export default function Dashboard() {
                                     </Card.Title>
                                     <IconUsers className='text-muted-fg size-4' />
                                 </Card.Header>
-                                <Card.Content>
+                                <Card.Content className='pb-4'>
                                     <div className='text-2xl font-bold'>+2350</div>
                                     <p className='text-muted-fg text-xs'>+180.1% from last month</p>
                                 </Card.Content>
@@ -48,7 +48,7 @@ export default function Dashboard() {
                                     <Card.Title className='text-sm font-medium'>Sales</Card.Title>
                                     <IconChartColumn className='text-muted-fg size-4' />
                                 </Card.Header>
-                                <Card.Content>
+                                <Card.Content className='pb-4'>
                                     <div className='text-2xl font-bold'>+12,234</div>
                                     <p className='text-muted-fg text-xs'>+19% from last month</p>
                                 </Card.Content>
@@ -60,7 +60,7 @@ export default function Dashboard() {
                                     </Card.Title>
                                     <IconActivity className='text-muted-fg size-4' />
                                 </Card.Header>
-                                <Card.Content>
+                                <Card.Content className='pb-4'>
                                     <div className='text-2xl font-bold'>+573</div>
                                     <p className='text-muted-fg text-xs'>+201 since last hour</p>
                                 </Card.Content>

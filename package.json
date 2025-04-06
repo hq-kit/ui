@@ -32,7 +32,6 @@
         "recharts": "^2.15.2",
         "scroll-into-view-if-needed": "^3.1.0",
         "shiki": "^3.2.1",
-        "sonner": "^2.0.3",
         "tailwindcss-react-aria-components": "^2.0.0",
         "use-debounce": "^10.0.4",
         "usemods": "^1.12.0",
@@ -70,5 +69,6 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hq-kit/ui.git"
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

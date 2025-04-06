@@ -54,7 +54,7 @@ Then, make sure you import the icons you want to use.
 import { IconMoon, IconSun } from 'hq-icons'
 import { Theme, useTheme } from '@/components/theme-provider'
 
-export function ThemeSwitcher() {
+export function ThemeSwitcher({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
   const [theme, setTheme] = useTheme()
   const switchTheme = () => {
     if (theme === 'dark') {
@@ -66,7 +66,7 @@ export function ThemeSwitcher() {
 
   return (
     <Button
-      variant="outline"
+      variant={variant}
       size="icon"
       aria-label="Switch theme"
       onPress={switchTheme}

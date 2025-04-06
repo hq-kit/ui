@@ -2,8 +2,8 @@
 
 import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
 import AuthLayoutModern from 'layouts/auth-layout-modern'
-import { toast } from 'sonner'
 
+import { toast } from '@/components/ui'
 import { Button, Checkbox, Form, Link, Separator, TextField } from '@/components/ui'
 
 export default function AuthForm() {

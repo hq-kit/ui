@@ -236,7 +236,7 @@ export function cn(...inputs: ClassValue[]) {
 }`}/>
 
 ### useMediaQuery Hooks
-Create a hook called `useMediaQuery` (some components which Responsive are need it). Usually located in `hooks/use-media-query.tsx`:
+Create a hook called `useMediaQuery` (some components which Responsive are need it). Usually located in `lib/hooks.tsx`:
 
 <Code lang='tsx' code={`import React from 'react';
 
@@ -267,80 +267,78 @@ import { Button, Sheet, Badge } from '@/components/ui'
 ```
 
 Create a file called index.ts in your UI folder, and add the following code to it:
-<Code lang='ts' code={`export * from './avatar';
-export * from './badge';
-export * from './breadcrumbs';
-export * from './button';
-export * from './calendar';
-export * from './card';
-export * from './carousel';
-export * from './chart';
-export * from './checkbox';
-export * from './collections';
-export * from './color-area';
-export * from './color-field';
-export * from './color-picker';
-export * from './color-slider';
-export * from './color-swatch';
-export * from './color-swatch-picker';
-export * from './color-thumb';
-export * from './color-wheel';
-export * from './combo-box';
-export * from './command';
-export * from './container';
-export * from './context-menu';
-export * from './date-field';
-export * from './date-picker';
-export * from './date-range-picker';
-export * from './description-list';
-export * from './disclosure';
-export * from './drop-zone';
-export * from './dropdown';
-export * from './field';
-export * from './file-trigger';
-export * from './form';
-export * from './grid-list';
-export * from './heading';
-export * from './keyboard';
-export * from './link';
-export * from './list-box';
-export * from './menu';
-export * from './meter';
-export * from './modal';
-export * from './multi-select';
-export * from './navbar';
-export * from './note';
-export * from './number-field';
-export * from './otp';
-export * from './pagination';
-export * from './popover';
-export * from './progress';
-export * from './progress-circle';
-export * from './radio';
-export * from './range-calendar';
-export * from './rich-text-field';
-export * from './search-field';
-export * from './select';
-export * from './selection-box';
-export * from './separator';
-export * from './sheet';
-export * from './sidebar';
-export * from './skeleton';
-export * from './slider';
-export * from './spoiler';
-export * from './switch';
-export * from './table';
-export * from './tabs';
-export * from './tag-group';
-export * from './text-field';
-export * from './textarea';
-export * from './time-field';
-export * from './toast';
-export * from './toggle';
-export * from './toolbar';
-export * from './tooltip';
-export * from './tree';
-export * from './user';`} />
+<Code lang='ts' code={`'export * from './avatar'
+export * from './badge'
+export * from './breadcrumbs'
+export * from './button'
+export * from './calendar'
+export * from './card'
+export * from './carousel'
+export * from './chart'
+export * from './checkbox'
+export * from './collections'
+export * from './color-area'
+export * from './color-field'
+export * from './color-picker'
+export * from './color-slider'
+export * from './color-swatch'
+export * from './color-swatch-picker'
+export * from './color-thumb'
+export * from './color-wheel'
+export * from './combo-box'
+export * from './command'
+export * from './container'
+export * from './context-menu'
+export * from './date-field'
+export * from './date-picker'
+export * from './date-range-picker'
+export * from './description-list'
+export * from './disclosure'
+export * from './drop-zone'
+export * from './field'
+export * from './file-trigger'
+export * from './form'
+export * from './grid-list'
+export * from './heading'
+export * from './keyboard'
+export * from './link'
+export * from './list-box'
+export * from './menu'
+export * from './meter'
+export * from './modal'
+export * from './multi-select'
+export * from './navbar'
+export * from './note'
+export * from './number-field'
+export * from './otp'
+export * from './pagination'
+export * from './popover'
+export * from './progress'
+export * from './radio'
+export * from './range-calendar'
+export * from './rich-text-field'
+export * from './search-field'
+export * from './select'
+export * from './selection-box'
+export * from './separator'
+export * from './sheet'
+export * from './sidebar'
+export * from './skeleton'
+export * from './slider'
+export * from './spoiler'
+export * from './switch'
+export * from './table'
+export * from './tabs'
+export * from './tag-group'
+export * from './text-field'
+export * from './textarea'
+export * from './time-field'
+export * from './toast'
+export * from './toggle'
+export * from './toolbar'
+export * from './tooltip'
+export * from './tree'
+export * from './user'`} />
 
 ### TS Config
 Next, incorporate the following settings into your `tsconfig.json` file:

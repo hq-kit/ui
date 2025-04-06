@@ -25,7 +25,7 @@ import { NavLink } from '@/components/layouts/nav-link'
 import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, buttonStyles, Keyboard, Link, Menu, Separator } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 
 export function Navbar() {
     const id = React.useId()

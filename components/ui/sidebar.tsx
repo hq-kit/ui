@@ -26,7 +26,7 @@ import {
 import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 import { Badge } from './badge'

@@ -3,9 +3,9 @@
 import React from 'react'
 
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-icons'
-import { toast } from 'sonner'
 
 import { CopyButton } from '@/components/mdx/copy-button'
+import { toast } from '@/components/ui'
 import { Description, Menu } from '@/components/ui'
 import { cn, wait } from '@/lib/utils'
 

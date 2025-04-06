@@ -9,7 +9,7 @@ import { usePathname, useRouter } from 'next/navigation'
 
 import { createHierarchy, type Doc, type Hierarchy } from '@/components/layouts/aside'
 import { Command } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 import { goodTitle } from '@/lib/utils'
 
 export interface OpenCloseProps {

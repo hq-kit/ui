@@ -16,7 +16,7 @@ import {
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 import { Keyboard } from './keyboard'

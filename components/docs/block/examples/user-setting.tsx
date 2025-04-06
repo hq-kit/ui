@@ -7,7 +7,7 @@ import SecuritySetting from 'components/user-setting/security-setting'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Card, Container, Tabs } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useMediaQuery } from '@/lib/hooks'
 
 export default function UserSetting() {
     const isMobile = useMediaQuery('(max-width: 767px)')

@@ -6,9 +6,8 @@ import * as icons from 'hq-icons'
 import { useSearchParams } from 'next/navigation'
 import { ListBox, ListBoxItem } from 'react-aria-components'
 import { renderToString } from 'react-dom/server'
-import { toast } from 'sonner'
 
-import { Menu } from '@/components/ui'
+import { Menu, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 export default function IconList({ items }: { items: { keywords: string[]; name: string }[] }) {
@@ -21,7 +20,6 @@ export default function IconList({ items }: { items: { keywords: string[]; name:
             aria-label='Icons'
             layout='grid'
             className='flex flex-wrap justify-around gap-2'
-            selectionMode='single'
             items={items}
         >
             {(item) => (
