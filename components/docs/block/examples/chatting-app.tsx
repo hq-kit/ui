@@ -18,15 +18,7 @@ import {
 } from 'hq-icons'
 import ChattingAppLayout from 'layouts/chatting-app-layout'
 
-import {
-    Avatar,
-    Button,
-    buttonStyles,
-    Menu,
-    Popover,
-    SidebarInset,
-    SidebarProvider
-} from '@/components/ui'
+import { Avatar, Button, buttonStyles, Menu, Popover, SidebarInset } from '@/components/ui'
 import { cn, formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
@@ -71,10 +63,10 @@ export default function ChatApp() {
     }
 
     return (
-        <SidebarProvider defaultOpen={false}>
+        <div className='flex'>
             <ChattingAppLayout />
             <SidebarInset>
-                <main className='grid flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
+                <main className='grid h-svh flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
                     <div className='relative hidden flex-col items-start gap-4 rounded-lg border md:flex'>
                         <div className='bg-bg sticky top-0 z-20 flex w-full items-center justify-between rounded-lg p-4'>
                             <h1 className='text-2xl font-bold'>Chats</h1>
@@ -171,6 +163,6 @@ export default function ChatApp() {
                     </div>
                 </main>
             </SidebarInset>
-        </SidebarProvider>
+        </div>
     )
 }

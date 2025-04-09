@@ -47,7 +47,7 @@ const ColorPicker = ({
                         {label && <Label className='ml-2'>{label}</Label>}
                     </Button>
                     <Popover.Content showArrow={showArrow} placement={placement}>
-                        <Popover.Body className='space-y-2 py-4'>
+                        <Popover.Body className='space-y-2 pb-4 sm:py-4 overflow-visible'>
                             {children || (
                                 <>
                                     <ColorArea

@@ -218,10 +218,10 @@ const TableRow = <T extends object>({
                     cn(
                         'group relative cursor-default not-last:border-b',
                         'href' in props && 'cursor-pointer',
-                        isSelected && 'bg-primary/40 text-primary-fg',
-                        isHovered && 'bg-primary/30 text-primary-fg',
+                        isSelected && 'bg-primary/15 text-primary',
+                        isHovered && 'bg-primary/10 text-primary',
                         {
-                            'outline outline-primary bg-primary/30 text-primary-fg':
+                            'outline outline-primary bg-primary/15 text-primary':
                                 isFocusVisible || isFocusVisibleWithin
                         },
                         isDisabled && 'pointer-events-none opacity-50',
@@ -241,7 +241,7 @@ const TableRow = <T extends object>({
                 <Cell className='pl-4'>
                     <span
                         aria-hidden
-                        className='absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-selected:block'
+                        className='absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary/70 group-selected:block'
                     />
                     <Checkbox slot='selection' />
                 </Cell>

@@ -24,8 +24,8 @@ const buttonStyles = tv({
             danger: 'bg-danger text-danger-fg border-danger hover:bg-danger/85 pressed:bg-danger/95',
             warning:
                 'bg-warning text-warning-fg border-warning hover:bg-warning/85 pressed:bg-warning/95',
-            outline: 'bg-bg/80 hover:bg-muted/40 pressed:bg-muted/50 text-fg hover:text-muted-fg',
-            ghost: 'text-fg hover:bg-muted/40 pressed:bg-muted/50 hover:text-muted-fg border-transparent bg-transparent backdrop-blur-none'
+            outline: 'bg-bg/80 hover:bg-muted/40 pressed:bg-muted/50 text-fg',
+            ghost: 'text-fg hover:bg-muted/40 pressed:bg-muted/50 border-transparent bg-transparent backdrop-blur-none'
         },
         size: {
             xs: 'h-6 px-2 py-1.5 text-xs',

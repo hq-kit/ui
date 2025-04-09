@@ -108,7 +108,7 @@ interface ContextMenuContentProps<T>
     className?: string
 }
 
-const ContextMenuContent = <T extends object>(props: ContextMenuContentProps<T>) => {
+const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProps<T>, 'style'>) => {
     const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
         <Menu.Content

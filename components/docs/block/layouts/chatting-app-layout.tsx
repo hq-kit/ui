@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import {
     IconBrandCleon,
+    IconChevronRight,
     IconFilm,
     IconGroup,
     IconHeadphones,
@@ -13,38 +12,45 @@ import {
     IconSettings
 } from 'hq-icons'
 
-import { Avatar, Link, Menu, Sidebar } from '@/components/ui'
+import { Menu, Sidebar, User } from '@/components/ui'
 
 export default function ChattingAppLayout() {
     return (
-        <Sidebar collapsible='dock'>
+        <Sidebar collapsible='dock' defaultOpen={false}>
             <Sidebar.Header>
-                <Link
-                    className='flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center'
-                    href='#'
-                >
-                    <IconBrandCleon className='size-5' />
-                    <Sidebar.Label className='font-medium'>Chat App</Sidebar.Label>
-                </Link>
+                <IconBrandCleon />
+                <Sidebar.Label>Chat App</Sidebar.Label>
             </Sidebar.Header>
             <Sidebar.Content>
-                <Sidebar.SectionGroup>
-                    <Sidebar.Section>
-                        <SidebarItem isCurrent icon={IconMessage} href='#' tooltip='Chats' />
-                        <SidebarItem icon={IconRss} href='#' tooltip='Broadcast' />
-                        <SidebarItem icon={IconFilm} href='#' tooltip='Stories' />
-                        <SidebarItem icon={IconGroup} href='#' tooltip='Communities' />
-                    </Sidebar.Section>
-                </Sidebar.SectionGroup>
+                <Sidebar.Section>
+                    <Sidebar.Item isCurrent href='#'>
+                        <IconMessage />
+                        <Sidebar.Label>Chats</Sidebar.Label>
+                    </Sidebar.Item>
+                    <Sidebar.Item href='#'>
+                        <IconRss />
+                        <Sidebar.Label>Broadcast</Sidebar.Label>
+                    </Sidebar.Item>
+                    <Sidebar.Item href='#'>
+                        <IconFilm />
+                        <Sidebar.Label>Stories</Sidebar.Label>
+                    </Sidebar.Item>
+                    <Sidebar.Item href='#'>
+                        <IconGroup />
+                        <Sidebar.Label>Communities</Sidebar.Label>
+                    </Sidebar.Item>
+                </Sidebar.Section>
             </Sidebar.Content>
             <Sidebar.Footer>
                 <Menu>
-                    <Menu.Trigger className='group' aria-label='Profile' data-slot='menu-trigger'>
-                        <Avatar shape='square' src='https://github.com/dq-alhq.png' />
-                        <div className='text-sm in-data-[sidebar-collapsible=dock]:hidden'>
-                            <Sidebar.Label>DQ Al Haqqi</Sidebar.Label>
-                            <span className='text-muted-fg -mt-0.5 block'>@dq-alhq</span>
-                        </div>
+                    <Menu.Trigger className='group p-2 size-full justify-between items-center flex hover:bg-muted pressed:bg-muted rounded-lg'>
+                        <User
+                            src='https://github.com/dq-alhq.png'
+                            name='DQ Al Haqqi'
+                            description='@dq-alhq'
+                            shape='square'
+                        />
+                        <IconChevronRight className='group-aria-expanded:-rotate-90 size-4' />
                     </Menu.Trigger>
                     <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
@@ -67,18 +73,7 @@ export default function ChattingAppLayout() {
                     </Menu.Content>
                 </Menu>
             </Sidebar.Footer>
+            <Sidebar.Trigger />
         </Sidebar>
-    )
-}
-
-function SidebarItem({
-    icon: Icon,
-    ...props
-}: React.ComponentProps<typeof Sidebar.Item> & { icon: React.FC<React.SVGProps<SVGSVGElement>> }) {
-    return (
-        <Sidebar.Item tooltip={props.tooltip} isCurrent href='#' {...props}>
-            <Icon />
-            <Sidebar.Label>{props.tooltip}</Sidebar.Label>
-        </Sidebar.Item>
     )
 }

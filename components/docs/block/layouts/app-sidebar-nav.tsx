@@ -1,91 +1,53 @@
 'use client'
 
-import {
-    IconCommand,
-    IconComputer,
-    IconGauge,
-    IconLogOut,
-    IconMoon,
-    IconSettings,
-    IconSun
-} from 'hq-icons'
-import { useTheme } from 'next-themes'
+import { IconBrandCleon, IconSearch, IconShoppingBag } from 'hq-icons'
 
-import { Avatar, Breadcrumbs, Menu, Sidebar } from '@/components/ui'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Button, Navbar, Separator } from '@/components/ui'
 
-export default function AppSidebarNav() {
+export default function AppNavbar(props: React.ComponentProps<typeof Navbar>) {
     return (
-        <Sidebar.Nav className='border-b'>
-            <span className='flex items-center gap-x-4'>
-                <Sidebar.Trigger />
-                <Breadcrumbs className='hidden @md:flex'>
-                    <Breadcrumbs.Item href='/blocks/sidebar/sidebar-01'>Dashboard</Breadcrumbs.Item>
-                    <Breadcrumbs.Item>Newsletter</Breadcrumbs.Item>
-                </Breadcrumbs>
-            </span>
-            <UserMenu />
-        </Sidebar.Nav>
-    )
-}
-
-function UserMenu() {
-    const { resolvedTheme, setTheme } = useTheme()
-    return (
-        <Menu>
-            <Menu.Trigger className='ml-auto md:hidden' aria-label='Open Menu'>
-                <Avatar alt='DQ Al-Haqqi' src='https://github.com/dq-alhq.png' />
-            </Menu.Trigger>
-            <Menu.Content placement='bottom' className='sm:min-w-64'>
-                <Menu.Header>
-                    <span className='block'>DQ Al-Haqqi</span>
-                    <span className='text-muted-fg font-normal'>@dq-alhq</span>
-                </Menu.Header>
-                <Menu.Item href='#dashboard'>
-                    <IconGauge />
-                    <Menu.Label>Dashboard</Menu.Label>
-                </Menu.Item>
-                <Menu.Item href='#settings'>
-                    <IconSettings />
-                    <Menu.Label>Settings</Menu.Label>
-                </Menu.Item>
-                <Menu.Separator />
-                <Menu.Item>
-                    <IconCommand />
-                    <Menu.Label>Command Menu</Menu.Label>
-                </Menu.Item>
-                <Menu.Submenu>
-                    <Menu.Item>
-                        {resolvedTheme === 'light' ? (
-                            <IconSun />
-                        ) : resolvedTheme === 'dark' ? (
-                            <IconMoon />
-                        ) : (
-                            <IconComputer />
-                        )}
-                        <Menu.Label>Switch theme</Menu.Label>
-                    </Menu.Item>
-                    <Menu.Content>
-                        <Menu.Item onAction={() => setTheme('system')}>
-                            <IconComputer /> System
-                        </Menu.Item>
-                        <Menu.Item onAction={() => setTheme('dark')}>
-                            <IconMoon /> Dark
-                        </Menu.Item>
-                        <Menu.Item onAction={() => setTheme('light')}>
-                            <IconSun /> Light
-                        </Menu.Item>
-                    </Menu.Content>
-                </Menu.Submenu>
-                <Menu.Separator />
-                <Menu.Item href='#contact-s'>
-                    <Menu.Label>Contact Support</Menu.Label>
-                </Menu.Item>
-                <Menu.Separator />
-                <Menu.Item href='#logout'>
-                    <IconLogOut />
-                    <Menu.Label>Log out</Menu.Label>
-                </Menu.Item>
-            </Menu.Content>
-        </Menu>
+        <Navbar {...props}>
+            <Navbar.Nav>
+                <Navbar.Logo aria-label='Goto documenation of Navbar' href='#'>
+                    <IconBrandCleon className='size-6 sm:size-5' />
+                </Navbar.Logo>
+                <Navbar.Section className='ml-auto hidden md:flex'>
+                    <Navbar.Flex className='sm:gap-x-1'>
+                        <Button variant='ghost' size='icon' aria-label='Search for products'>
+                            <IconSearch />
+                        </Button>
+                        <Button variant='ghost' size='icon' aria-label='Your Bag'>
+                            <IconShoppingBag />
+                        </Button>
+                        <ThemeToggle />
+                    </Navbar.Flex>
+                </Navbar.Section>
+            </Navbar.Nav>
+            <Navbar.Compact>
+                <Navbar.Flex>
+                    <Navbar.Trigger className='-ml-2' />
+                    <Separator orientation='vertical' className='h-6 sm:mx-1' />
+                    <Navbar.Logo
+                        aria-label='Goto documenation of Navbar'
+                        href='/docs/components/layouts/navbar'
+                    >
+                        <IconBrandCleon className='size-5' />
+                    </Navbar.Logo>
+                </Navbar.Flex>
+                <Navbar.Flex>
+                    <Navbar.Flex>
+                        <Button variant='ghost' size='icon' aria-label='Search for products'>
+                            <IconSearch />
+                        </Button>
+                        <Button variant='ghost' size='icon' aria-label='Your Bag'>
+                            <IconShoppingBag />
+                        </Button>
+                        <ThemeToggle variant='ghost' />
+                    </Navbar.Flex>
+                </Navbar.Flex>
+            </Navbar.Compact>
+            {props.children ?? null}
+        </Navbar>
     )
 }

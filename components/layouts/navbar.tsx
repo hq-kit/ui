@@ -92,7 +92,7 @@ export function Navbar() {
                     </nav>
                 </div>
             </LayoutGroup>
-            {!isDesktop && <ResponsiveAside openCmd={open} setOpenCmd={setOpen} />}
+            {!isDesktop && <ResponsiveAside setOpenCmd={setOpen} />}
         </>
     )
 }
@@ -104,7 +104,7 @@ export function NavbarDropdown() {
                 <span className='flex items-center gap-x-2'>
                     <IconBrandCleon className='-ml-1 size-6' />
                     <span className='text-base font-bold tracking-tight sm:text-sm'>HQ UI</span>
-                    <IconChevronDown className='text-muted-fg group-data-hovered:text-fg group-data-pressed:text-fg -mr-2 ml-1 transition group-data-pressed:rotate-180' />
+                    <IconChevronDown className='text-muted-fg group-data-hovered:text-fg group-pressed:text-fg -mr-2 ml-1 transition group-pressed:rotate-180' />
                     <span className='sr-only'>Open menu</span>
                 </span>
             </Button>

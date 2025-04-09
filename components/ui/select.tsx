@@ -34,7 +34,6 @@ interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'childre
     children: React.ReactNode | ((item: T) => React.ReactNode)
     placement?: Placement
     prefix?: React.ReactNode
-    portal?: Element
 }
 
 const Select = <T extends object>({
@@ -94,7 +93,6 @@ const Select = <T extends object>({
                     <FieldError>{errorMessage}</FieldError>
                     <Popover
                         trigger='Select'
-                        UNSTABLE_portalContainer={props.portal}
                         placement={placement}
                         className={({ isEntering, isExiting }) =>
                             cn(
@@ -131,10 +129,10 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
                 className,
                 (className, { isHovered, isFocused, isSelected, isDisabled, isFocusVisible }) =>
                     cn(
-                        'group relative grid grid-cols-subgrid col-span-full',
+                        'group relative grid grid-cols-subgrid col-span-full outline-hidden',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:[svg]:mr-2 *:[svg]:my-1 *:data-avatar:mr-2 *:data-avatar:size-6',
-                        { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
+                        { 'bg-primary/10 text-primary': isFocused || isFocusVisible || isHovered },
                         isSelected && '**:data-[slot=icon]:hidden **:data-avatar:hidden',
                         isDisabled && 'pointer-events-none opacity-50',
                         className

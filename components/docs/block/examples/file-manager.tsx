@@ -12,15 +12,7 @@ import {
 } from 'hq-icons'
 import FileManagerLayout from 'layouts/file-manager-layout'
 
-import {
-    Breadcrumbs,
-    Button,
-    GridList,
-    SearchField,
-    Separator,
-    Sidebar,
-    Toggle
-} from '@/components/ui'
+import { Breadcrumbs, Button, GridList, SearchField, Toggle } from '@/components/ui'
 
 export default function FileManager() {
     const [view, setView] = React.useState<'grid' | 'stack'>('grid')
@@ -39,8 +31,6 @@ export default function FileManager() {
         <FileManagerLayout rootDir={dir} setRootDir={setDir}>
             <header className='sticky top-0 flex h-[3.57rem] items-center justify-between gap-x-2 px-4'>
                 <span className='flex items-center gap-x-4'>
-                    <Sidebar.Trigger className='-mx-2' />
-                    <Separator className='hidden h-6 md:block' orientation='vertical' />
                     <Breadcrumbs
                         onAction={(v) => setDir(v + '/')}
                         className='hidden md:flex'
@@ -91,6 +81,8 @@ export default function FileManager() {
                     aria-label='Files'
                     selectionBehavior='toggle'
                     selectionMode={selectionMode}
+                    columns={view === 'stack' ? 1 : 'auto'}
+                    gap={view === 'stack' ? 0 : 2}
                     items={[
                         ...new Map(
                             files.map((item) => [

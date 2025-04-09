@@ -53,9 +53,9 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                 (className, { isHovered, isSelected, isFocusVisible, isDisabled }) =>
                     cn(
                         'flex items-center text-fg gap-2 border px-3 py-2 outline-hidden transition select-none sm:text-sm rounded-lg',
-                        isHovered && 'bg-primary/40',
+                        isHovered && 'bg-primary/10',
                         {
-                            'border-primary bg-primary text-primary-fg':
+                            'border-primary/70 bg-primary/10 text-primary':
                                 isSelected || isFocusVisible
                         },
                         isDisabled && 'opacity-50',

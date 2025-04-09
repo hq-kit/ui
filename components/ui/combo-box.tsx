@@ -30,7 +30,6 @@ interface ComboBoxProps<T extends object>
     extends Omit<RACComboboxProps<T>, 'children'>,
         FieldProps {
     children: React.ReactNode | ((item: T) => React.ReactNode)
-    portal?: Element
     prefix?: React.ReactNode
 }
 
@@ -86,7 +85,6 @@ const ComboBox = <T extends object>({
                     <FieldError>{errorMessage}</FieldError>
                     <Popover
                         trigger='Select'
-                        UNSTABLE_portalContainer={props.portal}
                         className={({ isEntering, isExiting }) =>
                             cn(
                                 'group max-h-72 overflow-y-auto border p-1 shadow bg-bg w-full max-w-(--trigger-width) rounded-lg transition outline-hidden',

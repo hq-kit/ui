@@ -28,7 +28,7 @@ const initialState: State = {
     presetColor: 'brand-default',
     fontSansFamily: {
         label: 'Geist',
-        value: '--font-geist-sans',
+        value: '--font-geist',
         link: 'https://vercel.com/font'
     },
     fontMonoFamily: {

@@ -1,8 +1,5 @@
 'use client'
 
-import React from 'react'
-
-import { toast } from '@/components/ui'
 import {
     Button,
     Card,
@@ -13,7 +10,8 @@ import {
     Radio,
     RadioGroup,
     Select,
-    Switch
+    Switch,
+    toast
 } from '@/components/ui'
 
 const items = [
@@ -31,12 +29,6 @@ const items = [
 ]
 
 export default function DataFormSink() {
-    const [portal, setPortal] = React.useState<Element>()
-
-    React.useEffect(() => {
-        const portal = (document?.getElementById('theme-container') as Element) || document.body
-        setPortal(portal)
-    }, [])
     return (
         <Card>
             <Card.Header>
@@ -56,7 +48,7 @@ export default function DataFormSink() {
                         <Radio value='pnpm'>PNPM</Radio>
                         <Radio value='bun'>BUN</Radio>
                     </RadioGroup>
-                    <Select portal={portal} label='Framework' placeholder='Select an option'>
+                    <Select label='Framework' placeholder='Select an option'>
                         <Select.Item id='1'>Next Js</Select.Item>
                         <Select.Item id='2'>React Js</Select.Item>
                         <Select.Item id='3'>Svelte</Select.Item>
@@ -70,12 +62,7 @@ export default function DataFormSink() {
                         <Checkbox value='notifications'>Enable React Server Component</Checkbox>
                         <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
                     </CheckboxGroup>
-                    <MultiSelect
-                        portal={portal}
-                        className='w-full'
-                        label='Components'
-                        items={items}
-                    >
+                    <MultiSelect className='w-full' label='Components' items={items}>
                         {(item) => {
                             return (
                                 <MultiSelect.Item textValue={item.name}>

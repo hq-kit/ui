@@ -45,7 +45,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                     { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }
                 ) =>
                     cn(
-                        'group relative grid grid-cols-subgrid col-span-full items-center',
+                        'group relative grid grid-cols-subgrid col-span-full items-center outline-hidden',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
                         '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
                         {

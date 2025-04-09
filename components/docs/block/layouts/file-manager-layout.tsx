@@ -8,11 +8,11 @@ import {
     IconFilm,
     IconFolders,
     IconHome,
-    IconImages,
+    IconMusicNotes,
     IconTrash
 } from 'hq-icons'
 
-import { Link, Sidebar, SidebarInset, SidebarProvider } from '@/components/ui'
+import { Link, Sidebar, SidebarInset } from '@/components/ui'
 
 interface Props {
     rootDir: string
@@ -22,7 +22,7 @@ interface Props {
 
 export default function FileManagerLayout({ children, rootDir, setRootDir }: Props) {
     return (
-        <SidebarProvider>
+        <div className='flex'>
             <Sidebar collapsible='dock' variant='inset'>
                 <Sidebar.Header>
                     <Link
@@ -35,67 +35,61 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                 </Sidebar.Header>
                 <Sidebar.Content>
                     <Sidebar.Section>
-                        <SidebarItem
+                        <Sidebar.Item
                             onPress={() => setRootDir('')}
                             isCurrent={rootDir === ''}
-                            icon={IconHome}
                             href='#'
-                            tooltip='Home'
-                        />
-                        <SidebarItem
+                        >
+                            <IconHome />
+                            <Sidebar.Label>Home</Sidebar.Label>
+                        </Sidebar.Item>
+                        <Sidebar.Item
                             onPress={() => setRootDir('Downloads/')}
                             isCurrent={rootDir.startsWith('Downloads/')}
-                            icon={IconDownload}
                             href='#'
-                            tooltip='Downloads'
-                        />
-                        <SidebarItem
+                        >
+                            <IconDownload />
+                            <Sidebar.Label>Downloads</Sidebar.Label>
+                        </Sidebar.Item>
+                        <Sidebar.Item
                             onPress={() => setRootDir('Documents/')}
                             isCurrent={rootDir.startsWith('Documents/')}
-                            icon={IconFolders}
                             href='#'
-                            tooltip='Documents'
-                        />
-                        <SidebarItem
+                        >
+                            <IconFolders />
+                            <Sidebar.Label>Documents</Sidebar.Label>
+                        </Sidebar.Item>
+                        <Sidebar.Item
                             onPress={() => setRootDir('Music/')}
                             isCurrent={rootDir.startsWith('Music/')}
-                            icon={IconImages}
                             href='#'
-                            tooltip='Music'
-                        />
-                        <SidebarItem
+                        >
+                            <IconMusicNotes />
+                            <Sidebar.Label>Music</Sidebar.Label>
+                        </Sidebar.Item>
+                        <Sidebar.Item
                             onPress={() => setRootDir('Videos/')}
                             isCurrent={rootDir.startsWith('Videos/')}
-                            icon={IconFilm}
                             href='#'
-                            tooltip='Videos'
-                        />
+                        >
+                            <IconFilm />
+                            <Sidebar.Label>Videos</Sidebar.Label>
+                        </Sidebar.Item>
                     </Sidebar.Section>
                     <Sidebar.Section>
-                        <SidebarItem
+                        <Sidebar.Item
                             onPress={() => setRootDir('Trash/')}
                             isCurrent={rootDir === 'Trash/'}
-                            icon={IconTrash}
                             href='#'
-                            tooltip='Trash'
-                        />
+                        >
+                            <IconTrash />
+                            <Sidebar.Label>Trash</Sidebar.Label>
+                        </Sidebar.Item>
                     </Sidebar.Section>
                 </Sidebar.Content>
                 <Sidebar.Rail />
             </Sidebar>
             <SidebarInset>{children}</SidebarInset>
-        </SidebarProvider>
-    )
-}
-
-function SidebarItem({
-    icon: Icon,
-    ...props
-}: React.ComponentProps<typeof Sidebar.Item> & { icon: React.FC<React.SVGProps<SVGSVGElement>> }) {
-    return (
-        <Sidebar.Item tooltip={props.tooltip} isCurrent href='#' {...props}>
-            <Icon />
-            <Sidebar.Label>{props.tooltip}</Sidebar.Label>
-        </Sidebar.Item>
+        </div>
     )
 }

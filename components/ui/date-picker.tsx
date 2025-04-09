@@ -16,9 +16,7 @@ import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, FieldProps, Label } from './field'
 import { Popover } from './popover'
 
-interface DatePickerProps<T extends DateValue> extends RACDatePickerProps<T>, FieldProps {
-    portal?: Element
-}
+interface DatePickerProps<T extends DateValue> extends RACDatePickerProps<T>, FieldProps {}
 
 const DatePicker = <T extends DateValue>({
     label,
@@ -52,11 +50,7 @@ const DatePicker = <T extends DateValue>({
                     </FieldGroup>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
-                    <Popover.Content
-                        showArrow={false}
-                        className='p-4'
-                        UNSTABLE_portalContainer={props.portal}
-                    >
+                    <Popover.Content showArrow={false} className='p-4'>
                         <Calendar />
                         <Button
                             type='button'

@@ -1,7 +1,9 @@
 'use client'
 
+import React from 'react'
+
 import { IconX } from 'hq-icons'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -11,11 +13,11 @@ import type {
 } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     Dialog,
     DialogTrigger,
     Heading,
     ModalOverlay,
+    OverlayTriggerStateContext,
     Modal as RACModal,
     Text
 } from 'react-aria-components'
@@ -24,6 +26,7 @@ import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const MModal = motion.create(RACModal)
+const Overlay = motion.create(ModalOverlay)
 
 const Modal = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
@@ -53,28 +56,28 @@ const Content = ({
     const isDismissable = isDismissableInternal ?? role !== 'alertdialog'
     const isMobile = useMediaQuery('(max-width: 768px)') || drawer
     const isDesktop = respectScreen ? !isMobile : true
+    const state = React.use(OverlayTriggerStateContext)!
     return (
-        <ModalOverlay
-            isDismissable={isDismissable}
-            className={({ isEntering, isExiting }) =>
-                cn(
-                    'fixed outline-hidden top-0 left-0 isolate z-50 flex h-(--visual-viewport-height) w-full items-end justify-end bg-black/40 backdrop-blur [--visual-viewport-vertical-padding:32px]',
-                    isEntering && 'fade-in animate-in duration-150 ease-out',
-                    isExiting && 'fade-out animate-out ease-in',
-                    isDesktop && `items-center justify-center ${size !== 'full' && 'p-4 sm:p-6'}`
-                )
-            }
-            {...props}
-        >
-            {({ state }) => (
-                <MModal
+        <AnimatePresence>
+            {(props?.isOpen || state?.isOpen) && (
+                <Overlay
                     isDismissable={isDismissable}
-                    className={composeRenderProps(
-                        className,
-                        (className, { isEntering, isExiting }) =>
-                            cn(
-                                'max-h-full w-full bg-bg text-fg align-middle shadow-sm overflow-hidden dark:border',
-                                isDesktop ? 'rounded-lg' : 'rounded-t-lg',
+                    isOpen={props?.isOpen || state?.isOpen}
+                    onOpenChange={props?.onOpenChange || state?.setOpen}
+                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)' }}
+                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    className='fixed inset-0 z-10 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    {...props}
+                >
+                    {({ state }) => (
+                        <MModal
+                            isDismissable={isDismissable}
+                            className={cn(
+                                'absolute max-h-full w-full touch-none overflow-hidden bg-bg align-middle text-fg shadow-sm will-change-transform',
+                                isDesktop
+                                    ? 'rounded-lg border left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
+                                    : 'rounded-t-2xl border-t bottom-0',
                                 {
                                     'max-w-xs': size === 'xs' && isDesktop,
                                     'max-w-sm': size === 'sm' && isDesktop,
@@ -87,41 +90,46 @@ const Content = ({
                                     'max-w-5xl': size === '5xl' && isDesktop,
                                     'max-w-full h-svh': size === 'full' && isDesktop
                                 },
-                                isEntering &&
-                                    `fade-in animate-in ease-out ${isDesktop ? 'zoom-in-95 slide-in-from-bottom-0' : 'slide-in-from-bottom duration-150'}`,
-                                isExiting &&
-                                    `animate-out duration-150 ${isDesktop ? 'slide-out-to-bottom-0 zoom-out-95 ease-in' : 'slide-out-to-bottom'}`,
-                                notch && !isDesktop && 'pt-3',
                                 className
-                            )
-                    )}
-                    drag={!isDesktop && isDismissable ? 'y' : false}
-                    transition={{ duration: 0.2 }}
-                    dragConstraints={{ top: 0, bottom: 0 }}
-                    onDragEnd={(_, { offset, velocity }) => {
-                        if (offset.y > window.innerHeight * 0.5 || velocity.y > 25) {
-                            state.close()
-                        }
-                    }}
-                    {...props}
-                >
-                    {notch && isMobile && (
-                        <div className='h-4 w-full'>
-                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
-                        </div>
-                    )}
-                    <Dialog
-                        aria-label='Modal'
-                        role={role}
-                        className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
-                    >
-                        {composeRenderProps(children, (children) => (
-                            <>
-                                {children}
+                            )}
+                            drag={!isDesktop && isDismissable ? 'y' : false}
+                            initial={{
+                                y: isDesktop ? 0 : '100%',
+                                scale: isDesktop ? 0.9 : 1,
+                                opacity: 0
+                            }}
+                            animate={{ y: 0, scale: 1, opacity: 1 }}
+                            exit={{
+                                y: isDesktop ? 0 : '100%',
+                                scale: isDesktop ? 0.9 : 1,
+                                opacity: 0
+                            }}
+                            transition={{ duration: 0.15, ease: 'easeInOut' }}
+                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                            dragPropagation
+                            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+                            onDragEnd={(_, { offset, velocity }) => {
+                                if (offset.y > screen.availHeight * 0.25 || velocity.y > 100) {
+                                    state.close()
+                                }
+                            }}
+                            {...props}
+                        >
+                            <Dialog
+                                aria-label='Modal'
+                                role={role}
+                                className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
+                            >
+                                {notch && isMobile && (
+                                    <div className='w-full mt-2'>
+                                        <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                                    </div>
+                                )}
+                                {children as React.ReactNode}
                                 {closeButton && isDesktop && (
                                     <Button
-                                        aria-label='Close'
                                         slot='close'
+                                        aria-label='Close'
                                         className={({ isPressed, isHovered, isFocusVisible }) =>
                                             cn(
                                                 'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
@@ -134,14 +142,15 @@ const Content = ({
                                         <IconX />
                                     </Button>
                                 )}
-                            </>
-                        ))}
-                    </Dialog>
-                </MModal>
+                            </Dialog>
+                        </MModal>
+                    )}
+                </Overlay>
             )}
-        </ModalOverlay>
+        </AnimatePresence>
     )
 }
+
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
         <div

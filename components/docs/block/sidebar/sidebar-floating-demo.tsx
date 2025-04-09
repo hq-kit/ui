@@ -1,11 +1,11 @@
 import AppSidebar from 'layouts/app-sidebar'
 import AppSidebarNav from 'layouts/app-sidebar-nav'
 
-import { Heading, SidebarInset, SidebarProvider } from '@/components/ui'
+import { Heading, SidebarInset } from '@/components/ui'
 
 export default function SidebarFloatDemo() {
     return (
-        <SidebarProvider>
+        <div className='flex'>
             <AppSidebar variant='float' />
             <SidebarInset>
                 <AppSidebarNav />
@@ -13,6 +13,6 @@ export default function SidebarFloatDemo() {
                     <Heading>Float</Heading>
                 </div>
             </SidebarInset>
-        </SidebarProvider>
+        </div>
     )
 }

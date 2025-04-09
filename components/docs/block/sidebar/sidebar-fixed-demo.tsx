@@ -1,11 +1,11 @@
 import AppSidebar from 'layouts/app-sidebar'
 import AppSidebarNav from 'layouts/app-sidebar-nav'
 
-import { Heading, SidebarInset, SidebarProvider } from '@/components/ui'
+import { Heading, SidebarInset } from '@/components/ui'
 
 export default function SidebarFixedDemo() {
     return (
-        <SidebarProvider fixed>
+        <div className='flex'>
             <AppSidebar collapsible='none' />
             <SidebarInset>
                 <AppSidebarNav />
@@ -13,6 +13,6 @@ export default function SidebarFixedDemo() {
                     <Heading>Fixed</Heading>
                 </div>
             </SidebarInset>
-        </SidebarProvider>
+        </div>
     )
 }

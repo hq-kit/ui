@@ -6,7 +6,7 @@ import PaginationDemo from '../docs/navigation/pagination/pagination-demo'
 
 export default function TableSink() {
     return (
-        <Card className='lg:col-span-2'>
+        <Card className='lg:col-span-2 border-t-0'>
             <Card.Content>
                 <Table aria-label='Books' selectionMode='multiple'>
                     <Table.Header>

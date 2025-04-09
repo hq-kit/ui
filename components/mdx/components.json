@@ -12,7 +12,10 @@
         "name": "toggle"
     },
     {
-        "name": "menu"
+        "name": "menu",
+        "deps": [
+            "motion"
+        ]
     },
     {
         "name": "list-box"
@@ -45,6 +48,9 @@
             "color-swatch",
             "field",
             "popover"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -104,17 +110,21 @@
     {
         "name": "command",
         "components": [
+            "modal",
             "separator",
             "keyboard"
         ],
         "deps": [
-            "cmdk"
+            "motion"
         ]
     },
     {
         "name": "context-menu",
         "components": [
             "menu"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -122,6 +132,9 @@
         "components": [
             "button",
             "menu"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -129,6 +142,9 @@
         "components": [
             "calendar",
             "button"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -152,6 +168,9 @@
             "popover",
             "button",
             "field"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -163,6 +182,9 @@
             "popover",
             "button",
             "field"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -250,6 +272,9 @@
             "button",
             "badge",
             "tooltip"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {
@@ -290,13 +315,22 @@
         "name": "disclosure"
     },
     {
-        "name": "modal"
+        "name": "modal",
+        "deps": [
+            "motion"
+        ]
     },
     {
-        "name": "sheet"
+        "name": "sheet",
+        "deps": [
+            "motion"
+        ]
     },
     {
-        "name": "popover"
+        "name": "popover",
+        "deps": [
+            "motion"
+        ]
     },
     {
         "name": "tooltip"
@@ -344,7 +378,10 @@
         "name": "note"
     },
     {
-        "name": "toast"
+        "name": "toast",
+        "deps": [
+            "motion"
+        ]
     },
     {
         "name": "meter",
@@ -371,6 +408,9 @@
         "name": "spoiler",
         "components": [
             "button"
+        ],
+        "deps": [
+            "motion"
         ]
     },
     {

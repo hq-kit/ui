@@ -1,18 +1,10 @@
 'use client'
 
-import React from 'react'
-
 import { IconEye, IconLock } from 'hq-icons'
 
 import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
 
 export default function TeamManagementSink() {
-    const [portal, setPortal] = React.useState<Element>()
-
-    React.useEffect(() => {
-        const portal = (document?.getElementById('theme-container') as Element) || document.body
-        setPortal(portal)
-    }, [])
     return (
         <Card className='flex flex-col items-center justify-around gap-4 p-2 lg:col-span-3 lg:flex-row'>
             <AvatarGroup items={roles}>
@@ -27,7 +19,7 @@ export default function TeamManagementSink() {
             <ColorPicker defaultValue={'#ff0000'} label='Color' />
             <Menu>
                 <Button variant='success'>Options</Button>
-                <Menu.Content portal={portal} items={roles}>
+                <Menu.Content items={roles}>
                     {(item) => (
                         <Menu.Item id={item.id} textValue={item.name}>
                             <Menu.Details label={item.name} description={item.description} />

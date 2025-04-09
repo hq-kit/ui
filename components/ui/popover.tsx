@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { motion } from 'motion/react'
+import { AnimatePresence, motion, useDragControls } from 'motion/react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -19,6 +19,7 @@ import {
     Heading,
     ModalOverlay,
     OverlayArrow,
+    OverlayTriggerStateContext,
     Modal as RACModal,
     Popover as RACPopover,
     Text
@@ -28,51 +29,73 @@ import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const Modal = motion.create(RACModal)
+const Overlay = motion.create(ModalOverlay)
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
-const DrawerMode = ({ className, ...props }: ModalOverlayProps & Pick<DialogProps, 'children'>) => (
-    <ModalOverlay
-        isDismissable
-        className={({ isEntering, isExiting }) =>
-            cn(
-                'fixed top-0 left-0 isolate z-50 flex h-(--visual-viewport-height) w-full bg-fg/50 backdrop-blur [--visual-viewport-vertical-padding:16px]',
-                isEntering && 'fade-in animate-in duration-200 ease-out',
-                isExiting && 'fade-out animate-out ease-in'
-            )
-        }
-        {...props}
-    >
-        {({ state }) => (
-            <Modal
-                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                    cn(
-                        'bg-bg text-fg pt-2 rounded-t-lg fixed top-auto bottom-0 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
-                        isEntering &&
-                            'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
-                        isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
-                        className
-                    )
-                )}
-                drag={'y'}
-                transition={{ duration: 0.2 }}
-                dragConstraints={{ top: 0, bottom: 0 }}
-                onDragEnd={(_, { offset, velocity }) => {
-                    if (offset.y > window.innerHeight * 0.5 || velocity.y > 25) {
-                        state.close()
-                    }
-                }}
-            >
-                <div className='h-4 w-full'>
-                    <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
-                </div>
-                <Dialog className='relative flex max-h-[inherit] flex-col gap-4 overflow-hidden outline-hidden'>
-                    {props.children}
-                </Dialog>
-            </Modal>
-        )}
-    </ModalOverlay>
-)
+const DrawerMode = ({
+    className,
+    ...props
+}: Omit<ModalOverlayProps, 'style'> & Pick<DialogProps, 'children'>) => {
+    const state = React.useContext(OverlayTriggerStateContext)!
+    const controls = useDragControls()
+    return (
+        <AnimatePresence>
+            {(props?.isOpen || state?.isOpen) && (
+                <Overlay
+                    isOpen={props?.isOpen || state?.isOpen}
+                    onOpenChange={props?.onOpenChange || state?.setOpen}
+                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    animate={{ backgroundColor: `rgba(0, 0, 0, 0.5)`, backdropFilter: 'blur(2px)' }}
+                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    isDismissable
+                    {...props}
+                >
+                    {({ state }) => (
+                        <Modal
+                            isDismissable
+                            className={cn(
+                                'bg-bg rounded-t-2xl border-t fixed bottom-0 w-full shadow-sm will-change-transform max-h-full overflow-hidden',
+                                className
+                            )}
+                            initial={{ y: '100%' }}
+                            animate={{ y: 0 }}
+                            exit={{ y: '100%' }}
+                            drag='y'
+                            dragElastic={{ top: 0, bottom: 1 }}
+                            whileDrag={{ cursor: 'grabbing' }}
+                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                            dragPropagation
+                            dragConstraints={{ top: 0, bottom: 0 }}
+                            transition={{ duration: 0.15, ease: 'easeInOut' }}
+                            onDragEnd={(_, { offset, velocity }) =>
+                                (offset.y > screen.availHeight * 0.25 || velocity.y > 100) &&
+                                state.close()
+                            }
+                            dragListener={false}
+                            dragControls={controls}
+                            {...props}
+                        >
+                            <Dialog
+                                aria-label='Popover'
+                                className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
+                            >
+                                <div
+                                    className='w-full h-8 touch-none py-2'
+                                    onPointerDown={(e) => controls.start(e)}
+                                >
+                                    <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                                </div>
+                                {props.children as React.ReactNode}
+                            </Dialog>
+                        </Modal>
+                    )}
+                </Overlay>
+            )}
+        </AnimatePresence>
+    )
+}
 
 const PopoverMode = ({
     className,

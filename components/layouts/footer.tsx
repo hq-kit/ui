@@ -8,8 +8,8 @@ export const Footer = () => (
         </p>
         <p>
             Special thanks for{' '}
-            <a target='_blank' href='https://getjustd.com/'>
-                JUST-D
+            <a target='_blank' href='https://intentui.com/'>
+                Intent UI
             </a>{' '}
             by{' '}
             <a target='_blank' href='https://github.com/irsyadadl'>

@@ -1,7 +1,9 @@
 'use client'
 
+import React from 'react'
+
 import { IconX } from 'hq-icons'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -11,23 +13,24 @@ import type {
 } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     Dialog,
     DialogTrigger,
     Heading,
-    Modal,
     ModalOverlay,
+    OverlayTriggerStateContext,
+    Modal as RACModal,
     Text
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-const MModal = motion.create(Modal)
+const Modal = motion.create(RACModal)
+const Overlay = motion.create(ModalOverlay)
 
 const Sheet = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
 interface SheetContentProps
-    extends Omit<ModalOverlayProps, 'className' | 'children'>,
+    extends Omit<ModalOverlayProps, 'className' | 'children' | 'isDismissable'>,
         Pick<DialogProps, 'aria-label' | 'aria-labelledby' | 'role' | 'children' | 'className'> {
     closeButton?: boolean
     isFloating?: boolean
@@ -46,103 +49,106 @@ const SheetContent = ({
     className,
     ...props
 }: SheetContentProps) => {
+    const state = React.use(OverlayTriggerStateContext)!
+
     return (
-        <ModalOverlay
-            isDismissable
-            className={({ isEntering, isExiting }) =>
-                cn(
-                    'fixed outline-hidden top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full items-end justify-end [--visual-viewport-vertical-padding:32px] sm:block',
-                    isEntering && 'fade-in animate-in duration-200 ease-out',
-                    isExiting && 'fade-out animate-out ease-in',
-                    isBlurred && 'bg-black/80 backdrop-blur'
-                )
-            }
-            {...props}
-        >
-            {({ state }) => (
-                <MModal
-                    className={composeRenderProps(
-                        className,
-                        (className, { isEntering, isExiting }) =>
-                            cn(
-                                'bg-bg text-fg fixed z-50 shadow-lg ease-in-out',
-                                isFloating ? 'ring-fg/5' : 'border-fg/20',
-                                isEntering && 'animate-in',
-                                isExiting && 'animate-out',
+        <AnimatePresence>
+            {(props?.isOpen || state?.isOpen) && (
+                <Overlay
+                    isDismissable
+                    isOpen={props?.isOpen || state?.isOpen}
+                    onOpenChange={props?.onOpenChange || state?.setOpen}
+                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    animate={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        backdropFilter: isBlurred ? 'blur(4px)' : 'blur(0px)'
+                    }}
+                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                >
+                    {({ state }) => (
+                        <Modal
+                            className={cn(
+                                'fixed will-change-transform max-h-full touch-none bg-bg text-fg align-middle shadow-sm overflow-hidden',
                                 side === 'top' &&
-                                    `${isEntering && 'slide-in-from-top'} ${isExiting && 'slide-out-to-top'} ${
+                                    `${
                                         isFloating
-                                            ? 'top-2 inset-x-2 rounded-lg ring-1 border-b-0'
+                                            ? 'top-2 inset-x-2 rounded-lg border-b-0'
                                             : 'inset-x-0 top-0 rounded-b-2xl border-b'
                                     }`,
                                 side === 'right' &&
-                                    `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-right'} ${
-                                        isExiting && 'slide-out-to-right'
-                                    } ${
+                                    `max-w-xs w-full overflow-y-auto **:[[slot=header]]:text-left ${
                                         isFloating
-                                            ? 'right-2 inset-y-2 rounded-lg ring-1 border-l-0'
-                                            : 'inset-y-0 right-0 h-auto w-full max-w-xs overflow-y-auto border-l'
+                                            ? 'inset-y-2 right-2 rounded-lg border'
+                                            : 'inset-y-0 right-0 h-auto border-l'
                                     }`,
                                 side === 'bottom' &&
-                                    `pt-2 ${isEntering && 'slide-in-from-bottom'} ${isExiting && 'slide-out-to-bottom'} ${
+                                    `${
                                         isFloating
-                                            ? 'bottom-2 inset-x-2 rounded-lg ring-1 border-t-0'
+                                            ? 'bottom-2 inset-x-2 rounded-lg border-t-0'
                                             : 'inset-x-0 bottom-0 rounded-t-2xl border-t'
                                     }`,
                                 side === 'left' &&
-                                    `min-w-xs **:[[slot=header]]:text-left ${isEntering && 'slide-in-from-left'} ${
-                                        isExiting && 'slide-out-to-left'
-                                    } ${
+                                    `max-w-xs w-full overflow-y-auto **:[[slot=header]]:text-left ${
                                         isFloating
-                                            ? 'left-2 inset-y-2 rounded-lg ring-1 border-r-0'
-                                            : 'inset-y-0 left-0 h-auto w-full max-w-xs overflow-y-auto border-r'
+                                            ? 'inset-y-2 left-2 rounded-lg border'
+                                            : 'inset-y-0 left-0 h-auto border-r'
                                     }`,
                                 className
-                            )
-                    )}
-                    drag={side === 'left' || side === 'right' ? 'x' : 'y'}
-                    dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-                    transition={{ duration: 0.3 }}
-                    onDragEnd={(_, { offset, velocity }) => {
-                        if (
-                            side === 'bottom' &&
-                            (offset.y > window.innerHeight * 0.5 || velocity.y > 25)
-                        ) {
-                            state.close()
-                        }
-                        if (
-                            side === 'top' &&
-                            (offset.y > window.innerHeight * 0.5 || velocity.y < -25)
-                        ) {
-                            state.close()
-                        }
-                        if (
-                            side === 'left' &&
-                            (offset.x < window.innerWidth * -0.5 || velocity.x < -25)
-                        ) {
-                            state.close()
-                        }
-                        if (
-                            side === 'right' &&
-                            (offset.x > window.innerWidth * 0.5 || velocity.x > 25)
-                        ) {
-                            state.close()
-                        }
-                    }}
-                    {...props}
-                >
-                    {side === 'bottom' && (
-                        <div className='h-4 w-full'>
-                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
-                        </div>
-                    )}
-                    <Dialog
-                        aria-label='Sheet'
-                        className='relative flex flex-col h-full overflow-hidden outline-hidden'
-                    >
-                        {composeRenderProps(children, (children) => (
-                            <>
-                                {children}
+                            )}
+                            initial={{
+                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
+                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
+                            }}
+                            animate={{ x: 0, y: 0 }}
+                            exit={{
+                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
+                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
+                            }}
+                            drag={side === 'left' || side === 'right' ? 'x' : 'y'}
+                            whileDrag={{ cursor: 'grabbing' }}
+                            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                            transition={{ duration: 0.15, ease: 'easeInOut' }}
+                            onDragEnd={(_, { offset, velocity }) => {
+                                if (
+                                    side === 'bottom' &&
+                                    (velocity.y > 150 || offset.y > screen.height * 0.25)
+                                ) {
+                                    state.close()
+                                }
+                                if (
+                                    side === 'top' &&
+                                    (velocity.y < -150 || offset.y < screen.height * 0.25)
+                                ) {
+                                    state.close()
+                                }
+                                if (side === 'left' && velocity.x < -150) {
+                                    state.close()
+                                }
+                                if (side === 'right' && velocity.x > 150) {
+                                    state.close()
+                                }
+                            }}
+                            dragElastic={{
+                                top: side === 'top' ? 1 : 0,
+                                bottom: side === 'bottom' ? 1 : 0,
+                                left: side === 'left' ? 1 : 0,
+                                right: side === 'right' ? 1 : 0
+                            }}
+                            dragPropagation
+                        >
+                            <Dialog
+                                aria-label='Sheet'
+                                role='dialog'
+                                className={cn(
+                                    'relative flex flex-col overflow-hidden outline-hidden will-change-auto',
+                                    side === 'top' || side === 'bottom'
+                                        ? 'max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]'
+                                        : 'max-h-full'
+                                )}
+                            >
+                                {children as React.ReactNode}
                                 {closeButton && (
                                     <Button
                                         aria-label='Close'
@@ -159,17 +165,12 @@ const SheetContent = ({
                                         <IconX />
                                     </Button>
                                 )}
-                            </>
-                        ))}
-                    </Dialog>
-                    {side === 'top' && (
-                        <div className='h-4 w-full'>
-                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
-                        </div>
+                            </Dialog>
+                        </Modal>
                     )}
-                </MModal>
+                </Overlay>
             )}
-        </ModalOverlay>
+        </AnimatePresence>
     )
 }
 
@@ -195,7 +196,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     <div
         slot='body'
         className={cn(
-            'isolate flex flex-col overflow-auto px-4 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
+            'isolate will-change-scroll flex flex-col overflow-auto px-4 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
             className
         )}
         {...props}

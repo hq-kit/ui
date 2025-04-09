@@ -80,6 +80,7 @@ const Command = <T extends object>({ shortcut, ...props }: CommandProps<T>) => {
             isOpen={props.isOpen || shortcutOpen}
             onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
+            notch
             {...props}
         >
             <Autocomplete
@@ -125,15 +126,19 @@ const CommandItem = ({ isDanger, className, ...props }: MenuItemProps & { isDang
             textValue={textValue}
             className={composeRenderProps(
                 className,
-                (className, { isHovered, isFocused, isSelected, isDisabled, isFocusVisible }) =>
+                (className, { isOpen, isFocused, isSelected, isDisabled }) =>
                     cn(
-                        'group relative grid grid-cols-subgrid col-span-full',
-                        'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
-                        '**:[svg]:size-4 *:[svg]:mr-2 *:[svg]:my-1 *:data-avatar:mr-2 *:data-avatar:size-6',
-                        { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
-                        isSelected && '**:data-[slot=icon]:hidden **:data-avatar:hidden',
+                        'group relative grid grid-cols-subgrid col-span-full items-center',
+                        'rounded-md px-2 py-1.5 text-base sm:text-sm outline-hidden select-none',
+                        '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
+                        isDanger
+                            ? 'text-danger **:text-danger focus:bg-danger/10 open:bg-danger/10 open:text-danger focus:text-danger focus:**:text-danger'
+                            : 'text-fg',
+                        isOpen && 'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary',
+                        isFocused && 'bg-primary/10 text-primary',
+                        isSelected &&
+                            '**:data-avatar:hidden **:data-avatar:*:hidden **:data-[slot=icon]:hidden',
                         isDisabled && 'pointer-events-none opacity-50',
-                        isDanger && 'text-danger selected:bg-danger selected:text-danger-fg',
                         className
                     )
             )}

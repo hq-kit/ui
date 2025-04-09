@@ -3,13 +3,13 @@
 import React from 'react'
 
 import { IconCheck, IconChevronRight } from 'hq-icons'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import type {
-    MenuItemProps,
     MenuProps,
     MenuSectionProps,
     MenuTriggerProps,
     PopoverProps,
+    MenuItemProps as RACMenuItemProps,
     SeparatorProps,
     TextProps
 } from 'react-aria-components'
@@ -20,6 +20,7 @@ import {
     Header,
     MenuTrigger,
     ModalOverlay,
+    OverlayTriggerStateContext,
     Popover,
     PopoverContext,
     Menu as RACMenu,
@@ -36,7 +37,7 @@ import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const Modal = motion.create(RACModal)
-
+const Overlay = motion.create(ModalOverlay)
 const Menu = ({ ...props }: MenuTriggerProps) => <MenuTrigger {...props} />
 
 interface MenuContentProps<T>
@@ -53,8 +54,8 @@ interface MenuContentProps<T>
         >,
         MenuProps<T> {
     className?: string
+    style?: React.CSSProperties
     respectScreen?: boolean
-    portal?: Element
 }
 
 const MenuContent = <T extends object>({
@@ -64,67 +65,65 @@ const MenuContent = <T extends object>({
 }: MenuContentProps<T>) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     const popoverContext = useSlottedContext(PopoverContext)!
+    const state = React.use(OverlayTriggerStateContext)!
     if (isMobile && respectScreen) {
         return (
-            <ModalOverlay
-                UNSTABLE_portalContainer={props.portal}
-                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                    cn(
-                        'fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full',
-                        'flex sm:block items-end justify-end bg-black/50 backdrop-blur',
-                        '[--visual-viewport-vertical-padding:16px] sm:[--visual-viewport-vertical-padding:32px]',
-                        isEntering && 'fade-in animate-in duration-200 ease-out',
-                        isExiting && 'fade-out animate-out ease-in',
-                        className
-                    )
-                )}
-                isDismissable
-            >
-                {({ state }) => (
-                    <Modal
-                        isDismissable
-                        UNSTABLE_portalContainer={props.portal}
-                        className={composeRenderProps(
-                            className,
-                            (className, { isEntering, isExiting }) =>
-                                cn(
-                                    'bg-bg text-fg pt-2 rounded-t-lg fixed top-auto bottom-0 z-50 max-h-full w-full border border-b-transparent overflow-y-auto outline-hidden',
-                                    isEntering &&
-                                        'will-change-transform fade-in slide-in-from-bottom-56 animate-in',
-                                    isExiting && 'fade-out slide-out-to-bottom-56 animate-out',
-                                    className
-                                )
-                        )}
-                        drag={'y'}
-                        transition={{ duration: 0.2 }}
-                        dragConstraints={{ top: 0, bottom: 0 }}
-                        onDragEnd={(_, { offset, velocity }) => {
-                            if (offset.y > window.innerHeight * 0.5 || velocity.y > 25) {
-                                state.close()
-                            }
+            <AnimatePresence>
+                {(props?.isOpen || state?.isOpen) && (
+                    <Overlay
+                        isOpen={props?.isOpen || state?.isOpen}
+                        onOpenChange={props?.onOpenChange || state?.setOpen}
+                        initial={{
+                            backgroundColor: 'rgba(0, 0, 0, 0)',
+                            backdropFilter: 'blur(0px)'
                         }}
+                        animate={{
+                            backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                            backdropFilter: 'blur(2px)'
+                        }}
+                        exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                        className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                        isDismissable
+                        {...props}
                     >
-                        <div className='h-4 w-full'>
-                            <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
-                        </div>
-                        <RACMenu
-                            aria-label='Menu'
-                            className={cn(
-                                'grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-lg p-1 outline-hidden',
-                                className
-                            )}
-                            {...props}
-                        />
-                    </Modal>
+                        {({ state }) => (
+                            <Modal
+                                isDismissable
+                                className='bg-bg rounded-t-2xl border-t absolute bottom-0 w-full shadow-sm will-change-transform max-h-full overflow-hidden'
+                                initial={{ y: '100%' }}
+                                animate={{ y: 0 }}
+                                exit={{ y: '100%' }}
+                                drag='y'
+                                dragElastic={{ top: 0, bottom: 1 }}
+                                whileDrag={{ cursor: 'grabbing' }}
+                                dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                                dragPropagation
+                                dragConstraints={{ top: 0, bottom: 0 }}
+                                transition={{ duration: 0.15, ease: 'easeInOut' }}
+                                onDragEnd={(_, { offset, velocity }) =>
+                                    (offset.y > screen.availHeight * 0.25 || velocity.y > 100) &&
+                                    state.close()
+                                }
+                            >
+                                <div className='w-full h-8 touch-none py-2'>
+                                    <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                                </div>
+                                <RACMenu
+                                    aria-label='Menu'
+                                    className='grid grid-cols-[auto_1fr_auto] max-h-[calc(var(--visual-viewport-height)-10rem)] overflow-auto p-1 outline-hidden'
+                                    {...props}
+                                />
+                            </Modal>
+                        )}
+                    </Overlay>
                 )}
-            </ModalOverlay>
+            </AnimatePresence>
         )
     } else {
         const isSubmenuTrigger = popoverContext?.trigger === 'SubmenuTrigger'
         const optimalOffset = isSubmenuTrigger ? 0 : 8
         return (
             <Popover
-                UNSTABLE_portalContainer={props.portal}
                 isOpen={props.isOpen}
                 onOpenChange={props.onOpenChange}
                 shouldFlip={props.shouldFlip}
@@ -156,12 +155,11 @@ const MenuContent = <T extends object>({
     }
 }
 
-const MenuItem = ({
-    className,
-    isDanger = false,
-    children,
-    ...props
-}: MenuItemProps & { isDanger?: boolean }) => {
+interface MenuItemProps extends RACMenuItemProps {
+    isDanger?: boolean
+}
+
+const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemProps) => {
     const textValue = props.textValue || (typeof children === 'string' ? children : undefined)
     return (
         <RACMenuItem
@@ -169,7 +167,7 @@ const MenuItem = ({
                 className,
                 (className, { isOpen, isFocused, isSelected, isDisabled }) =>
                     cn(
-                        'group relative grid  grid-cols-subgrid col-span-full items-center',
+                        'group relative grid grid-cols-subgrid col-span-full items-center',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm outline-hidden select-none',
                         '**:[svg]:size-4 *:data-[slot=icon]:mr-2',
                         isDanger
@@ -202,7 +200,7 @@ const MenuItem = ({
 const MenuHeader = ({ className, ...props }: React.ComponentProps<typeof Header>) => (
     <Header
         className={cn(
-            'col-span-full px-2.5 py-2 text-base font-semibold sm:text-sm -mx-1 mb-1 border-b sm:px-3 sm:pb-2.5',
+            'touch-none col-span-full px-2.5 py-2 text-base font-semibold sm:text-sm -mx-1 mb-1 border-b sm:px-3 sm:pb-2.5',
             className
         )}
         {...props}

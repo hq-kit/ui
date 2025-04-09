@@ -40,7 +40,6 @@ interface MultiSelectProps<T>
         Pick<GroupProps, 'isDisabled' | 'isInvalid'> {
     className?: string
     errorMessage?: string
-    portal?: Element
 }
 
 const MultiSelect = <T extends object>({ className, children, ...props }: MultiSelectProps<T>) => {
@@ -195,7 +194,6 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                             'fade-out animate-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2'
                                     )
                                 }
-                                UNSTABLE_portalContainer={props.portal}
                             >
                                 <ListBox
                                     className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'

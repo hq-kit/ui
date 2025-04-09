@@ -40,7 +40,7 @@ export default function Block({
                             'flex min-h-56 items-center justify-center lg:min-h-80'
                         )}
                     >
-                        <div className='absolute right-0 hidden sm:flex gap-1 sm:-top-14 z-50'>
+                        <div className='absolute right-0 hidden sm:flex gap-1 sm:-top-14 z-20'>
                             <Link
                                 target='_blank'
                                 className={buttonStyles({

@@ -55,7 +55,7 @@ export default function ProductManagement() {
                         <Toolbar className='flex justify-between pt-2'>
                             <Toolbar.Group aria-label='Filters'>
                                 <Select
-                                    className='w-16'
+                                    className='w-32'
                                     aria-label='Show'
                                     selectedKey={show}
                                     onSelectionChange={setShow}

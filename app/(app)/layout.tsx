@@ -7,8 +7,8 @@ import { ThemeCustomizer } from '@/components/theme-customizer'
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <Navbar />
             <ThemeCustomizer />
+            <Navbar />
             {children}
             <Footer />
         </>

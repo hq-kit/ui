@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconBrandX, IconTrash } from 'hq-icons'
 
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
@@ -20,12 +18,6 @@ import {
 } from '@/components/ui'
 
 export default function OptionsSink() {
-    const [portal, setPortal] = React.useState<Element>()
-
-    React.useEffect(() => {
-        const portal = (document?.getElementById('theme-container') as Element) || document.body
-        setPortal(portal)
-    }, [])
     return (
         <Card className='p-4'>
             <Breadcrumbs>
@@ -33,9 +25,8 @@ export default function OptionsSink() {
                 <Breadcrumbs.Item href='/docs'>Docs</Breadcrumbs.Item>
                 <Breadcrumbs.Item>Components</Breadcrumbs.Item>
             </Breadcrumbs>
-            <div className='mt-6 flex w-full flex-col items-center gap-2 lg:flex-row'>
+            <div className='mt-6 flex w-full items-center gap-2'>
                 <Select
-                    portal={portal}
                     aria-labelledby='per-page'
                     id='per-page'
                     placeholder='10'
@@ -46,12 +37,11 @@ export default function OptionsSink() {
                     <Select.Item id='20'>20</Select.Item>
                     <Select.Item id='30'>30</Select.Item>
                 </Select>
-                <DatePicker portal={portal} className='w-full' aria-label='Event date' />
+                <DatePicker className='w-full' aria-label='Event date' />
             </div>
             <div className='mt-4 flex items-end gap-1'>
                 <ComboBox
                     className='w-full'
-                    portal={portal}
                     placeholder='Select a user'
                     label='Users'
                     items={users}
@@ -66,7 +56,7 @@ export default function OptionsSink() {
                     <Button variant='danger' size='icon'>
                         <IconTrash />
                     </Button>
-                    <Modal.Content size='lg' UNSTABLE_portalContainer={portal}>
+                    <Modal.Content role='alertdialog' size='lg'>
                         <Modal.Header>
                             <Modal.Title>Delete User?</Modal.Title>
                             <Modal.Description>
@@ -93,17 +83,11 @@ export default function OptionsSink() {
                     <Button aria-label='Follow My Twitter' size='icon'>
                         <IconBrandX />
                     </Button>
-                    <Tooltip.Content UNSTABLE_portalContainer={portal}>
-                        Follow me on X @dqalhq
-                    </Tooltip.Content>
+                    <Tooltip.Content>Follow me on X @dqalhq</Tooltip.Content>
                 </Tooltip>
                 <Popover>
                     <Button variant='warning'>Forgot Password</Button>
-                    <Popover.Content
-                        UNSTABLE_portalContainer={portal}
-                        aria-label='Forgot Password'
-                        className='min-w-72'
-                    >
+                    <Popover.Content aria-label='Forgot Password' className='min-w-72'>
                         <Popover.Header>
                             <Popover.Title>Email</Popover.Title>
                             <Popover.Description>
