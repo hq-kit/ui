@@ -67,7 +67,7 @@ const Content = ({
                     initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
                     animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)' }}
                     exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    className='fixed inset-0 z-10 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
                     {...props}
                 >
                     {({ state }) => (
