@@ -3,13 +3,7 @@
 import React from 'react'
 
 import { getFileIcon, mapFilePaths, rootFolders } from 'components/file-manager/file-list'
-import {
-    IconLayoutGrid,
-    IconLayoutList,
-    IconSearch,
-    IconSquare,
-    IconSquareCheckBig
-} from 'hq-icons'
+import { IconLayoutGrid, IconLayoutList, IconSearch, IconSquare, IconSquareCheckBig } from 'hq-icons'
 import FileManagerLayout from 'layouts/file-manager-layout'
 
 import { Breadcrumbs, Button, GridList, SearchField, Toggle } from '@/components/ui'
@@ -43,34 +37,23 @@ export default function FileManager() {
                     </Breadcrumbs>
                 </span>
                 <div className='flex items-center gap-x-2'>
-                    <Button
-                        variant='ghost'
-                        className='md:hidden'
-                        aria-label='Search...'
-                        size='icon'
-                    >
+                    <Button variant='ghost' className='md:hidden' aria-label='Search...' icon>
                         <IconSearch />
                     </Button>
                     <SearchField aria-label='Search' className='hidden md:inline-flex' />
                     <Button
-                        size='icon'
+                        icon
                         variant='ghost'
                         aria-label='View'
                         onPress={() => setView(view === 'stack' ? 'grid' : 'stack')}
                     >
-                        {view === 'stack' ? (
-                            <IconLayoutList />
-                        ) : (
-                            <IconLayoutGrid className='size-5' />
-                        )}
+                        {view === 'stack' ? <IconLayoutList /> : <IconLayoutGrid className='size-5' />}
                     </Button>
                     <Toggle
-                        size='icon'
+                        icon
                         aria-label='Selection Mode'
                         isSelected={selectionMode === 'multiple'}
-                        onChange={() =>
-                            setSelectionMode(selectionMode === 'multiple' ? 'single' : 'multiple')
-                        }
+                        onChange={() => setSelectionMode(selectionMode === 'multiple' ? 'single' : 'multiple')}
                     >
                         {({ isSelected }) => (isSelected ? <IconSquareCheckBig /> : <IconSquare />)}
                     </Toggle>
@@ -96,9 +79,7 @@ export default function FileManager() {
                         <GridList.Item
                             textValue={item.id}
                             id={item.id}
-                            onAction={() =>
-                                !item.id.includes('.') && setDir(dir + item.id.split('/')[0] + '/')
-                            }
+                            onAction={() => !item.id.includes('.') && setDir(dir + item.id.split('/')[0] + '/')}
                         >
                             {getFileIcon(item.id.split('.').pop() || 'folder')}
                             {item.id}

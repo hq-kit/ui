@@ -17,10 +17,7 @@ export const CopyButton = ({ isCopied, ...props }: CopyButtonProps) => {
             {...props}
         >
             <IconClipboard
-                className={cn(
-                    'size-4 scale-100 rotate-0 transition-all duration-200',
-                    isCopied && 'scale-0 rotate-90'
-                )}
+                className={cn('size-4 scale-100 rotate-0 transition-all duration-200', isCopied && 'scale-0 rotate-90')}
             />
             <IconCheck
                 className={cn(

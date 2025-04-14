@@ -17,13 +17,7 @@ interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
     zoomOut: number
 }
 
-export default function Block({
-    page,
-    zoomOut = 0.6,
-    height = 768,
-    className,
-    ...props
-}: BlockProps) {
+export default function Block({ page, zoomOut = 0.6, height = 768, className, ...props }: BlockProps) {
     const [screenWidth, setScreenWidth] = React.useState(new Set<Key>(['max-w-none']))
 
     return (
@@ -35,18 +29,15 @@ export default function Block({
                 </Tabs.List>
                 <Tabs.Content className='w-full' id='preview'>
                     <div
-                        className={cn(
-                            'bg-bg relative w-full',
-                            'flex min-h-56 items-center justify-center lg:min-h-80'
-                        )}
+                        className={cn('bg-bg relative w-full', 'flex min-h-56 items-center justify-center lg:min-h-80')}
                     >
                         <div className='absolute right-0 hidden sm:flex gap-1 sm:-top-14 z-20'>
                             <Link
                                 target='_blank'
                                 className={buttonStyles({
-                                    size: 'icon',
+                                    icon: true,
                                     variant: 'outline',
-                                    className: '!size-9'
+                                    size: 'sm'
                                 })}
                                 href={`/${page}`}
                             >
@@ -54,6 +45,7 @@ export default function Block({
                             </Link>
                             <Toggle.Group
                                 size='sm'
+                                icon
                                 selectionMode='single'
                                 selectedKeys={screenWidth}
                                 onSelectionChange={setScreenWidth}

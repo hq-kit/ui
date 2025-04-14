@@ -42,10 +42,7 @@ export default function LineChartBasicDemo() {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey='month' tickLine={false} axisLine={false} tickMargin={8} />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Line
                             dataKey='revenue'
                             type='natural'

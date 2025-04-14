@@ -23,11 +23,7 @@ export default function GridListMultipleDemo() {
     const [selectionMode, setSelectionMode] = React.useState<Key>('multiple')
     return (
         <div className='space-y-6'>
-            <Select
-                label='Selection mode'
-                selectedKey={selectionMode}
-                onSelectionChange={setSelectionMode}
-            >
+            <Select label='Selection mode' selectedKey={selectionMode} onSelectionChange={setSelectionMode}>
                 <Select.Item id='none'>None</Select.Item>
                 <Select.Item id='single'>Single</Select.Item>
                 <Select.Item id='multiple'>Multiple</Select.Item>

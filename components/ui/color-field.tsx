@@ -32,10 +32,7 @@ const ColorField = ({
         <RACColorField
             aria-label={props['aria-label'] ?? 'Color field'}
             className={composeRenderProps(className, (className) =>
-                cn(
-                    'group flex w-full flex-col gap-y-1.5 **:data-[slot=color-swatch]:-ml-0.5',
-                    className
-                )
+                cn('group flex w-full flex-col gap-y-1.5 **:data-[slot=color-swatch]:-ml-0.5', className)
             )}
             {...props}
         >
@@ -48,9 +45,7 @@ const ColorField = ({
                     )}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
-                                {props.prefix}
-                            </span>
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
                         ) : null}
                         {isLoading ? (
                             <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
@@ -61,15 +56,9 @@ const ColorField = ({
                             {value && (
                                 <span className='ml-2'>
                                     {withPicker ? (
-                                        <ColorPicker
-                                            onChange={props.onChange}
-                                            value={value.toString('hex')}
-                                        />
+                                        <ColorPicker onChange={props.onChange} value={value.toString('hex')} />
                                     ) : (
-                                        <ColorSwatch
-                                            className='size-6'
-                                            color={value.toString('hex')}
-                                        />
+                                        <ColorSwatch className='size-6' color={value.toString('hex')} />
                                     )}
                                 </span>
                             )}

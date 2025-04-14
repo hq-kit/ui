@@ -26,12 +26,7 @@ export default function GridListLayoutDemo() {
     return (
         <div className='flex flex-col gap-4'>
             <div className='flex gap-2 w-full'>
-                <Select
-                    className='w-full'
-                    label='Columns'
-                    selectedKey={columns}
-                    onSelectionChange={setColumns}
-                >
+                <Select className='w-full' label='Columns' selectedKey={columns} onSelectionChange={setColumns}>
                     <Select.Item id={1}>1</Select.Item>
                     <Select.Item id={2}>2</Select.Item>
                     <Select.Item id={3}>3</Select.Item>

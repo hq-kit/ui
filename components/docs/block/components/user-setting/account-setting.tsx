@@ -5,16 +5,7 @@ import React from 'react'
 import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from 'hq-icons'
 import { isFileDropItem } from 'react-aria-components'
 
-import {
-    Avatar,
-    Button,
-    Card,
-    DropZone,
-    FileTrigger,
-    Form,
-    Textarea,
-    TextField
-} from '@/components/ui'
+import { Avatar, Button, Card, DropZone, FileTrigger, Form, Textarea, TextField } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function AccountSetting() {
@@ -49,9 +40,7 @@ export default function AccountSetting() {
                         <div className='flex items-center gap-2'>
                             <DropZone
                                 getDropOperation={(types) =>
-                                    types.has('image/jpeg') || types.has('image/png')
-                                        ? 'copy'
-                                        : 'cancel'
+                                    types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel'
                                 }
                                 onDrop={onDropHandler}
                                 className='size-10 overflow-hidden rounded-full p-0'
@@ -97,30 +86,10 @@ export default function AccountSetting() {
                         <Card.Description>Your social accounts.</Card.Description>
                     </Card.Header>
                     <Card.Content className='grid gap-4 lg:grid-cols-2'>
-                        <TextField
-                            label='Github Username'
-                            prefix={<IconBrandGithub />}
-                            id='github'
-                            name='github'
-                        />
-                        <TextField
-                            label='X Username'
-                            prefix={<IconBrandX />}
-                            id='twitter'
-                            name='twitter'
-                        />
-                        <TextField
-                            label='Facebook'
-                            prefix={<IconBrandFacebook />}
-                            id='facebook'
-                            name='facebook'
-                        />
-                        <TextField
-                            label='Instagram'
-                            prefix={<IconBrandInstagram />}
-                            id='ig'
-                            name='ig'
-                        />
+                        <TextField label='Github Username' prefix={<IconBrandGithub />} id='github' name='github' />
+                        <TextField label='X Username' prefix={<IconBrandX />} id='twitter' name='twitter' />
+                        <TextField label='Facebook' prefix={<IconBrandFacebook />} id='facebook' name='facebook' />
+                        <TextField label='Instagram' prefix={<IconBrandInstagram />} id='ig' name='ig' />
                     </Card.Content>
                     <Card.Footer>
                         <Button>Save</Button>

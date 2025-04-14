@@ -8,13 +8,7 @@ export default function TeamManagementSink() {
     return (
         <Card className='flex flex-col items-center justify-around gap-4 p-2 lg:col-span-3 lg:flex-row'>
             <AvatarGroup items={roles}>
-                {(item) => (
-                    <Avatar
-                        id={item.id}
-                        alt={item.name}
-                        src={`https://i.pravatar.cc/150?img=2${item.id}`}
-                    />
-                )}
+                {(item) => <Avatar id={item.id} alt={item.name} src={`https://i.pravatar.cc/150?img=2${item.id}`} />}
             </AvatarGroup>
             <ColorPicker defaultValue={'#ff0000'} label='Color' />
             <Menu>

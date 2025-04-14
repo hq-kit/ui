@@ -23,9 +23,7 @@ export function SelectSize() {
 
     const searchParams = useSearchParams()
 
-    const [selectedSize, setSelectSize] = React.useState<Selection>(
-        new Set([searchParams.get('s') || '5'])
-    )
+    const [selectedSize, setSelectSize] = React.useState<Selection>(new Set([searchParams.get('s') || '5']))
     const onSelectionChange = (size: Selection) => {
         router.push(pathname + '?' + createQueryString('s', [...size].join(',')), {
             scroll: false

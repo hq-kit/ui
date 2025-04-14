@@ -45,31 +45,18 @@ export default function TooltipChartFormatterDemo() {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                        <Bar
-                            dataKey='sales'
-                            stackId='a'
-                            fill='var(--color-sales)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='profit'
-                            stackId='a'
-                            fill='var(--color-profit)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='sales' stackId='a' fill='var(--color-sales)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='profit' stackId='a' fill='var(--color-profit)' radius={[4, 4, 0, 0]} />
                         <Chart.Tooltip
                             content={
                                 <Chart.TooltipContent
                                     hideLabel
                                     formatter={(value, name) => (
                                         <div className='text-muted-fg flex min-w-[130px] items-center text-xs'>
-                                            {chartConfig[name as keyof typeof chartConfig]?.label ||
-                                                name}
+                                            {chartConfig[name as keyof typeof chartConfig]?.label || name}
                                             <div className='text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums'>
                                                 {value}
-                                                <span className='text-muted-fg font-normal'>
-                                                    USD
-                                                </span>
+                                                <span className='text-muted-fg font-normal'>USD</span>
                                             </div>
                                         </div>
                                     )}

@@ -35,9 +35,7 @@ export default function DropZoneAndFileTriggerDemo() {
 
     return (
         <DropZone
-            getDropOperation={(types) =>
-                types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel'
-            }
+            getDropOperation={(types) => (types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel')}
             onDrop={onDropHandler}
         >
             <div className='grid space-y-3'>

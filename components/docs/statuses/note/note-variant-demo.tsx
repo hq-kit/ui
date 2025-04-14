@@ -6,12 +6,10 @@ import { type Key } from 'react-aria-components'
 
 import { Note, Select } from '@/components/ui'
 
-const variants = ['primary', 'secondary', 'warning', 'danger', 'info', 'success', 'outline'].map(
-    (n) => ({
-        name: n,
-        value: n
-    })
-)
+const variants = ['primary', 'secondary', 'warning', 'danger', 'info', 'success', 'outline'].map((n) => ({
+    name: n,
+    value: n
+}))
 
 export default function NoteVariantDemo() {
     const [selected, setSelected] = React.useState<Key>('primary')
@@ -26,18 +24,7 @@ export default function NoteVariantDemo() {
             >
                 {(item) => <Select.Item id={item.name}>{item.name}</Select.Item>}
             </Select>
-            <Note
-                variant={
-                    selected as
-                        | 'primary'
-                        | 'secondary'
-                        | 'warning'
-                        | 'danger'
-                        | 'success'
-                        | 'info'
-                        | 'outline'
-                }
-            >
+            <Note variant={selected as 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'info' | 'outline'}>
                 {selected} alert! Change a few things up and try submitting again.
             </Note>
         </div>

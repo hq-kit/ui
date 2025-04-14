@@ -8,21 +8,12 @@ import { OTPInput, OTPInputContext } from 'input-otp'
 import { cn } from '@/lib/utils'
 
 type OTPInputProps = React.ComponentProps<typeof OTPInput>
-const OTP = ({
-    className,
-    autoFocus = false,
-    containerClassName,
-    ref,
-    ...props
-}: OTPInputProps) => (
+const OTP = ({ className, autoFocus = false, containerClassName, ref, ...props }: OTPInputProps) => (
     <OTPInput
         data-1p-ignore
         ref={ref}
         autoFocus={autoFocus}
-        containerClassName={cn(
-            'flex items-center gap-2 has-disabled:opacity-50',
-            containerClassName
-        )}
+        containerClassName={cn('flex items-center gap-2 has-disabled:opacity-50', containerClassName)}
         className={cn('bg-danger mt-auto h-[2.5rem] disabled:cursor-not-allowed', className)}
         {...props}
     />

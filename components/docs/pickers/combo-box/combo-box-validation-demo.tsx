@@ -22,13 +22,7 @@ export default function ComboBoxValidationDemo() {
     }
     return (
         <Form onSubmit={onSubmit} className='space-y-4'>
-            <ComboBox
-                label='Linux Distro'
-                items={items}
-                selectedKey={value}
-                onSelectionChange={setValue}
-                isRequired
-            >
+            <ComboBox label='Linux Distro' items={items} selectedKey={value} onSelectionChange={setValue} isRequired>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
             <Button type='submit'>Submit</Button>

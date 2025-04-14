@@ -41,11 +41,7 @@ export default function PopoverControlledDemo() {
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
-                        {loading === 'loading'
-                            ? 'Deleting...'
-                            : loading === 'success'
-                              ? 'Deleted'
-                              : 'Delete'}
+                        {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}
                     </Button>
                 </Popover.Footer>
             </Popover.Content>

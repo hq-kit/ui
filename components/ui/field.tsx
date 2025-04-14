@@ -88,11 +88,7 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
     )
 }
 
-const Input = ({
-    className,
-    ref,
-    ...props
-}: InputProps & { ref?: React.Ref<HTMLInputElement> }) => (
+const Input = ({ className, ref, ...props }: InputProps & { ref?: React.Ref<HTMLInputElement> }) => (
     <RACInput
         ref={ref}
         className={cn(

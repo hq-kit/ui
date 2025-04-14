@@ -55,10 +55,7 @@ export default function AreaChartIconDemo() {
                             tickMargin={8}
                             tickFormatter={(value) => value.slice(0, 3)}
                         />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
                         <Area
                             dataKey='retail'
                             type='natural'

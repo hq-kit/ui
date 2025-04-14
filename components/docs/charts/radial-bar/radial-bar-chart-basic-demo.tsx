@@ -50,10 +50,7 @@ export default function RadialBarChartBasicDemo() {
             <Card.Content className='flex-1 pb-0'>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <RadialBarChart data={chartData} innerRadius={30} outerRadius={110}>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel nameKey='category' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel nameKey='category' />} />
                         <RadialBar dataKey='sales' background />
                     </RadialBarChart>
                 </Chart>

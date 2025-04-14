@@ -31,18 +31,8 @@ export default function LoginFormSink() {
                     </div>
                     <Separator />
                     <TextField isRequired label='Name' placeholder='Enter your Name' />
-                    <TextField
-                        isRequired
-                        label='Email'
-                        type='email'
-                        placeholder='Enter your email'
-                    />
-                    <TextField
-                        isRequired
-                        label='Password'
-                        type='password'
-                        placeholder='Enter your password'
-                    />
+                    <TextField isRequired label='Email' type='email' placeholder='Enter your email' />
+                    <TextField isRequired label='Password' type='password' placeholder='Enter your password' />
                     <Checkbox>I agree to the terms and conditions</Checkbox>
                 </Card.Content>
                 <Card.Footer className='justify-end gap-4'>

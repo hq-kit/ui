@@ -34,10 +34,7 @@ const chartConfig = {
 export default function BarChartStackedLegendDemo() {
     return (
         <Card>
-            <Card.Header
-                title='Biweekly Revenue'
-                description='Revenue breakdown every 2 weeks (Jan - Dec 2024)'
-            />
+            <Card.Header title='Biweekly Revenue' description='Revenue breakdown every 2 weeks (Jan - Dec 2024)' />
             <Card.Content>
                 <Chart config={chartConfig}>
                     <BarChart accessibilityLayer data={chartData}>
@@ -51,18 +48,8 @@ export default function BarChartStackedLegendDemo() {
                         />
                         <Chart.Tooltip content={<Chart.TooltipContent hideLabel />} />
                         <Chart.Legend content={<Chart.LegendContent />} />
-                        <Bar
-                            dataKey='revenue'
-                            stackId='a'
-                            fill='var(--chart-1)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='expenses'
-                            stackId='a'
-                            fill='var(--chart-2)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='revenue' stackId='a' fill='var(--chart-1)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='expenses' stackId='a' fill='var(--chart-2)' radius={[4, 4, 0, 0]} />
                     </BarChart>
                 </Chart>
             </Card.Content>

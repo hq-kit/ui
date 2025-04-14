@@ -18,13 +18,7 @@ interface GridListProps<T extends object> extends Omit<RACGridListProps<T>, 'lay
     gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6
 }
 
-const GridList = <T extends object>({
-    children,
-    className,
-    columns = 1,
-    gap = 0,
-    ...props
-}: GridListProps<T>) => (
+const GridList = <T extends object>({ children, className, columns = 1, gap = 0, ...props }: GridListProps<T>) => (
     <RACGridList
         layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
         className={composeRenderProps(className, (className, { layout }) =>
@@ -55,8 +49,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                         'flex items-center text-fg gap-2 border px-3 py-2 outline-hidden transition select-none sm:text-sm rounded-lg',
                         isHovered && 'bg-primary/10',
                         {
-                            'border-primary/70 bg-primary/10 text-primary':
-                                isSelected || isFocusVisible
+                            'border-primary/70 bg-primary/10 text-primary': isSelected || isFocusVisible
                         },
                         isDisabled && 'opacity-50',
                         className
@@ -68,17 +61,12 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                     {allowsDragging && (
                         <Button
                             slot='drag'
-                            className={cn(
-                                'text-muted-fg cursor-grab',
-                                isDragging && 'cursor-grabbing'
-                            )}
+                            className={cn('text-muted-fg cursor-grab', isDragging && 'cursor-grabbing')}
                         >
                             <IconGripVertical />
                         </Button>
                     )}
-                    {selectionMode === 'multiple' && selectionBehavior === 'toggle' && (
-                        <Checkbox slot='selection' />
-                    )}
+                    {selectionMode === 'multiple' && selectionBehavior === 'toggle' && <Checkbox slot='selection' />}
                     {children}
                 </>
             )}

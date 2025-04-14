@@ -87,7 +87,7 @@ export function ThemeSwitcher({ variant='outline' }: { variant?: 'outline' | 'gh
   return (
     <Button
       variant={variant}
-      size="icon"
+      icon
       aria-label={'Switch to ' + resolvedTheme === 'light' ? 'dark' : 'light' + 'mode'}
       onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
     >

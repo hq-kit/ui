@@ -27,12 +27,7 @@ export default function SalesPerformance() {
             />
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
-                    <RadialBarChart
-                        data={chartData}
-                        endAngle={100}
-                        innerRadius={80}
-                        outerRadius={140}
-                    >
+                    <RadialBarChart data={chartData} endAngle={100} innerRadius={80} outerRadius={140}>
                         <PolarGrid
                             gridType='circle'
                             radialLines={false}

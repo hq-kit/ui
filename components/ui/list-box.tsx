@@ -1,12 +1,7 @@
 'use client'
 
 import { IconCheck, IconGripVertical } from 'hq-icons'
-import type {
-    ListBoxItemProps,
-    ListBoxProps,
-    ListBoxSectionProps,
-    TextProps
-} from 'react-aria-components'
+import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
 import {
     Collection,
     composeRenderProps,
@@ -40,10 +35,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
             {...props}
             className={composeRenderProps(
                 className,
-                (
-                    className,
-                    { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }
-                ) =>
+                (className, { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }) =>
                     cn(
                         'group relative grid grid-cols-subgrid col-span-full items-center outline-hidden',
                         'rounded-md px-2 py-1.5 text-base sm:text-sm/6 select-none',
@@ -85,13 +77,8 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
     )
 }
 
-const ListBoxSection = <T extends object>({
-    className,
-    ...props
-}: ListBoxSectionProps<T> & { title?: string }) => (
-    <RACListBoxSection
-        className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}
-    >
+const ListBoxSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+    <RACListBoxSection className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}>
         {'title' in props && (
             <Header className='text-muted-fg text-xs py-1 px-2.5 col-span-full pointer-events-none'>
                 {props.title}

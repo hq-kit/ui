@@ -37,9 +37,7 @@ const User = ({ name, description, size = 'lg', ...props }: UserProps) => {
             <Avatar {...props} initials={name} size={sizes.avatar} />
             <div data-user className='inline-flex flex-col items-start'>
                 <span className={'font-medium text-inherit ' + sizes.name}>{name}</span>
-                {description && (
-                    <span className={'text-muted-fg ' + sizes.description}>{description}</span>
-                )}
+                {description && <span className={'text-muted-fg ' + sizes.description}>{description}</span>}
             </div>
         </div>
     )

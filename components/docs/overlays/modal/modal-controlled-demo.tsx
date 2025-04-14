@@ -40,11 +40,7 @@ export default function ModalControlledDemo() {
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
-                        {loading === 'loading'
-                            ? 'Deleting...'
-                            : loading === 'success'
-                              ? 'Deleted'
-                              : 'Delete'}
+                        {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}
                     </Button>
                 </Modal.Footer>
             </Modal.Content>

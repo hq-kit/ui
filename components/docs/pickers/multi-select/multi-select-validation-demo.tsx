@@ -29,9 +29,7 @@ export default function MultiSelectDemo() {
         <Form className='space-y-4' onSubmit={onSubmit}>
             <MultiSelect
                 isInvalid={Array.from(selected).length < 2}
-                errorMessage={
-                    Array.from(selected).length < 2 ? 'Select at least 2 distros' : undefined
-                }
+                errorMessage={Array.from(selected).length < 2 ? 'Select at least 2 distros' : undefined}
                 label='Linux Distro'
                 selectedKeys={selected}
                 onSelectionChange={setSelected}

@@ -29,12 +29,7 @@ export default function TextFieldSuffixButtonDemo() {
             <TextField
                 label='Name'
                 suffix={
-                    <Button
-                        aria-label='Add New User'
-                        onPress={() => setOpen(true)}
-                        size='icon'
-                        variant='ghost'
-                    >
+                    <Button aria-label='Add New User' onPress={() => setOpen(true)} icon variant='ghost'>
                         <IconUserPlus />
                     </Button>
                 }

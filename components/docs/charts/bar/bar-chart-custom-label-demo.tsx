@@ -36,10 +36,7 @@ const chartConfig = {
 export default function BarChartCustomLabelDemo() {
     return (
         <Card>
-            <Card.Header
-                title='Team Project Status'
-                description='Completed vs Ongoing Projects by Team'
-            />
+            <Card.Header title='Team Project Status' description='Completed vs Ongoing Projects by Team' />
             <Card.Content>
                 <Chart config={chartConfig}>
                     <BarChart
@@ -51,24 +48,10 @@ export default function BarChartCustomLabelDemo() {
                         }}
                     >
                         <CartesianGrid horizontal={false} />
-                        <YAxis
-                            dataKey='team'
-                            type='category'
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                        />
+                        <YAxis dataKey='team' type='category' tickLine={false} tickMargin={10} axisLine={false} />
                         <XAxis dataKey='completed' type='number' hide />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
-                        <Bar
-                            dataKey='completed'
-                            layout='vertical'
-                            fill='var(--color-completed)'
-                            radius={4}
-                        >
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
+                        <Bar dataKey='completed' layout='vertical' fill='var(--color-completed)' radius={4}>
                             <LabelList
                                 dataKey='team'
                                 position='insideLeft'

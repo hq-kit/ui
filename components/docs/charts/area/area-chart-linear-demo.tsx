@@ -47,10 +47,7 @@ export default function AreaChartLinearDemo() {
                             tickMargin={8}
                             tickFormatter={(value) => value.slice(0, 3)}
                         />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='dot' hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='dot' hideLabel />} />
                         <Area
                             dataKey='uniqueVisitors'
                             type='linear'

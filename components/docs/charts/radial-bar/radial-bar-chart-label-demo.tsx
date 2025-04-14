@@ -49,17 +49,8 @@ export default function SalesDistribution() {
             />
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
-                    <RadialBarChart
-                        data={chartData}
-                        startAngle={-90}
-                        endAngle={380}
-                        innerRadius={30}
-                        outerRadius={110}
-                    >
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel nameKey='category' />}
-                        />
+                    <RadialBarChart data={chartData} startAngle={-90} endAngle={380} innerRadius={30} outerRadius={110}>
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel nameKey='category' />} />
                         <RadialBar dataKey='quantity' background>
                             <LabelList
                                 position='insideStart'

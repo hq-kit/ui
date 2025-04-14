@@ -27,13 +27,7 @@ export default function ProductSalesOverview() {
             />
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
-                    <RadialBarChart
-                        data={chartData}
-                        startAngle={0}
-                        endAngle={250}
-                        innerRadius={80}
-                        outerRadius={110}
-                    >
+                    <RadialBarChart data={chartData} startAngle={0} endAngle={250} innerRadius={80} outerRadius={110}>
                         <PolarGrid
                             gridType='circle'
                             radialLines={false}

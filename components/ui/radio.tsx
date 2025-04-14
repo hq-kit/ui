@@ -1,14 +1,7 @@
 'use client'
 
-import type {
-    RadioGroupProps as RACRadioGroupProps,
-    RadioProps as RACRadioProps
-} from 'react-aria-components'
-import {
-    Radio as RACRadio,
-    RadioGroup as RACRadioGroup,
-    composeRenderProps
-} from 'react-aria-components'
+import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
+import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -22,9 +15,7 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
     return (
         <RACRadioGroup
             {...props}
-            className={composeRenderProps(props.className, (className) =>
-                cn('group flex flex-col gap-2', className)
-            )}
+            className={composeRenderProps(props.className, (className) => cn('group flex flex-col gap-2', className))}
         >
             {composeRenderProps(children, (children, { isInvalid, isDisabled, orientation }) => (
                 <>
@@ -36,9 +27,7 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
                     <div
                         className={cn(
                             'flex select-none',
-                            orientation === 'horizontal'
-                                ? 'flex-wrap gap-2 sm:gap-4'
-                                : 'flex-col gap-2'
+                            orientation === 'horizontal' ? 'flex-wrap gap-2 sm:gap-4' : 'flex-col gap-2'
                         )}
                     >
                         {children}
@@ -51,9 +40,7 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
     )
 }
 
-interface RadioProps
-    extends RACRadioProps,
-        Omit<FieldProps, 'children' | 'placeholder' | 'errorMessage'> {
+interface RadioProps extends RACRadioProps, Omit<FieldProps, 'children' | 'placeholder' | 'errorMessage'> {
     ref?: React.Ref<HTMLLabelElement>
     children?: React.ReactNode
 }
@@ -63,11 +50,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
         <RACRadio
             ref={ref}
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn(
-                    'group flex items-center gap-2 text-sm transition',
-                    isDisabled && 'opacity-50',
-                    className
-                )
+                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
             {...props}
         >
@@ -85,16 +68,11 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                                 : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',
                             isFocused &&
                                 'border-primary ring-primary/20 ring-4 group-invalid:border-danger group-invalid:ring-danger/20',
-                            isInvalid &&
-                                'border-danger/70 ring-danger/20 group-hover:border-danger/70'
+                            isInvalid && 'border-danger/70 ring-danger/20 group-hover:border-danger/70'
                         )}
                     />
                     <div className='flex flex-col'>
-                        <Label
-                            isInvalid={isInvalid}
-                            isDisabled={props.isDisabled}
-                            className='not-last:text-sm/4'
-                        >
+                        <Label isInvalid={isInvalid} isDisabled={props.isDisabled} className='not-last:text-sm/4'>
                             {label ?? children}
                         </Label>
                         {description && <Description>{description}</Description>}

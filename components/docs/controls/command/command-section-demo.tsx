@@ -2,35 +2,29 @@
 
 import React from 'react'
 
-import { Avatar, Button, Command } from '@/components/ui'
+import { Avatar, Command } from '@/components/ui'
 
 export default function CommandSectionDemo() {
-    const [isOpen, setIsOpen] = React.useState(false)
     return (
-        <>
-            <Button variant='outline' onPress={() => setIsOpen(true)}>
-                Open
-            </Button>
-            <Command isOpen={isOpen} onOpenChange={setIsOpen}>
-                <Command.Section title='Pages'>
-                    <Command.Item textValue='home'>
-                        <Command.Label>Home</Command.Label>
+        <Command>
+            <Command.Section title='Pages'>
+                <Command.Item textValue='home'>
+                    <Command.Label>Home</Command.Label>
+                </Command.Item>
+                <Command.Item textValue='documenation'>
+                    <Command.Label>Documentation</Command.Label>
+                </Command.Item>
+            </Command.Section>
+            <Command.Separator />
+            <Command.Section title='Users' items={users}>
+                {(item) => (
+                    <Command.Item id={item.id} textValue={item.name}>
+                        <Avatar src={item.image_url} />
+                        <Command.Label>{item.name}</Command.Label>
                     </Command.Item>
-                    <Command.Item textValue='documenation'>
-                        <Command.Label>Documentation</Command.Label>
-                    </Command.Item>
-                </Command.Section>
-                <Command.Separator />
-                <Command.Section title='Users' items={users}>
-                    {(item) => (
-                        <Command.Item id={item.id} textValue={item.name}>
-                            <Avatar src={item.image_url} />
-                            <Command.Label>{item.name}</Command.Label>
-                        </Command.Item>
-                    )}
-                </Command.Section>
-            </Command>
-        </>
+                )}
+            </Command.Section>
+        </Command>
     )
 }
 

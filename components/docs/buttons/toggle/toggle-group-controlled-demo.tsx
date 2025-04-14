@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { IconBold, IconItalic, IconUnderline } from 'hq-icons'
 import type { Key } from 'react-aria-components'
 
 import { Toggle } from '@/components/ui'
@@ -11,14 +12,16 @@ export default function ToggleGroupControlledDemo() {
 
     return (
         <div className='space-y-6 flex flex-col items-center'>
-            <Toggle.Group
-                selectionMode='multiple'
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
-            >
-                <Toggle id='bold'>Bold</Toggle>
-                <Toggle id='italic'>Italic</Toggle>
-                <Toggle id='underline'>Underline</Toggle>
+            <Toggle.Group icon selectionMode='multiple' selectedKeys={selected} onSelectionChange={setSelected}>
+                <Toggle id='bold'>
+                    <IconBold />
+                </Toggle>
+                <Toggle id='italic'>
+                    <IconItalic />
+                </Toggle>
+                <Toggle id='underline'>
+                    <IconUnderline />
+                </Toggle>
             </Toggle.Group>
             <code>selected: {JSON.stringify([...selected])}</code>
         </div>

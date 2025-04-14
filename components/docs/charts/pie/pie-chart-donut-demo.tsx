@@ -49,10 +49,7 @@ export default function PieChartDonutDemo() {
             <Card.Content className='flex-1 pb-0'>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <PieChart>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Pie data={chartData} dataKey='sales' nameKey='category' innerRadius={60} />
                     </PieChart>
                 </Chart>

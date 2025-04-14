@@ -17,12 +17,7 @@ export default function AuthForm() {
             <Form className='grid gap-4' onSubmit={onSubmit}>
                 <TextField isRequired label='Name' placeholder='Enter your Name' />
                 <TextField isRequired label='Email' type='email' placeholder='Enter your email' />
-                <TextField
-                    isRequired
-                    label='Password'
-                    type='password'
-                    placeholder='Enter your password'
-                />
+                <TextField isRequired label='Password' type='password' placeholder='Enter your password' />
                 <Checkbox>I agree to the terms and conditions</Checkbox>
                 <Button className='mt-2 w-full' type='submit'>
                     Register

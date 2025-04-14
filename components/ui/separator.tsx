@@ -5,11 +5,7 @@ import { Separator as RACSeparator } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-const Separator = ({
-    className,
-    children,
-    ...props
-}: SeparatorProps & { children?: React.ReactNode }) => {
+const Separator = ({ className, children, ...props }: SeparatorProps & { children?: React.ReactNode }) => {
     return children ? (
         <div
             className={cn(

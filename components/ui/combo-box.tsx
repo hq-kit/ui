@@ -2,15 +2,12 @@
 
 import React from 'react'
 
-import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
-import type {
-    ListBoxItemProps,
-    ListBoxSectionProps,
-    ComboBoxProps as RACComboboxProps
-} from 'react-aria-components'
+import { IconCheck, IconChevronDown, IconLoader, IconX } from 'hq-icons'
+import type { ComboBoxProps as RACComboboxProps, ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
 import {
     Button,
     Collection,
+    ComboBox as RACCombobox,
     ComboBoxStateContext,
     composeRenderProps,
     Header,
@@ -18,7 +15,6 @@ import {
     ListBoxItem,
     ListBoxSection,
     Popover,
-    ComboBox as RACCombobox,
     Text
 } from 'react-aria-components'
 
@@ -26,11 +22,10 @@ import { cn } from '@/lib/utils'
 
 import { Description, FieldError, FieldGroup, FieldProps, Input, Label } from './field'
 
-interface ComboBoxProps<T extends object>
-    extends Omit<RACComboboxProps<T>, 'children'>,
-        FieldProps {
+interface ComboBoxProps<T extends object> extends Omit<RACComboboxProps<T>, 'children'>, FieldProps {
     children: React.ReactNode | ((item: T) => React.ReactNode)
     prefix?: React.ReactNode
+    isPending?: boolean
 }
 
 const ComboBox = <T extends object>({
@@ -39,6 +34,7 @@ const ComboBox = <T extends object>({
     errorMessage,
     children,
     placeholder,
+    isPending,
     className,
     items,
     ...props
@@ -59,10 +55,10 @@ const ComboBox = <T extends object>({
                         </Label>
                     )}
                     <FieldGroup>
-                        {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
-                                {props.prefix}
-                            </span>
+                        {isPending ? (
+                            <IconLoader className='animate-spin ml-2 size-4 shrink-0 text-muted-fg' />
+                        ) : props.prefix ? (
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
                         ) : null}
                         <Input placeholder={placeholder ?? 'Choose an option or Input value'} />
                         {props.inputValue ? (
@@ -72,12 +68,7 @@ const ComboBox = <T extends object>({
                                 aria-label='Chevron'
                                 className='rounded-lg outline-hidden inline-flex items-center justify-center text-muted-fg'
                             >
-                                <IconChevronDown
-                                    className={cn(
-                                        'transition size-4 mr-2',
-                                        isOpen && '-rotate-180'
-                                    )}
-                                />
+                                <IconChevronDown className={cn('transition size-4 mr-2', isOpen && '-rotate-180')} />
                             </Button>
                         )}
                     </FieldGroup>
@@ -164,17 +155,10 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
     )
 }
 
-const ComboBoxSection = <T extends object>({
-    className,
-    ...props
-}: ListBoxSectionProps<T> & { title?: string }) => (
-    <ListBoxSection
-        className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}
-    >
+const ComboBoxSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+    <ListBoxSection className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}>
         {'title' in props && (
-            <Header className='text-muted-fg text-xs py-1 px-2 col-span-full pointer-events-none'>
-                {props.title}
-            </Header>
+            <Header className='text-muted-fg text-xs py-1 px-2 col-span-full pointer-events-none'>{props.title}</Header>
         )}
         <Collection items={props.items}>{props.children}</Collection>
     </ListBoxSection>

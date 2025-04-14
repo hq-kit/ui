@@ -15,12 +15,7 @@ export default function DateRangePickerValidationDemo() {
 
     return (
         <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
-            <DateRangePicker
-                isRequired
-                label='Event date'
-                value={value}
-                onChange={(v) => setValue(v!)}
-            />
+            <DateRangePicker isRequired label='Event date' value={value} onChange={(v) => setValue(v!)} />
             <Button type='submit'>Submit</Button>
         </Form>
     )

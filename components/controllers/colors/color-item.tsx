@@ -42,21 +42,14 @@ const ColorItem = ({ item, textColor, name, selectedFormat, tailwindVariable }: 
                     ? 'ring-1 ring-black/10 ring-inset'
                     : 'dark:ring-1 dark:ring-white/10 dark:ring-inset'
             )}
-            onAction={() =>
-                handleCopy(
-                    parseColor(item.color as string)?.toString(selectedFormat as ColorFormat)
-                )
-            }
+            onAction={() => handleCopy(parseColor(item.color as string)?.toString(selectedFormat as ColorFormat))}
             style={{
                 color: textColor ?? textfg(item.color),
                 backgroundColor: item.color
             }}
         >
             <span
-                className={cn(
-                    'absolute top-2 left-1/2 hidden -translate-x-1/2 group-hover:block',
-                    copied && 'block'
-                )}
+                className={cn('absolute top-2 left-1/2 hidden -translate-x-1/2 group-hover:block', copied && 'block')}
             >
                 {copied ? <IconCheck /> : <IconCopy />}
             </span>

@@ -16,9 +16,7 @@ export default function CheckboxValidationDemo() {
                 onChange={setValue}
                 value={value}
                 isRequired
-                validate={(v) =>
-                    !v.includes('terms-conditions') ? 'Terms and conditions must be accepted' : null
-                }
+                validate={(v) => (!v.includes('terms-conditions') ? 'Terms and conditions must be accepted' : null)}
                 label='Agreement'
                 description='Please read and agree before continuing'
             >

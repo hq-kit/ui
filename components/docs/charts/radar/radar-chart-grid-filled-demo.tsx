@@ -37,10 +37,7 @@ export default function RadarChartGridFilledDemo() {
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <RadarChart data={chartData}>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <PolarGrid className='fill-[--color-revenue] opacity-20' />
                         <PolarAngleAxis dataKey='month' />
                         <Radar dataKey='revenue' fill='var(--color-revenue)' fillOpacity={0.5} />

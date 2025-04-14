@@ -1,10 +1,4 @@
-import {
-    IconBrandArch,
-    IconBrandDebian,
-    IconBrandFedora,
-    IconBrandRedhat,
-    IconBrandUbuntu
-} from 'hq-icons'
+import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandRedhat, IconBrandUbuntu } from 'hq-icons'
 
 import { Select } from '@/components/ui'
 

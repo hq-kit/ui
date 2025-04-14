@@ -30,16 +30,8 @@ export default function SalesPerformanceOverview() {
             />
             <Card.Content className='flex flex-1 items-center pb-0'>
                 <Chart config={chartConfig} className='mx-auto aspect-square w-full max-w-[250px]'>
-                    <RadialBarChart
-                        data={chartData}
-                        endAngle={180}
-                        innerRadius={80}
-                        outerRadius={130}
-                    >
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                    <RadialBarChart data={chartData} endAngle={180} innerRadius={80} outerRadius={130}>
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
                             <Label
                                 content={({ viewBox }) => {

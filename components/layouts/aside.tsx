@@ -69,18 +69,13 @@ const renderHierarchy = (node: Hierarchy) => {
                                 </MenuLink>
                             ) : (
                                 <li key={subKey} id={subKey} className='flex flex-col gap-1'>
-                                    <Heading className='text-fg font-semibold pl-4 py-2'>
-                                        {goodTitle(subKey)}
-                                    </Heading>
+                                    <Heading className='text-fg font-semibold pl-4 py-2'>{goodTitle(subKey)}</Heading>
                                     <ul className='flex flex-col gap-1 mb-4'>
                                         {Object.entries(subValue as Hierarchy).map(
                                             ([childKey, childValue]) =>
                                                 typeof childValue === 'object' &&
                                                 'title' in childValue && (
-                                                    <MenuLink
-                                                        key={childKey}
-                                                        href={`/${childValue.slug}`}
-                                                    >
+                                                    <MenuLink key={childKey} href={`/${childValue.slug}`}>
                                                         {goodTitle((childValue as Doc).title)}
                                                     </MenuLink>
                                                 )

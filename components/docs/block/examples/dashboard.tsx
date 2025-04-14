@@ -1,12 +1,6 @@
 'use client'
 
-import {
-    IconActivity,
-    IconChartColumn,
-    IconRupiah,
-    IconSquareArrowUpRight,
-    IconUsers
-} from 'hq-icons'
+import { IconActivity, IconChartColumn, IconRupiah, IconSquareArrowUpRight, IconUsers } from 'hq-icons'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Avatar, buttonStyles, Card, Container, Link, Navbar, Table } from '@/components/ui'
@@ -21,9 +15,7 @@ export default function Dashboard() {
                         <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4'>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>
-                                        Total Revenue
-                                    </Card.Title>
+                                    <Card.Title className='text-sm font-medium'>Total Revenue</Card.Title>
                                     <IconRupiah className='text-muted-fg size-4' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
@@ -33,9 +25,7 @@ export default function Dashboard() {
                             </Card>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>
-                                        Subscriptions
-                                    </Card.Title>
+                                    <Card.Title className='text-sm font-medium'>Subscriptions</Card.Title>
                                     <IconUsers className='text-muted-fg size-4' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
@@ -55,9 +45,7 @@ export default function Dashboard() {
                             </Card>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>
-                                        Active Now
-                                    </Card.Title>
+                                    <Card.Title className='text-sm font-medium'>Active Now</Card.Title>
                                     <IconActivity className='text-muted-fg size-4' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
@@ -82,17 +70,13 @@ export default function Dashboard() {
                                     <Table>
                                         <Table.Header>
                                             <Table.Column isRowHeader>Customer</Table.Column>
-                                            <Table.Column className='[&_div]:justify-end'>
-                                                Amount
-                                            </Table.Column>
+                                            <Table.Column className='[&_div]:justify-end'>Amount</Table.Column>
                                         </Table.Header>
                                         <Table.Body>
                                             {transactions.map((transaction) => (
                                                 <Table.Row key={transaction.id}>
                                                     <Table.Cell>
-                                                        <div className='font-medium'>
-                                                            {transaction.name}
-                                                        </div>
+                                                        <div className='font-medium'>{transaction.name}</div>
                                                         <div className='text-muted-fg hidden text-sm md:inline'>
                                                             {transaction.email}
                                                         </div>
@@ -112,26 +96,17 @@ export default function Dashboard() {
                                 </Card.Header>
                                 <Card.Content className='grid gap-8'>
                                     {transactions.map((transaction) => (
-                                        <div
-                                            key={transaction.id}
-                                            className='flex items-center gap-4'
-                                        >
+                                        <div key={transaction.id} className='flex items-center gap-4'>
                                             <Avatar
                                                 className='hidden size-9 sm:flex'
                                                 src={`https://i.pravatar.cc/150?img=${transaction.id}`}
                                                 initials={getInitials(transaction.name)}
                                             />
                                             <div className='grid gap-1'>
-                                                <p className='text-sm leading-none font-medium'>
-                                                    {transaction.name}
-                                                </p>
-                                                <p className='text-muted-fg text-sm'>
-                                                    {transaction.email}
-                                                </p>
+                                                <p className='text-sm leading-none font-medium'>{transaction.name}</p>
+                                                <p className='text-muted-fg text-sm'>{transaction.email}</p>
                                             </div>
-                                            <div className='ml-auto font-medium'>
-                                                +Rp {transaction.amount}
-                                            </div>
+                                            <div className='ml-auto font-medium'>+Rp {transaction.amount}</div>
                                         </div>
                                     ))}
                                 </Card.Content>

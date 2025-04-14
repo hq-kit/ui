@@ -30,19 +30,12 @@ const components = [...getAllFiles(docsDir), ...getAllFiles(uiDir)]
     .reduce(
         (acc, filePath) => {
             const content = fs.readFileSync(filePath, 'utf8') // Read the file content
-            const relativePath = path
-                .relative(baseDir, filePath)
-                .replace(/\\/g, '/')
-                .replace('.tsx', '')
+            const relativePath = path.relative(baseDir, filePath).replace(/\\/g, '/').replace('.tsx', '')
             const importPath = `@/components/${relativePath}`
             const key = relativePath.split('/').slice(1).join('/')
             const type = filePath.startsWith(docsDir) ? 'docs' : 'ui' // Determine type based on folder path
 
-            if (
-                type === 'docs' &&
-                !filePath.includes('layouts') &&
-                !filePath.includes('block/components')
-            ) {
+            if (type === 'docs' && !filePath.includes('layouts') && !filePath.includes('block/components')) {
                 // @ts-expect-error no-type
                 acc.tsComponents[key] = {
                     component: importPath

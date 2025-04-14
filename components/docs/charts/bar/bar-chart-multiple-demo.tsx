@@ -5,20 +5,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
 import { Card, Chart, type ChartConfig } from '@/components/ui'
 
 const chartData = Array.from({ length: 12 }, (_, i) => {
-    const months = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-    ]
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     return {
         month: months[i],
         sales: 1000 + Math.floor(Math.random() * 300), // Random value for Sales
@@ -55,10 +42,7 @@ export default function BarChartMultipleDemo() {
                     <BarChart accessibilityLayer data={chartData}>
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey='month' tickLine={false} tickMargin={10} axisLine={false} />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='dashed' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='dashed' />} />
                         <Bar dataKey='sales' fill='var(--color-sales)' radius={4} />
                         <Bar dataKey='expenses' fill='var(--color-expenses)' radius={4} />
                         <Bar dataKey='profit' fill='var(--color-profit)' radius={4} />

@@ -36,17 +36,8 @@ export default function LineChartStepDemo() {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey='month' tickLine={false} axisLine={false} tickMargin={8} />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
-                        <Line
-                            dataKey='sales'
-                            type='step'
-                            stroke='var(--color-sales)'
-                            strokeWidth={2}
-                            dot={false}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
+                        <Line dataKey='sales' type='step' stroke='var(--color-sales)' strokeWidth={2} dot={false} />
                     </LineChart>
                 </Chart>
             </Card.Content>

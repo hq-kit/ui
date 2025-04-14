@@ -45,18 +45,8 @@ export default function TooltipChartNoLabelDemo() {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                        <Bar
-                            dataKey='products'
-                            stackId='a'
-                            fill='var(--color-products)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='services'
-                            stackId='a'
-                            fill='var(--color-services)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='products' stackId='a' fill='var(--color-products)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='services' stackId='a' fill='var(--color-services)' radius={[4, 4, 0, 0]} />
                         <Chart.Tooltip
                             content={<Chart.TooltipContent hideIndicator hideLabel />}
                             cursor={false}

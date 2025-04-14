@@ -12,15 +12,7 @@ import { copyToClipboard } from 'usemods'
 import { CopyButton } from '@/components/mdx/copy-button'
 import { cn } from '@/lib/utils'
 
-export default function Code({
-    lang = 'tsx',
-    code,
-    className
-}: {
-    lang?: string
-    code: string
-    className?: string
-}) {
+export default function Code({ lang = 'tsx', code, className }: { lang?: string; code: string; className?: string }) {
     const [copied, setCopied] = React.useState<boolean>(false)
 
     const copyCode = () => {

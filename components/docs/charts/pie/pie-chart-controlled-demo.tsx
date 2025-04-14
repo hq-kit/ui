@@ -52,10 +52,7 @@ export default function PieChartControlledDemo() {
     const id = 'pie-interactive'
     const [activeMonth, setActiveMonth] = useState<Key>(data[0]!.month)
 
-    const activeIndex = useMemo(
-        () => data.findIndex((item) => item.month === activeMonth),
-        [activeMonth]
-    )
+    const activeIndex = useMemo(() => data.findIndex((item) => item.month === activeMonth), [activeMonth])
     const months = useMemo(() => data.map((item) => item.month), [])
 
     return (
@@ -66,9 +63,7 @@ export default function PieChartControlledDemo() {
                     <Card.Title className='capitalize'>{activeMonth}</Card.Title>
                     <Card.Description>
                         The total sales for the month is{' '}
-                        <strong className='font-semibold'>
-                            {data[activeIndex]?.sales.toLocaleString()}
-                        </strong>
+                        <strong className='font-semibold'>{data[activeIndex]?.sales.toLocaleString()}</strong>
                     </Card.Description>
                 </div>
                 <Select
@@ -93,16 +88,9 @@ export default function PieChartControlledDemo() {
                 </Select>
             </Card.Header>
             <Card.Content className='flex flex-1 justify-center pb-0'>
-                <Chart
-                    id={id}
-                    config={config}
-                    className='mx-auto aspect-square w-full max-w-[315px]'
-                >
+                <Chart id={id} config={config} className='mx-auto aspect-square w-full max-w-[315px]'>
                     <PieChart>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Pie
                             data={data}
                             dataKey='sales'
@@ -113,11 +101,7 @@ export default function PieChartControlledDemo() {
                             activeShape={({ outerRadius = 0, ...props }: PieSectorDataItem) => (
                                 <g>
                                     <Sector {...props} outerRadius={outerRadius + 10} />
-                                    <Sector
-                                        {...props}
-                                        outerRadius={outerRadius + 25}
-                                        innerRadius={outerRadius + 12}
-                                    />
+                                    <Sector {...props} outerRadius={outerRadius + 25} innerRadius={outerRadius + 12} />
                                 </g>
                             )}
                         >

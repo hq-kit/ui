@@ -5,11 +5,7 @@ import type {
     CheckboxGroupProps as RACCheckboxGroupProps,
     CheckboxProps as RACCheckboxProps
 } from 'react-aria-components'
-import {
-    composeRenderProps,
-    Checkbox as RACCheckbox,
-    CheckboxGroup as RACCheckboxGroup
-} from 'react-aria-components'
+import { composeRenderProps, Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -17,19 +13,11 @@ import { Description, FieldError, FieldProps, Label } from './field'
 
 interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
 
-const CheckboxGroup = ({
-    className,
-    children,
-    description,
-    errorMessage,
-    ...props
-}: CheckboxGroupProps) => {
+const CheckboxGroup = ({ className, children, description, errorMessage, ...props }: CheckboxGroupProps) => {
     return (
         <RACCheckboxGroup
             {...props}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-2', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
         >
             {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                 <>
@@ -49,23 +37,12 @@ interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'placeholder'
     children?: React.ReactNode
 }
 
-const Checkbox = ({
-    className,
-    label,
-    children,
-    description,
-    errorMessage,
-    ...props
-}: CheckboxProps) => {
+const Checkbox = ({ className, label, children, description, errorMessage, ...props }: CheckboxProps) => {
     return (
         <RACCheckbox
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn(
-                    'group flex items-center gap-2 text-sm transition',
-                    isDisabled && 'opacity-50',
-                    className
-                )
+                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
         >
             {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired }) => (
@@ -76,7 +53,7 @@ const Checkbox = ({
                 >
                     <div
                         className={cn(
-                            'flex size-4 shrink-0 items-center justify-center rounded-sm border text-bg transition',
+                            'flex size-4 shrink-0 items-center justify-center rounded-xs border text-bg transition',
                             isSelected || isIndeterminate
                                 ? 'border-primary bg-primary text-primary-fg group-invalid:border-danger/70 group-invalid:bg-danger group-invalid:text-danger-fg'
                                 : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',

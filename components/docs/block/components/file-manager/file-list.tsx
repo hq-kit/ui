@@ -1,12 +1,4 @@
-import {
-    IconArchive,
-    IconDisc,
-    IconFileImage,
-    IconFileMusic,
-    IconFileText,
-    IconFileVideo,
-    IconFolder
-} from 'hq-icons'
+import { IconArchive, IconDisc, IconFileImage, IconFileMusic, IconFileText, IconFileVideo, IconFolder } from 'hq-icons'
 
 export type FileNode = {
     file: string
@@ -16,12 +8,7 @@ export type FileNode = {
 const filesInDownloads: FileNode[] = [
     {
         file: 'Compressed',
-        children: [
-            { file: 'laravel.zip' },
-            { file: 'react.zip' },
-            { file: 'nextjs.rar' },
-            { file: 'ubuntu.iso' }
-        ]
+        children: [{ file: 'laravel.zip' }, { file: 'react.zip' }, { file: 'nextjs.rar' }, { file: 'ubuntu.iso' }]
     },
     {
         file: 'Docs',
@@ -36,12 +23,7 @@ const filesInDownloads: FileNode[] = [
 const filesInDocuments: FileNode[] = [
     {
         file: 'Thesis',
-        children: [
-            { file: 'Bab 1.docx' },
-            { file: 'Bab 2.docx' },
-            { file: 'Bab 3.docx' },
-            { file: 'Cover.docx' }
-        ]
+        children: [{ file: 'Bab 1.docx' }, { file: 'Bab 2.docx' }, { file: 'Bab 3.docx' }, { file: 'Cover.docx' }]
     },
     { file: 'Secret.txt' },
     { file: 'Project.jpg' }

@@ -34,27 +34,25 @@ export default function ColorCustomizer() {
                         <Button variant='outline'>
                             <IconPalette /> Presets
                         </Button>
-                        <Popover.Content placement='right'>In Progress</Popover.Content>
+                        <Popover.Content placement='right' className='p-4'>
+                            In Progress
+                        </Popover.Content>
                     </Popover>
                     <div className='flex items-center gap-3'>
                         <Tooltip>
                             <Toggle
-                                size='icon'
+                                icon
+                                variant='outline'
                                 isSelected={tailwindVariable}
                                 onChange={() => setTailwindVariable(!tailwindVariable)}
                             >
                                 {({ isSelected }) => (
-                                    <IconBrandTailwind
-                                        className={isSelected ? '!text-sky-500' : '!text-fg'}
-                                    />
+                                    <IconBrandTailwind className={isSelected ? '!text-sky-500' : '!text-fg'} />
                                 )}
                             </Toggle>
                             <Tooltip.Content>Enable Tailwind Color Variable</Tooltip.Content>
                         </Tooltip>
-                        <SelectFormat
-                            selectedFormat={selectedFormat}
-                            setSelectedFormat={setSelectedFormat}
-                        />
+                        <SelectFormat selectedFormat={selectedFormat} setSelectedFormat={setSelectedFormat} />
                     </div>
                 </Container>
             </div>

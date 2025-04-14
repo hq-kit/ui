@@ -1,6 +1,8 @@
 'use client'
 
-import { IconLoaderCircle, IconSearch, IconX } from 'hq-icons'
+import React from 'react'
+
+import { IconLoader, IconSearch, IconX } from 'hq-icons'
 import {
     Button,
     composeRenderProps,
@@ -34,22 +36,21 @@ const SearchField = ({
         <RACSearchField
             aria-label={placeholder ?? props['aria-label'] ?? 'Search...'}
             {...props}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
         >
             {({ isEmpty }) => (
                 <>
                     {label && <Label>{label}</Label>}
                     <FieldGroup>
-                        <IconSearch aria-hidden className='text-muted-fg ml-2 size-4 shrink-0' />
+                        {isPending ? (
+                            <IconLoader className='animate-spin ml-2 size-4 shrink-0 text-muted-fg' />
+                        ) : (
+                            <IconSearch className='text-muted-fg ml-2 size-4 shrink-0' />
+                        )}
                         <Input
                             placeholder={placeholder ?? 'Search...'}
                             className='[&::-webkit-search-cancel-button]:hidden'
                         />
-                        {isPending && (
-                            <IconLoaderCircle className='animate-spin size-4 mr-2 to-muted-fg' />
-                        )}
                         {!isEmpty && (
                             <Button
                                 type='button'
@@ -69,4 +70,3 @@ const SearchField = ({
 }
 
 export { SearchField }
-export type { SearchFieldProps }

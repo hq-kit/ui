@@ -162,7 +162,7 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
             data-navbar-trigger='true'
             variant='ghost'
             aria-label={props['aria-label'] || 'Toggle Navbar'}
-            size='icon'
+            icon
             className={className}
             onPress={(event) => {
                 onPress?.(event)
@@ -183,11 +183,7 @@ const NavbarSection = ({ className, ...props }: React.ComponentProps<'div'>) => 
         <LayoutGroup id={id}>
             <div
                 data-navbar-section='true'
-                className={cn(
-                    'flex',
-                    isCompact ? 'flex-col gap-y-4' : 'flex-row items-center gap-x-3',
-                    className
-                )}
+                className={cn('flex', isCompact ? 'flex-col gap-y-4' : 'flex-row items-center gap-x-3', className)}
                 {...props}
             >
                 {props.children}
@@ -256,9 +252,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
 }
 
 const NavbarFlex = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
-    return (
-        <div ref={ref} className={cn('flex items-center gap-2 md:gap-3', className)} {...props} />
-    )
+    return <div ref={ref} className={cn('flex items-center gap-2 md:gap-3', className)} {...props} />
 }
 
 interface NavbarCompactProps extends React.ComponentProps<'div'> {
@@ -288,11 +282,7 @@ const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<'div'>) 
         <main
             ref={ref}
             data-navbar-variant={variant}
-            className={cn(
-                'flex flex-1 flex-col',
-                variant === 'inset' && 'bg-bg pb-2 md:px-2',
-                className
-            )}
+            className={cn('flex flex-1 flex-col', variant === 'inset' && 'bg-bg pb-2 md:px-2', className)}
         >
             <div
                 className={cn(

@@ -64,11 +64,7 @@ export default function DataFormSink() {
                     </CheckboxGroup>
                     <MultiSelect className='w-full' label='Components' items={items}>
                         {(item) => {
-                            return (
-                                <MultiSelect.Item textValue={item.name}>
-                                    {item.name}
-                                </MultiSelect.Item>
-                            )
+                            return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
                         }}
                     </MultiSelect>
                     <Switch>Notifications</Switch>

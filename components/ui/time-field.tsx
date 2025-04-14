@@ -29,9 +29,7 @@ const TimeField = <T extends TimeValue>({
     return (
         <RACTimeField
             {...props}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
         >
             {({ isInvalid, isDisabled }) => (
                 <>

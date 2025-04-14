@@ -16,19 +16,10 @@ interface TextareaProps extends RACTextFieldProps, FieldProps {
     className?: string
 }
 
-const Textarea = ({
-    className,
-    placeholder,
-    label,
-    description,
-    errorMessage,
-    ...props
-}: TextareaProps) => {
+const Textarea = ({ className, placeholder, label, description, errorMessage, ...props }: TextareaProps) => {
     return (
         <RACTextField
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (

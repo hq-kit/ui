@@ -47,10 +47,7 @@ export default function LineChartLabelDemo() {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey='month' tickLine={false} axisLine={false} tickMargin={8} />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
                         <Line
                             dataKey='revenue'
                             type='natural'
@@ -63,12 +60,7 @@ export default function LineChartLabelDemo() {
                                 r: 6
                             }}
                         >
-                            <LabelList
-                                position='top'
-                                offset={12}
-                                className='fill-fg'
-                                fontSize={12}
-                            />
+                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
                         </Line>
                         <Line
                             dataKey='expenses'
@@ -82,12 +74,7 @@ export default function LineChartLabelDemo() {
                                 r: 6
                             }}
                         >
-                            <LabelList
-                                position='top'
-                                offset={12}
-                                className='fill-fg'
-                                fontSize={12}
-                            />
+                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
                         </Line>
                     </LineChart>
                 </Chart>

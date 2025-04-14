@@ -17,12 +17,7 @@ const items = [
 
 export default function ListBoxDisabledDemo() {
     return (
-        <ListBox
-            disabledKeys={[1, 3]}
-            items={items}
-            aria-label='Linux Distros'
-            selectionMode='multiple'
-        >
+        <ListBox disabledKeys={[1, 3]} items={items} aria-label='Linux Distros' selectionMode='multiple'>
             {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
         </ListBox>
     )

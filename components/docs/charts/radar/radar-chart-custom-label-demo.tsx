@@ -49,10 +49,7 @@ export default function RadarChartCustomLabelDemo() {
                             left: 10
                         }}
                     >
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
                         <PolarAngleAxis
                             dataKey='month'
                             tick={({ x, y, textAnchor, index, ...props }) => {
@@ -70,12 +67,7 @@ export default function RadarChartCustomLabelDemo() {
                                         <tspan>{data.revenue}</tspan>
                                         <tspan className='fill-muted-fg'>/</tspan>
                                         <tspan>{data.expenses}</tspan>
-                                        <tspan
-                                            x={x}
-                                            dy={'1rem'}
-                                            fontSize={12}
-                                            className='fill-muted-fg'
-                                        >
+                                        <tspan x={x} dy={'1rem'} fontSize={12} className='fill-muted-fg'>
                                             {data.month}
                                         </tspan>
                                     </text>

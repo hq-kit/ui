@@ -57,13 +57,7 @@ export default function LineChartDotsColorDemo() {
                         <CartesianGrid vertical={false} />
                         <Chart.Tooltip
                             cursor={false}
-                            content={
-                                <Chart.TooltipContent
-                                    indicator='line'
-                                    nameKey='expenses'
-                                    hideLabel
-                                />
-                            }
+                            content={<Chart.TooltipContent indicator='line' nameKey='expenses' hideLabel />}
                         />
                         <Line
                             dataKey='expenses'

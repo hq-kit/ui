@@ -1,25 +1,8 @@
 'use client'
 
-import {
-    IconChevronLeft,
-    IconChevronRight,
-    IconChevronsLeft,
-    IconChevronsRight,
-    IconEllipsis
-} from 'hq-icons'
-import type {
-    ListBoxItemProps,
-    ListBoxProps,
-    ListBoxSectionProps,
-    TextProps
-} from 'react-aria-components'
-import {
-    composeRenderProps,
-    ListBox,
-    ListBoxItem,
-    ListBoxSection,
-    Text
-} from 'react-aria-components'
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconEllipsis } from 'hq-icons'
+import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
+import { composeRenderProps, ListBox, ListBoxItem, ListBoxSection, Text } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -27,12 +10,7 @@ interface PaginationProps<T> extends ListBoxProps<T> {
     ref?: React.RefObject<HTMLDivElement>
     shape?: 'square' | 'circle'
 }
-const Pagination = <T extends object>({
-    className,
-    shape = 'square',
-    ref,
-    ...props
-}: PaginationProps<T>) => {
+const Pagination = <T extends object>({ className, shape = 'square', ref, ...props }: PaginationProps<T>) => {
     return (
         <ListBox
             ref={ref}
@@ -40,9 +18,7 @@ const Pagination = <T extends object>({
             aria-label={props['aria-label'] || 'Pagination'}
             layout='grid'
             data-shape={shape}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex gap-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex gap-1.5', className))}
             {...props}
         />
     )
@@ -51,11 +27,7 @@ const Pagination = <T extends object>({
 interface PaginationPagesProps<T> extends ListBoxSectionProps<T> {
     ref?: React.RefObject<HTMLElement>
 }
-const PaginationPages = <T extends object>({
-    className,
-    ref,
-    ...props
-}: PaginationPagesProps<T>) => (
+const PaginationPages = <T extends object>({ className, ref, ...props }: PaginationPagesProps<T>) => (
     <ListBoxSection ref={ref} {...props} className={cn('flex gap-1.5', className)} />
 )
 
@@ -65,13 +37,7 @@ interface PaginationItemProps extends ListBoxItemProps {
     isCurrent?: boolean
     role?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
 }
-const PaginationItem = ({
-    role = 'page',
-    className,
-    isCurrent,
-    children,
-    ...props
-}: PaginationItemProps) => {
+const PaginationItem = ({ role = 'page', className, isCurrent, children, ...props }: PaginationItemProps) => {
     const textValue = role === 'page' ? children?.toString() : role
     return (
         <ListBoxItem
@@ -87,8 +53,7 @@ const PaginationItem = ({
                         isPressed && 'bg-primary/20 text-primary',
                         isFocusVisible && 'ring-4 border-primary ring-primary/20',
                         {
-                            'bg-primary text-primary-fg pointer-events-none':
-                                isCurrent || isSelected
+                            'bg-primary text-primary-fg pointer-events-none': isCurrent || isSelected
                         },
                         isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                         role !== 'ellipsis' && 'border',

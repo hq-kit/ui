@@ -57,9 +57,7 @@ export default function LineChartCustomLabelDemo() {
                         <CartesianGrid vertical={false} />
                         <Chart.Tooltip
                             cursor={false}
-                            content={
-                                <Chart.TooltipContent indicator='line' nameKey='users' hideLabel />
-                            }
+                            content={<Chart.TooltipContent indicator='line' nameKey='users' hideLabel />}
                         />
                         <Line
                             dataKey='users'
@@ -79,9 +77,7 @@ export default function LineChartCustomLabelDemo() {
                                 className='fill-fg'
                                 fontSize={12}
                                 dataKey='platform'
-                                formatter={(value: keyof typeof chartConfig) =>
-                                    chartConfig[value]?.label
-                                }
+                                formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}
                             />
                         </Line>
                     </LineChart>

@@ -32,7 +32,7 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
     })
 
     return (
-        <Command isOpen={openCommand} onOpenChange={setOpen} shortcut={{ key: 'k' }}>
+        <Command.Modal isOpen={openCommand} onOpenChange={setOpen} shortcut={{ key: 'k' }}>
             <Command.Section title='Pages'>
                 <Command.Item textValue='home' onAction={() => router.push('/')}>
                     <IconHome />
@@ -58,20 +58,15 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
 
             {filteredNodeEntries.map(([key, value]) => (
                 <React.Fragment key={key}>
-                    <Command.Section
-                        key={`${key}-section`}
-                        title={key !== 'components' ? goodTitle(key) : undefined}
-                    >
+                    <Command.Section key={`${key}-section`} title={key !== 'components' ? goodTitle(key) : undefined}>
                         {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
                             typeof subValue === 'object' && 'title' in subValue ? (
                                 <Command.Item
-                                    textValue={goodTitle(key + ' ' + (subValue as Doc).title)}
+                                    textValue={key + (subValue as Doc).title}
                                     key={`${key}-${subKey}`}
                                     onAction={() => router.push(`/${subValue.slug}`)}
                                 >
-                                    <Command.Label>
-                                        {goodTitle((subValue as Doc).title)}
-                                    </Command.Label>
+                                    <Command.Label>{goodTitle((subValue as Doc).title)}</Command.Label>
                                 </Command.Item>
                             ) : null
                         )}
@@ -79,37 +74,27 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
 
                     {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
                         typeof subValue === 'object' && 'title' in subValue ? null : (
-                            <Command.Section
-                                key={`${key}-${subKey}-section`}
-                                title={goodTitle(subKey)}
-                            >
-                                {Object.entries(subValue as Hierarchy).map(
-                                    ([childKey, childValue]) =>
-                                        typeof childValue === 'object' && 'title' in childValue ? (
-                                            <Command.Item
-                                                textValue={
-                                                    childValue.title === 'Text Field'
-                                                        ? 'Text Field Input'
-                                                        : goodTitle(
-                                                              subKey +
-                                                                  ' ' +
-                                                                  (childValue as Doc).title
-                                                          )
-                                                }
-                                                key={`${key}-${subKey}-${childKey}`}
-                                                onAction={() => router.push(`/${childValue.slug}`)}
-                                            >
-                                                <Command.Label>
-                                                    {goodTitle((childValue as Doc).title)}
-                                                </Command.Label>
-                                            </Command.Item>
-                                        ) : null
+                            <Command.Section key={`${key}-${subKey}-section`} title={goodTitle(subKey)}>
+                                {Object.entries(subValue as Hierarchy).map(([childKey, childValue]) =>
+                                    typeof childValue === 'object' && 'title' in childValue ? (
+                                        <Command.Item
+                                            textValue={
+                                                childValue.title === 'Text Field'
+                                                    ? 'Text Field Input'
+                                                    : subKey + (childValue as Doc).title
+                                            }
+                                            key={`${key}-${subKey}-${childKey}`}
+                                            onAction={() => router.push(`/${childValue.slug}`)}
+                                        >
+                                            <Command.Label>{goodTitle((childValue as Doc).title)}</Command.Label>
+                                        </Command.Item>
+                                    ) : null
                                 )}
                             </Command.Section>
                         )
                     )}
                 </React.Fragment>
             ))}
-        </Command>
+        </Command.Modal>
     )
 }

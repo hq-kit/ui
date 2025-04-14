@@ -11,12 +11,7 @@ import { cn } from '@/lib/utils'
 
 import { ColorSwatch } from './color-swatch'
 
-const ColorSwatchPicker = ({
-    children,
-    className,
-    layout = 'grid',
-    ...props
-}: ColorSwatchPickerProps) => {
+const ColorSwatchPicker = ({ children, className, layout = 'grid', ...props }: ColorSwatchPickerProps) => {
     return (
         <RACColorSwatchPicker
             layout={layout}
@@ -32,16 +27,14 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
     return (
         <ColorSwatchPickerItem
             {...props}
-            className={composeRenderProps(
-                className,
-                (className, { isDisabled, isFocusVisible, isFocused }) =>
-                    cn(
-                        'relative rounded-lg disabled:opacity-50',
-                        isFocused && 'ring-primary/20 ring-4',
-                        isFocusVisible && 'ring-primary/20 ring-4',
-                        isDisabled && 'opacity-50',
-                        className
-                    )
+            className={composeRenderProps(className, (className, { isDisabled, isFocusVisible, isFocused }) =>
+                cn(
+                    'relative rounded-lg disabled:opacity-50',
+                    isFocused && 'ring-primary/20 ring-4',
+                    isFocusVisible && 'ring-primary/20 ring-4',
+                    isDisabled && 'opacity-50',
+                    className
+                )
             )}
         >
             {({ isSelected }) => (

@@ -24,9 +24,7 @@ export function ColorShades({ item, selectedFormat, tailwindVariable }: ColorRow
     return (
         <div className='bg-bg overflow-hidden rounded-lg border p-2'>
             <div className='mb-2 flex items-center justify-center'>
-                <h3 className='text-muted-fg font-mono text-sm font-medium tracking-tight sm:text-sm'>
-                    {item.name}
-                </h3>
+                <h3 className='text-muted-fg font-mono text-sm font-medium tracking-tight sm:text-sm'>{item.name}</h3>
             </div>
 
             <ListBox

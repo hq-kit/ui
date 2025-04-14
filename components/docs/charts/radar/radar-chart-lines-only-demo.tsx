@@ -41,10 +41,7 @@ export default function RadarChartLinesOnlyDemo() {
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <RadarChart data={chartData}>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
                         <PolarAngleAxis dataKey='month' />
                         <PolarGrid radialLines={false} />
                         <Radar

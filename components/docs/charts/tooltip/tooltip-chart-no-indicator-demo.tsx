@@ -45,18 +45,8 @@ export default function TooltipChartNoIndicatorDemo() {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                        <Bar
-                            dataKey='revenue'
-                            stackId='a'
-                            fill='var(--color-revenue)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='cost'
-                            stackId='a'
-                            fill='var(--color-cost)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='revenue' stackId='a' fill='var(--color-revenue)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='cost' stackId='a' fill='var(--color-cost)' radius={[4, 4, 0, 0]} />
                         <Chart.Tooltip
                             content={<Chart.TooltipContent hideIndicator />}
                             cursor={false}

@@ -3,18 +3,8 @@
 import React from 'react'
 
 import { IconX } from 'hq-icons'
-import type {
-    TagGroupProps as RACTagGroupProps,
-    TagListProps,
-    TagProps
-} from 'react-aria-components'
-import {
-    Button,
-    composeRenderProps,
-    Tag as RACTag,
-    TagGroup as RACTagGroup,
-    TagList
-} from 'react-aria-components'
+import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
+import { Button, composeRenderProps, Tag as RACTag, TagGroup as RACTagGroup, TagList } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'

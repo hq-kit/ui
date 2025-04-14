@@ -32,12 +32,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
         read: <IconCheckDouble className='text-success size-5' />
     }
     return (
-        <div
-            className={cn(
-                'group flex items-start',
-                role === 'send' ? 'flex-row-reverse' : 'flex-row'
-            )}
-        >
+        <div className={cn('group flex items-start', role === 'send' ? 'flex-row-reverse' : 'flex-row')}>
             <div>
                 <div
                     className={cn(
@@ -63,12 +58,10 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
             <Menu>
                 <Button
                     variant='outline'
-                    size='icon'
+                    icon
                     className='pressed:opacity-100 mx-2 size-7 p-1 opacity-0 transition group-hover:opacity-100'
                 >
-                    <IconChevronRight
-                        className={cn('size-3', role === 'send' ? 'rotate-180' : '')}
-                    />
+                    <IconChevronRight className={cn('size-3', role === 'send' ? 'rotate-180' : '')} />
                 </Button>
                 <Menu.Content placement={role === 'send' ? 'left' : 'right'} aria-label='Actions'>
                     <Menu.Item>

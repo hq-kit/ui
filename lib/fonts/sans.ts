@@ -1,13 +1,4 @@
-import {
-    Geist,
-    Inter,
-    Outfit,
-    Plus_Jakarta_Sans,
-    Poppins,
-    Raleway,
-    Roboto,
-    Ubuntu_Sans
-} from 'next/font/google'
+import { Geist, Inter, Outfit, Plus_Jakarta_Sans, Poppins, Raleway, Roboto, Ubuntu_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 

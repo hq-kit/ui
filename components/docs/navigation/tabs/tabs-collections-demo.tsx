@@ -15,9 +15,7 @@ export default function TabsCollectionsDemo() {
     return (
         <Tabs aria-label='Project Management'>
             <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
-            <Collection items={items}>
-                {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
-            </Collection>
+            <Collection items={items}>{(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}</Collection>
         </Tabs>
     )
 }

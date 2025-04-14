@@ -3,16 +3,16 @@
 import { use } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
-import type { DateValue, CalendarProps as RACCalendarProps } from 'react-aria-components'
+import type { CalendarProps as RACCalendarProps, DateValue } from 'react-aria-components'
 import {
+    Calendar as RACCalendar,
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
+    CalendarGridHeader as RACCalendarGridHeader,
     CalendarHeaderCell,
     CalendarStateContext,
     FieldError,
-    Calendar as RACCalendar,
-    CalendarGridHeader as RACCalendarGridHeader,
     RangeCalendarStateContext,
     useLocale
 } from 'react-aria-components'
@@ -41,22 +41,16 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
                     {(date) => (
                         <CalendarCell
                             date={date}
-                            className={({
-                                isHovered,
-                                isSelected,
-                                isOutsideMonth,
-                                isInvalid,
-                                isDisabled
-                            }) =>
+                            className={({ isHovered, isSelected, isOutsideMonth, isInvalid, isDisabled }) =>
                                 cn([
-                                    'shrink-0 relative rounded-lg flex items-center justify-center size-10 cursor-default outline-hidden',
+                                    'shrink-0 relative rounded-lg flex items-center justify-center size-9 cursor-default outline-hidden',
                                     isOutsideMonth && 'text-muted-fg',
                                     isHovered && 'bg-primary/10 text-primary',
                                     isSelected &&
                                         `${isInvalid ? 'bg-danger text-danger-fg' : 'bg-primary text-primary-fg'}`,
                                     isDisabled && 'opacity-50 pointer-events-none',
                                     date.compare(now) === 0 &&
-                                        'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-muted-fg'
+                                        'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-fg'
                                 ])
                             }
                         >
@@ -70,41 +64,22 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
     )
 }
 
-const CalendarHeader = ({
-    isRange,
-    className,
-    ...props
-}: React.ComponentProps<'header'> & { isRange?: boolean }) => {
+const CalendarHeader = ({ isRange, className, ...props }: React.ComponentProps<'header'> & { isRange?: boolean }) => {
     const { direction } = useLocale()
     const state = isRange ? use(RangeCalendarStateContext)! : use(CalendarStateContext)!
 
     return (
         <header
             slot='calendar-header'
-            className={cn(
-                'flex w-full items-center justify-between gap-1.5 pt-1 pr-1 pb-5 pl-1.5 sm:pb-4',
-                className
-            )}
+            className={cn('flex w-full items-center justify-between gap-1.5 pt-1 pr-1 pb-5 pl-1.5 sm:pb-4', className)}
             {...props}
         >
             <MonthYearSelection state={state} />
             <div className='flex items-center gap-1'>
-                <Button
-                    size='icon'
-                    className='size-8 **:data-[slot=icon]:text-fg sm:size-7'
-                    shape='circle'
-                    variant='ghost'
-                    slot='previous'
-                >
+                <Button className='text-muted-fg' icon size='sm' shape='circle' variant='ghost' slot='previous'>
                     {direction === 'rtl' ? <IconChevronRight /> : <IconChevronLeft />}
                 </Button>
-                <Button
-                    size='icon'
-                    className='size-8 **:data-[slot=icon]:text-fg sm:size-7'
-                    shape='circle'
-                    variant='ghost'
-                    slot='next'
-                >
+                <Button className='text-muted-fg' icon size='sm' shape='circle' variant='ghost' slot='next'>
                     {direction === 'rtl' ? <IconChevronLeft /> : <IconChevronRight />}
                 </Button>
             </div>

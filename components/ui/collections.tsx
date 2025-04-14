@@ -35,9 +35,7 @@ const useDND = <T extends object>({
         getDropOperation: () => operation,
         onInsert: async (e) => {
             const processedItems = await Promise.all(
-                e.items
-                    .filter(isTextDropItem)
-                    .map(async (item) => JSON.parse(await item.getText('custom-app-type')))
+                e.items.filter(isTextDropItem).map(async (item) => JSON.parse(await item.getText('custom-app-type')))
             )
             if (e.target.dropPosition === 'before') {
                 list.insertBefore(e.target.key, ...processedItems)
@@ -47,9 +45,7 @@ const useDND = <T extends object>({
         },
         onRootDrop: async (e) => {
             const processedItems = await Promise.all(
-                e.items
-                    .filter(isTextDropItem)
-                    .map(async (item) => JSON.parse(await item.getText('custom-app-type')))
+                e.items.filter(isTextDropItem).map(async (item) => JSON.parse(await item.getText('custom-app-type')))
             )
             list.append(...processedItems)
         },

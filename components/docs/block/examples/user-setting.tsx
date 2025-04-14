@@ -17,15 +17,10 @@ export default function UserSetting() {
                 <Card className='mb-6'>
                     <Card.Header>
                         <Card.Title>User Setting</Card.Title>
-                        <Card.Description>
-                            Manage your account settings and preferences.
-                        </Card.Description>
+                        <Card.Description>Manage your account settings and preferences.</Card.Description>
                     </Card.Header>
                 </Card>
-                <Tabs
-                    orientation={isMobile ? 'horizontal' : 'vertical'}
-                    aria-label='E-Learning Platform'
-                >
+                <Tabs orientation={isMobile ? 'horizontal' : 'vertical'} aria-label='E-Learning Platform'>
                     <Tabs.List>
                         <Tabs.Label id='account'>Account</Tabs.Label>
                         <Tabs.Label id='security'>Security</Tabs.Label>

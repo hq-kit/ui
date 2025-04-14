@@ -7,23 +7,23 @@ import type {
     CellProps,
     ColumnProps,
     ColumnResizerProps,
-    TableHeaderProps as HeaderProps,
-    TableProps as RACTableProps,
     RowProps,
-    TableBodyProps
+    TableBodyProps,
+    TableHeaderProps as HeaderProps,
+    TableProps as RACTableProps
 } from 'react-aria-components'
 import {
     Button,
     Cell,
     Collection,
     Column,
-    composeRenderProps,
     ColumnResizer as RACColumnResizer,
+    composeRenderProps,
+    ResizableTableContainer,
+    Row,
     Table as RACTable,
     TableBody as RACTableBody,
     TableHeader as RACTableHeader,
-    ResizableTableContainer,
-    Row,
     useTableOptions
 } from 'react-aria-components'
 
@@ -45,7 +45,7 @@ const useTableContext = () => React.useContext(TableContext)
 const Table = ({ className, ...props }: TableProps) => {
     return (
         <TableContext.Provider value={props}>
-            <div slot='table' className='relative w-full overflow-auto border rounded-lg'>
+            <div slot='table' className='relative w-full overflow-auto'>
                 {props.allowResize ? (
                     <ResizableTableContainer className='overflow-auto'>
                         <RACTable
@@ -166,25 +166,13 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
     ref?: React.Ref<HTMLTableSectionElement>
 }
 
-const TableHeader = <T extends object>({
-    children,
-    ref,
-    className,
-    columns,
-    ...props
-}: TableHeaderProps<T>) => {
+const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <RACTableHeader
-            ref={ref}
-            className={cn('border-b bg-primary/10 text-fg', className)}
-            {...props}
-        >
+        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-fg', className)} {...props}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
-                <Column className='w-0 pl-4'>
-                    {selectionMode === 'multiple' && <Checkbox slot='selection' />}
-                </Column>
+                <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
             )}
             <Collection items={columns}>{children}</Collection>
         </RACTableHeader>
@@ -196,14 +184,7 @@ interface TableRowProps<T extends object> extends RowProps<T> {
     ref?: React.Ref<HTMLTableRowElement>
 }
 
-const TableRow = <T extends object>({
-    children,
-    className,
-    columns,
-    id,
-    ref,
-    ...props
-}: TableRowProps<T>) => {
+const TableRow = <T extends object>({ children, className, columns, id, ref, ...props }: TableRowProps<T>) => {
     const { selectionBehavior, allowsDragging } = useTableOptions()
     return (
         <Row
@@ -211,18 +192,14 @@ const TableRow = <T extends object>({
             id={id}
             className={composeRenderProps(
                 className,
-                (
-                    className,
-                    { isSelected, isHovered, isFocusVisible, isDisabled, isFocusVisibleWithin }
-                ) =>
+                (className, { isSelected, isHovered, isFocusVisible, isDisabled, isFocusVisibleWithin }) =>
                     cn(
                         'group relative cursor-default not-last:border-b',
                         'href' in props && 'cursor-pointer',
                         isSelected && 'bg-primary/15 text-primary',
                         isHovered && 'bg-primary/10 text-primary',
                         {
-                            'outline outline-primary bg-primary/15 text-primary':
-                                isFocusVisible || isFocusVisibleWithin
+                            'outline outline-primary bg-primary/15 text-primary': isFocusVisible || isFocusVisibleWithin
                         },
                         isDisabled && 'pointer-events-none opacity-50',
                         className

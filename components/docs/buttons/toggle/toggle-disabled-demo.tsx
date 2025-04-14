@@ -6,7 +6,7 @@ import { Toggle } from '@/components/ui'
 
 export default function ToggleDisabledDemo() {
     return (
-        <Toggle size='icon' isDisabled>
+        <Toggle icon isDisabled>
             <IconPower />
         </Toggle>
     )

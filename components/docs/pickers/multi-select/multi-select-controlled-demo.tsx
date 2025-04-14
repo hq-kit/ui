@@ -23,12 +23,7 @@ export default function MultiSelectDemo() {
     const [selected, setSelected] = React.useState<Selection>(new Set([2, 4]))
     return (
         <div className='space-y-6'>
-            <MultiSelect
-                label='Linux Distro'
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
-                items={items}
-            >
+            <MultiSelect label='Linux Distro' selectedKeys={selected} onSelectionChange={setSelected} items={items}>
                 {(item) => {
                     return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
                 }}

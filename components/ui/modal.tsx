@@ -4,13 +4,7 @@ import React from 'react'
 
 import { IconX } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
-import type {
-    DialogProps,
-    DialogTriggerProps,
-    HeadingProps,
-    ModalOverlayProps,
-    TextProps
-} from 'react-aria-components'
+import type { DialogProps, DialogTriggerProps, HeadingProps, ModalOverlayProps, TextProps } from 'react-aria-components'
 import {
     Button,
     Dialog,
@@ -153,11 +147,7 @@ const Content = ({
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <div
-            slot='header'
-            className={cn('flex flex-col p-4 sm:p-6 sm:text-left text-center', className)}
-            {...props}
-        />
+        <div slot='header' className={cn('flex flex-col p-4 sm:p-6 sm:text-left text-center', className)} {...props} />
     )
 }
 

@@ -50,10 +50,7 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
         }
     }
     return (
-        <Form
-            onSubmit={onSubmit}
-            className='bg-bg relative overflow-hidden rounded-lg border-t md:border'
-        >
+        <Form onSubmit={onSubmit} className='bg-bg relative overflow-hidden rounded-lg border-t md:border'>
             <div
                 contentEditable
                 ref={editorRef}
@@ -67,24 +64,19 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
                 className='no-scrollbar min-h-32 w-full resize-none border-0 p-3 outline-none'
             />
             <div className='flex items-center p-2'>
-                <Button variant='ghost' size='icon' type='button'>
+                <Button variant='ghost' icon type='button'>
                     <IconCamera className='size-4' />
                     <span className='sr-only'>Upload Image</span>
                 </Button>
-                <Button variant='ghost' size='icon' type='button'>
+                <Button variant='ghost' icon type='button'>
                     <IconMic className='size-4' />
                     <span className='sr-only'>Use Microphone</span>
                 </Button>
-                <Button variant='ghost' size='icon' type='button'>
+                <Button variant='ghost' icon type='button'>
                     <IconPaperclip className='size-4' />
                     <span className='sr-only'>Attach File</span>
                 </Button>
-                <Button
-                    isDisabled={value.trim() === ''}
-                    type='submit'
-                    size='sm'
-                    className='ml-auto gap-1.5'
-                >
+                <Button isDisabled={value.trim() === ''} type='submit' size='sm' className='ml-auto gap-1.5'>
                     Send Message
                     <IconSend />
                 </Button>

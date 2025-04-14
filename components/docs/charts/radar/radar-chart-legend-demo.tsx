@@ -47,10 +47,7 @@ export default function RadarChartLegendDemo() {
                             bottom: -10
                         }}
                     >
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='line' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='line' />} />
                         <PolarAngleAxis dataKey='month' />
                         <PolarGrid />
                         <Radar dataKey='sales' fill='var(--color-sales)' fillOpacity={0.6} />

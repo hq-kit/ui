@@ -17,14 +17,8 @@ export default function TabsControlledDemo() {
     const [selected, setSelected] = React.useState<Key>(1)
     return (
         <div className='space-y-6'>
-            <Tabs
-                aria-label='Project Management'
-                selectedKey={selected}
-                onSelectionChange={setSelected}
-            >
-                <Tabs.List items={items}>
-                    {(item) => <Tabs.Label>{item.title}</Tabs.Label>}
-                </Tabs.List>
+            <Tabs aria-label='Project Management' selectedKey={selected} onSelectionChange={setSelected}>
+                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
                 <Collection items={items}>
                     {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
                 </Collection>

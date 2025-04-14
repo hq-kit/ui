@@ -103,9 +103,9 @@ export const syncGrayColor = (color: GrayColor, resolvedTheme: string | undefine
 
     const grayColor = grayColors.find((c) => c.name === color)
 
-    const vars = (
-        resolvedTheme === 'light' ? { ...grayColor?.cssVars.light } : { ...grayColor?.cssVars.dark }
-    ) as { [key: string]: string }
+    const vars = (resolvedTheme === 'light' ? { ...grayColor?.cssVars.light } : { ...grayColor?.cssVars.dark }) as {
+        [key: string]: string
+    }
 
     Object.keys(vars)?.forEach((variable) => {
         root.style.setProperty(`--${variable}`, `${vars[variable]}`)
@@ -113,9 +113,7 @@ export const syncGrayColor = (color: GrayColor, resolvedTheme: string | undefine
 
     root.style.setProperty(
         '--bg',
-        resolvedTheme === 'light'
-            ? `${grayColor?.cssVars.light.bg}`
-            : `${grayColor?.cssVars.dark.bg}`
+        resolvedTheme === 'light' ? `${grayColor?.cssVars.light.bg}` : `${grayColor?.cssVars.dark.bg}`
     )
 }
 
@@ -126,9 +124,7 @@ export const syncThemeColor = (color: PresetColor, resolvedTheme: string | undef
     const primaryColor = presetColors.find((c) => c.name === color)
 
     const vars = (
-        resolvedTheme === 'light'
-            ? { ...primaryColor?.cssVars.light }
-            : { ...primaryColor?.cssVars.dark }
+        resolvedTheme === 'light' ? { ...primaryColor?.cssVars.light } : { ...primaryColor?.cssVars.dark }
     ) as { [key: string]: string }
 
     Object.keys(vars)?.forEach((variable) => {

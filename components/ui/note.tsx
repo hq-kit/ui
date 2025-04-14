@@ -7,13 +7,7 @@ interface NoteProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     hideIndicator?: boolean
 }
 
-const Note = ({
-    hideIndicator = false,
-    variant = 'primary',
-    className,
-    children,
-    ...props
-}: NoteProps) => {
+const Note = ({ hideIndicator = false, variant = 'primary', className, children, ...props }: NoteProps) => {
     const iconMap: Record<string, React.ElementType | null> = {
         primary: IconInfo,
         info: IconInfo,

@@ -23,7 +23,7 @@ const items = [
 export default function ContextMenuItemDetailsDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger className='h-32 rounded-lg border border-dashed flex items-center justify-center'>
+            <ContextMenu.Trigger className='p-10 rounded-lg flex items-center justify-center border border-dashed'>
                 <p className='sm:flex hidden'>Right click here!</p>
                 <p className='sm:hidden flex'>Hold your finger here!</p>
             </ContextMenu.Trigger>

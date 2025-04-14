@@ -35,12 +35,7 @@ const Hero = ({ children }: { children: React.ReactNode }) => (
                     <path d='M.5 200V.5H200' fill='none' />
                 </pattern>
             </defs>
-            <rect
-                fill='url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)'
-                width='100%'
-                height='100%'
-                strokeWidth={0}
-            />
+            <rect fill='url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)' width='100%' height='100%' strokeWidth={0} />
         </svg>
         <div className='border-b pt-10 pb-6 lg:py-16'>
             <Container>{children}</Container>
@@ -48,32 +43,16 @@ const Hero = ({ children }: { children: React.ReactNode }) => (
     </div>
 )
 
-const HeroHeader = ({ children, ...props }: { children: React.ReactNode }) => (
-    <Header {...props}>{children}</Header>
-)
+const HeroHeader = ({ children, ...props }: { children: React.ReactNode }) => <Header {...props}>{children}</Header>
 
 const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
-    <Heading
-        level={1}
-        className={cn('mb-2 max-w-xl text-2xl font-bold lg:mb-6 lg:text-5xl', className)}
-        {...props}
-    >
+    <Heading level={1} className={cn('mb-2 max-w-xl text-2xl font-bold lg:mb-6 lg:text-5xl', className)} {...props}>
         {children}
     </Heading>
 )
 
-const HeroDescription = ({
-    children,
-    className,
-    ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-        className={cn(
-            'text-muted-fg block max-w-2xl text-base leading-relaxed lg:text-xl',
-            className
-        )}
-        {...props}
-    >
+const HeroDescription = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={cn('text-muted-fg block max-w-2xl text-base leading-relaxed lg:text-xl', className)} {...props}>
         {children}
     </div>
 )
@@ -86,7 +65,8 @@ const HeroContent = ({ children, className, ...props }: React.HTMLAttributes<HTM
 
 interface HeroButtonProps extends LinkProps {
     variant?: 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'outline' | 'ghost'
-    size?: 'sm' | 'md' | 'lg' | 'icon'
+    size?: 'xs' | 'sm' | 'md' | 'lg'
+    icon?: boolean
 }
 
 const HeroButton = ({
@@ -94,13 +74,15 @@ const HeroButton = ({
     className,
     variant = 'primary',
     size = 'lg',
+    icon = false,
     ...props
 }: HeroButtonProps) => (
     <Link
         className={cn(
             buttonStyles({
                 size: size,
-                variant: variant
+                variant: variant,
+                icon
             }),
             className
         )}

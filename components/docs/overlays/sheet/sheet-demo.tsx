@@ -13,18 +13,8 @@ export default function SheetDemo() {
                         <Sheet.Description>Enter your credentials to sign in.</Sheet.Description>
                     </Sheet.Header>
                     <Sheet.Body className='space-y-4'>
-                        <TextField
-                            isRequired
-                            type='email'
-                            label='Email'
-                            placeholder='Enter your email'
-                        />
-                        <TextField
-                            isRequired
-                            label='Password'
-                            type='password'
-                            placeholder='Enter your password'
-                        />
+                        <TextField isRequired type='email' label='Email' placeholder='Enter your email' />
+                        <TextField isRequired label='Password' type='password' placeholder='Enter your password' />
                         <div className='flex items-center justify-between'>
                             <Checkbox name='remember-me'>Remember me</Checkbox>
                             <Link href='#'>Forgot password?</Link>

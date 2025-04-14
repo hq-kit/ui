@@ -22,13 +22,7 @@ export default function SelectValidationDemo() {
     }
     return (
         <Form onSubmit={onSubmit} className='space-y-4'>
-            <Select
-                label='Linux Distro'
-                items={items}
-                selectedKey={value}
-                onSelectionChange={setValue}
-                isRequired
-            >
+            <Select label='Linux Distro' items={items} selectedKey={value} onSelectionChange={setValue} isRequired>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
             <Button type='submit'>Submit</Button>

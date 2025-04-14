@@ -18,10 +18,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
     const meta = {
         total,
         from: (page - 1) * Number(show) + 1,
-        to:
-            total - show * page > 0
-                ? total - (total - show * page)
-                : show * page - Math.abs(total - show * page),
+        to: total - show * page > 0 ? total - (total - show * page) : show * page - Math.abs(total - show * page),
         page,
         last_page: Math.ceil(total / show)
     }
@@ -34,10 +31,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
     }
     return (
         <div
-            className={cn(
-                'flex w-full flex-col-reverse items-center gap-3 xl:flex-row xl:justify-between',
-                className
-            )}
+            className={cn('flex w-full flex-col-reverse items-center gap-3 xl:flex-row xl:justify-between', className)}
         >
             <div>
                 Showing {meta.from} to {meta.to} of {meta.total} results
@@ -46,19 +40,9 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                 <Pagination>
                     {isDesktop ? (
                         <>
-                            <Pagination.Item
-                                role='first'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.first}
-                            />
-                            <Pagination.Item
-                                role='previous'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.prev}
-                            />
-                            {meta.page > 2 && (
-                                <Pagination.Item onAction={actions.first}>1</Pagination.Item>
-                            )}
+                            <Pagination.Item role='first' isDisabled={meta.page === 1} onAction={actions.first} />
+                            <Pagination.Item role='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            {meta.page > 2 && <Pagination.Item onAction={actions.first}>1</Pagination.Item>}
                             {meta.page > 3 && <Pagination.Item role='ellipsis' />}
                             {meta.page !== 1 && (
                                 <Pagination.Item onAction={() => setPage(meta.page - 1)}>
@@ -73,9 +57,7 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                             )}
                             {meta.page < meta.last_page - 2 && <Pagination.Item role='ellipsis' />}
                             {meta.page <= meta.last_page - 2 && (
-                                <Pagination.Item onAction={actions.last}>
-                                    {meta.last_page}
-                                </Pagination.Item>
+                                <Pagination.Item onAction={actions.last}>{meta.last_page}</Pagination.Item>
                             )}
                             <Pagination.Item
                                 role='next'
@@ -90,16 +72,8 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                         </>
                     ) : (
                         <>
-                            <Pagination.Item
-                                role='first'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.first}
-                            />
-                            <Pagination.Item
-                                role='previous'
-                                isDisabled={meta.page === 1}
-                                onAction={actions.prev}
-                            />
+                            <Pagination.Item role='first' isDisabled={meta.page === 1} onAction={actions.first} />
+                            <Pagination.Item role='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
                             <Pagination.Label current={meta.page} total={meta.last_page} />
                             <Pagination.Item
                                 role='next'

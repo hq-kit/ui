@@ -45,18 +45,8 @@ export default function TooltipChartAdvanceDemo() {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                        <Bar
-                            dataKey='coffee'
-                            stackId='a'
-                            fill='var(--color-coffee)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='snacks'
-                            stackId='a'
-                            fill='var(--color-snacks)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='coffee' stackId='a' fill='var(--color-coffee)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='snacks' stackId='a' fill='var(--color-snacks)' radius={[4, 4, 0, 0]} />
                         <Chart.Tooltip
                             content={
                                 <Chart.TooltipContent
@@ -72,13 +62,10 @@ export default function TooltipChartAdvanceDemo() {
                                                     } as React.CSSProperties
                                                 }
                                             />
-                                            {chartConfig[name as keyof typeof chartConfig]?.label ||
-                                                name}
+                                            {chartConfig[name as keyof typeof chartConfig]?.label || name}
                                             <div className='text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums'>
                                                 {value}
-                                                <span className='text-muted-fg font-normal'>
-                                                    USD
-                                                </span>
+                                                <span className='text-muted-fg font-normal'>USD</span>
                                             </div>
                                             {/* Add this after the last item */}
                                             {index === 1 && (
@@ -86,9 +73,7 @@ export default function TooltipChartAdvanceDemo() {
                                                     Total
                                                     <div className='text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums'>
                                                         {item.payload.coffee + item.payload.snacks}
-                                                        <span className='text-muted-fg font-normal'>
-                                                            USD
-                                                        </span>
+                                                        <span className='text-muted-fg font-normal'>USD</span>
                                                     </div>
                                                 </div>
                                             )}

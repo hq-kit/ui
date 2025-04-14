@@ -22,17 +22,7 @@ import {
 } from 'hq-icons'
 import { Group, Menu as MenuPrimitive } from 'react-aria-components'
 
-import {
-    Avatar,
-    Button,
-    Checkbox,
-    Description,
-    Menu,
-    Modal,
-    Select,
-    Sheet,
-    TextField
-} from '@/components/ui'
+import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from '@/components/ui'
 
 export default function SheetMenuDemo() {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -46,16 +36,12 @@ export default function SheetMenuDemo() {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='space-y-4'>
-                        <TextField
-                            prefix={<IconBrandGithub />}
-                            label='Status'
-                            placeholder="What's your status?"
-                        />
+                        <TextField prefix={<IconBrandGithub />} label='Status' placeholder="What's your status?" />
                         <Group>
                             <Checkbox>Busy</Checkbox>
                             <Description>
-                                When others mention you, assign you, or request your review, GitHub
-                                will let them know that you have limited availability.
+                                When others mention you, assign you, or request your review, GitHub will let them know
+                                that you have limited availability.
                             </Description>
                         </Group>
                         <Select label='Clear Status'>

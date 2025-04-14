@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { ListBox, ListBoxItem } from 'react-aria-components'
 import { renderToString } from 'react-dom/server'
 
-import { Menu, toast } from '@/components/ui'
+import { toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 export default function IconList({ items }: { items: { keywords: string[]; name: string }[] }) {
@@ -21,6 +21,7 @@ export default function IconList({ items }: { items: { keywords: string[]; name:
             layout='grid'
             className='flex flex-wrap justify-around gap-2'
             items={items}
+            selectionMode='none'
         >
             {(item) => (
                 <ListBoxItem
@@ -36,90 +37,89 @@ export default function IconList({ items }: { items: { keywords: string[]; name:
                     id={item.name}
                     textValue={item.name}
                 >
-                    <Menu>
-                        <Menu.Trigger>
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: SvgIcon({
-                                        name: item.name as keyof typeof icons,
-                                        size,
-                                        stroke
-                                    })
-                                }}
-                            />
-                        </Menu.Trigger>
-                        <Menu.Content aria-label={item.name}>
-                            <Menu.Header className='text-xs'>{item.name}</Menu.Header>
-                            <Menu.Item
-                                onAction={async () =>
-                                    await copySvgToClipboard(
-                                        SvgIcon({
-                                            name: item.name as keyof typeof icons,
-                                            size,
-                                            stroke
-                                        })
-                                    )
-                                }
-                            >
-                                <icons.IconFileCode />
-                                <Menu.Label>Copy SVG</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item
-                                onAction={async () =>
-                                    await copyJsxSvgToClipboard(
-                                        SvgIcon({
-                                            name: item.name as keyof typeof icons,
-                                            size,
-                                            stroke
-                                        })
-                                    )
-                                }
-                            >
-                                <icons.IconBrandReact />
-                                <Menu.Label>Copy JSX</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item onAction={async () => await copyJsxToClipboard(item.name)}>
-                                <icons.IconTextCursorInput />
-                                <Menu.Label>Copy Name</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Separator />
-                            <Menu.Item
-                                onAction={async () =>
-                                    await downloadSvg(
-                                        SvgIcon({
-                                            name: item.name as keyof typeof icons,
-                                            size,
-                                            stroke
-                                        }),
-                                        item.name
-                                    )
-                                }
-                            >
-                                <icons.IconDownload />
-                                <Menu.Label>Download SVG</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item
-                                onAction={async () =>
-                                    await downloadPng(
-                                        SvgIcon({
-                                            name: item.name as keyof typeof icons,
-                                            size,
-                                            stroke
-                                        }),
-                                        item.name
-                                    )
-                                }
-                            >
-                                <icons.IconDownload />
-                                <Menu.Label>Download PNG</Menu.Label>
-                            </Menu.Item>
-                        </Menu.Content>
-                    </Menu>
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: SvgIcon({
+                                name: item.name as keyof typeof icons,
+                                size,
+                                stroke
+                            })
+                        }}
+                    />
                 </ListBoxItem>
             )}
         </ListBox>
     )
 }
+
+// const Options = () => (
+//     <Menu.Content aria-label={item.name}>
+//         <Menu.Header className='text-xs'>{item.name}</Menu.Header>
+//         <Menu.Item
+//             onAction={async () =>
+//                 await copySvgToClipboard(
+//                     SvgIcon({
+//                         name: item.name as keyof typeof icons,
+//                         size,
+//                         stroke
+//                     })
+//                 )
+//             }
+//         >
+//             <icons.IconFileCode />
+//             <Menu.Label>Copy SVG</Menu.Label>
+//         </Menu.Item>
+//         <Menu.Item
+//             onAction={async () =>
+//                 await copyJsxSvgToClipboard(
+//                     SvgIcon({
+//                         name: item.name as keyof typeof icons,
+//                         size,
+//                         stroke
+//                     })
+//                 )
+//             }
+//         >
+//             <icons.IconBrandReact />
+//             <Menu.Label>Copy JSX</Menu.Label>
+//         </Menu.Item>
+//         <Menu.Item onAction={async () => await copyJsxToClipboard(item.name)}>
+//             <icons.IconTextCursorInput />
+//             <Menu.Label>Copy Name</Menu.Label>
+//         </Menu.Item>
+//         <Menu.Separator />
+//         <Menu.Item
+//             onAction={async () =>
+//                 await downloadSvg(
+//                     SvgIcon({
+//                         name: item.name as keyof typeof icons,
+//                         size,
+//                         stroke
+//                     }),
+//                     item.name
+//                 )
+//             }
+//         >
+//             <icons.IconDownload />
+//             <Menu.Label>Download SVG</Menu.Label>
+//         </Menu.Item>
+//         <Menu.Item
+//             onAction={async () =>
+//                 await downloadPng(
+//                     SvgIcon({
+//                         name: item.name as keyof typeof icons,
+//                         size,
+//                         stroke
+//                     }),
+//                     item.name
+//                 )
+//             }
+//         >
+//             <icons.IconDownload />
+//             <Menu.Label>Download PNG</Menu.Label>
+//         </Menu.Item>
+//     </Menu.Content>
+// )
 
 const SvgIcon = ({
     name,

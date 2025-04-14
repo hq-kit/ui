@@ -14,8 +14,8 @@ export default function PlanBillingSetting() {
             <Form>
                 <Card.Content className='grid gap-4'>
                     <Note variant='warning'>
-                        Changing the plan will take effect immediately. You will be charged for the
-                        rest of the current month.
+                        Changing the plan will take effect immediately. You will be charged for the rest of the current
+                        month.
                     </Note>
                     <GridList aria-label='Select items' selectionMode='single'>
                         <GridList.Item textValue='Basic'>Basic</GridList.Item>
@@ -39,26 +39,12 @@ export default function PlanBillingSetting() {
                             name='card_number'
                             id='card_number'
                         />
-                        <DatePicker
-                            label='Expiration Date'
-                            name='expiration_date'
-                            id='expiration_date'
-                        />
+                        <DatePicker label='Expiration Date' name='expiration_date' id='expiration_date' />
                         <TextField prefix={<IconLock />} label='CVC / CVC2' name='cvc' id='cvc' />
                     </div>
                     <div className='grid gap-4 lg:grid-cols-2'>
-                        <TextField
-                            prefix={<IconMap />}
-                            label='Country'
-                            name='country'
-                            id='country'
-                        />
-                        <TextField
-                            prefix={<IconHash />}
-                            label='Zip / Postal Code'
-                            name='zip'
-                            id='zip'
-                        />
+                        <TextField prefix={<IconMap />} label='Country' name='country' id='country' />
+                        <TextField prefix={<IconHash />} label='Zip / Postal Code' name='zip' id='zip' />
                     </div>
                 </Card.Content>
                 <Card.Footer>

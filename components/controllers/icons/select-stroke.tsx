@@ -21,9 +21,7 @@ export function SelectStroke() {
 
     const searchParams = useSearchParams()
 
-    const [selectedStroke, setSelectStroke] = React.useState<Selection>(
-        new Set([searchParams.get('t') || '2'])
-    )
+    const [selectedStroke, setSelectStroke] = React.useState<Selection>(new Set([searchParams.get('t') || '2']))
     const onSelectionChange = (stroke: Selection) => {
         router.push(pathname + '?' + createQueryString('t', [...stroke].join(',')), {
             scroll: false

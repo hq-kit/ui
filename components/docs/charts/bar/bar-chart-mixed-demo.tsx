@@ -89,34 +89,14 @@ export default function BarChartGroupedDemo() {
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
-                            tickFormatter={(value) =>
-                                chartConfig[value as keyof typeof chartConfig]?.label
-                            }
+                            tickFormatter={(value) => chartConfig[value as keyof typeof chartConfig]?.label}
                         />
                         <XAxis type='number' hide />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Legend />
-                        <Bar
-                            dataKey='visitors'
-                            layout='vertical'
-                            fill='var(--color-chrome)'
-                            radius={5}
-                        />
-                        <Bar
-                            dataKey='bounceRate'
-                            layout='vertical'
-                            fill='var(--color-safari)'
-                            radius={5}
-                        />
-                        <Bar
-                            dataKey='avgSession'
-                            layout='vertical'
-                            fill='var(--color-firefox)'
-                            radius={5}
-                        />
+                        <Bar dataKey='visitors' layout='vertical' fill='var(--color-chrome)' radius={5} />
+                        <Bar dataKey='bounceRate' layout='vertical' fill='var(--color-safari)' radius={5} />
+                        <Bar dataKey='avgSession' layout='vertical' fill='var(--color-firefox)' radius={5} />
                     </BarChart>
                 </Chart>
             </Card.Content>

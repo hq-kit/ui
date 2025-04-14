@@ -88,9 +88,7 @@ export default async function DocsPage(props: DocPageProps) {
                     <Card className='not-prose'>
                         <Card.Header>
                             <Card.Title>{doc.title}</Card.Title>
-                            {doc.description && (
-                                <Card.Description>{doc.description}</Card.Description>
-                            )}
+                            {doc.description && <Card.Description>{doc.description}</Card.Description>}
                         </Card.Header>
                         {doc.references && doc.references?.length > 0 && (
                             <Card.Content className='flex flex-row gap-2 pb-6'>

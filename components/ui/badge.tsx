@@ -14,8 +14,7 @@ const badgeStyles = tv({
             success: '[--bg:var(--color-success)] [--fg:var(--color-success-fg)]',
             danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
             warning: '[--bg:var(--color-warning)] [--fg:var(--color-warning-fg)]',
-            outline:
-                'bg-bg/80 text-fg hover:bg-primary/40 pressed:bg-primary/50 hover:text-primary-fg border-primary'
+            outline: 'bg-bg/80 text-fg hover:bg-primary/40 pressed:bg-primary/50 hover:text-primary-fg border-primary'
         },
         shape: {
             square: 'rounded-lg',
@@ -28,9 +27,7 @@ const badgeStyles = tv({
     }
 })
 
-interface BadgeProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof badgeStyles> {
+interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeStyles> {
     className?: string
     children: React.ReactNode
 }

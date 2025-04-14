@@ -11,9 +11,7 @@ import { Menu } from './menu'
 interface ContextMenuContextProps {
     triggerRef: React.RefObject<HTMLDivElement | null>
     contextMenuOffset: { offset: number; crossOffset: number } | null
-    setContextMenuOffset: React.Dispatch<
-        React.SetStateAction<{ offset: number; crossOffset: number } | null>
-    >
+    setContextMenuOffset: React.Dispatch<React.SetStateAction<{ offset: number; crossOffset: number } | null>>
 }
 
 const ContextMenuContext = React.createContext<ContextMenuContextProps>({
@@ -41,9 +39,7 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
     } | null>(null)
     const triggerRef = React.useRef<HTMLDivElement>(null)
     return (
-        <ContextMenuContext.Provider
-            value={{ triggerRef, contextMenuOffset, setContextMenuOffset }}
-        >
+        <ContextMenuContext.Provider value={{ triggerRef, contextMenuOffset, setContextMenuOffset }}>
             {children}
         </ContextMenuContext.Provider>
     )
@@ -80,10 +76,7 @@ const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDi
     }
     return (
         <div
-            className={cn(
-                'cursor-default outline-hidden disabled:opacity-50 select-none',
-                className
-            )}
+            className={cn('cursor-default outline-hidden disabled:opacity-50 select-none', className)}
             ref={triggerRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
@@ -97,13 +90,7 @@ const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDi
 interface ContextMenuContentProps<T>
     extends Omit<
         MenuProps<T>,
-        | 'showArrow'
-        | 'isOpen'
-        | 'onOpenChange'
-        | 'triggerRef'
-        | 'placement'
-        | 'shouldFlip'
-        | 'className'
+        'showArrow' | 'isOpen' | 'onOpenChange' | 'triggerRef' | 'placement' | 'shouldFlip' | 'className'
     > {
     className?: string
 }

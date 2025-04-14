@@ -2,25 +2,28 @@
 
 import React from 'react'
 
-import { IconCheck, IconChevronDown } from 'hq-icons'
-import type {
-    ListBoxItemProps,
-    ListBoxSectionProps,
-    SelectProps as RACSelectProps,
-    TextProps
-} from 'react-aria-components'
+import { IconCheck, IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
 import {
+    Autocomplete,
     Button,
     Collection,
     composeRenderProps,
+    Group,
     Header,
+    Input,
     ListBox,
     ListBoxItem,
+    ListBoxItemProps,
     ListBoxSection,
+    ListBoxSectionProps,
     Popover,
+    SearchField,
     Select as RACSelect,
+    SelectProps as RACSelectProps,
     SelectValue,
-    Text
+    Text,
+    TextProps,
+    useFilter
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -34,6 +37,13 @@ interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'childre
     children: React.ReactNode | ((item: T) => React.ReactNode)
     placement?: Placement
     prefix?: React.ReactNode
+    searchable?:
+        | {
+              sensitivity?: 'base' | 'accent' | 'case' | 'variant'
+              filter?: 'contains' | 'startsWith' | 'endsWith'
+              isPending?: boolean
+          }
+        | boolean
 }
 
 const Select = <T extends object>({
@@ -43,9 +53,12 @@ const Select = <T extends object>({
     errorMessage,
     children,
     items,
+    searchable = false,
     className,
     ...props
 }: SelectProps<T>) => {
+    const { sensitivity, filter, isPending } = typeof searchable === 'object' ? searchable : {}
+    const { contains, endsWith, startsWith } = useFilter({ sensitivity: sensitivity || 'accent' })
     return (
         <RACSelect
             className={composeRenderProps(className, (className) =>
@@ -65,8 +78,7 @@ const Select = <T extends object>({
                             cn(
                                 'flex h-10 w-full cursor-default items-center gap-4 gap-x-2 rounded-lg border p-2 transition outline-hidden',
                                 {
-                                    'border-primary/70 ring-primary/20 ring-4':
-                                        isFocusVisible || isOpen || isFocused
+                                    'border-primary/70 ring-primary/20 ring-4': isFocusVisible || isOpen || isFocused
                                 },
                                 isHovered && 'border-primary/70 invalid:border-danger/70',
                                 isInvalid && 'border-danger/70 ring-danger/20',
@@ -76,17 +88,12 @@ const Select = <T extends object>({
                         )}
                     >
                         {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
-                                {props.prefix}
-                            </span>
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
                         ) : null}
                         <SelectValue className='grid grid-cols-[auto_1fr] items-center text-base **:data-avatar:-mx-0.5 **:data-avatar:mr-2 **:data-avatar:size-6 **:data-[slot=icon]:mr-2 sm:text-sm **:data-[slot=description]:hidden' />
                         <IconChevronDown
                             data-slot='chevron'
-                            className={cn(
-                                'text-muted-fg size-4 transition ml-auto',
-                                isOpen && '-rotate-180'
-                            )}
+                            className={cn('text-muted-fg size-4 transition ml-auto', isOpen && '-rotate-180')}
                         />
                     </Button>
                     {description && <Description>{description}</Description>}
@@ -104,13 +111,61 @@ const Select = <T extends object>({
                             )
                         }
                     >
-                        <ListBox
-                            aria-label='items'
-                            items={items}
-                            className='grid outline-hidden w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg'
-                        >
-                            {children}
-                        </ListBox>
+                        {searchable ? (
+                            <Autocomplete
+                                filter={
+                                    filter === 'startsWith' ? startsWith : filter === 'endsWith' ? endsWith : contains
+                                }
+                            >
+                                <SearchField autoFocus className='-mx-1 mb-1 border-b' aria-label='Search'>
+                                    {({ isEmpty }) => (
+                                        <Group className='flex items-center px-2'>
+                                            {isPending ? (
+                                                <IconLoader className='animate-spin size-4 shrink-0 text-muted-fg' />
+                                            ) : (
+                                                <IconSearch className='text-muted-fg size-4 shrink-0' />
+                                            )}
+                                            <Input
+                                                className='outline-hidden w-full p-2 [&::-webkit-search-cancel-button]:hidden'
+                                                placeholder='Search...'
+                                            />
+                                            {!isEmpty && (
+                                                <Button
+                                                    type='button'
+                                                    aria-label='Clear'
+                                                    className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
+                                                >
+                                                    <IconX aria-hidden />
+                                                </Button>
+                                            )}
+                                        </Group>
+                                    )}
+                                </SearchField>
+                                <ListBox
+                                    renderEmptyState={() => (
+                                        <div className='p-4 text-muted-fg col-span-full text-center'>
+                                            No results found
+                                        </div>
+                                    )}
+                                    aria-label='items'
+                                    items={items}
+                                    className='grid outline-hidden w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg'
+                                >
+                                    {children}
+                                </ListBox>
+                            </Autocomplete>
+                        ) : (
+                            <ListBox
+                                renderEmptyState={() => (
+                                    <div className='p-4 text-muted-fg col-span-full text-center'>No results found</div>
+                                )}
+                                aria-label='items'
+                                items={items}
+                                className='grid outline-hidden w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg'
+                            >
+                                {children}
+                            </ListBox>
+                        )}
                     </Popover>
                 </>
             )}
@@ -155,17 +210,10 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
     )
 }
 
-const SelectSection = <T extends object>({
-    className,
-    ...props
-}: ListBoxSectionProps<T> & { title?: string }) => (
-    <ListBoxSection
-        className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}
-    >
+const SelectSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+    <ListBoxSection className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}>
         {'title' in props && (
-            <Header className='text-muted-fg text-xs py-1 px-2 col-span-full pointer-events-none'>
-                {props.title}
-            </Header>
+            <Header className='text-muted-fg text-xs py-1 px-2 col-span-full pointer-events-none'>{props.title}</Header>
         )}
         <Collection items={props.items}>{props.children}</Collection>
     </ListBoxSection>

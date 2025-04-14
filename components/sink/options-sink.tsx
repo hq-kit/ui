@@ -5,17 +5,7 @@ import { IconBrandX, IconTrash } from 'hq-icons'
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
 import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
-import {
-    Breadcrumbs,
-    Button,
-    Card,
-    ComboBox,
-    DatePicker,
-    Modal,
-    Popover,
-    Select,
-    Tooltip
-} from '@/components/ui'
+import { Breadcrumbs, Button, Card, ComboBox, DatePicker, Modal, Popover, Select, Tooltip } from '@/components/ui'
 
 export default function OptionsSink() {
     return (
@@ -40,12 +30,7 @@ export default function OptionsSink() {
                 <DatePicker className='w-full' aria-label='Event date' />
             </div>
             <div className='mt-4 flex items-end gap-1'>
-                <ComboBox
-                    className='w-full'
-                    placeholder='Select a user'
-                    label='Users'
-                    items={users}
-                >
+                <ComboBox className='w-full' placeholder='Select a user' label='Users' items={users}>
                     {(item) => (
                         <ComboBox.Item id={item.id} textValue={item.name}>
                             {item.name}
@@ -53,7 +38,7 @@ export default function OptionsSink() {
                     )}
                 </ComboBox>
                 <Modal>
-                    <Button variant='danger' size='icon'>
+                    <Button variant='danger' icon>
                         <IconTrash />
                     </Button>
                     <Modal.Content role='alertdialog' size='lg'>
@@ -80,7 +65,7 @@ export default function OptionsSink() {
             </div>
             <div className='mt-4 flex justify-center gap-5'>
                 <Tooltip>
-                    <Button aria-label='Follow My Twitter' size='icon'>
+                    <Button aria-label='Follow My Twitter' icon>
                         <IconBrandX />
                     </Button>
                     <Tooltip.Content>Follow me on X @dqalhq</Tooltip.Content>
@@ -90,9 +75,7 @@ export default function OptionsSink() {
                     <Popover.Content aria-label='Forgot Password' className='min-w-72'>
                         <Popover.Header>
                             <Popover.Title>Email</Popover.Title>
-                            <Popover.Description>
-                                We&apos;ll send you an email to log in.
-                            </Popover.Description>
+                            <Popover.Description>We&apos;ll send you an email to log in.</Popover.Description>
                         </Popover.Header>
                         <Popover.Footer>
                             <Button>Send Login Link</Button>

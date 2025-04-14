@@ -16,49 +16,49 @@ import {
     IconPointer
 } from 'hq-icons'
 
-import { Button, Menu, Toggle, Toolbar } from '@/components/ui'
+import { Menu, Toggle, Toolbar } from '@/components/ui'
 
 export default function ToolbarOrientationDemo() {
     return (
         <Toolbar aria-label='Toolbox' orientation='vertical'>
-            <Toolbar.Group aria-label='Toolbox'>
-                <Toolbar.Item aria-label='Cursor' size='icon' variant='outline'>
+            <Toolbar.Group icon aria-label='Toolbox'>
+                <Toolbar.Item aria-label='Cursor'>
                     <IconPointer />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Pencil Box' size='icon' variant='outline'>
+                <Toolbar.Item aria-label='Pencil Box'>
                     <IconPencil />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Pencil Box' size='icon' variant='outline'>
+                <Toolbar.Item aria-label='Pencil Box'>
                     <IconPencilRuler />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group aria-label='Gallery'>
-                <Toolbar.Item aria-label='Camera' size='icon' variant='outline'>
+            <Toolbar.Group icon aria-label='Gallery'>
+                <Toolbar.Item aria-label='Camera'>
                     <IconCamera />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Gallery' size='icon' variant='outline'>
+                <Toolbar.Item aria-label='Gallery'>
                     <IconImage />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group aria-label='Alignment'>
-                <Toggle aria-label='Align Left' size='icon' variant='outline'>
+            <Toolbar.Group icon aria-label='Alignment'>
+                <Toggle aria-label='Align Left'>
                     <IconAlignLeft />
                 </Toggle>
-                <Toolbar.Item aria-label='Align Center' size='icon' variant='outline'>
+                <Toolbar.Item aria-label='Align Center'>
                     <IconAlignCenter />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Align Justify' size='icon' variant='outline'>
+                <Toolbar.Item aria-label='Align Justify'>
                     <IconAlignJustify />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group>
+            <Toolbar.Group icon>
                 <Menu>
-                    <Button aria-label='Other options' variant='outline' size='icon'>
+                    <Toolbar.Item aria-label='Other options'>
                         <IconEllipsisVertical />
-                    </Button>
+                    </Toolbar.Item>
                     <Menu.Content placement='right'>
                         <Menu.Item>
                             <IconCircleArrowLeft />

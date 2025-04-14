@@ -43,9 +43,7 @@ export default function BarChartControlledDemo() {
             <Card.Header className='flex-row items-center justify-between'>
                 <div className='space-y-1'>
                     <Card.Title>Business Overview</Card.Title>
-                    <Card.Description>
-                        Displaying total sales and revenue for the last 50 days
-                    </Card.Description>
+                    <Card.Description>Displaying total sales and revenue for the last 50 days</Card.Description>
                 </div>
                 <div>
                     <Select
@@ -66,9 +64,7 @@ export default function BarChartControlledDemo() {
                                 >
                                     <Select.Details
                                         label={chartConfig[chart].label}
-                                        description={total[
-                                            key as keyof typeof total
-                                        ].toLocaleString()}
+                                        description={total[key as keyof typeof total].toLocaleString()}
                                     />
                                 </Select.Item>
                             )
@@ -116,10 +112,7 @@ export default function BarChartControlledDemo() {
                                 />
                             }
                         />
-                        <Bar
-                            dataKey={activeChart as keyof typeof chartConfig}
-                            fill={`var(--color-${activeChart})`}
-                        />
+                        <Bar dataKey={activeChart as keyof typeof chartConfig} fill={`var(--color-${activeChart})`} />
                     </BarChart>
                 </Chart>
             </Card.Content>

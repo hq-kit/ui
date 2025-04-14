@@ -54,17 +54,8 @@ export default function PieChartDonutWithTextDemo() {
             <Card.Content className='flex-1 pb-0'>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <PieChart>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
-                        <Pie
-                            data={chartData}
-                            dataKey='sales'
-                            nameKey='category'
-                            innerRadius={60}
-                            strokeWidth={5}
-                        >
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
+                        <Pie data={chartData} dataKey='sales' nameKey='category' innerRadius={60} strokeWidth={5}>
                             <Label
                                 content={({ viewBox }) => {
                                     if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {

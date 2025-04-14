@@ -43,9 +43,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         const layoutName: string = componentData.match(/'layouts\/([^']*?)'/g)
 
         if (componentNames || layoutName || componentData) {
-            const components = componentNames
-                ? componentNames.map((c: string) => 'block/' + c.replaceAll("'", ''))
-                : []
+            const components = componentNames ? componentNames.map((c: string) => 'block/' + c.replaceAll("'", '')) : []
             const componentExists = components.filter((component: string) => component in previews)
             setComponents(componentExists)
             const layoutExists = layoutName && `block/${layoutName[0].replaceAll("'", '')}`
@@ -64,9 +62,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             if (uiComponentNames) {
                 /* @ts-expect-error unknown-types */ // prettier-ignore
                 const uiComponents = uiComponentNames.map((name: string) => convertToKebabCase(name.trim()))
-                const componentExists = uiComponents.filter(
-                    (component: string) => component in previews
-                )
+                const componentExists = uiComponents.filter((component: string) => component in previews)
                 componentExists.push('utils')
                 setUiComponents(componentExists)
             }
@@ -116,9 +112,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     </>
                 )}
             </TreeItem.Content>
-            {item.children.length > 0 && (
-                <Collection items={item.children}>{renderItem}</Collection>
-            )}
+            {item.children.length > 0 && <Collection items={item.children}>{renderItem}</Collection>}
         </TreeItem>
     )
 
@@ -188,17 +182,12 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
     const [sidebarOpen, setSidebarOpen] = React.useState(true)
 
     return (
-        <div
-            className={cn('flex w-full flex-col rounded-lg border lg:flex-row', className)}
-            {...props}
-        >
+        <div className={cn('flex w-full flex-col rounded-lg border lg:flex-row', className)} {...props}>
             <Tree
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
                     'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-l-lg lg:rounded-r-none lg:border-r lg:border-b-0',
-                    sidebarOpen
-                        ? 'min-h-40 overflow-y-auto'
-                        : 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
+                    sidebarOpen ? 'min-h-40 overflow-y-auto' : 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
                 )}
                 aria-label='Files'
                 selectionMode='none'
@@ -217,10 +206,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     <IconBrandReact className='size-4' />
                     {selected.split('/').pop() + '.tsx'}
                 </div>
-                <Code
-                    code={code}
-                    className='border-none static [&_pre]:max-h-full overflow-y-auto'
-                />
+                <Code code={code} className='border-none static [&_pre]:max-h-full overflow-y-auto' />
             </div>
         </div>
     )

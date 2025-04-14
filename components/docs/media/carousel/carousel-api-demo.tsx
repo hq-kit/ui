@@ -49,9 +49,7 @@ export default function CarouselDApiDemo() {
                         <Button
                             className={cn(
                                 'rounded-full transition size-3',
-                                current === index + 1
-                                    ? 'bg-primary'
-                                    : 'bg-muted hover:bg-primary/50'
+                                current === index + 1 ? 'bg-primary' : 'bg-muted hover:bg-primary/50'
                             )}
                             aria-label={`Slide ${current} of ${count}`}
                             onPress={() => handleSelect(index)}

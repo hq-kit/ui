@@ -39,10 +39,7 @@ const ColorPicker = ({
         <div className='flex flex-col gap-y-2 group'>
             <RACColorPicker {...props}>
                 <Popover>
-                    <Button
-                        isDisabled={isDisabled}
-                        className='flex items-center gap-2 outline-hidden'
-                    >
+                    <Button isDisabled={isDisabled} className='flex items-center gap-2 outline-hidden'>
                         <ColorSwatch className='size-6' />
                         {label && <Label className='ml-2'>{label}</Label>}
                     </Button>
@@ -56,11 +53,7 @@ const ColorPicker = ({
                                         xChannel='saturation'
                                         yChannel='brightness'
                                     />
-                                    <ColorSlider
-                                        showOutput={false}
-                                        colorSpace='hsb'
-                                        channel='hue'
-                                    />
+                                    <ColorSlider showOutput={false} colorSpace='hsb' channel='hue' />
                                     <ColorField aria-label='Hex' />
                                 </>
                             )}

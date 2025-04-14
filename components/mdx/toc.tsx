@@ -65,10 +65,7 @@ export function TableOfContents({ className, items }: Props) {
                     }
                 >
                     <>
-                        <Heading
-                            level={2}
-                            className='text-fg mb-6 text-base leading-7 font-medium lg:text-lg'
-                        >
+                        <Heading level={2} className='text-fg mb-6 text-base leading-7 font-medium lg:text-lg'>
                             On this page
                         </Heading>
                         {items.length > 0 && (
@@ -79,11 +76,7 @@ export function TableOfContents({ className, items }: Props) {
                                         {item.items && item.items.length > 0 && (
                                             <ul className='flex flex-col gap-y-2.5 pl-3'>
                                                 {item.items.map((subItem) => (
-                                                    <TocLink
-                                                        key={subItem.title}
-                                                        item={subItem}
-                                                        activeId={activeId}
-                                                    />
+                                                    <TocLink key={subItem.title} item={subItem} activeId={activeId} />
                                                 ))}
                                             </ul>
                                         )}
@@ -124,8 +117,7 @@ export function useActiveItem(itemIds: string[]) {
                 entries.forEach((entry) => {
                     if (
                         entry.isIntersecting &&
-                        (!bestCandidate ||
-                            bestCandidate.intersectionRatio < entry.intersectionRatio)
+                        (!bestCandidate || bestCandidate.intersectionRatio < entry.intersectionRatio)
                     ) {
                         bestCandidate = entry
                     }

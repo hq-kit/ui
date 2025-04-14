@@ -31,11 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {blocks?.map(
                             (block) =>
                                 block.includes('auth') && (
-                                    <Sidebar.Item
-                                        key={block}
-                                        href={`/${block}`}
-                                        isCurrent={`/${block}` === pathname}
-                                    >
+                                    <Sidebar.Item key={block} href={`/${block}`} isCurrent={`/${block}` === pathname}>
                                         <IconPanelsTopLeft />
                                         <Sidebar.Label>
                                             {goodTitle(block.split('/').pop() || 'Sample Page')}
@@ -48,11 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {blocks?.map(
                             (block) =>
                                 !block.includes('auth') && (
-                                    <Sidebar.Item
-                                        key={block}
-                                        href={`/${block}`}
-                                        isCurrent={`/${block}` === pathname}
-                                    >
+                                    <Sidebar.Item key={block} href={`/${block}`} isCurrent={`/${block}` === pathname}>
                                         <IconAppWindowMac />
                                         <Sidebar.Label>
                                             {goodTitle(block.split('/').pop() || 'Sample Page')}

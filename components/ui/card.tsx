@@ -35,32 +35,19 @@ const CardHeader = ({ className, title, description, children, ...props }: Heade
 
 const CardTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
     return (
-        <div
-            slot='title'
-            className={cn('font-semibold text-lg leading-none tracking-tight', className)}
-            {...props}
-        />
+        <div slot='title' className={cn('font-semibold text-lg leading-none tracking-tight', className)} {...props} />
     )
 }
 
 const CardDescription = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            slot='description'
-            className={cn('row-start-2 text-muted-fg text-sm', className)}
-            {...props}
-        />
-    )
+    return <div slot='description' className={cn('row-start-2 text-muted-fg text-sm', className)} {...props} />
 }
 
 const CardAction = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='action'
-            className={cn(
-                'col-start-2 row-span-2 row-start-1 self-start justify-self-end',
-                className
-            )}
+            className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
             {...props}
         />
     )
@@ -74,10 +61,7 @@ const CardFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement
     return (
         <div
             slot='footer'
-            className={cn(
-                'flex flex-col-reverse lg:flex-row items-center justify-end p-6',
-                className
-            )}
+            className={cn('flex flex-col-reverse lg:flex-row items-center justify-end p-6', className)}
             {...props}
         />
     )

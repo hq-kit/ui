@@ -22,21 +22,12 @@ interface NumberFieldProps extends RACNumberFieldProps {
     errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
-const NumberField = ({
-    label,
-    placeholder,
-    description,
-    className,
-    errorMessage,
-    ...props
-}: NumberFieldProps) => {
+const NumberField = ({ label, placeholder, description, className, errorMessage, ...props }: NumberFieldProps) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     return (
         <RACNumberField
             {...props}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
@@ -51,10 +42,7 @@ const NumberField = ({
                                 <IconMinus />
                             </Stepper>
                         )}
-                        <Input
-                            className='tabular-nums text-center sm:text-left'
-                            placeholder={placeholder}
-                        />
+                        <Input className='tabular-nums text-center sm:text-left' placeholder={placeholder} />
                         <div
                             className={cn(
                                 'grid h-10 place-content-center border-s',

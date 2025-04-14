@@ -33,10 +33,7 @@ const Overlay = motion.create(ModalOverlay)
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
-const DrawerMode = ({
-    className,
-    ...props
-}: Omit<ModalOverlayProps, 'style'> & Pick<DialogProps, 'children'>) => {
+const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & Pick<DialogProps, 'children'>) => {
     const state = React.useContext(OverlayTriggerStateContext)!
     const controls = useDragControls()
     return (
@@ -70,8 +67,7 @@ const DrawerMode = ({
                             dragConstraints={{ top: 0, bottom: 0 }}
                             transition={{ duration: 0.15, ease: 'easeInOut' }}
                             onDragEnd={(_, { offset, velocity }) =>
-                                (offset.y > screen.availHeight * 0.25 || velocity.y > 100) &&
-                                state.close()
+                                (offset.y > screen.availHeight * 0.25 || velocity.y > 100) && state.close()
                             }
                             dragListener={false}
                             dragControls={controls}
@@ -81,10 +77,7 @@ const DrawerMode = ({
                                 aria-label='Popover'
                                 className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
                             >
-                                <div
-                                    className='w-full h-8 touch-none py-2'
-                                    onPointerDown={(e) => controls.start(e)}
-                                >
+                                <div className='w-full h-8 touch-none py-2' onPointerDown={(e) => controls.start(e)}>
                                     <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
                                 </div>
                                 {props.children as React.ReactNode}
@@ -97,30 +90,19 @@ const DrawerMode = ({
     )
 }
 
-const PopoverMode = ({
-    className,
-    children,
-    showArrow,
-    ...props
-}: PopoverProps & { showArrow?: boolean }) => (
+const PopoverMode = ({ className, children, showArrow, ...props }: PopoverProps & { showArrow?: boolean }) => (
     <RACPopover
-        className={composeRenderProps(
-            className,
-            (className, { isEntering, isExiting, placement }) =>
-                cn(
-                    'group max-w-sm bg-bg rounded-lg border shadow transition outline-hidden',
-                    isEntering && 'fade-in animate-in zoom-in-95',
-                    isExiting && 'fade-out animate-out zoom-out-95',
-                    placement === 'top' &&
-                        `mb-2 ${isEntering ? 'slide-in-from-bottom-2' : 'slide-out-to-bottom-2'}`,
-                    placement === 'right' &&
-                        `ml-2 ${isEntering ? 'slide-in-from-left-2' : 'slide-out-to-left-2'}`,
-                    placement === 'bottom' &&
-                        `mt-2 ${isEntering ? 'slide-in-from-top-2' : 'slide-out-to-top-2'}`,
-                    placement === 'left' &&
-                        `mr-2 ${isEntering ? 'slide-in-from-right-2' : 'slide-out-to-right-2'}`,
-                    className
-                )
+        className={composeRenderProps(className, (className, { isEntering, isExiting, placement }) =>
+            cn(
+                'group max-w-sm bg-bg rounded-lg border shadow transition outline-hidden',
+                isEntering && 'fade-in animate-in zoom-in-95',
+                isExiting && 'fade-out animate-out zoom-out-95',
+                placement === 'top' && `mb-2 ${isEntering ? 'slide-in-from-bottom-2' : 'slide-out-to-bottom-2'}`,
+                placement === 'right' && `ml-2 ${isEntering ? 'slide-in-from-left-2' : 'slide-out-to-left-2'}`,
+                placement === 'bottom' && `mt-2 ${isEntering ? 'slide-in-from-top-2' : 'slide-out-to-top-2'}`,
+                placement === 'left' && `mr-2 ${isEntering ? 'slide-in-from-right-2' : 'slide-out-to-right-2'}`,
+                className
+            )
         )}
         {...props}
     >
@@ -154,27 +136,13 @@ interface PopoverContentProps
     className?: string | ((values: { defaultClassName?: string }) => string)
 }
 
-const PopoverContent = ({
-    showArrow = true,
-    respectScreen = true,
-    ...props
-}: PopoverContentProps) => {
+const PopoverContent = ({ showArrow = true, respectScreen = true, ...props }: PopoverContentProps) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
-    return isMobile && respectScreen ? (
-        <DrawerMode {...props} />
-    ) : (
-        <PopoverMode showArrow={showArrow} {...props} />
-    )
+    return isMobile && respectScreen ? <DrawerMode {...props} /> : <PopoverMode showArrow={showArrow} {...props} />
 }
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            slot='header'
-            className={cn('flex flex-col p-4 text-center sm:text-left', className)}
-            {...props}
-        />
-    )
+    return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
 }
 
 const Title = ({ className, ...props }: HeadingProps) => (
@@ -200,10 +168,7 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
     return (
         <div
             slot='footer'
-            className={cn(
-                'isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4',
-                className
-            )}
+            className={cn('isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4', className)}
             {...props}
         />
     )

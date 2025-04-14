@@ -44,9 +44,7 @@ export const generateColorScale = (color: string): { shade: number; color: strin
 
 export const getfgColor = (color: string): string => {
     const luminance = chroma(color).luminance()
-    return luminance > 0.5
-        ? chroma(color).luminance(0.05).hex()
-        : chroma(color).luminance(0.95).hex()
+    return luminance > 0.5 ? chroma(color).luminance(0.05).hex() : chroma(color).luminance(0.95).hex()
 }
 export const getBackgroundColor = (color: string): string => {
     const luminance = chroma(color).luminance()

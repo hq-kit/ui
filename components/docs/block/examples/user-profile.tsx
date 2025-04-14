@@ -42,11 +42,7 @@ export default function UserProfile() {
                                 East Java, Indonesia
                             </Description>
                         </div>
-                        <Tabs
-                            className='mx-20 lg:ml-auto'
-                            selectedKey={panel}
-                            onSelectionChange={setPanel}
-                        >
+                        <Tabs className='mx-20 lg:ml-auto' selectedKey={panel} onSelectionChange={setPanel}>
                             <Tabs.List>
                                 <Tabs.Label className='lg:text-xl' id={1}>
                                     Posts

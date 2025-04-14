@@ -6,13 +6,7 @@ import type {
     TabProps as RACTabProps,
     TabsProps as RACTabsProps
 } from 'react-aria-components'
-import {
-    composeRenderProps,
-    Tab as RACTab,
-    Tabs as RACTabs,
-    TabList,
-    TabPanel
-} from 'react-aria-components'
+import { composeRenderProps, Tab as RACTab, Tabs as RACTabs, TabList, TabPanel } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -23,11 +17,7 @@ const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
         <RACTabs
             className={composeRenderProps(className, (className, { orientation }) =>
-                cn(
-                    'gap-4 grid',
-                    orientation === 'horizontal' ? 'grid-cols-1' : 'grid-cols-[auto_1fr]',
-                    className
-                )
+                cn('gap-4 grid', orientation === 'horizontal' ? 'grid-cols-1' : 'grid-cols-[auto_1fr]', className)
             )}
             ref={ref}
             {...props}
@@ -86,13 +76,7 @@ interface TabPanelProps extends RACTabPanelProps {
     ref?: React.RefObject<HTMLDivElement>
 }
 const Panel = ({ className, ref, ...props }: TabPanelProps) => {
-    return (
-        <TabPanel
-            {...props}
-            ref={ref}
-            className={cn(className, 'text-fg flex-1 text-sm outline-hidden')}
-        />
-    )
+    return <TabPanel {...props} ref={ref} className={cn(className, 'text-fg flex-1 text-sm outline-hidden')} />
 }
 
 Tabs.List = List

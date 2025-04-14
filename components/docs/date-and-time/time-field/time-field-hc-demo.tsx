@@ -11,19 +11,11 @@ export default function TimeFieldHcDemo() {
     return (
         <>
             <div className='absolute top-4 left-4 inline-flex min-w-32 flex-col gap-1'>
-                <Switch
-                    isSelected={hc === 24}
-                    onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}
-                >
+                <Switch isSelected={hc === 24} onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}>
                     {hc} hour
                 </Switch>
             </div>
-            <TimeField
-                value={value}
-                onChange={(newValue) => setValue(newValue!)}
-                hourCycle={hc}
-                label='Event time'
-            />
+            <TimeField value={value} onChange={(newValue) => setValue(newValue!)} hourCycle={hc} label='Event time' />
         </>
     )
 }

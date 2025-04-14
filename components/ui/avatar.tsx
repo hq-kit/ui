@@ -108,14 +108,7 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
             aria-hidden={alt ? undefined : 'true'}
         >
             {alt && <title>{alt}</title>}
-            <text
-                x='50%'
-                y='50%'
-                alignmentBaseline='middle'
-                dominantBaseline='middle'
-                textAnchor='middle'
-                dy='.125em'
-            >
+            <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
                 {initials.split(' ').slice(0, 2).length > 1
                     ? initials
                           .split(' ')
@@ -132,14 +125,7 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
             aria-hidden={alt ? undefined : 'true'}
         >
             {alt && <title>{alt}</title>}
-            <text
-                x='50%'
-                y='50%'
-                alignmentBaseline='middle'
-                dominantBaseline='middle'
-                textAnchor='middle'
-                dy='.125em'
-            >
+            <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
                 {alt.split(' ').slice(0, 2).length > 1
                     ? alt
                           .split(' ')

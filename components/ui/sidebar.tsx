@@ -106,11 +106,7 @@ const Sidebar = ({
 
     React.useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (
-                event.key === shortcut &&
-                collapsible !== 'none' &&
-                (event.metaKey || event.ctrlKey)
-            ) {
+            if (event.key === shortcut && collapsible !== 'none' && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault()
                 toggleSidebar()
             }
@@ -140,20 +136,15 @@ const Sidebar = ({
 
     const collapsedHidden = state === 'collapsed' && collapsible === 'hidden'
     const collapsedDock = state === 'collapsed' && collapsible === 'dock' && variant === 'default'
-    const collapsedFloatDock =
-        state === 'collapsed' && variant === 'float' && collapsible === 'dock'
-    const collapsedInsetDock =
-        state === 'collapsed' && variant === 'inset' && collapsible === 'dock'
+    const collapsedFloatDock = state === 'collapsed' && variant === 'float' && collapsible === 'dock'
+    const collapsedInsetDock = state === 'collapsed' && variant === 'inset' && collapsible === 'dock'
 
     return (
         <SidebarContext value={contextValue}>
             {collapsible === 'none' && !isMobile ? (
                 <div
                     style={{ width: WIDTH }}
-                    className={cn(
-                        'flex h-full min-h-screen flex-col border-r bg-bg text-fg',
-                        className
-                    )}
+                    className={cn('flex h-full min-h-screen flex-col border-r bg-bg text-fg', className)}
                 >
                     {children}
                 </div>
@@ -172,11 +163,7 @@ const Sidebar = ({
                     >
                         <IconPanelLeftOpen className='size-6' />
                     </Sheet.Trigger>
-                    <Sheet.Content
-                        aria-label='Sidebar'
-                        isFloating={variant === 'float'}
-                        side={side}
-                    >
+                    <Sheet.Content aria-label='Sidebar' isFloating={variant === 'float'} side={side}>
                         <Sheet.Body className='px-0 sm:px-0'>{children}</Sheet.Body>
                     </Sheet.Content>
                 </Sheet>
@@ -212,8 +199,7 @@ const Sidebar = ({
                             className={cn(
                                 'text-fg flex min-h-svh size-full flex-col',
                                 variant === 'inset' && 'min-h-[calc(100vh-1rem)]',
-                                variant === 'float' &&
-                                    'bg-primary/5 rounded-lg border min-h-[calc(100vh-1rem)]',
+                                variant === 'float' && 'bg-primary/5 rounded-lg border min-h-[calc(100vh-1rem)]',
                                 className
                             )}
                         >
@@ -277,10 +263,7 @@ const SidebarBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
 const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?: string }) => {
     const { state } = useSidebar()
     return (
-        <section
-            data-section
-            className={cn('col-span-full flex flex-col gap-y-0.5 px-2', className)}
-        >
+        <section data-section className={cn('col-span-full flex flex-col gap-y-0.5 px-2', className)}>
             {state !== 'collapsed' && 'title' in props && (
                 <Header className='text-muted-fg flex shrink-0 items-center rounded-lg px-2 text-xs font-medium transition-[margin,opa] duration-200 ease-linear outline-hidden'>
                     {props.title}
@@ -298,9 +281,7 @@ const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?
     )
 }
 
-interface SidebarItemProps
-    extends DisclosureProps,
-        Pick<LinkProps, 'href' | 'routerOptions' | 'onPress'> {
+interface SidebarItemProps extends DisclosureProps, Pick<LinkProps, 'href' | 'routerOptions' | 'onPress'> {
     isCurrent?: boolean
     tooltip?: React.ReactNode | string
     badge?: string | number | undefined
@@ -316,14 +297,11 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
                 cn(
                     'col-span-full relative text-sm cursor-pointer items-center outline-hidden rounded-lg',
                     {
-                        'bg-primary/10 text-primary':
-                            isHovered || isPressed || isFocused || isCurrent
+                        'bg-primary/10 text-primary': isHovered || isPressed || isFocused || isCurrent
                     },
                     isFocusVisible && 'ring-2 ring-offset-2 ring-primary',
                     isDisabled && 'cursor-default opacity-50',
-                    collapsedDock
-                        ? 'size-8 p-0 flex justify-center'
-                        : 'px-2.5 py-2 grid grid-cols-subgrid gap-x-3',
+                    collapsedDock ? 'size-8 p-0 flex justify-center' : 'px-2.5 py-2 grid grid-cols-subgrid gap-x-3',
                     state === 'collapsed' && 'group-data-section:*:[[slot=label]]:hidden',
                     className
                 )
@@ -351,13 +329,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
 }
 
 const SidebarLabel = ({ className, ...props }: TextProps) => {
-    return (
-        <Text
-            slot='label'
-            className={cn('col-start-2 line-clamp-1 text-left', className)}
-            {...props}
-        />
-    )
+    return <Text slot='label' className={cn('col-start-2 line-clamp-1 text-left', className)} {...props} />
 }
 
 const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) => {
@@ -373,9 +345,7 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
                     {
                         'bg-primary/10 text-primary': isHovered || isPressed || isFocused
                     },
-                    collapsedDock
-                        ? 'p-0 size-8 flex justify-center'
-                        : 'grid grid-cols-subgrid px-2.5 py-2 text-left',
+                    collapsedDock ? 'p-0 size-8 flex justify-center' : 'grid grid-cols-subgrid px-2.5 py-2 text-left',
                     isFocusVisible && 'ring-2 ring-offset-2 ring-primary',
                     'aria-expanded:*:data-[slot=indicator]:rotate-90',
                     state === 'collapsed' && '*:[[slot=label]]:hidden',
@@ -401,10 +371,7 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
 const SidebarSubItem = ({ children, className, ...props }: DisclosurePanelProps) => {
     const { state, isMobile } = useSidebar()
     return state === 'expanded' || isMobile ? (
-        <DisclosurePanel
-            className={cn('grid grid-cols-subgrid gap-y-0.5 col-span-full', className)}
-            {...props}
-        >
+        <DisclosurePanel className={cn('grid grid-cols-subgrid gap-y-0.5 col-span-full', className)} {...props}>
             {children}
         </DisclosurePanel>
     ) : (
@@ -481,8 +448,7 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
                     'fixed h-[calc(100svh-theme(spacing.4))] max-h-full w-4 transition bg-transparent',
                     side === 'left' ? 'right-0' : 'left-0',
                     state === 'collapsed' ? 'cursor-e-resize' : 'cursor-w-resize',
-                    (isHovered || isPressed) &&
-                        `${side === 'left' ? 'border-r-2' : 'border-l-2'} border-primary`,
+                    (isHovered || isPressed) && `${side === 'left' ? 'border-r-2' : 'border-l-2'} border-primary`,
                     className
                 )
             )}

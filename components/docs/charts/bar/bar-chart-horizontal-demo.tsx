@@ -24,10 +24,7 @@ const chartConfig = {
 export default function BarChartHorizontalDemo() {
     return (
         <Card>
-            <Card.Header
-                title='Data Center Uptime'
-                description='Uptime percentage by region for Q1 2024'
-            />
+            <Card.Header title='Data Center Uptime' description='Uptime percentage by region for Q1 2024' />
             <Card.Content>
                 <Chart config={chartConfig}>
                     <BarChart
@@ -39,17 +36,8 @@ export default function BarChartHorizontalDemo() {
                         }}
                     >
                         <XAxis type='number' dataKey='uptime' hide />
-                        <YAxis
-                            dataKey='dataCenter'
-                            type='category'
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                        />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <YAxis dataKey='dataCenter' type='category' tickLine={false} tickMargin={10} axisLine={false} />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Bar dataKey='uptime' fill='var(--color-uptime)' radius={5} />
                     </BarChart>
                 </Chart>

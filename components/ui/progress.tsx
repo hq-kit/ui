@@ -14,20 +14,11 @@ interface ProgressProps extends ProgressBarProps {
     variant?: 'primary' | 'secondary' | 'warning' | 'danger' | 'info' | 'success' | 'dark'
 }
 
-const Progress = ({
-    label,
-    ref,
-    circle,
-    variant = 'primary',
-    className,
-    ...props
-}: ProgressProps) => {
+const Progress = ({ label, ref, circle, variant = 'primary', className, ...props }: ProgressProps) => {
     return (
         <ProgressBar
             ref={ref}
-            className={composeRenderProps(className, (className) =>
-                cn('flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('flex flex-col gap-y-1.5', className))}
             {...props}
         >
             {({ percentage, valueText, isIndeterminate }) => (
@@ -35,11 +26,7 @@ const Progress = ({
                     {circle ? (
                         <svg
                             aria-label={label ?? 'Progress'}
-                            className={cn(
-                                'size-20 shrink-0',
-                                `text-${variant === 'dark' ? 'fg' : variant}`,
-                                className
-                            )}
+                            className={cn('size-20 shrink-0', `text-${variant === 'dark' ? 'fg' : variant}`, className)}
                             viewBox='0 0 32 32'
                             fill='none'
                         >
@@ -85,11 +72,7 @@ const Progress = ({
                         <>
                             <div className='flex justify-between gap-2'>
                                 {label && <Label>{label}</Label>}
-                                {valueText && (
-                                    <span className='text-muted-fg text-sm tabular-nums'>
-                                        {valueText}
-                                    </span>
-                                )}
+                                {valueText && <span className='text-muted-fg text-sm tabular-nums'>{valueText}</span>}
                             </div>
                             <div className='bg-muted relative h-2 min-w-64 overflow-hidden rounded-lg outline-hidden'>
                                 <motion.div

@@ -1,12 +1,4 @@
-import {
-    DM_Mono,
-    Fira_Code,
-    Geist_Mono,
-    IBM_Plex_Mono,
-    JetBrains_Mono,
-    PT_Mono,
-    Ubuntu_Mono
-} from 'next/font/google'
+import { DM_Mono, Fira_Code, Geist_Mono, IBM_Plex_Mono, JetBrains_Mono, PT_Mono, Ubuntu_Mono } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 

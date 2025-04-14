@@ -65,10 +65,7 @@ const chartConfig = {
 export default function BarChartActiveDemo() {
     return (
         <Card>
-            <Card.Header
-                title='Operating System Usage'
-                description='User distribution by OS in 2024'
-            />
+            <Card.Header title='Operating System Usage' description='User distribution by OS in 2024' />
             <Card.Content>
                 <Chart config={chartConfig}>
                     <BarChart accessibilityLayer data={chartData}>
@@ -82,10 +79,7 @@ export default function BarChartActiveDemo() {
                                 chartConfig[value.toLowerCase() as keyof typeof chartConfig]?.label
                             }
                         />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Bar
                             dataKey='users'
                             strokeWidth={2}

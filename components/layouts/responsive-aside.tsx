@@ -21,7 +21,7 @@ export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean)
                     aria-label='Open Menu.'
                     className='[&_[data-slot=icon]]:text-fg -ml-2'
                     variant='outline'
-                    size='icon'
+                    icon
                     onPress={() => {
                         setOpenAside(true)
                     }}
@@ -32,12 +32,7 @@ export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean)
                     <IconBrandCleon className='size-6' />
                 </Link>
                 <div className='flex items-center gap-x-1'>
-                    <Button
-                        onPress={() => setOpenCmd(true)}
-                        size='icon'
-                        variant='outline'
-                        aria-label='Open command palette'
-                    >
+                    <Button onPress={() => setOpenCmd(true)} icon variant='outline' aria-label='Open command palette'>
                         <IconSearch />
                     </Button>
                     <ThemeToggle />

@@ -17,9 +17,7 @@ export default function ColorAreaControlledDemo() {
     const [color, setColor] = React.useState(parseColor('hsl(0, 100%, 50%)'))
     const [colorSpace, setColorSpace] = React.useState<Key>('rgb')
     const [xChannel, setXChannel] = React.useState<Key>(colorSpace === 'rgb' ? 'red' : 'hue')
-    const [yChannel, setYChannel] = React.useState<Key>(
-        colorSpace === 'rgb' ? 'alpha' : 'saturation'
-    )
+    const [yChannel, setYChannel] = React.useState<Key>(colorSpace === 'rgb' ? 'alpha' : 'saturation')
 
     return (
         <div className='flex flex-col gap-4 items-center'>
@@ -42,13 +40,7 @@ export default function ColorAreaControlledDemo() {
                     className='w-full'
                     selectedKey={xChannel}
                     onSelectionChange={(v) => setXChannel(v)}
-                    items={
-                        colorSpace === 'rgb'
-                            ? RGBchannels
-                            : colorSpace === 'hsl'
-                              ? HSLchannels
-                              : HSBchannels
-                    }
+                    items={colorSpace === 'rgb' ? RGBchannels : colorSpace === 'hsl' ? HSLchannels : HSBchannels}
                 >
                     {(item) => <Select.Item id={item.channel}>{item.channel}</Select.Item>}
                 </Select>
@@ -57,13 +49,7 @@ export default function ColorAreaControlledDemo() {
                     className='w-full'
                     selectedKey={yChannel}
                     onSelectionChange={(v) => setYChannel(v)}
-                    items={
-                        colorSpace === 'rgb'
-                            ? RGBchannels
-                            : colorSpace === 'hsl'
-                              ? HSLchannels
-                              : HSBchannels
-                    }
+                    items={colorSpace === 'rgb' ? RGBchannels : colorSpace === 'hsl' ? HSLchannels : HSBchannels}
                 >
                     {(item) => <Select.Item id={item.channel}>{item.channel}</Select.Item>}
                 </Select>

@@ -61,13 +61,7 @@ import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
 import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import type { HeadingTagType } from '@lexical/rich-text'
-import {
-    $createHeadingNode,
-    $createQuoteNode,
-    $isHeadingNode,
-    HeadingNode,
-    QuoteNode
-} from '@lexical/rich-text'
+import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingNode, QuoteNode } from '@lexical/rich-text'
 import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
 
@@ -109,16 +103,7 @@ const RichTextField = ({
                 underline: 'underline'
             }
         },
-        nodes: [
-            HeadingNode,
-            ListNode,
-            ListItemNode,
-            QuoteNode,
-            CodeNode,
-            CodeHighlightNode,
-            AutoLinkNode,
-            LinkNode
-        ],
+        nodes: [HeadingNode, ListNode, ListItemNode, QuoteNode, CodeNode, CodeHighlightNode, AutoLinkNode, LinkNode],
         onError: (error) => {
             console.error(error)
         }
@@ -130,11 +115,7 @@ const RichTextField = ({
                 <div className='relative'>
                     {as === 'rich-text' ? (
                         <RichTextPlugin
-                            placeholder={
-                                <p className='text-muted-fg absolute bottom-2 left-3'>
-                                    Write something...
-                                </p>
-                            }
+                            placeholder={<p className='text-muted-fg absolute bottom-2 left-3'>Write something...</p>}
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -163,11 +144,7 @@ const RichTextField = ({
                         />
                     ) : (
                         <PlainTextPlugin
-                            placeholder={
-                                <p className='text-muted-fg absolute bottom-2 left-3'>
-                                    Write something...
-                                </p>
-                            }
+                            placeholder={<p className='text-muted-fg absolute bottom-2 left-3'>Write something...</p>}
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -304,7 +281,7 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
 
     return (
         <Menu>
-            <Button isDisabled={!editor.isEditable()} variant='outline' size='icon'>
+            <Button isDisabled={!editor.isEditable()} variant='outline' icon>
                 {blockIcons[blockType as keyof typeof blockIcons]}
             </Button>
             <Menu.Content selectionMode='single' aria-label='Block type' selectedKeys={[blockType]}>
@@ -437,11 +414,10 @@ export function ToolbarPlugin() {
 
     return (
         <Toolbar className='mb-2' aria-label='Toolbar'>
-            <Toolbar.Group aria-label='Formats'>
+            <Toolbar.Group icon aria-label='Formats'>
                 <BlockTypeDropdown blockType={blockType} />
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.bold}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')
@@ -451,7 +427,6 @@ export function ToolbarPlugin() {
                 </Toolbar.Item>
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.italic}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')
@@ -461,7 +436,6 @@ export function ToolbarPlugin() {
                 </Toolbar.Item>
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.underline}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')
@@ -471,7 +445,6 @@ export function ToolbarPlugin() {
                 </Toolbar.Item>
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.strikethrough}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')
@@ -481,7 +454,6 @@ export function ToolbarPlugin() {
                 </Toolbar.Item>
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.subscript}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'subscript')
@@ -491,7 +463,6 @@ export function ToolbarPlugin() {
                 </Toolbar.Item>
                 <Toolbar.Item
                     isDisabled={!editor.isEditable()}
-                    size='icon'
                     isSelected={formatText.superscript}
                     onChange={() => {
                         editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript')
@@ -503,7 +474,7 @@ export function ToolbarPlugin() {
             <Toolbar.Separator />
             <Toolbar.Group aria-label='Actions'>
                 <Toolbar.Item
-                    size='icon'
+                    icon
                     isDisabled={!canUndo || !editor.isEditable()}
                     isSelected={false}
                     onPress={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
@@ -511,7 +482,7 @@ export function ToolbarPlugin() {
                     <IconUndo />
                 </Toolbar.Item>
                 <Toolbar.Item
-                    size='icon'
+                    icon
                     isDisabled={!canRedo || !editor.isEditable()}
                     isSelected={false}
                     onPress={() => editor.dispatchCommand(REDO_COMMAND, undefined)}

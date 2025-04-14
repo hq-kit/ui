@@ -11,9 +11,7 @@ export default function PopoverTriggerDemo() {
             <Popover.Content>
                 <Popover.Header>
                     <Popover.Title>Email</Popover.Title>
-                    <Popover.Description>
-                        We&apos;ll send you an email to log in.
-                    </Popover.Description>
+                    <Popover.Description>We&apos;ll send you an email to log in.</Popover.Description>
                 </Popover.Header>
                 <Popover.Footer>
                     <Button>Send Login Link</Button>

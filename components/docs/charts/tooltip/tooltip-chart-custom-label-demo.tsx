@@ -49,18 +49,8 @@ export default function TooltipChartCustomLabelDemo() {
                                 })
                             }}
                         />
-                        <Bar
-                            dataKey='sales'
-                            stackId='a'
-                            fill='var(--color-sales)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='profit'
-                            stackId='a'
-                            fill='var(--color-profit)'
-                            radius={[4, 4, 0, 0]}
-                        />
+                        <Bar dataKey='sales' stackId='a' fill='var(--color-sales)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='profit' stackId='a' fill='var(--color-profit)' radius={[4, 4, 0, 0]} />
                         <Chart.Tooltip
                             content={<Chart.TooltipContent labelKey='metrics' indicator='line' />}
                             cursor={false}

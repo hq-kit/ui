@@ -139,12 +139,7 @@ const Carousel = ({
                 canScrollNext
             }}
         >
-            <div
-                onKeyDownCapture={handleKeyDown}
-                className={cn('relative', className)}
-                role='region'
-                {...props}
-            >
+            <div onKeyDownCapture={handleKeyDown} className={cn('relative', className)} role='region' {...props}>
                 {children}
             </div>
         </CarouselContext.Provider>
@@ -163,11 +158,7 @@ const CarouselContent = <T extends object>({ className, ...props }: ListBoxSecti
             className='overflow-hidden'
         >
             <ListBoxSection
-                className={cn(
-                    'flex',
-                    orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
-                    className
-                )}
+                className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
                 {...props}
             />
         </ListBox>

@@ -2,11 +2,7 @@
 
 import React from 'react'
 
-import type {
-    SliderProps as RACSliderProps,
-    SliderThumbProps,
-    SliderTrackProps
-} from 'react-aria-components'
+import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
     Slider as RACSlider,
     SliderThumb as RACSliderThumb,
@@ -29,9 +25,7 @@ const Slider = ({ orientation = 'horizontal', className, ...props }: SliderProps
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
                     'group relative flex touch-none select-none flex-col gap-y-3',
-                    orientation === 'horizontal'
-                        ? 'w-full min-w-56'
-                        : 'h-full min-h-56 w-1.5 items-center',
+                    orientation === 'horizontal' ? 'w-full min-w-56' : 'h-full min-h-56 w-1.5 items-center',
                     className
                 )
             )}
@@ -89,9 +83,7 @@ const SliderFiller = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
         const percent1 = getThumbPercent ? getThumbPercent(1) * 100 : 0
 
         if (values?.length === 1) {
-            return orientation === 'horizontal'
-                ? { width: `${percent0}%` }
-                : { height: `${percent0}%` }
+            return orientation === 'horizontal' ? { width: `${percent0}%` } : { height: `${percent0}%` }
         } else {
             return orientation === 'horizontal'
                 ? { left: `${percent0}%`, width: `${Math.abs(percent0 - percent1)}%` }
@@ -116,16 +108,14 @@ const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
     return (
         <RACSliderThumb
             {...props}
-            className={composeRenderProps(
-                className,
-                (className, { isFocusVisible, isDragging, isDisabled }) =>
-                    cn(
-                        'top-1/2 left-1/2 size-5 rounded-full border border-muted-fg bg-bg outline-hidden transition',
-                        isFocusVisible && 'border-primary ring-4 ring-primary/20',
-                        isDragging && 'cursor-grabbing border-primary ring-4 ring-primary/20',
-                        isDisabled && 'opacity-50',
-                        className
-                    )
+            className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
+                cn(
+                    'top-1/2 left-1/2 size-5 rounded-full border border-muted-fg bg-bg outline-hidden transition',
+                    isFocusVisible && 'border-primary ring-4 ring-primary/20',
+                    isDragging && 'cursor-grabbing border-primary ring-4 ring-primary/20',
+                    isDisabled && 'opacity-50',
+                    className
+                )
             )}
         />
     )

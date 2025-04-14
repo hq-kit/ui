@@ -61,13 +61,10 @@ export function Navbar() {
 
                                 <div className='flex items-center gap-x-1'>
                                     <>
-                                        <Button
-                                            onPress={() => setOpen((open: boolean) => !open)}
-                                            variant='outline'
-                                        >
+                                        <Button onPress={() => setOpen((open: boolean) => !open)} variant='outline'>
                                             <IconSearch />
                                             <span className='text-muted-fg mr-2'>Search...</span>
-                                            <Keyboard keys='⌘K' />
+                                            <Keyboard keys={['meta', 'k']} />
                                         </Button>
                                         <ThemeToggle />
 
@@ -77,7 +74,7 @@ export function Navbar() {
                                             aria-label='Github Repository'
                                             className={buttonStyles({
                                                 variant: 'outline',
-                                                size: 'icon',
+                                                icon: true,
                                                 className: '[&_[data-slot=icon]]:text-fg'
                                             })}
                                             target='_blank'
@@ -135,10 +132,7 @@ export function NavbarDropdown() {
                     <IconBrandGithub />
                     <Menu.Label>Github</Menu.Label>
                 </Menu.Item>
-                <Menu.Item
-                    href='https://react-spectrum.adobe.com/react-aria/components.html'
-                    target='_blank'
-                >
+                <Menu.Item href='https://react-spectrum.adobe.com/react-aria/components.html' target='_blank'>
                     <IconBrandAdobe />
                     <Menu.Label>RAC</Menu.Label>
                 </Menu.Item>

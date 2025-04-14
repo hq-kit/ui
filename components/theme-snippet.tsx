@@ -19,9 +19,7 @@ export const ThemeSnippet = () => {
                 <Modal.Content size='2xl'>
                     <Modal.Header>
                         <Modal.Title>Theme</Modal.Title>
-                        <Modal.Description>
-                            Copy and paste the following code into your CSS file.
-                        </Modal.Description>
+                        <Modal.Description>Copy and paste the following code into your CSS file.</Modal.Description>
                     </Modal.Header>
                     <Modal.Body>
                         <CopyCode />
@@ -100,8 +98,7 @@ export const ColorPreview = () => {
 }
 
 const CopyCode = () => {
-    const { currentPresetColor, currentGrayColor, currentBorderRadius, grayColors, presetColors } =
-        useThemeGenerator()
+    const { currentPresetColor, currentGrayColor, currentBorderRadius, grayColors, presetColors } = useThemeGenerator()
     const activeTheme = presetColors.find((theme) => theme.name === currentPresetColor)
     const activeBase = grayColors.find((theme) => theme.name === currentGrayColor)
 

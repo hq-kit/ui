@@ -21,24 +21,14 @@ interface TextFieldProps extends RACTextFieldProps, FieldProps {
     isPending?: boolean
 }
 
-const TextField = ({
-    label,
-    placeholder,
-    description,
-    errorMessage,
-    className,
-    type,
-    ...props
-}: TextFieldProps) => {
+const TextField = ({ label, placeholder, description, errorMessage, className, type, ...props }: TextFieldProps) => {
     const [masked, setMasked] = React.useState<boolean>(type === 'password')
     const inputType = type === 'password' ? (masked ? 'password' : 'text') : type
 
     return (
         <RACTextField
             type={inputType}
-            className={composeRenderProps(className, (className) =>
-                cn('group flex flex-col gap-y-1.5', className)
-            )}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (
@@ -54,9 +44,7 @@ const TextField = ({
                         data-loading={props.isPending ? 'true' : undefined}
                     >
                         {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
-                                {props.prefix}
-                            </span>
+                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
                         ) : null}
                         <Input placeholder={placeholder} />
                         {type === 'password' ? (
@@ -69,10 +57,7 @@ const TextField = ({
                                 {masked ? <IconEye /> : <IconEyeClosed />}
                             </Button>
                         ) : props.isPending ? (
-                            <IconLoaderCircle
-                                className='animate-spin size-3.5 mr-2 text-muted-fg'
-                                data-suffix
-                            />
+                            <IconLoaderCircle className='animate-spin size-3.5 mr-2 text-muted-fg' data-suffix />
                         ) : props.suffix ? (
                             <span data-suffix className='mr-2 has-[button]:mr-0 text-muted-fg'>
                                 {props.suffix}

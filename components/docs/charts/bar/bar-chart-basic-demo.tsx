@@ -5,12 +5,9 @@ import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
 import { Card, Chart, type ChartConfig } from '@/components/ui'
 
 const salesData = Array.from({ length: 48 }, (_, index) => {
-    const month = new Date(new Date().getFullYear() - 4, Math.floor(index / 2)).toLocaleDateString(
-        'en-US',
-        {
-            month: 'short'
-        }
-    )
+    const month = new Date(new Date().getFullYear() - 4, Math.floor(index / 2)).toLocaleDateString('en-US', {
+        month: 'short'
+    })
     const startDay = index % 2 === 0 ? 1 : 15
     const endDay = index % 2 === 0 ? 14 : 28
     return {
@@ -39,10 +36,7 @@ export default function BarChartBasicDemo() {
                     <BarChart accessibilityLayer data={salesData}>
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey='period' tickLine={false} tickMargin={10} axisLine={false} />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Bar dataKey='revenue' fill='var(--color-revenue)' radius={0} />
                     </BarChart>
                 </Chart>

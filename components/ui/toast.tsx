@@ -44,11 +44,7 @@ const ToastProvider = () => {
             queue={queue}
         >
             {({ toast }) => (
-                <Toaster
-                    key={toast.key}
-                    toast={toast}
-                    className={cn('sm:min-w-xs will-change-transform sm:w-fit')}
-                >
+                <Toaster key={toast.key} toast={toast} className={cn('sm:min-w-xs will-change-transform sm:w-fit')}>
                     <motion.div
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
@@ -58,14 +54,10 @@ const ToastProvider = () => {
                         className={cn(
                             'flex flex-col backdrop-blur-lg p-4 gap-2 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.3)] border',
                             {
-                                'border-success/20 text-success bg-success/10':
-                                    toast.content.type === 'success',
-                                'border-danger/20 bg-danger/5 text-danger':
-                                    toast.content.type === 'error',
-                                'border-primary/30 text-primary bg-primary/10':
-                                    toast.content.type === 'info',
-                                'border-warning/40 bg-warning/5 text-warning':
-                                    toast.content.type === 'warning',
+                                'border-success/20 text-success bg-success/10': toast.content.type === 'success',
+                                'border-danger/20 bg-danger/5 text-danger': toast.content.type === 'error',
+                                'border-primary/30 text-primary bg-primary/10': toast.content.type === 'info',
+                                'border-warning/40 bg-warning/5 text-warning': toast.content.type === 'warning',
                                 'bg-bg text-fg': toast.content.type === 'default'
                             }
                         )}
@@ -136,8 +128,7 @@ const ToastProvider = () => {
                                                 'outline-hidden cursor-pointer flex items-center border justify-center gap-x-1.5 rounded-lg bg-bg px-2 py-1 text-sm text-fg *:[svg]:size-3',
                                                 isHovered && 'bg-muted/40',
                                                 isPressed && 'bg-muted/60',
-                                                isFocusVisible &&
-                                                    'ring-4 ring-primary/20 border-primary'
+                                                isFocusVisible && 'ring-4 ring-primary/20 border-primary'
                                             )
                                         }
                                     >
@@ -220,10 +211,7 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
                 <>
                     {typeof children === 'function' ? children(values) : children}
                     {timeout !== undefined && (
-                        <svg
-                            className='absolute top-0 left-0 size-full'
-                            viewBox={`0 0 ${size} ${size}`}
-                        >
+                        <svg className='absolute top-0 left-0 size-full' viewBox={`0 0 ${size} ${size}`}>
                             <motion.circle
                                 stroke='#3b82f6'
                                 fill='transparent'
@@ -243,34 +231,19 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
     )
 }
 
-const toast = (
-    body: string,
-    content?: Omit<ToastContent, 'type' | 'title'>,
-    options?: ToastOptions
-) => queue.add({ ...content, title: body, type: 'default' }, options)
+const toast = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+    queue.add({ ...content, title: body, type: 'default' }, options)
 
-toast.success = (
-    body: string,
-    content?: Omit<ToastContent, 'type' | 'title'>,
-    options?: ToastOptions
-) => queue.add({ ...content, title: body, type: 'success' }, options)
+toast.success = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+    queue.add({ ...content, title: body, type: 'success' }, options)
 
-toast.error = (
-    body: string,
-    content?: Omit<ToastContent, 'type' | 'title'>,
-    options?: ToastOptions
-) => queue.add({ ...content, title: body, type: 'error' }, options)
+toast.error = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+    queue.add({ ...content, title: body, type: 'error' }, options)
 
-toast.info = (
-    body: string,
-    content?: Omit<ToastContent, 'type' | 'title'>,
-    options?: ToastOptions
-) => queue.add({ ...content, title: body, type: 'info' }, options)
+toast.info = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+    queue.add({ ...content, title: body, type: 'info' }, options)
 
-toast.warning = (
-    body: string,
-    content?: Omit<ToastContent, 'type' | 'title'>,
-    options?: ToastOptions
-) => queue.add({ ...content, title: body, type: 'warning' }, options)
+toast.warning = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+    queue.add({ ...content, title: body, type: 'warning' }, options)
 
 export { toast, ToastProvider }

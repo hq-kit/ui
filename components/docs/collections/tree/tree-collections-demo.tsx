@@ -33,9 +33,7 @@ export default function TreeCollectionsDemo() {
                 )}
             </TreeItem.Content>
             {item.children && (
-                <Collection items={item.children}>
-                    {item.children.map((file, i) => renderItem(file, i))}
-                </Collection>
+                <Collection items={item.children}>{item.children.map((file, i) => renderItem(file, i))}</Collection>
             )}
         </TreeItem>
     )

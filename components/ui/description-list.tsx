@@ -14,23 +14,12 @@ const DL = ({ className, ...props }: React.HTMLAttributes<HTMLDListElement>) => 
 
 const DT = ({ className, ...props }: React.HTMLAttributes<HTMLDetailsElement>) => {
     return (
-        <dt
-            className={cn(
-                'text-muted-fg col-start-1 border-t pt-3 first:border-none sm:py-3',
-                className
-            )}
-            {...props}
-        />
+        <dt className={cn('text-muted-fg col-start-1 border-t pt-3 first:border-none sm:py-3', className)} {...props} />
     )
 }
 
 const DD = ({ className, ...props }: React.HTMLAttributes<HTMLDetailsElement>) => {
-    return (
-        <dd
-            className={cn('text-fg pt-1 pb-3 sm:border-t sm:py-3 sm:nth-2:border-none', className)}
-            {...props}
-        />
-    )
+    return <dd className={cn('text-fg pt-1 pb-3 sm:border-t sm:py-3 sm:nth-2:border-none', className)} {...props} />
 }
 
 DL.T = DT

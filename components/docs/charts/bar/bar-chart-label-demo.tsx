@@ -42,10 +42,7 @@ const chartConfig = {
 export default function BarChartLabelDemo() {
     return (
         <Card>
-            <Card.Header
-                title='Customer Satisfaction Survey'
-                description='Satisfaction scores by category'
-            />
+            <Card.Header title='Customer Satisfaction Survey' description='Satisfaction scores by category' />
             <Card.Content>
                 <Chart config={chartConfig}>
                     <BarChart
@@ -56,23 +53,10 @@ export default function BarChartLabelDemo() {
                         }}
                     >
                         <CartesianGrid vertical={false} />
-                        <XAxis
-                            dataKey='category'
-                            tickLine={false}
-                            tickMargin={10}
-                            axisLine={false}
-                        />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel />}
-                        />
+                        <XAxis dataKey='category' tickLine={false} tickMargin={10} axisLine={false} />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Bar dataKey='satisfaction' fill='var(--color-satisfaction)' radius={8}>
-                            <LabelList
-                                position='top'
-                                offset={12}
-                                className='fill-fg'
-                                fontSize={12}
-                            />
+                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
                         </Bar>
                     </BarChart>
                 </Chart>

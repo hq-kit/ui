@@ -48,12 +48,7 @@ export default function RadarChartRadiusAxisDemo() {
                         <PolarGrid />
                         <Radar dataKey='sales' fill='var(--color-sales)' fillOpacity={0.6} />
                         <Radar dataKey='profit' fill='var(--color-profit)' />
-                        <PolarRadiusAxis
-                            angle={60}
-                            stroke='var(--fg)'
-                            orientation='middle'
-                            axisLine={false}
-                        />
+                        <PolarRadiusAxis angle={60} stroke='var(--fg)' orientation='middle' axisLine={false} />
                     </RadarChart>
                 </Chart>
             </Card.Content>

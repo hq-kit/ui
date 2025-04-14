@@ -71,14 +71,14 @@ export default function ChatApp() {
                         <div className='bg-bg sticky top-0 z-20 flex w-full items-center justify-between rounded-lg p-4'>
                             <h1 className='text-2xl font-bold'>Chats</h1>
                             <div className='flex items-center justify-between gap-2'>
-                                <Button variant='ghost' size='icon'>
+                                <Button variant='ghost' icon>
                                     <IconMessageMore className='!size-6' />
                                 </Button>
                                 <Menu>
                                     <Menu.Trigger
                                         className={buttonStyles({
                                             variant: 'ghost',
-                                            size: 'icon'
+                                            icon: true
                                         })}
                                     >
                                         <IconEllipsisVertical />
@@ -103,7 +103,7 @@ export default function ChatApp() {
                     <div className='bg-bg relative flex h-full min-h-[50vh] flex-col rounded-lg lg:col-span-3'>
                         <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
                             <Popover>
-                                <Button variant='ghost' size='icon' className='md:hidden'>
+                                <Button variant='ghost' icon className='md:hidden'>
                                     <IconContact />
                                 </Button>
                                 <Popover.Content aria-label='Contact List'>
@@ -122,7 +122,7 @@ export default function ChatApp() {
                                     className={cn(
                                         buttonStyles({
                                             variant: 'ghost',
-                                            size: 'icon'
+                                            icon: true
                                         }),
                                         'ml-auto'
                                     )}
@@ -153,9 +153,7 @@ export default function ChatApp() {
                             ) : (
                                 <div className='flex h-full flex-col items-center justify-center'>
                                     <IconMessageDashed className='!size-6' />
-                                    <p className='text-center text-xl font-bold'>
-                                        Start a conversation
-                                    </p>
+                                    <p className='text-center text-xl font-bold'>Start a conversation</p>
                                 </div>
                             )}
                         </div>

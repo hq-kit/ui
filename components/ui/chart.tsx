@@ -13,10 +13,7 @@ type ChartConfig = {
     [k in string]: {
         label?: React.ReactNode
         icon?: React.ComponentType
-    } & (
-        | { color?: string; theme?: never }
-        | { color?: never; theme: Record<keyof typeof THEMES, string> }
-    )
+    } & ({ color?: string; theme?: never } | { color?: never; theme: Record<keyof typeof THEMES, string> })
 }
 
 type ChartContextProps = {
@@ -215,9 +212,7 @@ const ChartTooltipContent = ({
                                     >
                                         <div className='grid gap-1.5'>
                                             {nestLabel ? tooltipLabel : null}
-                                            <span className='text-muted-fg'>
-                                                {itemConfig?.label || item.name}
-                                            </span>
+                                            <span className='text-muted-fg'>{itemConfig?.label || item.name}</span>
                                         </div>
                                         {item.value && (
                                             <span className='text-fg font-mono font-medium tabular-nums'>

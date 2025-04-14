@@ -48,9 +48,7 @@ export default function PieChartCustomLabelDemo() {
             <Card.Content className='flex-1 pb-0'>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px] px-0'>
                     <PieChart>
-                        <Chart.Tooltip
-                            content={<Chart.TooltipContent nameKey='amount' hideLabel />}
-                        />
+                        <Chart.Tooltip content={<Chart.TooltipContent nameKey='amount' hideLabel />} />
                         <Pie
                             data={chartData}
                             dataKey='amount'

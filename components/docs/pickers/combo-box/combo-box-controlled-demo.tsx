@@ -34,11 +34,7 @@ export default function ComboBoxControlledDemo() {
                     Input
                 </Toggle>
             </Toggle.Group>
-            {Array.from(mode).includes('selection') ? (
-                <ComboBoxControlledSelected />
-            ) : (
-                <ComboBoxControlledInput />
-            )}
+            {Array.from(mode).includes('selection') ? <ComboBoxControlledSelected /> : <ComboBoxControlledInput />}
         </div>
     )
 }
@@ -47,12 +43,7 @@ const ComboBoxControlledInput = () => {
     const [value, setValue] = React.useState<string>('')
     return (
         <div className='space-y-4 grid'>
-            <ComboBox
-                label='Linux Distro'
-                inputValue={value}
-                onInputChange={setValue}
-                items={items}
-            >
+            <ComboBox label='Linux Distro' inputValue={value} onInputChange={setValue} items={items}>
                 {(item) => (
                     <ComboBox.Item id={item.id} textValue={item.name}>
                         {item.name}
@@ -68,12 +59,7 @@ const ComboBoxControlledSelected = () => {
     const [selected, setSelected] = React.useState<Key | null>(null)
     return (
         <div className='space-y-4 grid'>
-            <ComboBox
-                label='Linux Distro'
-                selectedKey={selected}
-                onSelectionChange={setSelected}
-                items={items}
-            >
+            <ComboBox label='Linux Distro' selectedKey={selected} onSelectionChange={setSelected} items={items}>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
             <code>selected: {JSON.stringify(selected)}</code>

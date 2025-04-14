@@ -1,19 +1,19 @@
 'use client'
 
+import React from 'react'
+
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 
 import { Button, Command } from '@/components/ui'
 
 export default function CommandTriggerByKeyboardDemo() {
+    const [open, setOpen] = React.useState<boolean>(false)
     return (
         <>
-            <Button
-                variant='outline'
-                onPress={() => alert('Do not press me!, press the keyboard shortcut')}
-            >
-                <Command.Shortcut>⌘ + /</Command.Shortcut>
+            <Button variant='outline' onPress={() => setOpen(true)}>
+                <Command.Shortcut keys={['meta', '/']} />
             </Button>
-            <Command shortcut={{ key: '/' }}>
+            <Command.Modal isOpen={open} onOpenChange={setOpen} shortcut={{ key: '/' }}>
                 <Command.Item textValue='home'>
                     <IconHome />
                     <Command.Label>Home</Command.Label>
@@ -34,7 +34,7 @@ export default function CommandTriggerByKeyboardDemo() {
                     <IconPalette />
                     <Command.Label>Colors</Command.Label>
                 </Command.Item>
-            </Command>
+            </Command.Modal>
         </>
     )
 }

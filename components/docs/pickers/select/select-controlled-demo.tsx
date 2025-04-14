@@ -18,12 +18,7 @@ export default function SelectControlledDemo() {
     const [selected, setSelected] = React.useState<Key>('')
     return (
         <div className='space-y-6'>
-            <Select
-                selectedKey={selected}
-                onSelectionChange={setSelected}
-                label='Linux Distro'
-                items={items}
-            >
+            <Select selectedKey={selected} onSelectionChange={setSelected} label='Linux Distro' items={items}>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
             <code>selected: {JSON.stringify(selected)}</code>

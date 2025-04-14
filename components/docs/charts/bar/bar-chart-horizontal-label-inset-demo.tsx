@@ -96,16 +96,12 @@ export default function BarChartHorizontalLabelInsetDemo() {
                                         textAnchor='end'
                                         fill='var(--fg)'
                                     >
-                                        {props.count.toLocaleString()} (
-                                        {props.percentage.toFixed(1)}%)
+                                        {props.count.toLocaleString()} ({props.percentage.toFixed(1)}%)
                                     </text>
                                 </>
                             )}
                         />
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent indicator='dot' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent indicator='dot' />} />
                     </BarChart>
                 </Chart>
             </Card.Content>

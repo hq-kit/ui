@@ -39,10 +39,7 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
                         {showOutput && <SliderOutput />}
                     </div>
                     <SliderTrack
-                        className={cn(
-                            'rounded-lg',
-                            orientation === 'horizontal' ? 'h-6 w-full' : 'h-56 w-6'
-                        )}
+                        className={cn('rounded-lg', orientation === 'horizontal' ? 'h-6 w-full' : 'h-56 w-6')}
                         style={({ defaultStyle }) => ({ ...defaultStyle })}
                     >
                         <ColorThumb />

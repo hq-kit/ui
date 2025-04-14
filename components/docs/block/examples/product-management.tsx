@@ -72,12 +72,8 @@ export default function ProductManagement() {
                                 </Select>
                             </Toolbar.Group>
                             <Toolbar.Group aria-label='Actions'>
-                                <SearchField
-                                    onChange={handleSearch}
-                                    placeholder='Search...'
-                                    aria-label='Search'
-                                />
-                                <Toolbar.Item aria-label='Create' size='icon' variant='outline'>
+                                <SearchField onChange={handleSearch} placeholder='Search...' aria-label='Search' />
+                                <Toolbar.Item aria-label='Create' icon variant='outline'>
                                     <IconPlus />
                                 </Toolbar.Item>
                             </Toolbar.Group>
@@ -133,12 +129,7 @@ export default function ProductManagement() {
                         </Table>
                     </Card.Content>
                     <Card.Footer>
-                        <Paginator
-                            total={total}
-                            page={page}
-                            show={Number(show)}
-                            setPage={setPage}
-                        />
+                        <Paginator total={total} page={page} show={Number(show)} setPage={setPage} />
                     </Card.Footer>
                 </Card>
             </Container>

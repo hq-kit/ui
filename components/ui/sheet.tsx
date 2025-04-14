@@ -4,13 +4,7 @@ import React from 'react'
 
 import { IconX } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
-import type {
-    DialogProps,
-    DialogTriggerProps,
-    HeadingProps,
-    ModalOverlayProps,
-    TextProps
-} from 'react-aria-components'
+import type { DialogProps, DialogTriggerProps, HeadingProps, ModalOverlayProps, TextProps } from 'react-aria-components'
 import {
     Button,
     Dialog,
@@ -111,16 +105,10 @@ const SheetContent = ({
                             dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                             transition={{ duration: 0.15, ease: 'easeInOut' }}
                             onDragEnd={(_, { offset, velocity }) => {
-                                if (
-                                    side === 'bottom' &&
-                                    (velocity.y > 150 || offset.y > screen.height * 0.25)
-                                ) {
+                                if (side === 'bottom' && (velocity.y > 150 || offset.y > screen.height * 0.25)) {
                                     state.close()
                                 }
-                                if (
-                                    side === 'top' &&
-                                    (velocity.y < -150 || offset.y < screen.height * 0.25)
-                                ) {
+                                if (side === 'top' && (velocity.y < -150 || offset.y < screen.height * 0.25)) {
                                     state.close()
                                 }
                                 if (side === 'left' && velocity.x < -150) {
@@ -175,13 +163,7 @@ const SheetContent = ({
 }
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            slot='header'
-            className={cn('flex flex-col p-4 sm:text-left text-center', className)}
-            {...props}
-        />
-    )
+    return <div slot='header' className={cn('flex flex-col p-4 sm:text-left text-center', className)} {...props} />
 }
 
 const Title = ({ className, ...props }: HeadingProps) => (
@@ -207,10 +189,7 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
     return (
         <div
             slot='footer'
-            className={cn(
-                'isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4',
-                className
-            )}
+            className={cn('isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4', className)}
             {...props}
         />
     )

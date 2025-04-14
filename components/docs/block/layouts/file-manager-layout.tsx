@@ -2,15 +2,7 @@
 
 import React from 'react'
 
-import {
-    IconBrandCleon,
-    IconDownload,
-    IconFilm,
-    IconFolders,
-    IconHome,
-    IconMusicNotes,
-    IconTrash
-} from 'hq-icons'
+import { IconBrandCleon, IconDownload, IconFilm, IconFolders, IconHome, IconMusicNotes, IconTrash } from 'hq-icons'
 
 import { Link, Sidebar, SidebarInset } from '@/components/ui'
 
@@ -35,11 +27,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                 </Sidebar.Header>
                 <Sidebar.Content>
                     <Sidebar.Section>
-                        <Sidebar.Item
-                            onPress={() => setRootDir('')}
-                            isCurrent={rootDir === ''}
-                            href='#'
-                        >
+                        <Sidebar.Item onPress={() => setRootDir('')} isCurrent={rootDir === ''} href='#'>
                             <IconHome />
                             <Sidebar.Label>Home</Sidebar.Label>
                         </Sidebar.Item>
@@ -77,11 +65,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                         </Sidebar.Item>
                     </Sidebar.Section>
                     <Sidebar.Section>
-                        <Sidebar.Item
-                            onPress={() => setRootDir('Trash/')}
-                            isCurrent={rootDir === 'Trash/'}
-                            href='#'
-                        >
+                        <Sidebar.Item onPress={() => setRootDir('Trash/')} isCurrent={rootDir === 'Trash/'} href='#'>
                             <IconTrash />
                             <Sidebar.Label>Trash</Sidebar.Label>
                         </Sidebar.Item>

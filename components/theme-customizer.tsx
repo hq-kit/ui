@@ -38,15 +38,13 @@ export function ThemeCustomizer() {
 
     return (
         <Sheet>
-            <Button size='icon' className='fixed mt-1 top-16 right-0 z-50 rounded-r-none'>
+            <Button icon className='fixed mt-1 top-16 right-0 z-50 rounded-r-none'>
                 <IconSwatchBook />
             </Button>
             <Sheet.Content isBlurred={false} side='right' className='sm:max-w-md'>
                 <Sheet.Header>
                     <Sheet.Title>Customize</Sheet.Title>
-                    <Sheet.Description>
-                        Pick a style and color for your components.
-                    </Sheet.Description>
+                    <Sheet.Description>Pick a style and color for your components.</Sheet.Description>
                 </Sheet.Header>
                 <Sheet.Body className='space-y-4'>
                     <div className='flex flex-col sm:flex-row gap-4 w-full'>
@@ -57,8 +55,7 @@ export function ThemeCustomizer() {
                             selectedKey={currentFontSansFamily.label}
                             onSelectionChange={(key) =>
                                 updateFontSansFamily(
-                                    fontSansFamilies.find((f) => f.label === (key as string)) ??
-                                        fontSansFamilies[2]
+                                    fontSansFamilies.find((f) => f.label === (key as string)) ?? fontSansFamilies[2]
                                 )
                             }
                             items={fontSansFamilies}
@@ -72,8 +69,7 @@ export function ThemeCustomizer() {
                             selectedKey={currentFontMonoFamily.label}
                             onSelectionChange={(key) =>
                                 updateFontMonoFamily(
-                                    fontMonoFamilies.find((f) => f.label === (key as string)) ??
-                                        fontMonoFamilies[2]
+                                    fontMonoFamilies.find((f) => f.label === (key as string)) ?? fontMonoFamilies[2]
                                 )
                             }
                             items={fontMonoFamilies}
@@ -140,32 +136,22 @@ export function ThemeCustomizer() {
                                             /* @ts-expect-error needs fixing */ /* prettier-ignore */
                                             updateBorderRadius(presetColors.find((c) => c.name === key.currentKey)?.radius ?? currentBorderRadius)
                                         }}
-                                        items={presetColors.filter((c) =>
-                                            c.name.startsWith(preset.value)
-                                        )}
+                                        items={presetColors.filter((c) => c.name.startsWith(preset.value))}
                                     >
                                         {(item) => (
                                             <GridListItem
                                                 style={{
                                                     backgroundColor: item.color,
-                                                    color: isBrightColor(item.color)
-                                                        ? '#000'
-                                                        : '#fff'
+                                                    color: isBrightColor(item.color) ? '#000' : '#fff'
                                                 }}
                                                 id={item.name}
                                                 textValue={item.label}
-                                                className={({
-                                                    isHovered,
-                                                    isSelected,
-                                                    isFocusVisible
-                                                }) =>
+                                                className={({ isHovered, isSelected, isFocusVisible }) =>
                                                     cn(
                                                         'px-2 py-1 rounded-lg font-semibold flex items-center justify-center cursor-pointer text-xs transition',
                                                         {
                                                             'ring-inset ring-2 ring-fg/80':
-                                                                isFocusVisible ||
-                                                                isSelected ||
-                                                                isHovered
+                                                                isFocusVisible || isSelected || isHovered
                                                         }
                                                     )
                                                 }

@@ -3,14 +3,7 @@
 import React from 'react'
 
 import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
-import type {
-    ComboBoxProps,
-    GroupProps,
-    Key,
-    ListBoxItemProps,
-    ListBoxProps,
-    Selection
-} from 'react-aria-components'
+import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
     ComboBox,
@@ -32,10 +25,7 @@ import { Description, FieldGroup, FieldProps, Label } from './field'
 
 interface MultiSelectProps<T>
     extends ListBoxProps<T>,
-        Pick<
-            ComboBoxProps<T & { selectedKeys: Selection }>,
-            'isRequired' | 'validate' | 'validationBehavior'
-        >,
+        Pick<ComboBoxProps<T & { selectedKeys: Selection }>, 'isRequired' | 'validate' | 'validationBehavior'>,
         FieldProps,
         Pick<GroupProps, 'isDisabled' | 'isInvalid'> {
     className?: string
@@ -96,11 +86,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
             {({ isInvalid, isDisabled }) => (
                 <>
                     {props.label && (
-                        <Label
-                            onClick={() => inputRef.current?.focus()}
-                            isInvalid={isInvalid}
-                            isDisabled={isDisabled}
-                        >
+                        <Label onClick={() => inputRef.current?.focus()} isInvalid={isInvalid} isDisabled={isDisabled}>
                             {props.label}
                         </Label>
                     )}
@@ -112,9 +98,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                         <TagGroup onRemove={removeItem} aria-hidden aria-label='Selected'>
                             <TagList
                                 className='flex flex-1 flex-wrap gap-1 pl-2 empty:pl-0'
-                                items={items.filter((i: { id: Key }) =>
-                                    [...selectedKeys].includes(i.id)
-                                )}
+                                items={items.filter((i: { id: Key }) => [...selectedKeys].includes(i.id))}
                             >
                                 {(item: { id: Key; name: string }) => (
                                     <Tag
@@ -172,11 +156,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                     aria-label='Chevron'
                                     className='text-muted-fg ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg outline-hidden'
                                 >
-                                    <IconChevronDown
-                                        className={cn(
-                                            'size-4 transition group-has-open:-rotate-180'
-                                        )}
-                                    />
+                                    <IconChevronDown className={cn('size-4 transition group-has-open:-rotate-180')} />
                                 </Button>
                             </div>
                             <Popover
@@ -208,9 +188,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                     </FieldGroup>
                     {props.description && <Description>{props.description}</Description>}
                     {props.errorMessage && isInvalid && (
-                        <Description className='text-danger text-sm/5'>
-                            {props.errorMessage}
-                        </Description>
+                        <Description className='text-danger text-sm/5'>{props.errorMessage}</Description>
                     )}
                 </>
             )}

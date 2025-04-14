@@ -1,9 +1,6 @@
 'use client'
 
-import type {
-    DateValue,
-    RangeCalendarProps as RangeCalendarPrimitiveProps
-} from 'react-aria-components'
+import type { DateValue, RangeCalendarProps as RangeCalendarPrimitiveProps } from 'react-aria-components'
 import {
     CalendarCell,
     CalendarGrid,
@@ -53,7 +50,7 @@ const RangeCalendar = <T extends DateValue>({
                                             isDisabled
                                         }) =>
                                             cn([
-                                                'shrink-0 relative size-10 cursor-default outline-hidden',
+                                                'shrink-0 relative size-9 cursor-default outline-hidden',
                                                 '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
                                                 isSelectionStart && 'rounded-s-lg',
                                                 isSelectionEnd && 'rounded-e-lg',
@@ -62,7 +59,7 @@ const RangeCalendar = <T extends DateValue>({
                                                     `${isInvalid ? 'bg-danger/15 text-danger' : 'bg-primary/10 text-primary'}`,
                                                 isDisabled && 'opacity-50 pointer-events-none',
                                                 date.compare(now) === 0 &&
-                                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-muted-fg'
+                                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selection-start:after:bg-primary-fg selection-end:after:bg-primary-fg'
                                             ])
                                         }
                                     >

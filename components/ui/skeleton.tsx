@@ -10,7 +10,7 @@ const Skeleton = ({ shape, className, ...props }: SkeletonProps) => {
         <div
             className={cn(
                 'shrink-0 animate-pulse bg-muted/50',
-                shape === 'circle' ? 'rounded-full' : 'rounded-lg',
+                shape === 'circle' ? 'rounded-full' : 'rounded-none',
                 className
             )}
             {...props}

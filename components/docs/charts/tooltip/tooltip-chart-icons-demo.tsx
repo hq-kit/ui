@@ -48,23 +48,9 @@ export default function TooltipChartIconsDemo() {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                        <Bar
-                            dataKey='sales'
-                            stackId='a'
-                            fill='var(--color-sales)'
-                            radius={[0, 0, 4, 4]}
-                        />
-                        <Bar
-                            dataKey='expenses'
-                            stackId='a'
-                            fill='var(--color-expenses)'
-                            radius={[4, 4, 0, 0]}
-                        />
-                        <Chart.Tooltip
-                            content={<Chart.TooltipContent hideLabel />}
-                            cursor={false}
-                            defaultIndex={1}
-                        />
+                        <Bar dataKey='sales' stackId='a' fill='var(--color-sales)' radius={[0, 0, 4, 4]} />
+                        <Bar dataKey='expenses' stackId='a' fill='var(--color-expenses)' radius={[4, 4, 0, 0]} />
+                        <Chart.Tooltip content={<Chart.TooltipContent hideLabel />} cursor={false} defaultIndex={1} />
                     </BarChart>
                 </Chart>
             </Card.Content>

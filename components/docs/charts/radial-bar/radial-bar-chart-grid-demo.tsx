@@ -50,10 +50,7 @@ export default function RadialBarChartGridDemo() {
             <Card.Content>
                 <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
                     <RadialBarChart data={chartData} innerRadius={30} outerRadius={100}>
-                        <Chart.Tooltip
-                            cursor={false}
-                            content={<Chart.TooltipContent hideLabel nameKey='category' />}
-                        />
+                        <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel nameKey='category' />} />
                         <PolarGrid gridType='circle' />
                         <RadialBar dataKey='sales' />
                     </RadialBarChart>

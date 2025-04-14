@@ -35,20 +35,14 @@ export default function FileTriggerAvatarDemo() {
     return (
         <div className='flex items-center gap-2'>
             <DropZone
-                getDropOperation={(types) =>
-                    types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel'
-                }
+                getDropOperation={(types) => (types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel')}
                 onDrop={onDropHandler}
                 className={cn('size-10 overflow-hidden rounded-full p-0')}
             >
                 <Avatar src={droppedImage ?? ''} size='lg' />
                 <input type='hidden' name='image' value={droppedImage ?? ''} />
             </DropZone>
-            <FileTrigger
-                size='sm'
-                acceptedFileTypes={['image/png', 'image/jpeg']}
-                onSelect={onSelectHandler}
-            >
+            <FileTrigger size='sm' acceptedFileTypes={['image/png', 'image/jpeg']} onSelect={onSelectHandler}>
                 Upload avatar
             </FileTrigger>
         </div>

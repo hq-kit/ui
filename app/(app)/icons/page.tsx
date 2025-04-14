@@ -5,14 +5,7 @@ import { IconBrandFigma, IconBrandGithub, IconLoader } from 'hq-icons'
 import { IconsController } from '@/components/controllers/icons'
 import IconList from '@/components/controllers/icons/icon-list'
 import Icons from '@/components/controllers/icons/icons.json'
-import {
-    Hero,
-    HeroButton,
-    HeroContent,
-    HeroDescription,
-    HeroHeader,
-    HeroTitle
-} from '@/components/layouts/hero'
+import { Hero, HeroButton, HeroContent, HeroDescription, HeroHeader, HeroTitle } from '@/components/layouts/hero'
 import CLI from '@/components/mdx/cli'
 import { Container, Link } from '@/components/ui'
 
@@ -41,8 +34,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                     <HeroTitle>ICONS</HeroTitle>
                     <HeroDescription>
                         This UI Icon Library for Project, currently only for
-                        <strong className='text-fg'> React</strong>, most of these icons are forked
-                        from{' '}
+                        <strong className='text-fg'> React</strong>, most of these icons are forked from{' '}
                         <Link
                             target='_blank'
                             className='text-fg hover:text-primary font-semibold text-base'
@@ -60,21 +52,12 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         </Link>
                         <br />
                         This Icon Libray used for{' '}
-                        <Link
-                            className='text-fg hover:text-primary font-semibold text-base'
-                            target='_blank'
-                            href='/'
-                        >
+                        <Link className='text-fg hover:text-primary font-semibold text-base' target='_blank' href='/'>
                             HQ UI
                         </Link>
                     </HeroDescription>
                     <HeroContent>
-                        <CLI
-                            command='install'
-                            items={['hq-icons']}
-                            noMessage
-                            className='min-w-60'
-                        />
+                        <CLI command='install' items={['hq-icons']} noMessage className='min-w-60' />
                         <HeroButton target='_blank' href='https://github.com/hq-kit/icons'>
                             <IconBrandGithub />
                             Source

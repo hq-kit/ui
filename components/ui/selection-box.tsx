@@ -2,19 +2,8 @@
 
 import React from 'react'
 
-import type {
-    CheckboxGroupProps,
-    CheckboxProps,
-    RadioGroupProps,
-    RadioProps
-} from 'react-aria-components'
-import {
-    Checkbox,
-    CheckboxGroup,
-    composeRenderProps,
-    Radio,
-    RadioGroup
-} from 'react-aria-components'
+import type { CheckboxGroupProps, CheckboxProps, RadioGroupProps, RadioProps } from 'react-aria-components'
+import { Checkbox, CheckboxGroup, composeRenderProps, Radio, RadioGroup } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -57,9 +46,7 @@ const SelectionBox = ({
             {selectionMode === 'multiple' ? (
                 <CheckboxGroup
                     {...props}
-                    className={composeRenderProps(className, (className) =>
-                        cn('group flex flex-col gap-2', className)
-                    )}
+                    className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
                 >
                     {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                         <>
@@ -85,9 +72,7 @@ const SelectionBox = ({
             ) : (
                 <RadioGroup
                     {...props}
-                    className={composeRenderProps(className, (className) =>
-                        cn('group flex flex-col gap-2', className)
-                    )}
+                    className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
                 >
                     {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                         <>
@@ -131,11 +116,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
     return selectionMode === 'multiple' ? (
         <Checkbox
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn(
-                    'group flex items-center gap-2 text-sm transition',
-                    isDisabled && 'opacity-50',
-                    className
-                )
+                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
             {...props}
         >
@@ -168,11 +149,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
     ) : (
         <Radio
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn(
-                    'group flex items-center gap-2 text-sm transition',
-                    isDisabled && 'opacity-50',
-                    className
-                )
+                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
             {...props}
         >
