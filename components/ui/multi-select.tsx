@@ -19,7 +19,7 @@ import {
     Text
 } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn, fuzzyMatch } from '@/lib/utils'
 
 import { Description, FieldGroup, FieldProps, Label } from './field'
 
@@ -134,6 +134,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                             </TagList>
                         </TagGroup>
                         <ComboBox
+                            defaultFilter={fuzzyMatch}
                             isRequired={props.isRequired}
                             validate={props.validate}
                             validationBehavior={props.validationBehavior}

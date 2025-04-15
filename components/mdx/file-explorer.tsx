@@ -11,11 +11,12 @@ import {
     IconPanelRightClose
 } from 'hq-icons'
 import { Button, Collection } from 'react-aria-components'
+import { kebabCase } from 'usemods'
 
 import previews from '@/components/docs/generated/previews.json'
 import Code from '@/components/mdx/code'
 import { Tree, TreeItem } from '@/components/ui'
-import { cn, convertToKebabCase } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type FileNode = {
     id: string | number
@@ -61,7 +62,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
 
             if (uiComponentNames) {
                 /* @ts-expect-error unknown-types */ // prettier-ignore
-                const uiComponents = uiComponentNames.map((name: string) => convertToKebabCase(name.trim()))
+                const uiComponents = uiComponentNames.map((name: string) => kebabCase(name.trim()))
                 const componentExists = uiComponents.filter((component: string) => component in previews)
                 componentExists.push('utils')
                 setUiComponents(componentExists)

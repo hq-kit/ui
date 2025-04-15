@@ -8,9 +8,9 @@ import {
     Button,
     ButtonProps,
     Text,
-    UNSTABLE_ToastContent as ToastContent,
-    UNSTABLE_Toast as Toaster,
     ToastOptions,
+    UNSTABLE_Toast as Toaster,
+    UNSTABLE_ToastContent as ToastContent,
     UNSTABLE_ToastQueue as ToastQueue,
     UNSTABLE_ToastRegion as ToastRegion
 } from 'react-aria-components'
@@ -232,18 +232,18 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
 }
 
 const toast = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
-    queue.add({ ...content, title: body, type: 'default' }, options)
+    queue.add({ ...content, title: body, type: 'default' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 toast.success = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
-    queue.add({ ...content, title: body, type: 'success' }, options)
+    queue.add({ ...content, title: body, type: 'success' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 toast.error = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
-    queue.add({ ...content, title: body, type: 'error' }, options)
+    queue.add({ ...content, title: body, type: 'error' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 toast.info = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
-    queue.add({ ...content, title: body, type: 'info' }, options)
+    queue.add({ ...content, title: body, type: 'info' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 toast.warning = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
-    queue.add({ ...content, title: body, type: 'warning' }, options)
+    queue.add({ ...content, title: body, type: 'warning' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 export { toast, ToastProvider }

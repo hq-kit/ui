@@ -10,7 +10,7 @@ const items = [
 
 export default function AutocompleteDemo() {
     return (
-        <Select label='Default' items={items} searchable={{ sensitivity: 'accent', filter: 'contains' }}>
+        <Select label='Default' items={items} searchable>
             {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
         </Select>
     )

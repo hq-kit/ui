@@ -18,7 +18,7 @@ import {
     Text
 } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn, fuzzyMatch } from '@/lib/utils'
 
 import { Description, FieldError, FieldGroup, FieldProps, Input, Label } from './field'
 
@@ -41,6 +41,7 @@ const ComboBox = <T extends object>({
 }: ComboBoxProps<T>) => {
     return (
         <RACCombobox
+            defaultFilter={fuzzyMatch}
             menuTrigger='focus'
             className={composeRenderProps(className, (className) =>
                 cn('group flex flex-col gap-1.5 **:data-placeholder:text-muted-fg', className)

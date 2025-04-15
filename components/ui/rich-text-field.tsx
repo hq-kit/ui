@@ -281,7 +281,7 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
 
     return (
         <Menu>
-            <Button isDisabled={!editor.isEditable()} variant='outline' icon>
+            <Button isDisabled={!editor.isEditable()} variant='outline' size='sm' icon>
                 {blockIcons[blockType as keyof typeof blockIcons]}
             </Button>
             <Menu.Content selectionMode='single' aria-label='Block type' selectedKeys={[blockType]}>

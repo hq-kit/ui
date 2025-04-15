@@ -13,8 +13,6 @@ export const previews: Record<string, { component: React.LazyExoticComponent<() 
 "pickers/select/select-section-demo": { component: React.lazy(() => import("@/components/docs/pickers/select/select-section-demo")) },
 "pickers/select/select-demo": { component: React.lazy(() => import("@/components/docs/pickers/select/select-demo")) },
 "pickers/select/select-with-avatar-demo": { component: React.lazy(() => import("@/components/docs/pickers/select/select-with-avatar-demo")) },
-"pickers/autocomplete/autocomplete-grid-list-demo": { component: React.lazy(() => import("@/components/docs/pickers/autocomplete/autocomplete-grid-list-demo")) },
-"pickers/autocomplete/autocomplete-list-box-demo": { component: React.lazy(() => import("@/components/docs/pickers/autocomplete/autocomplete-list-box-demo")) },
 "pickers/combo-box/combo-box-controlled-demo": { component: React.lazy(() => import("@/components/docs/pickers/combo-box/combo-box-controlled-demo")) },
 "pickers/combo-box/combo-box-demo": { component: React.lazy(() => import("@/components/docs/pickers/combo-box/combo-box-demo")) },
 "pickers/combo-box/combo-box-async-demo": { component: React.lazy(() => import("@/components/docs/pickers/combo-box/combo-box-async-demo")) },

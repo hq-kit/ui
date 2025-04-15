@@ -25,31 +25,22 @@ import {
     MenuSection,
     Separator,
     Text,
-    TextField,
-    useFilter
+    TextField
 } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn, fuzzyMatch } from '@/lib/utils'
 
 import { Keyboard } from './keyboard'
 import { Modal } from './modal'
 
 interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputValue' | 'onInputChange'> {
     isPending?: boolean
-    sensitivity?: 'base' | 'accent' | 'case' | 'variant'
-    filter?: 'contains' | 'startsWith' | 'endsWith'
 }
 
-const Command = <T extends object>({ sensitivity, filter, ...props }: CommandProps<T>) => {
-    const { contains, startsWith, endsWith } = useFilter({ sensitivity: sensitivity || 'accent' })
-    const filterOption = filter === 'startsWith' ? startsWith : filter === 'endsWith' ? endsWith : contains
+const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
         <div className='border rounded-lg'>
-            <Autocomplete
-                filter={props.inputValue && props.onInputChange ? undefined : filterOption}
-                inputValue={props.inputValue}
-                onInputChange={props.onInputChange}
-            >
+            <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
                 <TextField className='p-1 border-b' aria-label='Search'>
                     <Group className='flex items-center px-2'>
                         {props.isPending ? (

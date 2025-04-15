@@ -7,26 +7,26 @@ export default function ToastAutoDismissDemo() {
         <div className='flex gap-2'>
             <Button
                 onPress={() =>
-                    toast('Manually Close', {
-                        description: 'Click the action or cancel button to close',
-                        actionLabel: 'Cancel',
-                        altActionLabel: 'Close'
-                    })
+                    toast(
+                        'Manually Close',
+                        {
+                            description: 'Click the action or cancel button to close',
+                            actionLabel: 'Cancel',
+                            altActionLabel: 'Close'
+                        },
+                        { timeout: 0 }
+                    )
                 }
             >
                 Manually Close
             </Button>
             <Button
                 onPress={() =>
-                    toast(
-                        'Automatically Close',
-                        {
-                            description: 'Just leave it for 3 seconds',
-                            actionLabel: 'Cancel',
-                            altActionLabel: 'Close'
-                        },
-                        { timeout: 3000 }
-                    )
+                    toast('Automatically Close', {
+                        description: 'Just leave it for 3 seconds',
+                        actionLabel: 'Cancel',
+                        altActionLabel: 'Close'
+                    })
                 }
             >
                 Automatically Close

@@ -22,11 +22,10 @@ import {
     SelectProps as RACSelectProps,
     SelectValue,
     Text,
-    TextProps,
-    useFilter
+    TextProps
 } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { cn, fuzzyMatch } from '@/lib/utils'
 import type { Placement } from '@react-types/overlays'
 
 import { Description, FieldError, FieldProps, Label } from './field'
@@ -37,13 +36,8 @@ interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'childre
     children: React.ReactNode | ((item: T) => React.ReactNode)
     placement?: Placement
     prefix?: React.ReactNode
-    searchable?:
-        | {
-              sensitivity?: 'base' | 'accent' | 'case' | 'variant'
-              filter?: 'contains' | 'startsWith' | 'endsWith'
-              isPending?: boolean
-          }
-        | boolean
+    searchable?: boolean
+    isPending?: boolean
 }
 
 const Select = <T extends object>({
@@ -57,8 +51,6 @@ const Select = <T extends object>({
     className,
     ...props
 }: SelectProps<T>) => {
-    const { sensitivity, filter, isPending } = typeof searchable === 'object' ? searchable : {}
-    const { contains, endsWith, startsWith } = useFilter({ sensitivity: sensitivity || 'accent' })
     return (
         <RACSelect
             className={composeRenderProps(className, (className) =>
@@ -112,15 +104,11 @@ const Select = <T extends object>({
                         }
                     >
                         {searchable ? (
-                            <Autocomplete
-                                filter={
-                                    filter === 'startsWith' ? startsWith : filter === 'endsWith' ? endsWith : contains
-                                }
-                            >
+                            <Autocomplete filter={fuzzyMatch}>
                                 <SearchField autoFocus className='-mx-1 mb-1 border-b' aria-label='Search'>
                                     {({ isEmpty }) => (
                                         <Group className='flex items-center px-2'>
-                                            {isPending ? (
+                                            {props.isPending ? (
                                                 <IconLoader className='animate-spin size-4 shrink-0 text-muted-fg' />
                                             ) : (
                                                 <IconSearch className='text-muted-fg size-4 shrink-0' />
@@ -142,6 +130,7 @@ const Select = <T extends object>({
                                     )}
                                 </SearchField>
                                 <ListBox
+                                    autoFocus={false}
                                     renderEmptyState={() => (
                                         <div className='p-4 text-muted-fg col-span-full text-center'>
                                             No results found

@@ -4,7 +4,6 @@ import { IconActivity, IconChartColumn, IconRupiah, IconSquareArrowUpRight, Icon
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Avatar, buttonStyles, Card, Container, Link, Navbar, Table } from '@/components/ui'
-import { getInitials } from '@/lib/utils'
 
 export default function Dashboard() {
     return (
@@ -100,7 +99,7 @@ export default function Dashboard() {
                                             <Avatar
                                                 className='hidden size-9 sm:flex'
                                                 src={`https://i.pravatar.cc/150?img=${transaction.id}`}
-                                                initials={getInitials(transaction.name)}
+                                                initials={transaction.name}
                                             />
                                             <div className='grid gap-1'>
                                                 <p className='text-sm leading-none font-medium'>{transaction.name}</p>

@@ -1,5 +1,9 @@
-import { ListBox } from '@/components/ui'
-import { Autocomplete } from '@/components/ui/autocomplete'
+'use client'
+
+import { Autocomplete } from 'react-aria-components'
+
+import { ListBox, SearchField } from '@/components/ui'
+import { fuzzyMatch } from '@/lib/utils'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -16,8 +20,8 @@ const items = [
 
 export default function AutocompleteListBoxDemo() {
     return (
-        <Autocomplete>
-            <Autocomplete.Input className='mb-2' />
+        <Autocomplete filter={fuzzyMatch}>
+            <SearchField className='mb-2' />
             <ListBox items={items} selectionMode='multiple' aria-label='Linux Distros'>
                 {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
             </ListBox>
