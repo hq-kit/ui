@@ -115,6 +115,12 @@ to switch to RGB, HSL, HSB, or oklch.
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
 
+    --chart-1: hsl(from var(--primary) calc(h - 3) s calc(l * 1.1));
+    --chart-2: hsl(from var(--primary) calc(h - 7) s calc(l * 1.3));
+    --chart-3: hsl(from var(--primary) calc(h - 10) s calc(l * 1.5));
+    --chart-4: hsl(from var(--primary) calc(h - 13) s calc(l * 1.7));
+    --chart-5: hsl(from var(--primary) calc(h - 16) s calc(l * 1.9));
+
     --radius-xs: calc(var(--radius-lg) - 4px);
     --radius-sm: calc(var(--radius-lg) - 2px);
     --radius-md: calc(var(--radius-lg) - 1px);
@@ -123,61 +129,45 @@ to switch to RGB, HSL, HSB, or oklch.
 }
 
 @layer base {
-    :root {
-        --bg: hsl(0 0% 98.04%);
-        --fg: hsl(240 10% 3.92%);
-        --primary: hsl(240 10% 3.92%);
-        --primary-fg: hsl(0 0% 98.04%);
-        --secondary: hsl(208.24 7.3% 45.69%);
-        --secondary-fg: hsl(0 0% 100%);
-        --primary: hsl(240, 4.88%, 83.92%);
-        --primary-fg: hsl(240 10% 3.92%);
-        --info: hsl(224.3 76.3% 48%);
-        --info-fg: hsl(0 0% 98.04%);
-        --danger: hsl(0 72.22% 50.59%);
-        --danger-fg: hsl(0 0% 98.04%);
-        --success: hsl(142.1 76.2% 36.3%);
-        --success-fg: hsl(0 0% 98.04%);
-        --warning: hsl(24.6 95% 53.1%);
-        --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240 4.88% 83.92%);
-        --muted-fg: hsl(240 3.83% 46.08%);
+  :root {
+    --bg: hsl(0, 0%, 98.04%);
+    --fg: hsl(240, 10%, 3.92%);
+    --primary: hsl(224.3 76.3% 48%);
+    --primary-fg: hsl(0 0% 98.04%);
+    --secondary: hsl(211.7 96.4% 78.4%);
+    --secondary-fg: hsl(226.2 57% 21%);
+    --danger: hsl(0 72.22% 50.59%);
+    --danger-fg: hsl(0 0% 98.04%);
+    --success: hsl(142.1 76.2% 36.3%);
+    --success-fg: hsl(0 0% 98.04%);
+    --info: hsl(293.41, 69.48%, 48.82%);
+    --info-fg: hsl(0 0% 98.04%);
+    --warning: hsl(24.6 95% 53.1%);
+    --warning-fg: hsl(0 0% 98.04%);
+    --muted: hsl(240, 4.88%, 83.92%);
+    --muted-fg: hsl(240, 5.26%, 26.08%);
 
-        --chart-1: oklch(0.546 0.245 262.881);
-        --chart-2: oklch(0.707 0.165 254.624);
-        --chart-3: oklch(0.809 0.105 251.813);
-        --chart-4: oklch(0.882 0.059 254.128);
-        --chart-5: oklch(0.932 0.032 255.585);
+    --radius: 0.5rem;
+  }
 
-        --radius: 0.5rem;
-    }
-    .dark {
-        --bg: hsl(240 10% 3.92%);
-        --fg: hsl(0 0% 98.04%);
-        --primary: hsl(0 0% 98.04%);
-        --primary-fg: hsl(240 10% 3.92%);
-        --secondary: hsl(208.24 7.36% 54.71%);
-        --secondary-fg: hsl(0 0% 100%);
-        --primary: hsl(240, 5.26%, 26.08%);
-        --primary-fg: hsl(0 0% 98.04%);
-        --info: hsl(221.2 83.2% 53.3%);
-        --info-fg: hsl(0 0% 98.04%);
-        --danger: hsl(0 72.2% 50.6%);
-        --danger-fg: hsl(0 0% 98.04%);
-        --success: hsl(142.1 76.2% 36.3%);
-        --success-fg: hsl(0 0% 98.04%);
-        --warning: hsl(17.5 88.3% 40.4%);
-        --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240 3.7% 15.88%);
-        --muted-fg: hsl(240 5.03% 64.9%);
-
-        --chart-1: oklch(0.488 0.243 264.376);
-        --chart-2: oklch(0.623 0.214 259.815);
-        --chart-3: oklch(0.707 0.165 254.624);
-        --chart-4: oklch(0.809 0.105 251.813);
-        --chart-5: oklch(0.882 0.059 254.128);
-    }
+  .dark {
+    --bg: hsl(240, 10%, 3.92%);
+    --fg: hsl(0, 0%, 98.04%);
+    --secondary: hsl(226.2 57% 21%);
+    --secondary-fg: hsl(211.7 96.4% 78.4%);
+    --danger: hsl(0 72.2% 50.6%);
+    --danger-fg: hsl(0 0% 98.04%);
+    --success: hsl(142.1 76.2% 36.3%);
+    --success-fg: hsl(0 0% 98.04%);
+    --info: hsl(292.19, 84.08%, 60.59%);
+    --info-fg: hsl(0 0% 98.04%);
+    --warning: hsl(17.5 88.3% 40.4%);
+    --warning-fg: hsl(0 0% 98.04%);
+    --muted: hsl(240, 5.26%, 26.08%);
+    --muted-fg: hsl(240, 4.88%, 83.92%);
+  }
 }
+
 
 @layer base {
     *,
@@ -228,11 +218,22 @@ to switch to RGB, HSL, HSB, or oklch.
 ### cn Helper
 Create a helper function called `cn`. Usually located in `lib/utils.ts`:
 
-<Code  lang='ts' code={`import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+<Code  lang='ts' code={`import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
+export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
+    if (inputValue.length === 0) return true
+    if (textValue.length === 0) return false
+    let textIndex = 0
+    let inputIndex = 0
+    while (textIndex < textValue.length && inputIndex < inputValue.length) {
+        if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
+            inputIndex++
+        }
+        textIndex++
+    }
+    return inputIndex === inputValue.length
 }`}/>
 
 ### useMediaQuery Hooks

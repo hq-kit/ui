@@ -11,7 +11,7 @@ const buttonStyles = tv({
     base: [
         'inline-flex items-center justify-center border border-muted font-medium whitespace-nowrap backdrop-blur-2xl transition outline-hidden',
         'w-(--width) h-(--height)',
-        'focus-visible:ring-2 ring-primary/20 focus-visible:border-primary/70',
+        'focus-visible:ring-2 ring-ring focus-visible:border-primary/70',
         'cursor-pointer disabled:cursor-default disabled:opacity-50'
     ],
     variants: {

@@ -5,16 +5,16 @@ export const grayColors = [
         color: '#27272a',
         cssVars: {
             light: {
-                bg: 'oklch(0.985 0 0)',
-                fg: 'oklch(0.21 0.006 285.885)',
-                muted: 'oklch(0.871 0.006 286.286)',
-                'muted-fg': 'oklch(0.552 0.016 285.938)'
+                bg: 'hsl(0, 0%, 98.04%)',
+                fg: 'hsl(240, 10%, 3.92%)',
+                muted: 'hsl(240, 4.88%, 83.92%)',
+                'muted-fg': 'hsl(240, 5.26%, 26.08%)'
             },
             dark: {
-                bg: 'oklch(0.21 0.006 285.885)',
-                fg: 'oklch(0.985 0 0)',
-                muted: 'oklch(0.37 0.013 285.805)',
-                'muted-fg': 'oklch(0.871 0.006 286.286)'
+                bg: 'hsl(240, 10%, 3.92%)',
+                fg: 'hsl(0, 0%, 98.04%)',
+                muted: 'hsl(240, 5.26%, 26.08%)',
+                'muted-fg': 'hsl(240, 4.88%, 83.92%)'
             }
         }
     },
@@ -24,16 +24,16 @@ export const grayColors = [
         color: '#6a7282',
         cssVars: {
             light: {
-                bg: 'oklch(0.985 0.002 247.839)',
-                fg: 'oklch(0.13 0.028 261.692)',
-                muted: 'oklch(0.872 0.01 258.338)',
-                'muted-fg': 'oklch(0.551 0.027 264.364)'
+                bg: 'hsl(210, 20%, 98.04%)',
+                fg: 'hsl(224, 71.43%, 4.12%)',
+                muted: 'hsl(216, 12.2%, 83.92%)',
+                'muted-fg': 'hsl(216.92, 19.12%, 26.67%)'
             },
             dark: {
-                bg: 'oklch(0.13 0.028 261.692)',
-                fg: 'oklch(0.985 0.002 247.839)',
-                muted: 'oklch(0.551 0.027 264.364)',
-                'muted-fg': 'oklch(0.872 0.01 258.338)'
+                bg: 'hsl(224, 71.43%, 4.12%)',
+                fg: 'hsl(210, 20%, 98.04%)',
+                muted: 'hsl(216.92, 19.12%, 26.67%)',
+                'muted-fg': 'hsl(216, 12.2%, 83.92%)'
             }
         }
     },
@@ -43,16 +43,16 @@ export const grayColors = [
         color: '#62748e',
         cssVars: {
             light: {
-                bg: 'oklch(0.984 0.003 247.858)',
-                fg: 'oklch(0.129 0.042 264.695)',
-                muted: 'oklch(0.869 0.022 252.894)',
-                'muted-fg': 'oklch(0.554 0.046 257.417)'
+                bg: 'hsl(210, 40%, 98.04%)',
+                fg: 'hsl(228.57, 84%, 4.9%)',
+                muted: 'hsl(212.73, 26.83%, 83.92%)',
+                'muted-fg': 'hsl(215.29, 25%, 26.67%)'
             },
             dark: {
-                bg: 'oklch(0.129 0.042 264.695)',
-                fg: 'oklch(0.984 0.003 247.858)',
-                muted: 'oklch(0.554 0.046 257.417)',
-                'muted-fg': 'oklch(0.869 0.022 252.894)'
+                bg: 'hsl(228.57, 84%, 4.9%)',
+                fg: 'hsl(210, 40%, 98.04%)',
+                muted: 'hsl(215.29, 25%, 26.67%)',
+                'muted-fg': 'hsl(212.73, 26.83%, 83.92%)'
             }
         }
     },
@@ -62,16 +62,16 @@ export const grayColors = [
         color: '#737373',
         cssVars: {
             light: {
-                bg: 'oklch(0.985 0 0)',
-                fg: 'oklch(0.145 0 0)',
-                muted: 'oklch(0.87 0 0)',
-                'muted-fg': 'oklch(0.556 0 0)'
+                bg: 'hsl(0, 0%, 98.04%)',
+                fg: 'hsl(0, 0%, 3.92%)',
+                muted: 'hsl(0, 0%, 83.14%)',
+                'muted-fg': 'hsl(0, 0%, 25.1%)'
             },
             dark: {
-                bg: 'oklch(0.145 0 0)',
-                fg: 'oklch(0.985 0 0)',
-                muted: 'oklch(0.556 0 0)',
-                'muted-fg': 'oklch(0.87 0 0)'
+                bg: 'hsl(0, 0%, 3.92%)',
+                fg: 'hsl(0, 0%, 98.04%)',
+                muted: 'hsl(0, 0%, 25.1%)',
+                'muted-fg': 'hsl(0, 0%, 83.14%)'
             }
         }
     },
@@ -81,16 +81,16 @@ export const grayColors = [
         color: '#79716b',
         cssVars: {
             light: {
-                bg: 'oklch(0.985 0.001 106.423)',
-                fg: 'oklch(0.147 0.004 49.25)',
-                muted: 'oklch(0.869 0.005 56.366)',
-                'muted-fg': 'oklch(0.553 0.013 58.071)'
+                bg: 'hsl(60, 9.09%, 97.84%)',
+                fg: 'hsl(20, 14.29%, 4.12%)',
+                muted: 'hsl(24, 5.75%, 82.94%)',
+                'muted-fg': 'hsl(30, 6.25%, 25.1%)'
             },
             dark: {
-                bg: 'oklch(0.147 0.004 49.25)',
-                fg: 'oklch(0.985 0.001 106.423)',
-                muted: 'oklch(0.553 0.013 58.071)',
-                'muted-fg': 'oklch(0.869 0.005 56.366)'
+                bg: 'hsl(20, 14.29%, 4.12%)',
+                fg: 'hsl(60, 9.09%, 97.84%)',
+                muted: 'hsl(30, 6.25%, 25.1%)',
+                'muted-fg': 'hsl(24, 5.75%, 82.94%)'
             }
         }
     }

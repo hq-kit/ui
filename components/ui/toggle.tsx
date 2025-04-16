@@ -95,7 +95,7 @@ const ToggleGroup = ({
 const toggleStyles = tv({
     base: [
         'flex justify-center cursor-pointer items-center gap-x-2 outline-hidden rounded-lg border transition sm:text-sm backdrop-blur-2xl',
-        'focus-visible:ring-2 ring-primary/20 focus-visible:border-primary/70',
+        'focus-visible:ring-2 ring-ring focus-visible:border-primary/70',
         'disabled:cursor-default disabled:opacity-50'
     ],
     variants: {

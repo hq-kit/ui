@@ -137,12 +137,6 @@ const CSS_VARIABLES = `@layer base {
     --muted: <%- colors.light["muted"] %>;
     --muted-fg: <%- colors.light["muted-fg"] %>;
 
-    --chart-1: oklch(0.546 0.245 262.881);
-    --chart-2: oklch(0.707 0.165 254.624);
-    --chart-3: oklch(0.809 0.105 251.813);
-    --chart-4: oklch(0.882 0.059 254.128);
-    --chart-5: oklch(0.932 0.032 255.585);
-
     --radius: <%- radius %>rem;
   }
 
