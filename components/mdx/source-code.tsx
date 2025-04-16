@@ -53,7 +53,7 @@ export default function SourceCode({ component, withMessage = true }: SourceCode
                 </Tabs.List>
                 {codeStrings.map((item) => (
                     <Tabs.Content key={item.name} id={`tab-${item.name}`}>
-                        <Code code={item.code} />
+                        <Code copyButton code={item.code} />
                     </Tabs.Content>
                 ))}
             </Tabs>

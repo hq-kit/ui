@@ -4,12 +4,12 @@ import React from 'react'
 
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
+    composeRenderProps,
     Slider as RACSlider,
-    SliderThumb as RACSliderThumb,
-    SliderTrack as RACSliderTrack,
     SliderOutput,
     SliderStateContext,
-    composeRenderProps
+    SliderThumb as RACSliderThumb,
+    SliderTrack as RACSliderTrack
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -110,7 +110,7 @@ const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
             {...props}
             className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
                 cn(
-                    'top-1/2 left-1/2 size-5 rounded-full border border-muted-fg bg-bg outline-hidden transition',
+                    'top-1/2 left-1/2 size-5 rounded-full border border-muted bg-bg outline-hidden transition',
                     isFocusVisible && 'border-primary ring-4 ring-primary/20',
                     isDragging && 'cursor-grabbing border-primary ring-4 ring-primary/20',
                     isDisabled && 'opacity-50',

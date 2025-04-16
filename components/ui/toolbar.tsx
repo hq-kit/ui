@@ -24,8 +24,10 @@ const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarPro
             orientation={orientation}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
-                    'group flex gap-2',
-                    orientation === 'vertical' ? 'flex-col items-start' : 'flex-row [-ms-overflow-style:none]',
+                    'group gap-2',
+                    orientation === 'vertical'
+                        ? 'grid items-start'
+                        : 'flex flex-row [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
                     className
                 )
             )}
@@ -41,7 +43,7 @@ interface ToolbarGroupProps extends GroupProps, Omit<ToggleGroupContextProps, 'o
 const ToolbarGroup = ({ className, ref, variant, gap, icon, size, ...props }: ToolbarGroupProps) => {
     const { orientation } = useSlottedContext(ToolbarContext)!
     return (
-        <ToggleGroupContext.Provider value={{ variant, gap, size, icon, isDisabled: props.isDisabled }}>
+        <ToggleGroupContext.Provider value={{ variant, gap, size, icon, orientation, isDisabled: props.isDisabled }}>
             <Group
                 ref={ref}
                 className={composeRenderProps(className, (className) =>

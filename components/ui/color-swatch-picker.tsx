@@ -1,15 +1,16 @@
 'use client'
 
+import { IconCircleCheck } from 'hq-icons'
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
 import {
+    ColorSwatchPicker as RACColorSwatchPicker,
     ColorSwatchPickerItem,
-    composeRenderProps,
-    ColorSwatchPicker as RACColorSwatchPicker
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-import { ColorSwatch } from './color-swatch'
+import { ColorSwatch, isBrightColor } from './color-swatch'
 
 const ColorSwatchPicker = ({ children, className, layout = 'grid', ...props }: ColorSwatchPickerProps) => {
     return (
@@ -29,7 +30,7 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
             {...props}
             className={composeRenderProps(className, (className, { isDisabled, isFocusVisible, isFocused }) =>
                 cn(
-                    'relative rounded-lg disabled:opacity-50',
+                    'relative rounded-lg disabled:opacity-50 outline-hidden',
                     isFocused && 'ring-primary/20 ring-4',
                     isFocusVisible && 'ring-primary/20 ring-4',
                     isDisabled && 'opacity-50',
@@ -37,11 +38,14 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
                 )
             )}
         >
-            {({ isSelected }) => (
+            {({ isSelected, color }) => (
                 <>
                     <ColorSwatch />
                     {isSelected && (
-                        <div className='ring-fg/30 absolute top-0 left-0 h-full w-full rounded-lg ring-2 outline-hidden ring-inset' />
+                        <IconCircleCheck
+                            style={{ color: isBrightColor(color.toString('hex')) ? '#3F3F46' : '#E4E4E7' }}
+                            className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-5'
+                        />
                     )}
                 </>
             )}

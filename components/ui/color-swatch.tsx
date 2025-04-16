@@ -111,7 +111,11 @@ const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => {
             data-slot='color-swatch'
             aria-label={props['aria-label'] ?? 'Color swatch'}
             className={composeRenderProps(className, (className) =>
-                cn('size-8 shrink-0 rounded-lg', ring && 'inset-ring-fg/10 inset-ring-1', className)
+                cn(
+                    'size-8 shrink-0 rounded-md border outline-hidden',
+                    ring && 'inset-ring-fg/10 inset-ring-1',
+                    className
+                )
             )}
             {...props}
         />

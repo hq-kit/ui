@@ -1,4 +1,13 @@
-import { DM_Mono, Fira_Code, Geist_Mono, IBM_Plex_Mono, JetBrains_Mono, PT_Mono, Ubuntu_Mono } from 'next/font/google'
+import {
+    DM_Mono,
+    Fira_Code,
+    Geist_Mono,
+    IBM_Plex_Mono,
+    JetBrains_Mono,
+    PT_Mono,
+    Source_Code_Pro,
+    Ubuntu_Mono
+} from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
@@ -41,6 +50,12 @@ const ubuntuMono = Ubuntu_Mono({
     weight: ['400', '700']
 })
 
+const sourceCodePro = Source_Code_Pro({
+    subsets: ['latin'],
+    variable: '--font-source-code-pro',
+    weight: ['400', '700']
+})
+
 export const fontMono = cn(
     dmMono.variable,
     firaCode.variable,
@@ -48,7 +63,8 @@ export const fontMono = cn(
     ibmPlexMono.variable,
     jetbrainsMono.variable,
     ptMono.variable,
-    ubuntuMono.variable
+    ubuntuMono.variable,
+    sourceCodePro.variable
 )
 
 export const fontMonoFamilies = [
@@ -86,5 +102,10 @@ export const fontMonoFamilies = [
         label: 'Ubuntu Mono',
         value: '--font-ubuntu-mono',
         link: 'https://fonts.google.com/specimen/Ubuntu+Mono'
+    },
+    {
+        label: 'Source Code Pro',
+        value: '--font-source-code-pro',
+        link: 'https://fonts.google.com/specimen/Source+Code+Pro'
     }
 ]

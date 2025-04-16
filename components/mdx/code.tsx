@@ -12,7 +12,17 @@ import { copyToClipboard } from 'usemods'
 import { CopyButton } from '@/components/mdx/copy-button'
 import { cn } from '@/lib/utils'
 
-export default function Code({ lang = 'tsx', code, className }: { lang?: string; code: string; className?: string }) {
+export default function Code({
+    lang = 'tsx',
+    code,
+    copyButton,
+    className
+}: {
+    lang?: string
+    code: string
+    copyButton?: boolean
+    className?: string
+}) {
     const [copied, setCopied] = React.useState<boolean>(false)
 
     const copyCode = () => {
@@ -28,9 +38,11 @@ export default function Code({ lang = 'tsx', code, className }: { lang?: string;
 
     return (
         <div className={cn('relative overflow-hidden rounded-lg border', className)}>
-            <div className={cn('not-prose absolute top-3 right-3 bottom-auto z-20 flex gap-1.5')}>
-                <CopyButton isCopied={copied} onPress={copyCode} />
-            </div>
+            {copyButton && (
+                <div className={cn('not-prose absolute top-2 right-2 bottom-auto z-20 flex gap-1.5')}>
+                    <CopyButton isCopied={copied} onPress={copyCode} />
+                </div>
+            )}
             <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0 [&_pre]:pb-[100px]'>
                 <CodeHighlighter lang={lang} code={code} />
             </div>
@@ -54,11 +66,8 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
                     .use(remarkParse)
                     .use(remarkRehype, { allowDangerousHtml: true })
                     .use(rehypePrettyCode, {
-                        keepBackground: false,
-                        theme: {
-                            dark: 'dark-plus',
-                            light: 'light-plus'
-                        },
+                        keepBackground: true,
+                        theme: 'github-dark-default',
                         defaultLang: {
                             block: lang,
                             inline: 'plaintext'
@@ -79,5 +88,5 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
         return <p>Error: {error}</p>
     }
 
-    return <div className='!font-mono' dangerouslySetInnerHTML={{ __html: formattedCode }} />
+    return <div className='!font-mono bg-gradient-dark' dangerouslySetInnerHTML={{ __html: formattedCode }} />
 }

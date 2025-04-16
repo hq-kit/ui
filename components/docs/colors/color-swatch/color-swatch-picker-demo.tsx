@@ -15,7 +15,7 @@ export default function ColorSwatchPickerDemo() {
             onChange={setValue}
             className='grid grid-cols-3 gap-2 lg:grid-cols-6'
         >
-            <ColorSwatchPicker.Item color='#f59e0b' />
+            <ColorSwatchPicker.Item color='#fafafa' />
             <ColorSwatchPicker.Item color='#84cc16' />
             <ColorSwatchPicker.Item color='#0d6efd' />
             <ColorSwatchPicker.Item color='#ec4899' />

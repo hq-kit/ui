@@ -13,7 +13,7 @@ export const CopyButton = ({ isCopied, ...props }: CopyButtonProps) => {
     return (
         <Button
             aria-label='Copy'
-            className='bg-fg dark:bg-bg flex size-7 items-center justify-center rounded-lg border text-white backdrop-blur outline-none focus:outline-none'
+            className='bg-zinc-600/80 hover:bg-zinc-700/80 flex size-7 items-center justify-center rounded-lg text-zinc-300 outline-hidden backdrop-blur-2xl'
             {...props}
         >
             <IconClipboard

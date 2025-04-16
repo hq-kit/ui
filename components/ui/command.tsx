@@ -41,14 +41,14 @@ const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
         <div className='border rounded-lg'>
             <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
-                <TextField className='p-1 border-b' aria-label='Search'>
+                <TextField autoFocus className='p-1 border-b' aria-label='Search'>
                     <Group className='flex items-center px-2'>
                         {props.isPending ? (
                             <IconLoader className='animate-spin size-4 shrink-0 text-muted-fg' />
                         ) : (
                             <IconSearch className='text-muted-fg size-4 shrink-0' />
                         )}
-                        <Input autoFocus className='outline-hidden w-full p-2' placeholder='Search...' />
+                        <Input className='outline-hidden w-full p-2' placeholder='Search...' />
                     </Group>
                 </TextField>
                 <Menu
@@ -65,7 +65,7 @@ const Command = <T extends object>({ ...props }: CommandProps<T>) => {
 
 interface CommandModalProps<T> extends CommandProps<T>, Pick<ModalOverlayProps, 'isOpen' | 'onOpenChange'> {
     shortcut?: {
-        modifiers?: 'alt' | 'ctrl/meta' | 'ctrl/meta+alt'
+        modifiers?: 'alt' | 'mod' | 'mod+alt' | 'mod+shift' | 'mod+alt+shift' | 'alt+shift'
         key: string
     }
 }
@@ -80,9 +80,15 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
                 e.key === shortcut?.key &&
                 (shortcut.modifiers === 'alt'
                     ? e.altKey
-                    : shortcut.modifiers === 'ctrl/meta+alt'
+                    : shortcut.modifiers === 'mod+alt'
                       ? e.altKey && (e.ctrlKey || e.metaKey)
-                      : e.ctrlKey || e.metaKey)
+                      : shortcut.modifiers === 'mod+shift'
+                        ? e.shiftKey && (e.ctrlKey || e.metaKey)
+                        : shortcut.modifiers === 'mod+alt+shift'
+                          ? e.altKey && e.shiftKey && (e.ctrlKey || e.metaKey)
+                          : shortcut.modifiers === 'alt+shift'
+                            ? e.altKey && e.shiftKey
+                            : e.ctrlKey || e.metaKey)
             ) {
                 e.preventDefault()
                 if (props.onOpenChange) {

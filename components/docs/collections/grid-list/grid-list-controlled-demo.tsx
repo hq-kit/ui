@@ -32,7 +32,7 @@ export default function GridListControlledDemo() {
             >
                 {(item) => <GridList.Item id={item.id}>{item.name}</GridList.Item>}
             </GridList>
-            <code>selected: {JSON.stringify(Array.from(selected))}</code>
+            <code>{JSON.stringify([...selected], null, 2)}</code>
         </div>
     )
 }

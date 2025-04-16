@@ -13,7 +13,7 @@ export default function CollapsibleControlledDemo() {
                 <Collapsible.Trigger>System Requirements</Collapsible.Trigger>
                 <Collapsible.Content>Details about system requirements here.</Collapsible.Content>
             </Collapsible>
-            <code>expanded: {JSON.stringify(expanded)}</code>
+            <code>{JSON.stringify({ expanded }, null, 2)}</code>
         </div>
     )
 }

@@ -17,33 +17,21 @@
     --color-muted-fg: var(--muted-fg);
 
     --color-primary: var(--primary);
-    --color-primary-lighter: hsl(from var(--primary) h s calc(l * 1.1));
-    --color-primary-darker: hsl(from var(--primary) h s calc(l * 0.9));
     --color-primary-fg: var(--primary-fg);
 
     --color-secondary: var(--secondary);
     --color-secondary-fg: var(--secondary-fg);
-    --color-secondary-lighter: hsl(from var(--secondary) h s calc(l * 1.1));
-    --color-secondary-darker: hsl(from var(--secondary) h s calc(l * 0.9));
 
     --color-info: var(--info);
-    --color-info-lighter: hsl(from var(--info) h s calc(l * 1.1));
-    --color-info-darker: hsl(from var(--info) h s calc(l * 0.9));
     --color-info-fg: var(--info-fg);
 
     --color-success: var(--success);
-    --color-success-lighter: hsl(from var(--success) h s calc(l * 1.1));
-    --color-success-darker: hsl(from var(--success) h s calc(l * 0.9));
     --color-success-fg: var(--success-fg);
 
     --color-danger: var(--danger);
-    --color-danger-lighter: hsl(from var(--danger) h s calc(l * 1.1));
-    --color-danger-darker: hsl(from var(--danger) h s calc(l * 0.9));
     --color-danger-fg: var(--danger-fg);
 
     --color-warning: var(--warning);
-    --color-warning-lighter: hsl(from var(--warning) h s calc(l * 1.1));
-    --color-warning-darker: hsl(from var(--warning) h s calc(l * 0.9));
     --color-warning-fg: var(--warning-fg);
 
     --color-border: var(--muted);
@@ -72,6 +60,8 @@
     :root {
         --bg: hsl(0, 0%, 98.04%);
         --fg: hsl(240, 10%, 3.92%);
+        --muted: hsl(240, 4.88%, 83.92%);
+        --muted-fg: hsl(240, 3.7%, 15.88%);
         --primary: hsl(224.3 76.3% 48%);
         --primary-fg: hsl(0 0% 98.04%);
         --secondary: hsl(211.7 96.4% 78.4%);
@@ -84,14 +74,15 @@
         --info-fg: hsl(0 0% 98.04%);
         --warning: hsl(24.6 95% 53.1%);
         --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240, 4.88%, 83.92%);
-        --muted-fg: hsl(240, 5.26%, 26.08%);
+
 
         --radius: 0.5rem;
     }
 
     .dark {
         --bg: hsl(240, 10%, 3.92%);
+        --muted: hsl(240, 3.7%, 15.88%);
+        --muted-fg: hsl(240, 4.88%, 83.92%);
         --fg: hsl(0, 0%, 98.04%);
         --secondary: hsl(226.2 57% 21%);
         --secondary-fg: hsl(211.7 96.4% 78.4%);
@@ -103,8 +94,6 @@
         --info-fg: hsl(0 0% 98.04%);
         --warning: hsl(17.5 88.3% 40.4%);
         --warning-fg: hsl(0 0% 98.04%);
-        --muted: hsl(240, 5.26%, 26.08%);
-        --muted-fg: hsl(240, 4.88%, 83.92%);
     }
 }
 
@@ -136,7 +125,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-        background: var(--muted-fg);
+        background: var(--muted);
         border-radius: var(--radius-lg);
     }
 }

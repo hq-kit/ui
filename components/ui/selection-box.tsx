@@ -59,7 +59,7 @@ const SelectionBox = ({
                                 slot='items'
                                 className={cn(
                                     'select-none flex gap-2',
-                                    orientation === 'horizontal' ? 'flex-wrap' : 'flex-col'
+                                    orientation === 'horizontal' ? 'flex-wrap justify-between' : 'flex-col'
                                 )}
                             >
                                 {children}
@@ -85,7 +85,7 @@ const SelectionBox = ({
                                 slot='items'
                                 className={cn(
                                     'select-none flex gap-2',
-                                    orientation === 'horizontal' ? 'flex-wrap' : 'flex-col'
+                                    orientation === 'horizontal' ? 'flex-wrap justify-between' : 'flex-col'
                                 )}
                             >
                                 {children}
@@ -149,7 +149,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
     ) : (
         <Radio
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
+                cn('group flex grow items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
             {...props}
         >

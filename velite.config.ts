@@ -43,10 +43,7 @@ export default defineConfig({
                 rehypePrettyCode,
                 {
                     transformers: [transformerNotationDiff()],
-                    theme: {
-                        dark: 'dark-plus',
-                        light: 'light-plus'
-                    },
+                    theme: 'github-dark-default',
                     defaultLang: {
                         block: 'tsx',
                         inline: 'plaintext'

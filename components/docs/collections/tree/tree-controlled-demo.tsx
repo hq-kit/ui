@@ -37,7 +37,7 @@ export default function TreeControlledDemo() {
                 </TreeItem>
             </Tree>
 
-            <code>selected: {JSON.stringify(Array.from(selected))}</code>
+            <pre>{JSON.stringify([...selected], null, 2)}</pre>
         </div>
     )
 }

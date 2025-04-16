@@ -1,11 +1,11 @@
 'use client'
 
-import type { TooltipProps as RACTooltipProps } from 'react-aria-components'
 import {
+    Button,
     composeRenderProps,
     OverlayArrow,
-    Pressable,
     Tooltip as RACTooltip,
+    TooltipProps as RACTooltipProps,
     TooltipTrigger as RACTooltipTrigger
 } from 'react-aria-components'
 
@@ -65,13 +65,7 @@ const TooltipContent = ({
     )
 }
 
-const TooltipTrigger = (props: React.HTMLAttributes<HTMLDivElement>) => (
-    <Pressable>
-        <div style={{ cursor: 'default' }} {...props} />
-    </Pressable>
-)
-
-Tooltip.Trigger = TooltipTrigger
+Tooltip.Trigger = Button
 Tooltip.Content = TooltipContent
 
 export { Tooltip }

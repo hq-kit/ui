@@ -27,7 +27,7 @@ export default function TagGroupControlledDemo() {
                 {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
 
-            <code>selected: {JSON.stringify(Array.from(selected))}</code>
+            <pre>{JSON.stringify([...selected], null, 2)}</pre>
         </div>
     )
 }

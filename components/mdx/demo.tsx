@@ -46,7 +46,7 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                     </div>
                 </Tabs.Content>
                 <Tabs.Content className='not-prose' id='code'>
-                    <Code code={codeString} />
+                    <Code copyButton code={codeString} />
                 </Tabs.Content>
             </Tabs>
         </div>

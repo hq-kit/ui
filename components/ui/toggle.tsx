@@ -33,7 +33,7 @@ interface ToggleGroupProps extends ToggleButtonGroupProps, ToggleGroupContextPro
 const toggleGroupStyles = tv({
     variants: {
         orientation: {
-            horizontal: 'flex flex-row [-ms-overflow-style:none]',
+            horizontal: 'flex flex-row [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
             vertical: 'grid items-start'
         },
         gap: {
@@ -94,7 +94,7 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'flex justify-center cursor-pointer items-center gap-x-2 outline-hidden rounded-lg border transition sm:text-sm backdrop-blur-2xl',
+        'cursor-pointer items-center gap-x-2 outline-hidden rounded-lg border transition sm:text-sm backdrop-blur-2xl',
         'focus-visible:ring-2 ring-ring focus-visible:border-primary/70',
         'disabled:cursor-default disabled:opacity-50'
     ],
@@ -105,6 +105,10 @@ const toggleStyles = tv({
             outline: 'bg-bg/80 hover:bg-muted/40 pressed:bg-muted/50 selected:bg-muted selected:text-fg'
         },
         noGap: { true: '' },
+        orientation: {
+            horizontal: 'inline-flex justify-center',
+            vertical: 'flex'
+        },
         size: {
             xs: '[--height:theme(spacing.6)] [--width:auto] px-2 py-1.5 text-xs **:[svg]:size-3.5 gap-x-1.5',
             sm: '[--height:theme(spacing.8)] [--width:auto] px-3 py-2 text-sm **:[svg]:size-4 gap-x-1.5',
@@ -112,7 +116,7 @@ const toggleStyles = tv({
             lg: '[--height:theme(spacing.12)] [--width:auto] px-5 py-3.5 text-base **:[svg]:size-6 gap-x-2.5'
         },
         icon: {
-            true: 'h-(--height) w-(--height) shrink-0 p-0',
+            true: 'h-(--height) w-(--height) shrink-0 p-0 justify-center',
             false: 'w-(--width) h-(--height)'
         },
         shape: {
@@ -139,7 +143,14 @@ interface ToggleProps extends ToggleButtonProps, VariantProps<typeof toggleStyle
 }
 
 const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
-    const { variant: groupvariant, gap, size, icon, isDisabled: isGroupDisabled } = React.use(ToggleGroupContext)
+    const {
+        variant: groupvariant,
+        gap,
+        size,
+        orientation,
+        icon,
+        isDisabled: isGroupDisabled
+    } = React.use(ToggleGroupContext)
     return (
         <ToggleButton
             ref={ref}
@@ -150,6 +161,7 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
                         variant: variant ?? groupvariant,
                         size: props.size ?? size,
                         icon: props.icon ?? icon,
+                        orientation: orientation,
                         shape: props.shape,
                         noGap: gap === 0
                     }),

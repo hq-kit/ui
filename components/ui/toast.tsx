@@ -54,10 +54,14 @@ const ToastProvider = () => {
                         className={cn(
                             'flex flex-col backdrop-blur-lg p-4 gap-2 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.3)] border',
                             {
-                                'border-success/20 text-success bg-success/10': toast.content.type === 'success',
-                                'border-danger/20 bg-danger/5 text-danger': toast.content.type === 'error',
-                                'border-primary/30 text-primary bg-primary/10': toast.content.type === 'info',
-                                'border-warning/40 bg-warning/5 text-warning': toast.content.type === 'warning',
+                                'border-success/20 text-success bg-success/10 **:data-loader:stroke-success':
+                                    toast.content.type === 'success',
+                                'border-danger/20 bg-danger/5 text-danger **:data-loader:stroke-danger':
+                                    toast.content.type === 'error',
+                                'border-primary/30 text-primary bg-primary/10 **:data-loader:stroke-primary':
+                                    toast.content.type === 'info',
+                                'border-warning/40 bg-warning/5 text-warning **:data-loader:stroke-warning':
+                                    toast.content.type === 'warning',
                                 'bg-bg text-fg': toast.content.type === 'default'
                             }
                         )}
@@ -213,7 +217,8 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
                     {timeout !== undefined && (
                         <svg className='absolute top-0 left-0 size-full' viewBox={`0 0 ${size} ${size}`}>
                             <motion.circle
-                                stroke='#3b82f6'
+                                data-loader
+                                stroke='var(--muted-fg)'
                                 fill='transparent'
                                 strokeWidth={stroke}
                                 strokeDasharray={circumference}

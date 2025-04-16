@@ -14,7 +14,7 @@ const badgeStyles = tv({
             success: '[--bg:var(--color-success)] [--fg:var(--color-success-fg)]',
             danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
             warning: '[--bg:var(--color-warning)] [--fg:var(--color-warning-fg)]',
-            outline: 'bg-bg/80 text-fg hover:bg-primary/40 pressed:bg-primary/50 hover:text-primary-fg border-primary'
+            outline: 'bg-bg/80 text-fg hover:bg-muted/40 pressed:bg-muted/50 border-muted'
         },
         shape: {
             square: 'rounded-lg',

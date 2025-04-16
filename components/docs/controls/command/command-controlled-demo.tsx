@@ -37,7 +37,7 @@ export default function CommandControlledDemo() {
                 )}
             </Command>
 
-            <code>selected: {JSON.stringify(Array.from(selected))}</code>
+            <code>{JSON.stringify({ selected: [...selected] })}</code>
         </div>
     )
 }

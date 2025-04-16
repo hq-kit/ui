@@ -1,4 +1,14 @@
-import { Geist, Inter, Outfit, Plus_Jakarta_Sans, Poppins, Raleway, Roboto, Ubuntu_Sans } from 'next/font/google'
+import {
+    Geist,
+    Inter,
+    Outfit,
+    Plus_Jakarta_Sans,
+    Poppins,
+    Raleway,
+    Roboto,
+    Source_Sans_3,
+    Ubuntu_Sans
+} from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
@@ -36,6 +46,11 @@ const ubuntuSans = Ubuntu_Sans({
     variable: '--font-ubuntu-sans'
 })
 
+const sourceSans = Source_Sans_3({
+    subsets: ['latin'],
+    variable: '--font-source-sans'
+})
+
 export const fontSans = cn(
     geist.variable,
     jakarta.variable,
@@ -44,7 +59,8 @@ export const fontSans = cn(
     raleway.variable,
     roboto.variable,
     poppins.variable,
-    ubuntuSans.variable
+    ubuntuSans.variable,
+    sourceSans.variable
 )
 
 export const fontSansFamilies = [
@@ -87,5 +103,10 @@ export const fontSansFamilies = [
         label: 'Ubuntu',
         value: '--font-ubuntu-sans',
         link: 'https://fonts.google.com/specimen/Ubuntu+Sans'
+    },
+    {
+        label: 'Source Sans',
+        value: '--font-source-sans',
+        link: 'https://fonts.google.com/specimen/Source+Sans+3'
     }
 ]

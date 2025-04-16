@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Image from 'next/image'
 
 import Block from '@/components/mdx/block'
@@ -24,7 +26,9 @@ export function MDXContent({ code }: MdxProps) {
                 Install,
                 Demo: (props: React.ComponentProps<typeof Demo>) => <Demo className={props.className} {...props} />,
                 CLI,
-                Code,
+                Code: (props: React.ComponentProps<typeof Code>) => (
+                    <Code className={props.className} copyButton {...props} />
+                ),
                 Block
             }}
         />

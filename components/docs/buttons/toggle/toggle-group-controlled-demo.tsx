@@ -23,7 +23,7 @@ export default function ToggleGroupControlledDemo() {
                     <IconUnderline />
                 </Toggle>
             </Toggle.Group>
-            <code>selected: {JSON.stringify([...selected])}</code>
+            <code>{JSON.stringify([...selected], null, 2)}</code>
         </div>
     )
 }

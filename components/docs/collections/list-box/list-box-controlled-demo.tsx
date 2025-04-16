@@ -33,7 +33,7 @@ export default function ListBoxControlledDemo() {
                 {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
             </ListBox>
 
-            <code>selected: {JSON.stringify(Array.from(selected))}</code>
+            <code>{JSON.stringify([...selected], null, 2)}</code>
         </div>
     )
 }

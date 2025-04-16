@@ -13,7 +13,7 @@ export default function ToggleControlledDemo() {
             <Toggle icon isSelected={isSelected} onChange={setSelected}>
                 {({ isSelected }) => <>{isSelected ? <IconLock /> : <IconLockOpen />}</>}
             </Toggle>
-            <code>value: {JSON.stringify(isSelected)}</code>
+            <code>{JSON.stringify({ isSelected }, null, 2)}</code>
         </div>
     )
 }

@@ -11,7 +11,7 @@ export default function CheckboxControlledDemo() {
             <Checkbox isSelected={selected} onChange={setSelection} value='updates'>
                 Accept terms and conditions
             </Checkbox>
-            <code>selected: {JSON.stringify(selected)}</code>
+            <code>{JSON.stringify({ selected })}</code>
         </div>
     )
 }

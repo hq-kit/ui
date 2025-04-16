@@ -1,32 +1,14 @@
-html {
-    pre code[data-theme],
-    pre code[data-theme] span {
-        color: var(--shiki-light) !important;
-    }
-}
-html.dark {
-    pre code[data-theme],
-    pre code[data-theme] span {
-        color: var(--shiki-dark) !important;
-    }
-}
-
 [data-rehype-pretty-code-figure] {
     margin: 0;
 }
 
 [data-rehype-pretty-code-figure] pre {
     border-radius: var(--radius-lg);
-    border: 1px solid var(--muted);
-    @apply rounded-lg border !bg-transparent px-0 py-2;
+    @apply rounded-lg border px-0 py-2;
 }
 
 [data-rehype-pretty-code-figure] code {
-    @apply border-0 p-0 !text-sm !leading-loose md:text-base;
-}
-
-span[data-rehype-pretty-code-figure] > code {
-    @apply !bg-transparent;
+    @apply border-0 p-0 !text-sm !leading-loose md:text-base !rounded-lg;
 }
 
 span[data-rehype-pretty-code-figure] > code span {
@@ -40,7 +22,7 @@ pre code {
 pre code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
-    @apply text-muted-fg mr-8 inline-block w-4 text-right;
+    @apply text-zinc-500 mr-8 inline-block w-4 text-right;
 }
 
 pre code[data-line-numbers-max-digits='2'] > [data-line]::before {

@@ -18,7 +18,7 @@ export default function FileTriggerDemo() {
             >
                 Upload
             </FileTrigger>
-            {file && <code>uploaded: {JSON.stringify(file)}</code>}
+            {file && <code>{JSON.stringify({ file }, null, 2)}</code>}
         </div>
     )
 }

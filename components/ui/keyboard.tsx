@@ -13,6 +13,7 @@ type ShortcutKeyResult = {
 
 const shortcutKeyMap: Record<string, ShortcutKeyResult> = {
     mod: { symbol: '⌘', readable: 'Command/Control' },
+    win: { symbol: '⌘', readable: 'Win' },
     meta: { symbol: '⌘', readable: 'Meta' },
     alt: { symbol: '⌥', readable: 'Option/Alt' },
     shift: { symbol: '⇧', readable: 'Shift' },
@@ -24,14 +25,13 @@ const shortcutKeyMap: Record<string, ShortcutKeyResult> = {
     right: { symbol: '→', readable: 'Right' },
     down: { symbol: '↓', readable: 'Down' },
     left: { symbol: '←', readable: 'Left' },
-    slash: { symbol: '/', readable: 'Slash' },
-    backslash: { symbol: '\\', readable: 'Backslash' },
-    equals: { symbol: '=', readable: 'Equals' },
-    minus: { symbol: '-', readable: 'Minus' },
+    pageup: { symbol: '⇞', readable: 'Page Up' },
+    pagedown: { symbol: '⇟', readable: 'Page Down' },
+    home: { symbol: '↖', readable: 'Home' },
+    end: { symbol: '↘', readable: 'End' },
     enter: { symbol: '↵', readable: 'Enter' },
-    escape: { symbol: '⎋', readable: 'Escape' },
-    fn: { symbol: 'Fn', readable: 'Fn' },
-    win: { symbol: '⌘', readable: 'Win' }
+    esc: { symbol: '⎋', readable: 'Escape' },
+    fn: { symbol: 'Fn', readable: 'Function' }
 }
 
 const getShortcutKey = (key: string): ShortcutKeyResult =>
@@ -42,15 +42,15 @@ const Keyboard = ({ keys, className, ...props }: React.ComponentProps<typeof RAC
     return (
         <RACKeyboard
             className={cn(
-                'hidden text-xs text-current/70 border rounded-sm px-1 py-0.5 font-mono group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex',
+                'hidden justify-self-end w-fit space-x-0.5 shadow rtl:space-x-reverse text-xs text-current/70 !font-sans border rounded-sm px-1.5 py-0.5 group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex',
                 className
             )}
             {...props}
         >
             {keys.map((key) => (
-                <span className='capitalize' key={key} aria-label={getShortcutKey(key).readable}>
+                <abbr className='capitalize' key={key} aria-label={getShortcutKey(key).readable}>
                     {getShortcutKey(key).symbol}
-                </span>
+                </abbr>
             ))}
         </RACKeyboard>
     )
