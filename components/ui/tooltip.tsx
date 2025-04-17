@@ -5,7 +5,7 @@ import {
     composeRenderProps,
     OverlayArrow,
     Tooltip as RACTooltip,
-    TooltipProps as RACTooltipProps,
+    type TooltipProps as RACTooltipProps,
     TooltipTrigger as RACTooltipTrigger
 } from 'react-aria-components'
 

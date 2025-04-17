@@ -7,7 +7,7 @@ import { Checkbox, CheckboxGroup, composeRenderProps, Radio, RadioGroup } from '
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 const SelectionBoxContext = React.createContext<'single' | 'multiple'>('single')
 const useSelectionBoxContext = () => React.use(SelectionBoxContext)

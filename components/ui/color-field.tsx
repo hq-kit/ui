@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import { Description, FieldError, FieldGroup, FieldProps, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 
 interface ColorFieldProps extends RACColorFieldProps, FieldProps {
     prefix?: React.ReactNode

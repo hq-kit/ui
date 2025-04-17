@@ -12,7 +12,7 @@ import {
 import { cn } from '@/lib/utils'
 
 import { DateInput } from './date-field'
-import { Description, FieldError, FieldGroup, FieldProps, Label } from './field'
+import { Description, FieldError, FieldGroup, Label, type FieldProps } from './field'
 import { Popover } from './popover'
 import { RangeCalendar } from './range-calendar'
 

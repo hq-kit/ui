@@ -3,6 +3,12 @@
 import React from 'react'
 
 import { IconCheck, IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
+import type {
+    ListBoxItemProps,
+    ListBoxSectionProps,
+    SelectProps as RACSelectProps,
+    TextProps
+} from 'react-aria-components'
 import {
     Autocomplete,
     Button,
@@ -13,22 +19,18 @@ import {
     Input,
     ListBox,
     ListBoxItem,
-    ListBoxItemProps,
     ListBoxSection,
-    ListBoxSectionProps,
     Popover,
     SearchField,
     Select as RACSelect,
-    SelectProps as RACSelectProps,
     SelectValue,
     Text,
-    TextProps
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 import type { Placement } from '@react-types/overlays'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'children'>, FieldProps {
     className?: string

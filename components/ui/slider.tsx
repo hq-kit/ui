@@ -6,15 +6,15 @@ import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps 
 import {
     composeRenderProps,
     Slider as RACSlider,
-    SliderOutput,
-    SliderStateContext,
     SliderThumb as RACSliderThumb,
-    SliderTrack as RACSliderTrack
+    SliderTrack as RACSliderTrack,
+    SliderOutput,
+    SliderStateContext
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface SliderProps extends RACSliderProps, FieldProps {}
 

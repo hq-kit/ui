@@ -9,7 +9,7 @@ import {
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface TextareaProps extends RACTextFieldProps, FieldProps {
     autoSize?: boolean

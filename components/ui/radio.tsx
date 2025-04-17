@@ -5,7 +5,7 @@ import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } fr
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'>, FieldProps {
     children?: React.ReactNode

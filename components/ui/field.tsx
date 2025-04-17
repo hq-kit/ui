@@ -2,20 +2,22 @@
 
 import React from 'react'
 
+import type {
+    FieldErrorProps,
+    GroupProps,
+    InputProps,
+    LabelProps as RACLabelProps,
+    TextFieldProps,
+    TextProps,
+    ValidationResult
+} from 'react-aria-components'
 import {
     composeRenderProps,
-    type FieldErrorProps,
     Group,
-    type GroupProps,
-    type InputProps,
     FieldError as RACFieldError,
     Input as RACInput,
     Label as RACLabel,
-    type LabelProps as RACLabelProps,
-    Text,
-    type TextFieldProps,
-    type TextProps,
-    type ValidationResult
+    Text
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'

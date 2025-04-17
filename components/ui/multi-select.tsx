@@ -21,7 +21,7 @@ import {
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 
-import { Description, FieldGroup, FieldProps, Label } from './field'
+import { Description, FieldGroup, type FieldProps, Label } from './field'
 
 interface MultiSelectProps<T>
     extends ListBoxProps<T>,

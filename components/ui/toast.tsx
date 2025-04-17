@@ -4,11 +4,13 @@ import React from 'react'
 
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
 import { motion, useAnimation } from 'motion/react'
+import type {
+    ButtonProps,
+    ToastOptions,
+} from 'react-aria-components'
 import {
     Button,
-    ButtonProps,
     Text,
-    ToastOptions,
     UNSTABLE_Toast as Toaster,
     UNSTABLE_ToastContent as ToastContent,
     UNSTABLE_ToastQueue as ToastQueue,

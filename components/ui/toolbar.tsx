@@ -2,15 +2,17 @@
 
 import React from 'react'
 
+import type {
+    GroupProps,
+    SeparatorProps,
+    ToolbarProps,
+} from 'react-aria-components'
 import {
     composeRenderProps,
     Group,
-    GroupProps,
     Separator,
-    SeparatorProps,
     Toolbar as RACToolbar,
     ToolbarContext,
-    ToolbarProps,
     useSlottedContext
 } from 'react-aria-components'
 

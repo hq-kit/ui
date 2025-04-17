@@ -3,11 +3,10 @@
 import React from 'react'
 
 import { IconCheck, IconChevronDown, IconLoader, IconX } from 'hq-icons'
-import type { ComboBoxProps as RACComboboxProps, ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
+import type { ListBoxItemProps, ListBoxSectionProps, ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {
     Button,
     Collection,
-    ComboBox as RACCombobox,
     ComboBoxStateContext,
     composeRenderProps,
     Header,
@@ -15,12 +14,13 @@ import {
     ListBoxItem,
     ListBoxSection,
     Popover,
+    ComboBox as RACCombobox,
     Text
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 
-import { Description, FieldError, FieldGroup, FieldProps, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 
 interface ComboBoxProps<T extends object> extends Omit<RACComboboxProps<T>, 'children'>, FieldProps {
     children: React.ReactNode | ((item: T) => React.ReactNode)

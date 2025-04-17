@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils'
 
 import { Calendar } from './calendar'
 import { DateInput } from './date-field'
-import { Description, FieldError, FieldGroup, FieldProps, Label } from './field'
+import { Description, FieldError, FieldGroup, Label, type FieldProps } from './field'
 import { Popover } from './popover'
 
 interface DatePickerProps<T extends DateValue> extends RACDatePickerProps<T>, FieldProps {}

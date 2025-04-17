@@ -9,7 +9,7 @@ import { composeRenderProps, Checkbox as RACCheckbox, CheckboxGroup as RACCheckb
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
 

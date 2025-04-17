@@ -12,7 +12,7 @@ import {
 
 import { cn } from '@/lib/utils'
 
-import { Description, FieldError, FieldGroup, FieldProps, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
 
 interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
     prefix?: React.ReactNode
