@@ -49,7 +49,7 @@ export default function PieChartLabelDemo() {
             <Card.Content className='flex-1 pb-0'>
                 <Chart
                     config={chartConfig}
-                    className='[&_.recharts-pie-label-text]:fill-fg mx-auto aspect-square max-h-[250px] pb-0'
+                    className='mx-auto aspect-square max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-fg'
                 >
                     <PieChart>
                         <Chart.Tooltip content={<Chart.TooltipContent hideLabel />} />

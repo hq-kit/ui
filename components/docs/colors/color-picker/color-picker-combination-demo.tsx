@@ -12,7 +12,7 @@ export default function ColorPickerCombinationDemo() {
         <ColorPicker label='Color picker' defaultValue='#0d6efd'>
             <section className='space-y-2 sm:max-w-56'>
                 <ColorArea colorSpace={space} />
-                <div className='space-y-0 5'>
+                <div className='5 space-y-0'>
                     {getColorChannels(space).map((channel) => (
                         <ColorSlider showOutput={false} key={channel} colorSpace={space} channel={channel} />
                     ))}

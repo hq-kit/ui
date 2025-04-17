@@ -50,7 +50,7 @@ const config = {
 
 export default function PieChartControlledDemo() {
     const id = 'pie-interactive'
-    const [activeMonth, setActiveMonth] = useState<Key>(data[0]!.month)
+    const [activeMonth, setActiveMonth] = useState<Key>(data[0]?.month)
 
     const activeIndex = useMemo(() => data.findIndex((item) => item.month === activeMonth), [activeMonth])
     const months = useMemo(() => data.map((item) => item.month), [])
@@ -118,7 +118,7 @@ export default function PieChartControlledDemo() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={viewBox.cy}
-                                                    className='fill-fg text-2xl font-semibold'
+                                                    className='fill-fg font-semibold text-2xl'
                                                 >
                                                     {data[activeIndex]?.sales.toLocaleString()}
                                                 </tspan>

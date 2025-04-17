@@ -5,7 +5,7 @@ import { Card } from '@/components/ui'
 
 export default function Posts() {
     return (
-        <div className='grid grid-cols-1 2xl:grid-cols-3 gap-2'>
+        <div className='grid grid-cols-1 gap-2 2xl:grid-cols-3'>
             <Collection items={posts}>
                 {(item) => (
                     <div key={item.id}>

@@ -3,52 +3,52 @@
 import { IconActivity, IconChartColumn, IconRupiah, IconSquareArrowUpRight, IconUsers } from 'hq-icons'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
-import { Avatar, buttonStyles, Card, Container, Link, Navbar, Table } from '@/components/ui'
+import { Avatar, Card, Container, Link, Navbar, Table, buttonStyles } from '@/components/ui'
 
 export default function Dashboard() {
     return (
         <NavbarLayout variant='inset'>
             <Navbar.Inset>
-                <Container className='py-6 @xl:py-12'>
+                <Container className='@xl:py-12 py-6'>
                     <main className='flex flex-1 flex-col gap-4 md:gap-8'>
                         <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4'>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>Total Revenue</Card.Title>
-                                    <IconRupiah className='text-muted-fg size-4' />
+                                    <Card.Title className='font-medium text-sm'>Total Revenue</Card.Title>
+                                    <IconRupiah className='size-4 text-muted-fg' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
-                                    <div className='text-2xl font-bold'>Rp 45,231.89</div>
+                                    <div className='font-bold text-2xl'>Rp 45,231.89</div>
                                     <p className='text-muted-fg text-xs'>+20.1% from last month</p>
                                 </Card.Content>
                             </Card>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>Subscriptions</Card.Title>
-                                    <IconUsers className='text-muted-fg size-4' />
+                                    <Card.Title className='font-medium text-sm'>Subscriptions</Card.Title>
+                                    <IconUsers className='size-4 text-muted-fg' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
-                                    <div className='text-2xl font-bold'>+2350</div>
+                                    <div className='font-bold text-2xl'>+2350</div>
                                     <p className='text-muted-fg text-xs'>+180.1% from last month</p>
                                 </Card.Content>
                             </Card>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>Sales</Card.Title>
-                                    <IconChartColumn className='text-muted-fg size-4' />
+                                    <Card.Title className='font-medium text-sm'>Sales</Card.Title>
+                                    <IconChartColumn className='size-4 text-muted-fg' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
-                                    <div className='text-2xl font-bold'>+12,234</div>
+                                    <div className='font-bold text-2xl'>+12,234</div>
                                     <p className='text-muted-fg text-xs'>+19% from last month</p>
                                 </Card.Content>
                             </Card>
                             <Card>
                                 <Card.Header className='flex flex-row items-center justify-between space-y-0'>
-                                    <Card.Title className='text-sm font-medium'>Active Now</Card.Title>
-                                    <IconActivity className='text-muted-fg size-4' />
+                                    <Card.Title className='font-medium text-sm'>Active Now</Card.Title>
+                                    <IconActivity className='size-4 text-muted-fg' />
                                 </Card.Header>
                                 <Card.Content className='pb-4'>
-                                    <div className='text-2xl font-bold'>+573</div>
+                                    <div className='font-bold text-2xl'>+573</div>
                                     <p className='text-muted-fg text-xs'>+201 since last hour</p>
                                 </Card.Content>
                             </Card>
@@ -76,7 +76,7 @@ export default function Dashboard() {
                                                 <Table.Row key={transaction.id}>
                                                     <Table.Cell>
                                                         <div className='font-medium'>{transaction.name}</div>
-                                                        <div className='text-muted-fg hidden text-sm md:inline'>
+                                                        <div className='hidden text-muted-fg text-sm md:inline'>
                                                             {transaction.email}
                                                         </div>
                                                     </Table.Cell>
@@ -102,7 +102,7 @@ export default function Dashboard() {
                                                 initials={transaction.name}
                                             />
                                             <div className='grid gap-1'>
-                                                <p className='text-sm leading-none font-medium'>{transaction.name}</p>
+                                                <p className='font-medium text-sm leading-none'>{transaction.name}</p>
                                                 <p className='text-muted-fg text-sm'>{transaction.email}</p>
                                             </div>
                                             <div className='ml-auto font-medium'>+Rp {transaction.amount}</div>

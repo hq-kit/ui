@@ -1,12 +1,7 @@
 'use client'
 
-import {
-    composeRenderProps,
-    ColorSlider as RACColorSlider,
-    SliderOutput,
-    SliderTrack,
-    type ColorSliderProps as RACColorSliderProps
-} from 'react-aria-components'
+import { ColorSlider as RACColorSlider, SliderOutput, SliderTrack, composeRenderProps } from 'react-aria-components'
+import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -25,7 +20,7 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
             slot='color-slider'
             className={composeRenderProps(className, (className, { orientation, isDisabled }) =>
                 cn(
-                    'group relative gap-2 flex flex-col items-center',
+                    'group relative flex flex-col items-center gap-2',
                     orientation === 'horizontal' ? 'min-w-56 justify-between' : 'justify-center',
                     isDisabled && 'opacity-50',
                     className
@@ -34,7 +29,7 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
         >
             {({ isDisabled, orientation }) => (
                 <>
-                    <div className='flex items-center justify-between w-full has-only:justify-center'>
+                    <div className='flex w-full items-center justify-between has-only:justify-center'>
                         {label && <Label isDisabled={isDisabled}>{label}</Label>}
                         {showOutput && <SliderOutput />}
                     </div>

@@ -23,7 +23,7 @@ export function SelectStroke() {
 
     const [selectedStroke, setSelectStroke] = React.useState<Selection>(new Set([searchParams.get('t') || '2']))
     const onSelectionChange = (stroke: Selection) => {
-        router.push(pathname + '?' + createQueryString('t', [...stroke].join(',')), {
+        router.push(`${pathname}?${createQueryString('t', [...stroke].join(','))}`, {
             scroll: false
         })
         setSelectStroke(stroke)
@@ -32,7 +32,7 @@ export function SelectStroke() {
     return (
         <Menu aria-label='Select Icon Size'>
             <Button
-                className='bg-bg w-full sm:max-w-sm [&_[data-slot=icon]]:transition-transform [&[data-pressed]_[data-slot=icon]]:rotate-180'
+                className='w-full bg-bg sm:max-w-sm [&[data-pressed]_[data-slot=icon]]:rotate-180 [&_[data-slot=icon]]:transition-transform'
                 variant='outline'
             >
                 <span>Stroke {[...selectedStroke].join('').replace('stroke-', '') || '5'}</span>

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { IconBrandCleon, IconDownload, IconFilm, IconFolders, IconHome, IconMusicNotes, IconTrash } from 'hq-icons'
 

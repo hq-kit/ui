@@ -47,7 +47,7 @@ export default function PieChartLabelListDemo() {
                 description='Jan - Jun 2024'
             />
             <Card.Content className='flex-1 pb-0'>
-                <Chart config={chartConfig} className='[&_.recharts-text]:fill-bg mx-auto aspect-square max-h-[250px]'>
+                <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px] [&_.recharts-text]:fill-bg'>
                     <PieChart>
                         <Chart.Tooltip content={<Chart.TooltipContent nameKey='marketShare' hideLabel />} />
                         <Pie data={chartData} dataKey='marketShare'>

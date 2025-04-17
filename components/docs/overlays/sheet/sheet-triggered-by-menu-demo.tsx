@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 import { IconBan, IconRotateCcw, IconTrash } from 'hq-icons'
-import { Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 
 import { Button, Menu, Sheet } from '@/components/ui'
 

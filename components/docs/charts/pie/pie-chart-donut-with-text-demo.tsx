@@ -69,7 +69,7 @@ export default function PieChartDonutWithTextDemo() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={viewBox.cy}
-                                                    className='fill-fg text-3xl font-bold'
+                                                    className='fill-fg font-bold text-3xl'
                                                 >
                                                     {totalSales.toLocaleString()}
                                                 </tspan>

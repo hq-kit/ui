@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import type { FieldProps } from './field'
 
 interface ColorFieldProps extends RACColorFieldProps, FieldProps {
     prefix?: React.ReactNode
@@ -32,7 +33,7 @@ const ColorField = ({
         <RACColorField
             aria-label={props['aria-label'] ?? 'Color field'}
             className={composeRenderProps(className, (className) =>
-                cn('group flex w-full flex-col gap-y-1.5 **:data-[slot=color-swatch]:-ml-0.5', className)
+                cn('group **:data-[slot=color-swatch]:-ml-0.5 flex w-full flex-col gap-y-1.5', className)
             )}
             {...props}
         >
@@ -45,11 +46,11 @@ const ColorField = ({
                     )}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
+                            <span className='ml-2 text-muted-fg has-[button]:ml-0'>{props.prefix}</span>
                         ) : null}
                         {isLoading ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>
-                                <IconLoaderPinwheel className='animate-spin size-4' />
+                            <span className='ml-2 text-muted-fg has-[button]:ml-0'>
+                                <IconLoaderPinwheel className='size-4 animate-spin' />
                             </span>
                         ) : null}
                         <div className='flex w-full items-center'>
@@ -65,7 +66,7 @@ const ColorField = ({
                             <Input placeholder={placeholder} />
                         </div>
                         {props.suffix ? (
-                            <span data-suffix className='mr-2 has-[button]:mr-0 text-muted-fg'>
+                            <span data-suffix className='mr-2 text-muted-fg has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

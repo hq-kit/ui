@@ -1,10 +1,10 @@
 'use client'
 
 import {
-    composeRenderProps,
     TimeField as RACTimeField,
     type TimeFieldProps as RACTimeFieldProps,
-    type TimeValue
+    type TimeValue,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -40,7 +40,7 @@ const TimeField = <T extends TimeValue>({
                     )}
                     <FieldGroup>
                         {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
-                        <DateInput className='flex w-fit min-w-28 justify-around p-2 whitespace-nowrap sm:text-sm' />
+                        <DateInput className='flex w-fit min-w-28 justify-around whitespace-nowrap p-2 sm:text-sm' />
                         {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
                     </FieldGroup>
                     {description && <Description>{description}</Description>}

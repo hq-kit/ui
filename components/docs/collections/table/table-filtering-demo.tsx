@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { Card, SearchField, Table } from '@/components/ui'
 import { useAsyncList } from '@react-stately/data'
 
@@ -30,7 +28,7 @@ export default function TableFilteringDemo() {
                     const first = a[sortDescriptor.column]
                     // @ts-expect-error unknown-type
                     const second = b[sortDescriptor.column]
-                    let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1
+                    let cmp = (Number.parseInt(first) || first) < (Number.parseInt(second) || second) ? -1 : 1
                     if (sortDescriptor.direction === 'descending') {
                         cmp *= -1
                     }
@@ -63,7 +61,7 @@ export default function TableFilteringDemo() {
                     <Table.Body
                         items={list.items}
                         renderEmptyState={() => (
-                            <div className='p-4 text-muted-fg col-span-full text-center'>No items found</div>
+                            <div className='col-span-full p-4 text-center text-muted-fg'>No items found</div>
                         )}
                     >
                         {(item) => (

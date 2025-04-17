@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconFolderTree, IconPanelLeftClose, IconSettings, IconX } from 'hq-icons'
 
 import { Command, Keyboard } from '@/components/ui'

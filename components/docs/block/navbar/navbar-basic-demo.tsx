@@ -8,7 +8,7 @@ export default function NavbarBasicDemo() {
     return (
         <>
             <NavbarLayout />
-            <Container className='py-6 @xl:py-12'>
+            <Container className='@xl:py-12 py-6'>
                 <Heading>Basic</Heading>
             </Container>
         </>

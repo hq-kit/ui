@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import './code.css';
+@import "tailwindcss";
+@import "./code.css";
 
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
@@ -75,7 +75,6 @@
         --warning: hsl(24.6 95% 53.1%);
         --warning-fg: hsl(0 0% 98.04%);
 
-
         --radius: 0.5rem;
     }
 
@@ -96,7 +95,6 @@
         --warning-fg: hsl(0 0% 98.04%);
     }
 }
-
 
 @layer base {
     *,

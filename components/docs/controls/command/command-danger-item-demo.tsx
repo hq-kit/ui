@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { Command } from '@/components/ui'
 
 export default function CommandDangerItemDemo() {

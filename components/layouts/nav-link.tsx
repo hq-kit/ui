@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { motion } from 'motion/react'
-import { composeRenderProps, Link } from 'react-aria-components'
+import { Link, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -21,8 +21,8 @@ const NavLink = ({ href, isActive, className, ...props }: NavLinkProps) => {
             href={href}
             className={composeRenderProps(className, (className, { isFocusVisible, isHovered }) =>
                 cn(
-                    'relative flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-fg outline-hidden transition-colors',
-                    isFocusVisible && 'text-primary ring-2 ring-offset-2 ring-primary/50',
+                    'relative flex items-center gap-2 rounded-lg px-3 py-2 text-muted-fg text-sm outline-hidden transition-colors',
+                    isFocusVisible && 'text-primary ring-2 ring-primary/50 ring-offset-2',
                     isHovered && 'text-primary',
                     isActive && 'text-primary',
                     className
@@ -34,7 +34,7 @@ const NavLink = ({ href, isActive, className, ...props }: NavLinkProps) => {
             {isActive && (
                 <motion.span
                     layoutId='active-indicator'
-                    className='bg-primary/10 absolute inset-x-0 size-full rounded-lg'
+                    className='absolute inset-x-0 size-full rounded-lg bg-primary/10'
                 />
             )}
         </Link>

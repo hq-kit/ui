@@ -1,6 +1,7 @@
 'use client'
 
-import { composeRenderProps, ColorArea as RACColorArea, type ColorAreaProps } from 'react-aria-components'
+import { ColorArea as RACColorArea, composeRenderProps } from 'react-aria-components'
+import type { ColorAreaProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -11,7 +12,7 @@ const ColorArea = ({ className, ...props }: ColorAreaProps) => {
         <RACColorArea
             slot='color-area'
             className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn('bg-muted min-w-56 min-h-56 rounded-lg', isDisabled && 'opacity-50 grayscale-50', className)
+                cn('min-h-56 min-w-56 rounded-lg bg-muted', isDisabled && 'opacity-50 grayscale-50', className)
             )}
             style={({ defaultStyle }) => ({ ...defaultStyle })}
             {...props}

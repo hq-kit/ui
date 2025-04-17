@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { Button, Form, TimeField } from '@/components/ui'
-import { Time } from '@internationalized/date'
+import type { Time } from '@internationalized/date'
 
 export default function TimeFieldValidationDemo() {
     const [value, setValue] = React.useState<Time>()

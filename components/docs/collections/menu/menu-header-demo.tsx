@@ -14,7 +14,7 @@ export default function MenuHeaderDemo() {
                 <Menu.Content placement='bottom' className='min-w-64'>
                     <Menu.Header>
                         <span className='block'>DQ Al-Haqqi</span>
-                        <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                        <span className='font-normal text-muted-fg'>@dq-alhq</span>
                     </Menu.Header>
                     <Menu.Item>
                         <IconCircleUser />

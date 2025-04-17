@@ -1,12 +1,7 @@
 'use client'
 
-import {
-    type DragAndDropOptions,
-    DropIndicator,
-    type DropOperation,
-    isTextDropItem,
-    useDragAndDrop
-} from 'react-aria-components'
+import { DropIndicator, isTextDropItem, useDragAndDrop } from 'react-aria-components'
+import type { DragAndDropOptions, DropOperation } from 'react-aria-components'
 import type { ListData, ListOptions } from 'react-stately'
 import { useListData as RACListData } from 'react-stately'
 
@@ -59,12 +54,12 @@ const useDND = <T extends object>({
             <DropIndicator
                 target={e}
                 className={({ isDropTarget }) =>
-                    isDropTarget ? 'outline outline-primary col-span-full rounded-md' : ''
+                    isDropTarget ? 'col-span-full rounded-md outline outline-primary' : ''
                 }
             />
         ),
         renderDragPreview: (items) => (
-            <ul className='rounded-md bg-primary p-2 text-primary-fg w-full'>
+            <ul className='w-full rounded-md bg-primary p-2 text-primary-fg'>
                 {items.map((item, i) => (
                     <li className='text-sm' key={i}>
                         {i + 1}. {item['text/plain']}

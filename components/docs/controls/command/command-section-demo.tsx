@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { Avatar, Command } from '@/components/ui'
 
 export default function CommandSectionDemo() {

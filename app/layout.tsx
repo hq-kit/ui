@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import type { Metadata, Viewport } from 'next'
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
     title: {
         default: 'HQ UI',
-        template: `%s | HQ UI`
+        template: '%s | HQ UI'
     },
     description: 'Customizable React UI Components Library',
     alternates: {

@@ -72,7 +72,7 @@ export default function SheetMenuDemo() {
                     <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' />
                 </Sheet.Trigger>
                 <Sheet.Content closeButton={false}>
-                    <Sheet.Header className='bg-background sticky top-0 flex flex-row items-center p-4 sm:gap-3'>
+                    <Sheet.Header className='sticky top-0 flex flex-row items-center bg-background p-4 sm:gap-3'>
                         <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' size='xl' />
                         <div>
                             <Sheet.Title>dq-alhq</Sheet.Title>

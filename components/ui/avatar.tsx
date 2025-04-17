@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { IconUser } from 'hq-icons'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
 import { Collection, type CollectionProps } from '@react-aria/collections'
@@ -16,7 +16,7 @@ const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps
     return (
         <div
             className={cn(
-                '**:data-avatar:ring-border flex items-center justify-center -space-x-2 **:data-avatar:ring',
+                '-space-x-2 flex items-center justify-center **:data-avatar:ring **:data-avatar:ring-border',
                 '**:data-avatar:transition-transform **:data-avatar:hover:z-30 **:data-avatar:hover:scale-110',
                 className
             )}
@@ -29,7 +29,7 @@ const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps
 const avatar = tv({
     base: [
         'inline-grid shrink-0 items-center justify-center align-middle *:col-start-1 *:row-start-1',
-        'outline-fg/20 text-center outline-1 -outline-offset-1'
+        '-outline-offset-1 text-center outline-1 outline-fg/20'
     ],
 
     variants: {
@@ -89,6 +89,7 @@ const Avatar = ({
         )
     }
     return (
+        // biome-ignore lint/a11y/useAltText: <explanation>
         <img
             src={src}
             alt={alt}
@@ -103,9 +104,9 @@ const Avatar = ({
 const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) => {
     return initials ? (
         <svg
-            className='bg-bg size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none'
+            className='size-full select-none bg-bg fill-current p-[5%] font-medium text-[48px] uppercase'
             viewBox='0 0 100 100'
-            aria-hidden={alt ? undefined : 'true'}
+            aria-hidden='true'
         >
             {alt && <title>{alt}</title>}
             <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
@@ -120,9 +121,9 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
         </svg>
     ) : alt ? (
         <svg
-            className='size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none'
+            className='size-full select-none fill-current p-[5%] font-medium text-[48px] uppercase'
             viewBox='0 0 100 100'
-            aria-hidden={alt ? undefined : 'true'}
+            aria-hidden='true'
         >
             {alt && <title>{alt}</title>}
             <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
@@ -136,7 +137,7 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
             </text>
         </svg>
     ) : (
-        <IconUser className='bg-bg size-full place-self-center p-1.5' />
+        <IconUser className='size-full place-self-center bg-bg p-1.5' />
     )
 }
 

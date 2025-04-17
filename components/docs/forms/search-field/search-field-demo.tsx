@@ -4,7 +4,7 @@ import { SearchField } from '@/components/ui'
 
 export default function SearchFieldDemo() {
     return (
-        <div className='flex flex-col sm:flex-row gap-2'>
+        <div className='flex flex-col gap-2 sm:flex-row'>
             <SearchField label='Basic' />
             <SearchField isPending label='Pending' />
             <SearchField isReadOnly label='Readonly' />

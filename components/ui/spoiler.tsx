@@ -51,7 +51,7 @@ function Spoiler({
             {gradientTransparency && (
                 <div
                     className={cn(
-                        'via-bg to-bg absolute inset-0 rounded-lg bg-gradient-to-b from-transparent',
+                        'absolute inset-0 rounded-lg bg-gradient-to-b from-transparent via-bg to-bg',
                         isExpanded && 'hidden'
                     )}
                 />
@@ -59,7 +59,7 @@ function Spoiler({
             <Button
                 variant='outline'
                 size='sm'
-                className={cn('absolute left-1/2 -translate-x-1/2 w-fit -bottom-4')}
+                className={cn('-translate-x-1/2 -bottom-4 absolute left-1/2 w-fit')}
                 onPress={() => setIsExpanded(!isExpanded)}
             >
                 {isExpanded ? showLessText : showMoreText}

@@ -3,7 +3,7 @@
 import { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
 
-import { Button, buttonStyles } from './button'
+import { Button, type buttonStyles } from './button'
 
 interface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof buttonStyles> {
     isDisabled?: boolean

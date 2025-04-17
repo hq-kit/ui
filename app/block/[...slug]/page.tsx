@@ -29,7 +29,7 @@ export default async function BlocksPage({ params }: { params: Params }) {
     return (
         <React.Suspense
             fallback={
-                <div className='text-muted-fg flex min-h-svh w-full items-center justify-center text-sm'>
+                <div className='flex min-h-svh w-full items-center justify-center text-muted-fg text-sm'>
                     <IconLoaderCircle className='size-12 animate-spin' />
                 </div>
             }

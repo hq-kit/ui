@@ -24,7 +24,7 @@ import { CommandMenu } from '@/components/layouts/command-menu'
 import { NavLink } from '@/components/layouts/nav-link'
 import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, buttonStyles, Keyboard, Link, Menu, Separator } from '@/components/ui'
+import { Button, Keyboard, Link, Menu, Separator, buttonStyles } from '@/components/ui'
 import { useMediaQuery } from '@/lib/hooks'
 
 export function Navbar() {
@@ -45,7 +45,7 @@ export function Navbar() {
             <CommandMenu setOpen={setOpen} openCommand={open} />
             <LayoutGroup id={`navigation-${id}`}>
                 <div className='sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block'>
-                    <nav className='bg-bg/95 supports-[backdrop-filter]:bg-bg/60 border-b py-2 backdrop-blur-lg'>
+                    <nav className='border-b bg-bg/95 py-2 backdrop-blur-lg supports-[backdrop-filter]:bg-bg/60'>
                         <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
                             <div className='flex items-center justify-between'>
                                 <div className='flex items-center gap-x-2'>
@@ -63,7 +63,7 @@ export function Navbar() {
                                     <>
                                         <Button onPress={() => setOpen((open: boolean) => !open)} variant='outline'>
                                             <IconSearch />
-                                            <span className='text-muted-fg mr-2'>Search...</span>
+                                            <span className='mr-2 text-muted-fg'>Search...</span>
                                             <Keyboard keys={['meta', 'k']} />
                                         </Button>
                                         <ThemeToggle />
@@ -100,8 +100,8 @@ export function NavbarDropdown() {
             <Button aria-label='Menu' variant='ghost' className='group -ml-1 [&_svg]:size-4'>
                 <span className='flex items-center gap-x-2'>
                     <IconBrandCleon className='-ml-1 size-6' />
-                    <span className='text-base font-bold tracking-tight sm:text-sm'>HQ UI</span>
-                    <IconChevronDown className='text-muted-fg group-data-hovered:text-fg group-pressed:text-fg -mr-2 ml-1 transition group-pressed:rotate-180' />
+                    <span className='font-bold text-base tracking-tight sm:text-sm'>HQ UI</span>
+                    <IconChevronDown className='-mr-2 ml-1 text-muted-fg transition group-pressed:rotate-180 group-pressed:text-fg group-data-hovered:text-fg' />
                     <span className='sr-only'>Open menu</span>
                 </span>
             </Button>

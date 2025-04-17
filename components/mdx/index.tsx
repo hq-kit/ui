@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import Image from 'next/image'
 
@@ -21,7 +21,7 @@ export function MDXContent({ code }: MdxProps) {
             components={{
                 Image,
                 Note: (props: React.ComponentProps<typeof Note>) => (
-                    <Note className={props.className + ' not-prose'} {...props} />
+                    <Note className={`${props.className} not-prose`} {...props} />
                 ),
                 Install,
                 Demo: (props: React.ComponentProps<typeof Demo>) => <Demo className={props.className} {...props} />,

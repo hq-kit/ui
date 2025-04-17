@@ -1,10 +1,10 @@
 'use client'
 
-import { tv, type VariantProps } from 'tailwind-variants'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 const badgeStyles = tv({
     base: [
-        'inline-flex items-center cursor-default border gap-x-1.5 px-2 py-0.5 text-xs/5 font-medium **:data-[slot=icon]:size-3 transition bg-(--bg) text-(--fg) border-(--bg)/20 hover:bg-(--bg)/85 pressed:bg-(--bg)/95'
+        'inline-flex cursor-default items-center gap-x-1.5 border border-(--bg)/20 bg-(--bg) pressed:bg-(--bg)/95 px-2 py-0.5 font-medium text-(--fg) text-xs/5 transition hover:bg-(--bg)/85 **:data-[slot=icon]:size-3'
     ],
     variants: {
         variant: {
@@ -14,7 +14,7 @@ const badgeStyles = tv({
             success: '[--bg:var(--color-success)] [--fg:var(--color-success-fg)]',
             danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
             warning: '[--bg:var(--color-warning)] [--fg:var(--color-warning-fg)]',
-            outline: 'bg-bg/80 text-fg hover:bg-muted/40 pressed:bg-muted/50 border-muted'
+            outline: 'border-muted bg-bg/80 pressed:bg-muted/50 text-fg hover:bg-muted/40'
         },
         shape: {
             square: 'rounded-lg',

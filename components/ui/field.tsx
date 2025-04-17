@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import type {
     FieldErrorProps,
@@ -12,12 +12,12 @@ import type {
     ValidationResult
 } from 'react-aria-components'
 import {
-    composeRenderProps,
     Group,
     FieldError as RACFieldError,
     Input as RACInput,
     Label as RACLabel,
-    Text
+    Text,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -42,10 +42,10 @@ const Label = ({ className, isInvalid, isDisabled, ...props }: LabelProps) => {
             slot='label'
             {...props}
             className={cn(
-                'w-fit cursor-default text-sm font-medium transition-colors',
+                'w-fit cursor-default font-medium text-sm transition-colors',
                 isInvalid
-                    ? 'text-danger/70 group-has-focus:text-danger group-has-focus-within:text-danger group-open:text-danger group-has-pressed:text-danger'
-                    : 'text-muted-fg group-has-focus:text-primary group-has-focus-within:text-primary group-open:text-primary group-has-pressed:text-primary',
+                    ? 'text-danger/70 group-open:text-danger group-has-focus-within:text-danger group-has-focus:text-danger group-has-pressed:text-danger'
+                    : 'text-muted-fg group-open:text-primary group-has-focus-within:text-primary group-has-focus:text-primary group-has-pressed:text-primary',
                 isDisabled && 'opacity-50',
                 className
             )}
@@ -58,7 +58,7 @@ const Description = ({ className, ...props }: TextProps) => {
         <Text
             {...props}
             slot='description'
-            className={cn('text-muted-fg text-base/5 text-pretty sm:text-sm/5', className)}
+            className={cn('text-pretty text-base/5 text-muted-fg sm:text-sm/5', className)}
         />
     )
 }
@@ -74,14 +74,14 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
                 className,
                 (className, { isHovered, isInvalid, isFocusWithin, isDisabled, isFocusVisible }) =>
                     cn([
-                        'h-10 flex items-center rounded-lg border transition',
+                        'flex h-10 items-center rounded-lg border transition',
                         isInvalid ? 'border-danger/30' : 'border-muted',
                         isHovered && `${isInvalid ? 'border-danger/70' : 'border-primary/70'}`,
                         {
-                            'ring-4 border-primary/70 ring-primary/20 invalid:border-danger/70 invalid:ring-danger/20':
+                            'border-primary/70 ring-4 ring-primary/20 invalid:border-danger/70 invalid:ring-danger/20':
                                 isFocusWithin || isFocusVisible
                         },
-                        isDisabled && 'opacity-50 pointer-events-none',
+                        isDisabled && 'pointer-events-none opacity-50',
                         className
                     ])
             )}

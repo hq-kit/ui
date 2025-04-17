@@ -11,7 +11,7 @@ export default function ToggleGroupControlledDemo() {
     const [selected, setSelected] = React.useState(new Set<Key>(['bold']))
 
     return (
-        <div className='space-y-6 flex flex-col items-center'>
+        <div className='flex flex-col items-center space-y-6'>
             <Toggle.Group icon selectionMode='multiple' selectedKeys={selected} onSelectionChange={setSelected}>
                 <Toggle id='bold'>
                     <IconBold />

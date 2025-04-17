@@ -2,11 +2,11 @@
 
 import {
     Button,
-    composeRenderProps,
     OverlayArrow,
     Tooltip as RACTooltip,
     type TooltipProps as RACTooltipProps,
-    TooltipTrigger as RACTooltipTrigger
+    TooltipTrigger as RACTooltipTrigger,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -35,7 +35,7 @@ const TooltipContent = ({
                 cn(
                     'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
                     isInverse ? 'bg-fg text-bg' : 'bg-bg text-fg',
-                    isEntering && `fade-in animate-in`,
+                    isEntering && 'fade-in animate-in',
                     isExiting && 'fade-in direction-reverse animate-in',
                     placement === 'top' && `${isEntering ? 'slide-in-from-bottom-1' : 'slide-out-to-bottom-1'}`,
                     placement === 'right' && `${isEntering ? 'slide-in-from-left-1' : 'slide-out-to-left-1'}`,
@@ -52,7 +52,7 @@ const TooltipContent = ({
                         height={12}
                         viewBox='0 0 12 12'
                         className={cn(
-                            'block group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180',
+                            'group-placement-left:-rotate-90 block group-placement-bottom:rotate-180 group-placement-right:rotate-90',
                             isInverse ? 'fill-fg' : 'fill-bg stroke-border'
                         )}
                     >

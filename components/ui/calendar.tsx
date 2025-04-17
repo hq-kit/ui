@@ -3,16 +3,16 @@
 import { use } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
-import type { CalendarProps as RACCalendarProps, DateValue } from 'react-aria-components'
+import type { DateValue, CalendarProps as RACCalendarProps } from 'react-aria-components'
 import {
-    Calendar as RACCalendar,
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
-    CalendarGridHeader as RACCalendarGridHeader,
     CalendarHeaderCell,
     CalendarStateContext,
     FieldError,
+    Calendar as RACCalendar,
+    CalendarGridHeader as RACCalendarGridHeader,
     RangeCalendarStateContext,
     useLocale
 } from 'react-aria-components'
@@ -35,7 +35,7 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
     return (
         <RACCalendar {...props}>
             <CalendarHeader />
-            <CalendarGrid className='**:[td]:px-0 **:[td]:py-[1.5px] w-full'>
+            <CalendarGrid className='w-full **:[td]:px-0 **:[td]:py-[1.5px]'>
                 <CalendarGridHeader />
                 <CalendarGridBody>
                     {(date) => (
@@ -43,12 +43,12 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
                             date={date}
                             className={({ isHovered, isSelected, isOutsideMonth, isInvalid, isDisabled }) =>
                                 cn([
-                                    'shrink-0 relative rounded-lg flex items-center justify-center size-9 cursor-default outline-hidden',
+                                    'relative flex size-9 shrink-0 cursor-default items-center justify-center rounded-lg outline-hidden',
                                     isOutsideMonth && 'text-muted-fg',
                                     isHovered && 'bg-primary/10 text-primary',
                                     isSelected &&
                                         `${isInvalid ? 'bg-danger text-danger-fg' : 'bg-primary text-primary-fg'}`,
-                                    isDisabled && 'opacity-50 pointer-events-none',
+                                    isDisabled && 'pointer-events-none opacity-50',
                                     date.compare(now) === 0 &&
                                         'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-fg'
                                 ])
@@ -59,7 +59,7 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
                     )}
                 </CalendarGridBody>
             </CalendarGrid>
-            <FieldError className='text-danger text-sm/5 px-2'>{errorMessage}</FieldError>
+            <FieldError className='px-2 text-danger text-sm/5'>{errorMessage}</FieldError>
         </RACCalendar>
     )
 }
@@ -123,7 +123,7 @@ const MonthYearSelection = ({ state }: { state: CalendarState | RangeCalendarSta
     return (
         <div className='flex gap-1'>
             <Menu aria-label='Select month'>
-                <Menu.Trigger className='text-muted-fg rounded-lg' slot={null}>
+                <Menu.Trigger className='rounded-lg text-muted-fg' slot={null}>
                     {months[focusedDate.month - 1]}
                 </Menu.Trigger>
                 <Menu.Content
@@ -141,7 +141,7 @@ const MonthYearSelection = ({ state }: { state: CalendarState | RangeCalendarSta
                 </Menu.Content>
             </Menu>
             <Menu aria-label='Select year'>
-                <Menu.Trigger className='text-muted-fg rounded-lg' slot={null}>
+                <Menu.Trigger className='rounded-lg text-muted-fg' slot={null}>
                     {yearFormatter.format(focusedDate.toDate(timeZone))}
                 </Menu.Trigger>
                 <Menu.Content

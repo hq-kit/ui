@@ -4,10 +4,10 @@ import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
 import {
     Button,
     type ButtonProps,
-    composeRenderProps,
     NumberField as RACNumberField,
     type NumberFieldProps as RACNumberFieldProps,
-    type ValidationResult
+    type ValidationResult,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { useMediaQuery } from '@/lib/hooks'
@@ -42,11 +42,11 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
                                 <IconMinus />
                             </Stepper>
                         )}
-                        <Input className='tabular-nums text-center sm:text-left' placeholder={placeholder} />
+                        <Input className='text-center tabular-nums sm:text-left' placeholder={placeholder} />
                         <div
                             className={cn(
                                 'grid h-10 place-content-center border-s',
-                                'group-focus:border-primary/70 group-hover:border-primary/60',
+                                'group-hover:border-primary/60 group-focus:border-primary/70',
                                 isInvalid && 'group-focus:border-danger/70',
                                 isDisabled && 'group-focus:border-muted'
                             )}
@@ -85,7 +85,7 @@ const Stepper = ({ slot, className, ...props }: StepperProps) => {
         <Button
             className={composeRenderProps(className, (className, { isDisabled, isPressed }) =>
                 cn(
-                    'text-muted-fg h-10 px-3 outline-hidden',
+                    'h-10 px-3 text-muted-fg outline-hidden',
                     isPressed && 'bg-primary text-primary-fg',
                     isDisabled && 'opacity-50',
                     className

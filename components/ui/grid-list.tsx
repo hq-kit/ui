@@ -4,9 +4,9 @@ import { IconGripVertical } from 'hq-icons'
 import type { GridListItemProps, GridListProps as RACGridListProps } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     GridList as RACGridList,
-    GridListItem as RACGridListItem
+    GridListItem as RACGridListItem,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -25,7 +25,7 @@ const GridList = <T extends object>({ children, className, columns = 1, gap = 0,
             cn(
                 layout === 'stack'
                     ? 'grid grid-cols-1 gap-0 *:rounded-none *:first:rounded-t-lg *:last:rounded-b-lg'
-                    : `${columns === 'auto' ? 'flex flex-wrap grow' : `grid grid-cols-${columns}`}`,
+                    : `${columns === 'auto' ? 'flex grow flex-wrap' : `grid grid-cols-${columns}`}`,
                 `gap-${gap}`,
                 className
             )
@@ -46,7 +46,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                 className,
                 (className, { isHovered, isSelected, isFocusVisible, isDisabled }) =>
                     cn(
-                        'flex items-center text-fg gap-2 border px-3 py-2 outline-hidden transition select-none sm:text-sm rounded-lg',
+                        'flex select-none items-center gap-2 rounded-lg border px-3 py-2 text-fg outline-hidden transition sm:text-sm',
                         isHovered && 'bg-primary/10',
                         {
                             'border-primary/70 bg-primary/10 text-primary': isSelected || isFocusVisible
@@ -61,7 +61,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                     {allowsDragging && (
                         <Button
                             slot='drag'
-                            className={cn('text-muted-fg cursor-grab', isDragging && 'cursor-grabbing')}
+                            className={cn('cursor-grab text-muted-fg', isDragging && 'cursor-grabbing')}
                         >
                             <IconGripVertical />
                         </Button>

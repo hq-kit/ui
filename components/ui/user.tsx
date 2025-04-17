@@ -1,6 +1,6 @@
 'use client'
 
-import { Avatar, AvatarProps } from './avatar'
+import { Avatar, type AvatarProps } from './avatar'
 
 interface UserProps extends Omit<AvatarProps, 'size'> {
     name: string
@@ -26,7 +26,6 @@ const User = ({ name, description, size = 'lg', ...props }: UserProps) => {
             sizes.description = 'text-sm'
             break
         default:
-        case 'lg':
             sizes.avatar = 'lg'
             sizes.name = 'text-sm'
             sizes.description = 'text-xs'
@@ -36,8 +35,8 @@ const User = ({ name, description, size = 'lg', ...props }: UserProps) => {
         <div className='inline-flex items-center justify-center gap-2 rounded-xl outline-none'>
             <Avatar {...props} initials={name} size={sizes.avatar} />
             <div data-user className='inline-flex flex-col items-start'>
-                <span className={'font-medium text-inherit ' + sizes.name}>{name}</span>
-                {description && <span className={'text-muted-fg ' + sizes.description}>{description}</span>}
+                <span className={`font-medium text-inherit ${sizes.name}`}>{name}</span>
+                {description && <span className={`text-muted-fg ${sizes.description}`}>{description}</span>}
             </div>
         </div>
     )

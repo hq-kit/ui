@@ -3,7 +3,7 @@
 import React from 'react'
 
 import type { CheckboxGroupProps, CheckboxProps, RadioGroupProps, RadioProps } from 'react-aria-components'
-import { Checkbox, CheckboxGroup, composeRenderProps, Radio, RadioGroup } from 'react-aria-components'
+import { Checkbox, CheckboxGroup, Radio, RadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -58,7 +58,7 @@ const SelectionBox = ({
                             <div
                                 slot='items'
                                 className={cn(
-                                    'select-none flex gap-2',
+                                    'flex select-none gap-2',
                                     orientation === 'horizontal' ? 'flex-wrap justify-between' : 'flex-col'
                                 )}
                             >
@@ -84,7 +84,7 @@ const SelectionBox = ({
                             <div
                                 slot='items'
                                 className={cn(
-                                    'select-none flex gap-2',
+                                    'flex select-none gap-2',
                                     orientation === 'horizontal' ? 'flex-wrap justify-between' : 'flex-col'
                                 )}
                             >
@@ -124,19 +124,19 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full px-3 py-2 items-center rounded-sm border text-bg transition',
+                        'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
                         isSelected || isIndeterminate
                             ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-danger/20 group-invalid:**:text-danger'
-                            : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10 **:text-muted-fg',
+                            : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-primary/20 ring-4 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                            'border-primary ring-4 ring-primary/20 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
                         isInvalid &&
                             'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
                         className
                     )}
                 >
                     {props.prefix && (
-                        <div className='flex shrink-0 items-center justify-center size-5 text-base mr-2'>
+                        <div className='mr-2 flex size-5 shrink-0 items-center justify-center text-base'>
                             {props.prefix}
                         </div>
                     )}
@@ -157,19 +157,19 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full px-3 py-2 items-center rounded-sm border text-bg transition',
+                        'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
                         isSelected
                             ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-danger/20 group-invalid:**:text-danger'
-                            : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10 **:text-muted-fg',
+                            : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-primary/20 ring-4 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                            'border-primary ring-4 ring-primary/20 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
                         isInvalid &&
                             'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
                         className
                     )}
                 >
                     {props.prefix && (
-                        <div className='flex shrink-0 items-center justify-center size-5 text-base mr-2'>
+                        <div className='mr-2 flex size-5 shrink-0 items-center justify-center text-base'>
                             {props.prefix}
                         </div>
                     )}

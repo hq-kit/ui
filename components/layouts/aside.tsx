@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
-
-import { type Docs, docs } from '#docs'
-import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
 import { LayoutGroup, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { composeRenderProps, Heading, Link, LinkProps } from 'react-aria-components'
+import React from 'react'
+import { Heading, Link, type LinkProps, composeRenderProps } from 'react-aria-components'
+import { type Docs, docs } from '#docs'
 
 import { cn, goodTitle } from '@/lib/utils'
+import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
 
 export interface Doc {
     slug: string
@@ -22,11 +21,11 @@ export interface Hierarchy {
 export const createHierarchy = (docs: Array<Docs>): Hierarchy => {
     const hierarchy: Hierarchy = {}
 
-    docs.forEach((doc) => {
+    for (const doc of docs) {
         const parts = doc.slugAsParams.split('/')
         let currentLevel = hierarchy
 
-        parts.forEach((part: string, index: number) => {
+        for (const [index, part] of parts.entries()) {
             if (index === parts.length - 1) {
                 currentLevel[part] = doc
             } else {
@@ -35,8 +34,8 @@ export const createHierarchy = (docs: Array<Docs>): Hierarchy => {
                 }
                 currentLevel = currentLevel[part] as Hierarchy
             }
-        })
-    })
+        }
+    }
     return hierarchy
 }
 
@@ -50,7 +49,7 @@ const renderHierarchy = (node: Hierarchy) => {
         <ul className='flex flex-col gap-5'>
             {menu.map(([key, value]) => (
                 <li key={key} className='flex flex-col gap-1'>
-                    <Heading className='text-fg flex gap-x-2 items-center font-semibold'>
+                    <Heading className='flex items-center gap-x-2 font-semibold text-fg'>
                         {key === 'getting-started' ? (
                             <IconLayers />
                         ) : key === 'dark-mode' ? (
@@ -60,7 +59,7 @@ const renderHierarchy = (node: Hierarchy) => {
                         )}
                         {goodTitle(key)}
                     </Heading>
-                    <ul className='flex flex-col gap-1 relative pl-2'>
+                    <ul className='relative flex flex-col gap-1 pl-2'>
                         <div className='absolute left-1.5 h-full w-0.5 bg-muted' />
                         {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
                             typeof subValue === 'object' && 'title' in subValue ? (
@@ -69,8 +68,8 @@ const renderHierarchy = (node: Hierarchy) => {
                                 </MenuLink>
                             ) : (
                                 <li key={subKey} id={subKey} className='flex flex-col gap-1'>
-                                    <Heading className='text-fg font-semibold pl-4 py-2'>{goodTitle(subKey)}</Heading>
-                                    <ul className='flex flex-col gap-1 mb-4'>
+                                    <Heading className='py-2 pl-4 font-semibold text-fg'>{goodTitle(subKey)}</Heading>
+                                    <ul className='mb-4 flex flex-col gap-1'>
                                         {Object.entries(subValue as Hierarchy).map(
                                             ([childKey, childValue]) =>
                                                 typeof childValue === 'object' &&
@@ -92,7 +91,6 @@ const renderHierarchy = (node: Hierarchy) => {
 }
 
 export const Aside = () => {
-    const pathname = usePathname()
     const id = React.useId()
     const hierarchicalDocs = createHierarchy(docs)
 
@@ -105,7 +103,7 @@ export const Aside = () => {
                 block: 'center'
             })
         }
-    }, [pathname])
+    }, [])
     return (
         <LayoutGroup id={id}>
             <aside>{renderHierarchy(hierarchicalDocs)}</aside>
@@ -121,9 +119,9 @@ const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
             href={href}
             className={composeRenderProps(className, (className, { isHovered }) =>
                 cn(
-                    'relative text-muted-fg w-full px-4 py-1 rounded-r-lg transition-colors',
-                    isActive && 'text-primary pointer-events-none is-active',
-                    isHovered && 'text-primary bg-primary/5',
+                    'relative w-full rounded-r-lg px-4 py-1 text-muted-fg transition-colors',
+                    isActive && 'is-active pointer-events-none text-primary',
+                    isHovered && 'bg-primary/5 text-primary',
                     className
                 )
             )}
@@ -134,7 +132,7 @@ const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
                 {isActive && (
                     <motion.span
                         layoutId='active-indicator'
-                        className='absolute inset-0 size-full bg-primary/10 rounded-r-lg border-l-2 border-primary'
+                        className='absolute inset-0 size-full rounded-r-lg border-primary border-l-2 bg-primary/10'
                     />
                 )}
             </>

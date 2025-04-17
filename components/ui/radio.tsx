@@ -56,7 +56,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
         >
             {({ isSelected, isFocused, isInvalid }) => (
                 <div
-                    className={cn('flex gap-2 items-center', {
+                    className={cn('flex items-center gap-2', {
                         'items-start': description
                     })}
                 >
@@ -67,7 +67,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                                 ? 'border-[5px] border-primary bg-bg group-invalid:border-danger'
                                 : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',
                             isFocused &&
-                                'border-primary ring-primary/20 ring-4 group-invalid:border-danger group-invalid:ring-danger/20',
+                                'border-primary ring-4 ring-primary/20 group-invalid:border-danger group-invalid:ring-danger/20',
                             isInvalid && 'border-danger/70 ring-danger/20 group-hover:border-danger/70'
                         )}
                     />

@@ -4,7 +4,7 @@ import React from 'react'
 
 import Paginator from 'components/paginator'
 import { IconEllipsisVertical, IconEye, IconHighlighter, IconPlus, IconTrash } from 'hq-icons'
-import { Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
@@ -40,14 +40,14 @@ export default function ProductManagement() {
         }
     }, 300)
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     React.useEffect(() => {
         getProducts()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [show, page])
 
     return (
         <NavbarLayout>
-            <Container className='py-6 @xl:py-12'>
+            <Container className='@xl:py-12 py-6'>
                 <Card>
                     <Card.Header>
                         <Card.Title>Product Management</Card.Title>
@@ -93,7 +93,7 @@ export default function ProductManagement() {
                             <Table.Body
                                 items={items}
                                 renderEmptyState={() => (
-                                    <div className='w-full justify-center items-center flex h-10'>
+                                    <div className='flex h-10 w-full items-center justify-center'>
                                         No products found
                                     </div>
                                 )}

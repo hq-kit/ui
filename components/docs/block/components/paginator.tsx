@@ -40,12 +40,16 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                 <Pagination>
                     {isDesktop ? (
                         <>
-                            <Pagination.Item role='first' isDisabled={meta.page === 1} onAction={actions.first} />
-                            <Pagination.Item role='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
-                            {meta.page > 2 && <Pagination.Item onAction={actions.first}>1</Pagination.Item>}
-                            {meta.page > 3 && <Pagination.Item role='ellipsis' />}
+                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
+                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            {meta.page > 2 && (
+                                <Pagination.Item slot='first' onAction={actions.first}>
+                                    1
+                                </Pagination.Item>
+                            )}
+                            {meta.page > 3 && <Pagination.Item slot='ellipsis' />}
                             {meta.page !== 1 && (
-                                <Pagination.Item onAction={() => setPage(meta.page - 1)}>
+                                <Pagination.Item slot='previous' onAction={() => setPage(meta.page - 1)}>
                                     {meta.page - 1}
                                 </Pagination.Item>
                             )}
@@ -55,33 +59,33 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                                     {meta.page + 1}
                                 </Pagination.Item>
                             )}
-                            {meta.page < meta.last_page - 2 && <Pagination.Item role='ellipsis' />}
+                            {meta.page < meta.last_page - 2 && <Pagination.Item slot='ellipsis' />}
                             {meta.page <= meta.last_page - 2 && (
                                 <Pagination.Item onAction={actions.last}>{meta.last_page}</Pagination.Item>
                             )}
                             <Pagination.Item
-                                role='next'
+                                slot='next'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.next}
                             />
                             <Pagination.Item
-                                role='last'
+                                slot='last'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.last}
                             />
                         </>
                     ) : (
                         <>
-                            <Pagination.Item role='first' isDisabled={meta.page === 1} onAction={actions.first} />
-                            <Pagination.Item role='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
+                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
                             <Pagination.Label current={meta.page} total={meta.last_page} />
                             <Pagination.Item
-                                role='next'
+                                slot='next'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.next}
                             />
                             <Pagination.Item
-                                role='last'
+                                slot='last'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.last}
                             />

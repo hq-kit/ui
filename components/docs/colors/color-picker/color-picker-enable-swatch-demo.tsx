@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { type Color } from 'react-aria-components'
+import type { Color } from 'react-aria-components'
 
 import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatchPicker, defaultColor } from '@/components/ui'
 

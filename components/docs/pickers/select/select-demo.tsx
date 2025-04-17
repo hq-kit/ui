@@ -10,7 +10,7 @@ const items = [
 
 export default function SelectDemo() {
     return (
-        <div className='grid sm:grid-cols-3 gap-2'>
+        <div className='grid gap-2 sm:grid-cols-3'>
             <Select label='Default' items={items}>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>

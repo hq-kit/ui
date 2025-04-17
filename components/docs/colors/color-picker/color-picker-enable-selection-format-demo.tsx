@@ -4,7 +4,7 @@ import React from 'react'
 
 import { type ColorSpace, getColorChannels } from 'react-aria-components'
 
-import { ColorArea, ColorField, ColorPicker, defaultColor, Select } from '@/components/ui'
+import { ColorArea, ColorField, ColorPicker, Select, defaultColor } from '@/components/ui'
 
 export default function ColorPickerEnableSelectionFormatDemo() {
     const [color, setColor] = React.useState(defaultColor)

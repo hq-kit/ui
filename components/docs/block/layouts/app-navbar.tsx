@@ -148,7 +148,7 @@ function UserMenu() {
             <Menu.Content placement='bottom right' className='sm:min-w-56'>
                 <Menu.Header>
                     <span className='block'>DQ Al-Haqqi</span>
-                    <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                    <span className='font-normal text-muted-fg'>@dq-alhq</span>
                 </Menu.Header>
                 <Menu.Item href='#dashboard'>
                     <IconGauge />

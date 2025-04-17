@@ -6,7 +6,7 @@ import type {
     TabProps as RACTabProps,
     TabsProps as RACTabsProps
 } from 'react-aria-components'
-import { composeRenderProps, Tab as RACTab, Tabs as RACTabs, TabList, TabPanel } from 'react-aria-components'
+import { Tab as RACTab, Tabs as RACTabs, TabList, TabPanel, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -17,7 +17,7 @@ const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
         <RACTabs
             className={composeRenderProps(className, (className, { orientation }) =>
-                cn('gap-4 grid', orientation === 'horizontal' ? 'grid-cols-1' : 'grid-cols-[auto_1fr]', className)
+                cn('grid gap-4', orientation === 'horizontal' ? 'grid-cols-1' : 'grid-cols-[auto_1fr]', className)
             )}
             ref={ref}
             {...props}
@@ -35,7 +35,7 @@ const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) =
             {...props}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
-                    'group p-1 size-fit',
+                    'group size-fit p-1',
                     orientation === 'horizontal'
                         ? 'flex items-center rounded-t-lg pb-0'
                         : 'grid items-start rounded-r-lg pl-0',
@@ -59,10 +59,10 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
                 className,
                 (className, { isSelected, isFocusVisible, isHovered, isDisabled }) =>
                     cn(
-                        'relative cursor-pointer py-1.5 px-4 flex gap-x-2 items-center text-sm font-medium whitespace-nowrap outline-hidden transition',
+                        'relative flex cursor-pointer items-center gap-x-2 whitespace-nowrap px-4 py-1.5 font-medium text-sm outline-hidden transition',
                         'group-orientation-horizontal:rounded-t-md group-orientation-vertical:rounded-r-md group-orientation-horizontal:border-b-2 group-orientation-vertical:border-l-2',
-                        isSelected ? 'text-primary bg-primary/10 border-primary' : 'text-muted-fg',
-                        isFocusVisible && 'text-primary ring-1 ring-offset-2 ring-primary',
+                        isSelected ? 'border-primary bg-primary/10 text-primary' : 'text-muted-fg',
+                        isFocusVisible && 'text-primary ring-1 ring-primary ring-offset-2',
                         isHovered && 'text-primary',
                         isDisabled && 'opacity-50',
                         className
@@ -76,7 +76,7 @@ interface TabPanelProps extends RACTabPanelProps {
     ref?: React.RefObject<HTMLDivElement>
 }
 const Panel = ({ className, ref, ...props }: TabPanelProps) => {
-    return <TabPanel {...props} ref={ref} className={cn(className, 'text-fg flex-1 text-sm outline-hidden')} />
+    return <TabPanel {...props} ref={ref} className={cn(className, 'flex-1 text-fg text-sm outline-hidden')} />
 }
 
 Tabs.List = List

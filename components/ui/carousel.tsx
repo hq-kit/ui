@@ -4,15 +4,8 @@ import React from 'react'
 
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
-import {
-    Button,
-    composeRenderProps,
-    ListBox,
-    ListBoxItem,
-    type ListBoxItemProps,
-    ListBoxSection,
-    type ListBoxSectionProps
-} from 'react-aria-components'
+import type { ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
+import { Button, ListBox, ListBoxItem, ListBoxSection, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -189,7 +182,7 @@ const CarouselHandler = ({ className, ...props }: React.HTMLAttributes<HTMLDivEl
         <div
             slot='carousel-handler'
             className={cn(
-                'relative z-10 flex items-center gap-x-2 my-4',
+                'relative z-10 my-4 flex items-center gap-x-2',
                 orientation === 'horizontal' ? 'justify-end' : 'justify-center',
                 className
             )}
@@ -202,7 +195,7 @@ const CarouselHandler = ({ className, ...props }: React.HTMLAttributes<HTMLDivEl
                     className,
                     (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
                         cn(
-                            'bg-bg border inline-flex size-8 items-center justify-center rounded-lg text-muted-fg outline-hidden',
+                            'inline-flex size-8 items-center justify-center rounded-lg border bg-bg text-muted-fg outline-hidden',
                             isHovered && 'bg-primary/40',
                             isFocusVisible && 'ring-4 ring-primary/20',
                             isPressed && 'bg-primary/50',
@@ -223,7 +216,7 @@ const CarouselHandler = ({ className, ...props }: React.HTMLAttributes<HTMLDivEl
                     className,
                     (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
                         cn(
-                            'bg-bg border inline-flex size-8 items-center justify-center rounded-lg text-muted-fg outline-hidden',
+                            'inline-flex size-8 items-center justify-center rounded-lg border bg-bg text-muted-fg outline-hidden',
                             isHovered && 'bg-primary/40',
                             isFocusVisible && 'ring-4 ring-primary/20',
                             isPressed && 'bg-primary/50',

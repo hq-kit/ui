@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import {
     IconCheck,
@@ -26,10 +26,10 @@ export interface BubbleChatProps {
 
 export default function BubbleChat({ message, time, role, status, onDelete }: BubbleChatProps) {
     const statusIcon: Record<string, React.ReactNode> = {
-        pending: <IconClock className='text-fg size-5' />,
-        sent: <IconCheck className='text-fg size-5' />,
-        delivered: <IconCheckDouble className='text-fg size-5' />,
-        read: <IconCheckDouble className='text-success size-5' />
+        pending: <IconClock className='size-5 text-fg' />,
+        sent: <IconCheck className='size-5 text-fg' />,
+        delivered: <IconCheckDouble className='size-5 text-fg' />,
+        read: <IconCheckDouble className='size-5 text-success' />
     }
     return (
         <div className={cn('group flex items-start', role === 'send' ? 'flex-row-reverse' : 'flex-row')}>
@@ -41,13 +41,13 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                     )}
                 >
                     <div
-                        className='text-fg text-left text-sm'
+                        className='text-left text-fg text-sm'
                         dangerouslySetInnerHTML={{ __html: convertToHtml(message) }}
                     />
                 </div>
                 <small
                     className={cn(
-                        'text-muted-fg mt-0.5 flex items-center gap-1',
+                        'mt-0.5 flex items-center gap-1 text-muted-fg',
                         role === 'send' ? 'justify-end' : 'justify-start'
                     )}
                 >
@@ -59,7 +59,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                 <Button
                     variant='outline'
                     icon
-                    className='pressed:opacity-100 mx-2 size-7 p-1 opacity-0 transition group-hover:opacity-100'
+                    className='mx-2 size-7 p-1 opacity-0 pressed:opacity-100 transition group-hover:opacity-100'
                 >
                     <IconChevronRight className={cn('size-3', role === 'send' ? 'rotate-180' : '')} />
                 </Button>

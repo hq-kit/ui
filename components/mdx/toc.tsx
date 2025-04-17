@@ -46,7 +46,7 @@ export function TableOfContents({ className, items }: Props) {
             ref={tocRef}
             className={cn(
                 'not-prose',
-                'no-scrollbar xl:sticky xl:top-[1.75rem] xl:-mr-6 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
+                'no-scrollbar xl:-mr-6 xl:sticky xl:top-[1.75rem] xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
                 'top-20',
                 className
             )}
@@ -57,7 +57,7 @@ export function TableOfContents({ className, items }: Props) {
                         <div className='space-y-2'>
                             <Skeleton className='h-3 w-20 animate-pulse' />
                             <Skeleton className='h-3 w-32 animate-pulse' />
-                            <Skeleton className='bg-fg/50 h-3 w-12 animate-pulse' />
+                            <Skeleton className='h-3 w-12 animate-pulse bg-fg/50' />
                             <Skeleton className='h-3 w-16 animate-pulse' />
                             <Skeleton className='h-3 w-8 animate-pulse' />
                             <Skeleton className='h-3 w-24 animate-pulse' />
@@ -65,7 +65,7 @@ export function TableOfContents({ className, items }: Props) {
                     }
                 >
                     <>
-                        <Heading level={2} className='text-fg mb-6 text-base leading-7 font-medium lg:text-lg'>
+                        <Heading level={2} className='mb-6 font-medium text-base text-fg leading-7 lg:text-lg'>
                             On this page
                         </Heading>
                         {items.length > 0 && (
@@ -96,7 +96,7 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
         <li key={item.title}>
             <Link
                 className={cn(
-                    'data-focus-visible:text-primary block tracking-tight no-underline duration-200 outline-none data-focus-visible:outline-none lg:text-[0.885rem]',
+                    'block tracking-tight no-underline outline-none duration-200 data-focus-visible:text-primary data-focus-visible:outline-none lg:text-[0.885rem]',
                     item.url.split('#')[1] === activeId ? 'text-primary' : 'text-muted-fg/90'
                 )}
                 href={item.url}
@@ -114,34 +114,33 @@ export function useActiveItem(itemIds: string[]) {
         const observer = new IntersectionObserver(
             (entries) => {
                 let bestCandidate: IntersectionObserverEntry | null = null
-                entries.forEach((entry) => {
+                for (const entry of entries) {
                     if (
                         entry.isIntersecting &&
                         (!bestCandidate || bestCandidate.intersectionRatio < entry.intersectionRatio)
                     ) {
                         bestCandidate = entry
                     }
-                })
+                }
                 if (bestCandidate) {
-                    // @ts-expect-error unknown-type
                     setActiveId(bestCandidate.target.id)
                 }
             },
             { rootMargin: '0% 0% -25% 0%', threshold: 0.1 }
         )
 
-        itemIds.forEach((id) => {
+        for (const id of itemIds) {
             const element = document.getElementById(id)
             if (element) observer.observe(element)
-        })
+        }
 
         return () => {
-            itemIds.forEach((id) => {
+            for (const id of itemIds) {
                 const element = document.getElementById(id)
                 if (element) observer.unobserve(element)
-            })
+            }
         }
-    }, [itemIds, activeId])
+    }, [itemIds])
 
     return activeId
 }

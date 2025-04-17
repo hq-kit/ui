@@ -13,8 +13,8 @@ const pages = [
 export default function PaginationDynamicDemo() {
     return (
         <Pagination>
-            <Pagination.Item role='first' href='#' />
-            <Pagination.Item role='previous' href='#' />
+            <Pagination.Item slot='first' href='#' />
+            <Pagination.Item slot='previous' href='#' />
             <Pagination.Label className='lg:hidden' current={3} total={pages.length} />
             <Pagination.Pages items={pages} className='hidden lg:flex'>
                 {(item) => (
@@ -23,8 +23,8 @@ export default function PaginationDynamicDemo() {
                     </Pagination.Item>
                 )}
             </Pagination.Pages>
-            <Pagination.Item role='next' href='#' />
-            <Pagination.Item role='last' href='#' />
+            <Pagination.Item slot='next' href='#' />
+            <Pagination.Item slot='last' href='#' />
         </Pagination>
     )
 }

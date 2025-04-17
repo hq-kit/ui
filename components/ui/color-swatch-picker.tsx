@@ -3,8 +3,8 @@
 import { IconCircleCheck } from 'hq-icons'
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
 import {
-    ColorSwatchPicker as RACColorSwatchPicker,
     ColorSwatchPickerItem,
+    ColorSwatchPicker as RACColorSwatchPicker,
     composeRenderProps
 } from 'react-aria-components'
 
@@ -30,9 +30,9 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
             {...props}
             className={composeRenderProps(className, (className, { isDisabled, isFocusVisible, isFocused }) =>
                 cn(
-                    'relative rounded-lg disabled:opacity-50 outline-hidden',
-                    isFocused && 'ring-primary/20 ring-4',
-                    isFocusVisible && 'ring-primary/20 ring-4',
+                    'relative rounded-lg outline-hidden disabled:opacity-50',
+                    isFocused && 'ring-4 ring-primary/20',
+                    isFocusVisible && 'ring-4 ring-primary/20',
                     isDisabled && 'opacity-50',
                     className
                 )
@@ -44,7 +44,7 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
                     {isSelected && (
                         <IconCircleCheck
                             style={{ color: isBrightColor(color.toString('hex')) ? '#3F3F46' : '#E4E4E7' }}
-                            className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-5'
+                            className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-5'
                         />
                     )}
                 </>

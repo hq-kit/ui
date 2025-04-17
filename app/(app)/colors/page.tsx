@@ -12,7 +12,7 @@ export default function Page() {
                 <HeroHeader>
                     <HeroTitle>COLORS</HeroTitle>
                     <HeroDescription>Let&apos;s generate color palette based on your favor.</HeroDescription>
-                    <HeroDescription className='text-warning mt-4'>
+                    <HeroDescription className='mt-4 text-warning'>
                         This project still in experimental state
                     </HeroDescription>
                 </HeroHeader>

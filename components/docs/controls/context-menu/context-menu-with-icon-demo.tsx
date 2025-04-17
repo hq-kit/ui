@@ -7,9 +7,9 @@ import { ContextMenu } from '@/components/ui'
 export default function ContextMenuWithIconDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger className='p-10 rounded-lg flex items-center justify-center border border-dashed'>
-                <p className='sm:flex hidden'>Right click here!</p>
-                <p className='sm:hidden flex'>Hold your finger here!</p>
+            <ContextMenu.Trigger className='flex items-center justify-center rounded-lg border border-dashed p-10'>
+                <p className='hidden sm:flex'>Right click here!</p>
+                <p className='flex sm:hidden'>Hold your finger here!</p>
             </ContextMenu.Trigger>
             <ContextMenu.Content aria-label='Options'>
                 <ContextMenu.Item>

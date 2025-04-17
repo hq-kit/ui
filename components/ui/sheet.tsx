@@ -58,20 +58,20 @@ const SheetContent = ({
                         backdropFilter: isBlurred ? 'blur(4px)' : 'blur(0px)'
                     }}
                     exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
                 >
                     {({ state }) => (
                         <Modal
                             className={cn(
-                                'fixed will-change-transform max-h-full touch-none bg-bg text-fg align-middle shadow-sm overflow-hidden',
+                                'fixed max-h-full touch-none overflow-hidden bg-bg align-middle text-fg shadow-sm will-change-transform',
                                 side === 'top' &&
                                     `${
                                         isFloating
-                                            ? 'top-2 inset-x-2 rounded-lg border-b-0'
+                                            ? 'inset-x-2 top-2 rounded-lg border-b-0'
                                             : 'inset-x-0 top-0 rounded-b-2xl border-b'
                                     }`,
                                 side === 'right' &&
-                                    `max-w-xs w-full overflow-y-auto **:[[slot=header]]:text-left ${
+                                    `w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left ${
                                         isFloating
                                             ? 'inset-y-2 right-2 rounded-lg border'
                                             : 'inset-y-0 right-0 h-auto border-l'
@@ -79,11 +79,11 @@ const SheetContent = ({
                                 side === 'bottom' &&
                                     `${
                                         isFloating
-                                            ? 'bottom-2 inset-x-2 rounded-lg border-t-0'
+                                            ? 'inset-x-2 bottom-2 rounded-lg border-t-0'
                                             : 'inset-x-0 bottom-0 rounded-t-2xl border-t'
                                     }`,
                                 side === 'left' &&
-                                    `max-w-xs w-full overflow-y-auto **:[[slot=header]]:text-left ${
+                                    `w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left ${
                                         isFloating
                                             ? 'inset-y-2 left-2 rounded-lg border'
                                             : 'inset-y-0 left-0 h-auto border-r'
@@ -143,7 +143,7 @@ const SheetContent = ({
                                         slot='close'
                                         className={({ isPressed, isHovered, isFocusVisible }) =>
                                             cn(
-                                                'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
+                                                'absolute top-2 right-2 inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-bg text-muted-fg outline-hidden',
                                                 isHovered && 'bg-muted/40',
                                                 isFocusVisible && 'ring-4 ring-primary/20',
                                                 isPressed && 'bg-muted/50'
@@ -163,7 +163,7 @@ const SheetContent = ({
 }
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    return <div slot='header' className={cn('flex flex-col p-4 sm:text-left text-center', className)} {...props} />
+    return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
 }
 
 const Title = ({ className, ...props }: HeadingProps) => (
@@ -178,7 +178,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     <div
         slot='body'
         className={cn(
-            'isolate will-change-scroll flex flex-col overflow-auto px-4 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
+            'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-4 py-1 will-change-scroll',
             className
         )}
         {...props}
@@ -189,7 +189,7 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
     return (
         <div
             slot='footer'
-            className={cn('isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4', className)}
+            className={cn('isolate mt-auto flex flex-col-reverse justify-end gap-2 p-4 sm:flex-row', className)}
             {...props}
         />
     )

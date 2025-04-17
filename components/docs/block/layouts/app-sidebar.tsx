@@ -69,7 +69,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <Menu>
                     <Menu.Trigger
                         slot={null}
-                        className='group p-2 size-full justify-between items-center flex hover:bg-muted pressed:bg-muted rounded-lg'
+                        className='group flex size-full items-center justify-between rounded-lg pressed:bg-muted p-2 hover:bg-muted'
                     >
                         <User
                             src='https://github.com/dq-alhq.png'
@@ -82,7 +82,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                     <Menu.Content placement='bottom left' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
-                            <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                            <span className='font-normal text-muted-fg'>@dq-alhq</span>
                         </Menu.Header>
                         <Menu.Item href='#dashboard'>
                             <IconGauge />

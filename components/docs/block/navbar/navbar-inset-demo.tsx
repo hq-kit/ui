@@ -9,7 +9,7 @@ export default function NavbarInsetDemo() {
         <>
             <NavbarLayout variant='inset'>
                 <Navbar.Inset>
-                    <Container className='py-6 @xl:py-12'>
+                    <Container className='@xl:py-12 py-6'>
                         <Heading>Inset</Heading>
                     </Container>
                 </Navbar.Inset>

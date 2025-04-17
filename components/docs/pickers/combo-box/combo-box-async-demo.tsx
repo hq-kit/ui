@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconSearch } from 'hq-icons'
 import { useAsyncList } from 'react-stately'
 

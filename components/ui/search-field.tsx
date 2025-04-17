@@ -1,14 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconLoader, IconSearch, IconX } from 'hq-icons'
 import {
     Button,
-    composeRenderProps,
     SearchField as RACSearchField,
     type SearchFieldProps as RACSearchFieldProps,
-    type ValidationResult
+    type ValidationResult,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -43,9 +41,9 @@ const SearchField = ({
                     {label && <Label>{label}</Label>}
                     <FieldGroup>
                         {isPending ? (
-                            <IconLoader className='animate-spin ml-2 size-4 shrink-0 text-muted-fg' />
+                            <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-fg' />
                         ) : (
-                            <IconSearch className='text-muted-fg ml-2 size-4 shrink-0' />
+                            <IconSearch className='ml-2 size-4 shrink-0 text-muted-fg' />
                         )}
                         <Input
                             placeholder={placeholder ?? 'Search...'}
@@ -55,7 +53,7 @@ const SearchField = ({
                             <Button
                                 type='button'
                                 aria-label='Clear'
-                                className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
+                                className='mr-2 inline-flex items-center justify-center rounded-lg text-muted-fg outline-offset-4'
                             >
                                 <IconX aria-hidden />
                             </Button>

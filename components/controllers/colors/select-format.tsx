@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { IconSwatchBook } from 'hq-icons'
-import { type ColorFormat } from 'react-aria-components'
+import type { ColorFormat } from 'react-aria-components'
 
-import { buttonStyles, Menu } from '@/components/ui'
+import { Menu, buttonStyles } from '@/components/ui'
 
 const ColorSelectors = [
     { type: 'hex', sample: '#3B82F6' },

@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { IconBrandTailwind, IconPalette } from 'hq-icons'
-import { type ColorFormat } from 'react-aria-components'
+import type { ColorFormat } from 'react-aria-components'
 
 import { CustomColor } from '@/components/controllers/colors/color-create-preset'
 import { ColorShades } from '@/components/controllers/colors/color-shades'
@@ -28,7 +28,7 @@ export default function ColorCustomizer() {
 
     return (
         <>
-            <div className='bg-bg/60 sticky top-0 z-10 w-full rounded-b-lg py-6 backdrop-blur-xl lg:top-14'>
+            <div className='sticky top-0 z-10 w-full rounded-b-lg bg-bg/60 py-6 backdrop-blur-xl lg:top-14'>
                 <Container className='flex flex-row items-center justify-between gap-3'>
                     <Popover>
                         <Button variant='outline'>
@@ -58,7 +58,7 @@ export default function ColorCustomizer() {
             </div>
             <Container className='w-full space-y-2'>
                 <CustomColor {...{ selectedFormat, tailwindVariable }} />
-                <h2 className='text-muted-fg pt-2 font-semibold'>Tailwind Colors</h2>
+                <h2 className='pt-2 font-semibold text-muted-fg'>Tailwind Colors</h2>
                 <div className='grid gap-2 sm:grid-cols-2'>
                     {tailwindColors.map((color, i) => (
                         <ColorShades
@@ -71,7 +71,7 @@ export default function ColorCustomizer() {
                     ))}
                 </div>
 
-                <h2 className='text-muted-fg pt-2 font-semibold'>Radix Colors</h2>
+                <h2 className='pt-2 font-semibold text-muted-fg'>Radix Colors</h2>
                 <div className='grid gap-2 sm:grid-cols-2'>
                     {radixColors.map((color, i) => (
                         <ColorShades

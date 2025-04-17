@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { useAsyncList } from 'react-stately'
 
 import { Command } from '@/components/ui'

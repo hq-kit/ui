@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils'
 export default function Media() {
     const items = Array.from({ length: 17 }, (_, id) => ({
         id: id + 1,
-        title: 'Image ' + id
+        title: `Image ${id}`
     }))
     return (
-        <div className='grid grid-cols-2 2xl:grid-cols-4 gap-2'>
+        <div className='grid grid-cols-2 gap-2 2xl:grid-cols-4'>
             <Collection items={items}>
                 {(item) => (
                     <div key={item.id} className={cn(item.id % 5 === 0 && 'col-span-2')}>

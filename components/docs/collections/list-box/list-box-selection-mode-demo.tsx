@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 
 import { ListBox, Select } from '@/components/ui'
 

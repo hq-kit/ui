@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { ThemeProvider, useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'

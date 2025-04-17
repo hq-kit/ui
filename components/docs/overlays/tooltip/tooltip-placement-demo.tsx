@@ -1,6 +1,6 @@
 'use client'
 
-import { type TooltipProps } from 'react-aria-components'
+import type { TooltipProps } from 'react-aria-components'
 
 import { Button, Tooltip } from '@/components/ui'
 
@@ -27,7 +27,7 @@ export default function TooltipPlacementDemo() {
                     <Button
                         size='xs'
                         variant='outline'
-                        className='nth-3:col-span-2 nth-10:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
+                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
                     >
                         {place}
                     </Button>

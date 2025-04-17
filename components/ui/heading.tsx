@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -14,11 +14,11 @@ const Heading = ({ className, tracking = 'normal', level = 1, ...props }: Headin
     return (
         <Element
             className={cn(
-                'text-fg font-sans',
-                level === 1 && 'text-xl font-bold sm:text-2xl',
-                level === 2 && 'text-lg font-semibold sm:text-xl',
-                level === 3 && 'text-base font-semibold sm:text-lg',
-                level === 4 && 'text-base font-semibold',
+                'font-sans text-fg',
+                level === 1 && 'font-bold text-xl sm:text-2xl',
+                level === 2 && 'font-semibold text-lg sm:text-xl',
+                level === 3 && 'font-semibold text-base sm:text-lg',
+                level === 4 && 'font-semibold text-base',
                 tracking === 'tighter' && 'tracking-tighter',
                 tracking === 'tight' && 'tracking-tight',
                 tracking === 'normal' && 'tracking-normal',

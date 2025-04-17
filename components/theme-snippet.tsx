@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import Code from '@/components/mdx/code'
 import { Button, Link, Modal } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
-import { Gray, Preset } from '@/lib/themes'
+import type { Gray, Preset } from '@/lib/themes'
 
 export const ThemeSnippet = () => {
     const { currentFontSansFamily, currentFontMonoFamily } = useThemeGenerator()
@@ -24,12 +24,12 @@ export const ThemeSnippet = () => {
                     <Modal.Body>
                         <CopyCode />
                     </Modal.Body>
-                    <Modal.Footer className='sm:flex-col justify-start'>
+                    <Modal.Footer className='justify-start sm:flex-col'>
                         <Modal.Title className='text-lg/2'>Font</Modal.Title>
                         <Modal.Description>
                             The Selected Font Sans is:{' '}
                             <Link
-                                className='p-0 text-primary font-semibold'
+                                className='p-0 font-semibold text-primary'
                                 target='_blank'
                                 href={currentFontSansFamily.link}
                             >
@@ -37,7 +37,7 @@ export const ThemeSnippet = () => {
                             </Link>
                             , and Font Mono is:{' '}
                             <Link
-                                className='p-0 text-primary font-semibold'
+                                className='p-0 font-semibold text-primary'
                                 target='_blank'
                                 href={currentFontMonoFamily.link}
                             >
@@ -61,11 +61,11 @@ export const ColorPreview = () => {
     const lightColors = { ...activeBase?.cssVars.light, ...activeTheme?.cssVars.light }
     const darkColors = { ...activeBase?.cssVars.dark, ...activeTheme?.cssVars.dark }
     return theme === 'light' ? (
-        <div className='grid grid-cols-2 gap-2 p-4 border border-dashed rounded-lg'>
+        <div className='grid grid-cols-2 gap-2 rounded-lg border border-dashed p-4'>
             {Object.keys(lightColors).map((key) =>
                 key.endsWith('fg') ? null : (
                     <div
-                        className='px-2 py-1 border font-bold text-sm flex items-center justify-center rounded-lg'
+                        className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
                             backgroundColor: lightColors[key as keyof typeof lightColors],
                             color: lightColors[`${key}-fg` as keyof typeof lightColors]
@@ -78,11 +78,11 @@ export const ColorPreview = () => {
             )}
         </div>
     ) : (
-        <div className='grid grid-cols-2 gap-2 p-4 border border-dashed rounded-lg'>
+        <div className='grid grid-cols-2 gap-2 rounded-lg border border-dashed p-4'>
             {Object.keys(darkColors).map((key) =>
                 key.endsWith('fg') ? null : (
                     <div
-                        className='px-2 py-1 border font-bold text-sm flex items-center justify-center rounded-lg'
+                        className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
                             backgroundColor: darkColors[key as keyof typeof darkColors],
                             color: darkColors[`${key}-fg` as keyof typeof darkColors]

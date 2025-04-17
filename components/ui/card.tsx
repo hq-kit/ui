@@ -5,7 +5,7 @@ const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
         <div
             slot='card'
             className={cn(
-                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:border-x-0 **:[[slot=table]]:rounded-none',
+                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:rounded-none **:[[slot=table]]:border-x-0',
                 className
             )}
             {...props}
@@ -61,7 +61,7 @@ const CardFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement
     return (
         <div
             slot='footer'
-            className={cn('flex flex-col-reverse lg:flex-row items-center justify-end p-6', className)}
+            className={cn('flex flex-col-reverse items-center justify-end p-6 lg:flex-row', className)}
             {...props}
         />
     )

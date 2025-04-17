@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { ColorSpace, Key, parseColor } from 'react-aria-components'
-import { ColorChannel } from 'react-stately'
+import { type ColorSpace, type Key, parseColor } from 'react-aria-components'
+import type { ColorChannel } from 'react-stately'
 
 import { ColorArea, SelectionBox } from '@/components/ui'
 import { Select } from '@/components/ui/select'
@@ -19,7 +19,7 @@ export default function ColorAreaControlledDemo() {
     const [yChannel, setYChannel] = React.useState<Key>(colorSpace === 'rgb' ? 'green' : 'saturation')
 
     return (
-        <div className='flex flex-col gap-2 items-center'>
+        <div className='flex flex-col items-center gap-2'>
             <SelectionBox
                 className='w-full'
                 label='Color Spaces'

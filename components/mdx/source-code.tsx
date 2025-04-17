@@ -27,10 +27,9 @@ export default function SourceCode({ component, withMessage = true }: SourceCode
                     name: show,
                     code: componentData.raw
                 }
-            } else {
-                console.error('Component not found:', show)
-                return { name: show, code: '' }
             }
+            console.error('Component not found:', show)
+            return { name: show, code: '' }
         })
         setCodeStrings(updatedCodeStrings)
     }, [component])
@@ -47,7 +46,7 @@ export default function SourceCode({ component, withMessage = true }: SourceCode
                     {(item) => (
                         <Tabs.Label key={item.name} id={`tab-${item.name}`}>
                             <IconBrandReact />
-                            {item.name.includes('demo') ? `main` : item.name}.tsx
+                            {item.name.includes('demo') ? 'main' : item.name}.tsx
                         </Tabs.Label>
                     )}
                 </Tabs.List>

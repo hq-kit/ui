@@ -8,7 +8,7 @@ export default function ModalDrawerDemo() {
             <Button>Login</Button>
             <Form onSubmit={() => {}}>
                 <Modal.Content drawer notch>
-                    <div className='max-w-xl w-full mx-auto'>
+                    <div className='mx-auto w-full max-w-xl'>
                         <Modal.Header>
                             <Modal.Title>Login</Modal.Title>
                             <Modal.Description>Enter your credentials to sign in.</Modal.Description>

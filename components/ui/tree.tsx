@@ -4,10 +4,10 @@ import { IconChevronRight } from 'hq-icons'
 import type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     Tree as RACTree,
     TreeItem as RACTreeItem,
-    TreeItemContent
+    TreeItemContent,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -16,7 +16,7 @@ const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
     return (
         <RACTree
             className={composeRenderProps(className, (className) =>
-                cn('flex flex-col cursor-default gap-0.5 p-2 text-sm outline-hidden', className)
+                cn('flex cursor-default flex-col gap-0.5 p-2 text-sm outline-hidden', className)
             )}
             {...props}
         />
@@ -30,11 +30,11 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
                 className,
                 (className, { isFocusVisible, isDisabled, isSelected, hasChildItems }) =>
                     cn(
-                        'p-1 outline-hidden relative flex items-center gap-1.5 rounded-lg py-2 text-sm',
+                        'relative flex items-center gap-1.5 rounded-lg p-1 py-2 text-sm outline-hidden',
                         hasChildItems
                             ? 'pl-[calc((var(--tree-item-level)-1)*20px+8px)]'
                             : 'pl-[calc((var(--tree-item-level)-1)*20px+32px)]',
-                        isFocusVisible && 'ring-primary/20 ring-2',
+                        isFocusVisible && 'ring-2 ring-primary/20',
                         isSelected && 'bg-primary/10 text-primary',
                         isDisabled && 'opacity-50',
                         className
@@ -52,7 +52,7 @@ const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
                 {hasChildItems && (
                     <Button
                         slot='chevron'
-                        className='inline-flex size-4 text-muted-fg items-center justify-center outline-hidden'
+                        className='inline-flex size-4 items-center justify-center text-muted-fg outline-hidden'
                     >
                         <IconChevronRight
                             data-slot='indicator'

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { Keyboard as RACKeyboard } from 'react-aria-components'
 
@@ -42,7 +42,7 @@ const Keyboard = ({ keys, className, ...props }: React.ComponentProps<typeof RAC
     return (
         <RACKeyboard
             className={cn(
-                'hidden justify-self-end w-fit space-x-0.5 shadow rtl:space-x-reverse text-xs text-current/70 !font-sans border rounded-sm px-1.5 py-0.5 group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex',
+                '!font-sans hidden w-fit space-x-0.5 justify-self-end rounded-sm border px-1.5 py-0.5 text-current/70 text-xs shadow group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex rtl:space-x-reverse',
                 className
             )}
             {...props}

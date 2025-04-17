@@ -1,10 +1,10 @@
 'use client'
 
 import {
-    composeRenderProps,
     TextArea as RACTextArea,
     TextField as RACTextField,
-    type TextFieldProps as RACTextFieldProps
+    type TextFieldProps as RACTextFieldProps,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -36,12 +36,12 @@ const Textarea = ({ className, placeholder, label, description, errorMessage, ..
                                 'min-h-14 w-full min-w-0 rounded-lg border bg-transparent p-2 text-base outline-hidden transition duration-200 sm:text-sm',
                                 isInvalid ? 'border-danger/30' : 'border-muted',
                                 isHovered && 'border-primary/70 invalid:border-danger/70',
-                                isDisabled && 'opacity-50 pointer-events-none',
+                                isDisabled && 'pointer-events-none opacity-50',
                                 {
                                     'border-primary/70 ring-4 ring-primary/20 invalid:border-danger/70 invalid:ring-danger/20':
                                         isFocused || isFocusVisible
                                 },
-                                props.autoSize && 'resize-none field-sizing-content'
+                                props.autoSize && 'field-sizing-content resize-none'
                             )
                         }
                     />

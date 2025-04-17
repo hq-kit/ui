@@ -7,7 +7,7 @@ import { FileTrigger } from '@/components/ui'
 export default function FileTriggerDemo() {
     const [file, setFile] = React.useState<string[] | null>(null)
     return (
-        <div className='space-y-6 flex flex-col'>
+        <div className='flex flex-col space-y-6'>
             <FileTrigger
                 allowsMultiple
                 onSelect={(e) => {

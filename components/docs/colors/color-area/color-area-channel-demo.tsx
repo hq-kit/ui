@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { Key } from 'react-aria-components'
-import { ColorChannel } from 'react-stately'
+import type { Key } from 'react-aria-components'
+import type { ColorChannel } from 'react-stately'
 
 import { ColorArea, Select } from '@/components/ui'
 
@@ -14,7 +14,7 @@ export default function ColorAreaChannelDemo() {
     const [yChannel, setYChannel] = React.useState<Key>('blue')
     return (
         <div className='flex flex-col items-center gap-4'>
-            <div className='flex flex-col sm:flex-row gap-2 w-full'>
+            <div className='flex w-full flex-col gap-2 sm:flex-row'>
                 <Select
                     label='X Channel'
                     className='w-full'

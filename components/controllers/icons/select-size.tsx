@@ -25,7 +25,7 @@ export function SelectSize() {
 
     const [selectedSize, setSelectSize] = React.useState<Selection>(new Set([searchParams.get('s') || '5']))
     const onSelectionChange = (size: Selection) => {
-        router.push(pathname + '?' + createQueryString('s', [...size].join(',')), {
+        router.push(`${pathname}?${createQueryString('s', [...size].join(','))}`, {
             scroll: false
         })
         setSelectSize(size)
@@ -34,7 +34,7 @@ export function SelectSize() {
     return (
         <Menu aria-label='Select Icon Size'>
             <Button
-                className='bg-bg w-full sm:max-w-sm [&_[data-slot=icon]]:transition-transform [&[data-pressed]_[data-slot=icon]]:rotate-180'
+                className='w-full bg-bg sm:max-w-sm [&[data-pressed]_[data-slot=icon]]:rotate-180 [&_[data-slot=icon]]:transition-transform'
                 variant='outline'
             >
                 <span>Size {[...selectedSize].join(', ').replace('size-', '')}</span>

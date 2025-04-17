@@ -1,0 +1,84 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "files": {
+    "ignore": [
+      "public/**/*",
+      "**/.next/**",
+      "components/docs/generated/**/*",
+      "**/.velite/**"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": {
+        "useNumberNamespace": "off",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "warn",
+        "useImportType": "error"
+      },
+      "complexity": {
+        "useArrowFunction": "error"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useValidAnchor": "off",
+        "useSemanticElements": "off"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "error",
+        "noUnusedImports": "error",
+        "noChildrenProp": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off",
+        "noConsoleLog": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+            "level": "error",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["cn", "tv", "composeRenderProps"]
+          }
+        }
+      }
+    },
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+  },
+  "formatter": {
+       "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 4,
+    "useEditorconfig": true,
+    "lineWidth": 120,
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "single",
+        "quoteProperties": "asNeeded",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": false
+    }
+  }
+}

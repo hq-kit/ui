@@ -17,7 +17,7 @@ export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
     return inputIndex === inputValue.length
 }
 
-export const wait = (number: number = 1000) => new Promise((resolve) => setTimeout(resolve, number))
+export const wait = (number = 1000) => new Promise((resolve) => setTimeout(resolve, number))
 
 export const formatDate = (input: string | number): string => {
     const date = new Date(input)

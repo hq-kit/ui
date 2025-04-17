@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { DateField } from '@/components/ui'
-import { getLocalTimeZone, parseDate, today, type CalendarDate } from '@internationalized/date'
+import { type CalendarDate, getLocalTimeZone, parseDate, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
 
 export default function DateFieldControlledDemo() {

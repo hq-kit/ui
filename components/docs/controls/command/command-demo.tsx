@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 
 import { Command } from '@/components/ui'

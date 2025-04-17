@@ -3,16 +3,16 @@
 import { IconCalendarDays } from 'hq-icons'
 import {
     Button,
-    composeRenderProps,
-    DateRangePicker as RACDateRangePicker,
     type DateValue,
-    type DateRangePickerProps as RACDateRangePickerProps
+    DateRangePicker as RACDateRangePicker,
+    type DateRangePickerProps as RACDateRangePickerProps,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
 import { DateInput } from './date-field'
-import { Description, FieldError, FieldGroup, Label, type FieldProps } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
 import { Popover } from './popover'
 import { RangeCalendar } from './range-calendar'
 
@@ -44,7 +44,7 @@ const DateRangePicker = <T extends DateValue>({
                             –
                         </span>
                         <DateInput slot='end' className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm' />
-                        <Button className='mr-1 cursor-pointer size-8 rounded-lg outline-hidden inline-flex items-center justify-center'>
+                        <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
                             <IconCalendarDays
                                 aria-hidden
                                 className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-fg')}
@@ -58,7 +58,7 @@ const DateRangePicker = <T extends DateValue>({
                         <Button
                             type='button'
                             slot='close'
-                            className='mt-2 w-full sm:hidden rounded-lg p-2 text-center border hover:bg-primary/40 pressed:bg-primary/50'
+                            className='mt-2 w-full rounded-lg border pressed:bg-primary/50 p-2 text-center hover:bg-primary/40 sm:hidden'
                         >
                             Close
                         </Button>

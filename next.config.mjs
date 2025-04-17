@@ -8,6 +8,9 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 
 /** @type {import('next').NextConfig} */
 const config = {
+    eslint: {
+        ignoreDuringBuilds: true
+    },
     experimental: {
         optimizePackageImports: ['shiki']
     },

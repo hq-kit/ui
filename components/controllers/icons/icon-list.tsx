@@ -1,13 +1,13 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import * as icons from 'hq-icons'
 import { useSearchParams } from 'next/navigation'
 import { Button } from 'react-aria-components'
 import { renderToString } from 'react-dom/server'
 
-import { Menu, toast, Tooltip } from '@/components/ui'
+import { Menu, Tooltip, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 export default function IconList({ items }: { items: { keywords: string[]; name: string }[] }) {
@@ -16,15 +16,15 @@ export default function IconList({ items }: { items: { keywords: string[]; name:
     const stroke = searchParams.get('t') || '2'
 
     return (
-        <div className='flex flex-wrap gap-4 justify-around'>
+        <div className='flex flex-wrap justify-around gap-4'>
             {items.map((item, i) => (
                 <Menu key={i}>
                     <Tooltip delay={200}>
                         <Button
                             className={cn(
-                                'rounded-lg cursor-pointer size-10 flex items-center justify-center outline-hidden',
+                                'flex size-10 cursor-pointer items-center justify-center rounded-lg outline-hidden',
                                 'hover:bg-primary/10 hover:text-primary',
-                                'focus-visible:ring-2 ring-primary',
+                                'ring-primary focus-visible:ring-2',
                                 'pressed:bg-primary/10 pressed:text-primary'
                             )}
                         >
@@ -195,13 +195,13 @@ function convertSvgToJsx(svgString: string): string {
     const svgElement = svgDocument.documentElement
 
     function convertAttributes(node: Element): void {
-        Array.from(node.attributes).forEach((attr) => {
+        for (const attr of Array.from(node.attributes)) {
             const camelCaseName = attr.name.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
             if (attr.name !== camelCaseName) {
                 node.setAttribute(camelCaseName, attr.value)
                 node.removeAttribute(attr.name)
             }
-        })
+        }
     }
 
     function transformNode(node: Node): string {
@@ -214,8 +214,9 @@ function convertSvgToJsx(svgString: string): string {
                 .join(' ')
             const children = Array.from(element.childNodes).map(transformNode).join('')
 
-            return `<${tagName}${attributes ? ' ' + attributes : ''}>${children}</${tagName}>`
-        } else if (node.nodeType === Node.TEXT_NODE) {
+            return `<${tagName}${attributes ? ` ${attributes}` : ''}>${children}</${tagName}>`
+        }
+        if (node.nodeType === Node.TEXT_NODE) {
             return (node as Text).textContent || ''
         }
         return ''

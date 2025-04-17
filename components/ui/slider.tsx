@@ -4,12 +4,12 @@ import React from 'react'
 
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
-    composeRenderProps,
     Slider as RACSlider,
     SliderThumb as RACSliderThumb,
     SliderTrack as RACSliderTrack,
     SliderOutput,
-    SliderStateContext
+    SliderStateContext,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -66,7 +66,7 @@ const SliderTrack = ({ className, ...props }: SliderTrackProps) => {
                 cn([
                     'relative cursor-pointer rounded-full bg-muted',
                     orientation === 'horizontal' ? 'h-1.5 w-full' : 'w-1.5 flex-1/2',
-                    isDisabled ? 'opacity-50 cursor-default' : 'cursor-pointer',
+                    isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                     className
                 ])
             )}
@@ -84,18 +84,17 @@ const SliderFiller = ({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
 
         if (values?.length === 1) {
             return orientation === 'horizontal' ? { width: `${percent0}%` } : { height: `${percent0}%` }
-        } else {
-            return orientation === 'horizontal'
-                ? { left: `${percent0}%`, width: `${Math.abs(percent0 - percent1)}%` }
-                : { bottom: `${percent0}%`, height: `${Math.abs(percent0 - percent1)}%` }
         }
+        return orientation === 'horizontal'
+            ? { left: `${percent0}%`, width: `${Math.abs(percent0 - percent1)}%` }
+            : { bottom: `${percent0}%`, height: `${Math.abs(percent0 - percent1)}%` }
     }
 
     return (
         <div
             className={cn(
                 'pointer-events-none absolute rounded-full bg-primary',
-                orientation === 'horizontal' ? 'h-full' : 'w-full bottom-0',
+                orientation === 'horizontal' ? 'h-full' : 'bottom-0 w-full',
                 className
             )}
             style={getStyle()}

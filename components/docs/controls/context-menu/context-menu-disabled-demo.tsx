@@ -8,7 +8,7 @@ export default function ContextMenuDisabledDemo() {
     return (
         <div className='flex flex-col gap-4'>
             <ContextMenu>
-                <ContextMenu.Trigger className='p-10 rounded-lg flex items-center justify-center border border-dashed'>
+                <ContextMenu.Trigger className='flex items-center justify-center rounded-lg border border-dashed p-10'>
                     Disabled by Item
                 </ContextMenu.Trigger>
                 <ContextMenu.Content>
@@ -27,7 +27,7 @@ export default function ContextMenuDisabledDemo() {
                 </ContextMenu.Content>
             </ContextMenu>
             <ContextMenu>
-                <ContextMenu.Trigger className='p-10 rounded-lg flex items-center justify-center border border-dashed'>
+                <ContextMenu.Trigger className='flex items-center justify-center rounded-lg border border-dashed p-10'>
                     Disabled by Key
                 </ContextMenu.Trigger>
                 <ContextMenu.Content disabledKeys={['edit', 'delete']}>

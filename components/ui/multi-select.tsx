@@ -7,7 +7,6 @@ import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Se
 import {
     Button,
     ComboBox,
-    composeRenderProps,
     Group,
     Input,
     ListBox,
@@ -16,7 +15,8 @@ import {
     Tag,
     TagGroup,
     TagList,
-    Text
+    Text,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
@@ -40,7 +40,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
 
     React.useEffect(() => {
         setInputValue('')
-    }, [props.selectedKeys, selectedKeys])
+    }, [])
 
     const addItem = (e: Key | null) => {
         if (!e) return
@@ -93,7 +93,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                     <FieldGroup
                         isDisabled={isDisabled}
                         isInvalid={isInvalid}
-                        className='flex min-h-10 h-fit flex-wrap items-center py-1'
+                        className='flex h-fit min-h-10 flex-wrap items-center py-1'
                     >
                         <TagGroup onRemove={removeItem} aria-hidden aria-label='Selected'>
                             <TagList
@@ -108,8 +108,8 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                             cn(
                                                 'inline-flex items-center justify-between gap-1 rounded-lg border px-2 py-0.5 text-sm outline-hidden',
                                                 isInvalid
-                                                    ? 'bg-danger/10 text-danger border-danger/70'
-                                                    : 'bg-primary/10 text-primary border-primary/70',
+                                                    ? 'border-danger/70 bg-danger/10 text-danger'
+                                                    : 'border-primary/70 bg-primary/10 text-primary',
                                                 isFocusVisible &&
                                                     `ring-2 ${isInvalid ? 'ring-danger/70' : 'ring-primary/70'}`
                                             )
@@ -155,9 +155,9 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                 />
                                 <Button
                                     aria-label='Chevron'
-                                    className='text-muted-fg ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg outline-hidden'
+                                    className='ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg text-muted-fg outline-hidden'
                                 >
-                                    <IconChevronDown className={cn('size-4 transition group-has-open:-rotate-180')} />
+                                    <IconChevronDown className={cn('group-has-open:-rotate-180 size-4 transition')} />
                                 </Button>
                             </div>
                             <Popover
@@ -168,11 +168,11 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                 triggerRef={triggerRef}
                                 className={({ isEntering, isExiting }) =>
                                     cn(
-                                        'group bg-bg max-h-72 w-full max-w-(--trigger-width) overflow-y-auto rounded-lg border p-1 shadow outline-hidden transition',
+                                        'group max-h-72 w-full max-w-(--trigger-width) overflow-y-auto rounded-lg border bg-bg p-1 shadow outline-hidden transition',
                                         isEntering &&
-                                            'fade-in animate-in zoom-in-95 placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2',
+                                            'fade-in zoom-in-95 placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 animate-in',
                                         isExiting &&
-                                            'fade-out animate-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2'
+                                            'fade-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2 animate-out'
                                     )
                                 }
                             >
@@ -209,7 +209,7 @@ const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) =>
                 (className, { isHovered, isFocused, isDisabled, isFocusVisible }) =>
                     cn(
                         'group relative col-span-full grid grid-cols-subgrid',
-                        'rounded-md px-2 py-1.5 text-base select-none sm:text-sm/6',
+                        'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
                         '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
                         { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
                         isDisabled && 'pointer-events-none opacity-50',

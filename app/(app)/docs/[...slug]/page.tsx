@@ -1,6 +1,6 @@
-import { docs } from '#docs'
-import { type Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { docs } from '#docs'
 
 import { MDXContent } from '@/components/mdx'
 import Pager from '@/components/mdx/pager'
@@ -83,8 +83,8 @@ export default async function DocsPage(props: DocPageProps) {
 
     return (
         <>
-            <div className='max-w-2xl min-w-0 flex-auto px-4 pt-12 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'>
-                <main className='prose prose-img:rounded-lg prose-h2:mb-4 prose-pre:p-0 prose-headings:mb-[0.3rem] prose-headings:scroll-mt-24 prose-blue dark:prose-invert max-w-[inherit]'>
+            <div className='min-w-0 max-w-2xl flex-auto px-4 pt-12 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'>
+                <main className='prose prose-blue dark:prose-invert prose-h2:mb-4 prose-headings:mb-[0.3rem] max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0'>
                     <Card className='not-prose'>
                         <Card.Header>
                             <Card.Title>{doc.title}</Card.Title>

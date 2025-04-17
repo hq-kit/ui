@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { IconCheck, IconCopy } from 'hq-icons'
-import { ColorFormat, ListBoxItem, parseColor, type ListBoxItemProps } from 'react-aria-components'
+import { type ColorFormat, ListBoxItem, type ListBoxItemProps, parseColor } from 'react-aria-components'
 import { copyToClipboard } from 'usemods'
 
 import { formatColorForTailwind, textfg } from '@/components/controllers/colors/colors'
@@ -49,11 +49,11 @@ const ColorItem = ({ item, textColor, name, selectedFormat, tailwindVariable }: 
             }}
         >
             <span
-                className={cn('absolute top-2 left-1/2 hidden -translate-x-1/2 group-hover:block', copied && 'block')}
+                className={cn('-translate-x-1/2 absolute top-2 left-1/2 hidden group-hover:block', copied && 'block')}
             >
                 {copied ? <IconCheck /> : <IconCopy />}
             </span>
-            <span className='absolute bottom-2 left-1/2 flex -translate-x-1/2 flex-col justify-center font-mono text-xs'>
+            <span className='-translate-x-1/2 absolute bottom-2 left-1/2 flex flex-col justify-center font-mono text-xs'>
                 {item.shade}
             </span>
         </ListBoxItem>

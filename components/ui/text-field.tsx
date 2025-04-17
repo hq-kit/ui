@@ -5,9 +5,9 @@ import React from 'react'
 import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
 import {
     Button,
-    composeRenderProps,
     TextField as RACTextField,
-    type TextFieldProps as RACTextFieldProps
+    type TextFieldProps as RACTextFieldProps,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -44,7 +44,7 @@ const TextField = ({ label, placeholder, description, errorMessage, className, t
                         data-loading={props.isPending ? 'true' : undefined}
                     >
                         {props.prefix ? (
-                            <span className='ml-2 has-[button]:ml-0 text-muted-fg'>{props.prefix}</span>
+                            <span className='ml-2 text-muted-fg has-[button]:ml-0'>{props.prefix}</span>
                         ) : null}
                         <Input placeholder={placeholder} />
                         {type === 'password' ? (
@@ -52,14 +52,14 @@ const TextField = ({ label, placeholder, description, errorMessage, className, t
                                 type='button'
                                 aria-label='Toggle visibility'
                                 onPress={() => setMasked((e) => !e)}
-                                className='mr-2 rounded-lg outline-offset-4 inline-flex items-center justify-center text-muted-fg'
+                                className='mr-2 inline-flex items-center justify-center rounded-lg text-muted-fg outline-offset-4'
                             >
                                 {masked ? <IconEye /> : <IconEyeClosed />}
                             </Button>
                         ) : props.isPending ? (
-                            <IconLoaderCircle className='animate-spin size-3.5 mr-2 text-muted-fg' data-suffix />
+                            <IconLoaderCircle className='mr-2 size-3.5 animate-spin text-muted-fg' data-suffix />
                         ) : props.suffix ? (
-                            <span data-suffix className='mr-2 has-[button]:mr-0 text-muted-fg'>
+                            <span data-suffix className='mr-2 text-muted-fg has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

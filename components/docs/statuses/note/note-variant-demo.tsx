@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { type Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 
 import { Note, Select } from '@/components/ui'
 

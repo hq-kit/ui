@@ -48,11 +48,11 @@ export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'gh
         <Button
             icon
             variant={variant}
-            aria-label={'Switch to ' + resolvedTheme === 'light' ? 'dark' : 'light' + 'mode'}
+            aria-label={`Switch to ${resolvedTheme}` === 'light' ? 'dark' : 'light' + 'mode'}
             onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
         >
-            <IconSun className='scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90' />
-            <IconMoon className='absolute scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0' />
+            <IconSun className='dark:-rotate-90 rotate-0 scale-100 transition-all dark:scale-0' />
+            <IconMoon className='absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
         </Button>
     )
 }

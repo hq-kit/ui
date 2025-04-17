@@ -1,10 +1,10 @@
 'use client'
 
 import { IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
-import { GridList, GridListItem } from 'react-aria-components'
+import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 import { useTheme } from '@/components/providers'
-import { Button, isBrightColor, Label, Select, Sheet, Slider, Tabs } from '@/components/ui'
+import { Button, Label, Select, Sheet, Slider, Tabs, isBrightColor } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { cn } from '@/lib/utils'
 
@@ -38,7 +38,7 @@ export function ThemeCustomizer() {
 
     return (
         <Sheet>
-            <Button icon className='fixed mt-1 top-16 right-0 z-50 rounded-r-none'>
+            <Button icon className='fixed top-16 right-0 z-50 mt-1 rounded-r-none'>
                 <IconSwatchBook />
             </Button>
             <Sheet.Content isBlurred={false} side='right' className='sm:max-w-md'>
@@ -47,7 +47,7 @@ export function ThemeCustomizer() {
                     <Sheet.Description>Pick a style and color for your components.</Sheet.Description>
                 </Sheet.Header>
                 <Sheet.Body className='space-y-4'>
-                    <div className='flex flex-col sm:flex-row gap-4 w-full'>
+                    <div className='flex w-full flex-col gap-4 sm:flex-row'>
                         <Select
                             className='w-full'
                             label='Font Sans'
@@ -82,7 +82,7 @@ export function ThemeCustomizer() {
                         <GridList
                             layout='grid'
                             aria-label='Gray Colors'
-                            className='grid gap-2 grid-cols-3'
+                            className='grid grid-cols-3 gap-2'
                             disallowEmptySelection
                             selectionMode='single'
                             selectedKeys={[currentGrayColor]}
@@ -102,9 +102,9 @@ export function ThemeCustomizer() {
                                     textValue={item.label}
                                     className={({ isHovered, isSelected, isFocusVisible }) =>
                                         cn(
-                                            'px-2 py-1 rounded-lg font-semibold flex items-center justify-center cursor-pointer text-xs transition',
+                                            'flex cursor-pointer items-center justify-center rounded-lg px-2 py-1 font-semibold text-xs transition',
                                             {
-                                                'ring-inset ring-2 ring-bg/80 border':
+                                                'border ring-2 ring-bg/80 ring-inset':
                                                     isFocusVisible || isSelected || isHovered
                                             }
                                         )
@@ -126,15 +126,16 @@ export function ThemeCustomizer() {
                                     <GridList
                                         layout='grid'
                                         aria-label='Accent Colors'
-                                        className='grid gap-2 grid-cols-3'
+                                        className='grid grid-cols-3 gap-2'
                                         disallowEmptySelection
                                         selectionMode='single'
                                         selectedKeys={[currentPresetColor]}
-                                        onSelectionChange={(key) => {
-                                            // @ts-expect-error no-type
-                                            updatePresetColor(key.currentKey)
-                                            /* @ts-expect-error needs fixing */ /* prettier-ignore */
-                                            updateBorderRadius(presetColors.find((c) => c.name === key.currentKey)?.radius ?? currentBorderRadius)
+                                        onSelectionChange={(selection: Selection) => {
+                                            updatePresetColor([...selection][0] as string)
+                                            updateBorderRadius(
+                                                presetColors.find((c) => c.name === [...selection][0])?.radius ??
+                                                    currentBorderRadius
+                                            )
                                         }}
                                         items={presetColors.filter((c) => c.name.startsWith(preset.value))}
                                     >
@@ -148,9 +149,9 @@ export function ThemeCustomizer() {
                                                 textValue={item.label}
                                                 className={({ isHovered, isSelected, isFocusVisible }) =>
                                                     cn(
-                                                        'px-2 py-1 rounded-lg font-semibold flex items-center justify-center cursor-pointer text-xs transition',
+                                                        'flex cursor-pointer items-center justify-center rounded-lg px-2 py-1 font-semibold text-xs transition',
                                                         {
-                                                            'ring-inset ring-2 ring-fg/80':
+                                                            'ring-2 ring-fg/80 ring-inset':
                                                                 isFocusVisible || isSelected || isHovered
                                                         }
                                                     )
@@ -193,9 +194,9 @@ export function ThemeCustomizer() {
                         </Button>
                     </div>
                 </Sheet.Body>
-                <Sheet.Footer className='sm:flex-col flex-col justify-center'>
+                <Sheet.Footer className='flex-col justify-center sm:flex-col'>
                     <ColorPreview />
-                    <div className='flex flex-row gap-2 justify-end'>
+                    <div className='flex flex-row justify-end gap-2'>
                         <ThemeSnippet />
                         <Button variant='danger' onPress={() => reset()}>
                             <IconRotateCcw />

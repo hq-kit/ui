@@ -5,7 +5,7 @@ import type {
     CheckboxGroupProps as RACCheckboxGroupProps,
     CheckboxProps as RACCheckboxProps
 } from 'react-aria-components'
-import { composeRenderProps, Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup } from 'react-aria-components'
+import { Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -47,7 +47,7 @@ const Checkbox = ({ className, label, children, description, errorMessage, ...pr
         >
             {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired }) => (
                 <div
-                    className={cn('flex gap-2 items-center', {
+                    className={cn('flex items-center gap-2', {
                         'items-start': description || (isInvalid && isRequired)
                     })}
                 >
@@ -58,7 +58,7 @@ const Checkbox = ({ className, label, children, description, errorMessage, ...pr
                                 ? 'border-primary bg-primary text-primary-fg group-invalid:border-danger/70 group-invalid:bg-danger group-invalid:text-danger-fg'
                                 : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',
                             isFocused &&
-                                'border-primary ring-primary/20 ring-4 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                                'border-primary ring-4 ring-primary/20 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
                             isInvalid &&
                                 'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
                             className

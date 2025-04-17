@@ -2,26 +2,26 @@
 
 import { Header, Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
-import { buttonStyles, Container, Link } from '@/components/ui'
+import { Container, Link, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 const Hero = ({ children }: { children: React.ReactNode }) => (
-    <div className='bg-bg relative isolate overflow-hidden'>
+    <div className='relative isolate overflow-hidden bg-bg'>
         <div
             aria-hidden='true'
-            className='absolute inset-x-0 -top-10 -z-10 hidden transform-gpu overflow-hidden blur-3xl sm:-top-56 sm:block'
+            className='-top-10 -z-10 sm:-top-56 absolute inset-x-0 hidden transform-gpu overflow-hidden blur-3xl sm:block'
         >
             <div
                 style={{
                     clipPath:
                         'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)'
                 }}
-                className='from-info to-primary relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr opacity-10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] dark:opacity-[0.17]'
+                className='-translate-x-1/2 relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] rotate-[30deg] bg-gradient-to-tr from-info to-primary opacity-10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] dark:opacity-[0.17]'
             />
         </div>
         <svg
             aria-hidden='true'
-            className='stroke-muted absolute inset-0 -z-10 hidden h-full w-full [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] sm:block'
+            className='-z-10 absolute inset-0 hidden h-full w-full stroke-muted [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] sm:block'
         >
             <defs>
                 <pattern
@@ -46,13 +46,13 @@ const Hero = ({ children }: { children: React.ReactNode }) => (
 const HeroHeader = ({ children, ...props }: { children: React.ReactNode }) => <Header {...props}>{children}</Header>
 
 const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
-    <Heading level={1} className={cn('mb-2 max-w-xl text-2xl font-bold lg:mb-6 lg:text-5xl', className)} {...props}>
+    <Heading level={1} className={cn('mb-2 max-w-xl font-bold text-2xl lg:mb-6 lg:text-5xl', className)} {...props}>
         {children}
     </Heading>
 )
 
 const HeroDescription = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={cn('text-muted-fg block max-w-2xl text-base leading-relaxed lg:text-xl', className)} {...props}>
+    <div className={cn('block max-w-2xl text-base text-muted-fg leading-relaxed lg:text-xl', className)} {...props}>
         {children}
     </div>
 )

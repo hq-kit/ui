@@ -115,7 +115,7 @@ const RichTextField = ({
                 <div className='relative'>
                     {as === 'rich-text' ? (
                         <RichTextPlugin
-                            placeholder={<p className='text-muted-fg absolute bottom-2 left-3'>Write something...</p>}
+                            placeholder={<p className='absolute bottom-2 left-3 text-muted-fg'>Write something...</p>}
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -130,9 +130,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base transition outline-none focus:outline-none sm:text-sm',
-                                            'focus:border-primary/70 focus:ring-primary/20 focus:ring-4',
-                                            'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
+                                            'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base outline-none transition focus:outline-none sm:text-sm',
+                                            'focus:border-primary/70 focus:ring-4 focus:ring-primary/20',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
@@ -144,7 +144,7 @@ const RichTextField = ({
                         />
                     ) : (
                         <PlainTextPlugin
-                            placeholder={<p className='text-muted-fg absolute bottom-2 left-3'>Write something...</p>}
+                            placeholder={<p className='absolute bottom-2 left-3 text-muted-fg'>Write something...</p>}
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -159,9 +159,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'bg-bg min-h-32 w-full min-w-0 rounded-lg border px-2.5 py-2 text-base shadow-sm transition outline-none focus:outline-none sm:text-sm',
-                                            'focus:border-primary/70 focus:ring-primary/20 focus:ring-4',
-                                            'invalid:border-danger invalid:ring-danger/20 invalid:ring-4',
+                                            'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base shadow-sm outline-none transition focus:outline-none sm:text-sm',
+                                            'focus:border-primary/70 focus:ring-4 focus:ring-primary/20',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
@@ -213,7 +213,7 @@ function OnChange({ value, onChange, returnType }: OnChangeProps) {
 
     React.useEffect(() => {
         setIsFirstRender(true)
-    }, [value])
+    }, [])
 
     return (
         <OnChangePlugin

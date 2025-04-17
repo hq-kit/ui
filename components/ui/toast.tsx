@@ -4,22 +4,19 @@ import React from 'react'
 
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
 import { motion, useAnimation } from 'motion/react'
-import type {
-    ButtonProps,
-    ToastOptions,
-} from 'react-aria-components'
+import type { ButtonProps, ToastOptions } from 'react-aria-components'
 import {
     Button,
     Text,
-    UNSTABLE_Toast as Toaster,
     UNSTABLE_ToastContent as ToastContent,
     UNSTABLE_ToastQueue as ToastQueue,
-    UNSTABLE_ToastRegion as ToastRegion
+    UNSTABLE_ToastRegion as ToastRegion,
+    UNSTABLE_Toast as Toaster
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-interface ToastContent {
+interface ToastContentProps {
     title: string
     description?: string
     action?: () => void
@@ -29,7 +26,7 @@ interface ToastContent {
     type: 'default' | 'success' | 'error' | 'info' | 'warning'
 }
 
-const queue = new ToastQueue<ToastContent>({
+const queue = new ToastQueue<ToastContentProps>({
     wrapUpdate(fn) {
         if ('startViewTransition' in document) {
             document.startViewTransition(() => fn())
@@ -42,11 +39,11 @@ const ToastProvider = () => {
     const [isHovered, setIsHovered] = React.useState(false)
     return (
         <ToastRegion
-            className='fixed w-full h-fit sm:w-fit flex flex-col-reverse items-center sm:items-end p-4 gap-3 sm:bottom-2 sm:right-2 top-0 sm:top-auto'
+            className='fixed top-0 flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
             queue={queue}
         >
             {({ toast }) => (
-                <Toaster key={toast.key} toast={toast} className={cn('sm:min-w-xs will-change-transform sm:w-fit')}>
+                <Toaster key={toast.key} toast={toast} className={cn('will-change-transform sm:w-fit sm:min-w-xs')}>
                     <motion.div
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
@@ -54,13 +51,13 @@ const ToastProvider = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className={cn(
-                            'flex flex-col backdrop-blur-lg p-4 gap-2 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.3)] border',
+                            'flex flex-col gap-2 rounded-lg border p-4 shadow-[0_3px_10px_rgb(0,0,0,0.3)] backdrop-blur-lg',
                             {
-                                'border-success/20 text-success bg-success/10 **:data-loader:stroke-success':
+                                'border-success/20 bg-success/10 text-success **:data-loader:stroke-success':
                                     toast.content.type === 'success',
                                 'border-danger/20 bg-danger/5 text-danger **:data-loader:stroke-danger':
                                     toast.content.type === 'error',
-                                'border-primary/30 text-primary bg-primary/10 **:data-loader:stroke-primary':
+                                'border-info/30 bg-info/10 text-info **:data-loader:stroke-info':
                                     toast.content.type === 'info',
                                 'border-warning/40 bg-warning/5 text-warning **:data-loader:stroke-warning':
                                     toast.content.type === 'warning',
@@ -82,7 +79,7 @@ const ToastProvider = () => {
                             ) : toast.content.type === 'warning' ? (
                                 <IconTriangleAlert className='shrink-0' />
                             ) : null}
-                            <ToastContent className='w-full flex flex-col'>
+                            <ToastContent className='flex w-full flex-col'>
                                 <Text slot='title' className='font-medium'>
                                     {toast.content.title}
                                 </Text>
@@ -97,26 +94,26 @@ const ToastProvider = () => {
                             </TimeoutButton>
                         </div>
                         {(toast.content.action || toast.content.altAction) && (
-                            <div className='flex items-center gap-2 justify-start'>
+                            <div className='flex items-center justify-start gap-2'>
                                 {toast.content.action && (
                                     <Button
                                         onPress={toast.content.action}
                                         slot='close'
                                         className={({ isHovered, isPressed, isFocusVisible }) =>
                                             cn(
-                                                'outline-hidden cursor-pointer flex items-center border justify-center gap-x-1.5 rounded-lg px-2 py-1 text-sm *:[svg]:size-3',
+                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden *:[svg]:size-3',
                                                 isHovered && 'brightness-80',
                                                 isPressed && 'brightness-90',
                                                 isFocusVisible && 'ring-4 ring-primary/20',
                                                 {
-                                                    'border-success text-success-fg bg-success':
+                                                    'border-success bg-success text-success-fg':
                                                         toast.content.type === 'success',
-                                                    'border-danger text-danger-fg bg-danger':
+                                                    'border-danger bg-danger text-danger-fg':
                                                         toast.content.type === 'error',
-                                                    'border-primary text-primary-fg bg-primary':
+                                                    'border-info bg-info text-info-fg':
                                                         toast.content.type === 'info' ||
                                                         toast.content.type === 'default',
-                                                    'border-warning text-warning-fg bg-warning':
+                                                    'border-warning bg-warning text-warning-fg':
                                                         toast.content.type === 'warning'
                                                 }
                                             )
@@ -131,10 +128,10 @@ const ToastProvider = () => {
                                         slot='close'
                                         className={({ isHovered, isPressed, isFocusVisible }) =>
                                             cn(
-                                                'outline-hidden cursor-pointer flex items-center border justify-center gap-x-1.5 rounded-lg bg-bg px-2 py-1 text-sm text-fg *:[svg]:size-3',
+                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-bg px-2 py-1 text-fg text-sm outline-hidden *:[svg]:size-3',
                                                 isHovered && 'bg-muted/40',
                                                 isPressed && 'bg-muted/60',
-                                                isFocusVisible && 'ring-4 ring-primary/20 border-primary'
+                                                isFocusVisible && 'border-primary ring-4 ring-primary/20'
                                             )
                                         }
                                     >
@@ -176,13 +173,14 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
             })
     }
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     React.useEffect(() => {
         if (timeout === undefined) return
         startTimeRef.current = performance.now()
         animate(timeout / 1000)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeout])
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     React.useEffect(() => {
         if (timeout === undefined) return
 
@@ -198,17 +196,16 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
                 animate(remaining / 1000)
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [paused])
+    }, [paused, timeout])
 
     return (
         <Button
             className={({ isHovered, isPressed, isFocusVisible }) =>
                 cn(
-                    'relative shrink-0 outline-hidden ml-auto border size-7 rounded-full inline-flex items-center justify-center',
+                    'relative ml-auto inline-flex size-7 shrink-0 items-center justify-center rounded-full border outline-hidden',
                     isHovered && 'bg-muted/40',
                     isPressed && 'bg-muted/60',
-                    isFocusVisible && 'ring-4 ring-primary/20 border-primary'
+                    isFocusVisible && 'border-primary ring-4 ring-primary/20'
                 )
             }
             {...props}
@@ -238,19 +235,19 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
     )
 }
 
-const toast = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+const toast = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'default' }, { ...options, timeout: options?.timeout ?? 3000 })
 
-toast.success = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+toast.success = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'success' }, { ...options, timeout: options?.timeout ?? 3000 })
 
-toast.error = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+toast.error = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'error' }, { ...options, timeout: options?.timeout ?? 3000 })
 
-toast.info = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+toast.info = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'info' }, { ...options, timeout: options?.timeout ?? 3000 })
 
-toast.warning = (body: string, content?: Omit<ToastContent, 'type' | 'title'>, options?: ToastOptions) =>
+toast.warning = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'warning' }, { ...options, timeout: options?.timeout ?? 3000 })
 
 export { toast, ToastProvider }

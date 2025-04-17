@@ -118,7 +118,7 @@ const files: FileNode[] = [
 ]
 
 const FileIcon = ({ ext }: { ext: string }) => {
-    let Icon
+    let Icon: any
     switch (ext) {
         case 'jpg':
         case 'png':

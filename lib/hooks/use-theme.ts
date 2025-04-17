@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
 import { fontMonoFamilies, fontSansFamilies } from '@/lib/fonts'
-import { GrayColor, PresetColor, grayColors, presetColors } from '@/lib/themes'
+import { type GrayColor, type PresetColor, grayColors, presetColors } from '@/lib/themes'
 
 // import {Presets} from '@/lib/themes/presets'
 
@@ -107,9 +107,9 @@ export const syncGrayColor = (color: GrayColor, resolvedTheme: string | undefine
         [key: string]: string
     }
 
-    Object.keys(vars)?.forEach((variable) => {
+    for (const variable of Object.keys(vars)) {
         root.style.setProperty(`--${variable}`, `${vars[variable]}`)
-    })
+    }
 
     root.style.setProperty(
         '--bg',
@@ -127,9 +127,9 @@ export const syncThemeColor = (color: PresetColor, resolvedTheme: string | undef
         resolvedTheme === 'light' ? { ...primaryColor?.cssVars.light } : { ...primaryColor?.cssVars.dark }
     ) as { [key: string]: string }
 
-    Object.keys(vars)?.forEach((variable) => {
+    for (const variable of Object.keys(vars)) {
         root.style.setProperty(`--${variable}`, `${vars[variable]}`)
-    })
+    }
 }
 
 export const syncBorderRadius = (borderRadius: number) => {

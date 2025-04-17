@@ -2,7 +2,7 @@
 
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 
-import { buttonStyles, Link } from '@/components/ui'
+import { Link, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface Doc {
@@ -46,7 +46,7 @@ export default function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
     }
 
     return (
-        <div className='mt-6 flex flex-row items-center justify-between not-prose'>
+        <div className='not-prose mt-6 flex flex-row items-center justify-between'>
             {pager.prev && (
                 <Link
                     aria-label={`Previous page: ${pager.prev.title}`}

@@ -5,7 +5,7 @@ import React from 'react'
 import { IconMenu } from 'hq-icons'
 import { LayoutGroup, motion } from 'motion/react'
 import type { LinkProps } from 'react-aria-components'
-import { composeRenderProps, Link } from 'react-aria-components'
+import { Link, composeRenderProps } from 'react-aria-components'
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
@@ -92,7 +92,7 @@ const Navbar = ({
                 className={cn(
                     'relative isolate flex w-full flex-col',
                     variant === 'float' && 'px-2.5 pt-2',
-                    variant === 'inset' && 'bg-bg min-h-svh',
+                    variant === 'inset' && 'min-h-svh bg-bg',
                     className
                 )}
                 {...props}
@@ -138,8 +138,8 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
                 '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-[1680px] [&>div]:items-center md:[&>div]:flex',
                 isSticky && 'sticky top-0 z-40',
                 variant === 'float' &&
-                    'bg-bg text-fg mx-auto w-full max-w-7xl rounded-lg border md:px-4 2xl:max-w-(--breakpoint-2xl)',
-                variant === 'navbar' && 'bg-bg text-fg border-b md:px-6',
+                    'mx-auto w-full max-w-7xl rounded-lg border bg-bg text-fg md:px-4 2xl:max-w-(--breakpoint-2xl)',
+                variant === 'navbar' && 'border-b bg-bg text-fg md:px-6',
                 variant === 'inset' &&
                     'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex 2xl:[&>div]:max-w-(--breakpoint-2xl)',
                 className
@@ -206,7 +206,7 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
                 className,
                 (className, { isFocused, isHovered, isPressed, isFocusVisible, isDisabled }) =>
                     cn(
-                        'text-muted-fg relative flex cursor-pointer items-center gap-x-2 px-2 no-underline outline-hidden transition-colors md:text-sm',
+                        'relative flex cursor-pointer items-center gap-x-2 px-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
                         '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
                         '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
                         isFocused && 'text-fg',
@@ -214,7 +214,7 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
                         isPressed && 'text-fg **:data-[slot=chevron]:rotate-180',
                         isFocusVisible && 'ring-2 ring-primary/20',
                         isDisabled && 'cursor-default opacity-50',
-                        isCurrent && 'text-fg cursor-default',
+                        isCurrent && 'cursor-default text-fg',
                         className
                     )
             )}
@@ -228,7 +228,7 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
                         <motion.span
                             layoutId='current-indicator'
                             data-slot='current-indicator'
-                            className='bg-fg absolute inset-x-2 bottom-[calc(var(--navbar-height)*-0.33)] h-0.5 rounded-full'
+                            className='absolute inset-x-2 bottom-[calc(var(--navbar-height)*-0.33)] h-0.5 rounded-full bg-fg'
                         />
                     )}
                 </>
@@ -242,7 +242,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
         <Link
             className={composeRenderProps(className, (className) =>
                 cn(
-                    'text-fg data-focus-visible:outline-primary relative flex items-center gap-x-2 px-2 py-4 data-focus-visible:outline-1 data-focused:outline-hidden md:mr-4 md:px-0 md:py-0',
+                    'relative flex items-center gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden md:mr-4 md:px-0 md:py-0',
                     className
                 )
             )}
@@ -265,7 +265,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
         <div
             ref={ref}
             className={cn(
-                'bg-bg text-fg flex justify-between peer-has-[[data-navbar-variant=float]]:border md:hidden',
+                'flex justify-between bg-bg text-fg peer-has-[[data-navbar-variant=float]]:border md:hidden',
                 variant === 'float' && 'h-12 rounded-lg border px-3.5',
                 variant === 'inset' && 'h-14 border-b px-4',
                 variant === 'navbar' && 'h-14 border-b px-4',
@@ -288,7 +288,7 @@ const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<'div'>) 
                 className={cn(
                     'grow',
                     variant === 'inset' &&
-                        'bg-bg md:ring-fg/15 md:dark:ring-border md:rounded-lg md:ring-1 md:shadow-xs'
+                        'bg-bg md:rounded-lg md:shadow-xs md:ring-1 md:ring-fg/15 md:dark:ring-border'
                 )}
             >
                 {props.children}

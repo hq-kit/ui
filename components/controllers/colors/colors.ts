@@ -90,7 +90,7 @@ export const formatColorForTailwind = (colorString: string): string => {
 }
 
 export const formatColorFromTailwind = (colorString: string, format = 'hsl'): string => {
-    return format + '(' + colorString.replace(/ /g, ', ') + ')'
+    return `${format}(${colorString.replace(/ /g, ', ')})`
 }
 
 export const hslToHex = (hsl: string): string => {
@@ -121,7 +121,8 @@ export const getColorName = ({
     if (type === 'hex') {
         const n_match = ntc.name(color)
         return slug ? slugify(n_match[1]) : n_match[1]
-    } else if (type === 'hsl') {
+    }
+    if (type === 'hsl') {
         const n_match = ntc.name(hslToHex(color))
         return slug ? slugify(n_match[1]) : n_match[1]
     }

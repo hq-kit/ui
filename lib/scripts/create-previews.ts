@@ -1,5 +1,5 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 
 const baseDir = path.resolve(__dirname, '../../components')
 const docsDir = path.join(baseDir, 'docs')
@@ -8,20 +8,15 @@ const outputMapFilePath = path.resolve(docsDir, 'generated/previews.ts')
 const jsonOutputFilePath = path.resolve(docsDir, 'generated/previews.json')
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
-    // Exclude directories: 'outside' in base directory
-    // if (dirPath.endsWith('outside')) {
-    //     return arrayOfFiles // Skip these directories and their contents
-    // }
-
     const files = fs.readdirSync(dirPath)
-    files.forEach((file) => {
+    for (const file of files) {
         const filePath = path.join(dirPath, file)
         if (fs.statSync(filePath).isDirectory()) {
-            arrayOfFiles = getAllFiles(filePath, arrayOfFiles)
+            getAllFiles(filePath, arrayOfFiles)
         } else if (file.endsWith('.tsx')) {
             arrayOfFiles.push(filePath)
         }
-    })
+    }
     return arrayOfFiles
 }
 
@@ -65,7 +60,5 @@ ${Object.keys(components.tsComponents)
 `
 
 fs.writeFileSync(outputMapFilePath, previewsContent)
-console.log(`Component map generated into ${outputMapFilePath}`)
 
 fs.writeFileSync(jsonOutputFilePath, JSON.stringify(components.jsonComponents, null, 2))
-console.log(`Component JSON generated into ${jsonOutputFilePath}`)

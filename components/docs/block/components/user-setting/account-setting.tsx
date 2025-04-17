@@ -5,7 +5,7 @@ import React from 'react'
 import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from 'hq-icons'
 import { isFileDropItem } from 'react-aria-components'
 
-import { Avatar, Button, Card, DropZone, FileTrigger, Form, Textarea, TextField } from '@/components/ui'
+import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function AccountSetting() {

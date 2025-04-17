@@ -63,16 +63,16 @@ export default function TooltipChartAdvanceDemo() {
                                                 }
                                             />
                                             {chartConfig[name as keyof typeof chartConfig]?.label || name}
-                                            <div className='text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums'>
+                                            <div className='ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums'>
                                                 {value}
-                                                <span className='text-muted-fg font-normal'>USD</span>
+                                                <span className='font-normal text-muted-fg'>USD</span>
                                             </div>
                                             {index === 1 && (
-                                                <div className='text-foreground mt-1.5 flex basis-full items-center border-t pt-1.5 text-xs font-medium'>
+                                                <div className='mt-1.5 flex basis-full items-center border-t pt-1.5 font-medium text-foreground text-xs'>
                                                     Total
-                                                    <div className='text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums'>
+                                                    <div className='ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums'>
                                                         {item.payload.groceries + item.payload.utilities}
-                                                        <span className='text-muted-fg font-normal'>USD</span>
+                                                        <span className='font-normal text-muted-fg'>USD</span>
                                                     </div>
                                                 </div>
                                             )}

@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { IconSquareCheckBig, IconTextCursorInput } from 'hq-icons'
-import { Key, Selection } from 'react-aria-components'
+import type { Key, Selection } from 'react-aria-components'
 
 import { ComboBox, Toggle } from '@/components/ui'
 
@@ -42,7 +42,7 @@ export default function ComboBoxControlledDemo() {
 const ComboBoxControlledInput = () => {
     const [value, setValue] = React.useState<string>('')
     return (
-        <div className='space-y-4 grid'>
+        <div className='grid space-y-4'>
             <ComboBox label='Linux Distro' inputValue={value} onInputChange={setValue} items={items}>
                 {(item) => (
                     <ComboBox.Item id={item.id} textValue={item.name}>
@@ -58,7 +58,7 @@ const ComboBoxControlledInput = () => {
 const ComboBoxControlledSelected = () => {
     const [selected, setSelected] = React.useState<Key | null>(null)
     return (
-        <div className='space-y-4 grid'>
+        <div className='grid space-y-4'>
             <ComboBox label='Linux Distro' selectedKey={selected} onSelectionChange={setSelected} items={items}>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>

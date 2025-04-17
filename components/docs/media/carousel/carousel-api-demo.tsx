@@ -37,18 +37,18 @@ export default function CarouselDApiDemo() {
                     <Carousel.Item id={id}>
                         <Card>
                             <Card.Content className='flex aspect-square items-center justify-center p-6'>
-                                <span className='text-4xl font-semibold'>{id}</span>
+                                <span className='font-semibold text-4xl'>{id}</span>
                             </Card.Content>
                         </Card>
                     </Carousel.Item>
                 )}
             </Carousel.Content>
             <div className='flex items-center justify-between'>
-                <div className='text-muted-fg flex gap-1 py-2 text-center text-sm'>
+                <div className='flex gap-1 py-2 text-center text-muted-fg text-sm'>
                     {Array.from({ length: 10 }).map((_, index) => (
                         <Button
                             className={cn(
-                                'rounded-full transition size-3',
+                                'size-3 rounded-full transition',
                                 current === index + 1 ? 'bg-primary' : 'bg-muted hover:bg-primary/50'
                             )}
                             aria-label={`Slide ${current} of ${count}`}

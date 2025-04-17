@@ -61,7 +61,7 @@ const Content = ({
                     initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
                     animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)' }}
                     exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
                     {...props}
                 >
                     {({ state }) => (
@@ -70,8 +70,8 @@ const Content = ({
                             className={cn(
                                 'absolute max-h-full w-full touch-none overflow-hidden bg-bg align-middle text-fg shadow-sm will-change-transform',
                                 isDesktop
-                                    ? 'rounded-lg border left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-                                    : 'rounded-t-2xl border-t bottom-0',
+                                    ? '-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-lg border'
+                                    : 'bottom-0 rounded-t-2xl border-t',
                                 {
                                     'max-w-xs': size === 'xs' && isDesktop,
                                     'max-w-sm': size === 'sm' && isDesktop,
@@ -82,7 +82,7 @@ const Content = ({
                                     'max-w-3xl': size === '3xl' && isDesktop,
                                     'max-w-4xl': size === '4xl' && isDesktop,
                                     'max-w-5xl': size === '5xl' && isDesktop,
-                                    'max-w-full h-svh': size === 'full' && isDesktop
+                                    'h-svh max-w-full': size === 'full' && isDesktop
                                 },
                                 className
                             )}
@@ -112,11 +112,11 @@ const Content = ({
                             <Dialog
                                 aria-label='Modal'
                                 role={role}
-                                className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
+                                className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
                             >
                                 {notch && isMobile && (
-                                    <div className='w-full mt-2'>
-                                        <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                                    <div className='mt-2 w-full'>
+                                        <div className='mx-auto h-1.5 w-12 rounded-full bg-muted' />
                                     </div>
                                 )}
                                 {children as React.ReactNode}
@@ -126,7 +126,7 @@ const Content = ({
                                         aria-label='Close'
                                         className={({ isPressed, isHovered, isFocusVisible }) =>
                                             cn(
-                                                'absolute top-2 right-2 bg-bg shrink-0 inline-flex size-8 items-center justify-center rounded-md text-muted-fg outline-hidden',
+                                                'absolute top-2 right-2 inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-bg text-muted-fg outline-hidden',
                                                 isHovered && 'bg-muted/40',
                                                 isFocusVisible && 'ring-4 ring-primary/20',
                                                 isPressed && 'bg-muted/50'
@@ -147,7 +147,7 @@ const Content = ({
 
 const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <div slot='header' className={cn('flex flex-col p-4 sm:p-6 sm:text-left text-center', className)} {...props} />
+        <div slot='header' className={cn('flex flex-col p-4 text-center sm:p-6 sm:text-left', className)} {...props} />
     )
 }
 
@@ -163,7 +163,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     <div
         slot='body'
         className={cn(
-            'isolate flex flex-col overflow-auto px-4 sm:px-6 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
+            'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-4 py-1 sm:px-6',
             className
         )}
         {...props}
@@ -175,7 +175,7 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
         <div
             slot='footer'
             className={cn(
-                'isolate flex sm:flex-row flex-col-reverse justify-center sm:justify-end gap-2 mt-auto p-4 sm:p-6',
+                'isolate mt-auto flex flex-col-reverse justify-center gap-2 p-4 sm:flex-row sm:justify-end sm:p-6',
                 className
             )}
             {...props}

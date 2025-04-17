@@ -6,7 +6,7 @@ import About from 'components/user-profile/about'
 import Media from 'components/user-profile/media'
 import Posts from 'components/user-profile/posts'
 import Image from 'next/image'
-import { Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Avatar, Card, Container, Description, Heading, Tabs } from '@/components/ui'
@@ -15,7 +15,7 @@ export default function UserProfile() {
     const [panel, setPanel] = React.useState<Key>(1)
     return (
         <NavbarLayout variant='inset'>
-            <Container className='py-6 @xl:py-12'>
+            <Container className='@xl:py-12 py-6'>
                 <div className='relative w-full'>
                     <Card className='w-full overflow-hidden'>
                         <Card.Content className='p-0 lg:h-96'>
@@ -32,10 +32,10 @@ export default function UserProfile() {
                         <Avatar
                             alt='logo'
                             src='https://github.com/dq-alhq.png'
-                            className='bg-bg absolute bottom-32 left-1/2 size-24 -translate-x-1/2 rounded-full border p-1 lg:-bottom-4 lg:left-20 lg:size-44 lg:translate-x-0'
+                            className='-translate-x-1/2 lg:-bottom-4 absolute bottom-32 left-1/2 size-24 rounded-full border bg-bg p-1 lg:left-20 lg:size-44 lg:translate-x-0'
                         />
                         <div className='flex w-full flex-col gap-1 lg:ml-72'>
-                            <Heading className='text-center text-lg font-bold lg:text-left lg:text-4xl'>
+                            <Heading className='text-center font-bold text-lg lg:text-left lg:text-4xl'>
                                 Diqi Al-Haqqi
                             </Heading>
                             <Description className='text-center text-sm uppercase lg:text-left lg:text-lg'>

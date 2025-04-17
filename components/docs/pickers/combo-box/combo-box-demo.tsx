@@ -10,7 +10,7 @@ const items = [
 
 export default function ComboBoxDemo() {
     return (
-        <div className='grid sm:grid-cols-4 gap-2'>
+        <div className='grid gap-2 sm:grid-cols-4'>
             <ComboBox label='Default' items={items}>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>

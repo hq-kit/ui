@@ -50,7 +50,7 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
         }
     }
     return (
-        <Form onSubmit={onSubmit} className='bg-bg relative overflow-hidden rounded-lg border-t md:border'>
+        <Form onSubmit={onSubmit} className='relative overflow-hidden rounded-lg border-t bg-bg md:border'>
             <div
                 contentEditable
                 ref={editorRef}

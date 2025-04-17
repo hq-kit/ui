@@ -1,18 +1,14 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
-import type {
-    GroupProps,
-    SeparatorProps,
-    ToolbarProps,
-} from 'react-aria-components'
+import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
 import {
-    composeRenderProps,
     Group,
-    Separator,
     Toolbar as RACToolbar,
+    Separator,
     ToolbarContext,
+    composeRenderProps,
     useSlottedContext
 } from 'react-aria-components'
 
@@ -69,7 +65,7 @@ const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
         <Separator
             className={cn(
                 'bg-muted',
-                orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : ' my-1.5 min-w-8 w-fit h-px',
+                orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : ' my-1.5 h-px w-fit min-w-8',
                 className
             )}
             {...props}

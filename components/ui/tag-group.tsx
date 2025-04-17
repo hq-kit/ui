@@ -4,7 +4,7 @@ import React from 'react'
 
 import { IconX } from 'hq-icons'
 import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
-import { Button, composeRenderProps, Tag as RACTag, TagGroup as RACTagGroup, TagList } from 'react-aria-components'
+import { Button, Tag as RACTag, TagGroup as RACTagGroup, TagList, composeRenderProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
@@ -69,7 +69,7 @@ const tagStyles = tv({
     variants: {
         isSelected: { false: '!bg-(--bg)/10 !text-(--bg)' },
         isFocusVisible: {
-            true: 'ring-primary ring-2 ring-offset-2 outline-0'
+            true: 'outline-0 ring-2 ring-primary ring-offset-2'
         },
         isDisabled: { true: 'cursor-default opacity-50', false: 'cursor-pointer' },
         allowsRemoving: { true: 'pr-1' }
@@ -100,7 +100,7 @@ const Tag = (props: TagProps) => {
                         {allowsRemoving && (
                             <Button
                                 slot='remove'
-                                className='focus-visible:ring-primary -mr-0.5 grid size-3.5 place-content-center rounded-lg focus-visible:ring-1 focus:outline-none'
+                                className='-mr-0.5 grid size-3.5 place-content-center rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-primary'
                             >
                                 <IconX className='size-3 shrink-0' />
                             </Button>

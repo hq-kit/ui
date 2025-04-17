@@ -11,7 +11,7 @@ interface ContactProps {
 }
 export default function ContactList() {
     return (
-        <div className='grid w-full gap-2 mb-4'>
+        <div className='mb-4 grid w-full gap-2'>
             {contacts.map((contact) => (
                 <Contact key={contact.id} {...contact} />
             ))}

@@ -1,8 +1,8 @@
 'use client'
 
-import * as React from 'react'
+import type * as React from 'react'
 
-import { ColorFormat, ListBox } from 'react-aria-components'
+import { type ColorFormat, ListBox } from 'react-aria-components'
 
 import { ColorItem } from '@/components/controllers/colors/color-item'
 
@@ -22,9 +22,9 @@ export interface ColorRowProps extends React.HtmlHTMLAttributes<HTMLDivElement> 
 
 export function ColorShades({ item, selectedFormat, tailwindVariable }: ColorRowProps) {
     return (
-        <div className='bg-bg overflow-hidden rounded-lg border p-2'>
+        <div className='overflow-hidden rounded-lg border bg-bg p-2'>
             <div className='mb-2 flex items-center justify-center'>
-                <h3 className='text-muted-fg font-mono text-sm font-medium tracking-tight sm:text-sm'>{item.name}</h3>
+                <h3 className='font-medium font-mono text-muted-fg text-sm tracking-tight sm:text-sm'>{item.name}</h3>
             </div>
 
             <ListBox

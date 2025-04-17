@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Selection } from 'react-aria-components'
+import type { Selection } from 'react-aria-components'
 
 import { Button, Form, MultiSelect } from '@/components/ui'
 

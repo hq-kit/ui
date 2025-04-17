@@ -13,7 +13,6 @@ import type {
 } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     Dialog,
     DialogTrigger,
     Heading,
@@ -22,7 +21,8 @@ import {
     OverlayTriggerStateContext,
     Modal as RACModal,
     Popover as RACPopover,
-    Text
+    Text,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { useMediaQuery } from '@/lib/hooks'
@@ -43,9 +43,9 @@ const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & 
                     isOpen={props?.isOpen || state?.isOpen}
                     onOpenChange={props?.onOpenChange || state?.setOpen}
                     initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    animate={{ backgroundColor: `rgba(0, 0, 0, 0.5)`, backdropFilter: 'blur(2px)' }}
+                    animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(2px)' }}
                     exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    className='fixed inset-0 z-50 [--visual-viewport-vertical-padding:32px] will-change-auto'
+                    className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
                     isDismissable
                     {...props}
                 >
@@ -53,7 +53,7 @@ const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & 
                         <Modal
                             isDismissable
                             className={cn(
-                                'bg-bg rounded-t-2xl border-t fixed bottom-0 w-full shadow-sm will-change-transform max-h-full overflow-hidden',
+                                'fixed bottom-0 max-h-full w-full overflow-hidden rounded-t-2xl border-t bg-bg shadow-sm will-change-transform',
                                 className
                             )}
                             initial={{ y: '100%' }}
@@ -75,10 +75,10 @@ const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & 
                         >
                             <Dialog
                                 aria-label='Popover'
-                                className='relative flex flex-col max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] overflow-hidden outline-hidden'
+                                className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
                             >
-                                <div className='w-full h-8 touch-none py-2' onPointerDown={(e) => controls.start(e)}>
-                                    <div className='mx-auto w-12 h-1.5 rounded-full bg-muted' />
+                                <div className='h-8 w-full touch-none py-2' onPointerDown={(e) => controls.start(e)}>
+                                    <div className='mx-auto h-1.5 w-12 rounded-full bg-muted' />
                                 </div>
                                 {props.children as React.ReactNode}
                             </Dialog>
@@ -94,9 +94,9 @@ const PopoverMode = ({ className, children, showArrow, ...props }: PopoverProps 
     <RACPopover
         className={composeRenderProps(className, (className, { isEntering, isExiting, placement }) =>
             cn(
-                'group max-w-sm bg-bg rounded-lg border shadow transition outline-hidden',
-                isEntering && 'fade-in animate-in zoom-in-95',
-                isExiting && 'fade-out animate-out zoom-out-95',
+                'group max-w-sm rounded-lg border bg-bg shadow outline-hidden transition',
+                isEntering && 'fade-in zoom-in-95 animate-in',
+                isExiting && 'fade-out zoom-out-95 animate-out',
                 placement === 'top' && `mb-2 ${isEntering ? 'slide-in-from-bottom-2' : 'slide-out-to-bottom-2'}`,
                 placement === 'right' && `ml-2 ${isEntering ? 'slide-in-from-left-2' : 'slide-out-to-left-2'}`,
                 placement === 'bottom' && `mt-2 ${isEntering ? 'slide-in-from-top-2' : 'slide-out-to-top-2'}`,
@@ -114,7 +114,7 @@ const PopoverMode = ({ className, children, showArrow, ...props }: PopoverProps 
                             width={12}
                             height={12}
                             viewBox='0 0 12 12'
-                            className='block fill-bg stroke-muted group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
+                            className='group-placement-left:-rotate-90 block fill-bg stroke-muted group-placement-bottom:rotate-180 group-placement-right:rotate-90'
                         >
                             <path d='M0 0 L6 6 L12 0' />
                         </svg>
@@ -157,7 +157,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     <div
         slot='body'
         className={cn(
-            'isolate flex flex-col overflow-auto px-4 py-1 max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]',
+            'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-4 py-1',
             className
         )}
         {...props}
@@ -168,7 +168,7 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
     return (
         <div
             slot='footer'
-            className={cn('isolate flex sm:flex-row flex-col-reverse justify-end gap-2 mt-auto p-4', className)}
+            className={cn('isolate mt-auto flex flex-col-reverse justify-end gap-2 p-4 sm:flex-row', className)}
             {...props}
         />
     )

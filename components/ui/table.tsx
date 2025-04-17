@@ -7,10 +7,10 @@ import type {
     CellProps,
     ColumnProps,
     ColumnResizerProps,
-    RowProps,
-    TableBodyProps,
     TableHeaderProps as HeaderProps,
-    TableProps as RACTableProps
+    TableProps as RACTableProps,
+    RowProps,
+    TableBodyProps
 } from 'react-aria-components'
 import {
     Button,
@@ -18,12 +18,12 @@ import {
     Collection,
     Column,
     ColumnResizer as RACColumnResizer,
-    composeRenderProps,
-    ResizableTableContainer,
-    Row,
     Table as RACTable,
     TableBody as RACTableBody,
     TableHeader as RACTableHeader,
+    ResizableTableContainer,
+    Row,
+    composeRenderProps,
     useTableOptions
 } from 'react-aria-components'
 
@@ -84,7 +84,7 @@ const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
             )
         )}
     >
-        <div className='w-px h-full' />
+        <div className='h-full w-px' />
     </RACColumnResizer>
 )
 
@@ -92,7 +92,7 @@ const TableBody = <T extends object>(props: TableBodyProps<T>) => (
     <RACTableBody
         {...props}
         className={cn(
-            '**:data-drop-target:outline **:data-drop-target:outline-primary **:data-drop-target:py-2',
+            '**:data-drop-target:py-2 **:data-drop-target:outline **:data-drop-target:outline-primary',
             props.className
         )}
     />
@@ -132,7 +132,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
             {...props}
             className={composeRenderProps(className, (className, { isResizing, allowsSorting }) =>
                 cn(
-                    'relative whitespace-nowrap p-3 text-left font-medium outline-hidden **:has-[slot=selection]:pr-0 first:pl-6 last:pr-6',
+                    'relative whitespace-nowrap p-3 text-left font-medium outline-hidden first:pl-6 last:pr-6 **:has-[slot=selection]:pr-0',
                     isResizable && 'overflow-hidden truncate',
                     isResizing && 'cursor-grabbing',
                     allowsSorting && 'cursor-pointer',
@@ -199,7 +199,7 @@ const TableRow = <T extends object>({ children, className, columns, id, ref, ...
                         isSelected && 'bg-primary/15 text-primary',
                         isHovered && 'bg-primary/10 text-primary',
                         {
-                            'outline outline-primary bg-primary/15 text-primary': isFocusVisible || isFocusVisibleWithin
+                            'bg-primary/15 text-primary outline outline-primary': isFocusVisible || isFocusVisibleWithin
                         },
                         isDisabled && 'pointer-events-none opacity-50',
                         className

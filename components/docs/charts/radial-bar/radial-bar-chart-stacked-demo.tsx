@@ -19,7 +19,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function SalesPerformanceOverview() {
-    const totalRevenue = chartData[0]!.sales + chartData[0]!.profit
+    const totalRevenue = chartData[0]?.sales + chartData[0]?.profit
 
     return (
         <Card>
@@ -41,7 +41,7 @@ export default function SalesPerformanceOverview() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={(viewBox.cy || 0) - 16}
-                                                    className='fill-fg text-2xl font-bold'
+                                                    className='fill-fg font-bold text-2xl'
                                                 >
                                                     {totalRevenue.toLocaleString()}
                                                 </tspan>
@@ -63,14 +63,14 @@ export default function SalesPerformanceOverview() {
                             stackId='a'
                             cornerRadius={5}
                             fill='var(--color-sales)'
-                            className='stroke-transparent stroke-2'
+                            className='stroke-2 stroke-transparent'
                         />
                         <RadialBar
                             dataKey='profit'
                             fill='var(--color-profit)'
                             stackId='a'
                             cornerRadius={5}
-                            className='stroke-transparent stroke-2'
+                            className='stroke-2 stroke-transparent'
                         />
                     </RadialBarChart>
                 </Chart>

@@ -3,7 +3,6 @@
 import React from 'react'
 
 import { IconBrandCleon, IconMenu, IconSearch } from 'hq-icons'
-import { usePathname } from 'next/navigation'
 
 import { Aside } from '@/components/layouts/aside'
 import { NavbarDropdown } from '@/components/layouts/navbar'
@@ -12,14 +11,13 @@ import { Button, Link, Sheet } from '@/components/ui'
 
 export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean) => void }) {
     const [openAside, setOpenAside] = React.useState(false)
-    const pathname = usePathname()
-    React.useEffect(() => setOpenAside(false), [pathname])
+    React.useEffect(() => setOpenAside(false), [])
     return (
-        <nav className='z-10 bg-bg/10 backdrop-blur-lg sticky top-0 md:h-14 lg:hidden'>
+        <nav className='sticky top-0 z-10 bg-bg/10 backdrop-blur-lg md:h-14 lg:hidden'>
             <div className='flex items-center justify-between py-2 pr-2 pl-4'>
                 <Button
                     aria-label='Open Menu.'
-                    className='[&_[data-slot=icon]]:text-fg -ml-2'
+                    className='-ml-2 [&_[data-slot=icon]]:text-fg'
                     variant='outline'
                     icon
                     onPress={() => {

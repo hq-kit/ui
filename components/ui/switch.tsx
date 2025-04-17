@@ -1,6 +1,6 @@
 'use client'
 
-import { composeRenderProps, Switch as RACSwitch, type SwitchProps as RACSwitchProps } from 'react-aria-components'
+import { Switch as RACSwitch, type SwitchProps as RACSwitchProps, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -25,7 +25,7 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
                         className={cn(
                             'mr-2 inline-flex h-5 w-8 items-center rounded-xl border border-transparent bg-muted transition',
                             {
-                                'ring-2 ring-offset-2 border-primary/70 ring-primary/20':
+                                'border-primary/70 ring-2 ring-primary/20 ring-offset-2':
                                     isFocused || isFocusVisible || isPressed
                             },
                             isSelected && 'bg-primary',
@@ -34,7 +34,7 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
                     >
                         <span
                             className={cn(
-                                'bg-primary-fg block size-4 origin-right rounded-lg shadow-sm transition-transform duration-200 ease-in-out',
+                                'block size-4 origin-right rounded-lg bg-primary-fg shadow-sm transition-transform duration-200 ease-in-out',
                                 isSelected && 'ml-3'
                             )}
                         />

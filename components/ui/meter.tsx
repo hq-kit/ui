@@ -20,18 +20,18 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                     <div className='flex w-full justify-between gap-2'>
                         {label && <Label>{label}</Label>}
                         <span
-                            className={`text-sm flex items-center tabular-nums ${percentage >= 80 ? 'text-danger' : 'text-muted-fg'}`}
+                            className={`flex items-center text-sm tabular-nums ${percentage >= 80 ? 'text-danger' : 'text-muted-fg'}`}
                         >
                             {percentage >= 80 && (
                                 <IconCircleAlert
                                     aria-label='Alert'
-                                    className='fill-danger/20 inline text-danger size-4 mr-1'
+                                    className='mr-1 inline size-4 fill-danger/20 text-danger'
                                 />
                             )}
                             {valueText}
                         </span>
                     </div>
-                    <div className='bg-muted relative h-2 min-w-64 rounded-lg outline-hidden'>
+                    <div className='relative h-2 min-w-64 rounded-lg bg-muted outline-hidden'>
                         <motion.div
                             className='absolute top-0 left-0 h-full rounded-full'
                             initial={{ width: '0%', backgroundColor: 'transparent' }}
@@ -51,11 +51,14 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
 const getColor = (percentage: number) => {
     if (percentage < 25) {
         return 'var(--info)'
-    } else if (percentage < 50) {
+    }
+    if (percentage < 50) {
         return 'var(--success)'
-    } else if (percentage < 75) {
+    }
+    if (percentage < 75) {
         return 'var(--warning)'
-    } else return 'var(--danger)'
+    }
+    return 'var(--danger)'
 }
 
 export { Meter }

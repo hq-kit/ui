@@ -17,7 +17,7 @@ const items = [
 
 export default function MultiSelectDemo() {
     return (
-        <div className='grid sm:grid-cols-3 gap-2'>
+        <div className='grid gap-2 sm:grid-cols-3'>
             <MultiSelect label='Default' items={items}>
                 {(item) => {
                     return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>

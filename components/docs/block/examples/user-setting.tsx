@@ -13,7 +13,7 @@ export default function UserSetting() {
     const isMobile = useMediaQuery('(max-width: 767px)')
     return (
         <NavbarLayout variant='float'>
-            <Container className='py-6 @xl:py-12'>
+            <Container className='@xl:py-12 py-6'>
                 <Card className='mb-6'>
                     <Card.Header>
                         <Card.Title>User Setting</Card.Title>

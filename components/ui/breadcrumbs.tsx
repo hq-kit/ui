@@ -4,7 +4,7 @@ import React from 'react'
 
 import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
 import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
-import { Breadcrumb, composeRenderProps, Link, Breadcrumbs as RACBreadcrumbs } from 'react-aria-components'
+import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -51,7 +51,7 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
 
 const Separator = ({ separator = 'chevron' }: { separator?: BreadcrumbsContextProps['separator'] }) => {
     return (
-        <span className='*:text-muted-fg select-none'>
+        <span className='select-none *:text-muted-fg'>
             {separator === 'chevron' && <IconChevronRight />}
             {separator === 'slash' && <IconSlash />}
             {separator === 'dash' && <IconMinus />}

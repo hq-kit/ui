@@ -57,7 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Sidebar.Rail />
                 <Sidebar.Trigger />
             </Sidebar>
-            <div className='p-4 md:p-6 w-full'>{children}</div>
+            <div className='w-full p-4 md:p-6'>{children}</div>
         </div>
     )
 }

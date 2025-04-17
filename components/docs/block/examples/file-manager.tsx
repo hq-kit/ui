@@ -18,15 +18,14 @@ export default function FileManager() {
 
     React.useEffect(() => {
         setFiles(paths.filter((path) => path.startsWith(dir)))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dir])
+    }, [dir, paths])
 
     return (
         <FileManagerLayout rootDir={dir} setRootDir={setDir}>
             <header className='sticky top-0 flex h-[3.57rem] items-center justify-between gap-x-2 px-4'>
                 <span className='flex items-center gap-x-4'>
                     <Breadcrumbs
-                        onAction={(v) => setDir(v + '/')}
+                        onAction={(v) => setDir(`${v}/`)}
                         className='hidden md:flex'
                         items={dir
                             .split('/')
@@ -79,7 +78,7 @@ export default function FileManager() {
                         <GridList.Item
                             textValue={item.id}
                             id={item.id}
-                            onAction={() => !item.id.includes('.') && setDir(dir + item.id.split('/')[0] + '/')}
+                            onAction={() => !item.id.includes('.') && setDir(`${dir + item.id.split('/')[0]}/`)}
                         >
                             {getFileIcon(item.id.split('.').pop() || 'folder')}
                             {item.id}

@@ -7,7 +7,7 @@ import type { Key } from 'react-aria-components'
 
 import FileExplorer from '@/components/mdx/file-explorer'
 import PreviewContent from '@/components/mdx/preview-content'
-import { buttonStyles, Link, Tabs, Toggle } from '@/components/ui'
+import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -29,9 +29,9 @@ export default function Block({ page, zoomOut = 0.6, height = 768, className, ..
                 </Tabs.List>
                 <Tabs.Content className='w-full' id='preview'>
                     <div
-                        className={cn('bg-bg relative w-full', 'flex min-h-56 items-center justify-center lg:min-h-80')}
+                        className={cn('relative w-full bg-bg', 'flex min-h-56 items-center justify-center lg:min-h-80')}
                     >
-                        <div className='absolute right-0 hidden sm:flex gap-1 sm:-top-14 z-20'>
+                        <div className='sm:-top-14 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Link
                                 target='_blank'
                                 className={buttonStyles({

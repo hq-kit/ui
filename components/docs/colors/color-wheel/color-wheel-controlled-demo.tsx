@@ -9,7 +9,7 @@ import { ColorWheel } from '@/components/ui'
 export default function ColorWheelControlledDemo() {
     const [color, setColor] = React.useState(parseColor('hsl(0, 100%, 50%)'))
     return (
-        <div className='flex flex-col gap-4 items-center'>
+        <div className='flex flex-col items-center gap-4'>
             <ColorWheel aria-label='Background color' value={color} onChange={setColor} />
             <code>color: {JSON.stringify(color)}</code>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { composeRenderProps, ProgressBar, type ProgressBarProps } from 'react-aria-components'
+import { ProgressBar, type ProgressBarProps, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -74,7 +74,7 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                 {label && <Label>{label}</Label>}
                                 {valueText && <span className='text-muted-fg text-sm tabular-nums'>{valueText}</span>}
                             </div>
-                            <div className='bg-muted relative h-2 min-w-64 overflow-hidden rounded-lg outline-hidden'>
+                            <div className='relative h-2 min-w-64 overflow-hidden rounded-lg bg-muted outline-hidden'>
                                 <motion.div
                                     className={cn(
                                         'absolute top-0 left-0 h-full rounded-full',
@@ -91,7 +91,7 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                     transition={{
                                         duration: 1.5,
                                         ease: 'easeInOut',
-                                        repeat: isIndeterminate ? Infinity : 0
+                                        repeat: isIndeterminate ? Number.POSITIVE_INFINITY : 0
                                     }}
                                 />
                             </div>

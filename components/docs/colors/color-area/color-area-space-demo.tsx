@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { ColorSpace, Key } from 'react-aria-components'
+import type { ColorSpace, Key } from 'react-aria-components'
 
 import { ColorArea, Select } from '@/components/ui'
 

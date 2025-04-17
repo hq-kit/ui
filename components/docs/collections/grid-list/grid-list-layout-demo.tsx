@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Key } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 
 import { GridList, Select } from '@/components/ui'
 
@@ -25,7 +25,7 @@ export default function GridListLayoutDemo() {
 
     return (
         <div className='flex flex-col gap-4'>
-            <div className='flex gap-2 w-full'>
+            <div className='flex w-full gap-2'>
                 <Select className='w-full' label='Columns' selectedKey={columns} onSelectionChange={setColumns}>
                     <Select.Item id={1}>1</Select.Item>
                     <Select.Item id={2}>2</Select.Item>

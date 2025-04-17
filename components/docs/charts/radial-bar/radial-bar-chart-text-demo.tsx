@@ -50,9 +50,9 @@ export default function ProductSalesOverview() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={viewBox.cy}
-                                                    className='fill-fg text-4xl font-bold'
+                                                    className='fill-fg font-bold text-4xl'
                                                 >
-                                                    {chartData[0]!.sales.toLocaleString()}
+                                                    {chartData[0]?.sales.toLocaleString()}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}

@@ -37,7 +37,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         <strong className='text-fg'> React</strong>, most of these icons are forked from{' '}
                         <Link
                             target='_blank'
-                            className='text-fg hover:text-primary font-semibold text-base'
+                            className='font-semibold text-base text-fg hover:text-primary'
                             href='https://tabler.io/icons'
                         >
                             Tabler Icons
@@ -45,14 +45,14 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                         and{' '}
                         <Link
                             target='_blank'
-                            className='text-fg hover:text-primary font-semibold text-base'
+                            className='font-semibold text-base text-fg hover:text-primary'
                             href='https://lucide.dev/icons/'
                         >
                             Lucide Icons
                         </Link>
                         <br />
                         This Icon Libray used for{' '}
-                        <Link className='text-fg hover:text-primary font-semibold text-base' target='_blank' href='/'>
+                        <Link className='font-semibold text-base text-fg hover:text-primary' target='_blank' href='/'>
                             HQ UI
                         </Link>
                     </HeroDescription>
@@ -78,7 +78,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                 <React.Suspense
                     fallback={
                         <div className='flex min-h-96 w-full items-center justify-center'>
-                            <IconLoader className='animate-spin size-7' />
+                            <IconLoader className='size-7 animate-spin' />
                         </div>
                     }
                 >

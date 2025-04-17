@@ -2,7 +2,7 @@
 
 import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconEllipsis } from 'hq-icons'
 import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
-import { composeRenderProps, ListBox, ListBoxItem, ListBoxSection, Text } from 'react-aria-components'
+import { ListBox, ListBoxItem, ListBoxSection, Text, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -35,42 +35,42 @@ interface PaginationItemProps extends ListBoxItemProps {
     children?: React.ReactNode
     className?: string
     isCurrent?: boolean
-    role?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
+    slot?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
 }
-const PaginationItem = ({ role = 'page', className, isCurrent, children, ...props }: PaginationItemProps) => {
-    const textValue = role === 'page' ? children?.toString() : role
+const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...props }: PaginationItemProps) => {
+    const textValue = slot === 'page' ? children?.toString() : slot
     return (
         <ListBoxItem
-            isDisabled={props.isDisabled || role === 'ellipsis'}
+            isDisabled={props.isDisabled || slot === 'ellipsis'}
             textValue={textValue}
             className={composeRenderProps(
                 className,
                 (className, { isHovered, isPressed, isSelected, isDisabled, isFocusVisible }) =>
                     cn(
-                        'inline-flex size-10 text-sm items-center justify-center gap-x-2 font-medium whitespace-nowrap transition outline-hidden',
+                        'inline-flex size-10 items-center justify-center gap-x-2 whitespace-nowrap font-medium text-sm outline-hidden transition',
                         'group-data-[shape=circle]:rounded-full group-data-[shape=square]:rounded-lg',
                         isHovered && 'bg-primary/10 text-primary',
                         isPressed && 'bg-primary/20 text-primary',
-                        isFocusVisible && 'ring-4 border-primary ring-primary/20',
+                        isFocusVisible && 'border-primary ring-4 ring-primary/20',
                         {
-                            'bg-primary text-primary-fg pointer-events-none': isCurrent || isSelected
+                            'pointer-events-none bg-primary text-primary-fg': isCurrent || isSelected
                         },
                         isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
-                        role !== 'ellipsis' && 'border',
+                        slot !== 'ellipsis' && 'border',
                         className
                     )
             )}
             {...props}
         >
-            {role === 'ellipsis' ? (
+            {slot === 'ellipsis' ? (
                 <IconEllipsis />
-            ) : role === 'first' ? (
+            ) : slot === 'first' ? (
                 <IconChevronsLeft />
-            ) : role === 'last' ? (
+            ) : slot === 'last' ? (
                 <IconChevronsRight />
-            ) : role === 'previous' ? (
+            ) : slot === 'previous' ? (
                 <IconChevronLeft />
-            ) : role === 'next' ? (
+            ) : slot === 'next' ? (
                 <IconChevronRight />
             ) : (
                 children
@@ -88,7 +88,7 @@ const PaginationLabel = ({ className, current, total, ...props }: PaginationLabe
         textValue={`${String(current)}/${String(total)}`}
         isDisabled
         className={cn(
-            'inline-flex select-none px-4 h-10 text-sm items-center text-muted-fg justify-center gap-x-2 font-medium whitespace-nowrap transition outline-hidden',
+            'inline-flex h-10 select-none items-center justify-center gap-x-2 whitespace-nowrap px-4 font-medium text-muted-fg text-sm outline-hidden transition',
             className
         )}
         {...props}

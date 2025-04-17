@@ -70,7 +70,7 @@ export const rootFolders: FileNode[] = [
     }
 ]
 
-export function mapFilePaths(nodes: FileNode[], parentPath: string = ''): string[] {
+export function mapFilePaths(nodes: FileNode[], parentPath = ''): string[] {
     let paths: string[] = []
     for (const node of nodes) {
         const currentPath = parentPath ? `${parentPath}/${node.file}` : node.file
@@ -111,7 +111,6 @@ export const getFileIcon = (ext: string) => {
             Icon = IconDisc
             break
         default:
-        case 'folder':
             Icon = IconFolder
             break
     }

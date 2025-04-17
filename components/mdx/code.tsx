@@ -43,7 +43,7 @@ export default function Code({
                     <CopyButton isCopied={copied} onPress={copyCode} />
                 </div>
             )}
-            <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:!border-0 [&_pre]:pb-[100px]'>
+            <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:!border-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:pb-[100px]'>
                 <CodeHighlighter lang={lang} code={code} />
             </div>
         </div>
@@ -88,5 +88,5 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
         return <p>Error: {error}</p>
     }
 
-    return <div className='!font-mono bg-gradient-dark' dangerouslySetInnerHTML={{ __html: formattedCode }} />
+    return <div className='!font-mono' dangerouslySetInnerHTML={{ __html: formattedCode }} />
 }

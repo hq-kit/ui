@@ -1,13 +1,13 @@
 'use client'
 
 import {
-    composeRenderProps,
     type DateInputProps,
     DateSegment,
     type DateValue,
     DateField as RACDateField,
     type DateFieldProps as RACDateFieldProps,
-    DateInput as RACDateInput
+    DateInput as RACDateInput,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -65,7 +65,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
                 <DateSegment
                     segment={segment}
                     className={cn(
-                        'type-literal:px-0 text-fg inline shrink-0 rounded-sm p-0.5 tracking-wider tabular-nums caret-transparent outline-0 sm:text-sm sm:uppercase',
+                        'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-fg tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
                         segment.isPlaceholder && 'text-muted-fg',
                         'focus:bg-primary/70 focus:text-primary-fg',
                         'invalid:not-type-literal:text-danger invalid:focus:text-primary-fg'

@@ -43,7 +43,7 @@ export default function ChattingAppLayout() {
             </Sidebar.Content>
             <Sidebar.Footer>
                 <Menu>
-                    <Menu.Trigger className='group p-2 size-full justify-between items-center flex hover:bg-muted pressed:bg-muted rounded-lg'>
+                    <Menu.Trigger className='group flex size-full items-center justify-between rounded-lg pressed:bg-muted p-2 hover:bg-muted'>
                         <User
                             src='https://github.com/dq-alhq.png'
                             name='DQ Al Haqqi'
@@ -55,7 +55,7 @@ export default function ChattingAppLayout() {
                     <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
-                            <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                            <span className='font-normal text-muted-fg'>@dq-alhq</span>
                         </Menu.Header>
                         <Menu.Item href='#setting'>
                             <IconSettings />

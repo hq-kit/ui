@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { Button, DateField, Form } from '@/components/ui'
-import { type CalendarDate } from '@internationalized/date'
+import type { CalendarDate } from '@internationalized/date'
 
 export default function DateFieldValidationDemo() {
     const [value, setValue] = React.useState<CalendarDate>()

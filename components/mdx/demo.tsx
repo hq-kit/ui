@@ -30,13 +30,13 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                 <Tabs.Content id='preview'>
                     <div
                         className={cn(
-                            'border-muted not-prose bg-bg relative w-full gap-4 rounded-lg border border-dashed p-6 overflow-auto',
+                            'not-prose relative w-full gap-4 overflow-auto rounded-lg border border-muted border-dashed bg-bg p-6',
                             center && 'grid min-h-20 place-content-center py-6 sm:py-12'
                         )}
                     >
                         <React.Suspense
                             fallback={
-                                <div className='text-muted-fg flex w-full items-center justify-center text-sm'>
+                                <div className='flex w-full items-center justify-center text-muted-fg text-sm'>
                                     <IconLoaderCircle className='size-12 animate-spin' />
                                 </div>
                             }

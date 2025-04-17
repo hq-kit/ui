@@ -44,7 +44,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         const layoutName: string = componentData.match(/'layouts\/([^']*?)'/g)
 
         if (componentNames || layoutName || componentData) {
-            const components = componentNames ? componentNames.map((c: string) => 'block/' + c.replaceAll("'", '')) : []
+            const components = componentNames ? componentNames.map((c: string) => `block/${c.replaceAll("'", '')}`) : []
             const componentExists = components.filter((component: string) => component in previews)
             setComponents(componentExists)
             const layoutExists = layoutName && `block/${layoutName[0].replaceAll("'", '')}`
@@ -57,8 +57,17 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                 /* @ts-expect-error unknown-types */ // prettier-ignore
                 allComponents += componentExists.map((c) => previews[c as string].raw).join('')
 
-            /* @ts-expect-error unknown-types */ // prettier-ignore
-            const uiComponentNames = [...new Set((allComponents.match(/import\s+{([^}]+)}\s+from\s+'@\/components\/ui'/g) || []).flatMap(match => match.match(/{([^}]+)}/)[1].split(',').map(comp => comp.trim())))]
+            const uiComponentNames = [
+                ...new Set(
+                    (allComponents.match(/import\s+{([^}]+)}\s+from\s+'@\/components\/ui'/g) || []).flatMap(
+                        (match: string) =>
+                            match
+                                ?.match(/{([^}]+)}/)?.[1]
+                                .split(',')
+                                .map((comp: string) => comp.trim())
+                    )
+                )
+            ]
 
             if (uiComponentNames) {
                 /* @ts-expect-error unknown-types */ // prettier-ignore
@@ -79,7 +88,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             if (selected === 'index') {
                 setCode(`${uiComponents.map((c) => `export * from './${c}'`).join('\n')}`)
             } else {
-                setCode(``)
+                setCode('')
             }
         }
     }, [selected, uiComponents])
@@ -88,7 +97,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         <TreeItem
             className={cn(
                 selected === item.id && 'bg-primary/10 text-primary',
-                'hover:bg-primary/10 hover:text-primary cursor-pointer transition'
+                'cursor-pointer transition hover:bg-primary/10 hover:text-primary'
             )}
             key={item.id}
             id={item.id}
@@ -125,7 +134,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             children: [
                 {
                     id: page,
-                    title: page.split('/').pop() + '.tsx' || 'page.tsx',
+                    title: `${page.split('/').pop()}.tsx` || 'page.tsx',
                     children: []
                 }
             ]
@@ -138,7 +147,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             children: [
                 {
                     id: layout,
-                    title: layout.split('/').pop() + '.tsx' || 'page.tsx',
+                    title: `${layout.split('/').pop()}.tsx` || 'page.tsx',
                     children: []
                 }
             ]
@@ -149,14 +158,14 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         const componentsUsed = components.sort().map((component: string) => {
             return {
                 id: component,
-                title: component.split('/').pop() + '.tsx',
+                title: `${component.split('/').pop()}.tsx`,
                 children: []
             }
         })
         const uiComponentsUsed = uiComponents.sort().map((component: string) => {
             return {
                 id: component,
-                title: component + '.tsx',
+                title: `${component}.tsx`,
                 children: []
             }
         })
@@ -187,7 +196,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             <Tree
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
-                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-l-lg lg:rounded-r-none lg:border-r lg:border-b-0',
+                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
                     sidebarOpen ? 'min-h-40 overflow-y-auto' : 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
                 )}
                 aria-label='Files'
@@ -196,18 +205,18 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
             >
                 {files.map(renderItem)}
             </Tree>
-            <div className='grid w-full grid-cols-1 place-content-start relative'>
-                <div className='relative flex h-12 items-center gap-2 border-b px-4 py-1 bg-primary/10 text-primary'>
+            <div className='relative grid w-full grid-cols-1 place-content-start'>
+                <div className='relative flex h-12 items-center gap-2 border-b bg-primary/10 px-4 py-1 text-primary'>
                     <Button
                         onPress={() => setSidebarOpen(!sidebarOpen)}
-                        className='absolute left-1/2 -mt-7 flex size-6 -translate-x-1/2 rotate-90 items-center justify-center lg:relative lg:left-0 lg:mt-0 lg:-ml-7 lg:translate-x-0 lg:rotate-0'
+                        className='-mt-7 -translate-x-1/2 lg:-ml-7 absolute left-1/2 flex size-6 rotate-90 items-center justify-center lg:relative lg:left-0 lg:mt-0 lg:translate-x-0 lg:rotate-0'
                     >
                         {sidebarOpen ? <IconPanelLeftClose /> : <IconPanelRightClose />}
                     </Button>
                     <IconBrandReact className='size-4' />
-                    {selected.split('/').pop() + '.tsx'}
+                    {`${selected.split('/').pop()}.tsx`}
                 </div>
-                <Code code={code} className='border-none static [&_pre]:max-h-full overflow-y-auto' />
+                <Code copyButton code={code} className='static overflow-y-auto border-none [&_pre]:max-h-full' />
             </div>
         </div>
     )

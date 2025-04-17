@@ -2,11 +2,11 @@
 
 import React from 'react'
 
-import { docs } from '#docs'
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { usePathname, useRouter } from 'next/navigation'
+import { docs } from '#docs'
 
-import { createHierarchy, type Doc, type Hierarchy } from '@/components/layouts/aside'
+import { type Doc, type Hierarchy, createHierarchy } from '@/components/layouts/aside'
 import { Command } from '@/components/ui'
 import { goodTitle } from '@/lib/utils'
 
@@ -19,6 +19,7 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
     const router = useRouter()
     const pathname = usePathname()
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     React.useEffect(() => {
         if (setOpen) {
             setOpen(false)

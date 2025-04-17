@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { MenuProps } from 'react-aria-components'
+import type { MenuProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
@@ -76,7 +76,7 @@ const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDi
     }
     return (
         <div
-            className={cn('cursor-default outline-hidden disabled:opacity-50 select-none', className)}
+            className={cn('cursor-default select-none outline-hidden disabled:opacity-50', className)}
             ref={triggerRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}

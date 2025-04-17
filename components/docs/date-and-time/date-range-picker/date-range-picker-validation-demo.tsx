@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { Button, DateRangePicker, Form } from '@/components/ui'
-import { CalendarDate } from '@internationalized/date'
+import type { CalendarDate } from '@internationalized/date'
 
 export default function DateRangePickerValidationDemo() {
     const [value, setValue] = React.useState<{ start: CalendarDate; end: CalendarDate }>()

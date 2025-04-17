@@ -20,7 +20,7 @@ export function CustomColor({ selectedFormat, tailwindVariable }: CustomColorPro
 
     return (
         <>
-            <div className='bg-bg overflow-hidden rounded-lg border p-2'>
+            <div className='overflow-hidden rounded-lg border bg-bg p-2'>
                 <ColorField className='max-w-56' value={parseColor(customColor)} onChange={handleChange} />
             </div>
             <ColorShades

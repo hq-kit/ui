@@ -34,7 +34,7 @@ const RangeCalendar = <T extends DateValue>({
                         <CalendarGrid
                             key={index}
                             offset={id >= 2 ? { months: id - 1 } : undefined}
-                            className='**:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg w-full'
+                            className='w-full **:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg'
                         >
                             <Calendar.GridHeader />
                             <CalendarGridBody>
@@ -50,16 +50,16 @@ const RangeCalendar = <T extends DateValue>({
                                             isDisabled
                                         }) =>
                                             cn([
-                                                'shrink-0 relative size-9 cursor-default outline-hidden',
+                                                'relative size-9 shrink-0 cursor-default outline-hidden',
                                                 '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
                                                 isSelectionStart && 'rounded-s-lg',
                                                 isSelectionEnd && 'rounded-e-lg',
                                                 isOutsideMonth && 'text-muted-fg',
                                                 isSelected &&
                                                     `${isInvalid ? 'bg-danger/15 text-danger' : 'bg-primary/10 text-primary'}`,
-                                                isDisabled && 'opacity-50 pointer-events-none',
+                                                isDisabled && 'pointer-events-none opacity-50',
                                                 date.compare(now) === 0 &&
-                                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selection-start:after:bg-primary-fg selection-end:after:bg-primary-fg'
+                                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selection-end:after:bg-primary-fg selection-start:after:bg-primary-fg'
                                             ])
                                         }
                                     >
@@ -91,7 +91,7 @@ const RangeCalendar = <T extends DateValue>({
                     )
                 })}
             </div>
-            <FieldError className='text-danger text-sm/5 px-2'>{errorMessage}</FieldError>
+            <FieldError className='px-2 text-danger text-sm/5'>{errorMessage}</FieldError>
         </RangeCalendarPrimitive>
     )
 }

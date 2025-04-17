@@ -1,12 +1,10 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
-import {
-    Button,
-    ColorPicker as RACColorPicker,
-    type ColorPickerProps as RACColorPickerProps
-} from 'react-aria-components'
+import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
+
+import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
 
 import type { Placement } from '@react-types/overlays'
 
@@ -36,7 +34,7 @@ const ColorPicker = ({
     ...props
 }: ColorPickerProps) => {
     return (
-        <div className='flex flex-col gap-y-2 group'>
+        <div className='group flex flex-col gap-y-2'>
             <RACColorPicker {...props}>
                 <Popover>
                     <Button isDisabled={isDisabled} className='flex items-center gap-2 outline-hidden'>
@@ -44,7 +42,7 @@ const ColorPicker = ({
                         {label && <Label className='ml-2'>{label}</Label>}
                     </Button>
                     <Popover.Content showArrow={showArrow} placement={placement}>
-                        <Popover.Body className='space-y-2 pb-4 sm:py-4 overflow-visible'>
+                        <Popover.Body className='space-y-2 overflow-visible pb-4 sm:py-4'>
                             {children || (
                                 <>
                                     <ColorArea

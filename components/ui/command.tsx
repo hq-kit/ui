@@ -16,7 +16,6 @@ import {
     Autocomplete,
     Button,
     Collection,
-    composeRenderProps,
     Group,
     Header,
     Input,
@@ -25,7 +24,8 @@ import {
     MenuSection,
     Separator,
     Text,
-    TextField
+    TextField,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
@@ -39,23 +39,23 @@ interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputVa
 
 const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
-        <div className='border rounded-lg'>
+        <div className='rounded-lg border'>
             <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
-                <TextField autoFocus className='p-1 border-b' aria-label='Search'>
+                <TextField autoFocus className='border-b p-1' aria-label='Search'>
                     <Group className='flex items-center px-2'>
                         {props.isPending ? (
-                            <IconLoader className='animate-spin size-4 shrink-0 text-muted-fg' />
+                            <IconLoader className='size-4 shrink-0 animate-spin text-muted-fg' />
                         ) : (
-                            <IconSearch className='text-muted-fg size-4 shrink-0' />
+                            <IconSearch className='size-4 shrink-0 text-muted-fg' />
                         )}
-                        <Input className='outline-hidden w-full p-2' placeholder='Search...' />
+                        <Input className='w-full p-2 outline-hidden' placeholder='Search...' />
                     </Group>
                 </TextField>
                 <Menu
                     renderEmptyState={() => (
-                        <div className='p-4 text-muted-fg col-span-full text-center'>No results found</div>
+                        <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>
                     )}
-                    className='grid outline-hidden w-full grid-cols-[auto_1fr_auto] gap-y-1 max-h-[30rem] overflow-y-auto p-2'
+                    className='grid max-h-[30rem] w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden'
                     {...props}
                 />
             </Autocomplete>
@@ -93,12 +93,14 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
                 e.preventDefault()
                 if (props.onOpenChange) {
                     return props.onOpenChange(!props.isOpen)
-                } else setShortcutOpen(!shortcutOpen)
+                }
+                setShortcutOpen(!shortcutOpen)
             } else if (e.key === 'Escape') {
                 e.preventDefault()
                 if (props.onOpenChange) {
                     return props.onOpenChange(false)
-                } else setShortcutOpen(false)
+                }
+                setShortcutOpen(false)
             }
         }
 
@@ -125,14 +127,14 @@ const CommandItem = ({ isDanger, children, className, ...props }: MenuItemProps 
         <MenuItem
             className={composeRenderProps(className, (className, { isFocused, isSelected, isDisabled }) =>
                 cn(
-                    'group relative grid grid-cols-subgrid col-span-full items-center',
-                    'rounded-md px-2 py-1.5 text-base sm:text-sm outline-hidden select-none',
-                    '**:[svg]:size-4 *:[svg]:mr-2 *:[svg]:my-1 *:data-avatar:mr-2 *:data-avatar:size-6',
+                    'group relative col-span-full grid grid-cols-subgrid items-center',
+                    'select-none rounded-md px-2 py-1.5 text-base outline-hidden sm:text-sm',
+                    '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
                     isDanger
-                        ? 'text-danger **:text-danger focus:bg-danger/10 open:bg-danger/10 open:text-danger focus:text-danger focus:**:text-danger'
+                        ? 'text-danger **:text-danger open:bg-danger/10 open:text-danger focus:bg-danger/10 focus:text-danger focus:**:text-danger'
                         : 'text-fg',
                     isFocused && 'bg-primary/10 text-primary',
-                    isSelected && '**:data-avatar:hidden **:data-avatar:*:hidden **:data-[slot=icon]:hidden',
+                    isSelected && '**:data-avatar:*:hidden **:data-[slot=icon]:hidden **:data-avatar:hidden',
                     isDisabled && 'pointer-events-none opacity-50',
                     className
                 )
@@ -155,9 +157,9 @@ const CommandLabel = ({ className, ...props }: TextProps) => (
 )
 
 const CommandSection = <T extends object>({ className, ...props }: MenuSectionProps<T> & { title?: string }) => (
-    <MenuSection className={cn('col-span-full text-sm grid grid-cols-[auto_1fr] mt-2', className)}>
+    <MenuSection className={cn('col-span-full mt-2 grid grid-cols-[auto_1fr] text-sm', className)}>
         {'title' in props && (
-            <Header className='text-muted-fg text-xs py-1 px-2 col-span-full pointer-events-none'>{props.title}</Header>
+            <Header className='pointer-events-none col-span-full px-2 py-1 text-muted-fg text-xs'>{props.title}</Header>
         )}
         <Collection items={props.items}>{props.children}</Collection>
     </MenuSection>
@@ -166,7 +168,7 @@ const CommandSection = <T extends object>({ className, ...props }: MenuSectionPr
 const CommandSeparator = ({ className, ...props }: SeparatorProps) => (
     <Separator
         orientation='horizontal'
-        className={cn('bg-muted col-span-full -mx-2 my-1 h-px', className)}
+        className={cn('-mx-2 col-span-full my-1 h-px bg-muted', className)}
         {...props}
     />
 )

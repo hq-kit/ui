@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import type React from 'react'
 
 import { IconMinus } from 'hq-icons'
 import type {
@@ -11,10 +11,10 @@ import type {
 } from 'react-aria-components'
 import {
     Button,
-    composeRenderProps,
     Disclosure as RACDisclosure,
     DisclosureGroup as RACDisclosureGroup,
-    DisclosurePanel as RACDisclosurePanel
+    DisclosurePanel as RACDisclosurePanel,
+    composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -54,7 +54,7 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
-                    'w-full rounded-lg min-w-60 transition duration-300 ease-in-out overflow-hidden',
+                    'w-full min-w-60 overflow-hidden rounded-lg transition duration-300 ease-in-out',
                     isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                     className
                 )
@@ -75,8 +75,8 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
             slot='trigger'
             className={composeRenderProps(className, (className, { isFocusVisible, isDisabled }) =>
                 cn(
-                    'flex w-full rounded-lg items-center justify-between gap-2 py-2 font-medium whitespace-nowrap sm:text-sm aria-expanded:**:data-[slot=indicator]:rotate-0',
-                    isFocusVisible && 'text-fg outline-2 outline-offset-2 outline-primary',
+                    'flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-lg py-2 font-medium aria-expanded:**:data-[slot=indicator]:rotate-0 sm:text-sm',
+                    isFocusVisible && 'text-fg outline-2 outline-primary outline-offset-2',
                     isDisabled && 'cursor-default opacity-50',
                     className
                 )
@@ -90,13 +90,13 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
                         data-slot='indicator'
                         className={cn(
                             className,
-                            'relative ml-auto inline-flex size-5 -rotate-90 items-center justify-center transition-transform duration-300'
+                            '-rotate-90 relative ml-auto inline-flex size-5 items-center justify-center transition-transform duration-300'
                         )}
                     >
                         <IconMinus data-slot='indicator-static' className='absolute size-3.5' />
                         <IconMinus
                             data-slot='indicator'
-                            className='absolute size-3.5 -rotate-90 transition-transform duration-300'
+                            className='-rotate-90 absolute size-3.5 transition-transform duration-300'
                         />
                     </div>
                 </>
@@ -109,7 +109,7 @@ const DisclosurePanel = ({ className, children, ...props }: DisclosurePanelProps
         <RACDisclosurePanel
             data-slot='disclosure-content'
             className={cn(
-                'transition-all duration-300 ease-in-out overflow-hidden',
+                'overflow-hidden transition-all duration-300 ease-in-out',
                 'max-h-0 opacity-0 aria-[hidden=false]:max-h-[1000px] aria-[hidden=false]:opacity-100',
                 className
             )}

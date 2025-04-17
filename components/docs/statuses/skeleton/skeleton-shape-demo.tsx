@@ -2,7 +2,7 @@ import { Card, Skeleton } from '@/components/ui'
 
 export default function SkeletonShapeDemo() {
     return (
-        <Card className='p-4 space-y-4'>
+        <Card className='space-y-4 p-4'>
             <div className='flex gap-2'>
                 <Skeleton shape='circle' className='size-9' />
                 <div className='space-y-1'>

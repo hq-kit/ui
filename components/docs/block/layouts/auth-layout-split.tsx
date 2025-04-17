@@ -22,7 +22,7 @@ export default function AuthLayoutSplit({
                     <Card.Content className='pb-6'>{children}</Card.Content>
                 </Card>
             </div>
-            <div className='bg-muted hidden lg:block'>
+            <div className='hidden bg-muted lg:block'>
                 <Image
                     src='https://picsum.photos/1920/1080'
                     alt='Image'

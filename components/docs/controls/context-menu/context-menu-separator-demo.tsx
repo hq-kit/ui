@@ -7,14 +7,14 @@ import { ContextMenu } from '@/components/ui'
 export default function ContextMenuSeparatorDemo() {
     return (
         <ContextMenu>
-            <ContextMenu.Trigger className='p-10 rounded-lg flex items-center justify-center border border-dashed'>
-                <p className='sm:flex hidden'>Right click here!</p>
-                <p className='sm:hidden flex'>Hold your finger here!</p>
+            <ContextMenu.Trigger className='flex items-center justify-center rounded-lg border border-dashed p-10'>
+                <p className='hidden sm:flex'>Right click here!</p>
+                <p className='flex sm:hidden'>Hold your finger here!</p>
             </ContextMenu.Trigger>
             <ContextMenu.Content aria-label='Context menu'>
                 <ContextMenu.Header>
                     <span className='block'>DQ Al-Haqqi</span>
-                    <span className='text-muted-fg font-normal'>@dq-alhq</span>
+                    <span className='font-normal text-muted-fg'>@dq-alhq</span>
                 </ContextMenu.Header>
                 <ContextMenu.Item>
                     <IconCircleUser />
