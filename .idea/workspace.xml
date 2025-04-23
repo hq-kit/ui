@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/modifiers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/components/paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/paginator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/chatting-app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/chatting-app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/user-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/user-setting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/controls/keyboard/keyboard-command-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/controls/keyboard/keyboard-command-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/docs-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/docs-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/badge.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/multi-select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/multi-select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/number-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/number-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/components/controls/keyboard.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/controls/keyboard.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/components/pickers/multi-select.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/pickers/multi-select.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/getting-started/client-side-routing.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/getting-started/client-side-routing.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/getting-started/installation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/getting-started/installation.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hooks/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hooks/docs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hooks/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +82,7 @@
       <workItem from="1745339032644" duration="17243000" />
       <workItem from="1745393047938" duration="7833000" />
       <workItem from="1745400926214" duration="213000" />
-      <workItem from="1745421275242" duration="7670000" />
+      <workItem from="1745421275242" duration="7950000" />
     </task>
     <servers />
   </component>
