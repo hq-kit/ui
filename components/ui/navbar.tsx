@@ -6,7 +6,7 @@ import { type ComponentProps, type RefObject, createContext, use, useCallback, u
 import type { LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from './button'
 import { Sheet } from './sheet'
@@ -52,7 +52,7 @@ const Navbar = ({
     variant = 'navbar',
     ...props
 }: NavbarProps) => {
-    const isCompact = useMediaQuery('(max-width: 768px)')
+    const isCompact = useIsMobile()
     const [_open, _setOpen] = useState(defaultOpen)
     const open = openProp ?? _open
 

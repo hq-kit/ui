@@ -5,350 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.velite/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.velite/index.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utils/modifiers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/docs/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/docs/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/docs/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/docs/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/icons/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/icons/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/block/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biome.json" beforeDir="false" afterPath="$PROJECT_DIR$/biome.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/color-create-preset.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/color-customizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/colors/color-customizer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/color-item.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/color-shades.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/colors/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/radix-colors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/select-format.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/colors/select-format.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/icons/icon-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/icons/icon-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/icons/select-size.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/icons/select-size.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/icons/select-stroke.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/icons/select-stroke.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/components/chatting-app/bubble-chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/chatting-app/bubble-chat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/components/chatting-app/message-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/chatting-app/message-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/components/file-manager/file-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/file-manager/file-list.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/block/components/paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/paginator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-setting/account-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/components/user-setting/account-setting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-classic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/auth-form-classic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-full.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/auth-form-full.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-modern.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/auth-form-modern.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/auth-form-overlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-split.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/auth-form-split.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/block/examples/chatting-app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/chatting-app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/file-manager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/file-manager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/product-management.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/product-management.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/user-profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/user-profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/block/examples/user-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/user-setting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/app-navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar-nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar-nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-classic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-classic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-full.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-full.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-modern.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-modern.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-overlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-split.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-split.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/file-manager-layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/file-manager-layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-basic-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/navbar/navbar-basic-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-floating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/navbar/navbar-floating-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-inset-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/navbar/navbar-inset-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-basic-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-basic-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-default-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-default-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-dock-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-dock-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-fixed-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-fixed-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-floating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-floating-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-inset-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-inset-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-off-canvas-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-off-canvas-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/buttons/file-trigger/file-trigger-avatar-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/buttons/file-trigger/file-trigger-avatar-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/buttons/file-trigger/file-trigger-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/buttons/file-trigger/file-trigger-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/buttons/toggle/toggle-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/buttons/toggle/toggle-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/buttons/toggle/toggle-group-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/buttons/toggle/toggle-group-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/collapsible/collapsible-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/collapsible/collapsible-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-layout-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-layout-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-selection-mode-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/grid-list/grid-list-selection-mode-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-item-details-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-item-details-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-selection-mode-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/list-box/list-box-selection-mode-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/menu/menu-section-level-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/menu/menu-section-level-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/menu/single-menu-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/menu/single-menu-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/table/table-bulk-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/table/table-bulk-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/table/table-filtering-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/table/table-filtering-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/table/table-sorting-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/table/table-sorting-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/tag-group/tag-group-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/tag-group/tag-group-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/tree/tree-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/tree/tree-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/collections/tree/tree-selection-mode-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/collections/tree/tree-selection-mode-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-channel-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-space-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-space-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-with-slider-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-area/color-area-with-slider-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-field/color-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-field/color-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-combination-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-combination-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-disabled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-disabled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-dynamic-label-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-dynamic-label-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-enable-selection-format-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-enable-selection-format-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-enable-swatch-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-enable-swatch-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-with-description-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-with-description-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-with-label-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-picker/color-picker-with-label-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-slider/color-slider-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-slider/color-slider-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-picker-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-picker-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-picker-item-disabled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-swatch/color-swatch-picker-item-disabled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/colors/color-wheel/color-wheel-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/colors/color-wheel/color-wheel-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/controls/command/command-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/controls/command/command-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/controls/command/command-trigger-by-keyboard-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/controls/command/command-trigger-by-keyboard-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-field-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-field-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-time-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-field/date-time-field-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-custom-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-custom-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-required-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-picker-required-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-time-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-picker/date-time-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-custom-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-custom-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-time-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-time-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/date-range-picker/date-range-picker-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-hc-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-hc-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/date-and-time/time-field/time-field-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/drag-and-drop/drop-zone-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/drag-and-drop/drop-zone-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-description-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-description-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox-group/checkbox-group-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox/checkbox-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox/checkbox-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/checkbox/checkbox-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/checkbox/checkbox-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/number-field/number-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/number-field/number-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/number-field/number-field-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/number-field/number-field-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/otp/otp-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/otp/otp-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/radio-group/radio-group-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/radio-group/radio-group-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/radio-group/radio-group-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/radio-group/radio-group-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-controlled-html-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-controlled-html-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-controlled-markdown-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-controlled-markdown-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-disabled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/rich-text-field/rich-text-field-disabled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/search-field/search-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/search-field/search-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/search-field/search-field-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/search-field/search-field-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-mode-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-mode-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-orientation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/selection-box/selection-box-orientation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-suffix-button-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-suffix-button-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/text-field/text-field-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/textarea/textarea-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/textarea/textarea-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/forms/textarea/textarea-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/forms/textarea/textarea-validation-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/controls/keyboard/keyboard-command-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/controls/keyboard/keyboard-command-demo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/media/avatar/avatar-initials-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/media/avatar/avatar-initials-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/media/carousel/carousel-api-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/media/carousel/carousel-api-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/media/carousel/carousel-autoplay-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/media/carousel/carousel-autoplay-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/modal/modal-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/modal/modal-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/modal/modal-nested-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/modal/modal-nested-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/modal/modal-size-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/modal/modal-size-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/popover/popover-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/popover/popover-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-menu-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-menu-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-position-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/overlays/sheet/sheet-position-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/combo-box/combo-box-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/combo-box/combo-box-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/combo-box/combo-box-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/combo-box/combo-box-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/select/select-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/select/select-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/pickers/select/select-validation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/select/select-validation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/badge/badge-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/badge/badge-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/meter/meter-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/meter/meter-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/note/note-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/note/note-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/note/note-hide-indicator-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/note/note-hide-indicator-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/note/note-variant-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/note/note-variant-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/progress/progress-bar-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/progress/progress-bar-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/progress/progress-circle-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/progress/progress-circle-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/progress/progress-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/progress/progress-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/statuses/progress/progress-variant-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/statuses/progress/progress-variant-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/aside.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/command-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/command-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/nav-link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/nav-link.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/pickers/multi-select/multi-select-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layouts/docs-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/docs-navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layouts/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/responsive-aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/responsive-aside.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/block.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/block.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/pager.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/preview-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/preview-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/references.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/references.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/source-code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/source-code.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/toc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/toc.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sink/table-sink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/table-sink.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-toggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/avatar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/breadcrumbs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/breadcrumbs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/chart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/chart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-area.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-area.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-swatch-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-swatch-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/color-swatch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-swatch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/combo-box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/combo-box.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/command.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/command.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/context-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/context-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/date-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/date-range-picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-range-picker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/description-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/description-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/disclosure.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/disclosure.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/file-trigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/file-trigger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/grid-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/grid-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/heading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/heading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/keyboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/keyboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/badge.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/meter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/meter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/multi-select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/multi-select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/note.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/note.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/number-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/number-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/otp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/otp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/pagination.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/radio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/radio.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/range-calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/range-calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/rich-text-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/rich-text-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/search-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/search-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/selection-box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/selection-box.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/separator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/separator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/sheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sheet.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/skeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/skeleton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/spoiler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/spoiler.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/switch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/switch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/tag-group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tag-group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/text-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/text-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/textarea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/time-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/time-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toolbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tooltip.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/buttons/button.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/buttons/file-trigger.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/buttons/toggle.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/area-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/bar-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/line-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/pie-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/radar-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/radial-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/scatter-chart.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/tooltip.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/accordion.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/collapsible.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/grid-list.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/list-box.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/table.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/tag-group.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/collections/tree.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-area.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-picker.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-slider.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-swatch-picker.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-swatch.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/colors/color-wheel.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/command.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/context-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/keyboard.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/slider.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/switch.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/controls/toolbar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/calendar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/date-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/date-picker.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/date-range-picker.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/range-calendar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/date-and-time/time-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/drag-and-drop/drop-zone.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/checkbox-group.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/checkbox.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/form.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/number-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/otp.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/radio-group.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/rich-text-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/search-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/selection-box.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/text-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/textarea.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/layouts/navbar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/layouts/sidebar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/media/avatar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/media/carousel.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/media/user.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/navigation/breadcrumbs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/navigation/link.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/navigation/pagination.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/navigation/tabs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/modal.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/popover.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/sheet.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/tooltip.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/pickers/combo-box.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/pickers/multi-select.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/pickers/select.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/badge.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/meter.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/note.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/progress.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/skeleton.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/statuses/toast.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/surfaces/card.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/surfaces/description-list.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/surfaces/separator.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/surfaces/spoiler.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/dark-mode/astro.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/dark-mode/inertia-js.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/dark-mode/next-js.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/dark-mode/remix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/dark-mode/vite.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/getting-started/greetings.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/getting-started/installation.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/getting-started/react-aria-routing.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hooks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hooks/use-mdx.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hooks/use-mounted.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hooks/use-mounted.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scripts/create-previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/scripts/create-previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/controls/keyboard.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/controls/keyboard.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/pickers/multi-select.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/pickers/multi-select.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/getting-started/client-side-routing.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/getting-started/client-side-routing.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/getting-started/installation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/getting-started/installation.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hooks/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hooks/docs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hooks/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/velite.config.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,6 +50,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2w5kanE0NPoWt3DZQkAh6gQh2yv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -423,6 +113,8 @@
       <workItem from="1745338892373" duration="127000" />
       <workItem from="1745339032644" duration="17243000" />
       <workItem from="1745393047938" duration="7833000" />
+      <workItem from="1745400926214" duration="213000" />
+      <workItem from="1745421275242" duration="7670000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,7 @@
 'use client'
 
-import { useMediaQuery } from '@/lib/hooks'
-
 import { Pagination } from '@/components/ui'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 interface PaginateProps {
@@ -14,7 +13,7 @@ interface PaginateProps {
 }
 
 export default function Paginator({ className, show, page, total, action }: PaginateProps) {
-    const isDesktop = useMediaQuery('(min-width: 1024px)')
+    const isMobile = useIsMobile()
 
     const meta = {
         total,
@@ -39,7 +38,23 @@ export default function Paginator({ className, show, page, total, action }: Pagi
             </div>
             <div>
                 <Pagination>
-                    {isDesktop ? (
+                    {isMobile ? (
+                        <>
+                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
+                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            <Pagination.Label current={meta.page} total={meta.last_page} />
+                            <Pagination.Item
+                                slot='next'
+                                isDisabled={meta.page === meta.last_page}
+                                onAction={actions.next}
+                            />
+                            <Pagination.Item
+                                slot='last'
+                                isDisabled={meta.page === meta.last_page}
+                                onAction={actions.last}
+                            />
+                        </>
+                    ) : (
                         <>
                             <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
                             <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
@@ -64,22 +79,6 @@ export default function Paginator({ className, show, page, total, action }: Pagi
                             {meta.page <= meta.last_page - 2 && (
                                 <Pagination.Item onAction={actions.last}>{meta.last_page}</Pagination.Item>
                             )}
-                            <Pagination.Item
-                                slot='next'
-                                isDisabled={meta.page === meta.last_page}
-                                onAction={actions.next}
-                            />
-                            <Pagination.Item
-                                slot='last'
-                                isDisabled={meta.page === meta.last_page}
-                                onAction={actions.last}
-                            />
-                        </>
-                    ) : (
-                        <>
-                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
-                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
-                            <Pagination.Label current={meta.page} total={meta.last_page} />
                             <Pagination.Item
                                 slot='next'
                                 isDisabled={meta.page === meta.last_page}

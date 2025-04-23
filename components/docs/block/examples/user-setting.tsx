@@ -2,14 +2,14 @@
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Card, Container, Tabs } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import AccountSetting from 'components/user-setting/account-setting'
 import DangerArea from 'components/user-setting/danger-area'
 import PlanBillingSetting from 'components/user-setting/plan-billing-setting'
 import SecuritySetting from 'components/user-setting/security-setting'
 
 export default function UserSetting() {
-    const isMobile = useMediaQuery('(max-width: 767px)')
+    const isMobile = useIsMobile()
     return (
         <NavbarLayout variant='float'>
             <Container className='@xl:py-12 py-6'>

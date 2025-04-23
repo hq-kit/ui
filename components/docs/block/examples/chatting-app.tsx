@@ -18,7 +18,8 @@ import ChattingAppLayout from 'layouts/chatting-app-layout'
 import { type FormEvent, useState } from 'react'
 
 import { Avatar, Button, Menu, Popover, SidebarInset, buttonStyles } from '@/components/ui'
-import { cn, formatTime } from '@/lib/utils'
+import { cn } from '@/lib/utils'
+import { useDateFormatter } from 'react-aria'
 
 export default function ChatApp() {
     const [chats, setChats] = useState<BubbleChatProps[]>([
@@ -43,6 +44,7 @@ export default function ChatApp() {
     ])
 
     const [message, setMessage] = useState<string>('')
+    const formatter = useDateFormatter({ hour: '2-digit', minute: '2-digit', hour12: false })
 
     function sendMessage(e: FormEvent) {
         e.preventDefault()
@@ -50,7 +52,7 @@ export default function ChatApp() {
             ...chats,
             {
                 message,
-                time: formatTime(new Date()),
+                time: formatter.format(new Date()),
                 role: 'send'
             }
         ])

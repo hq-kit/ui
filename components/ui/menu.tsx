@@ -32,7 +32,7 @@ import {
     useSlottedContext
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const Modal = motion.create(RACModal)
@@ -58,7 +58,7 @@ interface MenuContentProps<T>
 }
 
 const MenuContent = <T extends object>({ className, respectScreen = true, ...props }: MenuContentProps<T>) => {
-    const isMobile = useMediaQuery('(max-width: 768px)')
+    const isMobile = useIsMobile()
     const popoverContext = useSlottedContext(PopoverContext)!
     const state = use(OverlayTriggerStateContext)!
     if (isMobile && respectScreen) {

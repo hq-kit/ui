@@ -10,7 +10,7 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 
@@ -22,7 +22,7 @@ interface NumberFieldProps extends RACNumberFieldProps {
 }
 
 const NumberField = ({ label, placeholder, description, className, errorMessage, ...props }: NumberFieldProps) => {
-    const isMobile = useMediaQuery('(max-width: 768px)')
+    const isMobile = useIsMobile()
     return (
         <RACNumberField
             {...props}

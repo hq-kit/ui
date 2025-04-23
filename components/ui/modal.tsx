@@ -14,7 +14,7 @@ import {
     Text
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { type CSSProperties, type HTMLAttributes, type ReactNode, use } from 'react'
 
@@ -47,7 +47,7 @@ const Content = ({
     ...props
 }: ModalContentProps) => {
     const isDismissable = isDismissableInternal ?? role !== 'alertdialog'
-    const isMobile = useMediaQuery('(max-width: 768px)') || drawer
+    const isMobile = useIsMobile() || drawer
     const isDesktop = respectScreen ? !isMobile : true
     const state = use(OverlayTriggerStateContext)!
     return (

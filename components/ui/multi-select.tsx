@@ -36,9 +36,10 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
     const [inputValue, setInputValue] = useState('')
     const [selectedKeys, onSelectionChange] = useState<Selection>(new Set(props.selectedKeys))
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         setInputValue('')
-    }, [])
+    }, [props?.selectedKeys, selectedKeys])
 
     const addItem = (e: Key | null) => {
         if (!e) return

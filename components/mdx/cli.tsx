@@ -2,7 +2,7 @@
 
 import { CopyButton } from '@/components/mdx/copy-button'
 import { Description, Menu, toast } from '@/components/ui'
-import { cn, wait } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { useState } from 'react'
 
 interface CLIProps {
@@ -51,7 +51,7 @@ export default function CLI({ items, message, command = 'init', noMessage, class
         setCli(getCommand(pm))
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(getCommand(pm)).then(() => setCopied(true))
-            wait(2000).then(() => setCopied(false))
+            setTimeout(() => setCopied(false), 2000)
         } else {
             toast.error('Failed to copy to clipboard')
         }

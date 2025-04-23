@@ -1,8 +1,18 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronRight, IconPanelBottomClose, IconPanelLeftOpen } from 'hq-icons'
+import {
+    type CSSProperties,
+    type ComponentProps,
+    type HTMLAttributes,
+    type ReactNode,
+    createContext,
+    use,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState
+} from 'react'
 import type {
     ButtonProps,
     DisclosureGroupProps,
@@ -25,7 +35,7 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { Sheet } from './sheet'
 
@@ -49,17 +59,17 @@ type SidebarContextProps = {
     collapsible: 'dock' | 'hidden' | 'none'
 }
 
-const SidebarContext = React.createContext<SidebarContextProps | null>(null)
+const SidebarContext = createContext<SidebarContextProps | null>(null)
 
 const useSidebar = () => {
-    const context = React.use(SidebarContext)
+    const context = use(SidebarContext)
     if (!context) {
         throw new Error('useSidebar must be used within a Sidebar.')
     }
     return context
 }
 
-interface SidebarProviderProps extends React.ComponentProps<'div'> {
+interface SidebarProviderProps extends ComponentProps<'div'> {
     defaultOpen?: boolean
     shortcut?: string
     isOpen?: boolean
@@ -81,12 +91,12 @@ const Sidebar = ({
     collapsible = 'hidden',
     ...props
 }: SidebarProviderProps) => {
-    const isMobile = useMediaQuery('(max-width: 768px)')
-    const [openMobile, setOpenMobile] = React.useState<boolean>(false)
-    const [internalOpenState, setInternalOpenState] = React.useState<boolean>(defaultOpen)
+    const isMobile = useIsMobile()
+    const [openMobile, setOpenMobile] = useState<boolean>(false)
+    const [internalOpenState, setInternalOpenState] = useState<boolean>(defaultOpen)
 
     const open = openProp ?? internalOpenState
-    const setOpen = React.useCallback(
+    const setOpen = useCallback(
         (value: boolean | ((value: boolean) => boolean)) => {
             const openState = typeof value === 'function' ? value(open) : value
             if (setOpenProp) {
@@ -99,11 +109,11 @@ const Sidebar = ({
         [setOpenProp, open]
     )
 
-    const toggleSidebar = React.useCallback(() => {
+    const toggleSidebar = useCallback(() => {
         return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
     }, [isMobile, setOpen])
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === shortcut && collapsible !== 'none' && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault()
@@ -117,7 +127,7 @@ const Sidebar = ({
 
     const state = open ? 'expanded' : 'collapsed'
 
-    const contextValue = React.useMemo<SidebarContextProps>(
+    const contextValue = useMemo<SidebarContextProps>(
         () => ({
             state,
             open,
@@ -170,6 +180,7 @@ const Sidebar = ({
                 <div
                     data-variant={variant}
                     data-side={side}
+                    data-open={open}
                     className='peer z-20 hidden text-fg [--visual-viewport-vertical-padding:32px] **:data-[slot=icon]:shrink-0 md:block'
                 >
                     <div
@@ -211,7 +222,7 @@ const Sidebar = ({
     )
 }
 
-const SidebarHeader = ({ className, ...props }: React.ComponentProps<'div'>) => {
+const SidebarHeader = ({ className, ...props }: ComponentProps<'div'>) => {
     const { state, variant, collapsible } = useSidebar()
     const collapsed = state === 'collapsed'
     return (
@@ -229,7 +240,7 @@ const SidebarHeader = ({ className, ...props }: React.ComponentProps<'div'>) => 
     )
 }
 
-const SidebarFooter = ({ className, ...props }: React.ComponentProps<'div'>) => {
+const SidebarFooter = ({ className, ...props }: ComponentProps<'div'>) => {
     const { state, isMobile, collapsible } = useSidebar()
     const collapsed = state === 'collapsed' && !isMobile
     const hidden = collapsed && collapsible === 'hidden'
@@ -248,7 +259,7 @@ const SidebarFooter = ({ className, ...props }: React.ComponentProps<'div'>) => 
     )
 }
 
-const SidebarBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const SidebarBody = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div
         slot='body'
         className={cn(
@@ -282,9 +293,9 @@ const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?
 
 interface SidebarItemProps extends DisclosureProps, Pick<LinkProps, 'href' | 'routerOptions' | 'onPress'> {
     isCurrent?: boolean
-    tooltip?: React.ReactNode | string
+    tooltip?: ReactNode | string
     badge?: string | number | undefined
-    style?: React.CSSProperties
+    style?: CSSProperties
 }
 
 const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
@@ -307,7 +318,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
             }
             {...props}
         >
-            {props.children as React.ReactNode}
+            {props.children as ReactNode}
         </Link>
     ) : state === 'expanded' ? (
         <Disclosure
@@ -323,7 +334,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
             {...props}
         />
     ) : (
-        <DialogTrigger>{props.children as React.ReactNode}</DialogTrigger>
+        <DialogTrigger>{props.children as ReactNode}</DialogTrigger>
     )
 }
 
@@ -393,15 +404,7 @@ const SidebarSubItem = ({ children, className, ...props }: DisclosurePanelProps)
     )
 }
 
-const SidebarInset = ({ ...props }: React.ComponentProps<'main'>) => {
-    return (
-        <div className='relative flex min-h-[calc(100svh-theme(spacing.4))] w-full flex-1 flex-col p-1.5 peer-data-[variant=float]:peer-data-[side=right]:pr-0 peer-data-[variant=inset]:peer-data-[side=right]:pr-0 peer-data-[variant=float]:peer-data-[side=left]:pl-0 peer-data-[variant=inset]:peer-data-[side=left]:pl-0 peer-data-[variant=inset]:bg-primary/5 peer-data-[variant=default]:p-0 peer-data-[variant=default]:*:border-0 '>
-            <main className='h-full overflow-auto rounded-lg border bg-bg' {...props} />
-        </div>
-    )
-}
-
-const SidebarTrigger = ({ children, ...props }: React.ComponentProps<typeof Button>) => {
+const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) => {
     const { toggleSidebar, open, variant, isMobile, side } = useSidebar()
     return (
         !isMobile && (
@@ -444,8 +447,10 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
             onPress={toggleSidebar}
             className={composeRenderProps(className, (className, { isHovered, isPressed }) =>
                 cn(
-                    'fixed h-[calc(100svh-theme(spacing.4))] max-h-full w-4 bg-transparent transition',
-                    side === 'left' ? 'right-0' : 'left-0',
+                    'fixed inset-y-0 max-h-full w-4 bg-transparent transition',
+                    side === 'left'
+                        ? `${state === 'collapsed' ? '-right-2' : 'right-0'}`
+                        : `${state === 'collapsed' ? '-left-2' : 'left-0'}`,
                     state === 'collapsed' ? 'cursor-e-resize' : 'cursor-w-resize',
                     (isHovered || isPressed) && `${side === 'left' ? 'border-r-2' : 'border-l-2'} border-primary`,
                     className
@@ -453,6 +458,21 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
             )}
             {...props}
         />
+    )
+}
+
+const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
+    return (
+        <div
+            className={cn(
+                'relative flex min-h-dvh w-full flex-1 flex-col p-1.5 peer-data-[variant=inset]:bg-primary/5',
+                'peer-data-[variant=default]:p-0 peer-data-[variant=default]:*:border-0',
+                'peer-data-[variant=float]:peer-data-[side=right]:pr-0 peer-data-[variant=float]:peer-data-[side=left]:peer-data-[open=true]:pl-0',
+                'peer-data-[variant=inset]:peer-data-[side=right]:pr-0 peer-data-[variant=inset]:peer-data-[side=left]:peer-data-[open=true]:pl-0'
+            )}
+        >
+            <main className='h-full overflow-auto rounded-lg border bg-bg' {...props} />
+        </div>
     )
 }
 

@@ -24,7 +24,7 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
 const Modal = motion.create(RACModal)
@@ -136,7 +136,7 @@ interface PopoverContentProps
 }
 
 const PopoverContent = ({ showArrow = true, respectScreen = true, ...props }: PopoverContentProps) => {
-    const isMobile = useMediaQuery('(max-width: 768px)')
+    const isMobile = useIsMobile()
     return isMobile && respectScreen ? <DrawerMode {...props} /> : <PopoverMode showArrow={showArrow} {...props} />
 }
 

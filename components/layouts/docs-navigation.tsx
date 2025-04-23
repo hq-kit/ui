@@ -2,12 +2,13 @@
 
 import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
 import { motion } from 'motion/react'
-import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import { Heading, Link, type LinkProps, composeRenderProps } from 'react-aria-components'
 
+import { Badge } from '@/components/ui'
 import type { Docs } from '@/lib/hooks/docs'
 import { cn } from '@/lib/utils'
+import { usePathname } from 'next/navigation'
 
 export const DocsNavigation = ({ docs }: { docs: Docs[] }) => {
     useEffect(() => {
@@ -47,6 +48,13 @@ export const DocsNavigation = ({ docs }: { docs: Docs[] }) => {
                                                     .map((subItem, i) => (
                                                         <MenuLink key={i} href={subItem.url}>
                                                             {subItem.title}
+                                                            {subItem.status === 'alpha' ? (
+                                                                <Badge variant='danger' className='ml-auto'>
+                                                                    {subItem.status}
+                                                                </Badge>
+                                                            ) : subItem.status === 'beta' ? (
+                                                                <Badge className='ml-auto'>{subItem.status}</Badge>
+                                                            ) : null}
                                                         </MenuLink>
                                                     ))}
                                             </ul>
@@ -70,7 +78,7 @@ const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
             href={href}
             className={composeRenderProps(className, (className, { isHovered }) =>
                 cn(
-                    'relative w-full rounded-r-lg px-4 py-1 text-muted-fg text-sm transition-colors',
+                    'relative flex w-full items-center rounded-r-lg px-4 py-1 text-muted-fg text-sm transition-colors',
                     isActive && 'is-active pointer-events-none text-primary',
                     isHovered && 'bg-primary/5 text-primary',
                     className

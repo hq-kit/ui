@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import previews from '@/components/docs/generated/previews.json'
 import { Sidebar } from '@/components/ui'
-import { goodTitle } from '@/lib/utils'
+import { goodTitle } from '@/lib/utils/modifiers'
 import { type ReactNode, useEffect, useState } from 'react'
 
 export default function Layout({ children }: { children: ReactNode }) {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import previews from '@/components/docs/generated/previews.json'
 import Block from '@/components/mdx/block'
-import { goodTitle } from '@/lib/utils'
+import { goodTitle } from '@/lib/utils/modifiers'
 
 export interface BlockProps {
     params: Promise<{

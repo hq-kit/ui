@@ -3,16 +3,13 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { components } from '@/components/mdx'
+import { goodTitle } from '@/lib/utils/modifiers'
 import { transformerNotationDiff } from '@shikijs/transformers'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import { titleCase } from 'usemods'
-
-async function goodTitle(str: string) {
-    return titleCase(str.replaceAll('-', ' '))
-}
+import remarkGfm from 'remark-gfm'
 
 export type Frontmatter = {
     title: string
@@ -20,6 +17,7 @@ export type Frontmatter = {
     order: number
     published: boolean
     references: string[]
+    status: string
 }
 
 async function checkFile(slug: string[]): Promise<boolean> {
@@ -74,7 +72,7 @@ const getDocsContent = async (slug: string[]): Promise<{ frontmatter: Frontmatte
                         }
                     ]
                 ],
-                remarkPlugins: [],
+                remarkPlugins: [remarkGfm],
                 format: 'mdx'
             }
         },
@@ -89,6 +87,7 @@ type Docs = {
     title: string
     url?: string
     order: number
+    status?: string
     items?: Docs[]
 }
 
@@ -98,7 +97,7 @@ const getAllDocs = async (): Promise<Docs[]> => {
     // This will be the parent (Getting Started, Dark Mode and Components)
     for (const item of items) {
         docs.push({
-            title: await goodTitle(item),
+            title: goodTitle(item),
             order: docs.length + 1,
             items: []
         })
@@ -108,14 +107,14 @@ const getAllDocs = async (): Promise<Docs[]> => {
             if (subItem.endsWith('.mdx')) {
                 const frontmatter = await getDocs([item, subItem.replace('.mdx', '')])
                 docs[docs.length - 1].items?.push({
-                    title: await goodTitle(frontmatter.title),
+                    title: goodTitle(frontmatter.title),
                     url: `/docs/${item}/${subItem}`.replace('.mdx', ''),
                     order: frontmatter.order
                 })
             } else {
                 // Components folder
                 docs[docs.length - 1]?.items?.push({
-                    title: await goodTitle(subItem),
+                    title: goodTitle(subItem),
                     order: docs.length + 1,
                     items: []
                 })
@@ -125,8 +124,9 @@ const getAllDocs = async (): Promise<Docs[]> => {
                     if (subSubItem.endsWith('.mdx')) {
                         const frontmatter = await getDocs([item, subItem, subSubItem.replace('.mdx', '')])
                         docs[docs.length - 1].items![docs[docs.length - 1].items!.length - 1].items!.push({
-                            title: await goodTitle(frontmatter.title),
+                            title: goodTitle(frontmatter.title),
                             url: `/docs/${item}/${subItem}/${subSubItem}`.replace('.mdx', ''),
+                            status: frontmatter.status,
                             order: frontmatter.order
                         })
                     }

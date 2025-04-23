@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { titleCase } from 'usemods'
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
@@ -15,25 +14,4 @@ export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
         textIndex++
     }
     return inputIndex === inputValue.length
-}
-
-export const wait = (number = 1000) => new Promise((resolve) => setTimeout(resolve, number))
-
-export const formatDate = (input: string | number): string => {
-    const date = new Date(input)
-    return date.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    })
-}
-
-export const formatTime = (date: Date): string => {
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
-    return `${hours}:${minutes}`
-}
-
-export function goodTitle(str: string) {
-    return titleCase(str.replaceAll('-', ' '))
 }

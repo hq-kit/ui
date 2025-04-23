@@ -22,7 +22,7 @@ export default function KeyboardCommandDemo() {
                 <Command.Label>Settings</Command.Label>
                 <Keyboard keys={['mod', ',']} />
             </Command.Item>
-            <Command.Item textValue='hide sidebar'>
+            <Command.Item textValue='quit'>
                 <IconX />
                 <Command.Label>Quit</Command.Label>
                 <Keyboard keys={['alt', 'F4']} />

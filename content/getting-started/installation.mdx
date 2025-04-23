@@ -238,27 +238,27 @@ export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
     return inputIndex === inputValue.length
 }`}/>
 
-### useMediaQuery Hooks
-Create a hook called `useMediaQuery` (some components which Responsive are need it). Usually located in `lib/hooks.tsx`:
+### useIsMobile Hooks
+Create a hook called `useIsMobile` (some components which Responsive are need it). Usually located in `lib/hooks.ts`:
 
-<Code lang='tsx' code={`import React from 'react';
+<Code lang='tsx' code={`import { useEffect, useState } from 'react'
 
-export const useMediaQuery = (query: string) => {
-    const [value, setValue] = React.useState(false);
+const MOBILE_BREAKPOINT = 768
 
-    React.useEffect(() => {
-        const onChange = (e: MediaQueryListEvent) => {
-            setValue(e.matches);
+export function useIsMobile() {
+    const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined)
+
+    useEffect(() => {
+        const mql = window.matchMedia(\`(max-width: \${MOBILE_BREAKPOINT - 1}px)\`)
+        const onChange = () => {
+            setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
         }
+        mql.addEventListener('change', onChange)
+        setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+        return () => mql.removeEventListener('change', onChange)
+    }, [])
 
-        const result = matchMedia(query);
-        result.addEventListener('change', onChange);
-        setValue(result.matches);
-
-        return () => result.removeEventListener('change', onChange);
-    }, [query])
-
-    return value;
+    return !!isMobile
 }`}/>
 
 ## Simple Import
@@ -270,7 +270,7 @@ import { Button, Sheet, Badge } from '@/components/ui'
 ```
 
 Create a file called index.ts in your UI folder, and add the following code to it:
-<Code lang='ts' code={`'export * from './avatar'
+<Code lang='ts' code={`export * from './avatar'
 export * from './badge'
 export * from './breadcrumbs'
 export * from './button'
@@ -345,30 +345,36 @@ export * from './user'`} />
 
 ### TS Config
 Next, incorporate the following settings into your `tsconfig.json` file:
-```json {5}
+```json {4-9}
     {
-      "compilerOptions": {
-      // ...
-      "paths": {
-      "@/*": ["./*"]
+        "compilerOptions": {
+            // ...
+            "baseUrl": ".",
+            "paths": {
+                "@/*": [
+                    "./*"
+                ]
+            }
+        }
     }
-  }
-}
 ```
 
 ### TS Config with src Folder
 Ensure you configure the `paths` property correctly if your project includes a `src` folder. If you want to organize
 the UI folder, adjust your paths accordingly like this:
 
-```json {5}
+```json {4-9}
     {
-      "compilerOptions": {
-      // ...
-      "paths": {
-      "@/*": ["./src/*"]
+        "compilerOptions": {
+            // ...
+            "baseUrl": ".",
+            "paths": {
+                "@/*": [
+                    "./src/*"
+                ]
+            }
+        }
     }
-  }
-}
 ```
 
 ## Dark Mode

@@ -34,8 +34,7 @@ export default function Layout() {
 ### Inertia.js
 To integrate with Inertia.js, you must first declare it in your `.d.ts` file, such as in `global.d.ts`.
 
-```tsx
-import { type VisitOptions } from '@inertiajs/core'
+<Code code={`import { type VisitOptions } from '@inertiajs/core'
 import { type AxiosInstance } from 'axios'
 import { type route as routeFn } from 'ziggy-js'
 
@@ -51,15 +50,15 @@ declare module 'react-aria-components' {
     interface RouterConfig {
         routerOptions: VisitOptions
     }
-}
-```
+}`} lang="ts" />
+
 Next, execute `ziggy:generate` to generate the Ziggy routes in your terminal.
 ```bash
 php artisan ziggy:generate
 ```
 
 Then, proceed to alias 'ziggy-js' in your `vite.config.ts` file.
-```
+```tsx {18}
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
@@ -84,7 +83,7 @@ export default defineConfig({
 ```
 
 Now, create the provider file in `resources/js/components/providers.tsx` and add the following code:
-```
+```tsx {8-12}
 import { router } from '@inertiajs/react'
 import React from 'react'
 import { RouterProvider } from 'react-aria-components'
@@ -93,22 +92,22 @@ import { ThemeProvider } from './theme-provider'
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
         <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
-          <ThemeProvider defaultTheme="system" storageKey="theme">
-            {children}
-          </ThemeProvider>
+            <ThemeProvider defaultTheme="system" storageKey="theme">
+                {children}
+            </ThemeProvider>
         </RouterProvider>
     )
 }
 ```
 
 If you're not sure what is theme-provider, refer to the [Theme Provider](/docs/dark-mode/inertia-js) section. After that, go to your `resources/js/app.tsx` you can encapsulate `<App/>` within `Providers` as follows:
-```
-import '../css/app.css'
+
+<Code code={`import '../css/app.css'
 import './bootstrap'
 
 import { Ziggy } from '@/ziggy'
 import { createInertiaApp } from '@inertiajs/react'
-import { Providers } from 'components/providers'
+import { Providers } from '@/components/providers'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { useRoute } from 'ziggy-js'
@@ -116,31 +115,29 @@ import { useRoute } from 'ziggy-js'
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
 createInertiaApp({
-  title: (title) => (title ? `${title} / ${appName}` : appName),
-  resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
-  setup({ el, App, props }) {
+  title: (title) => (title ? \`\${title} / \${appName}\` : appName),
+    resolve: (name) => resolvePageComponent(\`./pages/\${name}.tsx\`, import.meta.glob('./pages/**/*.tsx')),
+    setup({ el, App, props }) {
     // @ts-expect-error
     window.route = useRoute(Ziggy as any)
     const appElement = (
-      <Providers>
-        <App {...props} />
-      </Providers>
-    )
-    if (import.meta.env.SSR) {
-      hydrateRoot(el, appElement)
-      return
-    }
+    <Providers>
+    <App {...props} />
+</Providers>
+)
+if (import.meta.env.SSR) {
+    hydrateRoot(el, appElement)
+    return
+}
 
-    createRoot(el).render(appElement)
-  },
-  progress: false
-})
-```
+createRoot(el).render(appElement)
+},
+progress: false
+})`}/>
 
 I don't know if you need this or not, but if you care about `ssr.tsx`, you can add the following code:
 
-```
-import { Ziggy as ziggy } from '@/ziggy'
+<Code code={`import { Ziggy as ziggy } from '@/ziggy'
 import { createInertiaApp } from '@inertiajs/react'
 import createServer from '@inertiajs/react/server'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
@@ -149,28 +146,25 @@ import { route, type RouteName } from 'ziggy-js'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
-createServer(
-  (page) =>
-    createInertiaApp({
-      page,
-      render: ReactDOMServer.renderToString,
-      title: (title) => (title ? `${title} / ${appName}` : appName),
-      resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
-      setup: ({ App, props }) => {
-        // @ts-expect-error
-        global.route<RouteName> = (name, params, absolute) =>
-          // @ts-expect-error
-          route(name, params as any, absolute, {
-            ...ziggy,
-            // @ts-expect-error
-            location: new URL(page.props.ziggy.location)
-          })
-
-        return <App {...props} />
-      }
-    })
-)
-```
+createServer((page) =>
+        createInertiaApp({
+            page,
+            render: ReactDOMServer.renderToString,
+            title: (title) => (title ? \`\${title} / \${appName}\` : appName),
+            resolve: (name) => resolvePageComponent(\`./pages/\${name}.tsx\`, import.meta.glob('./pages/**/*.tsx')),
+            setup: ({ App, props }) => {
+                    // @ts-expect-error
+                    global.route<RouteName> = (name, params, absolute) =>
+                        // @ts-expect-error
+                        route(name, params as any, absolute, {
+                            ...ziggy,
+                            // @ts-expect-error
+                            location: new URL(page.props.ziggy.location)
+                        })
+                    return <App {...props} />
+               }
+        })
+)`}/>
 
 ### Next.js
 The `useRouter` hook from `next/navigation` provides a router object for navigation purposes. The `RouterProvider` should be implemented in a client component at the root of each page or layout that contains React Aria links. Create a new client component in the `app` folder named `provider.tsx` for this purpose or combine it with other top-level providers as outlined in the Next.js documentation.

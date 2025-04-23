@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 const badgeStyles = tv({
@@ -29,7 +30,7 @@ const badgeStyles = tv({
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeStyles> {
     className?: string
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const Badge = ({ children, variant, shape, className, ...props }: BadgeProps) => {

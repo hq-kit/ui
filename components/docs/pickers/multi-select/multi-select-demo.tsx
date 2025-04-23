@@ -20,17 +20,17 @@ export default function MultiSelectDemo() {
         <div className='grid gap-2 sm:grid-cols-3'>
             <MultiSelect label='Default' items={items}>
                 {(item) => {
-                    return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
+                    return <MultiSelect.Item>{item.name}</MultiSelect.Item>
                 }}
             </MultiSelect>
             <MultiSelect label='Invalid' items={items} isInvalid>
                 {(item) => {
-                    return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
+                    return <MultiSelect.Item>{item.name}</MultiSelect.Item>
                 }}
             </MultiSelect>
             <MultiSelect label='Disabled' items={items} isDisabled>
                 {(item) => {
-                    return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
+                    return <MultiSelect.Item>{item.name}</MultiSelect.Item>
                 }}
             </MultiSelect>
         </div>

@@ -11,7 +11,7 @@ import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { MotionIcon } from '@/components/mdx/references'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Keyboard, Link, Menu, Separator, buttonStyles } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks'
+import { useIsMobile } from '@/lib/hooks'
 import {
     IconBrandAdobe,
     IconBrandCleon,
@@ -37,7 +37,7 @@ export function Navbar() {
         { id: 5, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') }
     ]
 
-    const isDesktop = useMediaQuery('(min-width: 1024px)')
+    const isMobile = useIsMobile()
 
     const [open, setOpen] = useState(false)
     return (
@@ -89,7 +89,7 @@ export function Navbar() {
                     </nav>
                 </div>
             </LayoutGroup>
-            {!isDesktop && <ResponsiveAside action={setOpen} />}
+            {isMobile && <ResponsiveAside action={setOpen} />}
         </>
     )
 }
