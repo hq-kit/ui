@@ -1,13 +1,13 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import { Progress } from '@/components/ui'
 
 export default function ProgressVariantDemo() {
-    const [value, setValue] = React.useState(0)
+    const [value, setValue] = useState(0)
 
-    React.useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => {
             setValue((prev) => (prev < 75 ? prev + 1 : 75))
         }, 200)

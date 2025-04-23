@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { IconX } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
+import { type CSSProperties, type HTMLAttributes, type ReactNode, use } from 'react'
 import type { DialogProps, DialogTriggerProps, HeadingProps, ModalOverlayProps, TextProps } from 'react-aria-components'
 import {
     Button,
@@ -30,7 +29,7 @@ interface SheetContentProps
     isFloating?: boolean
     isBlurred?: boolean
     className?: string
-    style?: React.CSSProperties
+    style?: CSSProperties
     side?: 'top' | 'bottom' | 'left' | 'right'
 }
 
@@ -43,7 +42,7 @@ const SheetContent = ({
     className,
     ...props
 }: SheetContentProps) => {
-    const state = React.use(OverlayTriggerStateContext)!
+    const state = use(OverlayTriggerStateContext)!
 
     return (
         <AnimatePresence>
@@ -136,7 +135,7 @@ const SheetContent = ({
                                         : 'max-h-full'
                                 )}
                             >
-                                {children as React.ReactNode}
+                                {children as ReactNode}
                                 {closeButton && (
                                     <Button
                                         aria-label='Close'
@@ -162,7 +161,7 @@ const SheetContent = ({
     )
 }
 
-const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
 }
 
@@ -174,7 +173,7 @@ const Description = ({ className, ...props }: TextProps) => (
     <Text slot='description' className={cn('text-muted-fg text-sm', className)} {...props} />
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Body = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div
         slot='body'
         className={cn(
@@ -185,7 +184,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     />
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='footer'

@@ -1,7 +1,6 @@
 'use client'
 
-import type React from 'react'
-
+import type { RefObject } from 'react'
 import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
 import {
     Group,
@@ -13,7 +12,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Toggle, ToggleGroupContext, type ToggleGroupContextProps, toggleGroupStyles } from './toggle'
 
 const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => (
@@ -35,7 +33,7 @@ const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarPro
 )
 
 interface ToolbarGroupProps extends GroupProps, Omit<ToggleGroupContextProps, 'orientation'> {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
 }
 
 const ToolbarGroup = ({ className, ref, variant, gap, icon, size, ...props }: ToolbarGroupProps) => {

@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
-
 import { CopyButton } from '@/components/mdx/copy-button'
 import { Description, Menu, toast } from '@/components/ui'
 import { cn, wait } from '@/lib/utils'
+import { useState } from 'react'
 
 interface CLIProps {
     items?: string | string[]
@@ -45,14 +44,13 @@ export default function CLI({ items, message, command = 'init', noMessage, class
         }
     }
 
-    const [cli, setCli] = React.useState(getCommand('npm'))
-    const [copied, setCopied] = React.useState(false)
+    const [cli, setCli] = useState(getCommand('npm'))
+    const [copied, setCopied] = useState(false)
 
     const handleCopy = (pm: string) => {
         setCli(getCommand(pm))
         if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(getCommand(pm))
-            setCopied(true)
+            navigator.clipboard.writeText(getCommand(pm)).then(() => setCopied(true))
             wait(2000).then(() => setCopied(false))
         } else {
             toast.error('Failed to copy to clipboard')

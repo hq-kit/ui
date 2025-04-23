@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import type { Key } from 'react-aria-components'
 
@@ -15,8 +15,8 @@ const items = [
 ]
 
 export default function SelectValidationDemo() {
-    const [value, setValue] = React.useState<Key>('')
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [value, setValue] = useState<Key>('')
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

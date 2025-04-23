@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
 
@@ -13,7 +13,7 @@ const items = [
     { id: 4, name: 'Pikachu', type: 'Electric', level: '100' }
 ]
 export default function TableBulkDemo() {
-    const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set())
+    const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set())
     return (
         <div className='space-y-6'>
             <Table

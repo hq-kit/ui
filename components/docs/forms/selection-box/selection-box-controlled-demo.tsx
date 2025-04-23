@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
-
 import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
+import { useState } from 'react'
 
 import { SelectionBox } from '@/components/ui'
 
 export default function SelectionBoxControlledDemo() {
-    const [singleValue, setSingleValue] = React.useState<string>('')
-    const [multiValue, setMultiValue] = React.useState<string[]>([])
+    const [singleValue, setSingleValue] = useState<string>('')
+    const [multiValue, setMultiValue] = useState<string[]>([])
     return (
         <div className='flex flex-col gap-4'>
             <SelectionBox

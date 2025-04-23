@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import { type Color, parseColor } from 'react-aria-components'
 
 import { ColorField } from '@/components/ui'
 
 export default function ColorFieldControlledDemo() {
-    const [color, setColor] = React.useState<Color | null>(parseColor('#FAFAFA'))
+    const [color, setColor] = useState<Color | null>(parseColor('#FAFAFA'))
     return (
         <div className='flex flex-col items-center gap-4'>
             <ColorField value={color} label='Color' onChange={setColor} />

@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupControlledDemo() {
-    const [selected, setSelected] = React.useState('')
+    const [selected, setSelected] = useState('')
     return (
         <div className='space-y-4'>
             <RadioGroup label='Plan' value={selected} onChange={setSelected}>

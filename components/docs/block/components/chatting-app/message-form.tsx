@@ -1,25 +1,24 @@
 'use client'
 
-import React from 'react'
-
 import { IconCamera, IconMic, IconPaperclip, IconSend } from 'hq-icons'
+import { type FormEvent, type KeyboardEvent, useEffect, useRef } from 'react'
 
 import { Button, Form } from '@/components/ui'
 
 interface MessageFormProps {
     value: string
-    onChange: (value: string) => void
-    onSend: (e: React.FormEvent<HTMLFormElement>) => void
+    valueAction: (value: string) => void
+    sendAction: (e: FormEvent<HTMLFormElement>) => void
 }
-export default function MessageForm({ value, onChange, onSend }: MessageFormProps) {
-    const editorRef = React.useRef<HTMLDivElement>(null)
-    React.useEffect(() => {
+export default function MessageForm({ value, valueAction, sendAction }: MessageFormProps) {
+    const editorRef = useRef<HTMLDivElement>(null)
+    useEffect(() => {
         const editor = editorRef.current
 
         const handleInput = () => {
             if (editor) {
                 const text = editor.innerText
-                onChange(text)
+                valueAction(text)
                 editor.innerHTML = formatText(text)
                 placeCaretAtEnd(editor)
             }
@@ -40,11 +39,11 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
         return () => {
             editor?.removeEventListener('input', handleInput)
         }
-    }, [onChange])
+    }, [valueAction])
 
-    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    function onSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        onSend(e)
+        sendAction(e)
         if (editorRef.current) {
             editorRef.current.innerHTML = ''
         }
@@ -54,9 +53,9 @@ export default function MessageForm({ value, onChange, onSend }: MessageFormProp
             <div
                 contentEditable
                 ref={editorRef}
-                onKeyDown={(e: React.KeyboardEvent) => {
+                onKeyDown={(e: KeyboardEvent) => {
                     if (e.key === 'Enter' && !e.shiftKey && value.trim() !== '') {
-                        onSubmit(e as unknown as React.FormEvent<HTMLFormElement>)
+                        onSubmit(e as unknown as FormEvent<HTMLFormElement>)
                     }
                 }}
                 aria-label='Message'

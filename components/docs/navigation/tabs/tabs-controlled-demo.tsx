@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import { Collection, type Key } from 'react-aria-components'
 
 import { Tabs } from '@/components/ui'
@@ -14,7 +13,7 @@ const items = [
 ]
 
 export default function TabsControlledDemo() {
-    const [selected, setSelected] = React.useState<Key>(1)
+    const [selected, setSelected] = useState<Key>(1)
     return (
         <div className='space-y-6'>
             <Tabs aria-label='Project Management' selectedKey={selected} onSelectionChange={setSelected}>

@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { Meter } from '@/components/ui'
+import { useEffect, useState } from 'react'
 
 export default function MeterDemo() {
-    const [value, setValue] = React.useState(0)
+    const [value, setValue] = useState(0)
 
-    React.useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => {
             setValue((prev) => (prev < 100 ? prev + 1 : 100))
         }, 50)

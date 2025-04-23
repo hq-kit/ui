@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconSquareCheckBig, IconTextCursorInput } from 'hq-icons'
+import { useState } from 'react'
 import type { Key, Selection } from 'react-aria-components'
 
 import { ComboBox, Toggle } from '@/components/ui'
@@ -21,7 +20,7 @@ const items = [
 ]
 
 export default function ComboBoxControlledDemo() {
-    const [mode, setMode] = React.useState<Selection>(new Set(['selection']))
+    const [mode, setMode] = useState<Selection>(new Set(['selection']))
     return (
         <div className='space-y-4'>
             <Toggle.Group selectionMode='single' selectedKeys={mode} onSelectionChange={setMode}>
@@ -40,7 +39,7 @@ export default function ComboBoxControlledDemo() {
 }
 
 const ComboBoxControlledInput = () => {
-    const [value, setValue] = React.useState<string>('')
+    const [value, setValue] = useState<string>('')
     return (
         <div className='grid space-y-4'>
             <ComboBox label='Linux Distro' inputValue={value} onInputChange={setValue} items={items}>
@@ -56,7 +55,7 @@ const ComboBoxControlledInput = () => {
 }
 
 const ComboBoxControlledSelected = () => {
-    const [selected, setSelected] = React.useState<Key | null>(null)
+    const [selected, setSelected] = useState<Key | null>(null)
     return (
         <div className='grid space-y-4'>
             <ComboBox label='Linux Distro' selectedKey={selected} onSelectionChange={setSelected} items={items}>

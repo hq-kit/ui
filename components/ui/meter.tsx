@@ -5,7 +5,6 @@ import { motion } from 'motion/react'
 import { Meter as RACMeter, type MeterProps as RACMeterProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Label } from './field'
 
 interface MeterProps extends RACMeterProps {

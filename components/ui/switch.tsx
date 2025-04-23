@@ -1,13 +1,13 @@
 'use client'
 
+import type { ReactNode, RefObject } from 'react'
 import { Switch as RACSwitch, type SwitchProps as RACSwitchProps, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Label } from './field'
 
 interface SwitchProps extends RACSwitchProps {
-    ref?: React.RefObject<HTMLLabelElement>
+    ref?: RefObject<HTMLLabelElement>
 }
 
 const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
@@ -39,7 +39,7 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
                             )}
                         />
                     </span>
-                    <Label>{children as React.ReactNode}</Label>
+                    <Label>{children as ReactNode}</Label>
                 </>
             )}
         </RACSwitch>

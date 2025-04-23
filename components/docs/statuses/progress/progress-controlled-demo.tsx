@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { Progress, Slider } from '@/components/ui'
 
 export default function ProgressControlledDemo() {
-    const [value, setValue] = React.useState(10)
+    const [value, setValue] = useState(10)
 
     return (
         <div className='flex flex-col items-center gap-4'>

@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconUserPlus } from 'hq-icons'
+import { useState } from 'react'
 
 import { Button, Modal, TextField } from '@/components/ui'
 
 export default function TextFieldSuffixButtonDemo() {
-    const [open, setOpen] = React.useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
     return (
         <>
             <Modal.Content isOpen={open} onOpenChange={() => setOpen(false)}>

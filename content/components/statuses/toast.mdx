@@ -1,0 +1,42 @@
+---
+title: Toast
+description: A Toast displays a brief, temporary notification of actions, errors, or other events in an application.
+references: ['https://react-spectrum.adobe.com/react-aria/Toast.html#props']
+order: 6
+published: true
+status: alpha
+---
+
+## Installation
+<Install component='toast' />
+
+First, in your root app component or layout, import the Toast component.
+```tsx
+import { ToastProvider } from '@/components/ui'
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <>
+            <ToastProvider />
+            {children}
+        <>
+    )
+}
+```
+
+## Basic
+Use the `toast()` function to show a toast.
+<Demo center component='statuses/toast/toast-demo' />
+
+## Description
+<Demo center component='statuses/toast/toast-description-demo' />
+
+## Status
+<Demo center component='statuses/toast/toast-status-demo' />
+
+## Action
+<Demo center component='statuses/toast/toast-action-demo' />
+
+## Manually Close
+Just pass the `timeout: 0` option.
+<Demo center component='statuses/toast/toast-manual-demo' />

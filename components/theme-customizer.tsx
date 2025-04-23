@@ -7,7 +7,6 @@ import { useTheme } from '@/components/providers'
 import { Button, Label, Select, Sheet, Slider, Tabs, isBrightColor } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { cn } from '@/lib/utils'
-
 import { ColorPreview, ThemeSnippet } from './theme-snippet'
 
 export function ThemeCustomizer() {

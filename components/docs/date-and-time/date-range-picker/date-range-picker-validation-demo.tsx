@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, DateRangePicker, Form } from '@/components/ui'
 import type { CalendarDate } from '@internationalized/date'
 
 export default function DateRangePickerValidationDemo() {
-    const [value, setValue] = React.useState<{ start: CalendarDate; end: CalendarDate }>()
+    const [value, setValue] = useState<{ start: CalendarDate; end: CalendarDate }>()
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

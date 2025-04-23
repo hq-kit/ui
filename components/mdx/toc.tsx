@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { Fragment, Suspense, useEffect, useRef, useState } from 'react'
 import { Heading } from 'react-aria-components'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
@@ -10,8 +9,8 @@ import { cn } from '@/lib/utils'
 
 interface TableOfContentsProps {
     title: string
-    url: string
-    items?: TableOfContentsProps[]
+    link: string
+    level: 2 | 3
 }
 
 interface Props {
@@ -20,14 +19,12 @@ interface Props {
 }
 
 export function TableOfContents({ className, items }: Props) {
-    const tocRef = React.useRef<HTMLDivElement>(null)
-    const ids = items.flatMap((item) => [
-        item.url.split('#')[1],
-        ...(item.items ? item.items.map((subItem) => subItem.url.split('#')[1]) : [])
-    ])
+    const tocRef = useRef<HTMLDivElement>(null)
+    const ids = items.map((item) => item.link)
+
     const activeId = useActiveItem(ids)
     const activeIndex = activeId?.length || 0
-    React.useEffect(() => {
+    useEffect(() => {
         if (!activeId || activeIndex < 2) return
         const anchor = tocRef.current?.querySelector(`li > a[href="#${activeId}"]`)
 
@@ -52,7 +49,7 @@ export function TableOfContents({ className, items }: Props) {
             )}
         >
             <nav aria-labelledby='on-this-page-title' className='xl:w-56'>
-                <React.Suspense
+                <Suspense
                     fallback={
                         <div className='space-y-2'>
                             <Skeleton className='h-3 w-20 animate-pulse' />
@@ -71,21 +68,14 @@ export function TableOfContents({ className, items }: Props) {
                         {items.length > 0 && (
                             <ul className='flex flex-col gap-y-2.5'>
                                 {items.map((item) => (
-                                    <React.Fragment key={item.title}>
+                                    <Fragment key={item.link}>
                                         <TocLink item={item} activeId={activeId} />
-                                        {item.items && item.items.length > 0 && (
-                                            <ul className='flex flex-col gap-y-2.5 pl-3'>
-                                                {item.items.map((subItem) => (
-                                                    <TocLink key={subItem.title} item={subItem} activeId={activeId} />
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </React.Fragment>
+                                    </Fragment>
                                 ))}
                             </ul>
                         )}
                     </>
-                </React.Suspense>
+                </Suspense>
             </nav>
         </aside>
     )
@@ -97,9 +87,10 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
             <Link
                 className={cn(
                     'block tracking-tight no-underline outline-none duration-200 data-focus-visible:text-primary data-focus-visible:outline-none lg:text-[0.885rem]',
-                    item.url.split('#')[1] === activeId ? 'text-primary' : 'text-muted-fg/90'
+                    item.link === activeId ? 'text-primary' : 'text-muted-fg/90',
+                    item.level === 3 && 'pl-4'
                 )}
-                href={item.url}
+                href={`#${item.link}`}
             >
                 {item.title}
             </Link>
@@ -108,9 +99,9 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
 }
 
 export function useActiveItem(itemIds: string[]) {
-    const [activeId, setActiveId] = React.useState<string | null>(null)
+    const [activeId, setActiveId] = useState<string | null>(null)
 
-    React.useEffect(() => {
+    useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 let bestCandidate: IntersectionObserverEntry | null = null

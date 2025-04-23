@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
+import { useState } from 'react'
 
 import { Button, Command } from '@/components/ui'
 
 export default function CommandTriggerByKeyboardDemo() {
-    const [open, setOpen] = React.useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
     return (
         <>
             <Button variant='outline' onPress={() => setOpen(true)}>

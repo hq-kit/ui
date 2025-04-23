@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconMoon, IconSun } from 'hq-icons'
+import { useEffect } from 'react'
 
 import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui'
@@ -24,23 +23,23 @@ export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'gh
     const currentFontMonoFamily = useThemeStore((state) => state.fontMonoFamily)
     const currentBorderRadius = useThemeStore((state) => state.borderRadius)
 
-    React.useEffect(() => {
+    useEffect(() => {
         syncGrayColor(currentGrayColor, resolvedTheme)
     }, [currentGrayColor, resolvedTheme])
 
-    React.useEffect(() => {
+    useEffect(() => {
         syncThemeColor(currentPresetColor, resolvedTheme)
     }, [currentPresetColor, resolvedTheme])
 
-    React.useEffect(() => {
+    useEffect(() => {
         syncFontSansFamily(currentFontSansFamily)
     }, [currentFontSansFamily])
 
-    React.useEffect(() => {
+    useEffect(() => {
         syncFontMonoFamily(currentFontMonoFamily)
     }, [currentFontMonoFamily])
 
-    React.useEffect(() => {
+    useEffect(() => {
         syncBorderRadius(currentBorderRadius)
     }, [currentBorderRadius])
 

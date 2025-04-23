@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import {
     IconBrandReact,
     IconBrandTypescript,
@@ -10,6 +8,7 @@ import {
     IconPanelLeftClose,
     IconPanelRightClose
 } from 'hq-icons'
+import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
 import { Button, Collection } from 'react-aria-components'
 import { kebabCase } from 'usemods'
 
@@ -24,19 +23,19 @@ type FileNode = {
     children: FileNode[]
 }
 
-interface FileExplorerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface FileExplorerProps extends HTMLAttributes<HTMLDivElement> {
     page: string
     className?: string
 }
 
 export default function FileExplorer({ page, className, ...props }: FileExplorerProps) {
-    const [selected, setSelected] = React.useState<string>(page)
-    const [code, setCode] = React.useState<string>('')
-    const [components, setComponents] = React.useState<string[]>([])
-    const [uiComponents, setUiComponents] = React.useState<string[]>([])
-    const [layout, setLayout] = React.useState<string | null>(null)
+    const [selected, setSelected] = useState<string>(page)
+    const [code, setCode] = useState<string>('')
+    const [components, setComponents] = useState<string[]>([])
+    const [uiComponents, setUiComponents] = useState<string[]>([])
+    const [layout, setLayout] = useState<string | null>(null)
 
-    React.useEffect(() => {
+    useEffect(() => {
         // @ts-expect-error no-type
         const componentData = previews[page] ? previews[page].raw : ''
 
@@ -79,7 +78,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         }
     }, [page])
 
-    React.useEffect(() => {
+    useEffect(() => {
         // @ts-expect-error no-type
         const componentData = previews[selected] ? previews[selected].raw : ''
         if (componentData) {
@@ -93,7 +92,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         }
     }, [selected, uiComponents])
 
-    const renderItem = (item: FileNode): React.ReactNode => (
+    const renderItem = (item: FileNode): ReactNode => (
         <TreeItem
             className={cn(
                 selected === item.id && 'bg-primary/10 text-primary',
@@ -189,7 +188,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
         } as FileNode)
     }
 
-    const [sidebarOpen, setSidebarOpen] = React.useState(true)
+    const [sidebarOpen, setSidebarOpen] = useState(true)
 
     return (
         <div className={cn('flex w-full flex-col rounded-lg border lg:flex-row', className)} {...props}>

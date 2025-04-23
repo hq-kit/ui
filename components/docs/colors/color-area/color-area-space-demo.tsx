@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { ColorSpace, Key } from 'react-aria-components'
 
 import { ColorArea, Select } from '@/components/ui'
@@ -9,7 +8,7 @@ import { ColorArea, Select } from '@/components/ui'
 const spaces = ['rgb', 'hsb', 'hsl'].map((space) => ({ space }))
 
 export default function ColorAreaSpaceDemo() {
-    const [colorSpace, setColorSpace] = React.useState<Key>('rgb')
+    const [colorSpace, setColorSpace] = useState<Key>('rgb')
     return (
         <div className='flex flex-col gap-4'>
             <Select

@@ -1,17 +1,16 @@
 'use client'
 
-import React from 'react'
-
 import { IconAppWindowMac, IconBlocks, IconPanelsTopLeft } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 
 import previews from '@/components/docs/generated/previews.json'
 import { Sidebar } from '@/components/ui'
 import { goodTitle } from '@/lib/utils'
+import { type ReactNode, useEffect, useState } from 'react'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-    const [blocks, setBlocks] = React.useState<string[]>([])
-    React.useEffect(() => {
+export default function Layout({ children }: { children: ReactNode }) {
+    const [blocks, setBlocks] = useState<string[]>([])
+    useEffect(() => {
         const blocks = Object.keys(previews)
             .filter((c) => c.includes('examples'))
             .map((c) => c.replace('block/', 'blocks/'))

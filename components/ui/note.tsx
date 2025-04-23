@@ -1,14 +1,15 @@
 import { IconCircleAlert, IconCircleCheck, IconInfo } from 'hq-icons'
+import type { ElementType, HtmlHTMLAttributes } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface NoteProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+interface NoteProps extends HtmlHTMLAttributes<HTMLDivElement> {
     variant?: 'primary' | 'secondary' | 'danger' | 'info' | 'success' | 'warning' | 'outline'
     hideIndicator?: boolean
 }
 
 const Note = ({ hideIndicator = false, variant = 'primary', className, children, ...props }: NoteProps) => {
-    const iconMap: Record<string, React.ElementType | null> = {
+    const iconMap: Record<string, ElementType | null> = {
         primary: IconInfo,
         info: IconInfo,
         warning: IconCircleAlert,

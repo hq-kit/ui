@@ -1,18 +1,17 @@
 'use client'
 
-import type React from 'react'
-
 import { IconBrandCleon, IconDownload, IconFilm, IconFolders, IconHome, IconMusicNotes, IconTrash } from 'hq-icons'
+import type { ReactNode } from 'react'
 
 import { Link, Sidebar, SidebarInset } from '@/components/ui'
 
 interface Props {
     rootDir: string
-    setRootDir: (rootDir: string) => void
-    children: React.ReactNode
+    action: (rootDir: string) => void
+    children: ReactNode
 }
 
-export default function FileManagerLayout({ children, rootDir, setRootDir }: Props) {
+export default function FileManagerLayout({ children, rootDir, action }: Props) {
     return (
         <div className='flex'>
             <Sidebar collapsible='dock' variant='inset'>
@@ -27,12 +26,12 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                 </Sidebar.Header>
                 <Sidebar.Content>
                     <Sidebar.Section>
-                        <Sidebar.Item onPress={() => setRootDir('')} isCurrent={rootDir === ''} href='#'>
+                        <Sidebar.Item onPress={() => action('')} isCurrent={rootDir === ''} href='#'>
                             <IconHome />
                             <Sidebar.Label>Home</Sidebar.Label>
                         </Sidebar.Item>
                         <Sidebar.Item
-                            onPress={() => setRootDir('Downloads/')}
+                            onPress={() => action('Downloads/')}
                             isCurrent={rootDir.startsWith('Downloads/')}
                             href='#'
                         >
@@ -40,7 +39,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                             <Sidebar.Label>Downloads</Sidebar.Label>
                         </Sidebar.Item>
                         <Sidebar.Item
-                            onPress={() => setRootDir('Documents/')}
+                            onPress={() => action('Documents/')}
                             isCurrent={rootDir.startsWith('Documents/')}
                             href='#'
                         >
@@ -48,7 +47,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                             <Sidebar.Label>Documents</Sidebar.Label>
                         </Sidebar.Item>
                         <Sidebar.Item
-                            onPress={() => setRootDir('Music/')}
+                            onPress={() => action('Music/')}
                             isCurrent={rootDir.startsWith('Music/')}
                             href='#'
                         >
@@ -56,7 +55,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                             <Sidebar.Label>Music</Sidebar.Label>
                         </Sidebar.Item>
                         <Sidebar.Item
-                            onPress={() => setRootDir('Videos/')}
+                            onPress={() => action('Videos/')}
                             isCurrent={rootDir.startsWith('Videos/')}
                             href='#'
                         >
@@ -65,7 +64,7 @@ export default function FileManagerLayout({ children, rootDir, setRootDir }: Pro
                         </Sidebar.Item>
                     </Sidebar.Section>
                     <Sidebar.Section>
-                        <Sidebar.Item onPress={() => setRootDir('Trash/')} isCurrent={rootDir === 'Trash/'} href='#'>
+                        <Sidebar.Item onPress={() => action('Trash/')} isCurrent={rootDir === 'Trash/'} href='#'>
                             <IconTrash />
                             <Sidebar.Label>Trash</Sidebar.Label>
                         </Sidebar.Item>

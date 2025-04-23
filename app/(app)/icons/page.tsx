@@ -1,6 +1,5 @@
-import React from 'react'
-
 import { IconBrandFigma, IconBrandGithub, IconLoader } from 'hq-icons'
+import { Suspense } from 'react'
 
 import { IconsController } from '@/components/controllers/icons'
 import IconList from '@/components/controllers/icons/icon-list'
@@ -75,7 +74,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
             </Hero>
             <IconsController />
             <Container className='flex w-full flex-col py-4'>
-                <React.Suspense
+                <Suspense
                     fallback={
                         <div className='flex min-h-96 w-full items-center justify-center'>
                             <IconLoader className='size-7 animate-spin' />
@@ -83,7 +82,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                     }
                 >
                     <IconList items={filteredIcons} />
-                </React.Suspense>
+                </Suspense>
             </Container>
         </>
     )

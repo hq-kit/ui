@@ -1,7 +1,8 @@
 'use client'
 
-import { Pagination } from '@/components/ui'
 import { useMediaQuery } from '@/lib/hooks'
+
+import { Pagination } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface PaginateProps {
@@ -9,10 +10,10 @@ interface PaginateProps {
     show: number
     total: number
     page: number
-    setPage: (page: number) => void
+    action: (page: number) => void
 }
 
-export default function Paginator({ className, show, page, total, setPage }: PaginateProps) {
+export default function Paginator({ className, show, page, total, action }: PaginateProps) {
     const isDesktop = useMediaQuery('(min-width: 1024px)')
 
     const meta = {
@@ -24,10 +25,10 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
     }
 
     const actions = {
-        first: () => setPage(1),
-        prev: () => setPage(page - 1),
-        next: () => setPage(page + 1),
-        last: () => setPage(meta.last_page)
+        first: () => action(1),
+        prev: () => action(page - 1),
+        next: () => action(page + 1),
+        last: () => action(meta.last_page)
     }
     return (
         <div
@@ -49,13 +50,13 @@ export default function Paginator({ className, show, page, total, setPage }: Pag
                             )}
                             {meta.page > 3 && <Pagination.Item slot='ellipsis' />}
                             {meta.page !== 1 && (
-                                <Pagination.Item slot='previous' onAction={() => setPage(meta.page - 1)}>
+                                <Pagination.Item slot='previous' onAction={() => action(meta.page - 1)}>
                                     {meta.page - 1}
                                 </Pagination.Item>
                             )}
                             <Pagination.Item isCurrent>{meta.page}</Pagination.Item>
                             {meta.page !== meta.last_page && (
-                                <Pagination.Item onAction={() => setPage(meta.page + 1)}>
+                                <Pagination.Item onAction={() => action(meta.page + 1)}>
                                     {meta.page + 1}
                                 </Pagination.Item>
                             )}

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import type { Key } from 'react-aria-components'
 
@@ -15,7 +15,7 @@ const items = [
 ]
 
 export default function SelectControlledDemo() {
-    const [selected, setSelected] = React.useState<Key>('')
+    const [selected, setSelected] = useState<Key>('')
     return (
         <div className='space-y-6'>
             <Select selectedKey={selected} onSelectionChange={setSelected} label='Linux Distro' items={items}>

@@ -1,4 +1,5 @@
 'use client'
+import type { ReactNode } from 'react'
 
 import { Button, Modal } from '@/components/ui'
 
@@ -9,7 +10,7 @@ export default function AuthLayoutOverlay({
 }: {
     title: string
     description: string
-    children: React.ReactNode
+    children: ReactNode
 }) {
     return (
         <div className='flex h-screen w-full items-center justify-center'>

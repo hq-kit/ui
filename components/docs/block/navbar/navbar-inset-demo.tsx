@@ -1,8 +1,7 @@
 'use client'
 
-import NavbarLayout from 'layouts/app-navbar'
-
 import { Container, Heading, Navbar } from '@/components/ui'
+import NavbarLayout from 'layouts/app-navbar'
 
 export default function NavbarInsetDemo() {
     return (

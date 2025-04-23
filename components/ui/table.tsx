@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronDown, IconMenu } from 'hq-icons'
+import { type ReactNode, type Ref, createContext, useContext } from 'react'
 import type {
     CellProps,
     ColumnProps,
@@ -28,7 +27,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Checkbox } from './checkbox'
 
 interface TableProps extends RACTableProps {
@@ -36,11 +34,11 @@ interface TableProps extends RACTableProps {
     allowResize?: boolean
 }
 
-const TableContext = React.createContext<TableProps>({
+const TableContext = createContext<TableProps>({
     allowResize: false
 })
 
-const useTableContext = () => React.useContext(TableContext)
+const useTableContext = () => useContext(TableContext)
 
 const Table = ({ className, ...props }: TableProps) => {
     return (
@@ -143,7 +141,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
             {({ allowsSorting, sortDirection, isHovered }) => (
                 <div className='flex items-center gap-2'>
                     <>
-                        {props.children as React.ReactNode}
+                        {props.children as ReactNode}
                         {allowsSorting && (
                             <IconChevronDown
                                 className={cn(
@@ -163,7 +161,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
 
 interface TableHeaderProps<T extends object> extends HeaderProps<T> {
     className?: string
-    ref?: React.Ref<HTMLTableSectionElement>
+    ref?: Ref<HTMLTableSectionElement>
 }
 
 const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
@@ -181,7 +179,7 @@ const TableHeader = <T extends object>({ children, ref, className, columns, ...p
 
 interface TableRowProps<T extends object> extends RowProps<T> {
     className?: string
-    ref?: React.Ref<HTMLTableRowElement>
+    ref?: Ref<HTMLTableRowElement>
 }
 
 const TableRow = <T extends object>({ children, className, columns, id, ref, ...props }: TableRowProps<T>) => {

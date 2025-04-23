@@ -10,7 +10,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Checkbox } from './checkbox'
 
 interface GridListProps<T extends object> extends Omit<RACGridListProps<T>, 'layout'> {

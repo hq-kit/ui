@@ -1,12 +1,10 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronDown } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
+import { type ReactNode, useState } from 'react'
 
 import { cn } from '@/lib/utils'
-
 import { Button } from './button'
 
 interface SpoilerProps {
@@ -16,7 +14,7 @@ interface SpoilerProps {
     showLessText?: string
     gradientTransparency?: boolean
     className?: string
-    children: React.ReactNode
+    children: ReactNode
 }
 
 function Spoiler({
@@ -28,7 +26,7 @@ function Spoiler({
     gradientTransparency = true,
     className
 }: SpoilerProps) {
-    const [isExpanded, setIsExpanded] = React.useState(false)
+    const [isExpanded, setIsExpanded] = useState(false)
     const animate = {
         transition: { type: 'tween' },
         height: isExpanded ? 'auto' : initialHeight,

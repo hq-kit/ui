@@ -1,6 +1,6 @@
 'use client'
 
-import type React from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 
 import { IconSwatchBook } from 'hq-icons'
 import type { ColorFormat } from 'react-aria-components'
@@ -15,7 +15,7 @@ const ColorSelectors = [
 
 type SelectFormatProps = {
     selectedFormat: ColorFormat
-    setSelectedFormat: React.Dispatch<React.SetStateAction<ColorFormat>>
+    setSelectedFormat: Dispatch<SetStateAction<ColorFormat>>
 }
 
 export default function SelectFormat({ selectedFormat, setSelectedFormat }: SelectFormatProps) {

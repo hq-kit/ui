@@ -1,15 +1,14 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import { titleCase } from 'usemods'
 
 import { Button, Sheet } from '@/components/ui'
 
 type Side = 'left' | 'right' | 'top' | 'bottom'
 export default function SheetPositionDemo() {
-    const [sheetSide, setSheetSide] = React.useState<Side>('left')
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [sheetSide, setSheetSide] = useState<Side>('left')
+    const [isOpen, setIsOpen] = useState(false)
 
     const sides: Side[] = ['top', 'left', 'right', 'bottom']
 

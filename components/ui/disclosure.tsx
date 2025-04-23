@@ -1,8 +1,7 @@
 'use client'
 
-import type React from 'react'
-
 import { IconMinus } from 'hq-icons'
+import type { Ref, RefObject } from 'react'
 import type {
     ButtonProps,
     DisclosurePanelProps,
@@ -20,7 +19,7 @@ import {
 import { cn } from '@/lib/utils'
 
 interface AccordionProps extends RACDisclosureGroupProps {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
     hideIndicator?: boolean
 }
 const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
@@ -44,7 +43,7 @@ const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps)
 }
 
 interface CollapsibleProps extends RACDisclosureProps {
-    ref?: React.Ref<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
 }
 const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) => {
     return (
@@ -66,7 +65,7 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
 }
 
 interface DisclosureTriggerProps extends ButtonProps {
-    ref?: React.Ref<HTMLButtonElement>
+    ref?: Ref<HTMLButtonElement>
 }
 const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps) => {
     return (

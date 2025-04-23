@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { IconCheck, IconChevronRight } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
+import { type CSSProperties, type ComponentProps, type Ref, use } from 'react'
 import type {
     MenuProps,
     MenuSectionProps,
@@ -54,14 +53,14 @@ interface MenuContentProps<T>
         >,
         MenuProps<T> {
     className?: string
-    style?: React.CSSProperties
+    style?: CSSProperties
     respectScreen?: boolean
 }
 
 const MenuContent = <T extends object>({ className, respectScreen = true, ...props }: MenuContentProps<T>) => {
     const isMobile = useMediaQuery('(max-width: 768px)')
     const popoverContext = useSlottedContext(PopoverContext)!
-    const state = React.use(OverlayTriggerStateContext)!
+    const state = use(OverlayTriggerStateContext)!
     if (isMobile && respectScreen) {
         return (
             <AnimatePresence>
@@ -186,7 +185,7 @@ const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemP
     )
 }
 
-const MenuHeader = ({ className, ...props }: React.ComponentProps<typeof Header>) => (
+const MenuHeader = ({ className, ...props }: ComponentProps<typeof Header>) => (
     <Header
         className={cn(
             '-mx-1 col-span-full mb-1 touch-none border-b px-2.5 py-2 font-semibold text-base sm:px-3 sm:pb-2.5 sm:text-sm',
@@ -235,7 +234,7 @@ const MenuDetails = ({ label, description, ...props }: DropdownItemDetailProps) 
 }
 
 interface MenuLabelProps extends TextProps {
-    ref?: React.Ref<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
 }
 
 const MenuLabel = ({ className, ref, ...props }: MenuLabelProps) => (

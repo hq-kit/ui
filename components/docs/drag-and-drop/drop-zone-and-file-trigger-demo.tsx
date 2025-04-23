@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { IconImage } from 'hq-icons'
 import Image from 'next/image'
@@ -10,7 +10,7 @@ import { Description, DropZone, FileTrigger } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
 export default function DropZoneAndFileTriggerDemo() {
-    const [droppedImage, setDroppedImage] = React.useState<string | null>(null)
+    const [droppedImage, setDroppedImage] = useState<string | null>(null)
 
     const onDropHandler = async (e: DropEvent) => {
         const item = e.items

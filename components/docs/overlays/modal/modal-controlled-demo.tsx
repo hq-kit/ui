@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
-
 import { IconCircleCheck, IconTrash } from 'hq-icons'
+import { useState } from 'react'
 
 import { Button, Modal } from '@/components/ui'
 
 export default function ModalControlledDemo() {
-    const [open, setOpen] = React.useState(false)
-    const [loading, setLoading] = React.useState<'idle' | 'loading' | 'success'>('idle')
+    const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState<'idle' | 'loading' | 'success'>('idle')
 
     const deleteAccount = async () => {
         setLoading('loading')

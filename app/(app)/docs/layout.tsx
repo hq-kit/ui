@@ -1,6 +1,8 @@
-import { Aside } from '@/components/layouts/aside'
+import type { ReactNode } from 'react'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+import Aside from '@/components/layouts/aside'
+
+export default async function Layout({ children }: { children: ReactNode }) {
     return (
         <div className='flex w-full flex-col'>
             <div className='relative mx-auto flex w-full max-w-7xl flex-auto justify-center lg:px-8 2xl:max-w-screen-2xl'>

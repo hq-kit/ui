@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 
 import { Card } from '@/components/ui'
 
@@ -9,7 +10,7 @@ export default function AuthLayoutSplit({
 }: {
     title: string
     description: string
-    children: React.ReactNode
+    children: ReactNode
 }) {
     return (
         <div className='grid w-full lg:max-h-screen lg:min-h-screen lg:grid-cols-2'>

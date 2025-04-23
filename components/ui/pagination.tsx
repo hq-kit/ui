@@ -1,13 +1,14 @@
 'use client'
 
 import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconEllipsis } from 'hq-icons'
+import type { ReactNode, RefObject } from 'react'
 import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
 import { ListBox, ListBoxItem, ListBoxSection, Text, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
 interface PaginationProps<T> extends ListBoxProps<T> {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
     shape?: 'square' | 'circle'
 }
 const Pagination = <T extends object>({ className, shape = 'square', ref, ...props }: PaginationProps<T>) => {
@@ -25,14 +26,14 @@ const Pagination = <T extends object>({ className, shape = 'square', ref, ...pro
 }
 
 interface PaginationPagesProps<T> extends ListBoxSectionProps<T> {
-    ref?: React.RefObject<HTMLElement>
+    ref?: RefObject<HTMLElement>
 }
 const PaginationPages = <T extends object>({ className, ref, ...props }: PaginationPagesProps<T>) => (
     <ListBoxSection ref={ref} {...props} className={cn('flex gap-1.5', className)} />
 )
 
 interface PaginationItemProps extends ListBoxItemProps {
-    children?: React.ReactNode
+    children?: ReactNode
     className?: string
     isCurrent?: boolean
     slot?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'

@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconLoaderCircle } from 'hq-icons'
+import { Fragment, type HTMLAttributes, Suspense } from 'react'
 
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
@@ -10,14 +9,14 @@ import Code from '@/components/mdx/code'
 import { Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-interface DemoProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DemoProps extends HTMLAttributes<HTMLDivElement> {
     component: string
     className?: string
     center?: boolean
 }
 
 export default function Demo({ component, center = false, ...props }: DemoProps) {
-    const Preview = previews[component] ? previews[component].component : React.Fragment
+    const Preview = previews[component] ? previews[component].component : Fragment
     // @ts-expect-error no-type
     const codeString = jsonPreviews[component].raw ?? ''
     return (
@@ -34,7 +33,7 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                             center && 'grid min-h-20 place-content-center py-6 sm:py-12'
                         )}
                     >
-                        <React.Suspense
+                        <Suspense
                             fallback={
                                 <div className='flex w-full items-center justify-center text-muted-fg text-sm'>
                                     <IconLoaderCircle className='size-12 animate-spin' />
@@ -42,7 +41,7 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                             }
                         >
                             <Preview />
-                        </React.Suspense>
+                        </Suspense>
                     </div>
                 </Tabs.Content>
                 <Tabs.Content className='not-prose' id='code'>

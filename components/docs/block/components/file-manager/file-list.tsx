@@ -1,4 +1,5 @@
 import { IconArchive, IconDisc, IconFileImage, IconFileMusic, IconFileText, IconFileVideo, IconFolder } from 'hq-icons'
+import type { FC, SVGProps } from 'react'
 
 export type FileNode = {
     file: string
@@ -84,7 +85,7 @@ export function mapFilePaths(nodes: FileNode[], parentPath = ''): string[] {
 }
 
 export const getFileIcon = (ext: string) => {
-    let Icon = IconFolder
+    let Icon: FC<SVGProps<SVGSVGElement>>
     switch (ext) {
         case 'jpg':
         case 'png':

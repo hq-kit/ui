@@ -1,7 +1,6 @@
 'use client'
 
-import type React from 'react'
-
+import type { Ref } from 'react'
 import type {
     FieldErrorProps,
     GroupProps,
@@ -90,7 +89,7 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
     )
 }
 
-const Input = ({ className, ref, ...props }: InputProps & { ref?: React.Ref<HTMLInputElement> }) => (
+const Input = ({ className, ref, ...props }: InputProps & { ref?: Ref<HTMLInputElement> }) => (
     <RACInput
         ref={ref}
         className={cn(

@@ -1,12 +1,8 @@
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { docs } from '#docs'
-
-import { MDXContent } from '@/components/mdx'
-import Pager from '@/components/mdx/pager'
 import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
 import { Card } from '@/components/ui'
+import { getDocs, getDocsContent, getStaticParams, getTableOfContents } from '@/lib/hooks/docs'
+import type { Metadata } from 'next'
 
 export interface DocPageProps {
     params: Promise<{
@@ -14,32 +10,23 @@ export interface DocPageProps {
     }>
 }
 
-async function getPostFromParams(params: { slug: string[] }) {
-    const slug = params?.slug?.join('/')
-    return docs.find((doc) => doc.slugAsParams === slug)
-}
-
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
     const params = await props.params
-    const doc = await getPostFromParams(params)
-
-    if (!doc) {
-        return {}
-    }
+    const frontmatter = await getDocs(params.slug)
 
     const ogSearchParams = new URLSearchParams()
-    ogSearchParams.set('title', doc.title)
+    ogSearchParams.set('title', frontmatter.title)
 
     return {
-        title: doc.title,
-        description: doc.description,
+        title: frontmatter.title,
+        description: frontmatter.description,
         applicationName: 'HQ UI',
         category: 'Docs',
         keywords: [
-            doc.title,
-            `${doc.title} components`,
-            `${doc.title} component`,
-            `${doc.title} on React`,
+            frontmatter.title,
+            `${frontmatter.title} components`,
+            `${frontmatter.title} component`,
+            `${frontmatter.title} on React`,
             'React',
             'Next.js',
             'Inertia.js',
@@ -70,16 +57,15 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
 }
 
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-    return docs.map((doc) => ({ slug: doc.slugAsParams.split('/') }))
+    const docs = await getStaticParams()
+    return docs.map((doc) => ({ slug: doc.split('/') }))
 }
 
 export default async function DocsPage(props: DocPageProps) {
     const params = await props.params
-    const doc = await getPostFromParams(params)
+    const { frontmatter, content } = await getDocsContent(params.slug)
 
-    if (!doc) {
-        notFound()
-    }
+    const tocItems = await getTableOfContents(params.slug)
 
     return (
         <>
@@ -87,29 +73,20 @@ export default async function DocsPage(props: DocPageProps) {
                 <main className='prose prose-blue dark:prose-invert prose-h2:mb-4 prose-headings:mb-[0.3rem] max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0'>
                     <Card className='not-prose'>
                         <Card.Header>
-                            <Card.Title>{doc.title}</Card.Title>
-                            {doc.description && <Card.Description>{doc.description}</Card.Description>}
+                            <Card.Title>{frontmatter.title}</Card.Title>
+                            {frontmatter.description && <Card.Description>{frontmatter.description}</Card.Description>}
                         </Card.Header>
-                        {doc.references && doc.references?.length > 0 && (
+                        {frontmatter.references && frontmatter.references?.length > 0 && (
                             <Card.Content className='flex flex-row gap-2 pb-6'>
-                                <DocRefs references={doc.references} />
+                                <DocRefs references={frontmatter.references} />
                             </Card.Content>
                         )}
                     </Card>
-                    <TableOfContents className='mt-8 block xl:hidden' items={doc.toc} />
-                    <MDXContent code={doc.body} />
-                    <Pager
-                        doc={{
-                            title: doc.title,
-                            slug: doc.slug
-                        }}
-                        docs={docs
-                            .filter((doc) => doc.slug.startsWith('docs/components'))
-                            .map((doc) => ({ slug: doc.slug, title: doc.title }))}
-                    />
+                    <TableOfContents className='mt-8 block xl:hidden' items={tocItems} />
+                    {content}
                 </main>
             </div>
-            <TableOfContents className='hidden xl:block' items={doc.toc} />
+            <TableOfContents className='hidden xl:block' items={tocItems} />
         </>
     )
 }

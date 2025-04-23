@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 
 import { GridList } from '@/components/ui'
@@ -20,7 +19,7 @@ const items = [
 ]
 
 export default function GridListControlledDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set([]))
+    const [selected, setSelected] = useState<Selection>(new Set([]))
     return (
         <div className='space-y-6'>
             <GridList

@@ -1,11 +1,12 @@
 'use client'
 
+import type { HTMLAttributes, ReactNode } from 'react'
 import { Header, Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
 import { Container, Link, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-const Hero = ({ children }: { children: React.ReactNode }) => (
+const Hero = ({ children }: { children: ReactNode }) => (
     <div className='relative isolate overflow-hidden bg-bg'>
         <div
             aria-hidden='true'
@@ -43,7 +44,7 @@ const Hero = ({ children }: { children: React.ReactNode }) => (
     </div>
 )
 
-const HeroHeader = ({ children, ...props }: { children: React.ReactNode }) => <Header {...props}>{children}</Header>
+const HeroHeader = ({ children, ...props }: { children: ReactNode }) => <Header {...props}>{children}</Header>
 
 const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
     <Heading level={1} className={cn('mb-2 max-w-xl font-bold text-2xl lg:mb-6 lg:text-5xl', className)} {...props}>
@@ -51,13 +52,13 @@ const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
     </Heading>
 )
 
-const HeroDescription = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const HeroDescription = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div className={cn('block max-w-2xl text-base text-muted-fg leading-relaxed lg:text-xl', className)} {...props}>
         {children}
     </div>
 )
 
-const HeroContent = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const HeroContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div {...props} className={cn('mt-6 flex flex-col gap-4 lg:flex-row lg:items-end', className)}>
         {children}
     </div>

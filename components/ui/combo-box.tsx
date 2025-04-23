@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconCheck, IconChevronDown, IconLoader, IconX } from 'hq-icons'
+import { type ReactNode, use } from 'react'
 import type { ListBoxItemProps, ListBoxSectionProps, ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {
     Button,
@@ -19,12 +18,11 @@ import {
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
-
 import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 
 interface ComboBoxProps<T extends object> extends Omit<RACComboboxProps<T>, 'children'>, FieldProps {
-    children: React.ReactNode | ((item: T) => React.ReactNode)
-    prefix?: React.ReactNode
+    children: ReactNode | ((item: T) => ReactNode)
+    prefix?: ReactNode
     isPending?: boolean
 }
 
@@ -102,7 +100,7 @@ const ComboBox = <T extends object>({
 }
 
 const ClearButton = () => {
-    const state = React.use(ComboBoxStateContext)!
+    const state = use(ComboBoxStateContext)!
     return (
         <Button
             className='inline-flex cursor-pointer items-center justify-center rounded-lg text-muted-fg outline-hidden hover:text-fg'

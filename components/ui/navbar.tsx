@@ -1,15 +1,13 @@
 'use client'
 
-import React from 'react'
-
 import { IconMenu } from 'hq-icons'
 import { LayoutGroup, motion } from 'motion/react'
+import { type ComponentProps, type RefObject, createContext, use, useCallback, useId, useMemo, useState } from 'react'
 import type { LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-
 import { Button, type ButtonProps } from './button'
 import { Sheet } from './sheet'
 
@@ -26,10 +24,10 @@ type NavbarContextProps = {
     toggleNavbar: () => void
 } & NavbarOptions
 
-const NavbarContext = React.createContext<NavbarContextProps | null>(null)
+const NavbarContext = createContext<NavbarContextProps | null>(null)
 
 function useNavbar() {
-    const context = React.use(NavbarContext)
+    const context = use(NavbarContext)
     if (!context) {
         throw new Error('useNavbar must be used within a Navbar.')
     }
@@ -37,7 +35,7 @@ function useNavbar() {
     return context
 }
 
-interface NavbarProps extends React.ComponentProps<'header'>, NavbarOptions {
+interface NavbarProps extends ComponentProps<'header'>, NavbarOptions {
     defaultOpen?: boolean
     isOpen?: boolean
     onOpenChange?: (open: boolean) => void
@@ -55,10 +53,10 @@ const Navbar = ({
     ...props
 }: NavbarProps) => {
     const isCompact = useMediaQuery('(max-width: 768px)')
-    const [_open, _setOpen] = React.useState(defaultOpen)
+    const [_open, _setOpen] = useState(defaultOpen)
     const open = openProp ?? _open
 
-    const setOpen = React.useCallback(
+    const setOpen = useCallback(
         (value: boolean | ((value: boolean) => boolean)) => {
             if (setOpenProp) {
                 return setOpenProp?.(typeof value === 'function' ? value(open) : value)
@@ -69,11 +67,11 @@ const Navbar = ({
         [setOpenProp, open]
     )
 
-    const toggleNavbar = React.useCallback(() => {
+    const toggleNavbar = useCallback(() => {
         setOpen((open) => !open)
     }, [setOpen])
 
-    const contextValue = React.useMemo<NavbarContextProps>(
+    const contextValue = useMemo<NavbarContextProps>(
         () => ({
             open,
             setOpen,
@@ -103,7 +101,7 @@ const Navbar = ({
     )
 }
 
-interface NavbarNavProps extends React.ComponentProps<'div'> {
+interface NavbarNavProps extends ComponentProps<'div'> {
     variant?: 'navbar' | 'float' | 'inset'
     isSticky?: boolean
     side?: 'left' | 'right'
@@ -152,7 +150,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
 }
 
 interface NavbarTriggerProps extends ButtonProps {
-    ref?: React.RefObject<HTMLButtonElement>
+    ref?: RefObject<HTMLButtonElement>
 }
 const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
     const { toggleNavbar } = useNavbar()
@@ -176,9 +174,9 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
     )
 }
 
-const NavbarSection = ({ className, ...props }: React.ComponentProps<'div'>) => {
+const NavbarSection = ({ className, ...props }: ComponentProps<'div'>) => {
     const { isCompact } = useNavbar()
-    const id = React.useId()
+    const id = useId()
     return (
         <LayoutGroup id={id}>
             <div
@@ -251,12 +249,12 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
     )
 }
 
-const NavbarFlex = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
+const NavbarFlex = ({ className, ref, ...props }: ComponentProps<'div'>) => {
     return <div ref={ref} className={cn('flex items-center gap-2 md:gap-3', className)} {...props} />
 }
 
-interface NavbarCompactProps extends React.ComponentProps<'div'> {
-    ref?: React.RefObject<HTMLDivElement>
+interface NavbarCompactProps extends ComponentProps<'div'> {
+    ref?: RefObject<HTMLDivElement>
     variant?: 'float' | 'inset' | 'navbar'
 }
 const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
@@ -276,7 +274,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     )
 }
 
-const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
+const NavbarInset = ({ className, ref, ...props }: ComponentProps<'div'>) => {
     const { variant } = useNavbar()
     return (
         <main

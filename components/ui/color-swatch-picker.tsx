@@ -9,7 +9,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { ColorSwatch, isBrightColor } from './color-swatch'
 
 const ColorSwatchPicker = ({ children, className, layout = 'grid', ...props }: ColorSwatchPickerProps) => {

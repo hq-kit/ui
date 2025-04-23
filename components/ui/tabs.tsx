@@ -1,5 +1,6 @@
 'use client'
 
+import type { RefObject } from 'react'
 import type {
     TabListProps as RACTabListProps,
     TabPanelProps as RACTabPanelProps,
@@ -11,7 +12,7 @@ import { Tab as RACTab, Tabs as RACTabs, TabList, TabPanel, composeRenderProps }
 import { cn } from '@/lib/utils'
 
 interface TabsProps extends RACTabsProps {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
 }
 const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
@@ -26,7 +27,7 @@ const Tabs = ({ className, ref, ...props }: TabsProps) => {
 }
 
 interface TabListProps<T extends object> extends RACTabListProps<T> {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
 }
 const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
     return (
@@ -47,7 +48,7 @@ const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) =
 }
 
 interface TabProps extends RACTabProps {
-    ref?: React.RefObject<HTMLButtonElement>
+    ref?: RefObject<HTMLButtonElement>
 }
 
 const Tab = ({ className, ref, ...props }: TabProps) => {
@@ -73,7 +74,7 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
 }
 
 interface TabPanelProps extends RACTabPanelProps {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
 }
 const Panel = ({ className, ref, ...props }: TabPanelProps) => {
     return <TabPanel {...props} ref={ref} className={cn(className, 'flex-1 text-fg text-sm outline-hidden')} />

@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
+import { createContext, use } from 'react'
 import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
 import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
 
@@ -10,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 type BreadcrumbsContextProps = { separator?: 'chevron' | 'slash' | 'dash' | 'dot' }
 
-const BreadcrumbsContext = React.createContext<BreadcrumbsContextProps>({
+const BreadcrumbsContext = createContext<BreadcrumbsContextProps>({
     separator: 'chevron'
 })
 
@@ -30,7 +29,7 @@ interface BreadcrumbsItemProps extends BreadcrumbProps, Pick<LinkProps, 'href'> 
 }
 
 const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) => {
-    const { separator } = React.use(BreadcrumbsContext)
+    const { separator } = use(BreadcrumbsContext)
 
     return (
         <Breadcrumb

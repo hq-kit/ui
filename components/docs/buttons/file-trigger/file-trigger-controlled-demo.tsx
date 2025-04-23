@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { FileTrigger } from '@/components/ui'
 
 export default function FileTriggerDemo() {
-    const [file, setFile] = React.useState<string[] | null>(null)
+    const [file, setFile] = useState<string[] | null>(null)
     return (
         <div className='flex flex-col space-y-6'>
             <FileTrigger

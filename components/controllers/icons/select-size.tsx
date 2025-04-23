@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronDown } from 'hq-icons'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 
 import { Button, Menu } from '@/components/ui'
@@ -23,7 +22,7 @@ export function SelectSize() {
 
     const searchParams = useSearchParams()
 
-    const [selectedSize, setSelectSize] = React.useState<Selection>(new Set([searchParams.get('s') || '5']))
+    const [selectedSize, setSelectSize] = useState<Selection>(new Set([searchParams.get('s') || '5']))
     const onSelectionChange = (size: Selection) => {
         router.push(`${pathname}?${createQueryString('s', [...size].join(','))}`, {
             scroll: false

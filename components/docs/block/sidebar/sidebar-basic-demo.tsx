@@ -1,7 +1,6 @@
+import { Heading, SidebarInset } from '@/components/ui'
 import AppSidebar from 'layouts/app-sidebar'
 import AppSidebarNav from 'layouts/app-sidebar-nav'
-
-import { Heading, SidebarInset } from '@/components/ui'
 
 export default function SidebarBasicDemo() {
     return (

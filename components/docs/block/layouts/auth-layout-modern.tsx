@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 
 import { Card } from '@/components/ui'
 
@@ -9,7 +10,7 @@ export default function AuthLayoutModern({
 }: {
     title: string
     description: string
-    children: React.ReactNode
+    children: ReactNode
 }) {
     return (
         <div className='flex min-h-screen w-full items-center justify-center'>

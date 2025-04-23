@@ -1,5 +1,3 @@
-'use client'
-
 import { Note } from '@/components/ui'
 
 export default function NoteDemo() {

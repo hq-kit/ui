@@ -1,27 +1,26 @@
 'use client'
 
-import React from 'react'
-
-import { getFileIcon, mapFilePaths, rootFolders } from 'components/file-manager/file-list'
 import { IconLayoutGrid, IconLayoutList, IconSearch, IconSquare, IconSquareCheckBig } from 'hq-icons'
-import FileManagerLayout from 'layouts/file-manager-layout'
+import { useEffect, useState } from 'react'
 
 import { Breadcrumbs, Button, GridList, SearchField, Toggle } from '@/components/ui'
+import { getFileIcon, mapFilePaths, rootFolders } from 'components/file-manager/file-list'
+import FileManagerLayout from 'layouts/file-manager-layout'
 
 export default function FileManager() {
-    const [view, setView] = React.useState<'grid' | 'stack'>('grid')
-    const [selectionMode, setSelectionMode] = React.useState<'single' | 'multiple'>('single')
-    const [dir, setDir] = React.useState('')
+    const [view, setView] = useState<'grid' | 'stack'>('grid')
+    const [selectionMode, setSelectionMode] = useState<'single' | 'multiple'>('single')
+    const [dir, setDir] = useState('')
     const paths = mapFilePaths(rootFolders)
 
-    const [files, setFiles] = React.useState(paths)
+    const [files, setFiles] = useState(paths)
 
-    React.useEffect(() => {
+    useEffect(() => {
         setFiles(paths.filter((path) => path.startsWith(dir)))
     }, [dir, paths])
 
     return (
-        <FileManagerLayout rootDir={dir} setRootDir={setDir}>
+        <FileManagerLayout rootDir={dir} action={setDir}>
             <header className='sticky top-0 flex h-[3.57rem] items-center justify-between gap-x-2 px-4'>
                 <span className='flex items-center gap-x-4'>
                     <Breadcrumbs

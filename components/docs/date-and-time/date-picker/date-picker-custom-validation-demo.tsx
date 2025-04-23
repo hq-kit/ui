@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, DatePicker, Form } from '@/components/ui'
 import { getLocalTimeZone, parseDate, startOfYear, today } from '@internationalized/date'
@@ -8,8 +8,8 @@ import { getLocalTimeZone, parseDate, startOfYear, today } from '@internationali
 export default function DatePickerInvalidDemo() {
     const ly = startOfYear(today(getLocalTimeZone()))
     const now = today(getLocalTimeZone())
-    const [value, setValue] = React.useState(parseDate(ly.toString()))
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [value, setValue] = useState(parseDate(ly.toString()))
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

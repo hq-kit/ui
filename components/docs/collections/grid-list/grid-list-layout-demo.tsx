@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import { GridList, Select } from '@/components/ui'
@@ -20,8 +19,8 @@ const items = [
 ]
 
 export default function GridListLayoutDemo() {
-    const [columns, setColumns] = React.useState<Key>(2)
-    const [gap, setGap] = React.useState<Key>(4)
+    const [columns, setColumns] = useState<Key>(2)
+    const [gap, setGap] = useState<Key>(4)
 
     return (
         <div className='flex flex-col gap-4'>

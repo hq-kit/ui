@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { AnimatePresence, motion, useDragControls } from 'motion/react'
+import { type CSSProperties, type HTMLAttributes, type ReactNode, useContext } from 'react'
 import type {
     DialogProps,
     DialogTriggerProps,
@@ -34,7 +33,7 @@ const Overlay = motion.create(ModalOverlay)
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
 const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & Pick<DialogProps, 'children'>) => {
-    const state = React.useContext(OverlayTriggerStateContext)!
+    const state = useContext(OverlayTriggerStateContext)!
     const controls = useDragControls()
     return (
         <AnimatePresence>
@@ -80,7 +79,7 @@ const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & 
                                 <div className='h-8 w-full touch-none py-2' onPointerDown={(e) => controls.start(e)}>
                                     <div className='mx-auto h-1.5 w-12 rounded-full bg-muted' />
                                 </div>
-                                {props.children as React.ReactNode}
+                                {props.children as ReactNode}
                             </Dialog>
                         </Modal>
                     )}
@@ -129,10 +128,10 @@ const PopoverMode = ({ className, children, showArrow, ...props }: PopoverProps 
 interface PopoverContentProps
     extends Omit<ModalOverlayProps, 'children' | 'className'>,
         Omit<PopoverProps, 'children' | 'className'> {
-    style?: React.CSSProperties
+    style?: CSSProperties
     showArrow?: boolean
     respectScreen?: boolean
-    children: React.ReactNode
+    children: ReactNode
     className?: string | ((values: { defaultClassName?: string }) => string)
 }
 
@@ -141,7 +140,7 @@ const PopoverContent = ({ showArrow = true, respectScreen = true, ...props }: Po
     return isMobile && respectScreen ? <DrawerMode {...props} /> : <PopoverMode showArrow={showArrow} {...props} />
 }
 
-const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
 }
 
@@ -153,7 +152,7 @@ const Description = ({ className, ...props }: TextProps) => (
     <Text slot='description' className={cn('text-muted-fg text-sm', className)} {...props} />
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Body = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div
         slot='body'
         className={cn(
@@ -164,7 +163,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     />
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='footer'

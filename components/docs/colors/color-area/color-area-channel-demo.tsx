@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 import type { ColorChannel } from 'react-stately'
 
@@ -10,8 +9,8 @@ import { ColorArea, Select } from '@/components/ui'
 const channels = ['red', 'green', 'blue', 'alpha'].map((channel) => ({ channel }))
 
 export default function ColorAreaChannelDemo() {
-    const [xChannel, setXChannel] = React.useState<Key>('red')
-    const [yChannel, setYChannel] = React.useState<Key>('blue')
+    const [xChannel, setXChannel] = useState<Key>('red')
+    const [yChannel, setYChannel] = useState<Key>('blue')
     return (
         <div className='flex flex-col items-center gap-4'>
             <div className='flex w-full flex-col gap-2 sm:flex-row'>

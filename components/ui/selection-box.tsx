@@ -1,26 +1,24 @@
 'use client'
 
-import React from 'react'
-
+import { type CSSProperties, type ReactNode, createContext, use } from 'react'
 import type { CheckboxGroupProps, CheckboxProps, RadioGroupProps, RadioProps } from 'react-aria-components'
 import { Checkbox, CheckboxGroup, Radio, RadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, type FieldProps, Label } from './field'
 
-const SelectionBoxContext = React.createContext<'single' | 'multiple'>('single')
-const useSelectionBoxContext = () => React.use(SelectionBoxContext)
+const SelectionBoxContext = createContext<'single' | 'multiple'>('single')
+const useSelectionBoxContext = () => use(SelectionBoxContext)
 
 interface SelectionBoxProps
     extends Omit<CheckboxGroupProps, 'value' | 'onChange' | 'defaultValue' | 'validate'>,
         Omit<RadioGroupProps, 'value' | 'onChange' | 'defaultValue' | 'validate'>,
         FieldProps {
     selectionMode?: 'single' | 'multiple'
-    prefix?: React.ReactNode
-    children?: React.ReactNode
+    prefix?: ReactNode
+    children?: ReactNode
     className?: string
-    style?: React.CSSProperties
+    style?: CSSProperties
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     value?: any
     /* eslint-disable  @typescript-eslint/no-explicit-any */
@@ -104,10 +102,10 @@ interface SelectionBoxItemProps
     extends Omit<CheckboxProps, 'value'>,
         Omit<RadioProps, 'value'>,
         Omit<FieldProps, 'placeholder' | 'description' | 'errorMessage'> {
-    prefix?: React.ReactNode
-    children?: React.ReactNode
+    prefix?: ReactNode
+    children?: ReactNode
     className?: string
-    style?: React.CSSProperties
+    style?: CSSProperties
     value: string
 }
 

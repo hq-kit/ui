@@ -1,14 +1,14 @@
 'use client'
 
+import type { ReactNode, Ref } from 'react'
 import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
 import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'>, FieldProps {
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
 const RadioGroup = ({ label, description, errorMessage, children, ...props }: RadioGroupProps) => {
@@ -41,8 +41,8 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
 }
 
 interface RadioProps extends RACRadioProps, Omit<FieldProps, 'children' | 'placeholder' | 'errorMessage'> {
-    ref?: React.Ref<HTMLLabelElement>
-    children?: React.ReactNode
+    ref?: Ref<HTMLLabelElement>
+    children?: ReactNode
 }
 
 const Radio = ({ label, description, className, children, ref, ...props }: RadioProps) => {

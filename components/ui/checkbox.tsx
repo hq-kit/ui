@@ -8,7 +8,6 @@ import type {
 import { Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}

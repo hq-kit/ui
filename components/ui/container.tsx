@@ -1,3 +1,4 @@
+import type { HTMLAttributes, Ref } from 'react'
 import { tv } from 'tailwind-variants'
 
 const containerStyles = tv({
@@ -13,9 +14,9 @@ const containerStyles = tv({
     }
 })
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
     variant?: 'constrained' | 'padded-content'
-    ref?: React.Ref<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
 }
 
 const Container = ({ className, variant, ref, ...props }: ContainerProps) => (

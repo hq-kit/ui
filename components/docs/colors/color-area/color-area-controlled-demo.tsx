@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import { type ColorSpace, type Key, parseColor } from 'react-aria-components'
 import type { ColorChannel } from 'react-stately'
 
@@ -13,10 +12,10 @@ const HSLchannels = ['hue', 'saturation', 'lightness'].map((channel) => ({ chann
 const HSBchannels = ['hue', 'saturation', 'brightness'].map((channel) => ({ channel }))
 
 export default function ColorAreaControlledDemo() {
-    const [color, setColor] = React.useState(parseColor('hsl(0, 100%, 50%)'))
-    const [colorSpace, setColorSpace] = React.useState<Key>('rgb')
-    const [xChannel, setXChannel] = React.useState<Key>(colorSpace === 'rgb' ? 'red' : 'hue')
-    const [yChannel, setYChannel] = React.useState<Key>(colorSpace === 'rgb' ? 'green' : 'saturation')
+    const [color, setColor] = useState(parseColor('hsl(0, 100%, 50%)'))
+    const [colorSpace, setColorSpace] = useState<Key>('rgb')
+    const [xChannel, setXChannel] = useState<Key>(colorSpace === 'rgb' ? 'red' : 'hue')
+    const [yChannel, setYChannel] = useState<Key>(colorSpace === 'rgb' ? 'green' : 'saturation')
 
     return (
         <div className='flex flex-col items-center gap-2'>

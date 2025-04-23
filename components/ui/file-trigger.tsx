@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode, RefObject } from 'react'
 import { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
 
@@ -7,7 +8,7 @@ import { Button, type buttonStyles } from './button'
 
 interface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof buttonStyles> {
     isDisabled?: boolean
-    ref?: React.RefObject<HTMLInputElement>
+    ref?: RefObject<HTMLInputElement>
 }
 
 const FileTrigger = ({
@@ -17,7 +18,7 @@ const FileTrigger = ({
     ref,
     children,
     ...props
-}: Omit<FileTriggerProps, 'children'> & { children: React.ReactNode }) => {
+}: Omit<FileTriggerProps, 'children'> & { children: ReactNode }) => {
     return (
         <RACFileTrigger ref={ref} {...props}>
             <Button isDisabled={props.isDisabled} size={size} shape={shape} variant={variant}>

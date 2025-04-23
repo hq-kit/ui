@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { RichTextField } from '@/components/ui'
 
 export default function RichTextFieldControlledMarkdownDemo() {
-    const [value, setValue] = React.useState('')
+    const [value, setValue] = useState('')
     return (
         <>
             <RichTextField returnType='html' value={value} onChange={setValue} label='Content' className='mb-2' />

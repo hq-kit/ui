@@ -12,7 +12,6 @@ import {
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 
 interface NumberFieldProps extends RACNumberFieldProps {

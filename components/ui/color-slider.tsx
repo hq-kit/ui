@@ -4,7 +4,6 @@ import { ColorSlider as RACColorSlider, SliderOutput, SliderTrack, composeRender
 import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { ColorThumb } from './color-thumb'
 import { Label } from './field'
 

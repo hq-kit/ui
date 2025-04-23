@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
-
+import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import {
     IconBold,
     IconHeading1,
@@ -34,10 +33,9 @@ import {
     SELECTION_CHANGE_COMMAND,
     UNDO_COMMAND
 } from 'lexical'
+import { useCallback, useEffect, useState } from 'react'
 import { TextField, type ValidationResult } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
-import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import {
@@ -65,6 +63,7 @@ import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingNode, Quot
 import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
 
+import { cn } from '@/lib/utils'
 import { Button } from './button'
 import { Description, FieldError, Label } from './field'
 import { Menu } from './menu'
@@ -191,9 +190,9 @@ interface OnChangeProps {
 
 function OnChange({ value, onChange, returnType }: OnChangeProps) {
     const [editor] = useLexicalComposerContext()
-    const [isFirstRender, setIsFirstRender] = React.useState(true)
+    const [isFirstRender, setIsFirstRender] = useState(true)
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (returnType === 'html') {
             if (!value || !isFirstRender) return
 
@@ -211,7 +210,7 @@ function OnChange({ value, onChange, returnType }: OnChangeProps) {
         }
     }, [editor, value, isFirstRender, returnType])
 
-    React.useEffect(() => {
+    useEffect(() => {
         setIsFirstRender(true)
     }, [])
 
@@ -320,7 +319,7 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
 
 export function ToolbarPlugin() {
     const [editor] = useLexicalComposerContext()
-    const [formatText, setFormatText] = React.useState({
+    const [formatText, setFormatText] = useState({
         bold: false,
         italic: false,
         underline: false,

@@ -1,5 +1,3 @@
-'use client'
-
 import { Checkbox, CheckboxGroup } from '@/components/ui'
 
 export default function CheckboxGroupDescriptionDemo() {

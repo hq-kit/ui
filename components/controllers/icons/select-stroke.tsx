@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconChevronDown } from 'hq-icons'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import type { Selection } from 'react-aria-components'
 
 import { Button, Menu } from '@/components/ui'
 import { useQueryString } from '@/lib/hooks/use-query-string'
+import { useState } from 'react'
 
 const strokes = [
     { id: '1', name: 'Stroke 1' },
@@ -21,7 +20,7 @@ export function SelectStroke() {
 
     const searchParams = useSearchParams()
 
-    const [selectedStroke, setSelectStroke] = React.useState<Selection>(new Set([searchParams.get('t') || '2']))
+    const [selectedStroke, setSelectStroke] = useState<Selection>(new Set([searchParams.get('t') || '2']))
     const onSelectionChange = (stroke: Selection) => {
         router.push(`${pathname}?${createQueryString('t', [...stroke].join(','))}`, {
             scroll: false

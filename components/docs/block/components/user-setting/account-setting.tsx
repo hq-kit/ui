@@ -1,15 +1,14 @@
 'use client'
 
-import React from 'react'
-
+import type { DropEvent } from '@react-types/shared'
 import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from 'hq-icons'
+import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
 
 import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
-import type { DropEvent } from '@react-types/shared'
 
 export default function AccountSetting() {
-    const [droppedImage, setDroppedImage] = React.useState<string>('')
+    const [droppedImage, setDroppedImage] = useState<string>('')
     async function onDropHandler(e: DropEvent) {
         const item = e.items
             .filter(isFileDropItem)

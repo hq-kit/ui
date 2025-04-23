@@ -1,17 +1,29 @@
 'use client'
 
-import React from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-import { IconBrandCleon, IconMenu, IconSearch } from 'hq-icons'
-
-import { Aside } from '@/components/layouts/aside'
+import { DocsNavigation } from '@/components/layouts/docs-navigation'
 import { NavbarDropdown } from '@/components/layouts/navbar'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Link, Sheet } from '@/components/ui'
+import { type Docs, getAllDocs } from '@/lib/hooks/docs'
+import { IconBrandCleon, IconMenu, IconSearch } from 'hq-icons'
 
-export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean) => void }) {
-    const [openAside, setOpenAside] = React.useState(false)
-    React.useEffect(() => setOpenAside(false), [])
+export function ResponsiveAside({ action }: { action: (openCmd: boolean) => void }) {
+    const [openAside, setOpenAside] = useState(false)
+    const pathname = usePathname()
+    const [docs, setDocs] = useState<Docs[]>([])
+
+    useEffect(() => {
+        const getDocs = async () => {
+            setDocs(await getAllDocs())
+        }
+        getDocs()
+    }, [])
+
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+    useEffect(() => setOpenAside(false), [pathname])
     return (
         <nav className='sticky top-0 z-10 bg-bg/10 backdrop-blur-lg md:h-14 lg:hidden'>
             <div className='flex items-center justify-between py-2 pr-2 pl-4'>
@@ -30,7 +42,7 @@ export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean)
                     <IconBrandCleon className='size-6' />
                 </Link>
                 <div className='flex items-center gap-x-1'>
-                    <Button onPress={() => setOpenCmd(true)} icon variant='outline' aria-label='Open command palette'>
+                    <Button onPress={() => action(true)} icon variant='outline' aria-label='Open command palette'>
                         <IconSearch />
                     </Button>
                     <ThemeToggle />
@@ -47,7 +59,7 @@ export function ResponsiveAside({ setOpenCmd }: { setOpenCmd: (openCmd: boolean)
                     <NavbarDropdown />
                 </Sheet.Header>
                 <Sheet.Body className='px-6'>
-                    <Aside />
+                    <DocsNavigation docs={docs} />
                 </Sheet.Body>
             </Sheet.Content>
         </nav>

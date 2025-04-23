@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import {
     IconBook,
@@ -25,7 +25,7 @@ import { Group, Menu as MenuPrimitive } from 'react-aria-components'
 import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from '@/components/ui'
 
 export default function SheetMenuDemo() {
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
     const closeModal = () => setIsOpen(false)
     return (

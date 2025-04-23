@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, DatePicker, Form } from '@/components/ui'
 import type { CalendarDate } from '@internationalized/date'
 
 export default function DatePickerValidationDemo() {
-    const [value, setValue] = React.useState<CalendarDate>()
+    const [value, setValue] = useState<CalendarDate>()
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

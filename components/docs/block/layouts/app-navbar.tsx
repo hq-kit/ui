@@ -12,11 +12,12 @@ import {
     IconShield,
     IconShoppingBag
 } from 'hq-icons'
+import type { ComponentProps } from 'react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar, Button, Menu, Navbar, Separator } from '@/components/ui'
 
-export default function AppNavbar(props: React.ComponentProps<typeof Navbar>) {
+export default function AppNavbar(props: ComponentProps<typeof Navbar>) {
     return (
         <Navbar {...props}>
             <Navbar.Nav>

@@ -1,13 +1,12 @@
 'use client'
 
-import { use } from 'react'
-
 import { IconCircle } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
+import { type ComponentProps, use } from 'react'
 
 import { cn } from '@/lib/utils'
 
-type OTPInputProps = React.ComponentProps<typeof OTPInput>
+type OTPInputProps = ComponentProps<typeof OTPInput>
 const OTP = ({ className, autoFocus = false, containerClassName, ref, ...props }: OTPInputProps) => (
     <OTPInput
         data-1p-ignore
@@ -19,12 +18,12 @@ const OTP = ({ className, autoFocus = false, containerClassName, ref, ...props }
     />
 )
 
-type OTPGroupProps = React.ComponentProps<'div'>
+type OTPGroupProps = ComponentProps<'div'>
 const OTPGroup = ({ className, ref, ...props }: OTPGroupProps) => (
     <div ref={ref} className={cn('flex items-center gap-x-1.5', className)} {...props} />
 )
 
-interface OTPSlotProps extends React.ComponentProps<'div'> {
+interface OTPSlotProps extends ComponentProps<'div'> {
     index: number
 }
 
@@ -58,7 +57,7 @@ const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
     )
 }
 
-type OTPSeparatorProps = React.ComponentProps<'div'>
+type OTPSeparatorProps = ComponentProps<'div'>
 const OTPSeparator = ({ ref, ...props }: OTPSeparatorProps) => (
     <div ref={ref} {...props}>
         <IconCircle className='size-2 fill-fg' />

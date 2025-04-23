@@ -1,11 +1,10 @@
-import type React from 'react'
-
+import { OpenPanelComponent } from '@openpanel/nextjs'
 import type { Metadata, Viewport } from 'next'
+import type { CSSProperties, ReactNode } from 'react'
 
 import { Providers } from '@/components/providers'
 import { fontMono, fontSans } from '@/lib/fonts'
 import '@/lib/styles/app.css'
-import { OpenPanelComponent } from '@openpanel/nextjs'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
@@ -73,7 +72,7 @@ export const viewport: Viewport = {
 export default function RootLayout({
     children
 }: Readonly<{
-    children: React.ReactNode
+    children: ReactNode
 }>) {
     return (
         <html
@@ -84,7 +83,7 @@ export default function RootLayout({
                 {
                     '--font-sans': 'var(--font-geist)',
                     '--font-mono': 'var(--font-geist-mono)'
-                } as React.CSSProperties
+                } as CSSProperties
             }
         >
             <body className='min-h-screen font-sans antialiased'>

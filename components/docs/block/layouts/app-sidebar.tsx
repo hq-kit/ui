@@ -16,10 +16,11 @@ import {
     IconShieldQuestion,
     IconTicket
 } from 'hq-icons'
+import type { ComponentProps } from 'react'
 
 import { Menu, Sidebar, User } from '@/components/ui'
 
-export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+export default function AppSidebar(props: ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar {...props}>
             <Sidebar.Header>

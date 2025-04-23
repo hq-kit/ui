@@ -1,11 +1,20 @@
 'use client'
 
-import React from 'react'
+import { LayoutGroup } from 'motion/react'
+import { usePathname } from 'next/navigation'
+import { useId, useState } from 'react'
+import { Collection } from 'react-aria-components'
 
+import { CommandMenu } from '@/components/layouts/command-menu'
+import { NavLink } from '@/components/layouts/nav-link'
+import { ResponsiveAside } from '@/components/layouts/responsive-aside'
+import { MotionIcon } from '@/components/mdx/references'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Button, Keyboard, Link, Menu, Separator, buttonStyles } from '@/components/ui'
+import { useMediaQuery } from '@/lib/hooks'
 import {
     IconBrandAdobe,
     IconBrandCleon,
-    IconBrandFramer,
     IconBrandGithub,
     IconBrandTailwind,
     IconChevronDown,
@@ -16,19 +25,9 @@ import {
     IconSearch,
     IconShapes
 } from 'hq-icons'
-import { LayoutGroup } from 'motion/react'
-import { usePathname } from 'next/navigation'
-import { Collection } from 'react-aria-components'
-
-import { CommandMenu } from '@/components/layouts/command-menu'
-import { NavLink } from '@/components/layouts/nav-link'
-import { ResponsiveAside } from '@/components/layouts/responsive-aside'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, Keyboard, Link, Menu, Separator, buttonStyles } from '@/components/ui'
-import { useMediaQuery } from '@/lib/hooks'
 
 export function Navbar() {
-    const id = React.useId()
+    const id = useId()
     const pathname = usePathname()
     const menuItems = [
         { id: 1, label: 'Home', url: '/', active: pathname === '/' },
@@ -38,11 +37,12 @@ export function Navbar() {
         { id: 5, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') }
     ]
 
-    const [open, setOpen] = React.useState(false)
     const isDesktop = useMediaQuery('(min-width: 1024px)')
+
+    const [open, setOpen] = useState(false)
     return (
         <>
-            <CommandMenu setOpen={setOpen} openCommand={open} />
+            <CommandMenu action={setOpen} openCommand={open} />
             <LayoutGroup id={`navigation-${id}`}>
                 <div className='sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block'>
                     <nav className='border-b bg-bg/95 py-2 backdrop-blur-lg supports-[backdrop-filter]:bg-bg/60'>
@@ -89,7 +89,7 @@ export function Navbar() {
                     </nav>
                 </div>
             </LayoutGroup>
-            {!isDesktop && <ResponsiveAside setOpenCmd={setOpen} />}
+            {!isDesktop && <ResponsiveAside action={setOpen} />}
         </>
     )
 }
@@ -140,9 +140,9 @@ export function NavbarDropdown() {
                     <IconBrandTailwind />
                     <Menu.Label>Tailwind CSS</Menu.Label>
                 </Menu.Item>
-                <Menu.Item href='https://www.framer.com/motion/' target='_blank'>
-                    <IconBrandFramer />
-                    <Menu.Label>Framer Motion</Menu.Label>
+                <Menu.Item href='https://motion.dev/' target='_blank'>
+                    <MotionIcon />
+                    <Menu.Label>Motion</Menu.Label>
                 </Menu.Item>
             </Menu.Content>
         </Menu>

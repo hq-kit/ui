@@ -1,8 +1,8 @@
 'use client'
 
-import type React from 'react'
-
+import type { Placement } from '@react-types/overlays'
 import { IconCheck, IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
+import type { ReactNode } from 'react'
 import type {
     ListBoxItemProps,
     ListBoxSectionProps,
@@ -28,16 +28,14 @@ import {
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
-import type { Placement } from '@react-types/overlays'
-
 import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'children'>, FieldProps {
     className?: string
     items?: Iterable<T>
-    children: React.ReactNode | ((item: T) => React.ReactNode)
+    children: ReactNode | ((item: T) => ReactNode)
     placement?: Placement
-    prefix?: React.ReactNode
+    prefix?: ReactNode
     searchable?: boolean
     isPending?: boolean
 }

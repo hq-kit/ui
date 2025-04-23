@@ -1,5 +1,3 @@
-'use client'
-
 import { SelectionBox } from '@/components/ui'
 
 export default function SelectionBoxDemo() {

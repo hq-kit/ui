@@ -1,7 +1,5 @@
 'use client'
 
-import type React from 'react'
-
 import {
     IconCheck,
     IconCheckDouble,
@@ -12,6 +10,7 @@ import {
     IconReply,
     IconTrash
 } from 'hq-icons'
+import type { ReactNode } from 'react'
 
 import { Button, Menu } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -25,7 +24,7 @@ export interface BubbleChatProps {
 }
 
 export default function BubbleChat({ message, time, role, status, onDelete }: BubbleChatProps) {
-    const statusIcon: Record<string, React.ReactNode> = {
+    const statusIcon: Record<string, ReactNode> = {
         pending: <IconClock className='size-5 text-fg' />,
         sent: <IconCheck className='size-5 text-fg' />,
         delivered: <IconCheckDouble className='size-5 text-fg' />,
@@ -88,7 +87,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
 const convertToHtml = (text: string) => {
     let html = text
     html = html.replace(
-        /(https?:\/\/[^\s]+)/g,
+        /(https?:\/\/\S+)/g,
         '<a href="$1" target="_blank" class="text-primary underline" rel="noopener noreferrer">$1</a>'
     )
     html = html.replace(/`([^`]+)`/g, '<code class="font-mono">$1</code>')

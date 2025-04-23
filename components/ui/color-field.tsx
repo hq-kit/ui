@@ -1,19 +1,19 @@
 'use client'
 
 import { IconLoaderPinwheel } from 'hq-icons'
+import type { ReactNode } from 'react'
 import type { ColorFieldProps as RACColorFieldProps } from 'react-aria-components'
 import { ColorField as RACColorField, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 import type { FieldProps } from './field'
 
 interface ColorFieldProps extends RACColorFieldProps, FieldProps {
-    prefix?: React.ReactNode
-    suffix?: React.ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
     isLoading?: boolean
     withPicker?: boolean
 }
@@ -46,7 +46,9 @@ const ColorField = ({
                     )}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
-                            <span className='ml-2 text-muted-fg has-[button]:ml-0'>{props.prefix}</span>
+                            <span data-prefix={true} className='ml-2 text-muted-fg has-[button]:ml-0'>
+                                {props.prefix}
+                            </span>
                         ) : null}
                         {isLoading ? (
                             <span className='ml-2 text-muted-fg has-[button]:ml-0'>
@@ -66,7 +68,7 @@ const ColorField = ({
                             <Input placeholder={placeholder} />
                         </div>
                         {props.suffix ? (
-                            <span data-suffix className='mr-2 text-muted-fg has-[button]:mr-0'>
+                            <span data-suffix={true} className='mr-2 text-muted-fg has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

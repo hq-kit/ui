@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
+import { Children, type KeyboardEvent, type ReactNode, isValidElement, useEffect, useRef, useState } from 'react'
 import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
@@ -20,7 +19,6 @@ import {
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
-
 import { Description, FieldGroup, type FieldProps, Label } from './field'
 
 interface MultiSelectProps<T>
@@ -33,12 +31,12 @@ interface MultiSelectProps<T>
 }
 
 const MultiSelect = <T extends object>({ className, children, ...props }: MultiSelectProps<T>) => {
-    const triggerRef = React.useRef<HTMLDivElement>(null)
-    const inputRef = React.useRef<HTMLInputElement>(null)
-    const [inputValue, setInputValue] = React.useState('')
-    const [selectedKeys, onSelectionChange] = React.useState<Selection>(new Set(props.selectedKeys))
+    const triggerRef = useRef<HTMLDivElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
+    const [inputValue, setInputValue] = useState('')
+    const [selectedKeys, onSelectionChange] = useState<Selection>(new Set(props.selectedKeys))
 
-    React.useEffect(() => {
+    useEffect(() => {
         setInputValue('')
     }, [])
 
@@ -57,7 +55,7 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
         )
     }
 
-    const onKeyDownCapture = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const onKeyDownCapture = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Backspace' && inputValue === '') {
             onSelectionChange?.((s) => new Set([...s].slice(0, -1)))
             // @ts-expect-error incompatible type Key and Selection
@@ -68,9 +66,9 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
     const items = props.items
         ? // @ts-expect-error unknown type
           props.items.map((item) => ({ id: item.id, name: item.name }))
-        : React.Children.map(
-              children as React.ReactNode,
-              (child) => React.isValidElement(child) && child.props
+        : Children.map(
+              children as ReactNode,
+              (child) => isValidElement(child) && child.props
               // @ts-expect-error unknown type
           )?.map((item) => ({ id: item.id, name: item.textValue }))
 

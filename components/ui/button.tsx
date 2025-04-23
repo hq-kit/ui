@@ -1,8 +1,7 @@
 'use client'
 
-import type React from 'react'
-
 import { IconLoaderCircle } from 'hq-icons'
+import type { Ref } from 'react'
 import type { ButtonProps as RACButtonProps } from 'react-aria-components'
 import { Button as RACButton, composeRenderProps } from 'react-aria-components'
 import { type VariantProps, tv } from 'tailwind-variants'
@@ -50,10 +49,10 @@ const buttonStyles = tv({
 })
 
 export interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyles> {
-    ref?: React.Ref<HTMLButtonElement>
+    ref?: Ref<HTMLButtonElement>
 }
 
-const Button = ({ className, variant, size, shape, ref, ...props }: ButtonProps) => (
+const Button = ({ className, variant, size, shape, ref, children, ...props }: ButtonProps) => (
     <RACButton
         ref={ref}
         {...props}
@@ -71,7 +70,7 @@ const Button = ({ className, variant, size, shape, ref, ...props }: ButtonProps)
         {(values) => (
             <>
                 {values.isPending && <IconLoaderCircle data-slot='loader' className='size-4 animate-spin' />}
-                {typeof props.children === 'function' ? props.children(values) : props.children}
+                {typeof children === 'function' ? children(values) : children}
             </>
         )}
     </RACButton>

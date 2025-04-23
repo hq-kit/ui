@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, Form, Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupControlledDemo() {
-    const [selected, setSelected] = React.useState<string>('')
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [selected, setSelected] = useState<string>('')
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(selected)
     }

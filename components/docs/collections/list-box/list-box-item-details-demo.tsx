@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 
 import { ListBox } from '@/components/ui'
@@ -25,7 +24,7 @@ const items = [
 ]
 
 export default function ListBoxItemDetailsDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set([1]))
+    const [selected, setSelected] = useState<Selection>(new Set([1]))
     return (
         <ListBox
             selectedKeys={selected}

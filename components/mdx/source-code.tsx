@@ -1,23 +1,22 @@
 'use client'
 
-import * as React from 'react'
-
 import { IconBrandReact } from 'hq-icons'
+import { type HTMLAttributes, useEffect, useState } from 'react'
 
 import previews from '@/components/docs/generated/previews.json'
 import Code from '@/components/mdx/code'
 import { Description, Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-interface SourceCodeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SourceCodeProps extends HTMLAttributes<HTMLDivElement> {
     component: string | string[]
     withMessage?: boolean
 }
 
 export default function SourceCode({ component, withMessage = true }: SourceCodeProps) {
-    const [codeStrings, setCodeStrings] = React.useState<{ name: string; code: string }[]>([])
+    const [codeStrings, setCodeStrings] = useState<{ name: string; code: string }[]>([])
 
-    React.useEffect(() => {
+    useEffect(() => {
         const componentArray = Array.isArray(component) ? component : [component]
         const updatedCodeStrings = componentArray.map((show) => {
             // @ts-expect-error no-type

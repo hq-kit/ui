@@ -1,9 +1,9 @@
 'use client'
 
+import { useAsyncList } from '@react-stately/data'
 import { IconLoader } from 'hq-icons'
 
 import { Table } from '@/components/ui'
-import { useAsyncList } from '@react-stately/data'
 
 interface Character {
     title: string

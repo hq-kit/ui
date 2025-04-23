@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import {
     TimeField as RACTimeField,
     type TimeFieldProps as RACTimeFieldProps,
@@ -8,13 +9,12 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
 
 interface TimeFieldProps<T extends TimeValue> extends RACTimeFieldProps<T>, FieldProps {
-    prefix?: React.ReactNode
-    suffix?: React.ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
 }
 
 const TimeField = <T extends TimeValue>({
@@ -39,9 +39,9 @@ const TimeField = <T extends TimeValue>({
                         </Label>
                     )}
                     <FieldGroup>
-                        {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
+                        {prefix ? <span data-prefix={true}>{prefix}</span> : null}
                         <DateInput className='flex w-fit min-w-28 justify-around whitespace-nowrap p-2 sm:text-sm' />
-                        {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
+                        {suffix ? <span data-suffix={true}>{suffix}</span> : null}
                     </FieldGroup>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>

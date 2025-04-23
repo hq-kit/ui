@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
 import { motion, useAnimation } from 'motion/react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import type { ButtonProps, ToastOptions } from 'react-aria-components'
 import {
     Button,
@@ -20,9 +19,9 @@ interface ToastContentProps {
     title: string
     description?: string
     action?: () => void
-    actionLabel?: React.ReactNode
+    actionLabel?: ReactNode
     altAction?: () => void
-    altActionLabel?: React.ReactNode
+    altActionLabel?: ReactNode
     type: 'default' | 'success' | 'error' | 'info' | 'warning'
 }
 
@@ -36,7 +35,7 @@ const queue = new ToastQueue<ToastContentProps>({
 })
 
 const ToastProvider = () => {
-    const [isHovered, setIsHovered] = React.useState(false)
+    const [isHovered, setIsHovered] = useState(false)
     return (
         <ToastRegion
             className='fixed top-0 flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
@@ -155,8 +154,8 @@ interface TimeoutButtonProps extends ButtonProps {
 
 const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: TimeoutButtonProps) => {
     const controls = useAnimation()
-    const startTimeRef = React.useRef<number | null>(null)
-    const elapsedRef = React.useRef<number>(0)
+    const startTimeRef = useRef<number | null>(null)
+    const elapsedRef = useRef<number>(0)
     const size = 28
     const stroke = 2
     const radius = (size - stroke) / 2
@@ -174,14 +173,14 @@ const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: Time
     }
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    React.useEffect(() => {
+    useEffect(() => {
         if (timeout === undefined) return
         startTimeRef.current = performance.now()
         animate(timeout / 1000)
     }, [timeout])
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    React.useEffect(() => {
+    useEffect(() => {
         if (timeout === undefined) return
 
         if (paused) {

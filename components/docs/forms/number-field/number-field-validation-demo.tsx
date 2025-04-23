@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, Form, NumberField } from '@/components/ui'
 
 export default function NumberFieldValidationDemo() {
-    const [value, setValue] = React.useState<number>()
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [value, setValue] = useState<number>()
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

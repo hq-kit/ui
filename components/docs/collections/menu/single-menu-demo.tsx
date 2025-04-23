@@ -1,11 +1,10 @@
 'use client'
 
-import React from 'react'
-
+import type { Placement } from '@react-types/overlays'
+import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 
 import { Menu } from '@/components/ui'
-import type { Placement } from '@react-types/overlays'
 
 const placements = [
     { position: 'bottom' },
@@ -33,7 +32,7 @@ const placements = [
 ]
 
 export default function SingleMenuDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set(['bottom']))
+    const [selected, setSelected] = useState<Selection>(new Set(['bottom']))
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>

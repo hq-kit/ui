@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import { Time } from '@internationalized/date'
+import { useState } from 'react'
 
 import { TimeField } from '@/components/ui'
-import { Time } from '@internationalized/date'
 
 export default function TimeFieldValidationDemo() {
-    const [value, setValue] = React.useState(new Time(11, 45))
+    const [value, setValue] = useState(new Time(11, 45))
     return (
         <div className='space-y-6'>
             <TimeField label='Event time' value={value} onChange={(v) => setValue(v!)} />

@@ -1,39 +1,38 @@
 'use client'
 
-import React from 'react'
-
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { usePathname, useRouter } from 'next/navigation'
-import { docs } from '#docs'
+import { Fragment, useEffect, useState } from 'react'
 
-import { type Doc, type Hierarchy, createHierarchy } from '@/components/layouts/aside'
 import { Command } from '@/components/ui'
-import { goodTitle } from '@/lib/utils'
+import { type Docs, getAllDocs } from '@/lib/hooks/docs'
 
 export interface OpenCloseProps {
     openCommand: boolean
-    setOpen: (openCommand: boolean) => void
+    action: (openCommand: boolean) => void
 }
 
-export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
+export function CommandMenu({ openCommand, action }: OpenCloseProps) {
     const router = useRouter()
     const pathname = usePathname()
+    const [docs, setDocs] = useState<Docs[]>([])
+
+    useEffect(() => {
+        const getDocs = async () => {
+            setDocs(await getAllDocs())
+        }
+        getDocs()
+    }, [])
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    React.useEffect(() => {
-        if (setOpen) {
-            setOpen(false)
+    useEffect(() => {
+        if (action) {
+            action(false)
         }
-    }, [pathname, setOpen])
-
-    const data = createHierarchy(docs)
-    const filteredNodeEntries = Object.entries(data).sort(([a], [b]) => {
-        const order = ['prologue', 'getting-started', 'dark-mode', 'components']
-        return order.indexOf(a) - order.indexOf(b)
-    })
+    }, [pathname, action])
 
     return (
-        <Command.Modal isOpen={openCommand} onOpenChange={setOpen} shortcut={{ key: 'k' }}>
+        <Command.Modal isOpen={openCommand} onOpenChange={action} shortcut={{ key: 'k' }}>
             <Command.Section title='Pages'>
                 <Command.Item textValue='home' onAction={() => router.push('/')}>
                     <IconHome />
@@ -56,46 +55,52 @@ export function CommandMenu({ openCommand, setOpen }: OpenCloseProps) {
                     <Command.Label>Colors</Command.Label>
                 </Command.Item>
             </Command.Section>
-
-            {filteredNodeEntries.map(([key, value]) => (
-                <React.Fragment key={key}>
-                    <Command.Section key={`${key}-section`} title={key !== 'components' ? goodTitle(key) : undefined}>
-                        {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
-                            typeof subValue === 'object' && 'title' in subValue ? (
-                                <Command.Item
-                                    textValue={key + (subValue as Doc).title}
-                                    key={`${key}-${subKey}`}
-                                    onAction={() => router.push(`/${subValue.slug}`)}
-                                >
-                                    <Command.Label>{goodTitle((subValue as Doc).title)}</Command.Label>
-                                </Command.Item>
-                            ) : null
-                        )}
-                    </Command.Section>
-
-                    {Object.entries(value as Hierarchy).map(([subKey, subValue]) =>
-                        typeof subValue === 'object' && 'title' in subValue ? null : (
-                            <Command.Section key={`${key}-${subKey}-section`} title={goodTitle(subKey)}>
-                                {Object.entries(subValue as Hierarchy).map(([childKey, childValue]) =>
-                                    typeof childValue === 'object' && 'title' in childValue ? (
+            {docs
+                .sort((a, b) => b.order - a.order)
+                .map((doc, i) => (
+                    <Command.Section key={i} title={doc.title}>
+                        {doc?.items
+                            ?.sort((a, b) => a.order - b.order)
+                            .map(
+                                (item, i) =>
+                                    item.url && (
                                         <Command.Item
-                                            textValue={
-                                                childValue.title === 'Text Field'
-                                                    ? 'Text Field Input'
-                                                    : subKey + (childValue as Doc).title
-                                            }
-                                            key={`${key}-${subKey}-${childKey}`}
-                                            onAction={() => router.push(`/${childValue.slug}`)}
+                                            key={i}
+                                            textValue={item.title}
+                                            onAction={() => router.push(item.url as string)}
                                         >
-                                            <Command.Label>{goodTitle((childValue as Doc).title)}</Command.Label>
+                                            <Command.Label>{item.title}</Command.Label>
                                         </Command.Item>
-                                    ) : null
-                                )}
-                            </Command.Section>
-                        )
-                    )}
-                </React.Fragment>
-            ))}
+                                    )
+                            )}
+                    </Command.Section>
+                ))}
+            {docs
+                .filter((item) => item.title === 'Components')
+                .map((item, i) => (
+                    <Fragment key={i}>
+                        {item.items
+                            ?.sort((a, b) => a.order - b.order)
+                            .map((item, i) => (
+                                <Command.Section key={i} title={item.title}>
+                                    {item?.items
+                                        ?.sort((a, b) => a.order - b.order)
+                                        .map(
+                                            (item, i) =>
+                                                item.url && (
+                                                    <Command.Item
+                                                        key={i}
+                                                        textValue={item.title}
+                                                        onAction={() => router.push(item.url as string)}
+                                                    >
+                                                        <Command.Label>{item.title}</Command.Label>
+                                                    </Command.Item>
+                                                )
+                                        )}
+                                </Command.Section>
+                            ))}
+                    </Fragment>
+                ))}
         </Command.Modal>
     )
 }

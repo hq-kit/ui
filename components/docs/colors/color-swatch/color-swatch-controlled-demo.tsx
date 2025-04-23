@@ -1,13 +1,12 @@
 'use client'
 
-import * as React from 'react'
-
+import { useState } from 'react'
 import { parseColor } from 'react-aria-components'
 
 import { ColorSwatchPicker } from '@/components/ui'
 
 export default function ColorSwatchPickerDemo() {
-    const [color, setColor] = React.useState(parseColor('#0d6efd'))
+    const [color, setColor] = useState(parseColor('#0d6efd'))
     return (
         <div className='flex flex-col gap-4'>
             <ColorSwatchPicker

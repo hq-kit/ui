@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import { ListBox, Select } from '@/components/ui'
@@ -20,7 +19,7 @@ const items = [
 ]
 
 export default function ListBoxMultipleDemo() {
-    const [selectionMode, setSelectionMode] = React.useState<Key>('multiple')
+    const [selectionMode, setSelectionMode] = useState<Key>('multiple')
     return (
         <div className='space-y-6'>
             <Select label='Selection mode' selectedKey={selectionMode} onSelectionChange={setSelectionMode}>

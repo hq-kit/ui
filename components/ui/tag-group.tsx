@@ -1,14 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconX } from 'hq-icons'
+import { type ReactNode, type RefObject, createContext, useContext } from 'react'
 import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
 import { Button, Tag as RACTag, TagGroup as RACTagGroup, TagList, composeRenderProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
-
 import { badgeStyles } from './badge'
 import { Description, Label } from './field'
 
@@ -17,7 +15,7 @@ type TagGroupStyles = {
     shape: keyof typeof badgeStyles.variants.shape
 }
 
-const TagGroupContext = React.createContext<TagGroupStyles>({
+const TagGroupContext = createContext<TagGroupStyles>({
     variant: 'primary',
     shape: 'square'
 })
@@ -28,7 +26,7 @@ interface TagGroupProps extends Omit<RACTagGroupProps, 'children'> {
     errorMessage?: string
     label?: string
     description?: string
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
     className?: string
 }
 
@@ -78,7 +76,7 @@ const tagStyles = tv({
 
 const Tag = (props: TagProps) => {
     const textValue = typeof props.children === 'string' ? props.children : undefined
-    const groupContext = React.useContext(TagGroupContext)
+    const groupContext = useContext(TagGroupContext)
 
     return (
         <RACTag
@@ -96,7 +94,7 @@ const Tag = (props: TagProps) => {
             {({ allowsRemoving }) => {
                 return (
                     <>
-                        {props.children as React.ReactNode}
+                        {props.children as ReactNode}
                         {allowsRemoving && (
                             <Button
                                 slot='remove'

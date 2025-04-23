@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { Card } from '@/components/ui'
 
 export default function AuthLayoutClassic({
@@ -7,7 +9,7 @@ export default function AuthLayoutClassic({
 }: {
     title: string
     description: string
-    children: React.ReactNode
+    children: ReactNode
 }) {
     return (
         <div className='flex min-h-screen w-full items-center justify-center p-4 lg:p-8'>

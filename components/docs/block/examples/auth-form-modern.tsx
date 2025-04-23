@@ -1,13 +1,14 @@
 'use client'
 
 import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
-import AuthLayoutModern from 'layouts/auth-layout-modern'
+import type { FormEvent } from 'react'
 
 import { toast } from '@/components/ui'
 import { Button, Checkbox, Form, Link, Separator, TextField } from '@/components/ui'
+import AuthLayoutModern from 'layouts/auth-layout-modern'
 
 export default function AuthForm() {
-    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    function onSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         toast.success('Register Successfully')
     }

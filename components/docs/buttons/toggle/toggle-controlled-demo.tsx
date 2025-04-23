@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { IconLock, IconLockOpen } from 'hq-icons'
+import { useState } from 'react'
 
 import { Toggle } from '@/components/ui'
 
 export default function ToggleControlledDemo() {
-    const [isSelected, setSelected] = React.useState(false)
+    const [isSelected, setSelected] = useState(false)
     return (
         <div className='flex flex-col items-center space-y-6'>
             <Toggle icon isSelected={isSelected} onChange={setSelected}>

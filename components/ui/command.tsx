@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconCheck, IconLoader, IconSearch } from 'hq-icons'
 import type {
     AutocompleteProps,
@@ -29,7 +27,7 @@ import {
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
-
+import { useEffect, useState } from 'react'
 import { Keyboard } from './keyboard'
 import { Modal } from './modal'
 
@@ -39,7 +37,7 @@ interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputVa
 
 const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
-        <div className='rounded-lg border'>
+        <div data-command={true} className={cn('rounded-lg border', props.className)}>
             <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
                 <TextField autoFocus className='border-b p-1' aria-label='Search'>
                     <Group className='flex items-center px-2'>
@@ -71,9 +69,9 @@ interface CommandModalProps<T> extends CommandProps<T>, Pick<ModalOverlayProps, 
 }
 
 const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProps<T>) => {
-    const [shortcutOpen, setShortcutOpen] = React.useState<boolean>(false)
+    const [shortcutOpen, setShortcutOpen] = useState<boolean>(false)
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!shortcut) return
         const handleKeyDown = (e: KeyboardEvent) => {
             if (
@@ -114,7 +112,7 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
             onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
             notch
-            className={'border-0'}
+            className={'border-0 **:data-command:border-0'}
         >
             <Command {...props} />
         </Modal.Content>

@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import { Select, Tree, TreeItem } from '@/components/ui'
 
 export default function TreeSelectionModeDemo() {
-    const [selectionMode, setSelectionMode] = React.useState<Key>('multiple')
+    const [selectionMode, setSelectionMode] = useState<Key>('multiple')
 
     return (
         <div className='space-y-6'>

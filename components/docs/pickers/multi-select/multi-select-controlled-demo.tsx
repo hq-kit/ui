@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
 
@@ -20,7 +20,7 @@ const items = [
 ]
 
 export default function MultiSelectDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set([2, 4]))
+    const [selected, setSelected] = useState<Selection>(new Set([2, 4]))
     return (
         <div className='space-y-6'>
             <MultiSelect label='Linux Distro' selectedKeys={selected} onSelectionChange={setSelected} items={items}>

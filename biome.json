@@ -44,24 +44,42 @@
       },
       "nursery": {
         "useSortedClasses": {
-            "level": "error",
+          "level": "error",
           "fix": "safe",
           "options": {
-            "attributes": ["classList"],
-            "functions": ["cn", "tv", "composeRenderProps"]
+            "attributes": [
+              "classList"
+            ],
+            "functions": [
+              "cn",
+              "tv",
+              "composeRenderProps"
+            ]
           }
         }
       }
     },
-    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+    "ignore": [
+      "node_modules",
+      ".next",
+      ".source",
+      "dist",
+      ".vercel"
+    ]
   },
   "formatter": {
-       "enabled": true,
+    "enabled": true,
     "indentStyle": "space",
     "indentWidth": 4,
     "useEditorconfig": true,
     "lineWidth": 120,
-    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+    "ignore": [
+      "node_modules",
+      ".next",
+      ".source",
+      "dist",
+      ".vercel"
+    ]
   },
   "javascript": {
     "formatter": {
@@ -71,7 +89,7 @@
       "bracketSameLine": false,
       "bracketSpacing": true,
       "jsxQuoteStyle": "single",
-        "quoteProperties": "asNeeded",
+      "quoteProperties": "asNeeded",
       "semicolons": "asNeeded",
       "trailingCommas": "none"
     }

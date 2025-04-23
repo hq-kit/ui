@@ -1,8 +1,7 @@
 'use client'
 
+import PaginationDemo from '@/components/docs/navigation/pagination/pagination-demo'
 import { Card, Table } from '@/components/ui'
-
-import PaginationDemo from '../docs/navigation/pagination/pagination-demo'
 
 export default function TableSink() {
     return (

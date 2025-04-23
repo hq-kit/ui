@@ -1,8 +1,8 @@
-import chroma from 'chroma-js'
-import ntc from 'ntcjs'
-import { slugify } from 'usemods'
+import { color as chroma } from 'chroma.ts'
 
 import _colors from '@/components/controllers/colors/colors.json'
+import ntc from 'ntcjs'
+import { slugify } from 'usemods'
 
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 type ColorData = Record<number, string>
@@ -23,32 +23,23 @@ export const generateColorScale = (color: string): { shade: number; color: strin
     }
 
     const baseColors = [
-        chroma(color).brighten(2.5).hex(),
-        chroma(color).brighten(2).hex(),
-        chroma(color).brighten(1.5).hex(),
-        chroma(color).brighten(1).hex(),
-        chroma(color).brighten(0.5).hex(),
+        chroma(color).brighter(2.5).hex(),
+        chroma(color).brighter(2).hex(),
+        chroma(color).brighter(1.5).hex(),
+        chroma(color).brighter(1).hex(),
+        chroma(color).brighter(0.5).hex(),
         color,
-        chroma(color).darken(0.5).hex(),
-        chroma(color).darken(1.1).hex(),
-        chroma(color).darken(1.5).hex(),
-        chroma(color).darken(2).hex(),
-        chroma(color).darken(2.5).hex()
+        chroma(color).darker(0.5).hex(),
+        chroma(color).darker(1.1).hex(),
+        chroma(color).darker(1.5).hex(),
+        chroma(color).darker(2).hex(),
+        chroma(color).darker(2.5).hex()
     ]
 
     return shades.map((shade, index) => ({
         shade,
         color: baseColors[index]
     }))
-}
-
-export const getfgColor = (color: string): string => {
-    const luminance = chroma(color).luminance()
-    return luminance > 0.5 ? chroma(color).luminance(0.05).hex() : chroma(color).luminance(0.95).hex()
-}
-export const getBackgroundColor = (color: string): string => {
-    const luminance = chroma(color).luminance()
-    return luminance < 0.5 ? chroma(color).luminance(0.1).hex() : chroma(color).luminance(0.9).hex()
 }
 
 export const textfg = (backgroundColor: string): string => {
@@ -109,21 +100,6 @@ export const hslToHex = (hsl: string): string => {
     return `#${f(0)}${f(8)}${f(4)}`
 }
 
-export const getColorName = ({
-    color,
-    slug = true,
-    type = 'hex'
-}: {
-    color: string
-    slug?: boolean
-    type?: 'hex' | 'hsl'
-}) => {
-    if (type === 'hex') {
-        const n_match = ntc.name(color)
-        return slug ? slugify(n_match[1]) : n_match[1]
-    }
-    if (type === 'hsl') {
-        const n_match = ntc.name(hslToHex(color))
-        return slug ? slugify(n_match[1]) : n_match[1]
-    }
+export const getColorName = (color: string): string => {
+    return slugify(ntc.name(color)[1])
 }

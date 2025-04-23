@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 
 import { Button, DateRangePicker, Form } from '@/components/ui'
 import { getLocalTimeZone, today } from '@internationalized/date'
@@ -9,11 +10,11 @@ export default function DateRangePickerCustomValidationDemo() {
     const now = today(getLocalTimeZone())
     const tomorrowWeek = today(getLocalTimeZone()).add({ days: 12 })
 
-    const [value, setValue] = React.useState({
+    const [value, setValue] = useState({
         start: now,
         end: tomorrowWeek
     })
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

@@ -1,0 +1,43 @@
+---
+title: Carousel
+description: The carousel is a slideshow for cycling through a series of content. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.
+references: ['https://react-spectrum.adobe.com/react-aria/ListBox.html#props', 'https://www.embla-carousel.com/api/']
+order: 1
+published: true
+---
+
+## Installation
+<Install component='carousel' />
+
+## Basic
+<Demo center component='media/carousel/carousel-demo' />
+
+## Collections
+<Demo center component='media/carousel/carousel-with-collection-demo' />
+
+## Orientation
+<Demo center component='media/carousel/carousel-orientation-demo' />
+
+## Options
+<Demo center component='media/carousel/carousel-options-demo' />
+
+## Autoplay
+
+This a plugin by the embla-carousel it self, it's not included in the package, but you can install it to make sure the carousel autoplay.
+Once you install it, you can use it with the `plugins` prop.
+
+<CLI command='install' items={['embla-carousel-autoplay']} />
+
+<Demo center component='media/carousel/carousel-autoplay-demo' />
+
+## Link
+
+If you need a link in carousel item, simply add `href` prop to the Carousel.Item.
+
+```tsx
+<Carousel.Item href="/path/to/page"/>
+```
+
+## API
+You can use the carousel api to control the carousel.
+<Demo center component='media/carousel/carousel-api-demo' />

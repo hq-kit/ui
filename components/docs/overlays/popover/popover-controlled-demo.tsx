@@ -1,15 +1,15 @@
 'use client'
 
-import React from 'react'
+import { useRef, useState } from 'react'
 
 import { IconCircleCheck, IconTrash } from 'hq-icons'
 
 import { Button, Popover } from '@/components/ui'
 
 export default function PopoverControlledDemo() {
-    const [open, setOpen] = React.useState<boolean>(false)
-    const [loading, setLoading] = React.useState<'idle' | 'loading' | 'success'>('idle')
-    const triggerRef = React.useRef<HTMLButtonElement>(null)
+    const [open, setOpen] = useState<boolean>(false)
+    const [loading, setLoading] = useState<'idle' | 'loading' | 'success'>('idle')
+    const triggerRef = useRef<HTMLButtonElement>(null)
 
     const deleteAccount = async () => {
         setLoading('loading')

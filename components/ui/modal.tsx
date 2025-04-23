@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { IconX } from 'hq-icons'
 import { AnimatePresence, motion } from 'motion/react'
 import type { DialogProps, DialogTriggerProps, HeadingProps, ModalOverlayProps, TextProps } from 'react-aria-components'
@@ -18,6 +16,7 @@ import {
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
+import { type CSSProperties, type HTMLAttributes, type ReactNode, use } from 'react'
 
 const MModal = motion.create(RACModal)
 const Overlay = motion.create(ModalOverlay)
@@ -29,7 +28,7 @@ interface ModalContentProps
         Pick<DialogProps, 'aria-label' | 'aria-labelledby' | 'role' | 'children' | 'className'> {
     closeButton?: boolean
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'full'
-    style?: React.CSSProperties
+    style?: CSSProperties
     respectScreen?: boolean
     drawer?: boolean
     notch?: boolean
@@ -50,7 +49,7 @@ const Content = ({
     const isDismissable = isDismissableInternal ?? role !== 'alertdialog'
     const isMobile = useMediaQuery('(max-width: 768px)') || drawer
     const isDesktop = respectScreen ? !isMobile : true
-    const state = React.use(OverlayTriggerStateContext)!
+    const state = use(OverlayTriggerStateContext)!
     return (
         <AnimatePresence>
             {(props?.isOpen || state?.isOpen) && (
@@ -119,7 +118,7 @@ const Content = ({
                                         <div className='mx-auto h-1.5 w-12 rounded-full bg-muted' />
                                     </div>
                                 )}
-                                {children as React.ReactNode}
+                                {children as ReactNode}
                                 {closeButton && isDesktop && (
                                     <Button
                                         slot='close'
@@ -145,7 +144,7 @@ const Content = ({
     )
 }
 
-const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div slot='header' className={cn('flex flex-col p-4 text-center sm:p-6 sm:text-left', className)} {...props} />
     )
@@ -159,7 +158,7 @@ const Description = ({ className, ...props }: TextProps) => (
     <Text slot='description' className={cn('text-muted-fg', className)} {...props} />
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Body = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div
         slot='body'
         className={cn(
@@ -170,7 +169,7 @@ const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     />
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='footer'

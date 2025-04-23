@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
 
@@ -20,8 +20,8 @@ const items = [
 ]
 
 export default function MultiSelectDemo() {
-    const [selected, setSelected] = React.useState<Selection>(new Set([]))
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [selected, setSelected] = useState<Selection>(new Set([]))
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(Array.from(selected))
     }

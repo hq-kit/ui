@@ -1,8 +1,7 @@
 'use client'
 
-import type React from 'react'
-
 import { motion } from 'motion/react'
+import type { ReactNode } from 'react'
 import { Link, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -10,7 +9,7 @@ import { cn } from '@/lib/utils'
 interface NavLinkProps {
     href: string
     isActive?: boolean
-    children?: React.ReactNode
+    children?: ReactNode
     target?: string
     className?: string
 }

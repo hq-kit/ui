@@ -1,7 +1,15 @@
 'use client'
 
-import React from 'react'
-
+import {
+    type CSSProperties,
+    type ComponentProps,
+    type ComponentType,
+    type ReactNode,
+    createContext,
+    use,
+    useId,
+    useMemo
+} from 'react'
 import type { LegendProps } from 'recharts'
 import { Legend, ResponsiveContainer, Tooltip } from 'recharts'
 
@@ -11,8 +19,8 @@ const THEMES = { light: '', dark: '.dark' } as const
 
 type ChartConfig = {
     [k in string]: {
-        label?: React.ReactNode
-        icon?: React.ComponentType
+        label?: ReactNode
+        icon?: ComponentType
     } & ({ color?: string; theme?: never } | { color?: never; theme: Record<keyof typeof THEMES, string> })
 }
 
@@ -20,10 +28,10 @@ type ChartContextProps = {
     config: ChartConfig
 }
 
-const ChartContext = React.createContext<ChartContextProps | null>(null)
+const ChartContext = createContext<ChartContextProps | null>(null)
 
 function useChart() {
-    const context = React.use(ChartContext)
+    const context = use(ChartContext)
 
     if (!context) {
         throw new Error('useChart must be used within a <Chart />')
@@ -39,11 +47,11 @@ const Chart = ({
     config,
     ref,
     ...props
-}: React.ComponentProps<'div'> & {
+}: ComponentProps<'div'> & {
     config: ChartConfig
-    children: React.ComponentProps<typeof ResponsiveContainer>['children']
+    children: ComponentProps<typeof ResponsiveContainer>['children']
 }) => {
-    const uniqueId = React.useId()
+    const uniqueId = useId()
     const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`
 
     return (
@@ -110,8 +118,8 @@ const ChartTooltipContent = ({
     nameKey,
     labelKey,
     ref
-}: React.ComponentProps<typeof Tooltip> &
-    React.ComponentProps<'div'> & {
+}: ComponentProps<typeof Tooltip> &
+    ComponentProps<'div'> & {
         hideLabel?: boolean
         hideIndicator?: boolean
         indicator?: 'line' | 'dot' | 'dashed'
@@ -120,7 +128,7 @@ const ChartTooltipContent = ({
     }) => {
     const { config } = useChart()
 
-    const tooltipLabel = React.useMemo(() => {
+    const tooltipLabel = useMemo(() => {
         if (hideLabel || !payload?.length) {
             return null
         }
@@ -199,7 +207,7 @@ const ChartTooltipContent = ({
                                                     {
                                                         '--color-bg': indicatorColor,
                                                         '--color-border': indicatorColor
-                                                    } as React.CSSProperties
+                                                    } as CSSProperties
                                                 }
                                             />
                                         )
@@ -239,7 +247,7 @@ const ChartLegendContent = ({
     verticalAlign = 'bottom',
     nameKey,
     ref
-}: React.ComponentProps<'div'> &
+}: ComponentProps<'div'> &
     Pick<LegendProps, 'payload' | 'verticalAlign'> & {
         hideIcon?: boolean
         nameKey?: string

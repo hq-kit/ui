@@ -1,13 +1,12 @@
 'use client'
 
-import * as React from 'react'
-
 import Autoplay from 'embla-carousel-autoplay'
+import { useRef } from 'react'
 
 import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselAutoplayDemo() {
-    const plugin = React.useRef(Autoplay({ delay: 1000, stopOnInteraction: true }))
+    const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }))
 
     return (
         <Carousel

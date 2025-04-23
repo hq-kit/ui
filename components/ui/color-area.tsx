@@ -4,7 +4,6 @@ import { ColorArea as RACColorArea, composeRenderProps } from 'react-aria-compon
 import type { ColorAreaProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { ColorThumb } from './color-thumb'
 
 const ColorArea = ({ className, ...props }: ColorAreaProps) => {

@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { type HTMLAttributes, use } from 'react'
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
     Slider as RACSlider,
@@ -13,7 +12,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface SliderProps extends RACSliderProps, FieldProps {}
@@ -74,8 +72,8 @@ const SliderTrack = ({ className, ...props }: SliderTrackProps) => {
     )
 }
 
-const SliderFiller = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    const state = React.use(SliderStateContext)
+const SliderFiller = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
+    const state = use(SliderStateContext)
     const { values, orientation, getThumbPercent } = state || {}
 
     const getStyle = () => {

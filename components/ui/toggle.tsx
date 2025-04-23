@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { type RefObject, createContext, use } from 'react'
 import type { ToggleButtonGroupProps, ToggleButtonProps } from 'react-aria-components'
 import { ToggleButton, ToggleButtonGroup, composeRenderProps } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
@@ -18,7 +17,7 @@ type ToggleGroupContextProps = {
     icon?: boolean
 }
 
-const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
+const ToggleGroupContext = createContext<ToggleGroupContextProps>({
     gap: 0,
     variant: 'outline',
     orientation: 'horizontal',
@@ -27,7 +26,7 @@ const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
 })
 
 interface ToggleGroupProps extends ToggleButtonGroupProps, ToggleGroupContextProps {
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
 }
 
 const toggleGroupStyles = tv({
@@ -139,18 +138,11 @@ const toggleStyles = tv({
 })
 
 interface ToggleProps extends ToggleButtonProps, VariantProps<typeof toggleStyles> {
-    ref?: React.RefObject<HTMLButtonElement>
+    ref?: RefObject<HTMLButtonElement>
 }
 
 const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
-    const {
-        variant: groupvariant,
-        gap,
-        size,
-        orientation,
-        icon,
-        isDisabled: isGroupDisabled
-    } = React.use(ToggleGroupContext)
+    const { variant: groupvariant, gap, size, orientation, icon, isDisabled: isGroupDisabled } = use(ToggleGroupContext)
     return (
         <ToggleButton
             ref={ref}

@@ -1,12 +1,9 @@
 'use client'
 
-import type React from 'react'
-
-import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
-
-import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
-
 import type { Placement } from '@react-types/overlays'
+import type { ReactNode } from 'react'
+import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
+import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
 
 import { ColorArea } from './color-area'
 import { ColorField } from './color-field'
@@ -17,11 +14,12 @@ import { Popover } from './popover'
 
 export interface ColorPickerProps extends RACColorPickerProps {
     label?: string
-    children?: React.ReactNode
+    children?: ReactNode
     showArrow?: boolean
     isDisabled?: boolean
     placement?: Placement
     description?: string
+    trigger?: ReactNode
 }
 
 const ColorPicker = ({
@@ -37,9 +35,13 @@ const ColorPicker = ({
         <div className='group flex flex-col gap-y-2'>
             <RACColorPicker {...props}>
                 <Popover>
-                    <Button isDisabled={isDisabled} className='flex items-center gap-2 outline-hidden'>
-                        <ColorSwatch className='size-6' />
-                        {label && <Label className='ml-2'>{label}</Label>}
+                    <Button isDisabled={isDisabled} className='flex cursor-pointer items-center gap-2 outline-hidden'>
+                        {props.trigger ?? (
+                            <>
+                                <ColorSwatch className='size-6' />
+                                {label && <Label className='ml-2'>{label}</Label>}
+                            </>
+                        )}
                     </Button>
                     <Popover.Content showArrow={showArrow} placement={placement}>
                         <Popover.Body className='space-y-2 overflow-visible pb-4 sm:py-4'>

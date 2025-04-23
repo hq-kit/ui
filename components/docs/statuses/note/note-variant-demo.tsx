@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import { Note, Select } from '@/components/ui'
@@ -12,7 +11,7 @@ const variants = ['primary', 'secondary', 'warning', 'danger', 'info', 'success'
 }))
 
 export default function NoteVariantDemo() {
-    const [selected, setSelected] = React.useState<Key>('primary')
+    const [selected, setSelected] = useState<Key>('primary')
     return (
         <div className='space-y-6'>
             <Select

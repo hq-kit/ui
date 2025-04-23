@@ -1,5 +1,6 @@
 'use client'
 
+import type { ComponentProps, ReactNode } from 'react'
 import {
     Button,
     OverlayArrow,
@@ -11,12 +12,12 @@ import {
 
 import { cn } from '@/lib/utils'
 
-type TooltipProps = React.ComponentProps<typeof RACTooltipTrigger>
+type TooltipProps = ComponentProps<typeof RACTooltipTrigger>
 const Tooltip = (props: TooltipProps) => <RACTooltipTrigger {...props} />
 
 interface TooltipContentProps extends Omit<RACTooltipProps, 'children'> {
     showArrow?: boolean
-    children: React.ReactNode
+    children: ReactNode
     isInverse?: boolean
 }
 

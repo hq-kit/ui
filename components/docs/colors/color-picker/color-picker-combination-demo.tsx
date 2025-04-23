@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
+import { useState } from 'react'
 import { type ColorSpace, getColorChannels } from 'react-aria-components'
 
 import { ColorArea, ColorField, ColorPicker, ColorSlider, Select } from '@/components/ui'
 
 export default function ColorPickerCombinationDemo() {
-    const [space, setSpace] = React.useState<ColorSpace>('rgb')
+    const [space, setSpace] = useState<ColorSpace>('rgb')
     return (
         <ColorPicker label='Color picker' defaultValue='#0d6efd'>
             <section className='space-y-2 sm:max-w-56'>

@@ -1,7 +1,5 @@
 'use client'
 
-import type React from 'react'
-
 import * as icons from 'hq-icons'
 import { useSearchParams } from 'next/navigation'
 import { Button } from 'react-aria-components'
@@ -9,6 +7,7 @@ import { renderToString } from 'react-dom/server'
 
 import { Menu, Tooltip, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import type { FC, SVGProps } from 'react'
 
 export default function IconList({ items }: { items: { keywords: string[]; name: string }[] }) {
     const searchParams = useSearchParams()
@@ -117,7 +116,7 @@ const SvgIcon = ({
     size: string
     stroke: string
 }): string => {
-    const HQIcon = icons[name] as React.FC<React.SVGProps<SVGSVGElement>>
+    const HQIcon = icons[name] as FC<SVGProps<SVGSVGElement>>
 
     return renderToString(<HQIcon className={`size-${size}`} />).replaceAll(
         'stroke-width="2"',

@@ -1,0 +1,76 @@
+---
+title: Navbar
+description: A navbar is a component that helps you organize your content and navigation in a consistent way.
+references: ["https://react-spectrum.adobe.com/react-aria/Link.html#props"]
+order: 1
+published: true
+---
+
+## Installation
+<Install component='navbar' />
+
+## Basic
+<Block page="block/navbar/navbar-basic-demo" />
+
+## Variant
+There are three types of variants: `navbar`, `float`, and `inset`, each with distinct behaviors.
+
+### Navbar
+The default variant of the navbar is `navbar`. You can change it to `float` or `inset` by setting the `variant` prop.
+<Block page="block/navbar/navbar-basic-demo" />
+
+### Float
+The float variant will have a border inside the navbar itself, the wrapper will have a padding to the content.
+<Block page="block/navbar/navbar-floating-demo" />
+
+### Inset
+The inset one will have the padding to inset main content. You can of course see what's going on the demo, but you can also see the [live example here](/block/navbar/navbar-03).
+<Block page="block/navbar/navbar-inset-demo" />
+
+## Sticky
+You also make the navbar sticky by setting the `isSticky` prop to `true`.
+
+```tsx
+<Navbar isSticky />
+```
+
+## Controlled
+On mobile devices, the navbar is hidden by default. You can open it using `Navbar.Trigger`, but there are times when you might want to manage its state by clicking one of the links within the navbar. You can achieve this because it shares the sheet properties, specifically `isOpen` and `onOpenChange`. There are multiple ways to control the state, but the simplest method is to listen for path changes and set `isOpen` to `true` or `false` accordingly.
+
+### Inertia.js
+When you are using inertia.js, you can listen the path by using `usePage` hooks.
+
+```tsx
+import { usePage } from '@inertiajs/react';
+
+export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Navbar>) {
+
+  const page = usePage();
+  const [isOpen, setIsOpen] = React.useState(false);
+  React.useEffect(() => setIsOpen(false), [page.url]);
+
+  return (
+    <Navbar isOpen={isOpen} onOpenChange={setIsOpen} {...props}/>
+  )
+}
+```
+
+### Next.js
+On next.js, you can listen the path by using `usePathname` hooks.
+
+```tsx
+import { usePathname } from "next/navigation"
+
+export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Navbar>) {
+
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = React.useState(false);
+  React.useEffect(() => setIsOpen(false), [pathname]);
+
+  return (
+    <Navbar isOpen={isOpen} onOpenChange={setIsOpen} {...props}>
+        {/* Rest of your code */}
+    </Navbar>
+  )
+}
+```

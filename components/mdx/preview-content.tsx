@@ -1,6 +1,5 @@
-import React from 'react'
-
 import { IconLoaderCircle } from 'hq-icons'
+import { Suspense } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -16,7 +15,7 @@ export default function PreviewContent({
     height: number
 }) {
     return (
-        <React.Suspense
+        <Suspense
             fallback={
                 <div className='flex w-full items-center justify-center'>
                     <IconLoaderCircle className='size-20 bg-muted' />
@@ -31,6 +30,6 @@ export default function PreviewContent({
                 allowFullScreen
                 src={`/${component}`}
             />
-        </React.Suspense>
+        </Suspense>
     )
 }

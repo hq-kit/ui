@@ -1,11 +1,12 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import type { SeparatorProps } from 'react-aria-components'
 import { Separator as RACSeparator } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 
-const Separator = ({ className, children, ...props }: SeparatorProps & { children?: React.ReactNode }) => {
+const Separator = ({ className, children, ...props }: SeparatorProps & { children?: ReactNode }) => {
     return children ? (
         <div
             className={cn(

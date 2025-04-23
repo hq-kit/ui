@@ -1,15 +1,15 @@
 'use client'
 
 import { motion } from 'motion/react'
+import type { RefObject } from 'react'
 import { ProgressBar, type ProgressBarProps, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Label } from './field'
 
 interface ProgressProps extends ProgressBarProps {
     label?: string
-    ref?: React.RefObject<HTMLDivElement>
+    ref?: RefObject<HTMLDivElement>
     circle?: boolean
     variant?: 'primary' | 'secondary' | 'warning' | 'danger' | 'info' | 'success' | 'dark'
 }

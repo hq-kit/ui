@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
-
-import Paginator from 'components/paginator'
 import { IconEllipsisVertical, IconEye, IconHighlighter, IconPlus, IconTrash } from 'hq-icons'
 import type { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Card, Container, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
+import Paginator from 'components/paginator'
+import { useEffect, useState } from 'react'
 
 type product = {
     id: number
@@ -18,10 +17,10 @@ type product = {
 }
 
 export default function ProductManagement() {
-    const [items, setItems] = React.useState<product[]>([])
-    const [show, setShow] = React.useState<Key>(5)
-    const [page, setPage] = React.useState<number>(1)
-    const [total, setTotal] = React.useState<number>(0)
+    const [items, setItems] = useState<product[]>([])
+    const [show, setShow] = useState<Key>(5)
+    const [page, setPage] = useState<number>(1)
+    const [total, setTotal] = useState<number>(0)
 
     const getProducts = async ({ query = '' }: { query?: string } = {}) => {
         const response = await fetch(
@@ -41,7 +40,7 @@ export default function ProductManagement() {
     }, 300)
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    React.useEffect(() => {
+    useEffect(() => {
         getProducts()
     }, [show, page])
 
@@ -129,7 +128,7 @@ export default function ProductManagement() {
                         </Table>
                     </Card.Content>
                     <Card.Footer>
-                        <Paginator total={total} page={page} show={Number(show)} setPage={setPage} />
+                        <Paginator total={total} page={page} show={Number(show)} action={setPage} />
                     </Card.Footer>
                 </Card>
             </Container>

@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, Form, TimeField } from '@/components/ui'
 import type { Time } from '@internationalized/date'
 
 export default function TimeFieldValidationDemo() {
-    const [value, setValue] = React.useState<Time>()
+    const [value, setValue] = useState<Time>()
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

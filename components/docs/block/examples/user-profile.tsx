@@ -1,18 +1,17 @@
 'use client'
 
-import React from 'react'
-
-import About from 'components/user-profile/about'
-import Media from 'components/user-profile/media'
-import Posts from 'components/user-profile/posts'
 import Image from 'next/image'
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
 import { Avatar, Card, Container, Description, Heading, Tabs } from '@/components/ui'
+import About from 'components/user-profile/about'
+import Media from 'components/user-profile/media'
+import Posts from 'components/user-profile/posts'
 
 export default function UserProfile() {
-    const [panel, setPanel] = React.useState<Key>(1)
+    const [panel, setPanel] = useState<Key>(1)
     return (
         <NavbarLayout variant='inset'>
             <Container className='@xl:py-12 py-6'>

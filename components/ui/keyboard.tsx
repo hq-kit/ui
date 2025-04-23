@@ -1,10 +1,9 @@
 'use client'
 
-import type React from 'react'
-
 import { Keyboard as RACKeyboard } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
+import type { ComponentProps } from 'react'
 
 type ShortcutKeyResult = {
     symbol: string
@@ -37,7 +36,7 @@ const shortcutKeyMap: Record<string, ShortcutKeyResult> = {
 const getShortcutKey = (key: string): ShortcutKeyResult =>
     shortcutKeyMap[key.toLowerCase()] || { symbol: key, readable: key }
 
-const Keyboard = ({ keys, className, ...props }: React.ComponentProps<typeof RACKeyboard> & { keys: string[] }) => {
+const Keyboard = ({ keys, className, ...props }: ComponentProps<typeof RACKeyboard> & { keys: string[] }) => {
     if (!keys) return null
     return (
         <RACKeyboard

@@ -1,8 +1,7 @@
 'use client'
 
-import * as React from 'react'
-
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
+import { type HTMLAttributes, useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 import FileExplorer from '@/components/mdx/file-explorer'
@@ -10,7 +9,7 @@ import PreviewContent from '@/components/mdx/preview-content'
 import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
+interface BlockProps extends HTMLAttributes<HTMLDivElement> {
     page: string
     className?: string
     height?: number
@@ -18,7 +17,7 @@ interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Block({ page, zoomOut = 0.6, height = 768, className, ...props }: BlockProps) {
-    const [screenWidth, setScreenWidth] = React.useState(new Set<Key>(['max-w-none']))
+    const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
 
     return (
         <div className={cn('not-prose group relative my-6', className)} {...props}>

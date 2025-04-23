@@ -1,27 +1,38 @@
 'use client'
 
-import React from 'react'
-
+import {
+    type Dispatch,
+    type HTMLAttributes,
+    type MouseEvent,
+    type ReactNode,
+    type RefObject,
+    type SetStateAction,
+    type TouchEvent,
+    createContext,
+    createRef,
+    use,
+    useRef,
+    useState
+} from 'react'
 import type { MenuProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Menu } from './menu'
 
 interface ContextMenuContextProps {
-    triggerRef: React.RefObject<HTMLDivElement | null>
+    triggerRef: RefObject<HTMLDivElement | null>
     contextMenuOffset: { offset: number; crossOffset: number } | null
-    setContextMenuOffset: React.Dispatch<React.SetStateAction<{ offset: number; crossOffset: number } | null>>
+    setContextMenuOffset: Dispatch<SetStateAction<{ offset: number; crossOffset: number } | null>>
 }
 
-const ContextMenuContext = React.createContext<ContextMenuContextProps>({
-    triggerRef: React.createRef(),
+const ContextMenuContext = createContext<ContextMenuContextProps>({
+    triggerRef: createRef(),
     contextMenuOffset: null,
     setContextMenuOffset: () => {}
 })
 
 const useContextMenu = () => {
-    const context = React.use(ContextMenuContext)
+    const context = use(ContextMenuContext)
     if (!context) {
         throw new Error('useContextMenu must be used within a ContextMenu')
     }
@@ -29,15 +40,15 @@ const useContextMenu = () => {
 }
 
 interface ContextMenuProps {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const ContextMenu = ({ children }: ContextMenuProps) => {
-    const [contextMenuOffset, setContextMenuOffset] = React.useState<{
+    const [contextMenuOffset, setContextMenuOffset] = useState<{
         offset: number
         crossOffset: number
     } | null>(null)
-    const triggerRef = React.useRef<HTMLDivElement>(null)
+    const triggerRef = useRef<HTMLDivElement>(null)
     return (
         <ContextMenuContext.Provider value={{ triggerRef, contextMenuOffset, setContextMenuOffset }}>
             {children}
@@ -45,10 +56,10 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
     )
 }
 
-const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const ContextMenuTrigger = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     const { triggerRef, setContextMenuOffset } = useContextMenu()
 
-    const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    const onContextMenu = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault()
         const rect = e.currentTarget.getBoundingClientRect()
         setContextMenuOffset({
@@ -56,9 +67,9 @@ const ContextMenuTrigger = ({ className, ...props }: React.HTMLAttributes<HTMLDi
             crossOffset: e.clientX - rect.left
         })
     }
-    const longPressTimer = React.useRef<NodeJS.Timeout | null>(null)
+    const longPressTimer = useRef<NodeJS.Timeout | null>(null)
 
-    const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
         e.preventDefault()
         const touch = e.touches[0]
         const rect = e.currentTarget.getBoundingClientRect()

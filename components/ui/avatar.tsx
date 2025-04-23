@@ -1,12 +1,11 @@
 'use client'
 
-import React from 'react'
-
+import { Collection, type CollectionProps } from '@react-aria/collections'
 import { IconUser } from 'hq-icons'
+import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
-import { Collection, type CollectionProps } from '@react-aria/collections'
 
 interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string
@@ -67,23 +66,23 @@ const Avatar = ({
     shape,
     size,
     initials,
-    alt = '',
+    alt = 'avatar',
     className,
     ...props
-}: AvatarProps & React.ComponentPropsWithoutRef<'img'>) => {
-    const [error, setError] = React.useState(!src)
+}: AvatarProps & ComponentPropsWithoutRef<'img'>) => {
+    const [error, setError] = useState(!src)
 
     function handleError() {
         setError(true)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         setError(!src)
     }, [src])
 
     if (error) {
         return (
-            <span data-avatar className={avatar({ shape, size, className })}>
+            <span data-avatar={true} className={avatar({ shape, size, className })}>
                 <FallbackImage initials={initials} alt={alt} />
             </span>
         )
@@ -94,7 +93,7 @@ const Avatar = ({
             src={src}
             alt={alt}
             onError={handleError}
-            data-avatar
+            data-avatar={true}
             className={avatar({ shape, size, className })}
             {...props}
         />

@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, Checkbox, Form } from '@/components/ui'
 
 export default function CheckboxValidationDemo() {
-    const [value, setValue] = React.useState<boolean>(false)
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [value, setValue] = useState<boolean>(false)
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

@@ -1,7 +1,5 @@
 'use client'
 
-import React, { type FormEvent } from 'react'
-
 import BubbleChat, { type BubbleChatProps } from 'components/chatting-app/bubble-chat'
 import ContactList from 'components/chatting-app/contact-list'
 import MessageForm from 'components/chatting-app/message-form'
@@ -17,12 +15,13 @@ import {
     IconUser
 } from 'hq-icons'
 import ChattingAppLayout from 'layouts/chatting-app-layout'
+import { type FormEvent, useState } from 'react'
 
 import { Avatar, Button, Menu, Popover, SidebarInset, buttonStyles } from '@/components/ui'
 import { cn, formatTime } from '@/lib/utils'
 
 export default function ChatApp() {
-    const [chats, setChats] = React.useState<BubbleChatProps[]>([
+    const [chats, setChats] = useState<BubbleChatProps[]>([
         {
             message: "Assalamu'alaikum, Hello Bro!",
             time: '10:00',
@@ -43,7 +42,7 @@ export default function ChatApp() {
         }
     ])
 
-    const [message, setMessage] = React.useState<string>('')
+    const [message, setMessage] = useState<string>('')
 
     function sendMessage(e: FormEvent) {
         e.preventDefault()
@@ -157,7 +156,7 @@ export default function ChatApp() {
                                 </div>
                             )}
                         </div>
-                        <MessageForm value={message} onChange={setMessage} onSend={sendMessage} />
+                        <MessageForm value={message} valueAction={setMessage} sendAction={sendMessage} />
                     </div>
                 </main>
             </SidebarInset>

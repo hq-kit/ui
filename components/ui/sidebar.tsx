@@ -27,7 +27,6 @@ import {
 
 import { useMediaQuery } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-
 import { Sheet } from './sheet'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state'
@@ -263,7 +262,7 @@ const SidebarBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
 const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?: string }) => {
     const { state } = useSidebar()
     return (
-        <section data-section className={cn('col-span-full flex flex-col gap-y-0.5 px-2', className)}>
+        <section data-section={true} className={cn('col-span-full flex flex-col gap-y-0.5 px-2', className)}>
             {state !== 'collapsed' && 'title' in props && (
                 <Header className='flex shrink-0 items-center rounded-lg px-2 font-medium text-muted-fg text-xs outline-hidden transition-[margin,opa] duration-200 ease-linear'>
                     {props.title}

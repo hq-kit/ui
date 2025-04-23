@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-
 import { Button, Form, Modal, Textarea, toast } from '@/components/ui'
+import { useState } from 'react'
 
 export default function ModalNestedDemo() {
-    const [firstModal, setFirstModal] = React.useState<boolean>(false)
-    const [secondModal, setSecondModal] = React.useState<boolean>(false)
-    const [filled, setFilled] = React.useState(false)
+    const [firstModal, setFirstModal] = useState<boolean>(false)
+    const [secondModal, setSecondModal] = useState<boolean>(false)
+    const [filled, setFilled] = useState(false)
 
     return (
         <>

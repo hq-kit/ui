@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
@@ -11,6 +9,7 @@ import { copyToClipboard } from 'usemods'
 
 import { CopyButton } from '@/components/mdx/copy-button'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 export default function Code({
     lang = 'tsx',
@@ -23,7 +22,7 @@ export default function Code({
     copyButton?: boolean
     className?: string
 }) {
-    const [copied, setCopied] = React.useState<boolean>(false)
+    const [copied, setCopied] = useState<boolean>(false)
 
     const copyCode = () => {
         copyToClipboard(code)
@@ -56,10 +55,10 @@ interface CodeProps {
 }
 
 export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
-    const [formattedCode, setFormattedCode] = React.useState('')
-    const [error, setError] = React.useState('')
+    const [formattedCode, setFormattedCode] = useState('')
+    const [error, setError] = useState('')
 
-    React.useEffect(() => {
+    useEffect(() => {
         const processCode = async () => {
             try {
                 const file = await unified()

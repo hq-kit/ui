@@ -1,7 +1,6 @@
-import React from 'react'
-
 import { IconLoaderCircle } from 'hq-icons'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { deslugify, titleCase } from 'usemods'
 
 import { previews } from '@/components/docs/generated/previews'
@@ -27,7 +26,7 @@ export default async function BlocksPage({ params }: { params: Params }) {
     const Block = previews[component] ? previews[component].component : () => null
 
     return (
-        <React.Suspense
+        <Suspense
             fallback={
                 <div className='flex min-h-svh w-full items-center justify-center text-muted-fg text-sm'>
                     <IconLoaderCircle className='size-12 animate-spin' />
@@ -35,6 +34,6 @@ export default async function BlocksPage({ params }: { params: Params }) {
             }
         >
             <Block />
-        </React.Suspense>
+        </Suspense>
     )
 }

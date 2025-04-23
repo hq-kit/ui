@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { Checkbox, CheckboxGroup } from '@/components/ui'
 
 export default function CheckboxGroupControlledDemo() {
-    const [values, setValues] = React.useState<string[]>([])
+    const [values, setValues] = useState<string[]>([])
     return (
         <div className='space-y-2'>
             <CheckboxGroup value={values} onChange={setValues} label='Agreement'>

@@ -1,13 +1,13 @@
 'use client'
 
-import React from 'react'
+import { type FormEvent, useState } from 'react'
 
 import { Button, Form, Textarea } from '@/components/ui'
 
 export default function TextareaValidationDemo() {
-    const [value, setValue] = React.useState('')
+    const [value, setValue] = useState('')
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)
     }

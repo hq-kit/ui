@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { Collapsible } from '@/components/ui'
 
 export default function CollapsibleControlledDemo() {
-    const [expanded, setExpanded] = React.useState(false)
+    const [expanded, setExpanded] = useState(false)
 
     return (
         <div className='space-y-6'>

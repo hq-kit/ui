@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import {
     type DateInputProps,
     DateSegment,
@@ -11,12 +12,11 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
 
 interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
-    prefix?: React.ReactNode
-    suffix?: React.ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
 }
 
 const DateField = <T extends DateValue>({

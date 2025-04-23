@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import {
     IconAlignCenter,
     IconAlignLeft,
@@ -13,13 +11,14 @@ import {
     IconScissors,
     IconUnderline
 } from 'hq-icons'
+import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 
 import { Menu } from '@/components/ui'
 
 export default function MenuSectionLevelDemo() {
-    const [style, setStyle] = React.useState<Selection>(new Set(['bold']))
-    const [align, setAlign] = React.useState<Selection>(new Set(['left']))
+    const [style, setStyle] = useState<Selection>(new Set(['bold']))
+    const [align, setAlign] = useState<Selection>(new Set(['left']))
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>

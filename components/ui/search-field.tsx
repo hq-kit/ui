@@ -10,7 +10,6 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-
 import { Description, FieldError, FieldGroup, Input, Label } from './field'
 
 interface SearchFieldProps extends RACSearchFieldProps {
