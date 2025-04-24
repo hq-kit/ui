@@ -60,6 +60,7 @@ export const ColorPreview = () => {
 
     const lightColors = { ...activeBase?.cssVars.light, ...activeTheme?.cssVars.light }
     const darkColors = { ...activeBase?.cssVars.dark, ...activeTheme?.cssVars.dark }
+
     return theme === 'light' ? (
         <div className='grid grid-cols-2 gap-2 rounded-lg border border-dashed p-4'>
             {Object.keys(lightColors).map((key) =>
@@ -67,8 +68,8 @@ export const ColorPreview = () => {
                     <div
                         className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
-                            backgroundColor: lightColors[key as keyof typeof lightColors],
-                            color: lightColors[`${key}-fg` as keyof typeof lightColors]
+                            backgroundColor: lightColors[key as keyof typeof lightColors] ?? `var(--${key})`,
+                            color: lightColors[`${key}-fg` as keyof typeof lightColors] ?? `var(--${key}-fg)`
                         }}
                         key={key}
                     >
@@ -84,8 +85,8 @@ export const ColorPreview = () => {
                     <div
                         className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
-                            backgroundColor: darkColors[key as keyof typeof darkColors],
-                            color: darkColors[`${key}-fg` as keyof typeof darkColors]
+                            backgroundColor: darkColors[key as keyof typeof darkColors] ?? `var(--${key})`,
+                            color: darkColors[`${key}-fg` as keyof typeof darkColors] ?? `var(--${key}-fg)`
                         }}
                         key={key}
                     >
@@ -102,7 +103,7 @@ const CopyCode = () => {
     const activeTheme = presetColors.find((theme) => theme.name === currentPresetColor)
     const activeBase = grayColors.find((theme) => theme.name === currentGrayColor)
 
-    return <Code lang='css' code={getThemeCode(activeTheme, activeBase, currentBorderRadius)} />
+    return <Code copyButton lang='css' code={getThemeCode(activeTheme, activeBase, currentBorderRadius)} />
 }
 
 function getThemeCode(theme: Preset | undefined, grays: Gray | undefined, radius: number) {

@@ -1,24 +1,25 @@
 'use client'
 
-import type { Dispatch, SetStateAction } from 'react'
-
 import { IconSwatchBook } from 'hq-icons'
-import type { ColorFormat } from 'react-aria-components'
+import type { Dispatch, SetStateAction } from 'react'
 
 import { Menu, buttonStyles } from '@/components/ui'
 
 const ColorSelectors = [
-    { type: 'hex', sample: '#3B82F6' },
-    { type: 'rgb', sample: '59 130 246' },
-    { type: 'hsl', sample: '217.22 91.22% 59.8%' }
+    { type: 'hex', sample: '#0D6DFD' },
+    { type: 'rgb', sample: 'rgb(13 109 253)' },
+    { type: 'hsl', sample: 'hsl(216 98.4% 52.2%)' },
+    { type: 'oklch', sample: 'oklch(0.576 0.229 260.191)' }
 ]
+
+export type ColorFormat = (typeof ColorSelectors)[number]['type']
 
 type SelectFormatProps = {
     selectedFormat: ColorFormat
-    setSelectedFormat: Dispatch<SetStateAction<ColorFormat>>
+    action: Dispatch<SetStateAction<ColorFormat>>
 }
 
-export default function SelectFormat({ selectedFormat, setSelectedFormat }: SelectFormatProps) {
+export default function SelectFormat({ selectedFormat, action }: SelectFormatProps) {
     return (
         <Menu>
             <Menu.Trigger className={buttonStyles({ variant: 'outline' })}>
@@ -26,11 +27,7 @@ export default function SelectFormat({ selectedFormat, setSelectedFormat }: Sele
             </Menu.Trigger>
             <Menu.Content items={ColorSelectors}>
                 {(item) => (
-                    <Menu.Item
-                        onAction={() => setSelectedFormat(item.type as ColorFormat)}
-                        id={item.type}
-                        textValue={item.type}
-                    >
+                    <Menu.Item onAction={() => action(item.type)} id={item.type} textValue={item.type}>
                         <Menu.Details label={item.type} description={item.sample} />
                     </Menu.Item>
                 )}

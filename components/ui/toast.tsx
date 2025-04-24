@@ -38,7 +38,7 @@ const ToastProvider = () => {
     const [isHovered, setIsHovered] = useState(false)
     return (
         <ToastRegion
-            className='fixed top-0 flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
+            className='fixed top-0 z-[9999] flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
             queue={queue}
         >
             {({ toast }) => (

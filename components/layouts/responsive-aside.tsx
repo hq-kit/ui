@@ -25,7 +25,7 @@ export function ResponsiveAside({ action }: { action: (openCmd: boolean) => void
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => setOpenAside(false), [pathname])
     return (
-        <nav className='sticky top-0 z-10 bg-bg/10 backdrop-blur-lg md:h-14 lg:hidden'>
+        <nav className='sticky top-0 z-10 bg-bg/10 backdrop-blur-lg md:hidden md:h-14'>
             <div className='flex items-center justify-between py-2 pr-2 pl-4'>
                 <Button
                     aria-label='Open Menu.'

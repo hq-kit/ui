@@ -44,8 +44,8 @@ export function Navbar() {
         <>
             <CommandMenu action={setOpen} openCommand={open} />
             <LayoutGroup id={`navigation-${id}`}>
-                <div className='sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block'>
-                    <nav className='border-b bg-bg/95 py-2 backdrop-blur-lg supports-[backdrop-filter]:bg-bg/60'>
+                <div className='sticky top-0 z-30 hidden overflow-hidden pb-0 md:block'>
+                    <nav className='border-b bg-bg/60 py-2 backdrop-blur-lg'>
                         <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
                             <div className='flex items-center justify-between'>
                                 <div className='flex items-center gap-x-2'>

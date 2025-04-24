@@ -1,24 +1,17 @@
 'use client'
 
-import { IconBrandTailwind, IconPalette } from 'hq-icons'
+import { IconPalette } from 'hq-icons'
 import { useState } from 'react'
-import { Button, Collection, type Color, type ColorFormat } from 'react-aria-components'
+import { Button, Collection, type Color } from 'react-aria-components'
 import { copyToClipboard } from 'usemods'
 
-import {
-    formatColorForTailwind,
-    generateColorScale,
-    getColorName,
-    textfg
-} from '@/components/controllers/colors/colors'
-import SelectFormat from '@/components/controllers/colors/select-format'
+import { formatColor, generateColorScale, getColorName, textfg } from '@/components/controllers/colors/colors'
+import SelectFormat, { type ColorFormat } from '@/components/controllers/colors/select-format'
 import _tailwindcolors from '@/components/controllers/colors/tailwind-colors.json'
-import { ColorPicker, Container, Popover, Toggle, Tooltip, defaultColor, toast } from '@/components/ui'
+import { Badge, ColorPicker, Container, Popover, defaultColor, toast } from '@/components/ui'
 
 export default function ColorCustomizer() {
-    const [selectedFormat, setSelectedFormat] = useState<ColorFormat>('hsl')
-    const [tailwindVariable, setTailwindVariable] = useState(false)
-
+    const [selectedFormat, setSelectedFormat] = useState<ColorFormat>('oklch')
     const [customColor, setCustomColor] = useState<Color>(defaultColor)
 
     const tailwindColors = _tailwindcolors.map((item) => ({
@@ -29,15 +22,16 @@ export default function ColorCustomizer() {
     const [isCopied, setIsCopied] = useState<boolean>(false)
 
     const handleCopy = async (selectedColor: string) => {
-        const toCopy = tailwindVariable ? formatColorForTailwind(selectedColor) : selectedColor
+        const toCopy = formatColor(selectedColor, selectedFormat)
+
         await copyToClipboard(toCopy).then(() => setIsCopied(true))
-        setTimeout(() => setIsCopied(false), 1000)
-        toast(`Copy ${toCopy} to clipboard.`, {}, { timeout: 1000 })
+        setTimeout(() => setIsCopied(false), 2500)
+        toast(`Copied: ${toCopy}`, {}, { timeout: 2500 })
     }
 
     return (
         <>
-            <div className='sticky top-0 z-10 w-full rounded-b-lg bg-bg/60 py-6 backdrop-blur-xl lg:top-14'>
+            <div className='sticky top-14 z-10 w-full rounded-b-lg bg-bg/60 py-2 backdrop-blur-lg md:py-4 lg:top-14'>
                 <Container className='flex flex-row items-center justify-between gap-3'>
                     <Popover>
                         <Button>
@@ -47,32 +41,21 @@ export default function ColorCustomizer() {
                             In Progress
                         </Popover.Content>
                     </Popover>
-                    <div className='flex items-center gap-3'>
-                        <Tooltip>
-                            <Toggle
-                                icon
-                                variant='outline'
-                                isSelected={tailwindVariable}
-                                onChange={() => setTailwindVariable(!tailwindVariable)}
-                            >
-                                {({ isSelected }) => (
-                                    <IconBrandTailwind className={isSelected ? '!text-sky-500' : '!text-fg'} />
-                                )}
-                            </Toggle>
-                            <Tooltip.Content>Enable Tailwind Color Variable</Tooltip.Content>
-                        </Tooltip>
-                        <SelectFormat selectedFormat={selectedFormat} setSelectedFormat={setSelectedFormat} />
-                    </div>
+                    <SelectFormat selectedFormat={selectedFormat} action={setSelectedFormat} />
                 </Container>
             </div>
             <Container className='divide-y'>
-                <div className='mb-2 grid grid-cols-11 gap-1.5 border-b-0'>
+                <div className='sticky top-28 z-10 grid h-12 grid-cols-11 gap-1.5 border-b-0 bg-bg/60 py-4 backdrop-blur-lg'>
                     <Collection
                         items={['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'].map(
                             (shade) => ({ id: shade, shade })
                         )}
                     >
-                        {(item) => <div className='text-center font-bold text-sm'>{item.shade}</div>}
+                        {(item) => (
+                            <Badge className='-rotate-90 justify-center text-[10px] sm:rotate-0' variant='outline'>
+                                {item.shade}
+                            </Badge>
+                        )}
                     </Collection>
                 </div>
                 <div className='grid grid-cols-[auto_minmax(0_1fr)] border-x border-t p-2'>

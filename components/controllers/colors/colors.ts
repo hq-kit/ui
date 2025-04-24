@@ -1,8 +1,9 @@
-import { color as chroma } from 'chroma.ts'
-
-import _colors from '@/components/controllers/colors/colors.json'
+import chroma from 'chroma-js'
 import ntc from 'ntcjs'
 import { slugify } from 'usemods'
+
+import _colors from '@/components/controllers/colors/colors.json'
+import type { ColorFormat } from '@/components/controllers/colors/select-format'
 
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 type ColorData = Record<number, string>
@@ -23,17 +24,17 @@ export const generateColorScale = (color: string): { shade: number; color: strin
     }
 
     const baseColors = [
-        chroma(color).brighter(2.5).hex(),
-        chroma(color).brighter(2).hex(),
-        chroma(color).brighter(1.5).hex(),
-        chroma(color).brighter(1).hex(),
-        chroma(color).brighter(0.5).hex(),
+        chroma(color).brighten(2.5).hex(),
+        chroma(color).brighten(2).hex(),
+        chroma(color).brighten(1.5).hex(),
+        chroma(color).brighten(1).hex(),
+        chroma(color).brighten(0.5).hex(),
         color,
-        chroma(color).darker(0.5).hex(),
-        chroma(color).darker(1.1).hex(),
-        chroma(color).darker(1.5).hex(),
-        chroma(color).darker(2).hex(),
-        chroma(color).darker(2.5).hex()
+        chroma(color).darken(0.5).hex(),
+        chroma(color).darken(1.1).hex(),
+        chroma(color).darken(1.5).hex(),
+        chroma(color).darken(2).hex(),
+        chroma(color).darken(2.5).hex()
     ]
 
     return shades.map((shade, index) => ({
@@ -44,62 +45,31 @@ export const generateColorScale = (color: string): { shade: number; color: strin
 
 export const textfg = (backgroundColor: string): string => {
     const luminance = chroma(backgroundColor).luminance()
-    return luminance > 0.3 ? '#000000' : '#FFFFFF'
-}
-
-export const tailwindColorNames = [
-    'slate',
-    'gray',
-    'zinc',
-    'neutral',
-    'stone',
-    'red',
-    'orange',
-    'amber',
-    'yellow',
-    'lime',
-    'green',
-    'emerald',
-    'teal',
-    'cyan',
-    'sky',
-    'blue',
-    'indigo',
-    'violet',
-    'purple',
-    'fuchsia',
-    'pink',
-    'rose'
-]
-
-export const formatColorForTailwind = (colorString: string): string => {
-    return colorString
-        .replace(/(rgb|rgba|hsl|hsla|hsb|hsba|oklch)[(a]?/g, '')
-        .replace(/[()]/g, '')
-        .replace(/,\s*/g, ' ')
-        .trim()
-}
-
-export const formatColorFromTailwind = (colorString: string, format = 'hsl'): string => {
-    return `${format}(${colorString.replace(/ /g, ', ')})`
-}
-
-export const hslToHex = (hsl: string): string => {
-    const h = Number(hsl.split(' ')[0])
-    const s = Number(hsl.split(' ')[1].replace('%', ''))
-    const l = Number(hsl.split(' ')[2].replace('%', ''))
-    const hDecimal = l / 100
-    const a = (s * Math.min(hDecimal, 1 - hDecimal)) / 100
-    const f = (n: number) => {
-        const k = (n + h / 30) % 12
-        const color = hDecimal - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)
-        return Math.round(255 * color)
-            .toString(16)
-            .padStart(2, '0')
-    }
-    return `#${f(0)}${f(8)}${f(4)}`
+    return luminance > 0.5 ? '#000000' : '#FFFFFF'
 }
 
 export const getColorName = (color: string): string => {
     return slugify(ntc.name(color)[1])
+}
+
+const roundNum = (num: number): number => {
+    if (Number.isNaN(num)) {
+        return 0
+    }
+    return Math.round(num * 1000) / 1000
+}
+
+export const formatColor = (color: string, format: ColorFormat) => {
+    if (format === 'rgb') {
+        return `rgb(${chroma(color).rgb().join(' ')})`
+    }
+    if (format === 'hsl') {
+        const hsl = chroma(color).hsl()
+        return `hsl(${roundNum(hsl[0])} ${roundNum(hsl[1]) * 100}% ${roundNum(hsl[2]) * 100}%)`
+    }
+    if (format === 'oklch') {
+        const oklch = chroma(color).oklch()
+        return `oklch(${roundNum(oklch[0])} ${roundNum(oklch[1])} ${roundNum(oklch[2])})`
+    }
+    return color
 }

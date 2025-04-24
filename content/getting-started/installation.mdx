@@ -132,44 +132,43 @@ to switch to RGB, HSL, HSB, or oklch.
 
 @layer base {
   :root {
-    --bg: hsl(0, 0%, 98.04%);
-    --fg: hsl(240, 10%, 3.92%);
-    --primary: hsl(224.3 76.3% 48%);
-    --primary-fg: hsl(0 0% 98.04%);
-    --secondary: hsl(211.7 96.4% 78.4%);
-    --secondary-fg: hsl(226.2 57% 21%);
-    --danger: hsl(0 72.22% 50.59%);
-    --danger-fg: hsl(0 0% 98.04%);
-    --success: hsl(142.1 76.2% 36.3%);
-    --success-fg: hsl(0 0% 98.04%);
-    --info: hsl(293.41, 69.48%, 48.82%);
-    --info-fg: hsl(0 0% 98.04%);
-    --warning: hsl(24.6 95% 53.1%);
-    --warning-fg: hsl(0 0% 98.04%);
-    --muted: hsl(240, 4.88%, 83.92%);
-    --muted-fg: hsl(240, 5.26%, 26.08%);
+    --bg: oklch(0.985 0 0);
+    --fg: oklch(0.141 0.004 285.863);
+    --primary: oklch(0.623 0.188 259.813);
+    --primary-fg: oklch(0.97 0.014 254.605);
+    --secondary: oklch(0.809 0.096 251.808);
+    --secondary-fg: oklch(0.282 0.087 267.936);
+    --danger: oklch(0.645 0.215 16.444);
+    --danger-fg: oklch(0.969 0.015 12.545);
+    --success: oklch(0.696 0.149 162.474);
+    --success-fg: oklch(0.982 0.018 155.712);
+    --info: oklch(0.627 0.233 303.91);
+    --info-fg: oklch(0.977 0.014 308.43);
+    --warning: oklch(0.795 0.162 86.039);
+    --warning-fg: oklch(0.987 0.026 102.171);
+    --muted: oklch(0.871 0.005 286.485);
+    --muted-fg: oklch(0.552 0.014 285.988);
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --bg: hsl(240, 10%, 3.92%);
-    --fg: hsl(0, 0%, 98.04%);
-    --secondary: hsl(226.2 57% 21%);
-    --secondary-fg: hsl(211.7 96.4% 78.4%);
-    --danger: hsl(0 72.2% 50.6%);
-    --danger-fg: hsl(0 0% 98.04%);
-    --success: hsl(142.1 76.2% 36.3%);
-    --success-fg: hsl(0 0% 98.04%);
-    --info: hsl(292.19, 84.08%, 60.59%);
-    --info-fg: hsl(0 0% 98.04%);
-    --warning: hsl(17.5 88.3% 40.4%);
-    --warning-fg: hsl(0 0% 98.04%);
-    --muted: hsl(240, 5.26%, 26.08%);
-    --muted-fg: hsl(240, 4.88%, 83.92%);
+    --bg: oklch(0.141 0.004 285.863);
+    --fg: oklch(0.985 0 0);
+    --secondary: oklch(0.282 0.087 267.936);
+    --secondary-fg: oklch(0.809 0.096 251.808);
+    --danger: oklch(0.586 0.222 17.589);
+    --danger-fg: oklch(0.969 0.015 12.545);
+    --success: oklch(0.596 0.127 163.22);
+    --success-fg: oklch(0.979 0.021 166.012);
+    --info: oklch(0.558 0.252 302.33);
+    --info-fg: oklch(0.977 0.014 308.43);
+    --warning: oklch(0.681 0.142 75.827);
+    --warning-fg: oklch(0.987 0.026 102.171);
+    --muted: oklch(0.274 0.005 286.095);
+    --muted-fg: oklch(0.552 0.014 285.988);
   }
 }
-
 
 @layer base {
     *,

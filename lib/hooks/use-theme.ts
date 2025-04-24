@@ -4,8 +4,6 @@ import { devtools, persist } from 'zustand/middleware'
 import { fontMonoFamilies, fontSansFamilies } from '@/lib/fonts'
 import { type GrayColor, type PresetColor, grayColors, presetColors } from '@/lib/themes'
 
-// import {Presets} from '@/lib/themes/presets'
-
 type State = {
     grayColor: GrayColor
     presetColor: PresetColor
@@ -92,16 +90,13 @@ export const useThemeGenerator = () => {
     }
 }
 
-export type ThemeConfig = {
-    code: string
-    config: string
-}
-
 export const syncGrayColor = (color: GrayColor, resolvedTheme: string | undefined) => {
     const root = document.querySelector<HTMLHtmlElement>(':root')
     if (!root) return
 
     const grayColor = grayColors.find((c) => c.name === color)
+
+    if (!grayColor) return
 
     const vars = (resolvedTheme === 'light' ? { ...grayColor?.cssVars.light } : { ...grayColor?.cssVars.dark }) as {
         [key: string]: string
@@ -122,6 +117,8 @@ export const syncThemeColor = (color: PresetColor, resolvedTheme: string | undef
     if (!root) return
 
     const primaryColor = presetColors.find((c) => c.name === color)
+
+    if (!primaryColor) return
 
     const vars = (
         resolvedTheme === 'light' ? { ...primaryColor?.cssVars.light } : { ...primaryColor?.cssVars.dark }
