@@ -9,7 +9,7 @@ export default async function Page() {
         <>
             <Hero>
                 <HeroHeader>
-                    <HeroTitle>HQ KIT</HeroTitle>
+                    <HeroTitle>HQ KIT - UI Components</HeroTitle>
                     <HeroDescription>
                         This UI Design is basically built on top of{' '}
                         <strong className='text-fg'>React Aria Components</strong>, all about keeping the web

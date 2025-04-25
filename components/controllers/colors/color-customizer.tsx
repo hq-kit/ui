@@ -5,20 +5,16 @@ import { useState } from 'react'
 import { Button, Collection, type Color } from 'react-aria-components'
 import { copyToClipboard } from 'usemods'
 
-import { formatColor, generateColorScale, getColorName, textfg } from '@/components/controllers/colors/colors'
+import { formatColor } from '@/components/controllers/colors/colors'
 import SelectFormat, { type ColorFormat } from '@/components/controllers/colors/select-format'
-import _tailwindcolors from '@/components/controllers/colors/tailwind-colors.json'
-import { Badge, ColorPicker, Container, Popover, defaultColor, toast } from '@/components/ui'
+import { tailwindColors } from '@/components/controllers/colors/tailwind-colors'
+import { Container, Popover, defaultColor, toast } from '@/components/ui'
+
+type TailwindColor = keyof typeof tailwindColors
 
 export default function ColorCustomizer() {
     const [selectedFormat, setSelectedFormat] = useState<ColorFormat>('oklch')
     const [customColor, setCustomColor] = useState<Color>(defaultColor)
-
-    const tailwindColors = _tailwindcolors.map((item) => ({
-        name: item.name,
-        children: generateColorScale(item.color)
-    }))
-
     const [isCopied, setIsCopied] = useState<boolean>(false)
 
     const handleCopy = async (selectedColor: string) => {
@@ -44,64 +40,55 @@ export default function ColorCustomizer() {
                     <SelectFormat selectedFormat={selectedFormat} action={setSelectedFormat} />
                 </Container>
             </div>
-            <Container className='divide-y'>
-                <div className='sticky top-28 z-10 grid h-12 grid-cols-11 gap-1.5 border-b-0 bg-bg/60 py-4 backdrop-blur-lg'>
-                    <Collection
-                        items={['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'].map(
-                            (shade) => ({ id: shade, shade })
-                        )}
-                    >
-                        {(item) => (
-                            <Badge className='-rotate-90 justify-center text-[10px] sm:rotate-0' variant='outline'>
-                                {item.shade}
-                            </Badge>
-                        )}
-                    </Collection>
-                </div>
-                <div className='grid grid-cols-[auto_minmax(0_1fr)] border-x border-t p-2'>
-                    <div className='mb-2 flex items-center'>
-                        <ColorPicker
-                            defaultValue='#0d6efd'
-                            label={getColorName(customColor.toString('hex'))}
-                            value={customColor}
-                            onChange={setCustomColor}
-                        />
-                    </div>
-                    <div className='grid grid-cols-11 gap-1.5'>
-                        <Collection
-                            items={generateColorScale(customColor.toString('hex')).map((color) => ({
-                                id: color.shade,
-                                color: color.color
-                            }))}
-                        >
-                            {(item) => (
-                                <div
-                                    style={{ backgroundColor: item.color, color: textfg(item.color) }}
-                                    className='h-8 cursor-pointer rounded border'
-                                    onMouseUp={() => !isCopied && handleCopy(item.color)}
-                                />
-                            )}
-                        </Collection>
-                    </div>
-                </div>
-                {tailwindColors.map((color, i) => (
-                    <div key={i} className='grid grid-cols-[auto_minmax(0_1fr] border-x p-2 last:border-b'>
-                        <p className='mb-2 font-semibold text-muted-fg text-xs sm:text-sm'>{color.name}</p>
-                        <div className='grid grid-cols-11 gap-1.5'>
-                            <Collection items={color.children}>
+            <Container>
+                <table className='w-full table-fixed'>
+                    <thead>
+                        <tr className='sticky top-28 z-10 bg-bg/60 backdrop-blur-lg sm:top-32'>
+                            <th className='size-10' colSpan={2} />
+                            <Collection
+                                items={['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'].map(
+                                    (shade) => ({ id: shade, shade })
+                                )}
+                            >
                                 {(item) => (
-                                    <div
-                                        id={item.shade + color.name}
-                                        key={item.shade}
-                                        style={{ backgroundColor: item.color, color: textfg(item.color) }}
-                                        className='h-8 cursor-pointer rounded border'
-                                        onMouseUp={() => !isCopied && handleCopy(item.color)}
-                                    />
+                                    <th className='-rotate-90 w-[3ch] text-xs sm:rotate-0 sm:text-sm'>{item.shade}</th>
                                 )}
                             </Collection>
-                        </div>
-                    </div>
-                ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.keys(tailwindColors).map((color, i) => (
+                            <tr key={i} className='h-8'>
+                                <td
+                                    className='text-xs sm:text-sm'
+                                    colSpan={2}
+                                    style={{ color: Object.values(tailwindColors[color as TailwindColor]).at(5) }}
+                                >
+                                    {color}
+                                </td>
+                                <Collection
+                                    items={Object.values(tailwindColors[color as TailwindColor]).map((item, i) => ({
+                                        id: i,
+                                        color: item
+                                    }))}
+                                >
+                                    {(item) => (
+                                        <td
+                                            className='h-7 w-auto p-0.5'
+                                            key={item.color}
+                                            onMouseUp={() => !isCopied && handleCopy(item.color)}
+                                        >
+                                            <div
+                                                className='size-full cursor-pointer rounded-lg ring ring-border transition-transform hover:scale-110'
+                                                style={{ backgroundColor: item.color }}
+                                            />
+                                        </td>
+                                    )}
+                                </Collection>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </Container>
         </>
     )

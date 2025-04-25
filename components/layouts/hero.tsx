@@ -3,6 +3,7 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import { Header, Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
+import { ColourfulText } from '@/components/aceternity/colorful-text'
 import { Container, Link, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
@@ -48,7 +49,7 @@ const HeroHeader = ({ children, ...props }: { children: ReactNode }) => <Header 
 
 const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
     <Heading level={1} className={cn('mb-2 max-w-xl font-bold text-2xl lg:mb-6 lg:text-5xl', className)} {...props}>
-        {children}
+        <ColourfulText text={children as string} />
     </Heading>
 )
 
