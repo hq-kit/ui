@@ -24,17 +24,17 @@ export const generateColorScale = (color: string): { shade: number; color: strin
     }
 
     const baseColors = [
-        chroma(color).brighten(2.5).hex(),
-        chroma(color).brighten(2).hex(),
-        chroma(color).brighten(1.5).hex(),
-        chroma(color).brighten(1).hex(),
-        chroma(color).brighten(0.5).hex(),
+        chroma(color).brighten(5).tint(0.9).hex(),
+        chroma(color).brighten(4).tint(0.8).hex(),
+        chroma(color).brighten(3).tint(0.6).hex(),
+        chroma(color).brighten(2).tint(0.4).hex(),
+        chroma(color).brighten(1).tint(0.2).hex(),
         color,
-        chroma(color).darken(0.5).hex(),
-        chroma(color).darken(1.1).hex(),
-        chroma(color).darken(1.5).hex(),
-        chroma(color).darken(2).hex(),
-        chroma(color).darken(2.5).hex()
+        chroma(color).darken(1).shade(0.2).hex(),
+        chroma(color).darken(2).shade(0.4).hex(),
+        chroma(color).darken(3).shade(0.6).hex(),
+        chroma(color).darken(4).shade(0.8).hex(),
+        chroma(color).darken(5).shade(0.9).hex()
     ]
 
     return shades.map((shade, index) => ({
@@ -56,7 +56,7 @@ const roundNum = (num: number): number => {
     if (Number.isNaN(num)) {
         return 0
     }
-    return Math.round(num * 1000) / 1000
+    return Number(num.toFixed(2))
 }
 
 export const formatColor = (color: string, format: ColorFormat) => {

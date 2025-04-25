@@ -13,7 +13,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.141 0.004 285.863)',
                 fg: 'oklch(0.985 0 0)',
-                muted: 'oklch(0.274 0.005 286.095)',
+                muted: 'oklch(0.37 0.012 285.844)',
                 'muted-fg': 'oklch(0.552 0.014 285.988)'
             }
         }
@@ -32,7 +32,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.13 0.027 261.691)',
                 fg: 'oklch(0.985 0.002 247.727)',
-                muted: 'oklch(0.278 0.03 256.846)',
+                muted: 'oklch(0.373 0.031 259.733)',
                 'muted-fg': 'oklch(0.551 0.023 264.371)'
             }
         }
@@ -51,7 +51,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.129 0.041 264.695)',
                 fg: 'oklch(0.984 0.003 247.8)',
-                muted: 'oklch(0.279 0.037 260.03)',
+                muted: 'oklch(0.372 0.039 257.285)',
                 'muted-fg': 'oklch(0.554 0.041 257.415)'
             }
         }
@@ -70,7 +70,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.145 0 0)',
                 fg: 'oklch(0.985 0 0)',
-                muted: 'oklch(0.269 0 0)',
+                muted: 'oklch(0.371 0 0)',
                 'muted-fg': 'oklch(0.556 0 0)'
             }
         }
@@ -89,7 +89,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.147 0.004 49.275)',
                 fg: 'oklch(0.985 0.001 105.52)',
-                muted: 'oklch(0.268 0.006 34.352)',
+                muted: 'oklch(0.374 0.009 67.561)',
                 'muted-fg': 'oklch(0.553 0.012 58.091)'
             }
         }
