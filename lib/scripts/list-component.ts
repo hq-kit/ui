@@ -4,7 +4,8 @@ import path from 'node:path'
 const baseDir = path.resolve(__dirname, '../../components')
 const docsDir = path.join(baseDir, 'docs')
 const uiDir = path.join(baseDir, 'ui')
-const componentListFilePath = path.resolve(docsDir, 'generated/components.ts')
+const componentListFilePathTs = path.resolve(docsDir, 'generated/components.ts')
+const componentListFilePathJson = path.resolve(docsDir, 'generated/components.json')
 
 function getComponents() {
     const components: string[] = []
@@ -72,19 +73,26 @@ for (const component of components) {
     })
 }
 
-const writeContent = `type Component = {
+const writeContent = componentsList
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((c) => JSON.stringify(c))
+    .join(',\n    ')
+    .replaceAll(',"children":[]', '')
+    .replaceAll(',"deps":[]', '')
+
+const writeContentTs = `type Component = {
     name: string;
     deps?: string[];
     children?: Component[];
 };
 
 export const components: Component[] = [
-    ${componentsList
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map((c) => JSON.stringify(c))
-        .join(',\n    ')
-        .replaceAll(',"children":[]', '')
-        .replaceAll(',"deps":[]', '')}
+    ${writeContent}
 ]`
 
-fs.writeFileSync(componentListFilePath, writeContent)
+const writeContentJson = `[
+    ${writeContent}
+]`
+
+fs.writeFileSync(componentListFilePathTs, writeContentTs)
+fs.writeFileSync(componentListFilePathJson, writeContentJson)
