@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/aceternity/colorful-text.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/controllers/colors/tailwind-colors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/scripts/list-component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/color-customizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/colors/color-customizer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/colors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/colors/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/colors/tailwind-colors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/chart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/chart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/collections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/collections.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/color-swatch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/color-swatch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/scripts/create-previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/scripts/create-previews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +98,7 @@
       <workItem from="1745516801855" duration="11657000" />
       <workItem from="1745550213368" duration="5711000" />
       <workItem from="1745562795899" duration="9607000" />
+      <workItem from="1745595698562" duration="4867000" />
     </task>
     <servers />
   </component>

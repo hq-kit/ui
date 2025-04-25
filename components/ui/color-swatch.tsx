@@ -1,8 +1,8 @@
 'use client'
 
-import { parseColor } from '@react-stately/color'
 import type { ColorSwatchProps } from 'react-aria-components'
 import { ColorSwatch as RACColorSwatch, composeRenderProps } from 'react-aria-components'
+import { parseColor } from 'react-stately'
 
 import { cn } from '@/lib/utils'
 

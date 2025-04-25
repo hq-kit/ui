@@ -10,8 +10,7 @@ import {
     useId,
     useMemo
 } from 'react'
-import type { LegendProps } from 'recharts'
-import { Legend, ResponsiveContainer, Tooltip } from 'recharts'
+import { Legend, type LegendProps, ResponsiveContainer, Tooltip } from 'recharts'
 
 import { cn } from '@/lib/utils'
 

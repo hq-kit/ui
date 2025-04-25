@@ -6,6 +6,7 @@ const docsDir = path.join(baseDir, 'docs')
 const uiDir = path.join(baseDir, 'ui')
 const outputMapFilePath = path.resolve(docsDir, 'generated/previews.ts')
 const jsonOutputFilePath = path.resolve(docsDir, 'generated/previews.json')
+const componentListFilePath = path.resolve(docsDir, 'generated/components.ts')
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
     const files = fs.readdirSync(dirPath)
@@ -60,5 +61,4 @@ ${Object.keys(components.tsComponents)
 `
 
 fs.writeFileSync(outputMapFilePath, previewsContent)
-
 fs.writeFileSync(jsonOutputFilePath, JSON.stringify(components.jsonComponents, null, 2))

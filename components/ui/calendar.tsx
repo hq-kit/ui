@@ -4,7 +4,6 @@ import { use } from 'react'
 
 import { getLocalTimeZone, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
-import type { CalendarState, RangeCalendarState } from '@react-stately/calendar'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import type { DateValue, CalendarProps as RACCalendarProps } from 'react-aria-components'
 import {
@@ -19,6 +18,7 @@ import {
     RangeCalendarStateContext,
     useLocale
 } from 'react-aria-components'
+import type { CalendarState, RangeCalendarState } from 'react-stately'
 
 import { cn } from '@/lib/utils'
 import { Button } from './button'

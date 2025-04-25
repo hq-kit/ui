@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome lint --fix && biome check --write",
-    "b": "bun run lib/scripts/create-previews.ts",
+    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts",
     "preview": "bun run build && npm run start"
   },
   "dependencies": {

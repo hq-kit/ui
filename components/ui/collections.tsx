@@ -2,8 +2,7 @@
 
 import { DropIndicator, isTextDropItem, useDragAndDrop } from 'react-aria-components'
 import type { DragAndDropOptions, DropOperation } from 'react-aria-components'
-import type { ListData, ListOptions } from 'react-stately'
-import { useListData as RACListData } from 'react-stately'
+import { type ListData, type ListOptions, useListData as RACListData } from 'react-stately'
 
 const useList = <T extends object>(options: ListOptions<T>) => RACListData(options)
 const useDND = <T extends object>({
