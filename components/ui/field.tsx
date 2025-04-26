@@ -66,9 +66,10 @@ const FieldError = ({ className, ...props }: FieldErrorProps) => {
     return <RACFieldError {...props} className={cn('text-danger text-sm/5', className)} />
 }
 
-const FieldGroup = ({ className, ...props }: GroupProps) => {
+const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLDivElement> }) => {
     return (
         <Group
+            ref={ref}
             className={composeRenderProps(
                 className,
                 (className, { isHovered, isInvalid, isFocusWithin, isDisabled, isFocusVisible }) =>

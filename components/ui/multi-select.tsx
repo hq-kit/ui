@@ -108,7 +108,6 @@ const MultiSelect = <T extends object>({
             className={composeRenderProps(className, (className) =>
                 cn('group flex h-fit flex-col gap-y-1.5', className)
             )}
-            ref={triggerRef}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
@@ -118,6 +117,7 @@ const MultiSelect = <T extends object>({
                         </Label>
                     )}
                     <FieldGroup
+                        ref={triggerRef}
                         isDisabled={isDisabled}
                         isInvalid={isInvalid}
                         className='flex h-fit min-h-10 flex-wrap items-center py-1'
