@@ -41,7 +41,7 @@ export default function SourceCode({ component, withMessage = true }: SourceCode
                 </Description>
             )}
             <Tabs className='mt-2 gap-0'>
-                <Tabs.List items={codeStrings}>
+                <Tabs.List items={codeStrings} className='max-w-full overflow-auto'>
                     {(item) => (
                         <Tabs.Label key={item.name} id={`tab-${item.name}`}>
                             <IconBrandReact />

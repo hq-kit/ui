@@ -1,26 +1,16 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-
-import { DocsNavigation } from '@/components/layouts/docs-navigation'
+import { Aside } from '@/components/layouts/aside'
 import { NavbarDropdown } from '@/components/layouts/navbar'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Link, Sheet } from '@/components/ui'
-import { type Docs, getAllDocs } from '@/lib/hooks/docs'
 import { IconBrandCleon, IconMenu, IconSearch } from 'hq-icons'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export function ResponsiveAside({ action }: { action: (openCmd: boolean) => void }) {
     const [openAside, setOpenAside] = useState(false)
     const pathname = usePathname()
-    const [docs, setDocs] = useState<Docs[]>([])
-
-    useEffect(() => {
-        const getDocs = async () => {
-            setDocs(await getAllDocs())
-        }
-        getDocs()
-    }, [])
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => setOpenAside(false), [pathname])
@@ -59,7 +49,7 @@ export function ResponsiveAside({ action }: { action: (openCmd: boolean) => void
                     <NavbarDropdown />
                 </Sheet.Header>
                 <Sheet.Body className='px-6'>
-                    <DocsNavigation docs={docs} />
+                    <Aside />
                 </Sheet.Body>
             </Sheet.Content>
         </nav>

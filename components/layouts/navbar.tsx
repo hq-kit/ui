@@ -1,17 +1,17 @@
 'use client'
 
-import { LayoutGroup } from 'motion/react'
+import { LayoutGroup, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { useId, useState } from 'react'
-import { Collection } from 'react-aria-components'
+import { type ReactNode, useId, useState } from 'react'
+import { Collection, composeRenderProps } from 'react-aria-components'
 
 import { CommandMenu } from '@/components/layouts/command-menu'
-import { NavLink } from '@/components/layouts/nav-link'
 import { ResponsiveAside } from '@/components/layouts/responsive-aside'
 import { MotionIcon } from '@/components/mdx/references'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Keyboard, Link, Menu, Separator, buttonStyles } from '@/components/ui'
 import { useIsMobile } from '@/lib/hooks'
+import { cn } from '@/lib/utils'
 import {
     IconBrandAdobe,
     IconBrandCleon,
@@ -146,5 +146,39 @@ export function NavbarDropdown() {
                 </Menu.Item>
             </Menu.Content>
         </Menu>
+    )
+}
+
+interface NavLinkProps {
+    href: string
+    isActive?: boolean
+    children?: ReactNode
+    target?: string
+    className?: string
+}
+
+const NavLink = ({ href, isActive, className, ...props }: NavLinkProps) => {
+    return (
+        <Link
+            href={href}
+            className={composeRenderProps(className, (className, { isFocusVisible, isHovered }) =>
+                cn(
+                    'relative flex items-center gap-2 rounded-lg px-3 py-2 text-muted-fg text-sm outline-hidden transition-colors',
+                    isFocusVisible && 'text-primary ring-2 ring-primary/50 ring-offset-2',
+                    isHovered && 'text-primary',
+                    isActive && 'text-primary',
+                    className
+                )
+            )}
+            {...props}
+        >
+            {props.children}
+            {isActive && (
+                <motion.span
+                    layoutId='active-indicator'
+                    className='absolute inset-x-0 size-full rounded-lg bg-primary/10'
+                />
+            )}
+        </Link>
     )
 }

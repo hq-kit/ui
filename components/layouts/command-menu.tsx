@@ -2,10 +2,11 @@
 
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { usePathname, useRouter } from 'next/navigation'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect } from 'react'
 
 import { Command } from '@/components/ui'
-import { type Docs, getAllDocs } from '@/lib/hooks/docs'
+
+import { docs } from '@/components/docs/generated/docs'
 
 export interface OpenCloseProps {
     openCommand: boolean
@@ -15,14 +16,6 @@ export interface OpenCloseProps {
 export function CommandMenu({ openCommand, action }: OpenCloseProps) {
     const router = useRouter()
     const pathname = usePathname()
-    const [docs, setDocs] = useState<Docs[]>([])
-
-    useEffect(() => {
-        const getDocs = async () => {
-            setDocs(await getAllDocs())
-        }
-        getDocs()
-    }, [])
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {

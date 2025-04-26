@@ -1,20 +1,37 @@
 'use client'
 
+import { components } from '@/components/docs/generated/components'
 import CLI from '@/components/mdx/cli'
-import Components from '@/components/mdx/components.json'
 import SourceCode from '@/components/mdx/source-code'
 import { Tabs } from '@/components/ui'
 
 export default function Install({ component }: { component: string }) {
-    const item = Components.find((c) => c.name === component)
+    const items: string[] = []
+    const deps: string[] = ['react-aria-components', 'hq-icons']
+
+    const item = components.find((c) => c.name === component)
     if (!item) {
         return null
     }
-    const items = item.components ? [item.name, ...item.components] : [item.name]
-
-    const deps = ['react-aria-components', 'hq-icons']
-    if (item.deps) deps.push(...item.deps)
-
+    if (item.deps) {
+        for (const dep of item.deps) {
+            if (!deps.includes(dep)) {
+                deps.push(dep)
+            }
+        }
+    }
+    if (item.children) {
+        for (const child of item.children) {
+            if (!items.includes(child.name)) {
+                items.push(child.name)
+            }
+            const childItem = components.find((c) => c.name === child.name)
+            if (childItem) {
+                if (childItem.deps) deps.push(...childItem.deps)
+                if (childItem.children) items.push(...childItem.children.map((c) => c.name))
+            }
+        }
+    }
     return (
         <Tabs aria-label='Packages' className='my-6'>
             <Tabs.List>

@@ -3,13 +3,14 @@
   "version": "0.1.2",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "watch": "bun run watcher.ts",
+    "dev": "concurrently \"bun --bun next dev\" \"bun run watch\"",
+    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",
+    "build": "bun run b && next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome lint --fix && biome check --write",
-    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts",
-    "preview": "bun run build && npm run start"
+    "preview": "bun run build && bun run start"
   },
   "dependencies": {
     "@lexical/react": "^0.20.2",
@@ -50,6 +51,8 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.1.2",
     "eslint": "^9.25.1",
     "eslint-config-next": "^15.3.1",
     "next-themes": "^0.4.6",
