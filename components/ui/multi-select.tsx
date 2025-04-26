@@ -28,21 +28,45 @@ interface MultiSelectProps<T>
         Pick<GroupProps, 'isDisabled' | 'isInvalid'> {
     className?: string
     errorMessage?: string
+    maxItems?: number
 }
 
-const MultiSelect = <T extends object>({ className, children, ...props }: MultiSelectProps<T>) => {
+function mapToNewObject<T extends object>(array: T[]): { id: T[keyof T]; textValue: T[keyof T] }[] {
+    return array.map((item) => {
+        const idProperty = Object.keys(item).find((key) => key === 'id' || key === 'key')
+        const textProperty = Object.keys(item).find((key) => key !== 'id' && key !== 'key')
+        return {
+            id: item[idProperty as keyof T],
+            textValue: item[textProperty as keyof T]
+        }
+    })
+}
+
+const MultiSelect = <T extends object>({
+    className,
+    maxItems = Number.POSITIVE_INFINITY,
+    children,
+    ...props
+}: MultiSelectProps<T>) => {
     const triggerRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
+    const triggerButtonRef = useRef<HTMLButtonElement>(null)
+    const popoverRef = useRef<HTMLDivElement>(null)
     const [inputValue, setInputValue] = useState('')
     const [selectedKeys, onSelectionChange] = useState<Selection>(new Set(props.selectedKeys))
+
+    const isMax = [...selectedKeys].length >= maxItems
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         setInputValue('')
+        return () => {
+            inputRef.current?.focus()
+        }
     }, [props?.selectedKeys, selectedKeys])
 
     const addItem = (e: Key | null) => {
-        if (!e) return
+        if (!e || isMax) return
         onSelectionChange?.((s) => new Set([...s, e!]))
         // @ts-expect-error incompatible type Key and Selection
         props.onSelectionChange?.((s) => new Set([...s, e!]))
@@ -64,15 +88,19 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
         }
     }
 
-    const items = props.items
-        ? // @ts-expect-error unknown type
-          props.items.map((item) => ({ id: item.id, name: item.name }))
-        : Children.map(
-              children as ReactNode,
-              (child) => isValidElement(child) && child.props
-              // @ts-expect-error unknown type
-          )?.map((item) => ({ id: item.id, name: item.textValue }))
+    const parsedItems = props.items
+        ? mapToNewObject(props.items as T[])
+        : mapToNewObject(Children.map(children as ReactNode, (child) => isValidElement(child) && child.props) as T[])
 
+    const availableItemsToSelect = props.items
+        ? parsedItems.filter((item) => ![...selectedKeys].includes(item.id as Key))
+        : parsedItems
+
+    const filteredChildren = props.items
+        ? parsedItems.filter((item) => ![...selectedKeys].includes(item.id as Key))
+        : Children.map(children as ReactNode, (child) => isValidElement(child) && child.props)?.filter(
+              (item: T & any) => ![...selectedKeys].includes(item.id)
+          )
     return (
         <Group
             isInvalid={props.isInvalid}
@@ -97,12 +125,14 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                         <TagGroup onRemove={removeItem} aria-hidden aria-label='Selected'>
                             <TagList
                                 className='flex flex-1 flex-wrap gap-1 pl-2 empty:pl-0'
-                                items={items.filter((i: { id: Key }) => [...selectedKeys].includes(i.id))}
+                                items={[...selectedKeys].map((key) => ({
+                                    id: key,
+                                    textValue: parsedItems.find((item) => item.id === key)?.textValue as string
+                                }))}
                             >
-                                {(item: { id: Key; name: string }) => (
+                                {(item: { id: Key; textValue: Key }) => (
                                     <Tag
                                         isDisabled={isDisabled}
-                                        id={item.id}
                                         className={({ isFocusVisible }) =>
                                             cn(
                                                 'inline-flex items-center justify-between gap-1 rounded-lg border px-2 py-0.5 text-sm outline-hidden',
@@ -113,9 +143,9 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                                     `ring-2 ${isInvalid ? 'ring-danger/70' : 'ring-primary/70'}`
                                             )
                                         }
-                                        textValue={item.name}
+                                        textValue={item.textValue as string}
                                     >
-                                        {item.name}
+                                        {item.textValue as string}
                                         <Button
                                             slot='remove'
                                             className={({ isHovered, isPressed }) =>
@@ -138,21 +168,30 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                             validate={props.validate}
                             validationBehavior={props.validationBehavior}
                             isInvalid={isInvalid}
+                            isReadOnly={isMax}
                             isDisabled={isDisabled}
                             className='flex-1 px-2 text-sm/7'
                             aria-label='Search'
                             onSelectionChange={addItem}
                             inputValue={inputValue}
-                            onInputChange={setInputValue}
+                            onInputChange={isMax ? () => {} : setInputValue}
                         >
                             <div className='flex flex-row items-center'>
                                 <Input
+                                    onFocus={() => triggerButtonRef.current?.click()}
                                     ref={inputRef}
                                     onKeyDownCapture={onKeyDownCapture}
-                                    placeholder='Pick something'
+                                    placeholder={
+                                        isMax
+                                            ? 'Max items reached'
+                                            : !availableItemsToSelect || !filteredChildren?.length
+                                              ? ''
+                                              : 'Pick some items'
+                                    }
                                     className='w-full text-sm/7 outline-hidden'
                                 />
                                 <Button
+                                    ref={triggerButtonRef}
                                     aria-label='Chevron'
                                     className='ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg text-muted-fg outline-hidden'
                                 >
@@ -160,6 +199,8 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                 </Button>
                             </div>
                             <Popover
+                                ref={popoverRef}
+                                trigger='focus'
                                 style={{
                                     minWidth: triggerRef.current?.offsetWidth,
                                     width: triggerRef.current?.offsetWidth
@@ -179,9 +220,18 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
                                     className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
                                     selectionMode='multiple'
                                     renderEmptyState={() => <div>No Items</div>}
+                                    items={(availableItemsToSelect as T[]) ?? props.items}
                                     {...props}
                                 >
-                                    {children}
+                                    {filteredChildren?.map((item: any) => (
+                                        <MultiSelect.Item
+                                            key={item.id as Key}
+                                            id={item.id as Key}
+                                            textValue={item.textValue as string}
+                                        >
+                                            {item.textValue as string}
+                                        </MultiSelect.Item>
+                                    )) ?? children}
                                 </ListBox>
                             </Popover>
                         </ComboBox>
@@ -198,7 +248,6 @@ const MultiSelect = <T extends object>({ className, children, ...props }: MultiS
 
 const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
     const textValue = typeof children === 'string' ? children : undefined
-
     return (
         <ListBoxItem
             textValue={textValue}
@@ -210,7 +259,9 @@ const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) =>
                         'group relative col-span-full grid grid-cols-subgrid',
                         'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
                         '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
-                        { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
+                        {
+                            'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered
+                        },
                         isDisabled && 'pointer-events-none opacity-50',
                         className
                     )
