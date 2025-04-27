@@ -5,8 +5,9 @@
   "scripts": {
     "watch": "bun run watcher.ts",
     "dev": "concurrently \"bun --bun next dev\" \"bun run watch\"",
-    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",
-    "build": "bun run b && next build",
+    "b": "bun run lib/scripts/create-previews.ts",
+    "docs:generate": "bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",
+    "build": "next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome lint --fix && biome check --write",
