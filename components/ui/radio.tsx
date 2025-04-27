@@ -11,11 +11,11 @@ interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'>, FieldPro
     children?: ReactNode
 }
 
-const RadioGroup = ({ label, description, errorMessage, children, ...props }: RadioGroupProps) => {
+const RadioGroup = ({ label, description, errorMessage, className, children, ...props }: RadioGroupProps) => {
     return (
         <RACRadioGroup
             {...props}
-            className={composeRenderProps(props.className, (className) => cn('group flex flex-col gap-2', className))}
+            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
         >
             {composeRenderProps(children, (children, { isInvalid, isDisabled, orientation }) => (
                 <>
@@ -26,7 +26,7 @@ const RadioGroup = ({ label, description, errorMessage, children, ...props }: Ra
                     )}
                     <div
                         className={cn(
-                            'flex select-none',
+                            'flex',
                             orientation === 'horizontal' ? 'flex-wrap gap-2 sm:gap-4' : 'flex-col gap-2'
                         )}
                     >
@@ -54,7 +54,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
             )}
             {...props}
         >
-            {({ isSelected, isFocused, isInvalid }) => (
+            {({ isSelected, isFocused, isInvalid, isDisabled }) => (
                 <div
                     className={cn('flex items-center gap-2', {
                         'items-start': description
@@ -72,7 +72,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                         )}
                     />
                     <div className='flex flex-col'>
-                        <Label isInvalid={isInvalid} isDisabled={props.isDisabled} className='not-last:text-sm/4'>
+                        <Label isInvalid={isInvalid} isDisabled={isDisabled} className='not-last:text-sm/4'>
                             {label ?? children}
                         </Label>
                         {description && <Description>{description}</Description>}

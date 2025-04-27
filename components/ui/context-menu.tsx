@@ -7,7 +7,6 @@ import {
     type ReactNode,
     type RefObject,
     type SetStateAction,
-    type TouchEvent,
     createContext,
     createRef,
     use,
@@ -67,32 +66,12 @@ const ContextMenuTrigger = ({ className, ...props }: HTMLAttributes<HTMLDivEleme
             crossOffset: e.clientX - rect.left
         })
     }
-    const longPressTimer = useRef<NodeJS.Timeout | null>(null)
-
-    const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-        e.preventDefault()
-        const touch = e.touches[0]
-        const rect = e.currentTarget.getBoundingClientRect()
-        longPressTimer.current = setTimeout(() => {
-            setContextMenuOffset({
-                offset: touch.clientY - rect.bottom,
-                crossOffset: touch.clientX - rect.left
-            })
-        }, 600)
-    }
-    const onTouchEnd = () => {
-        if (longPressTimer.current) {
-            clearTimeout(longPressTimer.current)
-        }
-    }
     return (
         <div
             className={cn('cursor-default select-none outline-hidden disabled:opacity-50', className)}
             ref={triggerRef}
             aria-haspopup='menu'
             onContextMenu={onContextMenu}
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
             {...props}
         />
     )
@@ -103,6 +82,7 @@ interface ContextMenuContentProps<T>
         MenuProps<T>,
         'showArrow' | 'isOpen' | 'onOpenChange' | 'triggerRef' | 'placement' | 'shouldFlip' | 'className'
     > {
+    respectScreen?: boolean
     className?: string
 }
 
@@ -110,7 +90,7 @@ const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProp
     const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
         <Menu.Content
-            respectScreen={false}
+            respectScreen={props.respectScreen}
             aria-label={props['aria-label'] ?? 'Context Menu'}
             isOpen={!!contextMenuOffset}
             offset={contextMenuOffset?.offset}

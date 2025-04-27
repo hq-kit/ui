@@ -4,13 +4,14 @@ import { IconPhone } from 'hq-icons'
 import Image from 'next/image'
 
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
-import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField, Textarea, TimeField } from '@/components/ui'
+import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField, Textarea } from '@/components/ui'
 
 export default function UserProfileSink() {
     return (
         <Card className='p-2'>
             <div className='flex w-full flex-col'>
                 <Image
+                    priority
                     width={320}
                     height={240}
                     className='h-40 w-full rounded-lg object-cover'
@@ -36,7 +37,7 @@ export default function UserProfileSink() {
                         <Tabs.Content id='t1' className='p-1'>
                             <div className='mb-4 flex w-full items-end gap-3'>
                                 <DateField label='Birthdate' className='w-full' />
-                                <TimeField label='Birthtime' />
+                                {/*<TimeField label='Birthtime' />*/}
                             </div>
                             <div className='my-2.5'>
                                 <TextField label='Phone' prefix='+62' suffix={<IconPhone />} />

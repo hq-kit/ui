@@ -236,7 +236,6 @@ export const docs: Docs[] = [
           {
             "title": "Context Menu",
             "url": "/docs/components/controls/context-menu",
-            "status": "beta",
             "order": 2
           },
           {

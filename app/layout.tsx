@@ -1,4 +1,5 @@
-import { OpenPanelComponent } from '@openpanel/nextjs'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import type { CSSProperties, ReactNode } from 'react'
 
@@ -90,12 +91,10 @@ export default function RootLayout({
                 <Providers>
                     {children}
                     {process.env.NODE_ENV === 'production' && (
-                        <OpenPanelComponent
-                            clientSecret={process.env.ANALYTICS_CLIENT_SECRET as string}
-                            clientId={process.env.ANALYTICS_CLIENT_ID as string}
-                            trackScreenViews={true}
-                            trackAttributes={true}
-                        />
+                        <>
+                            <Analytics />
+                            <SpeedInsights />
+                        </>
                     )}
                 </Providers>
             </body>

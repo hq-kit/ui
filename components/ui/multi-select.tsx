@@ -122,7 +122,7 @@ const MultiSelect = <T extends object>({
                         isInvalid={isInvalid}
                         className='flex h-fit min-h-10 flex-wrap items-center py-1'
                     >
-                        <TagGroup onRemove={removeItem} aria-hidden aria-label='Selected'>
+                        <TagGroup onRemove={removeItem} aria-hidden aria-label='selected-items'>
                             <TagList
                                 className='flex flex-1 flex-wrap gap-1 pl-2 empty:pl-0'
                                 items={[...selectedKeys].map((key) => ({

@@ -1,6 +1,8 @@
+import type { HTMLAttributes } from 'react'
+
 import { cn } from '@/lib/utils'
 
-const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Card = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='card'
@@ -13,7 +15,7 @@ const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => 
     )
 }
 
-interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
     title?: string
     description?: string
 }
@@ -33,17 +35,17 @@ const CardHeader = ({ className, title, description, children, ...props }: Heade
     </div>
 )
 
-const CardTitle = ({ className, ...props }: React.ComponentProps<'div'>) => {
+const CardTitle = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div slot='title' className={cn('font-semibold text-lg leading-none tracking-tight', className)} {...props} />
     )
 }
 
-const CardDescription = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const CardDescription = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return <div slot='description' className={cn('row-start-2 text-muted-fg text-sm', className)} {...props} />
 }
 
-const CardAction = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const CardAction = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='action'
@@ -53,11 +55,11 @@ const CardAction = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement
     )
 }
 
-const CardContent = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const CardContent = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return <div slot='content' className={cn('px-6 has-[table]:p-0', className)} {...props} />
 }
 
-const CardFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const CardFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             slot='footer'

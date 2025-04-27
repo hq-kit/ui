@@ -4,7 +4,7 @@ import { IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
 import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 import { useTheme } from '@/components/providers'
-import { Button, Label, Select, Sheet, Slider, isBrightColor } from '@/components/ui'
+import { Button, Select, Sheet, Slider, isBrightColor } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { cn } from '@/lib/utils'
 import { ColorPreview, ThemeSnippet } from './theme-snippet'
@@ -31,7 +31,7 @@ export function ThemeCustomizer() {
 
     return (
         <Sheet>
-            <Button icon className='fixed top-16 right-0 z-50 mt-1 rounded-r-none'>
+            <Button name='Theme Customizer Toggle' icon className='fixed top-16 right-0 z-50 mt-1 rounded-r-none'>
                 <IconSwatchBook />
             </Button>
             <Sheet.Content isBlurred={false} side='right' className='sm:max-w-md'>
@@ -42,6 +42,7 @@ export function ThemeCustomizer() {
                 <Sheet.Body className='space-y-4'>
                     <div className='flex w-full flex-col gap-4 sm:flex-row'>
                         <Select
+                            name='font-sans'
                             className='w-full'
                             label='Font Sans'
                             placeholder='Select a font'
@@ -56,6 +57,7 @@ export function ThemeCustomizer() {
                             {(item) => <Select.Item id={item.label}>{item.label}</Select.Item>}
                         </Select>
                         <Select
+                            name='font-mono'
                             className='w-full'
                             label='Font Mono'
                             placeholder='Select a font'
@@ -71,7 +73,7 @@ export function ThemeCustomizer() {
                         </Select>
                     </div>
                     <div className='group flex flex-col gap-1.5'>
-                        <Label>Gray Color</Label>
+                        <div className='font-medium text-muted-fg text-sm group-has-focus:text-primary'>Gray Color</div>
                         <GridList
                             layout='grid'
                             aria-label='Gray Colors'
@@ -97,7 +99,7 @@ export function ThemeCustomizer() {
                                         cn(
                                             'flex cursor-pointer items-center justify-center rounded-lg px-2 py-1 font-semibold text-xs transition',
                                             {
-                                                'border ring-2 ring-bg/80 ring-inset':
+                                                'ring-2 ring-bg/80 ring-inset':
                                                     isFocusVisible || isSelected || isHovered
                                             }
                                         )
@@ -109,7 +111,9 @@ export function ThemeCustomizer() {
                         </GridList>
                     </div>
                     <div className='group flex flex-col gap-1.5'>
-                        <Label>Accent Color</Label>
+                        <div className='font-medium text-muted-fg text-sm group-has-focus:text-primary'>
+                            Accent Color
+                        </div>
                         <GridList
                             layout='grid'
                             aria-label='Accent Colors'

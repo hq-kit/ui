@@ -1,6 +1,7 @@
 'use client'
 
 import { IconCheck, IconMinus } from 'hq-icons'
+import type { ReactNode, Ref } from 'react'
 import type {
     CheckboxGroupProps as RACCheckboxGroupProps,
     CheckboxProps as RACCheckboxProps
@@ -33,18 +34,20 @@ const CheckboxGroup = ({ className, children, description, errorMessage, ...prop
 }
 
 interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'placeholder'> {
-    children?: React.ReactNode
+    children?: ReactNode
+    ref?: Ref<HTMLLabelElement>
 }
 
-const Checkbox = ({ className, label, children, description, errorMessage, ...props }: CheckboxProps) => {
+const Checkbox = ({ className, label, children, description, ref, errorMessage, ...props }: CheckboxProps) => {
     return (
         <RACCheckbox
             {...props}
+            ref={ref}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
             )}
         >
-            {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired }) => (
+            {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired, isDisabled }) => (
                 <div
                     className={cn('flex items-center gap-2', {
                         'items-start': description || (isInvalid && isRequired)
@@ -73,7 +76,7 @@ const Checkbox = ({ className, label, children, description, errorMessage, ...pr
                     <div className='flex flex-col'>
                         <Label
                             isInvalid={isInvalid || !!errorMessage}
-                            isDisabled={props.isDisabled}
+                            isDisabled={isDisabled}
                             className='not-last:text-sm/4'
                         >
                             {label ?? children}

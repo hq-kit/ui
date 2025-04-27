@@ -23,11 +23,11 @@ export function Aside() {
 
     return (
         <aside>
-            <ul className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5'>
                 {docs
                     .sort((a, b) => a.order - b.order)
                     .map((doc, i) => (
-                        <li key={i} className='flex flex-col gap-1'>
+                        <div key={i} className='flex flex-col gap-1'>
                             <Heading className='flex items-center gap-x-2 font-semibold text-fg'>
                                 {doc.order === 1 ? (
                                     <IconLayers />
@@ -38,14 +38,14 @@ export function Aside() {
                                 )}
                                 {doc.title}
                             </Heading>
-                            <ul className='relative flex flex-col gap-1 pl-1.5'>
+                            <div className='relative flex flex-col gap-1 pl-1.5'>
                                 <div className='absolute left-1.5 h-full w-0.5 bg-muted' />
                                 {doc.items
                                     ?.sort((a, b) => a.title.localeCompare(b.title))
                                     .map((item, i) => (
-                                        <li key={i} className='flex flex-col gap-1'>
+                                        <div key={i} className='flex flex-col gap-1'>
                                             {item.items?.length ? (
-                                                <ul className='mb-4 flex flex-col gap-1'>
+                                                <div className='mb-4 flex flex-col gap-1'>
                                                     <Heading className='py-2 pl-4 font-semibold text-fg'>
                                                         {item.title}
                                                     </Heading>
@@ -63,16 +63,16 @@ export function Aside() {
                                                                 ) : null}
                                                             </MenuLink>
                                                         ))}
-                                                </ul>
+                                                </div>
                                             ) : (
                                                 <MenuLink href={item.url}>{item.title}</MenuLink>
                                             )}
-                                        </li>
+                                        </div>
                                     ))}
-                            </ul>
-                        </li>
+                            </div>
+                        </div>
                     ))}
-            </ul>
+            </div>
         </aside>
     )
 }
