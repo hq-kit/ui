@@ -1,7 +1,7 @@
 import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
 import { Card } from '@/components/ui'
-import { getDocs, getDocsContent, getStaticParams, getTableOfContents } from '@/lib/hooks/docs'
+import { getDocs, getDocsContent, getTableOfContents } from '@/lib/hooks/docs'
 import type { Metadata } from 'next'
 
 export interface DocPageProps {
@@ -54,11 +54,6 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
             'HQ Inertia'
         ]
     }
-}
-
-export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-    const docs = await getStaticParams()
-    return docs.map((doc) => ({ slug: doc.split('/') }))
 }
 
 export default async function DocsPage(props: DocPageProps) {
