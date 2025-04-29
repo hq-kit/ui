@@ -44,7 +44,7 @@ const SelectionBox = ({
             {selectionMode === 'multiple' ? (
                 <CheckboxGroup
                     {...props}
-                    className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
+                    className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
                 >
                     {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                         <>
@@ -70,7 +70,7 @@ const SelectionBox = ({
             ) : (
                 <RadioGroup
                     {...props}
-                    className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
+                    className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
                 >
                     {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                         <>

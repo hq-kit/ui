@@ -13,13 +13,14 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
     <RACListBox
         {...props}
         className={composeRenderProps(className, (className) =>
             cn(
-                'grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg border p-1 outline-hidden',
+                'grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto rounded-lg border p-1 outline-hidden',
                 className
             )
         )}
@@ -37,39 +38,34 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                 className,
                 (className, { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }) =>
                     cn(
-                        'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden',
+                        'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
                         'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-                        '*:data-[slot=icon]:mr-2 **:[svg]:size-4',
+                        '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
                         {
                             'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary':
                                 isFocused || isFocusVisible || isHovered
                         },
-                        isSelected && '**:data-[slot=icon]:hidden',
+                        isSelected && '**:data-[slot=checked]:mr-2 **:data-[slot=icon]:hidden',
                         isDragging && 'cursor-grabbing outline outline-primary',
                         isDisabled && 'pointer-events-none opacity-50',
                         className
                     )
             )}
         >
-            {({ allowsDragging, isSelected, isFocused, isDragging }) => (
+            {({ allowsDragging, isSelected, isDragging }) => (
                 <>
                     {allowsDragging && (
                         <IconGripVertical
-                            className={cn(
-                                'size-4 shrink-0 text-muted-fg transition',
-                                isFocused && 'text-fg',
-                                isDragging && 'text-muted-fg',
-                                isSelected && 'text-primary-fg/70'
-                            )}
+                            className={cn('size-4 shrink-0 text-muted-fg transition', isDragging && 'text-primary')}
                         />
                     )}
-                    {isSelected && <IconCheck className='mr-2 size-4' data-slot='checked' />}
+                    {isSelected && <IconCheck className='text-success' data-slot='checked' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
-                            {children}
+                            {children as ReactNode}
                         </Text>
                     ) : (
-                        children
+                        (children as ReactNode)
                     )}
                 </>
             )}
@@ -117,4 +113,4 @@ ListBox.Section = ListBoxSection
 ListBox.Details = ListBoxDetails
 ListBox.Item = ListBoxItem
 
-export { ListBox }
+export { ListBox, ListBoxSection, ListBoxDetails, ListBoxItem }

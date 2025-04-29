@@ -1,7 +1,7 @@
 'use client'
 
 import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
-import { createContext, use } from 'react'
+import { type ReactNode, createContext, use } from 'react'
 import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
 import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
 
@@ -35,12 +35,16 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
         <Breadcrumb
             {...props}
             className={composeRenderProps(className, (className) =>
-                cn('inline-flex items-center gap-2 text-muted-fg data-current:text-fg', className)
+                cn('inline-flex items-center gap-2 text-muted-fg text-sm data-current:text-fg', className)
             )}
         >
             {(values) => (
                 <>
-                    {href ? <Link href={href} className='inline-flex items-center gap-2' {...props} /> : props.children}
+                    {href ? (
+                        <Link href={href} className='inline-flex items-center gap-2' {...props} />
+                    ) : (
+                        (props.children as ReactNode)
+                    )}
                     {!values.isCurrent && <Separator separator={separator} />}
                 </>
             )}

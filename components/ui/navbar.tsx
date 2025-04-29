@@ -240,7 +240,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
         <Link
             className={composeRenderProps(className, (className) =>
                 cn(
-                    'relative flex items-center gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden md:mr-4 md:px-0 md:py-0',
+                    'relative flex items-center gap-x-2 px-2 py-4 text-fg focus:outline-hidden focus-visible:outline-1 focus-visible:outline-primary md:mr-4 md:px-0 md:py-0',
                     className
                 )
             )}

@@ -51,6 +51,17 @@ const Select = <T extends object>({
     className,
     ...props
 }: SelectProps<T>) => {
+    const renderChildren = (
+        <ListBox
+            renderEmptyState={() => <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>}
+            aria-label='items'
+            items={items}
+            className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+        >
+            {children}
+        </ListBox>
+    )
+
     return (
         <RACSelect
             className={composeRenderProps(className, (className) =>
@@ -105,7 +116,7 @@ const Select = <T extends object>({
                     >
                         {searchable ? (
                             <Autocomplete filter={fuzzyMatch}>
-                                <SearchField autoFocus className='-mx-1 mb-1 border-b' aria-label='Search'>
+                                <SearchField autoFocus className='-mx-1 -mt-1 mb-1 border-b' aria-label='Search'>
                                     {({ isEmpty }) => (
                                         <Group className='flex items-center px-2'>
                                             {props.isPending ? (
@@ -114,7 +125,7 @@ const Select = <T extends object>({
                                                 <IconSearch className='size-4 shrink-0 text-muted-fg' />
                                             )}
                                             <Input
-                                                className='w-full p-2 outline-hidden [&::-webkit-search-cancel-button]:hidden'
+                                                className='w-full p-2 text-sm outline-hidden [&::-webkit-search-cancel-button]:hidden'
                                                 placeholder='Search...'
                                             />
                                             {!isEmpty && (
@@ -129,31 +140,10 @@ const Select = <T extends object>({
                                         </Group>
                                     )}
                                 </SearchField>
-                                <ListBox
-                                    autoFocus={false}
-                                    renderEmptyState={() => (
-                                        <div className='col-span-full p-4 text-center text-muted-fg'>
-                                            No results found
-                                        </div>
-                                    )}
-                                    aria-label='items'
-                                    items={items}
-                                    className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
-                                >
-                                    {children}
-                                </ListBox>
+                                {renderChildren}
                             </Autocomplete>
                         ) : (
-                            <ListBox
-                                renderEmptyState={() => (
-                                    <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>
-                                )}
-                                aria-label='items'
-                                items={items}
-                                className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
-                            >
-                                {children}
-                            </ListBox>
+                            renderChildren
                         )}
                     </Popover>
                 </>
@@ -175,7 +165,7 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
                     cn(
                         'group relative col-span-full grid grid-cols-subgrid outline-hidden',
                         'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-                        '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
+                        '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-3.5',
                         { 'bg-primary/10 text-primary': isFocused || isFocusVisible || isHovered },
                         isSelected && '**:data-[slot=icon]:hidden **:data-avatar:hidden',
                         isDisabled && 'pointer-events-none opacity-50',
@@ -185,13 +175,13 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
         >
             {({ isSelected }) => (
                 <>
-                    {isSelected && <IconCheck data-slot='checked' />}
+                    {isSelected && <IconCheck data-slot='checked' className='text-success' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
-                            {children}
+                            {children as ReactNode}
                         </Text>
                     ) : (
-                        children
+                        (children as ReactNode)
                     )}
                 </>
             )}

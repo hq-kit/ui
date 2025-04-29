@@ -10,7 +10,7 @@ import { ColorField } from './color-field'
 import { ColorSlider } from './color-slider'
 import { ColorSwatch } from './color-swatch'
 import { Description, Label } from './field'
-import { Popover } from './popover'
+import { Popover, PopoverContent } from './popover'
 
 export interface ColorPickerProps extends RACColorPickerProps {
     label?: string
@@ -43,7 +43,7 @@ const ColorPicker = ({
                             </>
                         )}
                     </Button>
-                    <Popover.Content showArrow={showArrow} placement={placement}>
+                    <PopoverContent showArrow={showArrow} placement={placement}>
                         <Popover.Body className='space-y-2 overflow-visible pb-4 sm:py-4'>
                             {children || (
                                 <>
@@ -58,7 +58,7 @@ const ColorPicker = ({
                                 </>
                             )}
                         </Popover.Body>
-                    </Popover.Content>
+                    </PopoverContent>
                 </Popover>
             </RACColorPicker>
             {description && <Description>{description}</Description>}

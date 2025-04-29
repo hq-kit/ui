@@ -15,7 +15,7 @@ const RadioGroup = ({ label, description, errorMessage, className, children, ...
     return (
         <RACRadioGroup
             {...props}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
+            className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
         >
             {composeRenderProps(children, (children, { isInvalid, isDisabled, orientation }) => (
                 <>
@@ -49,8 +49,8 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
     return (
         <RACRadio
             ref={ref}
-            className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
+            className={composeRenderProps(className, (className) =>
+                cn('group flex items-center gap-2 text-sm transition', className)
             )}
             {...props}
         >

@@ -1,99 +1,21 @@
 'use client'
 
-import { AnimatePresence, motion, useDragControls } from 'motion/react'
-import { type CSSProperties, type HTMLAttributes, type ReactNode, useContext } from 'react'
-import type {
-    DialogProps,
-    DialogTriggerProps,
-    HeadingProps,
-    ModalOverlayProps,
-    PopoverProps,
-    TextProps
-} from 'react-aria-components'
-import {
-    Button,
-    Dialog,
-    DialogTrigger,
-    Heading,
-    ModalOverlay,
-    OverlayArrow,
-    OverlayTriggerStateContext,
-    Modal as RACModal,
-    Popover as RACPopover,
-    Text,
-    composeRenderProps
-} from 'react-aria-components'
+import type { CSSProperties, ReactNode } from 'react'
+import type { ButtonProps, DialogTriggerProps, ModalOverlayProps, PopoverProps } from 'react-aria-components'
+import { Button, DialogTrigger, OverlayArrow, Popover as RACPopover, composeRenderProps } from 'react-aria-components'
 
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-
-const Modal = motion.create(RACModal)
-const Overlay = motion.create(ModalOverlay)
+import { DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './dialog'
+import { SheetContent } from './sheet'
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger {...props} />
-
-const DrawerMode = ({ className, ...props }: Omit<ModalOverlayProps, 'style'> & Pick<DialogProps, 'children'>) => {
-    const state = useContext(OverlayTriggerStateContext)!
-    const controls = useDragControls()
-    return (
-        <AnimatePresence>
-            {(props?.isOpen || state?.isOpen) && (
-                <Overlay
-                    isOpen={props?.isOpen || state?.isOpen}
-                    onOpenChange={props?.onOpenChange || state?.setOpen}
-                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(2px)' }}
-                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
-                    isDismissable
-                    {...props}
-                >
-                    {({ state }) => (
-                        <Modal
-                            isDismissable
-                            className={cn(
-                                'fixed bottom-0 max-h-full w-full overflow-hidden rounded-t-2xl border-t bg-bg shadow-sm will-change-transform',
-                                className
-                            )}
-                            initial={{ y: '100%' }}
-                            animate={{ y: 0 }}
-                            exit={{ y: '100%' }}
-                            drag='y'
-                            dragElastic={{ top: 0, bottom: 1 }}
-                            whileDrag={{ cursor: 'grabbing' }}
-                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                            dragPropagation
-                            dragConstraints={{ top: 0, bottom: 0 }}
-                            transition={{ duration: 0.15, ease: 'easeInOut' }}
-                            onDragEnd={(_, { offset, velocity }) =>
-                                (offset.y > screen.availHeight * 0.25 || velocity.y > 100) && state.close()
-                            }
-                            dragListener={false}
-                            dragControls={controls}
-                            {...props}
-                        >
-                            <Dialog
-                                aria-label='Popover'
-                                className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
-                            >
-                                <div className='h-8 w-full touch-none py-2' onPointerDown={(e) => controls.start(e)}>
-                                    <div className='mx-auto h-1.5 w-12 rounded-full bg-muted' />
-                                </div>
-                                {props.children as ReactNode}
-                            </Dialog>
-                        </Modal>
-                    )}
-                </Overlay>
-            )}
-        </AnimatePresence>
-    )
-}
 
 const PopoverMode = ({ className, children, showArrow, ...props }: PopoverProps & { showArrow?: boolean }) => (
     <RACPopover
         className={composeRenderProps(className, (className, { isEntering, isExiting, placement }) =>
             cn(
-                'group max-w-sm rounded-lg border bg-bg shadow outline-hidden transition',
+                'group max-w-sm rounded-lg border bg-bg shadow-sm outline-hidden transition',
                 isEntering && 'fade-in zoom-in-95 animate-in',
                 isExiting && 'fade-out zoom-out-95 animate-out',
                 placement === 'top' && `mb-2 ${isEntering ? 'slide-in-from-bottom-2' : 'slide-out-to-bottom-2'}`,
@@ -137,48 +59,33 @@ interface PopoverContentProps
 
 const PopoverContent = ({ showArrow = true, respectScreen = true, ...props }: PopoverContentProps) => {
     const isMobile = useIsMobile()
-    return isMobile && respectScreen ? <DrawerMode {...props} /> : <PopoverMode showArrow={showArrow} {...props} />
-}
-
-const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
-    return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
-}
-
-const Title = ({ className, ...props }: HeadingProps) => (
-    <Heading slot='title' className={cn('font-semibold text-lg/8', className)} {...props} />
-)
-
-const Description = ({ className, ...props }: TextProps) => (
-    <Text slot='description' className={cn('text-muted-fg text-sm', className)} {...props} />
-)
-
-const Body = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-    <div
-        slot='body'
-        className={cn(
-            'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-4 py-1',
-            className
-        )}
-        {...props}
-    />
-)
-
-const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div
-            slot='footer'
-            className={cn('isolate mt-auto flex flex-col-reverse justify-end gap-2 p-4 sm:flex-row', className)}
+    return isMobile && respectScreen ? (
+        <SheetContent
+            closeButton={false}
+            side={
+                props.placement?.endsWith('top')
+                    ? 'top'
+                    : props.placement?.endsWith('right')
+                      ? 'right'
+                      : props.placement?.endsWith('left')
+                        ? 'left'
+                        : 'bottom'
+            }
             {...props}
         />
+    ) : (
+        <PopoverMode showArrow={showArrow} {...props} />
     )
 }
 
-Popover.Trigger = Button
-Popover.Content = PopoverContent
-Popover.Header = Header
-Popover.Title = Title
-Popover.Description = Description
-Popover.Body = Body
-Popover.Footer = Footer
+Popover.Trigger = (props: ButtonProps) => <Button {...props} />
 
-export { Popover }
+Popover.Content = PopoverContent
+
+Popover.Header = DialogHeader
+Popover.Title = DialogTitle
+Popover.Description = DialogDescription
+Popover.Body = DialogBody
+Popover.Footer = DialogFooter
+
+export { Popover, PopoverContent }

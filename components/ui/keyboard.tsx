@@ -3,7 +3,7 @@
 import { Keyboard as RACKeyboard } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import type { ComponentProps } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
 type ShortcutKeyResult = {
     symbol: string
@@ -36,10 +36,16 @@ const shortcutKeyMap: Record<string, ShortcutKeyResult> = {
 const getShortcutKey = (key: string): ShortcutKeyResult =>
     shortcutKeyMap[key.toLowerCase()] || { symbol: key, readable: key }
 
-const Keyboard = ({ keys, className, ...props }: ComponentProps<typeof RACKeyboard> & { keys: string[] }) => {
+const Keyboard = ({
+    keys,
+    className,
+    ref,
+    ...props
+}: ComponentPropsWithRef<typeof RACKeyboard> & { keys: string[] }) => {
     if (!keys) return null
     return (
         <RACKeyboard
+            ref={ref}
             className={cn(
                 '!font-sans hidden w-fit space-x-0.5 justify-self-end rounded-sm border px-1.5 py-0.5 text-current/70 text-xs shadow group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex rtl:space-x-reverse',
                 className

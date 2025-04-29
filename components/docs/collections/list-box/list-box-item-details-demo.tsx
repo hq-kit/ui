@@ -31,6 +31,7 @@ export default function ListBoxItemDetailsDemo() {
             onSelectionChange={setSelected}
             items={items}
             aria-label='Javascript Frameworks'
+            selectionMode='single'
         >
             {(item) => (
                 <ListBox.Item id={item.id} textValue={item.name}>

@@ -27,7 +27,7 @@ export default function PopoverPlacementDemo() {
                     <Button
                         size='xs'
                         variant='outline'
-                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
+                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3 whitespace-normal py-5 text-[10px] sm:text-sm'
                     >
                         {place}
                     </Button>

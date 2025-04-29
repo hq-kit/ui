@@ -1,8 +1,6 @@
-import type { Metadata } from 'next'
-
-import previews from '@/components/docs/generated/previews.json'
 import Block from '@/components/mdx/block'
 import { goodTitle } from '@/lib/utils/modifiers'
+import type { Metadata } from 'next'
 
 export interface BlockProps {
     params: Promise<{
@@ -41,12 +39,6 @@ export async function generateMetadata(props: BlockProps): Promise<Metadata> {
             'UI for Laravel Inertia'
         ]
     }
-}
-
-export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-    return Object.keys(previews)
-        .filter((preview) => preview.includes('block'))
-        .map((preview) => ({ slug: preview.split('/') }))
 }
 
 export default async function BlockPage(props: BlockProps) {

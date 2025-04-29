@@ -17,7 +17,7 @@ const CheckboxGroup = ({ className, children, description, errorMessage, ...prop
     return (
         <RACCheckboxGroup
             {...props}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-2', className))}
+            className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
         >
             {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                 <>
@@ -41,11 +41,11 @@ interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'placeholder'
 const Checkbox = ({ className, label, children, description, ref, errorMessage, ...props }: CheckboxProps) => {
     return (
         <RACCheckbox
-            {...props}
-            ref={ref}
-            className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn('group flex items-center gap-2 text-sm transition', isDisabled && 'opacity-50', className)
+            className={composeRenderProps(className, (className) =>
+                cn('group flex items-center gap-2 text-sm transition', className)
             )}
+            ref={ref}
+            {...props}
         >
             {({ isSelected, isIndeterminate, isFocused, isInvalid, isRequired, isDisabled }) => (
                 <div

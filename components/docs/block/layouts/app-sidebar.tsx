@@ -3,16 +3,13 @@
 import {
     IconBrandCleon,
     IconChevronRight,
-    IconCommand,
     IconCreditCard,
     IconEllipsis,
     IconGauge,
-    IconHeadphones,
     IconLogOut,
     IconMessage,
     IconNotebook,
     IconSettings,
-    IconShield,
     IconShieldQuestion,
     IconTicket
 } from 'hq-icons'
@@ -80,33 +77,15 @@ export default function AppSidebar(props: ComponentProps<typeof Sidebar>) {
                         />
                         <IconChevronRight className='group-aria-expanded:-rotate-90 size-4' />
                     </Menu.Trigger>
-                    <Menu.Content placement='bottom left' className='sm:min-w-(--trigger-width)'>
+                    <Menu.Content placement='top left' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
                             <span className='font-normal text-muted-fg'>@dq-alhq</span>
                         </Menu.Header>
-                        <Menu.Item href='#dashboard'>
-                            <IconGauge />
-                            Dashboard
-                        </Menu.Item>
                         <Menu.Item href='#settings'>
                             <IconSettings />
                             Settings
                         </Menu.Item>
-                        <Menu.Item href='#security'>
-                            <IconShield />
-                            Security
-                        </Menu.Item>
-                        <Menu.Separator />
-                        <Menu.Item>
-                            <IconCommand />
-                            Command Menu
-                        </Menu.Item>
-                        <Menu.Item href='#contact'>
-                            <IconHeadphones />
-                            Customer Support
-                        </Menu.Item>
-                        <Menu.Separator />
                         <Menu.Item href='#logout'>
                             <IconLogOut />
                             Log out

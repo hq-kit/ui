@@ -12,7 +12,7 @@ import {
 import { cn } from '@/lib/utils'
 import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
-import { Popover } from './popover'
+import { PopoverContent } from './popover'
 import { RangeCalendar } from './range-calendar'
 
 interface DateRangePickerProps<T extends DateValue> extends RACDateRangePickerProps<T>, FieldProps {}
@@ -52,7 +52,7 @@ const DateRangePicker = <T extends DateValue>({
                     </FieldGroup>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
-                    <Popover.Content showArrow={false} className='p-4'>
+                    <PopoverContent showArrow={false} className='p-4'>
                         <RangeCalendar />
                         <Button
                             type='button'
@@ -61,7 +61,7 @@ const DateRangePicker = <T extends DateValue>({
                         >
                             Close
                         </Button>
-                    </Popover.Content>
+                    </PopoverContent>
                 </>
             )}
         </RACDateRangePicker>

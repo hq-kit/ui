@@ -130,7 +130,7 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
                     cn(
                         'group relative col-span-full grid grid-cols-subgrid',
                         'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-                        '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
+                        '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:mr-2 **:[svg]:size-3.5',
                         { 'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered },
                         isSelected && '**:data-[slot=icon]:hidden **:data-avatar:hidden',
                         isDisabled && 'pointer-events-none opacity-50',
@@ -140,13 +140,13 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
         >
             {({ isSelected }) => (
                 <>
-                    {isSelected && <IconCheck data-slot='checked' />}
+                    {isSelected && <IconCheck data-slot='checked' className='text-success' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
-                            {children}
+                            {children as ReactNode}
                         </Text>
                     ) : (
-                        children
+                        (children as ReactNode)
                     )}
                 </>
             )}

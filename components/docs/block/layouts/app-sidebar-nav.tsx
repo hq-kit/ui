@@ -1,51 +1,45 @@
 'use client'
 
-import { IconBrandCleon, IconSearch, IconShoppingBag } from 'hq-icons'
-import type { ComponentProps } from 'react'
-
 import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, Navbar, Separator } from '@/components/ui'
+import { Link } from '@/components/ui'
+import { Avatar } from '@/components/ui/avatar'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
+import { Menu } from '@/components/ui/menu'
+import { SidebarNav } from '@/components/ui/sidebar'
+import { IconBrandCleon, IconLogOut, IconSettings } from 'hq-icons'
 
-export default function AppNavbar(props: ComponentProps<typeof Navbar>) {
+export default function AppSidebarNav() {
     return (
-        <Navbar {...props}>
-            <Navbar.Nav>
-                <Navbar.Logo aria-label='Goto documenation of Navbar' href='#'>
-                    <IconBrandCleon className='size-6 sm:size-5' />
-                </Navbar.Logo>
-                <Navbar.Section className='ml-auto hidden md:flex'>
-                    <Navbar.Flex className='sm:gap-x-1'>
-                        <Button variant='ghost' icon aria-label='Search for products'>
-                            <IconSearch />
-                        </Button>
-                        <Button variant='ghost' icon aria-label='Your Bag'>
-                            <IconShoppingBag />
-                        </Button>
-                        <ThemeToggle />
-                    </Navbar.Flex>
-                </Navbar.Section>
-            </Navbar.Nav>
-            <Navbar.Compact>
-                <Navbar.Flex>
-                    <Navbar.Trigger className='-ml-2' />
-                    <Separator orientation='vertical' className='h-6 sm:mx-1' />
-                    <Navbar.Logo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
-                        <IconBrandCleon className='size-5' />
-                    </Navbar.Logo>
-                </Navbar.Flex>
-                <Navbar.Flex>
-                    <Navbar.Flex>
-                        <Button variant='ghost' icon aria-label='Search for products'>
-                            <IconSearch />
-                        </Button>
-                        <Button variant='ghost' icon aria-label='Your Bag'>
-                            <IconShoppingBag />
-                        </Button>
-                        <ThemeToggle variant='ghost' />
-                    </Navbar.Flex>
-                </Navbar.Flex>
-            </Navbar.Compact>
-            {props.children ?? null}
-        </Navbar>
+        <SidebarNav>
+            <Link href='#' className='ml-auto pl-16 md:hidden'>
+                <IconBrandCleon className='size-6' />
+            </Link>
+            <Breadcrumbs className='hidden md:flex'>
+                <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
+                <Breadcrumbs.Item>Content</Breadcrumbs.Item>
+            </Breadcrumbs>
+            <div className='ml-auto'>
+                <ThemeToggle variant='ghost' />
+            </div>
+            <Menu>
+                <Menu.Trigger className='md:hidden' aria-label='Open Menu'>
+                    <Avatar alt='Diqi Al-Haqqi' src='https://github.com/dq-alhq.png' />
+                </Menu.Trigger>
+                <Menu.Content placement='right bottom' className='sm:min-w-(--trigger-width)'>
+                    <Menu.Header>
+                        <span className='block'>DQ Al Haqqi</span>
+                        <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                    </Menu.Header>
+                    <Menu.Item href='#settings'>
+                        <IconSettings />
+                        Settings
+                    </Menu.Item>
+                    <Menu.Item href='#logout'>
+                        <IconLogOut />
+                        Log out
+                    </Menu.Item>
+                </Menu.Content>
+            </Menu>
+        </SidebarNav>
     )
 }

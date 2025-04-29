@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import type { Key } from 'react-aria-components'
 
-import { ListBox, Select } from '@/components/ui'
+import { ListBox, Radio, RadioGroup } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -19,14 +18,19 @@ const items = [
 ]
 
 export default function ListBoxMultipleDemo() {
-    const [selectionMode, setSelectionMode] = useState<Key>('multiple')
+    const [selectionMode, setSelectionMode] = useState<string>('multiple')
     return (
         <div className='space-y-6'>
-            <Select label='Selection mode' selectedKey={selectionMode} onSelectionChange={setSelectionMode}>
-                <Select.Item id='none'>None</Select.Item>
-                <Select.Item id='single'>Single</Select.Item>
-                <Select.Item id='multiple'>Multiple</Select.Item>
-            </Select>
+            <RadioGroup
+                orientation='horizontal'
+                label='Selection mode'
+                value={selectionMode}
+                onChange={setSelectionMode}
+            >
+                <Radio value='none'>None</Radio>
+                <Radio value='single'>Single</Radio>
+                <Radio value='multiple'>Multiple</Radio>
+            </RadioGroup>
 
             <ListBox
                 items={items}

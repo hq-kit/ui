@@ -6,7 +6,7 @@ import SourceCode from '@/components/mdx/source-code'
 import { Tabs } from '@/components/ui'
 
 export default function Install({ component }: { component: string }) {
-    const items: string[] = []
+    const items: string[] = [component]
     const deps: string[] = ['react-aria-components', 'hq-icons']
 
     const item = components.find((c) => c.name === component)
@@ -27,8 +27,20 @@ export default function Install({ component }: { component: string }) {
             }
             const childItem = components.find((c) => c.name === child.name)
             if (childItem) {
-                if (childItem.deps) deps.push(...childItem.deps)
-                if (childItem.children) items.push(...childItem.children.map((c) => c.name))
+                if (childItem.deps) {
+                    for (const dep of childItem.deps) {
+                        if (!deps.includes(dep)) {
+                            deps.push(dep)
+                        }
+                    }
+                }
+                if (childItem.children) {
+                    for (const grandchild of childItem.children) {
+                        if (!items.includes(grandchild.name)) {
+                            items.push(grandchild.name)
+                        }
+                    }
+                }
             }
         }
     }

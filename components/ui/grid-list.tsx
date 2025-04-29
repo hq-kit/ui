@@ -10,6 +10,7 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 import { Checkbox } from './checkbox'
 
 interface GridListProps<T extends object> extends Omit<RACGridListProps<T>, 'layout'> {
@@ -19,13 +20,31 @@ interface GridListProps<T extends object> extends Omit<RACGridListProps<T>, 'lay
 
 const GridList = <T extends object>({ children, className, columns = 1, gap = 0, ...props }: GridListProps<T>) => (
     <RACGridList
+        aria-label={props['aria-label'] ?? 'Grid list'}
         layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
         className={composeRenderProps(className, (className, { layout }) =>
             cn(
+                'group',
                 layout === 'stack'
-                    ? 'grid grid-cols-1 gap-0 *:rounded-none *:first:rounded-t-lg *:last:rounded-b-lg'
-                    : `${columns === 'auto' ? 'flex grow flex-wrap' : `grid grid-cols-${columns}`}`,
-                `gap-${gap}`,
+                    ? 'flex flex-col gap-0 divide-y rounded-lg border-y'
+                    : {
+                          'flex grow flex-wrap': columns === 'auto',
+                          'grid grid-cols-1': columns === 1,
+                          'grid grid-cols-2': columns === 2,
+                          'grid grid-cols-3': columns === 3,
+                          'grid grid-cols-4': columns === 4,
+                          'grid grid-cols-5': columns === 5,
+                          'grid grid-cols-6': columns === 6
+                      },
+                {
+                    'gap-0': gap === 0,
+                    'gap-1': gap === 1,
+                    'gap-2': gap === 2,
+                    'gap-3': gap === 3,
+                    'gap-4': gap === 4,
+                    'gap-5': gap === 5,
+                    'gap-6': gap === 6
+                },
                 className
             )
         )}
@@ -45,12 +64,15 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                 className,
                 (className, { isHovered, isSelected, isFocusVisible, isDisabled }) =>
                     cn(
-                        'flex select-none items-center gap-2 rounded-lg border px-3 py-2 text-fg outline-hidden transition sm:text-sm',
+                        'flex select-none items-center gap-2 px-3 py-2 text-fg outline-hidden sm:text-sm',
+                        'group-layout-grid:rounded-lg group-layout-grid:border',
+                        'group-layout-stack:border-x group-layout-stack:last:rounded-b-lg group-layout-stack:first:rounded-t-lg',
                         isHovered && 'bg-primary/10',
                         {
-                            'border-primary/70 bg-primary/10 text-primary': isSelected || isFocusVisible
+                            'bg-primary/10 text-primary group-layout-grid:border-primary/70 group-layout-stack:border-x-primary/70':
+                                isSelected || isFocusVisible
                         },
-                        isDisabled && 'opacity-50',
+                        isDisabled && 'text-muted-fg',
                         className
                     )
             )}
@@ -66,7 +88,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                         </Button>
                     )}
                     {selectionMode === 'multiple' && selectionBehavior === 'toggle' && <Checkbox slot='selection' />}
-                    {children}
+                    {children as ReactNode}
                 </>
             )}
         </RACGridListItem>

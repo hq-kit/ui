@@ -30,7 +30,7 @@ export default function Block({ page, zoomOut = 0.6, height = 768, className, ..
                     <div
                         className={cn('relative w-full bg-bg', 'flex min-h-56 items-center justify-center lg:min-h-80')}
                     >
-                        <div className='sm:-top-14 absolute right-0 z-20 hidden gap-1 sm:flex'>
+                        <div className='sm:-top-12 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Link
                                 target='_blank'
                                 className={buttonStyles({

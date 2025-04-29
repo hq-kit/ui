@@ -29,7 +29,7 @@ import {
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import { Keyboard } from './keyboard'
-import { Modal } from './modal'
+import { ModalContent } from './modal'
 
 interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputValue' | 'onInputChange'> {
     isPending?: boolean
@@ -107,15 +107,14 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
     })
 
     return (
-        <Modal.Content
+        <ModalContent
             isOpen={props.isOpen || shortcutOpen}
             onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
-            notch
-            className={'border-0 **:data-command:border-0'}
+            className={'min-h-[85dvh] border-0 **:data-command:border-0 sm:min-h-0'}
         >
             <Command {...props} />
-        </Modal.Content>
+        </ModalContent>
     )
 }
 
