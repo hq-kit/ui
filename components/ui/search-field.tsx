@@ -1,23 +1,20 @@
 'use client'
 
 import { IconLoader, IconSearch, IconX } from 'hq-icons'
+import type { Ref } from 'react'
 import {
     Button,
     SearchField as RACSearchField,
     type SearchFieldProps as RACSearchFieldProps,
-    type ValidationResult,
     composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 
-interface SearchFieldProps extends RACSearchFieldProps {
-    label?: string
-    placeholder?: string
-    description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
+interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
     isPending?: boolean
+    ref?: Ref<HTMLDivElement>
 }
 
 const SearchField = ({
@@ -27,13 +24,15 @@ const SearchField = ({
     description,
     errorMessage,
     isPending,
+    ref,
     ...props
 }: SearchFieldProps) => {
     return (
         <RACSearchField
             aria-label={placeholder ?? props['aria-label'] ?? 'Search...'}
-            {...props}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            ref={ref}
+            {...props}
         >
             {({ isEmpty }) => (
                 <>

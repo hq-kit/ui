@@ -5,6 +5,7 @@
   "scripts": {
     "watch": "bun run watcher.ts",
     "dev": "next dev",
+    "dev:turbo": "next dev --turbopack",
     "docs:generate": "bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",
     "b": "bun run lib/scripts/create-previews.ts",
     "build": "next build",
@@ -19,7 +20,6 @@
     "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.21",
     "chroma-js": "^3.1.2",
-    "chroma.ts": "^1.0.10",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "hq-icons": "^0.0.10",

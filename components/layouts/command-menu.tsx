@@ -1,7 +1,7 @@
 'use client'
 
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Fragment, useEffect } from 'react'
 
 import { Command } from '@/components/ui'
@@ -14,7 +14,6 @@ export interface OpenCloseProps {
 }
 
 export function CommandMenu({ openCommand, action }: OpenCloseProps) {
-    const router = useRouter()
     const pathname = usePathname()
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -27,23 +26,23 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
     return (
         <Command.Modal isOpen={openCommand} onOpenChange={action} shortcut={{ key: 'k' }}>
             <Command.Section title='Pages'>
-                <Command.Item textValue='home' onAction={() => router.push('/')}>
+                <Command.Item textValue='home' href='/'>
                     <IconHome />
                     <Command.Label>Home</Command.Label>
                 </Command.Item>
-                <Command.Item textValue='documenation' onAction={() => router.push('/docs')}>
+                <Command.Item textValue='documenation' href='/docs'>
                     <IconPackage />
                     <Command.Label>Documentation</Command.Label>
                 </Command.Item>
-                <Command.Item textValue='blocks' onAction={() => router.push('/blocks')}>
+                <Command.Item textValue='blocks' href='/blocks'>
                     <IconLayoutDashboard />
                     <Command.Label>Blocks</Command.Label>
                 </Command.Item>
-                <Command.Item textValue='icons' onAction={() => router.push('/icons')}>
+                <Command.Item textValue='icons' href='/icons'>
                     <IconShapes />
                     <Command.Label>Icons</Command.Label>
                 </Command.Item>
-                <Command.Item textValue='colors' onAction={() => router.push('/colors')}>
+                <Command.Item textValue='colors' href='/colors'>
                     <IconPalette />
                     <Command.Label>Colors</Command.Label>
                 </Command.Item>
@@ -57,11 +56,7 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
                             .map(
                                 (item, i) =>
                                     item.url && (
-                                        <Command.Item
-                                            key={i}
-                                            textValue={item.title}
-                                            onAction={() => router.push(item.url as string)}
-                                        >
+                                        <Command.Item key={i} textValue={item.title} href={item.url as string}>
                                             <Command.Label>{item.title}</Command.Label>
                                         </Command.Item>
                                     )
@@ -84,7 +79,7 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
                                                     <Command.Item
                                                         key={i}
                                                         textValue={item.title}
-                                                        onAction={() => router.push(item.url as string)}
+                                                        href={item.url as string}
                                                     >
                                                         <Command.Label>{item.title}</Command.Label>
                                                     </Command.Item>

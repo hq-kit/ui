@@ -2,7 +2,7 @@
 
 import type { Placement } from '@react-types/overlays'
 import { IconCheck, IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 import type {
     ListBoxItemProps,
     ListBoxSectionProps,
@@ -38,6 +38,7 @@ interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'childre
     prefix?: ReactNode
     searchable?: boolean
     isPending?: boolean
+    ref?: Ref<HTMLDivElement>
 }
 
 const Select = <T extends object>({
@@ -49,9 +50,10 @@ const Select = <T extends object>({
     items,
     searchable = false,
     className,
+    ref,
     ...props
 }: SelectProps<T>) => {
-    const renderChildren = (
+    const renderOptions = (
         <ListBox
             renderEmptyState={() => <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>}
             aria-label='items'
@@ -67,6 +69,7 @@ const Select = <T extends object>({
             className={composeRenderProps(className, (className) =>
                 cn('group flex flex-col gap-y-1.5 **:data-placeholder:text-muted-fg', className)
             )}
+            ref={ref}
             {...props}
         >
             {({ isInvalid, isDisabled, isOpen, isFocusVisible, isFocused }) => (
@@ -140,10 +143,10 @@ const Select = <T extends object>({
                                         </Group>
                                     )}
                                 </SearchField>
-                                {renderChildren}
+                                {renderOptions}
                             </Autocomplete>
                         ) : (
-                            renderChildren
+                            renderOptions
                         )}
                     </Popover>
                 </>

@@ -41,8 +41,8 @@ const RadioGroup = ({ label, description, errorMessage, className, children, ...
 }
 
 interface RadioProps extends RACRadioProps, Omit<FieldProps, 'children' | 'placeholder' | 'errorMessage'> {
-    ref?: Ref<HTMLLabelElement>
     children?: ReactNode
+    ref?: Ref<HTMLLabelElement>
 }
 
 const Radio = ({ label, description, className, children, ref, ...props }: RadioProps) => {

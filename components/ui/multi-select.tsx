@@ -1,7 +1,16 @@
 'use client'
 
 import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
-import { Children, type KeyboardEvent, type ReactNode, isValidElement, useEffect, useRef, useState } from 'react'
+import {
+    Children,
+    type KeyboardEvent,
+    type ReactNode,
+    type Ref,
+    isValidElement,
+    useEffect,
+    useRef,
+    useState
+} from 'react'
 import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
@@ -29,6 +38,7 @@ interface MultiSelectProps<T>
     className?: string
     errorMessage?: string
     maxItems?: number
+    ref?: Ref<HTMLDivElement>
 }
 
 function mapToNewObject<T extends object>(array: T[]): { id: T[keyof T]; textValue: T[keyof T] }[] {
@@ -46,6 +56,7 @@ const MultiSelect = <T extends object>({
     className,
     maxItems = Number.POSITIVE_INFINITY,
     children,
+    ref,
     ...props
 }: MultiSelectProps<T>) => {
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -108,6 +119,7 @@ const MultiSelect = <T extends object>({
             className={composeRenderProps(className, (className) =>
                 cn('group flex h-fit flex-col gap-y-1.5', className)
             )}
+            ref={ref}
         >
             {({ isInvalid, isDisabled }) => (
                 <>

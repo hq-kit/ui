@@ -1,6 +1,6 @@
 'use client'
 
-import { type HTMLAttributes, use } from 'react'
+import { type HTMLAttributes, type Ref, use } from 'react'
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
     Slider as RACSlider,
@@ -14,9 +14,11 @@ import {
 import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './field'
 
-interface SliderProps extends RACSliderProps, FieldProps {}
+interface SliderProps extends RACSliderProps, FieldProps {
+    ref?: Ref<HTMLDivElement>
+}
 
-const Slider = ({ orientation = 'horizontal', className, ...props }: SliderProps) => {
+const Slider = ({ orientation = 'horizontal', className, ref, ...props }: SliderProps) => {
     return (
         <RACSlider
             orientation={orientation}
@@ -27,6 +29,7 @@ const Slider = ({ orientation = 'horizontal', className, ...props }: SliderProps
                     className
                 )
             )}
+            ref={ref}
             {...props}
         >
             {({ orientation, state }) => (

@@ -1,6 +1,6 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 import {
     TimeField as RACTimeField,
     type TimeFieldProps as RACTimeFieldProps,
@@ -15,6 +15,7 @@ import { Description, FieldError, FieldGroup, type FieldProps, Label } from './f
 interface TimeFieldProps<T extends TimeValue> extends RACTimeFieldProps<T>, FieldProps {
     prefix?: ReactNode
     suffix?: ReactNode
+    ref?: Ref<HTMLDivElement>
 }
 
 const TimeField = <T extends TimeValue>({
@@ -24,12 +25,14 @@ const TimeField = <T extends TimeValue>({
     className,
     description,
     errorMessage,
+    ref,
     ...props
 }: TimeFieldProps<T>) => {
     return (
         <RACTimeField
-            {...props}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            ref={ref}
+            {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>

@@ -1,7 +1,7 @@
 'use client'
 
 import { IconCheck, IconChevronDown, IconLoader, IconX } from 'hq-icons'
-import { type ReactNode, use } from 'react'
+import { type ReactNode, type Ref, use } from 'react'
 import type { ListBoxItemProps, ListBoxSectionProps, ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {
     Button,
@@ -24,6 +24,7 @@ interface ComboBoxProps<T extends object> extends Omit<RACComboboxProps<T>, 'chi
     children: ReactNode | ((item: T) => ReactNode)
     prefix?: ReactNode
     isPending?: boolean
+    ref?: Ref<HTMLDivElement>
 }
 
 const ComboBox = <T extends object>({
@@ -35,6 +36,7 @@ const ComboBox = <T extends object>({
     isPending,
     className,
     items,
+    ref,
     ...props
 }: ComboBoxProps<T>) => {
     return (
@@ -44,6 +46,7 @@ const ComboBox = <T extends object>({
             className={composeRenderProps(className, (className) =>
                 cn('group flex flex-col gap-1.5 **:data-placeholder:text-muted-fg', className)
             )}
+            ref={ref}
             {...props}
         >
             {({ isInvalid, isDisabled, isOpen }) => (

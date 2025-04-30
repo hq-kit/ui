@@ -1,7 +1,7 @@
 'use client'
 
 import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
-import { type ReactNode, useState } from 'react'
+import { type ReactNode, type Ref, useState } from 'react'
 import {
     Button,
     TextField as RACTextField,
@@ -17,9 +17,19 @@ interface TextFieldProps extends RACTextFieldProps, FieldProps {
     prefix?: ReactNode
     suffix?: ReactNode
     isPending?: boolean
+    ref?: Ref<HTMLDivElement>
 }
 
-const TextField = ({ label, placeholder, description, errorMessage, className, type, ...props }: TextFieldProps) => {
+const TextField = ({
+    label,
+    placeholder,
+    description,
+    errorMessage,
+    className,
+    type,
+    ref,
+    ...props
+}: TextFieldProps) => {
     const [masked, setMasked] = useState<boolean>(type === 'password')
     const inputType = type === 'password' ? (masked ? 'password' : 'text') : type
 
@@ -27,6 +37,7 @@ const TextField = ({ label, placeholder, description, errorMessage, className, t
         <RACTextField
             type={inputType}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            ref={ref}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (

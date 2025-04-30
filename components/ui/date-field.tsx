@@ -1,6 +1,6 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 import {
     type DateInputProps,
     DateSegment,
@@ -17,6 +17,7 @@ import { Description, FieldError, FieldGroup, type FieldProps, Label } from './f
 interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
     prefix?: ReactNode
     suffix?: ReactNode
+    ref?: Ref<HTMLDivElement>
 }
 
 const DateField = <T extends DateValue>({
@@ -26,12 +27,14 @@ const DateField = <T extends DateValue>({
     description,
     errorMessage,
     className,
+    ref,
     ...props
 }: DateFieldProps<T>) => {
     return (
         <RACDateField
-            {...props}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            ref={ref}
+            {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>

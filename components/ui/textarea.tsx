@@ -1,5 +1,6 @@
 'use client'
 
+import type { Ref } from 'react'
 import {
     TextArea as RACTextArea,
     TextField as RACTextField,
@@ -12,12 +13,13 @@ import { Description, FieldError, type FieldProps, Label } from './field'
 
 interface TextareaProps extends RACTextFieldProps, FieldProps {
     autoSize?: boolean
-    className?: string
+    ref?: Ref<HTMLDivElement>
 }
 
-const Textarea = ({ className, placeholder, label, description, errorMessage, ...props }: TextareaProps) => {
+const Textarea = ({ className, placeholder, label, description, errorMessage, ref, ...props }: TextareaProps) => {
     return (
         <RACTextField
+            ref={ref}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             {...props}
         >

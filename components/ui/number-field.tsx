@@ -1,32 +1,30 @@
 'use client'
 
 import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
+import type { Ref } from 'react'
 import {
     Button,
     type ButtonProps,
     NumberField as RACNumberField,
     type NumberFieldProps as RACNumberFieldProps,
-    type ValidationResult,
     composeRenderProps
 } from 'react-aria-components'
 
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
 
-interface NumberFieldProps extends RACNumberFieldProps {
-    label?: string
-    description?: string
-    placeholder?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
+interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
+    ref?: Ref<HTMLDivElement>
 }
 
-const NumberField = ({ label, placeholder, description, className, errorMessage, ...props }: NumberFieldProps) => {
+const NumberField = ({ label, placeholder, description, className, errorMessage, ref, ...props }: NumberFieldProps) => {
     const isMobile = useIsMobile()
     return (
         <RACNumberField
-            {...props}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            ref={ref}
+            {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
