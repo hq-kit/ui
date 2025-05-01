@@ -1,16 +1,16 @@
 'use client'
 
 import { Fragment, Suspense, useEffect, useRef, useState } from 'react'
-import { Heading } from 'react-aria-components'
+import { Heading, Link } from 'react-aria-components'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
-import { Link, Skeleton } from '@/components/ui'
+import { Skeleton } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface TableOfContentsProps {
     title: string
-    link: string
-    level: 2 | 3
+    url: string
+    items: TableOfContentsProps[]
 }
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
 
 export function TableOfContents({ className, items }: Props) {
     const tocRef = useRef<HTMLDivElement>(null)
-    const ids = items.map((item) => item.link)
+    const ids = items.map((item) => item.url.replace('#', ''))
 
     const activeId = useActiveItem(ids)
     const activeIndex = activeId?.length || 0
@@ -38,12 +38,13 @@ export function TableOfContents({ className, items }: Props) {
             })
         }
     }, [activeId, activeIndex])
+
     return (
         <aside
             ref={tocRef}
             className={cn(
                 'not-prose',
-                'no-scrollbar xl:-mr-6 xl:sticky xl:top-[1.75rem] xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
+                'no-scrollbar xl:-mr-6 xl:sticky xl:top-7 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
                 'top-20',
                 className
             )}
@@ -68,8 +69,15 @@ export function TableOfContents({ className, items }: Props) {
                         {items.length > 0 && (
                             <ul className='flex flex-col gap-y-2.5'>
                                 {items.map((item) => (
-                                    <Fragment key={item.link}>
+                                    <Fragment key={item.url}>
                                         <TocLink item={item} activeId={activeId} />
+                                        {item.items.length > 0 && (
+                                            <ul className='flex flex-col gap-y-2.5 pl-4'>
+                                                {item.items.map((subItem) => (
+                                                    <TocLink key={subItem.url} item={subItem} activeId={activeId} />
+                                                ))}
+                                            </ul>
+                                        )}
                                     </Fragment>
                                 ))}
                             </ul>
@@ -83,14 +91,13 @@ export function TableOfContents({ className, items }: Props) {
 
 function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: string | null }) {
     return (
-        <li key={item.title}>
+        <li key={item.url}>
             <Link
                 className={cn(
-                    'block tracking-tight no-underline outline-none duration-200 data-focus-visible:text-primary data-focus-visible:outline-none lg:text-[0.885rem]',
-                    item.link === activeId ? 'text-primary' : 'text-muted-fg/90',
-                    item.level === 3 && 'pl-4'
+                    'block text-sm tracking-tight no-underline outline-hidden focus-visible:text-primary',
+                    item.url === `#${activeId}` ? 'text-primary' : 'text-muted-fg'
                 )}
-                href={`#${item.link}`}
+                href={item.url}
             >
                 {item.title}
             </Link>

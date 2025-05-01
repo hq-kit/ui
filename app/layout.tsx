@@ -78,7 +78,7 @@ export default function RootLayout({
     return (
         <html
             lang='en'
-            suppressHydrationWarning={true}
+            suppressHydrationWarning
             className={`${fontSans} ${fontMono}`}
             style={
                 {

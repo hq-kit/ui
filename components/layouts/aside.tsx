@@ -3,6 +3,7 @@
 import { docs } from '@/components/docs/generated/docs'
 import { Badge } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { titleCase } from '@/lib/utils/modifiers'
 import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
@@ -36,7 +37,7 @@ export function Aside() {
                                 ) : (
                                     <IconPackage />
                                 )}
-                                {doc.title}
+                                {titleCase(doc.title)}
                             </Heading>
                             <div className='relative flex flex-col gap-1 pl-1.5'>
                                 <div className='absolute left-1.5 h-full w-0.5 bg-muted' />
@@ -47,7 +48,7 @@ export function Aside() {
                                             {item.items?.length ? (
                                                 <div className='mb-4 flex flex-col gap-1'>
                                                     <Heading className='py-2 pl-4 font-semibold text-fg'>
-                                                        {item.title}
+                                                        {titleCase(item.title)}
                                                     </Heading>
                                                     {item.items
                                                         .sort((a, b) => a.order - b.order)
@@ -85,7 +86,7 @@ const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
             href={href}
             className={composeRenderProps(className, (className, { isHovered }) =>
                 cn(
-                    'relative flex w-full items-center rounded-r-lg px-4 py-1 text-muted-fg text-sm transition-colors',
+                    'relative flex w-full items-center rounded-r-lg px-4 py-1 text-muted-fg text-sm',
                     isActive && 'is-active pointer-events-none text-primary',
                     isHovered && 'bg-primary/5 text-primary',
                     className

@@ -1,9 +1,10 @@
 'use client'
 
-import { CopyButton } from '@/components/mdx/copy-button'
+import { useState } from 'react'
+
 import { Description, Menu, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { CopyButton } from './copy-button'
 
 interface CLIProps {
     items?: string | string[]
@@ -13,7 +14,7 @@ interface CLIProps {
     className?: string
 }
 
-export default function CLI({ items, message, command = 'init', noMessage, className }: CLIProps) {
+export function CLI({ items, message, command = 'init', noMessage, className }: CLIProps) {
     const getCommand = (pm: string) => {
         const item = typeof items === 'string' ? items : items?.join(' ')
         switch (pm) {
@@ -66,14 +67,14 @@ export default function CLI({ items, message, command = 'init', noMessage, class
             )}
             <div
                 className={cn(
-                    'mt-2 flex h-12 w-full items-center justify-between gap-4 rounded-lg border bg-[#0d1117] p-3 font-mono text-sm text-zinc-200 dark:bg-[#0d1117]',
+                    '!font-mono mt-2 flex h-12 w-full items-center justify-between gap-4 rounded-lg border bg-[#0d1117] p-3 text-sm text-zinc-200 dark:bg-[#0d1117]',
                     className
                 )}
             >
                 {cli}
                 <Menu>
                     <CopyButton isCopied={copied} />
-                    <Menu.Content placement='bottom end'>
+                    <Menu.Content placement='bottom end' className='**:[svg]:mr-2'>
                         <Menu.Item onAction={() => handleCopy('npm')}>
                             <NPMIcon />
                             <Menu.Label className='!text-[#c12127]'>NPM</Menu.Label>

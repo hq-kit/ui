@@ -13,7 +13,7 @@ export const grayColors = [
             dark: {
                 bg: 'oklch(0.141 0.004 285.863)',
                 fg: 'oklch(0.985 0 0)',
-                muted: 'oklch(0.37 0.012 285.844)',
+                muted: 'oklch(0.274 0.005 286.095)',
                 'muted-fg': 'oklch(0.552 0.014 285.988)'
             }
         }

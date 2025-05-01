@@ -1,5 +1,36 @@
-import { titleCase } from 'usemods'
+function titleCase(str: string): string {
+    return str
+        .replace(/-/g, ' ')
+        .toLowerCase()
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+}
 
-const goodTitle = (str: string): string => titleCase(str.replaceAll('-', ' '))
+function slugify(str: string): string {
+    return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9 -]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+}
 
-export { goodTitle }
+function pascalCase(str: string): string {
+    return str
+        .replace(/[_\-\s]+/g, ' ')
+        .toLowerCase()
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('')
+}
+
+async function copyToClipboard(text: string) {
+    try {
+        await navigator.clipboard.writeText(text)
+    } catch (err) {
+        console.error('Failed to copy: ', err)
+    }
+}
+
+export { titleCase, slugify, pascalCase, copyToClipboard }

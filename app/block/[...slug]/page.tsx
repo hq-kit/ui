@@ -1,17 +1,21 @@
 import { IconLoaderCircle } from 'hq-icons'
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { deslugify, titleCase } from 'usemods'
 
 import { previews } from '@/components/docs/generated/previews'
+import { titleCase } from '@/lib/utils/modifiers'
 
 type Params = Promise<{ slug: string[] }>
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
     const { slug } = await params
     return {
-        title: titleCase(deslugify(slug.join(' | ')))
+        title: titleCase(slug.join(' | '))
     }
+}
+
+export async function generateStaticParams() {
+    return Object.keys(previews).map((slug) => ({ slug: slug.split('/') }))
 }
 
 export default async function BlocksPage({ params }: { params: Params }) {

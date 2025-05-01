@@ -1,23 +1,22 @@
 'use client'
 
+import { previews } from '@/components/docs/generated/previews'
+import jsonPreviews from '@/components/docs/generated/previews.json'
 import { IconLoaderCircle } from 'hq-icons'
 import { Fragment, type HTMLAttributes, Suspense } from 'react'
 
-import { previews } from '@/components/docs/generated/previews'
-import jsonPreviews from '@/components/docs/generated/previews.json'
-import Code from '@/components/mdx/code'
 import { Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { Code } from './code'
 
 interface DemoProps extends HTMLAttributes<HTMLDivElement> {
-    component: string
+    component: keyof typeof jsonPreviews
     className?: string
     center?: boolean
 }
 
-export default function Demo({ component, center = false, ...props }: DemoProps) {
+export function Demo({ component, center = false, ...props }: DemoProps) {
     const Preview = previews[component] ? previews[component].component : Fragment
-    // @ts-expect-error no-type
     const codeString = jsonPreviews[component].raw ?? ''
     return (
         <div className='relative my-4' {...props}>
@@ -45,7 +44,7 @@ export default function Demo({ component, center = false, ...props }: DemoProps)
                     </div>
                 </Tabs.Content>
                 <Tabs.Content className='not-prose' id='code'>
-                    <Code copyButton code={codeString} />
+                    <Code code={codeString} />
                 </Tabs.Content>
             </Tabs>
         </div>

@@ -7,6 +7,7 @@ import { Fragment, useEffect } from 'react'
 import { Command } from '@/components/ui'
 
 import { docs } from '@/components/docs/generated/docs'
+import { titleCase } from '@/lib/utils/modifiers'
 
 export interface OpenCloseProps {
     openCommand: boolean
@@ -50,7 +51,7 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
             {docs
                 .sort((a, b) => b.order - a.order)
                 .map((doc, i) => (
-                    <Command.Section key={i} title={doc.title}>
+                    <Command.Section key={i} title={titleCase(doc.title)}>
                         {doc?.items
                             ?.sort((a, b) => a.order - b.order)
                             .map(
@@ -70,7 +71,7 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
                         {item.items
                             ?.sort((a, b) => a.order - b.order)
                             .map((item, i) => (
-                                <Command.Section key={i} title={item.title}>
+                                <Command.Section key={i} title={titleCase(item.title)}>
                                     {item?.items
                                         ?.sort((a, b) => a.order - b.order)
                                         .map(

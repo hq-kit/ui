@@ -1,13 +1,9 @@
 'use client'
-
+import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 import { type HTMLAttributes, useState } from 'react'
 import type { Key } from 'react-aria-components'
-
-import FileExplorer from '@/components/mdx/file-explorer'
-import PreviewContent from '@/components/mdx/preview-content'
-import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
-import { cn } from '@/lib/utils'
 
 interface BlockProps extends HTMLAttributes<HTMLDivElement> {
     page: string
@@ -16,7 +12,7 @@ interface BlockProps extends HTMLAttributes<HTMLDivElement> {
     zoomOut: number
 }
 
-export default function Block({ page, zoomOut = 0.6, height = 768, className, ...props }: BlockProps) {
+export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }: BlockProps) {
     const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
 
     return (
@@ -60,16 +56,18 @@ export default function Block({ page, zoomOut = 0.6, height = 768, className, ..
                                 </Toggle>
                             </Toggle.Group>
                         </div>
-                        <PreviewContent
-                            height={height}
-                            zoomOut={zoomOut}
-                            component={page}
-                            className={[...screenWidth].join(' ')}
+                        <iframe
+                            title='Preview'
+                            className={cn('relative z-20 w-full rounded-lg border', className)}
+                            height={height || 768}
+                            style={{ zoom: zoomOut || 1 }}
+                            allowFullScreen
+                            src={`/${page}`}
                         />
                     </div>
                 </Tabs.Content>
                 <Tabs.Content id='code'>
-                    <FileExplorer style={{ height: height * zoomOut }} page={page} />
+                    {/*<FileExplorer style={{ height: height * zoomOut }} page={page} />*/}
                 </Tabs.Content>
             </Tabs>
         </div>

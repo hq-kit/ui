@@ -1,32 +1,37 @@
+import { docs } from '@/.velite'
+import { MDXContent } from '@/components/mdx'
 import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
-import { Card } from '@/components/ui'
-import { getDocs, getDocsContent, getTableOfContents } from '@/lib/hooks/docs'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
-export interface DocPageProps {
-    params: Promise<{
-        slug: string[]
-    }>
+type Props = {
+    params: Promise<{ slug: string[] }>
 }
 
-export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
-    const params = await props.params
-    const frontmatter = await getDocs(params.slug)
+function getDocsBySlug(slug: string) {
+    return docs.find((doc) => doc.slug === slug)
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { slug } = await props.params
+    const doc = getDocsBySlug(slug.join('/'))
+
+    if (!doc) return {}
 
     const ogSearchParams = new URLSearchParams()
-    ogSearchParams.set('title', frontmatter.title)
+    ogSearchParams.set('title', doc?.title)
 
     return {
-        title: frontmatter.title,
-        description: frontmatter.description,
+        title: doc?.title,
+        description: doc?.description,
         applicationName: 'HQ UI',
         category: 'Docs',
         keywords: [
-            frontmatter.title,
-            `${frontmatter.title} components`,
-            `${frontmatter.title} component`,
-            `${frontmatter.title} on React`,
+            doc?.title,
+            `${doc?.title} components`,
+            `${doc?.title} component`,
+            `${doc?.title} on React`,
             'React',
             'Next.js',
             'Inertia.js',
@@ -55,33 +60,30 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
         ]
     }
 }
+export function generateStaticParams() {
+    return docs.map((doc) => ({ slug: doc.slug.split('/') }))
+}
 
-export default async function DocsPage(props: DocPageProps) {
-    const params = await props.params
-    const { frontmatter, content } = await getDocsContent(params.slug)
+export default async function DocsPage(props: Props) {
+    const { slug } = await props.params
+    const doc = getDocsBySlug(slug.join('/'))
 
-    const tocItems = await getTableOfContents(params.slug)
+    if (!doc) notFound()
 
     return (
         <>
             <div className='min-w-0 max-w-2xl flex-auto px-4 pt-12 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'>
                 <main className='prose prose-blue dark:prose-invert prose-h2:mb-4 prose-headings:mb-[0.3rem] max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0'>
-                    <Card className='not-prose'>
-                        <Card.Header>
-                            <Card.Title>{frontmatter.title}</Card.Title>
-                            {frontmatter.description && <Card.Description>{frontmatter.description}</Card.Description>}
-                        </Card.Header>
-                        {frontmatter.references && frontmatter.references?.length > 0 && (
-                            <Card.Content className='flex flex-row gap-2 pb-6'>
-                                <DocRefs references={frontmatter.references} />
-                            </Card.Content>
-                        )}
-                    </Card>
-                    <TableOfContents className='mt-8 block xl:hidden' items={tocItems} />
-                    {content}
+                    <div className='mb-8'>
+                        <h1 className='mt-2 font-semibold text-2xl tracking-tight sm:text-3xl'>{doc.title}</h1>
+                        {doc.description && <p className='mt-2.5 text-base leading-relaxed'>{doc.description}</p>}
+                        {doc.references && <DocRefs references={doc.references} />}
+                    </div>
+                    <TableOfContents className='mt-8 block xl:hidden' items={doc.toc} />
+                    <MDXContent code={doc.body} />
                 </main>
             </div>
-            <TableOfContents className='hidden xl:block' items={tocItems} />
+            <TableOfContents className='hidden xl:block' items={doc.toc} />
         </>
     )
 }

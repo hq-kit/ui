@@ -2,7 +2,7 @@ import { IconClipboard } from 'hq-icons'
 import template from 'lodash.template'
 import { useTheme } from 'next-themes'
 
-import Code from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code'
 import { Button, Link, Modal } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import type { Gray, Preset } from '@/lib/themes'
@@ -103,7 +103,7 @@ const CopyCode = () => {
     const activeTheme = presetColors.find((theme) => theme.name === currentPresetColor)
     const activeBase = grayColors.find((theme) => theme.name === currentGrayColor)
 
-    return <Code copyButton lang='css' code={getThemeCode(activeTheme, activeBase, currentBorderRadius)} />
+    return <Code lang='css' code={getThemeCode(activeTheme, activeBase, currentBorderRadius)} />
 }
 
 function getThemeCode(theme: Preset | undefined, grays: Gray | undefined, radius: number) {
