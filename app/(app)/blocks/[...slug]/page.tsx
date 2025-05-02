@@ -1,5 +1,6 @@
-import Block from '@/components/mdx/block'
-import { goodTitle } from '@/lib/utils/modifiers'
+import { previews } from '@/components/docs/generated/previews'
+import { Block } from '@/components/mdx/block'
+import { titleCase } from '@/lib/utils/modifiers'
 import type { Metadata } from 'next'
 
 export interface BlockProps {
@@ -8,9 +9,15 @@ export interface BlockProps {
     }>
 }
 
+export async function generateStaticParams() {
+    return Object.keys(previews)
+        .filter((s) => s.startsWith('block'))
+        .map((slug) => ({ slug: slug.split('/') }))
+}
+
 export async function generateMetadata(props: BlockProps): Promise<Metadata> {
     const params = await props.params
-    const title = goodTitle(params.slug.reverse()[0])
+    const title = titleCase(params.slug.reverse()[0])
 
     const ogSearchParams = new URLSearchParams()
     ogSearchParams.set('title', title)

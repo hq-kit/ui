@@ -2,11 +2,11 @@
 
 import { IconAppWindowMac, IconBlocks, IconPanelsTopLeft } from 'hq-icons'
 import { usePathname } from 'next/navigation'
+import { type ReactNode, useEffect, useState } from 'react'
 
 import previews from '@/components/docs/generated/previews.json'
 import { Sidebar } from '@/components/ui'
-import { goodTitle } from '@/lib/utils/modifiers'
-import { type ReactNode, useEffect, useState } from 'react'
+import { titleCase } from '@/lib/utils/modifiers'
 
 export default function Layout({ children }: { children: ReactNode }) {
     const [blocks, setBlocks] = useState<string[]>([])
@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                                     <Sidebar.Item key={block} href={`/${block}`} isCurrent={`/${block}` === pathname}>
                                         <IconPanelsTopLeft />
                                         <Sidebar.Label>
-                                            {goodTitle(block.split('/').pop() || 'Sample Page')}
+                                            {titleCase(block.split('/').pop() || 'Sample Page')}
                                         </Sidebar.Label>
                                     </Sidebar.Item>
                                 )
@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                                     <Sidebar.Item key={block} href={`/${block}`} isCurrent={`/${block}` === pathname}>
                                         <IconAppWindowMac />
                                         <Sidebar.Label>
-                                            {goodTitle(block.split('/').pop() || 'Sample Page')}
+                                            {titleCase(block.split('/').pop() || 'Sample Page')}
                                         </Sidebar.Label>
                                     </Sidebar.Item>
                                 )

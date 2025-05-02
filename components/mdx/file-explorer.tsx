@@ -13,7 +13,7 @@ import { Button, Collection } from 'react-aria-components'
 import { kebabCase } from 'usemods'
 
 import previews from '@/components/docs/generated/previews.json'
-import Code from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code'
 import { Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
@@ -28,7 +28,7 @@ interface FileExplorerProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
 }
 
-export default function FileExplorer({ page, className, ...props }: FileExplorerProps) {
+export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
     const [selected, setSelected] = useState<string>(page)
     const [code, setCode] = useState<string>('')
     const [components, setComponents] = useState<string[]>([])
@@ -215,7 +215,7 @@ export default function FileExplorer({ page, className, ...props }: FileExplorer
                     <IconBrandReact className='size-4' />
                     {`${selected.split('/').pop()}.tsx`}
                 </div>
-                <Code copyButton code={code} className='static overflow-y-auto border-none [&_pre]:max-h-full' />
+                <Code code={code} className='static overflow-y-auto rounded-none border-none [&_pre]:max-h-full' />
             </div>
         </div>
     )

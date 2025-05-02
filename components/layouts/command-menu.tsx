@@ -65,7 +65,7 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
                     </Command.Section>
                 ))}
             {docs
-                .filter((item) => item.title === 'Components')
+                .filter((item) => item.title === 'components')
                 .map((item, i) => (
                     <Fragment key={i}>
                         {item.items

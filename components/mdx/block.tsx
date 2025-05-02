@@ -1,4 +1,5 @@
 'use client'
+import { FileExplorer } from '@/components/mdx/file-explorer'
 import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
@@ -58,7 +59,7 @@ export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }
                         </div>
                         <iframe
                             title='Preview'
-                            className={cn('relative z-20 w-full rounded-lg border', className)}
+                            className={cn('relative z-20 w-full rounded-lg border', screenWidth, className)}
                             height={height || 768}
                             style={{ zoom: zoomOut || 1 }}
                             allowFullScreen
@@ -67,7 +68,7 @@ export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }
                     </div>
                 </Tabs.Content>
                 <Tabs.Content id='code'>
-                    {/*<FileExplorer style={{ height: height * zoomOut }} page={page} />*/}
+                    <FileExplorer style={{ height: height * zoomOut }} page={page} />
                 </Tabs.Content>
             </Tabs>
         </div>

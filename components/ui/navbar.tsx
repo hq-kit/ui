@@ -2,7 +2,17 @@
 
 import { IconMenu } from 'hq-icons'
 import { LayoutGroup, motion } from 'motion/react'
-import { type ComponentProps, type RefObject, createContext, use, useCallback, useId, useMemo, useState } from 'react'
+import {
+    type ComponentProps,
+    type ComponentPropsWithRef,
+    type RefObject,
+    createContext,
+    use,
+    useCallback,
+    useId,
+    useMemo,
+    useState
+} from 'react'
 import type { LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
 
@@ -11,10 +21,11 @@ import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from './button'
 import { Sheet } from './sheet'
 
+const HEIGHT = '3.5rem'
+
 type NavbarOptions = {
-    side?: 'left' | 'right'
     isSticky?: boolean
-    variant?: 'navbar' | 'float' | 'inset'
+    variant?: 'default' | 'float' | 'inset'
 }
 
 type NavbarContextProps = {
@@ -47,9 +58,8 @@ const Navbar = ({
     onOpenChange: setOpenProp,
     defaultOpen = false,
     className,
-    side = 'left',
     isSticky = false,
-    variant = 'navbar',
+    variant = 'default',
     ...props
 }: NavbarProps) => {
     const isCompact = useIsMobile()
@@ -78,19 +88,19 @@ const Navbar = ({
             isCompact,
             toggleNavbar,
             variant,
-            isSticky,
-            side
+            isSticky
         }),
-        [open, setOpen, isCompact, toggleNavbar, variant, isSticky, side]
+        [open, setOpen, isCompact, toggleNavbar, variant, isSticky]
     )
     return (
         <NavbarContext value={contextValue}>
             <header
                 data-navbar-variant={variant}
                 className={cn(
+                    `[--navbar-height:${HEIGHT}] group/navbar [--navbar-breadcrumbs-height:0px] has-data-navbar-breadcrumbs:[--navbar-breadcrumbs-height:3rem]`,
                     'relative isolate flex w-full flex-col',
                     variant === 'float' && 'px-2.5 pt-2',
-                    variant === 'inset' && 'min-h-svh bg-bg',
+                    variant === 'inset' && 'min-h-dvh bg-bg',
                     className
                 )}
                 {...props}
@@ -104,19 +114,18 @@ const Navbar = ({
 interface NavbarNavProps extends ComponentProps<'div'> {
     variant?: 'navbar' | 'float' | 'inset'
     isSticky?: boolean
-    side?: 'left' | 'right'
     useDefaultResponsive?: boolean
 }
 
 const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: NavbarNavProps) => {
-    const { isCompact, side, variant, isSticky, open, setOpen } = useNavbar()
+    const { isCompact, variant, isSticky, open, setOpen } = useNavbar()
 
     if (isCompact && useDefaultResponsive) {
         return (
             <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
                 <Sheet.Trigger className='sr-only' />
                 <Sheet.Content
-                    side={side}
+                    side='left'
                     aria-label='Compact Navbar'
                     data-navbar='compact'
                     isFloating={variant === 'float'}
@@ -132,12 +141,12 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
             data-navbar-nav='true'
             ref={ref}
             className={cn(
-                'group peer hidden h-(--navbar-height) w-full items-center px-4 [--navbar-height:3.5rem] md:flex',
-                '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-[1680px] [&>div]:items-center md:[&>div]:flex',
-                isSticky && 'sticky top-0 z-40',
-                variant === 'float' &&
-                    'mx-auto w-full max-w-7xl rounded-lg border bg-bg text-fg md:px-4 2xl:max-w-(--breakpoint-2xl)',
-                variant === 'navbar' && 'border-b bg-bg text-fg md:px-6',
+                'group peer hidden w-full items-center px-4 md:flex',
+                'h-(--navbar-height)',
+                '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-7xl [&>div]:items-center md:[&>div]:flex',
+                isSticky && 'sticky top-0 z-40 bg-bg/20 backdrop-blur-lg',
+                variant === 'float' && 'mx-auto w-full max-w-7xl rounded-lg border bg-bg px-4 text-fg',
+                variant === 'default' && 'border-b bg-bg text-fg md:px-6',
                 variant === 'inset' &&
                     'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex 2xl:[&>div]:max-w-(--breakpoint-2xl)',
                 className
@@ -250,7 +259,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
 }
 
 const NavbarFlex = ({ className, ref, ...props }: ComponentProps<'div'>) => {
-    return <div ref={ref} className={cn('flex items-center gap-2 md:gap-3', className)} {...props} />
+    return <div ref={ref} className={cn('flex items-center gap-2', className)} {...props} />
 }
 
 interface NavbarCompactProps extends ComponentProps<'div'> {
@@ -266,7 +275,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
                 'flex justify-between bg-bg text-fg peer-has-[[data-navbar-variant=float]]:border md:hidden',
                 variant === 'float' && 'h-12 rounded-lg border px-3.5',
                 variant === 'inset' && 'h-14 border-b px-4',
-                variant === 'navbar' && 'h-14 border-b px-4',
+                variant === 'default' && 'h-14 border-b px-4',
                 className
             )}
             {...props}
@@ -274,24 +283,53 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     )
 }
 
+const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentPropsWithRef<'div'>) => {
+    const { variant } = useNavbar()
+    return (
+        <div
+            data-navbar-breadcrumbs={true}
+            ref={ref}
+            className={cn(
+                'flex h-(--navbar-breadcrumbs-height) items-center',
+                variant === 'default' && 'w-full border-b bg-bg text-fg *:max-w-7xl *:px-4 md:*:px-6',
+                variant === 'inset' &&
+                    'w-full rounded-lg rounded-b-none border-b px-4 md:mx-auto md:max-w-[calc(100vw-16px)] md:border md:px-6',
+                variant === 'float' && 'mx-auto w-full max-w-7xl rounded-lg bg-bg px-2 text-fg md:px-4',
+                className
+            )}
+            {...props}
+        >
+            <div className='mx-auto w-full'>{children}</div>
+        </div>
+    )
+}
+
 const NavbarInset = ({ className, ref, ...props }: ComponentProps<'div'>) => {
     const { variant } = useNavbar()
     return (
-        <main
+        <div
             ref={ref}
-            data-navbar-variant={variant}
-            className={cn('flex flex-1 flex-col', variant === 'inset' && 'bg-bg pb-2 md:px-2', className)}
+            className={cn(
+                'relative flex w-full flex-col overflow-auto',
+                variant === 'inset' &&
+                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] bg-bg pb-2 md:px-2',
+                variant === 'float' && 'h-[calc(100vh-var(--navbar-height,0px)-8px)]',
+                variant === 'default' && 'h-[calc(100vh-var(--navbar-height,0px))]',
+                className
+            )}
         >
-            <div
+            <main
                 className={cn(
-                    'grow',
+                    'mx-auto flex size-full flex-1 grow flex-col',
                     variant === 'inset' &&
-                        'bg-bg md:rounded-lg md:shadow-xs md:ring-1 md:ring-fg/15 md:dark:ring-border'
+                        'bg-bg shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
+                    variant === 'default' && 'max-w-7xl overflow-auto px-4 md:px-0',
+                    variant === 'float' && 'max-w-7xl'
                 )}
             >
                 {props.children}
-            </div>
-        </main>
+            </main>
+        </div>
     )
 }
 
@@ -302,6 +340,7 @@ Navbar.Flex = NavbarFlex
 Navbar.Trigger = NavbarTrigger
 Navbar.Logo = NavbarLogo
 Navbar.Item = NavbarItem
+Navbar.Breadcrumbs = NavbarBreadcrumbs
 Navbar.Section = NavbarSection
 
-export { Navbar }
+export { Navbar, NavbarInset, NavbarBreadcrumbs }

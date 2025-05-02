@@ -15,7 +15,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export async function generateStaticParams() {
-    return Object.keys(previews).map((slug) => ({ slug: slug.split('/') }))
+    return Object.keys(previews)
+        .filter((s) => s.startsWith('block'))
+        .map((slug) => ({ slug: slug.split('/') }))
 }
 
 export default async function BlocksPage({ params }: { params: Params }) {

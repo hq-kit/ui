@@ -431,9 +431,10 @@ const SidebarSubItem = ({ children, className, ...props }: DisclosurePanelProps)
 }
 
 const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) => {
-    const { toggleSidebar, variant, isMobile, open } = useSidebar()
+    const { toggleSidebar, variant, collapsible, isMobile, open } = useSidebar()
     return (
-        !isMobile && (
+        !isMobile &&
+        collapsible !== 'none' && (
             <Button
                 aria-label='Toggle Sidebar'
                 onPress={toggleSidebar}
@@ -491,7 +492,7 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
                 'peer-data-[open=false]:**:[[slot=nav]]:pl-12'
             )}
         >
-            <main className='h-full overflow-auto rounded-lg border bg-bg' {...props} />
+            <main className='flex h-full flex-1 flex-col overflow-auto rounded-lg border bg-bg' {...props} />
         </div>
     )
 }
@@ -501,7 +502,7 @@ const SidebarNav = ({ className, ...props }: ComponentPropsWithRef<'nav'>) => {
         <nav
             slot='nav'
             className={cn(
-                'isolate flex h-12 items-center justify-between gap-x-2 border-b bg-bg/60 px-4 text-fg backdrop-blur-lg md:w-full md:justify-start',
+                'isolate flex h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-bg/60 px-4 text-fg backdrop-blur-lg md:w-full md:justify-start',
                 'sticky top-0 z-10'
             )}
             {...props}

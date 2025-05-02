@@ -1,4 +1,4 @@
-import { Heading, SidebarInset } from '@/components/ui'
+import { SidebarInset, Skeleton } from '@/components/ui'
 import AppSidebar from 'layouts/app-sidebar'
 import AppSidebarNav from 'layouts/app-sidebar-nav'
 
@@ -8,8 +8,13 @@ export default function Page() {
             <AppSidebar variant='default' />
             <SidebarInset>
                 <AppSidebarNav />
-                <div className='p-4 lg:p-6'>
-                    <Heading>Default</Heading>
+                <div className='flex flex-1 flex-col gap-4 p-4'>
+                    <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
+                        <Skeleton className='aspect-video rounded-xl bg-muted/50' />
+                        <Skeleton className='aspect-video rounded-xl bg-muted/50' />
+                        <Skeleton className='aspect-video rounded-xl bg-muted/50' />
+                    </div>
+                    <Skeleton className='min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min' />
                 </div>
             </SidebarInset>
         </div>

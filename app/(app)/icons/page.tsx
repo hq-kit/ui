@@ -5,7 +5,7 @@ import { IconsController } from '@/components/controllers/icons'
 import IconList from '@/components/controllers/icons/icon-list'
 import Icons from '@/components/controllers/icons/icons.json'
 import { Hero, HeroButton, HeroContent, HeroDescription, HeroHeader, HeroTitle } from '@/components/layouts/hero'
-import CLI from '@/components/mdx/cli'
+import { CLI } from '@/components/mdx/cli'
 import { Container, Link } from '@/components/ui'
 
 export async function generateMetadata() {
