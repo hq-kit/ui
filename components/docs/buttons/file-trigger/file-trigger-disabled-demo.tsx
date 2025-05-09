@@ -3,9 +3,5 @@
 import { FileTrigger } from '@/components/ui'
 
 export default function FileTriggerDemo() {
-    return (
-        <>
-            <FileTrigger isDisabled>Upload</FileTrigger>
-        </>
-    )
+    return <FileTrigger isDisabled>Upload</FileTrigger>
 }

@@ -1,8 +1,8 @@
 'use client'
 
 import {
+    type ComponentPropsWithRef,
     type Dispatch,
-    type HTMLAttributes,
     type MouseEvent,
     type ReactNode,
     type RefObject,
@@ -13,6 +13,7 @@ import {
     useRef,
     useState
 } from 'react'
+
 import type { MenuProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -55,7 +56,7 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
     )
 }
 
-const ContextMenuTrigger = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
+const ContextMenuTrigger = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     const { triggerRef, setContextMenuOffset } = useContextMenu()
 
     const onContextMenu = (e: MouseEvent<HTMLDivElement>) => {

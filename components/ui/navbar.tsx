@@ -5,6 +5,7 @@ import { LayoutGroup, motion } from 'motion/react'
 import {
     type ComponentProps,
     type ComponentPropsWithRef,
+    type Ref,
     type RefObject,
     createContext,
     use,
@@ -13,12 +14,12 @@ import {
     useMemo,
     useState
 } from 'react'
-import type { LinkProps } from 'react-aria-components'
+import type { ButtonProps, LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
 
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-import { Button, type ButtonProps } from './button'
+import { Button } from './button'
 import { Sheet } from './sheet'
 
 const HEIGHT = '3.5rem'
@@ -96,9 +97,14 @@ const Navbar = ({
         <NavbarContext value={contextValue}>
             <header
                 data-navbar-variant={variant}
+                style={{
+                    // @ts-ignore
+                    '--navbar-height': HEIGHT
+                }}
                 className={cn(
-                    `[--navbar-height:${HEIGHT}] group/navbar [--navbar-breadcrumbs-height:0px] has-data-navbar-breadcrumbs:[--navbar-breadcrumbs-height:3rem]`,
+                    'group/navbar [--navbar-breadcrumbs-height:0px] has-data-navbar-breadcrumbs:[--navbar-breadcrumbs-height:3rem]',
                     'relative isolate flex w-full flex-col',
+                    isSticky && 'sticky top-0 z-50',
                     variant === 'float' && 'px-2.5 pt-2',
                     variant === 'inset' && 'min-h-dvh bg-bg',
                     className
@@ -118,18 +124,13 @@ interface NavbarNavProps extends ComponentProps<'div'> {
 }
 
 const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: NavbarNavProps) => {
-    const { isCompact, variant, isSticky, open, setOpen } = useNavbar()
+    const { isCompact, variant, open, setOpen } = useNavbar()
 
     if (isCompact && useDefaultResponsive) {
         return (
             <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
                 <Sheet.Trigger className='sr-only' />
-                <Sheet.Content
-                    side='left'
-                    aria-label='Compact Navbar'
-                    data-navbar='compact'
-                    isFloating={variant === 'float'}
-                >
+                <Sheet.Content side='left' aria-label='Compact Navbar' data-navbar='compact'>
                     <Sheet.Body className='px-2 md:px-4'>{props.children}</Sheet.Body>
                 </Sheet.Content>
             </Sheet>
@@ -144,7 +145,6 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
                 'group peer hidden w-full items-center px-4 md:flex',
                 'h-(--navbar-height)',
                 '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-7xl [&>div]:items-center md:[&>div]:flex',
-                isSticky && 'sticky top-0 z-40 bg-bg/20 backdrop-blur-lg',
                 variant === 'float' && 'mx-auto w-full max-w-7xl rounded-lg border bg-bg px-4 text-fg',
                 variant === 'default' && 'border-b bg-bg text-fg md:px-6',
                 variant === 'inset' &&
@@ -159,7 +159,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
 }
 
 interface NavbarTriggerProps extends ButtonProps {
-    ref?: RefObject<HTMLButtonElement>
+    ref?: Ref<HTMLButtonElement>
 }
 const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
     const { toggleNavbar } = useNavbar()
@@ -209,21 +209,15 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
         <Link
             data-navbar-item
             aria-current={isCurrent ? 'page' : undefined}
-            className={composeRenderProps(
-                className,
-                (className, { isFocused, isHovered, isPressed, isFocusVisible, isDisabled }) =>
-                    cn(
-                        'relative flex cursor-pointer items-center gap-x-2 px-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
-                        '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
-                        '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
-                        isFocused && 'text-fg',
-                        isHovered && 'text-fg',
-                        isPressed && 'text-fg **:data-[slot=chevron]:rotate-180',
-                        isFocusVisible && 'ring-2 ring-primary/20',
-                        isDisabled && 'cursor-default opacity-50',
-                        isCurrent && 'cursor-default text-fg',
-                        className
-                    )
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'relative flex cursor-pointer items-center gap-x-2 px-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
+                    '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
+                    '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
+                    'pressed:text-fg hover:text-fg focus:text-fg focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
+                    isCurrent && 'cursor-default text-fg',
+                    className
+                )
             )}
             {...props}
         >

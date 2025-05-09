@@ -1,11 +1,12 @@
 'use client'
 
-import { motion } from 'motion/react'
 import type { RefObject } from 'react'
+
+import { motion } from 'motion/react'
 import { ProgressBar, type ProgressBarProps, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Label } from './field'
+import { Label } from './form'
 
 interface ProgressProps extends ProgressBarProps {
     label?: string

@@ -1,5 +1,8 @@
 'use client'
 
+import type { FC, SVGProps } from 'react'
+import { Menu, MenuItem } from 'react-aria-components'
+
 import {
     IconBrandAdobe,
     IconBrandAstro,
@@ -17,10 +20,8 @@ import {
     IconCommand,
     IconTextCursorInput
 } from 'hq-icons'
-import type { FC, SVGProps } from 'react'
-import { Menu, MenuItem } from 'react-aria-components'
 
-import { buttonStyles } from '@/components/ui'
+import { buttonStyle } from '@/components/ui'
 
 function extractAndFormat(url: string): string {
     const match = url.match(/\/([^/]+)\.html/)
@@ -153,7 +154,7 @@ export function DocRefs({ references }: { references: string[] }) {
             {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
                 <MenuItem
                     target='_blank'
-                    className={buttonStyles({
+                    className={buttonStyle({
                         variant: 'outline',
                         size: 'xs',
                         className: 'data-focus-visible:outline-2'

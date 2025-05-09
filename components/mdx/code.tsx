@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
@@ -9,7 +11,6 @@ import { unified } from 'unified'
 import { CopyButton } from '@/components/mdx/copy-button'
 import { cn } from '@/lib/utils'
 import { copyToClipboard } from '@/lib/utils/modifiers'
-import { useEffect, useState } from 'react'
 
 export function Code({
     lang = 'tsx',

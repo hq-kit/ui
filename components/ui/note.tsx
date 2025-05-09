@@ -1,49 +1,37 @@
-import { IconCircleAlert, IconCircleCheck, IconInfo } from 'hq-icons'
-import type { ElementType, HtmlHTMLAttributes } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface NoteProps extends HtmlHTMLAttributes<HTMLDivElement> {
-    variant?: 'primary' | 'secondary' | 'danger' | 'info' | 'success' | 'warning' | 'outline'
-    hideIndicator?: boolean
+interface NoteProps extends ComponentPropsWithRef<'div'> {
+    variant?: 'default' | 'danger' | 'outline'
 }
 
-const Note = ({ hideIndicator = false, variant = 'primary', className, children, ...props }: NoteProps) => {
-    const iconMap: Record<string, ElementType | null> = {
-        primary: IconInfo,
-        info: IconInfo,
-        warning: IconCircleAlert,
-        danger: IconCircleAlert,
-        success: IconCircleCheck,
-        secondary: null,
-        outline: null
-    }
-
-    const Icon = iconMap[variant] || null
-
-    return (
-        <div
-            className={cn(
-                'w-full overflow-hidden rounded-lg border p-4 text-sm backdrop-blur-2xl',
-                variant === 'primary' && 'border-primary/30 bg-primary/10 text-primary',
-                variant === 'secondary' && 'border-secondary bg-secondary text-secondary-fg',
-                variant === 'warning' && 'border-warning/40 bg-warning/5 text-warning',
-                variant === 'danger' && 'border-danger/30 bg-danger/10 text-danger',
-                variant === 'success' && 'border-success/20 bg-success/10 text-success',
-                variant === 'info' && 'border-info/35 bg-info/10 text-info',
-                variant === 'outline' && 'border-muted bg-bg/10 text-fg',
-                className
-            )}
-            {...props}
-        >
-            <div className='flex grow items-start'>
-                {Icon && !hideIndicator && (
-                    <Icon className='my-0.5 mr-3 size-4 shrink-0 rounded-full ring-2 ring-current/30' />
-                )}
-                {children}
-            </div>
+const Note = ({ variant = 'default', className, children, ...props }: NoteProps) => (
+    <div
+        className={cn(
+            'w-full overflow-hidden rounded-lg border p-4 backdrop-blur-2xl',
+            variant === 'default' && 'border-primary/30 bg-ring text-primary',
+            variant === 'danger' && 'border-danger/30 bg-invalid text-danger',
+            variant === 'outline' && 'border-muted text-fg',
+            className
+        )}
+        {...props}
+    >
+        <div className='grid grid-cols-[1fr_auto] *:data-[slot=icon]:mr-3 *:data-[slot=icon]:size-5 *:data-[slot=icon]:shrink-0'>
+            {children}
         </div>
-    )
-}
+    </div>
+)
+
+const NoteTitle = ({ className, ...props }: ComponentPropsWithRef<'h5'>) => (
+    <h5 className={cn('font-semibold tracking-tight first:col-span-full', className)} {...props} />
+)
+
+const NoteDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
+    <p className={cn('col-start-2 mt-1 text-muted-fg text-sm leading-relaxed', className)} {...props} />
+)
+
+Note.Title = NoteTitle
+Note.Description = NoteDescription
 
 export { Note }

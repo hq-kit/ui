@@ -1,7 +1,8 @@
-import { cn } from '@/lib/utils'
-import type { HTMLAttributes } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
-const DL = ({ className, ...props }: HTMLAttributes<HTMLDListElement>) => {
+import { cn } from '@/lib/utils'
+
+const DL = ({ className, ...props }: ComponentPropsWithRef<'dl'>) => {
     return (
         <dl
             className={cn(
@@ -13,16 +14,17 @@ const DL = ({ className, ...props }: HTMLAttributes<HTMLDListElement>) => {
     )
 }
 
-const DT = ({ className, ...props }: HTMLAttributes<HTMLDetailsElement>) => {
+const DT = ({ className, ...props }: ComponentPropsWithRef<'dt'>) => {
     return (
         <dt className={cn('col-start-1 border-t pt-3 text-muted-fg first:border-none sm:py-3', className)} {...props} />
     )
 }
 
-const DD = ({ className, ...props }: HTMLAttributes<HTMLDetailsElement>) => {
+const DD = ({ className, ...props }: ComponentPropsWithRef<'dd'>) => {
     return <dd className={cn('pt-1 pb-3 text-fg sm:border-t sm:nth-2:border-none sm:py-3', className)} {...props} />
 }
 
 DL.T = DT
 DL.D = DD
+
 export { DL }

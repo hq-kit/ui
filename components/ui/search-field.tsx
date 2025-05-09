@@ -1,7 +1,8 @@
 'use client'
 
-import { IconLoader, IconSearch, IconX } from 'hq-icons'
 import type { Ref } from 'react'
+
+import { IconLoader, IconSearch, IconX } from 'hq-icons'
 import {
     Button,
     SearchField as RACSearchField,
@@ -10,10 +11,11 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
 
 interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
     isPending?: boolean
+    placeholder?: string
     ref?: Ref<HTMLDivElement>
 }
 

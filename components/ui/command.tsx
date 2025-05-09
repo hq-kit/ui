@@ -1,35 +1,15 @@
 'use client'
 
-import { IconCheck, IconLoader, IconSearch } from 'hq-icons'
-import type {
-    AutocompleteProps,
-    MenuItemProps,
-    MenuProps,
-    MenuSectionProps,
-    ModalOverlayProps,
-    SeparatorProps,
-    TextProps
-} from 'react-aria-components'
-import {
-    Autocomplete,
-    Button,
-    Collection,
-    Group,
-    Header,
-    Input,
-    Menu,
-    MenuItem,
-    MenuSection,
-    Separator,
-    Text,
-    TextField,
-    composeRenderProps
-} from 'react-aria-components'
-
-import { cn, fuzzyMatch } from '@/lib/utils'
 import { useEffect, useState } from 'react'
+
+import { IconLoader, IconSearch } from 'hq-icons'
+import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
+import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'
+
+import { ModalContent } from '@/components/ui/modal'
+import { cn, fuzzyMatch } from '@/lib/utils'
 import { Keyboard } from './keyboard'
-import { ModalContent } from './modal'
+import { MenuItem, MenuLabel, MenuSection, MenuSeparator } from './menu'
 
 interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputValue' | 'onInputChange'> {
     isPending?: boolean
@@ -118,64 +98,17 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
     )
 }
 
-const CommandItem = ({ isDanger, children, className, ...props }: MenuItemProps & { isDanger?: boolean }) => {
-    const textValue = props.textValue || (typeof children === 'string' ? children : undefined)
-    return (
-        <MenuItem
-            className={composeRenderProps(className, (className, { isFocused, isSelected, isDisabled }) =>
-                cn(
-                    'group relative col-span-full grid grid-cols-subgrid items-center',
-                    'select-none rounded-md px-2 py-1.5 text-base outline-hidden sm:text-sm',
-                    '*:data-avatar:mr-2 *:data-avatar:size-6 *:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
-                    isDanger
-                        ? 'text-danger **:text-danger open:bg-danger/10 open:text-danger focus:bg-danger/10 focus:text-danger focus:**:text-danger'
-                        : 'text-fg',
-                    isFocused && 'bg-primary/10 text-primary',
-                    isSelected && '**:data-avatar:*:hidden **:data-[slot=icon]:hidden **:data-avatar:hidden',
-                    isDisabled && 'pointer-events-none opacity-50',
-                    className
-                )
-            )}
-            textValue={textValue}
-            {...props}
-        >
-            {(values) => (
-                <>
-                    {values.isSelected && <IconCheck className='mr-2 size-4' data-slot='checked' />}
-                    {typeof children === 'function' ? children(values) : children}
-                </>
-            )}
-        </MenuItem>
-    )
-}
-
-const CommandLabel = ({ className, ...props }: TextProps) => (
-    <Text slot='label' className={cn('col-start-2', className)} {...props} />
-)
-
-const CommandSection = <T extends object>({ className, ...props }: MenuSectionProps<T> & { title?: string }) => (
-    <MenuSection className={cn('col-span-full mt-2 grid grid-cols-[auto_1fr] text-sm', className)}>
-        {'title' in props && (
-            <Header className='pointer-events-none col-span-full px-2 py-1 text-muted-fg text-xs'>{props.title}</Header>
-        )}
-        <Collection items={props.items}>{props.children}</Collection>
-    </MenuSection>
-)
-
-const CommandSeparator = ({ className, ...props }: SeparatorProps) => (
-    <Separator
-        orientation='horizontal'
-        className={cn('-mx-2 col-span-full my-1 h-px bg-muted', className)}
-        {...props}
-    />
-)
+const CommandTrigger = (props: ButtonProps) => <Button {...props} />
 
 Command.Modal = CommandModal
-Command.Trigger = Button
-Command.Item = CommandItem
-Command.Label = CommandLabel
-Command.Section = CommandSection
-Command.Separator = CommandSeparator
+
+Command.Trigger = CommandTrigger
+
+Command.Item = MenuItem
+Command.Label = MenuLabel
+Command.Section = MenuSection
+Command.Separator = MenuSeparator
+
 Command.Shortcut = Keyboard
 
 export { Command }

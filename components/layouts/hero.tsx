@@ -1,10 +1,10 @@
 'use client'
 
 import type { HTMLAttributes, ReactNode } from 'react'
+
 import { Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
 
-import { ColourfulText } from '@/components/aceternity/colorful-text'
-import { Container, Link, buttonStyles } from '@/components/ui'
+import { Container, Link, buttonStyle } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 const Hero = ({ children }: { children: ReactNode }) => (
@@ -49,7 +49,7 @@ const HeroHeader = ({ children, ...props }: { children: ReactNode }) => <header 
 
 const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
     <Heading level={1} className={cn('mb-2 max-w-xl font-bold text-2xl lg:mb-6 lg:text-5xl', className)} {...props}>
-        <ColourfulText text={children as string} />
+        {children}
     </Heading>
 )
 
@@ -66,7 +66,7 @@ const HeroContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivEl
 )
 
 interface HeroButtonProps extends LinkProps {
-    variant?: 'primary' | 'secondary' | 'warning' | 'danger' | 'success' | 'outline' | 'ghost'
+    variant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'ghost'
     size?: 'xs' | 'sm' | 'md' | 'lg'
     icon?: boolean
 }
@@ -81,7 +81,7 @@ const HeroButton = ({
 }: HeroButtonProps) => (
     <Link
         className={cn(
-            buttonStyles({
+            buttonStyle({
                 size: size,
                 variant: variant,
                 icon

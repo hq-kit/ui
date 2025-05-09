@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 import { Meter as RACMeter, type MeterProps as RACMeterProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Label } from './field'
+import { Label } from './form'
 
 interface MeterProps extends RACMeterProps {
     label?: string
@@ -24,7 +24,7 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                             {percentage >= 80 && (
                                 <IconCircleAlert
                                     aria-label='Alert'
-                                    className='mr-1 inline size-4 fill-danger/20 text-danger'
+                                    className='mr-1 inline size-4 fill-invalid text-danger'
                                 />
                             )}
                             {valueText}

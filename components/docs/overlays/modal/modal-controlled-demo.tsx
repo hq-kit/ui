@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { Button, Modal } from '@/components/ui'
 
 export default function ModalControlledDemo() {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState<boolean>(false)
     const [loading, setLoading] = useState<'idle' | 'loading' | 'success'>('idle')
 
     const deleteAccount = async () => {
@@ -35,7 +35,7 @@ export default function ModalControlledDemo() {
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'success' : 'danger'}
+                        variant={loading === 'success' ? 'primary' : 'danger'}
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}

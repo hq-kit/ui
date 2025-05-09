@@ -1,8 +1,9 @@
 'use client'
 
+import { type ComponentProps, useEffect, useState } from 'react'
+
 import { Collection, type CollectionProps } from '@react-aria/collections'
 import { IconUser } from 'hq-icons'
-import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
@@ -10,6 +11,15 @@ import { cn } from '@/lib/utils'
 interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string
 }
+
+const getInitials = (name: string): string =>
+    name.split(' ').slice(0, 2).length > 1
+        ? name
+              .split(' ')
+              .slice(0, 2)
+              .map((part) => part.charAt(0))
+              .join('')
+        : name.split('').slice(0, 2).join('')
 
 const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps<T>) => {
     return (
@@ -25,12 +35,11 @@ const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps
     )
 }
 
-const avatar = tv({
+const avatarStyle = tv({
     base: [
         'inline-grid shrink-0 items-center justify-center align-middle *:col-start-1 *:row-start-1',
         '-outline-offset-1 text-center outline-1 outline-fg/20'
     ],
-
     variants: {
         shape: {
             square: 'rounded-lg *:rounded-lg',
@@ -54,22 +63,14 @@ const avatar = tv({
     }
 })
 
-interface AvatarProps extends VariantProps<typeof avatar> {
+interface AvatarProps extends VariantProps<typeof avatarStyle> {
     src?: string | undefined
     initials?: string
     alt?: string
     className?: string
 }
 
-const Avatar = ({
-    src,
-    shape,
-    size,
-    initials,
-    alt = 'avatar',
-    className,
-    ...props
-}: AvatarProps & ComponentPropsWithoutRef<'img'>) => {
+const Avatar = ({ src, shape, size, alt, className, ...props }: AvatarProps & ComponentProps<'img'>) => {
     const [error, setError] = useState(!src)
 
     function handleError() {
@@ -82,8 +83,8 @@ const Avatar = ({
 
     if (error) {
         return (
-            <span data-avatar={true} className={avatar({ shape, size, className })}>
-                <FallbackImage initials={initials} alt={alt} />
+            <span data-avatar={true} className={avatarStyle({ shape, size, className })}>
+                <FallbackImage alt={alt} />
             </span>
         )
     }
@@ -91,17 +92,17 @@ const Avatar = ({
         // biome-ignore lint/a11y/useAltText: <explanation>
         <img
             src={src}
-            alt={alt}
+            alt={alt || 'Avatar'}
             onError={handleError}
-            data-avatar={true}
-            className={avatar({ shape, size, className })}
+            data-avatar
+            className={avatarStyle({ shape, size, className })}
             {...props}
         />
     )
 }
 
-const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) => {
-    return initials ? (
+const FallbackImage = ({ alt }: { alt: string | undefined }) => {
+    return alt ? (
         <svg
             className='size-full select-none bg-bg fill-current p-[5%] font-medium text-[48px] uppercase'
             viewBox='0 0 100 100'
@@ -109,30 +110,7 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
         >
             {alt && <title>{alt}</title>}
             <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
-                {initials.split(' ').slice(0, 2).length > 1
-                    ? initials
-                          .split(' ')
-                          .slice(0, 2)
-                          .map((part) => part.charAt(0))
-                          .join('')
-                    : initials.split('').slice(0, 2)}
-            </text>
-        </svg>
-    ) : alt ? (
-        <svg
-            className='size-full select-none fill-current p-[5%] font-medium text-[48px] uppercase'
-            viewBox='0 0 100 100'
-            aria-hidden='true'
-        >
-            {alt && <title>{alt}</title>}
-            <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
-                {alt.split(' ').slice(0, 2).length > 1
-                    ? alt
-                          .split(' ')
-                          .slice(0, 2)
-                          .map((part) => part.charAt(0))
-                          .join('')
-                    : alt.split('').slice(0, 2)}
+                {getInitials(alt)}
             </text>
         </svg>
     ) : (
@@ -140,4 +118,5 @@ const FallbackImage = ({ initials, alt }: { initials?: string; alt: string }) =>
     )
 }
 
-export { Avatar, AvatarGroup, type AvatarProps }
+export { Avatar, AvatarGroup }
+export type { AvatarProps }

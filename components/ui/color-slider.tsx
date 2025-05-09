@@ -5,7 +5,7 @@ import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-compone
 
 import { cn } from '@/lib/utils'
 import { ColorThumb } from './color-thumb'
-import { Label } from './field'
+import { Label } from './form'
 
 interface ColorSliderProps extends RACColorSliderProps {
     label?: string

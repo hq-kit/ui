@@ -1,28 +1,26 @@
 'use client'
 
-import { IconX } from 'hq-icons'
 import { type ReactNode, type RefObject, createContext, useContext } from 'react'
+
+import { IconX } from 'hq-icons'
 import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
 import { Button, Tag as RACTag, TagGroup as RACTagGroup, TagList, composeRenderProps } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
-import { badgeStyles } from './badge'
-import { Description, Label } from './field'
+import { badgeStyle } from './badge'
+import { Description, Label } from './form'
 
 type TagGroupStyles = {
-    variant: keyof Omit<typeof badgeStyles.variants.variant, 'outline'>
-    shape: keyof typeof badgeStyles.variants.shape
+    variant: keyof Omit<typeof badgeStyle.variants.variant, 'outline'>
 }
 
 const TagGroupContext = createContext<TagGroupStyles>({
-    variant: 'primary',
-    shape: 'square'
+    variant: 'primary'
 })
 
 interface TagGroupProps extends Omit<RACTagGroupProps, 'children'> {
     variant?: TagGroupStyles['variant']
-    shape?: TagGroupStyles['shape']
     errorMessage?: string
     label?: string
     description?: string
@@ -45,8 +43,7 @@ const TagGroup = <T extends object>({
             {label && <Label className='mb-1'>{label}</Label>}
             <TagGroupContext.Provider
                 value={{
-                    variant: props.variant || 'primary',
-                    shape: props.shape || 'square'
+                    variant: props.variant || 'primary'
                 }}
             >
                 <TagList
@@ -62,8 +59,8 @@ const TagGroup = <T extends object>({
     )
 }
 
-const tagStyles = tv({
-    extend: badgeStyles,
+const tagStyle = tv({
+    extend: badgeStyle,
     variants: {
         isSelected: { false: '!bg-(--bg)/10 !text-(--bg)' },
         isFocusVisible: {
@@ -83,10 +80,9 @@ const Tag = (props: TagProps) => {
             textValue={textValue}
             {...props}
             className={composeRenderProps(props.className, (className, renderProps) =>
-                tagStyles({
+                tagStyle({
                     ...renderProps,
                     variant: groupContext.variant,
-                    shape: groupContext.shape,
                     className
                 })
             )}

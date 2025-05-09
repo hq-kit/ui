@@ -1,7 +1,8 @@
 'use client'
 
-import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
 import type { Ref } from 'react'
+
+import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
 import {
     Button,
     type ButtonProps,
@@ -12,9 +13,10 @@ import {
 
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
 
 interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
+    placeholder?: string
     ref?: Ref<HTMLDivElement>
 }
 

@@ -1,7 +1,8 @@
-import { cn } from '@/lib/utils'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
-type HeadingType = { level?: 1 | 2 | 3 | 4 } & ComponentPropsWithoutRef<'h1' | 'h2' | 'h3' | 'h4'>
+import { cn } from '@/lib/utils'
+
+type HeadingType = { level?: 1 | 2 | 3 | 4 } & ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4'>
 
 interface HeadingProps extends HeadingType {
     tracking?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'

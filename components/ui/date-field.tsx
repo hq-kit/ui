@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode, Ref } from 'react'
+
 import {
     type DateInputProps,
     DateSegment,
@@ -12,7 +13,7 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, type FieldProps, Label } from './field'
+import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
     prefix?: ReactNode
@@ -59,8 +60,8 @@ const DateField = <T extends DateValue>({
 const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) => {
     return (
         <RACDateInput
-            className={composeRenderProps(className, (className, { isDisabled }) =>
-                cn('bg-transparent p-2 text-base lg:text-sm', isDisabled && 'opacity-50', className)
+            className={composeRenderProps(className, (className) =>
+                cn('bg-transparent p-2 text-base disabled:opacity-50 lg:text-sm', className)
             )}
             {...props}
         >

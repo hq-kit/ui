@@ -1,19 +1,21 @@
 'use client'
 
-import { IconLoaderPinwheel } from 'hq-icons'
 import type { ReactNode } from 'react'
+
+import { IconLoaderPinwheel } from 'hq-icons'
 import type { ColorFieldProps as RACColorFieldProps } from 'react-aria-components'
 import { ColorField as RACColorField, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import { Description, FieldError, FieldGroup, Input, Label } from './field'
-import type { FieldProps } from './field'
+import { Description, FieldError, FieldGroup, Input, Label } from './form'
+import type { FieldProps } from './form'
 
 interface ColorFieldProps extends RACColorFieldProps, FieldProps {
     prefix?: ReactNode
     suffix?: ReactNode
+    placeholder?: string
     isLoading?: boolean
     withPicker?: boolean
 }
@@ -65,7 +67,7 @@ const ColorField = ({
                                     )}
                                 </span>
                             )}
-                            <Input placeholder={placeholder} />
+                            <Input placeholder={placeholder ?? '#000'} />
                         </div>
                         {props.suffix ? (
                             <span data-suffix={true} className='mr-2 text-muted-fg has-[button]:mr-0'>

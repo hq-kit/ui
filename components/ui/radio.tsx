@@ -1,11 +1,12 @@
 'use client'
 
 import type { ReactNode, Ref } from 'react'
+
 import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
 import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'>, FieldProps {
     children?: ReactNode
@@ -54,7 +55,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
             )}
             {...props}
         >
-            {({ isSelected, isFocused, isInvalid, isDisabled }) => (
+            {(values) => (
                 <div
                     className={cn('flex items-center gap-2', {
                         'items-start': description
@@ -63,16 +64,20 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                     <div
                         className={cn(
                             'size-4 shrink-0 rounded-full border bg-bg transition',
-                            isSelected
-                                ? 'border-[5px] border-primary bg-bg group-invalid:border-danger'
-                                : 'border-muted group-hover:border-primary/70 group-hover:bg-primary/10',
-                            isFocused &&
-                                'border-primary ring-4 ring-primary/20 group-invalid:border-danger group-invalid:ring-danger/20',
-                            isInvalid && 'border-danger/70 ring-danger/20 group-hover:border-danger/70'
+                            'group-selected:border-[5px] group-selected:border-primary group-selected:bg-bg group-selected:group-invalid:border-danger',
+                            'border-muted group-hover:border-primary/70',
+                            'group-focus:border-primary group-focus:group-invalid:border-danger',
+                            'group-focus-visible:border-primary group-focus-visible:ring-4 group-focus-visible:ring-ring group-focus-visible:group-invalid:border-danger',
+                            'group-invalid:border-danger/70 group-invalid:ring-invalid group-invalid:group-hover:border-danger/70'
                         )}
                     />
-                    <div className='flex flex-col'>
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled} className='not-last:text-sm/4'>
+                    <div className='flex flex-col gap-y-1.5'>
+                        <Label
+                            elementType='span'
+                            isInvalid={values.isInvalid}
+                            isDisabled={values.isDisabled}
+                            className='not-last:text-sm/4'
+                        >
                             {label ?? children}
                         </Label>
                         {description && <Description>{description}</Description>}

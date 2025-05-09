@@ -1,11 +1,11 @@
 'use client'
 
-import { Link, buttonStyles } from '@/components/ui'
+import { Link, buttonStyle } from '@/components/ui'
 
 export default function ButtonLinkDemo() {
     return (
-        <Link className={buttonStyles({ variant: 'success' })} href='#'>
-            Choicebox
+        <Link className={buttonStyle({ variant: 'danger' })} href='#'>
+            Link
         </Link>
     )
 }

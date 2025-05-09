@@ -1,14 +1,17 @@
 'use client'
 
+import { useEffect } from 'react'
+
+import { usePathname } from 'next/navigation'
+
+import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
+import { motion } from 'motion/react'
+import { Heading, Link, type LinkProps, composeRenderProps } from 'react-aria-components'
+
 import { docs } from '@/components/docs/generated/docs'
 import { Badge } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { titleCase } from '@/lib/utils/modifiers'
-import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
-import { motion } from 'motion/react'
-import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
-import { Heading, Link, type LinkProps, composeRenderProps } from 'react-aria-components'
 
 export function Aside() {
     useEffect(() => {

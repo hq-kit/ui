@@ -12,7 +12,7 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface SliderProps extends RACSliderProps, FieldProps {
     ref?: Ref<HTMLDivElement>
@@ -111,8 +111,8 @@ const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
             className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
                 cn(
                     'top-1/2 left-1/2 size-5 rounded-full border border-muted bg-bg outline-hidden transition',
-                    isFocusVisible && 'border-primary ring-4 ring-primary/20',
-                    isDragging && 'cursor-grabbing border-primary ring-4 ring-primary/20',
+                    isFocusVisible && 'border-primary ring-4 ring-ring',
+                    isDragging && 'cursor-grabbing border-primary ring-4 ring-ring',
                     isDisabled && 'opacity-50',
                     className
                 )

@@ -1,35 +1,26 @@
 'use client'
 
-import { use } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
 import { getLocalTimeZone, today } from '@internationalized/date'
-import { useDateFormatter } from '@react-aria/i18n'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
-import type { DateValue, CalendarProps as RACCalendarProps } from 'react-aria-components'
+import type { CalendarProps, DateValue, RangeCalendarProps } from 'react-aria-components'
 import {
+    Button,
     CalendarCell,
     CalendarGrid,
     CalendarGridBody,
     CalendarHeaderCell,
-    CalendarStateContext,
-    FieldError,
+    Heading,
     Calendar as RACCalendar,
     CalendarGridHeader as RACCalendarGridHeader,
-    RangeCalendarStateContext,
+    RangeCalendar as RACRangeCalendar,
     useLocale
 } from 'react-aria-components'
-import type { CalendarState, RangeCalendarState } from 'react-stately'
 
 import { cn } from '@/lib/utils'
-import { Button } from './button'
-import { Menu } from './menu'
 
-interface CalendarProps<T extends DateValue> extends Omit<RACCalendarProps<T>, 'visibleDuration'> {
-    errorMessage?: string
-    className?: string
-}
-
-const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps<T>) => {
+const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
     const now = today(getLocalTimeZone())
     return (
         <RACCalendar {...props}>
@@ -40,124 +31,88 @@ const Calendar = <T extends DateValue>({ errorMessage, ...props }: CalendarProps
                     {(date) => (
                         <CalendarCell
                             date={date}
-                            className={({ isHovered, isSelected, isOutsideMonth, isInvalid, isDisabled }) =>
-                                cn([
-                                    'relative flex size-9 shrink-0 cursor-default items-center justify-center rounded-lg outline-hidden',
-                                    isOutsideMonth && 'text-muted-fg',
-                                    isHovered && 'bg-primary/10 text-primary',
-                                    isSelected &&
-                                        `${isInvalid ? 'bg-danger text-danger-fg' : 'bg-primary text-primary-fg'}`,
-                                    isDisabled && 'pointer-events-none opacity-50',
-                                    date.compare(now) === 0 &&
-                                        'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1.5 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-fg'
-                                ])
-                            }
+                            className={cn([
+                                'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-muted/50 outside-month:text-muted-fg text-sm outline-hidden hover:bg-muted/40',
+                                'selected:bg-primary selected:text-primary-fg selected:invalid:bg-danger selected:invalid:text-danger-fg',
+                                'focus-visible:ring-2 focus-visible:ring-ring',
+                                'disabled:pointer-events-none disabled:opacity-50',
+                                date.compare(now) === 0 &&
+                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-fg'
+                            ])}
                         >
-                            {({ formattedDate }) => formattedDate}
+                            {date.day}
                         </CalendarCell>
                     )}
                 </CalendarGridBody>
             </CalendarGrid>
-            <FieldError className='px-2 text-danger text-sm/5'>{errorMessage}</FieldError>
         </RACCalendar>
     )
 }
 
-const CalendarHeader = ({ isRange, className, ...props }: React.ComponentProps<'header'> & { isRange?: boolean }) => {
-    const { direction } = useLocale()
-    const state = isRange ? use(RangeCalendarStateContext)! : use(CalendarStateContext)!
+const RangeCalendar = <T extends DateValue>({ visibleDuration = { months: 1 }, ...props }: RangeCalendarProps<T>) => {
+    const now = today(getLocalTimeZone())
+    return (
+        <RACRangeCalendar visibleDuration={visibleDuration} {...props}>
+            <CalendarHeader />
+            <div className='grid gap-2 overflow-auto md:flex'>
+                {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
+                    const id = index + 1
+                    return (
+                        <CalendarGrid
+                            key={index}
+                            offset={id >= 2 ? { months: id - 1 } : undefined}
+                            className='w-full **:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg'
+                        >
+                            <CalendarGridHeader />
+                            <CalendarGridBody>
+                                {(date) => (
+                                    <CalendarCell
+                                        date={date}
+                                        className={cn([
+                                            'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-muted/50 outside-month:text-muted-fg text-sm outline-hidden hover:bg-muted/40',
+                                            'selection-start:bg-primary selection-start:text-primary-fg selection-start:invalid:bg-danger selection-start:invalid:text-danger-fg',
+                                            'selection-end:bg-primary selection-end:text-primary-fg selection-end:invalid:bg-danger selection-end:invalid:text-danger-fg',
+                                            'selected:rounded-none selected:bg-muted/50 selected:selection-end:rounded-r-lg selected:selection-start:rounded-l-lg',
+                                            'focus-visible:ring-2 focus-visible:ring-ring',
+                                            'disabled:pointer-events-none disabled:opacity-50',
+                                            date.compare(now) === 0 &&
+                                                'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:mt-1 after:size-1 after:rounded after:bg-primary selected:selection-end:after:bg-primary-fg selected:selection-start:after:bg-primary-fg'
+                                        ])}
+                                    >
+                                        {date.day}
+                                    </CalendarCell>
+                                )}
+                            </CalendarGridBody>
+                        </CalendarGrid>
+                    )
+                })}
+            </div>
+        </RACRangeCalendar>
+    )
+}
 
+const CalendarHeader = ({ className, ...props }: ComponentPropsWithRef<'header'> & { isRange?: boolean }) => {
+    const { direction } = useLocale()
     return (
         <header
             slot='calendar-header'
             className={cn('flex w-full items-center justify-between gap-1.5 pt-1 pr-1 pb-5 pl-1.5 sm:pb-4', className)}
             {...props}
         >
-            <MonthYearSelection state={state} />
-            <div className='flex items-center gap-1'>
-                <Button className='text-muted-fg' icon size='sm' shape='circle' variant='ghost' slot='previous'>
-                    {direction === 'rtl' ? <IconChevronRight /> : <IconChevronLeft />}
-                </Button>
-                <Button className='text-muted-fg' icon size='sm' shape='circle' variant='ghost' slot='next'>
-                    {direction === 'rtl' ? <IconChevronLeft /> : <IconChevronRight />}
-                </Button>
-            </div>
+            <Button
+                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
+                slot='previous'
+            >
+                {direction === 'rtl' ? <IconChevronRight /> : <IconChevronLeft />}
+            </Button>
+            <Heading className='font-normal text-sm' />
+            <Button
+                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
+                slot='next'
+            >
+                {direction === 'rtl' ? <IconChevronLeft /> : <IconChevronRight />}
+            </Button>
         </header>
-    )
-}
-
-const MonthYearSelection = ({ state }: { state: CalendarState | RangeCalendarState }) => {
-    const { timeZone, focusedDate, setFocusedDate } = state
-    const monthFormatter = useDateFormatter({
-        month: 'long',
-        timeZone: timeZone
-    })
-
-    const months: string[] = []
-    const numMonths = focusedDate.calendar.getMonthsInYear(focusedDate)
-    for (let i = 1; i <= numMonths; i++) {
-        const date = focusedDate.set({ month: i })
-        months.push(monthFormatter.format(date.toDate(timeZone)))
-    }
-    const onMonthChange = (e: number) => {
-        const date = focusedDate.set({ month: e })
-        setFocusedDate(date)
-    }
-
-    const yearFormatter = useDateFormatter({
-        year: 'numeric',
-        timeZone: timeZone
-    })
-
-    const years: string[] = []
-    for (let i = -20; i <= 20; i++) {
-        const date = focusedDate.add({ years: i })
-        years.push(yearFormatter.format(date.toDate(timeZone)))
-    }
-    const onYearChange = (e: number) => {
-        const date = focusedDate.set({ year: Number(years[e]) })
-        setFocusedDate(date)
-    }
-
-    return (
-        <div className='flex gap-1'>
-            <Menu aria-label='Select month'>
-                <Menu.Trigger className='rounded-lg text-muted-fg' slot={null}>
-                    {months[focusedDate.month - 1]}
-                </Menu.Trigger>
-                <Menu.Content
-                    selectionMode='single'
-                    selectedKeys={[focusedDate.month]}
-                    items={months.map((month, i) => ({ id: i + 1, label: month }))}
-                    // @ts-expect-error unknown-type
-                    onSelectionChange={(e) => onMonthChange(e.currentKey)}
-                >
-                    {(item) => (
-                        <Menu.Item id={item.id} textValue={item.label}>
-                            <Menu.Label>{item.label}</Menu.Label>
-                        </Menu.Item>
-                    )}
-                </Menu.Content>
-            </Menu>
-            <Menu aria-label='Select year'>
-                <Menu.Trigger className='rounded-lg text-muted-fg' slot={null}>
-                    {yearFormatter.format(focusedDate.toDate(timeZone))}
-                </Menu.Trigger>
-                <Menu.Content
-                    selectionMode='single'
-                    selectedKeys={[20]}
-                    items={years.map((year, i) => ({ id: i, label: year }))}
-                    // @ts-expect-error unknown-type
-                    onSelectionChange={(e) => onYearChange(e.currentKey)}
-                >
-                    {(item) => (
-                        <Menu.Item id={item.id} textValue={item.label}>
-                            <Menu.Label>{item.label}</Menu.Label>
-                        </Menu.Item>
-                    )}
-                </Menu.Content>
-            </Menu>
-        </div>
     )
 }
 
@@ -173,7 +128,4 @@ const CalendarGridHeader = () => {
     )
 }
 
-Calendar.Header = CalendarHeader
-Calendar.GridHeader = CalendarGridHeader
-
-export { Calendar }
+export { Calendar, RangeCalendar }

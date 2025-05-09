@@ -1,7 +1,8 @@
 'use client'
 
-import { IconMinus } from 'hq-icons'
-import type { Ref, RefObject } from 'react'
+import type { Ref } from 'react'
+
+import { IconChevronDown } from 'hq-icons'
 import type {
     ButtonProps,
     DisclosurePanelProps,
@@ -19,7 +20,7 @@ import {
 import { cn } from '@/lib/utils'
 
 interface AccordionProps extends RACDisclosureGroupProps {
-    ref?: RefObject<HTMLDivElement>
+    ref?: Ref<HTMLDivElement>
     hideIndicator?: boolean
 }
 const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
@@ -53,7 +54,7 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
-                    'w-full min-w-60 overflow-hidden rounded-lg transition duration-300 ease-in-out',
+                    'w-full border-b last:border-b-0',
                     isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                     className
                 )
@@ -67,16 +68,17 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
 interface DisclosureTriggerProps extends ButtonProps {
     ref?: Ref<HTMLButtonElement>
 }
-const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps) => {
+const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTriggerProps) => {
     return (
         <Button
             ref={ref}
             slot='trigger'
-            className={composeRenderProps(className, (className, { isFocusVisible, isDisabled }) =>
+            className={composeRenderProps(className, (className) =>
                 cn(
-                    'flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-lg py-2 font-medium aria-expanded:**:data-[slot=indicator]:rotate-0 sm:text-sm',
-                    isFocusVisible && 'text-fg outline-2 outline-primary outline-offset-2',
-                    isDisabled && 'cursor-default opacity-50',
+                    'flex w-full flex-1 items-start justify-between gap-4 rounded-md py-4 text-left font-medium text-sm outline-none transition-all',
+                    'aria-expanded:**:data-[slot=indicator]:rotate-180 **:[svg]:size-4 **:[svg]:shrink-0',
+                    'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
+                    'disabled:cursor-default disabled:opacity-50',
                     className
                 )
             )}
@@ -84,20 +86,8 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
         >
             {(values) => (
                 <>
-                    {typeof props.children === 'function' ? props.children(values) : props.children}
-                    <div
-                        data-slot='indicator'
-                        className={cn(
-                            className,
-                            '-rotate-90 relative ml-auto inline-flex size-5 items-center justify-center transition-transform duration-300'
-                        )}
-                    >
-                        <IconMinus data-slot='indicator-static' className='absolute size-3.5' />
-                        <IconMinus
-                            data-slot='indicator'
-                            className='-rotate-90 absolute size-3.5 transition-transform duration-300'
-                        />
-                    </div>
+                    {typeof children === 'function' ? children(values) : children}
+                    <IconChevronDown data-slot='indicator' className='text-muted-fg transition-transform' />
                 </>
             )}
         </Button>
@@ -105,16 +95,8 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
 }
 const DisclosurePanel = ({ className, children, ...props }: DisclosurePanelProps) => {
     return (
-        <RACDisclosurePanel
-            data-slot='disclosure-content'
-            className={cn(
-                'overflow-hidden transition-all duration-300 ease-in-out',
-                'max-h-0 opacity-0 aria-[hidden=false]:max-h-[1000px] aria-[hidden=false]:opacity-100',
-                className
-            )}
-            {...props}
-        >
-            {children}
+        <RACDisclosurePanel data-slot='disclosure-content' className='overflow-hidden text-sm' {...props}>
+            <div className={cn('pt-0 pb-4', className)}>{children}</div>
         </RACDisclosurePanel>
     )
 }

@@ -1,19 +1,46 @@
 'use client'
 
 import { IconCheck, IconGripVertical } from 'hq-icons'
-import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
+import type {
+    ListBoxItemProps,
+    ListBoxProps,
+    ListBoxSectionProps,
+    SeparatorProps,
+    TextProps
+} from 'react-aria-components'
 import {
     Collection,
     Header,
     ListBox as RACListBox,
     ListBoxItem as RACListBoxItem,
     ListBoxSection as RACListBoxSection,
+    Separator,
     Text,
     composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import type { ReactNode } from 'react'
+import type { ComponentPropsWithRef } from 'react'
+import { tv } from 'tailwind-variants'
+
+const listStyles = tv({
+    slots: {
+        sectionStyle: 'col-span-full mt-2 grid grid-cols-[auto_1fr] text-sm',
+        headerStyle: 'pointer-events-none col-span-full px-2 py-1 text-muted-fg text-xs',
+        itemStyle: [
+            'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
+            'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
+            '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
+            'focus:bg-ring focus:text-primary focus:*:[.text-muted-fg]:text-primary',
+            'hover:bg-ring hover:text-primary hover:*:[.text-muted-fg]:text-primary',
+            'selected:**:data-[slot=checked]:mr-2 selected:**:data-[slot=icon]:hidden',
+            'dragging:cursor-grabbing dragging:outline dragging:outline-primary',
+            'disabled:pointer-events-none disabled:opacity-50'
+        ]
+    }
+})
+
+const { sectionStyle, headerStyle, itemStyle } = listStyles()
 
 const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => (
     <RACListBox
@@ -34,38 +61,29 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
         <RACListBoxItem
             textValue={textValue}
             {...props}
-            className={composeRenderProps(
-                className,
-                (className, { isHovered, isFocused, isDragging, isSelected, isDisabled, isFocusVisible }) =>
-                    cn(
-                        'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
-                        'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-                        '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
-                        {
-                            'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary':
-                                isFocused || isFocusVisible || isHovered
-                        },
-                        isSelected && '**:data-[slot=checked]:mr-2 **:data-[slot=icon]:hidden',
-                        isDragging && 'cursor-grabbing outline outline-primary',
-                        isDisabled && 'pointer-events-none opacity-50',
-                        className
-                    )
+            className={composeRenderProps(className, (className) =>
+                itemStyle({
+                    className
+                })
             )}
         >
-            {({ allowsDragging, isSelected, isDragging }) => (
+            {(values) => (
                 <>
-                    {allowsDragging && (
+                    {values.allowsDragging && (
                         <IconGripVertical
-                            className={cn('size-4 shrink-0 text-muted-fg transition', isDragging && 'text-primary')}
+                            className={cn(
+                                'size-4 shrink-0 text-muted-fg transition',
+                                values.isDragging && 'text-primary'
+                            )}
                         />
                     )}
-                    {isSelected && <IconCheck className='text-success' data-slot='checked' />}
+                    {values.isSelected && <IconCheck className='text-success' data-slot='checked' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
-                            {children as ReactNode}
+                            {children}
                         </Text>
                     ) : (
-                        (children as ReactNode)
+                        children
                     )}
                 </>
             )}
@@ -73,14 +91,15 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
     )
 }
 
-const ListBoxSection = <T extends object>({ className, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-    <RACListBoxSection className={cn('col-span-full mt-2 grid grid-cols-[auto_1fr] text-sm', className)}>
-        {'title' in props && (
-            <Header className='pointer-events-none col-span-full px-2.5 py-1 text-muted-fg text-xs'>
-                {props.title}
-            </Header>
-        )}
-        <Collection items={props.items}>{props.children}</Collection>
+const ListBoxSection = <T extends object>({
+    className,
+    items,
+    children,
+    ...props
+}: ListBoxSectionProps<T> & { title?: string }) => (
+    <RACListBoxSection className={sectionStyle({ className })}>
+        {'title' in props && <Header className={headerStyle()}>{props.title}</Header>}
+        <Collection items={items}>{children}</Collection>
     </RACListBoxSection>
 )
 
@@ -109,8 +128,23 @@ const ListBoxDetails = ({ label, description, ...props }: ListBoxDetailsProps) =
     )
 }
 
+const ListBoxSeparator = ({ className, ...props }: SeparatorProps) => (
+    <Separator
+        orientation='horizontal'
+        className={cn('-mx-1 col-span-full my-1 h-px bg-muted', className)}
+        {...props}
+    />
+)
+
+const ListBoxLabel = ({ className, ...props }: ComponentPropsWithRef<typeof Text>) => (
+    <Text slot='label' className={cn('col-start-2', className)} {...props} />
+)
+
 ListBox.Section = ListBoxSection
 ListBox.Details = ListBoxDetails
 ListBox.Item = ListBoxItem
+ListBox.Separator = ListBoxSeparator
+ListBox.Label = ListBoxLabel
 
-export { ListBox, ListBoxSection, ListBoxDetails, ListBoxItem }
+export { itemStyle, headerStyle, sectionStyle }
+export { ListBox, ListBoxSection, ListBoxDetails, ListBoxItem, ListBoxSeparator, ListBoxLabel }

@@ -1,14 +1,15 @@
 'use client'
 
-import { IconPalette } from 'hq-icons'
 import { useState } from 'react'
+
+import { IconPalette } from 'hq-icons'
 import { Button, Collection, type Color } from 'react-aria-components'
-import { copyToClipboard } from 'usemods'
 
 import { formatColor } from '@/components/controllers/colors/colors'
 import SelectFormat, { type ColorFormat } from '@/components/controllers/colors/select-format'
 import { tailwindColors } from '@/components/controllers/colors/tailwind-colors'
 import { Container, Popover, defaultColor, toast } from '@/components/ui'
+import { copyToClipboard } from '@/lib/utils/modifiers'
 
 type TailwindColor = keyof typeof tailwindColors
 

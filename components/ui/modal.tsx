@@ -1,10 +1,10 @@
 'use client'
 
 import type { CSSProperties } from 'react'
+
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import { Button, DialogTrigger as ModalTrigger, Modal as RACModal, composeRenderProps } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
 import {
     Dialog,
     DialogBody,
@@ -13,7 +13,8 @@ import {
     DialogHeader,
     DialogOverlay,
     DialogTitle,
-    DialogX
+    DialogX,
+    modalStyle
 } from './dialog'
 
 const Modal = (props: DialogTriggerProps) => {
@@ -41,35 +42,15 @@ const ModalContent = ({
         <DialogOverlay isDismissable={isDismissable} {...props}>
             <RACModal
                 isDismissable={isDismissable}
-                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                    cn(
-                        'absolute h-fit max-h-full w-full overflow-hidden bg-bg align-middle text-fg shadow-sm',
-                        'bottom-0 rounded-t-lg border-t',
-                        'sm:-translate-x-1/2 sm:-translate-y-1/2 sm:fixed sm:top-1/2 sm:left-[50vw] sm:rounded-lg sm:border',
-                        {
-                            'sm:max-w-xs': size === 'xs',
-                            'sm:max-w-sm': size === 'sm',
-                            'sm:max-w-md': size === 'md',
-                            'sm:max-w-lg': size === 'lg',
-                            'sm:max-w-xl': size === 'xl',
-                            'sm:max-w-2xl': size === '2xl',
-                            'sm:max-w-3xl': size === '3xl',
-                            'sm:max-w-4xl': size === '4xl',
-                            'sm:max-w-5xl': size === '5xl',
-                            'h-dvh max-w-full': size === 'full'
-                        },
-                        isEntering &&
-                            'fade-in slide-in-from-bottom sm:zoom-in-95 sm:slide-in-from-bottom-0 animate-in duration-200 ease-out',
-
-                        isExiting &&
-                            'slide-out-to-bottom sm:slide-out-to-bottom-0 fade-out sm:zoom-out-95 animate-out duration-150 ease-in',
-
+                className={composeRenderProps(className, (className) =>
+                    modalStyle({
+                        size,
                         className
-                    )
+                    })
                 )}
                 {...props}
             >
-                <Dialog aria-label='Dialog' role={role}>
+                <Dialog role={role}>
                     {(values) => (
                         <>
                             {typeof children === 'function' ? children(values) : children}

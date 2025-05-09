@@ -1,7 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @plugin 'tailwindcss-react-aria-components';
-@plugin 'tailwindcss-animate';
 
 @variant dark (&:is(.dark *));
 
@@ -33,7 +33,8 @@
     --color-warning-fg: var(--warning-fg);
 
     --color-border: var(--muted);
-    --color-ring: hsla(from var(--primary) h s l / 0.2);
+    --color-ring: hsla(from var(--primary) h s l / 0.15);
+    --color-invalid: hsla(from var(--danger) h s l / 0.15);
 
     --color-chart-1: var(--chart-1);
     --color-chart-2: var(--chart-2);
@@ -41,11 +42,11 @@
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
 
-    --chart-1: hsl(from var(--primary) calc(h - 3) s calc(l * 1.1));
-    --chart-2: hsl(from var(--primary) calc(h - 7) s calc(l * 1.3));
-    --chart-3: hsl(from var(--primary) calc(h - 10) s calc(l * 1.5));
-    --chart-4: hsl(from var(--primary) calc(h - 13) s calc(l * 1.7));
-    --chart-5: hsl(from var(--primary) calc(h - 16) s calc(l * 1.9));
+    --chart-1: hsl(from var(--primary) h s calc(l * 1));
+    --chart-2: hsl(from var(--primary) h s calc(l * 1.15));
+    --chart-3: hsl(from var(--primary) h s calc(l * 1.3));
+    --chart-4: hsl(from var(--primary) h s calc(l * 1.45));
+    --chart-5: hsl(from var(--primary) h s calc(l * 1.55));
 
     --radius-xs: calc(var(--radius-lg) - 5px);
     --radius-sm: calc(var(--radius-lg) - 2px);

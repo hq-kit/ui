@@ -1,7 +1,8 @@
 import type { HTMLAttributes, Ref } from 'react'
-import { tv } from 'tailwind-variants'
 
-const containerStyles = tv({
+import { type VariantProps, tv } from 'tailwind-variants'
+
+const containerStyle = tv({
     base: '@container mx-auto w-full max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
     variants: {
         variant: {
@@ -14,13 +15,12 @@ const containerStyles = tv({
     }
 })
 
-interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-    variant?: 'constrained' | 'padded-content'
+interface ContainerProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof containerStyle> {
     ref?: Ref<HTMLDivElement>
 }
 
 const Container = ({ className, variant, ref, ...props }: ContainerProps) => (
-    <div className={containerStyles({ variant, className })} {...props} ref={ref} />
+    <div className={containerStyle({ variant, className })} {...props} ref={ref} />
 )
 
 export { Container }

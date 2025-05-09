@@ -1,9 +1,10 @@
 'use client'
+import { type HTMLAttributes, useState } from 'react'
+
 import { FileExplorer } from '@/components/mdx/file-explorer'
-import { Link, Tabs, Toggle, buttonStyles } from '@/components/ui'
+import { Link, Tabs, Toggle, buttonStyle } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
-import { type HTMLAttributes, useState } from 'react'
 import type { Key } from 'react-aria-components'
 
 interface BlockProps extends HTMLAttributes<HTMLDivElement> {
@@ -30,7 +31,7 @@ export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }
                         <div className='sm:-top-12 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Link
                                 target='_blank'
-                                className={buttonStyles({
+                                className={buttonStyle({
                                     icon: true,
                                     variant: 'outline',
                                     size: 'sm'

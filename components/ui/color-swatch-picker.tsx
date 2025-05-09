@@ -27,12 +27,12 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
     return (
         <ColorSwatchPickerItem
             {...props}
-            className={composeRenderProps(className, (className, { isDisabled, isFocusVisible, isFocused }) =>
+            className={composeRenderProps(className, (className) =>
                 cn(
                     'relative rounded-lg outline-hidden disabled:opacity-50',
-                    isFocused && 'ring-4 ring-primary/20',
-                    isFocusVisible && 'ring-4 ring-primary/20',
-                    isDisabled && 'opacity-50',
+                    'focus:ring-4 focus:ring-ring',
+                    'focus-visible:ring-4 focus-visible:ring-ring',
+                    'disabled:opacity-50',
                     className
                 )
             )}

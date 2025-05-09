@@ -170,19 +170,14 @@ const Sidebar = ({
                             cn(
                                 'absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-bg text-muted-fg outline-hidden',
                                 isHovered && 'bg-muted/40',
-                                isFocusVisible && 'border-primary ring-4 ring-primary/20',
+                                isFocusVisible && 'border-primary ring-4 ring-ring',
                                 isPressed && 'bg-muted/50'
                             )
                         }
                     >
                         <IconMenu />
                     </Sheet.Trigger>
-                    <Sheet.Content
-                        className={isInverse ? 'dark' : ''}
-                        aria-label='Sidebar'
-                        isFloating={variant === 'float'}
-                        side='left'
-                    >
+                    <Sheet.Content className={isInverse ? 'dark' : ''} aria-label='Sidebar' side='left'>
                         {children}
                     </Sheet.Content>
                 </Sheet>
@@ -442,7 +437,7 @@ const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) =
                     cn(
                         'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-fg outline-hidden transition-transform',
                         isHovered && 'bg-muted/40',
-                        isFocusVisible && 'ring-4 ring-primary/20',
+                        isFocusVisible && 'ring-4 ring-ring',
                         isPressed && 'bg-muted/50',
                         variant === 'default' ? 'top-2 right-2' : 'top-4 right-4',
                         open ? 'translate-x-0' : `${variant === 'default' ? 'translate-x-12' : 'translate-x-16'}`

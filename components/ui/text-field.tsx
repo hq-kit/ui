@@ -1,7 +1,8 @@
 'use client'
 
-import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
 import { type ReactNode, type Ref, useState } from 'react'
+
+import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
 import {
     Button,
     TextField as RACTextField,
@@ -10,13 +11,14 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import type { FieldProps } from './field'
-import { Description, FieldError, FieldGroup, Input, Label } from './field'
+import type { FieldProps } from './form'
+import { Description, FieldError, FieldGroup, Input, Label } from './form'
 
 interface TextFieldProps extends RACTextFieldProps, FieldProps {
     prefix?: ReactNode
     suffix?: ReactNode
     isPending?: boolean
+    placeholder?: string
     ref?: Ref<HTMLDivElement>
 }
 

@@ -1,7 +1,8 @@
 'use client'
 
+import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
+
 import { IconBrandReact } from 'hq-icons'
-import { type HTMLAttributes, useEffect, useState } from 'react'
 
 import { components } from '@/components/docs/generated/components'
 import previews from '@/components/docs/generated/previews.json'
@@ -66,7 +67,7 @@ export function Install({ component }: { component: string }) {
     )
 }
 
-interface SourceCodeProps extends HTMLAttributes<HTMLDivElement> {
+interface SourceCodeProps extends ComponentPropsWithoutRef<'div'> {
     component: string | string[]
     withMessage?: boolean
 }

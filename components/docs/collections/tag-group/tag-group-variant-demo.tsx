@@ -20,15 +20,6 @@ export default function TagGroupVariantDemo() {
             <Tag.Group variant='danger' label='Danger' items={items} selectionMode='multiple'>
                 {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
-            <Tag.Group variant='info' label='Info' items={items} selectionMode='multiple'>
-                {(item) => <Tag>{item.name}</Tag>}
-            </Tag.Group>
-            <Tag.Group variant='success' label='Success' items={items} selectionMode='multiple'>
-                {(item) => <Tag>{item.name}</Tag>}
-            </Tag.Group>
-            <Tag.Group variant='warning' label='Warning' items={items} selectionMode='multiple'>
-                {(item) => <Tag>{item.name}</Tag>}
-            </Tag.Group>
         </div>
     )
 }

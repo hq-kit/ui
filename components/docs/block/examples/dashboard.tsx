@@ -3,7 +3,7 @@
 import { IconActivity, IconChartColumn, IconRupiah, IconSquareArrowUpRight, IconUsers } from 'hq-icons'
 
 import NavbarLayout from '@/components/docs/block/layouts/app-navbar'
-import { Avatar, Card, Container, Link, Navbar, Table, buttonStyles } from '@/components/ui'
+import { Avatar, Card, Container, Link, Navbar, Table, buttonStyle } from '@/components/ui'
 
 export default function Dashboard() {
     return (
@@ -60,7 +60,7 @@ export default function Dashboard() {
                                         <Card.Title>Transactions</Card.Title>
                                         <Card.Description>Recent transactions.</Card.Description>
                                     </div>
-                                    <Link className={buttonStyles({ variant: 'outline' })} href='#'>
+                                    <Link className={buttonStyle({ variant: 'outline' })} href='#'>
                                         All
                                         <IconSquareArrowUpRight />
                                     </Link>

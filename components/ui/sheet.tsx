@@ -1,7 +1,9 @@
 'use client'
 
+import type { ComponentProps } from 'react'
+
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
-import { Button, Modal, DialogTrigger as SheetTrigger, composeRenderProps } from 'react-aria-components'
+import { Button, Modal, DialogTrigger as SheetTrigger } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
 import {
@@ -12,7 +14,8 @@ import {
     DialogHeader,
     DialogOverlay,
     DialogTitle,
-    DialogX
+    DialogX,
+    sheetStyle
 } from './dialog'
 
 const Sheet = (props: DialogTriggerProps) => {
@@ -20,14 +23,13 @@ const Sheet = (props: DialogTriggerProps) => {
 }
 
 interface SheetContentProps
-    extends Omit<React.ComponentProps<typeof Modal>, 'children'>,
+    extends Omit<ComponentProps<typeof Modal>, 'children'>,
         Omit<ModalOverlayProps, 'className'> {
     'aria-label'?: DialogProps['aria-label']
     'aria-labelledby'?: DialogProps['aria-labelledby']
     role?: DialogProps['role']
     closeButton?: boolean
     isBlurred?: boolean
-    isFloating?: boolean
     side?: 'top' | 'bottom' | 'left' | 'right'
 }
 
@@ -36,7 +38,6 @@ const SheetContent = ({
     side = 'right',
     role = 'dialog',
     closeButton = true,
-    isFloating = false,
     className,
     children,
     ...props
@@ -45,42 +46,10 @@ const SheetContent = ({
     return (
         <DialogOverlay isDismissable={isDismissable} {...props}>
             <Modal
-                className={composeRenderProps(className, (className, { isEntering, isExiting }) =>
-                    cn(
-                        'fixed z-50 grid gap-4 bg-bg text-fg shadow-sm transition ease-in-out',
-                        {
-                            'inset-x-2 top-2 rounded-lg border-b-0': isFloating && side === 'top',
-                            'inset-x-0 top-0 rounded-b-lg border-b': !isFloating && side === 'top'
-                        },
-                        {
-                            'w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left': side === 'right',
-                            'inset-y-2 right-2 rounded-lg border': isFloating && side === 'right',
-                            'inset-y-0 right-0 h-auto border-l': !isFloating && side === 'right'
-                        },
-                        {
-                            'inset-x-2 bottom-2 rounded-lg border-t-0': isFloating && side === 'bottom',
-                            'inset-x-0 bottom-0 rounded-t-lg border-t': !isFloating && side === 'bottom'
-                        },
-                        {
-                            'w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left': side === 'left',
-                            'inset-y-2 left-2 rounded-lg border': isFloating && side === 'left',
-                            'inset-y-0 left-0 h-auto border-r': !isFloating && side === 'left'
-                        },
-                        {
-                            'slide-in-from-top animate-in duration-150 ease-out': isEntering && side === 'top',
-                            'slide-in-from-right animate-in duration-150 ease-out': isEntering && side === 'right',
-                            'slide-in-from-bottom animate-in duration-150 ease-out': isEntering && side === 'bottom',
-                            'slide-in-from-left animate-in duration-150 ease-out': isEntering && side === 'left'
-                        },
-                        {
-                            'slide-out-to-top animate-out duration-150 ease-in': isExiting && side === 'top',
-                            'slide-out-to-right animate-out duration-150 ease-in': isExiting && side === 'right',
-                            'slide-out-to-bottom animate-out duration-150 ease-in': isExiting && side === 'bottom',
-                            'slide-out-to-left animate-out duration-150 ease-in': isExiting && side === 'left'
-                        },
-                        className
-                    )
-                )}
+                className={sheetStyle({
+                    side,
+                    className: side === 'top' || side === 'bottom' ? 'h-fit' : 'h-full'
+                })}
                 {...props}
             >
                 {(values) => (

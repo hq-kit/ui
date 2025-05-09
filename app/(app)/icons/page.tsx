@@ -62,7 +62,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                             Source
                         </HeroButton>
                         <HeroButton
-                            variant='success'
+                            variant='outline'
                             target='_blank'
                             href='https://www.figma.com/design/LyFwmlkNXFWIkCUMvxTLQm/Cleon-UI-Icons?m=auto&t=9IvlYFDBF75mOpKf-6'
                         >

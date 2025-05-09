@@ -12,7 +12,7 @@ export default function TeamManagementSink() {
             </AvatarGroup>
             <ColorPicker defaultValue={'#ff0000'} label='Color' />
             <Menu>
-                <Button variant='success'>Options</Button>
+                <Button>Options</Button>
                 <Menu.Content items={roles}>
                     {(item) => (
                         <Menu.Item id={item.id} textValue={item.name}>

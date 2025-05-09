@@ -39,7 +39,7 @@ export default function DropZoneAndFileTriggerDemo() {
             onDrop={onDropHandler}
         >
             <div className='grid space-y-3'>
-                <div className='mx-auto grid size-12 place-content-center overflow-hidden rounded-full border bg-muted/70 group-drop-target:border-primary/70 group-drop-target:bg-primary/20'>
+                <div className='mx-auto grid size-12 place-content-center overflow-hidden rounded-full border bg-muted/70 group-drop-target:border-primary/70 group-drop-target:bg-ring'>
                     {droppedImage ? (
                         <Image
                             width={20}

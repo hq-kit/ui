@@ -1,45 +1,28 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import type { ComponentPropsWithRef } from 'react'
+
 import { type VariantProps, tv } from 'tailwind-variants'
 
-const badgeStyles = tv({
-    base: [
-        'inline-flex cursor-default items-center gap-x-1.5 border border-(--bg)/20 bg-(--bg) pressed:bg-(--bg)/95 px-2 py-0.5 font-medium text-(--fg) text-xs/5 transition hover:bg-(--bg)/85 **:data-[slot=icon]:size-3'
-    ],
+import { cn } from '@/lib/utils'
+
+const badgeStyle = tv({
+    base: 'inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden whitespace-nowrap rounded-md border px-2 py-0.5 font-medium text-xs transition-[color,box-shadow] invalid:border-danger invalid:ring-invalid focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring *:[svg]:pointer-events-none *:[svg]:size-3',
     variants: {
         variant: {
-            primary: '[--bg:var(--color-primary)] [--fg:var(--color-primary-fg)]',
-            secondary: '[--bg:var(--color-secondary)] [--fg:var(--color-secondary-fg)]',
-            info: '[--bg:var(--color-info)] [--fg:var(--color-info-fg)]',
-            success: '[--bg:var(--color-success)] [--fg:var(--color-success-fg)]',
-            danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
-            warning: '[--bg:var(--color-warning)] [--fg:var(--color-warning-fg)]',
-            outline: 'border-muted bg-bg/80 pressed:bg-muted/50 text-fg hover:bg-muted/40'
-        },
-        shape: {
-            square: 'rounded-lg',
-            circle: 'rounded-full'
+            primary: 'border-transparent bg-primary text-primary-fg [a&]:hover:bg-primary/90',
+            secondary: 'border-transparent bg-secondary text-secondary-fg [a&]:hover:bg-secondary/90',
+            danger: 'border-transparent bg-danger text-white focus-visible:ring-invalid dark:bg-danger/60 dark:focus-visible:ring-danger/40 [a&]:hover:bg-danger/90',
+            outline: 'text-fg [a&]:hover:bg-muted [a&]:hover:text-muted-fg'
         }
     },
     defaultVariants: {
-        variant: 'primary',
-        shape: 'square'
+        variant: 'primary'
     }
 })
 
-interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeStyles> {
-    className?: string
-    children: ReactNode
-}
+const Badge = ({ className, variant, ...props }: ComponentPropsWithRef<'span'> & VariantProps<typeof badgeStyle>) => (
+    <span data-badge className={cn(badgeStyle({ variant }), className)} {...props} />
+)
 
-const Badge = ({ children, variant, shape, className, ...props }: BadgeProps) => {
-    return (
-        <span data-badge {...props} className={badgeStyles({ variant, shape, className })}>
-            {children}
-        </span>
-    )
-}
-
-export { Badge, badgeStyles }
-export type { BadgeProps }
+export { Badge, badgeStyle }

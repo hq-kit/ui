@@ -37,7 +37,7 @@ export default function PopoverControlledDemo() {
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'success' : 'danger'}
+                        variant={loading === 'success' ? 'primary' : 'danger'}
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}

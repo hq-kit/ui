@@ -1,6 +1,5 @@
 'use client'
 
-import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
 import {
     Children,
     type KeyboardEvent,
@@ -11,6 +10,8 @@ import {
     useRef,
     useState
 } from 'react'
+
+import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
 import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
@@ -19,7 +20,6 @@ import {
     Input,
     ListBox,
     ListBoxItem,
-    Popover,
     Tag,
     TagGroup,
     TagList,
@@ -27,8 +27,9 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
+import { PopoverContent } from '@/components/ui/popover'
 import { cn, fuzzyMatch } from '@/lib/utils'
-import { Description, FieldGroup, type FieldProps, Label } from './field'
+import { Description, FieldGroup, type FieldProps, Label } from './form'
 
 interface MultiSelectProps<T>
     extends ListBoxProps<T>,
@@ -132,7 +133,7 @@ const MultiSelect = <T extends object>({
                         ref={triggerRef}
                         isDisabled={isDisabled}
                         isInvalid={isInvalid}
-                        className='flex h-fit min-h-10 flex-wrap items-center py-1'
+                        className='flex h-fit min-h-9 flex-wrap items-center py-1'
                     >
                         <TagGroup onRemove={removeItem} aria-hidden aria-label='selected-items'>
                             <TagList
@@ -210,23 +211,16 @@ const MultiSelect = <T extends object>({
                                     <IconChevronDown className={cn('group-has-open:-rotate-180 size-4 transition')} />
                                 </Button>
                             </div>
-                            <Popover
+                            <PopoverContent
                                 ref={popoverRef}
+                                respectScreen={false}
                                 trigger='focus'
                                 style={{
                                     minWidth: triggerRef.current?.offsetWidth,
                                     width: triggerRef.current?.offsetWidth
                                 }}
                                 triggerRef={triggerRef}
-                                className={({ isEntering, isExiting }) =>
-                                    cn(
-                                        'group max-h-72 w-full max-w-(--trigger-width) overflow-y-auto rounded-lg border bg-bg p-1 shadow outline-hidden transition',
-                                        isEntering &&
-                                            'fade-in zoom-in-95 placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 animate-in',
-                                        isExiting &&
-                                            'fade-out zoom-out-95 placement-left:slide-out-to-right-2 placement-right:slide-out-to-left-2 placement-top:slide-out-to-bottom-2 placement-bottom:slide-out-to-top-2 animate-out'
-                                    )
-                                }
+                                showArrow={false}
                             >
                                 <ListBox
                                     className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
@@ -245,7 +239,7 @@ const MultiSelect = <T extends object>({
                                         </MultiSelect.Item>
                                     )) ?? children}
                                 </ListBox>
-                            </Popover>
+                            </PopoverContent>
                         </ComboBox>
                     </FieldGroup>
                     {props.description && <Description>{props.description}</Description>}

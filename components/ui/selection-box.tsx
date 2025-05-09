@@ -5,7 +5,7 @@ import type { CheckboxGroupProps, CheckboxProps, RadioGroupProps, RadioProps } f
 import { Checkbox, CheckboxGroup, Radio, RadioGroup, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './field'
+import { Description, FieldError, type FieldProps, Label } from './form'
 
 const SelectionBoxContext = createContext<'single' | 'multiple'>('single')
 const useSelectionBoxContext = () => use(SelectionBoxContext)
@@ -124,12 +124,12 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                     className={cn(
                         'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
                         isSelected || isIndeterminate
-                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-danger/20 group-invalid:**:text-danger'
+                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
                             : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-4 ring-primary/20 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                            'border-primary ring-4 ring-ring group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-invalid',
                         isInvalid &&
-                            'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
+                            'border-danger/70 bg-invalid text-danger-fg ring-invalid group-hover:border-danger/70',
                         className
                     )}
                 >
@@ -157,12 +157,12 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                     className={cn(
                         'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
                         isSelected
-                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-danger/20 group-invalid:**:text-danger'
+                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
                             : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-4 ring-primary/20 group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-danger/20',
+                            'border-primary ring-4 ring-ring group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-invalid',
                         isInvalid &&
-                            'border-danger/70 bg-danger/20 text-danger-fg ring-danger/20 group-hover:border-danger/70',
+                            'border-danger/70 bg-invalid text-danger-fg ring-invalid group-hover:border-danger/70',
                         className
                     )}
                 >

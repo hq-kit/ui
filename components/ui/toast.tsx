@@ -1,8 +1,9 @@
 'use client'
 
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
 import { motion, useAnimation } from 'motion/react'
-import { type ReactNode, useEffect, useRef, useState } from 'react'
 import type { ButtonProps, ToastOptions } from 'react-aria-components'
 import {
     Button,
@@ -54,7 +55,7 @@ const ToastProvider = () => {
                             {
                                 'border-success/20 bg-success/10 text-success **:data-loader:stroke-success':
                                     toast.content.type === 'success',
-                                'border-danger/20 bg-danger/5 text-danger **:data-loader:stroke-danger':
+                                'border-invalid bg-danger/5 text-danger **:data-loader:stroke-danger':
                                     toast.content.type === 'error',
                                 'border-info/30 bg-info/10 text-info **:data-loader:stroke-info':
                                     toast.content.type === 'info',
@@ -103,7 +104,7 @@ const ToastProvider = () => {
                                                 'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden *:[svg]:size-3',
                                                 isHovered && 'brightness-80',
                                                 isPressed && 'brightness-90',
-                                                isFocusVisible && 'ring-4 ring-primary/20',
+                                                isFocusVisible && 'ring-4 ring-ring',
                                                 {
                                                     'border-success bg-success text-success-fg':
                                                         toast.content.type === 'success',

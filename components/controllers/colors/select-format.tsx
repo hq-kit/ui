@@ -1,9 +1,10 @@
 'use client'
 
-import { IconSwatchBook } from 'hq-icons'
 import type { Dispatch, SetStateAction } from 'react'
 
-import { Menu, buttonStyles } from '@/components/ui'
+import { IconSwatchBook } from 'hq-icons'
+
+import { Button, Menu } from '@/components/ui'
 
 const ColorSelectors = [
     { type: 'hex', sample: '#0D6DFD' },
@@ -22,9 +23,9 @@ type SelectFormatProps = {
 export default function SelectFormat({ selectedFormat, action }: SelectFormatProps) {
     return (
         <Menu>
-            <Menu.Trigger className={buttonStyles({ variant: 'outline' })}>
+            <Button variant='outline'>
                 <IconSwatchBook /> Format : {selectedFormat}
-            </Menu.Trigger>
+            </Button>
             <Menu.Content items={ColorSelectors}>
                 {(item) => (
                     <Menu.Item onAction={() => action(item.type)} id={item.type} textValue={item.type}>

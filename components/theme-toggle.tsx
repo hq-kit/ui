@@ -1,7 +1,8 @@
 'use client'
 
-import { IconMoon, IconSun } from 'hq-icons'
 import { useEffect } from 'react'
+
+import { IconMoon, IconSun } from 'hq-icons'
 
 import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui'

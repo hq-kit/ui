@@ -23,7 +23,7 @@ const Contact = ({ name, avatar, status, lastSeen, active }: ContactProps) => {
         <div
             className={cn(
                 'flex cursor-pointer flex-row items-center gap-3 rounded-lg border p-2 md:px-4',
-                active ? 'bg-primary/20' : ''
+                active ? 'bg-ring' : ''
             )}
         >
             {status === 'online' ? <Avatar src={avatar} /> : <Avatar src={avatar} />}

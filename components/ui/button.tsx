@@ -1,40 +1,39 @@
 'use client'
 
-import { IconLoaderCircle } from 'hq-icons'
 import type { Ref } from 'react'
-import type { ButtonProps as RACButtonProps } from 'react-aria-components'
+
+import { IconLoaderCircle } from 'hq-icons'
 import { Button as RACButton, composeRenderProps } from 'react-aria-components'
+import type { ButtonProps as RACButtonProps } from 'react-aria-components'
 import { type VariantProps, tv } from 'tailwind-variants'
 
-const buttonStyles = tv({
+const buttonStyle = tv({
     base: [
-        'inline-flex items-center justify-center whitespace-nowrap border border-muted font-medium outline-hidden backdrop-blur-2xl transition',
-        'h-(--height) w-(--width)',
-        'ring-ring focus-visible:border-primary/70 focus-visible:ring-2',
-        'cursor-pointer disabled:cursor-default disabled:opacity-50'
+        'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium text-sm outline-hidden transition-[box-shadow,opacity,color]',
+        '**:[svg]:pointer-events-none **:[svg]:shrink-0',
+        'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
+        'cursor-pointer disabled:pointer-events-none disabled:opacity-50',
+        'h-(--height) w-(--width)'
     ],
     variants: {
         variant: {
-            primary: 'border-primary bg-primary pressed:bg-primary/95 text-primary-fg hover:bg-primary/85',
-            secondary: 'border-secondary bg-secondary pressed:bg-secondary/95 text-secondary-fg hover:bg-secondary/85',
-            info: 'border-info bg-info pressed:bg-info/95 text-info-fg hover:bg-info/85',
-            success: 'border-success bg-success pressed:bg-success/95 text-success-fg hover:bg-success/85',
-            danger: 'border-danger bg-danger pressed:bg-danger/95 text-danger-fg hover:bg-danger/85',
-            warning: 'border-warning bg-warning pressed:bg-warning/95 text-warning-fg hover:bg-warning/85',
-            outline: 'bg-bg/80 pressed:bg-muted/50 text-fg hover:bg-muted/40',
-            ghost: 'border-transparent bg-transparent pressed:bg-muted/50 text-fg backdrop-blur-none hover:bg-muted/40'
+            primary: 'bg-primary pressed:bg-primary/95 text-primary-fg shadow-xs hover:bg-primary/90',
+            danger: 'bg-danger text-white shadow-xs hover:bg-danger/90 focus-visible:ring-danger/25',
+            outline: 'border bg-bg pressed:bg-muted/50 text-fg shadow-xs hover:bg-muted/40',
+            secondary: 'bg-secondary text-secondary-fg shadow-xs hover:bg-secondary/80',
+            ghost: 'pressed:bg-muted/50 hover:bg-muted/40'
         },
         size: {
-            xs: 'gap-x-1.5 px-2 py-1.5 text-xs [--height:theme(spacing.6)] [--width:auto] **:[svg]:size-3.5',
-            sm: 'gap-x-1.5 px-3 py-2 text-sm [--height:theme(spacing.8)] [--width:auto] **:[svg]:size-4',
-            md: 'gap-x-2 px-4 py-3 text-sm [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-4',
-            lg: 'gap-x-2.5 px-5 py-3.5 text-base [--height:theme(spacing.12)] [--width:auto] **:[svg]:size-6'
+            xs: 'gap-x-1.5 px-2 text-xs [--height:theme(spacing.6)] [--width:auto] **:[svg]:size-3.5',
+            sm: 'gap-x-1.5 px-3 text-sm [--height:theme(spacing.8)] [--width:auto] **:[svg]:size-4',
+            md: 'gap-x-2 px-4 text-sm [--height:theme(spacing.9)] [--width:auto] **:[svg]:size-4',
+            lg: 'gap-x-2.5 px-5 text-base [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-5'
         },
         icon: {
-            true: 'h-(--height) w-(--height) shrink-0 p-0'
+            true: 'h-(--height) w-(--height) shrink-0 px-0'
         },
         shape: {
-            square: 'rounded-lg',
+            square: 'rounded-md',
             circle: 'rounded-full'
         },
         isPending: {
@@ -48,32 +47,25 @@ const buttonStyles = tv({
     }
 })
 
-export interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyles> {
+interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyle> {
     ref?: Ref<HTMLButtonElement>
+    isPending?: boolean
 }
 
-const Button = ({ className, variant, size, shape, ref, children, ...props }: ButtonProps) => (
+const Button = ({ className, children, variant, size, icon, isPending, ...props }: ButtonProps) => (
     <RACButton
-        ref={ref}
-        {...props}
-        className={composeRenderProps(className, (className, renderProps) =>
-            buttonStyles({
-                ...renderProps,
-                variant,
-                size,
-                icon: !!props.icon,
-                shape,
-                className
-            })
+        className={composeRenderProps(className, (className) =>
+            buttonStyle({ variant, size, icon, isPending, className })
         )}
+        {...props}
     >
         {(values) => (
             <>
-                {values.isPending && <IconLoaderCircle data-slot='loader' className='size-4 animate-spin' />}
+                {isPending && <IconLoaderCircle data-slot='loader' className='animate-spin' />}
                 {typeof children === 'function' ? children(values) : children}
             </>
         )}
     </RACButton>
 )
 
-export { Button, buttonStyles }
+export { Button, buttonStyle }

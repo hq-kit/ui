@@ -13,7 +13,7 @@ export default function PlanBillingSetting() {
             </Card.Header>
             <Form>
                 <Card.Content className='grid gap-4'>
-                    <Note variant='warning'>
+                    <Note>
                         Changing the plan will take effect immediately. You will be charged for the rest of the current
                         month.
                     </Note>

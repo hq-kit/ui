@@ -26,19 +26,15 @@ const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
 const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) => {
     return (
         <RACTreeItem
-            className={composeRenderProps(
-                className,
-                (className, { isFocusVisible, isDisabled, isSelected, hasChildItems }) =>
-                    cn(
-                        'relative flex items-center gap-1.5 rounded-lg p-1 py-2 text-sm outline-hidden',
-                        hasChildItems
-                            ? 'pl-[calc((var(--tree-item-level)-1)*20px+8px)]'
-                            : 'pl-[calc((var(--tree-item-level)-1)*20px+32px)]',
-                        isFocusVisible && 'ring-2 ring-primary/20',
-                        isSelected && 'bg-primary/10 text-primary',
-                        isDisabled && 'opacity-50',
-                        className
-                    )
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'relative flex items-center gap-1.5 rounded-lg p-1 py-2 text-sm outline-hidden',
+                    'pl-[calc((var(--tree-item-level)-1)*20px+32px)] has-child-items:pl-[calc((var(--tree-item-level)-1)*20px+8px)]',
+                    'focus-visible:ring-2 focus-visible:ring-ring',
+                    'selected:bg-ring selected:text-primary',
+                    'disabled:opacity-50',
+                    className
+                )
             )}
             {...props}
         />
@@ -47,22 +43,22 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
 
 const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
     <TreeItemContent {...props}>
-        {composeRenderProps(children, (children, { hasChildItems, isExpanded }) => (
+        {(values) => (
             <>
-                {hasChildItems && (
+                {values.hasChildItems && (
                     <Button
                         slot='chevron'
                         className='inline-flex size-4 items-center justify-center text-muted-fg outline-hidden'
                     >
                         <IconChevronRight
                             data-slot='indicator'
-                            className={cn('transition-transform', isExpanded && 'rotate-90')}
+                            className={cn('transition-transform', values.isExpanded && 'rotate-90')}
                         />
                     </Button>
                 )}
                 {children}
             </>
-        ))}
+        )}
     </TreeItemContent>
 )
 

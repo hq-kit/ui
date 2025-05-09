@@ -2,35 +2,40 @@
 
 import { IconCheck, IconChevronRight } from 'hq-icons'
 import type { CSSProperties, ComponentPropsWithRef } from 'react'
-import type {
-    MenuProps,
-    MenuSectionProps,
-    MenuTriggerProps,
-    PopoverProps,
-    MenuItemProps as RACMenuItemProps,
-    SeparatorProps,
-    TextProps
+import {
+    type ButtonProps,
+    type MenuProps,
+    type MenuSectionProps,
+    type MenuTriggerProps,
+    type PopoverProps,
+    type MenuItemProps as RACMenuItemProps,
+    composeRenderProps
 } from 'react-aria-components'
 import {
     Button,
     Collection,
     Header,
-    MenuTrigger,
     PopoverContext,
     Menu as RACMenu,
     MenuItem as RACMenuItem,
     MenuSection as RACMenuSection,
-    Separator,
+    MenuTrigger as RACMenuTrigger,
     SubmenuTrigger,
-    Text,
-    composeRenderProps,
     useSlottedContext
 } from 'react-aria-components'
 
+import {
+    ListBoxDetails,
+    ListBoxLabel,
+    ListBoxSeparator,
+    headerStyle,
+    itemStyle,
+    sectionStyle
+} from '@/components/ui/list-box'
 import { cn } from '@/lib/utils'
 import { PopoverContent } from './popover'
 
-const Menu = ({ ...props }: MenuTriggerProps) => <MenuTrigger {...props} />
+const Menu = ({ ...props }: MenuTriggerProps) => <RACMenuTrigger {...props} />
 
 interface MenuContentProps<T>
     extends MenuProps<T>,
@@ -75,20 +80,15 @@ const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemP
     const textValue = props.textValue || (typeof children === 'string' ? children : undefined)
     return (
         <RACMenuItem
-            className={composeRenderProps(className, (className, { isOpen, isFocused, isSelected, isDisabled }) =>
-                cn(
-                    'group relative col-span-full grid grid-cols-subgrid items-center has-data-[slot=item-details]:items-start',
-                    'select-none rounded-md px-2 py-1.5 text-base outline-hidden sm:text-sm',
-                    '**:data-[slot=icon]:mr-2 **:data-avatar:mr-2 **:data-avatar:size-6 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
-                    isDanger
-                        ? 'text-danger **:text-danger open:bg-danger/10 open:text-danger focus:bg-danger/10 focus:text-danger focus:**:text-danger'
-                        : 'text-fg',
-                    isOpen && 'bg-primary/10 text-primary *:[.text-muted-fg]:text-primary',
-                    isFocused && 'bg-primary/10 text-primary',
-                    isSelected && '**:data-avatar:*:hidden **:data-[slot=icon]:hidden **:data-avatar:hidden',
-                    isDisabled && 'pointer-events-none opacity-50',
-                    className
-                )
+            className={composeRenderProps(className, (className) =>
+                itemStyle({
+                    className: cn(
+                        isDanger
+                            ? 'text-danger **:text-danger open:bg-danger/10 open:text-danger focus:bg-danger/10 focus:text-danger focus:**:text-danger'
+                            : 'text-fg',
+                        className
+                    )
+                })
             )}
             textValue={textValue}
             {...props}
@@ -114,57 +114,27 @@ const MenuHeader = ({ className, ...props }: ComponentPropsWithRef<typeof Header
     />
 )
 
-const MenuSection = <T extends object>({ className, ...props }: MenuSectionProps<T> & { title?: string }) => {
+const MenuSection = <T extends object>({
+    className,
+    items,
+    children,
+    ...props
+}: MenuSectionProps<T> & { title?: string }) => {
     return (
-        <RACMenuSection className={cn('col-span-full mt-2 grid grid-cols-[auto_1fr]', className)} {...props}>
-            {'title' in props && (
-                <Header className='pointer-events-none col-span-full px-2 py-1 text-muted-fg text-xs'>
-                    {props.title}
-                </Header>
-            )}
-            <Collection items={props.items}>{props.children}</Collection>
+        <RACMenuSection className={sectionStyle()} {...props}>
+            {'title' in props && <Header className={headerStyle()}>{props.title}</Header>}
+            <Collection items={items}>{children}</Collection>
         </RACMenuSection>
     )
 }
 
-interface DropdownItemDetailProps extends TextProps {
-    label?: TextProps['children']
-    description?: TextProps['children']
-}
+const MenuTrigger = (props: ButtonProps) => <Button {...props} />
 
-const MenuDetails = ({ label, description, ...props }: DropdownItemDetailProps) => {
-    const { children, title, ...restProps } = props
+const MenuLabel = ListBoxLabel
+const MenuSeparator = ListBoxSeparator
+const MenuDetails = ListBoxDetails
 
-    return (
-        <div data-slot='item-details' className='col-start-2 flex flex-col gap-y-1' {...restProps}>
-            {label && (
-                <Text slot='label' className='font-medium sm:text-sm'>
-                    {label}
-                </Text>
-            )}
-            {description && (
-                <Text slot='description' className='text-muted-fg text-xs' {...restProps}>
-                    {description}
-                </Text>
-            )}
-            {!title && children}
-        </div>
-    )
-}
-
-const MenuLabel = ({ className, ...props }: ComponentPropsWithRef<typeof Text>) => (
-    <Text slot='label' className={cn('col-start-2', className)} {...props} />
-)
-
-const MenuSeparator = ({ className, ...props }: SeparatorProps) => (
-    <Separator
-        orientation='horizontal'
-        className={cn('-mx-1 col-span-full my-1 h-px bg-muted', className)}
-        {...props}
-    />
-)
-
-Menu.Trigger = Button
+Menu.Trigger = MenuTrigger
 Menu.Submenu = SubmenuTrigger
 Menu.Item = MenuItem
 Menu.Content = MenuContent
@@ -174,4 +144,4 @@ Menu.Details = MenuDetails
 Menu.Label = MenuLabel
 Menu.Separator = MenuSeparator
 
-export { Menu }
+export { Menu, MenuItem, MenuSection, MenuLabel, MenuSeparator, MenuDetails }

@@ -71,7 +71,7 @@ export default function OptionsSink() {
                     <Tooltip.Content>Follow me on X @dqalhq</Tooltip.Content>
                 </Tooltip>
                 <Popover>
-                    <Button variant='warning'>Forgot Password</Button>
+                    <Button>Forgot Password</Button>
                     <Popover.Content aria-label='Forgot Password' className='min-w-72'>
                         <Popover.Header>
                             <Popover.Title>Email</Popover.Title>

@@ -1,5 +1,6 @@
-import { IconLoaderCircle } from 'hq-icons'
 import { Suspense } from 'react'
+
+import { IconLoaderCircle } from 'hq-icons'
 
 import { cn } from '@/lib/utils'
 

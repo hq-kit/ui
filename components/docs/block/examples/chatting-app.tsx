@@ -17,8 +17,7 @@ import {
 import ChattingAppLayout from 'layouts/chatting-app-layout'
 import { type FormEvent, useState } from 'react'
 
-import { Avatar, Button, Menu, Popover, SidebarInset, buttonStyles } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { Avatar, Button, Menu, Popover, SidebarInset } from '@/components/ui'
 import { useDateFormatter } from 'react-aria'
 
 export default function ChatApp() {
@@ -76,14 +75,9 @@ export default function ChatApp() {
                                     <IconMessageMore className='!size-6' />
                                 </Button>
                                 <Menu>
-                                    <Menu.Trigger
-                                        className={buttonStyles({
-                                            variant: 'ghost',
-                                            icon: true
-                                        })}
-                                    >
+                                    <Button icon variant='ghost'>
                                         <IconEllipsisVertical />
-                                    </Menu.Trigger>
+                                    </Button>
                                     <Menu.Content placement='bottom end'>
                                         <Menu.Item>
                                             <IconMessagePlus />
@@ -119,17 +113,9 @@ export default function ChatApp() {
                                 <small className='text-muted-fg text-xs'>Online</small>
                             </div>
                             <Menu>
-                                <Menu.Trigger
-                                    className={cn(
-                                        buttonStyles({
-                                            variant: 'ghost',
-                                            icon: true
-                                        }),
-                                        'ml-auto'
-                                    )}
-                                >
+                                <Button className='ml-auto' variant='ghost'>
                                     <IconEllipsisVertical />
-                                </Menu.Trigger>
+                                </Button>
                                 <Menu.Content placement='bottom end'>
                                     <Menu.Item>
                                         <IconUser />

@@ -1,5 +1,7 @@
 'use client'
 
+import type { ReactNode } from 'react'
+
 import { IconGripVertical } from 'hq-icons'
 import type { GridListItemProps, GridListProps as RACGridListProps } from 'react-aria-components'
 import {
@@ -10,32 +12,36 @@ import {
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import type { ReactNode } from 'react'
 import { Checkbox } from './checkbox'
 
-interface GridListProps<T extends object> extends Omit<RACGridListProps<T>, 'layout'> {
+interface GridListProps<T extends object> extends RACGridListProps<T> {
     columns?: 1 | 2 | 3 | 4 | 5 | 6 | 'auto'
     gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6
 }
 
-const GridList = <T extends object>({ children, className, columns = 1, gap = 0, ...props }: GridListProps<T>) => (
+const GridList = <T extends object>({
+    children,
+    layout,
+    className,
+    columns = 1,
+    gap = 0,
+    ...props
+}: GridListProps<T>) => (
     <RACGridList
         aria-label={props['aria-label'] ?? 'Grid list'}
         layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
-        className={composeRenderProps(className, (className, { layout }) =>
+        className={composeRenderProps(className, (className) =>
             cn(
-                'group',
-                layout === 'stack'
-                    ? 'flex flex-col gap-0 divide-y rounded-lg border-y'
-                    : {
-                          'flex grow flex-wrap': columns === 'auto',
-                          'grid grid-cols-1': columns === 1,
-                          'grid grid-cols-2': columns === 2,
-                          'grid grid-cols-3': columns === 3,
-                          'grid grid-cols-4': columns === 4,
-                          'grid grid-cols-5': columns === 5,
-                          'grid grid-cols-6': columns === 6
-                      },
+                'group layout-stack:flex layout-stack:flex-col layout-stack:gap-0 layout-stack:divide-y layout-stack:rounded-lg layout-stack:border-y',
+                {
+                    'flex grow flex-wrap': columns === 'auto',
+                    'grid grid-cols-1': columns === 1,
+                    'grid grid-cols-2': columns === 2,
+                    'grid grid-cols-3': columns === 3,
+                    'grid grid-cols-4': columns === 4,
+                    'grid grid-cols-5': columns === 5,
+                    'grid grid-cols-6': columns === 6
+                },
                 {
                     'gap-0': gap === 0,
                     'gap-1': gap === 1,

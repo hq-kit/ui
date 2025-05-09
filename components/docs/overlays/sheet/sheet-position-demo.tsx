@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { titleCase } from 'usemods'
 
 import { Button, Sheet } from '@/components/ui'
 
@@ -33,7 +32,7 @@ export default function SheetPositionDemo() {
             </div>
             <Sheet.Content isOpen={isOpen} onOpenChange={setIsOpen} side={sheetSide}>
                 <Sheet.Header>
-                    <Sheet.Title>{titleCase(sheetSide)}</Sheet.Title>
+                    <Sheet.Title>{sheetSide}</Sheet.Title>
                     <Sheet.Description>The sheet will go from {sheetSide} side.</Sheet.Description>
                 </Sheet.Header>
             </Sheet.Content>

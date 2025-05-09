@@ -9,12 +9,12 @@ const ColorThumb = ({ className, ...props }: ColorThumbProps) => {
         <RACColorThumb
             {...props}
             style={({ defaultStyle }) => ({ ...defaultStyle })}
-            className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
+            className={composeRenderProps(className, (className) =>
                 cn(
                     'top-1/2 left-1/2 size-5 rounded-full border-2 ring-bg',
-                    isFocusVisible && 'size-8',
-                    isDragging && 'bg-muted',
-                    isDisabled && 'opacity-50',
+                    'focus-visible:size-8',
+                    'dragging:bg-muted',
+                    'disabled:opacity-50',
                     className
                 )
             )}

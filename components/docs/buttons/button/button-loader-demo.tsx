@@ -18,7 +18,7 @@ export default function ButtonLoaderDemo() {
     return (
         <Button
             isPending={loading === 'loading'}
-            variant={loading === 'success' ? 'success' : 'danger'}
+            variant={loading === 'success' ? 'primary' : 'danger'}
             onPress={onPress}
         >
             {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}

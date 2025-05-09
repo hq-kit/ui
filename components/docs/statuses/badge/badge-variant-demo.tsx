@@ -1,17 +1,15 @@
 'use client'
 
-import { titleCase } from 'usemods'
+import { Badge, badgeStyle } from '@/components/ui'
 
-import { Badge, badgeStyles } from '@/components/ui'
-
-type Appearance = keyof typeof badgeStyles.variants.variant
+type Appearance = keyof typeof badgeStyle.variants.variant
 
 export default function BadgeVariantDemo() {
     return (
         <div className='flex flex-col gap-2 md:flex-row md:flex-wrap'>
-            {Object.keys(badgeStyles.variants.variant).map((variant) => (
+            {Object.keys(badgeStyle.variants.variant).map((variant) => (
                 <div key={variant}>
-                    <Badge variant={variant as Appearance}>{titleCase(variant)}</Badge>
+                    <Badge variant={variant as Appearance}>{variant}</Badge>
                 </div>
             ))}
         </div>

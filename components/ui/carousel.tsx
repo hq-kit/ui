@@ -1,12 +1,21 @@
 'use client'
 
+import {
+    type ComponentPropsWithRef,
+    type KeyboardEvent,
+    createContext,
+    use,
+    useCallback,
+    useEffect,
+    useState
+} from 'react'
+
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { IconChevronLeft, IconChevronRight } from 'hq-icons'
 import type { ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
 import { Button, ListBox, ListBoxItem, ListBoxSection, composeRenderProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { type HTMLAttributes, type KeyboardEvent, createContext, use, useCallback, useEffect, useState } from 'react'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -40,7 +49,7 @@ interface CarouselRootProps {
     CarouselItem?: typeof CarouselItem
 }
 
-interface CarouselProps extends HTMLAttributes<HTMLDivElement>, CarouselRootProps {
+interface CarouselProps extends CarouselRootProps, ComponentPropsWithRef<'div'> {
     opts?: CarouselOptions
     plugins?: CarouselPlugin
     orientation?: 'horizontal' | 'vertical'
@@ -175,7 +184,7 @@ const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
     )
 }
 
-const CarouselHandler = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
+const CarouselHandler = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
     return (
         <div
@@ -190,19 +199,7 @@ const CarouselHandler = ({ className, ...props }: HTMLAttributes<HTMLDivElement>
             <Button
                 aria-label='Previous Slide'
                 data-handler='previous'
-                className={composeRenderProps(
-                    className,
-                    (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
-                        cn(
-                            'inline-flex size-8 items-center justify-center rounded-lg border bg-bg text-muted-fg outline-hidden',
-                            isHovered && 'bg-primary/40',
-                            isFocusVisible && 'ring-4 ring-primary/20',
-                            isPressed && 'bg-primary/50',
-                            isDisabled && 'opacity-50',
-                            orientation === 'vertical' ? 'rotate-90' : '',
-                            className
-                        )
-                )}
+                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
                 isDisabled={!canScrollPrev}
                 onPress={scrollPrev}
             >
@@ -211,19 +208,7 @@ const CarouselHandler = ({ className, ...props }: HTMLAttributes<HTMLDivElement>
             <Button
                 aria-label='Next Slide'
                 data-handler='next'
-                className={composeRenderProps(
-                    className,
-                    (className, { isPressed, isHovered, isFocusVisible, isDisabled }) =>
-                        cn(
-                            'inline-flex size-8 items-center justify-center rounded-lg border bg-bg text-muted-fg outline-hidden',
-                            isHovered && 'bg-primary/40',
-                            isFocusVisible && 'ring-4 ring-primary/20',
-                            isPressed && 'bg-primary/50',
-                            isDisabled && 'opacity-50',
-                            orientation === 'vertical' ? 'rotate-90' : '',
-                            className
-                        )
-                )}
+                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
                 isDisabled={!canScrollNext}
                 onPress={scrollNext}
             >

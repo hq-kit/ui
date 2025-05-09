@@ -7,14 +7,12 @@ import { cn } from '@/lib/utils'
 
 const DropZone = ({ className, ...props }: DropZoneProps) => (
     <RACDropZone
-        className={composeRenderProps(className, (className, { isDropTarget, isFocused, isFocusVisible }) =>
+        className={composeRenderProps(className, (className) =>
             cn(
                 'group flex max-h-[200px] max-w-xl flex-col items-center justify-center gap-2 rounded-lg border border-dashed p-6 text-sm outline-hidden transition duration-200 has-[[slot=description]]:text-center',
-                isDropTarget &&
-                    'border-primary border-solid bg-primary/10 ring-4 ring-primary/20 [&_.text-muted-fg]:text-primary',
-                isFocused &&
-                    'border-primary/70 outline-hidden ring-4 ring-primary/20 invalid:border-danger/70 invalid:ring-danger/20',
-                isFocusVisible && 'ring-4 ring-primary/20',
+                'drop-target:border-primary drop-target:border-solid drop-target:bg-ring/50 drop-target:ring-4 drop-target:ring-ring drop-target:[&_.text-muted-fg]:text-primary',
+                'focus:border-primary/70 focus:outline-hidden focus:ring-4 focus:ring-ring focus:invalid:border-danger/70 focus:invalid:ring-invalid',
+                'focus-visible:ring-4 focus-visible:ring-ring',
                 className
             )
         )}

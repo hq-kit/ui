@@ -1,7 +1,8 @@
 'use client'
 
-import type { Placement } from '@react-types/overlays'
 import type { ReactNode } from 'react'
+
+import type { Placement } from '@react-types/overlays'
 import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
 import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
 
@@ -9,7 +10,7 @@ import { ColorArea } from './color-area'
 import { ColorField } from './color-field'
 import { ColorSlider } from './color-slider'
 import { ColorSwatch } from './color-swatch'
-import { Description, Label } from './field'
+import { Description, Label } from './form'
 import { Popover, PopoverContent } from './popover'
 
 export interface ColorPickerProps extends RACColorPickerProps {

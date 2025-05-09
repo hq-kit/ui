@@ -44,22 +44,18 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
         <ListBoxItem
             isDisabled={props.isDisabled || slot === 'ellipsis'}
             textValue={textValue}
-            className={composeRenderProps(
-                className,
-                (className, { isHovered, isPressed, isSelected, isDisabled, isFocusVisible }) =>
-                    cn(
-                        'inline-flex size-10 items-center justify-center gap-x-2 whitespace-nowrap font-medium text-sm outline-hidden transition',
-                        'group-data-[shape=circle]:rounded-full group-data-[shape=square]:rounded-lg',
-                        isHovered && 'bg-primary/10 text-primary',
-                        isPressed && 'bg-primary/20 text-primary',
-                        isFocusVisible && 'border-primary ring-4 ring-primary/20',
-                        {
-                            'pointer-events-none bg-primary text-primary-fg': isCurrent || isSelected
-                        },
-                        isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
-                        slot !== 'ellipsis' && 'border',
-                        className
-                    )
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'inline-flex size-10 cursor-pointer items-center justify-center gap-x-2 whitespace-nowrap font-medium text-sm outline-hidden transition',
+                    'group-data-[shape=circle]:rounded-full group-data-[shape=square]:rounded-lg',
+                    'hover:bg-muted/40',
+                    'pressed:bg-muted/50',
+                    'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
+                    'selected:pointer-events-none selected:bg-primary selected:text-primary-fg',
+                    'cursor-default opacity-50',
+                    slot !== 'ellipsis' && 'border',
+                    className
+                )
             )}
             {...props}
         >

@@ -65,7 +65,7 @@ import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexi
 
 import { cn } from '@/lib/utils'
 import { Button } from './button'
-import { Description, FieldError, Label } from './field'
+import { Description, FieldError, Label } from './form'
 import { Menu } from './menu'
 import { Toolbar } from './toolbar'
 
@@ -130,8 +130,8 @@ const RichTextField = ({
                                         disabled={isDisabled}
                                         className={cn(
                                             'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base outline-none transition focus:outline-none sm:text-sm',
-                                            'focus:border-primary/70 focus:ring-4 focus:ring-primary/20',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            'focus:border-primary/70 focus:ring-4 focus:ring-ring',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-invalid',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
@@ -160,7 +160,7 @@ const RichTextField = ({
                                         className={cn(
                                             'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base shadow-sm outline-none transition focus:outline-none sm:text-sm',
                                             'focus:border-primary/70 focus:ring-4 focus:ring-primary/20',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-danger/20',
+                                            'invalid:border-danger invalid:ring-4 invalid:ring-invalid',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />

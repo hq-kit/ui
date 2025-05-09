@@ -1,14 +1,13 @@
-import type { ReactNode } from 'react'
-
+import { AppNavbar } from '@/components/layouts/app-navbar'
 import { Footer } from '@/components/layouts/footer'
-import { Navbar } from '@/components/layouts/navbar'
 import { ThemeCustomizer } from '@/components/theme-customizer'
+import type { ReactNode } from 'react'
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
     return (
         <>
             <ThemeCustomizer />
-            <Navbar />
+            <AppNavbar />
             {children}
             <Footer />
         </>

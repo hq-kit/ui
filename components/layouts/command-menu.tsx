@@ -1,8 +1,9 @@
 'use client'
 
+import { Fragment, useEffect } from 'react'
+
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { usePathname } from 'next/navigation'
-import { Fragment, useEffect } from 'react'
 
 import { Command } from '@/components/ui'
 

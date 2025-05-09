@@ -1,9 +1,10 @@
 'use client'
 
+import { Fragment, type HTMLAttributes, Suspense } from 'react'
+
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import { IconLoaderCircle } from 'hq-icons'
-import { Fragment, type HTMLAttributes, Suspense } from 'react'
 
 import { Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -28,7 +29,7 @@ export function Demo({ component, center = false, ...props }: DemoProps) {
                 <Tabs.Content id='preview'>
                     <div
                         className={cn(
-                            'not-prose relative w-full gap-4 overflow-auto rounded-lg border border-muted border-dashed bg-bg p-6',
+                            'not-prose **:not-prose relative w-full gap-4 overflow-auto rounded-lg border border-muted border-dashed bg-bg p-6',
                             center && 'grid min-h-20 place-content-center py-6 sm:py-12'
                         )}
                     >

@@ -79,7 +79,6 @@ export default async function DocsPage(props: Props) {
                         {doc.description && <p className='mt-2.5 text-base leading-relaxed'>{doc.description}</p>}
                         {doc.references && <DocRefs references={doc.references} />}
                     </div>
-                    <TableOfContents className='mt-8 block xl:hidden' items={doc.toc} />
                     <MDXContent code={doc.body} />
                 </main>
             </div>
