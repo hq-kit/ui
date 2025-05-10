@@ -7,24 +7,23 @@
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/controls/context-menu/context-menu-respect-screen-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/copy-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/copy-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-snippet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-snippet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layouts/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/aside.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/combo-box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/combo-box.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/command.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/command.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/context-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/context-menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/list-box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/list-box.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/meter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/meter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/note.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/note.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/switch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/switch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/styles/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/multi-select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/multi-select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/controls/context-menu.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/controls/context-menu.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,7 @@
       <workItem from="1746786937064" duration="8252000" />
       <workItem from="1746811963823" duration="5023000" />
       <workItem from="1746847975805" duration="6806000" />
-      <workItem from="1746890106144" duration="9969000" />
+      <workItem from="1746890106144" duration="13937000" />
     </task>
     <servers />
   </component>

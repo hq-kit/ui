@@ -17,7 +17,7 @@ import {
 import type { MenuProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Menu } from './menu'
+import { Menu, MenuContent } from './menu'
 
 interface ContextMenuContextProps {
     triggerRef: RefObject<HTMLDivElement | null>
@@ -57,11 +57,13 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
 }
 
 const ContextMenuTrigger = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    const { triggerRef, setContextMenuOffset } = useContextMenu()
+    const { setContextMenuOffset, triggerRef } = useContextMenu()
+    const areaRef = useRef<HTMLDivElement>(null)
 
     const onContextMenu = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault()
         const rect = e.currentTarget.getBoundingClientRect()
+        triggerRef.current = areaRef.current
         setContextMenuOffset({
             offset: e.clientY - rect.bottom,
             crossOffset: e.clientX - rect.left
@@ -69,32 +71,27 @@ const ContextMenuTrigger = ({ className, ...props }: ComponentPropsWithRef<'div'
     }
     return (
         <div
-            className={cn('cursor-default select-none outline-hidden disabled:opacity-50', className)}
-            ref={triggerRef}
+            className={cn('relative cursor-default select-none outline-hidden disabled:opacity-50', className)}
             aria-haspopup='menu'
+            ref={areaRef}
             onContextMenu={onContextMenu}
             {...props}
         />
     )
 }
 
-interface ContextMenuContentProps<T>
-    extends Omit<
-        MenuProps<T>,
-        'showArrow' | 'isOpen' | 'onOpenChange' | 'triggerRef' | 'placement' | 'shouldFlip' | 'className'
-    > {
-    respectScreen?: boolean
-    className?: string
-}
+type ContextMenuContentProps<T> = Omit<
+    MenuProps<T>,
+    'showArrow' | 'isOpen' | 'onOpenChange' | 'triggerRef' | 'placement' | 'shouldFlip' | 'className'
+>
 
 const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProps<T>, 'style'>) => {
     const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
-        <Menu.Content
-            respectScreen={props.respectScreen}
+        <MenuContent
             aria-label={props['aria-label'] ?? 'Context Menu'}
             isOpen={!!contextMenuOffset}
-            offset={contextMenuOffset?.offset}
+            offset={contextMenuOffset?.offset ?? 0}
             crossOffset={contextMenuOffset?.crossOffset}
             triggerRef={triggerRef}
             placement='bottom left'
@@ -107,6 +104,7 @@ const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProp
 
 ContextMenu.Trigger = ContextMenuTrigger
 ContextMenu.Content = ContextMenuContent
+
 ContextMenu.Item = Menu.Item
 ContextMenu.Label = Menu.Label
 ContextMenu.Separator = Menu.Separator

@@ -187,7 +187,6 @@ export const previews: Record<string, { component: LazyExoticComponent<() => Rea
 "controls/context-menu/context-menu-danger-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-danger-demo")) },
 "controls/context-menu/context-menu-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-demo")) },
 "controls/context-menu/context-menu-separator-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-separator-demo")) },
-"controls/context-menu/context-menu-respect-screen-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-respect-screen-demo")) },
 "controls/context-menu/context-menu-disabled-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-disabled-demo")) },
 "controls/context-menu/context-menu-with-icon-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-with-icon-demo")) },
 "controls/context-menu/context-menu-item-details-demo": { component: lazy(() => import("@/components/docs/controls/context-menu/context-menu-item-details-demo")) },

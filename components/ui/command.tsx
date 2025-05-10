@@ -6,10 +6,10 @@ import { IconLoader, IconSearch } from 'hq-icons'
 import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
 import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'
 
-import { ModalContent } from '@/components/ui/modal'
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { Keyboard } from './keyboard'
 import { MenuItem, MenuLabel, MenuSection, MenuSeparator } from './menu'
+import { ModalContent } from './modal'
 
 interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputValue' | 'onInputChange'> {
     isPending?: boolean

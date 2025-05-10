@@ -16,10 +16,10 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { PopoverContent } from '@/components/ui/popover'
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxLabel, ListBoxSection } from './list-box'
+import { PopoverContent } from './popover'
 
 interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'children'>, FieldProps {
     className?: string

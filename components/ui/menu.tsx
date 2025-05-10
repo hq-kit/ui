@@ -24,15 +24,8 @@ import {
     useSlottedContext
 } from 'react-aria-components'
 
-import {
-    ListBoxDetails,
-    ListBoxLabel,
-    ListBoxSeparator,
-    headerStyle,
-    itemStyle,
-    sectionStyle
-} from '@/components/ui/list-box'
 import { cn } from '@/lib/utils'
+import { ListBoxDetails, ListBoxLabel, ListBoxSeparator, headerStyle, itemStyle, sectionStyle } from './list-box'
 import { PopoverContent } from './popover'
 
 const Menu = ({ ...props }: MenuTriggerProps) => <RACMenuTrigger {...props} />
@@ -60,7 +53,12 @@ const MenuContent = <T extends object>({ className, respectScreen = true, ...pro
     const isSubmenuTrigger = popoverContext?.trigger === 'SubmenuTrigger'
     const optimalOffset = isSubmenuTrigger ? 0 : 8
     return (
-        <PopoverContent respectScreen={respectScreen} offset={props.offset ?? optimalOffset} {...props}>
+        <PopoverContent
+            showArrow={false}
+            respectScreen={respectScreen}
+            offset={props.offset ?? optimalOffset}
+            {...props}
+        >
             <RACMenu
                 className={cn(
                     'grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr_auto] overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit] sm:min-w-40',
@@ -144,4 +142,5 @@ Menu.Details = MenuDetails
 Menu.Label = MenuLabel
 Menu.Separator = MenuSeparator
 
-export { Menu, MenuItem, MenuSection, MenuLabel, MenuSeparator, MenuDetails }
+export { Menu, MenuItem, MenuContent, MenuSection, MenuLabel, MenuSeparator, MenuDetails }
+export type { MenuContentProps }

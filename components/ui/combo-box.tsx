@@ -12,10 +12,10 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { PopoverContent } from '@/components/ui/popover'
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxSection } from './list-box'
+import { PopoverContent } from './popover'
 
 interface ComboBoxProps<T extends object> extends Omit<RACComboboxProps<T>, 'children'>, FieldProps {
     children: ReactNode | ((item: T) => ReactNode)

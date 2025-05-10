@@ -986,6 +986,257 @@
     "body": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(o){const t={a:\"a\",h2:\"h2\",span:\"span\",...o.components},{Demo:c}=t;return c||function(n,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}(\"Demo\",!0),e(n,{children:[e(t.h2,{id:\"default\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#default\",children:a(t.span,{className:\"icon icon-link\"})}),\"Default\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-default-demo\"}),\"\\n\",e(t.h2,{id:\"icons\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#icons\",children:a(t.span,{className:\"icon icon-link\"})}),\"Icons\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-icons-demo\"}),\"\\n\",e(t.h2,{id:\"custom-label\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#custom-label\",children:a(t.span,{className:\"icon icon-link\"})}),\"Custom Label\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-custom-label-demo\"}),\"\\n\",e(t.h2,{id:\"formatter\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#formatter\",children:a(t.span,{className:\"icon icon-link\"})}),\"Formatter\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-formatter-demo\"}),\"\\n\",e(t.h2,{id:\"label-formatter\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#label-formatter\",children:a(t.span,{className:\"icon icon-link\"})}),\"Label Formatter\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-label-formatter-demo\"}),\"\\n\",e(t.h2,{id:\"line-indicator\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#line-indicator\",children:a(t.span,{className:\"icon icon-link\"})}),\"Line Indicator\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-line-indicator-demo\"}),\"\\n\",e(t.h2,{id:\"no-indicator\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#no-indicator\",children:a(t.span,{className:\"icon icon-link\"})}),\"No Indicator\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-no-indicator-demo\"}),\"\\n\",e(t.h2,{id:\"no-label\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#no-label\",children:a(t.span,{className:\"icon icon-link\"})}),\"No Label\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-no-label-demo\"}),\"\\n\",e(t.h2,{id:\"advanced\",children:[a(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#advanced\",children:a(t.span,{className:\"icon icon-link\"})}),\"Advanced\"]}),\"\\n\",a(c,{center:!0,className:\"w-full\",component:\"charts/tooltip/tooltip-chart-advance-demo\"})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};"
   },
   {
+    "slug": "components/colors/color-area",
+    "title": "Color Area",
+    "description": "A color area lets users tweak two channels of an RGB, HSL, or HSB color against a 2D gradient backdrop.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Channel",
+        "url": "#channel",
+        "items": []
+      },
+      {
+        "title": "Space",
+        "url": "#space",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Color Area with Slider",
+        "url": "#color-area-with-slider",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorArea.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(o){const c={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...o.components},{Demo:r,Install:l}=c;return r||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),a(e,{children:[a(c.h2,{id:\"installation\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(c.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"color-area\"}),\"\\n\",a(c.h2,{id:\"basic\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(c.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-demo\"}),\"\\n\",a(c.h2,{id:\"channel\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#channel\",children:n(c.span,{className:\"icon icon-link\"})}),\"Channel\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-channel-demo\"}),\"\\n\",a(c.h2,{id:\"space\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#space\",children:n(c.span,{className:\"icon icon-link\"})}),\"Space\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-space-demo\"}),\"\\n\",a(c.h2,{id:\"controlled\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(c.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(c.p,{children:[\"Control the color area by specifying channels for the horizontal (\",n(c.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(c.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(c.span,{\"data-line\":\"\",children:n(c.span,{children:\"xChannel\"})})})}),\") and vertical (\",n(c.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(c.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(c.span,{\"data-line\":\"\",children:n(c.span,{children:\"yChannel\"})})})}),\") axes.\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-controlled-demo\"}),\"\\n\",a(c.h2,{id:\"color-area-with-slider\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#color-area-with-slider\",children:n(c.span,{className:\"icon icon-link\"})}),\"Color Area with Slider\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-with-slider-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-field",
+    "title": "Color Field",
+    "description": "A color field allows users to adjust a hex color or fine-tune individual color channels, offering precise control over color customization.",
+    "published": true,
+    "order": 2,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Prefix Suffix",
+        "url": "#prefix-suffix",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorField.html"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(l){const a={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Demo:r,Install:c}=a;return r||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),o(e,{children:[o(a.h2,{id:\"installation\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"color-field\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-demo\"}),\"\\n\",o(a.h2,{id:\"prefix-suffix\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#prefix-suffix\",children:n(a.span,{className:\"icon icon-link\"})}),\"Prefix Suffix\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-with-prefix-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-controlled-demo\"}),\"\\n\",o(a.p,{children:[\"You can typically click the color swatch to open the color picker. To disable this feature, set \",n(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(a.span,{\"data-line\":\"\",children:n(a.span,{children:\"enableColorPicker\"})})})}),\" to false.\"]}),\"\\n\",n(a.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(a.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(a.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:o(a.span,{\"data-line\":\"\",children:[n(a.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(a.span,{style:{color:\"#7EE787\"},children:\"ColorField\"}),n(a.span,{style:{color:\"#79C0FF\"},children:\" withPicker\"}),n(a.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(a.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(a.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(a.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-picker",
+    "title": "Color Picker",
+    "description": "A Color Picker keeps color values in sync across React Aria color components. It makes building color pickers with custom layouts a breeze through composition.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Enable Format Selection",
+        "url": "#enable-format-selection",
+        "items": []
+      },
+      {
+        "title": "Combination",
+        "url": "#combination",
+        "items": []
+      },
+      {
+        "title": "Label",
+        "url": "#label",
+        "items": []
+      },
+      {
+        "title": "Dynamic Label",
+        "url": "#dynamic-label",
+        "items": []
+      },
+      {
+        "title": "Description",
+        "url": "#description",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorPicker.html"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(c){const i={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...c.components},{Demo:a,Install:l}=i;return a||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),o(e,{children:[o(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"color-picker\"}),\"\\n\",o(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-demo\"}),\"\\n\",o(i.h2,{id:\"enable-format-selection\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#enable-format-selection\",children:n(i.span,{className:\"icon icon-link\"})}),\"Enable Format Selection\"]}),\"\\n\",n(i.p,{children:\"Enable users to select the format of the color value (e.g., RGB, HSL).\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-enable-selection-format-demo\"}),\"\\n\",o(i.h2,{id:\"combination\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#combination\",children:n(i.span,{className:\"icon icon-link\"})}),\"Combination\"]}),\"\\n\",n(i.p,{children:\"Combine both swatch and selection format options in the color picker.\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-combination-demo\"}),\"\\n\",o(i.h2,{id:\"label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#label\",children:n(i.span,{className:\"icon icon-link\"})}),\"Label\"]}),\"\\n\",n(i.p,{children:\"Add a label to the color picker for better accessibility and user guidance.\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-with-label-demo\"}),\"\\n\",o(i.h2,{id:\"dynamic-label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dynamic-label\",children:n(i.span,{className:\"icon icon-link\"})}),\"Dynamic Label\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-dynamic-label-demo\"}),\"\\n\",o(i.h2,{id:\"description\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#description\",children:n(i.span,{className:\"icon icon-link\"})}),\"Description\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-with-description-demo\"}),\"\\n\",o(i.h2,{id:\"controlled\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(i.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-controlled-demo\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-slider",
+    "title": "Color Slider",
+    "description": "Slide through gradients, picking the intensity or shade you need, as smoothly as sliding into your favorite jeans.",
+    "published": true,
+    "order": 4,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "With Label",
+        "url": "#with-label",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorSlider.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(a){const i={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:l,Install:r}=i;return l||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),o(e,{children:[o(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(r,{component:\"color-slider\"}),\"\\n\",o(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-demo\"}),\"\\n\",o(i.h2,{id:\"with-label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-label\",children:n(i.span,{className:\"icon icon-link\"})}),\"With Label\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-with-label-demo\"}),\"\\n\",o(i.h2,{id:\"orientation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",o(i.p,{children:[\"By default, the color slider is horizontal. You can change it to vertical by setting the \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{children:\"orientation\"})})})}),\" prop to \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{children:\"vertical\"})})})}),\".\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-vertical-demo\"}),\"\\n\",o(i.h2,{id:\"controlled\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(i.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-controlled-demo\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-swatch-picker",
+    "title": "Color Swatch Picker",
+    "description": "A Color Swatch Picker keeps color values in sync across React Aria color components. It makes building color pickers with custom layouts a breeze through composition.",
+    "published": true,
+    "order": 6,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Disabled",
+        "url": "#disabled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorSwatchPicker.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(c){const a={a:\"a\",h2:\"h2\",span:\"span\",...c.components},{Demo:i,Install:s}=a;return i||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"color-swatch-picker\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-picker-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-controlled-demo\"}),\"\\n\",o(a.h2,{id:\"disabled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-picker-item-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-swatch",
+    "title": "Color Swatch",
+    "description": "A visual lineup of colors, letting you pick with a click, just like choosing your next outfit from your wardrobe.",
+    "published": true,
+    "order": 5,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorSwatch.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(t){const a={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:c,Install:s}=a;return c||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"color-swatch\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(c,{center:!0,component:\"colors/color-swatch/color-swatch-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/colors/color-wheel",
+    "title": "Color Wheel",
+    "description": "Spin through the color spectrum on this wheel, picking hues like a game show contestant spins for a prize—fun and functional.",
+    "published": true,
+    "order": 7,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ColorWheel.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(c){const a={a:\"a\",h2:\"h2\",span:\"span\",...c.components},{Demo:l,Install:t}=a;return l||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(t,{component:\"color-wheel\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-controlled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
     "slug": "components/collections/accordion",
     "title": "Accordion",
     "description": "Accordion is a vertical stack of headers that expand or collapse to show or hide content, providing an organized, user-friendly way to manage information.",
@@ -1405,257 +1656,6 @@
     "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(i){const c={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:a,Install:l}=c;return a||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),o(e,{children:[o(c.h2,{id:\"installation\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(c.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"tree\"}),\"\\n\",o(c.h2,{id:\"basic\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(c.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-demo\"}),\"\\n\",o(c.h2,{id:\"selection-mode\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#selection-mode\",children:n(c.span,{className:\"icon icon-link\"})}),\"Selection Mode\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-selection-mode-demo\"}),\"\\n\",o(c.h2,{id:\"with-icon\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-icon\",children:n(c.span,{className:\"icon icon-link\"})}),\"With Icon\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-with-icon-demo\"}),\"\\n\",o(c.h2,{id:\"collections\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:n(c.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-collections-demo\"}),\"\\n\",o(c.h2,{id:\"controlled\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(c.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-controlled-demo\"}),\"\\n\",o(c.h2,{id:\"disabled\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:n(c.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",n(a,{component:\"collections/tree/tree-disabled-demo\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
-    "slug": "components/colors/color-area",
-    "title": "Color Area",
-    "description": "A color area lets users tweak two channels of an RGB, HSL, or HSB color against a 2D gradient backdrop.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Channel",
-        "url": "#channel",
-        "items": []
-      },
-      {
-        "title": "Space",
-        "url": "#space",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Color Area with Slider",
-        "url": "#color-area-with-slider",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorArea.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(o){const c={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...o.components},{Demo:r,Install:l}=c;return r||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),a(e,{children:[a(c.h2,{id:\"installation\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(c.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"color-area\"}),\"\\n\",a(c.h2,{id:\"basic\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(c.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-demo\"}),\"\\n\",a(c.h2,{id:\"channel\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#channel\",children:n(c.span,{className:\"icon icon-link\"})}),\"Channel\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-channel-demo\"}),\"\\n\",a(c.h2,{id:\"space\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#space\",children:n(c.span,{className:\"icon icon-link\"})}),\"Space\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-space-demo\"}),\"\\n\",a(c.h2,{id:\"controlled\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(c.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(c.p,{children:[\"Control the color area by specifying channels for the horizontal (\",n(c.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(c.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(c.span,{\"data-line\":\"\",children:n(c.span,{children:\"xChannel\"})})})}),\") and vertical (\",n(c.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(c.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(c.span,{\"data-line\":\"\",children:n(c.span,{children:\"yChannel\"})})})}),\") axes.\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-controlled-demo\"}),\"\\n\",a(c.h2,{id:\"color-area-with-slider\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#color-area-with-slider\",children:n(c.span,{className:\"icon icon-link\"})}),\"Color Area with Slider\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-area/color-area-with-slider-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-field",
-    "title": "Color Field",
-    "description": "A color field allows users to adjust a hex color or fine-tune individual color channels, offering precise control over color customization.",
-    "published": true,
-    "order": 2,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Prefix Suffix",
-        "url": "#prefix-suffix",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorField.html"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(l){const a={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Demo:r,Install:c}=a;return r||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),o(e,{children:[o(a.h2,{id:\"installation\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"color-field\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-demo\"}),\"\\n\",o(a.h2,{id:\"prefix-suffix\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#prefix-suffix\",children:n(a.span,{className:\"icon icon-link\"})}),\"Prefix Suffix\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-with-prefix-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[n(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(r,{center:!0,component:\"colors/color-field/color-field-controlled-demo\"}),\"\\n\",o(a.p,{children:[\"You can typically click the color swatch to open the color picker. To disable this feature, set \",n(a.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(a.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(a.span,{\"data-line\":\"\",children:n(a.span,{children:\"enableColorPicker\"})})})}),\" to false.\"]}),\"\\n\",n(a.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(a.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(a.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:o(a.span,{\"data-line\":\"\",children:[n(a.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(a.span,{style:{color:\"#7EE787\"},children:\"ColorField\"}),n(a.span,{style:{color:\"#79C0FF\"},children:\" withPicker\"}),n(a.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(a.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(a.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(a.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-picker",
-    "title": "Color Picker",
-    "description": "A Color Picker keeps color values in sync across React Aria color components. It makes building color pickers with custom layouts a breeze through composition.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Enable Format Selection",
-        "url": "#enable-format-selection",
-        "items": []
-      },
-      {
-        "title": "Combination",
-        "url": "#combination",
-        "items": []
-      },
-      {
-        "title": "Label",
-        "url": "#label",
-        "items": []
-      },
-      {
-        "title": "Dynamic Label",
-        "url": "#dynamic-label",
-        "items": []
-      },
-      {
-        "title": "Description",
-        "url": "#description",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorPicker.html"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(c){const i={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...c.components},{Demo:a,Install:l}=i;return a||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),o(e,{children:[o(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"color-picker\"}),\"\\n\",o(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-demo\"}),\"\\n\",o(i.h2,{id:\"enable-format-selection\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#enable-format-selection\",children:n(i.span,{className:\"icon icon-link\"})}),\"Enable Format Selection\"]}),\"\\n\",n(i.p,{children:\"Enable users to select the format of the color value (e.g., RGB, HSL).\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-enable-selection-format-demo\"}),\"\\n\",o(i.h2,{id:\"combination\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#combination\",children:n(i.span,{className:\"icon icon-link\"})}),\"Combination\"]}),\"\\n\",n(i.p,{children:\"Combine both swatch and selection format options in the color picker.\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-combination-demo\"}),\"\\n\",o(i.h2,{id:\"label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#label\",children:n(i.span,{className:\"icon icon-link\"})}),\"Label\"]}),\"\\n\",n(i.p,{children:\"Add a label to the color picker for better accessibility and user guidance.\"}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-with-label-demo\"}),\"\\n\",o(i.h2,{id:\"dynamic-label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dynamic-label\",children:n(i.span,{className:\"icon icon-link\"})}),\"Dynamic Label\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-dynamic-label-demo\"}),\"\\n\",o(i.h2,{id:\"description\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#description\",children:n(i.span,{className:\"icon icon-link\"})}),\"Description\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-with-description-demo\"}),\"\\n\",o(i.h2,{id:\"controlled\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(i.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(a,{center:!0,component:\"colors/color-picker/color-picker-controlled-demo\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-slider",
-    "title": "Color Slider",
-    "description": "Slide through gradients, picking the intensity or shade you need, as smoothly as sliding into your favorite jeans.",
-    "published": true,
-    "order": 4,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "With Label",
-        "url": "#with-label",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorSlider.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(a){const i={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:l,Install:r}=i;return l||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),o(e,{children:[o(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(r,{component:\"color-slider\"}),\"\\n\",o(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-demo\"}),\"\\n\",o(i.h2,{id:\"with-label\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-label\",children:n(i.span,{className:\"icon icon-link\"})}),\"With Label\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-with-label-demo\"}),\"\\n\",o(i.h2,{id:\"orientation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",o(i.p,{children:[\"By default, the color slider is horizontal. You can change it to vertical by setting the \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{children:\"orientation\"})})})}),\" prop to \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{children:\"vertical\"})})})}),\".\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-vertical-demo\"}),\"\\n\",o(i.h2,{id:\"controlled\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(i.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(l,{center:!0,component:\"colors/color-slider/color-slider-controlled-demo\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-swatch-picker",
-    "title": "Color Swatch Picker",
-    "description": "A Color Swatch Picker keeps color values in sync across React Aria color components. It makes building color pickers with custom layouts a breeze through composition.",
-    "published": true,
-    "order": 6,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Disabled",
-        "url": "#disabled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorSwatchPicker.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(c){const a={a:\"a\",h2:\"h2\",span:\"span\",...c.components},{Demo:i,Install:s}=a;return i||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"color-swatch-picker\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-picker-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-controlled-demo\"}),\"\\n\",o(a.h2,{id:\"disabled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(i,{center:!0,component:\"colors/color-swatch/color-swatch-picker-item-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-swatch",
-    "title": "Color Swatch",
-    "description": "A visual lineup of colors, letting you pick with a click, just like choosing your next outfit from your wardrobe.",
-    "published": true,
-    "order": 5,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorSwatch.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(t){const a={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:c,Install:s}=a;return c||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"color-swatch\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(c,{center:!0,component:\"colors/color-swatch/color-swatch-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/colors/color-wheel",
-    "title": "Color Wheel",
-    "description": "Spin through the color spectrum on this wheel, picking hues like a game show contestant spins for a prize—fun and functional.",
-    "published": true,
-    "order": 7,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ColorWheel.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(c){const a={a:\"a\",h2:\"h2\",span:\"span\",...c.components},{Demo:l,Install:t}=a;return l||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(t,{component:\"color-wheel\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-controlled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
     "slug": "components/controls/command",
     "title": "Command",
     "description": "A command is like a button with a twist, it opens a menu of options. It's a cooler version of a combobox, ideal for command palettes, menus, and more.",
@@ -1727,11 +1727,6 @@
         "items": []
       },
       {
-        "title": "Respect Screen",
-        "url": "#respect-screen",
-        "items": []
-      },
-      {
         "title": "Item Details",
         "url": "#item-details",
         "items": []
@@ -1757,7 +1752,7 @@
         "items": []
       }
     ],
-    "body": "const{Fragment:n,jsx:e,jsxs:c}=arguments[0];function _createMdxContent(a){const o={a:\"a\",h2:\"h2\",span:\"span\",...a.components},{Demo:t,Install:i}=o;return t||_missingMdxReference(\"Demo\",!0),i||_missingMdxReference(\"Install\",!0),c(n,{children:[c(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(i,{component:\"context-menu\"}),\"\\n\",c(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-demo\"}),\"\\n\",c(o.h2,{id:\"respect-screen\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#respect-screen\",children:e(o.span,{className:\"icon icon-link\"})}),\"Respect Screen\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-respect-screen-demo\"}),\"\\n\",c(o.h2,{id:\"item-details\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#item-details\",children:e(o.span,{className:\"icon icon-link\"})}),\"Item Details\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-item-details-demo\"}),\"\\n\",c(o.h2,{id:\"danger\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#danger\",children:e(o.span,{className:\"icon icon-link\"})}),\"Danger\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-danger-demo\"}),\"\\n\",c(o.h2,{id:\"with-icon\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-icon\",children:e(o.span,{className:\"icon icon-link\"})}),\"With Icon\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-with-icon-demo\"}),\"\\n\",c(o.h2,{id:\"separator\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#separator\",children:e(o.span,{className:\"icon icon-link\"})}),\"Separator\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-separator-demo\"}),\"\\n\",c(o.h2,{id:\"disabled\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(o.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(t,{center:!0,component:\"controls/context-menu/context-menu-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:c}=n.components||{};return c?e(c,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(o){const t={a:\"a\",h2:\"h2\",span:\"span\",...o.components},{Demo:c,Install:i}=t;return c||_missingMdxReference(\"Demo\",!0),i||_missingMdxReference(\"Install\",!0),a(n,{children:[a(t.h2,{id:\"installation\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(i,{component:\"context-menu\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-demo\"}),\"\\n\",a(t.h2,{id:\"item-details\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#item-details\",children:e(t.span,{className:\"icon icon-link\"})}),\"Item Details\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-item-details-demo\"}),\"\\n\",a(t.h2,{id:\"danger\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#danger\",children:e(t.span,{className:\"icon icon-link\"})}),\"Danger\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-danger-demo\"}),\"\\n\",a(t.h2,{id:\"with-icon\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-icon\",children:e(t.span,{className:\"icon icon-link\"})}),\"With Icon\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-with-icon-demo\"}),\"\\n\",a(t.h2,{id:\"separator\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#separator\",children:e(t.span,{className:\"icon icon-link\"})}),\"Separator\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-separator-demo\"}),\"\\n\",a(t.h2,{id:\"disabled\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(t.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(c,{center:!0,component:\"controls/context-menu/context-menu-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
     "slug": "components/controls/keyboard",
@@ -2143,281 +2138,6 @@
       "https://react-spectrum.adobe.com/react-aria/DropZone.html#props"
     ],
     "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(t){const r={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...t.components},{Demo:o,Install:d}=r;return o||_missingMdxReference(\"Demo\",!0),d||_missingMdxReference(\"Install\",!0),a(e,{children:[a(r.h2,{id:\"installation\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(r.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(d,{component:\"drop-zone\"}),\"\\n\",a(r.h2,{id:\"basic\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(r.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(r.p,{children:[\"DropZone provides support for mouse, keyboard, and touch interactions. Simply connect the \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onDrop\"})})})}),\" prop to handle all the drop actions. Additionally, you will receive real-time updates through \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onDropEnter\"})})})}),\", \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onDropMove\"})})})}),\", and \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onDropExit\"})})})}),\" events as users interact with the drop zone.\"]}),\"\\n\",n(o,{center:!0,component:\"drag-and-drop/drop-zone-demo\"}),\"\\n\",a(r.h2,{id:\"using-filetrigger\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#using-filetrigger\",children:n(r.span,{className:\"icon icon-link\"})}),\"Using FileTrigger\"]}),\"\\n\",a(r.p,{children:[\"The \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"FileTrigger\"})})})}),\" component can be used to select files from the file system, making it an excellent tool for managing files that have been dragged and dropped into the browser.\"]}),\"\\n\",n(o,{center:!0,component:\"drag-and-drop/drop-zone-and-file-trigger-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/layouts/navbar",
-    "title": "Navbar",
-    "description": "A navbar is a component that helps you organize your content and navigation in a consistent way.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Variant",
-        "url": "#variant",
-        "items": [
-          {
-            "title": "Navbar",
-            "url": "#navbar",
-            "items": []
-          },
-          {
-            "title": "Float",
-            "url": "#float",
-            "items": []
-          },
-          {
-            "title": "Inset",
-            "url": "#inset",
-            "items": []
-          }
-        ]
-      },
-      {
-        "title": "Sticky",
-        "url": "#sticky",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": [
-          {
-            "title": "Inertia.js",
-            "url": "#inertiajs",
-            "items": []
-          },
-          {
-            "title": "Next.js",
-            "url": "#nextjs",
-            "items": []
-          }
-        ]
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Link.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(l){const r={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Block:t,Install:c}=r;return t||_missingMdxReference(\"Block\",!0),c||_missingMdxReference(\"Install\",!0),a(e,{children:[a(r.h2,{id:\"installation\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(r.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"navbar\"}),\"\\n\",a(r.h2,{id:\"basic\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(r.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-basic-demo\"}),\"\\n\",a(r.h2,{id:\"variant\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:n(r.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",a(r.p,{children:[\"There are three types of variants: \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"navbar\"})})})}),\", \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"float\"})})})}),\", and \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"inset\"})})})}),\", each with distinct behaviors.\"]}),\"\\n\",a(r.h3,{id:\"navbar\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#navbar\",children:n(r.span,{className:\"icon icon-link\"})}),\"Navbar\"]}),\"\\n\",a(r.p,{children:[\"The default variant of the navbar is \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"navbar\"})})})}),\". You can change it to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"float\"})})})}),\" or \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"inset\"})})})}),\" by setting the \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"variant\"})})})}),\" prop.\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-basic-demo\"}),\"\\n\",a(r.h3,{id:\"float\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#float\",children:n(r.span,{className:\"icon icon-link\"})}),\"Float\"]}),\"\\n\",n(r.p,{children:\"The float variant will have a border inside the navbar itself, the wrapper will have a padding to the content.\"}),\"\\n\",n(t,{page:\"block/navbar/navbar-floating-demo\"}),\"\\n\",a(r.h3,{id:\"inset\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inset\",children:n(r.span,{className:\"icon icon-link\"})}),\"Inset\"]}),\"\\n\",a(r.p,{children:[\"The inset one will have the padding to inset main content. You can of course see what's going on the demo, but you can also see the \",n(r.a,{href:\"/block/navbar/navbar-03\",children:\"live example here\"}),\".\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-inset-demo\"}),\"\\n\",a(r.h2,{id:\"sticky\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#sticky\",children:n(r.span,{className:\"icon icon-link\"})}),\"Sticky\"]}),\"\\n\",a(r.p,{children:[\"You also make the navbar sticky by setting the \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isSticky\"})})})}),\" prop to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"true\"})})})}),\".\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isSticky\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})}),\"\\n\",a(r.h2,{id:\"controlled\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(r.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(r.p,{children:[\"On mobile devices, the navbar is hidden by default. You can open it using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"Navbar.Trigger\"})})})}),\", but there are times when you might want to manage its state by clicking one of the links within the navbar. You can achieve this because it shares the sheet properties, specifically \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isOpen\"})})})}),\" and \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onOpenChange\"})})})}),\". There are multiple ways to control the state, but the simplest method is to listen for path changes and set \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isOpen\"})})})}),\" to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"true\"})})})}),\" or \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"false\"})})})}),\" accordingly.\"]}),\"\\n\",a(r.h3,{id:\"inertiajs\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inertiajs\",children:n(r.span,{className:\"icon icon-link\"})}),\"Inertia.js\"]}),\"\\n\",a(r.p,{children:[\"When you are using inertia.js, you can listen the path by using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"usePage\"})})})}),\" hooks.\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"import\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" { usePage } \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"from\"}),n(r.span,{style:{color:\"#A5D6FF\"},children:\" '@inertiajs/react'\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\";\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"export\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" function\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" AppNavbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"({ \"}),n(r.span,{style:{color:\"#FFA657\"},children:\"children\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"...\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"props\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" }\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\":\"}),n(r.span,{style:{color:\"#FFA657\"},children:\" React\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\".\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"ComponentProps\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"typeof\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" Navbar>) {\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" page\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" =\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" usePage\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"();\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\");\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"  React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useEffect\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(() \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=>\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"), [page.url]);\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" {...\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"props\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})}),\"\\n\",a(r.h3,{id:\"nextjs\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#nextjs\",children:n(r.span,{className:\"icon icon-link\"})}),\"Next.js\"]}),\"\\n\",a(r.p,{children:[\"On next.js, you can listen the path by using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"usePathname\"})})})}),\" hooks.\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"import\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" { usePathname } \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"from\"}),n(r.span,{style:{color:\"#A5D6FF\"},children:' \"next/navigation\"'})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"export\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" function\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" AppNavbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"({ \"}),n(r.span,{style:{color:\"#FFA657\"},children:\"children\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"...\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"props\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" }\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\":\"}),n(r.span,{style:{color:\"#FFA657\"},children:\" React\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\".\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"ComponentProps\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"typeof\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" Navbar>) {\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" pathname\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" =\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" usePathname\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"();\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\");\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"  React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useEffect\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(() \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=>\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"), [pathname]);\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" {...\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"props\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"        {\"}),n(r.span,{style:{color:\"#8B949E\"},children:\"/* Rest of your code */\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    </\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/layouts/sidebar",
-    "title": "Sidebar",
-    "description": "A sidebar is a component that helps you organize your content and navigation.",
-    "published": true,
-    "order": 2,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Collapsible",
-        "url": "#collapsible",
-        "items": [
-          {
-            "title": "Hidden",
-            "url": "#hidden",
-            "items": []
-          },
-          {
-            "title": "Dock",
-            "url": "#dock",
-            "items": []
-          },
-          {
-            "title": "Fixed",
-            "url": "#fixed",
-            "items": []
-          }
-        ]
-      },
-      {
-        "title": "Variant",
-        "url": "#variant",
-        "items": [
-          {
-            "title": "Default",
-            "url": "#default",
-            "items": []
-          },
-          {
-            "title": "Float",
-            "url": "#float",
-            "items": []
-          },
-          {
-            "title": "Inset",
-            "url": "#inset",
-            "items": []
-          }
-        ]
-      },
-      {
-        "title": "Default Open",
-        "url": "#default-open",
-        "items": []
-      },
-      {
-        "title": "Rail",
-        "url": "#rail",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Link.html#props",
-      "https://react-spectrum.adobe.com/react-aria/Disclosure.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:a,jsxs:n}=arguments[0];function _createMdxContent(l){const d={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Block:i,Install:r}=d;return i||_missingMdxReference(\"Block\",!0),r||_missingMdxReference(\"Install\",!0),n(e,{children:[n(d.h2,{id:\"installation\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(d.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(r,{component:\"sidebar\"}),\"\\n\",n(d.h2,{id:\"basic\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:a(d.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-basic-demo\"}),\"\\n\",n(d.h2,{id:\"collapsible\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collapsible\",children:a(d.span,{className:\"icon icon-link\"})}),\"Collapsible\"]}),\"\\n\",n(d.p,{children:[\"The sidebar is collapsible with three options for collapsibility: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"hidden\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"dock\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"none\"})})})}),\".\"]}),\"\\n\",n(d.h3,{id:\"hidden\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#hidden\",children:a(d.span,{className:\"icon icon-link\"})}),\"Hidden\"]}),\"\\n\",a(d.p,{children:\"When the trigger is clicked, the sidebar slides out.\"}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-off-canvas-demo\"}),\"\\n\",n(d.h3,{id:\"dock\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dock\",children:a(d.span,{className:\"icon icon-link\"})}),\"Dock\"]}),\"\\n\",n(d.p,{children:[\"When set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"dock\"})})})}),\", the sidebar will be pinned to a specified location, displaying an icon and tooltip by default.\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-dock-demo\"}),\"\\n\",n(d.h3,{id:\"fixed\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fixed\",children:a(d.span,{className:\"icon icon-link\"})}),\"Fixed\"]}),\"\\n\",n(d.p,{children:[\"Choosing the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"none\"})})})}),\" collapsible ensures the sidebar is static and cannot be toggled.\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-fixed-demo\"}),\"\\n\",n(d.h2,{id:\"variant\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:a(d.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",n(d.p,{children:[\"There are three types of sidebar variants: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"default\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"float\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"inset\"})})})}),\", each with distinct behaviors.\"]}),\"\\n\",n(d.h3,{id:\"default\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#default\",children:a(d.span,{className:\"icon icon-link\"})}),\"Default\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-default-demo\"}),\"\\n\",n(d.h3,{id:\"float\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#float\",children:a(d.span,{className:\"icon icon-link\"})}),\"Float\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-floating-demo\"}),\"\\n\",n(d.h3,{id:\"inset\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inset\",children:a(d.span,{className:\"icon icon-link\"})}),\"Inset\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-inset-demo\"}),\"\\n\",n(d.h2,{id:\"default-open\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#default-open\",children:a(d.span,{className:\"icon icon-link\"})}),\"Default Open\"]}),\"\\n\",n(d.p,{children:[\"The sidebar's default open state can be managed using the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"defaultOpen\"})})})}),\" prop.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[n(d.span,{\"data-line\":\"\",\"data-highlighted-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Provider\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" defaultOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Inset\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"</\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Provider\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]})]})})}),\"\\n\",n(d.h2,{id:\"rail\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#rail\",children:a(d.span,{className:\"icon icon-link\"})}),\"Rail\"]}),\"\\n\",n(d.p,{children:[a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"<Sidebar.Rail/>\"})})})}),\" is a button that toggles the sidebar, positioned as a slim bar along the sidebar's border.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Rail\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})}),\"\\n\",n(d.h2,{id:\"controlled\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:a(d.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(d.p,{children:[\"To manually control the sidebar's state, use the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"isOpen\"})})})}),\" prop. When \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"isOpen\"})})})}),\" is set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"true\"})})})}),\", the sidebar opens; when it's \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"false\"})})})}),\", the sidebar closes.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"export\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\" function\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\" AppSidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"() {\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\", \"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"=\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"false\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\")\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"        {\"}),a(d.span,{style:{color:\"#8B949E\"},children:\"/* Rest of your code */\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    </\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?a(n,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/media/avatar",
-    "title": "Avatar",
-    "description": "The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.",
-    "published": true,
-    "order": 2,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Avatar Initials",
-        "url": "#avatar-initials",
-        "items": []
-      },
-      {
-        "title": "Fallback",
-        "url": "#fallback",
-        "items": []
-      },
-      {
-        "title": "Shape",
-        "url": "#shape",
-        "items": []
-      },
-      {
-        "title": "Size",
-        "url": "#size",
-        "items": []
-      },
-      {
-        "title": "Avatar Group",
-        "url": "#avatar-group",
-        "items": []
-      }
-    ],
-    "body": "const{Fragment:a,jsx:e,jsxs:n}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:r,Install:o}=t;return r||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),n(a,{children:[n(t.h2,{id:\"installation\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(o,{component:\"avatar\"}),\"\\n\",n(t.h2,{id:\"basic\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-group-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-initials\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-initials\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Initials\"]}),\"\\n\",n(t.p,{children:[\"Use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{children:\"initials\"})})})}),\" prop to display the initials of the user.\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-initials-demo\"}),\"\\n\",n(t.h2,{id:\"fallback\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fallback\",children:e(t.span,{className:\"icon icon-link\"})}),\"Fallback\"]}),\"\\n\",e(t.p,{children:\"If the image fails to load and no initials, the icon will be displayed\"}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-fallback-demo\"}),\"\\n\",n(t.h2,{id:\"shape\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(t.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-shape-demo\"}),\"\\n\",n(t.h2,{id:\"size\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:e(t.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-size-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-group\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-group\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Group\"]}),\"\\n\",n(t.p,{children:[\"You can use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{children:\"AvatarGroup\"})})})}),\" component to display a group of avatars.\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-group-demo\"})]})}return{default:function(a={}){const{wrapper:n}=a.components||{};return n?e(n,{...a,children:e(_createMdxContent,{...a})}):_createMdxContent(a)}};function _missingMdxReference(a,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+a+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/media/carousel",
-    "title": "Carousel",
-    "description": "The carousel is a slideshow for cycling through a series of content. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Collections",
-        "url": "#collections",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      },
-      {
-        "title": "Options",
-        "url": "#options",
-        "items": []
-      },
-      {
-        "title": "Autoplay",
-        "url": "#autoplay",
-        "items": []
-      },
-      {
-        "title": "Link",
-        "url": "#link",
-        "items": []
-      },
-      {
-        "title": "API",
-        "url": "#api",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props",
-      "https://www.embla-carousel.com/api/"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const o={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...i.components},{CLI:l,Demo:c,Install:t}=o;return l||_missingMdxReference(\"CLI\",!0),c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),a(e,{children:[a(o.h2,{id:\"installation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(t,{component:\"carousel\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-demo\"}),\"\\n\",a(o.h2,{id:\"collections\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:n(o.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-with-collection-demo\"}),\"\\n\",a(o.h2,{id:\"orientation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-orientation-demo\"}),\"\\n\",a(o.h2,{id:\"options\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#options\",children:n(o.span,{className:\"icon icon-link\"})}),\"Options\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-options-demo\"}),\"\\n\",a(o.h2,{id:\"autoplay\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#autoplay\",children:n(o.span,{className:\"icon icon-link\"})}),\"Autoplay\"]}),\"\\n\",a(o.p,{children:[\"This a plugin by the embla-carousel it self, it's not included in the package, but you can install it to make sure the carousel autoplay.\\nOnce you install it, you can use it with the \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{children:\"plugins\"})})})}),\" prop.\"]}),\"\\n\",n(l,{command:\"install\",items:[\"embla-carousel-autoplay\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-autoplay-demo\"}),\"\\n\",a(o.h2,{id:\"link\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#link\",children:n(o.span,{className:\"icon icon-link\"})}),\"Link\"]}),\"\\n\",a(o.p,{children:[\"If you need a link in carousel item, simply add \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{children:\"href\"})})})}),\" prop to the Carousel.Item.\"]}),\"\\n\",n(o.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(o.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(o.span,{\"data-line\":\"\",children:[n(o.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(o.span,{style:{color:\"#7EE787\"},children:\"Carousel.Item\"}),n(o.span,{style:{color:\"#79C0FF\"},children:\" href\"}),n(o.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(o.span,{style:{color:\"#A5D6FF\"},children:'\"/path/to/page\"'}),n(o.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]})})})}),\"\\n\",a(o.h2,{id:\"api\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#api\",children:n(o.span,{className:\"icon icon-link\"})}),\"API\"]}),\"\\n\",n(o.p,{children:\"You can use the carousel api to control the carousel.\"}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-api-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/media/user",
-    "title": "User",
-    "description": "Display user information with avatar and name.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Size",
-        "url": "#size",
-        "items": []
-      },
-      {
-        "title": "Shape",
-        "url": "#shape",
-        "items": []
-      }
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const s={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:c,Install:o}=s;return c||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(e,{children:[a(s.h2,{id:\"installation\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(s.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(o,{component:\"user\"}),\"\\n\",a(s.h2,{id:\"basic\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(s.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-basic-demo\"}),\"\\n\",a(s.h2,{id:\"size\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:n(s.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-size-demo\"}),\"\\n\",a(s.h2,{id:\"shape\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:n(s.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-shape-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
     "slug": "components/forms/checkbox-group",
@@ -2857,6 +2577,281 @@
       "https://react-spectrum.adobe.com/react-aria/TextField.html#textarea-1"
     ],
     "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:i,Install:r}=o;return i||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),a(e,{children:[a(o.h2,{id:\"installation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(r,{component:\"textarea\"}),\"\\n\",a(o.h2,{id:\"state\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#state\",children:n(o.span,{className:\"icon icon-link\"})}),\"State\"]}),\"\\n\",n(i,{center:!0,component:\"forms/textarea/textarea-demo\"}),\"\\n\",a(o.h2,{id:\"autosize\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#autosize\",children:n(o.span,{className:\"icon icon-link\"})}),\"Autosize\"]}),\"\\n\",n(i,{center:!0,component:\"forms/textarea/textarea-autosize-demo\"}),\"\\n\",a(o.h2,{id:\"controlled\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(o.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(i,{center:!0,component:\"forms/textarea/textarea-controlled-demo\"}),\"\\n\",a(o.h2,{id:\"validation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(i,{center:!0,component:\"forms/textarea/textarea-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/layouts/navbar",
+    "title": "Navbar",
+    "description": "A navbar is a component that helps you organize your content and navigation in a consistent way.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Variant",
+        "url": "#variant",
+        "items": [
+          {
+            "title": "Navbar",
+            "url": "#navbar",
+            "items": []
+          },
+          {
+            "title": "Float",
+            "url": "#float",
+            "items": []
+          },
+          {
+            "title": "Inset",
+            "url": "#inset",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Sticky",
+        "url": "#sticky",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": [
+          {
+            "title": "Inertia.js",
+            "url": "#inertiajs",
+            "items": []
+          },
+          {
+            "title": "Next.js",
+            "url": "#nextjs",
+            "items": []
+          }
+        ]
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Link.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(l){const r={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Block:t,Install:c}=r;return t||_missingMdxReference(\"Block\",!0),c||_missingMdxReference(\"Install\",!0),a(e,{children:[a(r.h2,{id:\"installation\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(r.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"navbar\"}),\"\\n\",a(r.h2,{id:\"basic\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(r.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-basic-demo\"}),\"\\n\",a(r.h2,{id:\"variant\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:n(r.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",a(r.p,{children:[\"There are three types of variants: \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"navbar\"})})})}),\", \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"float\"})})})}),\", and \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"inset\"})})})}),\", each with distinct behaviors.\"]}),\"\\n\",a(r.h3,{id:\"navbar\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#navbar\",children:n(r.span,{className:\"icon icon-link\"})}),\"Navbar\"]}),\"\\n\",a(r.p,{children:[\"The default variant of the navbar is \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"navbar\"})})})}),\". You can change it to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"float\"})})})}),\" or \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"inset\"})})})}),\" by setting the \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"variant\"})})})}),\" prop.\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-basic-demo\"}),\"\\n\",a(r.h3,{id:\"float\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#float\",children:n(r.span,{className:\"icon icon-link\"})}),\"Float\"]}),\"\\n\",n(r.p,{children:\"The float variant will have a border inside the navbar itself, the wrapper will have a padding to the content.\"}),\"\\n\",n(t,{page:\"block/navbar/navbar-floating-demo\"}),\"\\n\",a(r.h3,{id:\"inset\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inset\",children:n(r.span,{className:\"icon icon-link\"})}),\"Inset\"]}),\"\\n\",a(r.p,{children:[\"The inset one will have the padding to inset main content. You can of course see what's going on the demo, but you can also see the \",n(r.a,{href:\"/block/navbar/navbar-03\",children:\"live example here\"}),\".\"]}),\"\\n\",n(t,{page:\"block/navbar/navbar-inset-demo\"}),\"\\n\",a(r.h2,{id:\"sticky\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#sticky\",children:n(r.span,{className:\"icon icon-link\"})}),\"Sticky\"]}),\"\\n\",a(r.p,{children:[\"You also make the navbar sticky by setting the \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isSticky\"})})})}),\" prop to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"true\"})})})}),\".\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isSticky\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})}),\"\\n\",a(r.h2,{id:\"controlled\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(r.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(r.p,{children:[\"On mobile devices, the navbar is hidden by default. You can open it using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"Navbar.Trigger\"})})})}),\", but there are times when you might want to manage its state by clicking one of the links within the navbar. You can achieve this because it shares the sheet properties, specifically \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isOpen\"})})})}),\" and \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"onOpenChange\"})})})}),\". There are multiple ways to control the state, but the simplest method is to listen for path changes and set \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"isOpen\"})})})}),\" to \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"true\"})})})}),\" or \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"false\"})})})}),\" accordingly.\"]}),\"\\n\",a(r.h3,{id:\"inertiajs\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inertiajs\",children:n(r.span,{className:\"icon icon-link\"})}),\"Inertia.js\"]}),\"\\n\",a(r.p,{children:[\"When you are using inertia.js, you can listen the path by using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"usePage\"})})})}),\" hooks.\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"import\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" { usePage } \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"from\"}),n(r.span,{style:{color:\"#A5D6FF\"},children:\" '@inertiajs/react'\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\";\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"export\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" function\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" AppNavbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"({ \"}),n(r.span,{style:{color:\"#FFA657\"},children:\"children\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"...\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"props\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" }\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\":\"}),n(r.span,{style:{color:\"#FFA657\"},children:\" React\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\".\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"ComponentProps\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"typeof\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" Navbar>) {\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" page\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" =\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" usePage\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"();\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\");\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"  React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useEffect\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(() \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=>\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"), [page.url]);\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" {...\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"props\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})}),\"\\n\",a(r.h3,{id:\"nextjs\",children:[n(r.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#nextjs\",children:n(r.span,{className:\"icon icon-link\"})}),\"Next.js\"]}),\"\\n\",a(r.p,{children:[\"On next.js, you can listen the path by using \",n(r.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(r.span,{\"data-line\":\"\",children:n(r.span,{children:\"usePathname\"})})})}),\" hooks.\"]}),\"\\n\",n(r.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(r.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(r.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"import\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" { usePathname } \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"from\"}),n(r.span,{style:{color:\"#A5D6FF\"},children:' \"next/navigation\"'})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"export\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" function\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" AppNavbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"({ \"}),n(r.span,{style:{color:\"#FFA657\"},children:\"children\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"...\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"props\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" }\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\":\"}),n(r.span,{style:{color:\"#FFA657\"},children:\" React\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\".\"}),n(r.span,{style:{color:\"#FFA657\"},children:\"ComponentProps\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"typeof\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" Navbar>) {\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" pathname\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" =\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" usePathname\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"();\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\", \"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\");\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"  React.\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\"useEffect\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(() \"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"=>\"}),n(r.span,{style:{color:\"#D2A8FF\"},children:\" setIsOpen\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\"false\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"), [pathname]);\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"={\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\" {...\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\"props\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#FF7B72\"},children:\"        {\"}),n(r.span,{style:{color:\"#8B949E\"},children:\"/* Rest of your code */\"}),n(r.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",a(r.span,{\"data-line\":\"\",children:[n(r.span,{style:{color:\"#E6EDF3\"},children:\"    </\"}),n(r.span,{style:{color:\"#7EE787\"},children:\"Navbar\"}),n(r.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",n(r.span,{\"data-line\":\"\",children:n(r.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/layouts/sidebar",
+    "title": "Sidebar",
+    "description": "A sidebar is a component that helps you organize your content and navigation.",
+    "published": true,
+    "order": 2,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Collapsible",
+        "url": "#collapsible",
+        "items": [
+          {
+            "title": "Hidden",
+            "url": "#hidden",
+            "items": []
+          },
+          {
+            "title": "Dock",
+            "url": "#dock",
+            "items": []
+          },
+          {
+            "title": "Fixed",
+            "url": "#fixed",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Variant",
+        "url": "#variant",
+        "items": [
+          {
+            "title": "Default",
+            "url": "#default",
+            "items": []
+          },
+          {
+            "title": "Float",
+            "url": "#float",
+            "items": []
+          },
+          {
+            "title": "Inset",
+            "url": "#inset",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Default Open",
+        "url": "#default-open",
+        "items": []
+      },
+      {
+        "title": "Rail",
+        "url": "#rail",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Link.html#props",
+      "https://react-spectrum.adobe.com/react-aria/Disclosure.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:a,jsxs:n}=arguments[0];function _createMdxContent(l){const d={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Block:i,Install:r}=d;return i||_missingMdxReference(\"Block\",!0),r||_missingMdxReference(\"Install\",!0),n(e,{children:[n(d.h2,{id:\"installation\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(d.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(r,{component:\"sidebar\"}),\"\\n\",n(d.h2,{id:\"basic\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:a(d.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-basic-demo\"}),\"\\n\",n(d.h2,{id:\"collapsible\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collapsible\",children:a(d.span,{className:\"icon icon-link\"})}),\"Collapsible\"]}),\"\\n\",n(d.p,{children:[\"The sidebar is collapsible with three options for collapsibility: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"hidden\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"dock\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"none\"})})})}),\".\"]}),\"\\n\",n(d.h3,{id:\"hidden\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#hidden\",children:a(d.span,{className:\"icon icon-link\"})}),\"Hidden\"]}),\"\\n\",a(d.p,{children:\"When the trigger is clicked, the sidebar slides out.\"}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-off-canvas-demo\"}),\"\\n\",n(d.h3,{id:\"dock\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dock\",children:a(d.span,{className:\"icon icon-link\"})}),\"Dock\"]}),\"\\n\",n(d.p,{children:[\"When set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"dock\"})})})}),\", the sidebar will be pinned to a specified location, displaying an icon and tooltip by default.\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-dock-demo\"}),\"\\n\",n(d.h3,{id:\"fixed\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fixed\",children:a(d.span,{className:\"icon icon-link\"})}),\"Fixed\"]}),\"\\n\",n(d.p,{children:[\"Choosing the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"none\"})})})}),\" collapsible ensures the sidebar is static and cannot be toggled.\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-fixed-demo\"}),\"\\n\",n(d.h2,{id:\"variant\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:a(d.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",n(d.p,{children:[\"There are three types of sidebar variants: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"default\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"float\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"inset\"})})})}),\", each with distinct behaviors.\"]}),\"\\n\",n(d.h3,{id:\"default\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#default\",children:a(d.span,{className:\"icon icon-link\"})}),\"Default\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-default-demo\"}),\"\\n\",n(d.h3,{id:\"float\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#float\",children:a(d.span,{className:\"icon icon-link\"})}),\"Float\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-floating-demo\"}),\"\\n\",n(d.h3,{id:\"inset\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inset\",children:a(d.span,{className:\"icon icon-link\"})}),\"Inset\"]}),\"\\n\",a(i,{page:\"block/sidebar/sidebar-inset-demo\"}),\"\\n\",n(d.h2,{id:\"default-open\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#default-open\",children:a(d.span,{className:\"icon icon-link\"})}),\"Default Open\"]}),\"\\n\",n(d.p,{children:[\"The sidebar's default open state can be managed using the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"defaultOpen\"})})})}),\" prop.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[n(d.span,{\"data-line\":\"\",\"data-highlighted-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Provider\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" defaultOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Inset\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"</\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Provider\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]})]})})}),\"\\n\",n(d.h2,{id:\"rail\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#rail\",children:a(d.span,{className:\"icon icon-link\"})}),\"Rail\"]}),\"\\n\",n(d.p,{children:[a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"<Sidebar.Rail/>\"})})})}),\" is a button that toggles the sidebar, positioned as a slim bar along the sidebar's border.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Rail\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})}),\"\\n\",n(d.h2,{id:\"controlled\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:a(d.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(d.p,{children:[\"To manually control the sidebar's state, use the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"isOpen\"})})})}),\" prop. When \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"isOpen\"})})})}),\" is set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"true\"})})})}),\", the sidebar opens; when it's \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{children:\"false\"})})})}),\", the sidebar closes.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"export\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\" function\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\" AppSidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"() {\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\", \"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"=\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"false\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\")\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"        {\"}),a(d.span,{style:{color:\"#8B949E\"},children:\"/* Rest of your code */\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    </\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?a(n,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/media/avatar",
+    "title": "Avatar",
+    "description": "The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.",
+    "published": true,
+    "order": 2,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Avatar Initials",
+        "url": "#avatar-initials",
+        "items": []
+      },
+      {
+        "title": "Fallback",
+        "url": "#fallback",
+        "items": []
+      },
+      {
+        "title": "Shape",
+        "url": "#shape",
+        "items": []
+      },
+      {
+        "title": "Size",
+        "url": "#size",
+        "items": []
+      },
+      {
+        "title": "Avatar Group",
+        "url": "#avatar-group",
+        "items": []
+      }
+    ],
+    "body": "const{Fragment:a,jsx:e,jsxs:n}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:r,Install:o}=t;return r||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),n(a,{children:[n(t.h2,{id:\"installation\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(o,{component:\"avatar\"}),\"\\n\",n(t.h2,{id:\"basic\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-group-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-initials\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-initials\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Initials\"]}),\"\\n\",n(t.p,{children:[\"Use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{children:\"initials\"})})})}),\" prop to display the initials of the user.\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-initials-demo\"}),\"\\n\",n(t.h2,{id:\"fallback\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fallback\",children:e(t.span,{className:\"icon icon-link\"})}),\"Fallback\"]}),\"\\n\",e(t.p,{children:\"If the image fails to load and no initials, the icon will be displayed\"}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-fallback-demo\"}),\"\\n\",n(t.h2,{id:\"shape\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(t.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-shape-demo\"}),\"\\n\",n(t.h2,{id:\"size\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:e(t.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-size-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-group\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-group\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Group\"]}),\"\\n\",n(t.p,{children:[\"You can use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{children:\"AvatarGroup\"})})})}),\" component to display a group of avatars.\"]}),\"\\n\",e(r,{center:!0,component:\"media/avatar/avatar-group-demo\"})]})}return{default:function(a={}){const{wrapper:n}=a.components||{};return n?e(n,{...a,children:e(_createMdxContent,{...a})}):_createMdxContent(a)}};function _missingMdxReference(a,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+a+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/media/carousel",
+    "title": "Carousel",
+    "description": "The carousel is a slideshow for cycling through a series of content. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Collections",
+        "url": "#collections",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      },
+      {
+        "title": "Options",
+        "url": "#options",
+        "items": []
+      },
+      {
+        "title": "Autoplay",
+        "url": "#autoplay",
+        "items": []
+      },
+      {
+        "title": "Link",
+        "url": "#link",
+        "items": []
+      },
+      {
+        "title": "API",
+        "url": "#api",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props",
+      "https://www.embla-carousel.com/api/"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const o={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...i.components},{CLI:l,Demo:c,Install:t}=o;return l||_missingMdxReference(\"CLI\",!0),c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),a(e,{children:[a(o.h2,{id:\"installation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(t,{component:\"carousel\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-demo\"}),\"\\n\",a(o.h2,{id:\"collections\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:n(o.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-with-collection-demo\"}),\"\\n\",a(o.h2,{id:\"orientation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-orientation-demo\"}),\"\\n\",a(o.h2,{id:\"options\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#options\",children:n(o.span,{className:\"icon icon-link\"})}),\"Options\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-options-demo\"}),\"\\n\",a(o.h2,{id:\"autoplay\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#autoplay\",children:n(o.span,{className:\"icon icon-link\"})}),\"Autoplay\"]}),\"\\n\",a(o.p,{children:[\"This a plugin by the embla-carousel it self, it's not included in the package, but you can install it to make sure the carousel autoplay.\\nOnce you install it, you can use it with the \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{children:\"plugins\"})})})}),\" prop.\"]}),\"\\n\",n(l,{command:\"install\",items:[\"embla-carousel-autoplay\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-autoplay-demo\"}),\"\\n\",a(o.h2,{id:\"link\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#link\",children:n(o.span,{className:\"icon icon-link\"})}),\"Link\"]}),\"\\n\",a(o.p,{children:[\"If you need a link in carousel item, simply add \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"plaintext\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{children:\"href\"})})})}),\" prop to the Carousel.Item.\"]}),\"\\n\",n(o.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(o.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(o.span,{\"data-line\":\"\",children:[n(o.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(o.span,{style:{color:\"#7EE787\"},children:\"Carousel.Item\"}),n(o.span,{style:{color:\"#79C0FF\"},children:\" href\"}),n(o.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(o.span,{style:{color:\"#A5D6FF\"},children:'\"/path/to/page\"'}),n(o.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]})})})}),\"\\n\",a(o.h2,{id:\"api\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#api\",children:n(o.span,{className:\"icon icon-link\"})}),\"API\"]}),\"\\n\",n(o.p,{children:\"You can use the carousel api to control the carousel.\"}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-api-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/media/user",
+    "title": "User",
+    "description": "Display user information with avatar and name.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Size",
+        "url": "#size",
+        "items": []
+      },
+      {
+        "title": "Shape",
+        "url": "#shape",
+        "items": []
+      }
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const s={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:c,Install:o}=s;return c||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(e,{children:[a(s.h2,{id:\"installation\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(s.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(o,{component:\"user\"}),\"\\n\",a(s.h2,{id:\"basic\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(s.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-basic-demo\"}),\"\\n\",a(s.h2,{id:\"size\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:n(s.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-size-demo\"}),\"\\n\",a(s.h2,{id:\"shape\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:n(s.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-shape-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
     "slug": "components/navigation/breadcrumbs",

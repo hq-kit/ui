@@ -44,7 +44,7 @@ export function Aside() {
                             <div className='relative flex flex-col gap-1 pl-1.5'>
                                 <div className='absolute left-1.5 h-full w-0.5 bg-muted' />
                                 {doc.items
-                                    ?.sort((a, b) => a.title.localeCompare(b.title))
+                                    ?.sort((a, b) => a.order - b.order)
                                     .map((item, i) => (
                                         <div key={i} className='flex flex-col gap-1'>
                                             {item.items?.length ? (

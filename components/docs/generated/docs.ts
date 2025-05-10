@@ -131,6 +131,47 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "colors",
+        "order": 1,
+        "items": [
+          {
+            "title": "Color Area",
+            "url": "/docs/components/colors/color-area",
+            "order": 1
+          },
+          {
+            "title": "Color Field",
+            "url": "/docs/components/colors/color-field",
+            "order": 2
+          },
+          {
+            "title": "Color Picker",
+            "url": "/docs/components/colors/color-picker",
+            "order": 3
+          },
+          {
+            "title": "Color Slider",
+            "url": "/docs/components/colors/color-slider",
+            "order": 4
+          },
+          {
+            "title": "Color Swatch Picker",
+            "url": "/docs/components/colors/color-swatch-picker",
+            "order": 6
+          },
+          {
+            "title": "Color Swatch",
+            "url": "/docs/components/colors/color-swatch",
+            "order": 5
+          },
+          {
+            "title": "Color Wheel",
+            "url": "/docs/components/colors/color-wheel",
+            "order": 7
+          }
+        ]
+      },
+      {
         "title": "collections",
         "order": 5,
         "items": [
@@ -173,47 +214,6 @@ export const docs: Docs[] = [
             "title": "Tree",
             "url": "/docs/components/collections/tree",
             "order": 8
-          }
-        ]
-      },
-      {
-        "title": "colors",
-        "order": 1,
-        "items": [
-          {
-            "title": "Color Area",
-            "url": "/docs/components/colors/color-area",
-            "order": 1
-          },
-          {
-            "title": "Color Field",
-            "url": "/docs/components/colors/color-field",
-            "order": 2
-          },
-          {
-            "title": "Color Picker",
-            "url": "/docs/components/colors/color-picker",
-            "order": 3
-          },
-          {
-            "title": "Color Slider",
-            "url": "/docs/components/colors/color-slider",
-            "order": 4
-          },
-          {
-            "title": "Color Swatch Picker",
-            "url": "/docs/components/colors/color-swatch-picker",
-            "order": 6
-          },
-          {
-            "title": "Color Swatch",
-            "url": "/docs/components/colors/color-swatch",
-            "order": 5
-          },
-          {
-            "title": "Color Wheel",
-            "url": "/docs/components/colors/color-wheel",
-            "order": 7
           }
         ]
       },
@@ -301,43 +301,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "layouts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
-            "order": 3
-          }
-        ]
-      },
-      {
         "title": "forms",
         "order": 6,
         "items": [
@@ -397,6 +360,43 @@ export const docs: Docs[] = [
             "title": "Textarea",
             "url": "/docs/components/forms/textarea",
             "order": 5
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },

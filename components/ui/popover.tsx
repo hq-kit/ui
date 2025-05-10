@@ -49,7 +49,7 @@ const PopoverContent = ({
 }: PopoverContentProps) => {
     const isMobile = useIsMobile()
     return isMobile && respectScreen ? (
-        <DialogOverlay isDismissable>
+        <DialogOverlay isDismissable {...props}>
             <Modal
                 className={composeRenderProps(className, (className, renderProps) =>
                     sheetStyle({ ...renderProps, side: 'bottom', className })

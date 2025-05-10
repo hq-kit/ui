@@ -27,9 +27,9 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { PopoverContent } from '@/components/ui/popover'
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldGroup, type FieldProps, Label } from './form'
+import { PopoverContent } from './popover'
 
 interface MultiSelectProps<T>
     extends ListBoxProps<T>,
