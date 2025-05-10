@@ -91,7 +91,7 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
             isOpen={props.isOpen || shortcutOpen}
             onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
-            className={'border-0 **:data-command:border-0 sm:min-h-0'}
+            className={'h-[70dvh] border-0 **:data-command:border-0 sm:h-auto sm:min-h-0'}
         >
             <Command {...props} />
         </ModalContent>

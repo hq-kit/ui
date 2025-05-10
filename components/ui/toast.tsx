@@ -1,9 +1,8 @@
 'use client'
 
-import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
-import { motion, useAnimation } from 'motion/react'
 import type { ButtonProps, ToastOptions } from 'react-aria-components'
 import {
     Button,
@@ -32,205 +31,190 @@ const queue = new ToastQueue<ToastContentProps>({
             document.startViewTransition(() => fn())
         } else fn()
     },
-    maxVisibleToasts: 5
+    maxVisibleToasts: 3
 })
 
 const ToastProvider = () => {
     const [isHovered, setIsHovered] = useState(false)
     return (
-        <ToastRegion
-            className='fixed top-0 z-[9999] flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
-            queue={queue}
-        >
-            {({ toast }) => (
-                <Toaster key={toast.key} toast={toast} className={cn('will-change-transform sm:w-fit sm:min-w-xs')}>
-                    <motion.div
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
+        <>
+            <style>{`
+                    .toast {
+                        view-transition-class: toast;
+                    }
+                
+                    ::view-transition-new(.toast):only-child {
+                        animation: slide-in 300ms;
+                    }
+                
+                    ::view-transition-old(.toast):only-child {
+                        animation: slide-out 300ms;
+                    }
+                
+                    @keyframes slide-out {
+                        to {
+                            translate: 100% 0;
+                            opacity: 0;
+                        }
+                    }
+                
+                    @keyframes slide-in {
+                        from {
+                            translate: 100% 0;
+                            opacity: 0;
+                        }
+                    }
+           `}</style>
+            <ToastRegion
+                className={cn(
+                    'fixed top-0 z-[9999] flex h-fit w-full flex-col-reverse items-center gap-3 p-4 sm:top-auto sm:right-2 sm:bottom-2 sm:w-fit sm:items-end'
+                )}
+                queue={queue}
+            >
+                {({ toast }) => (
+                    <Toaster
+                        style={{ viewTransitionName: toast.key }}
                         key={toast.key}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className={cn(
-                            'flex flex-col gap-2 rounded-lg border p-4 shadow-[0_3px_10px_rgb(0,0,0,0.3)] backdrop-blur-lg',
-                            {
-                                'border-success/20 bg-success/10 text-success **:data-loader:stroke-success':
-                                    toast.content.type === 'success',
-                                'border-invalid bg-danger/5 text-danger **:data-loader:stroke-danger':
-                                    toast.content.type === 'error',
-                                'border-info/30 bg-info/10 text-info **:data-loader:stroke-info':
-                                    toast.content.type === 'info',
-                                'border-warning/40 bg-warning/5 text-warning **:data-loader:stroke-warning':
-                                    toast.content.type === 'warning',
-                                'bg-bg text-fg': toast.content.type === 'default'
-                            }
-                        )}
+                        toast={toast}
+                        className={cn('toast will-change-transform sm:w-fit sm:min-w-xs')}
                     >
                         <div
-                            className={cn('flex items-start gap-2', {
-                                'items-center': !toast.content.description
-                            })}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                            key={toast.key}
+                            className={cn(
+                                'flex flex-col gap-2 rounded-lg p-4 shadow-[0_3px_10px_rgb(0,0,0,0.15)] backdrop-blur-lg dark:border',
+                                {
+                                    'border-green-500/20 bg-green-500/10 text-green-500 **:data-loader:stroke-success':
+                                        toast.content.type === 'success',
+                                    'border-invalid bg-danger/5 text-danger **:data-loader:stroke-danger':
+                                        toast.content.type === 'error',
+                                    'border-blue-500/30 bg-blue-500/10 text-blue-500 **:data-loader:stroke-info':
+                                        toast.content.type === 'info',
+                                    'border-amber-500/40 bg-amber-500/5 text-amber-500 **:data-loader:stroke-warning':
+                                        toast.content.type === 'warning',
+                                    'bg-bg text-fg': toast.content.type === 'default'
+                                }
+                            )}
                         >
-                            {toast.content.type === 'success' ? (
-                                <IconCircleCheck className='shrink-0' />
-                            ) : toast.content.type === 'error' ? (
-                                <IconCircleAlert className='shrink-0' />
-                            ) : toast.content.type === 'info' ? (
-                                <IconInfo className='shrink-0' />
-                            ) : toast.content.type === 'warning' ? (
-                                <IconTriangleAlert className='shrink-0' />
-                            ) : null}
-                            <ToastContent className='flex w-full flex-col'>
-                                <Text slot='title' className='font-medium'>
-                                    {toast.content.title}
-                                </Text>
-                                {toast.content.description && (
-                                    <Text slot='description' className='text-sm'>
-                                        {toast.content.description}
+                            <div
+                                className={cn('flex items-start gap-2', {
+                                    'items-center': !toast.content.description
+                                })}
+                            >
+                                {toast.content.type === 'success' ? (
+                                    <IconCircleCheck className='shrink-0' />
+                                ) : toast.content.type === 'error' ? (
+                                    <IconCircleAlert className='shrink-0' />
+                                ) : toast.content.type === 'info' ? (
+                                    <IconInfo className='shrink-0' />
+                                ) : toast.content.type === 'warning' ? (
+                                    <IconTriangleAlert className='shrink-0' />
+                                ) : null}
+                                <ToastContent className='flex w-full flex-col'>
+                                    <Text slot='title' className='font-medium'>
+                                        {toast.content.title}
                                     </Text>
-                                )}
-                            </ToastContent>
-                            <TimeoutButton paused={isHovered} timeout={toast.timeout} slot='close'>
-                                <IconX />
-                            </TimeoutButton>
-                        </div>
-                        {(toast.content.action || toast.content.altAction) && (
-                            <div className='flex items-center justify-start gap-2'>
-                                {toast.content.action && (
-                                    <Button
-                                        onPress={toast.content.action}
-                                        slot='close'
-                                        className={({ isHovered, isPressed, isFocusVisible }) =>
-                                            cn(
-                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden *:[svg]:size-3',
-                                                isHovered && 'brightness-80',
-                                                isPressed && 'brightness-90',
-                                                isFocusVisible && 'ring-4 ring-ring',
+                                    {toast.content.description && (
+                                        <Text slot='description' className='text-sm'>
+                                            {toast.content.description}
+                                        </Text>
+                                    )}
+                                </ToastContent>
+                                <div className='-translate-y-1/2 absolute top-1 right-1 translate-x-1/2'>
+                                    <CountdownButton isPaused={isHovered} timeout={toast.timeout} slot='close' />
+                                </div>
+                            </div>
+                            {(toast.content.action || toast.content.altAction) && (
+                                <div className='flex items-center justify-start gap-2'>
+                                    {toast.content.action && (
+                                        <Button
+                                            onPress={toast.content.action}
+                                            slot='close'
+                                            className={cn(
+                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden pressed:brightness-90 hover:brightness-80 focus-visible:ring-4 focus-visible:ring-ring *:[svg]:size-3',
                                                 {
-                                                    'border-success bg-success text-success-fg':
+                                                    'border-green-500 bg-green-500 text-white':
                                                         toast.content.type === 'success',
                                                     'border-danger bg-danger text-danger-fg':
                                                         toast.content.type === 'error',
-                                                    'border-info bg-info text-info-fg':
+                                                    'border-blue-500 bg-blue-500 text-white':
                                                         toast.content.type === 'info' ||
                                                         toast.content.type === 'default',
-                                                    'border-warning bg-warning text-warning-fg':
+                                                    'border-amber-500 bg-amber-500 text-white':
                                                         toast.content.type === 'warning'
                                                 }
-                                            )
-                                        }
-                                    >
-                                        {toast.content.actionLabel || 'Action'}
-                                    </Button>
-                                )}
-                                {toast.content.altAction && (
-                                    <Button
-                                        onPress={toast.content.altAction}
-                                        slot='close'
-                                        className={({ isHovered, isPressed, isFocusVisible }) =>
-                                            cn(
-                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-bg px-2 py-1 text-fg text-sm outline-hidden *:[svg]:size-3',
-                                                isHovered && 'bg-muted/40',
-                                                isPressed && 'bg-muted/60',
-                                                isFocusVisible && 'border-primary ring-4 ring-primary/20'
-                                            )
-                                        }
-                                    >
-                                        {toast.content.altActionLabel || 'Cancel'}
-                                    </Button>
-                                )}
-                            </div>
-                        )}
-                    </motion.div>
-                </Toaster>
-            )}
-        </ToastRegion>
+                                            )}
+                                        >
+                                            {toast.content.actionLabel || 'Action'}
+                                        </Button>
+                                    )}
+                                    {toast.content.altAction && (
+                                        <Button
+                                            onPress={toast.content.altAction}
+                                            slot='close'
+                                            className='flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-bg pressed:bg-muted/60 px-2 py-1 text-fg text-sm outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 *:[svg]:size-3'
+                                        >
+                                            {toast.content.altActionLabel || 'Cancel'}
+                                        </Button>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </Toaster>
+                )}
+            </ToastRegion>
+        </>
     )
 }
 
 interface TimeoutButtonProps extends ButtonProps {
     timeout: number | undefined
-    paused?: boolean
-    onComplete?: () => void
+    isPaused?: boolean
 }
 
-const TimeoutButton = ({ timeout, onComplete, paused, children, ...props }: TimeoutButtonProps) => {
-    const controls = useAnimation()
-    const startTimeRef = useRef<number | null>(null)
-    const elapsedRef = useRef<number>(0)
-    const size = 28
-    const stroke = 2
-    const radius = (size - stroke) / 2
+const CountdownButton = ({ timeout, isPaused }: TimeoutButtonProps) => {
+    const [timeLeft, setTimeLeft] = useState<number>(timeout ? timeout - 100 : -1)
+    const radius = 10
     const circumference = 2 * Math.PI * radius
 
-    const animate = (duration: number) => {
-        controls
-            .start({
-                strokeDashoffset: 0,
-                transition: { duration, ease: 'linear' }
-            })
-            .then(() => {
-                onComplete?.()
-            })
-    }
+    const calculateProgress = useCallback(() => {
+        return timeout && (timeLeft / timeout) * circumference
+    }, [timeLeft, timeout, circumference])
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
-        if (timeout === undefined) return
-        startTimeRef.current = performance.now()
-        animate(timeout / 1000)
-    }, [timeout])
+        if (timeLeft <= 0 || isPaused) return
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    useEffect(() => {
-        if (timeout === undefined) return
+        const timer = setInterval(() => {
+            setTimeLeft((prevTimeLeft) => prevTimeLeft - 100)
+        }, 100)
 
-        if (paused) {
-            controls.stop()
-            if (startTimeRef.current) {
-                elapsedRef.current += performance.now() - startTimeRef.current
-            }
-        } else {
-            const remaining = timeout - elapsedRef.current
-            if (remaining > 0) {
-                startTimeRef.current = performance.now()
-                animate(remaining / 1000)
-            }
-        }
-    }, [paused, timeout])
+        return () => clearInterval(timer)
+    }, [isPaused, timeLeft])
 
     return (
         <Button
-            className={({ isHovered, isPressed, isFocusVisible }) =>
-                cn(
-                    'relative ml-auto inline-flex size-7 shrink-0 items-center justify-center rounded-full border outline-hidden',
-                    isHovered && 'bg-muted/40',
-                    isPressed && 'bg-muted/60',
-                    isFocusVisible && 'border-primary ring-4 ring-primary/20'
-                )
-            }
-            {...props}
+            slot='close'
+            className='relative z-10 inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full bg-bg pressed:text-fg text-muted-fg shadow-sm outline-hidden hover:text-fg focus-visible:ring-2 focus-visible:ring-ring dark:border'
         >
-            {(values) => (
-                <>
-                    {typeof children === 'function' ? children(values) : children}
-                    {timeout !== undefined && (
-                        <svg className='absolute top-0 left-0 size-full' viewBox={`0 0 ${size} ${size}`}>
-                            <motion.circle
-                                data-loader
-                                stroke='var(--muted-fg)'
-                                fill='transparent'
-                                strokeWidth={stroke}
-                                strokeDasharray={circumference}
-                                strokeDashoffset={circumference}
-                                animate={controls}
-                                r={radius}
-                                cx={size / 2}
-                                cy={size / 2}
-                            />
-                        </svg>
-                    )}
-                </>
-            )}
+            <IconX className='size-3.5' />
+            {timeout ? (
+                <svg className='-rotate-90 absolute size-fit'>
+                    <circle cx='50%' cy='50%' r={radius} stroke='current' strokeWidth='2' fill='none' />
+                    <circle
+                        cx='50%'
+                        cy='50%'
+                        r={radius}
+                        stroke='gray'
+                        strokeWidth='2'
+                        fill='none'
+                        strokeDasharray={circumference}
+                        style={{ transition: 'stroke-dashoffset 0.1s linear' }}
+                        strokeDashoffset={calculateProgress()}
+                        strokeLinecap='round'
+                    />
+                </svg>
+            ) : null}
         </Button>
     )
 }

@@ -5,8 +5,7 @@ import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
-import { motion } from 'motion/react'
-import { Heading, Link, type LinkProps, composeRenderProps } from 'react-aria-components'
+import { Heading, Link, type LinkProps } from 'react-aria-components'
 
 import { docs } from '@/components/docs/generated/docs'
 import { Badge } from '@/components/ui'
@@ -81,31 +80,18 @@ export function Aside() {
     )
 }
 
-const MenuLink = ({ children, href, className, ...props }: LinkProps) => {
+const MenuLink = ({ href, className, ...props }: LinkProps) => {
     const pathname = usePathname()
     const isActive = pathname === href
     return (
         <Link
             href={href}
-            className={composeRenderProps(className, (className, { isHovered }) =>
-                cn(
-                    'relative flex w-full items-center rounded-r-lg px-4 py-1 text-muted-fg text-sm',
-                    isActive && 'is-active pointer-events-none text-primary',
-                    isHovered && 'bg-primary/5 text-primary',
-                    className
-                )
+            className={cn(
+                'relative flex w-full items-center rounded-r-lg border-l-2 px-4 py-1 text-muted-fg text-sm hover:bg-primary/5 hover:text-primary',
+                isActive && 'is-active pointer-events-none border-l-primary bg-primary/10 text-primary',
+                className
             )}
             {...props}
-        >
-            <>
-                {children}
-                {isActive && (
-                    <motion.span
-                        layoutId='active-indicator'
-                        className='absolute inset-0 size-full rounded-r-lg border-primary border-l-2 bg-primary/10'
-                    />
-                )}
-            </>
-        </Link>
+        />
     )
 }

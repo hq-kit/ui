@@ -21,17 +21,17 @@
     --color-secondary: var(--secondary);
     --color-secondary-fg: var(--secondary-fg);
 
-    --color-info: var(--info);
-    --color-info-fg: var(--info-fg);
-
-    --color-success: var(--success);
-    --color-success-fg: var(--success-fg);
-
     --color-danger: var(--danger);
     --color-danger-fg: var(--danger-fg);
 
-    --color-warning: var(--warning);
-    --color-warning-fg: var(--warning-fg);
+    /*--color-info: var(--info);*/
+    /*--color-info-fg: var(--info-fg);*/
+
+    /*--color-success: var(--success);*/
+    /*--color-success-fg: var(--success-fg);*/
+
+    /*--color-warning: var(--warning);*/
+    /*--color-warning-fg: var(--warning-fg);*/
 
     --color-border: var(--muted);
     --color-ring: hsla(from var(--primary) h s l / 0.2);
@@ -66,12 +66,12 @@
         --secondary-fg: oklch(0.282 0.087 267.936);
         --danger: oklch(0.645 0.215 16.444);
         --danger-fg: oklch(0.969 0.015 12.545);
-        --success: oklch(0.696 0.149 162.474);
-        --success-fg: oklch(0.982 0.018 155.712);
-        --info: oklch(0.627 0.233 303.91);
-        --info-fg: oklch(0.977 0.014 308.43);
-        --warning: oklch(0.795 0.162 86.039);
-        --warning-fg: oklch(0.987 0.026 102.171);
+        /*--success: oklch(0.696 0.149 162.474);*/
+        /*--success-fg: oklch(0.982 0.018 155.712);*/
+        /*--info: oklch(0.627 0.233 303.91);*/
+        /*--info-fg: oklch(0.977 0.014 308.43);*/
+        /*--warning: oklch(0.795 0.162 86.039);*/
+        /*--warning-fg: oklch(0.987 0.026 102.171);*/
         --muted: oklch(0.871 0.005 286.485);
         --muted-fg: oklch(0.552 0.014 285.988);
 
@@ -85,12 +85,12 @@
         --secondary-fg: oklch(0.809 0.096 251.808);
         --danger: oklch(0.586 0.222 17.589);
         --danger-fg: oklch(0.969 0.015 12.545);
-        --success: oklch(0.596 0.127 163.22);
-        --success-fg: oklch(0.979 0.021 166.012);
-        --info: oklch(0.558 0.252 302.33);
-        --info-fg: oklch(0.977 0.014 308.43);
-        --warning: oklch(0.681 0.142 75.827);
-        --warning-fg: oklch(0.987 0.026 102.171);
+        /*--success: oklch(0.596 0.127 163.22);*/
+        /*--success-fg: oklch(0.979 0.021 166.012);*/
+        /*--info: oklch(0.558 0.252 302.33);*/
+        /*--info-fg: oklch(0.977 0.014 308.43);*/
+        /*--warning: oklch(0.681 0.142 75.827);*/
+        /*--warning-fg: oklch(0.987 0.026 102.171);*/
         --muted: oklch(0.274 0.005 286.095);
         --muted-fg: oklch(0.552 0.014 285.988);
     }

@@ -46,10 +46,10 @@ const avatarStyle = tv({
             circle: 'rounded-full *:rounded-full'
         },
         size: {
-            xs: 'size-5',
-            sm: 'size-6',
+            xs: 'size-6',
+            sm: 'size-7',
             md: 'size-8',
-            lg: 'size-10',
+            lg: 'size-9',
             xl: 'size-12',
             '2xl': 'size-14',
             '3xl': 'size-16',
@@ -59,7 +59,7 @@ const avatarStyle = tv({
     },
     defaultVariants: {
         shape: 'circle',
-        size: 'md'
+        size: 'lg'
     }
 })
 

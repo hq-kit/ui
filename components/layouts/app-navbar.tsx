@@ -1,13 +1,13 @@
 'use client'
 import { useEffect, useState } from 'react'
 
+import { CommandMenu } from '@/components/layouts/command-menu'
+import { MobileNav } from '@/components/layouts/mobile-nav'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Button, Keyboard, Link, Navbar, Separator, buttonStyle } from '@/components/ui'
 import { IconBrandCleon, IconBrandGithub, IconSearch } from 'hq-icons'
 import { usePathname } from 'next/navigation'
 import { Collection } from 'react-aria-components'
-
-import { CommandMenu } from '@/components/layouts/command-menu'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, Keyboard, Link, Navbar, Separator, buttonStyle } from '@/components/ui'
 
 export function AppNavbar() {
     const pathname = usePathname()
@@ -45,29 +45,28 @@ export function AppNavbar() {
                             )}
                         </Collection>
                     </Navbar.Section>
+                    <MobileNav currentUrl={pathname} />
                     <Navbar.Section className='ml-auto hidden md:flex'>
                         <Navbar.Flex>
-                            <>
-                                <Button variant='outline' onPress={() => setOpenCommand(true)}>
-                                    <IconSearch />
-                                    <span className='mr-2 text-muted-fg'>Search...</span>
-                                    <Keyboard keys={['meta', 'k']} />
-                                </Button>
-                                <ThemeToggle />
-                                <Separator orientation='vertical' className='mx-2 h-7' />
-                                <Link
-                                    aria-label='Github Repository'
-                                    className={buttonStyle({
-                                        variant: 'outline',
-                                        icon: true,
-                                        className: '[&_[data-slot=icon]]:text-fg'
-                                    })}
-                                    target='_blank'
-                                    href={'https://github.com/hq-kit/ui'}
-                                >
-                                    <IconBrandGithub />
-                                </Link>
-                            </>
+                            <Button variant='outline' onPress={() => setOpenCommand(true)}>
+                                <IconSearch />
+                                <span className='mr-2 text-muted-fg'>Search...</span>
+                                <Keyboard keys={['meta', 'k']} />
+                            </Button>
+                            <ThemeToggle />
+                            <Separator orientation='vertical' className='mx-2 h-7' />
+                            <Link
+                                aria-label='Github Repository'
+                                className={buttonStyle({
+                                    variant: 'outline',
+                                    icon: true,
+                                    className: '[&_[data-slot=icon]]:text-fg'
+                                })}
+                                target='_blank'
+                                href={'https://github.com/hq-kit/ui'}
+                            >
+                                <IconBrandGithub />
+                            </Link>
                         </Navbar.Flex>
                     </Navbar.Section>
                 </Navbar.Nav>

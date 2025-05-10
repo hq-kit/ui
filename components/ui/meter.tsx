@@ -1,7 +1,6 @@
 'use client'
 
 import { IconCircleAlert } from 'hq-icons'
-import { motion } from 'motion/react'
 import { Meter as RACMeter, type MeterProps as RACMeterProps } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
@@ -31,14 +30,12 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                         </span>
                     </div>
                     <div className='relative h-2 min-w-64 rounded-lg bg-muted outline-hidden'>
-                        <motion.div
-                            className='absolute top-0 left-0 h-full rounded-full'
-                            initial={{ width: '0%', backgroundColor: 'oklch(0% 0 0 / 0%)' }}
-                            animate={{
+                        <div
+                            className='absolute top-0 left-0 h-full rounded-full transition'
+                            style={{
                                 width: `${percentage}%`,
                                 backgroundColor: getColor(percentage)
                             }}
-                            transition={{ duration: 1.5 }}
                         />
                     </div>
                 </>

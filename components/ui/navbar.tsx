@@ -1,7 +1,6 @@
 'use client'
 
 import { IconMenu } from 'hq-icons'
-import { LayoutGroup, motion } from 'motion/react'
 import {
     type ComponentProps,
     type ComponentPropsWithRef,
@@ -10,7 +9,6 @@ import {
     createContext,
     use,
     useCallback,
-    useId,
     useMemo,
     useState
 } from 'react'
@@ -185,17 +183,15 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
 
 const NavbarSection = ({ className, ...props }: ComponentProps<'div'>) => {
     const { isCompact } = useNavbar()
-    const id = useId()
     return (
-        <LayoutGroup id={id}>
-            <div
-                data-navbar-section='true'
-                className={cn('flex', isCompact ? 'flex-col gap-y-4' : 'flex-row items-center gap-x-3', className)}
-                {...props}
-            >
-                {props.children}
-            </div>
-        </LayoutGroup>
+        <div
+            data-navbar-section
+            className={cn('flex', isCompact ? 'flex-col gap-y-1' : 'flex-row items-center gap-x-3', className)}
+            {...props}
+        >
+            {'title' in props && <h4 className='-mx-2 my-2 border-y px-5 font-medium text-sm'>{props.title}</h4>}
+            {props.children}
+        </div>
     )
 }
 
@@ -203,40 +199,23 @@ interface NavbarItemProps extends LinkProps {
     isCurrent?: boolean
 }
 
-const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
-    const { variant, isCompact } = useNavbar()
-    return (
-        <Link
-            data-navbar-item
-            aria-current={isCurrent ? 'page' : undefined}
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'relative flex cursor-pointer items-center gap-x-2 px-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
-                    '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
-                    '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
-                    'pressed:text-fg hover:text-fg focus:text-fg focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
-                    isCurrent && 'cursor-default text-fg',
-                    className
-                )
-            )}
-            {...props}
-        >
-            {(values) => (
-                <>
-                    {typeof props.children === 'function' ? props.children(values) : props.children}
-
-                    {(isCurrent || values.isCurrent) && !isCompact && variant !== 'float' && (
-                        <motion.span
-                            layoutId='current-indicator'
-                            data-slot='current-indicator'
-                            className='absolute inset-x-2 bottom-[calc(var(--navbar-height)*-0.33)] h-0.5 rounded-full bg-fg'
-                        />
-                    )}
-                </>
-            )}
-        </Link>
-    )
-}
+const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => (
+    <Link
+        data-navbar-item
+        aria-current={isCurrent ? 'page' : undefined}
+        className={composeRenderProps(className, (className) =>
+            cn(
+                'relative flex cursor-pointer items-center gap-x-2 rounded-md px-3 py-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
+                '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
+                '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
+                'pressed:text-primary hover:text-primary focus:text-primary focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
+                isCurrent && 'pointer-events-none cursor-default bg-primary/10 text-primary',
+                className
+            )
+        )}
+        {...props}
+    />
+)
 
 const NavbarLogo = ({ className, ...props }: LinkProps) => {
     return (
