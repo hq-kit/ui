@@ -31,10 +31,10 @@ const listStyles = tv({
             'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
             'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
             '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
-'**:data-avatar:size-6 **:data-avatar:*:size-6 **:data-avatar:mr-2 **:data-avatar:shrink-0',
+            '**:data-avatar:*:size-6 **:data-avatar:mr-2 **:data-avatar:size-6 **:data-avatar:shrink-0',
             'focus:bg-ring focus:text-primary focus:*:[.text-muted-fg]:text-primary',
             'hover:bg-ring hover:text-primary hover:*:[.text-muted-fg]:text-primary',
-            'selected:**:data-[slot=checked]:mr-2 selected:**:data-[slot=icon]:hidden',
+            'selected:**:data-[slot=checked]:mr-2 selected:**:data-[slot=icon]:hidden selected:**:data-avatar:hidden has-data-avatar:selected:**:data-[slot=checked]:ml-1',
             'dragging:cursor-grabbing dragging:outline dragging:outline-primary',
             'disabled:pointer-events-none disabled:opacity-50'
         ]
@@ -78,7 +78,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                             )}
                         />
                     )}
-                    {values.isSelected && <IconCheck className='text-success' data-slot='checked' />}
+                    {values.isSelected && <IconCheck className='text-green-500' data-slot='checked' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
                             {children}

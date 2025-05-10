@@ -77,6 +77,15 @@ export const ColorPreview = () => {
                     </div>
                 )
             )}
+            <div
+                className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
+                style={{
+                    backgroundColor: 'transparent',
+                    color: 'var(--muted)'
+                }}
+            >
+                border
+            </div>
         </div>
     ) : (
         <div className='grid grid-cols-2 gap-2 rounded-lg border border-dashed p-4'>
@@ -94,6 +103,15 @@ export const ColorPreview = () => {
                     </div>
                 )
             )}
+            <div
+                className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
+                style={{
+                    backgroundColor: 'transparent',
+                    color: 'var(--muted)'
+                }}
+            >
+                border
+            </div>
         </div>
     )
 }
@@ -129,12 +147,6 @@ const CSS_VARIABLES = `@layer base {
     --secondary-fg: <%- colors.light["secondary-fg"] %>;
     --danger: <%- colors.light["danger"] %>;
     --danger-fg: <%- colors.light["danger-fg"] %>;
-    --success: <%- colors.light["success"] %>;
-    --success-fg: <%- colors.light["success-fg"] %>;
-    --info: <%- colors.light["info"] %>;
-    --info-fg: <%- colors.light["info-fg"] %>;
-    --warning: <%- colors.light["warning"] %>;
-    --warning-fg: <%- colors.light["warning-fg"] %>;
     --muted: <%- colors.light["muted"] %>;
     --muted-fg: <%- colors.light["muted-fg"] %>;
 
@@ -148,12 +160,6 @@ const CSS_VARIABLES = `@layer base {
     --secondary-fg: <%- colors.dark["secondary-fg"] %>;
     --danger: <%- colors.dark["danger"] %>;
     --danger-fg: <%- colors.dark["danger-fg"] %>;
-    --success: <%- colors.dark["success"] %>;
-    --success-fg: <%- colors.dark["success-fg"] %>;
-    --info: <%- colors.dark["info"] %>;
-    --info-fg: <%- colors.dark["info-fg"] %>;
-    --warning: <%- colors.dark["warning"] %>;
-    --warning-fg: <%- colors.dark["warning-fg"] %>;
     --muted: <%- colors.dark["muted"] %>;
     --muted-fg: <%- colors.dark["muted-fg"] %>;
   }

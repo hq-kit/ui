@@ -3,7 +3,7 @@
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
-import type { ButtonProps, ToastOptions } from 'react-aria-components'
+import type { ToastOptions } from 'react-aria-components'
 import {
     Button,
     Text,
@@ -31,7 +31,7 @@ const queue = new ToastQueue<ToastContentProps>({
             document.startViewTransition(() => fn())
         } else fn()
     },
-    maxVisibleToasts: 3
+    maxVisibleToasts: 5
 })
 
 const ToastProvider = () => {
@@ -39,31 +39,19 @@ const ToastProvider = () => {
     return (
         <>
             <style>{`
-                    .toast {
-                        view-transition-class: toast;
+                    .toast { view-transition-class: toast; }
+                    @media screen and (max-width: 768px) {
+                        ::view-transition-new(.toast):only-child { animation: slide-down 300ms; }
+                        ::view-transition-old(.toast):only-child { animation: slide-up 300ms; } 
                     }
-                
-                    ::view-transition-new(.toast):only-child {
-                        animation: slide-in 300ms;
+                    @media screen and (min-width: 768px) {
+                        ::view-transition-new(.toast):only-child { animation: slide-left 300ms; }
+                        ::view-transition-old(.toast):only-child { animation: slide-right 300ms; } 
                     }
-                
-                    ::view-transition-old(.toast):only-child {
-                        animation: slide-out 300ms;
-                    }
-                
-                    @keyframes slide-out {
-                        to {
-                            translate: 100% 0;
-                            opacity: 0;
-                        }
-                    }
-                
-                    @keyframes slide-in {
-                        from {
-                            translate: 100% 0;
-                            opacity: 0;
-                        }
-                    }
+                    @keyframes slide-right { to { translate: 100% 0; opacity: 0; } }
+                    @keyframes slide-left { from { translate: 100% 0; opacity: 0; } }
+                    @keyframes slide-up { to { translate: 0 -100%; opacity: 0; } }
+                    @keyframes slide-down { from { translate: 0 -100%; opacity: 0; } }
            `}</style>
             <ToastRegion
                 className={cn(
@@ -73,29 +61,28 @@ const ToastProvider = () => {
             >
                 {({ toast }) => (
                     <Toaster
-                        style={{ viewTransitionName: toast.key }}
+                        style={{
+                            viewTransitionName: toast.key
+                        }}
                         key={toast.key}
                         toast={toast}
-                        className={cn('toast will-change-transform sm:w-fit sm:min-w-xs')}
+                        className={cn('toast w-full will-change-transform sm:w-fit sm:min-w-xs')}
                     >
                         <div
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                             key={toast.key}
-                            className={cn(
-                                'flex flex-col gap-2 rounded-lg p-4 shadow-[0_3px_10px_rgb(0,0,0,0.15)] backdrop-blur-lg dark:border',
-                                {
-                                    'border-green-500/20 bg-green-500/10 text-green-500 **:data-loader:stroke-success':
-                                        toast.content.type === 'success',
-                                    'border-invalid bg-danger/5 text-danger **:data-loader:stroke-danger':
-                                        toast.content.type === 'error',
-                                    'border-blue-500/30 bg-blue-500/10 text-blue-500 **:data-loader:stroke-info':
-                                        toast.content.type === 'info',
-                                    'border-amber-500/40 bg-amber-500/5 text-amber-500 **:data-loader:stroke-warning':
-                                        toast.content.type === 'warning',
-                                    'bg-bg text-fg': toast.content.type === 'default'
-                                }
-                            )}
+                            className={cn('flex flex-col gap-2 rounded-lg border p-4', {
+                                'border-green-500/20 bg-[#ecfdf3] text-[#008a2e] **:data-loader:stroke-green-500 dark:bg-[#001f0f] dark:text-[#59f39d]':
+                                    toast.content.type === 'success',
+                                'border-rose-500/20 bg-[#fff0f0] text-[#e60000] **:data-loader:stroke-rose-500 dark:bg-[#2d0607] dark:text-[#ff9ea1] ':
+                                    toast.content.type === 'error',
+                                'border-blue-500/30 bg-[#f0f8ff] text-[#0973dc] **:data-loader:stroke-blue-500 dark:bg-[#000d1f] dark:text-[#5896f3]':
+                                    toast.content.type === 'info',
+                                'border-amber-500/40 bg-[#fffcf0] text-[#dc7609] **:data-loader:stroke-amber-500 dark:bg-[#1d1f00] dark:text-[#f3cf58]':
+                                    toast.content.type === 'warning',
+                                'bg-bg text-fg': toast.content.type === 'default'
+                            })}
                         >
                             <div
                                 className={cn('flex items-start gap-2', {
@@ -112,17 +99,17 @@ const ToastProvider = () => {
                                     <IconTriangleAlert className='shrink-0' />
                                 ) : null}
                                 <ToastContent className='flex w-full flex-col'>
-                                    <Text slot='title' className='font-medium'>
+                                    <Text slot='title' className='font-medium text-sm tracking-tight'>
                                         {toast.content.title}
                                     </Text>
                                     {toast.content.description && (
-                                        <Text slot='description' className='text-sm'>
+                                        <Text slot='description' className='text-xs'>
                                             {toast.content.description}
                                         </Text>
                                     )}
                                 </ToastContent>
                                 <div className='-translate-y-1/2 absolute top-1 right-1 translate-x-1/2'>
-                                    <CountdownButton isPaused={isHovered} timeout={toast.timeout} slot='close' />
+                                    <CountdownButton isPaused={isHovered} timeout={toast.timeout} />
                                 </div>
                             </div>
                             {(toast.content.action || toast.content.altAction) && (
@@ -132,11 +119,11 @@ const ToastProvider = () => {
                                             onPress={toast.content.action}
                                             slot='close'
                                             className={cn(
-                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden pressed:brightness-90 hover:brightness-80 focus-visible:ring-4 focus-visible:ring-ring *:[svg]:size-3',
+                                                'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden pressed:brightness-90 backdrop-blur-2xl hover:brightness-80 focus-visible:ring-4 focus-visible:ring-ring *:[svg]:size-3',
                                                 {
                                                     'border-green-500 bg-green-500 text-white':
                                                         toast.content.type === 'success',
-                                                    'border-danger bg-danger text-danger-fg':
+                                                    'border-rose-500 bg-rose-500 text-white':
                                                         toast.content.type === 'error',
                                                     'border-blue-500 bg-blue-500 text-white':
                                                         toast.content.type === 'info' ||
@@ -168,7 +155,7 @@ const ToastProvider = () => {
     )
 }
 
-interface TimeoutButtonProps extends ButtonProps {
+interface TimeoutButtonProps {
     timeout: number | undefined
     isPaused?: boolean
 }
@@ -202,10 +189,11 @@ const CountdownButton = ({ timeout, isPaused }: TimeoutButtonProps) => {
                 <svg className='-rotate-90 absolute size-fit'>
                     <circle cx='50%' cy='50%' r={radius} stroke='current' strokeWidth='2' fill='none' />
                     <circle
+                        data-loader
                         cx='50%'
                         cy='50%'
                         r={radius}
-                        stroke='gray'
+                        stroke='currentColor'
                         strokeWidth='2'
                         fill='none'
                         strokeDasharray={circumference}

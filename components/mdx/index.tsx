@@ -42,7 +42,7 @@ const components = {
     Image,
     Note: ({ children, ...props }: ComponentProps<typeof Note>) => (
         <Note {...props} className='not-prose **:not-prose'>
-            <IconCircleAlert />
+            <IconCircleAlert className='my-0.5' />
             {children}
         </Note>
     )

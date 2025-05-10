@@ -17,16 +17,9 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
     return (
         <>
             <style>
-                {`
-                  @keyframes indeterminate {
-                    from {
-                      transform: translateX(-100%);
-                    }
-                    to {
-                      transform: translateX(250px);
-                    }
-                  }
-                `}
+                {
+                    '@keyframes indeterminate { from { transform: translateX(-100%); } to { transform: translateX(250px); } }'
+                }
             </style>
             <ProgressBar
                 ref={ref}
@@ -64,6 +57,7 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                     strokeDasharray='100 200'
                                     strokeDashoffset={100 - (percentage ?? 30)}
                                     strokeLinecap='round'
+                                    style={{ transition: 'stroke-dashoffset 0.1s linear' }}
                                     className={cn(
                                         'origin-center',
                                         isIndeterminate
@@ -98,7 +92,8 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                             width: `${percentage}%`,
                                             animation: isIndeterminate
                                                 ? 'indeterminate 1.5s infinite ease-in-out'
-                                                : 'ease-in-out'
+                                                : 'none',
+                                            transition: 'width 0.1s linear'
                                         }}
                                         className={cn(
                                             'absolute top-0 left-0 h-full rounded-full transition',

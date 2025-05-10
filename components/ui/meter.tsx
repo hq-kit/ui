@@ -31,7 +31,7 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                     </div>
                     <div className='relative h-2 min-w-64 rounded-lg bg-muted outline-hidden'>
                         <div
-                            className='absolute top-0 left-0 h-full rounded-full transition'
+                            className='absolute top-0 left-0 h-full rounded-full transition-[width,background-color]'
                             style={{
                                 width: `${percentage}%`,
                                 backgroundColor: getColor(percentage)
@@ -46,13 +46,13 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
 
 const getColor = (percentage: number) => {
     if (percentage < 25) {
-        return
+        return 'blue'
     }
     if (percentage < 50) {
-        return 'var(--success)'
+        return 'green'
     }
     if (percentage < 75) {
-        return 'var(--warning)'
+        return 'orange'
     }
     return 'var(--danger)'
 }

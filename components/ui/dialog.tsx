@@ -68,13 +68,13 @@ const modalStyle = tv({
 
 const popoverStyle = tv({
     base: [
-        'group overflow-y-auto max-w-xs rounded-lg border bg-bg bg-clip-padding text-fg shadow-xs transition-transform sm:max-w-3xl sm:text-sm',
+        'group max-w-xs rounded-lg border bg-bg bg-clip-padding text-fg shadow-xs transition-transform sm:max-w-3xl sm:text-sm',
         'entering:fade-in entering:animate-in entering:duration-150 entering:ease-out',
         'entering:placement-left:slide-in-from-right-1 entering:placement-right:slide-in-from-left-1 entering:placement-top:slide-in-from-bottom-1 entering:placement-bottom:slide-in-from-top-1',
         'exiting:fade-out exiting:animate-out exiting:duration-100 exiting:ease-in',
         'exiting:placement-left:slide-out-to-right-1 exiting:placement-right:slide-out-to-left-1 exiting:placement-top:slide-out-to-bottom-1 exiting:placement-bottom:slide-out-to-top-1'
     ],
-    variants: { isPicker: { true: 'max-h-72 min-w-(--trigger-width) max-w-(--trigger-width) p-1' } }
+    variants: { isPicker: { true: 'max-h-72 min-w-(--trigger-width) max-w-(--trigger-width) overflow-y-auto p-1' } }
 })
 
 const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (

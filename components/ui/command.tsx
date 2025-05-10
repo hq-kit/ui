@@ -17,7 +17,7 @@ interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputVa
 
 const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
-        <div data-command={true} className={cn('rounded-lg border', props.className)}>
+        <div data-command className={cn('rounded-lg border', props.className)}>
             <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
                 <TextField autoFocus className='border-b p-1' aria-label='Search'>
                     <Group className='flex items-center px-2'>
@@ -33,7 +33,7 @@ const Command = <T extends object>({ ...props }: CommandProps<T>) => {
                     renderEmptyState={() => (
                         <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>
                     )}
-                    className='grid max-h-[30rem] w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden'
+                    className='grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden sm:max-h-[30rem]'
                     {...props}
                 />
             </Autocomplete>
@@ -91,7 +91,7 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
             isOpen={props.isOpen || shortcutOpen}
             onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
-            className={'h-[70dvh] border-0 **:data-command:border-0 sm:h-auto sm:min-h-0'}
+            className='h-[70dvh] **:data-command:border-0 sm:h-auto sm:min-h-0'
         >
             <Command {...props} />
         </ModalContent>

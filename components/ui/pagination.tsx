@@ -48,11 +48,10 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
                 cn(
                     'inline-flex size-10 cursor-pointer items-center justify-center gap-x-2 whitespace-nowrap font-medium text-sm outline-hidden transition',
                     'group-data-[shape=circle]:rounded-full group-data-[shape=square]:rounded-lg',
-                    'hover:bg-muted/40',
-                    'pressed:bg-muted/50',
+                    'pressed:bg-muted/50 hover:bg-muted/40',
                     'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
                     'selected:pointer-events-none selected:bg-primary selected:text-primary-fg',
-                    'cursor-default opacity-50',
+                    'disabled:cursor-default disabled:opacity-50',
                     slot !== 'ellipsis' && 'border',
                     className
                 )
