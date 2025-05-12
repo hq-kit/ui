@@ -82,7 +82,24 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--muted, currentColor);
+    }
+
+    * {
+        font-feature-settings: "cv11", "ss01";
+        text-rendering: optimizeLegibility;
+
+        scrollbar-width: thin;
+        scrollbar-color: var(--muted) transparent;
+    }
+
+    html {
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        font-variation-settings: normal;
         scroll-behavior: smooth;
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -90,20 +107,17 @@
         color: var(--fg);
     }
 
-    *::-webkit-scrollbar {
-        border-radius: var(--radius-lg);
-        width: 7px;
-        height: 7px;
+    ::-webkit-scrollbar {
+        width: 4px;
     }
 
-    *::-webkit-scrollbar-track {
-        border-radius: var(--radius-lg);
+    ::-webkit-scrollbar-track {
         background: transparent;
     }
 
-    *::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
         background: var(--muted);
-        border-radius: var(--radius-lg);
+        border-radius: 4px;
     }
 }
 
@@ -129,15 +143,21 @@
 
     [data-rehype-pretty-code-figure] pre {
         border-radius: var(--radius-lg);
-        @apply rounded-lg border px-0 py-2;
+        padding-block: 8px;
+        padding-inline: 0;
+        border: 1px solid var(--muted);
     }
 
     [data-rehype-pretty-code-figure] code {
-        @apply border-0 p-0 !text-sm !leading-loose md:text-base !rounded-lg;
+        border: none;
+        padding: 0;
+        font-size: 14px;
+        line-height: 2;
+        border-radius: var(--radius-lg);
     }
 
     span[data-rehype-pretty-code-figure] > code span {
-        @apply !px-0.5 !font-normal;
+        padding-inline: 2px;
     }
 
     pre code {
@@ -147,7 +167,11 @@
     pre code > [data-line]::before {
         counter-increment: line;
         content: counter(line);
-        @apply text-zinc-500 mr-8 inline-block w-4 text-right;
+        color: #71717b;
+        margin-right: 2rem;
+        display: inline-block;
+        text-align: right;
+        width: 1rem;
     }
 
     pre code[data-line-numbers-max-digits="2"] > [data-line]::before {
@@ -165,11 +189,15 @@
     [data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
         counter-increment: line;
         content: counter(line);
-        @apply mr-4 inline-block w-4 text-right;
+        margin-right: 1rem;
+        display: inline-block;
+        text-align: right;
+        width: 1rem;
     }
 
     [data-rehype-pretty-code-figure] [data-line] {
-        @apply border-l-2 border-l-transparent px-3;
+        border-left: 2px solid transparent;
+        padding-inline: 8px;
     }
 
     [data-rehype-pretty-code-figure] [data-highlighted-line] {
@@ -183,12 +211,17 @@
     }
 
     [data-rehype-pretty-code-figure] [data-chars-id] {
-        border-bottom-color: color-mix(in oklab, var(--primary) 80%, transparent) !important;
-        @apply border-b-2 p-1 shadow-none;
+        border-bottom: 2px solid var(--muted);
+        box-shadow: none;
     }
 
     .subheading-anchor {
-        @apply text-primary font-semibold no-underline hover:no-underline;
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        :hover {
+            text-decoration: none;
+        }
     }
 
     .prose-headings\:scroll-mt-24
@@ -200,6 +233,6 @@
 
     .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
     .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
-        @apply hidden;
+        display: none;
     }
 }

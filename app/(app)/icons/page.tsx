@@ -4,9 +4,17 @@ import { Suspense } from 'react'
 import { IconsController } from '@/components/controllers/icons'
 import IconList from '@/components/controllers/icons/icon-list'
 import Icons from '@/components/controllers/icons/icons.json'
-import { Hero, HeroButton, HeroContent, HeroDescription, HeroHeader, HeroTitle } from '@/components/layouts/hero'
+import {
+    Hero,
+    HeroButton,
+    HeroContent,
+    HeroDescription,
+    HeroHeader,
+    HeroTitle,
+    MainContent
+} from '@/components/layouts/hero'
 import { CLI } from '@/components/mdx/cli'
-import { Container, Link } from '@/components/ui'
+import { Link } from '@/components/ui'
 
 export async function generateMetadata() {
     return {
@@ -73,7 +81,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                 </HeroHeader>
             </Hero>
             <IconsController />
-            <Container className='flex w-full flex-col py-4'>
+            <MainContent className='flex w-full flex-col'>
                 <Suspense
                     fallback={
                         <div className='flex min-h-96 w-full items-center justify-center'>
@@ -83,7 +91,7 @@ export default async function IconsPage(props: { searchParams: SearchParams }) {
                 >
                     <IconList items={filteredIcons} />
                 </Suspense>
-            </Container>
+            </MainContent>
         </>
     )
 }

@@ -56,7 +56,7 @@ const PopoverContent = ({
                 )}
                 {...props}
             >
-                <Dialog role='dialog' aria-label={props['aria-label'] ?? 'List item'}>
+                <Dialog role='dialog' aria-label={props['aria-label'] ?? 'Popover'}>
                     {children}
                 </Dialog>
             </Modal>

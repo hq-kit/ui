@@ -39,9 +39,7 @@ const Hero = ({ children }: { children: ReactNode }) => (
             </defs>
             <rect fill='url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)' width='100%' height='100%' strokeWidth={0} />
         </svg>
-        <div className='border-b pt-10 pb-6 lg:py-16'>
-            <Container>{children}</Container>
-        </div>
+        <Container className='border-b pt-10 pb-6 lg:py-16 xl:border-x'>{children}</Container>
     </div>
 )
 
@@ -94,4 +92,10 @@ const HeroButton = ({
     </Link>
 )
 
-export { Hero, HeroButton, HeroContent, HeroDescription, HeroHeader, HeroTitle }
+const MainContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
+    <Container constrained className={cn('py-6 xl:border-x', className)} {...props}>
+        {children}
+    </Container>
+)
+
+export { Hero, HeroButton, HeroContent, HeroDescription, HeroHeader, HeroTitle, MainContent }

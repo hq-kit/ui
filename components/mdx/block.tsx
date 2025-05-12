@@ -1,5 +1,5 @@
 'use client'
-import { type HTMLAttributes, useState } from 'react'
+import { type ComponentPropsWithRef, useState } from 'react'
 
 import { FileExplorer } from '@/components/mdx/file-explorer'
 import { Link, Tabs, Toggle, buttonStyle } from '@/components/ui'
@@ -7,9 +7,8 @@ import { cn } from '@/lib/utils'
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 import type { Key } from 'react-aria-components'
 
-interface BlockProps extends HTMLAttributes<HTMLDivElement> {
+interface BlockProps extends ComponentPropsWithRef<'div'> {
     page: string
-    className?: string
     height?: number
     zoomOut: number
 }
@@ -60,7 +59,7 @@ export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }
                         </div>
                         <iframe
                             title='Preview'
-                            className={cn('relative z-20 w-full rounded-lg border', screenWidth, className)}
+                            className={cn('relative z-20 w-full rounded-lg border', [...screenWidth].flat())}
                             height={height || 768}
                             style={{ zoom: zoomOut || 1 }}
                             allowFullScreen

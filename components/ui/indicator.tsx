@@ -4,7 +4,7 @@ import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 const indicatorStyle = tv({
-    base: 'absolute right-0 left-auto z-10 inline-flex w-auto translate-x-1/2 select-none items-center justify-center whitespace-nowrap border-2 py-[3px]',
+    base: 'absolute right-0.5 left-auto z-10 inline-flex w-auto translate-x-1/2 select-none items-center justify-center whitespace-nowrap border-2 py-[3px]',
     variants: {
         variant: {
             primary: '[--bg:var(--color-primary)] [--fg:var(--color-primary-fg)]',
@@ -13,8 +13,8 @@ const indicatorStyle = tv({
             outline: '[--bg:var(--color-bg)] [--fg:var(--color-fg)]'
         },
         position: {
-            top: '-translate-y-1/2 top-0 bottom-auto',
-            bottom: 'top-auto bottom-0 translate-y-1/2'
+            top: '-translate-y-1/2 top-0.5 bottom-auto',
+            bottom: 'top-auto bottom-0.5 translate-y-1/2'
         },
         isInverse: {
             true: 'border-(--bg) bg-(--fg) text-(--bg)',

@@ -1,27 +1,22 @@
-import type { HTMLAttributes, Ref } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 
-import { type VariantProps, tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
-const containerStyle = tv({
-    base: '@container mx-auto w-full max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
-    variants: {
-        variant: {
-            constrained: 'sm:px-6 lg:px-8',
-            'padded-content': 'px-4 sm:px-6 lg:px-8'
-        }
-    },
-    defaultVariants: {
-        variant: 'padded-content'
-    }
-})
-
-interface ContainerProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof containerStyle> {
-    ref?: Ref<HTMLDivElement>
+interface ContainerProps extends ComponentPropsWithRef<'div'> {
+    constrained?: boolean
 }
 
-const Container = ({ className, variant, ref, ...props }: ContainerProps) => (
-    <div className={containerStyle({ variant, className })} {...props} ref={ref} />
+const Container = ({ className, constrained = false, ref, ...props }: ContainerProps) => (
+    <div
+        className={cn(
+            'mx-auto w-full max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
+            constrained ? 'sm:px-6 lg:px-8' : 'px-4 sm:px-6 lg:px-8',
+            className
+        )}
+        {...props}
+        ref={ref}
+    />
 )
 
-export { Container }
 export type { ContainerProps }
+export { Container }

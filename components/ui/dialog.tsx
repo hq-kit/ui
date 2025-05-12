@@ -1,7 +1,7 @@
 'use client'
 
 import { IconX } from 'hq-icons'
-import type { ComponentProps, ComponentPropsWithRef } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 import {
     Button,
     type ButtonProps,
@@ -10,29 +10,27 @@ import {
     Dialog as RACDialog,
     type DialogProps as RACDialogProps,
     type HeadingProps as RACHeadingProps,
-    type Modal as RACModal,
     ModalOverlay as RACModalOverlay,
     type TextProps,
     composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { type VariantProps, tv } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
-const Dialog = ({ className, ...props }: RACDialogProps) => (
-    <RACDialog
-        slot='dialog'
-        aria-label='Dialog'
-        className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
-        {...props}
-    />
-)
+const overlayStyle = tv({
+    base: [
+        'fixed inset-0 isolate z-50 bg-black/50 backdrop-blur-sm [--visual-viewport-vertical-padding:32px]',
+        'entering:fade-in-0 entering:animate-in entering:duration-300 entering:ease-out',
+        'exiting:fade-out-0 exiting:animate-out exiting:duration-200 exiting:ease-in'
+    ]
+})
 
 const sheetStyle = tv({
     base: [
         'fixed z-50 gap-4 bg-bg shadow-lg transition',
-        'entering:animate-in entering:duration-300',
-        'exiting:animate-out exiting:duration-200'
+        'entering:animate-in entering:duration-300 entering:ease-out',
+        'exiting:animate-out exiting:duration-200 exiting:ease-in'
     ],
     variants: {
         side: {
@@ -47,8 +45,8 @@ const sheetStyle = tv({
 const modalStyle = tv({
     base: [
         'sm:-translate-x-1/2 sm:-translate-y-1/2 absolute bottom-0 z-50 h-fit w-full rounded-t-lg border bg-bg shadow-lg sm:fixed sm:top-1/2 sm:left-[50vw] sm:rounded-lg',
-        'entering:fade-in exiting:fade-out entering:zoom-in-95 entering:slide-in-from-bottom sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300',
-        'exiting:zoom-out-95 exiting:slide-out-to-bottom sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:duration-200'
+        'entering:fade-in entering:zoom-in-95 entering:slide-in-from-bottom sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300 entering:ease-out',
+        'exiting:fade-out exiting:zoom-out-95 exiting:slide-out-to-bottom sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:duration-200 exiting:ease-in'
     ],
     variants: {
         size: {
@@ -77,28 +75,26 @@ const popoverStyle = tv({
     variants: { isPicker: { true: 'max-h-72 min-w-(--trigger-width) max-w-(--trigger-width) overflow-y-auto p-1' } }
 })
 
-const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
-    <RACModalOverlay
-        isDismissable={isDismissable}
-        className={composeRenderProps(className, (className) =>
-            cn(
-                'fixed inset-0 isolate z-50 bg-black/50 backdrop-blur [--visual-viewport-vertical-padding:32px]',
-                'entering:fade-in-0 entering:animate-in entering:duration-300 entering:ease-out',
-                'exiting:fade-out-0 exiting:animate-out exiting:duration-200 exiting:ease-in',
-                className
-            )
+const Dialog = ({ className, ...props }: RACDialogProps) => (
+    <RACDialog
+        slot='dialog'
+        aria-label='Dialog'
+        className={cn(
+            'relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden',
+            className
         )}
         {...props}
     />
 )
 
-interface DialogContentProps
-    extends Omit<ComponentProps<typeof RACModal>, 'children' | 'isDismissable'>,
-        VariantProps<typeof sheetStyle> {
-    children?: RACDialogProps['children']
-    role?: RACDialogProps['role']
-    closeButton?: boolean
-}
+const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
+    <RACModalOverlay
+        isDismissable={isDismissable}
+        isKeyboardDismissDisabled={!isDismissable}
+        className={composeRenderProps(className, (className) => overlayStyle({ className }))}
+        {...props}
+    />
+)
 
 const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
@@ -149,4 +145,3 @@ const DialogX = (props: ButtonProps) => (
 
 export { Dialog, DialogOverlay, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, DialogX }
 export { sheetStyle, modalStyle, popoverStyle }
-export type { DialogContentProps }

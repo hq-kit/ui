@@ -24,17 +24,16 @@ const Sheet = (props: DialogTriggerProps) => {
 
 interface SheetContentProps
     extends Omit<ComponentProps<typeof Modal>, 'children'>,
-        Omit<ModalOverlayProps, 'className'> {
+        Omit<ModalOverlayProps, 'className' | 'children'> {
     'aria-label'?: DialogProps['aria-label']
     'aria-labelledby'?: DialogProps['aria-labelledby']
     role?: DialogProps['role']
     closeButton?: boolean
-    isBlurred?: boolean
     side?: 'top' | 'bottom' | 'left' | 'right'
+    children?: DialogProps['children']
 }
 
 const SheetContent = ({
-    isBlurred = false,
     side = 'right',
     role = 'dialog',
     closeButton = true,
@@ -52,23 +51,23 @@ const SheetContent = ({
                 })}
                 {...props}
             >
-                {(values) => (
-                    <Dialog
-                        role={role}
-                        aria-label='Sheet'
-                        className={cn(
-                            'relative flex flex-col overflow-hidden outline-hidden',
-                            side === 'top' || side === 'bottom'
-                                ? 'max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]'
-                                : 'max-h-full'
-                        )}
-                    >
+                <Dialog
+                    role={role}
+                    aria-label={props['aria-label'] ?? 'Sheet'}
+                    className={cn(
+                        'relative flex flex-col overflow-hidden outline-hidden',
+                        side === 'top' || side === 'bottom'
+                            ? 'max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]'
+                            : 'h-full'
+                    )}
+                >
+                    {(values) => (
                         <>
                             {typeof children === 'function' ? children(values) : children}
                             {closeButton && isDismissable && <DialogX />}
                         </>
-                    </Dialog>
-                )}
+                    )}
+                </Dialog>
             </Modal>
         </DialogOverlay>
     )

@@ -2,19 +2,12 @@
 
 import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
 
-import {
-    IconBrandReact,
-    IconBrandTypescript,
-    IconFolder,
-    IconFolderOpen,
-    IconPanelLeftClose,
-    IconPanelRightClose
-} from 'hq-icons'
+import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconPanelLeft } from 'hq-icons'
 import { Button, Collection } from 'react-aria-components'
 
 import previews from '@/components/docs/generated/previews.json'
 import { Code } from '@/components/mdx/code'
-import { Tree, TreeItem } from '@/components/ui'
+import { Separator, Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { slugify } from '@/lib/utils/modifiers'
 
@@ -97,7 +90,7 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
         <TreeItem
             className={cn(
                 selected === item.id && 'bg-primary/10 text-primary',
-                'cursor-pointer transition hover:bg-primary/10 hover:text-primary'
+                'cursor-pointer hover:bg-primary/10 hover:text-primary'
             )}
             key={item.id}
             id={item.id}
@@ -192,12 +185,14 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
     const [sidebarOpen, setSidebarOpen] = useState(true)
 
     return (
-        <div className={cn('flex w-full flex-col rounded-lg border lg:flex-row', className)} {...props}>
+        <div className={cn('flex w-full flex-col overflow-hidden rounded-lg border lg:flex-row', className)} {...props}>
             <Tree
                 defaultExpandedKeys={[1, 2, 3, 4]}
                 className={cn(
-                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 transition-all lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
-                    sidebarOpen ? 'min-h-40 overflow-y-auto' : 'h-0 overflow-hidden border-none p-0 lg:h-auto lg:w-0'
+                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 border-b transition-[width] lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
+                    sidebarOpen
+                        ? 'min-h-40 overflow-y-auto'
+                        : 'h-0 overflow-hidden border-none px-0 py-0 lg:h-auto lg:w-0 lg:py-2'
                 )}
                 aria-label='Files'
                 selectionMode='none'
@@ -205,18 +200,20 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
             >
                 {files.map(renderItem)}
             </Tree>
-            <div className='relative grid w-full grid-cols-1 place-content-start'>
-                <div className='relative flex h-12 items-center gap-2 border-b bg-primary/10 px-4 py-1 text-primary'>
-                    <Button
-                        onPress={() => setSidebarOpen(!sidebarOpen)}
-                        className='-mt-7 -translate-x-1/2 lg:-ml-7 absolute left-1/2 flex size-6 rotate-90 items-center justify-center lg:relative lg:left-0 lg:mt-0 lg:translate-x-0 lg:rotate-0'
-                    >
-                        {sidebarOpen ? <IconPanelLeftClose /> : <IconPanelRightClose />}
+            <div className='relative grid w-full grid-cols-1 place-content-start bg-[#0d1117] dark:bg-[#0d1117]'>
+                <div className='relative flex h-12 items-center gap-2 border-b bg-bg px-4 py-1 text-fg'>
+                    <Button onPress={() => setSidebarOpen(!sidebarOpen)}>
+                        <IconPanelLeft className='size-4 rotate-90 lg:rotate-0' />
                     </Button>
-                    <IconBrandReact className='size-4' />
-                    {`${selected.split('/').pop()}.tsx`}
+                    <Separator orientation='vertical' className='mx-2 hidden h-6 lg:block' />
+                    {selected === 'index' ? <IconBrandTypescript /> : <IconBrandReact />}
+                    {`${selected.split('/').pop()}.${selected === 'index' ? 'ts' : 'tsx'}`}
                 </div>
-                <Code code={code} className='static overflow-y-auto rounded-none border-none [&_pre]:max-h-full' />
+                <Code
+                    code={code}
+                    keepBackground={false}
+                    className='no-scrollbar static overflow-y-auto rounded-none border-none [&_pre]:max-h-full [&_pre]:rounded-none **:[svg]:text-fg'
+                />
             </div>
         </div>
     )

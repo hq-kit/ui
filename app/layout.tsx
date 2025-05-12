@@ -87,7 +87,7 @@ export default function RootLayout({
                 } as CSSProperties
             }
         >
-            <body className='min-h-screen font-sans antialiased'>
+            <body className='min-h-dvh font-sans antialiased'>
                 <Providers>
                     {children}
                     {process.env.NODE_ENV === 'production' && (

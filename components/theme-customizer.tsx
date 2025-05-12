@@ -1,6 +1,6 @@
 'use client'
 
-import { IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
+import { IconMonitor, IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
 import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 import { useTheme } from '@/components/providers'
@@ -34,7 +34,7 @@ export function ThemeCustomizer() {
             <Button name='Theme Customizer Toggle' icon className='fixed top-16 right-0 z-50 mt-1 rounded-r-none'>
                 <IconSwatchBook />
             </Button>
-            <Sheet.Content isBlurred={false} side='right' className='sm:max-w-md'>
+            <Sheet.Content side='right' className='sm:max-w-md'>
                 <Sheet.Header>
                     <Sheet.Title>Customize</Sheet.Title>
                     <Sheet.Description>Pick a style and color for your components.</Sheet.Description>
@@ -163,7 +163,7 @@ export function ThemeCustomizer() {
                         value={currentBorderRadius}
                         onChange={(v) => updateBorderRadius(Number(v))}
                     />
-                    <div className='grid grid-cols-2 gap-0 *:rounded-none *:first:rounded-l-lg *:last:rounded-r-lg'>
+                    <div className='grid grid-cols-3 gap-0 *:rounded-none *:first:rounded-l-lg *:last:rounded-r-lg'>
                         <Button
                             variant={mode === 'light' ? 'primary' : 'outline'}
                             size='sm'
@@ -171,6 +171,14 @@ export function ThemeCustomizer() {
                         >
                             <IconSun />
                             Light
+                        </Button>
+                        <Button
+                            variant={mode === 'system' ? 'primary' : 'outline'}
+                            size='sm'
+                            onPress={() => setMode('system')}
+                        >
+                            <IconMonitor />
+                            System
                         </Button>
                         <Button
                             variant={mode === 'dark' ? 'primary' : 'outline'}

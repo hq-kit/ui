@@ -5,16 +5,12 @@ import { Container } from '@/components/ui'
 
 export function IconsController() {
     return (
-        <>
-            <div className='sticky top-0 z-10 w-full rounded-b-lg bg-bg/60 py-6 backdrop-blur-xl lg:top-14'>
-                <Container className='relative flex flex-col items-center justify-between gap-2 sm:flex-row'>
-                    <Search />
-                    <div className='flex w-full items-center gap-2 sm:w-auto'>
-                        <SelectStroke />
-                        <SelectSize />
-                    </div>
-                </Container>
+        <Container className='sticky top-0 z-10 flex w-full flex-col items-center justify-between gap-2 bg-bg/60 py-2 backdrop-blur-xl sm:flex-row lg:top-14 lg:border-x'>
+            <Search />
+            <div className='flex w-full items-center gap-2 sm:w-auto'>
+                <SelectStroke />
+                <SelectSize />
             </div>
-        </>
+        </Container>
     )
 }

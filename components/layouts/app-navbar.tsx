@@ -31,7 +31,7 @@ export function AppNavbar() {
         <>
             <CommandMenu openCommand={openCommand} action={setOpenCommand} />
             <Navbar isSticky isOpen={openNav} onOpenChange={setOpenNav}>
-                <Navbar.Nav>
+                <Navbar.Nav className='xl:*:[div]:h-full xl:*:[div]:border-x'>
                     <Navbar.Logo href='/' aria-label='Home' className='flex items-center'>
                         <IconBrandCleon />
                         <span className='font-bold'>HQ UI</span>

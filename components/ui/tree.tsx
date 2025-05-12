@@ -56,7 +56,7 @@ const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
                         />
                     </Button>
                 )}
-                {children}
+                {typeof children === 'function' ? children(values) : children}
             </>
         )}
     </TreeItemContent>

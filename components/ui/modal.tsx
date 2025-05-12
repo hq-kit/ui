@@ -1,9 +1,9 @@
 'use client'
 
-import type { CSSProperties } from 'react'
+import type { ComponentProps } from 'react'
 
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
-import { Button, DialogTrigger as ModalTrigger, Modal as RACModal, composeRenderProps } from 'react-aria-components'
+import { Button, DialogTrigger, Modal as RACModal } from 'react-aria-components'
 
 import {
     Dialog,
@@ -17,24 +17,26 @@ import {
     modalStyle
 } from './dialog'
 
-const Modal = (props: DialogTriggerProps) => {
-    return <ModalTrigger {...props} />
-}
+const Modal = (props: DialogTriggerProps) => <DialogTrigger {...props} />
 
 interface ModalContentProps
-    extends Omit<ModalOverlayProps, 'className' | 'children'>,
-        Pick<DialogProps, 'aria-label' | 'aria-labelledby' | 'role' | 'children' | 'className'> {
+    extends Omit<ComponentProps<typeof RACModal>, 'children'>,
+        Omit<ModalOverlayProps, 'className' | 'children'> {
+    'aria-label'?: DialogProps['aria-label']
+    'aria-labelledby'?: DialogProps['aria-labelledby']
+    role?: DialogProps['role']
     closeButton?: boolean
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'full'
-    style?: CSSProperties
+    children?: DialogProps['children']
+    className?: DialogProps['className']
 }
 
 const ModalContent = ({
-    children,
     size = 'lg',
     role = 'dialog',
     closeButton = true,
     className,
+    children,
     ...props
 }: ModalContentProps) => {
     const isDismissable = role !== 'alertdialog'
@@ -42,15 +44,12 @@ const ModalContent = ({
         <DialogOverlay isDismissable={isDismissable} {...props}>
             <RACModal
                 isDismissable={isDismissable}
-                className={composeRenderProps(className, (className) =>
-                    modalStyle({
-                        size,
-                        className
-                    })
-                )}
+                className={modalStyle({
+                    size
+                })}
                 {...props}
             >
-                <Dialog role={role}>
+                <Dialog role={role} aria-label={props['aria-label'] ?? 'Modal'} className={className}>
                     {(values) => (
                         <>
                             {typeof children === 'function' ? children(values) : children}
@@ -63,7 +62,8 @@ const ModalContent = ({
     )
 }
 
-Modal.Trigger = (props: ButtonProps) => <Button {...props} />
+const ModalTrigger = (props: ButtonProps) => <Button {...props} />
+Modal.Trigger = ModalTrigger
 
 Modal.Content = ModalContent
 
@@ -74,3 +74,4 @@ Modal.Footer = DialogFooter
 Modal.Body = DialogBody
 
 export { Modal, ModalContent }
+export type { ModalContentProps }

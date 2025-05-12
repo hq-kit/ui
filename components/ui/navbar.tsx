@@ -1,17 +1,8 @@
 'use client'
 
+import { type ComponentPropsWithRef, type Ref, createContext, use, useCallback, useMemo, useState } from 'react'
+
 import { IconMenu } from 'hq-icons'
-import {
-    type ComponentProps,
-    type ComponentPropsWithRef,
-    type Ref,
-    type RefObject,
-    createContext,
-    use,
-    useCallback,
-    useMemo,
-    useState
-} from 'react'
 import type { ButtonProps, LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
 
@@ -45,7 +36,7 @@ function useNavbar() {
     return context
 }
 
-interface NavbarProps extends ComponentProps<'header'>, NavbarOptions {
+interface NavbarProps extends ComponentPropsWithRef<'header'>, NavbarOptions {
     defaultOpen?: boolean
     isOpen?: boolean
     onOpenChange?: (open: boolean) => void
@@ -115,13 +106,13 @@ const Navbar = ({
     )
 }
 
-interface NavbarNavProps extends ComponentProps<'div'> {
+interface NavbarNavProps extends ComponentPropsWithRef<'div'> {
     variant?: 'navbar' | 'float' | 'inset'
     isSticky?: boolean
     useDefaultResponsive?: boolean
 }
 
-const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: NavbarNavProps) => {
+const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...props }: NavbarNavProps) => {
     const { isCompact, variant, open, setOpen } = useNavbar()
 
     if (isCompact && useDefaultResponsive) {
@@ -129,7 +120,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
             <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
                 <Sheet.Trigger className='sr-only' />
                 <Sheet.Content side='left' aria-label='Compact Navbar' data-navbar='compact'>
-                    <Sheet.Body className='px-2 md:px-4'>{props.children}</Sheet.Body>
+                    <Sheet.Body className='px-2 md:px-4'>{children}</Sheet.Body>
                 </Sheet.Content>
             </Sheet>
         )
@@ -140,18 +131,19 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, ...props }: Na
             data-navbar-nav='true'
             ref={ref}
             className={cn(
-                'group peer hidden w-full items-center px-4 md:flex',
+                'group peer hidden w-full items-center px-4 md:flex md:px-0',
                 'h-(--navbar-height)',
-                '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-7xl [&>div]:items-center md:[&>div]:flex',
-                variant === 'float' && 'mx-auto w-full max-w-7xl rounded-lg border bg-bg px-4 text-fg',
-                variant === 'default' && 'border-b bg-bg text-fg md:px-6',
+                '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-7xl [&>div]:items-center md:[&>div]:flex lg:[&>div]:max-w-(--breakpoint-xl) 2xl:[&>div]:max-w-(--breakpoint-2xl)',
+                variant === 'float' &&
+                    'mx-auto w-full max-w-7xl rounded-lg border bg-bg px-4 text-fg md:px-6 lg:max-w-(--breakpoint-xl) lg:px-8 2xl:max-w-(--breakpoint-2xl)',
+                variant === 'default' && 'border-b bg-bg text-fg sm:[&>div]:px-6 lg:[&>div]:px-8',
                 variant === 'inset' &&
-                    'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex 2xl:[&>div]:max-w-(--breakpoint-2xl)',
+                    'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex',
                 className
             )}
             {...props}
         >
-            <div>{props.children}</div>
+            <div>{children}</div>
         </div>
     )
 }
@@ -181,7 +173,7 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
     )
 }
 
-const NavbarSection = ({ className, ...props }: ComponentProps<'div'>) => {
+const NavbarSection = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     const { isCompact } = useNavbar()
     return (
         <div
@@ -189,7 +181,9 @@ const NavbarSection = ({ className, ...props }: ComponentProps<'div'>) => {
             className={cn('flex', isCompact ? 'flex-col gap-y-1' : 'flex-row items-center gap-x-3', className)}
             {...props}
         >
-            {'title' in props && <h4 className='-mx-2 my-2 border-y px-5 font-medium text-sm'>{props.title}</h4>}
+            {'title' in props && (
+                <h4 className='-mx-2 my-2 border-y px-5 font-medium text-sm md:hidden'>{props.title}</h4>
+            )}
             {props.children}
         </div>
     )
@@ -231,12 +225,11 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
     )
 }
 
-const NavbarFlex = ({ className, ref, ...props }: ComponentProps<'div'>) => {
+const NavbarFlex = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>) => {
     return <div ref={ref} className={cn('flex items-center gap-2', className)} {...props} />
 }
 
-interface NavbarCompactProps extends ComponentProps<'div'> {
-    ref?: RefObject<HTMLDivElement>
+interface NavbarCompactProps extends ComponentPropsWithRef<'div'> {
     variant?: 'float' | 'inset' | 'navbar'
 }
 const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
@@ -264,10 +257,12 @@ const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentProp
             ref={ref}
             className={cn(
                 'flex h-(--navbar-breadcrumbs-height) items-center',
-                variant === 'default' && 'w-full border-b bg-bg text-fg *:max-w-7xl *:px-4 md:*:px-6',
+                variant === 'default' &&
+                    'w-full border-b bg-bg text-fg *:max-w-7xl *:px-4 md:*:px-6 lg:*:max-w-(--breakpoint-xl) 2xl:*:max-w-(--breakpoint-2xl)',
                 variant === 'inset' &&
                     'w-full rounded-lg rounded-b-none border-b px-4 md:mx-auto md:max-w-[calc(100vw-16px)] md:border md:px-6',
-                variant === 'float' && 'mx-auto w-full max-w-7xl rounded-lg bg-bg px-2 text-fg md:px-4',
+                variant === 'float' &&
+                    'mx-auto w-full max-w-7xl rounded-lg bg-bg px-2 text-fg md:px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
                 className
             )}
             {...props}
@@ -277,17 +272,16 @@ const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentProp
     )
 }
 
-const NavbarInset = ({ className, ref, ...props }: ComponentProps<'div'>) => {
+const NavbarInset = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>) => {
     const { variant } = useNavbar()
     return (
         <div
             ref={ref}
             className={cn(
-                'relative flex w-full flex-col overflow-auto',
-                variant === 'inset' &&
-                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] bg-bg pb-2 md:px-2',
-                variant === 'float' && 'h-[calc(100vh-var(--navbar-height,0px)-8px)]',
-                variant === 'default' && 'h-[calc(100vh-var(--navbar-height,0px))]',
+                'relative flex h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] w-full flex-col overflow-auto',
+                variant === 'inset' && 'bg-bg pb-2 md:px-2',
+                variant === 'float' &&
+                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)] bg-bg pb-2 md:px-2',
                 className
             )}
         >
@@ -296,8 +290,9 @@ const NavbarInset = ({ className, ref, ...props }: ComponentProps<'div'>) => {
                     'mx-auto flex size-full flex-1 grow flex-col',
                     variant === 'inset' &&
                         'bg-bg shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
-                    variant === 'default' && 'max-w-7xl overflow-auto px-4 md:px-0',
-                    variant === 'float' && 'max-w-7xl'
+                    variant === 'default' &&
+                        'max-w-7xl overflow-auto px-4 md:px-0 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
+                    variant === 'float' && 'max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)'
                 )}
             >
                 {props.children}

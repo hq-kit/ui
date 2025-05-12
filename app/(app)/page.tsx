@@ -1,6 +1,6 @@
 import { IconBrandCleon } from 'hq-icons'
 
-import { Hero, HeroButton, HeroTitle } from '@/components/layouts/hero'
+import { Hero, HeroButton, HeroTitle, MainContent } from '@/components/layouts/hero'
 import { CLI } from '@/components/mdx/cli'
 import Sink from '@/components/sink'
 
@@ -24,7 +24,9 @@ export default function Page() {
                     </HeroButton>
                 </main>
             </Hero>
-            <Sink />
+            <MainContent>
+                <Sink />
+            </MainContent>
         </>
     )
 }

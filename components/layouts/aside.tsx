@@ -26,7 +26,7 @@ export function Aside() {
 
     return (
         <aside>
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 py-16'>
                 {docs
                     .sort((a, b) => a.order - b.order)
                     .map((doc, i) => (

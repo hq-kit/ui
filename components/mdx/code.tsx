@@ -15,10 +15,12 @@ import { copyToClipboard } from '@/lib/utils/modifiers'
 export function Code({
     lang = 'tsx',
     code,
+    keepBackground = true,
     className
 }: {
     lang?: string
     code: string
+    keepBackground?: boolean
     className?: string
 }) {
     const [copied, setCopied] = useState<boolean>(false)
@@ -36,7 +38,7 @@ export function Code({
                 <CopyButton isCopied={copied} onPress={copyCode} />
             </div>
             <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:!border-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:pb-[100px]'>
-                <CodeHighlighter lang={lang} code={code} />
+                <CodeHighlighter keepBackground={keepBackground} lang={lang} code={code} />
             </div>
         </div>
     )
@@ -45,9 +47,10 @@ export function Code({
 interface CodeProps {
     lang?: string
     code: string
+    keepBackground?: boolean
 }
 
-export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
+export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground }: CodeProps) => {
     const [formattedCode, setFormattedCode] = useState('')
     const [error, setError] = useState('')
 
@@ -58,7 +61,7 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
                     .use(remarkParse)
                     .use(remarkRehype, { allowDangerousHtml: true })
                     .use(rehypePrettyCode, {
-                        keepBackground: true,
+                        keepBackground: keepBackground,
                         theme: 'github-dark-default',
                         defaultLang: {
                             block: lang,
@@ -74,7 +77,7 @@ export const CodeHighlighter = ({ lang = 'tsx', code }: CodeProps) => {
             }
         }
         processCode()
-    }, [code, lang])
+    }, [code, lang, keepBackground])
 
     if (error) {
         return <p>Error: {error}</p>
