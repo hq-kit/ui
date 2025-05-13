@@ -1,5 +1,4 @@
 import { previews } from '@/components/docs/generated/previews'
-import { Block } from '@/components/mdx/block'
 import { titleCase } from '@/lib/utils/modifiers'
 import type { Metadata } from 'next'
 
@@ -50,5 +49,6 @@ export async function generateMetadata(props: BlockProps): Promise<Metadata> {
 
 export default async function BlockPage(props: BlockProps) {
     const params = await props.params
-    return <Block zoomOut={0.9} height={880} page={`block/${params.slug.join('/')}`} />
+    // return <Block zoomOut={0.9} height={880} page={`block/${params.slug.join('/')}`} />
+    return <div>Hello</div>
 }

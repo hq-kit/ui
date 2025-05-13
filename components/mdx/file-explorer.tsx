@@ -6,6 +6,7 @@ import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconPa
 import { Button, Collection } from 'react-aria-components'
 
 import previews from '@/components/docs/generated/previews.json'
+import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
 import { Separator, Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -24,28 +25,33 @@ interface FileExplorerProps extends HTMLAttributes<HTMLDivElement> {
 
 export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
     const [selected, setSelected] = useState<string>(page)
+
+    const [components, setComponents] = useState<string[] | null>([])
+    const [uiComponents, setUiComponents] = useState<string[] | null>([])
+    const [layouts, setLayouts] = useState<string[] | null>(null)
+
     const [code, setCode] = useState<string>('')
-    const [components, setComponents] = useState<string[]>([])
-    const [uiComponents, setUiComponents] = useState<string[]>([])
-    const [layout, setLayout] = useState<string | null>(null)
 
     useEffect(() => {
         // @ts-expect-error no-type
         const componentData = previews[page] ? previews[page].raw : ''
 
         const componentNames: string[] = componentData.match(/'components\/(.*?[^'])'/g)
-        const layoutName: string = componentData.match(/'layouts\/([^']*?)'/g)
+        const layoutNames: string[] = componentData.match(/'layouts\/([^']*?)'/g)
 
-        if (componentNames || layoutName || componentData) {
-            const components = componentNames ? componentNames.map((c: string) => `block/${c.replaceAll("'", '')}`) : []
-            const componentExists = components.filter((component: string) => component in previews)
+        if (componentNames || layoutNames || componentData) {
+            const components = componentNames?.map((c: string) => `block/${c.replaceAll("'", '')}`)
+            const componentExists = components?.filter((component: string) => component in previews)
             setComponents(componentExists)
-            const layoutExists = layoutName && `block/${layoutName[0].replaceAll("'", '')}`
-            setLayout(layoutExists)
+
+            const layouts = layoutNames?.map((c: string) => `block/${c.replaceAll("'", '')}`)
+            const layoutExists = layouts?.filter((component: string) => component in previews)
+            setLayouts(layoutExists)
+
             let allComponents = componentData
             if (layoutExists)
                 /* @ts-expect-error unknown-types */ // prettier-ignore
-                allComponents += previews[`block/${layoutName[0].replaceAll("'", '')}`].raw
+                allComponents += layoutExists.map((c) => previews[c as string].raw).join('')
             if (componentExists)
                 /* @ts-expect-error unknown-types */ // prettier-ignore
                 allComponents += componentExists.map((c) => previews[c as string].raw).join('')
@@ -66,7 +72,6 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                 /* @ts-expect-error unknown-types */ // prettier-ignore
                 const uiComponents = uiComponentNames.map((name: string) => slugify(name.trim()))
                 const componentExists = uiComponents.filter((component: string) => component in previews)
-                componentExists.push('utils')
                 setUiComponents(componentExists)
             }
         }
@@ -79,7 +84,7 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
             setCode(componentData)
         } else {
             if (selected === 'index') {
-                setCode(`${uiComponents.map((c) => `export * from './${c}'`).join('\n')}`)
+                setCode(`${uiComponents?.map((c) => `export * from './${c}'`).join('\n')}`)
             } else {
                 setCode('')
             }
@@ -103,13 +108,13 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                 {({ isExpanded, hasChildItems }) => (
                     <>
                         {isExpanded ? (
-                            <IconFolderOpen />
+                            <IconFolderOpen className='size-4 text-blue-500' />
                         ) : hasChildItems ? (
-                            <IconFolder />
+                            <IconFolder className='size-4 text-blue-500' />
                         ) : item.title.includes('.tsx') ? (
-                            <IconBrandReact />
+                            <IconBrandReact className='size-4 text-[#00bcd4]' />
                         ) : item.title.includes('.ts') ? (
-                            <IconBrandTypescript />
+                            <IconBrandTypescript className='size-4 text-[#007acc]' />
                         ) : null}
                         {item.title}
                     </>
@@ -133,36 +138,38 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
             ]
         })
     }
-    if (layout) {
-        files.push({
-            id: 2,
-            title: 'layouts',
-            children: [
-                {
-                    id: layout,
-                    title: `${layout.split('/').pop()}.tsx` || 'page.tsx',
-                    children: []
-                }
-            ]
-        })
+    if (layouts) {
+        for (const layout of layouts) {
+            files.push({
+                id: layout,
+                title: 'layouts',
+                children: [
+                    {
+                        id: layout,
+                        title: `${layout.split('/').pop()}.tsx`,
+                        children: []
+                    }
+                ]
+            })
+        }
     }
 
     if (uiComponents || components) {
-        const componentsUsed = components.sort().map((component: string) => {
-            return {
-                id: component,
-                title: `${component.split('/').pop()}.tsx`,
-                children: []
-            }
-        })
-        const uiComponentsUsed = uiComponents.sort().map((component: string) => {
+        const componentsUsed = components?.sort().map((component: string) => ({
+            id: component,
+            title: `${component.split('/').pop()}.tsx`,
+            children: []
+        }))
+
+        const uiComponentsUsed = uiComponents?.sort().map((component: string) => {
             return {
                 id: component,
                 title: `${component}.tsx`,
                 children: []
             }
         })
-        uiComponentsUsed.push({
+
+        uiComponentsUsed?.push({
             id: 'index',
             title: 'index.ts',
             children: []
@@ -177,7 +184,7 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                     title: 'ui',
                     children: uiComponentsUsed
                 },
-                ...componentsUsed
+                componentsUsed
             ]
         } as FileNode)
     }
@@ -185,35 +192,48 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
     const [sidebarOpen, setSidebarOpen] = useState(true)
 
     return (
-        <div className={cn('flex w-full flex-col overflow-hidden rounded-lg border lg:flex-row', className)} {...props}>
-            <Tree
-                defaultExpandedKeys={[1, 2, 3, 4]}
+        <div className='space-y-4'>
+            <CLI command='add' items={uiComponents || []} />
+            <div
                 className={cn(
-                    'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 border-b transition-[width] lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
-                    sidebarOpen
-                        ? 'min-h-40 overflow-y-auto'
-                        : 'h-0 overflow-hidden border-none px-0 py-0 lg:h-auto lg:w-0 lg:py-2'
+                    'flex w-full flex-col overflow-hidden rounded-lg border bg-[#18181b] **:border-[#3f3f46] lg:flex-row',
+                    className
                 )}
-                aria-label='Files'
-                selectionMode='none'
-                items={files}
+                {...props}
             >
-                {files.map(renderItem)}
-            </Tree>
-            <div className='relative grid w-full grid-cols-1 place-content-start bg-[#0d1117] dark:bg-[#0d1117]'>
-                <div className='relative flex h-12 items-center gap-2 border-b bg-bg px-4 py-1 text-fg'>
-                    <Button onPress={() => setSidebarOpen(!sidebarOpen)}>
-                        <IconPanelLeft className='size-4 rotate-90 lg:rotate-0' />
-                    </Button>
-                    <Separator orientation='vertical' className='mx-2 hidden h-6 lg:block' />
-                    {selected === 'index' ? <IconBrandTypescript /> : <IconBrandReact />}
-                    {`${selected.split('/').pop()}.${selected === 'index' ? 'ts' : 'tsx'}`}
+                <Tree
+                    defaultExpandedKeys={[1, 2, 3, 4]}
+                    className={cn(
+                        'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 border-b text-white transition-[width] lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
+                        sidebarOpen
+                            ? 'min-h-40 overflow-y-auto'
+                            : 'h-0 overflow-hidden border-none px-0 py-0 lg:h-auto lg:w-0 lg:py-2'
+                    )}
+                    aria-label='Files'
+                    selectionMode='none'
+                    items={files}
+                >
+                    {files.map(renderItem)}
+                </Tree>
+                <div className='relative grid w-full grid-cols-1 place-content-start bg-[#0d1117] dark:bg-[#0d1117]'>
+                    <div className='relative flex h-12 items-center gap-2 border-b bg-[#18181b] px-4 py-1 text-white'>
+                        <Button onPress={() => setSidebarOpen(!sidebarOpen)}>
+                            <IconPanelLeft className='size-4 rotate-90 lg:rotate-0' />
+                        </Button>
+                        <Separator orientation='vertical' className='mx-2 hidden h-6 bg-[#3f3f46] lg:block' />
+                        {selected === 'index' ? (
+                            <IconBrandTypescript className='size-4 text-[#007acc]' />
+                        ) : (
+                            <IconBrandReact className='size-4 text-[#00bcd4]' />
+                        )}
+                        {`${selected.split('/').pop()}.${selected === 'index' ? 'ts' : 'tsx'}`}
+                    </div>
+                    <Code
+                        code={code}
+                        keepBackground={false}
+                        className='no-scrollbar static overflow-y-auto rounded-none border-none [&_pre]:max-h-full [&_pre]:rounded-none **:[svg]:text-white'
+                    />
                 </div>
-                <Code
-                    code={code}
-                    keepBackground={false}
-                    className='no-scrollbar static overflow-y-auto rounded-none border-none [&_pre]:max-h-full [&_pre]:rounded-none **:[svg]:text-fg'
-                />
             </div>
         </div>
     )

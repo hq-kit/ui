@@ -131,52 +131,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "collections",
-        "order": 5,
-        "items": [
-          {
-            "title": "Accordion",
-            "url": "/docs/components/collections/accordion",
-            "order": 5
-          },
-          {
-            "title": "Collapsible",
-            "url": "/docs/components/collections/collapsible",
-            "order": 6
-          },
-          {
-            "title": "Grid List",
-            "url": "/docs/components/collections/grid-list",
-            "order": 3
-          },
-          {
-            "title": "List Box",
-            "url": "/docs/components/collections/list-box",
-            "order": 3
-          },
-          {
-            "title": "Menu",
-            "url": "/docs/components/collections/menu",
-            "order": 1
-          },
-          {
-            "title": "Table",
-            "url": "/docs/components/collections/table",
-            "order": 4
-          },
-          {
-            "title": "Tag Group",
-            "url": "/docs/components/collections/tag-group",
-            "order": 7
-          },
-          {
-            "title": "Tree",
-            "url": "/docs/components/collections/tree",
-            "order": 8
-          }
-        ]
-      },
-      {
         "title": "colors",
         "order": 1,
         "items": [
@@ -254,6 +208,52 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "collections",
+        "order": 5,
+        "items": [
+          {
+            "title": "Accordion",
+            "url": "/docs/components/collections/accordion",
+            "order": 5
+          },
+          {
+            "title": "Collapsible",
+            "url": "/docs/components/collections/collapsible",
+            "order": 6
+          },
+          {
+            "title": "Grid List",
+            "url": "/docs/components/collections/grid-list",
+            "order": 3
+          },
+          {
+            "title": "List Box",
+            "url": "/docs/components/collections/list-box",
+            "order": 3
+          },
+          {
+            "title": "Menu",
+            "url": "/docs/components/collections/menu",
+            "order": 1
+          },
+          {
+            "title": "Table",
+            "url": "/docs/components/collections/table",
+            "order": 4
+          },
+          {
+            "title": "Tag Group",
+            "url": "/docs/components/collections/tag-group",
+            "order": 7
+          },
+          {
+            "title": "Tree",
+            "url": "/docs/components/collections/tree",
+            "order": 8
+          }
+        ]
+      },
+      {
         "title": "date-and-time",
         "order": 1,
         "items": [
@@ -297,43 +297,6 @@ export const docs: Docs[] = [
             "title": "Drop Zone",
             "url": "/docs/components/drag-and-drop/drop-zone",
             "order": 1
-          }
-        ]
-      },
-      {
-        "title": "layouts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
-            "order": 3
           }
         ]
       },
@@ -397,6 +360,43 @@ export const docs: Docs[] = [
             "title": "Textarea",
             "url": "/docs/components/forms/textarea",
             "order": 5
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },

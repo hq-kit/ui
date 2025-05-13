@@ -1,7 +1,7 @@
 'use client'
-import BreadcrumbsDemo from '@/components/docs/navigation/breadcrumbs/breadcrumbs-demo'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { Avatar, Button, Menu, Navbar, Separator } from '@/components/ui'
+
+import type { ComponentProps } from 'react'
+
 import {
     IconBrandCleon,
     IconChevronDown,
@@ -14,7 +14,9 @@ import {
     IconShield,
     IconShoppingBag
 } from 'hq-icons'
-import type { ComponentProps } from 'react'
+
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Avatar, Breadcrumbs, Button, Menu, Navbar, Separator } from '@/components/ui'
 
 export default function AppNavbar(props: ComponentProps<typeof Navbar>) {
     return (
@@ -82,7 +84,11 @@ export default function AppNavbar(props: ComponentProps<typeof Navbar>) {
                 </Navbar.Flex>
             </Navbar.Compact>
             <Navbar.Breadcrumbs>
-                <BreadcrumbsDemo />
+                <Breadcrumbs>
+                    <Breadcrumbs.Item href='#'>Home</Breadcrumbs.Item>
+                    <Breadcrumbs.Item href='#'>Docs</Breadcrumbs.Item>
+                    <Breadcrumbs.Item>Components</Breadcrumbs.Item>
+                </Breadcrumbs>
             </Navbar.Breadcrumbs>
             <Navbar.Inset>{props.children ?? null}</Navbar.Inset>
         </Navbar>

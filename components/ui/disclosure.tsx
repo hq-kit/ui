@@ -1,13 +1,14 @@
 'use client'
 
-import type { Ref } from 'react'
+import { type Ref, use, useRef } from 'react'
 
 import { IconChevronDown } from 'hq-icons'
-import type {
-    ButtonProps,
-    DisclosurePanelProps,
-    DisclosureGroupProps as RACDisclosureGroupProps,
-    DisclosureProps as RACDisclosureProps
+import {
+    type ButtonProps,
+    type DisclosurePanelProps,
+    DisclosureStateContext,
+    type DisclosureGroupProps as RACDisclosureGroupProps,
+    type DisclosureProps as RACDisclosureProps
 } from 'react-aria-components'
 import {
     Button,
@@ -54,7 +55,7 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
-                    'w-full border-b last:border-b-0',
+                    'group w-full border-b last:border-b-0',
                     isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
                     className
                 )
@@ -94,9 +95,21 @@ const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTri
     )
 }
 const DisclosurePanel = ({ className, children, ...props }: DisclosurePanelProps) => {
+    const { isExpanded } = use(DisclosureStateContext)!
+    const contentRef = useRef<HTMLDivElement>(null)
     return (
-        <RACDisclosurePanel data-slot='disclosure-content' className='overflow-hidden text-sm' {...props}>
-            <div className={cn('pt-0 pb-4', className)}>{children}</div>
+        <RACDisclosurePanel
+            data-slot='disclosure-content'
+            style={{
+                height: isExpanded ? contentRef?.current?.scrollHeight : 0,
+                transition: 'height 0.2s ease-in-out'
+            }}
+            className={cn('overflow-hidden text-sm')}
+            {...props}
+        >
+            <div ref={contentRef} className={cn('pt-0 pb-4', className)}>
+                {children}
+            </div>
         </RACDisclosurePanel>
     )
 }

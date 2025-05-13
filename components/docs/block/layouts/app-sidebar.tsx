@@ -1,5 +1,7 @@
 'use client'
 
+import type { ComponentProps } from 'react'
+
 import {
     IconBrandCleon,
     IconChevronRight,
@@ -13,7 +15,6 @@ import {
     IconShieldQuestion,
     IconTicket
 } from 'hq-icons'
-import type { ComponentProps } from 'react'
 
 import { Menu, Sidebar, User } from '@/components/ui'
 
