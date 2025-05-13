@@ -7,37 +7,12 @@
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/docs/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/docs/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/docs/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/docs/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/icons/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/icons/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controllers/icons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/icons/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/examples/dashboard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/app-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/app-navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/aside.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/block.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/block.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sink/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/indicator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/sheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sheet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/tree.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tree.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/note.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/note.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,6 +142,7 @@
       <workItem from="1746936548793" duration="9085000" />
       <workItem from="1746973410239" duration="7380000" />
       <workItem from="1747054816956" duration="2450000" />
+      <workItem from="1747102331744" duration="2231000" />
     </task>
     <servers />
   </component>

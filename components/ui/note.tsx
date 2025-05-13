@@ -17,7 +17,7 @@ const Note = ({ variant = 'default', className, children, ...props }: NoteProps)
         )}
         {...props}
     >
-        <div className='grid grid-cols-[1fr_auto] *:data-[slot=icon]:mr-3 *:data-[slot=icon]:size-5 *:data-[slot=icon]:shrink-0'>
+        <div className='grid grid-cols-[auto_1fr] *:data-[slot=icon]:mr-3 *:data-[slot=icon]:size-5 *:data-[slot=icon]:shrink-0'>
             {children}
         </div>
     </div>

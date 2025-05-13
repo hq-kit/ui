@@ -41,9 +41,9 @@ const components = {
     Block,
     Image,
     Note: ({ children, ...props }: ComponentProps<typeof Note>) => (
-        <Note {...props} className='not-prose **:not-prose'>
+        <Note {...props} className='not-prose **:not-prose' variant='danger'>
             <IconCircleAlert className='my-0.5' />
-            {children}
+            <Note.Title className='cols-start-2'>{children}</Note.Title>
         </Note>
     )
 }

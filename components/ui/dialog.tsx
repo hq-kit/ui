@@ -20,15 +20,15 @@ import { tv } from 'tailwind-variants'
 
 const overlayStyle = tv({
     base: [
-        'fixed inset-0 isolate z-50 bg-black/50 backdrop-blur-sm [--visual-viewport-vertical-padding:32px]',
-        'entering:fade-in-0 entering:animate-in entering:duration-300 entering:ease-out',
-        'exiting:fade-out-0 exiting:animate-out exiting:duration-200 exiting:ease-in'
+        'fixed inset-0 isolate z-50 bg-black/20 backdrop-blur-sm [--visual-viewport-vertical-padding:32px]',
+        'entering:fade-in entering:animate-in entering:duration-300 entering:ease-out',
+        'exiting:fade-out exiting:animate-out exiting:duration-200 exiting:ease-in'
     ]
 })
 
 const sheetStyle = tv({
     base: [
-        'fixed z-50 gap-4 bg-bg shadow-lg transition',
+        'fixed z-50 bg-bg shadow-lg transition',
         'entering:animate-in entering:duration-300 entering:ease-out',
         'exiting:animate-out exiting:duration-200 exiting:ease-in'
     ],
@@ -44,9 +44,10 @@ const sheetStyle = tv({
 
 const modalStyle = tv({
     base: [
-        'sm:-translate-x-1/2 sm:-translate-y-1/2 absolute bottom-0 z-50 h-fit w-full rounded-t-lg border bg-bg shadow-lg sm:fixed sm:top-1/2 sm:left-[50vw] sm:rounded-lg',
+        'sm:-translate-x-1/2 sm:-translate-y-1/2 absolute bottom-0 z-50 h-fit w-full rounded-t-lg bg-bg shadow-lg transition sm:fixed sm:top-1/2 sm:left-[50vw] sm:rounded-lg',
         'entering:fade-in entering:zoom-in-95 entering:slide-in-from-bottom sm:entering:slide-in-from-bottom-0 entering:animate-in entering:duration-300 entering:ease-out',
-        'exiting:fade-out exiting:zoom-out-95 exiting:slide-out-to-bottom sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:duration-200 exiting:ease-in'
+        'exiting:fade-out exiting:zoom-out-95 exiting:slide-out-to-bottom sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:duration-200 exiting:ease-in',
+        'ring-1 ring-border'
     ],
     variants: {
         size: {
@@ -66,7 +67,7 @@ const modalStyle = tv({
 
 const popoverStyle = tv({
     base: [
-        'group max-w-xs rounded-lg border bg-bg bg-clip-padding text-fg shadow-xs transition-transform sm:max-w-3xl sm:text-sm',
+        'group max-w-xs rounded-lg bg-bg bg-clip-padding text-fg shadow-xs ring-1 ring-border transition-transform sm:max-w-3xl sm:text-sm',
         'entering:fade-in entering:zoom-in-95 entering:animate-in entering:duration-150',
         'exiting:fade-out exiting:zoom-out-95 exiting:animate-out exiting:duration-100',
         'entering:placement-left:slide-in-from-right-2 entering:placement-right:slide-in-from-left-2 entering:placement-top:slide-in-from-bottom-2 entering:placement-bottom:slide-in-from-top-2',

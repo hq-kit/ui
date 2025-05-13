@@ -42,7 +42,7 @@ export function Aside() {
                                 {titleCase(doc.title)}
                             </Heading>
                             <div className='relative flex flex-col gap-1 pl-1.5'>
-                                <div className='absolute left-1.5 h-full w-0.5 bg-muted' />
+                                <div className='absolute left-1.5 h-full w-px bg-muted' />
                                 {doc.items
                                     ?.sort((a, b) => a.order - b.order)
                                     .map((item, i) => (
@@ -87,7 +87,7 @@ const MenuLink = ({ href, className, ...props }: LinkProps) => {
         <Link
             href={href}
             className={cn(
-                'relative flex w-full items-center rounded-r-lg border-l-2 px-4 py-1 text-muted-fg text-sm hover:bg-primary/5 hover:text-primary',
+                'relative flex w-full items-center rounded-r-lg border-l px-4 py-1 text-muted-fg text-sm hover:bg-primary/5 hover:text-primary',
                 isActive && 'is-active pointer-events-none border-l-primary bg-primary/10 text-primary',
                 className
             )}

@@ -3,7 +3,6 @@
   "version": "0.1.2",
   "private": true,
   "scripts": {
-    "watch": "bun run watcher.ts",
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
     "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",

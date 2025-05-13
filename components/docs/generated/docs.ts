@@ -8,27 +8,6 @@ type Docs = {
 
 export const docs: Docs[] = [
   {
-    "title": "getting-started",
-    "order": 0,
-    "items": [
-      {
-        "title": "Client Side Routing",
-        "url": "/docs/getting-started/client-side-routing",
-        "order": 3
-      },
-      {
-        "title": "Installation",
-        "url": "/docs/getting-started/installation",
-        "order": 2
-      },
-      {
-        "title": "Introduction",
-        "url": "/docs/getting-started/introduction",
-        "order": 1
-      }
-    ]
-  },
-  {
     "title": "dark-mode",
     "order": 1,
     "items": [
@@ -56,6 +35,27 @@ export const docs: Docs[] = [
         "title": "Vite",
         "url": "/docs/dark-mode/vite",
         "order": 2
+      }
+    ]
+  },
+  {
+    "title": "getting-started",
+    "order": 0,
+    "items": [
+      {
+        "title": "Client Side Routing",
+        "url": "/docs/getting-started/client-side-routing",
+        "order": 3
+      },
+      {
+        "title": "Installation",
+        "url": "/docs/getting-started/installation",
+        "order": 2
+      },
+      {
+        "title": "Introduction",
+        "url": "/docs/getting-started/introduction",
+        "order": 1
       }
     ]
   },
@@ -177,42 +177,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "controls",
-        "order": 1,
-        "items": [
-          {
-            "title": "Command",
-            "url": "/docs/components/controls/command",
-            "order": 1
-          },
-          {
-            "title": "Context Menu",
-            "url": "/docs/components/controls/context-menu",
-            "order": 2
-          },
-          {
-            "title": "Keyboard",
-            "url": "/docs/components/controls/keyboard",
-            "order": 6
-          },
-          {
-            "title": "Slider",
-            "url": "/docs/components/controls/slider",
-            "order": 3
-          },
-          {
-            "title": "Switch",
-            "url": "/docs/components/controls/switch",
-            "order": 4
-          },
-          {
-            "title": "Toolbar",
-            "url": "/docs/components/controls/toolbar",
-            "order": 5
-          }
-        ]
-      },
-      {
         "title": "colors",
         "order": 1,
         "items": [
@@ -250,6 +214,42 @@ export const docs: Docs[] = [
             "title": "Color Wheel",
             "url": "/docs/components/colors/color-wheel",
             "order": 7
+          }
+        ]
+      },
+      {
+        "title": "controls",
+        "order": 1,
+        "items": [
+          {
+            "title": "Command",
+            "url": "/docs/components/controls/command",
+            "order": 1
+          },
+          {
+            "title": "Context Menu",
+            "url": "/docs/components/controls/context-menu",
+            "order": 2
+          },
+          {
+            "title": "Keyboard",
+            "url": "/docs/components/controls/keyboard",
+            "order": 6
+          },
+          {
+            "title": "Slider",
+            "url": "/docs/components/controls/slider",
+            "order": 3
+          },
+          {
+            "title": "Switch",
+            "url": "/docs/components/controls/switch",
+            "order": 4
+          },
+          {
+            "title": "Toolbar",
+            "url": "/docs/components/controls/toolbar",
+            "order": 5
           }
         ]
       },
@@ -313,6 +313,27 @@ export const docs: Docs[] = [
             "title": "Sidebar",
             "url": "/docs/components/layouts/sidebar",
             "order": 2
+          }
+        ]
+      },
+      {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },
@@ -401,27 +422,6 @@ export const docs: Docs[] = [
           {
             "title": "Tabs",
             "url": "/docs/components/navigation/tabs",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
             "order": 3
           }
         ]
