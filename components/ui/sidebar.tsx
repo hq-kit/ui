@@ -165,16 +165,7 @@ const Sidebar = ({
                 </div>
             ) : isMobile ? (
                 <Sheet isOpen={isMobileOpen} onOpenChange={onMobileOpenChange} {...props}>
-                    <Sheet.Trigger
-                        className={({ isPressed, isHovered, isFocusVisible }) =>
-                            cn(
-                                'absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-bg text-muted-fg outline-hidden',
-                                isHovered && 'bg-muted/40',
-                                isFocusVisible && 'border-primary ring-4 ring-ring',
-                                isPressed && 'bg-muted/50'
-                            )
-                        }
-                    >
+                    <Sheet.Trigger className='absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-bg pressed:bg-muted/50 text-muted-fg outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring'>
                         <IconMenu />
                     </Sheet.Trigger>
                     <Sheet.Content className={isInverse ? 'dark' : ''} aria-label='Sidebar' side='left'>
@@ -203,7 +194,7 @@ const Sidebar = ({
                                       : WIDTH
                         }}
                         className={cn(
-                            'left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
+                            'sticky top-0 left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
                             variant === 'float' && 'p-2',
                             variant === 'inset' && 'bg-primary/5 p-2',
                             variant === 'default' && !collapsedHidden && 'border-r',
@@ -215,8 +206,7 @@ const Sidebar = ({
                             className={cn(
                                 'flex size-full min-h-svh flex-col text-fg',
                                 variant === 'inset' && 'min-h-[calc(100vh-1rem)]',
-                                variant === 'float' &&
-                                    `min-h-[calc(100vh-1rem)] rounded-lg bg-primary/5 ${open && 'border'}`,
+                                variant === 'float' && 'min-h-[calc(100vh-1rem)] rounded-lg border bg-primary/5',
                                 className
                             )}
                         >
@@ -311,21 +301,16 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
 
     const renderMenuWithHref = (
         <Link
-            className={({ isHovered, isPressed, isFocused, isFocusVisible, isDisabled }) =>
-                cn(
-                    'relative col-span-full cursor-pointer items-center rounded-lg text-sm outline-hidden',
-                    {
-                        'bg-primary/10 text-primary': isHovered || isPressed || isFocused || isCurrent
-                    },
-                    isFocusVisible && 'ring-2 ring-primary ring-offset-2',
-                    isDisabled && 'cursor-default opacity-50',
-                    collapsedDock
-                        ? 'flex size-8 justify-center gap-2 p-0'
-                        : 'grid grid-cols-subgrid gap-x-3 px-2.5 py-2',
-                    state === 'collapsed' && 'group-data-section:*:[[slot=label]]:hidden',
-                    className
-                )
-            }
+            className={cn(
+                'relative col-span-full cursor-pointer items-center rounded-lg text-sm outline-hidden',
+                'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'pressed:bg-primary/10 pressed:text-primary',
+                'hover:bg-primary/10 hover:text-primary',
+                'disabled:cursor-default disabled:opacity-50',
+                collapsedDock ? 'flex size-8 justify-center gap-2 p-0' : 'grid grid-cols-subgrid gap-x-3 px-2.5 py-2',
+                state === 'collapsed' && 'group-data-section:*:[[slot=label]]:hidden',
+                className
+            )}
             {...props}
         >
             {props.children as ReactNode}
@@ -344,11 +329,9 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
     ) : state === 'expanded' ? (
         <Disclosure
             isExpanded
-            className={composeRenderProps(className, (className, { isDisabled, isExpanded }) =>
+            className={composeRenderProps(className, (className) =>
                 cn(
-                    'relative col-span-full grid grid-cols-subgrid items-center gap-x-3 gap-y-0.5 rounded-lg text-sm outline-hidden',
-                    isExpanded && '*:[button]:data-[slot=indicator]:rotate-90',
-                    isDisabled && 'opacity-50',
+                    'relative col-span-full grid grid-cols-subgrid items-center gap-x-3 gap-y-0.5 rounded-lg text-sm outline-hidden disabled:opacity-50 expanded:*:[button]:data-[slot=indicator]:rotate-90',
                     className
                 )
             )}
@@ -370,19 +353,15 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
         <Button
             slot='trigger'
             {...props}
-            className={({ isHovered, isPressed, isFocused, isFocusVisible }) =>
-                cn(
-                    'col-span-full cursor-pointer items-center rounded-lg outline-hidden',
-                    {
-                        'bg-primary/10 text-primary': isHovered || isPressed || isFocused
-                    },
-                    collapsedDock ? 'flex size-8 justify-center p-0' : 'grid grid-cols-subgrid px-2.5 py-2 text-left',
-                    isFocusVisible && 'ring-2 ring-primary ring-offset-2',
-                    'aria-expanded:*:data-[slot=indicator]:rotate-90',
-                    state === 'collapsed' && '*:[[slot=label]]:hidden',
-                    className
-                )
-            }
+            className={cn(
+                'col-span-full cursor-pointer items-center rounded-lg outline-hidden',
+                'pressed:bg-primary/10 pressed:text-primary hover:bg-primary/10 hover:text-primary',
+                collapsedDock ? 'flex size-8 justify-center p-0' : 'grid grid-cols-subgrid px-2.5 py-2 text-left',
+                'focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                'aria-expanded:*:data-[slot=indicator]:rotate-90',
+                state === 'collapsed' && '*:[[slot=label]]:hidden',
+                className
+            )}
         >
             {(values) => (
                 <>
@@ -433,16 +412,14 @@ const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) =
             <Button
                 aria-label='Toggle Sidebar'
                 onPress={toggleSidebar}
-                className={({ isPressed, isHovered, isFocusVisible }) =>
-                    cn(
-                        'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-fg outline-hidden transition-transform',
-                        isHovered && 'bg-muted/40',
-                        isFocusVisible && 'ring-4 ring-ring',
-                        isPressed && 'bg-muted/50',
-                        variant === 'default' ? 'top-2 right-2' : 'top-4 right-4',
-                        open ? 'translate-x-0' : `${variant === 'default' ? 'translate-x-12' : 'translate-x-16'}`
-                    )
-                }
+                className={cn(
+                    'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-fg outline-hidden transition-transform',
+                    'hover:bg-muted/40',
+                    'focus-visible:ring-4 focus-visible:ring-ring',
+                    'pressed:bg-muted/50',
+                    variant === 'default' ? 'top-2 right-2' : 'top-4 right-4',
+                    open ? 'translate-x-0' : `${variant === 'default' ? 'translate-x-12' : 'translate-x-16'}`
+                )}
                 {...props}
             >
                 {children || <IconMenu className='size-4' />}
@@ -461,12 +438,12 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
                 aria-label='Toggle Sidebar'
                 excludeFromTabOrder
                 onPress={toggleSidebar}
-                className={composeRenderProps(className, (className, { isHovered, isPressed }) =>
+                className={composeRenderProps(className, (className) =>
                     cn(
                         'fixed inset-y-0 max-h-full w-4 bg-transparent transition',
                         state === 'collapsed' ? '-right-2' : 'right-0',
                         state === 'collapsed' ? 'cursor-e-resize' : 'cursor-w-resize',
-                        (isHovered || isPressed) && 'border-primary border-r-2',
+                        'pressed:border-primary pressed:border-r-2 hover:border-primary hover:border-r-2',
                         className
                     )
                 )}
@@ -480,14 +457,17 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
     return (
         <div
             className={cn(
-                'relative flex min-h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-primary/5 md:p-2',
+                'relative flex h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-primary/5 md:p-2',
                 'peer-data-[variant=default]:p-0 peer-data-[variant=default]:*:border-0',
                 'peer-data-[variant=float]:peer-data-[open=true]:pl-0',
                 'peer-data-[variant=inset]:peer-data-[open=true]:pl-0',
                 'peer-data-[open=false]:**:[[slot=nav]]:pl-12'
             )}
         >
-            <main className='flex h-full flex-1 flex-col overflow-auto rounded-lg border bg-bg' {...props} />
+            <main
+                className='relative flex h-full max-h-full flex-1 flex-col overflow-auto rounded-lg bg-bg md:border'
+                {...props}
+            />
         </div>
     )
 }
@@ -497,7 +477,7 @@ const SidebarNav = ({ className, ...props }: ComponentPropsWithRef<'nav'>) => {
         <nav
             slot='nav'
             className={cn(
-                'isolate flex h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-bg/60 px-4 text-fg backdrop-blur-lg md:w-full md:justify-start',
+                'isolate flex min-h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-bg/60 px-4 text-fg backdrop-blur-lg md:w-full md:justify-start',
                 'sticky top-0 z-10'
             )}
             {...props}

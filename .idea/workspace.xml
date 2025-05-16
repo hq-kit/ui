@@ -5,26 +5,150 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/docs/block/examples/chatting-app/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/block/examples/dashboard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/block/examples/file-manager/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/scripts/list-blocks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(app)/hello/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/card/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/card/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/overlay/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/overlay/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/split-card/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/split-card/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/split/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/authentication/split/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/chart-area.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/data-table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/simple/stats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/navbar/basic/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/navbar/float/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/navbar/inset/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/navbar/inset/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/basic/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/basic/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-float/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-float/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-float/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-float/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-inset/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-inset/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-inset/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock-inset/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/dock/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/fixed/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/fixed/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/fixed/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/fixed/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/float/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/float/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/float/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/float/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/inset/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/inset/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/inset/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/sidebar/inset/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/social/chat/chat-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/social/chat/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/social/chat/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/social/user-profile/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/application/social/user-profile/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/ecommerce/tables/product/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/ecommerce/tables/product/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/ecommerce/tables/product/paginator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/marketing/management/file-manager/file-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/marketing/management/file-manager/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/block/marketing/management/file-manager/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/controllers/blocks/block-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/controllers/blocks/breadcrumbs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/controllers/blocks/categories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/mdx/fleet.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/mdx/tabs-switcher.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/[...slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/chatting-app.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/dashboard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/file-manager.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/app-navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/blocks/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/block/[...slug]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/controllers/icons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/controllers/icons/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/chatting-app/bubble-chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/chat/bubble-chat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/chatting-app/contact-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/chat/contact-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/chatting-app/message-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/chat/message-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/file-manager/file-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/marketing/management/file-manager/file-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/paginator.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-profile/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/user-profile/about.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-profile/media.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/user-profile/media.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-profile/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/social/user-profile/posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-setting/account-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/account-setting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-setting/danger-area.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/danger-area.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-setting/plan-billing-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/plan-billing-setting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/components/user-setting/security-setting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/security-setting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-classic.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-full.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-modern.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-overlay.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/auth-form-split.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/chatting-app/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/dashboard/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/file-manager/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/product-management.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/user-profile.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/examples/user-setting.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/navbar/basic/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar-nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/sidebar/basic/app-sidebar-nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/sidebar/basic/app-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-classic.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-full.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-modern.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-overlay.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/auth-layout-split.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/chatting-app-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/layouts/file-manager-layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-basic-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-creating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/navbar/float/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-floating-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/navbar/navbar-inset-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-basic-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-default-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-dock-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-fixed-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-floating-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-inset-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/block/sidebar/sidebar-off-canvas-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/blocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/blocks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/file-explorer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/disclosure.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/disclosure.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/block.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/block.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/copy-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/copy-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/install.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/install.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/preview-content.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/sheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sheet.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/spoiler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/spoiler.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/getting-started/installation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/getting-started/installation.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tree.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tree.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/layouts/navbar.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/layouts/navbar.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/layouts/sidebar.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/layouts/sidebar.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/sans.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/sans.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/scripts/list-blocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/scripts/list-blocks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/modifiers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/modifiers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,35 +175,40 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dq/HQ/ui/components/docs/statuses/indicator&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/dq/HQ/ui/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "/home/dq/HQ/ui/app/block/application/social/user-profile",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "/home/dq/HQ/ui/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/block/application/social/user-profile" />
+      <recent name="$PROJECT_DIR$/app/block/sidebar" />
+      <recent name="$PROJECT_DIR$/app/block/navbar" />
       <recent name="$PROJECT_DIR$/components/docs/statuses/indicator" />
       <recent name="$PROJECT_DIR$/components/docs/statuses/note" />
-      <recent name="$PROJECT_DIR$/components/docs/controls/context-menu" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/docs/overlays/modal" />
-      <recent name="$PROJECT_DIR$/components/docs/overlays/dialog" />
+      <recent name="$PROJECT_DIR$/app/block/marketing/management/file-manager" />
+      <recent name="$PROJECT_DIR$/app/block/application/social/user-profile" />
+      <recent name="$PROJECT_DIR$/app/block/application/dashboard/user-setting" />
+      <recent name="$PROJECT_DIR$/app/block/application/social/chat" />
+      <recent name="$PROJECT_DIR$/app/block/application" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -154,7 +283,12 @@
       <workItem from="1746973410239" duration="7380000" />
       <workItem from="1747054816956" duration="2450000" />
       <workItem from="1747102331744" duration="9533000" />
-      <workItem from="1747112298335" duration="5596000" />
+      <workItem from="1747112298335" duration="5838000" />
+      <workItem from="1747141829641" duration="16014000" />
+      <workItem from="1747186871958" duration="2328000" />
+      <workItem from="1747198068104" duration="3338000" />
+      <workItem from="1747258082593" duration="3633000" />
+      <workItem from="1747283204823" duration="36588000" />
     </task>
     <servers />
   </component>

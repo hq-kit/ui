@@ -1,19 +1,317 @@
-type Block = {
-    name: string;
-    deps?: string[];
-    components?: Block[];
-};
-
-export const blocks: Block[] = [
-    {"name":"auth-form-classic"},
-    {"name":"auth-form-full"},
-    {"name":"auth-form-modern"},
-    {"name":"auth-form-overlay"},
-    {"name":"auth-form-split"},
-    {"name":"chatting-app","components":[{"name":"'components/chatting-app/bubble-chat'"},{"name":"'components/chatting-app/contact-list'"},{"name":"'components/chatting-app/message-form'"}],"deps":["components/chatting-app/bubble-chat","components/chatting-app/contact-list","components/chatting-app/message-form","react-aria"]},
-    {"name":"dashboard","deps":["motion"]},
-    {"name":"file-manager","components":[{"name":"'components/file-manager/file-list'"}],"deps":["components/file-manager/file-list"]},
-    {"name":"product-management","components":[{"name":"'components/paginator'"}],"deps":["use-debounce","components/paginator"]},
-    {"name":"user-profile","components":[{"name":"'components/user-profile/about'"},{"name":"'components/user-profile/media'"},{"name":"'components/user-profile/posts'"}],"deps":["next/image","components/user-profile/about","components/user-profile/media","components/user-profile/posts"]},
-    {"name":"user-setting","components":[{"name":"'components/user-setting/account-setting'"},{"name":"'components/user-setting/danger-area'"},{"name":"'components/user-setting/plan-billing-setting'"},{"name":"'components/user-setting/security-setting'"}],"deps":["components/user-setting/account-setting","components/user-setting/danger-area","components/user-setting/plan-billing-setting","components/user-setting/security-setting"]}
+export const blocks = [
+  {
+    "slug": "application/navbar/inset",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/navbar/float",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/navbar/basic",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/dashboard/simple",
+    "uiComponents": [
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "link.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "card.tsx",
+      "table.tsx",
+      "badge.tsx",
+      "chart.tsx",
+      "select.tsx",
+      "toggle.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "data.json",
+      "app-sidebar.tsx",
+      "data-table.tsx",
+      "stats.tsx",
+      "chart-area.tsx"
+    ]
+  },
+  {
+    "slug": "application/dashboard/user-setting",
+    "uiComponents": [
+      "button.tsx",
+      "card.tsx",
+      "date-picker.tsx",
+      "form.tsx",
+      "grid-list.tsx",
+      "heading.tsx",
+      "note.tsx",
+      "text-field.tsx",
+      "container.tsx",
+      "tabs.tsx",
+      "avatar.tsx",
+      "drop-zone.tsx",
+      "file-trigger.tsx",
+      "textarea.tsx",
+      "modal.tsx",
+      "switch.tsx"
+    ],
+    "components": [
+      "plan-billing-setting.tsx",
+      "account-setting.tsx",
+      "danger-area.tsx",
+      "security-setting.tsx"
+    ]
+  },
+  {
+    "slug": "application/authentication/split-card",
+    "uiComponents": [
+      "button.tsx",
+      "card.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "heading.tsx",
+      "link.tsx",
+      "separator.tsx",
+      "skeleton.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/authentication/overlay",
+    "uiComponents": [
+      "button.tsx",
+      "card.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "heading.tsx",
+      "link.tsx",
+      "modal.tsx",
+      "separator.tsx",
+      "skeleton.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/authentication/card",
+    "uiComponents": [
+      "button.tsx",
+      "card.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "separator.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/authentication/split",
+    "uiComponents": [
+      "button.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "heading.tsx",
+      "link.tsx",
+      "separator.tsx",
+      "skeleton.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/sidebar/inset",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/fixed",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/dock",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/dock-float",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/float",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/dock-inset",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/basic",
+    "uiComponents": [
+      "link.tsx",
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx"
+    ],
+    "components": [
+      "app-sidebar-nav.tsx",
+      "app-sidebar.tsx"
+    ]
+  },
+  {
+    "slug": "application/social/user-profile",
+    "uiComponents": [
+      "card.tsx",
+      "avatar.tsx",
+      "container.tsx",
+      "heading.tsx",
+      "tabs.tsx"
+    ],
+    "components": [
+      "media.tsx",
+      "about.tsx",
+      "posts.tsx"
+    ]
+  },
+  {
+    "slug": "application/social/chat",
+    "uiComponents": [
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "avatar.tsx",
+      "button.tsx",
+      "popover.tsx",
+      "form.tsx"
+    ],
+    "components": [
+      "chat-sidebar.tsx",
+      "contact-list.tsx",
+      "bubble-chat.tsx",
+      "message-form.tsx"
+    ]
+  },
+  {
+    "slug": "ecommerce/tables/product",
+    "uiComponents": [
+      "card.tsx",
+      "container.tsx",
+      "menu.tsx",
+      "search-field.tsx",
+      "select.tsx",
+      "table.tsx",
+      "toolbar.tsx",
+      "pagination.tsx"
+    ],
+    "components": [
+      "paginator.tsx"
+    ]
+  },
+  {
+    "slug": "marketing/management/file-manager",
+    "uiComponents": [
+      "link.tsx",
+      "sidebar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "grid-list.tsx",
+      "search-field.tsx",
+      "toggle.tsx"
+    ],
+    "components": [
+      "file-sidebar.tsx",
+      "file-list.tsx"
+    ]
+  }
 ]

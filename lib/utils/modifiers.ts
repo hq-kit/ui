@@ -10,6 +10,7 @@ function titleCase(str: string): string {
 function slugify(str: string): string {
     return str
         .trim()
+        .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
         .toLowerCase()
         .replace(/[^a-z0-9 -]/g, '')
         .replace(/\s+/g, '-')

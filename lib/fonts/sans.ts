@@ -1,6 +1,7 @@
 import {
     Geist,
     Inter,
+    Montserrat,
     Outfit,
     Plus_Jakarta_Sans,
     Poppins,
@@ -16,31 +17,43 @@ const geist = Geist({
     subsets: ['latin'],
     variable: '--font-geist'
 })
+
 const jakarta = Plus_Jakarta_Sans({
     subsets: ['latin'],
     variable: '--font-jakarta'
 })
+
 const inter = Inter({
     subsets: ['latin'],
     variable: '--font-inter'
 })
+
 const outfit = Outfit({
     subsets: ['latin'],
     variable: '--font-outfit'
 })
+
 const raleway = Raleway({
     subsets: ['latin'],
     variable: '--font-raleway'
 })
+
 const roboto = Roboto({
     subsets: ['latin'],
     variable: '--font-roboto'
 })
+
 const poppins = Poppins({
     subsets: ['latin'],
     variable: '--font-poppins',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
+
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    variable: '--font-montserrat'
+})
+
 const ubuntuSans = Ubuntu_Sans({
     subsets: ['latin'],
     variable: '--font-ubuntu-sans'
@@ -60,6 +73,7 @@ export const fontSans = cn(
     roboto.variable,
     poppins.variable,
     ubuntuSans.variable,
+    montserrat.variable,
     sourceSans.variable
 )
 
@@ -98,6 +112,11 @@ export const fontSansFamilies = [
         label: 'Poppins',
         value: '--font-poppins',
         link: 'https://fonts.google.com/specimen/Poppins'
+    },
+    {
+        label: 'Montserrat',
+        value: '--font-montserrat',
+        link: 'https://fonts.google.com/specimen/Montserrat'
     },
     {
         label: 'Ubuntu',

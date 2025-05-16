@@ -58,7 +58,7 @@ const SheetContent = ({
                         'relative flex flex-col overflow-hidden outline-hidden',
                         side === 'top' || side === 'bottom'
                             ? 'max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]'
-                            : 'h-full'
+                            : 'h-full max-h-screen'
                     )}
                 >
                     {(values) => (

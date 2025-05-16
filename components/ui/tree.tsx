@@ -31,7 +31,7 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
                     'relative flex items-center gap-1.5 rounded-lg p-1 py-2 text-sm outline-hidden',
                     'pl-[calc((var(--tree-item-level)-1)*20px+32px)] has-child-items:pl-[calc((var(--tree-item-level)-1)*20px+8px)]',
                     'focus-visible:ring-2 focus-visible:ring-ring',
-                    'selected:bg-ring selected:text-primary',
+                    'selected:bg-primary/10 selected:text-primary',
                     'disabled:opacity-50',
                     className
                 )

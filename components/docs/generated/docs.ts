@@ -131,6 +131,52 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "collections",
+        "order": 5,
+        "items": [
+          {
+            "title": "Accordion",
+            "url": "/docs/components/collections/accordion",
+            "order": 5
+          },
+          {
+            "title": "Collapsible",
+            "url": "/docs/components/collections/collapsible",
+            "order": 6
+          },
+          {
+            "title": "Grid List",
+            "url": "/docs/components/collections/grid-list",
+            "order": 3
+          },
+          {
+            "title": "List Box",
+            "url": "/docs/components/collections/list-box",
+            "order": 3
+          },
+          {
+            "title": "Menu",
+            "url": "/docs/components/collections/menu",
+            "order": 1
+          },
+          {
+            "title": "Table",
+            "url": "/docs/components/collections/table",
+            "order": 4
+          },
+          {
+            "title": "Tag Group",
+            "url": "/docs/components/collections/tag-group",
+            "order": 7
+          },
+          {
+            "title": "Tree",
+            "url": "/docs/components/collections/tree",
+            "order": 8
+          }
+        ]
+      },
+      {
         "title": "colors",
         "order": 1,
         "items": [
@@ -204,52 +250,6 @@ export const docs: Docs[] = [
             "title": "Toolbar",
             "url": "/docs/components/controls/toolbar",
             "order": 5
-          }
-        ]
-      },
-      {
-        "title": "collections",
-        "order": 5,
-        "items": [
-          {
-            "title": "Accordion",
-            "url": "/docs/components/collections/accordion",
-            "order": 5
-          },
-          {
-            "title": "Collapsible",
-            "url": "/docs/components/collections/collapsible",
-            "order": 6
-          },
-          {
-            "title": "Grid List",
-            "url": "/docs/components/collections/grid-list",
-            "order": 3
-          },
-          {
-            "title": "List Box",
-            "url": "/docs/components/collections/list-box",
-            "order": 3
-          },
-          {
-            "title": "Menu",
-            "url": "/docs/components/collections/menu",
-            "order": 1
-          },
-          {
-            "title": "Table",
-            "url": "/docs/components/collections/table",
-            "order": 4
-          },
-          {
-            "title": "Tag Group",
-            "url": "/docs/components/collections/tag-group",
-            "order": 7
-          },
-          {
-            "title": "Tree",
-            "url": "/docs/components/collections/tree",
-            "order": 8
           }
         ]
       },
@@ -380,27 +380,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
-            "order": 3
-          }
-        ]
-      },
-      {
         "title": "navigation",
         "order": 2,
         "items": [
@@ -427,28 +406,23 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "overlays",
-        "order": 1,
+        "title": "media",
+        "order": 2,
         "items": [
           {
-            "title": "Modal",
-            "url": "/docs/components/overlays/modal",
-            "order": 1
-          },
-          {
-            "title": "Popover",
-            "url": "/docs/components/overlays/popover",
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
             "order": 2
           },
           {
-            "title": "Sheet",
-            "url": "/docs/components/overlays/sheet",
-            "order": 3
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
           },
           {
-            "title": "Tooltip",
-            "url": "/docs/components/overlays/tooltip",
-            "order": 4
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },
@@ -471,6 +445,32 @@ export const docs: Docs[] = [
             "title": "Select",
             "url": "/docs/components/pickers/select",
             "order": 1
+          }
+        ]
+      },
+      {
+        "title": "overlays",
+        "order": 1,
+        "items": [
+          {
+            "title": "Modal",
+            "url": "/docs/components/overlays/modal",
+            "order": 1
+          },
+          {
+            "title": "Popover",
+            "url": "/docs/components/overlays/popover",
+            "order": 2
+          },
+          {
+            "title": "Sheet",
+            "url": "/docs/components/overlays/sheet",
+            "order": 3
+          },
+          {
+            "title": "Tooltip",
+            "url": "/docs/components/overlays/tooltip",
+            "order": 4
           }
         ]
       },

@@ -85,16 +85,14 @@
     }
 
     * {
-        font-feature-settings: "cv11", "ss01";
         text-rendering: optimizeLegibility;
-
         scrollbar-width: thin;
         scrollbar-color: var(--muted) transparent;
     }
 
     html {
-        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-        font-variation-settings: normal;
+        font-variant-ligatures: normal;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
         scroll-behavior: smooth;
         height: 100%;
         -webkit-font-smoothing: antialiased;

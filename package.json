@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
-    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts",
+    "b": "bun run lib/scripts/create-previews.ts && bun run lib/scripts/list-component.ts && bun run lib/scripts/list-docs.ts && bun run lib/scripts/list-blocks.ts",
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
@@ -35,6 +35,7 @@
     "remark-gfm": "^4.0.1",
     "scroll-into-view-if-needed": "^3.1.0",
     "shiki": "^3.4.0",
+    "sucrase": "^3.35.0",
     "tailwindcss-react-aria-components": "^2.0.0",
     "use-debounce": "^10.0.4",
     "zustand": "^5.0.4"

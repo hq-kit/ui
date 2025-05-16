@@ -168,5 +168,5 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
 
 Toggle.Group = ToggleGroup
 
-export { Toggle, ToggleGroupContext, toggleGroupStyles }
+export { Toggle, ToggleGroup, ToggleGroupContext, toggleGroupStyles }
 export type { ToggleGroupContextProps }

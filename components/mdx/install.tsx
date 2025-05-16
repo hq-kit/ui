@@ -3,10 +3,11 @@
 import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 
 import { IconBrandReact } from 'hq-icons'
+import { Tab, TabList, TabPanel, Tabs } from 'react-aria-components'
 
 import { components } from '@/components/docs/generated/components'
 import previews from '@/components/docs/generated/previews.json'
-import { Description, Tabs } from '@/components/ui'
+import { Description } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { CLI } from './cli'
 import { Code } from './code'
@@ -52,17 +53,27 @@ export function Install({ component }: { component: string }) {
     }
     return (
         <Tabs aria-label='Packages' className='my-6'>
-            <Tabs.List>
-                <Tabs.Label id='cli'>CLI</Tabs.Label>
-                <Tabs.Label id='manual'>Manual</Tabs.Label>
-            </Tabs.List>
-            <Tabs.Content id='cli' className='w-full'>
+            <TabList className='mb-2 flex w-fit max-w-full cursor-pointer items-center overflow-auto rounded-lg border p-1 text-xs'>
+                <Tab
+                    className='flex items-center gap-1 rounded-md selected:bg-primary px-2 py-1 selected:text-primary-fg'
+                    id='cli'
+                >
+                    CLI
+                </Tab>
+                <Tab
+                    className='flex items-center gap-1 rounded-md selected:bg-primary px-2 py-1 selected:text-primary-fg'
+                    id='manual'
+                >
+                    Manual
+                </Tab>
+            </TabList>
+            <TabPanel id='cli' className='w-full'>
                 <CLI command='add' items={component} />
-            </Tabs.Content>
-            <Tabs.Content id='manual' className='w-full'>
+            </TabPanel>
+            <TabPanel id='manual' className='w-full'>
                 <CLI command='install' items={deps} />
                 <SourceCode component={items} />
-            </Tabs.Content>
+            </TabPanel>
         </Tabs>
     )
 }
@@ -100,18 +111,25 @@ export function SourceCode({ component, withMessage = true }: SourceCodeProps) {
                 </Description>
             )}
             <Tabs className='mt-2 gap-0'>
-                <Tabs.List items={codeStrings} className='max-w-full overflow-auto'>
+                <TabList
+                    items={codeStrings}
+                    className='mb-2 flex w-fit max-w-full cursor-pointer items-center overflow-auto rounded-lg border p-1 text-xs'
+                >
                     {(item) => (
-                        <Tabs.Label key={item.name} id={`tab-${item.name}`}>
+                        <Tab
+                            className='flex items-center gap-1 rounded-md selected:bg-primary px-2 py-1 selected:text-primary-fg'
+                            key={item.name}
+                            id={`tab-${item.name}`}
+                        >
                             <IconBrandReact />
                             {item.name.includes('demo') ? 'main' : item.name}.tsx
-                        </Tabs.Label>
+                        </Tab>
                     )}
-                </Tabs.List>
+                </TabList>
                 {codeStrings.map((item) => (
-                    <Tabs.Content key={item.name} id={`tab-${item.name}`}>
+                    <TabPanel key={item.name} id={`tab-${item.name}`}>
                         <Code code={item.code} />
-                    </Tabs.Content>
+                    </TabPanel>
                 ))}
             </Tabs>
         </section>

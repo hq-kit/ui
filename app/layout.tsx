@@ -6,6 +6,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import { Providers } from '@/components/providers'
 import { fontMono, fontSans } from '@/lib/fonts'
 import '@/lib/styles/app.css'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
@@ -79,7 +80,7 @@ export default function RootLayout({
         <html
             lang='en'
             suppressHydrationWarning
-            className={`${fontSans} ${fontMono}`}
+            className={cn(fontSans, fontMono)}
             style={
                 {
                     '--font-sans': 'var(--font-geist)',

@@ -1,54 +1,60 @@
-import { previews } from '@/components/docs/generated/previews'
-import { titleCase } from '@/lib/utils/modifiers'
-import type { Metadata } from 'next'
+import BlockCard from '@/components/controllers/blocks/block-card'
+import { BlocksBreadcrumbs } from '@/components/controllers/blocks/breadcrumbs'
+import BlocksCategories from '@/components/controllers/blocks/categories'
+import { listBlocks } from '@/components/docs/generated/list-blocks'
+import { Block } from '@/components/mdx/block'
+import { Fragment } from 'react'
 
-export interface BlockProps {
-    params: Promise<{
-        slug: string[]
-    }>
+type Props = {
+    params: Promise<{ slug: string[] }>
+}
+export default async function Page(props: Props) {
+    const { slug } = await props.params
+    return (
+        <div className='mx-auto w-full max-w-7xl space-y-2 lg:max-w-(--breakpoint-xl) xl:border-x 2xl:max-w-(--breakpoint-2xl)'>
+            <BlocksCategories section={slug[0]} />
+            <div className='border-b px-4 pb-2'>
+                <BlocksBreadcrumbs pages={slug} />
+            </div>
+            <div className='space-y-4 px-4 pt-4'>
+                {slug.length < 2 ? (
+                    <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                        {listBlocks
+                            .filter((l) => l.section === slug[0])
+                            .map((l, i) => (
+                                <BlockCard
+                                    href={`/blocks/${l.section}/${l.category}`}
+                                    title={l.category}
+                                    description={`${l.blocks.length} blocks`}
+                                    key={i}
+                                />
+                            ))}
+                    </div>
+                ) : slug.length === 2 ? (
+                    listBlocks
+                        .filter((l) => l.section === slug[0] && l.category === slug[1])
+                        .map((l, i) => (
+                            <Fragment key={i}>
+                                {l.blocks.map((b, i) => (
+                                    <Block key={i} page={b.slug} />
+                                ))}
+                            </Fragment>
+                        ))
+                ) : (
+                    <Block page={slug.join('/')} />
+                )}
+            </div>
+        </div>
+    )
 }
 
 export async function generateStaticParams() {
-    return Object.keys(previews)
-        .filter((s) => s.startsWith('block'))
-        .map((slug) => ({ slug: slug.split('/') }))
-}
-
-export async function generateMetadata(props: BlockProps): Promise<Metadata> {
-    const params = await props.params
-    const title = titleCase(params.slug.reverse()[0])
-
-    const ogSearchParams = new URLSearchParams()
-    ogSearchParams.set('title', title)
-
-    return {
-        title: title,
-        applicationName: 'HQ UI',
-        category: 'Blocks',
-        keywords: [
-            `${title} components`,
-            `${title}`,
-            'React',
-            'Next.js',
-            'Inertia.js',
-            'Tailwind CSS',
-            'UI Components',
-            'UI Kit',
-            'UI Library',
-            'UI Framework',
-            'React Aria',
-            'React Aria Components',
-            'Server Components',
-            'React Components',
-            'Next UI Components',
-            'UI Design System',
-            'UI for Laravel Inertia'
-        ]
+    const blocks = []
+    for (const block of listBlocks) {
+        for (const b of block.blocks) {
+            blocks.push({ slug: [block.section, block.category, b.slug] })
+        }
     }
-}
 
-export default async function BlockPage(props: BlockProps) {
-    const params = await props.params
-    // return <Block zoomOut={0.9} height={880} page={`block/${params.slug.join('/')}`} />
-    return <div>Hello</div>
+    return blocks
 }

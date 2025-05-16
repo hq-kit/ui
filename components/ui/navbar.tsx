@@ -289,9 +289,9 @@ const NavbarInset = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>)
                 className={cn(
                     'mx-auto flex size-full flex-1 grow flex-col',
                     variant === 'inset' &&
-                        'bg-bg shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
+                        'bg-bg px-4 shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
                     variant === 'default' &&
-                        'max-w-7xl overflow-auto px-4 md:px-0 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
+                        'max-w-7xl overflow-auto px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
                     variant === 'float' && 'max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)'
                 )}
             >

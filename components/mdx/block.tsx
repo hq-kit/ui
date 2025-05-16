@@ -1,44 +1,26 @@
 'use client'
-import { type ComponentPropsWithRef, useState } from 'react'
 
-import { FileExplorer } from '@/components/mdx/file-explorer'
-import { Link, Tabs, Toggle, buttonStyle } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { useState } from 'react'
+
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
-import type { Key } from 'react-aria-components'
+import { type Key, TabPanel } from 'react-aria-components'
 
-interface BlockProps extends ComponentPropsWithRef<'div'> {
-    page: string
-    height?: number
-    zoomOut: number
-}
+import { Link, Separator, Toggle, buttonStyle } from '@/components/ui'
+import { cn } from '@/lib/utils'
+import { Fleet } from './fleet'
+import { TabsSwitcher } from './tabs-switcher'
 
-export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }: BlockProps) {
+export function Block({ page }: { page: string }) {
     const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
-
     return (
-        <div className={cn('not-prose group relative my-6', className)} {...props}>
-            <Tabs aria-label='Blocks'>
-                <Tabs.List>
-                    <Tabs.Label id='preview'>Preview</Tabs.Label>
-                    <Tabs.Label id='code'>Code</Tabs.Label>
-                </Tabs.List>
-                <Tabs.Content className='w-full' id='preview'>
-                    <div
-                        className={cn('relative w-full bg-bg', 'flex min-h-56 items-center justify-center lg:min-h-80')}
-                    >
-                        <div className='sm:-top-12 absolute right-0 z-20 hidden gap-1 sm:flex'>
-                            <Link
-                                target='_blank'
-                                className={buttonStyle({
-                                    icon: true,
-                                    variant: 'outline',
-                                    size: 'sm'
-                                })}
-                                href={`/${page}`}
-                            >
-                                <IconFullscreen />
-                            </Link>
+        <>
+            <div className='-mb-7 flex items-center gap-3 pl-28 text-muted-fg text-sm capitalize'>
+                <Separator orientation='vertical' className='h-6' /> {page.split('/').splice(1).join(' ')}
+            </div>
+            <TabsSwitcher>
+                <TabPanel className='mt-2' id='preview'>
+                    <div className={cn('relative w-full bg-bg', 'flex min-h-56 items-center lg:min-h-80')}>
+                        <div className='sm:-top-10 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Toggle.Group
                                 size='sm'
                                 icon
@@ -56,21 +38,35 @@ export function Block({ page, zoomOut = 0.6, height = 768, className, ...props }
                                     <IconMonitor />
                                 </Toggle>
                             </Toggle.Group>
+                            <Link
+                                target='_blank'
+                                className={buttonStyle({
+                                    icon: true,
+                                    variant: 'outline',
+                                    size: 'sm'
+                                })}
+                                href={`/block/${page}`}
+                            >
+                                <IconFullscreen />
+                            </Link>
                         </div>
                         <iframe
                             title='Preview'
-                            className={cn('relative z-20 w-full rounded-lg border', [...screenWidth].flat())}
-                            height={height || 768}
-                            style={{ zoom: zoomOut || 1 }}
+                            className={cn(
+                                'relative z-20 w-full overflow-hidden rounded-lg border',
+                                [...screenWidth].flat()
+                            )}
+                            height={768}
+                            style={{ zoom: 0.95 }}
                             allowFullScreen
-                            src={`/${page}`}
+                            src={`/block/${page}`}
                         />
                     </div>
-                </Tabs.Content>
-                <Tabs.Content id='code'>
-                    <FileExplorer style={{ height: height * zoomOut }} page={page} />
-                </Tabs.Content>
-            </Tabs>
-        </div>
+                </TabPanel>
+                <TabPanel id='code'>
+                    <Fleet page={page} />
+                </TabPanel>
+            </TabsSwitcher>
+        </>
     )
 }

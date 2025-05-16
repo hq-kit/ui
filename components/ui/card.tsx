@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 const Card = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     return (
         <div
-            slot='card'
+            data-slot='card'
             className={cn(
                 'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:rounded-none **:[[slot=table]]:border-x-0',
                 className

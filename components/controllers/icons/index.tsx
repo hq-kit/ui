@@ -5,7 +5,7 @@ import { Container } from '@/components/ui'
 
 export function IconsController() {
     return (
-        <Container className='sticky top-0 z-10 flex w-full flex-col items-center justify-between gap-2 bg-bg/60 py-2 backdrop-blur-xl sm:flex-row lg:top-14 lg:border-x'>
+        <Container className='sticky top-0 z-10 flex w-full flex-col items-center justify-between gap-2 bg-bg/60 py-2 backdrop-blur-xl sm:flex-row lg:top-14 xl:border-x'>
             <Search />
             <div className='flex w-full items-center gap-2 sm:w-auto'>
                 <SelectStroke />

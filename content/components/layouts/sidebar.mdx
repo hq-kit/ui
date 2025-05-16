@@ -9,45 +9,29 @@ published: true
 ## Installation
 <Install component='sidebar' />
 
-## Basic
-<Block page='block/sidebar/sidebar-basic-demo'/>
-
 ## Collapsible
 The sidebar is collapsible with three options for collapsibility: `hidden`, `dock`, and `none`.
 
 ### Hidden
 When the trigger is clicked, the sidebar slides out.
-<Block page='block/sidebar/sidebar-off-canvas-demo'/>
+<Block page='application/sidebar/basic'/>
 
 ### Dock
 When set to `dock`, the sidebar will be pinned to a specified location, displaying an icon and tooltip by default.
-<Block page='block/sidebar/sidebar-dock-demo'/>
+<Block page='application/sidebar/dock'/>
 
 ### Fixed
 Choosing the `none` collapsible ensures the sidebar is static and cannot be toggled.
-<Block page='block/sidebar/sidebar-fixed-demo'/>
+<Block page='application/sidebar/fixed'/>
 
 ## Variant
 There are three types of sidebar variants: `default`, `float`, and `inset`, each with distinct behaviors.
 
-### Default
-<Block page='block/sidebar/sidebar-default-demo'/>
-
 ### Float
-<Block page='block/sidebar/sidebar-floating-demo'/>
+<Block page='application/sidebar/float'/>
 
 ### Inset
-<Block page='block/sidebar/sidebar-inset-demo'/>
-
-## Default Open
-The sidebar's default open state can be managed using the `defaultOpen` prop.
-
-```tsx {1}
-<Sidebar.Provider defaultOpen>
-    <Sidebar />
-    <Sidebar.Inset />
-</Sidebar.Provider>
-```
+<Block page='application/sidebar/inset'/>
 
 ## Rail
 `<Sidebar.Rail/>` is a button that toggles the sidebar, positioned as a slim bar along the sidebar's border.

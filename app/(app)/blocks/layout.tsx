@@ -1,9 +1,6 @@
-'use client'
-
-import type { ReactNode } from 'react'
-
-import { Hero, HeroButton, HeroTitle, MainContent } from '@/components/layouts/hero'
+import { Hero, HeroButton, HeroTitle } from '@/components/layouts/hero'
 import { IconBlocks, IconGitPullRequest } from 'hq-icons'
+import type { ReactNode } from 'react'
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (
@@ -25,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </HeroButton>
                 </main>
             </Hero>
-            <MainContent>{children}</MainContent>
+            {children}
         </>
     )
 }

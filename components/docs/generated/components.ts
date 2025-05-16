@@ -63,7 +63,7 @@ export const components: Component[] = [
     {"name":"sidebar","children":[{"name":"sheet"},{"name":"tooltip"}]},
     {"name":"skeleton"},
     {"name":"slider","children":[{"name":"form"}]},
-    {"name":"spoiler","children":[{"name":"button"}],"deps":["motion"]},
+    {"name":"spoiler","children":[{"name":"button"}]},
     {"name":"switch","children":[{"name":"form"}]},
     {"name":"table","children":[{"name":"checkbox"}]},
     {"name":"tabs"},

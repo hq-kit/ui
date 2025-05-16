@@ -29,7 +29,7 @@ const nextConfig = {
             },
             {
                 source: '/blocks',
-                destination: '/blocks/examples/dashboard',
+                destination: '/blocks/application',
                 permanent: false
             }
         ]
