@@ -41,30 +41,40 @@ const TableContext = createContext<TableProps>({
 const useTableContext = () => useContext(TableContext)
 
 const Table = ({ className, ...props }: TableProps) => {
+    const renderTable = (
+        <RACTable
+            className={cn('w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden', className)}
+            {...props}
+        />
+    )
     return (
         <TableContext.Provider value={props}>
-            <div slot='table' className='relative w-full overflow-auto'>
+            <div slot='table' className='relative w-full overflow-auto rounded-lg border'>
                 {props.allowResize ? (
-                    <ResizableTableContainer className='overflow-auto'>
-                        <RACTable
-                            className={cn(
-                                'w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden',
-                                className
-                            )}
-                            {...props}
-                        />
-                    </ResizableTableContainer>
+                    <ResizableTableContainer className='overflow-auto'>{renderTable}</ResizableTableContainer>
                 ) : (
-                    <RACTable
-                        className={cn(
-                            'w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden',
-                            className
-                        )}
-                        {...props}
-                    />
+                    renderTable
                 )}
             </div>
         </TableContext.Provider>
+    )
+}
+
+interface TableHeaderProps<T extends object> extends HeaderProps<T> {
+    className?: string
+    ref?: Ref<HTMLTableSectionElement>
+}
+
+const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
+    const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
+    return (
+        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-fg', className)} {...props}>
+            {allowsDragging && <Column className='w-0' />}
+            {selectionBehavior === 'toggle' && (
+                <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
+            )}
+            <Collection items={columns}>{children}</Collection>
+        </RACTableHeader>
     )
 }
 
@@ -156,24 +166,6 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
                 </div>
             )}
         </Column>
-    )
-}
-
-interface TableHeaderProps<T extends object> extends HeaderProps<T> {
-    className?: string
-    ref?: Ref<HTMLTableSectionElement>
-}
-
-const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
-    const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
-    return (
-        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-fg', className)} {...props}>
-            {allowsDragging && <Column className='w-0' />}
-            {selectionBehavior === 'toggle' && (
-                <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
-            )}
-            <Collection items={columns}>{children}</Collection>
-        </RACTableHeader>
     )
 }
 

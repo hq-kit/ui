@@ -7,7 +7,7 @@ const Card = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
         <div
             data-slot='card'
             className={cn(
-                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:rounded-none **:[[slot=table]]:border-x-0',
+                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:rounded-b-none **:[[slot=table]]:border-x-0',
                 className
             )}
             {...props}

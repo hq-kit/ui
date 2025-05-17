@@ -5,30 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-block-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-filename-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-highlight-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-language-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-snippet-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-theme-demo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/code.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/components/surfaces/code.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/hello/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/hello/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/dark-mode/next-js.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/dark-mode/next-js.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/velite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/velite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,26 +35,26 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/home/dq/HQ/ui/components/docs/surfaces/code",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "/home/dq/HQ/ui/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dq/HQ/ui/components/docs/surfaces/code&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/dq/HQ/ui/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/docs/surfaces/code" />
@@ -169,7 +149,8 @@
       <workItem from="1747198068104" duration="3338000" />
       <workItem from="1747258082593" duration="3633000" />
       <workItem from="1747283204823" duration="36615000" />
-      <workItem from="1747469326703" duration="24501000" />
+      <workItem from="1747469326703" duration="24800000" />
+      <workItem from="1747506760483" duration="1001000" />
     </task>
     <servers />
   </component>

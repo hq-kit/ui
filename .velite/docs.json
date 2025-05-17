@@ -1658,209 +1658,6 @@
     "body": "const{Fragment:n,jsx:a,jsxs:o}=arguments[0];function _createMdxContent(e){const i={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...e.components},{Demo:t,Install:s}=i;return t||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),o(n,{children:[o(i.h2,{id:\"installation\",children:[a(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(s,{component:\"toolbar\"}),\"\\n\",o(i.h2,{id:\"basic\",children:[a(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:a(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(t,{component:\"controls/toolbar/toolbar-demo\"}),\"\\n\",o(i.h2,{id:\"orientation\",children:[a(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:a(i.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",a(t,{component:\"controls/toolbar/toolbar-orientation-demo\"}),\"\\n\",o(i.h2,{id:\"variants\",children:[a(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variants\",children:a(i.span,{className:\"icon icon-link\"})}),\"Variants\"]}),\"\\n\",a(i.p,{children:\"The Toolbar Item actually is a Toggle Button, so you can use all the variants that Toggle Button supports.\"}),\"\\n\",a(t,{component:\"controls/toolbar/toolbar-variants-demo\"}),\"\\n\",o(i.h2,{id:\"disabled\",children:[a(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:a(i.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",a(t,{component:\"controls/toolbar/toolbar-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?a(o,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
-    "slug": "components/date-and-time/calendar",
-    "title": "Calendar",
-    "description": "A calendar displays one or more date grids and allows users to select a single date.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Calendar.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:i,Install:c}=o;return i||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(n,{children:[a(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(c,{component:\"calendar\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"date-and-time/calendar/calendar-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/date-and-time/date-field",
-    "title": "Date Field",
-    "description": "A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Date Time Field",
-        "url": "#date-time-field",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Validation",
-        "url": "#validation",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/DateField.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:o,Install:d}=t;return o||_missingMdxReference(\"Demo\",!0),d||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(d,{component:\"date-field\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-demo\"}),\"\\n\",a(t.h2,{id:\"date-time-field\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#date-time-field\",children:n(t.span,{className:\"icon icon-link\"})}),\"Date Time Field\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-time-field-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/date-and-time/date-picker",
-    "title": "Date Picker",
-    "description": "A date picker combines a DateField and a Calendar popover to allow users to enter or select a date and time value.",
-    "published": true,
-    "order": 4,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Date and Time",
-        "url": "#date-and-time",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Validation",
-        "url": "#validation",
-        "items": []
-      },
-      {
-        "title": "Custom Validation",
-        "url": "#custom-validation",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/DatePicker.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:c}=t;return o||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"date-picker\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t.p,{children:\"A date picker combines a DateField with a Calendar popover, allowing users to either type in or select a date and time.\"}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-demo\"}),\"\\n\",a(t.h2,{id:\"date-and-time\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#date-and-time\",children:n(t.span,{className:\"icon icon-link\"})}),\"Date and Time\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-time-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-required-demo\"}),\"\\n\",a(t.h2,{id:\"custom-validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#custom-validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Custom Validation\"]}),\"\\n\",a(t.p,{children:[\"The \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{style:{color:\"#FFA657\"},children:\"validate\"})})})}),\" function is your go-to for custom validation rules. It checks the current date value and returns an error message string or strings if the value doesn't meet your criteria.\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-custom-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/date-and-time/date-range-picker",
-    "title": "Date Range Picker",
-    "description": "A date range picker combines two DateFields and a RangeCalendar popover to allow users to enter or select a date and time range.",
-    "published": true,
-    "order": 5,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Validation",
-        "url": "#validation",
-        "items": []
-      },
-      {
-        "title": "Custom Validation",
-        "url": "#custom-validation",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/DateRangePicker.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(r,{component:\"date-range-picker\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t.p,{children:\"A range calendar displays one or more date grids and allows users to select a range of dates in a single interaction.\"}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-validation-demo\"}),\"\\n\",a(t.h2,{id:\"custom-validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#custom-validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Custom Validation\"]}),\"\\n\",a(t.p,{children:[\"Use the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{style:{color:\"#FFA657\"},children:\"validate\"})})})}),\" function to implement custom validation rules. It evaluates the current date range and returns error messages if the value doesn't meet your criteria.\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-custom-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/date-and-time/range-calendar",
-    "title": "Range Calendar",
-    "description": "A range calendar displays one or more date grids and allows users to select a contiguous range of dates.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/RangeCalendar.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:i,Install:c}=o;return i||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(n,{children:[a(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(c,{component:\"range-calendar\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"date-and-time/calendar/range-calendar-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/date-and-time/time-field",
-    "title": "Time Field",
-    "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
-    "published": true,
-    "order": 6,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Hour Cycles",
-        "url": "#hour-cycles",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Validation",
-        "url": "#validation",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/TimeField.html#props"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:t,Install:c}=o;return t||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),i(e,{children:[i(o.h2,{id:\"installation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"time-field\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-demo\"}),\"\\n\",i(o.h2,{id:\"hour-cycles\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#hour-cycles\",children:n(o.span,{className:\"icon icon-link\"})}),\"Hour Cycles\"]}),\"\\n\",i(o.p,{children:[\"Change the hour format in the time field by using the \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{style:{color:\"#FFA657\"},children:\"hourCycle\"})})})}),\" prop.\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-hc-demo\"}),\"\\n\",i(o.h2,{id:\"controlled\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(o.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-controlled-demo\"}),\"\\n\",i(o.h2,{id:\"validation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-validation-demo\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
     "slug": "components/colors/color-area",
     "title": "Color Area",
     "description": "A color area lets users tweak two channels of an RGB, HSL, or HSB color against a 2D gradient backdrop.",
@@ -2110,6 +1907,209 @@
       "https://react-spectrum.adobe.com/react-aria/ColorWheel.html#props"
     ],
     "body": "const{Fragment:n,jsx:e,jsxs:o}=arguments[0];function _createMdxContent(c){const a={a:\"a\",h2:\"h2\",span:\"span\",...c.components},{Demo:l,Install:t}=a;return l||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),o(n,{children:[o(a.h2,{id:\"installation\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(a.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(t,{component:\"color-wheel\"}),\"\\n\",o(a.h2,{id:\"basic\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(a.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-demo\"}),\"\\n\",o(a.h2,{id:\"controlled\",children:[e(a.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:e(a.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",e(l,{center:!0,component:\"colors/color-wheel/color-wheel-controlled-demo\"})]})}return{default:function(n={}){const{wrapper:o}=n.components||{};return o?e(o,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/calendar",
+    "title": "Calendar",
+    "description": "A calendar displays one or more date grids and allows users to select a single date.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Calendar.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:i,Install:c}=o;return i||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(n,{children:[a(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(c,{component:\"calendar\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"date-and-time/calendar/calendar-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/date-field",
+    "title": "Date Field",
+    "description": "A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Date Time Field",
+        "url": "#date-time-field",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Validation",
+        "url": "#validation",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/DateField.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:o,Install:d}=t;return o||_missingMdxReference(\"Demo\",!0),d||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(d,{component:\"date-field\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-demo\"}),\"\\n\",a(t.h2,{id:\"date-time-field\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#date-time-field\",children:n(t.span,{className:\"icon icon-link\"})}),\"Date Time Field\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-time-field-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-field/date-field-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/date-picker",
+    "title": "Date Picker",
+    "description": "A date picker combines a DateField and a Calendar popover to allow users to enter or select a date and time value.",
+    "published": true,
+    "order": 4,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Date and Time",
+        "url": "#date-and-time",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Validation",
+        "url": "#validation",
+        "items": []
+      },
+      {
+        "title": "Custom Validation",
+        "url": "#custom-validation",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/DatePicker.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:c}=t;return o||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"date-picker\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t.p,{children:\"A date picker combines a DateField with a Calendar popover, allowing users to either type in or select a date and time.\"}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-demo\"}),\"\\n\",a(t.h2,{id:\"date-and-time\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#date-and-time\",children:n(t.span,{className:\"icon icon-link\"})}),\"Date and Time\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-time-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-required-demo\"}),\"\\n\",a(t.h2,{id:\"custom-validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#custom-validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Custom Validation\"]}),\"\\n\",a(t.p,{children:[\"The \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{style:{color:\"#FFA657\"},children:\"validate\"})})})}),\" function is your go-to for custom validation rules. It checks the current date value and returns an error message string or strings if the value doesn't meet your criteria.\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-picker/date-picker-custom-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/date-range-picker",
+    "title": "Date Range Picker",
+    "description": "A date range picker combines two DateFields and a RangeCalendar popover to allow users to enter or select a date and time range.",
+    "published": true,
+    "order": 5,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Validation",
+        "url": "#validation",
+        "items": []
+      },
+      {
+        "title": "Custom Validation",
+        "url": "#custom-validation",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/DateRangePicker.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),a(e,{children:[a(t.h2,{id:\"installation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(r,{component:\"date-range-picker\"}),\"\\n\",a(t.h2,{id:\"basic\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t.p,{children:\"A range calendar displays one or more date grids and allows users to select a range of dates in a single interaction.\"}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-demo\"}),\"\\n\",a(t.h2,{id:\"controlled\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(t.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-controlled-demo\"}),\"\\n\",a(t.h2,{id:\"validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-validation-demo\"}),\"\\n\",a(t.h2,{id:\"custom-validation\",children:[n(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#custom-validation\",children:n(t.span,{className:\"icon icon-link\"})}),\"Custom Validation\"]}),\"\\n\",a(t.p,{children:[\"Use the \",n(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(t.span,{\"data-line\":\"\",children:n(t.span,{style:{color:\"#FFA657\"},children:\"validate\"})})})}),\" function to implement custom validation rules. It evaluates the current date range and returns error messages if the value doesn't meet your criteria.\"]}),\"\\n\",n(o,{center:!0,component:\"date-and-time/date-range-picker/date-range-picker-custom-validation-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/range-calendar",
+    "title": "Range Calendar",
+    "description": "A range calendar displays one or more date grids and allows users to select a contiguous range of dates.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/RangeCalendar.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(t){const o={a:\"a\",h2:\"h2\",span:\"span\",...t.components},{Demo:i,Install:c}=o;return i||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),a(n,{children:[a(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(c,{component:\"range-calendar\"}),\"\\n\",a(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(i,{center:!0,component:\"date-and-time/calendar/range-calendar-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/date-and-time/time-field",
+    "title": "Time Field",
+    "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+    "published": true,
+    "order": 6,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Hour Cycles",
+        "url": "#hour-cycles",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Validation",
+        "url": "#validation",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/TimeField.html#props"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:t,Install:c}=o;return t||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),i(e,{children:[i(o.h2,{id:\"installation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(c,{component:\"time-field\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-demo\"}),\"\\n\",i(o.h2,{id:\"hour-cycles\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#hour-cycles\",children:n(o.span,{className:\"icon icon-link\"})}),\"Hour Cycles\"]}),\"\\n\",i(o.p,{children:[\"Change the hour format in the time field by using the \",n(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(o.span,{\"data-line\":\"\",children:n(o.span,{style:{color:\"#FFA657\"},children:\"hourCycle\"})})})}),\" prop.\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-hc-demo\"}),\"\\n\",i(o.h2,{id:\"controlled\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(o.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-controlled-demo\"}),\"\\n\",i(o.h2,{id:\"validation\",children:[n(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(o.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(t,{center:!0,component:\"date-and-time/time-field/time-field-validation-demo\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
     "slug": "components/drag-and-drop/drop-zone",
@@ -2694,327 +2694,6 @@
     "body": "const{Fragment:e,jsx:a,jsxs:n}=arguments[0];function _createMdxContent(l){const d={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",h3:\"h3\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Block:r,Install:i}=d;return r||_missingMdxReference(\"Block\",!0),i||_missingMdxReference(\"Install\",!0),n(e,{children:[n(d.h2,{id:\"installation\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(d.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(i,{component:\"sidebar\"}),\"\\n\",n(d.h2,{id:\"collapsible\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collapsible\",children:a(d.span,{className:\"icon icon-link\"})}),\"Collapsible\"]}),\"\\n\",n(d.p,{children:[\"The sidebar is collapsible with three options for collapsibility: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"hidden\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"dock\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"none\"})})})}),\".\"]}),\"\\n\",n(d.h3,{id:\"hidden\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#hidden\",children:a(d.span,{className:\"icon icon-link\"})}),\"Hidden\"]}),\"\\n\",a(d.p,{children:\"When the trigger is clicked, the sidebar slides out.\"}),\"\\n\",a(r,{page:\"application/sidebar/basic\"}),\"\\n\",n(d.h3,{id:\"dock\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dock\",children:a(d.span,{className:\"icon icon-link\"})}),\"Dock\"]}),\"\\n\",n(d.p,{children:[\"When set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"dock\"})})})}),\", the sidebar will be pinned to a specified location, displaying an icon and tooltip by default.\"]}),\"\\n\",a(r,{page:\"application/sidebar/dock\"}),\"\\n\",n(d.h3,{id:\"fixed\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fixed\",children:a(d.span,{className:\"icon icon-link\"})}),\"Fixed\"]}),\"\\n\",n(d.p,{children:[\"Choosing the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"none\"})})})}),\" collapsible ensures the sidebar is static and cannot be toggled.\"]}),\"\\n\",a(r,{page:\"application/sidebar/fixed\"}),\"\\n\",n(d.h2,{id:\"variant\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:a(d.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",n(d.p,{children:[\"There are three types of sidebar variants: \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"default\"})})})}),\", \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"float\"})})})}),\", and \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"inset\"})})})}),\", each with distinct behaviors.\"]}),\"\\n\",n(d.h3,{id:\"float\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#float\",children:a(d.span,{className:\"icon icon-link\"})}),\"Float\"]}),\"\\n\",a(r,{page:\"application/sidebar/float\"}),\"\\n\",n(d.h3,{id:\"inset\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#inset\",children:a(d.span,{className:\"icon icon-link\"})}),\"Inset\"]}),\"\\n\",a(r,{page:\"application/sidebar/inset\"}),\"\\n\",n(d.h2,{id:\"rail\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#rail\",children:a(d.span,{className:\"icon icon-link\"})}),\"Rail\"]}),\"\\n\",n(d.p,{children:[a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"<\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"Sidebar.Rail/\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\">\"})]})})}),\" is a button that toggles the sidebar, positioned as a slim bar along the sidebar's border.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar.Rail\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]})})})}),\"\\n\",n(d.h2,{id:\"controlled\",children:[a(d.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:a(d.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(d.p,{children:[\"To manually control the sidebar's state, use the \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"isOpen\"})})})}),\" prop. When \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#FFA657\"},children:\"isOpen\"})})})}),\" is set to \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#79C0FF\"},children:\"true\"})})})}),\", the sidebar opens; when it's \",a(d.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#79C0FF\"},children:\"false\"})})})}),\", the sidebar closes.\"]}),\"\\n\",a(d.figure,{\"data-rehype-pretty-code-figure\":\"\",children:a(d.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(d.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"export\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\" function\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\" AppSidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"() {\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  const\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" [\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\", \"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"] \"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"=\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" React.\"}),a(d.span,{style:{color:\"#D2A8FF\"},children:\"useState\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"(\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\"false\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\")\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"  return\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    <\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"isOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#79C0FF\"},children:\" onOpenChange\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"={\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\"setIsOpen\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#FF7B72\"},children:\"        {\"}),a(d.span,{style:{color:\"#8B949E\"},children:\"/* Rest of your code */\"}),a(d.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",n(d.span,{\"data-line\":\"\",children:[a(d.span,{style:{color:\"#E6EDF3\"},children:\"    </\"}),a(d.span,{style:{color:\"#7EE787\"},children:\"Sidebar\"}),a(d.span,{style:{color:\"#E6EDF3\"},children:\">\"})]}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"  )\"})}),\"\\n\",a(d.span,{\"data-line\":\"\",children:a(d.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?a(n,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
-    "slug": "components/media/avatar",
-    "title": "Avatar",
-    "description": "The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.",
-    "published": true,
-    "order": 2,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Avatar Initials",
-        "url": "#avatar-initials",
-        "items": []
-      },
-      {
-        "title": "Fallback",
-        "url": "#fallback",
-        "items": []
-      },
-      {
-        "title": "Shape",
-        "url": "#shape",
-        "items": []
-      },
-      {
-        "title": "Size",
-        "url": "#size",
-        "items": []
-      },
-      {
-        "title": "Avatar Group",
-        "url": "#avatar-group",
-        "items": []
-      }
-    ],
-    "body": "const{Fragment:a,jsx:e,jsxs:n}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),n(a,{children:[n(t.h2,{id:\"installation\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(r,{component:\"avatar\"}),\"\\n\",n(t.h2,{id:\"basic\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-group-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-initials\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-initials\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Initials\"]}),\"\\n\",n(t.p,{children:[\"Use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{style:{color:\"#FFA657\"},children:\"initials\"})})})}),\" prop to display the initials of the user.\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-initials-demo\"}),\"\\n\",n(t.h2,{id:\"fallback\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fallback\",children:e(t.span,{className:\"icon icon-link\"})}),\"Fallback\"]}),\"\\n\",e(t.p,{children:\"If the image fails to load and no initials, the icon will be displayed\"}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-fallback-demo\"}),\"\\n\",n(t.h2,{id:\"shape\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(t.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-shape-demo\"}),\"\\n\",n(t.h2,{id:\"size\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:e(t.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-size-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-group\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-group\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Group\"]}),\"\\n\",n(t.p,{children:[\"You can use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{style:{color:\"#FFA657\"},children:\"AvatarGroup\"})})})}),\" component to display a group of avatars.\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-group-demo\"})]})}return{default:function(a={}){const{wrapper:n}=a.components||{};return n?e(n,{...a,children:e(_createMdxContent,{...a})}):_createMdxContent(a)}};function _missingMdxReference(a,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+a+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/media/carousel",
-    "title": "Carousel",
-    "description": "The carousel is a slideshow for cycling through a series of content. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Collections",
-        "url": "#collections",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      },
-      {
-        "title": "Options",
-        "url": "#options",
-        "items": []
-      },
-      {
-        "title": "Autoplay",
-        "url": "#autoplay",
-        "items": []
-      },
-      {
-        "title": "Link",
-        "url": "#link",
-        "items": []
-      },
-      {
-        "title": "API",
-        "url": "#api",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props",
-      "https://www.embla-carousel.com/api/"
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(o){const i={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...o.components},{CLI:l,Demo:c,Install:t}=i;return l||_missingMdxReference(\"CLI\",!0),c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),a(e,{children:[a(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(t,{component:\"carousel\"}),\"\\n\",a(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-demo\"}),\"\\n\",a(i.h2,{id:\"collections\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:n(i.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-with-collection-demo\"}),\"\\n\",a(i.h2,{id:\"orientation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-orientation-demo\"}),\"\\n\",a(i.h2,{id:\"options\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#options\",children:n(i.span,{className:\"icon icon-link\"})}),\"Options\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-options-demo\"}),\"\\n\",a(i.h2,{id:\"autoplay\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#autoplay\",children:n(i.span,{className:\"icon icon-link\"})}),\"Autoplay\"]}),\"\\n\",a(i.p,{children:[\"This a plugin by the embla-carousel it self, it's not included in the package, but you can install it to make sure the carousel autoplay.\\nOnce you install it, you can use it with the \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{style:{color:\"#FFA657\"},children:\"plugins\"})})})}),\" prop.\"]}),\"\\n\",n(l,{command:\"install\",items:[\"embla-carousel-autoplay\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-autoplay-demo\"}),\"\\n\",a(i.h2,{id:\"link\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#link\",children:n(i.span,{className:\"icon icon-link\"})}),\"Link\"]}),\"\\n\",a(i.p,{children:[\"If you need a link in carousel item, simply add \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{style:{color:\"#FFA657\"},children:\"href\"})})})}),\" prop to the Carousel.Item.\"]}),\"\\n\",n(i.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(i.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(i.span,{\"data-line\":\"\",children:[n(i.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(i.span,{style:{color:\"#7EE787\"},children:\"Carousel.Item\"}),n(i.span,{style:{color:\"#79C0FF\"},children:\" href\"}),n(i.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(i.span,{style:{color:\"#A5D6FF\"},children:'\"/path/to/page\"'}),n(i.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]})})})}),\"\\n\",a(i.h2,{id:\"api\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#api\",children:n(i.span,{className:\"icon icon-link\"})}),\"API\"]}),\"\\n\",n(i.p,{children:\"You can use the carousel api to control the carousel.\"}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-api-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/media/user",
-    "title": "User",
-    "description": "Display user information with avatar and name.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Size",
-        "url": "#size",
-        "items": []
-      },
-      {
-        "title": "Shape",
-        "url": "#shape",
-        "items": []
-      }
-    ],
-    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const s={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:c,Install:o}=s;return c||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(e,{children:[a(s.h2,{id:\"installation\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(s.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(o,{component:\"user\"}),\"\\n\",a(s.h2,{id:\"basic\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(s.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-basic-demo\"}),\"\\n\",a(s.h2,{id:\"size\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:n(s.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-size-demo\"}),\"\\n\",a(s.h2,{id:\"shape\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:n(s.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-shape-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/navigation/breadcrumbs",
-    "title": "Breadcrumbs",
-    "description": "Navigate your way through pages, like following a trail back home, essential for easy site navigation.",
-    "published": true,
-    "order": 2,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Menu",
-        "url": "#menu",
-        "items": []
-      },
-      {
-        "title": "Collections",
-        "url": "#collections",
-        "items": []
-      },
-      {
-        "title": "Separator",
-        "url": "#separator",
-        "items": []
-      },
-      {
-        "title": "Current",
-        "url": "#current",
-        "items": []
-      },
-      {
-        "title": "Icon",
-        "url": "#icon",
-        "items": []
-      },
-      {
-        "title": "By URL (Next.js)",
-        "url": "#by-url-nextjs",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Breadcrumbs.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(c){const i={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...c.components},{Demo:r,Install:o}=i;return r||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(n,{children:[a(i.h2,{id:\"installation\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(o,{component:\"breadcrumbs\"}),\"\\n\",a(i.h2,{id:\"basic\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-demo\"}),\"\\n\",a(i.h2,{id:\"menu\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#menu\",children:e(i.span,{className:\"icon icon-link\"})}),\"Menu\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-menu-demo\"}),\"\\n\",a(i.h2,{id:\"collections\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:e(i.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-collections-demo\"}),\"\\n\",a(i.h2,{id:\"separator\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#separator\",children:e(i.span,{className:\"icon icon-link\"})}),\"Separator\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-separator-demo\"}),\"\\n\",a(i.h2,{id:\"current\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#current\",children:e(i.span,{className:\"icon icon-link\"})}),\"Current\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-current-demo\"}),\"\\n\",a(i.h2,{id:\"icon\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#icon\",children:e(i.span,{className:\"icon icon-link\"})}),\"Icon\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-icon-demo\"}),\"\\n\",a(i.h2,{id:\"by-url-nextjs\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#by-url-nextjs\",children:e(i.span,{className:\"icon icon-link\"})}),\"By URL (Next.js)\"]}),\"\\n\",e(i.p,{children:\"You can also use breadcrumbs to navigate between pages using the URL.\"}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-url-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/navigation/link",
-    "title": "Link",
-    "description": "Links allow users to navigate to a different location. They can be presented inline inside a paragraph or as standalone text.",
-    "published": true,
-    "order": 1,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Use as Button",
-        "url": "#use-as-button",
-        "items": []
-      },
-      {
-        "title": "Disabled",
-        "url": "#disabled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Link.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",h2:\"h2\",span:\"span\",...a.components},{Demo:t,Install:s}=o;return t||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),i(n,{children:[i(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"link\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-demo\"}),\"\\n\",i(o.h2,{id:\"use-as-button\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#use-as-button\",children:e(o.span,{className:\"icon icon-link\"})}),\"Use as Button\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-button-demo\"}),\"\\n\",i(o.h2,{id:\"disabled\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(o.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/navigation/pagination",
-    "title": "Pagination",
-    "description": "The pagination component can be used to navigate across a series of content and data sets for various pages such as blog posts, products, and more.",
-    "published": true,
-    "order": 4,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Shape",
-        "url": "#shape",
-        "items": []
-      },
-      {
-        "title": "Simple",
-        "url": "#simple",
-        "items": []
-      },
-      {
-        "title": "Dynamic",
-        "url": "#dynamic",
-        "items": []
-      },
-      {
-        "title": "Client Side Routing",
-        "url": "#client-side-routing",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:c,Install:t}=o;return c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),i(n,{children:[i(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(t,{component:\"pagination\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-demo\"}),\"\\n\",i(o.h2,{id:\"shape\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(o.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-shape-demo\"}),\"\\n\",i(o.h2,{id:\"simple\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#simple\",children:e(o.span,{className:\"icon icon-link\"})}),\"Simple\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-simple-demo\"}),\"\\n\",i(o.h2,{id:\"dynamic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dynamic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Dynamic\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-dynamic-demo\"}),\"\\n\",i(o.h2,{id:\"client-side-routing\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#client-side-routing\",children:e(o.span,{className:\"icon icon-link\"})}),\"Client Side Routing\"]}),\"\\n\",i(o.p,{children:[\"Make sure you have read \",e(o.a,{href:\"/docs/getting-started/client-side-routing\",children:\"Client Side Routing\"}),\" before using this component.\"]})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
-    "slug": "components/navigation/tabs",
-    "title": "Tabs",
-    "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
-    "published": true,
-    "order": 3,
-    "toc": [
-      {
-        "title": "Installation",
-        "url": "#installation",
-        "items": []
-      },
-      {
-        "title": "Basic",
-        "url": "#basic",
-        "items": []
-      },
-      {
-        "title": "Variant",
-        "url": "#variant",
-        "items": []
-      },
-      {
-        "title": "Orientation",
-        "url": "#orientation",
-        "items": []
-      },
-      {
-        "title": "With Icons",
-        "url": "#with-icons",
-        "items": []
-      },
-      {
-        "title": "Collections",
-        "url": "#collections",
-        "items": []
-      },
-      {
-        "title": "Controlled",
-        "url": "#controlled",
-        "items": []
-      },
-      {
-        "title": "Keyboard Navigation",
-        "url": "#keyboard-navigation",
-        "items": []
-      },
-      {
-        "title": "Links",
-        "url": "#links",
-        "items": []
-      },
-      {
-        "title": "Disabled",
-        "url": "#disabled",
-        "items": []
-      }
-    ],
-    "references": [
-      "https://react-spectrum.adobe.com/react-aria/Tabs.html#props"
-    ],
-    "body": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(i){const o={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:t,Install:c}=o;return t||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),e(n,{children:[e(o.h2,{id:\"installation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(c,{component:\"tabs\"}),\"\\n\",e(o.h2,{id:\"basic\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:a(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-demo\"}),\"\\n\",e(o.h2,{id:\"variant\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:a(o.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-variant-demo\"}),\"\\n\",e(o.h2,{id:\"orientation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-orientation-demo\"}),\"\\n\",e(o.h2,{id:\"with-icons\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-icons\",children:a(o.span,{className:\"icon icon-link\"})}),\"With Icons\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-icons-demo\"}),\"\\n\",e(o.h2,{id:\"collections\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:a(o.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-collections-demo\"}),\"\\n\",e(o.h2,{id:\"controlled\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:a(o.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-controlled-demo\"}),\"\\n\",e(o.h2,{id:\"keyboard-navigation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#keyboard-navigation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Keyboard Navigation\"]}),\"\\n\",e(o.p,{children:[\"By default, pressing the arrow keys will switch tabs. You can prevent this behavior by setting the \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:a(o.span,{style:{color:\"#FFA657\"},children:\"keyboardActivation\"})})})}),\" prop to \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:a(o.span,{style:{color:\"#FFA657\"},children:\"manual\"})})})}),\" then use \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(o.span,{\"data-line\":\"\",children:[a(o.span,{style:{color:\"#FFA657\"},children:\"space\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" or\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" enter\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" button\"})]})})}),\" to switch tabs.\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-keyboard-demo\"}),\"\\n\",e(o.h2,{id:\"links\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#links\",children:a(o.span,{className:\"icon icon-link\"})}),\"Links\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-link-demo\"}),\"\\n\",e(o.h2,{id:\"disabled\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:a(o.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
-  },
-  {
     "slug": "components/overlays/modal",
     "title": "Modal",
     "description": "Pop up a dialog box, demanding attention like a traffic stop sign, ideal for critical interactions.",
@@ -3349,6 +3028,135 @@
     "body": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(a){const c={a:\"a\",h2:\"h2\",span:\"span\",...a.components},{Demo:s,Install:l}=c;return s||_missingMdxReference(\"Demo\",!0),l||_missingMdxReference(\"Install\",!0),i(e,{children:[i(c.h2,{id:\"installation\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(c.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(l,{component:\"select\"}),\"\\n\",i(c.h2,{id:\"basic\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(c.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(s,{center:!0,component:\"pickers/select/select-demo\"}),\"\\n\",i(c.h2,{id:\"searchable\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#searchable\",children:n(c.span,{className:\"icon icon-link\"})}),\"Searchable\"]}),\"\\n\",n(s,{component:\"pickers/select/select-searchable-demo\"}),\"\\n\",i(c.h2,{id:\"select-with-icon\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#select-with-icon\",children:n(c.span,{className:\"icon icon-link\"})}),\"Select with Icon\"]}),\"\\n\",n(s,{component:\"pickers/select/select-with-icon-demo\"}),\"\\n\",i(c.h2,{id:\"select-with-avatar\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#select-with-avatar\",children:n(c.span,{className:\"icon icon-link\"})}),\"Select with Avatar\"]}),\"\\n\",n(s,{component:\"pickers/select/select-with-avatar-demo\"}),\"\\n\",i(c.h2,{id:\"section\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#section\",children:n(c.span,{className:\"icon icon-link\"})}),\"Section\"]}),\"\\n\",n(s,{component:\"pickers/select/select-section-demo\"}),\"\\n\",i(c.h2,{id:\"select-item-details\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#select-item-details\",children:n(c.span,{className:\"icon icon-link\"})}),\"Select Item Details\"]}),\"\\n\",n(s,{component:\"pickers/select/select-item-details-demo\"}),\"\\n\",i(c.h2,{id:\"controlled\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:n(c.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",n(s,{component:\"pickers/select/select-controlled-demo\"}),\"\\n\",i(c.h2,{id:\"validation\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#validation\",children:n(c.span,{className:\"icon icon-link\"})}),\"Validation\"]}),\"\\n\",n(s,{component:\"pickers/select/select-validation-demo\"}),\"\\n\",i(c.h2,{id:\"disabled-item\",children:[n(c.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled-item\",children:n(c.span,{className:\"icon icon-link\"})}),\"Disabled Item\"]}),\"\\n\",n(s,{component:\"pickers/select/select-disabled-demo\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
+    "slug": "components/media/avatar",
+    "title": "Avatar",
+    "description": "The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.",
+    "published": true,
+    "order": 2,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Avatar Initials",
+        "url": "#avatar-initials",
+        "items": []
+      },
+      {
+        "title": "Fallback",
+        "url": "#fallback",
+        "items": []
+      },
+      {
+        "title": "Shape",
+        "url": "#shape",
+        "items": []
+      },
+      {
+        "title": "Size",
+        "url": "#size",
+        "items": []
+      },
+      {
+        "title": "Avatar Group",
+        "url": "#avatar-group",
+        "items": []
+      }
+    ],
+    "body": "const{Fragment:a,jsx:e,jsxs:n}=arguments[0];function _createMdxContent(i){const t={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:o,Install:r}=t;return o||_missingMdxReference(\"Demo\",!0),r||_missingMdxReference(\"Install\",!0),n(a,{children:[n(t.h2,{id:\"installation\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(t.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(r,{component:\"avatar\"}),\"\\n\",n(t.h2,{id:\"basic\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(t.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-group-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-initials\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-initials\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Initials\"]}),\"\\n\",n(t.p,{children:[\"Use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{style:{color:\"#FFA657\"},children:\"initials\"})})})}),\" prop to display the initials of the user.\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-initials-demo\"}),\"\\n\",n(t.h2,{id:\"fallback\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#fallback\",children:e(t.span,{className:\"icon icon-link\"})}),\"Fallback\"]}),\"\\n\",e(t.p,{children:\"If the image fails to load and no initials, the icon will be displayed\"}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-fallback-demo\"}),\"\\n\",n(t.h2,{id:\"shape\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(t.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-shape-demo\"}),\"\\n\",n(t.h2,{id:\"size\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:e(t.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-size-demo\"}),\"\\n\",n(t.h2,{id:\"avatar-group\",children:[e(t.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#avatar-group\",children:e(t.span,{className:\"icon icon-link\"})}),\"Avatar Group\"]}),\"\\n\",n(t.p,{children:[\"You can use the \",e(t.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(t.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(t.span,{\"data-line\":\"\",children:e(t.span,{style:{color:\"#FFA657\"},children:\"AvatarGroup\"})})})}),\" component to display a group of avatars.\"]}),\"\\n\",e(o,{center:!0,component:\"media/avatar/avatar-group-demo\"})]})}return{default:function(a={}){const{wrapper:n}=a.components||{};return n?e(n,{...a,children:e(_createMdxContent,{...a})}):_createMdxContent(a)}};function _missingMdxReference(a,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+a+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/media/carousel",
+    "title": "Carousel",
+    "description": "The carousel is a slideshow for cycling through a series of content. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Collections",
+        "url": "#collections",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      },
+      {
+        "title": "Options",
+        "url": "#options",
+        "items": []
+      },
+      {
+        "title": "Autoplay",
+        "url": "#autoplay",
+        "items": []
+      },
+      {
+        "title": "Link",
+        "url": "#link",
+        "items": []
+      },
+      {
+        "title": "API",
+        "url": "#api",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props",
+      "https://www.embla-carousel.com/api/"
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(o){const i={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...o.components},{CLI:l,Demo:c,Install:t}=i;return l||_missingMdxReference(\"CLI\",!0),c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),a(e,{children:[a(i.h2,{id:\"installation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(t,{component:\"carousel\"}),\"\\n\",a(i.h2,{id:\"basic\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-demo\"}),\"\\n\",a(i.h2,{id:\"collections\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:n(i.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-with-collection-demo\"}),\"\\n\",a(i.h2,{id:\"orientation\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:n(i.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-orientation-demo\"}),\"\\n\",a(i.h2,{id:\"options\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#options\",children:n(i.span,{className:\"icon icon-link\"})}),\"Options\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-options-demo\"}),\"\\n\",a(i.h2,{id:\"autoplay\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#autoplay\",children:n(i.span,{className:\"icon icon-link\"})}),\"Autoplay\"]}),\"\\n\",a(i.p,{children:[\"This a plugin by the embla-carousel it self, it's not included in the package, but you can install it to make sure the carousel autoplay.\\nOnce you install it, you can use it with the \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{style:{color:\"#FFA657\"},children:\"plugins\"})})})}),\" prop.\"]}),\"\\n\",n(l,{command:\"install\",items:[\"embla-carousel-autoplay\"]}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-autoplay-demo\"}),\"\\n\",a(i.h2,{id:\"link\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#link\",children:n(i.span,{className:\"icon icon-link\"})}),\"Link\"]}),\"\\n\",a(i.p,{children:[\"If you need a link in carousel item, simply add \",n(i.span,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:n(i.span,{\"data-line\":\"\",children:n(i.span,{style:{color:\"#FFA657\"},children:\"href\"})})})}),\" prop to the Carousel.Item.\"]}),\"\\n\",n(i.figure,{\"data-rehype-pretty-code-figure\":\"\",children:n(i.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:n(i.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:a(i.span,{\"data-line\":\"\",children:[n(i.span,{style:{color:\"#E6EDF3\"},children:\"<\"}),n(i.span,{style:{color:\"#7EE787\"},children:\"Carousel.Item\"}),n(i.span,{style:{color:\"#79C0FF\"},children:\" href\"}),n(i.span,{style:{color:\"#FF7B72\"},children:\"=\"}),n(i.span,{style:{color:\"#A5D6FF\"},children:'\"/path/to/page\"'}),n(i.span,{style:{color:\"#E6EDF3\"},children:\"/>\"})]})})})}),\"\\n\",a(i.h2,{id:\"api\",children:[n(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#api\",children:n(i.span,{className:\"icon icon-link\"})}),\"API\"]}),\"\\n\",n(i.p,{children:\"You can use the carousel api to control the carousel.\"}),\"\\n\",n(c,{center:!0,component:\"media/carousel/carousel-api-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/media/user",
+    "title": "User",
+    "description": "Display user information with avatar and name.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Size",
+        "url": "#size",
+        "items": []
+      },
+      {
+        "title": "Shape",
+        "url": "#shape",
+        "items": []
+      }
+    ],
+    "body": "const{Fragment:e,jsx:n,jsxs:a}=arguments[0];function _createMdxContent(i){const s={a:\"a\",h2:\"h2\",span:\"span\",...i.components},{Demo:c,Install:o}=s;return c||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(e,{children:[a(s.h2,{id:\"installation\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:n(s.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",n(o,{component:\"user\"}),\"\\n\",a(s.h2,{id:\"basic\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:n(s.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-basic-demo\"}),\"\\n\",a(s.h2,{id:\"size\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#size\",children:n(s.span,{className:\"icon icon-link\"})}),\"Size\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-size-demo\"}),\"\\n\",a(s.h2,{id:\"shape\",children:[n(s.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:n(s.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",n(c,{center:!0,component:\"media/user/user-shape-demo\"})]})}return{default:function(e={}){const{wrapper:a}=e.components||{};return a?n(a,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};function _missingMdxReference(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
     "slug": "components/statuses/badge",
     "title": "Badge",
     "description": "A Chip is a small block of essential information that represent an input, attribute, or action.",
@@ -3592,6 +3400,198 @@
       "https://react-spectrum.adobe.com/react-aria/Toast.html#props"
     ],
     "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(l){const o={a:\"a\",code:\"code\",figure:\"figure\",h2:\"h2\",p:\"p\",pre:\"pre\",span:\"span\",...l.components},{Demo:t,Install:s}=o;return t||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),a(n,{children:[a(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"toast\"}),\"\\n\",e(o.p,{children:\"First, in your root app component or layout, import the Toast component.\"}),\"\\n\",e(o.figure,{\"data-rehype-pretty-code-figure\":\"\",children:e(o.pre,{style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},tabIndex:\"0\",\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",children:a(o.code,{\"data-language\":\"tsx\",\"data-theme\":\"github-dark-default\",style:{display:\"grid\"},children:[a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#FF7B72\"},children:\"import\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" { ToastProvider } \"}),e(o.span,{style:{color:\"#FF7B72\"},children:\"from\"}),e(o.span,{style:{color:\"#A5D6FF\"},children:\" '@/components/ui'\"})]}),\"\\n\",e(o.span,{\"data-line\":\"\",children:\" \"}),\"\\n\",a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#FF7B72\"},children:\"const\"}),e(o.span,{style:{color:\"#D2A8FF\"},children:\" Layout\"}),e(o.span,{style:{color:\"#FF7B72\"},children:\" =\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" ({ \"}),e(o.span,{style:{color:\"#FFA657\"},children:\"children\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" }\"}),e(o.span,{style:{color:\"#FF7B72\"},children:\":\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" { \"}),e(o.span,{style:{color:\"#FFA657\"},children:\"children\"}),e(o.span,{style:{color:\"#FF7B72\"},children:\":\"}),e(o.span,{style:{color:\"#FFA657\"},children:\" React\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\".\"}),e(o.span,{style:{color:\"#FFA657\"},children:\"ReactNode\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" }) \"}),e(o.span,{style:{color:\"#FF7B72\"},children:\"=>\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" {\"})]}),\"\\n\",a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#FF7B72\"},children:\"    return\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" (\"})]}),\"\\n\",e(o.span,{\"data-line\":\"\",children:e(o.span,{style:{color:\"#E6EDF3\"},children:\"        <>\"})}),\"\\n\",a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#E6EDF3\"},children:\"            <\"}),e(o.span,{style:{color:\"#7EE787\"},children:\"ToastProvider\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\" />\"})]}),\"\\n\",a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#FF7B72\"},children:\"            {\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\"children\"}),e(o.span,{style:{color:\"#FF7B72\"},children:\"}\"})]}),\"\\n\",e(o.span,{\"data-line\":\"\",children:e(o.span,{style:{color:\"#E6EDF3\"},children:\"        <>\"})}),\"\\n\",e(o.span,{\"data-line\":\"\",children:e(o.span,{style:{color:\"#E6EDF3\"},children:\"    )\"})}),\"\\n\",e(o.span,{\"data-line\":\"\",children:e(o.span,{style:{color:\"#E6EDF3\"},children:\"}\"})})]})})}),\"\\n\",a(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(o.p,{children:[\"Use the \",e(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#D2A8FF\"},children:\"toast\"}),e(o.span,{style:{color:\"#E6EDF3\"},children:\"()\"})]})})}),\" function to show a toast.\"]}),\"\\n\",e(t,{center:!0,component:\"statuses/toast/toast-demo\"}),\"\\n\",a(o.h2,{id:\"description\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#description\",children:e(o.span,{className:\"icon icon-link\"})}),\"Description\"]}),\"\\n\",e(t,{center:!0,component:\"statuses/toast/toast-description-demo\"}),\"\\n\",a(o.h2,{id:\"status\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#status\",children:e(o.span,{className:\"icon icon-link\"})}),\"Status\"]}),\"\\n\",e(t,{center:!0,component:\"statuses/toast/toast-status-demo\"}),\"\\n\",a(o.h2,{id:\"action\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#action\",children:e(o.span,{className:\"icon icon-link\"})}),\"Action\"]}),\"\\n\",e(t,{center:!0,component:\"statuses/toast/toast-action-demo\"}),\"\\n\",a(o.h2,{id:\"manually-close\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#manually-close\",children:e(o.span,{className:\"icon icon-link\"})}),\"Manually Close\"]}),\"\\n\",a(o.p,{children:[\"Just pass the \",e(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:e(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:[e(o.span,{style:{color:\"#FFA657\"},children:\"timeout:\"}),e(o.span,{style:{color:\"#79C0FF\"},children:\" 0\"})]})})}),\" option.\"]}),\"\\n\",e(t,{center:!0,component:\"statuses/toast/toast-manual-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/navigation/breadcrumbs",
+    "title": "Breadcrumbs",
+    "description": "Navigate your way through pages, like following a trail back home, essential for easy site navigation.",
+    "published": true,
+    "order": 2,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Menu",
+        "url": "#menu",
+        "items": []
+      },
+      {
+        "title": "Collections",
+        "url": "#collections",
+        "items": []
+      },
+      {
+        "title": "Separator",
+        "url": "#separator",
+        "items": []
+      },
+      {
+        "title": "Current",
+        "url": "#current",
+        "items": []
+      },
+      {
+        "title": "Icon",
+        "url": "#icon",
+        "items": []
+      },
+      {
+        "title": "By URL (Next.js)",
+        "url": "#by-url-nextjs",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Breadcrumbs.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:a}=arguments[0];function _createMdxContent(c){const i={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...c.components},{Demo:r,Install:o}=i;return r||_missingMdxReference(\"Demo\",!0),o||_missingMdxReference(\"Install\",!0),a(n,{children:[a(i.h2,{id:\"installation\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(i.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(o,{component:\"breadcrumbs\"}),\"\\n\",a(i.h2,{id:\"basic\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(i.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-demo\"}),\"\\n\",a(i.h2,{id:\"menu\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#menu\",children:e(i.span,{className:\"icon icon-link\"})}),\"Menu\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-menu-demo\"}),\"\\n\",a(i.h2,{id:\"collections\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:e(i.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-collections-demo\"}),\"\\n\",a(i.h2,{id:\"separator\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#separator\",children:e(i.span,{className:\"icon icon-link\"})}),\"Separator\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-separator-demo\"}),\"\\n\",a(i.h2,{id:\"current\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#current\",children:e(i.span,{className:\"icon icon-link\"})}),\"Current\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-current-demo\"}),\"\\n\",a(i.h2,{id:\"icon\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#icon\",children:e(i.span,{className:\"icon icon-link\"})}),\"Icon\"]}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-icon-demo\"}),\"\\n\",a(i.h2,{id:\"by-url-nextjs\",children:[e(i.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#by-url-nextjs\",children:e(i.span,{className:\"icon icon-link\"})}),\"By URL (Next.js)\"]}),\"\\n\",e(i.p,{children:\"You can also use breadcrumbs to navigate between pages using the URL.\"}),\"\\n\",e(r,{center:!0,component:\"navigation/breadcrumbs/breadcrumbs-url-demo\"})]})}return{default:function(n={}){const{wrapper:a}=n.components||{};return a?e(a,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/navigation/link",
+    "title": "Link",
+    "description": "Links allow users to navigate to a different location. They can be presented inline inside a paragraph or as standalone text.",
+    "published": true,
+    "order": 1,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Use as Button",
+        "url": "#use-as-button",
+        "items": []
+      },
+      {
+        "title": "Disabled",
+        "url": "#disabled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Link.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",h2:\"h2\",span:\"span\",...a.components},{Demo:t,Install:s}=o;return t||_missingMdxReference(\"Demo\",!0),s||_missingMdxReference(\"Install\",!0),i(n,{children:[i(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(s,{component:\"link\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-demo\"}),\"\\n\",i(o.h2,{id:\"use-as-button\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#use-as-button\",children:e(o.span,{className:\"icon icon-link\"})}),\"Use as Button\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-button-demo\"}),\"\\n\",i(o.h2,{id:\"disabled\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:e(o.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",e(t,{center:!0,component:\"navigation/link/link-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/navigation/pagination",
+    "title": "Pagination",
+    "description": "The pagination component can be used to navigate across a series of content and data sets for various pages such as blog posts, products, and more.",
+    "published": true,
+    "order": 4,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Shape",
+        "url": "#shape",
+        "items": []
+      },
+      {
+        "title": "Simple",
+        "url": "#simple",
+        "items": []
+      },
+      {
+        "title": "Dynamic",
+        "url": "#dynamic",
+        "items": []
+      },
+      {
+        "title": "Client Side Routing",
+        "url": "#client-side-routing",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/ListBox.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:e,jsxs:i}=arguments[0];function _createMdxContent(a){const o={a:\"a\",h2:\"h2\",p:\"p\",span:\"span\",...a.components},{Demo:c,Install:t}=o;return c||_missingMdxReference(\"Demo\",!0),t||_missingMdxReference(\"Install\",!0),i(n,{children:[i(o.h2,{id:\"installation\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:e(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",e(t,{component:\"pagination\"}),\"\\n\",i(o.h2,{id:\"basic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-demo\"}),\"\\n\",i(o.h2,{id:\"shape\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#shape\",children:e(o.span,{className:\"icon icon-link\"})}),\"Shape\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-shape-demo\"}),\"\\n\",i(o.h2,{id:\"simple\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#simple\",children:e(o.span,{className:\"icon icon-link\"})}),\"Simple\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-simple-demo\"}),\"\\n\",i(o.h2,{id:\"dynamic\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#dynamic\",children:e(o.span,{className:\"icon icon-link\"})}),\"Dynamic\"]}),\"\\n\",e(c,{center:!0,component:\"navigation/pagination/pagination-dynamic-demo\"}),\"\\n\",i(o.h2,{id:\"client-side-routing\",children:[e(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#client-side-routing\",children:e(o.span,{className:\"icon icon-link\"})}),\"Client Side Routing\"]}),\"\\n\",i(o.p,{children:[\"Make sure you have read \",e(o.a,{href:\"/docs/getting-started/client-side-routing\",children:\"Client Side Routing\"}),\" before using this component.\"]})]})}return{default:function(n={}){const{wrapper:i}=n.components||{};return i?e(i,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
+  },
+  {
+    "slug": "components/navigation/tabs",
+    "title": "Tabs",
+    "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
+    "published": true,
+    "order": 3,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Basic",
+        "url": "#basic",
+        "items": []
+      },
+      {
+        "title": "Variant",
+        "url": "#variant",
+        "items": []
+      },
+      {
+        "title": "Orientation",
+        "url": "#orientation",
+        "items": []
+      },
+      {
+        "title": "With Icons",
+        "url": "#with-icons",
+        "items": []
+      },
+      {
+        "title": "Collections",
+        "url": "#collections",
+        "items": []
+      },
+      {
+        "title": "Controlled",
+        "url": "#controlled",
+        "items": []
+      },
+      {
+        "title": "Keyboard Navigation",
+        "url": "#keyboard-navigation",
+        "items": []
+      },
+      {
+        "title": "Links",
+        "url": "#links",
+        "items": []
+      },
+      {
+        "title": "Disabled",
+        "url": "#disabled",
+        "items": []
+      }
+    ],
+    "references": [
+      "https://react-spectrum.adobe.com/react-aria/Tabs.html#props"
+    ],
+    "body": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(i){const o={a:\"a\",code:\"code\",h2:\"h2\",p:\"p\",span:\"span\",...i.components},{Demo:t,Install:c}=o;return t||_missingMdxReference(\"Demo\",!0),c||_missingMdxReference(\"Install\",!0),e(n,{children:[e(o.h2,{id:\"installation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#installation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Installation\"]}),\"\\n\",a(c,{component:\"tabs\"}),\"\\n\",e(o.h2,{id:\"basic\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#basic\",children:a(o.span,{className:\"icon icon-link\"})}),\"Basic\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-demo\"}),\"\\n\",e(o.h2,{id:\"variant\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#variant\",children:a(o.span,{className:\"icon icon-link\"})}),\"Variant\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-variant-demo\"}),\"\\n\",e(o.h2,{id:\"orientation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#orientation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Orientation\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-orientation-demo\"}),\"\\n\",e(o.h2,{id:\"with-icons\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#with-icons\",children:a(o.span,{className:\"icon icon-link\"})}),\"With Icons\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-icons-demo\"}),\"\\n\",e(o.h2,{id:\"collections\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#collections\",children:a(o.span,{className:\"icon icon-link\"})}),\"Collections\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-collections-demo\"}),\"\\n\",e(o.h2,{id:\"controlled\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#controlled\",children:a(o.span,{className:\"icon icon-link\"})}),\"Controlled\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-controlled-demo\"}),\"\\n\",e(o.h2,{id:\"keyboard-navigation\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#keyboard-navigation\",children:a(o.span,{className:\"icon icon-link\"})}),\"Keyboard Navigation\"]}),\"\\n\",e(o.p,{children:[\"By default, pressing the arrow keys will switch tabs. You can prevent this behavior by setting the \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:a(o.span,{style:{color:\"#FFA657\"},children:\"keyboardActivation\"})})})}),\" prop to \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:a(o.span,{\"data-line\":\"\",children:a(o.span,{style:{color:\"#FFA657\"},children:\"manual\"})})})}),\" then use \",a(o.span,{\"data-rehype-pretty-code-figure\":\"\",children:a(o.code,{\"data-language\":\"bash\",\"data-theme\":\"github-dark-default\",style:{backgroundColor:\"#0d1117\",color:\"#e6edf3\"},children:e(o.span,{\"data-line\":\"\",children:[a(o.span,{style:{color:\"#FFA657\"},children:\"space\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" or\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" enter\"}),a(o.span,{style:{color:\"#A5D6FF\"},children:\" button\"})]})})}),\" to switch tabs.\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-keyboard-demo\"}),\"\\n\",e(o.h2,{id:\"links\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#links\",children:a(o.span,{className:\"icon icon-link\"})}),\"Links\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-link-demo\"}),\"\\n\",e(o.h2,{id:\"disabled\",children:[a(o.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#disabled\",children:a(o.span,{className:\"icon icon-link\"})}),\"Disabled\"]}),\"\\n\",a(t,{component:\"navigation/tabs/tabs-disabled-demo\"})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};function _missingMdxReference(n,a){throw new Error(\"Expected \"+(a?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}"
   },
   {
     "slug": "components/surfaces/card",
