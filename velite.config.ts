@@ -39,7 +39,7 @@ export default defineConfig({
                     theme: 'github-dark-default',
                     defaultLang: {
                         block: 'tsx',
-                        inline: 'plaintext'
+                        inline: 'bash'
                     }
                 }
             ],

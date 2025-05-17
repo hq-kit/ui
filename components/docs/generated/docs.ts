@@ -85,52 +85,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "collections",
-        "order": 5,
-        "items": [
-          {
-            "title": "Accordion",
-            "url": "/docs/components/collections/accordion",
-            "order": 5
-          },
-          {
-            "title": "Collapsible",
-            "url": "/docs/components/collections/collapsible",
-            "order": 6
-          },
-          {
-            "title": "Grid List",
-            "url": "/docs/components/collections/grid-list",
-            "order": 3
-          },
-          {
-            "title": "List Box",
-            "url": "/docs/components/collections/list-box",
-            "order": 3
-          },
-          {
-            "title": "Menu",
-            "url": "/docs/components/collections/menu",
-            "order": 1
-          },
-          {
-            "title": "Table",
-            "url": "/docs/components/collections/table",
-            "order": 4
-          },
-          {
-            "title": "Tag Group",
-            "url": "/docs/components/collections/tag-group",
-            "order": 7
-          },
-          {
-            "title": "Tree",
-            "url": "/docs/components/collections/tree",
-            "order": 8
-          }
-        ]
-      },
-      {
         "title": "charts",
         "order": 1,
         "items": [
@@ -177,43 +131,48 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "colors",
-        "order": 1,
+        "title": "collections",
+        "order": 5,
         "items": [
           {
-            "title": "Color Area",
-            "url": "/docs/components/colors/color-area",
-            "order": 1
-          },
-          {
-            "title": "Color Field",
-            "url": "/docs/components/colors/color-field",
-            "order": 2
-          },
-          {
-            "title": "Color Picker",
-            "url": "/docs/components/colors/color-picker",
-            "order": 3
-          },
-          {
-            "title": "Color Slider",
-            "url": "/docs/components/colors/color-slider",
-            "order": 4
-          },
-          {
-            "title": "Color Swatch Picker",
-            "url": "/docs/components/colors/color-swatch-picker",
-            "order": 6
-          },
-          {
-            "title": "Color Swatch",
-            "url": "/docs/components/colors/color-swatch",
+            "title": "Accordion",
+            "url": "/docs/components/collections/accordion",
             "order": 5
           },
           {
-            "title": "Color Wheel",
-            "url": "/docs/components/colors/color-wheel",
+            "title": "Collapsible",
+            "url": "/docs/components/collections/collapsible",
+            "order": 6
+          },
+          {
+            "title": "Grid List",
+            "url": "/docs/components/collections/grid-list",
+            "order": 3
+          },
+          {
+            "title": "List Box",
+            "url": "/docs/components/collections/list-box",
+            "order": 3
+          },
+          {
+            "title": "Menu",
+            "url": "/docs/components/collections/menu",
+            "order": 1
+          },
+          {
+            "title": "Table",
+            "url": "/docs/components/collections/table",
+            "order": 4
+          },
+          {
+            "title": "Tag Group",
+            "url": "/docs/components/collections/tag-group",
             "order": 7
+          },
+          {
+            "title": "Tree",
+            "url": "/docs/components/collections/tree",
+            "order": 8
           }
         ]
       },
@@ -286,6 +245,47 @@ export const docs: Docs[] = [
             "title": "Time Field",
             "url": "/docs/components/date-and-time/time-field",
             "order": 6
+          }
+        ]
+      },
+      {
+        "title": "colors",
+        "order": 1,
+        "items": [
+          {
+            "title": "Color Area",
+            "url": "/docs/components/colors/color-area",
+            "order": 1
+          },
+          {
+            "title": "Color Field",
+            "url": "/docs/components/colors/color-field",
+            "order": 2
+          },
+          {
+            "title": "Color Picker",
+            "url": "/docs/components/colors/color-picker",
+            "order": 3
+          },
+          {
+            "title": "Color Slider",
+            "url": "/docs/components/colors/color-slider",
+            "order": 4
+          },
+          {
+            "title": "Color Swatch Picker",
+            "url": "/docs/components/colors/color-swatch-picker",
+            "order": 6
+          },
+          {
+            "title": "Color Swatch",
+            "url": "/docs/components/colors/color-swatch",
+            "order": 5
+          },
+          {
+            "title": "Color Wheel",
+            "url": "/docs/components/colors/color-wheel",
+            "order": 7
           }
         ]
       },
@@ -380,6 +380,27 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
+          }
+        ]
+      },
+      {
         "title": "navigation",
         "order": 2,
         "items": [
@@ -401,27 +422,6 @@ export const docs: Docs[] = [
           {
             "title": "Tabs",
             "url": "/docs/components/navigation/tabs",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
             "order": 3
           }
         ]
@@ -524,6 +524,11 @@ export const docs: Docs[] = [
             "title": "Card",
             "url": "/docs/components/surfaces/card",
             "order": 1
+          },
+          {
+            "title": "Code",
+            "url": "/docs/components/surfaces/code",
+            "order": 5
           },
           {
             "title": "Description List",

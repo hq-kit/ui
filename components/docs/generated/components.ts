@@ -14,6 +14,7 @@ export const components: Component[] = [
     {"name":"carousel","deps":["embla-carousel-react"]},
     {"name":"chart","deps":["recharts"]},
     {"name":"checkbox","children":[{"name":"form"}]},
+    {"name":"code","deps":["rehype-pretty-code","rehype-stringify","remark-parse","remark-rehype","unified"]},
     {"name":"collections","deps":["react-stately"]},
     {"name":"color-area","children":[{"name":"color-thumb"}]},
     {"name":"color-field","children":[{"name":"color-picker"},{"name":"color-swatch"},{"name":"form"}]},

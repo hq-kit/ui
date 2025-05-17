@@ -1,9 +1,11 @@
 'use client'
-import { Description, Menu, toast } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-icons'
+
 import { useState } from 'react'
-import { CopyButton } from './copy-button'
+
+import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from 'hq-icons'
+
+import { CopyButton, Description, Menu, toast } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface CLIProps {
     items?: string | string[]
@@ -55,7 +57,7 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
     }
 
     return (
-        <section className='space-y-2'>
+        <section className='relative space-y-2'>
             {!noMessage && (
                 <Description className='max-w-none text-base'>
                     {message ? message : 'In the terminal, run the following command to begin:'}
@@ -63,35 +65,37 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
             )}
             <div
                 className={cn(
-                    '!font-mono mt-2 flex h-10 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#0d1117] p-2 text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
+                    '!font-mono no-scrollbar mt-2 flex h-10 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#0d1117] py-2 text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
                     className
                 )}
             >
                 <div>
-                    <span className='ml-1 text-[#ffa657]'>{getPm(pm)}</span>
-                    <span className='text-[#a5d6ff]'>{getCommandLine(pm)}</span>
+                    <span className='ml-3 text-[#ffa657]'>{getPm(pm)}</span>
+                    <span className='mr-12 text-[#a5d6ff]'>{getCommandLine(pm)}</span>
                 </div>
-                <Menu>
-                    <CopyButton isCopied={copied} />
-                    <Menu.Content placement='bottom end'>
-                        <Menu.Item onAction={() => handleCopy('npm')}>
-                            <IconBrandNpm />
-                            <Menu.Label>NPM</Menu.Label>
-                        </Menu.Item>
-                        <Menu.Item onAction={() => handleCopy('bun')}>
-                            <IconBrandBun />
-                            <Menu.Label>Bun</Menu.Label>
-                        </Menu.Item>
-                        <Menu.Item onAction={() => handleCopy('yarn')}>
-                            <IconBrandYarn />
-                            <Menu.Label>Yarn</Menu.Label>
-                        </Menu.Item>
-                        <Menu.Item onAction={() => handleCopy('pnpm')}>
-                            <IconBrandPnpm />
-                            <Menu.Label>PNPM</Menu.Label>
-                        </Menu.Item>
-                    </Menu.Content>
-                </Menu>
+                <div className='absolute right-1 z-10'>
+                    <Menu>
+                        <CopyButton copied={copied} />
+                        <Menu.Content placement='left top'>
+                            <Menu.Item onAction={() => handleCopy('npm')}>
+                                <IconBrandNpm />
+                                <Menu.Label>NPM</Menu.Label>
+                            </Menu.Item>
+                            <Menu.Item onAction={() => handleCopy('bun')}>
+                                <IconBrandBun />
+                                <Menu.Label>Bun</Menu.Label>
+                            </Menu.Item>
+                            <Menu.Item onAction={() => handleCopy('yarn')}>
+                                <IconBrandYarn />
+                                <Menu.Label>Yarn</Menu.Label>
+                            </Menu.Item>
+                            <Menu.Item onAction={() => handleCopy('pnpm')}>
+                                <IconBrandPnpm />
+                                <Menu.Label>PNPM</Menu.Label>
+                            </Menu.Item>
+                        </Menu.Content>
+                    </Menu>
+                </div>
             </div>
         </section>
     )

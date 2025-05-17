@@ -1,16 +1,19 @@
 'use client'
 
-import { TabsSwitcher } from '@/components/mdx/tabs-switcher'
-import { Container } from '@/components/ui'
-import { TabPanel } from 'react-aria-components'
+import { Code, Container } from '@/components/ui'
 
+const code = `export default function Page() {
+    return (
+        <Container className='py-6 xl:py-12'>
+            <Code code={code} lang='bash' highlight={['2-4']} lineNumbers={false} />
+        </Container>
+    )
+}`
 export default function Page() {
     return (
-        <Container>
-            <TabsSwitcher>
-                <TabPanel id='preview'>View</TabPanel>
-                <TabPanel id='code'>Code</TabPanel>
-            </TabsSwitcher>
+        <Container className='w-sm space-y-6 py-6 xl:py-12'>
+            <Code code={code} lang='tsx' highlight={['2-4', '7']} filename='page.tsx' />
+            <Code code={'npx hq-kit add button menu modal code toolbar tooltip'} lang='bash' lineNumbers={false} />
         </Container>
     )
 }

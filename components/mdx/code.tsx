@@ -8,8 +8,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 
-import { CopyButton } from '@/components/mdx/copy-button'
-import { Tooltip } from '@/components/ui'
+import { CopyButton, Tooltip } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { copyToClipboard } from '@/lib/utils/modifiers'
 import { IconBrandJavascript, IconBrandTypescript } from 'hq-icons'
@@ -65,7 +64,7 @@ export function Code({
                         <Tooltip.Content>{isTs ? 'Switch to JavaScript' : 'Switch to TypeScript'}</Tooltip.Content>
                     </Tooltip>
                 )}
-                <CopyButton isCopied={copied} onPress={copyCode} />
+                <CopyButton copied={copied} onPress={copyCode} />
             </div>
             <div className='no-scrollbar [&_pre]:no-scrollbar [&_pre]:!my-0 [&_pre]:!border-0 [&_pre]:max-h-[32rem] [&_pre]:overflow-auto [&_pre]:pb-[100px]'>
                 <CodeHighlighter

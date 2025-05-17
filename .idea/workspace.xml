@@ -5,20 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-variant-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-block-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-filename-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-highlight-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-language-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-snippet-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/surfaces/code/code-theme-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/code.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/components/surfaces/code.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/danger-area.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/danger-area.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/block/application/dashboard/user-setting/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/generated/blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/blocks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/hello/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/hello/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-keyboard-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-keyboard-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-orientation-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/navigation/tabs/tabs-orientation-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/components/navigation/tabs.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/navigation/tabs.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/dark-mode/next-js.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/dark-mode/next-js.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/velite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/velite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +64,7 @@
     "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/home/dq/HQ/ui/components/docs/navigation/tabs",
+    "last_opened_file_path": "/home/dq/HQ/ui/components/docs/surfaces/code",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,11 +77,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/docs/surfaces/code" />
       <recent name="$PROJECT_DIR$/components/docs/navigation/tabs" />
       <recent name="$PROJECT_DIR$/app/block/application/social/user-profile" />
       <recent name="$PROJECT_DIR$/app/block/sidebar" />
       <recent name="$PROJECT_DIR$/app/block/navbar" />
-      <recent name="$PROJECT_DIR$/components/docs/statuses/indicator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/block/marketing/management/file-manager" />
@@ -159,7 +169,7 @@
       <workItem from="1747198068104" duration="3338000" />
       <workItem from="1747258082593" duration="3633000" />
       <workItem from="1747283204823" duration="36615000" />
-      <workItem from="1747469326703" duration="8187000" />
+      <workItem from="1747469326703" duration="24501000" />
     </task>
     <servers />
   </component>
