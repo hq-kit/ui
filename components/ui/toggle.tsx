@@ -37,7 +37,7 @@ const toggleGroupStyles = tv({
             vertical: 'grid items-start'
         },
         gap: {
-            0: 'gap-0 rounded-lg *:[button]:rounded-none',
+            0: 'gap-0 rounded-md **:rounded-none',
             1: 'gap-1',
             2: 'gap-2',
             3: 'gap-3',
@@ -52,12 +52,12 @@ const toggleGroupStyles = tv({
         {
             gap: 0,
             orientation: 'vertical',
-            className: '*:[button]:-mt-px *:[button]:first:rounded-t-lg *:[button]:last:rounded-b-lg'
+            className: '*:[button]:-mt-px *:[button]:first:rounded-t-md *:[button]:last:rounded-b-md'
         },
         {
             gap: 0,
             orientation: 'horizontal',
-            className: '*:[button]:-mr-px *:[button]:first:rounded-s-lg *:[button]:last:rounded-e-lg'
+            className: '*:-mr-px *:first:*:rounded-s-md *:first:rounded-s-md *:last:*:rounded-e-md *:last:rounded-e-md'
         }
     ]
 })
@@ -94,7 +94,7 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'cursor-pointer items-center gap-x-2 rounded-lg border outline-hidden backdrop-blur-2xl transition sm:text-sm',
+        'cursor-pointer items-center gap-x-2 rounded-md border outline-hidden backdrop-blur-2xl transition sm:text-sm',
         'ring-ring focus-visible:border-primary/70 focus-visible:ring-2',
         'disabled:cursor-default disabled:opacity-50'
     ],
@@ -110,17 +110,17 @@ const toggleStyles = tv({
             vertical: 'flex'
         },
         size: {
-            xs: 'gap-x-1.5 px-2 py-1.5 text-xs [--height:theme(spacing.6)] [--width:auto] **:[svg]:size-3.5',
-            sm: 'gap-x-1.5 px-3 py-2 text-sm [--height:theme(spacing.8)] [--width:auto] **:[svg]:size-4',
-            md: 'gap-x-2 px-4 py-3 text-sm [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-4',
-            lg: 'gap-x-2.5 px-5 py-3.5 text-base [--height:theme(spacing.12)] [--width:auto] **:[svg]:size-6'
+            xs: 'gap-x-1.5 px-2 text-xs [--height:theme(spacing.6)] [--width:auto] **:[svg]:size-3.5',
+            sm: 'gap-x-1.5 px-3 text-sm [--height:theme(spacing.8)] [--width:auto] **:[svg]:size-4',
+            md: 'gap-x-2 px-4 text-sm [--height:theme(spacing.9)] [--width:auto] **:[svg]:size-4',
+            lg: 'gap-x-2.5 px-5 text-base [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-5'
         },
         icon: {
-            true: 'h-(--height) w-(--height) shrink-0 justify-center p-0',
+            true: 'h-(--height) w-(--height) shrink-0 px-0',
             false: 'h-(--height) w-(--width)'
         },
         shape: {
-            square: 'rounded-lg',
+            square: 'rounded-md',
             circle: 'rounded-full'
         }
     },

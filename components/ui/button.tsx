@@ -12,8 +12,7 @@ const buttonStyle = tv({
         'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium text-sm outline-hidden transition-[box-shadow,opacity,color]',
         '**:[svg]:pointer-events-none **:[svg]:shrink-0',
         'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
-        'cursor-pointer disabled:pointer-events-none disabled:opacity-50',
-        'h-(--height) w-(--width)'
+        'cursor-pointer disabled:pointer-events-none disabled:opacity-50'
     ],
     variants: {
         variant: {
@@ -30,7 +29,8 @@ const buttonStyle = tv({
             lg: 'gap-x-2.5 px-5 text-base [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-5'
         },
         icon: {
-            true: 'h-(--height) w-(--height) shrink-0 px-0'
+            true: 'h-(--height) w-(--height) shrink-0 px-0',
+            false: 'h-(--height) w-(--width)'
         },
         shape: {
             square: 'rounded-md',

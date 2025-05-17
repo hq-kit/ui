@@ -49,7 +49,7 @@ const Select = <T extends object>({
             renderEmptyState={() => <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>}
             aria-label='items'
             items={items}
-            className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+            className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-md outline-hidden'
         >
             {children}
         </ListBox>
@@ -73,7 +73,7 @@ const Select = <T extends object>({
                     <Button
                         className={composeRenderProps(className, (className) =>
                             cn(
-                                'flex h-9 w-full cursor-default items-center gap-4 gap-x-2 rounded-lg border p-2 outline-hidden transition',
+                                'flex h-9 w-full cursor-default items-center gap-4 gap-x-2 rounded-md border p-2 outline-hidden transition',
                                 'group-focus-visible:border-primary/70 group-focus-visible:ring-4 group-focus-visible:ring-ring',
                                 'group-focus:border-primary/70 group-focus:ring-4 group-focus:ring-ring',
                                 'group-open:border-primary/70 group-open:ring-4 group-open:ring-ring',
@@ -120,7 +120,7 @@ const Select = <T extends object>({
                                                 <Button
                                                     type='button'
                                                     aria-label='Clear'
-                                                    className='mr-2 inline-flex items-center justify-center rounded-lg text-muted-fg outline-offset-4'
+                                                    className='mr-2 inline-flex items-center justify-center rounded-md text-muted-fg outline-offset-4'
                                                 >
                                                     <IconX aria-hidden />
                                                 </Button>

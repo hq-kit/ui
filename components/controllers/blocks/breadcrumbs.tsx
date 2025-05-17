@@ -4,8 +4,7 @@ import { Breadcrumbs } from '@/components/ui'
 
 export function BlocksBreadcrumbs({ pages }: { pages: string[] }) {
     const breadcrumbPages = [
-        { id: 0, label: 'Home', href: '/' },
-        { id: 1, label: 'Blocks', href: '/blocks' },
+        { id: 0, label: 'Blocks', href: '/blocks' },
         ...pages.map((p) => ({ id: p, label: p, href: `/blocks/${p}` }))
     ]
     return (

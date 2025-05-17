@@ -148,7 +148,7 @@ const MultiSelect = <T extends object>({
                                         isDisabled={isDisabled}
                                         className={({ isFocusVisible }) =>
                                             cn(
-                                                'inline-flex items-center justify-between gap-1 rounded-lg border px-2 py-0.5 text-sm outline-hidden',
+                                                'inline-flex items-center justify-between gap-1 rounded-md border px-2 py-0.5 text-sm outline-hidden',
                                                 isInvalid
                                                     ? 'border-danger/70 bg-danger/10 text-danger'
                                                     : 'border-primary/70 bg-primary/10 text-primary',
@@ -163,7 +163,7 @@ const MultiSelect = <T extends object>({
                                             slot='remove'
                                             className={({ isHovered, isPressed }) =>
                                                 cn(
-                                                    '-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-lg outline-hidden',
+                                                    '-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-md outline-hidden',
                                                     isHovered && 'bg-primary/70 text-primary-fg',
                                                     isPressed && 'bg-primary text-primary-fg'
                                                 )
@@ -206,7 +206,7 @@ const MultiSelect = <T extends object>({
                                 <Button
                                     ref={triggerButtonRef}
                                     aria-label='Chevron'
-                                    className='ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-lg text-muted-fg outline-hidden'
+                                    className='ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-md text-muted-fg outline-hidden'
                                 >
                                     <IconChevronDown className={cn('group-has-open:-rotate-180 size-4 transition')} />
                                 </Button>
@@ -223,7 +223,7 @@ const MultiSelect = <T extends object>({
                                 showArrow={false}
                             >
                                 <ListBox
-                                    className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+                                    className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-md outline-hidden'
                                     selectionMode='multiple'
                                     renderEmptyState={() => <div>No Items</div>}
                                     items={(availableItemsToSelect as T[]) ?? props.items}

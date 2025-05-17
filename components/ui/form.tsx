@@ -67,7 +67,7 @@ const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLD
             ref={ref}
             className={composeRenderProps(className, (className) =>
                 cn([
-                    'flex h-9 items-center rounded-lg border border-muted transition duration-200 ease-in-out',
+                    'flex h-9 items-center rounded-md border border-muted transition duration-200 ease-in-out',
                     'hover:border-primary/70',
                     'focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring',
                     'focus-within:border-primary/70 focus-within:ring-4 focus-within:ring-ring',

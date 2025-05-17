@@ -53,7 +53,7 @@ const SearchField = ({
                             <Button
                                 type='button'
                                 aria-label='Clear'
-                                className='mr-2 inline-flex items-center justify-center rounded-lg text-muted-fg outline-offset-4'
+                                className='mr-2 inline-flex items-center justify-center rounded-md text-muted-fg outline-offset-4'
                             >
                                 <IconX aria-hidden />
                             </Button>

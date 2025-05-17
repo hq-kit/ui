@@ -63,7 +63,7 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
             )}
             <div
                 className={cn(
-                    '!font-mono mt-2 flex h-10 w-full items-center justify-between gap-4 whitespace-nowrap rounded-lg border bg-[#0d1117] p-2 text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
+                    '!font-mono mt-2 flex h-10 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#0d1117] p-2 text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
                     className
                 )}
             >

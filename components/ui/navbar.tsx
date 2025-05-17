@@ -181,9 +181,7 @@ const NavbarSection = ({ className, ...props }: ComponentPropsWithRef<'div'>) =>
             className={cn('flex', isCompact ? 'flex-col gap-y-1' : 'flex-row items-center gap-x-3', className)}
             {...props}
         >
-            {'title' in props && (
-                <h4 className='-mx-2 my-2 border-y px-5 font-medium text-sm md:hidden'>{props.title}</h4>
-            )}
+            {'title' in props && <h4 className='-mx-2 my-4 px-5 font-medium text-sm md:hidden'>{props.title}</h4>}
             {props.children}
         </div>
     )

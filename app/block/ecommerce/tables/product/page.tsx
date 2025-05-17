@@ -51,22 +51,20 @@ export default function ProductManagement() {
                     <Card.Title>Product Management</Card.Title>
                     <Card.Description>Manage your products</Card.Description>
                     <Toolbar className='flex justify-between pt-2'>
-                        <Toolbar.Group aria-label='Filters'>
-                            <Select className='w-32' aria-label='Show' selectedKey={show} onSelectionChange={setShow}>
-                                <Select.Item id={5} textValue='5'>
-                                    5
-                                </Select.Item>
-                                <Select.Item id={10} textValue='10'>
-                                    10
-                                </Select.Item>
-                                <Select.Item id={20} textValue='20'>
-                                    20
-                                </Select.Item>
-                            </Select>
-                        </Toolbar.Group>
+                        <Select className='w-32' aria-label='Show' selectedKey={show} onSelectionChange={setShow}>
+                            <Select.Item id={5} textValue='5'>
+                                5
+                            </Select.Item>
+                            <Select.Item id={10} textValue='10'>
+                                10
+                            </Select.Item>
+                            <Select.Item id={20} textValue='20'>
+                                20
+                            </Select.Item>
+                        </Select>
                         <Toolbar.Group aria-label='Actions'>
                             <SearchField onChange={handleSearch} placeholder='Search...' aria-label='Search' />
-                            <Toolbar.Item aria-label='Create' icon variant='outline'>
+                            <Toolbar.Item aria-label='Create' size='md' icon variant='outline'>
                                 <IconPlus />
                             </Toolbar.Item>
                         </Toolbar.Group>

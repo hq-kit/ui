@@ -65,7 +65,7 @@ const ComboBox = <T extends object>({
                     ) : (
                         <Button
                             aria-label='Chevron'
-                            className='inline-flex items-center justify-center rounded-lg text-muted-fg outline-hidden'
+                            className='inline-flex items-center justify-center rounded-md text-muted-fg outline-hidden'
                         >
                             <IconChevronDown className={cn('mr-2 size-4 transition', values.isOpen && '-rotate-180')} />
                         </Button>
@@ -77,7 +77,7 @@ const ComboBox = <T extends object>({
                     <ListBox
                         aria-label='items'
                         items={items}
-                        className='grid w-full grid-cols-[auto_1fr_1.5rem] gap-y-1 overflow-y-auto rounded-lg outline-hidden'
+                        className='grid w-full grid-cols-[auto_1fr_1.5rem] gap-y-1 overflow-y-auto rounded-md outline-hidden'
                     >
                         {children}
                     </ListBox>
@@ -91,7 +91,7 @@ const ClearButton = () => {
     const state = use(ComboBoxStateContext)!
     return (
         <Button
-            className='inline-flex cursor-pointer items-center justify-center rounded-lg text-muted-fg outline-hidden hover:text-fg'
+            className='inline-flex cursor-pointer items-center justify-center rounded-md text-muted-fg outline-hidden hover:text-fg'
             slot={null}
             aria-label='Clear'
             onPress={() => {

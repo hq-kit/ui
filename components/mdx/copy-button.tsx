@@ -15,7 +15,7 @@ export const CopyButton = ({ isCopied, ...props }: CopyButtonProps) => {
         <Tooltip>
             <Button
                 aria-label='Copy'
-                className='flex size-9 cursor-pointer items-center justify-center rounded-md pressed:bg-zinc-700 text-zinc-300 outline-hidden backdrop-blur-2xl hover:bg-zinc-800 hover:text-zinc-100 focus-visible:ring-2 focus-visible:ring-ring'
+                className='flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-md pressed:bg-zinc-700 text-zinc-300 outline-hidden backdrop-blur-2xl hover:bg-zinc-800 hover:text-zinc-100 focus-visible:ring-2 focus-visible:ring-ring'
                 {...props}
             >
                 <IconCopy
