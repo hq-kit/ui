@@ -13,7 +13,6 @@ export default function UserSetting() {
         <Container className='py-6 xl:py-12'>
             <Card className='mb-6'>
                 <Card.Header>
-                    py-6
                     <Card.Title>User Setting</Card.Title>
                     <Card.Description>Manage your account settings and preferences.</Card.Description>
                 </Card.Header>

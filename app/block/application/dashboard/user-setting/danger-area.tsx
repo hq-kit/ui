@@ -11,7 +11,7 @@ export default function SecuritySetting() {
                 <Card.Title>Danger Area</Card.Title>
                 <Card.Description>Delete your account.</Card.Description>
             </Card.Header>
-            <Card.Content>
+            <Card.Footer className='sm:justify-start'>
                 <Modal>
                     <Button variant='danger'>
                         <IconUserX />
@@ -38,7 +38,7 @@ export default function SecuritySetting() {
                         </Form>
                     </Modal.Content>
                 </Modal>
-            </Card.Content>
+            </Card.Footer>
         </Card>
     )
 }

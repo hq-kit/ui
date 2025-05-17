@@ -13,9 +13,25 @@ const items = [
 
 export default function TabsOrientationDemo() {
     return (
-        <Tabs orientation='vertical' aria-label='Project Management'>
-            <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
-            <Collection items={items}>{(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}</Collection>
-        </Tabs>
+        <div className='space-y-6'>
+            <Tabs orientation='vertical' aria-label='Project Management'>
+                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
+                <Collection items={items}>
+                    {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
+                </Collection>
+            </Tabs>
+            <Tabs orientation='vertical' aria-label='Project Management' variant='secondary'>
+                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
+                <Collection items={items}>
+                    {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
+                </Collection>
+            </Tabs>
+            <Tabs orientation='vertical' aria-label='Project Management' variant='tertiary'>
+                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
+                <Collection items={items}>
+                    {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
+                </Collection>
+            </Tabs>
+        </div>
     )
 }

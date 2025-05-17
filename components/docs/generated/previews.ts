@@ -171,6 +171,7 @@ export const previews: Record<string, { component: LazyExoticComponent<() => Rea
 "navigation/tabs/tabs-orientation-demo": { component: lazy(() => import("@/components/docs/navigation/tabs/tabs-orientation-demo")) },
 "navigation/tabs/tabs-collections-demo": { component: lazy(() => import("@/components/docs/navigation/tabs/tabs-collections-demo")) },
 "navigation/tabs/tabs-icons-demo": { component: lazy(() => import("@/components/docs/navigation/tabs/tabs-icons-demo")) },
+"navigation/tabs/tabs-variant-demo": { component: lazy(() => import("@/components/docs/navigation/tabs/tabs-variant-demo")) },
 "navigation/tabs/tabs-keyboard-demo": { component: lazy(() => import("@/components/docs/navigation/tabs/tabs-keyboard-demo")) },
 "controls/slider/slider-range-demo": { component: lazy(() => import("@/components/docs/controls/slider/slider-range-demo")) },
 "controls/slider/slider-orientation-demo": { component: lazy(() => import("@/components/docs/controls/slider/slider-orientation-demo")) },

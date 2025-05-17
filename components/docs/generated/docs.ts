@@ -85,52 +85,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "charts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Area Chart",
-            "url": "/docs/components/charts/area-chart",
-            "order": 1
-          },
-          {
-            "title": "Bar Chart",
-            "url": "/docs/components/charts/bar-chart",
-            "order": 3
-          },
-          {
-            "title": "Line Chart",
-            "url": "/docs/components/charts/line-chart",
-            "order": 2
-          },
-          {
-            "title": "Pie Chart",
-            "url": "/docs/components/charts/pie-chart",
-            "order": 4
-          },
-          {
-            "title": "Radar Chart",
-            "url": "/docs/components/charts/radar-chart",
-            "order": 5
-          },
-          {
-            "title": "Radial Chart",
-            "url": "/docs/components/charts/radial-chart",
-            "order": 6
-          },
-          {
-            "title": "Scatter Chart",
-            "url": "/docs/components/charts/scatter-chart",
-            "order": 7
-          },
-          {
-            "title": "Chart Tooltip",
-            "url": "/docs/components/charts/tooltip",
-            "order": 8
-          }
-        ]
-      },
-      {
         "title": "collections",
         "order": 5,
         "items": [
@@ -172,6 +126,52 @@ export const docs: Docs[] = [
           {
             "title": "Tree",
             "url": "/docs/components/collections/tree",
+            "order": 8
+          }
+        ]
+      },
+      {
+        "title": "charts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Area Chart",
+            "url": "/docs/components/charts/area-chart",
+            "order": 1
+          },
+          {
+            "title": "Bar Chart",
+            "url": "/docs/components/charts/bar-chart",
+            "order": 3
+          },
+          {
+            "title": "Line Chart",
+            "url": "/docs/components/charts/line-chart",
+            "order": 2
+          },
+          {
+            "title": "Pie Chart",
+            "url": "/docs/components/charts/pie-chart",
+            "order": 4
+          },
+          {
+            "title": "Radar Chart",
+            "url": "/docs/components/charts/radar-chart",
+            "order": 5
+          },
+          {
+            "title": "Radial Chart",
+            "url": "/docs/components/charts/radial-chart",
+            "order": 6
+          },
+          {
+            "title": "Scatter Chart",
+            "url": "/docs/components/charts/scatter-chart",
+            "order": 7
+          },
+          {
+            "title": "Chart Tooltip",
+            "url": "/docs/components/charts/tooltip",
             "order": 8
           }
         ]
@@ -427,28 +427,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "pickers",
-        "order": 2,
-        "items": [
-          {
-            "title": "Combo Box",
-            "url": "/docs/components/pickers/combo-box",
-            "order": 2
-          },
-          {
-            "title": "Multi Select",
-            "url": "/docs/components/pickers/multi-select",
-            "order": 3,
-            "status": "beta"
-          },
-          {
-            "title": "Select",
-            "url": "/docs/components/pickers/select",
-            "order": 1
-          }
-        ]
-      },
-      {
         "title": "overlays",
         "order": 1,
         "items": [
@@ -471,6 +449,28 @@ export const docs: Docs[] = [
             "title": "Tooltip",
             "url": "/docs/components/overlays/tooltip",
             "order": 4
+          }
+        ]
+      },
+      {
+        "title": "pickers",
+        "order": 2,
+        "items": [
+          {
+            "title": "Combo Box",
+            "url": "/docs/components/pickers/combo-box",
+            "order": 2
+          },
+          {
+            "title": "Multi Select",
+            "url": "/docs/components/pickers/multi-select",
+            "order": 3,
+            "status": "beta"
+          },
+          {
+            "title": "Select",
+            "url": "/docs/components/pickers/select",
+            "order": 1
           }
         ]
       },
