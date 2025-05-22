@@ -214,6 +214,7 @@ const MultiSelect = <T extends object>({
                                 ref={popoverRef}
                                 respectScreen={false}
                                 trigger='focus'
+                                isPicker
                                 style={{
                                     minWidth: triggerRef.current?.offsetWidth,
                                     width: triggerRef.current?.offsetWidth

@@ -8,27 +8,6 @@ type Docs = {
 
 export const docs: Docs[] = [
   {
-    "title": "getting-started",
-    "order": 0,
-    "items": [
-      {
-        "title": "Client Side Routing",
-        "url": "/docs/getting-started/client-side-routing",
-        "order": 3
-      },
-      {
-        "title": "Installation",
-        "url": "/docs/getting-started/installation",
-        "order": 2
-      },
-      {
-        "title": "Introduction",
-        "url": "/docs/getting-started/introduction",
-        "order": 1
-      }
-    ]
-  },
-  {
     "title": "dark-mode",
     "order": 1,
     "items": [
@@ -60,55 +39,30 @@ export const docs: Docs[] = [
     ]
   },
   {
+    "title": "getting-started",
+    "order": 0,
+    "items": [
+      {
+        "title": "Client Side Routing",
+        "url": "/docs/getting-started/client-side-routing",
+        "order": 3
+      },
+      {
+        "title": "Installation",
+        "url": "/docs/getting-started/installation",
+        "order": 2
+      },
+      {
+        "title": "Introduction",
+        "url": "/docs/getting-started/introduction",
+        "order": 1
+      }
+    ]
+  },
+  {
     "title": "components",
     "order": 2,
     "items": [
-      {
-        "title": "charts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Area Chart",
-            "url": "/docs/components/charts/area-chart",
-            "order": 1
-          },
-          {
-            "title": "Bar Chart",
-            "url": "/docs/components/charts/bar-chart",
-            "order": 3
-          },
-          {
-            "title": "Line Chart",
-            "url": "/docs/components/charts/line-chart",
-            "order": 2
-          },
-          {
-            "title": "Pie Chart",
-            "url": "/docs/components/charts/pie-chart",
-            "order": 4
-          },
-          {
-            "title": "Radar Chart",
-            "url": "/docs/components/charts/radar-chart",
-            "order": 5
-          },
-          {
-            "title": "Radial Chart",
-            "url": "/docs/components/charts/radial-chart",
-            "order": 6
-          },
-          {
-            "title": "Scatter Chart",
-            "url": "/docs/components/charts/scatter-chart",
-            "order": 7
-          },
-          {
-            "title": "Chart Tooltip",
-            "url": "/docs/components/charts/tooltip",
-            "order": 8
-          }
-        ]
-      },
       {
         "title": "buttons",
         "order": 1,
@@ -254,6 +208,52 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "charts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Area Chart",
+            "url": "/docs/components/charts/area-chart",
+            "order": 1
+          },
+          {
+            "title": "Bar Chart",
+            "url": "/docs/components/charts/bar-chart",
+            "order": 3
+          },
+          {
+            "title": "Line Chart",
+            "url": "/docs/components/charts/line-chart",
+            "order": 2
+          },
+          {
+            "title": "Pie Chart",
+            "url": "/docs/components/charts/pie-chart",
+            "order": 4
+          },
+          {
+            "title": "Radar Chart",
+            "url": "/docs/components/charts/radar-chart",
+            "order": 5
+          },
+          {
+            "title": "Radial Chart",
+            "url": "/docs/components/charts/radial-chart",
+            "order": 6
+          },
+          {
+            "title": "Scatter Chart",
+            "url": "/docs/components/charts/scatter-chart",
+            "order": 7
+          },
+          {
+            "title": "Chart Tooltip",
+            "url": "/docs/components/charts/tooltip",
+            "order": 8
+          }
+        ]
+      },
+      {
         "title": "date-and-time",
         "order": 1,
         "items": [
@@ -297,6 +297,43 @@ export const docs: Docs[] = [
             "title": "Drop Zone",
             "url": "/docs/components/drag-and-drop/drop-zone",
             "order": 1
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },
@@ -364,27 +401,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
-            "order": 3
-          }
-        ]
-      },
-      {
         "title": "navigation",
         "order": 2,
         "items": [
@@ -407,22 +423,6 @@ export const docs: Docs[] = [
             "title": "Tabs",
             "url": "/docs/components/navigation/tabs",
             "order": 3
-          }
-        ]
-      },
-      {
-        "title": "layouts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
           }
         ]
       },
