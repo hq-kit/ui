@@ -65,7 +65,6 @@ const avatarStyle = tv({
 
 interface AvatarProps extends VariantProps<typeof avatarStyle> {
     src?: string | undefined
-    initials?: string
     alt?: string
     className?: string
 }

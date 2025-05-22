@@ -13,9 +13,9 @@ const HSBchannels = ['hue', 'saturation', 'brightness'].map((channel) => ({ chan
 
 export default function ColorAreaControlledDemo() {
     const [color, setColor] = useState(parseColor('hsl(0, 100%, 50%)'))
-    const [colorSpace, setColorSpace] = useState<Key>('rgb')
-    const [xChannel, setXChannel] = useState<Key>(colorSpace === 'rgb' ? 'red' : 'hue')
-    const [yChannel, setYChannel] = useState<Key>(colorSpace === 'rgb' ? 'green' : 'saturation')
+    const [colorSpace, setColorSpace] = useState<Key | null>('rgb')
+    const [xChannel, setXChannel] = useState<Key | null>(colorSpace === 'rgb' ? 'red' : 'hue')
+    const [yChannel, setYChannel] = useState<Key | null>(colorSpace === 'rgb' ? 'green' : 'saturation')
 
     return (
         <div className='flex flex-col items-center gap-2'>

@@ -19,7 +19,7 @@ export default function UserProfileSink() {
                     alt='Profile Cover'
                 />
                 <div className='-mt-20 mx-auto mb-3 flex w-full flex-shrink-0 flex-col items-center'>
-                    <Avatar src='https://github.com/dq-alhq.png' initials='DQ' className='!size-32' />
+                    <Avatar src='https://github.com/dq-alhq.png' alt='DQ' className='!size-32' />
                     <div className='mt-2 flex flex-col items-center text-center'>
                         <Heading level={3}>Diqi Al-Haqqi</Heading>
                         <Heading level={4} className='text-muted-fg'>

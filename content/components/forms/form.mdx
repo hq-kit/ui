@@ -8,64 +8,11 @@ published: true
 ## Installation
 <Install component='form' />
 
-## Validation
-<Demo center component='forms/form-validation-demo' />
+## Built In Validation
+<Demo center component='forms/form/form-builtin-validation-demo' />
 
-Sometimes, server-side errors don't match the client-side validation. You can handle this by using the `validationErrors` prop to format them correctly.
+## Custom Message Validation
+<Demo center component='forms/form/form-custom-validation-demo' />
 
-```tsx
-<Form validationErrors={errors} onSubmit={() => {}} />
-```
-Then, in the `<TextField />` component, pass the `errorMessage` prop like this:
-
-```tsx
-<TextField errorMessage={errors.name} label='Name' isRequired />
-```
-
-## React Hook Form
-It's taken from the official of [react aria components](https://react-spectrum.adobe.com/react-aria/forms.html#react-hook-form) documentation.
-
-```tsx
-import { Controller, useForm } from "react-hook-form"
-import { Button, FieldError, Form, Input, Label, TextField } from "react-aria-components"
-
-function App() {
-  const { handleSubmit, control } = useForm({
-    defaultValues: {
-      name: ""
-    }
-  })
-  const onSubmit = (data) => {
-    // Do something with the form data
-  }
-
-  return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        control={control}
-        name="name"
-        rules={{ required: "Name is required." }}
-        render={({
-          field: { name, value, onChange, onBlur, ref },
-          fieldState: { invalid, error }
-        }) => (
-          <TextField
-            name={name}
-            value={value}
-            onChange={onChange}
-            onBlur={onBlur}
-            isInvalid={invalid}
-            validationBehavior="aria"
-            isRequired
-          >
-            <Label>Name</Label>
-            <Input ref={ref} />
-            <FieldError>{error?.message}</FieldError>
-          </TextField>
-        )}
-      />
-      <Button type="submit">Submit</Button>
-    </Form>
-  )
-}
-```
+## Realtime Validation
+<Demo center component='forms/form/form-realtime-validation-demo' />

@@ -18,7 +18,7 @@ type product = {
 
 export default function ProductManagement() {
     const [items, setItems] = useState<product[]>([])
-    const [show, setShow] = useState<Key>(5)
+    const [show, setShow] = useState<Key | null>(5)
     const [page, setPage] = useState<number>(1)
     const [total, setTotal] = useState<number>(0)
 
@@ -39,7 +39,6 @@ export default function ProductManagement() {
         }
     }, 300)
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         getProducts()
     }, [show, page])

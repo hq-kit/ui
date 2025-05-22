@@ -1,6 +1,6 @@
 'use client'
 
-import type { Ref } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 import type {
     FieldErrorProps,
@@ -28,7 +28,7 @@ const Form = (props: FormProps) => <RACForm {...props} />
 interface FieldProps {
     label?: string
     description?: string
-    errorMessage?: string | ((validation: ValidationResult) => string)
+    errorMessage?: string | ((validation: ValidationResult) => string) | ReactNode
 }
 
 interface LabelProps extends RACLabelProps {
@@ -58,7 +58,17 @@ const Description = ({ className, ...props }: TextProps) => {
 }
 
 const FieldError = ({ className, ...props }: FieldErrorProps) => {
-    return <RACFieldError {...props} className={cn('text-danger text-sm/5', className)} />
+    return Array.isArray(props.children) ? (
+        <RACFieldError {...props} className={cn('text-danger text-sm/5', className)}>
+            <ul className='list-inside list-disc'>
+                {props.children.map((child, index) => (
+                    <li key={index}>{child}</li>
+                ))}
+            </ul>
+        </RACFieldError>
+    ) : (
+        <RACFieldError {...props} className={cn('text-danger text-sm/5', className)} />
+    )
 }
 
 const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLDivElement> }) => {
@@ -71,7 +81,7 @@ const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLD
                     'hover:border-primary/70',
                     'focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring',
                     'focus-within:border-primary/70 focus-within:ring-4 focus-within:ring-ring',
-                    'invalid:border-invalid invalid:hover:border-danger/70 invalid:focus-visible:border-danger/70 invalid:focus-visible:ring-invalid',
+                    'invalid:border-danger/70 invalid:focus-within:border-danger invalid:focus-within:ring-invalid invalid:hover:border-danger invalid:focus-visible:border-danger invalid:focus-visible:ring-invalid',
                     'disabled:pointer-events-none disabled:opacity-50',
                     className
                 ])

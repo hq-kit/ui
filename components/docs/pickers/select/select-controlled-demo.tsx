@@ -15,7 +15,7 @@ const items = [
 ]
 
 export default function SelectControlledDemo() {
-    const [selected, setSelected] = useState<Key>('')
+    const [selected, setSelected] = useState<Key | null>('')
     return (
         <div className='space-y-6'>
             <Select selectedKey={selected} onSelectionChange={setSelected} label='Linux Distro' items={items}>

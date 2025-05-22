@@ -19,8 +19,8 @@ const items = [
 ]
 
 export default function GridListLayoutDemo() {
-    const [columns, setColumns] = useState<Key>(2)
-    const [gap, setGap] = useState<Key>(4)
+    const [columns, setColumns] = useState<Key | null>(2)
+    const [gap, setGap] = useState<Key | null>(4)
 
     return (
         <div className='flex flex-col gap-4'>

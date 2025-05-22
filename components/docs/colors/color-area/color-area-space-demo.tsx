@@ -8,14 +8,14 @@ import { ColorArea, Select } from '@/components/ui'
 const spaces = ['rgb', 'hsb', 'hsl'].map((space) => ({ space }))
 
 export default function ColorAreaSpaceDemo() {
-    const [colorSpace, setColorSpace] = useState<Key>('rgb')
+    const [colorSpace, setColorSpace] = useState<Key | null>('rgb')
     return (
         <div className='flex flex-col gap-4'>
             <Select
                 className='w-full'
                 label='Color Space'
                 selectedKey={colorSpace}
-                onSelectionChange={(v) => setColorSpace(v)}
+                onSelectionChange={setColorSpace}
                 items={spaces}
             >
                 {(item) => <Select.Item id={item.space}>{item.space}</Select.Item>}

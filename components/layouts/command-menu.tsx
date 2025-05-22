@@ -18,7 +18,6 @@ export interface OpenCloseProps {
 export function CommandMenu({ openCommand, action }: OpenCloseProps) {
     const pathname = usePathname()
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         if (action) {
             action(false)

@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 
-import type { Selection } from 'react-aria-components'
+import type { Key } from 'react-aria-components'
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
-import { Card, Chart, type ChartConfig, Select, Toggle, ToggleGroup } from '@/components/ui'
+import { Card, Chart, type ChartConfig, Select } from '@/components/ui'
 import { useIsMobile } from '@/lib/hooks'
 
 const chartData = [
@@ -118,11 +118,11 @@ const chartConfig = {
 
 export default function ChartAreaInteractive() {
     const isMobile = useIsMobile()
-    const [timeRange, setTimeRange] = useState<Selection>(new Set(['30d']))
+    const [timeRange, setTimeRange] = useState<Key | null>('30d')
 
     useEffect(() => {
         if (isMobile) {
-            setTimeRange(new Set(['7d']))
+            setTimeRange('7d')
         }
     }, [isMobile])
 
@@ -130,9 +130,9 @@ export default function ChartAreaInteractive() {
         const date = new Date(item.date)
         const referenceDate = new Date('2024-06-30')
         let daysToSubtract = 90
-        if ([...timeRange].flat().join('') === '30d') {
+        if (timeRange === '30d') {
             daysToSubtract = 30
-        } else if ([...timeRange].flat().join('') === '7d') {
+        } else if (timeRange === '7d') {
             daysToSubtract = 7
         }
         const startDate = new Date(referenceDate)
@@ -141,36 +141,15 @@ export default function ChartAreaInteractive() {
     })
 
     return (
-        <Card className='@container/card'>
+        <Card>
             <Card.Header className='relative'>
                 <Card.Title>Total Visitors</Card.Title>
                 <Card.Description>
-                    <span className='@[540px]/card:block hidden'>Total for the last 3 months</span>
-                    <span className='@[540px]/card:hidden'>Last 3 months</span>
+                    <span className='hidden md:block'>Total for the last 3 months</span>
+                    <span className='md:hidden'>Last 3 months</span>
                 </Card.Description>
                 <div className='absolute top-4 right-4'>
-                    <ToggleGroup
-                        selectionMode='single'
-                        selectedKeys={timeRange}
-                        onSelectionChange={setTimeRange}
-                        variant='outline'
-                        className='@[767px]/card:flex hidden'
-                    >
-                        <Toggle id='90d' className='h-8 px-2.5'>
-                            Last 3 months
-                        </Toggle>
-                        <Toggle id='30d' className='h-8 px-2.5'>
-                            Last 30 days
-                        </Toggle>
-                        <Toggle id='7d' className='h-8 px-2.5'>
-                            Last 7 days
-                        </Toggle>
-                    </ToggleGroup>
-                    <Select
-                        className='@[767px]/card:hidden'
-                        selectedKey={[...timeRange].flat().join('')}
-                        onSelectionChange={(id) => setTimeRange(new Set([id]))}
-                    >
+                    <Select selectedKey={timeRange} onSelectionChange={setTimeRange}>
                         <Select.Item id='90d' className='rounded-lg'>
                             Last 3 months
                         </Select.Item>

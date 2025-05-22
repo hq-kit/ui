@@ -69,7 +69,6 @@ const MultiSelect = <T extends object>({
 
     const isMax = [...selectedKeys].length >= maxItems
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         setInputValue('')
         return () => {

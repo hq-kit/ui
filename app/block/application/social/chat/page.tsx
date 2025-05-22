@@ -105,7 +105,7 @@ export default function ChatApp() {
                             </Popover.Body>
                         </Popover.Content>
                     </Popover>
-                    <Avatar initials='HB' src='https://i.pravatar.cc/77' />
+                    <Avatar alt='Hebert' src='https://i.pravatar.cc/77' />
                     <div className='grid'>
                         <span className='text-sm'>Hebert</span>
                         <small className='text-muted-fg text-xs'>Online</small>

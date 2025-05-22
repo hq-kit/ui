@@ -9,8 +9,8 @@ import { ColorArea, Select } from '@/components/ui'
 const channels = ['red', 'green', 'blue', 'alpha'].map((channel) => ({ channel }))
 
 export default function ColorAreaChannelDemo() {
-    const [xChannel, setXChannel] = useState<Key>('red')
-    const [yChannel, setYChannel] = useState<Key>('blue')
+    const [xChannel, setXChannel] = useState<Key | null>('red')
+    const [yChannel, setYChannel] = useState<Key | null>('blue')
     return (
         <div className='flex flex-col items-center gap-4'>
             <div className='flex w-full flex-col gap-2 sm:flex-row'>

@@ -81,7 +81,7 @@ const code = `export default function RootLayout({
   )`
 
 export default function CodeThemeDemo() {
-    const [theme, setTheme] = useState<Key>('dracula')
+    const [theme, setTheme] = useState<Key | null>('dracula')
     return (
         <div className='space-y-4'>
             <Select label='Theme' searchable selectedKey={theme} onSelectionChange={setTheme} items={themes}>

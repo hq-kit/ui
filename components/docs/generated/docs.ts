@@ -8,6 +8,27 @@ type Docs = {
 
 export const docs: Docs[] = [
   {
+    "title": "getting-started",
+    "order": 0,
+    "items": [
+      {
+        "title": "Client Side Routing",
+        "url": "/docs/getting-started/client-side-routing",
+        "order": 3
+      },
+      {
+        "title": "Installation",
+        "url": "/docs/getting-started/installation",
+        "order": 2
+      },
+      {
+        "title": "Introduction",
+        "url": "/docs/getting-started/introduction",
+        "order": 1
+      }
+    ]
+  },
+  {
     "title": "dark-mode",
     "order": 1,
     "items": [
@@ -39,51 +60,9 @@ export const docs: Docs[] = [
     ]
   },
   {
-    "title": "getting-started",
-    "order": 0,
-    "items": [
-      {
-        "title": "Client Side Routing",
-        "url": "/docs/getting-started/client-side-routing",
-        "order": 3
-      },
-      {
-        "title": "Installation",
-        "url": "/docs/getting-started/installation",
-        "order": 2
-      },
-      {
-        "title": "Introduction",
-        "url": "/docs/getting-started/introduction",
-        "order": 1
-      }
-    ]
-  },
-  {
     "title": "components",
     "order": 2,
     "items": [
-      {
-        "title": "buttons",
-        "order": 1,
-        "items": [
-          {
-            "title": "Button",
-            "url": "/docs/components/buttons/button",
-            "order": 1
-          },
-          {
-            "title": "File Trigger",
-            "url": "/docs/components/buttons/file-trigger",
-            "order": 2
-          },
-          {
-            "title": "Toggle",
-            "url": "/docs/components/buttons/toggle",
-            "order": 3
-          }
-        ]
-      },
       {
         "title": "charts",
         "order": 1,
@@ -127,6 +106,27 @@ export const docs: Docs[] = [
             "title": "Chart Tooltip",
             "url": "/docs/components/charts/tooltip",
             "order": 8
+          }
+        ]
+      },
+      {
+        "title": "buttons",
+        "order": 1,
+        "items": [
+          {
+            "title": "Button",
+            "url": "/docs/components/buttons/button",
+            "order": 1
+          },
+          {
+            "title": "File Trigger",
+            "url": "/docs/components/buttons/file-trigger",
+            "order": 2
+          },
+          {
+            "title": "Toggle",
+            "url": "/docs/components/buttons/toggle",
+            "order": 3
           }
         ]
       },
@@ -213,42 +213,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "date-and-time",
-        "order": 1,
-        "items": [
-          {
-            "title": "Calendar",
-            "url": "/docs/components/date-and-time/calendar",
-            "order": 1
-          },
-          {
-            "title": "Date Field",
-            "url": "/docs/components/date-and-time/date-field",
-            "order": 3
-          },
-          {
-            "title": "Date Picker",
-            "url": "/docs/components/date-and-time/date-picker",
-            "order": 4
-          },
-          {
-            "title": "Date Range Picker",
-            "url": "/docs/components/date-and-time/date-range-picker",
-            "order": 5
-          },
-          {
-            "title": "Range Calendar",
-            "url": "/docs/components/date-and-time/range-calendar",
-            "order": 3
-          },
-          {
-            "title": "Time Field",
-            "url": "/docs/components/date-and-time/time-field",
-            "order": 6
-          }
-        ]
-      },
-      {
         "title": "colors",
         "order": 1,
         "items": [
@@ -286,6 +250,42 @@ export const docs: Docs[] = [
             "title": "Color Wheel",
             "url": "/docs/components/colors/color-wheel",
             "order": 7
+          }
+        ]
+      },
+      {
+        "title": "date-and-time",
+        "order": 1,
+        "items": [
+          {
+            "title": "Calendar",
+            "url": "/docs/components/date-and-time/calendar",
+            "order": 1
+          },
+          {
+            "title": "Date Field",
+            "url": "/docs/components/date-and-time/date-field",
+            "order": 3
+          },
+          {
+            "title": "Date Picker",
+            "url": "/docs/components/date-and-time/date-picker",
+            "order": 4
+          },
+          {
+            "title": "Date Range Picker",
+            "url": "/docs/components/date-and-time/date-range-picker",
+            "order": 5
+          },
+          {
+            "title": "Range Calendar",
+            "url": "/docs/components/date-and-time/range-calendar",
+            "order": 3
+          },
+          {
+            "title": "Time Field",
+            "url": "/docs/components/date-and-time/time-field",
+            "order": 6
           }
         ]
       },
@@ -364,22 +364,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "layouts",
-        "order": 1,
-        "items": [
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
         "title": "media",
         "order": 2,
         "items": [
@@ -423,6 +407,22 @@ export const docs: Docs[] = [
             "title": "Tabs",
             "url": "/docs/components/navigation/tabs",
             "order": 3
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 1,
+        "items": [
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
           }
         ]
       },

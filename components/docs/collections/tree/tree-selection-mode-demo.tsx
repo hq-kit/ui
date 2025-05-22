@@ -6,7 +6,7 @@ import type { Key } from 'react-aria-components'
 import { Select, Tree, TreeItem } from '@/components/ui'
 
 export default function TreeSelectionModeDemo() {
-    const [selectionMode, setSelectionMode] = useState<Key>('multiple')
+    const [selectionMode, setSelectionMode] = useState<Key | null>('multiple')
 
     return (
         <div className='space-y-6'>

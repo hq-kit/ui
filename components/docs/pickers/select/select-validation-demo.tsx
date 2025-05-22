@@ -15,7 +15,7 @@ const items = [
 ]
 
 export default function SelectValidationDemo() {
-    const [value, setValue] = useState<Key>('')
+    const [value, setValue] = useState<Key | null>('')
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         alert(value)

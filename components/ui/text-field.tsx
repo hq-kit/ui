@@ -45,12 +45,12 @@ const TextField = ({
             {({ isInvalid, isDisabled }) => (
                 <>
                     {label && (
-                        <Label isInvalid={isInvalid || !!errorMessage} isDisabled={isDisabled}>
+                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
                             {label}
                         </Label>
                     )}
                     <FieldGroup
-                        isInvalid={isInvalid || !!errorMessage}
+                        isInvalid={isInvalid}
                         isDisabled={isDisabled}
                         data-loading={props.isPending ? 'true' : undefined}
                     >
