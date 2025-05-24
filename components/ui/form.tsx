@@ -42,9 +42,9 @@ const Label = ({ className, isInvalid, isDisabled, ...props }: LabelProps) => {
             slot='label'
             {...props}
             className={cn(
-                'w-fit cursor-default text-sm leading-none transition-colors',
+                'w-fit cursor-default font-medium text-sm leading-none transition-colors',
                 isInvalid
-                    ? 'text-danger/70 group-open:text-danger group-has-focus-within:text-danger group-has-focus:text-danger group-has-pressed:text-danger'
+                    ? 'text-danger group-open:text-danger group-has-focus-within:text-danger group-has-focus:text-danger group-has-pressed:text-danger'
                     : 'text-fg group-open:text-primary group-has-focus-within:text-primary group-has-focus:text-primary group-has-pressed:text-primary',
                 isDisabled && 'opacity-50',
                 className

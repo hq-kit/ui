@@ -19,7 +19,7 @@ interface TextFieldProps extends RACTextFieldProps, FieldProps {
     suffix?: ReactNode
     isPending?: boolean
     placeholder?: string
-    ref?: Ref<HTMLDivElement>
+    ref?: Ref<HTMLInputElement>
 }
 
 const TextField = ({
@@ -55,7 +55,7 @@ const TextField = ({
                         data-loading={props.isPending ? 'true' : undefined}
                     >
                         {props.prefix ? (
-                            <span data-prefix={true} className='ml-2 text-muted-fg has-[button]:ml-0'>
+                            <span data-prefix className='ml-2 text-muted-fg has-[button]:ml-0'>
                                 {props.prefix}
                             </span>
                         ) : null}
@@ -72,7 +72,7 @@ const TextField = ({
                         ) : props.isPending ? (
                             <IconLoaderCircle className='mr-2 size-3.5 animate-spin text-muted-fg' data-suffix />
                         ) : props.suffix ? (
-                            <span data-suffix={true} className='mr-2 text-muted-fg has-[button]:mr-0'>
+                            <span data-suffix className='mr-2 text-muted-fg has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

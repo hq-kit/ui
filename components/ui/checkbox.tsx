@@ -59,7 +59,7 @@ const Checkbox = ({ className, children, label, description, ref, ...props }: Ch
                     <div
                         className={cn(
                             'flex size-4 shrink-0 items-center justify-center rounded-xs border shadow-xs transition',
-                            'border-muted group-hover:border-primary/70',
+                            'border-muted group-invalid:border-danger/70 group-hover:border-primary/70',
                             'group-selected:border-primary group-selected:bg-primary group-selected:text-primary-fg group-selected:group-invalid:border-danger/70 group-selected:group-invalid:bg-danger group-selected:group-invalid:text-danger-fg',
                             'group-focus:border-primary group-focus:group-invalid:border-danger/70',
                             'group-focus-visible:ring-4 group-focus-visible:ring-ring group-focus-visible:group-invalid:ring-invalid',
@@ -78,7 +78,7 @@ const Checkbox = ({ className, children, label, description, ref, ...props }: Ch
                             elementType='span'
                             isInvalid={values.isInvalid}
                             isDisabled={values.isDisabled}
-                            className='not-last:text-sm/4'
+                            className='font-normal not-last:text-sm/4'
                         >
                             {label ?? children}
                         </Label>

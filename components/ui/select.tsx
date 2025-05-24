@@ -1,6 +1,4 @@
 'use client'
-
-import type { Placement } from '@react-types/overlays'
 import { IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
 import type { ReactNode, Ref } from 'react'
 import type { SelectProps as RACSelectProps } from 'react-aria-components'
@@ -28,7 +26,6 @@ interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, 'childre
     prefix?: ReactNode
     searchable?: boolean
     isPending?: boolean
-    placement?: Placement
     ref?: Ref<HTMLDivElement>
 }
 
@@ -40,7 +37,6 @@ const Select = <T extends object>({
     items,
     searchable = false,
     className,
-    placement,
     ref,
     ...props
 }: SelectProps<T>) => {
@@ -95,13 +91,7 @@ const Select = <T extends object>({
                     </Button>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
-                    <PopoverContent
-                        respectScreen={false}
-                        placement={placement ?? 'bottom'}
-                        trigger='Select'
-                        isPicker
-                        showArrow={false}
-                    >
+                    <PopoverContent respectScreen={false} showArrow={false} trigger='focus' isPicker>
                         {searchable ? (
                             <Autocomplete filter={fuzzyMatch}>
                                 <SearchField autoFocus className='-mx-1 -mt-1 mb-1 border-b' aria-label='Search'>

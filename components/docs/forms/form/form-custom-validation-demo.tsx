@@ -11,7 +11,7 @@ export default function FormCustomValidationDemo() {
                 placeholder='Enter your email'
                 type='email'
                 errorMessage={({ validationDetails }) =>
-                    validationDetails.valueMissing ? 'Fill the email, Please! 🥲' : 'None'
+                    validationDetails.valueMissing ? 'Fill the email, Please! 🥲' : ''
                 }
             />
             <TextField

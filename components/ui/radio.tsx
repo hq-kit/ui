@@ -76,7 +76,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                             elementType='span'
                             isInvalid={values.isInvalid}
                             isDisabled={values.isDisabled}
-                            className='not-last:text-sm/4'
+                            className='font-normal not-last:text-sm/4'
                         >
                             {label ?? children}
                         </Label>
