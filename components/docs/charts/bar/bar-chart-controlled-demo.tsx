@@ -50,7 +50,6 @@ export default function BarChartControlledDemo() {
                         aria-label='Select a chart'
                         selectedKey={activeChart}
                         onSelectionChange={setActiveChart}
-                        placement='bottom end'
                         className='sm:min-w-40'
                     >
                         {['sales', 'revenue'].map((key) => {

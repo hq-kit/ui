@@ -85,19 +85,55 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "collections",
-        "order": 5,
+        "title": "charts",
+        "order": 1,
         "items": [
           {
-            "title": "Accordion",
-            "url": "/docs/components/collections/accordion",
+            "title": "Area Chart",
+            "url": "/docs/components/charts/area-chart",
+            "order": 1
+          },
+          {
+            "title": "Bar Chart",
+            "url": "/docs/components/charts/bar-chart",
+            "order": 3
+          },
+          {
+            "title": "Chart Tooltip",
+            "url": "/docs/components/charts/chart",
+            "order": 8
+          },
+          {
+            "title": "Line Chart",
+            "url": "/docs/components/charts/line-chart",
+            "order": 2
+          },
+          {
+            "title": "Pie Chart",
+            "url": "/docs/components/charts/pie-chart",
+            "order": 4
+          },
+          {
+            "title": "Radar Chart",
+            "url": "/docs/components/charts/radar-chart",
             "order": 5
           },
           {
-            "title": "Collapsible",
-            "url": "/docs/components/collections/collapsible",
+            "title": "Radial Chart",
+            "url": "/docs/components/charts/radial-chart",
             "order": 6
           },
+          {
+            "title": "Scatter Chart",
+            "url": "/docs/components/charts/scatter-chart",
+            "order": 7
+          }
+        ]
+      },
+      {
+        "title": "collections",
+        "order": 3,
+        "items": [
           {
             "title": "Grid List",
             "url": "/docs/components/collections/grid-list",
@@ -127,42 +163,6 @@ export const docs: Docs[] = [
             "title": "Tree",
             "url": "/docs/components/collections/tree",
             "order": 8
-          }
-        ]
-      },
-      {
-        "title": "controls",
-        "order": 1,
-        "items": [
-          {
-            "title": "Command",
-            "url": "/docs/components/controls/command",
-            "order": 1
-          },
-          {
-            "title": "Context Menu",
-            "url": "/docs/components/controls/context-menu",
-            "order": 2
-          },
-          {
-            "title": "Keyboard",
-            "url": "/docs/components/controls/keyboard",
-            "order": 6
-          },
-          {
-            "title": "Slider",
-            "url": "/docs/components/controls/slider",
-            "order": 3
-          },
-          {
-            "title": "Switch",
-            "url": "/docs/components/controls/switch",
-            "order": 4
-          },
-          {
-            "title": "Toolbar",
-            "url": "/docs/components/controls/toolbar",
-            "order": 5
           }
         ]
       },
@@ -208,48 +208,38 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "charts",
+        "title": "controls",
         "order": 1,
         "items": [
           {
-            "title": "Area Chart",
-            "url": "/docs/components/charts/area-chart",
+            "title": "Command",
+            "url": "/docs/components/controls/command",
             "order": 1
           },
           {
-            "title": "Bar Chart",
-            "url": "/docs/components/charts/bar-chart",
-            "order": 3
-          },
-          {
-            "title": "Line Chart",
-            "url": "/docs/components/charts/line-chart",
+            "title": "Context Menu",
+            "url": "/docs/components/controls/context-menu",
             "order": 2
           },
           {
-            "title": "Pie Chart",
-            "url": "/docs/components/charts/pie-chart",
-            "order": 4
-          },
-          {
-            "title": "Radar Chart",
-            "url": "/docs/components/charts/radar-chart",
-            "order": 5
-          },
-          {
-            "title": "Radial Chart",
-            "url": "/docs/components/charts/radial-chart",
+            "title": "Keyboard",
+            "url": "/docs/components/controls/keyboard",
             "order": 6
           },
           {
-            "title": "Scatter Chart",
-            "url": "/docs/components/charts/scatter-chart",
-            "order": 7
+            "title": "Slider",
+            "url": "/docs/components/controls/slider",
+            "order": 3
           },
           {
-            "title": "Chart Tooltip",
-            "url": "/docs/components/charts/tooltip",
-            "order": 8
+            "title": "Switch",
+            "url": "/docs/components/controls/switch",
+            "order": 4
+          },
+          {
+            "title": "Toolbar",
+            "url": "/docs/components/controls/toolbar",
+            "order": 5
           }
         ]
       },
@@ -301,9 +291,77 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "layouts",
-        "order": 1,
+        "title": "forms",
+        "order": 6,
         "items": [
+          {
+            "title": "Checkbox Group",
+            "url": "/docs/components/forms/checkbox-group",
+            "order": 6
+          },
+          {
+            "title": "Checkbox",
+            "url": "/docs/components/forms/checkbox",
+            "order": 7
+          },
+          {
+            "title": "Form",
+            "url": "/docs/components/forms/form",
+            "order": 1
+          },
+          {
+            "title": "Number Field",
+            "url": "/docs/components/forms/number-field",
+            "order": 3
+          },
+          {
+            "title": "O T P",
+            "url": "/docs/components/forms/otp",
+            "order": 9
+          },
+          {
+            "title": "Radio",
+            "url": "/docs/components/forms/radio",
+            "order": 8
+          },
+          {
+            "title": "Rich Text Field",
+            "url": "/docs/components/forms/rich-text-field",
+            "order": 11,
+            "status": "alpha"
+          },
+          {
+            "title": "Search Field",
+            "url": "/docs/components/forms/search-field",
+            "order": 4
+          },
+          {
+            "title": "Selection Box",
+            "url": "/docs/components/forms/selection-box",
+            "order": 10,
+            "status": "alpha"
+          },
+          {
+            "title": "Text Field",
+            "url": "/docs/components/forms/text-field",
+            "order": 2
+          },
+          {
+            "title": "Textarea",
+            "url": "/docs/components/forms/textarea",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 3,
+        "items": [
+          {
+            "title": "Container",
+            "url": "/docs/components/layouts/container",
+            "order": 3
+          },
           {
             "title": "Navbar",
             "url": "/docs/components/layouts/navbar",
@@ -338,69 +396,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "forms",
-        "order": 6,
-        "items": [
-          {
-            "title": "Checkbox Group",
-            "url": "/docs/components/forms/checkbox-group",
-            "order": 6
-          },
-          {
-            "title": "Checkbox",
-            "url": "/docs/components/forms/checkbox",
-            "order": 7
-          },
-          {
-            "title": "Form",
-            "url": "/docs/components/forms/form",
-            "order": 1
-          },
-          {
-            "title": "Number Field",
-            "url": "/docs/components/forms/number-field",
-            "order": 3
-          },
-          {
-            "title": "O T P",
-            "url": "/docs/components/forms/otp",
-            "order": 9
-          },
-          {
-            "title": "Radio Group",
-            "url": "/docs/components/forms/radio-group",
-            "order": 8
-          },
-          {
-            "title": "Rich Text Field",
-            "url": "/docs/components/forms/rich-text-field",
-            "order": 11,
-            "status": "alpha"
-          },
-          {
-            "title": "Search Field",
-            "url": "/docs/components/forms/search-field",
-            "order": 4
-          },
-          {
-            "title": "Selection Box",
-            "url": "/docs/components/forms/selection-box",
-            "order": 10,
-            "status": "alpha"
-          },
-          {
-            "title": "Text Field",
-            "url": "/docs/components/forms/text-field",
-            "order": 2
-          },
-          {
-            "title": "Textarea",
-            "url": "/docs/components/forms/textarea",
-            "order": 5
-          }
-        ]
-      },
-      {
         "title": "navigation",
         "order": 2,
         "items": [
@@ -408,6 +403,11 @@ export const docs: Docs[] = [
             "title": "Breadcrumbs",
             "url": "/docs/components/navigation/breadcrumbs",
             "order": 2
+          },
+          {
+            "title": "Disclosure",
+            "url": "/docs/components/navigation/disclosure",
+            "order": 5
           },
           {
             "title": "Link",
@@ -428,8 +428,13 @@ export const docs: Docs[] = [
       },
       {
         "title": "overlays",
-        "order": 1,
+        "order": 5,
         "items": [
+          {
+            "title": "Drawer",
+            "url": "/docs/components/overlays/drawer",
+            "order": 5
+          },
           {
             "title": "Modal",
             "url": "/docs/components/overlays/modal",

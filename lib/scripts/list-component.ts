@@ -4,6 +4,8 @@ import path from 'node:path'
 const baseDir = path.resolve(__dirname, '../../components')
 const docsDir = path.join(baseDir, 'docs')
 const uiDir = path.join(baseDir, 'ui')
+const contentDir = path.resolve(__dirname, '../../content/components')
+
 const componentListFilePathTs = path.resolve(docsDir, 'generated/components.ts')
 const componentListFilePathJson = path.resolve(docsDir, 'generated/components.json')
 
@@ -60,17 +62,34 @@ function getDeps(content: string) {
 
 const components = getComponents()
 
+function getSection(component: string): string {
+    const sections = fs.readdirSync(contentDir)
+    for (const section of sections) {
+        const components = fs.readdirSync(path.join(contentDir, section))
+        for (const file of components) {
+            if (file.replace('.mdx', '') === component.replace('.tsx', '')) {
+                return section
+            }
+        }
+    }
+    return ''
+}
+
 const componentsList = []
 for (const component of components) {
     const content = fs.readFileSync(path.join(uiDir, component), 'utf8')
     const childComponents = getChildComponents(content)
     const deps = getDeps(content)
+    const section = getSection(component)
 
-    componentsList.push({
-        name: component.replace('.tsx', ''),
-        children: childComponents.map((c) => ({ name: c })) ?? [],
-        deps: deps ?? []
-    })
+    if (section) {
+        componentsList.push({
+            section,
+            name: component.replace('.tsx', ''),
+            children: childComponents.map((c) => ({ name: c })) ?? [],
+            deps: deps ?? []
+        })
+    }
 }
 
 const writeContent = componentsList
@@ -81,6 +100,7 @@ const writeContent = componentsList
     .replaceAll(',"deps":[]', '')
 
 const writeContentTs = `type Component = {
+    section?: string;
     name: string;
     deps?: string[];
     children?: Component[];
