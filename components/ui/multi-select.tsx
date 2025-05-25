@@ -114,7 +114,7 @@ const MultiSelect = <T extends object>({
           )
     return (
         <Group
-            isInvalid={props.isInvalid}
+            isInvalid={props.isInvalid || !!props.errorMessage}
             isDisabled={props.isDisabled}
             className={composeRenderProps(className, (className) =>
                 cn('group flex h-fit flex-col gap-y-1.5', className)

@@ -38,6 +38,7 @@ const TextField = ({
     return (
         <RACTextField
             type={inputType}
+            isInvalid={!!errorMessage || props.isPending}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             ref={ref}
             {...props}
@@ -49,11 +50,7 @@ const TextField = ({
                             {label}
                         </Label>
                     )}
-                    <FieldGroup
-                        isInvalid={isInvalid}
-                        isDisabled={isDisabled}
-                        data-loading={props.isPending ? 'true' : undefined}
-                    >
+                    <FieldGroup data-loading={props.isPending ? 'true' : undefined}>
                         {props.prefix ? (
                             <span data-prefix className='ml-2 text-muted-fg has-[button]:ml-0'>
                                 {props.prefix}

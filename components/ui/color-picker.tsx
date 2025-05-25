@@ -3,8 +3,8 @@
 import type { ReactNode } from 'react'
 
 import type { Placement } from '@react-types/overlays'
-import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
 import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
+import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
 
 import { ColorArea } from './color-area'
 import { ColorField } from './color-field'

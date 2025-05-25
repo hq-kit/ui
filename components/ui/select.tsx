@@ -53,6 +53,7 @@ const Select = <T extends object>({
 
     return (
         <RACSelect
+            isInvalid={props.isInvalid || !!errorMessage}
             className={composeRenderProps(className, (className) =>
                 cn('group flex flex-col gap-y-1.5 **:data-placeholder:text-muted-fg', className)
             )}

@@ -33,6 +33,7 @@ const DateField = <T extends DateValue>({
 }: DateFieldProps<T>) => {
     return (
         <RACDateField
+            isInvalid={props.isInvalid || !!errorMessage}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             ref={ref}
             {...props}

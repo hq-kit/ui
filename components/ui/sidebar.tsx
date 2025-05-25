@@ -309,6 +309,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
                 'disabled:cursor-default disabled:opacity-50',
                 collapsedDock ? 'flex size-8 justify-center gap-2 p-0' : 'grid grid-cols-subgrid gap-x-3 px-2.5 py-2',
                 state === 'collapsed' && 'group-data-section:*:[[slot=label]]:hidden',
+                isCurrent && 'bg-primary/10 text-primary',
                 className
             )}
             {...props}

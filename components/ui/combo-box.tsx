@@ -38,6 +38,7 @@ const ComboBox = <T extends object>({
     ...props
 }: ComboBoxProps<T>) => (
     <RACCombobox
+        isInvalid={props.isInvalid || !!errorMessage}
         defaultFilter={fuzzyMatch}
         menuTrigger='focus'
         className={composeRenderProps(className, (className) => cn('group flex flex-col gap-1.5', className))}

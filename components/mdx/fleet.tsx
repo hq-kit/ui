@@ -228,7 +228,7 @@ export function Fleet({ page }: { page: string }) {
                         withoutSwitcher
                         lang={isTs ? 'tsx' : 'jsx'}
                         keepBackground={true}
-                        className='**:[button]:-mt-0.5 dark static overflow-auto rounded-none border-none **:[pre]:max-h-full **:[svg]:text-white'
+                        className='**:[button]:-mt-0.5 dark static overflow-auto rounded-none border-none p-4 **:[pre]:max-h-full **:[svg]:text-white'
                     />
                 </div>
             </div>

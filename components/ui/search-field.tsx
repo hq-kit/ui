@@ -31,6 +31,7 @@ const SearchField = ({
 }: SearchFieldProps) => {
     return (
         <RACSearchField
+            isInvalid={props.isInvalid || !!errorMessage}
             aria-label={placeholder ?? props['aria-label'] ?? 'Search...'}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             ref={ref}

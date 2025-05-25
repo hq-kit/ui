@@ -24,6 +24,7 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
     const isMobile = useIsMobile()
     return (
         <RACNumberField
+            isInvalid={props.isInvalid || !!errorMessage}
             className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
             ref={ref}
             {...props}
