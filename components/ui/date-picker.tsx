@@ -29,15 +29,13 @@ const DatePicker = <T extends DateValue>({
     return (
         <RACDatePicker
             {...props}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
         >
-            {({ isOpen, isInvalid, isDisabled }) => (
+            {({ isOpen }) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
+                    {label && <Label>{label}</Label>}
                     <FieldGroup className='min-w-40'>
                         <DateInput className='w-full px-2 text-base lg:text-sm' />
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
@@ -78,15 +76,13 @@ const DateRangePicker = <T extends DateValue>({
         <RACDateRangePicker
             shouldCloseOnSelect={false}
             {...props}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
         >
-            {({ isOpen, isInvalid, isDisabled }) => (
+            {({ isOpen }) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
+                    {label && <Label>{label}</Label>}
                     <FieldGroup className='w-auto min-w-40'>
                         <DateInput slot='start' className='px-2 text-base tabular-nums lg:text-sm' />
                         <span aria-hidden='true' className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm'>

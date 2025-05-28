@@ -24,7 +24,7 @@ const Slider = ({ orientation = 'horizontal', className, ref, ...props }: Slider
             orientation={orientation}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
-                    'group relative flex touch-none select-none flex-col gap-y-3',
+                    'group/field relative flex touch-none select-none flex-col gap-y-3',
                     orientation === 'horizontal' ? 'w-full min-w-56' : 'h-full min-h-56 w-1.5 items-center',
                     className
                 )

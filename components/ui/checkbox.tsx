@@ -18,27 +18,21 @@ const CheckboxGroup = ({ className, children, label, description, errorMessage, 
     return (
         <RACCheckboxGroup
             {...props}
-            className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
+            className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-2', className))}
         >
-            {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
+            {(values) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
-                    {children}
+                    {label && <Label>{label}</Label>}
+                    {typeof children === 'function' ? children(values) : children}
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
                 </>
-            ))}
+            )}
         </RACCheckboxGroup>
     )
 }
 
-interface CheckboxProps extends RACCheckboxProps {
-    label?: string
-    description?: string
+interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'errorMessage'> {
     children?: ReactNode
     ref?: Ref<HTMLLabelElement>
 }
@@ -46,45 +40,42 @@ interface CheckboxProps extends RACCheckboxProps {
 const Checkbox = ({ className, children, label, description, ref, ...props }: CheckboxProps) => {
     return (
         <RACCheckbox
-            className={composeRenderProps(className, (className) => cn('group flex items-center gap-x-2', className))}
             ref={ref}
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'group/box flex items-center gap-2',
+                    {
+                        'items-start': description
+                    },
+                    className
+                )
+            )}
             {...props}
         >
-            {(values) => (
-                <div
-                    className={cn('flex items-center gap-2', {
-                        'items-start': description
-                    })}
-                >
+            {({ isSelected, isIndeterminate }) => (
+                <>
                     <div
                         className={cn(
                             'flex size-4 shrink-0 items-center justify-center rounded-xs border shadow-xs transition',
-                            'border-muted group-invalid:border-danger/70 group-hover:border-primary/70',
-                            'group-selected:border-primary group-selected:bg-primary group-selected:text-primary-fg group-selected:group-invalid:border-danger/70 group-selected:group-invalid:bg-danger group-selected:group-invalid:text-danger-fg',
-                            'group-focus:border-primary group-focus:group-invalid:border-danger/70',
-                            'group-focus-visible:ring-4 group-focus-visible:ring-ring group-focus-visible:group-invalid:ring-invalid',
+                            'border-muted group-hover/box:border-primary/70 group-has-invalid/box:border-danger/70',
+                            'group-selected/box:border-primary group-selected/box:bg-primary group-selected/box:text-primary-fg group-selected/box:group-has-invalid/box:border-danger/70 group-selected/box:group-has-invalid/box:bg-danger group-selected/box:group-has-invalid/box:text-danger-fg',
+                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-danger/70',
+                            'group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring group-focus-visible/box:group-has-invalid/box:ring-invalid',
                             className
                         )}
                     >
-                        {values.isIndeterminate ? (
+                        {isIndeterminate ? (
                             <IconMinus className='size-3' />
-                        ) : values.isSelected ? (
+                        ) : isSelected ? (
                             <IconCheck className='size-3' />
                         ) : null}
                     </div>
 
                     <div className='flex flex-col gap-y-1.5'>
-                        <Label
-                            elementType='span'
-                            isInvalid={values.isInvalid}
-                            isDisabled={values.isDisabled}
-                            className='font-normal not-last:text-sm/4'
-                        >
-                            {label ?? children}
-                        </Label>
+                        <span className='not-last:text-sm/4 text-sm'>{label ?? children}</span>
                         {description && <Description>{description}</Description>}
                     </div>
-                </div>
+                </>
             )}
         </RACCheckbox>
     )

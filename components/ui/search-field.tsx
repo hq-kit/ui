@@ -5,13 +5,14 @@ import type { Ref } from 'react'
 import { IconLoader, IconSearch, IconX } from 'hq-icons'
 import {
     Button,
+    Input,
     SearchField as RACSearchField,
     type SearchFieldProps as RACSearchFieldProps,
     composeRenderProps
 } from 'react-aria-components'
 
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
+import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
     isPending?: boolean
@@ -31,16 +32,17 @@ const SearchField = ({
 }: SearchFieldProps) => {
     return (
         <RACSearchField
-            isInvalid={props.isInvalid || !!errorMessage}
             aria-label={placeholder ?? props['aria-label'] ?? 'Search...'}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
             ref={ref}
             {...props}
         >
             {({ isEmpty }) => (
                 <>
                     {label && <Label>{label}</Label>}
-                    <FieldGroup>
+                    <FieldGroup isInvalid={props.isInvalid || !!errorMessage} isDisabled={props.isDisabled}>
                         {isPending ? (
                             <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-fg' />
                         ) : (
@@ -54,7 +56,7 @@ const SearchField = ({
                             <Button
                                 type='button'
                                 aria-label='Clear'
-                                className='mr-2 inline-flex items-center justify-center rounded-md text-muted-fg outline-offset-4'
+                                className='mr-2 inline-flex cursor-pointer items-center justify-center rounded-md text-muted-fg outline-offset-4'
                             >
                                 <IconX aria-hidden />
                             </Button>

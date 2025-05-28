@@ -11,24 +11,23 @@ import {
     useState
 } from 'react'
 
-import { IconCheck, IconChevronDown, IconX } from 'hq-icons'
-import type { ComboBoxProps, GroupProps, Key, ListBoxItemProps, ListBoxProps, Selection } from 'react-aria-components'
+import { IconChevronDown, IconX } from 'hq-icons'
+import type { ComboBoxProps, GroupProps, Key, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
     ComboBox,
     Group,
     Input,
     ListBox,
-    ListBoxItem,
     Tag,
     TagGroup,
     TagList,
-    Text,
     composeRenderProps
 } from 'react-aria-components'
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldGroup, type FieldProps, Label } from './form'
+import { ListBoxDetails, ListBoxItem, ListBoxSection } from './list-box'
 import { PopoverContent } from './popover'
 
 interface MultiSelectProps<T>
@@ -114,26 +113,23 @@ const MultiSelect = <T extends object>({
           )
     return (
         <Group
-            isInvalid={props.isInvalid || !!props.errorMessage}
-            isDisabled={props.isDisabled}
             className={composeRenderProps(className, (className) =>
-                cn('group flex h-fit flex-col gap-y-1.5', className)
+                cn('group/field flex h-fit flex-col gap-y-1.5', className)
             )}
             ref={ref}
         >
-            {({ isInvalid, isDisabled }) => (
-                <>
-                    {props.label && (
-                        <Label onClick={() => inputRef.current?.focus()} isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {props.label}
-                        </Label>
-                    )}
-                    <FieldGroup
-                        ref={triggerRef}
-                        isDisabled={isDisabled}
-                        isInvalid={isInvalid}
-                        className='flex h-fit min-h-9 flex-wrap items-center py-1'
-                    >
+            {props.label && <Label onClick={() => inputRef.current?.focus()}>{props.label}</Label>}
+            <FieldGroup
+                ref={triggerRef}
+                isDisabled={props.isDisabled}
+                isInvalid={props.isInvalid || !!props.errorMessage}
+                className={cn(
+                    'flex h-fit min-h-9 flex-wrap items-center py-1 **:[input]:py-1',
+                    'group-has-invalid/field:group-has-focus/field:border-danger group-has-invalid/field:group-has-open/field:border-danger group-has-invalid/field:group-has-open/field:ring-invalid group-has-invalid/field:hover:border-danger/70'
+                )}
+            >
+                {({ isInvalid, isDisabled }) => (
+                    <>
                         <TagGroup onRemove={removeItem} aria-hidden aria-label='selected-items'>
                             <TagList
                                 className='flex flex-1 flex-wrap gap-1 pl-2 empty:pl-0'
@@ -160,13 +156,7 @@ const MultiSelect = <T extends object>({
                                         {item.textValue as string}
                                         <Button
                                             slot='remove'
-                                            className={({ isHovered, isPressed }) =>
-                                                cn(
-                                                    '-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-md outline-hidden',
-                                                    isHovered && 'bg-primary/70 text-primary-fg',
-                                                    isPressed && 'bg-primary text-primary-fg'
-                                                )
-                                            }
+                                            className='-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-md pressed:bg-primary/70 pressed:text-primary-fg outline-hidden hover:bg-primary hover:text-primary-fg'
                                         >
                                             <IconX className='size-3 shrink-0' />
                                         </Button>
@@ -182,7 +172,7 @@ const MultiSelect = <T extends object>({
                             isInvalid={isInvalid}
                             isReadOnly={isMax}
                             isDisabled={isDisabled}
-                            className='flex-1 px-2 text-sm/7'
+                            className='flex-1 text-sm/5'
                             aria-label='Search'
                             onSelectionChange={addItem}
                             inputValue={inputValue}
@@ -205,22 +195,22 @@ const MultiSelect = <T extends object>({
                                 <Button
                                     ref={triggerButtonRef}
                                     aria-label='Chevron'
-                                    className='ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-md text-muted-fg outline-hidden'
+                                    className='mr-2 ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-md text-muted-fg outline-hidden'
                                 >
-                                    <IconChevronDown className={cn('group-has-open:-rotate-180 size-4 transition')} />
+                                    <IconChevronDown className='group-has-open/field:-rotate-180 size-4 transition' />
                                 </Button>
                             </div>
                             <PopoverContent
                                 ref={popoverRef}
                                 respectScreen={false}
+                                showArrow={false}
+                                triggerRef={triggerRef}
                                 trigger='focus'
                                 isPicker
                                 style={{
                                     minWidth: triggerRef.current?.offsetWidth,
                                     width: triggerRef.current?.offsetWidth
                                 }}
-                                triggerRef={triggerRef}
-                                showArrow={false}
                             >
                                 <ListBox
                                     className='grid w-full grid-cols-[auto_1fr_1.5rem_0.5rem_auto] gap-y-1 overflow-y-auto rounded-md outline-hidden'
@@ -241,54 +231,17 @@ const MultiSelect = <T extends object>({
                                 </ListBox>
                             </PopoverContent>
                         </ComboBox>
-                    </FieldGroup>
-                    {props.description && <Description>{props.description}</Description>}
-                    {props.errorMessage && isInvalid && (
-                        <Description className='text-danger text-sm/5'>{props.errorMessage}</Description>
-                    )}
-                </>
-            )}
+                    </>
+                )}
+            </FieldGroup>
+            {props.description && <Description>{props.description}</Description>}
+            {props.errorMessage && <Description className='text-danger text-sm/5'>{props.errorMessage}</Description>}
         </Group>
     )
 }
 
-const MultiSelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
-    const textValue = typeof children === 'string' ? children : undefined
-    return (
-        <ListBoxItem
-            textValue={textValue}
-            {...props}
-            className={composeRenderProps(
-                className,
-                (className, { isHovered, isFocused, isDisabled, isFocusVisible }) =>
-                    cn(
-                        'group relative col-span-full grid grid-cols-subgrid',
-                        'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-                        '*:[svg]:my-1 *:[svg]:mr-2 **:[svg]:size-4',
-                        {
-                            'bg-primary text-primary-fg': isFocused || isFocusVisible || isHovered
-                        },
-                        isDisabled && 'pointer-events-none opacity-50',
-                        className
-                    )
-            )}
-        >
-            {({ isSelected }) => (
-                <>
-                    {isSelected && <IconCheck data-slot='checked' />}
-                    {typeof children === 'string' ? (
-                        <Text slot='label' className='col-start-2'>
-                            {children}
-                        </Text>
-                    ) : (
-                        children
-                    )}
-                </>
-            )}
-        </ListBoxItem>
-    )
-}
-
-MultiSelect.Item = MultiSelectItem
+MultiSelect.Item = ListBoxItem
+MultiSelect.Section = ListBoxSection
+MultiSelect.ItemDetails = ListBoxDetails
 
 export { MultiSelect }

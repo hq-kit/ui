@@ -7,7 +7,7 @@ import type {
     FormProps,
     GroupProps,
     InputProps,
-    LabelProps as RACLabelProps,
+    LabelProps,
     TextProps,
     ValidationResult
 } from 'react-aria-components'
@@ -21,7 +21,39 @@ import {
     composeRenderProps
 } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
+import { tv } from 'tailwind-variants'
+
+const fieldGroupStyle = tv({
+    base: [
+        'flex h-9 items-center rounded-md border transition',
+        'hover:border-primary/70 group-invalid/field:hover:border-danger/70!',
+        'focus-within:border-primary focus-within:ring-4 focus-within:ring-ring',
+        'group-open/field:border-primary group-open/field:ring-4 group-open/field:ring-ring',
+        'group-has-focus-visible/field:border-primary group-has-focus-visible/field:ring-4 group-has-focus-visible/field:ring-ring',
+        'group-has-focus-within/field:border-primary group-has-focus-within/field:ring-4 group-has-focus-within/field:ring-ring',
+        'group-has-focus/field:border-primary group-has-focus/field:ring-4 group-has-focus/field:ring-ring',
+        'group-invalid/field:group-open/field:ring-invalid group-invalid/field:group-has-focus-visible/field:ring-invalid group-invalid/field:group-has-focus-within/field:ring-invalid group-invalid/field:group-has-focus/field:ring-invalid',
+        'group-invalid/field:group-open/field:border-danger group-invalid/field:group-has-focus-visible/field:border-danger group-invalid/field:group-has-focus-within/field:border-danger group-invalid/field:group-has-focus/field:border-danger',
+        '**:[input]:w-full **:[input]:p-2 **:[input]:text-base **:[input]:outline-hidden sm:**:[input]:text-sm',
+        'disabled:pointer-events-none'
+    ]
+})
+
+const labelStyle = tv({
+    base: [
+        'w-fit cursor-default font-medium text-fg text-sm leading-none transition-colors',
+        'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary',
+        'group-invalid/field:text-danger! group-disabled/field:text-muted-fg! group-has-invalid/field:text-danger!'
+    ]
+})
+
+const descriptionStyle = tv({
+    base: 'text-pretty text-muted-fg text-sm'
+})
+
+const errorStyle = tv({
+    base: 'text-danger text-sm/5'
+})
 
 const Form = (props: FormProps) => <RACForm {...props} />
 
@@ -31,35 +63,17 @@ interface FieldProps {
     errorMessage?: string | ((validation: ValidationResult) => string) | ReactNode
 }
 
-interface LabelProps extends RACLabelProps {
-    isInvalid?: boolean
-    isDisabled?: boolean
-}
+const Label = ({ className, ...props }: LabelProps) => (
+    <RACLabel slot='label' {...props} className={labelStyle({ className })} />
+)
 
-const Label = ({ className, isInvalid, isDisabled, ...props }: LabelProps) => {
-    return (
-        <RACLabel
-            slot='label'
-            {...props}
-            className={cn(
-                'w-fit cursor-default font-medium text-sm leading-none transition-colors',
-                isInvalid
-                    ? 'text-danger group-open:text-danger group-has-focus-within:text-danger group-has-focus:text-danger group-has-pressed:text-danger'
-                    : 'text-fg group-open:text-primary group-has-focus-within:text-primary group-has-focus:text-primary group-has-pressed:text-primary',
-                isDisabled && 'opacity-50',
-                className
-            )}
-        />
-    )
-}
-
-const Description = ({ className, ...props }: TextProps) => {
-    return <Text {...props} slot='description' className={cn('text-pretty text-muted-fg text-sm', className)} />
-}
+const Description = ({ className, ...props }: TextProps) => (
+    <Text {...props} slot='description' className={descriptionStyle({ className })} />
+)
 
 const FieldError = ({ className, ...props }: FieldErrorProps) => {
     return Array.isArray(props.children) ? (
-        <RACFieldError {...props} className={cn('text-danger text-sm/5', className)}>
+        <RACFieldError {...props} className={composeRenderProps(className, (className) => errorStyle({ className }))}>
             <ul className='list-inside list-disc'>
                 {props.children.map((child, index) => (
                     <li key={index}>{child}</li>
@@ -67,7 +81,7 @@ const FieldError = ({ className, ...props }: FieldErrorProps) => {
             </ul>
         </RACFieldError>
     ) : (
-        <RACFieldError {...props} className={cn('text-danger text-sm/5', className)} />
+        <RACFieldError {...props} className={composeRenderProps(className, (className) => errorStyle({ className }))} />
     )
 }
 
@@ -75,33 +89,27 @@ const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLD
     return (
         <Group
             ref={ref}
-            className={composeRenderProps(className, (className) =>
-                cn([
-                    'flex h-9 items-center rounded-md border border-muted transition duration-200 ease-in-out',
-                    'hover:border-primary/70',
-                    'focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring',
-                    'focus-within:border-primary/70 focus-within:ring-4 focus-within:ring-ring',
-                    'invalid:border-danger/70 invalid:focus-within:border-danger invalid:focus-within:ring-invalid invalid:hover:border-danger invalid:focus-visible:border-danger invalid:focus-visible:ring-invalid',
-                    'disabled:pointer-events-none disabled:opacity-50',
-                    className
-                ])
-            )}
+            className={composeRenderProps(className, (className) => fieldGroupStyle({ className }))}
             {...props}
         />
     )
 }
 
 const Input = ({ className, ref, ...props }: InputProps & { ref?: Ref<HTMLInputElement> }) => (
-    <RACInput
-        ref={ref}
-        className={cn(
-            'w-full min-w-0 bg-transparent p-2 text-base text-fg placeholder-muted-fg outline-hidden lg:text-sm',
-            className
-        )}
-        {...props}
-    />
+    <RACInput ref={ref} {...props} />
 )
 
-export { Description, FieldError, FieldGroup, Input, Label, type FieldProps }
+export {
+    Description,
+    FieldError,
+    FieldGroup,
+    Input,
+    Label,
+    descriptionStyle,
+    errorStyle,
+    fieldGroupStyle,
+    labelStyle,
+    type FieldProps
+}
 
 export { Form }

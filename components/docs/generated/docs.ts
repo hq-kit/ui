@@ -292,13 +292,8 @@ export const docs: Docs[] = [
       },
       {
         "title": "forms",
-        "order": 6,
+        "order": 7,
         "items": [
-          {
-            "title": "Checkbox Group",
-            "url": "/docs/components/forms/checkbox-group",
-            "order": 6
-          },
           {
             "title": "Checkbox",
             "url": "/docs/components/forms/checkbox",
@@ -354,27 +349,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "layouts",
-        "order": 3,
-        "items": [
-          {
-            "title": "Container",
-            "url": "/docs/components/layouts/container",
-            "order": 3
-          },
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
         "title": "media",
         "order": 2,
         "items": [
@@ -392,6 +366,27 @@ export const docs: Docs[] = [
             "title": "User",
             "url": "/docs/components/media/user",
             "order": 3
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 3,
+        "items": [
+          {
+            "title": "Container",
+            "url": "/docs/components/layouts/container",
+            "order": 3
+          },
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
           }
         ]
       },

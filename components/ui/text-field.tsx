@@ -5,6 +5,7 @@ import { type ReactNode, type Ref, useState } from 'react'
 import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
 import {
     Button,
+    Input,
     TextField as RACTextField,
     type TextFieldProps as RACTextFieldProps,
     composeRenderProps
@@ -12,7 +13,7 @@ import {
 
 import { cn } from '@/lib/utils'
 import type { FieldProps } from './form'
-import { Description, FieldError, FieldGroup, Input, Label } from './form'
+import { Description, FieldError, FieldGroup, Label } from './form'
 
 interface TextFieldProps extends RACTextFieldProps, FieldProps {
     prefix?: ReactNode
@@ -38,19 +39,20 @@ const TextField = ({
     return (
         <RACTextField
             type={inputType}
-            isInvalid={!!errorMessage || props.isPending}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
             ref={ref}
             {...props}
         >
-            {({ isInvalid, isDisabled }) => (
+            {(values) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
-                    <FieldGroup data-loading={props.isPending ? 'true' : undefined}>
+                    {label && <Label>{label}</Label>}
+                    <FieldGroup
+                        isInvalid={!!errorMessage || values.isInvalid}
+                        isDisabled={values.isDisabled}
+                        data-loading={props.isPending ? 'true' : undefined}
+                    >
                         {props.prefix ? (
                             <span data-prefix className='ml-2 text-muted-fg has-[button]:ml-0'>
                                 {props.prefix}
@@ -62,9 +64,19 @@ const TextField = ({
                                 type='button'
                                 aria-label='Toggle visibility'
                                 onPress={() => setMasked((e) => !e)}
-                                className='mr-2 inline-flex items-center justify-center rounded-lg text-muted-fg outline-offset-4'
+                                className='mr-2 inline-flex items-center justify-center text-muted-fg outline-hidden focus-visible:text-primary'
                             >
-                                {masked ? <IconEye /> : <IconEyeClosed />}
+                                <IconEye
+                                    aria-hidden
+                                    className={cn('size-4 scale-0 transition-transform', masked && 'scale-100')}
+                                />
+                                <IconEyeClosed
+                                    aria-hidden
+                                    className={cn(
+                                        'absolute size-4 scale-0 transition-transform',
+                                        !masked && 'scale-100'
+                                    )}
+                                />
                             </Button>
                         ) : props.isPending ? (
                             <IconLoaderCircle className='mr-2 size-3.5 animate-spin text-muted-fg' data-suffix />

@@ -116,7 +116,7 @@ const toggleStyles = tv({
             lg: 'gap-x-2.5 px-5 text-base [--height:theme(spacing.10)] [--width:auto] **:[svg]:size-5'
         },
         icon: {
-            true: 'h-(--height) w-(--height) shrink-0 px-0',
+            true: 'h-(--height) w-(--height) shrink-0 justify-center px-0',
             false: 'h-(--height) w-(--width)'
         },
         shape: {

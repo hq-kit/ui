@@ -34,26 +34,20 @@ const DateField = <T extends DateValue>({
     return (
         <RACDateField
             isInvalid={props.isInvalid || !!errorMessage}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
             ref={ref}
             {...props}
         >
-            {({ isInvalid, isDisabled }) => (
-                <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
-                    <FieldGroup>
-                        {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
-                        <DateInput />
-                        {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
-                    </FieldGroup>
-                    {description && <Description>{description}</Description>}
-                    <FieldError>{errorMessage}</FieldError>
-                </>
-            )}
+            {label && <Label>{label}</Label>}
+            <FieldGroup>
+                {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
+                <DateInput />
+                {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
+            </FieldGroup>
+            {description && <Description>{description}</Description>}
+            <FieldError>{errorMessage}</FieldError>
         </RACDateField>
     )
 }
@@ -72,7 +66,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
                     className={cn(
                         'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-fg tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
                         segment.isPlaceholder && 'text-muted-fg',
-                        'focus:bg-primary/70 focus:text-primary-fg',
+                        'focus:font-bold focus:text-primary',
                         'invalid:not-type-literal:text-danger invalid:focus:text-primary-fg'
                     )}
                 />

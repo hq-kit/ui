@@ -46,13 +46,9 @@ const SelectionBox = ({
                     {...props}
                     className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
                 >
-                    {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
+                    {composeRenderProps(children, (children) => (
                         <>
-                            {label && (
-                                <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                                    {label}
-                                </Label>
-                            )}
+                            {label && <Label>{label}</Label>}
                             <div
                                 slot='items'
                                 className={cn(
@@ -74,11 +70,7 @@ const SelectionBox = ({
                 >
                     {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
                         <>
-                            {label && (
-                                <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                                    {label}
-                                </Label>
-                            )}
+                            {label && <Label>{label}</Label>}
                             <div
                                 slot='items'
                                 className={cn(
@@ -138,9 +130,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                             {props.prefix}
                         </div>
                     )}
-                    <Label isInvalid={isInvalid} isDisabled={props.isDisabled}>
-                        {label ?? children}
-                    </Label>
+                    <Label>{label ?? children}</Label>
                 </div>
             )}
         </Checkbox>
@@ -171,9 +161,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                             {props.prefix}
                         </div>
                     )}
-                    <Label isInvalid={isInvalid} isDisabled={props.isDisabled}>
-                        {label ?? children}
-                    </Label>
+                    <Label>{label ?? children}</Label>
                 </div>
             )}
         </Radio>

@@ -20,10 +20,10 @@ export default function FormRealtimeValidationDemo() {
     return (
         <Form onSubmit={() => {}}>
             <TextField
+                isInvalid={!!errors.length}
                 label='Password'
                 placeholder='Enter your password'
                 type='password'
-                isInvalid={!!errors.length}
                 errorMessage={errors}
                 value={password}
                 onChange={setPassword}
