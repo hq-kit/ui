@@ -31,17 +31,15 @@ const TimeField = <T extends TimeValue>({
     return (
         <RACTimeField
             isInvalid={props.isInvalid || !!errorMessage}
-            className={composeRenderProps(className, (className) => cn('group flex flex-col gap-y-1.5', className))}
+            className={composeRenderProps(className, (className) =>
+                cn('group/field flex flex-col gap-y-1.5', className)
+            )}
             ref={ref}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
+                    {label && <Label>{label}</Label>}
                     <FieldGroup>
                         {prefix ? <span data-prefix={true}>{prefix}</span> : null}
                         <DateInput className='flex w-fit min-w-28 justify-around whitespace-nowrap p-2 sm:text-sm' />

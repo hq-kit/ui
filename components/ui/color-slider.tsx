@@ -17,19 +17,18 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
         <RACColorSlider
             {...props}
             slot='color-slider'
-            className={composeRenderProps(className, (className, { orientation, isDisabled }) =>
+            className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
-                    'group relative flex flex-col items-center gap-2',
+                    'group/field relative flex flex-col items-center gap-2',
                     orientation === 'horizontal' ? 'min-w-56 justify-between' : 'justify-center',
-                    isDisabled && 'opacity-50',
                     className
                 )
             )}
         >
-            {({ isDisabled, orientation }) => (
+            {({ orientation }) => (
                 <>
                     <div className='flex w-full items-center justify-between has-only:justify-center'>
-                        {label && <Label isDisabled={isDisabled}>{label}</Label>}
+                        {label && <Label>{label}</Label>}
                         {showOutput && <SliderOutput />}
                     </div>
                     <SliderTrack

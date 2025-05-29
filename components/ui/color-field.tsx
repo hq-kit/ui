@@ -35,17 +35,13 @@ const ColorField = ({
         <RACColorField
             aria-label={props['aria-label'] ?? 'Color field'}
             className={composeRenderProps(className, (className) =>
-                cn('group **:data-[slot=color-swatch]:-ml-0.5 flex w-full flex-col gap-y-1.5', className)
+                cn('group/field **:data-[slot=color-swatch]:-ml-0.5 flex w-full flex-col gap-y-1.5', className)
             )}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
-                    {label && (
-                        <Label isInvalid={isInvalid} isDisabled={isDisabled}>
-                            {label}
-                        </Label>
-                    )}
+                    {label && <Label>{label}</Label>}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
                             <span data-prefix={true} className='ml-2 text-muted-fg has-[button]:ml-0'>
