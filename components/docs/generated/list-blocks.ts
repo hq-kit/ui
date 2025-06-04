@@ -146,7 +146,6 @@ export const listBlocks = [
           "textarea.tsx",
           "date-picker.tsx",
           "grid-list.tsx",
-          "heading.tsx",
           "switch.tsx",
           "container.tsx",
           "tabs.tsx"
@@ -229,7 +228,6 @@ export const listBlocks = [
           "card.tsx",
           "checkbox.tsx",
           "form.tsx",
-          "heading.tsx",
           "link.tsx",
           "separator.tsx",
           "skeleton.tsx",
@@ -245,7 +243,6 @@ export const listBlocks = [
           "card.tsx",
           "checkbox.tsx",
           "form.tsx",
-          "heading.tsx",
           "link.tsx",
           "modal.tsx",
           "separator.tsx",
@@ -261,7 +258,6 @@ export const listBlocks = [
           "button.tsx",
           "checkbox.tsx",
           "form.tsx",
-          "heading.tsx",
           "link.tsx",
           "separator.tsx",
           "skeleton.tsx",
@@ -300,7 +296,6 @@ export const listBlocks = [
           "card.tsx",
           "avatar.tsx",
           "container.tsx",
-          "heading.tsx",
           "tabs.tsx"
         ],
         "components": [

@@ -43,7 +43,8 @@ const labelStyle = tv({
     base: [
         'w-fit cursor-default font-medium text-fg text-sm leading-none transition-colors',
         'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary',
-        'group-invalid/field:text-danger! group-disabled/field:text-muted-fg! group-has-invalid/field:text-danger!'
+        'group-invalid/field:text-danger! group-disabled/field:text-muted-fg! group-has-invalid/field:text-danger!',
+        'group-disabled/field:text-muted-fg group-has-disabled/field:text-muted-fg'
     ]
 })
 

@@ -65,6 +65,8 @@
     .dark {
         --bg: oklch(0.141 0.004 285.863);
         --fg: oklch(0.985 0 0);
+        --primary: oklch(0.623 0.188 259.813);
+        --primary-fg: oklch(0.97 0.014 254.605);
         --secondary: oklch(0.282 0.087 267.936);
         --secondary-fg: oklch(0.809 0.096 251.808);
         --danger: oklch(0.586 0.222 17.589);
@@ -75,6 +77,7 @@
 }
 
 @layer base {
+
     *,
     ::after,
     ::before,
@@ -108,11 +111,14 @@
 
 @layer components {
     .no-scrollbar {
-        -ms-overflow-style: none; /* Internet Explorer and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        /* Internet Explorer and Edge */
+        scrollbar-width: none;
+        /* Firefox */
 
         ::-webkit-scrollbar {
-            display: none; /* Safari and Chrome */
+            display: none;
+            /* Safari and Chrome */
         }
     }
 

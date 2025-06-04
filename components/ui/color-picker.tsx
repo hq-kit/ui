@@ -33,7 +33,7 @@ const ColorPicker = ({
     ...props
 }: ColorPickerProps) => {
     return (
-        <div className='group flex flex-col gap-y-2'>
+        <div className='group/field flex flex-col gap-y-2'>
             <RACColorPicker {...props}>
                 <Popover>
                     <Button isDisabled={isDisabled} className='flex cursor-pointer items-center gap-2 outline-hidden'>

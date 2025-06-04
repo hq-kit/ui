@@ -7,7 +7,9 @@ export default function PaginationShapeDemo() {
             <Pagination.Item slot='previous' href='#previous' />
             <Pagination.Pages>
                 <Pagination.Item href='#1'>1</Pagination.Item>
-                <Pagination.Item href='#2'>2</Pagination.Item>
+                <Pagination.Item href='#2' isCurrent>
+                    2
+                </Pagination.Item>
                 <Pagination.Item href='#3'>3</Pagination.Item>
                 <Pagination.Item slot='ellipsis' />
                 <Pagination.Item href='#6'>6</Pagination.Item>

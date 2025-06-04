@@ -38,34 +38,25 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
                 className='overflow-hidden'
             >
                 {isMobile && (
-                    <Stepper slot='decrement' className='border-r'>
+                    <Stepper className='border-r' slot='decrement'>
                         <IconMinus />
                     </Stepper>
                 )}
                 <Input className='text-center tabular-nums sm:text-left' placeholder={placeholder} />
-                <div
-                    className={cn(
-                        'grid h-10 place-content-center border-s',
-                        'group-hover/field:border-primary/70 group-has-focus/field:border-primary',
-                        'group-has-invalid/field:group-has-focus/field:border-danger',
-                        'group-has-disabled/field:group-has-focus/field:border-muted'
-                    )}
-                >
-                    {isMobile ? (
-                        <Stepper slot='increment'>
-                            <IconPlus />
+                {isMobile ? (
+                    <Stepper className='border-s' slot='increment'>
+                        <IconPlus />
+                    </Stepper>
+                ) : (
+                    <div className='flex h-full flex-col divide-y border-s'>
+                        <Stepper slot='increment' className='size-5'>
+                            <IconChevronUp />
                         </Stepper>
-                    ) : (
-                        <div className='flex h-full flex-col divide-y'>
-                            <Stepper slot='increment' className='h-5 px-1'>
-                                <IconChevronUp />
-                            </Stepper>
-                            <Stepper slot='decrement' className='h-5 px-1'>
-                                <IconChevronDown />
-                            </Stepper>
-                        </div>
-                    )}
-                </div>
+                        <Stepper slot='decrement' className='size-5'>
+                            <IconChevronDown />
+                        </Stepper>
+                    </div>
+                )}
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
@@ -83,7 +74,7 @@ const Stepper = ({ slot, className, ...props }: StepperProps) => {
         <Button
             className={composeRenderProps(className, (className, { isDisabled, isPressed }) =>
                 cn(
-                    'h-10 px-3 text-muted-fg outline-hidden',
+                    'flex size-12 items-center justify-center text-muted-fg outline-hidden',
                     isPressed &&
                         'bg-primary text-primary-fg group-has-invalid/field:bg-danger group-has-invalid/field:text-danger-fg',
                     isDisabled && 'opacity-50',

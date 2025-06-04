@@ -4,7 +4,7 @@ import { IconPhone } from 'hq-icons'
 import Image from 'next/image'
 
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
-import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField, Textarea } from '@/components/ui'
+import { Avatar, Card, DateField, NumberField, Tabs, TextField, Textarea } from '@/components/ui'
 
 export default function UserProfileSink() {
     return (
@@ -21,10 +21,8 @@ export default function UserProfileSink() {
                 <div className='-mt-20 mx-auto mb-3 flex w-full flex-shrink-0 flex-col items-center'>
                     <Avatar src='https://github.com/dq-alhq.png' alt='DQ' className='!size-32' />
                     <div className='mt-2 flex flex-col items-center text-center'>
-                        <Heading level={3}>Diqi Al-Haqqi</Heading>
-                        <Heading level={4} className='text-muted-fg'>
-                            Developer
-                        </Heading>
+                        <h3 className='font-semibold text-lg'>Diqi Al-Haqqi</h3>
+                        <p className='text-muted-fg'>Developer</p>
                     </div>
                 </div>
                 <div className='rounded-lg border p-2'>

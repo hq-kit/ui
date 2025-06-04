@@ -54,7 +54,7 @@ export default function CardTableDemo() {
                     </Table.Body>
                 </Table>
             </Card.Content>
-            <Card.Footer className='justify-between gap-2'>
+            <Card.Footer className='flex-col justify-between gap-2 md:flex-row'>
                 <div className='text-muted-fg text-sm'>Showing 1 to 10 of 50 entries</div>
                 <Pagination>
                     <Pagination.Item slot='first' href='#first' />

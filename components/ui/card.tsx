@@ -7,7 +7,7 @@ const Card = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
         <div
             data-slot='card'
             className={cn(
-                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:[[slot=table]]:rounded-b-none **:[[slot=table]]:border-x-0',
+                'flex flex-col rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden not-has-[[slot=footer]]:**:[[slot=content]]:pb-6 **:[[slot=table]]:rounded-b-none **:[[slot=table]]:border-x-0',
                 className
             )}
             {...props}
@@ -24,7 +24,7 @@ const CardHeader = ({ className, title, description, children, ...props }: Heade
     <div
         slot='header'
         className={cn(
-            'grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 p-6 has-[[slot=action]]:grid-cols-[1fr_auto]',
+            'grid items-start gap-1.5 p-6 md:auto-rows-min md:grid-rows-[auto_auto] md:has-[[slot=action]]:grid-cols-[1fr_auto]',
             className
         )}
         {...props}
@@ -42,14 +42,17 @@ const CardTitle = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
 }
 
 const CardDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return <div slot='description' className={cn('row-start-2 text-muted-fg text-sm', className)} {...props} />
+    return <div slot='description' className={cn('text-muted-fg text-sm md:row-start-2', className)} {...props} />
 }
 
 const CardAction = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     return (
         <div
             slot='action'
-            className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
+            className={cn(
+                'flex items-center gap-2 self-start justify-self-end md:col-start-2 md:row-span-2 md:row-start-1',
+                className
+            )}
             {...props}
         />
     )
@@ -60,13 +63,7 @@ const CardContent = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
 }
 
 const CardFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return (
-        <div
-            slot='footer'
-            className={cn('flex flex-col-reverse items-center justify-end p-6 lg:flex-row', className)}
-            {...props}
-        />
-    )
+    return <div slot='footer' className={cn('flex items-center p-6', className)} {...props} />
 }
 
 Card.Content = CardContent
