@@ -2,18 +2,7 @@
 
 import { IconBrandCleon, IconBrandGithub, IconBrandGoogle, IconImage } from 'hq-icons'
 
-import {
-    Button,
-    Checkbox,
-    Description,
-    Form,
-    Heading,
-    Link,
-    Separator,
-    Skeleton,
-    TextField,
-    toast
-} from '@/components/ui'
+import { Button, Checkbox, Form, Header, Link, Separator, Skeleton, TextField, toast } from '@/components/ui'
 
 export default function Page() {
     return (
@@ -24,8 +13,7 @@ export default function Page() {
                         <Link href='#'>
                             <IconBrandCleon className='mb-2 size-10' />
                         </Link>
-                        <Heading level={1}>Register</Heading>
-                        <Description>Fill in the form below to create your account</Description>
+                        <Header title='Register' description='Fill in the form below to create your account' />
                     </div>
                     <Form
                         onSubmit={(e) => {

@@ -1,9 +1,9 @@
-import { DL, Heading } from '@/components/ui'
+import { DL, Header } from '@/components/ui'
 
 export default function DescriptionListHeadingDemo() {
     return (
         <div>
-            <Heading className='sm:text-lg'>PC Gaming</Heading>
+            <Header title='PC Gaming' description='PC Gaming' />
             <DL>
                 <DL.T>Processor</DL.T>
                 <DL.D>Intel Core i7-12700K</DL.D>

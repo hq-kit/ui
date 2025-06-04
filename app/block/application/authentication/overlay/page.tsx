@@ -8,9 +8,8 @@ import {
     Button,
     Card,
     Checkbox,
-    Description,
     Form,
-    Heading,
+    Header,
     Link,
     ModalContent,
     Separator,
@@ -37,8 +36,7 @@ export default function Page() {
                                 <Link href='#'>
                                     <IconBrandCleon className='mb-2 size-10' />
                                 </Link>
-                                <Heading level={1}>Register</Heading>
-                                <Description>Fill in the form below to create your account</Description>
+                                <Header title='Register' description='Fill in the form below to create your account' />
                             </div>
                             <Form
                                 onSubmit={(e) => {

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import type { Key } from 'react-aria-components'
 
-import { Avatar, Card, Container, Description, Heading, Tabs } from '@/components/ui'
+import { Avatar, Card, Container, Tabs } from '@/components/ui'
 import About from './about'
 import Media from './media'
 import Posts from './posts'
@@ -33,15 +33,11 @@ export default function UserProfile() {
                         className='-translate-x-1/2 lg:-bottom-4 absolute bottom-32 left-1/2 size-24 rounded-full border bg-bg p-1 lg:left-20 lg:size-44 lg:translate-x-0'
                     />
                     <div className='flex w-full flex-col gap-1 lg:ml-72'>
-                        <Heading className='text-center font-bold text-lg lg:text-left lg:text-4xl'>
-                            Diqi Al-Haqqi
-                        </Heading>
-                        <Description className='text-center text-sm uppercase lg:text-left lg:text-lg'>
-                            East Java, Indonesia
-                        </Description>
+                        <h3 className='text-center font-bold text-lg lg:text-left lg:text-4xl'>Diqi Al-Haqqi</h3>
+                        <p className='text-center text-sm uppercase lg:text-left lg:text-lg'>East Java, Indonesia</p>
                     </div>
-                    <Tabs className='mx-20 lg:ml-auto' selectedKey={panel} onSelectionChange={setPanel}>
-                        <Tabs.List>
+                    <Tabs selectedKey={panel} onSelectionChange={setPanel} className='lg:w-[400px]'>
+                        <Tabs.List className='w-full place-content-center'>
                             <Tabs.Label className='lg:text-xl' id={1}>
                                 Posts
                             </Tabs.Label>

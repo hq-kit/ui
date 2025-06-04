@@ -2,7 +2,7 @@
 
 import { IconCircleUser, IconCreditCard, IconHash, IconLock, IconMap } from 'hq-icons'
 
-import { Button, Card, DatePicker, Form, GridList, Heading, Note, TextField } from '@/components/ui'
+import { Button, Card, DatePicker, Form, GridList, Note, TextField } from '@/components/ui'
 
 export default function PlanBillingSetting() {
     return (
@@ -23,7 +23,7 @@ export default function PlanBillingSetting() {
                         <GridList.Item textValue='Deluxe'>Deluxe</GridList.Item>
                         <GridList.Item textValue='Ultimate'>Ultimate</GridList.Item>
                     </GridList>
-                    <Heading level={4}>Payment Details</Heading>
+                    <h4 className='font-semibold text-lg'>Payment Details</h4>
                     <TextField
                         autoFocus
                         prefix={<IconCircleUser />}
