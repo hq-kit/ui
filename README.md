@@ -2,7 +2,7 @@
 
 ![OG](https://raw.githubusercontent.com/hq-kit/ui/main/app/opengraph-image.png)
 
-Cleon-UI is a UI Components library, built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html), designed to make your project looks nice. Easy to use, just copy paste to your project, fully accessible and customizable. Feel free to make them yours.
+HQ-UI is a UI Components library, built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html), designed to make your project looks nice. Easy to use, just copy paste to your project, fully accessible and customizable. Feel free to make them yours.
 
 ## Documentation
 
