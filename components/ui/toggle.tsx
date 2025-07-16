@@ -100,7 +100,7 @@ const toggleStyles = tv({
     ],
     variants: {
         variant: {
-            solid: 'bg-bg/80 pressed:bg-primary/15 selected:bg-primary selected:text-primary-fg hover:bg-primary/10',
+            solid: 'bg-bg/80 pressed:bg-primary/15 selected:bg-primary selected:text-primary-fg shadow-xs hover:bg-primary/10',
             ghost: 'border-transparent bg-transparent pressed:bg-muted/50 text-fg hover:bg-muted/40',
             outline: 'bg-bg/80 pressed:bg-muted/50 selected:bg-muted selected:text-fg hover:bg-muted/40'
         },

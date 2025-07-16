@@ -11,16 +11,16 @@ const buttonStyle = tv({
     base: [
         'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium text-sm outline-hidden transition-[box-shadow,opacity,color]',
         '**:[svg]:pointer-events-none **:[svg]:shrink-0',
-        'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
+        'shadow-xs focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
         'cursor-pointer disabled:pointer-events-none disabled:opacity-50'
     ],
     variants: {
         variant: {
             primary: 'bg-primary pressed:bg-primary/95 text-primary-fg shadow-xs hover:bg-primary/90',
             danger: 'bg-danger text-white shadow-xs hover:bg-danger/90 focus-visible:ring-danger/25',
-            outline: 'border bg-bg pressed:bg-muted/50 text-fg shadow-xs hover:bg-muted/40',
+            outline: 'border bg-bg pressed:bg-muted/50 text-fg shadow-none shadow-xs hover:bg-muted/40',
             secondary: 'bg-secondary text-secondary-fg shadow-xs hover:bg-secondary/80',
-            ghost: 'pressed:bg-muted/50 hover:bg-muted/40'
+            ghost: 'pressed:bg-muted/50 shadow-none hover:bg-muted/40'
         },
         size: {
             xs: 'gap-x-1.5 px-2 text-xs [--height:theme(spacing.6)] [--width:auto] **:[svg]:size-3.5',

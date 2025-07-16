@@ -68,7 +68,7 @@ const SelectionBox = ({
                     {...props}
                     className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
                 >
-                    {composeRenderProps(children, (children, { isInvalid, isDisabled }) => (
+                    {composeRenderProps(children, (children) => (
                         <>
                             {label && <Label>{label}</Label>}
                             <div
@@ -114,7 +114,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
+                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-bg shadow-xs transition dark:bg-muted/40',
                         isSelected || isIndeterminate
                             ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
                             : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
@@ -145,7 +145,7 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full items-center rounded-sm border px-3 py-2 text-bg transition',
+                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-bg shadow-xs transition dark:bg-muted/40',
                         isSelected
                             ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
                             : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',

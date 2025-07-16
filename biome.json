@@ -28,7 +28,8 @@
                 "useExhaustiveDependencies": "off",
                 "useHookAtTopLevel": "error",
                 "noUnusedImports": "error",
-                "noChildrenProp": "off"
+                "noChildrenProp": "off",
+                "noUnknownFunction": "off"
             },
             "suspicious": {
                 "noExplicitAny": "off",

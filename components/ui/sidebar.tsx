@@ -196,7 +196,7 @@ const Sidebar = ({
                         className={cn(
                             'sticky top-0 left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
                             variant === 'float' && 'p-2',
-                            variant === 'inset' && 'bg-primary/5 p-2',
+                            variant === 'inset' && 'bg-popover p-2',
                             variant === 'default' && !collapsedHidden && 'border-r',
                             collapsedHidden && 'p-0'
                         )}
@@ -206,7 +206,7 @@ const Sidebar = ({
                             className={cn(
                                 'flex size-full min-h-svh flex-col text-fg',
                                 variant === 'inset' && 'min-h-[calc(100vh-1rem)]',
-                                variant === 'float' && 'min-h-[calc(100vh-1rem)] rounded-lg border bg-primary/5',
+                                variant === 'float' && 'min-h-[calc(100vh-1rem)] rounded-lg border bg-popover',
                                 className
                             )}
                         >
@@ -458,7 +458,7 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
     return (
         <div
             className={cn(
-                'relative flex h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-primary/5 md:p-2',
+                'relative flex h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-popover md:p-2',
                 'peer-data-[variant=default]:p-0 peer-data-[variant=default]:*:border-0',
                 'peer-data-[variant=float]:peer-data-[open=true]:pl-0',
                 'peer-data-[variant=inset]:peer-data-[open=true]:pl-0',

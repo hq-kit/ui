@@ -9,9 +9,9 @@ interface NoteProps extends ComponentPropsWithRef<'div'> {
 const Note = ({ variant = 'default', className, children, ...props }: NoteProps) => (
     <div
         className={cn(
-            'w-full overflow-hidden rounded-lg border p-4 backdrop-blur-2xl',
-            variant === 'default' && 'border-primary/30 bg-primary/10 text-primary',
-            variant === 'danger' && 'border-danger/30 bg-danger/10 text-danger',
+            'w-full overflow-hidden rounded-lg border bg-card p-4 text-sm backdrop-blur-2xl',
+            variant === 'default' && 'border-primary/30 text-primary',
+            variant === 'danger' && 'border-danger/30 text-danger',
             variant === 'outline' && 'border-muted text-fg',
             className
         )}

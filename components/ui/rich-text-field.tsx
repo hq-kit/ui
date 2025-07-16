@@ -129,7 +129,7 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base outline-none transition focus:outline-none sm:text-sm',
+                                            'min-h-32 w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-2 text-base shadow-xs outline-none transition focus:outline-none sm:text-sm dark:bg-muted/40',
                                             'focus:border-primary/70 focus:ring-4 focus:ring-ring',
                                             'invalid:border-danger invalid:ring-4 invalid:ring-invalid',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '

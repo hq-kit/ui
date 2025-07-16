@@ -64,27 +64,6 @@ export const docs: Docs[] = [
     "order": 2,
     "items": [
       {
-        "title": "buttons",
-        "order": 1,
-        "items": [
-          {
-            "title": "Button",
-            "url": "/docs/components/buttons/button",
-            "order": 1
-          },
-          {
-            "title": "File Trigger",
-            "url": "/docs/components/buttons/file-trigger",
-            "order": 2
-          },
-          {
-            "title": "Toggle",
-            "url": "/docs/components/buttons/toggle",
-            "order": 3
-          }
-        ]
-      },
-      {
         "title": "charts",
         "order": 1,
         "items": [
@@ -127,6 +106,63 @@ export const docs: Docs[] = [
             "title": "Scatter Chart",
             "url": "/docs/components/charts/scatter-chart",
             "order": 7
+          }
+        ]
+      },
+      {
+        "title": "buttons",
+        "order": 1,
+        "items": [
+          {
+            "title": "Button",
+            "url": "/docs/components/buttons/button",
+            "order": 1
+          },
+          {
+            "title": "File Trigger",
+            "url": "/docs/components/buttons/file-trigger",
+            "order": 2
+          },
+          {
+            "title": "Toggle",
+            "url": "/docs/components/buttons/toggle",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "collections",
+        "order": 3,
+        "items": [
+          {
+            "title": "Grid List",
+            "url": "/docs/components/collections/grid-list",
+            "order": 3
+          },
+          {
+            "title": "List Box",
+            "url": "/docs/components/collections/list-box",
+            "order": 3
+          },
+          {
+            "title": "Menu",
+            "url": "/docs/components/collections/menu",
+            "order": 1
+          },
+          {
+            "title": "Table",
+            "url": "/docs/components/collections/table",
+            "order": 4
+          },
+          {
+            "title": "Tag Group",
+            "url": "/docs/components/collections/tag-group",
+            "order": 7
+          },
+          {
+            "title": "Tree",
+            "url": "/docs/components/collections/tree",
+            "order": 8
           }
         ]
       },
@@ -203,78 +239,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "collections",
-        "order": 3,
-        "items": [
-          {
-            "title": "Grid List",
-            "url": "/docs/components/collections/grid-list",
-            "order": 3
-          },
-          {
-            "title": "List Box",
-            "url": "/docs/components/collections/list-box",
-            "order": 3
-          },
-          {
-            "title": "Menu",
-            "url": "/docs/components/collections/menu",
-            "order": 1
-          },
-          {
-            "title": "Table",
-            "url": "/docs/components/collections/table",
-            "order": 4
-          },
-          {
-            "title": "Tag Group",
-            "url": "/docs/components/collections/tag-group",
-            "order": 7
-          },
-          {
-            "title": "Tree",
-            "url": "/docs/components/collections/tree",
-            "order": 8
-          }
-        ]
-      },
-      {
-        "title": "date-and-time",
-        "order": 1,
-        "items": [
-          {
-            "title": "Calendar",
-            "url": "/docs/components/date-and-time/calendar",
-            "order": 1
-          },
-          {
-            "title": "Date Field",
-            "url": "/docs/components/date-and-time/date-field",
-            "order": 3
-          },
-          {
-            "title": "Date Picker",
-            "url": "/docs/components/date-and-time/date-picker",
-            "order": 4
-          },
-          {
-            "title": "Date Range Picker",
-            "url": "/docs/components/date-and-time/date-range-picker",
-            "order": 5
-          },
-          {
-            "title": "Range Calendar",
-            "url": "/docs/components/date-and-time/range-calendar",
-            "order": 3
-          },
-          {
-            "title": "Time Field",
-            "url": "/docs/components/date-and-time/time-field",
-            "order": 6
-          }
-        ]
-      },
-      {
         "title": "drag-and-drop",
         "order": 1,
         "items": [
@@ -282,48 +246,6 @@ export const docs: Docs[] = [
             "title": "Drop Zone",
             "url": "/docs/components/drag-and-drop/drop-zone",
             "order": 1
-          }
-        ]
-      },
-      {
-        "title": "layouts",
-        "order": 3,
-        "items": [
-          {
-            "title": "Container",
-            "url": "/docs/components/layouts/container",
-            "order": 3
-          },
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
-        "title": "media",
-        "order": 2,
-        "items": [
-          {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
-            "order": 2
-          },
-          {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
-            "order": 1
-          },
-          {
-            "title": "User",
-            "url": "/docs/components/media/user",
-            "order": 3
           }
         ]
       },
@@ -382,6 +304,84 @@ export const docs: Docs[] = [
             "title": "Textarea",
             "url": "/docs/components/forms/textarea",
             "order": 5
+          }
+        ]
+      },
+      {
+        "title": "date-and-time",
+        "order": 1,
+        "items": [
+          {
+            "title": "Calendar",
+            "url": "/docs/components/date-and-time/calendar",
+            "order": 1
+          },
+          {
+            "title": "Date Field",
+            "url": "/docs/components/date-and-time/date-field",
+            "order": 3
+          },
+          {
+            "title": "Date Picker",
+            "url": "/docs/components/date-and-time/date-picker",
+            "order": 4
+          },
+          {
+            "title": "Date Range Picker",
+            "url": "/docs/components/date-and-time/date-range-picker",
+            "order": 5
+          },
+          {
+            "title": "Range Calendar",
+            "url": "/docs/components/date-and-time/range-calendar",
+            "order": 3
+          },
+          {
+            "title": "Time Field",
+            "url": "/docs/components/date-and-time/time-field",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 3,
+        "items": [
+          {
+            "title": "Container",
+            "url": "/docs/components/layouts/container",
+            "order": 3
+          },
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
           }
         ]
       },
@@ -481,7 +481,7 @@ export const docs: Docs[] = [
           {
             "title": "Indicator",
             "url": "/docs/components/statuses/indicator",
-            "order": 7
+            "order": 8
           },
           {
             "title": "Meter",
@@ -502,6 +502,11 @@ export const docs: Docs[] = [
             "title": "Skeleton",
             "url": "/docs/components/statuses/skeleton",
             "order": 5
+          },
+          {
+            "title": "Sonner",
+            "url": "/docs/components/statuses/sonner",
+            "order": 7
           },
           {
             "title": "Toast",

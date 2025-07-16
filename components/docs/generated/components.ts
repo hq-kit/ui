@@ -61,6 +61,7 @@ export const components: Component[] = [
     {"section":"layouts","name":"sidebar","children":[{"name":"sheet"},{"name":"tooltip"}]},
     {"section":"statuses","name":"skeleton"},
     {"section":"controls","name":"slider","children":[{"name":"form"}]},
+    {"section":"statuses","name":"sonner","deps":["next-themes","sonner"]},
     {"section":"surfaces","name":"spoiler","children":[{"name":"button"}]},
     {"section":"controls","name":"switch","children":[{"name":"form"}]},
     {"section":"collections","name":"table","children":[{"name":"checkbox"}]},

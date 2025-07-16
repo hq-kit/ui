@@ -1,219 +1,51 @@
 export const blocks = [
   {
-    "slug": "application/sidebar/dock-float",
+    "slug": "marketing/management/file-manager",
     "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/fixed",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/basic",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/dock-inset",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/float",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/inset",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/sidebar/dock",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "link.tsx",
-      "skeleton.tsx"
-    ],
-    "components": [
-      "app-sidebar.tsx",
-      "app-sidebar-nav.tsx"
-    ]
-  },
-  {
-    "slug": "application/dashboard/simple",
-    "uiComponents": [
-      "menu.tsx",
-      "sidebar.tsx",
-      "user.tsx",
-      "card.tsx",
-      "chart.tsx",
-      "select.tsx",
-      "avatar.tsx",
       "breadcrumbs.tsx",
+      "button.tsx",
+      "grid-list.tsx",
+      "search-field.tsx",
+      "toggle.tsx",
       "link.tsx",
-      "table.tsx",
-      "badge.tsx"
+      "sidebar.tsx"
     ],
     "components": [
-      "app-sidebar.tsx",
-      "chart-area.tsx",
-      "app-sidebar-nav.tsx",
-      "data-table.tsx",
-      "data.json",
-      "stats.tsx"
+      "file-list.tsx",
+      "file-sidebar.tsx"
     ]
   },
   {
-    "slug": "application/dashboard/user-setting",
+    "slug": "application/social/chat",
     "uiComponents": [
-      "button.tsx",
-      "card.tsx",
-      "form.tsx",
-      "modal.tsx",
-      "note.tsx",
-      "text-field.tsx",
       "avatar.tsx",
-      "drop-zone.tsx",
-      "file-trigger.tsx",
-      "textarea.tsx",
-      "date-picker.tsx",
-      "grid-list.tsx",
-      "switch.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "popover.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "form.tsx"
+    ],
+    "components": [
+      "bubble-chat.tsx",
+      "chat-sidebar.tsx",
+      "message-form.tsx",
+      "contact-list.tsx"
+    ]
+  },
+  {
+    "slug": "application/social/user-profile",
+    "uiComponents": [
+      "card.tsx",
+      "avatar.tsx",
       "container.tsx",
       "tabs.tsx"
     ],
     "components": [
-      "danger-area.tsx",
-      "account-setting.tsx",
-      "plan-billing-setting.tsx",
-      "security-setting.tsx"
+      "posts.tsx",
+      "about.tsx",
+      "media.tsx"
     ]
-  },
-  {
-    "slug": "application/navbar/basic",
-    "uiComponents": [
-      "avatar.tsx",
-      "breadcrumbs.tsx",
-      "button.tsx",
-      "menu.tsx",
-      "navbar.tsx",
-      "separator.tsx",
-      "skeleton.tsx"
-    ],
-    "components": []
-  },
-  {
-    "slug": "application/navbar/float",
-    "uiComponents": [
-      "avatar.tsx",
-      "breadcrumbs.tsx",
-      "button.tsx",
-      "menu.tsx",
-      "navbar.tsx",
-      "separator.tsx",
-      "skeleton.tsx"
-    ],
-    "components": []
-  },
-  {
-    "slug": "application/navbar/inset",
-    "uiComponents": [
-      "avatar.tsx",
-      "breadcrumbs.tsx",
-      "button.tsx",
-      "menu.tsx",
-      "navbar.tsx",
-      "separator.tsx",
-      "skeleton.tsx"
-    ],
-    "components": []
-  },
-  {
-    "slug": "application/authentication/card",
-    "uiComponents": [
-      "button.tsx",
-      "card.tsx",
-      "checkbox.tsx",
-      "form.tsx",
-      "separator.tsx",
-      "text-field.tsx",
-      "toast.tsx"
-    ],
-    "components": []
-  },
-  {
-    "slug": "application/authentication/split-card",
-    "uiComponents": [
-      "button.tsx",
-      "card.tsx",
-      "checkbox.tsx",
-      "form.tsx",
-      "header.tsx",
-      "link.tsx",
-      "separator.tsx",
-      "skeleton.tsx",
-      "text-field.tsx",
-      "toast.tsx"
-    ],
-    "components": []
   },
   {
     "slug": "application/authentication/overlay",
@@ -248,67 +80,235 @@ export const blocks = [
     "components": []
   },
   {
-    "slug": "application/social/chat",
+    "slug": "application/authentication/split-card",
     "uiComponents": [
       "button.tsx",
+      "card.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "header.tsx",
+      "link.tsx",
+      "separator.tsx",
+      "skeleton.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/authentication/card",
+    "uiComponents": [
+      "button.tsx",
+      "card.tsx",
+      "checkbox.tsx",
+      "form.tsx",
+      "separator.tsx",
+      "text-field.tsx",
+      "toast.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/sidebar/dock-inset",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/float",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/fixed",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/basic",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/dock-float",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/inset",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/sidebar/dock",
+    "uiComponents": [
+      "skeleton.tsx",
+      "menu.tsx",
+      "sidebar.tsx",
+      "user.tsx",
+      "link.tsx"
+    ],
+    "components": [
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx"
+    ]
+  },
+  {
+    "slug": "application/navbar/float",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/navbar/basic",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/navbar/inset",
+    "uiComponents": [
+      "skeleton.tsx",
+      "avatar.tsx",
+      "breadcrumbs.tsx",
+      "button.tsx",
+      "menu.tsx",
+      "navbar.tsx",
+      "separator.tsx"
+    ],
+    "components": []
+  },
+  {
+    "slug": "application/dashboard/simple",
+    "uiComponents": [
+      "badge.tsx",
+      "card.tsx",
+      "chart.tsx",
+      "select.tsx",
+      "table.tsx",
       "menu.tsx",
       "sidebar.tsx",
       "user.tsx",
       "avatar.tsx",
-      "popover.tsx",
-      "form.tsx"
+      "breadcrumbs.tsx",
+      "link.tsx"
     ],
     "components": [
-      "bubble-chat.tsx",
-      "chat-sidebar.tsx",
-      "message-form.tsx",
-      "contact-list.tsx"
+      "stats.tsx",
+      "chart-area.tsx",
+      "data-table.tsx",
+      "app-sidebar.tsx",
+      "app-sidebar-nav.tsx",
+      "data.json"
     ]
   },
   {
-    "slug": "application/social/user-profile",
+    "slug": "application/dashboard/user-setting",
     "uiComponents": [
       "card.tsx",
-      "avatar.tsx",
       "container.tsx",
-      "tabs.tsx"
+      "tabs.tsx",
+      "button.tsx",
+      "date-picker.tsx",
+      "form.tsx",
+      "grid-list.tsx",
+      "note.tsx",
+      "text-field.tsx",
+      "modal.tsx",
+      "switch.tsx",
+      "avatar.tsx",
+      "drop-zone.tsx",
+      "file-trigger.tsx",
+      "textarea.tsx"
     ],
     "components": [
-      "posts.tsx",
-      "about.tsx",
-      "media.tsx"
+      "plan-billing-setting.tsx",
+      "danger-area.tsx",
+      "security-setting.tsx",
+      "account-setting.tsx"
     ]
   },
   {
     "slug": "ecommerce/tables/product",
     "uiComponents": [
-      "pagination.tsx",
       "card.tsx",
       "container.tsx",
       "menu.tsx",
       "search-field.tsx",
       "select.tsx",
       "table.tsx",
-      "toolbar.tsx"
+      "toolbar.tsx",
+      "pagination.tsx"
     ],
     "components": [
       "paginator.tsx"
-    ]
-  },
-  {
-    "slug": "marketing/management/file-manager",
-    "uiComponents": [
-      "breadcrumbs.tsx",
-      "button.tsx",
-      "grid-list.tsx",
-      "search-field.tsx",
-      "toggle.tsx",
-      "link.tsx",
-      "sidebar.tsx"
-    ],
-    "components": [
-      "file-list.tsx",
-      "file-sidebar.tsx"
     ]
   }
 ]

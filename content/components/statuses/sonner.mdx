@@ -1,0 +1,41 @@
+---
+title: Sonner
+description: A non-intrusive, auto-dismissable notification component used to display brief status updates, alerts, or confirmation messages.
+references: ['https://sonner.emilkowal.ski/toast']
+order: 7
+published: true
+---
+
+## Installation
+<Install component='sonner' />
+
+First, in your root app component or layout, import the Toast component.
+```tsx
+import { Toast } from '@/components/ui'
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <>
+            <Toast />
+            {children}
+        <>
+    )
+}
+```
+
+## Basic
+Use the `toast()` function to show a toast.
+<Demo center component='statuses/sonner/sonner-demo' />
+
+## Description
+<Demo center component='statuses/sonner/sonner-description-demo' />
+
+## Status
+<Demo center component='statuses/sonner/sonner-status-demo' />
+
+## Action
+<Demo center component='statuses/sonner/sonner-action-demo' />
+
+## Manually Close
+Just pass the `timeout: 0` option.
+<Demo center component='statuses/sonner/sonner-manual-demo' />

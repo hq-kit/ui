@@ -25,7 +25,7 @@ import { tv } from 'tailwind-variants'
 
 const fieldGroupStyle = tv({
     base: [
-        'flex h-9 items-center rounded-md border transition',
+        'flex h-9 items-center rounded-md border bg-transparent shadow-xs transition dark:bg-muted/40',
         'hover:border-primary/70 group-invalid/field:hover:border-danger/70!',
         'focus-within:border-primary focus-within:ring-4 focus-within:ring-ring',
         'group-open/field:border-primary group-open/field:ring-4 group-open/field:ring-ring',
@@ -42,7 +42,7 @@ const fieldGroupStyle = tv({
 const labelStyle = tv({
     base: [
         'w-fit cursor-default font-medium text-fg text-sm leading-none transition-colors',
-        'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary',
+        'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary group-has-pressed/field:text-primary',
         'group-invalid/field:text-danger! group-disabled/field:text-muted-fg! group-has-invalid/field:text-danger!',
         'group-disabled/field:text-muted-fg group-has-disabled/field:text-muted-fg'
     ]

@@ -60,7 +60,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                 <>
                     <div
                         className={cn(
-                            'size-4 shrink-0 rounded-full border bg-bg transition',
+                            'size-4 shrink-0 rounded-full border bg-transparent shadow-xs transition dark:bg-muted/40',
                             'group-hover/box:border-primary/70',
                             'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-danger',
                             'group-focus-visible/box:border-primary group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring group-focus-visible/box:group-has-invalid/box:border-danger',

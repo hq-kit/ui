@@ -73,13 +73,13 @@ const ToastProvider = () => {
                             onMouseLeave={() => setIsHovered(false)}
                             key={toast.key}
                             className={cn('flex flex-col gap-2 rounded-lg border p-4', {
-                                'border-green-500/20 bg-[#ecfdf3] text-[#008a2e] **:data-loader:stroke-green-500 dark:bg-[#001f0f] dark:text-[#59f39d]':
+                                'border-success-border bg-success-bg text-success-fg **:data-loader:stroke-success-fg':
                                     toast.content.type === 'success',
-                                'border-rose-500/20 bg-[#fff0f0] text-[#e60000] **:data-loader:stroke-rose-500 dark:bg-[#2d0607] dark:text-[#ff9ea1] ':
+                                'border-error-border bg-error-bg text-error-fg **:data-loader:stroke-error-fg':
                                     toast.content.type === 'error',
-                                'border-blue-500/30 bg-[#f0f8ff] text-[#0973dc] **:data-loader:stroke-blue-500 dark:bg-[#000d1f] dark:text-[#5896f3]':
+                                'border-info-border bg-info-bg text-info-fg **:data-loader:stroke-info-fg':
                                     toast.content.type === 'info',
-                                'border-amber-500/40 bg-[#fffcf0] text-[#dc7609] **:data-loader:stroke-amber-500 dark:bg-[#1d1f00] dark:text-[#f3cf58]':
+                                'border-warning-border bg-warning-bg text-warning-fg **:data-loader:stroke-warning-fg':
                                     toast.content.type === 'warning',
                                 'bg-bg text-fg': toast.content.type === 'default'
                             })}

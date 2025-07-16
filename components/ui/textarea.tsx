@@ -31,7 +31,7 @@ const Textarea = ({ className, placeholder, label, description, errorMessage, re
                 placeholder={placeholder}
                 className={cn(
                     fieldGroupStyle(),
-                    'h-auto min-h-14 w-full min-w-0 rounded-lg border bg-transparent p-2 text-base outline-hidden transition duration-200 sm:text-sm',
+                    'h-auto min-h-14 w-full min-w-0 rounded-lg border bg-transparent p-2 text-base shadow-xs outline-hidden transition duration-200 sm:text-sm dark:bg-muted/40',
                     props.autoSize && 'field-sizing-content resize-none'
                 )}
             />

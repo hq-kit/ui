@@ -4,6 +4,7 @@ import type { FC, SVGProps } from 'react'
 import { Menu, MenuItem } from 'react-aria-components'
 
 import {
+    IconBell,
     IconBrandAdobe,
     IconBrandAstro,
     IconBrandCleon,
@@ -137,6 +138,10 @@ export function DocRefs({ references }: { references: string[] }) {
             case url.includes('lexical'):
                 title = 'Lexical'
                 icon = IconTextCursorInput
+                break
+            case url.includes('sonner'):
+                title = 'Sonner'
+                icon = IconBell
                 break
             default:
                 icon = () => null

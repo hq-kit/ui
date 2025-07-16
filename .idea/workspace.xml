@@ -5,10 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/docs/statuses/sonner/sonner-action-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/statuses/sonner/sonner-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/statuses/sonner/sonner-description-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/statuses/sonner/sonner-manual-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/docs/statuses/sonner/sonner-status-demo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/sonner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/components/statuses/sonner.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/blocks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/blocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/blocks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/components.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/docs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/list-blocks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/list-blocks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/docs/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/docs/generated/previews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/references.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/references.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/calendar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/note.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/note.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/otp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/otp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/radio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/radio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/rich-text-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/rich-text-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/selection-box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/selection-box.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/textarea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tooltip.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/statuses/indicator.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/statuses/indicator.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/components/statuses/toast.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/components/statuses/toast.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,29 +78,30 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dq/HQ/ui/components/docs/surfaces/code&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dq/HQ/ui/components/docs/statuses&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/dq/HQ/ui/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/docs/statuses" />
+      <recent name="$PROJECT_DIR$/content/components/statuses" />
       <recent name="$PROJECT_DIR$/components/docs/surfaces/code" />
       <recent name="$PROJECT_DIR$/components/docs/navigation/tabs" />
       <recent name="$PROJECT_DIR$/app/block/application/social/user-profile" />
-      <recent name="$PROJECT_DIR$/app/block/sidebar" />
-      <recent name="$PROJECT_DIR$/app/block/navbar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/block/marketing/management/file-manager" />
@@ -89,7 +129,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
       </set>
     </attachedChunks>
   </component>
@@ -151,6 +191,9 @@
       <workItem from="1747283204823" duration="36615000" />
       <workItem from="1747469326703" duration="24800000" />
       <workItem from="1747506760483" duration="1001000" />
+      <workItem from="1752634294239" duration="40000" />
+      <workItem from="1752634340741" duration="7089000" />
+      <workItem from="1752649220915" duration="617000" />
     </task>
     <servers />
   </component>

@@ -67,7 +67,7 @@ const modalStyle = tv({
 
 const popoverStyle = tv({
     base: [
-        'group max-w-xs rounded-lg bg-bg bg-clip-padding text-fg shadow-xs ring-1 ring-border transition-transform sm:max-w-3xl sm:text-sm',
+        'group max-w-xs rounded-lg bg-popover bg-clip-padding text-popover-fg shadow-xs ring-1 ring-border transition-transform sm:max-w-3xl sm:text-sm',
         'entering:fade-in entering:zoom-in-95 entering:animate-in entering:duration-150',
         'exiting:fade-out exiting:zoom-out-95 exiting:animate-out exiting:duration-100',
         'entering:placement-left:slide-in-from-right-2 entering:placement-right:slide-in-from-left-2 entering:placement-top:slide-in-from-bottom-2 entering:placement-bottom:slide-in-from-top-2',
