@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconChevronDown, IconMenu } from 'hq-icons'
 import { type ReactNode, type Ref, createContext, useContext } from 'react'
 import type {
@@ -25,8 +26,6 @@ import {
     composeRenderProps,
     useTableOptions
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Checkbox } from './checkbox'
 
 interface TableProps extends RACTableProps {

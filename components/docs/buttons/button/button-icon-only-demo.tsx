@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBrandNextjs } from 'hq-icons'
-
 import { Button } from '@/components/ui'
+import { IconBrandNextjs } from 'hq-icons'
 
 export default function ButtonIconOnlyDemo() {
     return (

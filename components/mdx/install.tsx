@@ -1,10 +1,9 @@
 'use client'
-import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
-
 import { components } from '@/components/docs/generated/components'
 import previews from '@/components/docs/generated/previews.json'
 import { Description, Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { CLI } from './cli'
 import { Code } from './code'
 

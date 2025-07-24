@@ -1,12 +1,11 @@
 'use client'
 
-import { Fragment } from 'react'
+import { docs } from '@/components/docs/generated/docs'
 
 import { Navbar } from '@/components/ui'
-
-import { docs } from '@/components/docs/generated/docs'
 import { useIsMobile } from '@/lib/hooks'
 import { titleCase } from '@/lib/utils/modifiers'
+import { Fragment } from 'react'
 
 export function MobileNav({ currentUrl }: { currentUrl: string }) {
     const isMobile = useIsMobile()

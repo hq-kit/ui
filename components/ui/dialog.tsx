@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconX } from 'hq-icons'
 import type { ComponentPropsWithRef } from 'react'
 import {
@@ -14,8 +15,6 @@ import {
     type TextProps,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { tv } from 'tailwind-variants'
 
 const overlayStyle = tv({

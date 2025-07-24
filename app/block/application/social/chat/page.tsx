@@ -1,6 +1,6 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
+import { Avatar, Button, Menu, Popover } from '@/components/ui'
 
 import {
     IconCircleX,
@@ -13,13 +13,12 @@ import {
     IconTrash,
     IconUser
 } from 'hq-icons'
+import { type FormEvent, useState } from 'react'
 import { useDateFormatter } from 'react-aria'
 
 import BubbleChat, { type BubbleChatProps } from './bubble-chat'
 import ContactList from './contact-list'
 import MessageForm from './message-form'
-
-import { Avatar, Button, Menu, Popover } from '@/components/ui'
 
 export default function ChatApp() {
     const [chats, setChats] = useState<BubbleChatProps[]>([
@@ -66,7 +65,7 @@ export default function ChatApp() {
     return (
         <main className='grid h-dvh flex-1 gap-3 overflow-auto md:grid-cols-2 md:p-2 lg:grid-cols-4'>
             <div className='relative hidden flex-col items-start gap-4 rounded-lg border md:flex'>
-                <div className='sticky top-0 z-20 flex w-full items-center justify-between rounded-lg bg-bg p-4'>
+                <div className='sticky top-0 z-20 flex w-full items-center justify-between rounded-lg bg-background p-4'>
                     <h1 className='font-bold text-2xl'>Chats</h1>
                     <div className='flex items-center justify-between gap-2'>
                         <Button variant='ghost' icon>
@@ -81,7 +80,7 @@ export default function ChatApp() {
                                     <IconMessagePlus />
                                     New Group
                                 </Menu.Item>
-                                <Menu.Item isDanger>
+                                <Menu.Item isDestructive>
                                     <IconLogOut />
                                     Logout
                                 </Menu.Item>
@@ -93,7 +92,7 @@ export default function ChatApp() {
                     <ContactList />
                 </div>
             </div>
-            <div className='relative flex h-full min-h-[50vh] flex-col rounded-lg bg-bg lg:col-span-3'>
+            <div className='relative flex h-full min-h-[50vh] flex-col rounded-lg bg-background lg:col-span-3'>
                 <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
                     <Popover>
                         <Button variant='ghost' icon className='md:hidden'>
@@ -108,7 +107,7 @@ export default function ChatApp() {
                     <Avatar alt='Hebert' src='https://i.pravatar.cc/77' />
                     <div className='grid'>
                         <span className='text-sm'>Hebert</span>
-                        <small className='text-muted-fg text-xs'>Online</small>
+                        <small className='text-muted-foreground text-xs'>Online</small>
                     </div>
                     <Menu>
                         <Button className='ml-auto' variant='ghost'>
@@ -123,14 +122,14 @@ export default function ChatApp() {
                                 <IconTrash />
                                 Clear Chat
                             </Menu.Item>
-                            <Menu.Item isDanger>
+                            <Menu.Item isDestructive>
                                 <IconCircleX />
                                 Block
                             </Menu.Item>
                         </Menu.Content>
                     </Menu>
                 </div>
-                <div className='flex-1 flex-col space-y-2 overflow-x-hidden overflow-y-scroll p-4 text-muted-fg'>
+                <div className='flex-1 flex-col space-y-2 overflow-x-hidden overflow-y-scroll p-4 text-muted-foreground'>
                     {chats.length > 0 ? (
                         chats?.map((chat: BubbleChatProps, i: number) => (
                             <BubbleChat key={i} {...chat} onDelete={() => deleteChat(i)} />

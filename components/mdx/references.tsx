@@ -1,7 +1,6 @@
 'use client'
 
-import type { FC, SVGProps } from 'react'
-import { Menu, MenuItem } from 'react-aria-components'
+import { buttonStyle } from '@/components/ui'
 
 import {
     IconBell,
@@ -21,8 +20,8 @@ import {
     IconCommand,
     IconTextCursorInput
 } from 'hq-icons'
-
-import { buttonStyle } from '@/components/ui'
+import type { FC, SVGProps } from 'react'
+import { Menu, MenuItem } from 'react-aria-components'
 
 function extractAndFormat(url: string): string {
     const match = url.match(/\/([^/]+)\.html/)

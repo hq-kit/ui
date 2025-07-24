@@ -1,9 +1,8 @@
 'use client'
 
+import { GridList, Select } from '@/components/ui'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
-
-import { GridList, Select } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

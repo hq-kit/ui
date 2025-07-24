@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Card, Description, Slider } from '@/components/ui'
+import { useState } from 'react'
 
 export default function SliderOrientationDemo() {
     const [equalizer, setEqualizer] = useState({

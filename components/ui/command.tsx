@@ -1,12 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { cn, fuzzyMatch } from '@/lib/utils'
 
 import { IconLoader, IconSearch } from 'hq-icons'
+import { useEffect, useState } from 'react'
 import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
 import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'
-
-import { cn, fuzzyMatch } from '@/lib/utils'
 import { Keyboard } from './keyboard'
 import { MenuItem, MenuLabel, MenuSection, MenuSeparator } from './menu'
 import { ModalContent } from './modal'

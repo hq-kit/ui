@@ -2,9 +2,9 @@
 
 import ChartAreaInteractive from './chart-area'
 import DataTable from './data-table'
-import Stats from './stats'
 
 import data from './data.json'
+import Stats from './stats'
 
 export default function Dashboard() {
     return (

@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import { Slider } from '@/components/ui'
+import React from 'react'
 
 export default function SliderControlledDemo() {
     const [temperature, setTemperature] = React.useState<number>(31)

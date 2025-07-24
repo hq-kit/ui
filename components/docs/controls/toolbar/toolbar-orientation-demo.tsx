@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu, Toggle, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustify,
@@ -15,8 +16,6 @@ import {
     IconPencilRuler,
     IconPointer
 } from 'hq-icons'
-
-import { Menu, Toggle, Toolbar } from '@/components/ui'
 
 export default function ToolbarOrientationDemo() {
     return (

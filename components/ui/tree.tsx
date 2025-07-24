@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconChevronRight } from 'hq-icons'
 import type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'
 import {
@@ -9,8 +10,6 @@ import {
     TreeItemContent,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 
 const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
     return (

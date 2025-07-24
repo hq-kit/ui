@@ -1,10 +1,9 @@
 'use client'
 
+import { ColorArea, Select } from '@/components/ui'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 import type { ColorChannel } from 'react-stately'
-
-import { ColorArea, Select } from '@/components/ui'
 
 const channels = ['red', 'green', 'blue', 'alpha'].map((channel) => ({ channel }))
 

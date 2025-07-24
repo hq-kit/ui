@@ -1,10 +1,10 @@
-import { type HTMLAttributes, useId } from 'react'
-
 import { cn } from '@/lib/utils'
+import { type HTMLAttributes, useId } from 'react'
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
     shape?: 'square' | 'circle'
 }
+
 const Skeleton = ({ shape, className, ...props }: SkeletonProps) => {
     const patternId = useId()
     return (

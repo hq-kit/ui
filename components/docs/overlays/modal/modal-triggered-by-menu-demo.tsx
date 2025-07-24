@@ -1,11 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { Button, Menu, Modal } from '@/components/ui'
 
 import { IconBan, IconRotateCcw, IconTrash } from 'hq-icons'
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
-
-import { Button, Menu, Modal } from '@/components/ui'
 
 export default function ModalMenuDemo() {
     const [state, setState] = useState<Key>('')

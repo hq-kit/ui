@@ -1,11 +1,10 @@
 'use client'
 
+import { Card, Chart, type ChartConfig, Select } from '@/components/ui'
 import { useMemo, useState } from 'react'
 
 import type { Key } from 'react-aria-components'
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
-
-import { Card, Chart, type ChartConfig, Select } from '@/components/ui'
 
 const chartData = Array.from({ length: 50 }, (_, index) => {
     const date = new Date(2024, 0, 1 + index)

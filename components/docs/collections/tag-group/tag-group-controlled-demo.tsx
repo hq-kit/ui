@@ -1,9 +1,8 @@
 'use client'
 
+import { Tag } from '@/components/ui'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
-
-import { Tag } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

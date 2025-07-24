@@ -1,8 +1,10 @@
 'use client'
 
-import type { Ref } from 'react'
+import { useIsMobile } from '@/lib/hooks'
+import { cn } from '@/lib/utils'
 
 import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
+import type { Ref } from 'react'
 import {
     Button,
     type ButtonProps,
@@ -11,9 +13,6 @@ import {
     type NumberFieldProps as RACNumberFieldProps,
     composeRenderProps
 } from 'react-aria-components'
-
-import { useIsMobile } from '@/lib/hooks'
-import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface NumberFieldProps extends RACNumberFieldProps, FieldProps {

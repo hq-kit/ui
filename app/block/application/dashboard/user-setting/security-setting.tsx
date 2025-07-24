@@ -1,8 +1,7 @@
 'use client'
 
-import { IconKey } from 'hq-icons'
-
 import { Button, Card, Form, Switch, TextField } from '@/components/ui'
+import { IconKey } from 'hq-icons'
 
 export default function SecuritySetting() {
     return (
@@ -38,7 +37,7 @@ export default function SecuritySetting() {
                         name='new_password_confirm'
                         isRequired
                     />
-                    <div className='text-muted-fg'>Account Preferences</div>
+                    <div className='text-muted-foreground'>Account Preferences</div>
                     <Switch>Enable 2FA</Switch>
                     <Switch>Auto Logout</Switch>
                 </Card.Content>

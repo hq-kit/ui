@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBlocks, IconBookCopy, IconPalette, IconShapes, IconSwatchBook } from 'hq-icons'
-
 import { Tabs } from '@/components/ui'
+import { IconBlocks, IconBookCopy, IconPalette, IconShapes, IconSwatchBook } from 'hq-icons'
 
 const items = [
     { url: '/', label: 'Home' },

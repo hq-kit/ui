@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import type { FormEvent } from 'react'
-
 import { Button, DateRangePicker, Form } from '@/components/ui'
 import { getLocalTimeZone, today } from '@internationalized/date'
+import type { FormEvent } from 'react'
+import { useState } from 'react'
 
 export default function DateRangePickerCustomValidationDemo() {
     const now = today(getLocalTimeZone())

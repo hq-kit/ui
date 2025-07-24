@@ -1,8 +1,7 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, Form, Textarea } from '@/components/ui'
+import { type FormEvent, useState } from 'react'
 
 export default function TextareaValidationDemo() {
     const [value, setValue] = useState('')

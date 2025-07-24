@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import { Progress } from '@/components/ui'
+import { useEffect, useState } from 'react'
 
 export default function ProgressVariantDemo() {
     const [value, setValue] = useState(0)

@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { type HTMLAttributes, type Ref, use } from 'react'
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
 import {
@@ -10,8 +11,6 @@ import {
     SliderStateContext,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface SliderProps extends RACSliderProps, FieldProps {

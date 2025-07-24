@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu } from '@/components/ui'
 import {
     IconBrandArch,
     IconBrandDebian,
@@ -8,8 +9,6 @@ import {
     IconBrandRedhat,
     IconBrandUbuntu
 } from 'hq-icons'
-
-import { Menu } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Debian', icon: IconBrandDebian },

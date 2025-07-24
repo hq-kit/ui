@@ -1,11 +1,10 @@
 'use client'
 
+import { Toast, ToastProvider } from '@/components/ui'
 import { ThemeProvider, useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { RouterProvider } from 'react-aria-components'
-
-import { Toast, ToastProvider } from '@/components/ui'
 
 declare module 'react-aria-components' {
     interface RouterConfig {

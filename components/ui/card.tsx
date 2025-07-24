@@ -1,6 +1,5 @@
-import type { ComponentPropsWithRef } from 'react'
-
 import { cn } from '@/lib/utils'
+import type { ComponentPropsWithRef } from 'react'
 
 const Card = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     return (

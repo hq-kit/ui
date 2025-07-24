@@ -1,8 +1,7 @@
 'use client'
 
-import type { PopoverProps } from 'react-aria-components'
-
 import { Button, Popover } from '@/components/ui'
+import type { PopoverProps } from 'react-aria-components'
 
 const placements: PopoverProps['placement'][] = [
     'left top',

@@ -1,9 +1,8 @@
 'use client'
 
+import { ListBox } from '@/components/ui'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
-
-import { ListBox } from '@/components/ui'
 
 const items = [
     {

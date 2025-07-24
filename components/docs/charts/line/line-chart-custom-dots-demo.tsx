@@ -1,9 +1,8 @@
 'use client'
 
+import { Card, Chart, type ChartConfig } from '@/components/ui'
 import { IconBadgeDollar } from 'hq-icons'
 import { CartesianGrid, Line, LineChart, XAxis } from 'recharts'
-
-import { Card, Chart, type ChartConfig } from '@/components/ui'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 

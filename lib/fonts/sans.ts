@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import {
     Barlow,
     DM_Sans,
@@ -25,8 +26,6 @@ import {
     Space_Grotesk,
     Ubuntu_Sans
 } from 'next/font/google'
-
-import { cn } from '@/lib/utils'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })

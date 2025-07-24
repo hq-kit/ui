@@ -1,6 +1,5 @@
-import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandRedhat, IconBrandUbuntu } from 'hq-icons'
-
 import { Select } from '@/components/ui'
+import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandRedhat, IconBrandUbuntu } from 'hq-icons'
 
 export default function SelectWithIconDemo() {
     return (

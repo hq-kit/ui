@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { Ref } from 'react'
 import { ProgressBar, type ProgressBarProps, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Label } from './form'
 
 interface ProgressProps extends ProgressBarProps {

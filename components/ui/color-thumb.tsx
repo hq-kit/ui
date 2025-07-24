@@ -1,8 +1,7 @@
 'use client'
 
-import { type ColorThumbProps, ColorThumb as RACColorThumb, composeRenderProps } from 'react-aria-components'
-
 import { cn } from '@/lib/utils'
+import { type ColorThumbProps, ColorThumb as RACColorThumb, composeRenderProps } from 'react-aria-components'
 
 const ColorThumb = ({ className, ...props }: ColorThumbProps) => {
     return (

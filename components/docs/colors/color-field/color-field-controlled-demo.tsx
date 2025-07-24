@@ -1,9 +1,8 @@
 'use client'
 
+import { ColorField } from '@/components/ui'
 import { useState } from 'react'
 import { type Color, parseColor } from 'react-aria-components'
-
-import { ColorField } from '@/components/ui'
 
 export default function ColorFieldControlledDemo() {
     const [color, setColor] = useState<Color | null>(parseColor('#FAFAFA'))

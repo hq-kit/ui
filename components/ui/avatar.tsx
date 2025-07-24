@@ -1,12 +1,11 @@
 'use client'
 
-import { type ComponentProps, useEffect, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 import { Collection, type CollectionProps } from '@react-aria/collections'
 import { IconUser } from 'hq-icons'
+import { type ComponentProps, useEffect, useState } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
-
-import { cn } from '@/lib/utils'
 
 interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string

@@ -1,8 +1,7 @@
 'use client'
 
-import { IconHeading, IconParagraph } from 'hq-icons'
-
 import { Toggle } from '@/components/ui'
+import { IconHeading, IconParagraph } from 'hq-icons'
 
 export default function ToggleGroupDemo() {
     return (

@@ -1,7 +1,36 @@
 'use client'
 
 import { Toggle } from '@/components/ui/toggle'
+
+import { cn } from '@/lib/utils'
 import { CodeHighlightNode, CodeNode } from '@lexical/code'
+
+import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
+import { AutoLinkNode, LinkNode } from '@lexical/link'
+import {
+    $isListNode,
+    INSERT_ORDERED_LIST_COMMAND,
+    INSERT_UNORDERED_LIST_COMMAND,
+    ListItemNode,
+    ListNode,
+    REMOVE_LIST_COMMAND
+} from '@lexical/list'
+import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown'
+import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer'
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
+import { ContentEditable } from '@lexical/react/LexicalContentEditable'
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
+import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin'
+import { ListPlugin } from '@lexical/react/LexicalListPlugin'
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin'
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
+import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin'
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
+import type { HeadingTagType } from '@lexical/rich-text'
+import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingNode, QuoteNode } from '@lexical/rich-text'
+import { $setBlocksType } from '@lexical/selection'
+import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
 import {
     IconBold,
     IconHeading1,
@@ -36,35 +65,6 @@ import {
 } from 'lexical'
 import { useCallback, useEffect, useState } from 'react'
 import { TextField, type ValidationResult } from 'react-aria-components'
-
-import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
-import { AutoLinkNode, LinkNode } from '@lexical/link'
-import {
-    $isListNode,
-    INSERT_ORDERED_LIST_COMMAND,
-    INSERT_UNORDERED_LIST_COMMAND,
-    ListItemNode,
-    ListNode,
-    REMOVE_LIST_COMMAND
-} from '@lexical/list'
-import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown'
-import { type InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer'
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { ContentEditable } from '@lexical/react/LexicalContentEditable'
-import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
-import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin'
-import { ListPlugin } from '@lexical/react/LexicalListPlugin'
-import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin'
-import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'
-import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin'
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
-import type { HeadingTagType } from '@lexical/rich-text'
-import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingNode, QuoteNode } from '@lexical/rich-text'
-import { $setBlocksType } from '@lexical/selection'
-import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, Label } from './form'
 import { Menu } from './menu'
 import { Toolbar } from './toolbar'

@@ -1,6 +1,5 @@
-import { IconCloud, IconCloudOff, IconLock, IconLockOpen, IconMoon, IconSun } from 'hq-icons'
-
 import { Toggle } from '@/components/ui'
+import { IconCloud, IconCloudOff, IconLock, IconLockOpen, IconMoon, IconSun } from 'hq-icons'
 
 export default function App() {
     return (

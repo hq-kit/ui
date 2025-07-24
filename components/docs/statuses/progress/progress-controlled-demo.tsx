@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Progress, Slider } from '@/components/ui'
+import { useState } from 'react'
 
 export default function ProgressControlledDemo() {
     const [value, setValue] = useState(10)

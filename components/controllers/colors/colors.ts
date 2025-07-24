@@ -1,8 +1,7 @@
-import chroma from 'chroma-js'
-import ntc from 'ntcjs'
-
 import type { ColorFormat } from '@/components/controllers/colors/select-format'
 import { slugify } from '@/lib/utils/modifiers'
+import chroma from 'chroma-js'
+import ntc from 'ntcjs'
 
 export const getColorName = (color: string): string => {
     return slugify(ntc.name(color)[1])

@@ -1,10 +1,9 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { Button, Popover } from '@/components/ui'
 
 import { IconCircleCheck, IconTrash } from 'hq-icons'
-
-import { Button, Popover } from '@/components/ui'
+import { useRef, useState } from 'react'
 
 export default function PopoverControlledDemo() {
     const [open, setOpen] = useState<boolean>(false)

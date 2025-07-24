@@ -1,12 +1,11 @@
 'use client'
 
+import { Skeleton } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import { Fragment, Suspense, useEffect, useRef, useState } from 'react'
 
 import { Heading, Link } from 'react-aria-components'
 import scrollIntoView from 'scroll-into-view-if-needed'
-
-import { Skeleton } from '@/components/ui'
-import { cn } from '@/lib/utils'
 
 interface TableOfContentsProps {
     title: string

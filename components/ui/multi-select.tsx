@@ -1,5 +1,8 @@
 'use client'
 
+import { cn, fuzzyMatch } from '@/lib/utils'
+
+import { IconChevronDown, IconX } from 'hq-icons'
 import {
     Children,
     type KeyboardEvent,
@@ -10,8 +13,6 @@ import {
     useRef,
     useState
 } from 'react'
-
-import { IconChevronDown, IconX } from 'hq-icons'
 import type { ComboBoxProps, GroupProps, Key, ListBoxProps, Selection } from 'react-aria-components'
 import {
     Button,
@@ -24,8 +25,6 @@ import {
     TagList,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldGroup, type FieldProps, Label } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxSection } from './list-box'
 import { PopoverContent } from './popover'

@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { ListBox, Radio, RadioGroup } from '@/components/ui'
+import { useState } from 'react'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

@@ -1,11 +1,10 @@
 'use client'
 
+import { Avatar, DropZone, FileTrigger } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import type { DropEvent } from '@react-types/shared'
 import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
-
-import { Avatar, DropZone, FileTrigger } from '@/components/ui'
-import { cn } from '@/lib/utils'
 
 export default function FileTriggerAvatarDemo() {
     const [droppedImage, setDroppedImage] = useState<string | null>(null)

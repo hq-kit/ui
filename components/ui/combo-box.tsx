@@ -1,8 +1,9 @@
 'use client'
 
-import { type ReactNode, type Ref, use } from 'react'
+import { cn, fuzzyMatch } from '@/lib/utils'
 
 import { IconChevronDown, IconLoader, IconX } from 'hq-icons'
+import { type ReactNode, type Ref, use } from 'react'
 import type { ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {
     Button,
@@ -11,8 +12,6 @@ import {
     ComboBox as RACCombobox,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxSection } from './list-box'
 import { PopoverContent } from './popover'

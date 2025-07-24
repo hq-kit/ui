@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBook, IconBox, IconHome } from 'hq-icons'
-
 import { Breadcrumbs } from '@/components/ui'
+import { IconBook, IconBox, IconHome } from 'hq-icons'
 
 export default function BreadcrumbsIconDemo() {
     return (

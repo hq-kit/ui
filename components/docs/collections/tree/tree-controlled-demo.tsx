@@ -1,9 +1,8 @@
 'use client'
 
+import { Tree, TreeItem } from '@/components/ui'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
-
-import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeControlledDemo() {
     const [selected, setSelected] = useState<Selection>(new Set([]))

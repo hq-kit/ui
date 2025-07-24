@@ -1,9 +1,8 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, DateRangePicker, Form } from '@/components/ui'
 import type { CalendarDate } from '@internationalized/date'
+import { type FormEvent, useState } from 'react'
 
 export default function DateRangePickerValidationDemo() {
     const [value, setValue] = useState<{ start: CalendarDate; end: CalendarDate }>()

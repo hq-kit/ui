@@ -1,12 +1,11 @@
 'use client'
 
+import { Button, Menu } from '@/components/ui'
+import { useQueryString } from '@/lib/hooks/use-query-string'
 import { IconChevronDown } from 'hq-icons'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
-
-import { Button, Menu } from '@/components/ui'
-import { useQueryString } from '@/lib/hooks/use-query-string'
 
 const sizes = [
     { id: '4', name: 'Size 4' },

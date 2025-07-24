@@ -1,8 +1,7 @@
 'use client'
 
-import { IconFolder } from 'hq-icons'
-
 import { FileTrigger } from '@/components/ui'
+import { IconFolder } from 'hq-icons'
 
 export default function FileTriggerFolderDemo() {
     return (

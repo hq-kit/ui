@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignLeft,
@@ -13,8 +14,6 @@ import {
 } from 'hq-icons'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
-
-import { Menu } from '@/components/ui'
 
 export default function MenuSectionLevelDemo() {
     const [style, setStyle] = useState<Selection>(new Set(['bold']))

@@ -1,8 +1,9 @@
 'use client'
 
-import { type ReactNode, useCallback, useEffect, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
+import { type ReactNode, useCallback, useEffect, useState } from 'react'
 import type { ToastOptions } from 'react-aria-components'
 import {
     Button,
@@ -12,8 +13,6 @@ import {
     UNSTABLE_ToastRegion as ToastRegion,
     UNSTABLE_Toast as Toaster
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 
 interface ToastContentProps {
     title: string

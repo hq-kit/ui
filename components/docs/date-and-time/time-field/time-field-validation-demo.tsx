@@ -1,9 +1,8 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, Form, TimeField } from '@/components/ui'
 import type { Time } from '@internationalized/date'
+import { type FormEvent, useState } from 'react'
 
 export default function TimeFieldValidationDemo() {
     const [value, setValue] = useState<Time>()

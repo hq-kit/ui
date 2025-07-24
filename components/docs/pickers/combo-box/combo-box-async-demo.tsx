@@ -1,9 +1,8 @@
 'use client'
 
+import { ComboBox } from '@/components/ui'
 import { IconSearch } from 'hq-icons'
 import { useAsyncList } from 'react-stately'
-
-import { ComboBox } from '@/components/ui'
 
 export default function ComboBoxAsyncDemo() {
     const list = useAsyncList<{ title: string }>({

@@ -1,13 +1,12 @@
 'use client'
 
-import { Fragment, type HTMLAttributes, Suspense } from 'react'
-
-import { TabPanel } from 'react-aria-components'
-
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import { cn } from '@/lib/utils'
 import { IconLoaderCircle } from 'hq-icons'
+import { Fragment, type HTMLAttributes, Suspense } from 'react'
+
+import { TabPanel } from 'react-aria-components'
 import { Code } from './code'
 import { TabsSwitcher } from './tabs-switcher'
 

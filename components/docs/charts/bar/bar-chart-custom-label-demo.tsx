@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from 'recharts'
 
 const projectData = [
     { team: 'Engineering', completed: 42, ongoing: 15 },

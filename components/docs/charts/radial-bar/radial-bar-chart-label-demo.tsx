@@ -1,9 +1,8 @@
 'use client'
 
-import { LabelList, RadialBar, RadialBarChart } from 'recharts'
-
 import type { ChartConfig } from '@/components/ui'
 import { Card, Chart } from '@/components/ui'
+import { LabelList, RadialBar, RadialBarChart } from 'recharts'
 
 const chartData = [
     { category: 'Apples', quantity: 320, fill: 'var(--color-apples)' },

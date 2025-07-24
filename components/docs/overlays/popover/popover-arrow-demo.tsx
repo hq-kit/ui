@@ -1,8 +1,7 @@
 'use client'
 
-import { IconMousePointerClick } from 'hq-icons'
-
 import { Button, Popover } from '@/components/ui'
+import { IconMousePointerClick } from 'hq-icons'
 
 export default function PopoverArrowDemo() {
     return (

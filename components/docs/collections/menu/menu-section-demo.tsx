@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
-
 import { Menu } from '@/components/ui'
+import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
 
 const items = [
     {

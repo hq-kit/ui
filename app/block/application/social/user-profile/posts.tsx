@@ -1,7 +1,6 @@
+import { Card } from '@/components/ui'
 import Image from 'next/image'
 import { Collection } from 'react-aria-components'
-
-import { Card } from '@/components/ui'
 
 export default function Posts() {
     return (

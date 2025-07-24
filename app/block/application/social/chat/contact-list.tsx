@@ -9,6 +9,7 @@ interface ContactProps {
     lastSeen: string
     active: boolean
 }
+
 export default function ContactList() {
     return (
         <div className='mb-4 grid w-full gap-2'>
@@ -32,7 +33,7 @@ const Contact = ({ name, avatar, status, lastSeen, active }: ContactProps) => {
                 {status === 'online' ? (
                     <small className='text-success text-xs'>Online</small>
                 ) : (
-                    <small className='text-muted-fg text-xs'>Last seen {lastSeen}</small>
+                    <small className='text-muted-foreground text-xs'>Last seen {lastSeen}</small>
                 )}
             </div>
         </div>

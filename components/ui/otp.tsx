@@ -1,10 +1,9 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconCircle } from 'hq-icons'
 import { OTPInput, OTPInputContext } from 'input-otp'
 import { type ComponentProps, use } from 'react'
-
-import { cn } from '@/lib/utils'
 
 type OTPInputProps = ComponentProps<typeof OTPInput>
 const OTP = ({ className, autoFocus = false, containerClassName, ref, ...props }: OTPInputProps) => (

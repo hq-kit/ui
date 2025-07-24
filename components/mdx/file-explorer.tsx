@@ -1,16 +1,15 @@
 'use client'
 
-import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
-
-import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconPanelLeft } from 'hq-icons'
-import { Button, Collection } from 'react-aria-components'
-
 import previews from '@/components/docs/generated/previews.json'
 import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
 import { Separator, Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { slugify } from '@/lib/utils/modifiers'
+
+import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconPanelLeft } from 'hq-icons'
+import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
+import { Button, Collection } from 'react-aria-components'
 
 type FileNode = {
     id: string | number

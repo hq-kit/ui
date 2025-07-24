@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { ColorPicker, defaultColor } from '@/components/ui'
+import { useState } from 'react'
 
 export default function ColorPickerWithDescriptionDemo() {
     const [color, setColor] = useState(defaultColor)

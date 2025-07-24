@@ -1,8 +1,7 @@
 'use client'
 
-import { IconChevronDown } from 'hq-icons'
-
 import { Breadcrumbs, Menu } from '@/components/ui'
+import { IconChevronDown } from 'hq-icons'
 
 export default function BreadcrumbsMenuDemo() {
     return (

@@ -1,10 +1,9 @@
 'use client'
 
-import { IconCheck, IconCopy } from 'hq-icons'
-import { Button, type ButtonProps } from 'react-aria-components'
-
 import { Tooltip } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { IconCheck, IconCopy } from 'hq-icons'
+import { Button, type ButtonProps } from 'react-aria-components'
 
 interface CopyButtonProps extends ButtonProps {
     isCopied?: boolean

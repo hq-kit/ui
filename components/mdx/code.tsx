@@ -1,18 +1,18 @@
 'use client'
 
 import { FileIcon } from '@/components/mdx/file-icon'
+
+import { Button, CopyButton, Tooltip } from '@/components/ui'
+import { cn } from '@/lib/utils'
+import { copyToClipboard } from '@/lib/utils/modifiers'
 import { useEffect, useState } from 'react'
 
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import { unified } from 'unified'
-
-import { Button, CopyButton, Tooltip } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { copyToClipboard } from '@/lib/utils/modifiers'
 import { transform } from 'sucrase'
+import { unified } from 'unified'
 
 export function Code({
     lang = 'tsx',

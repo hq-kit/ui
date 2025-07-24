@@ -1,9 +1,8 @@
 'use client'
 
+import { ColorSwatchPicker, Description } from '@/components/ui'
 import { useState } from 'react'
 import { parseColor } from 'react-aria-components'
-
-import { ColorSwatchPicker, Description } from '@/components/ui'
 
 export default function ColorSwatchPickerDemo() {
     const [value, setValue] = useState(parseColor('#0d6efd'))

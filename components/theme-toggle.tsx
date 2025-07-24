@@ -1,8 +1,4 @@
 'use client'
-import { useEffect } from 'react'
-
-import { IconMoon, IconSun } from 'hq-icons'
-
 import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui'
 import {
@@ -12,6 +8,9 @@ import {
     syncThemeColor,
     useThemeStore
 } from '@/lib/hooks/use-theme'
+
+import { IconMoon, IconSun } from 'hq-icons'
+import { useEffect } from 'react'
 
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
     const { resolvedTheme, setTheme } = useTheme()

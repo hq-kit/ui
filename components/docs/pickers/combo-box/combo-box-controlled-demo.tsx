@@ -1,10 +1,9 @@
 'use client'
 
+import { ComboBox, Toggle } from '@/components/ui'
 import { IconSquareCheckBig, IconTextCursorInput } from 'hq-icons'
 import { useState } from 'react'
 import type { Key, Selection } from 'react-aria-components'
-
-import { ComboBox, Toggle } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

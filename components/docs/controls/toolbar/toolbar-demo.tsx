@@ -1,5 +1,6 @@
 'use client'
 
+import { Checkbox, Menu, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustify,
@@ -16,8 +17,6 @@ import {
     IconStrikethrough,
     IconUnderline
 } from 'hq-icons'
-
-import { Checkbox, Menu, Toolbar } from '@/components/ui'
 
 export default function ToolbarDemo() {
     return (

@@ -1,10 +1,9 @@
 'use client'
 
+import { MultiSelect } from '@/components/ui'
 import { useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
-
-import { MultiSelect } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

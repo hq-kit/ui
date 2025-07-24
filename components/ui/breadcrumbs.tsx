@@ -1,12 +1,11 @@
 'use client'
 
-import { type ReactNode, createContext, use } from 'react'
+import { cn } from '@/lib/utils'
 
 import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
+import { type ReactNode, createContext, use } from 'react'
 import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
 import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 
 type BreadcrumbsContextProps = {
     separator?: 'chevron' | 'slash' | 'dash' | 'dot'

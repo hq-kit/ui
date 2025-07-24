@@ -1,13 +1,12 @@
 'use client'
 
-import * as icons from 'hq-icons'
-import { useSearchParams } from 'next/navigation'
-import { Button } from 'react-aria-components'
-import { renderToString } from 'react-dom/server'
-
 import { Menu, Tooltip, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import * as icons from 'hq-icons'
+import { useSearchParams } from 'next/navigation'
 import type { FC, SVGProps } from 'react'
+import { Button } from 'react-aria-components'
+import { renderToString } from 'react-dom/server'
 
 export default function IconList({ items }: { items: { keywords: string[]; name: string }[] }) {
     const searchParams = useSearchParams()

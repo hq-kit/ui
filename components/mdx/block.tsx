@@ -1,12 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-
-import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
-import { type Key, TabPanel } from 'react-aria-components'
-
 import { Link, Toggle, buttonStyle } from '@/components/ui'
 import { cn } from '@/lib/utils'
+
+import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
+import { useState } from 'react'
+import { type Key, TabPanel } from 'react-aria-components'
 import { Fleet } from './fleet'
 import { TabsSwitcher } from './tabs-switcher'
 

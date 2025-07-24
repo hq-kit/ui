@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Breadcrumbs, Button, GridList, SearchField, SidebarInset, Toggle } from '@/components/ui'
 
 import { IconLayoutGrid, IconLayoutList, IconSearch, IconSquare, IconSquareCheckBig } from 'hq-icons'
-
-import { Breadcrumbs, Button, GridList, SearchField, SidebarInset, Toggle } from '@/components/ui'
+import { useEffect, useState } from 'react'
 import { getFileIcon, mapFilePaths, rootFolders } from './file-list'
 import FileSidebar from './file-sidebar'
 

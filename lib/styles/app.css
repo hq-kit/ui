@@ -164,6 +164,7 @@
         --error-border: theme(--color-red-200);
         --error-foreground: theme(--color-red-600);
     }
+
     .dark {
         --success-bg: theme(--color-emerald-950);
         --success-border: theme(--color-emerald-900);

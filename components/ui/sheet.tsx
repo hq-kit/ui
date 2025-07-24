@@ -1,11 +1,9 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { ComponentProps } from 'react'
-
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import { Button, Modal, DialogTrigger as SheetTrigger } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import {
     Dialog,
     DialogBody,

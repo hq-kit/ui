@@ -1,8 +1,7 @@
 'use client'
 
-import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
-
 import { Command } from '@/components/ui'
+import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 
 export default function CommandDemo() {
     return (

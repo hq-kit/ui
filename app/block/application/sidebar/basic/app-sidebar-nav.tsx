@@ -28,7 +28,7 @@ export default function AppSidebarNav() {
                 <Menu.Content placement='right bottom' className='sm:min-w-(--trigger-width)'>
                     <Menu.Header>
                         <span className='block'>DQ Al Haqqi</span>
-                        <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                        <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                     </Menu.Header>
                     <Menu.Item href='#settings'>
                         <IconSettings />

@@ -1,29 +1,27 @@
 'use client'
 
-import { type Ref, use, useRef } from 'react'
+import { cn } from '@/lib/utils'
 
 import { IconChevronDown } from 'hq-icons'
+import { type Ref, use, useRef } from 'react'
 import {
+    Button,
     type ButtonProps,
     type DisclosurePanelProps,
     DisclosureStateContext,
-    type DisclosureGroupProps as RACDisclosureGroupProps,
-    type DisclosureProps as RACDisclosureProps
-} from 'react-aria-components'
-import {
-    Button,
     Disclosure as RACDisclosure,
     DisclosureGroup as RACDisclosureGroup,
+    type DisclosureGroupProps as RACDisclosureGroupProps,
     DisclosurePanel as RACDisclosurePanel,
+    type DisclosureProps as RACDisclosureProps,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 
 interface AccordionProps extends RACDisclosureGroupProps {
     ref?: Ref<HTMLDivElement>
     hideIndicator?: boolean
 }
+
 const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
     return (
         <RACDisclosureGroup
@@ -47,6 +45,7 @@ const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps)
 interface CollapsibleProps extends RACDisclosureProps {
     ref?: Ref<HTMLDivElement>
 }
+
 const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) => {
     return (
         <RACDisclosure
@@ -69,6 +68,7 @@ const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) =>
 interface DisclosureTriggerProps extends ButtonProps {
     ref?: Ref<HTMLButtonElement>
 }
+
 const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTriggerProps) => {
     return (
         <Button

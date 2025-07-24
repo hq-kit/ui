@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu, Sidebar, User } from '@/components/ui'
 import {
     IconBrandCleon,
     IconChevronRight,
@@ -13,8 +14,6 @@ import {
     IconShieldQuestion,
     IconTicket
 } from 'hq-icons'
-
-import { Menu, Sidebar, User } from '@/components/ui'
 
 export default function AppSidebar() {
     return (
@@ -79,7 +78,7 @@ export default function AppSidebar() {
                     <Menu.Content placement='top left' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
-                            <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                            <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                         </Menu.Header>
                         <Menu.Item href='#settings'>
                             <IconSettings />

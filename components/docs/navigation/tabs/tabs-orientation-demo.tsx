@@ -1,8 +1,7 @@
 'use client'
 
-import { Collection } from 'react-aria-components'
-
 import { Tabs } from '@/components/ui'
+import { Collection } from 'react-aria-components'
 
 const items = [
     { id: 1, title: 'Overview', content: 'This is the overview tab content.' },
@@ -15,18 +14,6 @@ export default function TabsOrientationDemo() {
     return (
         <div className='space-y-6'>
             <Tabs orientation='vertical' aria-label='Project Management'>
-                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
-                <Collection items={items}>
-                    {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
-                </Collection>
-            </Tabs>
-            <Tabs orientation='vertical' aria-label='Project Management' variant='secondary'>
-                <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
-                <Collection items={items}>
-                    {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}
-                </Collection>
-            </Tabs>
-            <Tabs orientation='vertical' aria-label='Project Management' variant='tertiary'>
                 <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
                 <Collection items={items}>
                     {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}

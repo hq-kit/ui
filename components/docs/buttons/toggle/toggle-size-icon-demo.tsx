@@ -1,8 +1,7 @@
 'use client'
 
-import { IconEye, IconEyeClosed } from 'hq-icons'
-
 import { Toggle } from '@/components/ui'
+import { IconEye, IconEyeClosed } from 'hq-icons'
 
 export default function ToggleSizeDemo() {
     return (

@@ -1,5 +1,6 @@
 'use client'
 
+import { Description, Toggle } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustify,
@@ -10,8 +11,6 @@ import {
     IconStrikethrough,
     IconUnderline
 } from 'hq-icons'
-
-import { Description, Toggle } from '@/components/ui'
 
 export default function ToggleGroupSelectionModeDemo() {
     return (

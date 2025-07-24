@@ -1,6 +1,5 @@
-import { IconBrandCleon, IconDownload, IconFilm, IconFolders, IconHome, IconMusicNotes, IconTrash } from 'hq-icons'
-
 import { Link, Sidebar } from '@/components/ui'
+import { IconBrandCleon, IconDownload, IconFilm, IconFolders, IconHome, IconMusicNotes, IconTrash } from 'hq-icons'
 
 interface Props {
     rootDir: string

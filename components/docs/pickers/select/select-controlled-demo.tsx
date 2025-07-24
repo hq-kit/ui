@@ -1,10 +1,9 @@
 'use client'
 
+import { Select } from '@/components/ui'
 import { useState } from 'react'
 
 import type { Key } from 'react-aria-components'
-
-import { Select } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

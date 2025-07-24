@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Radio, RadioGroup } from '@/components/ui'
+import { useState } from 'react'
 
 export default function RadioGroupControlledDemo() {
     const [selected, setSelected] = useState('')

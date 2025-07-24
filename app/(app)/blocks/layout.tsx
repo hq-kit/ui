@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Hero>
                 <header>
                     <HeroTitle>HQ Blocks</HeroTitle>
-                    <div className='block max-w-2xl text-base text-muted-fg leading-relaxed lg:text-xl'>
+                    <div className='block max-w-2xl text-base text-muted-foreground leading-relaxed lg:text-xl'>
                         Ready to use, clean and responsive, fully customizable blocks for your React Projects.
                     </div>
                 </header>

@@ -1,8 +1,7 @@
 'use client'
 
-import { IconEye, IconLock } from 'hq-icons'
-
 import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
+import { IconEye, IconLock } from 'hq-icons'
 
 export default function TeamManagementSink() {
     return (

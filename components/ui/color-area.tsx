@@ -1,9 +1,8 @@
 'use client'
 
-import { ColorArea as RACColorArea, composeRenderProps } from 'react-aria-components'
-import type { ColorAreaProps } from 'react-aria-components'
-
 import { cn } from '@/lib/utils'
+import type { ColorAreaProps } from 'react-aria-components'
+import { ColorArea as RACColorArea, composeRenderProps } from 'react-aria-components'
 import { ColorThumb } from './color-thumb'
 
 const ColorArea = ({ className, ...props }: ColorAreaProps) => {

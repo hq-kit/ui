@@ -1,8 +1,7 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, Form, NumberField } from '@/components/ui'
+import { type FormEvent, useState } from 'react'
 
 export default function NumberFieldValidationDemo() {
     const [value, setValue] = useState<number>()

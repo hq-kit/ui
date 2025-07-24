@@ -1,9 +1,8 @@
 'use client'
 
+import { Button, Command } from '@/components/ui'
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { useState } from 'react'
-
-import { Button, Command } from '@/components/ui'
 
 export default function CommandTriggerByKeyboardDemo() {
     const [open, setOpen] = useState<boolean>(false)

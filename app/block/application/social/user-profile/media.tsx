@@ -1,8 +1,7 @@
-import Image from 'next/image'
-import { Collection } from 'react-aria-components'
-
 import { Card } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import { Collection } from 'react-aria-components'
 
 export default function Media() {
     const items = Array.from({ length: 17 }, (_, id) => ({

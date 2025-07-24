@@ -1,5 +1,6 @@
 'use client'
 
+import { Toggle, Toolbar } from '@/components/ui'
 import {
     IconAlignJustify,
     IconAlignRight,
@@ -9,8 +10,6 @@ import {
     IconPencilRuler,
     IconPointer
 } from 'hq-icons'
-
-import { Toggle, Toolbar } from '@/components/ui'
 
 export default function ToolbarDisabledDemo() {
     return (

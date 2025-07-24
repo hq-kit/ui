@@ -1,10 +1,9 @@
 'use client'
 
-import { IconChartArea } from 'hq-icons'
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
-
 import type { ChartConfig } from '@/components/ui'
 import { Card, Chart } from '@/components/ui'
+import { IconChartArea } from 'hq-icons'
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 const enrollmentData = Array.from({ length: 24 }, (_, index) => {
     const date = new Date(new Date().getFullYear() - 1, index)

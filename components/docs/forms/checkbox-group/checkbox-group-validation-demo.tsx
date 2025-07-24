@@ -1,8 +1,7 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, Checkbox, CheckboxGroup, Form } from '@/components/ui'
+import { type FormEvent, useState } from 'react'
 
 export default function CheckboxValidationDemo() {
     const [value, setValue] = useState<string[]>([])

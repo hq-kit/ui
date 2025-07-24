@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts'
 
 const salesData = Array.from({ length: 48 }, (_, index) => {
     const month = new Date(new Date().getFullYear() - 4, Math.floor(index / 2)).toLocaleDateString('en-US', {

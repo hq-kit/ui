@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Switch, TimeField } from '@/components/ui'
 import { Time } from '@internationalized/date'
+import { useState } from 'react'
 
 export default function TimeFieldHcDemo() {
     const [hc, setHc] = useState<12 | 24>(24)

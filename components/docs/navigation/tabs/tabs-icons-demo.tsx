@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBadgeDollar, IconBinoculars, IconGift, IconMessageHeart } from 'hq-icons'
-
 import { Tabs } from '@/components/ui'
+import { IconBadgeDollar, IconBinoculars, IconGift, IconMessageHeart } from 'hq-icons'
 
 export default function TabsIconsDemo() {
     return (

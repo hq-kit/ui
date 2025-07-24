@@ -1,8 +1,7 @@
 'use client'
 
-import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis, ZAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis, ZAxis } from 'recharts'
 
 const data = Array.from({ length: 30 }, (_, index) => ({
     x: Math.floor(Math.random() * 500 + 50),

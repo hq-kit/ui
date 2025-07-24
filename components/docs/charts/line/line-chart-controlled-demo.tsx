@@ -1,10 +1,9 @@
 'use client'
 
+import { Card, Chart, type ChartConfig, Toggle } from '@/components/ui'
 import { useState } from 'react'
 
 import { CartesianGrid, Line, LineChart, XAxis } from 'recharts'
-
-import { Card, Chart, type ChartConfig, Toggle } from '@/components/ui'
 
 const generateChartData = (startDate: string, endDate: string) => {
     const result = []

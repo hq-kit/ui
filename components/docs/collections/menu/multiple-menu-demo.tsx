@@ -1,10 +1,9 @@
 'use client'
 
+import { Menu } from '@/components/ui'
 import { useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
-
-import { Menu } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Recent Files' },

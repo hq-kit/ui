@@ -1,8 +1,7 @@
 'use client'
 
-import { CartesianGrid, Line, LineChart, XAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { CartesianGrid, Line, LineChart, XAxis } from 'recharts'
 
 const chartData = Array.from({ length: 24 }, (_, index) => {
     const date = new Date(new Date().getFullYear() - 1, index)

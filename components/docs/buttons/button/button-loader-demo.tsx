@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { Button } from '@/components/ui'
 
 import { IconCircleCheck, IconSend, IconTrash } from 'hq-icons'
-
-import { Button } from '@/components/ui'
+import { useState } from 'react'
 
 export default function ButtonLoaderDemo() {
     const [loading, setLoading] = useState<'idle' | 'loading' | 'success'>('idle')

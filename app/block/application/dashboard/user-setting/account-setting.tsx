@@ -1,15 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
 
 import type { DropEvent } from '@react-types/shared'
 import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from 'hq-icons'
+import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
-
-import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
 
 export default function AccountSetting() {
     const [droppedImage, setDroppedImage] = useState<string>('')
+
     async function onDropHandler(e: DropEvent) {
         const item = e.items
             .filter(isFileDropItem)
@@ -19,6 +19,7 @@ export default function AccountSetting() {
             setDroppedImage(URL.createObjectURL(file))
         }
     }
+
     async function onSelectHandler(e: FileList | null) {
         if (e) {
             const files = Array.from([...e])
@@ -28,6 +29,7 @@ export default function AccountSetting() {
             }
         }
     }
+
     return (
         <section className='space-y-4'>
             <Card>

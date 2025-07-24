@@ -1,8 +1,7 @@
 'use client'
 
-import { IconUserX } from 'hq-icons'
-
 import { Button, Card, Form, Modal, Note, TextField } from '@/components/ui'
+import { IconUserX } from 'hq-icons'
 
 export default function SecuritySetting() {
     return (
@@ -13,7 +12,7 @@ export default function SecuritySetting() {
             </Card.Header>
             <Card.Footer className='sm:justify-start'>
                 <Modal>
-                    <Button variant='danger'>
+                    <Button variant='destructive'>
                         <IconUserX />
                         Delete Account
                     </Button>
@@ -23,7 +22,7 @@ export default function SecuritySetting() {
                             <Modal.Description>
                                 This will permanently delete your account and all your data
                             </Modal.Description>
-                            <Note variant='danger'>No undo button here, so be sure!</Note>
+                            <Note variant='destructive'>No undo button here, so be sure!</Note>
                         </Modal.Header>
                         <Form onSubmit={() => {}}>
                             <Modal.Body>
@@ -33,7 +32,7 @@ export default function SecuritySetting() {
                                 <Button slot='close' variant='outline'>
                                     Cancel
                                 </Button>
-                                <Button variant='danger'>Confirm</Button>
+                                <Button variant='destructive'>Confirm</Button>
                             </Modal.Footer>
                         </Form>
                     </Modal.Content>

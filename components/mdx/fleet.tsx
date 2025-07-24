@@ -1,6 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { blocks } from '@/components/docs/generated/blocks'
+
+import blockSource from '@/components/docs/generated/blocks.json'
+import uiSource from '@/components/docs/generated/previews.json'
+import { CLI } from '@/components/mdx/cli'
+import { Code } from '@/components/mdx/code'
+import { Separator, Tooltip } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 import {
     IconBrandCss,
@@ -12,16 +19,8 @@ import {
     IconFolder,
     IconPanelLeft
 } from 'hq-icons'
+import { useState } from 'react'
 import { Button, Collection, Disclosure, DisclosureGroup, DisclosurePanel } from 'react-aria-components'
-
-import { blocks } from '@/components/docs/generated/blocks'
-import { Code } from '@/components/mdx/code'
-import { Separator, Tooltip } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
-import blockSource from '@/components/docs/generated/blocks.json'
-import uiSource from '@/components/docs/generated/previews.json'
-import { CLI } from '@/components/mdx/cli'
 import { transform } from 'sucrase'
 
 type FileNode = {

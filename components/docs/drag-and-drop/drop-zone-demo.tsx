@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { DropZone, Label } from '@/components/ui'
+import { useState } from 'react'
 
 export default function DropZoneDemo() {
     const [dropped, setDropped] = useState(false)

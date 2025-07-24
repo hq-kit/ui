@@ -1,6 +1,5 @@
-import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
-
 import { SelectionBox } from '@/components/ui'
+import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
 
 export default function SelectionBoxPrefixDemo() {
     return (

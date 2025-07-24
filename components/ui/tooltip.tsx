@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { ComponentProps, ReactNode } from 'react'
 import {
     Button,
@@ -9,8 +10,6 @@ import {
     TooltipTrigger as RACTooltipTrigger,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 
 type TooltipProps = ComponentProps<typeof RACTooltipTrigger>
 const Tooltip = (props: TooltipProps) => <RACTooltipTrigger {...props} />

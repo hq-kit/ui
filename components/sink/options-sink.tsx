@@ -1,11 +1,10 @@
 'use client'
 
-import { IconBrandX, IconTrash } from 'hq-icons'
-
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
 import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
 import { Breadcrumbs, Button, Card, ComboBox, DatePicker, Modal, Popover, Select, Tooltip } from '@/components/ui'
+import { IconBrandX, IconTrash } from 'hq-icons'
 
 export default function OptionsSink() {
     return (

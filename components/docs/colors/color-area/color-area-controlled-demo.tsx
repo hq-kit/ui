@@ -1,11 +1,10 @@
 'use client'
 
+import { ColorArea, SelectionBox } from '@/components/ui'
+import { Select } from '@/components/ui/select'
 import { useState } from 'react'
 import { type ColorSpace, type Key, parseColor } from 'react-aria-components'
 import type { ColorChannel } from 'react-stately'
-
-import { ColorArea, SelectionBox } from '@/components/ui'
-import { Select } from '@/components/ui/select'
 
 const RGBchannels = ['red', 'green', 'blue'].map((channel) => ({ channel }))
 const HSLchannels = ['hue', 'saturation', 'lightness'].map((channel) => ({ channel }))

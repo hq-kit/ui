@@ -1,14 +1,13 @@
 'use client'
-import { presets } from '@/lib/themes'
-import { titleCase } from '@/lib/utils/modifiers'
-import { IconMonitor, IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
-import { GridList, GridListItem, type Selection } from 'react-aria-components'
-
 import { useTheme } from '@/components/providers'
 import { ThemeSnippet } from '@/components/theme-snippet'
 import { Button, Select, Sheet } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
+import { presets } from '@/lib/themes'
 import { cn } from '@/lib/utils'
+import { titleCase } from '@/lib/utils/modifiers'
+import { IconMonitor, IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
+import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 export function ThemeCustomizer() {
     const { setTheme: setMode, resolvedTheme: mode } = useTheme()

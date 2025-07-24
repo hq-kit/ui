@@ -1,9 +1,8 @@
 'use client'
 
+import { TimeField } from '@/components/ui'
 import { Time } from '@internationalized/date'
 import { useState } from 'react'
-
-import { TimeField } from '@/components/ui'
 
 export default function TimeFieldValidationDemo() {
     const [value, setValue] = useState(new Time(11, 45))

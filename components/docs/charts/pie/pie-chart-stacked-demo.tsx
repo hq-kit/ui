@@ -1,8 +1,7 @@
 'use client'
 
-import { Pie, PieChart } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Pie, PieChart } from 'recharts'
 
 const northAmericaData = [
     { region: 'North America', sales: 500, fill: 'var(--color-north-america)' },

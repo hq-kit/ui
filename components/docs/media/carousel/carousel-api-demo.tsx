@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Button } from 'react-aria-components'
-
 import { Card, Carousel, type CarouselApi } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
+import { Button } from 'react-aria-components'
 
 export default function CarouselDApiDemo() {
     const [api, setApi] = useState<CarouselApi>()

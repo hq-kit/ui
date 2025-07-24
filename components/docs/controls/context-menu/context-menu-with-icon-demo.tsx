@@ -1,8 +1,7 @@
 'use client'
 
-import { IconCopy, IconFolder, IconHighlighter, IconTrash, IconUpload } from 'hq-icons'
-
 import { ContextMenu } from '@/components/ui'
+import { IconCopy, IconFolder, IconHighlighter, IconTrash, IconUpload } from 'hq-icons'
 
 export default function ContextMenuWithIconDemo() {
     return (

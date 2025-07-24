@@ -1,15 +1,15 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconEllipsis } from 'hq-icons'
 import type { ReactNode, RefObject } from 'react'
 import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
 import { ListBox, ListBoxItem, ListBoxSection, Text, composeRenderProps } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
-
 interface PaginationProps<T> extends ListBoxProps<T> {
     ref?: RefObject<HTMLDivElement>
 }
+
 const Pagination = <T extends object>({ className, ref, ...props }: PaginationProps<T>) => {
     return (
         <ListBox
@@ -28,6 +28,7 @@ const Pagination = <T extends object>({ className, ref, ...props }: PaginationPr
 interface PaginationPagesProps<T> extends ListBoxSectionProps<T> {
     ref?: RefObject<HTMLElement>
 }
+
 const PaginationPages = <T extends object>({ className, ref, ...props }: PaginationPagesProps<T>) => (
     <ListBoxSection
         ref={ref}
@@ -42,6 +43,7 @@ interface PaginationItemProps extends ListBoxItemProps {
     isCurrent?: boolean
     slot?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
 }
+
 const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...props }: PaginationItemProps) => {
     const textValue = slot === 'page' ? children?.toString() : slot
     return (
@@ -82,6 +84,7 @@ interface PaginationLabelProps extends TextProps {
     current: number | string
     total?: number | string
 }
+
 const PaginationLabel = ({ className, current, total, ...props }: PaginationLabelProps) => (
     <ListBoxItem
         textValue={`${String(current)}/${String(total)}`}

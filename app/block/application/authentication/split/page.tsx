@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBrandCleon, IconBrandGithub, IconBrandGoogle, IconImage } from 'hq-icons'
-
 import { Button, Checkbox, Form, Header, Link, Separator, Skeleton, TextField, toast } from '@/components/ui'
+import { IconBrandCleon, IconBrandGithub, IconBrandGoogle, IconImage } from 'hq-icons'
 
 export default function Page() {
     return (
@@ -35,7 +34,7 @@ export default function Page() {
                             <Button type='submit' className='w-full'>
                                 Login
                             </Button>
-                            <Link href='#' className='text-center text-muted-fg text-sm hover:text-fg'>
+                            <Link href='#' className='text-center text-muted-foreground text-sm hover:text-foreground'>
                                 Don't have an account? Register
                             </Link>
                             <Separator>Or continue with</Separator>
@@ -55,7 +54,7 @@ export default function Page() {
             </div>
             <div className='relative hidden lg:block'>
                 <Skeleton className='size-full' />
-                <IconImage className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-24 text-muted-fg' />
+                <IconImage className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-24 text-muted-foreground' />
             </div>
         </>
     )

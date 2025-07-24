@@ -1,9 +1,8 @@
 'use client'
 
+import { SearchField } from '@/components/ui'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
-
-import { SearchField } from '@/components/ui'
 
 export function Search() {
     const searchParams = useSearchParams()

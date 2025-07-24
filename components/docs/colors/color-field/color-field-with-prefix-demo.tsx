@@ -1,8 +1,7 @@
 'use client'
 
-import { IconPalette, IconSwatchBook } from 'hq-icons'
-
 import { ColorField } from '@/components/ui'
+import { IconPalette, IconSwatchBook } from 'hq-icons'
 
 export default function ColorFieldWithPrefixSuffixDemo() {
     return (

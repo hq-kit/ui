@@ -1,12 +1,11 @@
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import type { Metadata, Viewport } from 'next'
-import type { CSSProperties, ReactNode } from 'react'
-
 import { Providers } from '@/components/providers'
 import { fontMono, fontSans } from '@/lib/fonts'
 import '@/lib/styles/app.css'
 import { cn } from '@/lib/utils'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import type { Metadata, Viewport } from 'next'
+import type { CSSProperties, ReactNode } from 'react'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),

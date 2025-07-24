@@ -1,8 +1,7 @@
 'use client'
 
-import { IconCircleUser, IconLogOut, IconSettings } from 'hq-icons'
-
 import { Avatar, Menu } from '@/components/ui'
+import { IconCircleUser, IconLogOut, IconSettings } from 'hq-icons'
 
 export default function MenuHeaderDemo() {
     return (

@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Collapsible } from '@/components/ui'
+import { useState } from 'react'
 
 export default function CollapsibleControlledDemo() {
     const [expanded, setExpanded] = useState(false)

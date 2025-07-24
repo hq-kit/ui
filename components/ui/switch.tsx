@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { ReactNode, RefObject } from 'react'
 import { Switch as RACSwitch, type SwitchProps as RACSwitchProps, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Label } from './form'
 
 interface SwitchProps extends RACSwitchProps {

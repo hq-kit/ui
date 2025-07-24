@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, Cell, LabelList } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, CartesianGrid, Cell, LabelList } from 'recharts'
 
 const chartData = [
     { month: 'Jan', profitLoss: 1200 },

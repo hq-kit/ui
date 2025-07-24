@@ -1,10 +1,9 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { type CSSProperties, type ReactNode, createContext, use } from 'react'
 import type { CheckboxGroupProps, CheckboxProps, RadioGroupProps, RadioProps } from 'react-aria-components'
 import { Checkbox, CheckboxGroup, Radio, RadioGroup, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 const SelectionBoxContext = createContext<'single' | 'multiple'>('single')

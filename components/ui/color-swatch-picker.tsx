@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconCircleCheck } from 'hq-icons'
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
 import {
@@ -7,8 +8,6 @@ import {
     ColorSwatchPicker as RACColorSwatchPicker,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { ColorSwatch, isBrightColor } from './color-swatch'
 
 const ColorSwatchPicker = ({ children, className, layout = 'grid', ...props }: ColorSwatchPickerProps) => {

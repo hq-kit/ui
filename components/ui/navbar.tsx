@@ -1,13 +1,12 @@
 'use client'
 
-import { type ComponentPropsWithRef, type Ref, createContext, use, useCallback, useMemo, useState } from 'react'
-
-import { IconMenu } from 'hq-icons'
-import type { ButtonProps, LinkProps } from 'react-aria-components'
-import { Link, composeRenderProps } from 'react-aria-components'
-
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
+
+import { IconMenu } from 'hq-icons'
+import { type ComponentPropsWithRef, type Ref, createContext, use, useCallback, useMemo, useState } from 'react'
+import type { ButtonProps, LinkProps } from 'react-aria-components'
+import { Link, composeRenderProps } from 'react-aria-components'
 import { Button } from './button'
 import { Sheet } from './sheet'
 
@@ -152,6 +151,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
 interface NavbarTriggerProps extends ButtonProps {
     ref?: Ref<HTMLButtonElement>
 }
+
 const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
     const { toggleNavbar } = useNavbar()
     return (
@@ -231,6 +231,7 @@ const NavbarFlex = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>) 
 interface NavbarCompactProps extends ComponentPropsWithRef<'div'> {
     variant?: 'float' | 'inset' | 'navbar'
 }
+
 const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     const { variant } = useNavbar()
     return (

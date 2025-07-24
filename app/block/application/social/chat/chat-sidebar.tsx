@@ -1,5 +1,6 @@
 'use client'
 
+import { Menu, Sidebar, User } from '@/components/ui'
 import {
     IconBrandCleon,
     IconChevronRight,
@@ -11,8 +12,6 @@ import {
     IconRss,
     IconSettings
 } from 'hq-icons'
-
-import { Menu, Sidebar, User } from '@/components/ui'
 
 export default function ChatSidebar() {
     return (
@@ -55,7 +54,7 @@ export default function ChatSidebar() {
                     <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
-                            <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                            <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                         </Menu.Header>
                         <Menu.Item href='#setting'>
                             <IconSettings />

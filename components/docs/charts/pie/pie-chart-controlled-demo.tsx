@@ -1,12 +1,11 @@
 'use client'
 
+import { Card, Chart, type ChartConfig, ChartStyle, Select } from '@/components/ui'
 import { useMemo, useState } from 'react'
 
 import type { Key } from 'react-aria-components'
 import { Label, Pie, PieChart, Sector } from 'recharts'
 import type { PieSectorDataItem } from 'recharts/types/polar/Pie'
-
-import { Card, Chart, type ChartConfig, ChartStyle, Select } from '@/components/ui'
 
 const data = [
     { month: 'january', sales: 3186, fill: 'var(--color-january)' },

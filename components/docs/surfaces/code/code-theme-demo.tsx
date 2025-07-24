@@ -1,10 +1,9 @@
 'use client'
 
+import { Code, Select } from '@/components/ui'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 import type { Theme } from 'rehype-pretty-code'
-
-import { Code, Select } from '@/components/ui'
 
 const themes = [
     'andromeeda',

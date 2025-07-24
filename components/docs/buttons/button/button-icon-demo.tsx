@@ -1,6 +1,5 @@
-import { IconBrandGithub } from 'hq-icons'
-
 import { Button } from '@/components/ui'
+import { IconBrandGithub } from 'hq-icons'
 
 export default function ButtonIconDemo() {
     return (

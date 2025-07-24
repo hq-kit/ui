@@ -1,5 +1,6 @@
 'use client'
 
+import { Tree, TreeItem } from '@/components/ui'
 import {
     IconArchive,
     IconDisc,
@@ -12,8 +13,6 @@ import {
     IconFolderOpen
 } from 'hq-icons'
 import { Collection } from 'react-aria-components'
-
-import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeCollectionsDemo() {
     const renderItem = (item: FileNode, i: number) => (

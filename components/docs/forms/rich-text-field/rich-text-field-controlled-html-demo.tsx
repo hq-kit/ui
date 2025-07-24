@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { RichTextField } from '@/components/ui'
+import { useState } from 'react'
 
 export default function RichTextFieldControlledMarkdownDemo() {
     const [value, setValue] = useState('')

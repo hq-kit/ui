@@ -1,8 +1,7 @@
 'use client'
 
-import type { ReactNode } from 'react'
-
 import type { Placement } from '@react-types/overlays'
+import type { ReactNode } from 'react'
 import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
 import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
 

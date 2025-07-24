@@ -60,6 +60,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         ]
     }
 }
+
 export function generateStaticParams() {
     return docs.map((doc) => ({ slug: doc.slug.split('/') }))
 }

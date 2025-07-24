@@ -1,15 +1,14 @@
 'use client'
 
-import type { ReactNode, Ref } from 'react'
+import { cn } from '@/lib/utils'
 
 import { IconCheck, IconMinus } from 'hq-icons'
+import type { ReactNode, Ref } from 'react'
 import type {
     CheckboxGroupProps as RACCheckboxGroupProps,
     CheckboxProps as RACCheckboxProps
 } from 'react-aria-components'
 import { Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}

@@ -1,8 +1,7 @@
 'use client'
 
-import { Collection } from 'react-aria-components'
-
 import { Tabs } from '@/components/ui'
+import { Collection } from 'react-aria-components'
 
 const withArrowItems = [
     { id: 1, title: 'Use', content: 'This is the first content' },

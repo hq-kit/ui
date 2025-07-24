@@ -1,15 +1,15 @@
 'use client'
 
+import { Button, Form } from '@/components/ui'
 import { IconCamera, IconMic, IconPaperclip, IconSend } from 'hq-icons'
 import { type FormEvent, type KeyboardEvent, useEffect, useRef } from 'react'
-
-import { Button, Form } from '@/components/ui'
 
 interface MessageFormProps {
     value: string
     valueAction: (value: string) => void
     sendAction: (e: FormEvent<HTMLFormElement>) => void
 }
+
 export default function MessageForm({ value, valueAction, sendAction }: MessageFormProps) {
     const editorRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
@@ -48,8 +48,9 @@ export default function MessageForm({ value, valueAction, sendAction }: MessageF
             editorRef.current.innerHTML = ''
         }
     }
+
     return (
-        <Form onSubmit={onSubmit} className='relative overflow-hidden rounded-lg border-t bg-bg md:border'>
+        <Form onSubmit={onSubmit} className='relative overflow-hidden rounded-lg border-t bg-background md:border'>
             <div
                 contentEditable
                 ref={editorRef}
@@ -87,13 +88,13 @@ export default function MessageForm({ value, valueAction, sendAction }: MessageF
 const formatText = (text: string) => {
     return text
         .replace(/_(.*?)_/g, '<em>_$1_</em>')
-        .replace(/_/g, '<span class="text-muted-fg">_</span>')
+        .replace(/_/g, '<span class="text-muted-foreground">_</span>')
         .replace(/\*(.*?)\*/g, '<strong>*$1*</strong>')
-        .replace(/\*/g, '<span class="text-muted-fg">*</span>')
+        .replace(/\*/g, '<span class="text-muted-foreground">*</span>')
         .replace(/~(.*?)~/g, '<del>~$1~</del>')
-        .replace(/~/g, '<span class="text-muted-fg">~</span>')
+        .replace(/~/g, '<span class="text-muted-foreground">~</span>')
         .replace(/\^(.*?)\^/g, '<sup>^$1^</sup>')
-        .replace(/\^/g, '<span class="text-muted-fg">^</span>')
+        .replace(/\^/g, '<span class="text-muted-foreground">^</span>')
         .replace(
             /(https?:\/\/[^\s]+)/g,
             '<a href="$1" class="text-primary underline" target="_blank" rel="noopener noreferrer">$1</a>'

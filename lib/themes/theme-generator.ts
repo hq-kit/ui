@@ -1,41 +1,10 @@
-import { defaultLightThemeStyles } from '@/lib/themes/default'
 import type { ThemePreset, ThemeStyleProps } from '@/lib/types/theme'
-import { colorFormatter } from './color-converter'
 import type { ColorFormat } from './color-converter'
-import { getShadowMap } from './shadow'
+import { colorFormatter } from './color-converter'
 
 type ThemeType = {
     light: ThemeStyleProps
     dark: ThemeStyleProps
-}
-
-const generateShadowVariables = (shadowMap: Record<string, string>): string => {
-    return `
-  --shadow-2xs: ${shadowMap['shadow-2xs']};
-  --shadow-xs: ${shadowMap['shadow-xs']};
-  --shadow-sm: ${shadowMap['shadow-sm']};
-  --shadow: ${shadowMap.shadow};
-  --shadow-md: ${shadowMap['shadow-md']};
-  --shadow-lg: ${shadowMap['shadow-lg']};
-  --shadow-xl: ${shadowMap['shadow-xl']};
-  --shadow-2xl: ${shadowMap['shadow-2xl']};`
-}
-
-const generateTrackingVariables = (themeStyles: ThemePreset): string => {
-    const styles = themeStyles.light
-
-    if (styles?.['letter-spacing'] === '0em') {
-        return ''
-    }
-
-    return `
-
-  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
-  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
-  --tracking-normal: var(--tracking-normal);
-  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
-  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
-  --tracking-widest: calc(var(--tracking-normal) + 0.1em);`
 }
 
 export const generateThemeCode = (styles: ThemePreset, colorFormat: ColorFormat = 'oklch'): string => {
@@ -80,17 +49,11 @@ export const generateThemeCode = (styles: ThemePreset, colorFormat: ColorFormat 
   --sidebar-border: ${formatColor(themeStyles.light['sidebar-border'])};
   --sidebar-ring: ${formatColor(themeStyles.light['sidebar-ring'])};
 
-  --font-sans: ${themeStyles.light['font-sans']};
-  --font-serif: ${themeStyles.light['font-serif']};
-  --font-mono: ${themeStyles.light['font-mono']};
+  --font-sans: '${themeStyles.light['font-sans']}';
+  --font-serif: '${themeStyles.light['font-serif']}';
+  --font-mono: '${themeStyles.light['font-mono']}';
 
   --radius: ${themeStyles.light.radius};
-  ${generateShadowVariables(getShadowMap(themeStyles.light, colorFormat))}
-  ${
-      themeStyles.light['letter-spacing'] !== defaultLightThemeStyles?.['letter-spacing']
-          ? `\n  --tracking-normal: ${themeStyles.light['letter-spacing']};`
-          : ''
-  }
 }
 
 .dark {
@@ -125,7 +88,6 @@ export const generateThemeCode = (styles: ThemePreset, colorFormat: ColorFormat 
   --sidebar-accent-foreground: ${formatColor(themeStyles.dark['sidebar-accent-foreground'])};
   --sidebar-border: ${formatColor(themeStyles.dark['sidebar-border'])};
   --sidebar-ring: ${formatColor(themeStyles.dark['sidebar-ring'])};
-  ${generateShadowVariables(getShadowMap(themeStyles.dark, colorFormat))}
 }
 
 @theme inline {
@@ -169,14 +131,5 @@ export const generateThemeCode = (styles: ThemePreset, colorFormat: ColorFormat 
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);${generateTrackingVariables(themeStyles)}
-}${themeStyles.light['letter-spacing'] !== '0em' ? '\n\nbody {\n  letter-spacing: var(--tracking-normal);\n}' : ''}`
+}`
 }

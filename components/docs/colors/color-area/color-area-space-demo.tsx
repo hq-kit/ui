@@ -1,9 +1,8 @@
 'use client'
 
+import { ColorArea, Select } from '@/components/ui'
 import { useState } from 'react'
 import type { ColorSpace, Key } from 'react-aria-components'
-
-import { ColorArea, Select } from '@/components/ui'
 
 const spaces = ['rgb', 'hsb', 'hsl'].map((space) => ({ space }))
 

@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { Ref } from 'react'
 import {
     TextArea as RACTextArea,
@@ -7,8 +8,6 @@ import {
     type TextFieldProps as RACTextFieldProps,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label, fieldGroupStyle } from './form'
 
 interface TextareaProps extends RACTextFieldProps, FieldProps {

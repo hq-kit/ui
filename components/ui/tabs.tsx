@@ -1,5 +1,7 @@
 'use client'
 
+import { cn } from '@/lib/utils'
+import type { Ref } from 'react'
 import type {
     TabListProps as RACTabListProps,
     TabPanelProps as RACTabPanelProps,
@@ -8,12 +10,10 @@ import type {
 } from 'react-aria-components'
 import { Tab as RACTab, Tabs as RACTabs, TabList, TabPanel, composeRenderProps } from 'react-aria-components'
 
-import { cn } from '@/lib/utils'
-import type { Ref } from 'react'
-
 interface TabsProps extends RACTabsProps {
     ref?: Ref<HTMLDivElement>
 }
+
 const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
         <RACTabs
@@ -32,6 +32,7 @@ const Tabs = ({ className, ref, ...props }: TabsProps) => {
 interface TabListProps<T extends object> extends RACTabListProps<T> {
     ref?: Ref<HTMLDivElement>
 }
+
 const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
     return (
         <TabList
@@ -76,6 +77,7 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
 interface TabPanelProps extends RACTabPanelProps {
     ref?: Ref<HTMLDivElement>
 }
+
 const Panel = ({ className, ref, ...props }: TabPanelProps) => {
     return <TabPanel {...props} ref={ref} className={cn(className, 'flex-1 outline-hidden')} />
 }

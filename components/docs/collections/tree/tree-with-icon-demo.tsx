@@ -1,8 +1,7 @@
 'use client'
 
-import { IconFileImage, IconFileText, IconFolder, IconFolderOpen } from 'hq-icons'
-
 import { Tree, TreeItem } from '@/components/ui'
+import { IconFileImage, IconFileText, IconFolder, IconFolderOpen } from 'hq-icons'
 
 export default function TreeWithIconDemo() {
     return (

@@ -1,9 +1,8 @@
 'use client'
 
+import { SelectionBox } from '@/components/ui'
 import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
 import { useState } from 'react'
-
-import { SelectionBox } from '@/components/ui'
 
 export default function SelectionBoxControlledDemo() {
     const [singleValue, setSingleValue] = useState<string>('')

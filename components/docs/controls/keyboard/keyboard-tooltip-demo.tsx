@@ -1,8 +1,7 @@
 'use client'
 
-import { IconBold } from 'hq-icons'
-
 import { Keyboard, Tooltip } from '@/components/ui'
+import { IconBold } from 'hq-icons'
 
 export default function KeyboardTooltipDemo() {
     return (

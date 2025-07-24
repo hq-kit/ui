@@ -1,8 +1,9 @@
 'use client'
 
-import type { Ref } from 'react'
+import { cn } from '@/lib/utils'
 
 import { IconLoader, IconSearch, IconX } from 'hq-icons'
+import type { Ref } from 'react'
 import {
     Button,
     Input,
@@ -10,8 +11,6 @@ import {
     type SearchFieldProps as RACSearchFieldProps,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface SearchFieldProps extends RACSearchFieldProps, FieldProps {

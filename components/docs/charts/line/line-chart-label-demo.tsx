@@ -1,8 +1,7 @@
 'use client'
 
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { CartesianGrid, LabelList, Line, LineChart, XAxis } from 'recharts'
 
 const chartData = [
     { month: 'Jan', revenue: 186, expenses: 80 },

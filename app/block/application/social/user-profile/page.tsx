@@ -1,11 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { Avatar, Card, Container, Tabs } from '@/components/ui'
 
 import Image from 'next/image'
+import { useState } from 'react'
 import type { Key } from 'react-aria-components'
-
-import { Avatar, Card, Container, Tabs } from '@/components/ui'
 import About from './about'
 import Media from './media'
 import Posts from './posts'
@@ -30,7 +29,7 @@ export default function UserProfile() {
                     <Avatar
                         alt='logo'
                         src='https://github.com/dq-alhq.png'
-                        className='-translate-x-1/2 lg:-bottom-4 absolute bottom-32 left-1/2 size-24 rounded-full border bg-bg p-1 lg:left-20 lg:size-44 lg:translate-x-0'
+                        className='-translate-x-1/2 lg:-bottom-4 absolute bottom-32 left-1/2 size-24 rounded-full border bg-background p-1 lg:left-20 lg:size-44 lg:translate-x-0'
                     />
                     <div className='flex w-full flex-col gap-1 lg:ml-72'>
                         <h3 className='text-center font-bold text-lg lg:text-left lg:text-4xl'>Diqi Al-Haqqi</h3>

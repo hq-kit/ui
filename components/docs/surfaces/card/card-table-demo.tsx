@@ -1,6 +1,5 @@
-import { IconEllipsisVertical, IconEye, IconPencil, IconTrash } from 'hq-icons'
-
 import { Card, Menu, Pagination, Table } from '@/components/ui'
+import { IconEllipsisVertical, IconEye, IconPencil, IconTrash } from 'hq-icons'
 
 export default function CardTableDemo() {
     return (

@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts'
 
 const chartData = [
     { os: 'Windows', users: 320, fill: 'var(--chart-1)' },

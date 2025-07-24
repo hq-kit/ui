@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Textarea } from '@/components/ui'
+import { useState } from 'react'
 
 export default function TextareaControlledDemo() {
     const [value, setValue] = useState('')

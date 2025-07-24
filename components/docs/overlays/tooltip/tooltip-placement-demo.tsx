@@ -1,8 +1,7 @@
 'use client'
 
-import type { TooltipProps } from 'react-aria-components'
-
 import { Button, Tooltip } from '@/components/ui'
+import type { TooltipProps } from 'react-aria-components'
 
 const placements: TooltipProps['placement'][] = [
     'left top',

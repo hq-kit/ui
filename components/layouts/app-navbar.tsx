@@ -1,14 +1,13 @@
 'use client'
-import { useEffect, useState } from 'react'
-
-import { IconBrandCleon, IconBrandGithub, IconSearch } from 'hq-icons'
-import { usePathname } from 'next/navigation'
-import { Collection } from 'react-aria-components'
-
 import { CommandMenu } from '@/components/layouts/command-menu'
 import { MobileNav } from '@/components/layouts/mobile-nav'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Keyboard, Link, Navbar, Separator, buttonStyle } from '@/components/ui'
+
+import { IconBrandCleon, IconBrandGithub, IconSearch } from 'hq-icons'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Collection } from 'react-aria-components'
 
 export function AppNavbar() {
     const pathname = usePathname()

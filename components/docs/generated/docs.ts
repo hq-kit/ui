@@ -85,78 +85,6 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "collections",
-        "order": 3,
-        "items": [
-          {
-            "title": "Grid List",
-            "url": "/docs/components/collections/grid-list",
-            "order": 3
-          },
-          {
-            "title": "List Box",
-            "url": "/docs/components/collections/list-box",
-            "order": 3
-          },
-          {
-            "title": "Menu",
-            "url": "/docs/components/collections/menu",
-            "order": 1
-          },
-          {
-            "title": "Table",
-            "url": "/docs/components/collections/table",
-            "order": 4
-          },
-          {
-            "title": "Tag Group",
-            "url": "/docs/components/collections/tag-group",
-            "order": 7
-          },
-          {
-            "title": "Tree",
-            "url": "/docs/components/collections/tree",
-            "order": 8
-          }
-        ]
-      },
-      {
-        "title": "colors",
-        "order": 1,
-        "items": [
-          {
-            "title": "Color Area",
-            "url": "/docs/components/colors/color-area",
-            "order": 1
-          },
-          {
-            "title": "Color Field",
-            "url": "/docs/components/colors/color-field",
-            "order": 2
-          },
-          {
-            "title": "Color Picker",
-            "url": "/docs/components/colors/color-picker",
-            "order": 3
-          },
-          {
-            "title": "Color Slider",
-            "url": "/docs/components/colors/color-slider",
-            "order": 4
-          },
-          {
-            "title": "Color Swatch Picker",
-            "url": "/docs/components/colors/color-swatch-picker",
-            "order": 6
-          },
-          {
-            "title": "Color Wheel",
-            "url": "/docs/components/colors/color-wheel",
-            "order": 7
-          }
-        ]
-      },
-      {
         "title": "controls",
         "order": 1,
         "items": [
@@ -239,13 +167,38 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "drag-and-drop",
-        "order": 1,
+        "title": "collections",
+        "order": 3,
         "items": [
           {
-            "title": "Drop Zone",
-            "url": "/docs/components/drag-and-drop/drop-zone",
+            "title": "Grid List",
+            "url": "/docs/components/collections/grid-list",
+            "order": 3
+          },
+          {
+            "title": "List Box",
+            "url": "/docs/components/collections/list-box",
+            "order": 3
+          },
+          {
+            "title": "Menu",
+            "url": "/docs/components/collections/menu",
             "order": 1
+          },
+          {
+            "title": "Table",
+            "url": "/docs/components/collections/table",
+            "order": 4
+          },
+          {
+            "title": "Tag Group",
+            "url": "/docs/components/collections/tag-group",
+            "order": 7
+          },
+          {
+            "title": "Tree",
+            "url": "/docs/components/collections/tree",
+            "order": 8
           }
         ]
       },
@@ -282,6 +235,74 @@ export const docs: Docs[] = [
             "title": "Time Field",
             "url": "/docs/components/date-and-time/time-field",
             "order": 6
+          }
+        ]
+      },
+      {
+        "title": "colors",
+        "order": 1,
+        "items": [
+          {
+            "title": "Color Area",
+            "url": "/docs/components/colors/color-area",
+            "order": 1
+          },
+          {
+            "title": "Color Field",
+            "url": "/docs/components/colors/color-field",
+            "order": 2
+          },
+          {
+            "title": "Color Picker",
+            "url": "/docs/components/colors/color-picker",
+            "order": 3
+          },
+          {
+            "title": "Color Slider",
+            "url": "/docs/components/colors/color-slider",
+            "order": 4
+          },
+          {
+            "title": "Color Swatch Picker",
+            "url": "/docs/components/colors/color-swatch-picker",
+            "order": 6
+          },
+          {
+            "title": "Color Wheel",
+            "url": "/docs/components/colors/color-wheel",
+            "order": 7
+          }
+        ]
+      },
+      {
+        "title": "drag-and-drop",
+        "order": 1,
+        "items": [
+          {
+            "title": "Drop Zone",
+            "url": "/docs/components/drag-and-drop/drop-zone",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "layouts",
+        "order": 3,
+        "items": [
+          {
+            "title": "Container",
+            "url": "/docs/components/layouts/container",
+            "order": 3
+          },
+          {
+            "title": "Navbar",
+            "url": "/docs/components/layouts/navbar",
+            "order": 1
+          },
+          {
+            "title": "Sidebar",
+            "url": "/docs/components/layouts/sidebar",
+            "order": 2
           }
         ]
       },
@@ -361,58 +382,6 @@ export const docs: Docs[] = [
             "title": "Textarea",
             "url": "/docs/components/forms/textarea",
             "order": 5
-          }
-        ]
-      },
-      {
-        "title": "layouts",
-        "order": 3,
-        "items": [
-          {
-            "title": "Container",
-            "url": "/docs/components/layouts/container",
-            "order": 3
-          },
-          {
-            "title": "Navbar",
-            "url": "/docs/components/layouts/navbar",
-            "order": 1
-          },
-          {
-            "title": "Sidebar",
-            "url": "/docs/components/layouts/sidebar",
-            "order": 2
-          }
-        ]
-      },
-      {
-        "title": "navigation",
-        "order": 2,
-        "items": [
-          {
-            "title": "Breadcrumbs",
-            "url": "/docs/components/navigation/breadcrumbs",
-            "order": 2
-          },
-          {
-            "title": "Disclosure",
-            "url": "/docs/components/navigation/disclosure",
-            "order": 5
-          },
-          {
-            "title": "Link",
-            "url": "/docs/components/navigation/link",
-            "order": 1
-          },
-          {
-            "title": "Pagination",
-            "url": "/docs/components/navigation/pagination",
-            "order": 4
-          },
-          {
-            "title": "Tabs",
-            "url": "/docs/components/navigation/tabs",
-            "order": 3
           }
         ]
       },
@@ -513,6 +482,37 @@ export const docs: Docs[] = [
             "url": "/docs/components/statuses/toast",
             "order": 6,
             "status": "alpha"
+          }
+        ]
+      },
+      {
+        "title": "navigation",
+        "order": 2,
+        "items": [
+          {
+            "title": "Breadcrumbs",
+            "url": "/docs/components/navigation/breadcrumbs",
+            "order": 2
+          },
+          {
+            "title": "Disclosure",
+            "url": "/docs/components/navigation/disclosure",
+            "order": 5
+          },
+          {
+            "title": "Link",
+            "url": "/docs/components/navigation/link",
+            "order": 1
+          },
+          {
+            "title": "Pagination",
+            "url": "/docs/components/navigation/pagination",
+            "order": 4
+          },
+          {
+            "title": "Tabs",
+            "url": "/docs/components/navigation/tabs",
+            "order": 3
           }
         ]
       },

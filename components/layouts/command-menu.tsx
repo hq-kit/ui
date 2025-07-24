@@ -1,14 +1,13 @@
 'use client'
 
-import { Fragment, useEffect } from 'react'
+import { docs } from '@/components/docs/generated/docs'
+
+import { Command } from '@/components/ui'
+import { titleCase } from '@/lib/utils/modifiers'
 
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
 import { usePathname } from 'next/navigation'
-
-import { Command } from '@/components/ui'
-
-import { docs } from '@/components/docs/generated/docs'
-import { titleCase } from '@/lib/utils/modifiers'
+import { Fragment, useEffect } from 'react'
 
 export interface OpenCloseProps {
     openCommand: boolean

@@ -1,10 +1,9 @@
 'use client'
 
-import type { Dispatch, SetStateAction } from 'react'
+import { Button, Menu } from '@/components/ui'
 
 import { IconSwatchBook } from 'hq-icons'
-
-import { Button, Menu } from '@/components/ui'
+import type { Dispatch, SetStateAction } from 'react'
 
 const ColorSelectors = [
     { type: 'hex', sample: '#0D6DFD' },

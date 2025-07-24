@@ -1,8 +1,7 @@
 'use client'
 
-import { IconEye, IconPencil } from 'hq-icons'
-
 import { Menu } from '@/components/ui'
+import { IconEye, IconPencil } from 'hq-icons'
 
 export default function MenuWithIconDemo() {
     return (

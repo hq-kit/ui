@@ -1,9 +1,8 @@
 'use client'
 
+import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
 import Link from 'next/link'
-
-import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 
 export default function LoginFormSink() {
     return (

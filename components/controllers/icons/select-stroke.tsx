@@ -1,12 +1,11 @@
 'use client'
 
-import { IconChevronDown } from 'hq-icons'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import type { Selection } from 'react-aria-components'
-
 import { Button, Menu } from '@/components/ui'
 import { useQueryString } from '@/lib/hooks/use-query-string'
+import { IconChevronDown } from 'hq-icons'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
+import type { Selection } from 'react-aria-components'
 
 const strokes = [
     { id: '1', name: 'Stroke 1' },

@@ -15,5 +15,9 @@
       "description": "Path to the lib directory"
     }
   },
-  "required": ["ui", "css", "lib"]
+  "required": [
+    "ui",
+    "css",
+    "lib"
+  ]
 }

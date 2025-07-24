@@ -1,9 +1,8 @@
 'use client'
 
+import { Toggle } from '@/components/ui'
 import { IconLock, IconLockOpen } from 'hq-icons'
 import { useState } from 'react'
-
-import { Toggle } from '@/components/ui'
 
 export default function ToggleControlledDemo() {
     const [isSelected, setSelected] = useState(false)

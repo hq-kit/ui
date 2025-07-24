@@ -1,8 +1,7 @@
 'use client'
 
-import { IconSquareMousePointer } from 'hq-icons'
-
 import { Button, Tooltip } from '@/components/ui'
+import { IconSquareMousePointer } from 'hq-icons'
 
 export default function TooltipWithoutArrowDemo() {
     return (

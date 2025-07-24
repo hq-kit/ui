@@ -1,10 +1,9 @@
 'use client'
 
+import { Card, Chart, type ChartConfig } from '@/components/ui'
 import { useMemo } from 'react'
 
 import { Label, Pie, PieChart } from 'recharts'
-
-import { Card, Chart, type ChartConfig } from '@/components/ui'
 
 const chartData = [
     { category: 'Electronics', sales: 275, fill: 'var(--color-electronics)' },

@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { OTP } from '@/components/ui'
+import { useState } from 'react'
 
 export default function InputOtpControlledDemo() {
     const [value, setValue] = useState('')

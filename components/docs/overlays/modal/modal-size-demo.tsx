@@ -1,8 +1,7 @@
 'use client'
 
-import { type ComponentProps, useState } from 'react'
-
 import { Button, Modal } from '@/components/ui'
+import { type ComponentProps, useState } from 'react'
 
 type Size = Pick<ComponentProps<typeof Modal.Content>, 'size'>['size']
 const sizes: Size[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'full']

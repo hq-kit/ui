@@ -1,10 +1,9 @@
 'use client'
 
+import { Table } from '@/components/ui'
 import { useState } from 'react'
 
 import type { Selection } from 'react-aria-components'
-
-import { Table } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Charizard', type: 'Fire, Flying', level: '67' },

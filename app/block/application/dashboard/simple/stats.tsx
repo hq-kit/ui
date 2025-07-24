@@ -1,6 +1,5 @@
-import { IconTrendingDown, IconTrendingUp } from 'hq-icons'
-
 import { Badge, Card } from '@/components/ui'
+import { IconTrendingDown, IconTrendingUp } from 'hq-icons'
 
 export default function Stats() {
     return (

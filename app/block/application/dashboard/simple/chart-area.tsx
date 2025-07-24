@@ -1,12 +1,11 @@
 'use client'
 
+import { Card, Chart, type ChartConfig, Select } from '@/components/ui'
+import { useIsMobile } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
 import type { Key } from 'react-aria-components'
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
-
-import { Card, Chart, type ChartConfig, Select } from '@/components/ui'
-import { useIsMobile } from '@/lib/hooks'
 
 const chartData = [
     { date: '2024-04-01', desktop: 222, mobile: 150 },

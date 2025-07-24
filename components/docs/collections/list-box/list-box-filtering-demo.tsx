@@ -1,9 +1,8 @@
 'use client'
 
-import { Autocomplete } from 'react-aria-components'
-
 import { ListBox, SearchField } from '@/components/ui'
 import { fuzzyMatch } from '@/lib/utils'
+import { Autocomplete } from 'react-aria-components'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

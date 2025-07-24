@@ -1,10 +1,9 @@
 'use client'
 
-import type { Ref } from 'react'
-
 import { IconLoaderCircle } from 'hq-icons'
-import { Button as RACButton, composeRenderProps } from 'react-aria-components'
+import type { Ref } from 'react'
 import type { ButtonProps as RACButtonProps } from 'react-aria-components'
+import { Button as RACButton, composeRenderProps } from 'react-aria-components'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 const buttonStyle = tv({

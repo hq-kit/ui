@@ -1,9 +1,8 @@
 'use client'
 
-import { Keyboard as RACKeyboard } from 'react-aria-components'
-
 import { cn } from '@/lib/utils'
 import type { ComponentPropsWithRef } from 'react'
+import { Keyboard as RACKeyboard } from 'react-aria-components'
 
 type ShortcutKeyResult = {
     symbol: string

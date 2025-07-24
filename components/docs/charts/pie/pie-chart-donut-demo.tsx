@@ -1,8 +1,7 @@
 'use client'
 
-import { Pie, PieChart } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Pie, PieChart } from 'recharts'
 
 const chartData = [
     { category: 'Electronics', sales: 275, fill: 'var(--color-electronics)' },

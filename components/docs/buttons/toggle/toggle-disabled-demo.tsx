@@ -1,8 +1,7 @@
 'use client'
 
-import { IconPower } from 'hq-icons'
-
 import { Toggle } from '@/components/ui'
+import { IconPower } from 'hq-icons'
 
 export default function ToggleDisabledDemo() {
     return (

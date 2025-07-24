@@ -1,6 +1,5 @@
-import { IconUserPlus } from 'hq-icons'
-
 import { Button, Card, SearchField } from '@/components/ui'
+import { IconUserPlus } from 'hq-icons'
 
 export default function CardActionDemo() {
     return (

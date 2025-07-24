@@ -1,9 +1,8 @@
 'use client'
 
+import { Card, Chart, type ChartConfig } from '@/components/ui'
 import { IconBadgeDollar, IconShoppingBag } from 'hq-icons'
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
-
-import { Card, Chart, type ChartConfig } from '@/components/ui'
 
 const chartData = [
     { month: 'Jan', sales: 186, profit: 80 },

@@ -1,9 +1,8 @@
 'use client'
 
-import { IconBrandCleon, IconGauge, IconLogOut, IconSearch, IconSettings, IconShield, IconShoppingBag } from 'hq-icons'
-
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar, Breadcrumbs, Button, Menu, Navbar, Separator } from '@/components/ui'
+import { IconBrandCleon, IconGauge, IconLogOut, IconSearch, IconSettings, IconShield, IconShoppingBag } from 'hq-icons'
 
 export default function AppNavbar({ children }: { children: React.ReactNode }) {
     return (
@@ -74,7 +73,7 @@ function UserMenu() {
             <Menu.Content placement='bottom right' className='sm:min-w-56'>
                 <Menu.Header>
                     <span className='block'>DQ Al-Haqqi</span>
-                    <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                    <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                 </Menu.Header>
                 <Menu.Item href='#dashboard'>
                     <IconGauge />

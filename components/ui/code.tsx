@@ -1,16 +1,16 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useEffect, useState } from 'react'
+
+import { cn } from '@/lib/utils'
 
 import { IconCheck, IconCopy } from 'hq-icons'
+import { useEffect, useState } from 'react'
 import rehypePrettyCode, { type Theme } from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
-
-import { cn } from '@/lib/utils'
 
 interface CodeProps {
     lang?: string | { block?: string; inline?: string }
@@ -58,13 +58,13 @@ const Code = ({
             try {
                 const file = await unified()
                     .use(remarkParse)
-                    .use(remarkRehype, { allowDestructiveousHtml: true })
+                    .use(remarkRehype, { allowDangerousHtml: true })
                     .use(rehypePrettyCode, {
                         keepBackground: true,
                         theme,
                         defaultLang: lang
                     })
-                    .use(rehypeStringify, { allowDestructiveousHtml: true })
+                    .use(rehypeStringify, { allowDangerousHtml: true })
                     .process(
                         `\`\`\`${lang} ${lineNumbers && 'showLineNumbers'} ${filename ? `title="${filename}"` : ''} \{${highlightLine}\}\n${code}\n\`\`\``
                     )

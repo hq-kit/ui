@@ -1,8 +1,7 @@
 'use client'
 
-import { type FormEvent, useState } from 'react'
-
 import { Button, Form, SearchField } from '@/components/ui'
+import { type FormEvent, useState } from 'react'
 
 export default function SearchFieldValidationDemo() {
     const [value, setValue] = useState<string>('')

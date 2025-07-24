@@ -1,8 +1,7 @@
 'use client'
 
-import { IconEye } from 'hq-icons'
-
 import { Button, toast } from '@/components/ui'
+import { IconEye } from 'hq-icons'
 
 export default function ToastActionDemo() {
     return (

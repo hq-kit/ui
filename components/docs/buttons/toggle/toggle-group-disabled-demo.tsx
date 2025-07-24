@@ -1,8 +1,7 @@
 'use client'
 
-import { IconAlignCenter, IconAlignLeft, IconAlignRight } from 'hq-icons'
-
 import { Toggle } from '@/components/ui'
+import { IconAlignCenter, IconAlignLeft, IconAlignRight } from 'hq-icons'
 
 export default function ToggleGroupDisabledDemo() {
     return (

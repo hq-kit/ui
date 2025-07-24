@@ -1,11 +1,9 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { ReactNode, Ref } from 'react'
-
 import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
 import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface RadioGroupProps extends RACRadioGroupProps, FieldProps {}

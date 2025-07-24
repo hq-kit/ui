@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
 
 const surveyData = [
     { category: 'Customer Support', satisfaction: 85 },

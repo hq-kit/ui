@@ -1,9 +1,8 @@
 'use client'
 
+import { Button, Sheet } from '@/components/ui'
 import { IconCircleCheck, IconTrash } from 'hq-icons'
 import { useState } from 'react'
-
-import { Button, Sheet } from '@/components/ui'
 
 export default function SheetControlledDemo() {
     const [open, setOpen] = useState<boolean>(false)

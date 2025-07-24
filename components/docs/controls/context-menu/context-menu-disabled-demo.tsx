@@ -1,8 +1,7 @@
 'use client'
 
-import { IconEye, IconPencil, IconTrash } from 'hq-icons'
-
 import { ContextMenu } from '@/components/ui'
+import { IconEye, IconPencil, IconTrash } from 'hq-icons'
 
 export default function ContextMenuDisabledDemo() {
     return (

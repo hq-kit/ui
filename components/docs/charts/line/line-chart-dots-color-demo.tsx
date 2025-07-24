@@ -1,8 +1,7 @@
 'use client'
 
-import { CartesianGrid, Dot, Line, LineChart } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { CartesianGrid, Dot, Line, LineChart } from 'recharts'
 
 const chartData = [
     { department: 'Marketing', expenses: 275, fill: 'var(--color-marketing)' },

@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import { SearchField } from '@/components/ui'
+import { useState } from 'react'
 
 export default function SearchFieldControlledDemo() {
     const [value, setValue] = useState('')

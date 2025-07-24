@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/image'
-
 import { Card, Link } from '@/components/ui'
+import Image from 'next/image'
 
 export default function BlockCard({ title, description, href }: any) {
     return (

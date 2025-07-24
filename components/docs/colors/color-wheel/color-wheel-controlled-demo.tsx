@@ -1,9 +1,8 @@
 'use client'
 
+import { ColorWheel } from '@/components/ui'
 import { useState } from 'react'
 import { parseColor } from 'react-aria-components'
-
-import { ColorWheel } from '@/components/ui'
 
 export default function ColorWheelControlledDemo() {
     const [color, setColor] = useState(parseColor('hsl(0, 100%, 50%)'))

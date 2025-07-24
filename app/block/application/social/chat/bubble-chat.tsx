@@ -1,5 +1,7 @@
 'use client'
 
+import { Button, Menu } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import {
     IconCheck,
     IconCheckDouble,
@@ -11,9 +13,6 @@ import {
     IconTrash
 } from 'hq-icons'
 import type { ReactNode } from 'react'
-
-import { Button, Menu } from '@/components/ui'
-import { cn } from '@/lib/utils'
 
 export interface BubbleChatProps {
     message: string
@@ -75,7 +74,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                         <IconInfo />
                         Message Info
                     </Menu.Item>
-                    <Menu.Item onAction={onDelete} isDanger>
+                    <Menu.Item onAction={onDelete} isDestructive>
                         <IconTrash /> Delete
                     </Menu.Item>
                 </Menu.Content>

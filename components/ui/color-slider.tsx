@@ -1,9 +1,8 @@
 'use client'
 
-import { ColorSlider as RACColorSlider, SliderOutput, SliderTrack, composeRenderProps } from 'react-aria-components'
-import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-components'
-
 import { cn } from '@/lib/utils'
+import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-components'
+import { ColorSlider as RACColorSlider, SliderOutput, SliderTrack, composeRenderProps } from 'react-aria-components'
 import { ColorThumb } from './color-thumb'
 import { Label } from './form'
 

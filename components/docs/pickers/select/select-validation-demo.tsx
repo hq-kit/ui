@@ -1,10 +1,9 @@
 'use client'
 
+import { Button, Form, Select } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
 
 import type { Key } from 'react-aria-components'
-
-import { Button, Form, Select } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },

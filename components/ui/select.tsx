@@ -1,4 +1,5 @@
 'use client'
+import { cn, fuzzyMatch } from '@/lib/utils'
 import { IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
 import type { ReactNode, Ref } from 'react'
 import type { SelectProps as RACSelectProps } from 'react-aria-components'
@@ -13,8 +14,6 @@ import {
     SelectValue,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label, fieldGroupStyle } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxLabel, ListBoxSection } from './list-box'
 import { PopoverContent } from './popover'

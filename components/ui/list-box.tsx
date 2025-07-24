@@ -1,6 +1,8 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconCheck, IconGripVertical } from 'hq-icons'
+import type { ComponentPropsWithRef } from 'react'
 import type {
     ListBoxItemProps,
     ListBoxProps,
@@ -18,9 +20,6 @@ import {
     Text,
     composeRenderProps
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
-import type { ComponentPropsWithRef } from 'react'
 import { tv } from 'tailwind-variants'
 
 const listStyles = tv({

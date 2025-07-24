@@ -1,9 +1,8 @@
 'use client'
 
+import { DateRangePicker } from '@/components/ui'
 import { getLocalTimeZone, now, parseZonedDateTime } from '@internationalized/date'
 import { useState } from 'react'
-
-import { DateRangePicker } from '@/components/ui'
 
 export default function DateRangePickerTimeDemo() {
     const today = parseZonedDateTime(now(getLocalTimeZone()).toString())

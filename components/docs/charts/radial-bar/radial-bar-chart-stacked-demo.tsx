@@ -1,9 +1,8 @@
 'use client'
 
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts'
-
 import type { ChartConfig } from '@/components/ui'
 import { Card, Chart } from '@/components/ui'
+import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts'
 
 const chartData = [{ month: 'January', sales: 1260, profit: 570 }]
 

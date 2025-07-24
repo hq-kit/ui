@@ -1,10 +1,9 @@
 'use client'
 
+import { Toggle } from '@/components/ui'
 import { IconBold, IconItalic, IconUnderline } from 'hq-icons'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
-
-import { Toggle } from '@/components/ui'
 
 export default function ToggleGroupControlledDemo() {
     const [selected, setSelected] = useState(new Set<Key>(['bold']))

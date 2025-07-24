@@ -1,7 +1,7 @@
 'use client'
 
+import { useIsMobile } from '@/lib/hooks'
 import type { CSSProperties, ReactNode, Ref } from 'react'
-
 import type { ButtonProps, DialogTriggerProps, ModalOverlayProps, PopoverProps } from 'react-aria-components'
 import {
     Button,
@@ -11,8 +11,6 @@ import {
     Popover as RACPopover,
     composeRenderProps
 } from 'react-aria-components'
-
-import { useIsMobile } from '@/lib/hooks'
 import {
     Dialog,
     DialogBody,

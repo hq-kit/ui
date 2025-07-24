@@ -1,11 +1,10 @@
 'use client'
 
+import { Container, Link, buttonStyle } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import type { HTMLAttributes, ReactNode } from 'react'
 
 import { Heading, type HeadingProps, type LinkProps } from 'react-aria-components'
-
-import { Container, Link, buttonStyle } from '@/components/ui'
-import { cn } from '@/lib/utils'
 
 const Hero = ({ children }: { children: ReactNode }) => (
     <div className='relative isolate overflow-hidden bg-background'>
@@ -67,7 +66,7 @@ const HeroContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivEl
 )
 
 interface HeroButtonProps extends LinkProps {
-    variant?: 'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost'
+    variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost'
     size?: 'xs' | 'sm' | 'md' | 'lg'
     icon?: boolean
 }
@@ -75,7 +74,7 @@ interface HeroButtonProps extends LinkProps {
 const HeroButton = ({
     children,
     className,
-    variant = 'primary',
+    variant = 'default',
     size = 'lg',
     icon = false,
     ...props

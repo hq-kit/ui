@@ -1,9 +1,8 @@
 'use client'
 
+import { Button, Modal } from '@/components/ui'
 import { IconCircleCheck, IconTrash } from 'hq-icons'
 import { useState } from 'react'
-
-import { Button, Modal } from '@/components/ui'
 
 export default function ModalControlledDemo() {
     const [open, setOpen] = useState<boolean>(false)

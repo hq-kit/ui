@@ -1,7 +1,7 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { RefObject } from 'react'
-
 import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
 import {
     Group,
@@ -11,8 +11,6 @@ import {
     composeRenderProps,
     useSlottedContext
 } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Toggle, ToggleGroupContext, type ToggleGroupContextProps, toggleGroupStyles } from './toggle'
 
 const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => (

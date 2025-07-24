@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import {
     type ComponentPropsWithRef,
     type Dispatch,
@@ -15,8 +16,6 @@ import {
 } from 'react'
 
 import type { MenuProps } from 'react-aria-components'
-
-import { cn } from '@/lib/utils'
 import { Menu, MenuContent } from './menu'
 
 interface ContextMenuContextProps {

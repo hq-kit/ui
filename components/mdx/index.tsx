@@ -14,12 +14,12 @@ import {
     TypographyTr,
     TypographyUl
 } from '@/components/mdx/typography'
-import Image from 'next/image'
-import type { ComponentProps } from 'react'
-import * as runtime from 'react/jsx-runtime'
 
 import { Note } from '@/components/ui'
 import { IconCircleAlert } from 'hq-icons'
+import Image from 'next/image'
+import type { ComponentProps } from 'react'
+import * as runtime from 'react/jsx-runtime'
 import { Block } from './block'
 import { CLI } from './cli'
 import { Code } from './code'

@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import {
     type CSSProperties,
     type ComponentProps,
@@ -12,8 +13,6 @@ import {
 } from 'react'
 
 import { Legend, type LegendProps, ResponsiveContainer, Tooltip } from 'recharts'
-
-import { cn } from '@/lib/utils'
 
 const THEMES = { light: '', dark: '.dark' } as const
 

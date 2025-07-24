@@ -1,8 +1,7 @@
 'use client'
 
-import { Bar, BarChart, XAxis, YAxis } from 'recharts'
-
 import { Card, Chart, type ChartConfig } from '@/components/ui'
+import { Bar, BarChart, XAxis, YAxis } from 'recharts'
 
 const performanceData = [
     { dataCenter: 'New York', uptime: 99.9 },

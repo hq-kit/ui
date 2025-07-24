@@ -1,8 +1,7 @@
 'use client'
 
-import { IconFolderTree, IconPanelLeftClose, IconSettings, IconX } from 'hq-icons'
-
 import { Command, Keyboard } from '@/components/ui'
+import { IconFolderTree, IconPanelLeftClose, IconSettings, IconX } from 'hq-icons'
 
 export default function KeyboardCommandDemo() {
     return (
