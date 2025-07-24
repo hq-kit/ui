@@ -1,29 +1,29 @@
+import { type Preset, getPreset } from '@/lib/themes'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
 import { fontMonoFamilies, fontSansFamilies } from '@/lib/fonts'
-import { type GrayColor, type PresetColor, grayColors, presetColors } from '@/lib/themes'
 
 type State = {
-    grayColor: GrayColor
-    presetColor: PresetColor
+    presetTheme: Preset
     fontSansFamily: FontSansFamily
     fontMonoFamily: FontMonoFamily
-    borderRadius: number
+    borderRadius: string
 }
 
 type Actions = {
-    setGrayColor: (color: GrayColor) => void
-    setPresetColor: (preset: PresetColor) => void
+    setPresetTheme: (preset: Preset) => void
     setFontSansFamily: (font: FontMonoFamily) => void
     setFontMonoFamily: (font: FontSansFamily) => void
-    setBorderRadius: (radius: number) => void
+    setBorderRadius: (radius: string) => void
     reset: () => void
 }
 
+export type FontSansFamily = (typeof fontSansFamilies)[number]
+export type FontMonoFamily = (typeof fontMonoFamilies)[number]
+
 const initialState: State = {
-    grayColor: 'zinc',
-    presetColor: 'brand-default',
+    presetTheme: 'default',
     fontSansFamily: {
         label: 'Geist',
         value: '--font-geist',
@@ -34,7 +34,7 @@ const initialState: State = {
         value: '--font-geist-mono',
         link: 'https://vercel.com/font'
     },
-    borderRadius: 0.5
+    borderRadius: '0.5rem'
 }
 
 export const useThemeStore = create<State & Actions>()(
@@ -42,8 +42,7 @@ export const useThemeStore = create<State & Actions>()(
         persist(
             (set) => ({
                 ...initialState,
-                setGrayColor: (grayColor) => set(() => ({ grayColor })),
-                setPresetColor: (presetColor) => set(() => ({ presetColor })),
+                setPresetTheme: (presetTheme) => set(() => ({ presetTheme })),
                 setFontSansFamily: (fontSansFamily) => set(() => ({ fontSansFamily })),
                 setFontMonoFamily: (fontMonoFamily) => set(() => ({ fontMonoFamily })),
                 setBorderRadius: (borderRadius) => set(() => ({ borderRadius })),
@@ -57,14 +56,12 @@ export const useThemeStore = create<State & Actions>()(
 )
 
 export const useThemeGenerator = () => {
-    const currentPresetColor = useThemeStore((state) => state.presetColor)
-    const currentGrayColor = useThemeStore((state) => state.grayColor)
+    const currentPresetTheme = useThemeStore((state) => state.presetTheme)
     const currentFontSansFamily = useThemeStore((state) => state.fontSansFamily)
     const currentFontMonoFamily = useThemeStore((state) => state.fontMonoFamily)
     const currentBorderRadius = useThemeStore((state) => state.borderRadius)
 
-    const updatePresetColor = useThemeStore((state) => state.setPresetColor)
-    const updateGrayColor = useThemeStore((state) => state.setGrayColor)
+    const updatePresetTheme = useThemeStore((state) => state.setPresetTheme)
     const updateFontSansFamily = useThemeStore((state) => state.setFontSansFamily)
     const updateFontMonoFamily = useThemeStore((state) => state.setFontMonoFamily)
     const updateBorderRadius = useThemeStore((state) => state.setBorderRadius)
@@ -72,17 +69,13 @@ export const useThemeGenerator = () => {
     const reset = useThemeStore((state) => state.reset)
 
     return {
-        grayColors,
-        presetColors,
         fontSansFamilies,
         fontMonoFamilies,
-        currentGrayColor,
-        currentPresetColor,
+        currentPresetTheme,
         currentFontSansFamily,
         currentFontMonoFamily,
         currentBorderRadius,
-        updateGrayColor,
-        updatePresetColor,
+        updatePresetTheme,
         updateFontSansFamily,
         updateFontMonoFamily,
         updateBorderRadius,
@@ -90,49 +83,27 @@ export const useThemeGenerator = () => {
     }
 }
 
-export const syncGrayColor = (color: GrayColor, resolvedTheme: string | undefined) => {
+export const syncThemeColor = (preset: Preset, resolvedTheme: string | undefined) => {
     const root = document.querySelector<HTMLHtmlElement>(':root')
     if (!root) return
 
-    const grayColor = grayColors.find((c) => c.name === color)
+    const presetTheme = getPreset(preset)
 
-    if (!grayColor) return
+    if (!presetTheme) return
 
-    const vars = (resolvedTheme === 'light' ? { ...grayColor?.cssVars.light } : { ...grayColor?.cssVars.dark }) as {
+    const vars = (resolvedTheme === 'light' ? { ...presetTheme?.light } : { ...presetTheme?.dark }) as {
         [key: string]: string
     }
 
-    for (const variable of Object.keys(vars)) {
-        root.style.setProperty(`--${variable}`, `${vars[variable]}`)
-    }
-
-    root.style.setProperty(
-        '--bg',
-        resolvedTheme === 'light' ? `${grayColor?.cssVars.light.bg}` : `${grayColor?.cssVars.dark.bg}`
-    )
-}
-
-export const syncThemeColor = (color: PresetColor, resolvedTheme: string | undefined) => {
-    const root = document.querySelector<HTMLHtmlElement>(':root')
-    if (!root) return
-
-    const primaryColor = presetColors.find((c) => c.name === color)
-
-    if (!primaryColor) return
-
-    const vars = (
-        resolvedTheme === 'light' ? { ...primaryColor?.cssVars.light } : { ...primaryColor?.cssVars.dark }
-    ) as { [key: string]: string }
-
-    for (const variable of Object.keys(vars)) {
-        root.style.setProperty(`--${variable}`, `${vars[variable]}`)
+    for (const [key, value] of Object.entries(vars)) {
+        root.style.setProperty(`--${key}`, value)
     }
 }
 
-export const syncBorderRadius = (borderRadius: number) => {
+export const syncBorderRadius = (borderRadius: string) => {
     const root = document.querySelector<HTMLHtmlElement>(':root')
     if (!root) return
-    root.style.setProperty('--radius', `${borderRadius}rem`)
+    root.style.setProperty('--radius', borderRadius)
 }
 
 export const syncFontSansFamily = (fontFamily: FontSansFamily) => {
@@ -148,6 +119,3 @@ export const syncFontMonoFamily = (fontFamily: FontMonoFamily) => {
         root.style.setProperty('--font-mono', `var(${fontFamily.value})`)
     }
 }
-
-export type FontSansFamily = (typeof fontSansFamilies)[number]
-export type FontMonoFamily = (typeof fontMonoFamilies)[number]

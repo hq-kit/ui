@@ -29,7 +29,7 @@ export default function ContextMenuWithIconDemo() {
                     Share
                 </ContextMenu.Item>
                 <ContextMenu.Separator />
-                <ContextMenu.Item isDanger>
+                <ContextMenu.Item isDestructive>
                     <IconTrash />
                     Delete
                 </ContextMenu.Item>

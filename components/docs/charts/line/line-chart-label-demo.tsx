@@ -60,7 +60,7 @@ export default function LineChartLabelDemo() {
                                 r: 6
                             }}
                         >
-                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
+                            <LabelList position='top' offset={12} className='fill-foreground' fontSize={12} />
                         </Line>
                         <Line
                             dataKey='expenses'
@@ -74,7 +74,7 @@ export default function LineChartLabelDemo() {
                                 r: 6
                             }}
                         >
-                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
+                            <LabelList position='top' offset={12} className='fill-foreground' fontSize={12} />
                         </Line>
                     </LineChart>
                 </Chart>

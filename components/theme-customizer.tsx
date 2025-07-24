@@ -1,31 +1,26 @@
 'use client'
-
+import { presets } from '@/lib/themes'
+import { titleCase } from '@/lib/utils/modifiers'
 import { IconMonitor, IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
 import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 import { useTheme } from '@/components/providers'
-import { Button, Select, Sheet, Slider, isBrightColor } from '@/components/ui'
+import { ThemeSnippet } from '@/components/theme-snippet'
+import { Button, Select, Sheet } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { cn } from '@/lib/utils'
-import { ColorPreview, ThemeSnippet } from './theme-snippet'
 
 export function ThemeCustomizer() {
     const { setTheme: setMode, resolvedTheme: mode } = useTheme()
     const {
-        currentGrayColor,
-        updateGrayColor,
-        currentPresetColor,
-        updatePresetColor,
+        currentPresetTheme,
+        updatePresetTheme,
         currentFontSansFamily,
         updateFontSansFamily,
         currentFontMonoFamily,
         updateFontMonoFamily,
-        currentBorderRadius,
-        updateBorderRadius,
         fontSansFamilies,
         fontMonoFamilies,
-        grayColors,
-        presetColors,
         reset
     } = useThemeGenerator()
 
@@ -73,99 +68,61 @@ export function ThemeCustomizer() {
                         </Select>
                     </div>
                     <div className='group flex flex-col gap-1.5'>
-                        <div className='font-medium text-muted-fg text-sm group-has-focus:text-primary'>Gray Color</div>
-                        <GridList
-                            layout='grid'
-                            aria-label='Gray Colors'
-                            className='grid grid-cols-3 gap-2'
-                            disallowEmptySelection
-                            selectionMode='single'
-                            selectedKeys={[currentGrayColor]}
-                            onSelectionChange={(key) => {
-                                // @ts-expect-error no-type
-                                updateGrayColor(key.currentKey)
-                            }}
-                            items={grayColors}
-                        >
-                            {(item) => (
-                                <GridListItem
-                                    style={{
-                                        backgroundColor: item.color,
-                                        color: '#fff'
-                                    }}
-                                    id={item.name}
-                                    textValue={item.label}
-                                    className={({ isHovered, isSelected, isFocusVisible }) =>
-                                        cn(
-                                            'flex cursor-pointer items-center justify-center rounded-lg px-2 py-1 font-semibold text-xs transition',
-                                            {
-                                                'ring-2 ring-bg/80 ring-inset':
-                                                    isFocusVisible || isSelected || isHovered
-                                            }
-                                        )
-                                    }
-                                >
-                                    {item.label}
-                                </GridListItem>
-                            )}
-                        </GridList>
-                    </div>
-                    <div className='group flex flex-col gap-1.5'>
-                        <div className='font-medium text-muted-fg text-sm group-has-focus:text-primary'>
-                            Accent Color
+                        <div className='font-medium text-muted-foreground text-sm group-has-focus:text-primary'>
+                            Preset Theme
                         </div>
                         <GridList
                             layout='grid'
-                            aria-label='Accent Colors'
+                            aria-label='Preset Theme'
                             className='grid grid-cols-3 gap-2'
                             disallowEmptySelection
                             selectionMode='single'
-                            selectedKeys={[currentPresetColor]}
+                            selectedKeys={[currentPresetTheme]}
                             onSelectionChange={(selection: Selection) => {
-                                updatePresetColor([...selection][0] as string)
-                                updateBorderRadius(
-                                    presetColors.find((c) => c.name === [...selection][0])?.radius ??
-                                        currentBorderRadius
+                                updatePresetTheme([...selection][0] as string)
+                                updateFontSansFamily(
+                                    fontSansFamilies.find(
+                                        (f) => f.value === presets[[...selection][0] as string]?.light?.['font-sans']
+                                    ) ?? fontSansFamilies[2]
+                                )
+                                updateFontMonoFamily(
+                                    fontMonoFamilies.find(
+                                        (f) => f.value === presets[[...selection][0] as string]?.light?.['font-mono']
+                                    ) ?? fontMonoFamilies[2]
                                 )
                             }}
-                            items={presetColors}
+                            items={Object.entries(presets).map(([key, value]) => ({
+                                title: key,
+                                light: value.light,
+                                dark: value.dark
+                            }))}
                         >
                             {(item) => (
                                 <GridListItem
                                     style={{
-                                        backgroundColor: item.color,
-                                        color: isBrightColor(item.color) ? '#000' : '#fff'
+                                        backgroundColor: mode === 'dark' ? item?.dark?.primary : item?.light?.primary,
+                                        color:
+                                            mode === 'dark'
+                                                ? item?.dark?.['primary-foreground']
+                                                : item?.light?.['primary-foreground']
                                     }}
-                                    id={item.name}
-                                    textValue={item.label}
+                                    id={item.title}
+                                    textValue={titleCase(item.title)}
                                     className={({ isHovered, isSelected, isFocusVisible }) =>
                                         cn(
-                                            'flex cursor-pointer items-center justify-center rounded-lg px-2 py-1 font-semibold text-xs transition',
-                                            {
-                                                'ring-2 ring-fg/80 ring-inset':
-                                                    isFocusVisible || isSelected || isHovered
-                                            }
+                                            'flex cursor-pointer items-center justify-center truncate text-ellipsis whitespace-nowrap rounded-lg px-2 py-1 font-semibold text-xs transition',
+                                            { 'ring-2 ring-ring': isFocusVisible || isSelected || isHovered }
                                         )
                                     }
                                 >
-                                    {item.label}
+                                    {titleCase(item.title)}
                                 </GridListItem>
                             )}
                         </GridList>
                     </div>
-                    <Slider
-                        label='Border Radius'
-                        className='w-full'
-                        defaultValue={currentBorderRadius}
-                        minValue={0}
-                        maxValue={1}
-                        step={0.05}
-                        value={currentBorderRadius}
-                        onChange={(v) => updateBorderRadius(Number(v))}
-                    />
                     <div className='grid grid-cols-3 gap-0 *:rounded-none *:first:rounded-l-lg *:last:rounded-r-lg'>
                         <Button
-                            variant={mode === 'light' ? 'primary' : 'outline'}
+                            variant={mode === 'light' ? 'default' : 'outline'}
                             size='sm'
                             onPress={() => setMode('light')}
                         >
@@ -173,7 +130,7 @@ export function ThemeCustomizer() {
                             Light
                         </Button>
                         <Button
-                            variant={mode === 'system' ? 'primary' : 'outline'}
+                            variant={mode === 'system' ? 'default' : 'outline'}
                             size='sm'
                             onPress={() => setMode('system')}
                         >
@@ -181,7 +138,7 @@ export function ThemeCustomizer() {
                             System
                         </Button>
                         <Button
-                            variant={mode === 'dark' ? 'primary' : 'outline'}
+                            variant={mode === 'dark' ? 'default' : 'outline'}
                             size='sm'
                             onPress={() => setMode('dark')}
                         >
@@ -191,10 +148,9 @@ export function ThemeCustomizer() {
                     </div>
                 </Sheet.Body>
                 <Sheet.Footer className='flex-col justify-center sm:flex-col'>
-                    <ColorPreview />
                     <div className='flex flex-row justify-end gap-2'>
                         <ThemeSnippet />
-                        <Button variant='danger' onPress={() => reset()}>
+                        <Button variant='destructive' onPress={() => reset()}>
                             <IconRotateCcw />
                             Reset
                         </Button>

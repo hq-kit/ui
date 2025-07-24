@@ -34,11 +34,11 @@ const Slider = ({ orientation = 'horizontal', className, ref, ...props }: Slider
         >
             {({ orientation, state }) => (
                 <>
-                    <div className='flex text-fg'>
+                    <div className='flex text-foreground'>
                         {props.label && <Label>{props.label}</Label>}
                         <SliderOutput
                             className={cn(
-                                'text-muted-fg text-sm tabular-nums',
+                                'text-muted-foreground text-sm tabular-nums',
                                 orientation === 'horizontal' ? 'ml-auto' : 'mx-auto'
                             )}
                         >
@@ -110,7 +110,7 @@ const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
             {...props}
             className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
                 cn(
-                    'top-1/2 left-1/2 size-5 rounded-full border border-muted bg-bg outline-hidden transition',
+                    'top-1/2 left-1/2 size-5 rounded-full border border-border bg-background outline-hidden transition',
                     isFocusVisible && 'border-primary ring-4 ring-ring',
                     isDragging && 'cursor-grabbing border-primary ring-4 ring-ring',
                     isDisabled && 'opacity-50',

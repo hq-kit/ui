@@ -38,7 +38,7 @@ const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps
 const avatarStyle = tv({
     base: [
         'inline-grid shrink-0 items-center justify-center align-middle *:col-start-1 *:row-start-1',
-        '-outline-offset-1 text-center outline-1 outline-fg/20'
+        '-outline-offset-1 text-center outline-1 outline-foreground/20'
     ],
     variants: {
         shape: {
@@ -103,7 +103,7 @@ const Avatar = ({ src, shape, size, alt, className, ...props }: AvatarProps & Co
 const FallbackImage = ({ alt }: { alt: string | undefined }) => {
     return alt ? (
         <svg
-            className='size-full select-none bg-bg fill-current p-[5%] font-medium text-[48px] uppercase'
+            className='size-full select-none bg-background fill-current p-[5%] font-medium text-[48px] uppercase'
             viewBox='0 0 100 100'
             aria-hidden='true'
         >
@@ -113,7 +113,7 @@ const FallbackImage = ({ alt }: { alt: string | undefined }) => {
             </text>
         </svg>
     ) : (
-        <IconUser className='size-full place-self-center bg-bg p-1.5' />
+        <IconUser className='size-full place-self-center bg-background p-1.5' />
     )
 }
 

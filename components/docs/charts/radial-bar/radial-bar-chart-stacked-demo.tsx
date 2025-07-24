@@ -41,14 +41,14 @@ export default function SalesPerformanceOverview() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={(viewBox.cy || 0) - 16}
-                                                    className='fill-fg font-bold text-2xl'
+                                                    className='fill-foreground font-bold text-2xl'
                                                 >
                                                     {totalRevenue.toLocaleString()}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={(viewBox.cy || 0) + 4}
-                                                    className='fill-muted-fg'
+                                                    className='fill-muted-foreground'
                                                 >
                                                     Total Revenue
                                                 </tspan>

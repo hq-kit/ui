@@ -2,7 +2,7 @@
 
 import { ContextMenu } from '@/components/ui'
 
-export default function ContextMenuDangerDemo() {
+export default function ContextMenuDestructiveDemo() {
     return (
         <ContextMenu>
             <ContextMenu.Trigger className='flex items-center justify-center rounded-lg border border-dashed p-10'>
@@ -17,7 +17,7 @@ export default function ContextMenuDangerDemo() {
                     <ContextMenu.Label>Edit</ContextMenu.Label>
                 </ContextMenu.Item>
                 <ContextMenu.Separator />
-                <ContextMenu.Item isDanger>
+                <ContextMenu.Item isDestructive>
                     <ContextMenu.Label>Delete</ContextMenu.Label>
                 </ContextMenu.Item>
             </ContextMenu.Content>

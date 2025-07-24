@@ -59,7 +59,7 @@ export default function LineChartCustomDotsDemo() {
                                         y={cy - r / 2}
                                         width={r}
                                         height={r}
-                                        fill='var(--bg)'
+                                        fill='var(--background)'
                                         stroke='var(--color-sales)'
                                     />
                                 )

@@ -199,7 +199,7 @@ const CarouselHandler = ({ className, ...props }: ComponentPropsWithRef<'div'>) 
             <Button
                 aria-label='Previous Slide'
                 data-handler='previous'
-                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border bg-background pressed:bg-accent/80 pressed:text-accent-foreground text-foreground shadow-sm outline-hidden hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50'
                 isDisabled={!canScrollPrev}
                 onPress={scrollPrev}
             >
@@ -208,7 +208,7 @@ const CarouselHandler = ({ className, ...props }: ComponentPropsWithRef<'div'>) 
             <Button
                 aria-label='Next Slide'
                 data-handler='next'
-                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+                className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border bg-background pressed:bg-accent/80 pressed:text-accent-foreground text-foreground shadow-sm outline-hidden hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50'
                 isDisabled={!canScrollNext}
                 onPress={scrollNext}
             >

@@ -43,7 +43,7 @@ export default function CarouselDApiDemo() {
                 )}
             </Carousel.Content>
             <div className='flex items-center justify-between'>
-                <div className='flex gap-1 py-2 text-center text-muted-fg text-sm'>
+                <div className='flex gap-1 py-2 text-center text-muted-foreground text-sm'>
                     {Array.from({ length: 10 }).map((_, index) => (
                         <Button
                             className={cn(

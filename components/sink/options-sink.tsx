@@ -38,7 +38,7 @@ export default function OptionsSink() {
                     )}
                 </ComboBox>
                 <Modal>
-                    <Button variant='danger' icon>
+                    <Button variant='destructive' icon>
                         <IconTrash />
                     </Button>
                     <Modal.Content role='alertdialog' size='lg'>
@@ -52,7 +52,7 @@ export default function OptionsSink() {
                             <Button slot='close' variant='outline'>
                                 Cancel
                             </Button>
-                            <Button variant='danger' className='min-w-24'>
+                            <Button variant='destructive' className='min-w-24'>
                                 <IconTrash /> Delete
                             </Button>
                         </Modal.Footer>

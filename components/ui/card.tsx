@@ -7,7 +7,7 @@ const Card = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
         <div
             data-slot='card'
             className={cn(
-                'flex flex-col rounded-lg border bg-card text-card-fg shadow-sm has-[table]:overflow-hidden not-has-[[slot=footer]]:**:[[slot=content]]:pb-6 **:[[slot=table]]:rounded-b-none **:[[slot=table]]:border-x-0',
+                'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm has-[table]:overflow-hidden not-has-[[slot=footer]]:**:[[slot=content]]:pb-6 **:[[slot=table]]:rounded-b-none **:[[slot=table]]:border-x-0',
                 className
             )}
             {...props}
@@ -42,7 +42,9 @@ const CardTitle = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
 }
 
 const CardDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return <div slot='description' className={cn('text-muted-fg text-sm md:row-start-2', className)} {...props} />
+    return (
+        <div slot='description' className={cn('text-muted-foreground text-sm md:row-start-2', className)} {...props} />
+    )
 }
 
 const CardAction = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {

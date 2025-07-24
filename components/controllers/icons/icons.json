@@ -1128,7 +1128,7 @@
     { "name": "Church", "keywords": ["temple", "building"] },
     { "name": "CigaretteOff", "keywords": ["smoking", "no-smoking"] },
     { "name": "Cigarette", "keywords": ["smoking"] },
-    { "name": "CircleAlert", "keywords": ["warning", "alert", "danger", "exclamation mark"] },
+    { "name": "CircleAlert", "keywords": ["warning", "alert", "destructive", "exclamation mark"] },
     { "name": "CircleArrowDown", "keywords": ["backwards", "reverse", "direction", "south", "sign", "button"] },
     {
         "name": "CircleArrowLeft",
@@ -2098,7 +2098,10 @@
     },
     { "name": "FileVideo", "keywords": ["movie", "video", "film"] },
     { "name": "FileVolume", "keywords": ["audio", "music", "volume"] },
-    { "name": "FileWarning", "keywords": ["hidden", "warning", "alert", "danger", "protected", "exclamation mark"] },
+    {
+        "name": "FileWarning",
+        "keywords": ["hidden", "warning", "alert", "destructive", "protected", "exclamation mark"]
+    },
     { "name": "FileX", "keywords": ["lost", "delete", "remove", "document"] },
     { "name": "Film", "keywords": ["movie", "video", "reel", "camera", "cinema", "entertainment"] },
     { "name": "Filter", "keywords": ["funnel", "hopper"] },
@@ -3003,7 +3006,7 @@
             "abuse",
             "offense",
             "alert",
-            "danger",
+            "destructive",
             "caution",
             "protected",
             "exclamation mark"
@@ -3301,7 +3304,7 @@
     },
     { "name": "NutOff", "keywords": ["hazelnut", "acorn", "food", "allergy", "intolerance", "diet"] },
     { "name": "Nut", "keywords": ["hazelnut", "acorn", "food", "diet"] },
-    { "name": "OctagonAlert", "keywords": ["warning", "alert", "danger", "exclamation mark"] },
+    { "name": "OctagonAlert", "keywords": ["warning", "alert", "destructive", "exclamation mark"] },
     {
         "name": "OctagonMinus",
         "keywords": [
@@ -5053,7 +5056,7 @@
     { "name": "Siren", "keywords": ["police", "ambulance", "emergency", "security", "alert", "alarm", "light"] },
     { "name": "SkipBack", "keywords": ["arrow", "previous", "music"] },
     { "name": "SkipForward", "keywords": ["arrow", "skip", "next", "music"] },
-    { "name": "Skull", "keywords": ["death", "danger", "bone"] },
+    { "name": "Skull", "keywords": ["death", "destructive", "bone"] },
     {
         "name": "Skyscraper",
         "keywords": ["city", "urban", "office", "workplace", "corporation", "hotel", "apartments"]
@@ -5980,7 +5983,7 @@
             "volatile"
         ]
     },
-    { "name": "TriangleAlert", "keywords": ["warning", "alert", "danger", "exclamation mark", "linter"] },
+    { "name": "TriangleAlert", "keywords": ["warning", "alert", "destructive", "exclamation mark", "linter"] },
     {
         "name": "TriangleRight",
         "keywords": [

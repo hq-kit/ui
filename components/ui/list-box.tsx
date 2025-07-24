@@ -26,14 +26,14 @@ import { tv } from 'tailwind-variants'
 const listStyles = tv({
     slots: {
         sectionStyle: 'col-span-full mt-2 grid grid-cols-[auto_1fr] text-sm',
-        headerStyle: 'pointer-events-none col-span-full px-2 py-1 text-muted-fg text-xs',
+        headerStyle: 'pointer-events-none col-span-full px-2 py-1 text-muted-foreground text-xs',
         itemStyle: [
             'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
             'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
             '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
             '**:data-avatar:*:size-6 **:data-avatar:mr-2 **:data-avatar:size-6 **:data-avatar:shrink-0',
-            'focus:bg-ring focus:text-primary focus:*:[.text-muted-fg]:text-primary',
-            'hover:bg-ring hover:text-primary hover:*:[.text-muted-fg]:text-primary',
+            'focus:bg-accent focus:text-accent-foreground focus:*:[.text-muted-foreground]:text-accent-foreground',
+            'hover:bg-accent/90 hover:text-accent-foreground hover:*:[.text-muted-foreground]:text-accent-foreground',
             'selected:**:data-[slot=checked]:mr-2 selected:**:data-[slot=icon]:hidden selected:**:data-avatar:hidden has-data-avatar:selected:**:data-[slot=checked]:ml-1',
             'dragging:cursor-grabbing dragging:outline dragging:outline-primary',
             'disabled:pointer-events-none disabled:opacity-50'
@@ -73,12 +73,12 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                     {values.allowsDragging && (
                         <IconGripVertical
                             className={cn(
-                                'size-4 shrink-0 text-muted-fg transition',
+                                'size-4 shrink-0 text-muted-foreground transition',
                                 values.isDragging && 'text-primary'
                             )}
                         />
                     )}
-                    {values.isSelected && <IconCheck className='text-green-500' data-slot='checked' />}
+                    {values.isSelected && <IconCheck className='text-primary' data-slot='checked' />}
                     {typeof children === 'string' ? (
                         <Text slot='label' className='col-start-2'>
                             {children}
@@ -120,7 +120,7 @@ const ListBoxDetails = ({ label, description, ...props }: ListBoxDetailsProps) =
                 </Text>
             )}
             {description && (
-                <Text slot='description' className='text-muted-fg text-xs' {...restProps}>
+                <Text slot='description' className='text-muted-foreground text-xs' {...restProps}>
                     {description}
                 </Text>
             )}

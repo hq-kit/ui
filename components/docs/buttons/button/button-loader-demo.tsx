@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { IconCircleCheck, IconTrash } from 'hq-icons'
+import { IconCircleCheck, IconSend, IconTrash } from 'hq-icons'
 
 import { Button } from '@/components/ui'
 
@@ -16,13 +16,19 @@ export default function ButtonLoaderDemo() {
     }
 
     return (
-        <Button
-            isPending={loading === 'loading'}
-            variant={loading === 'success' ? 'primary' : 'danger'}
-            onPress={onPress}
-        >
-            {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
-            {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}
-        </Button>
+        <div className='flex items-center justify-center gap-2'>
+            <Button isPending={loading === 'loading'} onPress={onPress}>
+                {loading === 'success' ? <IconCircleCheck /> : <IconSend />}
+                {loading === 'loading' ? 'Sending...' : loading === 'success' ? 'Sent' : 'Send'}
+            </Button>
+            <Button
+                isPending={loading === 'loading'}
+                variant={loading === 'success' ? 'default' : 'destructive'}
+                onPress={onPress}
+            >
+                {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
+                {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}
+            </Button>
+        </div>
     )
 }

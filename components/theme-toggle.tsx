@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect } from 'react'
 
 import { IconMoon, IconSun } from 'hq-icons'
@@ -10,7 +9,6 @@ import {
     syncBorderRadius,
     syncFontMonoFamily,
     syncFontSansFamily,
-    syncGrayColor,
     syncThemeColor,
     useThemeStore
 } from '@/lib/hooks/use-theme'
@@ -18,19 +16,14 @@ import {
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
     const { resolvedTheme, setTheme } = useTheme()
 
-    const currentGrayColor = useThemeStore((state) => state.grayColor)
-    const currentPresetColor = useThemeStore((state) => state.presetColor)
+    const currentPresetTheme = useThemeStore((state) => state.presetTheme)
     const currentFontSansFamily = useThemeStore((state) => state.fontSansFamily)
     const currentFontMonoFamily = useThemeStore((state) => state.fontMonoFamily)
     const currentBorderRadius = useThemeStore((state) => state.borderRadius)
 
     useEffect(() => {
-        syncGrayColor(currentGrayColor, resolvedTheme)
-    }, [currentGrayColor, resolvedTheme])
-
-    useEffect(() => {
-        syncThemeColor(currentPresetColor, resolvedTheme)
-    }, [currentPresetColor, resolvedTheme])
+        syncThemeColor(currentPresetTheme, resolvedTheme)
+    }, [currentPresetTheme, resolvedTheme])
 
     useEffect(() => {
         syncFontSansFamily(currentFontSansFamily)

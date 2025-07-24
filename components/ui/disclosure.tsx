@@ -88,7 +88,7 @@ const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTri
             {(values) => (
                 <>
                     {typeof children === 'function' ? children(values) : children}
-                    <IconChevronDown data-slot='indicator' className='text-muted-fg transition-transform' />
+                    <IconChevronDown data-slot='indicator' className='text-muted-foreground transition-transform' />
                 </>
             )}
         </Button>

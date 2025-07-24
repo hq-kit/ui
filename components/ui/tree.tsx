@@ -48,7 +48,7 @@ const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
                 {values.hasChildItems && (
                     <Button
                         slot='chevron'
-                        className='inline-flex size-4 items-center justify-center text-muted-fg outline-hidden'
+                        className='inline-flex size-4 items-center justify-center text-muted-foreground outline-hidden'
                     >
                         <IconChevronRight
                             data-slot='indicator'

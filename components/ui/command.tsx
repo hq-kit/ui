@@ -22,16 +22,16 @@ const Command = <T extends object>({ ...props }: CommandProps<T>) => {
                 <TextField autoFocus className='border-b p-1' aria-label='Search'>
                     <Group className='flex items-center px-2'>
                         {props.isPending ? (
-                            <IconLoader className='size-4 shrink-0 animate-spin text-muted-fg' />
+                            <IconLoader className='size-4 shrink-0 animate-spin text-muted-foreground' />
                         ) : (
-                            <IconSearch className='size-4 shrink-0 text-muted-fg' />
+                            <IconSearch className='size-4 shrink-0 text-muted-foreground' />
                         )}
                         <Input className='w-full p-2 outline-hidden' placeholder='Search...' />
                     </Group>
                 </TextField>
                 <Menu
                     renderEmptyState={() => (
-                        <div className='col-span-full p-4 text-center text-muted-fg'>No results found</div>
+                        <div className='col-span-full p-4 text-center text-muted-foreground'>No results found</div>
                     )}
                     className='grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden sm:max-h-[30rem]'
                     {...props}

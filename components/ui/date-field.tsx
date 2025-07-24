@@ -64,10 +64,9 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
                 <DateSegment
                     segment={segment}
                     className={cn(
-                        'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-fg tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
-                        segment.isPlaceholder && 'text-muted-fg',
-                        'focus:font-bold focus:text-primary',
-                        'invalid:not-type-literal:text-danger invalid:focus:text-primary-fg'
+                        'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-foreground tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
+                        segment.isPlaceholder && 'text-muted-foreground',
+                        'underline-offset-4 invalid:not-type-literal:text-destructive/70 focus:text-primary focus:underline invalid:focus:text-destructive'
                     )}
                 />
             )}

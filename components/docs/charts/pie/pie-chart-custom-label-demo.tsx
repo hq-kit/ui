@@ -62,7 +62,7 @@ export default function PieChartCustomLabelDemo() {
                                         y={props.y}
                                         textAnchor={props.textAnchor}
                                         dominantBaseline={props.dominantBaseline}
-                                        fill='var(--fg)'
+                                        fill='var(--foreground)'
                                     >
                                         {payload.amount}
                                     </text>

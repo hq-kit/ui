@@ -55,17 +55,17 @@ export default function TooltipChartAdvanceDemo() {
                                     formatter={(value, name, item, index) => (
                                         <>
                                             <div
-                                                className='size-2.5 shrink-0 rounded-[2px] bg-(--color-bg)'
+                                                className='size-2.5 shrink-0 rounded-[2px] bg-(--color-background)'
                                                 style={
                                                     {
-                                                        '--color-bg': `var(--color-${name})`
+                                                        '--color-background': `var(--color-${name})`
                                                     } as React.CSSProperties
                                                 }
                                             />
                                             {chartConfig[name as keyof typeof chartConfig]?.label || name}
                                             <div className='ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums'>
                                                 {value}
-                                                <span className='font-normal text-muted-fg'>USD</span>
+                                                <span className='font-normal text-muted-foreground'>USD</span>
                                             </div>
                                             {/* Add this after the last item */}
                                             {index === 1 && (
@@ -73,7 +73,7 @@ export default function TooltipChartAdvanceDemo() {
                                                     Total
                                                     <div className='ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums'>
                                                         {item.payload.coffee + item.payload.snacks}
-                                                        <span className='font-normal text-muted-fg'>USD</span>
+                                                        <span className='font-normal text-muted-foreground'>USD</span>
                                                     </div>
                                                 </div>
                                             )}

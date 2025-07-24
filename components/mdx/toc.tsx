@@ -56,7 +56,7 @@ export function TableOfContents({ className, items }: Props) {
                         <div className='space-y-2'>
                             <Skeleton className='h-3 w-20 animate-pulse' />
                             <Skeleton className='h-3 w-32 animate-pulse' />
-                            <Skeleton className='h-3 w-12 animate-pulse bg-fg/50' />
+                            <Skeleton className='h-3 w-12 animate-pulse bg-foreground/50' />
                             <Skeleton className='h-3 w-16 animate-pulse' />
                             <Skeleton className='h-3 w-8 animate-pulse' />
                             <Skeleton className='h-3 w-24 animate-pulse' />
@@ -64,7 +64,7 @@ export function TableOfContents({ className, items }: Props) {
                     }
                 >
                     <>
-                        <Heading level={2} className='mb-6 font-medium text-base text-fg leading-7 lg:text-lg'>
+                        <Heading level={2} className='mb-6 font-medium text-base text-foreground leading-7 lg:text-lg'>
                             On this page
                         </Heading>
                         {items.length > 0 && (
@@ -96,7 +96,7 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
             <Link
                 className={cn(
                     'block text-sm tracking-tight no-underline outline-hidden focus-visible:text-primary',
-                    item.url === `#${activeId}` ? 'text-primary' : 'text-muted-fg'
+                    item.url === `#${activeId}` ? 'text-primary' : 'text-muted-foreground'
                 )}
                 href={item.url}
             >

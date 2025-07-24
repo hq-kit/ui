@@ -19,10 +19,7 @@ const BreadcrumbsContext = createContext<BreadcrumbsContextProps>({
 const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps<T> & BreadcrumbsContextProps) => {
     return (
         <BreadcrumbsContext.Provider value={{ separator: props.separator }}>
-            <RACBreadcrumbs
-                {...props}
-                className={cn('flex items-center gap-1.5 **:data-[slot=icon]:size-3.5', className)}
-            />
+            <RACBreadcrumbs {...props} className={cn('flex items-center gap-1.5 **:[svg]:size-3.5', className)} />
         </BreadcrumbsContext.Provider>
     )
 }
@@ -38,7 +35,10 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
         <Breadcrumb
             {...props}
             className={composeRenderProps(className, (className) =>
-                cn('inline-flex items-center gap-2 text-muted-fg text-sm data-current:text-fg', className)
+                cn(
+                    'inline-flex items-center gap-2 text-muted-foreground text-sm data-current:text-foreground',
+                    className
+                )
             )}
         >
             {(values) => (
@@ -46,7 +46,7 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
                     {href ? (
                         <Link
                             href={href}
-                            className='inline-flex items-center gap-2 transition-colors hover:text-fg'
+                            className='inline-flex items-center gap-2 transition-colors hover:text-foreground'
                             {...props}
                         />
                     ) : (
@@ -61,7 +61,7 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
 
 const Separator = ({ separator = 'chevron' }: { separator?: BreadcrumbsContextProps['separator'] }) => {
     return (
-        <span className='select-none *:text-muted-fg'>
+        <span className='select-none *:text-muted-foreground'>
             {separator === 'chevron' && <IconChevronRight />}
             {separator === 'slash' && <IconSlash />}
             {separator === 'dash' && <IconMinus />}

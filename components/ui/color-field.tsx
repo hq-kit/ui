@@ -44,12 +44,12 @@ const ColorField = ({
                     {label && <Label>{label}</Label>}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
-                            <span data-prefix={true} className='ml-2 text-muted-fg has-[button]:ml-0'>
+                            <span data-prefix={true} className='ml-2 text-muted-foreground has-[button]:ml-0'>
                                 {props.prefix}
                             </span>
                         ) : null}
                         {isLoading ? (
-                            <span className='ml-2 text-muted-fg has-[button]:ml-0'>
+                            <span className='ml-2 text-muted-foreground has-[button]:ml-0'>
                                 <IconLoaderPinwheel className='size-4 animate-spin' />
                             </span>
                         ) : null}
@@ -66,7 +66,7 @@ const ColorField = ({
                             <Input placeholder={placeholder ?? '#000'} />
                         </div>
                         {props.suffix ? (
-                            <span data-suffix={true} className='mr-2 text-muted-fg has-[button]:mr-0'>
+                            <span data-suffix={true} className='mr-2 text-muted-foreground has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

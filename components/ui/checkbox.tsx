@@ -56,11 +56,11 @@ const Checkbox = ({ className, children, label, description, ref, ...props }: Ch
                 <>
                     <div
                         className={cn(
-                            'flex size-4 shrink-0 items-center justify-center rounded-xs border bg-transparent shadow-xs transition dark:bg-muted/40',
-                            'border-muted group-hover/box:border-primary/70 group-has-invalid/box:border-danger/70',
-                            'group-selected/box:border-primary group-selected/box:bg-primary group-selected/box:text-primary-fg group-selected/box:group-has-invalid/box:border-danger/70 group-selected/box:group-has-invalid/box:bg-danger group-selected/box:group-has-invalid/box:text-danger-fg',
-                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-danger/70',
-                            'group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring group-focus-visible/box:group-has-invalid/box:ring-invalid',
+                            'flex size-4 shrink-0 items-center justify-center rounded-xs border bg-transparent transition dark:bg-input/30',
+                            'border-input group-hover/box:border-primary/70 group-has-invalid/box:border-destructive/70',
+                            'group-selected/box:border-primary group-selected/box:bg-primary group-selected/box:text-primary-foreground group-selected/box:group-has-invalid/box:border-destructive/70 group-selected/box:group-has-invalid/box:bg-destructive group-selected/box:group-has-invalid/box:text-destructive-foreground dark:group-selected/box:bg-primary',
+                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-destructive/70',
+                            'group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring/50 group-focus-visible/box:group-has-invalid/box:border-destructive/70 group-focus-visible/box:group-has-invalid/box:ring-destructive/20',
                             className
                         )}
                     >

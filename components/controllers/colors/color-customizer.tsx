@@ -28,7 +28,7 @@ export default function ColorCustomizer() {
 
     return (
         <>
-            <div className='sticky top-14 z-10 w-full rounded-b-lg bg-bg/60 py-2 backdrop-blur-lg md:py-4 lg:top-14'>
+            <div className='sticky top-14 z-10 w-full rounded-b-lg bg-background/60 py-2 backdrop-blur-lg md:py-4 lg:top-14'>
                 <Container className='flex flex-row items-center justify-between gap-3'>
                     <Popover>
                         <Button>
@@ -44,7 +44,7 @@ export default function ColorCustomizer() {
             <Container>
                 <table className='w-full table-fixed'>
                     <thead>
-                        <tr className='sticky top-28 z-10 bg-bg/60 backdrop-blur-lg sm:top-32'>
+                        <tr className='sticky top-28 z-10 bg-background/60 backdrop-blur-lg sm:top-32'>
                             <th className='size-10' colSpan={2} />
                             <Collection
                                 items={['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'].map(

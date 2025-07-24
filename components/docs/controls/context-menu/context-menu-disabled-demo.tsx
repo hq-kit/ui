@@ -20,7 +20,7 @@ export default function ContextMenuDisabledDemo() {
                         <IconPencil />
                         <ContextMenu.Label>Edit</ContextMenu.Label>
                     </ContextMenu.Item>
-                    <ContextMenu.Item isDanger isDisabled>
+                    <ContextMenu.Item isDestructive isDisabled>
                         <IconTrash />
                         <ContextMenu.Label>Delete</ContextMenu.Label>
                     </ContextMenu.Item>
@@ -39,7 +39,7 @@ export default function ContextMenuDisabledDemo() {
                         <IconPencil />
                         <ContextMenu.Label>Edit</ContextMenu.Label>
                     </ContextMenu.Item>
-                    <ContextMenu.Item id='delete' isDanger>
+                    <ContextMenu.Item id='delete' isDestructive>
                         <IconTrash />
                         <ContextMenu.Label>Delete</ContextMenu.Label>
                     </ContextMenu.Item>

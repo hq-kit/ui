@@ -13,7 +13,7 @@ const OTP = ({ className, autoFocus = false, containerClassName, ref, ...props }
         ref={ref}
         autoFocus={autoFocus}
         containerClassName={cn('flex items-center gap-2 has-disabled:opacity-50', containerClassName)}
-        className={cn('mt-auto h-[2.5rem] bg-danger disabled:cursor-not-allowed', className)}
+        className={cn('mt-auto h-[2.5rem] bg-destructive disabled:cursor-not-allowed', className)}
         {...props}
     />
 )
@@ -41,8 +41,8 @@ const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
         <div
             ref={ref}
             className={cn(
-                'relative flex size-9 items-center justify-center rounded-lg border bg-transparent text-sm tabular-nums shadow-xs transition-all dark:bg-muted/40',
-                isActive && 'z-10 border-primary/70 ring-4 ring-primary/20',
+                'relative flex size-9 items-center justify-center rounded-lg border bg-transparent text-sm tabular-nums shadow-xs transition-all dark:bg-input/30',
+                isActive && 'z-10 border-primary/70 ring-4 ring-ring/50',
                 className
             )}
             {...props}
@@ -50,7 +50,7 @@ const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
             {char}
             {hasFakeCaret && (
                 <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
-                    <div className='h-4 w-px animate-caret-blink bg-fg duration-1000' />
+                    <div className='h-4 w-px animate-caret-blink bg-foreground duration-1000' />
                 </div>
             )}
         </div>
@@ -60,7 +60,7 @@ const OTPSlot = ({ index, className, ref, ...props }: OTPSlotProps) => {
 type OTPSeparatorProps = ComponentProps<'div'>
 const OTPSeparator = ({ ref, ...props }: OTPSeparatorProps) => (
     <div ref={ref} {...props}>
-        <IconCircle className='size-2 fill-fg' />
+        <IconCircle className='size-2 fill-foreground' />
     </div>
 )
 

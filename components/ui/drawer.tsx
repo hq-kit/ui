@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'motion/react'
-import { use } from 'react'
+import { type ReactNode, use } from 'react'
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import {
     Button,
@@ -58,7 +58,7 @@ const DrawerContent = ({
                     {({ state }) => (
                         <Modal
                             className={cn(
-                                'fixed max-h-full touch-none overflow-hidden bg-bg align-middle text-fg shadow-sm will-change-transform',
+                                'fixed max-h-full touch-none overflow-hidden bg-background align-middle text-foreground shadow-sm will-change-transform',
                                 side === 'top' &&
                                     `${
                                         isFloating
@@ -132,11 +132,11 @@ const DrawerContent = ({
                                 )}
                             >
                                 {withNotch && side === 'bottom' && (
-                                    <div className='notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20' />
+                                    <div className='notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20' />
                                 )}
-                                {children as React.ReactNode}
+                                {children as ReactNode}
                                 {withNotch && side === 'top' && (
-                                    <div className='notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20' />
+                                    <div className='notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20' />
                                 )}
                             </Dialog>
                         </Modal>

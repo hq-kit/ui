@@ -7,11 +7,7 @@ export default function NoteTitleDescriptionDemo() {
                 <Note.Title>Heads up!</Note.Title>
                 <Note.Description>Change a few things up and try submitting again.</Note.Description>
             </Note>
-            <Note variant='danger'>
-                <Note.Title>Heads up!</Note.Title>
-                <Note.Description>Change a few things up and try submitting again.</Note.Description>
-            </Note>
-            <Note variant='outline'>
+            <Note variant='destructive'>
                 <Note.Title>Heads up!</Note.Title>
                 <Note.Description>Change a few things up and try submitting again.</Note.Description>
             </Note>

@@ -118,14 +118,14 @@ export default function PieChartControlledDemo() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={viewBox.cy}
-                                                    className='fill-fg font-semibold text-2xl'
+                                                    className='fill-foreground font-semibold text-2xl'
                                                 >
                                                     {data[activeIndex]?.sales.toLocaleString()}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={(viewBox.cy || 0) + 24}
-                                                    className='fill-muted-fg'
+                                                    className='fill-muted-foreground'
                                                 >
                                                     Visitors
                                                 </tspan>

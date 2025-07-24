@@ -19,7 +19,7 @@ export default function MenuSubDemo() {
                             <Menu.Label>Edit</Menu.Label>
                         </Menu.Item>
                         <Menu.Submenu>
-                            <Menu.Item isDanger>
+                            <Menu.Item isDestructive>
                                 <Menu.Label>Delete</Menu.Label>
                             </Menu.Item>
                             <Menu.Content>

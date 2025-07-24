@@ -2,7 +2,7 @@
 
 import { Menu } from '@/components/ui'
 
-export default function MenuDangerDemo() {
+export default function MenuDestructiveDemo() {
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
@@ -14,7 +14,7 @@ export default function MenuDangerDemo() {
                     <Menu.Label>Edit</Menu.Label>
                 </Menu.Item>
                 <Menu.Separator />
-                <Menu.Item isDanger>
+                <Menu.Item isDestructive>
                     <Menu.Label>Delete</Menu.Label>
                 </Menu.Item>
             </Menu.Content>

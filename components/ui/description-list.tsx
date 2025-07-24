@@ -16,12 +16,20 @@ const DL = ({ className, ...props }: ComponentPropsWithRef<'dl'>) => {
 
 const DT = ({ className, ...props }: ComponentPropsWithRef<'dt'>) => {
     return (
-        <dt className={cn('col-start-1 border-t pt-3 text-muted-fg first:border-none sm:py-3', className)} {...props} />
+        <dt
+            className={cn('col-start-1 border-t pt-3 text-muted-foreground first:border-none sm:py-3', className)}
+            {...props}
+        />
     )
 }
 
 const DD = ({ className, ...props }: ComponentPropsWithRef<'dd'>) => {
-    return <dd className={cn('pt-1 pb-3 text-fg sm:border-t sm:nth-2:border-none sm:py-3', className)} {...props} />
+    return (
+        <dd
+            className={cn('pt-1 pb-3 text-foreground sm:border-t sm:nth-2:border-none sm:py-3', className)}
+            {...props}
+        />
+    )
 }
 
 DL.T = DT

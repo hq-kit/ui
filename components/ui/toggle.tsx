@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 type ToggleGroupContextProps = {
     isDisabled?: boolean
     gap?: 0 | 1 | 2 | 3 | 4
-    variant?: 'solid' | 'outline' | 'ghost'
+    variant?: 'default' | 'outline'
     orientation?: 'horizontal' | 'vertical'
     size?: 'xs' | 'sm' | 'md' | 'lg'
     icon?: boolean
@@ -20,7 +20,7 @@ type ToggleGroupContextProps = {
 
 const ToggleGroupContext = createContext<ToggleGroupContextProps>({
     gap: 0,
-    variant: 'outline',
+    variant: 'default',
     orientation: 'horizontal',
     size: 'md',
     icon: false
@@ -94,15 +94,12 @@ const ToggleGroup = ({
 
 const toggleStyles = tv({
     base: [
-        'cursor-pointer items-center gap-x-2 rounded-md border outline-hidden backdrop-blur-2xl transition sm:text-sm',
-        'ring-ring focus-visible:border-primary/70 focus-visible:ring-2',
-        'disabled:cursor-default disabled:opacity-50'
+        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md pressed:bg-accent selected:bg-accent font-medium pressed:text-accent-foreground selected:text-accent-foreground text-sm outline-none transition-[color,box-shadow] hover:bg-muted hover:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
     ],
     variants: {
         variant: {
-            solid: 'bg-bg/80 pressed:bg-primary/15 selected:bg-primary selected:text-primary-fg shadow-xs hover:bg-primary/10',
-            ghost: 'border-transparent bg-transparent pressed:bg-muted/50 text-fg hover:bg-muted/40',
-            outline: 'bg-bg/80 pressed:bg-muted/50 selected:bg-muted selected:text-fg hover:bg-muted/40'
+            default: 'bg-transparent',
+            outline: 'border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground'
         },
         noGap: { true: '' },
         orientation: {
@@ -118,16 +115,11 @@ const toggleStyles = tv({
         icon: {
             true: 'h-(--height) w-(--height) shrink-0 justify-center px-0',
             false: 'h-(--height) w-(--width)'
-        },
-        shape: {
-            square: 'rounded-md',
-            circle: 'rounded-full'
         }
     },
     defaultVariants: {
-        variant: 'solid',
-        size: 'sm',
-        shape: 'square'
+        variant: 'default',
+        size: 'sm'
     },
     compoundVariants: [
         {
@@ -155,7 +147,6 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
                         size: props.size ?? size,
                         icon: props.icon ?? icon,
                         orientation: orientation,
-                        shape: props.shape,
                         noGap: gap === 0
                     }),
                     classname

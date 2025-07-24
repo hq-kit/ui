@@ -11,13 +11,13 @@ export default function LinkButtonDemo() {
             <Link className={buttonStyle({ variant: 'secondary' })} href='#'>
                 Link
             </Link>
-            <Link className={buttonStyle({ variant: 'danger' })} href='#'>
+            <Link className={buttonStyle({ variant: 'destructive' })} href='#'>
                 Link
             </Link>
             <Link className={buttonStyle({ variant: 'outline' })} href='#'>
                 Link
             </Link>
-            <Link className={buttonStyle({ variant: 'ghost', shape: 'circle' })} href='#'>
+            <Link className={buttonStyle({ variant: 'ghost' })} href='#'>
                 Link
             </Link>
         </div>

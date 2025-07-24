@@ -54,7 +54,7 @@ const TextField = ({
                         data-loading={props.isPending ? 'true' : undefined}
                     >
                         {props.prefix ? (
-                            <span data-prefix className='ml-2 text-muted-fg has-[button]:ml-0'>
+                            <span data-prefix className='ml-2 text-muted-foreground has-[button]:ml-0'>
                                 {props.prefix}
                             </span>
                         ) : null}
@@ -64,7 +64,7 @@ const TextField = ({
                                 type='button'
                                 aria-label='Toggle visibility'
                                 onPress={() => setMasked((e) => !e)}
-                                className='mr-2 inline-flex items-center justify-center text-muted-fg outline-hidden focus-visible:text-primary'
+                                className='mr-2 inline-flex items-center justify-center text-muted-foreground outline-hidden focus-visible:text-primary'
                             >
                                 <IconEye
                                     aria-hidden
@@ -79,9 +79,12 @@ const TextField = ({
                                 />
                             </Button>
                         ) : props.isPending ? (
-                            <IconLoaderCircle className='mr-2 size-3.5 animate-spin text-muted-fg' data-suffix />
+                            <IconLoaderCircle
+                                className='mr-2 size-3.5 animate-spin text-muted-foreground'
+                                data-suffix
+                            />
                         ) : props.suffix ? (
-                            <span data-suffix className='mr-2 text-muted-fg has-[button]:mr-0'>
+                            <span data-suffix className='mr-2 text-muted-foreground has-[button]:mr-0'>
                                 {props.suffix}
                             </span>
                         ) : null}

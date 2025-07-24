@@ -10,7 +10,7 @@ const Separator = ({ className, children, ...props }: SeparatorProps & { childre
     return children ? (
         <div
             className={cn(
-                'text-muted-fg text-sm leading-6 before:border-muted after:border-muted',
+                'text-muted-foreground text-sm leading-6 before:border-border after:border-muted',
                 props.orientation === 'vertical'
                     ? 'mx-2 flex h-full flex-col items-center self-stretch before:mb-2 before:flex-1 before:border-l after:mt-2 after:flex-1 after:border-r'
                     : 'my-2 flex h-px w-full items-center self-stretch before:mr-2 before:flex-1 before:border-t after:ml-2 after:flex-1 after:border-t',

@@ -70,7 +70,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                 className,
                 (className, { isHovered, isSelected, isFocusVisible, isDisabled }) =>
                     cn(
-                        'flex select-none items-center gap-2 px-3 py-2 text-fg outline-hidden sm:text-sm',
+                        'flex select-none items-center gap-2 px-3 py-2 text-foreground outline-hidden sm:text-sm',
                         'group-layout-grid:rounded-lg group-layout-grid:border',
                         'group-layout-stack:border-x group-layout-stack:last:rounded-b-lg group-layout-stack:first:rounded-t-lg',
                         isHovered && 'bg-primary/10',
@@ -78,7 +78,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                             'bg-primary/10 text-primary group-layout-grid:border-primary/70 group-layout-stack:border-x-primary/70':
                                 isSelected || isFocusVisible
                         },
-                        isDisabled && 'text-muted-fg',
+                        isDisabled && 'text-muted-foreground',
                         className
                     )
             )}
@@ -88,7 +88,7 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                     {allowsDragging && (
                         <Button
                             slot='drag'
-                            className={cn('cursor-grab text-muted-fg', isDragging && 'cursor-grabbing')}
+                            className={cn('cursor-grab text-muted-foreground', isDragging && 'cursor-grabbing')}
                         >
                             <IconGripVertical />
                         </Button>

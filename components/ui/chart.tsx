@@ -60,7 +60,7 @@ const Chart = ({
                 data-chart={chartId}
                 ref={ref}
                 className={cn(
-                    "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-fg [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/80 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
+                    "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/80 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
                     className
                 )}
                 {...props}
@@ -167,7 +167,7 @@ const ChartTooltipContent = ({
         <div
             ref={ref}
             className={cn(
-                'grid min-w-[12rem] items-start gap-1.5 rounded-lg border bg-bg px-3 py-2 text-fg text-xs shadow-xl',
+                'grid min-w-[12rem] items-start gap-1.5 rounded-lg border bg-background px-3 py-2 text-foreground text-xs shadow-xl',
                 className
             )}
         >
@@ -182,7 +182,7 @@ const ChartTooltipContent = ({
                         <div
                             key={item.dataKey}
                             className={cn(
-                                'flex w-full flex-wrap items-stretch gap-2 *:data-[slot=icon]:size-2.5 *:data-[slot=icon]:text-muted-fg',
+                                'flex w-full flex-wrap items-stretch gap-2 *:data-[slot=icon]:size-2.5 *:data-[slot=icon]:text-muted-foreground',
                                 indicator === 'dot' && 'items-center'
                             )}
                         >
@@ -196,7 +196,7 @@ const ChartTooltipContent = ({
                                         !hideIndicator && (
                                             <div
                                                 className={cn(
-                                                    'shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)',
+                                                    'shrink-0 rounded-[2px] border-(--color-border) bg-(--color-background)',
                                                     indicator === 'dot' && 'size-2.5',
                                                     indicator === 'line' && 'w-1',
                                                     indicator === 'dashed' &&
@@ -205,7 +205,7 @@ const ChartTooltipContent = ({
                                                 )}
                                                 style={
                                                     {
-                                                        '--color-bg': indicatorColor,
+                                                        '--color-background': indicatorColor,
                                                         '--color-border': indicatorColor
                                                     } as CSSProperties
                                                 }
@@ -220,10 +220,12 @@ const ChartTooltipContent = ({
                                     >
                                         <div className='grid gap-1.5'>
                                             {nestLabel ? tooltipLabel : null}
-                                            <span className='text-muted-fg'>{itemConfig?.label || item.name}</span>
+                                            <span className='text-muted-foreground'>
+                                                {itemConfig?.label || item.name}
+                                            </span>
                                         </div>
                                         {item.value && (
-                                            <span className='font-medium font-mono text-fg tabular-nums'>
+                                            <span className='font-medium font-mono text-foreground tabular-nums'>
                                                 {item.value.toLocaleString()}
                                             </span>
                                         )}
@@ -275,7 +277,7 @@ const ChartLegendContent = ({
                     <div
                         key={item.value}
                         className={cn(
-                            'flex items-center gap-1.5 *:data-[slot=icon]:size-3 *:data-[slot=icon]:text-muted-fg'
+                            'flex items-center gap-1.5 *:data-[slot=icon]:size-3 *:data-[slot=icon]:text-muted-foreground'
                         )}
                     >
                         {itemConfig?.icon && !hideIcon ? (

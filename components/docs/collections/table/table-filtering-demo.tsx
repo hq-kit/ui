@@ -62,7 +62,7 @@ export default function TableFilteringDemo() {
                     <Table.Body
                         items={list.items}
                         renderEmptyState={() => (
-                            <div className='col-span-full p-4 text-center text-muted-fg'>No items found</div>
+                            <div className='col-span-full p-4 text-center text-muted-foreground'>No items found</div>
                         )}
                     >
                         {(item) => (

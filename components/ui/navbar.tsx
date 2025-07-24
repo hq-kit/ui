@@ -95,7 +95,7 @@ const Navbar = ({
                     'relative isolate flex w-full flex-col',
                     isSticky && 'sticky top-0 z-50',
                     variant === 'float' && 'px-2.5 pt-2',
-                    variant === 'inset' && 'min-h-dvh bg-bg',
+                    variant === 'inset' && 'min-h-dvh bg-sidebar',
                     className
                 )}
                 {...props}
@@ -135,8 +135,9 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
                 'h-(--navbar-height)',
                 '[&>div]:mx-auto [&>div]:w-full [&>div]:max-w-7xl [&>div]:items-center md:[&>div]:flex lg:[&>div]:max-w-(--breakpoint-xl) 2xl:[&>div]:max-w-(--breakpoint-2xl)',
                 variant === 'float' &&
-                    'mx-auto w-full max-w-7xl rounded-lg border bg-bg px-4 text-fg md:px-6 lg:max-w-(--breakpoint-xl) lg:px-8 2xl:max-w-(--breakpoint-2xl)',
-                variant === 'default' && 'border-b bg-bg text-fg sm:[&>div]:px-6 lg:[&>div]:px-8',
+                    'mx-auto w-full max-w-7xl rounded-lg border border-sidebar-border bg-sidebar px-4 text-sidebar-foreground md:px-6 lg:max-w-(--breakpoint-xl) lg:px-8 2xl:max-w-(--breakpoint-2xl)',
+                variant === 'default' &&
+                    'border-sidebar-border border-b bg-sidebar text-sidebar-foreground sm:[&>div]:px-6 lg:[&>div]:px-8',
                 variant === 'inset' &&
                     'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex',
                 className
@@ -197,11 +198,11 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => (
         aria-current={isCurrent ? 'page' : undefined}
         className={composeRenderProps(className, (className) =>
             cn(
-                'relative flex cursor-pointer items-center gap-x-2 rounded-md px-3 py-2 text-muted-fg no-underline outline-hidden transition-colors md:text-sm',
+                'relative flex cursor-pointer items-center gap-x-2 rounded-md px-3 py-2 text-muted-foreground no-underline outline-hidden transition-colors md:text-sm',
                 '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
                 '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
-                'pressed:text-primary hover:text-primary focus:text-primary focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
-                isCurrent && 'pointer-events-none cursor-default bg-primary/10 text-primary',
+                'pressed:text-sidebar-primary hover:text-sidebar-primary focus:text-sidebar-primary focus-visible:ring-2 focus-visible:ring-sidebar-ring/50 disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
+                isCurrent && 'pointer-events-none cursor-default bg-sidebar-accent text-sidebar-accent-foreground',
                 className
             )
         )}
@@ -214,7 +215,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
         <Link
             className={composeRenderProps(className, (className) =>
                 cn(
-                    'relative flex items-center gap-x-2 px-2 py-4 text-fg focus:outline-hidden focus-visible:outline-1 focus-visible:outline-primary md:mr-4 md:px-0 md:py-0',
+                    'relative flex items-center gap-x-2 px-2 py-4 text-sidebar-foreground focus:outline-hidden focus-visible:outline-1 focus-visible:outline-sidebar-ring md:mr-4 md:px-0 md:py-0',
                     className
                 )
             )}
@@ -236,7 +237,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
         <div
             ref={ref}
             className={cn(
-                'flex justify-between bg-bg text-fg peer-has-[[data-navbar-variant=float]]:border md:hidden',
+                'flex justify-between bg-sidebar text-sidebar-foreground peer-has-[[data-navbar-variant=float]]:border peer-has-[[data-navbar-variant=float]]:border-sidebar-border md:hidden',
                 variant === 'float' && 'h-12 rounded-lg border px-3.5',
                 variant === 'inset' && 'h-14 border-b px-4',
                 variant === 'default' && 'h-14 border-b px-4',
@@ -256,11 +257,11 @@ const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentProp
             className={cn(
                 'flex h-(--navbar-breadcrumbs-height) items-center',
                 variant === 'default' &&
-                    'w-full border-b bg-bg text-fg *:max-w-7xl *:px-4 md:*:px-6 lg:*:max-w-(--breakpoint-xl) 2xl:*:max-w-(--breakpoint-2xl)',
+                    'w-full border-sidebar-border border-b bg-sidebar text-sidebar-foreground *:max-w-7xl *:px-4 md:*:px-6 lg:*:max-w-(--breakpoint-xl) 2xl:*:max-w-(--breakpoint-2xl)',
                 variant === 'inset' &&
-                    'w-full rounded-lg rounded-b-none border-b px-4 md:mx-auto md:max-w-[calc(100vw-16px)] md:border md:px-6',
+                    'w-full rounded-lg rounded-b-none border-sidebar-border border-b px-4 md:mx-auto md:max-w-[calc(100vw-16px)] md:border md:px-6',
                 variant === 'float' &&
-                    'mx-auto w-full max-w-7xl rounded-lg bg-bg px-2 text-fg md:px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
+                    'mx-auto w-full max-w-7xl rounded-lg bg-background px-2 text-foreground md:px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
                 className
             )}
             {...props}
@@ -277,9 +278,9 @@ const NavbarInset = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>)
             ref={ref}
             className={cn(
                 'relative flex h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] w-full flex-col overflow-auto',
-                variant === 'inset' && 'bg-bg pb-2 md:px-2',
+                variant === 'inset' && 'bg-background pb-2 md:px-2',
                 variant === 'float' &&
-                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)] bg-bg pb-2 md:px-2',
+                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)] bg-background pb-2 md:px-2',
                 className
             )}
         >
@@ -287,7 +288,7 @@ const NavbarInset = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>)
                 className={cn(
                     'mx-auto flex size-full flex-1 grow flex-col',
                     variant === 'inset' &&
-                        'bg-bg px-4 shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
+                        'border-sidebar-border bg-background px-4 shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
                     variant === 'default' &&
                         'max-w-7xl overflow-auto px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
                     variant === 'float' && 'max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)'

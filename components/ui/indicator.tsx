@@ -7,18 +7,18 @@ const indicatorStyle = tv({
     base: 'absolute right-0.5 left-auto z-10 inline-flex w-auto translate-x-1/2 select-none items-center justify-center whitespace-nowrap border-2 py-[3px]',
     variants: {
         variant: {
-            primary: '[--bg:var(--color-primary)] [--fg:var(--color-primary-fg)]',
-            secondary: '[--bg:var(--color-muted-fg)] [--fg:var(--color-muted)]',
-            danger: '[--bg:var(--color-danger)] [--fg:var(--color-danger-fg)]',
-            outline: '[--bg:var(--color-bg)] [--fg:var(--color-fg)]'
+            primary: '[--background:var(--color-primary)] [--foreground:var(--color-primary-foreground)]',
+            secondary: '[--background:var(--color-muted-foreground)] [--foreground:var(--color-muted)]',
+            destructive: '[--background:var(--color-destructive)] [--foreground:var(--color-border)]',
+            outline: '[--background:var(--color-background)] [--foreground:var(--color-foreground)]'
         },
         position: {
             top: '-translate-y-1/2 top-0.5 bottom-auto',
             bottom: 'top-auto bottom-0.5 translate-y-1/2'
         },
         isInverse: {
-            true: 'border-(--bg) bg-(--fg) text-(--bg)',
-            false: 'border-(--fg) bg-(--bg) text-(--fg)'
+            true: 'border-(--background) bg-(--foreground) text-(--background)',
+            false: 'border-(--foreground) bg-(--background) text-(--foreground)'
         },
         shape: {
             circle: 'rounded-full',

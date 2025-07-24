@@ -44,9 +44,9 @@ const SearchField = ({
                     {label && <Label>{label}</Label>}
                     <FieldGroup isInvalid={props.isInvalid || !!errorMessage} isDisabled={props.isDisabled}>
                         {isPending ? (
-                            <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-fg' />
+                            <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-foreground' />
                         ) : (
-                            <IconSearch className='ml-2 size-4 shrink-0 text-muted-fg' />
+                            <IconSearch className='ml-2 size-4 shrink-0 text-muted-foreground' />
                         )}
                         <Input
                             placeholder={placeholder ?? 'Search...'}
@@ -56,7 +56,7 @@ const SearchField = ({
                             <Button
                                 type='button'
                                 aria-label='Clear'
-                                className='mr-2 inline-flex cursor-pointer items-center justify-center rounded-md text-muted-fg outline-offset-4'
+                                className='mr-2 inline-flex cursor-pointer items-center justify-center rounded-md text-muted-foreground outline-offset-4'
                             >
                                 <IconX aria-hidden />
                             </Button>

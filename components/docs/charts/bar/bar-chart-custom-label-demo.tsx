@@ -29,7 +29,7 @@ const chartConfig = {
         color: 'var(--chart-2)'
     },
     label: {
-        color: 'var(--bg)'
+        color: 'var(--background)'
     }
 } satisfies ChartConfig
 
@@ -63,7 +63,7 @@ export default function BarChartCustomLabelDemo() {
                                 dataKey='completed'
                                 position='right'
                                 offset={8}
-                                className='fill-fg'
+                                className='fill-foreground'
                                 fontSize={12}
                             />
                         </Bar>

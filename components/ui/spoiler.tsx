@@ -42,7 +42,7 @@ function Spoiler({
             {gradientTransparency && (
                 <div
                     className={cn(
-                        'absolute inset-0 rounded-lg bg-gradient-to-b from-transparent to-bg',
+                        'absolute inset-0 rounded-lg bg-gradient-to-b from-transparent to-background',
                         isExpanded && 'hidden'
                     )}
                 />

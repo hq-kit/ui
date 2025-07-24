@@ -52,11 +52,11 @@ export default function TooltipChartFormatterDemo() {
                                 <Chart.TooltipContent
                                     hideLabel
                                     formatter={(value, name) => (
-                                        <div className='flex min-w-[130px] items-center text-muted-fg text-xs'>
+                                        <div className='flex min-w-[130px] items-center text-muted-foreground text-xs'>
                                             {chartConfig[name as keyof typeof chartConfig]?.label || name}
                                             <div className='ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums'>
                                                 {value}
-                                                <span className='font-normal text-muted-fg'>USD</span>
+                                                <span className='font-normal text-muted-foreground'>USD</span>
                                             </div>
                                         </div>
                                     )}

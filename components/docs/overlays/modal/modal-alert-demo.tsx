@@ -5,7 +5,7 @@ import { Button, Modal } from '@/components/ui'
 export default function ModalAlertDemo() {
     return (
         <Modal>
-            <Button variant='danger'>Delete</Button>
+            <Button variant='destructive'>Delete</Button>
             <Modal.Content role='alertdialog'>
                 <Modal.Header>
                     <Modal.Title>Delete file</Modal.Title>
@@ -15,7 +15,7 @@ export default function ModalAlertDemo() {
                     <Button slot='close' variant='outline'>
                         Cancel
                     </Button>
-                    <Button slot='close' variant='danger'>
+                    <Button slot='close' variant='destructive'>
                         Continue
                     </Button>
                 </Modal.Footer>

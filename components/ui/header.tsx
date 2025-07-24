@@ -26,7 +26,7 @@ const HeaderTitle = ({ className, ...props }: ComponentPropsWithRef<'h3'>) => (
 )
 
 const HeaderDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
-    <div slot='description' className={cn('text-muted-fg text-sm md:row-start-2', className)} {...props} />
+    <div slot='description' className={cn('text-muted-foreground text-sm md:row-start-2', className)} {...props} />
 )
 
 const HeaderAction = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (

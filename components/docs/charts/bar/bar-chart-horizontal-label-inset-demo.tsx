@@ -94,7 +94,7 @@ export default function BarChartHorizontalLabelInsetDemo() {
                                         x={props.background.width - 10}
                                         y={props.y + 20}
                                         textAnchor='end'
-                                        fill='var(--fg)'
+                                        fill='var(--foreground)'
                                     >
                                         {props.count.toLocaleString()} ({props.percentage.toFixed(1)}%)
                                     </text>

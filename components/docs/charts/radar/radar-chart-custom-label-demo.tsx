@@ -65,9 +65,9 @@ export default function RadarChartCustomLabelDemo() {
                                         {...props}
                                     >
                                         <tspan>{data.revenue}</tspan>
-                                        <tspan className='fill-muted-fg'>/</tspan>
+                                        <tspan className='fill-muted-foreground'>/</tspan>
                                         <tspan>{data.expenses}</tspan>
-                                        <tspan x={x} dy={'1rem'} fontSize={12} className='fill-muted-fg'>
+                                        <tspan x={x} dy={'1rem'} fontSize={12} className='fill-muted-foreground'>
                                             {data.month}
                                         </tspan>
                                     </text>

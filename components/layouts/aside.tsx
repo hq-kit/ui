@@ -31,7 +31,7 @@ export function Aside() {
                     .sort((a, b) => a.order - b.order)
                     .map((doc, i) => (
                         <div key={i} className='flex flex-col gap-1'>
-                            <Heading className='flex items-center gap-x-2 font-semibold text-fg'>
+                            <Heading className='flex items-center gap-x-2 font-semibold text-foreground'>
                                 {doc.order === 1 ? (
                                     <IconLayers />
                                 ) : doc.order === 2 ? (
@@ -42,14 +42,14 @@ export function Aside() {
                                 {titleCase(doc.title)}
                             </Heading>
                             <div className='relative flex flex-col gap-1 pl-1.5'>
-                                <div className='absolute left-1.5 h-full w-px bg-muted' />
+                                <div className='absolute left-1.5 h-full w-px bg-border' />
                                 {doc.items
                                     ?.sort((a, b) => a.order - b.order)
                                     .map((item, i) => (
                                         <div key={i} className='flex flex-col gap-1'>
                                             {item.items?.length ? (
                                                 <div className='mb-4 flex flex-col gap-1'>
-                                                    <Heading className='py-2 pl-4 font-semibold text-fg'>
+                                                    <Heading className='py-2 pl-4 font-semibold text-foreground'>
                                                         {titleCase(item.title)}
                                                     </Heading>
                                                     {item.items
@@ -58,7 +58,7 @@ export function Aside() {
                                                             <MenuLink key={i} href={subItem.url}>
                                                                 {subItem.title}
                                                                 {subItem.status === 'alpha' ? (
-                                                                    <Badge variant='danger' className='ml-auto'>
+                                                                    <Badge variant='destructive' className='ml-auto'>
                                                                         {subItem.status}
                                                                     </Badge>
                                                                 ) : subItem.status === 'beta' ? (
@@ -87,8 +87,8 @@ const MenuLink = ({ href, className, ...props }: LinkProps) => {
         <Link
             href={href}
             className={cn(
-                'relative flex w-full items-center rounded-r-lg border-l px-4 py-1 text-muted-fg text-sm hover:bg-primary/5 hover:text-primary',
-                isActive && 'is-active pointer-events-none border-l-primary bg-primary/10 text-primary',
+                'relative flex w-full items-center rounded-r-lg border-l px-4 py-1 text-muted-foreground text-sm hover:bg-accent/80 hover:text-accent-foreground',
+                isActive && 'is-active pointer-events-none border-l-accent bg-accent text-accent-foreground',
                 className
             )}
             {...props}

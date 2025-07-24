@@ -32,7 +32,7 @@ export default function ProductSalesOverview() {
                             gridType='circle'
                             radialLines={false}
                             stroke='none'
-                            className='first:fill-muted last:fill-bg'
+                            className='first:fill-muted last:fill-background'
                             polarRadius={[86, 74]}
                         />
                         <RadialBar dataKey='sales' background cornerRadius={10} />
@@ -50,14 +50,14 @@ export default function ProductSalesOverview() {
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={viewBox.cy}
-                                                    className='fill-fg font-bold text-4xl'
+                                                    className='fill-foreground font-bold text-4xl'
                                                 >
                                                     {chartData[0]?.sales.toLocaleString()}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}
                                                     y={(viewBox.cy || 0) + 24}
-                                                    className='fill-muted-fg'
+                                                    className='fill-muted-foreground'
                                                 >
                                                     Sales
                                                 </tspan>

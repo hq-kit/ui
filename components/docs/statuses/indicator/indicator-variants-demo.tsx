@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as const
 const shapes = ['circle', 'square'] as const
-const variants = ['primary', 'secondary', 'danger', 'outline'] as const
+const variants = ['primary', 'secondary', 'destructive', 'outline'] as const
 
 export default function IndicatorVariantsDemo() {
     return (

@@ -21,7 +21,7 @@ export default function PopoverControlledDemo() {
     }
     return (
         <>
-            <Button ref={triggerRef} onPress={() => setOpen(true)} variant='danger'>
+            <Button ref={triggerRef} onPress={() => setOpen(true)} variant='destructive'>
                 Delete Account
             </Button>
             <Popover.Content triggerRef={triggerRef} isOpen={open} onOpenChange={setOpen}>
@@ -37,7 +37,7 @@ export default function PopoverControlledDemo() {
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'primary' : 'danger'}
+                        variant={loading === 'success' ? 'default' : 'destructive'}
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}

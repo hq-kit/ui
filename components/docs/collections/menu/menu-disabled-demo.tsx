@@ -18,7 +18,7 @@ export default function MenuDisabledDemo() {
                         <IconPencil />
                         <Menu.Label>Edit</Menu.Label>
                     </Menu.Item>
-                    <Menu.Item isDanger isDisabled>
+                    <Menu.Item isDestructive isDisabled>
                         <IconTrash />
                         <Menu.Label>Delete</Menu.Label>
                     </Menu.Item>
@@ -35,7 +35,7 @@ export default function MenuDisabledDemo() {
                         <IconPencil />
                         <Menu.Label>Edit</Menu.Label>
                     </Menu.Item>
-                    <Menu.Item id='delete' isDanger>
+                    <Menu.Item id='delete' isDestructive>
                         <IconTrash />
                         <Menu.Label>Delete</Menu.Label>
                     </Menu.Item>

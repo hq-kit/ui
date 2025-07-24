@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
 
-const variants = ['primary', 'secondary', 'danger', 'outline'] as const
+const variants = ['primary', 'secondary', 'destructive', 'outline'] as const
 
 export default function IndicatorPositionDemo() {
     return (

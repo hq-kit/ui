@@ -74,7 +74,7 @@ export default function LineChartCustomLabelDemo() {
                             <LabelList
                                 position='top'
                                 offset={12}
-                                className='fill-fg'
+                                className='fill-foreground'
                                 fontSize={12}
                                 dataKey='platform'
                                 formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}

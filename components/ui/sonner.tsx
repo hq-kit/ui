@@ -14,25 +14,25 @@ const Toast = ({ ...props }: ToasterProps) => {
             }}
             style={
                 {
-                    '--normal-bg': 'var(--color-bg)',
-                    '--normal-text': 'var(--color-fg)',
+                    '--normal-background': 'var(--color-background)',
+                    '--normal-text': 'var(--color-foreground)',
                     '--normal-border': 'var(--color-muted)',
 
-                    '--success-bg': 'var(--color-success-bg)',
+                    '--success-background': 'var(--color-success-background)',
                     '--success-border': 'var(--color-success-border)',
-                    '--success-text': 'var(--color-success-fg)',
+                    '--success-text': 'var(--color-success-foreground)',
 
-                    '--error-bg': 'var(--color-error-bg)',
+                    '--error-background': 'var(--color-error-background)',
                     '--error-border': 'var(--color-error-border)',
-                    '--error-text': 'var(--color-error-fg)',
+                    '--error-text': 'var(--color-error-foreground)',
 
-                    '--warning-bg': 'var(--color-warning-bg)',
+                    '--warning-background': 'var(--color-warning-background)',
                     '--warning-border': 'var(--color-warning-border)',
-                    '--warning-text': 'var(--color-warning-fg)',
+                    '--warning-text': 'var(--color-warning-foreground)',
 
-                    '--info-bg': 'var(--color-info-bg)',
+                    '--info-background': 'var(--color-info-background)',
                     '--info-border': 'var(--color-info-border)',
-                    '--info-text': 'var(--color-info-fg)'
+                    '--info-text': 'var(--color-info-foreground)'
                 } as React.CSSProperties
             }
             {...props}

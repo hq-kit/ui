@@ -58,7 +58,7 @@ const useDND = <T extends object>({
             />
         ),
         renderDragPreview: (items) => (
-            <ul className='w-full rounded-md bg-primary p-2 text-primary-fg'>
+            <ul className='w-full rounded-md bg-primary p-2 text-primary-foreground'>
                 {items.map((item, i) => (
                     <li className='text-sm' key={i}>
                         {i + 1}. {item['text/plain']}

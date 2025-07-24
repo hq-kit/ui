@@ -14,7 +14,7 @@ export default function ContextMenuSeparatorDemo() {
             <ContextMenu.Content aria-label='Context menu'>
                 <ContextMenu.Header>
                     <span className='block'>DQ Al-Haqqi</span>
-                    <span className='font-normal text-muted-fg'>@dq-alhq</span>
+                    <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                 </ContextMenu.Header>
                 <ContextMenu.Item>
                     <IconCircleUser />
@@ -25,7 +25,7 @@ export default function ContextMenuSeparatorDemo() {
                     Settings
                 </ContextMenu.Item>
                 <ContextMenu.Separator />
-                <ContextMenu.Item isDanger>
+                <ContextMenu.Item isDestructive>
                     <IconLogOut />
                     Log out
                 </ContextMenu.Item>

@@ -113,7 +113,7 @@ const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => {
             className={composeRenderProps(className, (className) =>
                 cn(
                     'size-8 shrink-0 rounded-md border outline-hidden',
-                    ring && 'inset-ring-1 inset-ring-fg/10',
+                    ring && 'inset-ring-1 inset-ring-foreground/10',
                     className
                 )
             )}

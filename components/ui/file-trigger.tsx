@@ -15,7 +15,6 @@ interface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof butt
 const FileTrigger = ({
     variant,
     size,
-    shape,
     ref,
     isDisabled,
     isPending,
@@ -24,7 +23,7 @@ const FileTrigger = ({
 }: Omit<FileTriggerProps, 'children'> & { children: ReactNode }) => {
     return (
         <RACFileTrigger ref={ref} {...props}>
-            <Button isDisabled={isDisabled} isPending={isPending} size={size} shape={shape} variant={variant}>
+            <Button isDisabled={isDisabled} isPending={isPending} size={size} variant={variant}>
                 {children}
             </Button>
         </RACFileTrigger>

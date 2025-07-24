@@ -47,13 +47,16 @@ export default function PieChartLabelListDemo() {
                 description='Jan - Jun 2024'
             />
             <Card.Content className='flex-1 pb-0'>
-                <Chart config={chartConfig} className='mx-auto aspect-square max-h-[250px] [&_.recharts-text]:fill-bg'>
+                <Chart
+                    config={chartConfig}
+                    className='mx-auto aspect-square max-h-[250px] [&_.recharts-text]:fill-background'
+                >
                     <PieChart>
                         <Chart.Tooltip content={<Chart.TooltipContent nameKey='marketShare' hideLabel />} />
                         <Pie data={chartData} dataKey='marketShare'>
                             <LabelList
                                 dataKey='manufacturer'
-                                className='fill-bg'
+                                className='fill-background'
                                 stroke='none'
                                 fontSize={12}
                                 formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}

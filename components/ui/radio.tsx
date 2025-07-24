@@ -60,12 +60,12 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                 <>
                     <div
                         className={cn(
-                            'size-4 shrink-0 rounded-full border bg-transparent shadow-xs transition dark:bg-muted/40',
+                            'size-4 shrink-0 rounded-full border bg-transparent transition dark:bg-input/30',
                             'group-hover/box:border-primary/70',
-                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-danger',
-                            'group-focus-visible/box:border-primary group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring group-focus-visible/box:group-has-invalid/box:border-danger',
-                            'group-has-invalid/box:border-danger/70 group-has-invalid/box:ring-invalid group-has-invalid/box:group-hover/box:border-danger/70',
-                            values.isSelected && 'border-[5px] border-primary group-has-invalid/box:border-danger'
+                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-destructive',
+                            'group-focus-visible/box:border-primary group-focus-visible/box:ring-4 group-focus-visible/box:ring-ring/50 group-focus-visible/box:group-has-invalid/box:border-destructive',
+                            'group-has-invalid/box:border-destructive/70 group-has-invalid/box:ring-invalid group-has-invalid/box:group-hover/box:border-destructive/70',
+                            values.isSelected && 'border-[5px] border-primary group-has-invalid/box:border-destructive'
                         )}
                     />
                     <div className='flex flex-col gap-y-1.5'>

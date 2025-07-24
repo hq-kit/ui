@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { IconFullscreen, IconMonitor, IconSmartphone, IconTablet } from 'hq-icons'
 import { type Key, TabPanel } from 'react-aria-components'
 
-import { Link, Separator, Toggle, buttonStyle } from '@/components/ui'
+import { Link, Toggle, buttonStyle } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { Fleet } from './fleet'
 import { TabsSwitcher } from './tabs-switcher'
@@ -13,13 +13,10 @@ import { TabsSwitcher } from './tabs-switcher'
 export function Block({ page }: { page: string }) {
     const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
     return (
-        <>
-            <div className='-mb-7 flex items-center gap-3 pl-28 text-muted-fg text-sm capitalize'>
-                <Separator orientation='vertical' className='h-6' /> {page.split('/').splice(1).join(' ')}
-            </div>
+        <div className='my-4'>
             <TabsSwitcher>
-                <TabPanel className='mt-2' id='preview'>
-                    <div className={cn('relative w-full bg-bg', 'flex min-h-56 items-center lg:min-h-80')}>
+                <TabPanel className='my-2' id='preview'>
+                    <div className={cn('relative w-full bg-background', 'flex min-h-56 items-center lg:min-h-80')}>
                         <div className='sm:-top-10 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Toggle.Group
                                 size='sm'
@@ -67,6 +64,6 @@ export function Block({ page }: { page: string }) {
                     <Fleet page={page} />
                 </TabPanel>
             </TabsSwitcher>
-        </>
+        </div>
     )
 }

@@ -9,22 +9,16 @@ import { cn } from '@/lib/utils'
 
 interface PaginationProps<T> extends ListBoxProps<T> {
     ref?: RefObject<HTMLDivElement>
-    shape?: 'square' | 'circle'
 }
-const Pagination = <T extends object>({ className, shape = 'square', ref, ...props }: PaginationProps<T>) => {
+const Pagination = <T extends object>({ className, ref, ...props }: PaginationProps<T>) => {
     return (
         <ListBox
             ref={ref}
             orientation='horizontal'
             aria-label={props['aria-label'] || 'Pagination'}
             layout='grid'
-            data-shape={shape}
             className={composeRenderProps(className, (className) =>
-                cn(
-                    'group flex',
-                    shape === 'square' ? '-space-x-px *:first:rounded-l-lg *:last:rounded-r-lg' : 'gap-1',
-                    className
-                )
+                cn('group -space-x-px flex *:first:rounded-l-lg *:last:rounded-r-lg', className)
             )}
             {...props}
         />
@@ -38,10 +32,7 @@ const PaginationPages = <T extends object>({ className, ref, ...props }: Paginat
     <ListBoxSection
         ref={ref}
         {...props}
-        className={cn(
-            'group-data-[shape=square]:-space-x-px flex only:*:last:rounded-r-lg only:*:first:rounded-l-lg group-data-[shape=circle]:gap-1',
-            className
-        )}
+        className={cn('-space-x-px flex only:*:last:rounded-r-lg only:*:first:rounded-l-lg', className)}
     />
 )
 
@@ -60,12 +51,11 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
             className={composeRenderProps(className, (className) =>
                 cn(
                     'inline-flex size-9 cursor-pointer items-center justify-center gap-x-2 whitespace-nowrap border font-medium text-sm outline-hidden transition',
-                    'group-data-[shape=circle]:rounded-full',
-                    'pressed:bg-muted/50 hover:bg-muted/40',
-                    'focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring',
-                    'selected:pointer-events-none selected:bg-primary selected:text-primary-fg',
+                    'pressed:bg-accent/80 pressed:text-accent-foreground hover:bg-accent hover:text-accent-foreground',
+                    'focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring/50',
+                    'selected:pointer-events-none selected:bg-primary selected:text-primary-foreground',
                     'disabled:cursor-default',
-                    isCurrent && 'bg-primary text-primary-fg',
+                    isCurrent && 'bg-primary text-primary-foreground',
                     className
                 )
             )}
@@ -97,7 +87,7 @@ const PaginationLabel = ({ className, current, total, ...props }: PaginationLabe
         textValue={`${String(current)}/${String(total)}`}
         isDisabled
         className={cn(
-            'inline-flex h-9 select-none items-center justify-center gap-x-2 whitespace-nowrap border px-4 font-medium text-muted-fg text-sm outline-hidden transition',
+            'inline-flex h-9 select-none items-center justify-center gap-x-2 whitespace-nowrap border px-4 font-medium text-muted-foreground text-sm outline-hidden transition',
             className
         )}
         {...props}

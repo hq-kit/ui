@@ -9,7 +9,7 @@ published: true
 Before executing the command, ensure that **tailwind-css** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
 
 <Note>
-  This CLI will overwrite your **css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
+  This CLI will overwrite your **.css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
 </Note>
 
 ### Initial Setup
@@ -69,7 +69,7 @@ You should add the following code:
 You can customize your colors using these variables. By default, HQ UI utilizes oklch colors, but you have the option
 to switch to RGB, HSL, HSB, LCH, or simply HEX.
 
-<Code lang='css' code={`@import "tailwindcss";
+<Code lang='css' filename='app.css' withoutSwitcher code={`@import "tailwindcss";
 @import "tw-animate-css";
 
 @plugin 'tailwindcss-react-aria-components';
@@ -195,7 +195,7 @@ to switch to RGB, HSL, HSB, LCH, or simply HEX.
 ### Utils
 Create a helper function. Usually located in `lib/utils.ts`:
 
-<Code  lang='ts' code={`import { type ClassValue, clsx } from 'clsx'
+<Code lang='ts' filename='lib/utils.ts' code={`import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
@@ -216,7 +216,7 @@ export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
 ### Hooks
 Create a hook. Usually located in `lib/hooks.ts`:
 
-<Code lang='tsx' code={`import { useEffect, useState } from 'react'
+<Code lang='ts' filename='lib/hooks.ts' code={`import { useEffect, useState } from 'react'
 
 const MOBILE_BREAKPOINT = 768
 
@@ -245,7 +245,7 @@ import { Button, Sheet, Badge } from '@/components/ui'
 ```
 
 Create a file called index.ts in your UI folder, and add the following code to it:
-<Code lang='ts' code={`export * from './avatar'
+<Code lang='ts' filename='components/ui/index.ts' code={`export * from './avatar'
 export * from './badge'
 export * from './breadcrumbs'
 export * from './button'

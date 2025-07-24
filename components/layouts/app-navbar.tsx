@@ -50,7 +50,7 @@ export function AppNavbar() {
                         <Navbar.Flex>
                             <Button variant='outline' onPress={() => setOpenCommand(true)}>
                                 <IconSearch />
-                                <span className='mr-2 text-muted-fg'>Search...</span>
+                                <span className='mr-2 text-muted-foreground'>Search...</span>
                                 <Keyboard keys={['meta', 'k']} />
                             </Button>
                             <ThemeToggle />
@@ -60,7 +60,7 @@ export function AppNavbar() {
                                 className={buttonStyle({
                                     variant: 'outline',
                                     icon: true,
-                                    className: '[&_[data-slot=icon]]:text-fg'
+                                    className: '[&_[data-slot=icon]]:text-foreground'
                                 })}
                                 target='_blank'
                                 href={'https://github.com/hq-kit/ui'}
@@ -90,7 +90,7 @@ export function AppNavbar() {
                             className={buttonStyle({
                                 variant: 'outline',
                                 icon: true,
-                                className: '[&_[data-slot=icon]]:text-fg'
+                                className: '[&_[data-slot=icon]]:text-foreground'
                             })}
                             target='_blank'
                             href={'https://github.com/hq-kit/ui'}

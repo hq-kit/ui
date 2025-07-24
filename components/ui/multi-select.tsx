@@ -125,7 +125,7 @@ const MultiSelect = <T extends object>({
                 isInvalid={props.isInvalid || !!props.errorMessage}
                 className={cn(
                     'flex h-fit min-h-9 flex-wrap items-center py-1 **:[input]:py-1',
-                    'group-has-invalid/field:group-has-focus/field:border-danger group-has-invalid/field:group-has-open/field:border-danger group-has-invalid/field:group-has-open/field:ring-invalid group-has-invalid/field:hover:border-danger/70'
+                    'group-has-invalid/field:group-has-focus/field:border-destructive group-has-invalid/field:group-has-open/field:border-destructive group-has-invalid/field:group-has-open/field:ring-invalid group-has-invalid/field:hover:border-destructive/70'
                 )}
             >
                 {({ isInvalid, isDisabled }) => (
@@ -145,10 +145,10 @@ const MultiSelect = <T extends object>({
                                             cn(
                                                 'inline-flex items-center justify-between gap-1 rounded-md border px-2 py-0.5 text-sm outline-hidden',
                                                 isInvalid
-                                                    ? 'border-danger/70 bg-danger/10 text-danger'
+                                                    ? 'border-destructive/70 bg-destructive/10 text-destructive'
                                                     : 'border-primary/70 bg-primary/10 text-primary',
                                                 isFocusVisible &&
-                                                    `ring-2 ${isInvalid ? 'ring-danger/70' : 'ring-primary/70'}`
+                                                    `ring-2 ${isInvalid ? 'ring-destructive/70' : 'ring-primary/70'}`
                                             )
                                         }
                                         textValue={item.textValue as string}
@@ -156,7 +156,7 @@ const MultiSelect = <T extends object>({
                                         {item.textValue as string}
                                         <Button
                                             slot='remove'
-                                            className='-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-md pressed:bg-primary/70 pressed:text-primary-fg outline-hidden hover:bg-primary hover:text-primary-fg'
+                                            className='-mr-1 flex size-4 cursor-pointer items-center justify-center rounded-md pressed:bg-primary/70 pressed:text-primary-foreground outline-hidden hover:bg-primary hover:text-primary-foreground'
                                         >
                                             <IconX className='size-3 shrink-0' />
                                         </Button>
@@ -195,7 +195,7 @@ const MultiSelect = <T extends object>({
                                 <Button
                                     ref={triggerButtonRef}
                                     aria-label='Chevron'
-                                    className='mr-2 ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-md text-muted-fg outline-hidden'
+                                    className='mr-2 ml-auto inline-flex w-auto flex-1 items-center justify-center rounded-md text-muted-foreground outline-hidden'
                                 >
                                     <IconChevronDown className='group-has-open/field:-rotate-180 size-4 transition' />
                                 </Button>
@@ -235,7 +235,9 @@ const MultiSelect = <T extends object>({
                 )}
             </FieldGroup>
             {props.description && <Description>{props.description}</Description>}
-            {props.errorMessage && <Description className='text-danger text-sm/5'>{props.errorMessage}</Description>}
+            {props.errorMessage && (
+                <Description className='text-destructive text-sm/5'>{props.errorMessage}</Description>
+            )}
         </Group>
     )
 }

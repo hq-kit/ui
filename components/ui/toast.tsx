@@ -73,15 +73,15 @@ const ToastProvider = () => {
                             onMouseLeave={() => setIsHovered(false)}
                             key={toast.key}
                             className={cn('flex flex-col gap-2 rounded-lg border p-4', {
-                                'border-success-border bg-success-bg text-success-fg **:data-loader:stroke-success-fg':
+                                'border-success-border bg-success-background text-success-foreground **:data-loader:stroke-success-foreground':
                                     toast.content.type === 'success',
-                                'border-error-border bg-error-bg text-error-fg **:data-loader:stroke-error-fg':
+                                'border-error-border bg-error-background text-error-foreground **:data-loader:stroke-error-foreground':
                                     toast.content.type === 'error',
-                                'border-info-border bg-info-bg text-info-fg **:data-loader:stroke-info-fg':
+                                'border-info-border bg-info-background text-info-foreground **:data-loader:stroke-info-foreground':
                                     toast.content.type === 'info',
-                                'border-warning-border bg-warning-bg text-warning-fg **:data-loader:stroke-warning-fg':
+                                'border-warning-border bg-warning-background text-warning-foreground **:data-loader:stroke-warning-foreground':
                                     toast.content.type === 'warning',
-                                'bg-bg text-fg': toast.content.type === 'default'
+                                'bg-background text-foreground': toast.content.type === 'default'
                             })}
                         >
                             <div
@@ -140,7 +140,7 @@ const ToastProvider = () => {
                                         <Button
                                             onPress={toast.content.altAction}
                                             slot='close'
-                                            className='flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-bg pressed:bg-muted/60 px-2 py-1 text-fg text-sm outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 *:[svg]:size-3'
+                                            className='flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-background pressed:bg-muted/60 px-2 py-1 text-foreground text-sm outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 *:[svg]:size-3'
                                         >
                                             {toast.content.altActionLabel || 'Cancel'}
                                         </Button>
@@ -182,7 +182,7 @@ const CountdownButton = ({ timeout, isPaused }: TimeoutButtonProps) => {
     return (
         <Button
             slot='close'
-            className='relative z-10 inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full bg-bg pressed:text-fg text-muted-fg shadow-sm outline-hidden hover:text-fg focus-visible:ring-2 focus-visible:ring-ring dark:border'
+            className='relative z-10 inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full bg-background pressed:text-foreground text-muted-foreground shadow-sm outline-hidden hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring dark:border'
         >
             <IconX className='size-3.5' />
             {timeout ? (

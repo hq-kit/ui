@@ -13,12 +13,10 @@ import type { Ref } from 'react'
 
 interface TabsProps extends RACTabsProps {
     ref?: Ref<HTMLDivElement>
-    variant?: 'primary' | 'secondary' | 'tertiary'
 }
 const Tabs = ({ className, ref, ...props }: TabsProps) => {
     return (
         <RACTabs
-            data-variant={props.variant ?? 'primary'}
             className={composeRenderProps(className, (className) =>
                 cn(
                     'group/tabs grid orientation-horizontal:grid-cols-1 orientation-vertical:grid-cols-[auto_1fr] gap-2',
@@ -41,10 +39,8 @@ const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) =
             {...props}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
-                    'no-scrollbar rounded-lg bg-bg p-1 text-muted-fg group-data-[variant=primary]/tabs:border',
-                    orientation === 'horizontal'
-                        ? 'group-data-[variant=tertiary]/tabs:-space-x-[1px] flex w-full items-center overflow-x-auto group-data-[variant=secondary]/tabs:rounded-b-none group-data-[variant=secondary]/tabs:border-b group-data-[variant=secondary]/tabs:pb-0'
-                        : 'group-data-[variant=tertiary]/tabs:-space-y-[1px] grid h-fit items-start group-data-[variant=secondary]/tabs:rounded-l-none group-data-[variant=secondary]/tabs:border-l group-data-[variant=secondary]/tabs:pl-0',
+                    'no-scrollbar inline-flex h-9 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground',
+                    orientation === 'horizontal' ? 'max-w-full items-center overflow-x-auto' : 'grid h-fit items-start',
                     className
                 )
             )}
@@ -63,14 +59,13 @@ const Tab = ({ className, ref, ...props }: TabProps) => {
             {...props}
             className={composeRenderProps(className, (className) =>
                 cn(
-                    'relative inline-flex cursor-pointer items-center gap-x-2 whitespace-nowrap px-3 py-1 font-medium text-sm outline-hidden transition',
-                    'group-data-[variant=primary]/tabs:rounded-md group-data-[variant=secondary]/tabs:rounded-b-none group-data-[variant=secondary]/tabs:border-transparent group-data-[variant=secondary]/tabs:group-orientation-horizontal/tabs:border-b-2 group-data-[variant=secondary]/tabs:group-orientation-vertical/tabs:border-l-2',
-                    'selected:group-data-[variant=primary]/tabs:bg-primary/10 selected:group-data-[variant=primary]/tabs:text-primary',
-                    'selected:group-data-[variant=secondary]/tabs:border-primary selected:group-data-[variant=secondary]/tabs:text-primary',
-                    'group-data-[variant=tertiary]/tabs:rounded-md group-data-[variant=tertiary]/tabs:border group-data-[variant=tertiary]/tabs:border-transparent group-data-[variant=tertiary]/tabs:group-orientation-vertical/tabs:rounded-r-none group-data-[variant=tertiary]/tabs:group-orientation-horizontal/tabs:rounded-b-none group-data-[variant=tertiary]/tabs:group-orientation-vertical/tabs:border-r-primary group-data-[variant=tertiary]/tabs:group-orientation-horizontal/tabs:border-b-primary',
-                    'selected:group-data-[variant=tertiary]/tabs:border-primary selected:group-data-[variant=tertiary]/tabs:text-primary selected:group-data-[variant=tertiary]/tabs:group-orientation-vertical/tabs:border-r-transparent selected:group-data-[variant=tertiary]/tabs:group-orientation-horizontal/tabs:border-b-transparent',
-                    'focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                    'disabled:opacity-50',
+                    'inline-flex h-[calc(100%-1px)] flex-1 select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2 py-1 font-medium text-sm transition-[color,box-shadow]',
+                    'text-foreground dark:text-muted-foreground',
+                    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+                    'selected:bg-background selected:shadow-sm',
+                    'dark:selected:border-input dark:selected:bg-input/30 dark:selected:text-foreground',
+                    'focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+                    'disabled:pointer-events-none disabled:opacity-50',
                     className
                 )
             )}
@@ -82,7 +77,7 @@ interface TabPanelProps extends RACTabPanelProps {
     ref?: Ref<HTMLDivElement>
 }
 const Panel = ({ className, ref, ...props }: TabPanelProps) => {
-    return <TabPanel {...props} ref={ref} className={cn(className, 'flex-1 text-fg text-sm outline-hidden')} />
+    return <TabPanel {...props} ref={ref} className={cn(className, 'flex-1 outline-hidden')} />
 }
 
 Tabs.List = List

@@ -25,15 +25,15 @@ import { tv } from 'tailwind-variants'
 
 const fieldGroupStyle = tv({
     base: [
-        'flex h-9 items-center rounded-md border bg-transparent shadow-xs transition dark:bg-muted/40',
-        'hover:border-primary/70 group-invalid/field:hover:border-danger/70!',
-        'focus-within:border-primary focus-within:ring-4 focus-within:ring-ring',
-        'group-open/field:border-primary group-open/field:ring-4 group-open/field:ring-ring',
-        'group-has-focus-visible/field:border-primary group-has-focus-visible/field:ring-4 group-has-focus-visible/field:ring-ring',
-        'group-has-focus-within/field:border-primary group-has-focus-within/field:ring-4 group-has-focus-within/field:ring-ring',
-        'group-has-focus/field:border-primary group-has-focus/field:ring-4 group-has-focus/field:ring-ring',
-        'group-invalid/field:group-open/field:ring-invalid group-invalid/field:group-has-focus-visible/field:ring-invalid group-invalid/field:group-has-focus-within/field:ring-invalid group-invalid/field:group-has-focus/field:ring-invalid',
-        'group-invalid/field:group-open/field:border-danger group-invalid/field:group-has-focus-visible/field:border-danger group-invalid/field:group-has-focus-within/field:border-danger group-invalid/field:group-has-focus/field:border-danger',
+        'flex h-9 items-center rounded-md border border-input bg-transparent shadow-xs transition dark:bg-input/30',
+        'hover:border-ring group-invalid/field:hover:border-destructive/70!',
+        'focus-within:border-ring focus-within:ring-4 focus-within:ring-ring/50',
+        'group-open/field:border-ring group-open/field:ring-4 group-open/field:ring-ring/50',
+        'group-has-focus-visible/field:border-ring group-has-focus-visible/field:ring-4 group-has-focus-visible/field:ring-ring/50',
+        'group-has-focus-within/field:border-ring group-has-focus-within/field:ring-4 group-has-focus-within/field:ring-ring/50',
+        'group-has-focus/field:border-ring group-has-focus/field:ring-4 group-has-focus/field:ring-ring/50',
+        'group-invalid/field:group-open/field:ring-destructive/20 group-invalid/field:group-has-focus-visible/field:ring-destructive/20 group-invalid/field:group-has-focus-within/field:ring-destructive/20 group-invalid/field:group-has-focus/field:ring-destructive/20',
+        'group-invalid/field:group-open/field:border-destructive/70 group-invalid/field:group-has-focus-visible/field:border-destructive/70 group-invalid/field:group-has-focus-within/field:border-destructive/70 group-invalid/field:group-has-focus/field:border-destructive/70',
         '**:[input]:w-full **:[input]:p-2 **:[input]:text-base **:[input]:outline-hidden sm:**:[input]:text-sm',
         'disabled:pointer-events-none'
     ]
@@ -41,19 +41,19 @@ const fieldGroupStyle = tv({
 
 const labelStyle = tv({
     base: [
-        'w-fit cursor-default font-medium text-fg text-sm leading-none transition-colors',
+        'w-fit cursor-default font-medium text-foreground text-sm leading-none transition-colors',
         'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary group-has-pressed/field:text-primary',
-        'group-invalid/field:text-danger! group-disabled/field:text-muted-fg! group-has-invalid/field:text-danger!',
-        'group-disabled/field:text-muted-fg group-has-disabled/field:text-muted-fg'
+        'group-invalid/field:text-destructive! group-disabled/field:text-muted-foreground! group-has-invalid/field:text-destructive!',
+        'group-disabled/field:text-muted-foreground group-has-disabled/field:text-muted-foreground'
     ]
 })
 
 const descriptionStyle = tv({
-    base: 'text-pretty text-muted-fg text-sm'
+    base: 'text-pretty text-muted-foreground text-sm'
 })
 
 const errorStyle = tv({
-    base: 'text-danger text-sm/5'
+    base: 'text-destructive text-sm/5'
 })
 
 const Form = (props: FormProps) => <RACForm {...props} />

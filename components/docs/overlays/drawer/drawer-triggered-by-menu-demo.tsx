@@ -54,11 +54,11 @@ export default function DrawerMenuDemo() {
             <Menu>
                 <Button>Options</Button>
                 <Menu.Content onAction={setState}>
-                    <Menu.Item id='delete' isDanger>
+                    <Menu.Item id='delete' isDestructive>
                         <IconTrash />
                         <Menu.Label>Delete</Menu.Label>
                     </Menu.Item>
-                    <Menu.Item id='ban' isDanger>
+                    <Menu.Item id='ban' isDestructive>
                         <IconBan />
                         <Menu.Label>Ban</Menu.Label>
                     </Menu.Item>
@@ -79,7 +79,7 @@ export default function DrawerMenuDemo() {
                         Cancel
                     </Button>
                     <Button
-                        variant={state === 'restore' ? 'primary' : 'danger'}
+                        variant={state === 'restore' ? 'default' : 'destructive'}
                         isDisabled={loading}
                         isPending={loading}
                         onPress={actions(state)?.action}

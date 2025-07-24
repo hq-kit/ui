@@ -19,7 +19,7 @@ export default function SheetControlledDemo() {
     }
     return (
         <>
-            <Button onPress={() => setOpen(true)} variant='danger'>
+            <Button onPress={() => setOpen(true)} variant='destructive'>
                 Delete Account
             </Button>
             <Sheet.Content isOpen={open} onOpenChange={setOpen}>
@@ -35,7 +35,7 @@ export default function SheetControlledDemo() {
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'primary' : 'danger'}
+                        variant={loading === 'success' ? 'default' : 'destructive'}
                         onPress={deleteAccount}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}

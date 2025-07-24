@@ -31,7 +31,7 @@ export function SelectStroke() {
     return (
         <Menu aria-label='Select Icon Size'>
             <Button
-                className='w-full bg-bg sm:max-w-sm [&[data-pressed]_[data-slot=icon]]:rotate-180 [&_[data-slot=icon]]:transition-transform'
+                className='w-full bg-background sm:max-w-sm [&[data-pressed]_[data-slot=icon]]:rotate-180 [&_[data-slot=icon]]:transition-transform'
                 variant='outline'
             >
                 <span>Stroke {[...selectedStroke].join('').replace('stroke-', '') || '5'}</span>

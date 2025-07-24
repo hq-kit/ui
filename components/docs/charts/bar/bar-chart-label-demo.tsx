@@ -56,7 +56,7 @@ export default function BarChartLabelDemo() {
                         <XAxis dataKey='category' tickLine={false} tickMargin={10} axisLine={false} />
                         <Chart.Tooltip cursor={false} content={<Chart.TooltipContent hideLabel />} />
                         <Bar dataKey='satisfaction' fill='var(--color-satisfaction)' radius={8}>
-                            <LabelList position='top' offset={12} className='fill-fg' fontSize={12} />
+                            <LabelList position='top' offset={12} className='fill-foreground' fontSize={12} />
                         </Bar>
                     </BarChart>
                 </Chart>

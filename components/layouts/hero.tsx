@@ -8,7 +8,7 @@ import { Container, Link, buttonStyle } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 const Hero = ({ children }: { children: ReactNode }) => (
-    <div className='relative isolate overflow-hidden bg-bg'>
+    <div className='relative isolate overflow-hidden bg-background'>
         <div
             aria-hidden='true'
             className='-top-10 -z-10 sm:-top-56 absolute inset-x-0 hidden transform-gpu overflow-hidden blur-3xl sm:block'
@@ -52,7 +52,10 @@ const HeroTitle = ({ children, className, ...props }: HeadingProps) => (
 )
 
 const HeroDescription = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-    <div className={cn('block max-w-2xl text-base text-muted-fg leading-relaxed lg:text-xl', className)} {...props}>
+    <div
+        className={cn('block max-w-2xl text-base text-muted-foreground leading-relaxed lg:text-xl', className)}
+        {...props}
+    >
         {children}
     </div>
 )
@@ -64,7 +67,7 @@ const HeroContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivEl
 )
 
 interface HeroButtonProps extends LinkProps {
-    variant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'ghost'
+    variant?: 'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost'
     size?: 'xs' | 'sm' | 'md' | 'lg'
     icon?: boolean
 }

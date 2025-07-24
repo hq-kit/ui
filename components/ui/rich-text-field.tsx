@@ -1,5 +1,6 @@
 'use client'
 
+import { Toggle } from '@/components/ui/toggle'
 import { CodeHighlightNode, CodeNode } from '@lexical/code'
 import {
     IconBold,
@@ -64,7 +65,6 @@ import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
 
 import { cn } from '@/lib/utils'
-import { Button } from './button'
 import { Description, FieldError, Label } from './form'
 import { Menu } from './menu'
 import { Toolbar } from './toolbar'
@@ -114,7 +114,9 @@ const RichTextField = ({
                 <div className='relative'>
                     {as === 'rich-text' ? (
                         <RichTextPlugin
-                            placeholder={<p className='absolute bottom-2 left-3 text-muted-fg'>Write something...</p>}
+                            placeholder={
+                                <p className='absolute bottom-2 left-3 text-muted-foreground'>Write something...</p>
+                            }
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -129,9 +131,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'min-h-32 w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-2 text-base shadow-xs outline-none transition focus:outline-none sm:text-sm dark:bg-muted/40',
-                                            'focus:border-primary/70 focus:ring-4 focus:ring-ring',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-invalid',
+                                            'min-h-32 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-2 text-base shadow-xs outline-none transition focus:outline-none sm:text-sm dark:bg-input/30',
+                                            'focus:border-ring focus:ring-4 focus:ring-ring/50',
+                                            'invalid:border-destructive/70 invalid:ring-4 invalid:ring-destructive/20',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
@@ -143,7 +145,9 @@ const RichTextField = ({
                         />
                     ) : (
                         <PlainTextPlugin
-                            placeholder={<p className='absolute bottom-2 left-3 text-muted-fg'>Write something...</p>}
+                            placeholder={
+                                <p className='absolute bottom-2 left-3 text-muted-foreground'>Write something...</p>
+                            }
                             contentEditable={
                                 <TextField
                                     aria-label='Editor'
@@ -158,9 +162,9 @@ const RichTextField = ({
                                         aria-disabled={isDisabled}
                                         disabled={isDisabled}
                                         className={cn(
-                                            'min-h-32 w-full min-w-0 rounded-lg border bg-bg px-2.5 py-2 text-base shadow-sm outline-none transition focus:outline-none sm:text-sm',
+                                            'min-h-32 w-full min-w-0 rounded-lg border bg-background px-2.5 py-2 text-base shadow-sm outline-none transition focus:outline-none sm:text-sm',
                                             'focus:border-primary/70 focus:ring-4 focus:ring-primary/20',
-                                            'invalid:border-danger invalid:ring-4 invalid:ring-invalid',
+                                            'invalid:border-destructive invalid:ring-4 invalid:ring-invalid',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}
                                     />
@@ -280,9 +284,9 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
 
     return (
         <Menu>
-            <Button isDisabled={!editor.isEditable()} variant='outline' size='sm' icon>
+            <Toggle isDisabled={!editor.isEditable()} size='sm' icon>
                 {blockIcons[blockType as keyof typeof blockIcons]}
-            </Button>
+            </Toggle>
             <Menu.Content selectionMode='single' aria-label='Block type' selectedKeys={[blockType]}>
                 <Menu.Item id='paragraph' onAction={formatParagraph}>
                     <IconParagraph />

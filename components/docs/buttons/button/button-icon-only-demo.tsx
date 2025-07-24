@@ -19,18 +19,6 @@ export default function ButtonIconOnlyDemo() {
             <Button icon size='lg'>
                 <IconBrandNextjs />
             </Button>
-            <Button icon shape='circle' size='xs'>
-                <IconBrandNextjs />
-            </Button>
-            <Button icon shape='circle' size='sm'>
-                <IconBrandNextjs />
-            </Button>
-            <Button icon shape='circle'>
-                <IconBrandNextjs />
-            </Button>
-            <Button icon shape='circle' size='lg'>
-                <IconBrandNextjs />
-            </Button>
         </div>
     )
 }

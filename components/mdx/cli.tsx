@@ -57,7 +57,7 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
     }
 
     return (
-        <section className='relative space-y-2'>
+        <section className='relative my-2 space-y-2'>
             {!noMessage && (
                 <Description className='max-w-none text-base'>
                     {message ? message : 'In the terminal, run the following command to begin:'}

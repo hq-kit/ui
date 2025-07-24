@@ -156,7 +156,7 @@ const Sidebar = ({
                 <div
                     style={{ width: WIDTH }}
                     className={cn(
-                        'flex h-full min-h-screen flex-col border-r bg-bg text-fg',
+                        'flex h-full min-h-screen flex-col border-r bg-sidebar text-sidebar-foreground',
                         isInverse && 'dark',
                         className
                     )}
@@ -165,7 +165,7 @@ const Sidebar = ({
                 </div>
             ) : isMobile ? (
                 <Sheet isOpen={isMobileOpen} onOpenChange={onMobileOpenChange} {...props}>
-                    <Sheet.Trigger className='absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-bg pressed:bg-muted/50 text-muted-fg outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-ring'>
+                    <Sheet.Trigger className='absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-sidebar pressed:bg-accent/80 text-muted-foreground outline-hidden hover:bg-accent focus-visible:border-sidebar-ring focus-visible:ring-4 focus-visible:ring-sidebar-ring/50'>
                         <IconMenu />
                     </Sheet.Trigger>
                     <Sheet.Content className={isInverse ? 'dark' : ''} aria-label='Sidebar' side='left'>
@@ -177,7 +177,7 @@ const Sidebar = ({
                     data-variant={variant}
                     data-open={open}
                     className={cn(
-                        'peer z-20 hidden bg-bg text-fg [--visual-viewport-vertical-padding:32px] **:data-[slot=icon]:shrink-0 md:block',
+                        'peer z-20 hidden bg-sidebar text-sidebar-foreground [--visual-viewport-vertical-padding:32px] **:data-[slot=icon]:shrink-0 md:block',
                         isInverse && 'dark **:dark'
                     )}
                 >
@@ -196,7 +196,7 @@ const Sidebar = ({
                         className={cn(
                             'sticky top-0 left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
                             variant === 'float' && 'p-2',
-                            variant === 'inset' && 'bg-popover p-2',
+                            variant === 'inset' && 'bg-sidebar p-2',
                             variant === 'default' && !collapsedHidden && 'border-r',
                             collapsedHidden && 'p-0'
                         )}
@@ -204,9 +204,10 @@ const Sidebar = ({
                         <div
                             data-sidebar='default'
                             className={cn(
-                                'flex size-full min-h-svh flex-col text-fg',
+                                'flex size-full min-h-svh flex-col text-sidebar-foreground',
                                 variant === 'inset' && 'min-h-[calc(100vh-1rem)]',
-                                variant === 'float' && 'min-h-[calc(100vh-1rem)] rounded-lg border bg-popover',
+                                variant === 'float' &&
+                                    'min-h-[calc(100vh-1rem)] rounded-lg border border-sidebar-border bg-sidebar',
                                 className
                             )}
                         >
@@ -272,7 +273,7 @@ const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?
     return (
         <section data-section={true} className={cn('col-span-full flex flex-col gap-y-1 px-2', className)}>
             {state !== 'collapsed' && 'title' in props && (
-                <Header className='flex shrink-0 items-center rounded-lg px-2 font-medium text-muted-fg text-xs outline-hidden transition-[margin,opa] duration-200 ease-linear'>
+                <Header className='flex shrink-0 items-center rounded-lg px-2 font-medium text-sidebar-accent-foreground text-xs outline-hidden transition-[margin,opa] duration-200 ease-linear'>
                     {props.title}
                 </Header>
             )}
@@ -303,13 +304,13 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
         <Link
             className={cn(
                 'relative col-span-full cursor-pointer items-center rounded-lg text-sm outline-hidden',
-                'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                'pressed:bg-primary/10 pressed:text-primary',
-                'hover:bg-primary/10 hover:text-primary',
+                'focus-visible:ring-2 focus-visible:ring-sidebar-ring/50 focus-visible:ring-offset-2',
                 'disabled:cursor-default disabled:opacity-50',
                 collapsedDock ? 'flex size-8 justify-center gap-2 p-0' : 'grid grid-cols-subgrid gap-x-3 px-2.5 py-2',
                 state === 'collapsed' && 'group-data-section:*:[[slot=label]]:hidden',
-                isCurrent && 'bg-primary/10 text-primary',
+                isCurrent
+                    ? 'bg-sidebar-primary text-sidebar-primary-foreground'
+                    : 'pressed:bg-sidebar-accent/80 pressed:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                 className
             )}
             {...props}
@@ -356,9 +357,9 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
             {...props}
             className={cn(
                 'col-span-full cursor-pointer items-center rounded-lg outline-hidden',
-                'pressed:bg-primary/10 pressed:text-primary hover:bg-primary/10 hover:text-primary',
+                'pressed:bg-accent/80 pressed:text-sidebar-accent-foreground hover:bg-accent/90 hover:text-sidebar-accent-foreground',
                 collapsedDock ? 'flex size-8 justify-center p-0' : 'grid grid-cols-subgrid px-2.5 py-2 text-left',
-                'focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                'focus-visible:ring-2 focus-visible:ring-sidebar-ring/50 focus-visible:ring-offset-2',
                 'aria-expanded:*:data-[slot=indicator]:rotate-90',
                 state === 'collapsed' && '*:[[slot=label]]:hidden',
                 className
@@ -370,7 +371,7 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
                     {!collapsedDock && (
                         <IconChevronRight
                             data-slot='indicator'
-                            className={cn('ml-auto size-3.5 text-muted-fg transition-transform')}
+                            className={cn('ml-auto size-3.5 text-inherit transition-transform')}
                         />
                     )}
                 </>
@@ -388,14 +389,14 @@ const SidebarSubItem = ({ children, className, ...props }: DisclosurePanelProps)
     ) : (
         <Popover
             placement='right top'
-            className='group flex flex-col rounded-lg border bg-bg p-1 **:[[slot=label]]:hidden'
+            className='group flex flex-col rounded-lg border bg-sidebar p-1 **:[[slot=label]]:hidden'
         >
             <OverlayArrow className='group'>
                 <svg
                     width={12}
                     height={12}
                     viewBox='0 0 12 12'
-                    className='group-placement-left:-rotate-90 block fill-bg stroke-muted group-placement-bottom:rotate-180 group-placement-right:rotate-90'
+                    className='group-placement-left:-rotate-90 block fill-sidebar stroke-sidebar-border group-placement-bottom:rotate-180 group-placement-right:rotate-90'
                 >
                     <path d='M0 0 L6 6 L12 0' />
                 </svg>
@@ -414,10 +415,10 @@ const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) =
                 aria-label='Toggle Sidebar'
                 onPress={toggleSidebar}
                 className={cn(
-                    'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-fg outline-hidden transition-transform',
-                    'hover:bg-muted/40',
-                    'focus-visible:ring-4 focus-visible:ring-ring',
-                    'pressed:bg-muted/50',
+                    'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground outline-hidden transition-transform',
+                    'hover:bg-accent hover:text-accent-foreground',
+                    'focus-visible:ring-4 focus-visible:ring-sidebar-ring/50',
+                    'pressed:bg-accent/80 pressed:text-sidebar-accent-foreground',
                     variant === 'default' ? 'top-2 right-2' : 'top-4 right-4',
                     open ? 'translate-x-0' : `${variant === 'default' ? 'translate-x-12' : 'translate-x-16'}`
                 )}
@@ -444,7 +445,7 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
                         'fixed inset-y-0 max-h-full w-4 bg-transparent transition',
                         state === 'collapsed' ? '-right-2' : 'right-0',
                         state === 'collapsed' ? 'cursor-e-resize' : 'cursor-w-resize',
-                        'pressed:border-primary pressed:border-r-2 hover:border-primary hover:border-r-2',
+                        'pressed:border-sidebar-primary pressed:border-r-2 hover:border-sidebar-primary hover:border-r-2',
                         className
                     )
                 )}
@@ -458,7 +459,7 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
     return (
         <div
             className={cn(
-                'relative flex h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-popover md:p-2',
+                'relative flex h-dvh w-full flex-1 flex-col peer-data-[variant=inset]:bg-sidebar md:p-2',
                 'peer-data-[variant=default]:p-0 peer-data-[variant=default]:*:border-0',
                 'peer-data-[variant=float]:peer-data-[open=true]:pl-0',
                 'peer-data-[variant=inset]:peer-data-[open=true]:pl-0',
@@ -466,7 +467,7 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
             )}
         >
             <main
-                className='relative flex h-full max-h-full flex-1 flex-col overflow-auto rounded-lg bg-bg md:border'
+                className='relative flex h-full max-h-full flex-1 flex-col overflow-auto rounded-lg bg-background md:border'
                 {...props}
             />
         </div>
@@ -478,7 +479,7 @@ const SidebarNav = ({ className, ...props }: ComponentPropsWithRef<'nav'>) => {
         <nav
             slot='nav'
             className={cn(
-                'isolate flex min-h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-bg/60 px-4 text-fg backdrop-blur-lg md:w-full md:justify-start',
+                'isolate flex min-h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-sidebar/60 px-4 text-sidebar-foreground backdrop-blur-lg md:w-full md:justify-start',
                 'sticky top-0 z-10'
             )}
             {...props}

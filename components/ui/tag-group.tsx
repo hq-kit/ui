@@ -16,7 +16,7 @@ type TagGroupStyles = {
 }
 
 const TagGroupContext = createContext<TagGroupStyles>({
-    variant: 'primary'
+    variant: 'default'
 })
 
 interface TagGroupProps extends Omit<RACTagGroupProps, 'children'> {
@@ -39,17 +39,17 @@ const TagGroup = <T extends object>({
     ...props
 }: TagGroupProps & TagListProps<T>) => {
     return (
-        <RACTagGroup ref={ref} className={cn('flex flex-col flex-wrap', className)} {...props}>
-            {label && <Label className='mb-1'>{label}</Label>}
+        <RACTagGroup ref={ref} className={cn('flex flex-col flex-wrap gap-1.5', className)} {...props}>
+            {label && <Label>{label}</Label>}
             <TagGroupContext.Provider
                 value={{
-                    variant: props.variant || 'primary'
+                    variant: props.variant || 'default'
                 }}
             >
                 <TagList
                     items={items}
                     renderEmptyState={renderEmptyState}
-                    className='flex flex-wrap gap-2 *:data-badge:bg-primary'
+                    className='flex flex-wrap gap-2 *:data-[slot=badge]:bg-primary'
                 >
                     {children}
                 </TagList>
@@ -62,9 +62,9 @@ const TagGroup = <T extends object>({
 const tagStyle = tv({
     extend: badgeStyle,
     variants: {
-        isSelected: { false: '!bg-(--bg)/10 !text-(--bg)' },
+        isSelected: { false: '!border-border !bg-transparent !text-muted-foreground' },
         isFocusVisible: {
-            true: 'outline-0 ring-2 ring-primary ring-offset-2'
+            true: 'outline-0 ring-2 ring-ring/50 ring-offset-2'
         },
         isDisabled: { true: 'cursor-default opacity-50', false: 'cursor-pointer' },
         allowsRemoving: { true: 'pr-1' }
@@ -94,7 +94,7 @@ const Tag = (props: TagProps) => {
                         {allowsRemoving && (
                             <Button
                                 slot='remove'
-                                className='-mr-0.5 grid size-3.5 place-content-center rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-primary'
+                                className='-mr-0.5 grid size-3.5 place-content-center rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-ring/50'
                             >
                                 <IconX className='size-3 shrink-0' />
                             </Button>

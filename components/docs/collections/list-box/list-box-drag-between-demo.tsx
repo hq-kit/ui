@@ -13,7 +13,9 @@ function DNDList({ items }: { items: { id: string; type: string; name: string }[
             dragAndDropHooks={dragAndDropHooks}
             items={list.items}
             renderEmptyState={() => (
-                <div className='col-span-full flex items-center justify-center text-muted-fg'>Drop items here</div>
+                <div className='col-span-full flex items-center justify-center text-muted-foreground'>
+                    Drop items here
+                </div>
             )}
             aria-label='Linux Distros'
         >

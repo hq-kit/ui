@@ -48,7 +48,7 @@ export default function Component() {
                         <PolarGrid />
                         <Radar dataKey='sales' fill='var(--color-sales)' fillOpacity={0.6} />
                         <Radar dataKey='expenses' fill='var(--color-expenses)' />
-                        <PolarRadiusAxis angle={60} stroke='var(--fg)' orientation='middle' axisLine={false} />
+                        <PolarRadiusAxis angle={60} stroke='var(--foreground)' orientation='middle' axisLine={false} />
                     </RadarChart>
                 </Chart>
             </Card.Content>

@@ -37,7 +37,7 @@ interface ToolbarGroupProps extends GroupProps, Omit<ToggleGroupContextProps, 'o
     ref?: RefObject<HTMLDivElement>
 }
 
-const ToolbarGroup = ({ className, ref, variant, gap, icon, size, ...props }: ToolbarGroupProps) => {
+const ToolbarGroup = ({ className, ref, variant = 'outline', gap, icon, size, ...props }: ToolbarGroupProps) => {
     const { orientation } = useSlottedContext(ToolbarContext)!
     return (
         <ToggleGroupContext.Provider value={{ variant, gap, size, icon, orientation, isDisabled: props.isDisabled }}>
@@ -63,7 +63,7 @@ const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
     return (
         <Separator
             className={cn(
-                'bg-muted',
+                'bg-border',
                 orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : ' my-1.5 h-px w-fit min-w-8',
                 className
             )}

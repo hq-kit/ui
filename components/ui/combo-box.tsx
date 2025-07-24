@@ -47,9 +47,9 @@ const ComboBox = <T extends object>({
         {label && <Label>{label}</Label>}
         <FieldGroup isInvalid={props.isInvalid || !!errorMessage}>
             {isPending ? (
-                <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-fg' />
+                <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-foreground' />
             ) : props.prefix ? (
-                <span className='ml-2 shrink-0 text-muted-fg has-[button]:ml-0 **:data-avatar:size-6'>
+                <span className='ml-2 shrink-0 text-muted-foreground has-[button]:ml-0 **:data-avatar:size-6'>
                     {props.prefix}
                 </span>
             ) : null}
@@ -59,7 +59,7 @@ const ComboBox = <T extends object>({
             ) : (
                 <Button
                     aria-label='Chevron'
-                    className='inline-flex items-center justify-center rounded-md text-muted-fg outline-hidden'
+                    className='inline-flex items-center justify-center rounded-md text-muted-foreground outline-hidden'
                 >
                     <IconChevronDown className='group-open/field:-rotate-180 mr-2 size-4 transition' />
                 </Button>
@@ -83,7 +83,7 @@ const ClearButton = () => {
     const state = use(ComboBoxStateContext)!
     return (
         <Button
-            className='inline-flex cursor-pointer items-center justify-center rounded-md text-muted-fg outline-hidden hover:text-fg'
+            className='inline-flex cursor-pointer items-center justify-center rounded-md text-muted-foreground outline-hidden hover:text-foreground'
             slot={null}
             aria-label='Clear'
             onPress={() => {

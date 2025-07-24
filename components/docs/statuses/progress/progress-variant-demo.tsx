@@ -18,16 +18,14 @@ export default function ProgressVariantDemo() {
     return (
         <div className='space-y-4'>
             <div className='flex gap-2'>
-                <Progress circle label='Primary' value={value} variant='primary' />
+                <Progress circle label='Default' value={value} variant='default' />
                 <Progress circle label='Secondary' value={value} variant='secondary' />
-                <Progress circle label='Danger' value={value} variant='danger' />
-                <Progress circle label='Dark' value={value} variant='dark' />
+                <Progress circle label='Destructive' value={value} variant='destructive' />
             </div>
             <div className='flex flex-col gap-2'>
-                <Progress label='Primary' value={value} variant='primary' />
+                <Progress label='Default' value={value} variant='default' />
                 <Progress label='Secondary' value={value} variant='secondary' />
-                <Progress label='Danger' value={value} variant='danger' />
-                <Progress label='Dark' value={value} variant='dark' />
+                <Progress label='Destructive' value={value} variant='destructive' />
             </div>
         </div>
     )

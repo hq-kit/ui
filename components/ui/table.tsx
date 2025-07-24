@@ -68,7 +68,7 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
 const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-fg', className)} {...props}>
+        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-foreground', className)} {...props}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
                 <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
@@ -155,7 +155,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
                         {allowsSorting && (
                             <IconChevronDown
                                 className={cn(
-                                    'size-3.5 shrink-0 text-muted-fg transition-transform',
+                                    'size-3.5 shrink-0 text-muted-foreground transition-transform',
                                     sortDirection === 'ascending' ? '-rotate-180' : '',
                                     isHovered && 'text-primary'
                                 )}

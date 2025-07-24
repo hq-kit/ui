@@ -35,7 +35,7 @@ const TooltipContent = ({
             offset={offset}
             className={composeRenderProps(className, (className) =>
                 cn(
-                    isInverse ? 'bg-popover-fg text-popover' : 'bg-popover text-popover-fg',
+                    isInverse ? 'bg-popover-foreground text-popover' : 'bg-popover text-popover-foreground',
                     'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
                     'entering:fade-in entering:animate-in',
                     'exiting:fade-in exiting:direction-reverse exiting:animate-in',
@@ -55,7 +55,7 @@ const TooltipContent = ({
                         viewBox='0 0 12 12'
                         className={cn(
                             'group-placement-left:-rotate-90 block group-placement-bottom:rotate-180 group-placement-right:rotate-90',
-                            isInverse ? 'fill-popover-fg' : 'fill-popover stroke-muted'
+                            isInverse ? 'fill-popover-foreground' : 'fill-popover stroke-border'
                         )}
                     >
                         <path d='M0 0 L6 6 L12 0' />

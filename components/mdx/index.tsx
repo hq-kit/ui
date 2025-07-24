@@ -1,4 +1,19 @@
-import { cn } from '@/lib/utils'
+import {
+    TypographyA,
+    TypographyCode,
+    TypographyH1,
+    TypographyH2,
+    TypographyH3,
+    TypographyH4,
+    TypographyOl,
+    TypographyP,
+    TypographyPre,
+    TypographyTable,
+    TypographyTd,
+    TypographyTh,
+    TypographyTr,
+    TypographyUl
+} from '@/components/mdx/typography'
 import Image from 'next/image'
 import type { ComponentProps } from 'react'
 import * as runtime from 'react/jsx-runtime'
@@ -12,28 +27,20 @@ import { Demo } from './demo'
 import { Install } from './install'
 
 const components = {
-    a: ({ className, ...props }: ComponentProps<'a'>) => (
-        <a className={cn('font-medium underline underline-offset-4', className)} {...props} />
-    ),
-    p: ({ className, ...props }: ComponentProps<'p'>) => <p className={cn('leading-7', className)} {...props} />,
-    ul: ({ className, ...props }: ComponentProps<'ul'>) => (
-        <ul className={cn('my-6 ml-6 list-disc', className)} {...props} />
-    ),
-    li: ({ className, ...props }: ComponentProps<'li'>) => <li className={cn('mt-2', className)} {...props} />,
-    table: ({ className, ...props }: ComponentProps<'table'>) => (
-        <div className='my-6 w-full overflow-y-auto'>
-            <table className={cn('w-full', className)} {...props} />
-        </div>
-    ),
-    td: ({ className, ...props }: ComponentProps<'td'>) => (
-        <td
-            className={cn(
-                'border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right',
-                className
-            )}
-            {...props}
-        />
-    ),
+    h1: TypographyH1,
+    h2: TypographyH2,
+    h3: TypographyH3,
+    h4: TypographyH4,
+    a: TypographyA,
+    p: TypographyP,
+    ul: TypographyUl,
+    ol: TypographyOl,
+    table: TypographyTable,
+    tr: TypographyTr,
+    td: TypographyTd,
+    th: TypographyTh,
+    code: TypographyCode,
+    pre: TypographyPre,
     Code,
     CLI,
     Install,
@@ -41,9 +48,9 @@ const components = {
     Block,
     Image,
     Note: ({ children, ...props }: ComponentProps<typeof Note>) => (
-        <Note {...props} className='not-prose **:not-prose' variant='danger'>
+        <Note {...props} variant='destructive' className='my-4'>
             <IconCircleAlert className='my-0.5' />
-            <Note.Title className='cols-start-2'>{children}</Note.Title>
+            <Note.Description className='cols-start-2'>{children}</Note.Description>
         </Note>
     )
 }

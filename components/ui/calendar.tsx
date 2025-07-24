@@ -35,12 +35,12 @@ const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
                         <CalendarCell
                             date={date}
                             className={cn([
-                                'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-muted/50 outside-month:text-muted-fg text-sm outline-hidden hover:bg-muted/40',
-                                'selected:bg-primary selected:text-primary-fg selected:invalid:bg-danger selected:invalid:text-danger-fg',
-                                'focus-visible:ring-2 focus-visible:ring-ring',
+                                'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-accent outside-month:text-muted-foreground pressed:text-accent-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground',
+                                'selected:bg-primary selected:text-primary-foreground selected:invalid:bg-destructive selected:invalid:text-destructive-foreground',
+                                'focus-visible:ring-2 focus-visible:ring-ring/50',
                                 'disabled:pointer-events-none disabled:opacity-50',
                                 date.compare(now) === 0 &&
-                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-fg'
+                                    'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-foreground'
                             ])}
                         >
                             {date.day}
@@ -72,14 +72,14 @@ const RangeCalendar = <T extends DateValue>({ visibleDuration = { months: 1 }, .
                                     <CalendarCell
                                         date={date}
                                         className={cn([
-                                            'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-muted/50 outside-month:text-muted-fg text-sm outline-hidden hover:bg-muted/40',
-                                            'selection-start:bg-primary selection-start:text-primary-fg selection-start:invalid:bg-danger selection-start:invalid:text-danger-fg',
-                                            'selection-end:bg-primary selection-end:text-primary-fg selection-end:invalid:bg-danger selection-end:invalid:text-danger-fg',
-                                            'selected:rounded-none selected:bg-muted/50 selected:selection-end:rounded-r-lg selected:selection-start:rounded-l-lg',
-                                            'focus-visible:ring-2 focus-visible:ring-ring',
+                                            'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-accent outside-month:text-muted-foreground pressed:text-accent-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground',
+                                            'selection-start:bg-primary selection-start:text-primary-foreground selection-start:invalid:bg-destructive selection-start:invalid:text-destructive-foreground',
+                                            'selection-end:bg-primary selection-end:text-primary-foreground selection-end:invalid:bg-destructive selection-end:invalid:text-destructive-foreground',
+                                            'selected:rounded-none selected:bg-accent selected:text-accent-foreground selected:selection-end:rounded-r-lg selected:selection-start:rounded-l-lg',
+                                            'focus-visible:ring-2 focus-visible:ring-ring/50',
                                             'disabled:pointer-events-none disabled:opacity-50',
                                             date.compare(now) === 0 &&
-                                                'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:mt-1 after:size-1 after:rounded after:bg-primary selected:selection-end:after:bg-primary-fg selected:selection-start:after:bg-primary-fg'
+                                                'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:mt-1 after:size-1 after:rounded after:bg-primary selected:selection-end:after:bg-primary-foreground selected:selection-start:after:bg-primary-foreground'
                                         ])}
                                     >
                                         {date.day}
@@ -105,7 +105,7 @@ const CalendarHeader = ({ className, isRange, ...props }: ComponentPropsWithRef<
             {...props}
         >
             <Button
-                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
+                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-border/40 bg-background pressed:bg-muted/50 text-muted-foreground shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
                 slot='previous'
             >
                 {direction === 'rtl' ? <IconChevronRight /> : <IconChevronLeft />}
@@ -119,7 +119,7 @@ const CalendarHeader = ({ className, isRange, ...props }: ComponentPropsWithRef<
                 </div>
             )}
             <Button
-                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-muted/40 bg-bg pressed:bg-muted/50 text-muted-fg shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
+                className='inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-border/40 bg-background pressed:bg-muted/50 text-muted-foreground shadow-sm outline-hidden hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring'
                 slot='next'
             >
                 {direction === 'rtl' ? <IconChevronLeft /> : <IconChevronRight />}
@@ -132,7 +132,7 @@ const CalendarGridHeader = () => {
     return (
         <RACCalendarGridHeader>
             {(day) => (
-                <CalendarHeaderCell className='pb-2 font-semibold text-muted-fg text-sm sm:px-0 sm:py-0.5 lg:text-xs'>
+                <CalendarHeaderCell className='pb-2 font-semibold text-muted-foreground text-sm sm:px-0 sm:py-0.5 lg:text-xs'>
                     {day}
                 </CalendarHeaderCell>
             )}

@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import { Code } from '@/components/mdx/code'
 import { Button, Link, Modal } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
-import type { Gray, Preset } from '@/lib/themes'
+import type { Preset } from '@/lib/themes'
 
 export const ThemeSnippet = () => {
     const { currentFontSansFamily, currentFontMonoFamily } = useThemeGenerator()
@@ -52,14 +52,13 @@ export const ThemeSnippet = () => {
 }
 
 export const ColorPreview = () => {
-    const { currentPresetColor, currentGrayColor, grayColors, presetColors } = useThemeGenerator()
-    const activeTheme = presetColors.find((theme) => theme.name === currentPresetColor)
-    const activeBase = grayColors.find((theme) => theme.name === currentGrayColor)
+    const { currentPresetTheme, presetThemes } = useThemeGenerator()
+    const activeTheme = presetThemes.find((theme) => theme.name === currentPresetTheme)
 
     const { theme } = useTheme()
 
-    const lightColors = { ...activeBase?.cssVars.light, ...activeTheme?.cssVars.light }
-    const darkColors = { ...activeBase?.cssVars.dark, ...activeTheme?.cssVars.dark }
+    const lightColors = { ...activeTheme?.cssVars.light }
+    const darkColors = { ...activeTheme?.cssVars.dark }
 
     return theme === 'light' ? (
         <div className='grid grid-cols-2 gap-2 rounded-lg border border-dashed p-4'>
@@ -69,7 +68,9 @@ export const ColorPreview = () => {
                         className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
                             backgroundColor: lightColors[key as keyof typeof lightColors] ?? `var(--${key})`,
-                            color: lightColors[`${key}-fg` as keyof typeof lightColors] ?? `var(--${key}-fg)`
+                            color:
+                                lightColors[`${key}-foreground` as keyof typeof lightColors] ??
+                                `var(--${key}-foreground)`
                         }}
                         key={key}
                     >
@@ -95,7 +96,8 @@ export const ColorPreview = () => {
                         className='flex items-center justify-center rounded-lg border px-2 py-1 font-bold text-sm'
                         style={{
                             backgroundColor: darkColors[key as keyof typeof darkColors] ?? `var(--${key})`,
-                            color: darkColors[`${key}-fg` as keyof typeof darkColors] ?? `var(--${key}-fg)`
+                            color:
+                                darkColors[`${key}-foreground` as keyof typeof darkColors] ?? `var(--${key}-foreground)`
                         }}
                         key={key}
                     >
@@ -117,21 +119,20 @@ export const ColorPreview = () => {
 }
 
 const CopyCode = () => {
-    const { currentPresetColor, currentGrayColor, currentBorderRadius, grayColors, presetColors } = useThemeGenerator()
-    const activeTheme = presetColors.find((theme) => theme.name === currentPresetColor)
-    const activeBase = grayColors.find((theme) => theme.name === currentGrayColor)
+    const { currentPresetTheme, currentBorderRadius, presetThemes } = useThemeGenerator()
+    const activeTheme = presetThemes.find((theme) => theme.name === currentPresetTheme)
 
-    return <Code lang='css' code={getThemeCode(activeTheme, activeBase, currentBorderRadius)} />
+    return <Code lang='css' code={getThemeCode(activeTheme, currentBorderRadius)} />
 }
 
-function getThemeCode(theme: Preset | undefined, grays: Gray | undefined, radius: number) {
-    if (!theme || !grays) {
+function getThemeCode(theme: Preset | undefined, radius: string) {
+    if (!theme) {
         return ''
     }
 
     const colors = {
-        light: { ...theme.cssVars.light, ...grays.cssVars.light },
-        dark: { ...theme.cssVars.dark, ...grays.cssVars.dark }
+        light: { ...theme.cssVars.light },
+        dark: { ...theme.cssVars.dark }
     }
 
     return template(CSS_VARIABLES)({ colors, radius })
@@ -139,29 +140,29 @@ function getThemeCode(theme: Preset | undefined, grays: Gray | undefined, radius
 
 const CSS_VARIABLES = `@layer base {
   :root {
-    --bg: <%- colors.light["bg"] %>;
-    --fg: <%- colors.light["fg"] %>;
+    --background: <%- colors.light["bg"] %>;
+    --foreground: <%- colors.light["fg"] %>;
     --primary: <%- colors.light["primary"] %>;
-    --primary-fg: <%- colors.light["primary-fg"] %>;
+    --primary-foreground: <%- colors.light["primary-foreground"] %>;
     --secondary: <%- colors.light["secondary"] %>;
-    --secondary-fg: <%- colors.light["secondary-fg"] %>;
-    --danger: <%- colors.light["danger"] %>;
-    --danger-fg: <%- colors.light["danger-fg"] %>;
+    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+    --destructive: <%- colors.light["destructive"] %>;
+    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
     --muted: <%- colors.light["muted"] %>;
-    --muted-fg: <%- colors.light["muted-fg"] %>;
+    --muted-foreground: <%- colors.light["muted-foreground"] %>;
 
     --radius: <%- radius %>rem;
   }
 
   .dark {
-    --bg: <%- colors.dark["bg"] %>;
-    --fg: <%- colors.dark["fg"] %>;
+    --background: <%- colors.dark["bg"] %>;
+    --foreground: <%- colors.dark["fg"] %>;
     --secondary: <%- colors.dark["secondary"] %>;
-    --secondary-fg: <%- colors.dark["secondary-fg"] %>;
-    --danger: <%- colors.dark["danger"] %>;
-    --danger-fg: <%- colors.dark["danger-fg"] %>;
+    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
+    --destructive: <%- colors.dark["destructive"] %>;
+    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
     --muted: <%- colors.dark["muted"] %>;
-    --muted-fg: <%- colors.dark["muted-fg"] %>;
+    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
   }
 }
 `

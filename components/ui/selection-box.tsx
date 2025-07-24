@@ -114,14 +114,14 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-bg shadow-xs transition dark:bg-muted/40',
+                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-background shadow-xs transition dark:bg-muted/40',
                         isSelected || isIndeterminate
-                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
-                            : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
+                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-destructive/70 group-invalid:bg-invalid group-invalid:**:text-destructive'
+                            : 'border-border **:text-muted-foreground group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-4 ring-ring group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-invalid',
+                            'border-primary ring-4 ring-ring/50 group-invalid:border-destructive/70 group-invalid:text-destructive-foreground group-invalid:ring-invalid',
                         isInvalid &&
-                            'border-danger/70 bg-invalid text-danger-fg ring-invalid group-hover:border-danger/70',
+                            'border-destructive/70 bg-invalid text-destructive-foreground ring-invalid group-hover:border-destructive/70',
                         className
                     )}
                 >
@@ -145,14 +145,14 @@ const SelectionBoxItem = ({ className, label, children, ...props }: SelectionBox
                 <div
                     slot='box'
                     className={cn(
-                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-bg shadow-xs transition dark:bg-muted/40',
+                        'flex w-full items-center rounded-sm border bg-transparent px-3 py-2 text-background shadow-xs transition dark:bg-muted/40',
                         isSelected
-                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-danger/70 group-invalid:bg-invalid group-invalid:**:text-danger'
-                            : 'border-muted **:text-muted-fg group-hover:border-primary/70 group-hover:bg-primary/10',
+                            ? 'border-primary bg-primary/10 text-primary **:text-primary group-invalid:border-destructive/70 group-invalid:bg-invalid group-invalid:**:text-destructive'
+                            : 'border-border **:text-muted-foreground group-hover:border-primary/70 group-hover:bg-primary/10',
                         isFocused &&
-                            'border-primary ring-4 ring-ring group-invalid:border-danger/70 group-invalid:text-danger-fg group-invalid:ring-invalid',
+                            'border-primary ring-4 ring-ring/50 group-invalid:border-destructive/70 group-invalid:text-destructive-foreground group-invalid:ring-invalid',
                         isInvalid &&
-                            'border-danger/70 bg-invalid text-danger-fg ring-invalid group-hover:border-danger/70',
+                            'border-destructive/70 bg-invalid text-destructive-foreground ring-invalid group-hover:border-destructive/70',
                         className
                     )}
                 >

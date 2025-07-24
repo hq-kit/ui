@@ -27,7 +27,7 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
                     'cursor-pointer group-disabled/switch:cursor-default group-disabled/switch:opacity-50'
                 )}
             >
-                <span className='size-3.5 rounded-full bg-primary-fg shadow-sm transition-transform group-selected/switch:translate-x-3' />
+                <span className='size-3.5 rounded-full border bg-primary-foreground transition-transform group-selected/switch:translate-x-3' />
             </div>
             <Label>{children as ReactNode}</Label>
         </RACSwitch>

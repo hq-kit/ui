@@ -41,7 +41,7 @@ const DatePicker = <T extends DateValue>({
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
                             <IconCalendarDays
                                 aria-hidden
-                                className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-fg')}
+                                className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-foreground')}
                             />
                         </Button>
                     </FieldGroup>
@@ -52,7 +52,7 @@ const DatePicker = <T extends DateValue>({
                         <Button
                             type='button'
                             slot='close'
-                            className='mt-2 w-full rounded-lg border pressed:bg-muted/50 p-2 text-center hover:bg-muted/40 sm:hidden'
+                            className='mt-2 w-full rounded-lg border pressed:bg-accent p-2 text-center hover:bg-accent/90 sm:hidden'
                         >
                             Close
                         </Button>
@@ -92,7 +92,7 @@ const DateRangePicker = <T extends DateValue>({
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
                             <IconCalendarDays
                                 aria-hidden
-                                className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-fg')}
+                                className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-foreground')}
                             />
                         </Button>
                     </FieldGroup>
@@ -103,7 +103,7 @@ const DateRangePicker = <T extends DateValue>({
                         <Button
                             type='button'
                             slot='close'
-                            className='mt-2 w-full rounded-lg border pressed:bg-primary/50 p-2 text-center hover:bg-primary/40 sm:hidden'
+                            className='mt-2 w-full rounded-lg border pressed:bg-accent p-2 text-center hover:bg-accent/90 sm:hidden'
                         >
                             Close
                         </Button>

@@ -71,19 +71,19 @@ const MenuContent = <T extends object>({ className, respectScreen = true, ...pro
 }
 
 interface MenuItemProps extends RACMenuItemProps {
-    isDanger?: boolean
+    isDestructive?: boolean
 }
 
-const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemProps) => {
+const MenuItem = ({ className, isDestructive = false, children, ...props }: MenuItemProps) => {
     const textValue = props.textValue || (typeof children === 'string' ? children : undefined)
     return (
         <RACMenuItem
             className={composeRenderProps(className, (className) =>
                 itemStyle({
                     className: cn(
-                        isDanger
-                            ? 'text-danger **:text-danger open:bg-danger/10 open:text-danger focus:bg-danger/10 focus:text-danger focus:**:text-danger'
-                            : 'text-fg',
+                        isDestructive
+                            ? 'text-destructive **:text-destructive open:bg-destructive/10 open:text-destructive focus:bg-destructive/10 focus:text-destructive focus:**:text-destructive'
+                            : 'text-foreground',
                         className
                     )
                 })
@@ -93,7 +93,7 @@ const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemP
         >
             {(values) => (
                 <>
-                    {values.isSelected && <IconCheck className='mr-2 text-success' data-slot='checked' />}
+                    {values.isSelected && <IconCheck className='mr-2 text-primary' data-slot='checked' />}
                     {typeof children === 'function' ? children(values) : children}
                     {values.hasSubmenu && <IconChevronRight data-slot='chevron' className='ml-auto' />}
                 </>

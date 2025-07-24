@@ -49,10 +49,10 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
                     </Stepper>
                 ) : (
                     <div className='flex h-full flex-col divide-y border-s'>
-                        <Stepper slot='increment' className='size-5'>
+                        <Stepper slot='increment' className='h-5 w-7'>
                             <IconChevronUp />
                         </Stepper>
-                        <Stepper slot='decrement' className='size-5'>
+                        <Stepper slot='decrement' className='h-5 w-7'>
                             <IconChevronDown />
                         </Stepper>
                     </div>
@@ -74,9 +74,9 @@ const Stepper = ({ slot, className, ...props }: StepperProps) => {
         <Button
             className={composeRenderProps(className, (className, { isDisabled, isPressed }) =>
                 cn(
-                    'flex size-12 items-center justify-center text-muted-fg outline-hidden',
+                    'flex size-12 items-center justify-center text-muted-foreground outline-hidden',
                     isPressed &&
-                        'bg-primary text-primary-fg group-has-invalid/field:bg-danger group-has-invalid/field:text-danger-fg',
+                        'bg-accent text-accent-foreground group-has-invalid/field:bg-destructive group-has-invalid/field:text-destructive-foreground',
                     isDisabled && 'opacity-50',
                     className
                 )

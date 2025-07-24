@@ -73,10 +73,10 @@ export default async function DocsPage(props: Props) {
     return (
         <>
             <div className='min-w-0 max-w-2xl flex-auto pt-12 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'>
-                <main className='prose prose-blue dark:prose-invert prose-h2:mb-4 prose-headings:mb-[0.3rem] max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0'>
+                <main className='rehype max-w-[inherit]'>
                     <div className='mb-8'>
-                        <h1 className='mt-2 font-semibold text-2xl tracking-tight sm:text-3xl'>{doc.title}</h1>
-                        {doc.description && <p className='mt-2.5 text-base leading-relaxed'>{doc.description}</p>}
+                        <h1 className='mt-2 font-semibold text-2xl tracking-tight sm:text-4xl'>{doc.title}</h1>
+                        {doc.description && <p className='mt-2.5 mb-4 text-base leading-relaxed'>{doc.description}</p>}
                         {doc.references && <DocRefs references={doc.references} />}
                     </div>
                     <MDXContent code={doc.body} />

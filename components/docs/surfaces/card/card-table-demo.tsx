@@ -42,7 +42,7 @@ export default function CardTableDemo() {
                                                 <Menu.Label>Edit</Menu.Label>
                                             </Menu.Item>
                                             <Menu.Separator />
-                                            <Menu.Item isDanger>
+                                            <Menu.Item isDestructive>
                                                 <IconTrash />
                                                 <Menu.Label>Delete</Menu.Label>
                                             </Menu.Item>
@@ -55,7 +55,7 @@ export default function CardTableDemo() {
                 </Table>
             </Card.Content>
             <Card.Footer className='flex-col justify-between gap-2 md:flex-row'>
-                <div className='text-muted-fg text-sm'>Showing 1 to 10 of 50 entries</div>
+                <div className='text-muted-foreground text-sm'>Showing 1 to 10 of 50 entries</div>
                 <Pagination>
                     <Pagination.Item slot='first' href='#first' />
                     <Pagination.Item slot='previous' href='#previous' />

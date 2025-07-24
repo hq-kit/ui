@@ -12,18 +12,22 @@ interface MeterProps extends RACMeterProps {
 
 const Meter = ({ label, className, ...props }: MeterProps) => {
     return (
-        <RACMeter {...props} className={cn('flex flex-col gap-y-1.5', className)}>
+        <RACMeter
+            aria-label={props['aria-label'] ?? 'Meter'}
+            {...props}
+            className={cn('flex flex-col gap-y-1.5', className)}
+        >
             {({ percentage, valueText }) => (
                 <>
                     <div className='flex w-full justify-between gap-2'>
                         {label && <Label>{label}</Label>}
                         <span
-                            className={`flex items-center text-sm tabular-nums ${percentage >= 80 ? 'text-danger' : 'text-muted-fg'}`}
+                            className={`flex items-center text-sm tabular-nums ${percentage >= 80 ? 'text-destructive' : 'text-muted-foreground'}`}
                         >
                             {percentage >= 80 && (
                                 <IconCircleAlert
                                     aria-label='Alert'
-                                    className='mr-1 inline size-4 fill-invalid text-danger'
+                                    className='mr-1 inline size-4 fill-invalid text-destructive'
                                 />
                             )}
                             {valueText}
@@ -54,7 +58,7 @@ const getColor = (percentage: number) => {
     if (percentage < 75) {
         return 'orange'
     }
-    return 'var(--danger)'
+    return 'var(--destructive)'
 }
 
 export { Meter }

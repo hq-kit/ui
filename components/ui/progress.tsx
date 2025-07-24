@@ -10,10 +10,10 @@ interface ProgressProps extends ProgressBarProps {
     label?: string
     ref?: Ref<HTMLDivElement>
     circle?: boolean
-    variant?: 'primary' | 'secondary' | 'danger' | 'dark'
+    variant?: 'default' | 'secondary' | 'destructive'
 }
 
-const Progress = ({ label, ref, circle, variant = 'primary', className, ...props }: ProgressProps) => {
+const Progress = ({ label, ref, circle, variant = 'default', className, ...props }: ProgressProps) => {
     return (
         <>
             <style>
@@ -33,7 +33,9 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                 aria-label={label ?? 'Progress'}
                                 className={cn(
                                     'size-20 shrink-0',
-                                    `text-${variant === 'dark' ? 'fg' : variant}`,
+                                    variant === 'default' && 'text-primary',
+                                    variant === 'secondary' && 'text-foreground',
+                                    variant === 'destructive' && 'text-destructive',
                                     className
                                 )}
                                 viewBox='0 0 32 32'
@@ -83,7 +85,7 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                 <div className='flex justify-between gap-2'>
                                     {label && <Label>{label}</Label>}
                                     {valueText && (
-                                        <span className='text-muted-fg text-sm tabular-nums'>{valueText}</span>
+                                        <span className='text-muted-foreground text-sm tabular-nums'>{valueText}</span>
                                     )}
                                 </div>
                                 <div className='relative h-2 min-w-64 overflow-hidden rounded-lg bg-muted outline-hidden'>
@@ -97,10 +99,9 @@ const Progress = ({ label, ref, circle, variant = 'primary', className, ...props
                                         }}
                                         className={cn(
                                             'absolute top-0 left-0 h-full rounded-full transition',
-                                            variant === 'primary' && 'bg-primary',
-                                            variant === 'secondary' && 'bg-secondary',
-                                            variant === 'danger' && 'bg-danger',
-                                            variant === 'dark' && 'bg-fg',
+                                            variant === 'default' && 'bg-primary',
+                                            variant === 'secondary' && 'bg-muted-foreground',
+                                            variant === 'destructive' && 'bg-destructive',
                                             isIndeterminate && 'w-[120px]'
                                         )}
                                     />

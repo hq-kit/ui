@@ -19,18 +19,6 @@ export default function ToggleSizeDemo() {
             <Toggle icon size='lg'>
                 {({ isSelected }) => <>{isSelected ? <IconEye /> : <IconEyeClosed />}</>}
             </Toggle>
-            <Toggle icon shape='circle' size='xs'>
-                {({ isSelected }) => <>{isSelected ? <IconEye /> : <IconEyeClosed />}</>}
-            </Toggle>
-            <Toggle icon shape='circle' size='sm'>
-                {({ isSelected }) => <>{isSelected ? <IconEye /> : <IconEyeClosed />}</>}
-            </Toggle>
-            <Toggle icon shape='circle' size='md'>
-                {({ isSelected }) => <>{isSelected ? <IconEye /> : <IconEyeClosed />}</>}
-            </Toggle>
-            <Toggle icon shape='circle' size='lg'>
-                {({ isSelected }) => <>{isSelected ? <IconEye /> : <IconEyeClosed />}</>}
-            </Toggle>
         </div>
     )
 }

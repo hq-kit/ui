@@ -1,9 +1,9 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { useEffect, useState } from 'react'
 
 import { IconCheck, IconCopy } from 'hq-icons'
-import { Button, type ButtonProps } from 'react-aria-components'
 import rehypePrettyCode, { type Theme } from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
@@ -58,13 +58,13 @@ const Code = ({
             try {
                 const file = await unified()
                     .use(remarkParse)
-                    .use(remarkRehype, { allowDangerousHtml: true })
+                    .use(remarkRehype, { allowDestructiveousHtml: true })
                     .use(rehypePrettyCode, {
                         keepBackground: true,
                         theme,
                         defaultLang: lang
                     })
-                    .use(rehypeStringify, { allowDangerousHtml: true })
+                    .use(rehypeStringify, { allowDestructiveousHtml: true })
                     .process(
                         `\`\`\`${lang} ${lineNumbers && 'showLineNumbers'} ${filename ? `title="${filename}"` : ''} \{${highlightLine}\}\n${code}\n\`\`\``
                     )
@@ -85,24 +85,24 @@ const Code = ({
         <div className={cn('relative overflow-hidden rounded-lg', className)}>
             <CopyButton className='absolute top-1 right-1' copied={copied} onPress={copyCode} />
             <style>
-                {`pre code[data-line-numbers] { counter-reset: line; } pre code[data-line-numbers] > [data-line]::before { counter-increment: line; content: counter(line); margin-right: 2rem; color: #71717b; display: inline-block; text-align: right; width: 1rem; } pre code[data-line-numbers-max-digits="2"] > [data-line]::before { width: 2rem; } pre code[data-line-numbers-max-digits="3"] > [data-line]::before { width: 3rem; } code, code span { color: var(--shiki-light); background-color: var(--shiki-light-bg); } .dark { code, code span { color: var(--shiki-dark); background-color: var(--shiki-dark-bg); } } [data-highlighted-line] { background: rgba(200, 200, 255, 0.2) !important; border-left-color: color-mix(in oklab, var(--primary) 80%, transparent) !important; }`}
+                {`pre code[data-line-numbers] { counter-reset: line; } pre code[data-line-numbers] > [data-line]::before { counter-increment: line; content: counter(line); margin-right: 2rem; color: #71717b; display: inline-block; text-align: right; width: 1rem; } pre code[data-line-numbers-max-digits="2"] > [data-line]::before { width: 2rem; } pre code[data-line-numbers-max-digits="3"] > [data-line]::before { width: 3rem; } code, code span { color: var(--shiki-light); background-color: var(--shiki-light-background); } .dark { code, code span { color: var(--shiki-dark); background-color: var(--shiki-dark-background); } } [data-highlighted-line] { background: rgba(200, 200, 255, 0.2) !important; border-left-color: color-mix(in oklab, var(--primary) 80%, transparent) !important; }`}
             </style>
             <section
-                className='text-sm **:[code]:*:pr-12 **:[code]:*:pl-3 **:[code]:py-2.5 **:[code]:leading-relaxed **:[figcaption]:bg-fg **:[figcaption]:p-3 **:[figcaption]:text-muted-fg **:[pre]:overflow-auto'
+                className='text-sm **:[code]:*:pr-12 **:[code]:*:pl-3 **:[code]:py-2.5 **:[code]:leading-relaxed **:[figcaption]:bg-foreground **:[figcaption]:p-3 **:[figcaption]:text-muted-foreground **:[pre]:overflow-auto'
                 dangerouslySetInnerHTML={{ __html: formattedCode }}
             />
         </div>
     )
 }
 
-const CopyButton = ({ copied, className, ...props }: ButtonProps & { copied: boolean }) => (
+const CopyButton = ({ copied, className, onPress }: { copied: boolean; className?: string; onPress?: () => void }) => (
     <Button
         aria-label={copied ? 'Copied' : 'Copy'}
-        className={cn(
-            'z-10 flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-md text-muted-fg outline-hidden backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset',
-            className
-        )}
-        {...props}
+        variant='outline'
+        icon
+        size='sm'
+        className={className}
+        onPress={onPress}
     >
         <IconCopy
             className={cn('size-4 rotate-0 scale-100 transition-all duration-200', copied && 'rotate-90 scale-0')}
