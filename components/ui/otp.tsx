@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCircle } from 'hq-icons'
+import { IconCircle } from '@tabler/icons-react'
 import { OTPInput, OTPInputContext } from 'input-otp'
 import { type ComponentProps, use } from 'react'
 

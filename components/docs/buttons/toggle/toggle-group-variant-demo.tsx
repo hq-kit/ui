@@ -1,7 +1,7 @@
 'use client'
 
 import { Toggle } from '@/components/ui'
-import { IconCloud, IconCloudOff, IconLock, IconLockOpen, IconMoon, IconSun } from 'hq-icons'
+import { IconCloud, IconCloudOff, IconLock, IconLockOpen, IconMoon, IconSun } from '@tabler/icons-react'
 
 export default function ToggleGroupVariantDemo() {
     return (

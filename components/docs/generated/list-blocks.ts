@@ -1,27 +1,5 @@
 export const listBlocks = [
   {
-    "section": "marketing",
-    "category": "management",
-    "blocks": [
-      {
-        "slug": "marketing/management/file-manager",
-        "uiComponents": [
-          "breadcrumbs.tsx",
-          "button.tsx",
-          "grid-list.tsx",
-          "search-field.tsx",
-          "toggle.tsx",
-          "link.tsx",
-          "sidebar.tsx"
-        ],
-        "components": [
-          "file-list.tsx",
-          "file-sidebar.tsx"
-        ]
-      }
-    ]
-  },
-  {
     "section": "application",
     "category": "social",
     "blocks": [

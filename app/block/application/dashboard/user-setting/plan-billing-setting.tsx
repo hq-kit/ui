@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, DatePicker, Form, GridList, Note, TextField } from '@/components/ui'
-import { IconCircleUser, IconCreditCard, IconHash, IconLock, IconMap } from 'hq-icons'
+import { IconCreditCard, IconHash, IconLock, IconMap, IconUserCircle } from '@tabler/icons-react'
 
 export default function PlanBillingSetting() {
     return (
@@ -25,7 +25,7 @@ export default function PlanBillingSetting() {
                     <h4 className='font-semibold text-lg'>Payment Details</h4>
                     <TextField
                         autoFocus
-                        prefix={<IconCircleUser />}
+                        prefix={<IconUserCircle />}
                         label='Card Holder'
                         name='card_holder'
                         id='card_holder'

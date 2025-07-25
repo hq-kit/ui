@@ -1,7 +1,7 @@
 'use client'
 
 import { Command } from '@/components/ui'
-import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
+import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
 
 export default function CommandDemo() {
     return (
@@ -17,10 +17,6 @@ export default function CommandDemo() {
             <Command.Item textValue='blocks'>
                 <IconLayoutDashboard />
                 <Command.Label>Blocks</Command.Label>
-            </Command.Item>
-            <Command.Item textValue='icons'>
-                <IconShapes />
-                <Command.Label>Icons</Command.Label>
             </Command.Item>
             <Command.Item textValue='colors'>
                 <IconPalette />

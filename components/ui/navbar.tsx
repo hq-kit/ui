@@ -3,7 +3,7 @@
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
-import { IconMenu } from 'hq-icons'
+import { IconMenu } from '@tabler/icons-react'
 import { type ComponentPropsWithRef, type Ref, createContext, use, useCallback, useMemo, useState } from 'react'
 import type { ButtonProps, LinkProps } from 'react-aria-components'
 import { Link, composeRenderProps } from 'react-aria-components'
@@ -200,7 +200,7 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => (
             cn(
                 'relative flex cursor-pointer items-center gap-x-2 rounded-md px-3 py-2 text-muted-foreground no-underline outline-hidden transition-colors md:text-sm',
                 '**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform',
-                '*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0',
+                '*:[svg]:-mx-0.5 *:[svg]:size-4 *:[svg]:shrink-0',
                 'pressed:text-sidebar-primary hover:text-sidebar-primary focus:text-sidebar-primary focus-visible:ring-2 focus-visible:ring-sidebar-ring/50 disabled:cursor-default disabled:opacity-50 pressed:**:data-[slot=chevron]:rotate-180',
                 isCurrent && 'pointer-events-none cursor-default bg-sidebar-accent text-sidebar-accent-foreground',
                 className
@@ -311,4 +311,4 @@ Navbar.Item = NavbarItem
 Navbar.Breadcrumbs = NavbarBreadcrumbs
 Navbar.Section = NavbarSection
 
-export { Navbar, NavbarInset, NavbarBreadcrumbs }
+export { Navbar, NavbarBreadcrumbs, NavbarInset }

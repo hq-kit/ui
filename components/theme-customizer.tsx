@@ -6,7 +6,7 @@ import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { presets } from '@/lib/themes'
 import { cn } from '@/lib/utils'
 import { titleCase } from '@/lib/utils/modifiers'
-import { IconMonitor, IconMoon, IconRotateCcw, IconSun, IconSwatchBook } from 'hq-icons'
+import { IconColorSwatch, IconDeviceDesktop, IconMoon, IconRestore, IconSun } from '@tabler/icons-react'
 import { GridList, GridListItem, type Selection } from 'react-aria-components'
 
 export function ThemeCustomizer() {
@@ -26,7 +26,7 @@ export function ThemeCustomizer() {
     return (
         <Sheet>
             <Button name='Theme Customizer Toggle' icon className='fixed top-16 right-0 z-50 mt-1 rounded-r-none'>
-                <IconSwatchBook />
+                <IconColorSwatch />
             </Button>
             <Sheet.Content side='right' className='sm:max-w-md'>
                 <Sheet.Header>
@@ -37,7 +37,7 @@ export function ThemeCustomizer() {
                     <div className='flex w-full flex-col gap-4 sm:flex-row'>
                         <Select
                             name='font-sans'
-                            className='w-full'
+                            className='w-full whitespace-nowrap'
                             label='Font Sans'
                             placeholder='Select a font'
                             selectedKey={currentFontSansFamily.label}
@@ -46,13 +46,13 @@ export function ThemeCustomizer() {
                                     fontSansFamilies.find((f) => f.label === (key as string)) ?? fontSansFamilies[2]
                                 )
                             }
-                            items={fontSansFamilies}
+                            items={fontSansFamilies.sort((a, b) => a.label.localeCompare(b.label))}
                         >
                             {(item) => <Select.Item id={item.label}>{item.label}</Select.Item>}
                         </Select>
                         <Select
                             name='font-mono'
-                            className='w-full'
+                            className='w-full whitespace-nowrap'
                             label='Font Mono'
                             placeholder='Select a font'
                             selectedKey={currentFontMonoFamily.label}
@@ -61,7 +61,7 @@ export function ThemeCustomizer() {
                                     fontMonoFamilies.find((f) => f.label === (key as string)) ?? fontMonoFamilies[2]
                                 )
                             }
-                            items={fontMonoFamilies}
+                            items={fontMonoFamilies.sort((a, b) => a.label.localeCompare(b.label))}
                         >
                             {(item) => <Select.Item id={item.label}>{item.label}</Select.Item>}
                         </Select>
@@ -90,11 +90,13 @@ export function ThemeCustomizer() {
                                     ) ?? fontMonoFamilies[2]
                                 )
                             }}
-                            items={Object.entries(presets).map(([key, value]) => ({
-                                title: key,
-                                light: value.light,
-                                dark: value.dark
-                            }))}
+                            items={Object.entries(presets)
+                                .map(([key, value]) => ({
+                                    title: key,
+                                    light: value.light,
+                                    dark: value.dark
+                                }))
+                                .sort((a, b) => a.title.localeCompare(b.title))}
                         >
                             {(item) => (
                                 <GridListItem
@@ -133,7 +135,7 @@ export function ThemeCustomizer() {
                             size='sm'
                             onPress={() => setMode('system')}
                         >
-                            <IconMonitor />
+                            <IconDeviceDesktop />
                             System
                         </Button>
                         <Button
@@ -150,7 +152,7 @@ export function ThemeCustomizer() {
                     <div className='flex flex-row justify-end gap-2'>
                         <ThemeSnippet />
                         <Button variant='destructive' onPress={() => reset()}>
-                            <IconRotateCcw />
+                            <IconRestore />
                             Reset
                         </Button>
                     </div>

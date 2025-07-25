@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconX } from 'hq-icons'
+import { IconX } from '@tabler/icons-react'
 import type { ComponentPropsWithRef } from 'react'
 import {
     Button,
@@ -19,7 +19,7 @@ import { tv } from 'tailwind-variants'
 
 const overlayStyle = tv({
     base: [
-        'fixed inset-0 isolate z-50 bg-black/50 backdrop-blur-sm duration-200 [--visual-viewport-vertical-padding:32px]',
+        'fixed inset-0 isolate z-50 bg-black/50 duration-200 [--visual-viewport-vertical-padding:32px]',
         'entering:fade-in entering:animate-in entering:ease-out',
         'exiting:fade-out exiting:animate-out exiting:ease-in'
     ]
@@ -143,5 +143,16 @@ const DialogX = (props: ButtonProps) => (
     </Button>
 )
 
-export { Dialog, DialogOverlay, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, DialogX }
-export { sheetStyle, modalStyle, popoverStyle }
+export {
+    Dialog,
+    DialogBody,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogOverlay,
+    DialogTitle,
+    DialogX,
+    modalStyle,
+    popoverStyle,
+    sheetStyle
+}

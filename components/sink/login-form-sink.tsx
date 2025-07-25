@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
-import { IconBrandGithub, IconBrandGoogle } from 'hq-icons'
+import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
 
 export default function LoginFormSink() {

@@ -4,7 +4,7 @@ import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, Text
 
 import {
     IconBook,
-    IconBookOpen,
+    IconBook2,
     IconBrandGithub,
     IconBrandGithubCopilot,
     IconBuilding,
@@ -13,13 +13,13 @@ import {
     IconFilter,
     IconGlobe,
     IconHeart,
-    IconLogOut,
+    IconLogout,
     IconMessage,
     IconSettings,
     IconStar,
     IconUser,
     IconUsers
-} from 'hq-icons'
+} from '@tabler/icons-react'
 import { useState } from 'react'
 import { Group, Menu as MenuPrimitive } from 'react-aria-components'
 
@@ -129,7 +129,7 @@ export default function SheetMenuDemo() {
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
-                                    <IconBookOpen /> <Menu.Label>GitHub Docs</Menu.Label>
+                                    <IconBook2 /> <Menu.Label>GitHub Docs</Menu.Label>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <IconUsers /> <Menu.Label>GitHub Support</Menu.Label>
@@ -140,7 +140,7 @@ export default function SheetMenuDemo() {
                             </Menu.Section>
                             <Menu.Section>
                                 <Menu.Item>
-                                    <IconLogOut /> <Menu.Label>Sign out</Menu.Label>
+                                    <IconLogout /> <Menu.Label>Sign out</Menu.Label>
                                 </Menu.Item>
                             </Menu.Section>
                         </MenuPrimitive>

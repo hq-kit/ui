@@ -2,21 +2,21 @@
 
 import { Menu } from '@/components/ui'
 import {
-    IconBrandArch,
-    IconBrandDebian,
-    IconBrandFedora,
-    IconBrandMint,
-    IconBrandRedhat,
-    IconBrandUbuntu
-} from 'hq-icons'
+    IconBrandArc,
+    IconBrandChrome,
+    IconBrandEdge,
+    IconBrandFirefox,
+    IconBrandOpera,
+    IconBrandSafari
+} from '@tabler/icons-react'
 
 const items = [
-    { id: 1, name: 'Debian', icon: IconBrandDebian },
-    { id: 2, name: 'Ubuntu', icon: IconBrandUbuntu },
-    { id: 3, name: 'Fedora', icon: IconBrandFedora },
-    { id: 4, name: 'Arch', icon: IconBrandArch },
-    { id: 5, name: 'Mint', icon: IconBrandMint },
-    { id: 6, name: 'Red Hat', icon: IconBrandRedhat }
+    { id: 1, name: 'Chrome', icon: IconBrandChrome },
+    { id: 2, name: 'Firefox', icon: IconBrandFirefox },
+    { id: 3, name: 'Opera', icon: IconBrandOpera },
+    { id: 4, name: 'Arc', icon: IconBrandArc },
+    { id: 5, name: 'Edge', icon: IconBrandEdge },
+    { id: 6, name: 'Safari', icon: IconBrandSafari }
 ]
 
 export default function MenuCollectionDemo() {

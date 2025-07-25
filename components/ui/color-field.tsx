@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconLoaderPinwheel } from 'hq-icons'
+import { IconLoader3 } from '@tabler/icons-react'
 import type { ReactNode } from 'react'
 import type { ColorFieldProps as RACColorFieldProps } from 'react-aria-components'
 import { ColorField as RACColorField, composeRenderProps } from 'react-aria-components'
@@ -49,7 +49,7 @@ const ColorField = ({
                         ) : null}
                         {isLoading ? (
                             <span className='ml-2 text-muted-foreground has-[button]:ml-0'>
-                                <IconLoaderPinwheel className='size-4 animate-spin' />
+                                <IconLoader3 className='size-4 animate-spin' />
                             </span>
                         ) : null}
                         <div className='flex w-full items-center'>

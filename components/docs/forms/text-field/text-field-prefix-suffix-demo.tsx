@@ -1,5 +1,5 @@
 import { TextField } from '@/components/ui'
-import { IconBrandTiktok } from 'hq-icons'
+import { IconBrandTiktok } from '@tabler/icons-react'
 
 export default function TextFieldPrefixSuffixDemo() {
     return (

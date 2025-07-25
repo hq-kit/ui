@@ -1,7 +1,7 @@
 'use client'
 
 import { ContextMenu } from '@/components/ui'
-import { IconCircleUser, IconLogOut, IconSettings } from 'hq-icons'
+import { IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react'
 
 export default function ContextMenuSeparatorDemo() {
     return (
@@ -16,7 +16,7 @@ export default function ContextMenuSeparatorDemo() {
                     <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                 </ContextMenu.Header>
                 <ContextMenu.Item>
-                    <IconCircleUser />
+                    <IconUserCircle />
                     Profile
                 </ContextMenu.Item>
                 <ContextMenu.Item>
@@ -25,7 +25,7 @@ export default function ContextMenuSeparatorDemo() {
                 </ContextMenu.Item>
                 <ContextMenu.Separator />
                 <ContextMenu.Item isDestructive>
-                    <IconLogOut />
+                    <IconLogout />
                     Log out
                 </ContextMenu.Item>
             </ContextMenu.Content>

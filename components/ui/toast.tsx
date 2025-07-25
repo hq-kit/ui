@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconCircleAlert, IconCircleCheck, IconInfo, IconTriangleAlert, IconX } from 'hq-icons'
+import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle, IconX } from '@tabler/icons-react'
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 import type { ToastOptions } from 'react-aria-components'
 import {
@@ -91,11 +91,11 @@ const ToastProvider = () => {
                                 {toast.content.type === 'success' ? (
                                     <IconCircleCheck className='shrink-0' />
                                 ) : toast.content.type === 'error' ? (
-                                    <IconCircleAlert className='shrink-0' />
+                                    <IconAlertCircle className='shrink-0' />
                                 ) : toast.content.type === 'info' ? (
-                                    <IconInfo className='shrink-0' />
+                                    <IconInfoCircle className='shrink-0' />
                                 ) : toast.content.type === 'warning' ? (
-                                    <IconTriangleAlert className='shrink-0' />
+                                    <IconAlertTriangle className='shrink-0' />
                                 ) : null}
                                 <ToastContent className='flex w-full flex-col'>
                                     <Text slot='title' className='font-medium text-sm tracking-tight'>
@@ -221,4 +221,4 @@ toast.info = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>,
 toast.warning = (body: string, content?: Omit<ToastContentProps, 'type' | 'title'>, options?: ToastOptions) =>
     queue.add({ ...content, title: body, type: 'warning' }, { ...options, timeout: options?.timeout ?? 3000 })
 
-export { toast, ToastProvider }
+export { ToastProvider, toast }

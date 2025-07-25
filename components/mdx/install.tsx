@@ -9,7 +9,7 @@ import { Code } from './code'
 
 export function Install({ component }: { component: string }) {
     const items: string[] = [component]
-    const deps: string[] = ['react-aria-components', 'hq-icons']
+    const deps: string[] = ['react-aria-components', '@tabler/icons-react']
 
     const item = components.find((c) => c.name === component)
     if (!item) {

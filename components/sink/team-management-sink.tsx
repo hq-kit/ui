@@ -1,7 +1,7 @@
 'use client'
 
 import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
-import { IconEye, IconLock } from 'hq-icons'
+import { IconEye, IconLock } from '@tabler/icons-react'
 
 export default function TeamManagementSink() {
     return (

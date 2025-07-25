@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCalendarDays } from 'hq-icons'
+import { IconCalendarFilled } from '@tabler/icons-react'
 import {
     Button,
     type DateValue,
@@ -38,7 +38,7 @@ const DatePicker = <T extends DateValue>({
                     <FieldGroup className='min-w-40'>
                         <DateInput className='w-full px-2 text-base lg:text-sm' />
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
-                            <IconCalendarDays
+                            <IconCalendarFilled
                                 aria-hidden
                                 className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-foreground')}
                             />
@@ -89,7 +89,7 @@ const DateRangePicker = <T extends DateValue>({
                         </span>
                         <DateInput slot='end' className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm' />
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
-                            <IconCalendarDays
+                            <IconCalendarFilled
                                 aria-hidden
                                 className={cn('size-4', isOpen ? 'text-primary' : 'text-muted-foreground')}
                             />

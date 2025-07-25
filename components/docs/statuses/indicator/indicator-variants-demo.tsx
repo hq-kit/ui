@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
-import { IconBell } from 'hq-icons'
+import { IconBell } from '@tabler/icons-react'
 import { Fragment } from 'react'
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as const

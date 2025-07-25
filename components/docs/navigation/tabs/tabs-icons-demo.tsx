@@ -1,7 +1,7 @@
 'use client'
 
 import { Tabs } from '@/components/ui'
-import { IconBadgeDollar, IconBinoculars, IconGift, IconMessageHeart } from 'hq-icons'
+import { IconBinoculars, IconCurrencyDollar, IconGift, IconMessageHeart } from '@tabler/icons-react'
 
 export default function TabsIconsDemo() {
     return (
@@ -16,7 +16,7 @@ export default function TabsIconsDemo() {
                     Features
                 </Tabs.Label>
                 <Tabs.Label id='3'>
-                    <IconBadgeDollar />
+                    <IconCurrencyDollar />
                     Pricing
                 </Tabs.Label>
                 <Tabs.Label id='4'>

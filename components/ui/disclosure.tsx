@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconChevronDown } from 'hq-icons'
+import { IconChevronDown } from '@tabler/icons-react'
 import { type Ref, use, useRef } from 'react'
 import {
     Button,

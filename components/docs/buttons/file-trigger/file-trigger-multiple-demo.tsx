@@ -1,7 +1,7 @@
 'use client'
 
 import { FileTrigger } from '@/components/ui'
-import { IconUpload } from 'hq-icons'
+import { IconUpload } from '@tabler/icons-react'
 
 export default function FileTriggerMultipleDemo() {
     return (

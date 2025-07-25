@@ -2,7 +2,7 @@
 
 import type { ChartConfig } from '@/components/ui'
 import { Card, Chart } from '@/components/ui'
-import { IconShoppingBag, IconStore } from 'hq-icons'
+import { IconBuildingStore, IconShoppingBag } from '@tabler/icons-react'
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 const revenueData = Array.from({ length: 24 }, (_, index) => {
@@ -24,7 +24,7 @@ const revenueConfig = {
     retail: {
         label: 'Retail',
         color: 'var(--chart-2)',
-        icon: IconStore
+        icon: IconBuildingStore
     }
 } satisfies ChartConfig
 

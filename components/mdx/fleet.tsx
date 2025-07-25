@@ -10,15 +10,15 @@ import { Separator, Tooltip } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 import {
-    IconBrandCss,
+    IconBrandCss3,
     IconBrandJavascript,
     IconBrandReact,
     IconBrandTypescript,
     IconChevronRight,
     IconFileCode,
     IconFolder,
-    IconPanelLeft
-} from 'hq-icons'
+    IconLayoutSidebar
+} from '@tabler/icons-react'
 import { useState } from 'react'
 import { Button, Collection, Disclosure, DisclosureGroup, DisclosurePanel } from 'react-aria-components'
 import { transform } from 'sucrase'
@@ -111,7 +111,7 @@ export function Fleet({ page }: { page: string }) {
                     </Button>
                     <DisclosurePanel
                         data-slot='panel'
-                        className='w-full **:data-[slot=file]:**:data-[slot=icon]:ml-6 **:data-[slot=panel]:**:data-[slot=icon]:ml-12 **:data-[slot=chevron]:ml-6'
+                        className='w-full **:data-[slot=chevron]:ml-6 **:data-[slot=file]:**:[svg]:ml-6 **:data-[slot=panel]:**:[svg]:ml-12'
                     >
                         <Collection items={item.children}>{(item) => renderItem(item)}</Collection>
                     </DisclosurePanel>
@@ -132,7 +132,7 @@ export function Fleet({ page }: { page: string }) {
                     ) : item.textValue.endsWith('.ts') ? (
                         <IconBrandJavascript className='size-4 text-[#f7df1e]' />
                     ) : item.textValue.endsWith('.css') ? (
-                        <IconBrandCss className='size-4 text-[#2965f1]' />
+                        <IconBrandCss3 className='size-4 text-[#2965f1]' />
                     ) : (
                         <IconFileCode />
                     )}
@@ -172,7 +172,7 @@ export function Fleet({ page }: { page: string }) {
                                 className='flex size-9 cursor-pointer items-center justify-center rounded-lg pressed:bg-zinc-400/50 hover:bg-zinc-400/40'
                                 onPress={() => setExplorer(!explorer)}
                             >
-                                <IconPanelLeft className='size-4 rotate-90 lg:rotate-0' />
+                                <IconLayoutSidebar className='size-4 rotate-90 lg:rotate-0' />
                             </Button>
                             <Tooltip.Content>Toggle sidebar</Tooltip.Content>
                         </Tooltip>
@@ -184,7 +184,7 @@ export function Fleet({ page }: { page: string }) {
                         ) : file.endsWith('.tsx') || file.endsWith('.jsx') ? (
                             <IconBrandReact className='size-4 text-[#00bcd4]' />
                         ) : file.endsWith('.css') ? (
-                            <IconBrandCss className='size-4 text-[#2965f1]' />
+                            <IconBrandCss3 className='size-4 text-[#2965f1]' />
                         ) : (
                             <IconFileCode className='size-4 text-white' />
                         )}

@@ -3,19 +3,19 @@
 import { Menu, Toggle, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
-    IconAlignJustify,
+    IconAlignJustified,
     IconAlignLeft,
     IconCamera,
     IconCircleArrowLeft,
     IconCircleArrowRight,
-    IconEllipsisVertical,
-    IconImage,
+    IconDotsCircleHorizontal,
     IconLayoutGrid,
     IconLink,
     IconPencil,
-    IconPencilRuler,
-    IconPointer
-} from 'hq-icons'
+    IconPhoto,
+    IconPointer,
+    IconScissors
+} from '@tabler/icons-react'
 
 export default function ToolbarOrientationDemo() {
     return (
@@ -24,11 +24,11 @@ export default function ToolbarOrientationDemo() {
                 <Toolbar.Item aria-label='Cursor'>
                     <IconPointer />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Pencil Box'>
-                    <IconPencil />
+                <Toolbar.Item aria-label='Scissors'>
+                    <IconScissors />
                 </Toolbar.Item>
-                <Toolbar.Item aria-label='Pencil Box'>
-                    <IconPencilRuler />
+                <Toolbar.Item aria-label='Pencil'>
+                    <IconPencil />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
@@ -37,7 +37,7 @@ export default function ToolbarOrientationDemo() {
                     <IconCamera />
                 </Toolbar.Item>
                 <Toolbar.Item aria-label='Gallery'>
-                    <IconImage />
+                    <IconPhoto />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
@@ -49,14 +49,14 @@ export default function ToolbarOrientationDemo() {
                     <IconAlignCenter />
                 </Toolbar.Item>
                 <Toolbar.Item aria-label='Align Justify'>
-                    <IconAlignJustify />
+                    <IconAlignJustified />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
             <Toolbar.Group icon>
                 <Menu>
                     <Toolbar.Item aria-label='Other options'>
-                        <IconEllipsisVertical />
+                        <IconDotsCircleHorizontal />
                     </Toolbar.Item>
                     <Menu.Content placement='right'>
                         <Menu.Item>
@@ -72,7 +72,7 @@ export default function ToolbarOrientationDemo() {
                             Insert Link
                         </Menu.Item>
                         <Menu.Item>
-                            <IconImage />
+                            <IconPhoto />
                             Insert Image
                         </Menu.Item>
                         <Menu.Item>

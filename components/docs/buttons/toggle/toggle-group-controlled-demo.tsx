@@ -1,7 +1,7 @@
 'use client'
 
 import { Toggle } from '@/components/ui'
-import { IconBold, IconItalic, IconUnderline } from 'hq-icons'
+import { IconBold, IconItalic, IconUnderline } from '@tabler/icons-react'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 

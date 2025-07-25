@@ -2,7 +2,7 @@
 
 import { Button, Popover } from '@/components/ui'
 
-import { IconCircleCheck, IconTrash } from 'hq-icons'
+import { IconCircleCheck, IconTrash } from '@tabler/icons-react'
 import { useRef, useState } from 'react'
 
 export default function PopoverControlledDemo() {

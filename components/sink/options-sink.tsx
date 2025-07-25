@@ -4,7 +4,7 @@ import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-d
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
 import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
 import { Breadcrumbs, Button, Card, ComboBox, DatePicker, Modal, Popover, Select, Tooltip } from '@/components/ui'
-import { IconBrandX, IconTrash } from 'hq-icons'
+import { IconBrandX, IconTrash } from '@tabler/icons-react'
 
 export default function OptionsSink() {
     return (

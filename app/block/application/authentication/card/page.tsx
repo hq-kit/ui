@@ -1,14 +1,15 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
-import { IconBrandCleon, IconBrandGithub, IconBrandGoogle } from 'hq-icons'
+import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
 
 export default function Page() {
     return (
         <>
             <Link href='#'>
-                <IconBrandCleon className='size-10' />
+                <IconApp className='size-10' />
             </Link>
             <Card className='w-full max-w-md shadow-lg'>
                 <Card.Header>

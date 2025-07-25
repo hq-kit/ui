@@ -3,14 +3,14 @@
 import { Description, Toggle } from '@/components/ui'
 import {
     IconAlignCenter,
-    IconAlignJustify,
+    IconAlignJustified,
     IconAlignLeft,
     IconAlignRight,
     IconBold,
     IconItalic,
     IconStrikethrough,
     IconUnderline
-} from 'hq-icons'
+} from '@tabler/icons-react'
 
 export default function ToggleGroupSelectionModeDemo() {
     return (
@@ -27,7 +27,7 @@ export default function ToggleGroupSelectionModeDemo() {
                     <IconAlignRight />
                 </Toggle>
                 <Toggle id='justify'>
-                    <IconAlignJustify />
+                    <IconAlignJustified />
                 </Toggle>
             </Toggle.Group>
             <Description>Multiple</Description>

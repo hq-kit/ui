@@ -2,7 +2,7 @@
 
 import { Button, Menu, Modal } from '@/components/ui'
 
-import { IconBan, IconRotateCcw, IconTrash } from 'hq-icons'
+import { IconBan, IconRestore, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 
@@ -62,7 +62,7 @@ export default function ModalMenuDemo() {
                         <Menu.Label>Ban</Menu.Label>
                     </Menu.Item>
                     <Menu.Item id='restore'>
-                        <IconRotateCcw />
+                        <IconRestore />
                         <Menu.Label>Restore</Menu.Label>
                     </Menu.Item>
                 </Menu.Content>

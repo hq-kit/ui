@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Modal, TextField } from '@/components/ui'
-import { IconUserPlus } from 'hq-icons'
+import { IconUserPlus } from '@tabler/icons-react'
 import { useState } from 'react'
 
 export default function TextFieldSuffixButtonDemo() {

@@ -1,6 +1,6 @@
 'use client'
 
-import { IconLoaderCircle } from 'hq-icons'
+import { IconLoader3 } from '@tabler/icons-react'
 import type { Ref } from 'react'
 import type { ButtonProps as RACButtonProps } from 'react-aria-components'
 import { Button as RACButton, composeRenderProps } from 'react-aria-components'
@@ -57,7 +57,7 @@ const Button = ({ className, children, variant, size, icon, isPending, ...props 
     >
         {(values) => (
             <>
-                {isPending && <IconLoaderCircle data-slot='loader' className='animate-spin' />}
+                {isPending && <IconLoader3 data-slot='loader' className='animate-spin' />}
                 {typeof children === 'function' ? children(values) : children}
             </>
         )}

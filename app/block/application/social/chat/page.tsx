@@ -4,15 +4,14 @@ import { Avatar, Button, Menu, Popover } from '@/components/ui'
 
 import {
     IconCircleX,
-    IconContact,
-    IconEllipsisVertical,
-    IconLogOut,
-    IconMessageDashed,
-    IconMessageMore,
+    IconDotsVertical,
+    IconLogout,
+    IconMessageDots,
     IconMessagePlus,
     IconTrash,
-    IconUser
-} from 'hq-icons'
+    IconUser,
+    IconUserSquareRounded
+} from '@tabler/icons-react'
 import { type FormEvent, useState } from 'react'
 import { useDateFormatter } from 'react-aria'
 
@@ -69,11 +68,11 @@ export default function ChatApp() {
                     <h1 className='font-bold text-2xl'>Chats</h1>
                     <div className='flex items-center justify-between gap-2'>
                         <Button variant='ghost' icon>
-                            <IconMessageMore className='!size-6' />
+                            <IconMessageDots className='!size-6' />
                         </Button>
                         <Menu>
                             <Button icon variant='ghost'>
-                                <IconEllipsisVertical />
+                                <IconDotsVertical />
                             </Button>
                             <Menu.Content placement='bottom end'>
                                 <Menu.Item>
@@ -81,7 +80,7 @@ export default function ChatApp() {
                                     New Group
                                 </Menu.Item>
                                 <Menu.Item isDestructive>
-                                    <IconLogOut />
+                                    <IconLogout />
                                     Logout
                                 </Menu.Item>
                             </Menu.Content>
@@ -96,7 +95,7 @@ export default function ChatApp() {
                 <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
                     <Popover>
                         <Button variant='ghost' icon className='md:hidden'>
-                            <IconContact />
+                            <IconUserSquareRounded />
                         </Button>
                         <Popover.Content aria-label='Contact List'>
                             <Popover.Body>
@@ -111,7 +110,7 @@ export default function ChatApp() {
                     </div>
                     <Menu>
                         <Button className='ml-auto' variant='ghost'>
-                            <IconEllipsisVertical />
+                            <IconDotsVertical />
                         </Button>
                         <Menu.Content placement='bottom end'>
                             <Menu.Item>
@@ -136,7 +135,7 @@ export default function ChatApp() {
                         ))
                     ) : (
                         <div className='flex h-full flex-col items-center justify-center'>
-                            <IconMessageDashed className='!size-6' />
+                            <IconMessageDots className='!size-6' />
                             <p className='text-center font-bold text-xl'>Start a conversation</p>
                         </div>
                     )}

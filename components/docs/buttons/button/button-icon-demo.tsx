@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui'
-import { IconBrandGithub } from 'hq-icons'
+import { IconBrandGithub } from '@tabler/icons-react'
 
 export default function ButtonIconDemo() {
     return (

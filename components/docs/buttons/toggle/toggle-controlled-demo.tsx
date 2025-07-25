@@ -1,7 +1,7 @@
 'use client'
 
 import { Toggle } from '@/components/ui'
-import { IconLock, IconLockOpen } from 'hq-icons'
+import { IconLock, IconLockOpen } from '@tabler/icons-react'
 import { useState } from 'react'
 
 export default function ToggleControlledDemo() {

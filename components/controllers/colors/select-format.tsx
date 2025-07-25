@@ -1,8 +1,7 @@
 'use client'
 
 import { Button, Menu } from '@/components/ui'
-
-import { IconSwatchBook } from 'hq-icons'
+import { IconColorSwatch } from '@tabler/icons-react'
 import type { Dispatch, SetStateAction } from 'react'
 
 const ColorSelectors = [
@@ -23,7 +22,7 @@ export default function SelectFormat({ selectedFormat, action }: SelectFormatPro
     return (
         <Menu>
             <Button variant='outline'>
-                <IconSwatchBook /> Format : {selectedFormat}
+                <IconColorSwatch /> Format : {selectedFormat}
             </Button>
             <Menu.Content items={ColorSelectors}>
                 {(item) => (

@@ -1,5 +1,5 @@
 import { Button, Card, SearchField } from '@/components/ui'
-import { IconUserPlus } from 'hq-icons'
+import { IconUserPlus } from '@tabler/icons-react'
 
 export default function CardActionDemo() {
     return (

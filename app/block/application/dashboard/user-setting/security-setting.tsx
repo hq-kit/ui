@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, Form, Switch, TextField } from '@/components/ui'
-import { IconKey } from 'hq-icons'
+import { IconKey } from '@tabler/icons-react'
 
 export default function SecuritySetting() {
     return (

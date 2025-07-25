@@ -1,25 +1,25 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { Menu, Sidebar, User } from '@/components/ui'
 import {
-    IconBrandCleon,
     IconChevronRight,
     IconCreditCard,
-    IconEllipsis,
+    IconDots,
     IconGauge,
-    IconLogOut,
+    IconLogout,
     IconMessage,
     IconNotebook,
     IconSettings,
     IconShieldQuestion,
     IconTicket
-} from 'hq-icons'
+} from '@tabler/icons-react'
 
 export default function AppSidebar() {
     return (
         <Sidebar variant='inset' collapsible='dock'>
             <Sidebar.Header>
-                <IconBrandCleon />
+                <IconApp />
                 <Sidebar.Label>HQ UI</Sidebar.Label>
             </Sidebar.Header>
             <Sidebar.Content>
@@ -37,7 +37,7 @@ export default function AppSidebar() {
                 <Sidebar.Section defaultExpandedKeys={[1]}>
                     <Sidebar.Item id={1}>
                         <Sidebar.SubItemTrigger>
-                            <IconEllipsis />
+                            <IconDots />
                             <Sidebar.Label>Support</Sidebar.Label>
                         </Sidebar.SubItemTrigger>
                         <Sidebar.SubItem>
@@ -85,7 +85,7 @@ export default function AppSidebar() {
                             Settings
                         </Menu.Item>
                         <Menu.Item href='#logout'>
-                            <IconLogOut />
+                            <IconLogout />
                             Log out
                         </Menu.Item>
                     </Menu.Content>

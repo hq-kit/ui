@@ -1,5 +1,5 @@
 import { Link } from '@/components/ui'
-import { IconHome } from 'hq-icons'
+import { IconHome } from '@tabler/icons-react'
 
 export default function NotFound() {
     return (

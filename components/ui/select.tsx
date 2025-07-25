@@ -1,6 +1,6 @@
 'use client'
 import { cn, fuzzyMatch } from '@/lib/utils'
-import { IconChevronDown, IconLoader, IconSearch, IconX } from 'hq-icons'
+import { IconChevronDown, IconLoader, IconSearch, IconX } from '@tabler/icons-react'
 import type { ReactNode, Ref } from 'react'
 import type { SelectProps as RACSelectProps } from 'react-aria-components'
 import {
@@ -70,7 +70,7 @@ const Select = <T extends object>({
                 {props.prefix ? (
                     <span className='ml-2 text-muted-foreground has-[button]:ml-0'>{props.prefix}</span>
                 ) : null}
-                <SelectValue className='**:data-avatar:-mx-0.5 grid grid-cols-[auto_1fr] items-center text-base **:data-[slot=icon]:mr-2 **:data-avatar:mr-2 **:data-[slot=description]:hidden **:data-avatar:size-6 sm:text-sm' />
+                <SelectValue className='**:data-avatar:-mx-0.5 grid grid-cols-[auto_1fr] items-center text-base **:data-avatar:mr-2 **:data-[slot=description]:hidden **:data-avatar:size-6 sm:text-sm **:[svg]:mr-2' />
                 <IconChevronDown
                     data-slot='chevron'
                     className='group-open/field:-rotate-180 ml-auto size-4 text-muted-foreground transition'

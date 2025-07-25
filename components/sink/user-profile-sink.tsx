@@ -2,7 +2,7 @@
 
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
 import { Card, DateField, NumberField, Tabs, TextField, Textarea } from '@/components/ui'
-import { IconPhone } from 'hq-icons'
+import { IconPhone } from '@tabler/icons-react'
 import Image from 'next/image'
 
 export default function UserProfileSink() {

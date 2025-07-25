@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconCheck, IconMinus } from 'hq-icons'
+import { IconCheck, IconMinus } from '@tabler/icons-react'
 import type { ReactNode, Ref } from 'react'
 import type {
     CheckboxGroupProps as RACCheckboxGroupProps,

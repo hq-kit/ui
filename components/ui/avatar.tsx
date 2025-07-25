@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 
 import { Collection, type CollectionProps } from '@react-aria/collections'
-import { IconUser } from 'hq-icons'
+import { IconUser } from '@tabler/icons-react'
 import { type ComponentProps, useEffect, useState } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 

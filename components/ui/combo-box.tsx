@@ -2,7 +2,7 @@
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 
-import { IconChevronDown, IconLoader, IconX } from 'hq-icons'
+import { IconChevronDown, IconLoader, IconX } from '@tabler/icons-react'
 import { type ReactNode, type Ref, use } from 'react'
 import type { ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {

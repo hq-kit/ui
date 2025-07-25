@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { titleCase } from '@/lib/utils/modifiers'
 
-import { IconCircleHalf, IconLayers, IconPackage } from 'hq-icons'
+import { IconCircleHalf, IconLayout2, IconPackage } from '@tabler/icons-react'
 
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
@@ -32,7 +32,7 @@ export function Aside() {
                         <div key={i} className='flex flex-col gap-1'>
                             <Heading className='flex items-center gap-x-2 font-semibold text-foreground'>
                                 {doc.order === 1 ? (
-                                    <IconLayers />
+                                    <IconLayout2 />
                                 ) : doc.order === 2 ? (
                                     <IconCircleHalf />
                                 ) : (

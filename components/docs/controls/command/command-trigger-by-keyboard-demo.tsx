@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Command } from '@/components/ui'
-import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
+import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
 import { useState } from 'react'
 
 export default function CommandTriggerByKeyboardDemo() {
@@ -23,10 +23,6 @@ export default function CommandTriggerByKeyboardDemo() {
                 <Command.Item textValue='blocks'>
                     <IconLayoutDashboard />
                     <Command.Label>Blocks</Command.Label>
-                </Command.Item>
-                <Command.Item textValue='icons'>
-                    <IconShapes />
-                    <Command.Label>Icons</Command.Label>
                 </Command.Item>
                 <Command.Item textValue='colors'>
                     <IconPalette />

@@ -1,15 +1,16 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar, Breadcrumbs, Button, Menu, Navbar, Separator } from '@/components/ui'
-import { IconBrandCleon, IconGauge, IconLogOut, IconSearch, IconSettings, IconShield, IconShoppingBag } from 'hq-icons'
+import { IconGauge, IconLogout, IconSearch, IconSettings, IconShield, IconShoppingBag } from '@tabler/icons-react'
 
 export default function AppNavbar({ children }: { children: React.ReactNode }) {
     return (
         <Navbar variant='inset'>
             <Navbar.Nav>
                 <Navbar.Logo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
-                    <IconBrandCleon className='size-6 sm:size-5' />
+                    <IconApp className='size-6 sm:size-5' />
                 </Navbar.Logo>
                 <Navbar.Section>
                     <Navbar.Item href='#' isCurrent>
@@ -35,7 +36,7 @@ export default function AppNavbar({ children }: { children: React.ReactNode }) {
                     <Navbar.Trigger className='-ml-2' />
                     <Separator orientation='vertical' className='h-6 sm:mx-1' />
                     <Navbar.Logo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
-                        <IconBrandCleon className='size-5' />
+                        <IconApp className='size-5' />
                     </Navbar.Logo>
                 </Navbar.Flex>
                 <Navbar.Flex>
@@ -89,7 +90,7 @@ function UserMenu() {
                 </Menu.Item>
                 <Menu.Separator />
                 <Menu.Item href='#logout'>
-                    <IconLogOut />
+                    <IconLogout />
                     Log out
                 </Menu.Item>
             </Menu.Content>

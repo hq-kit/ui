@@ -2,14 +2,14 @@
 
 import { Toggle, Toolbar } from '@/components/ui'
 import {
-    IconAlignJustify,
+    IconAlignJustified,
     IconAlignRight,
     IconCamera,
-    IconImage,
     IconPencil,
-    IconPencilRuler,
-    IconPointer
-} from 'hq-icons'
+    IconPhoto,
+    IconPointer,
+    IconScissors
+} from '@tabler/icons-react'
 
 export default function ToolbarDisabledDemo() {
     return (
@@ -18,11 +18,11 @@ export default function ToolbarDisabledDemo() {
                 <Toggle isDisabled aria-label='Cursor'>
                     <IconPointer />
                 </Toggle>
-                <Toggle aria-label='Pencil Box'>
-                    <IconPencil />
+                <Toggle aria-label='Scissors'>
+                    <IconScissors />
                 </Toggle>
-                <Toggle aria-label='Pencil Box'>
-                    <IconPencilRuler />
+                <Toggle aria-label='Pencil'>
+                    <IconPencil />
                 </Toggle>
             </Toolbar.Group>
             <Toolbar.Separator />
@@ -31,7 +31,7 @@ export default function ToolbarDisabledDemo() {
                     <IconCamera />
                 </Toolbar.Item>
                 <Toolbar.Item aria-label='Gallery'>
-                    <IconImage />
+                    <IconPhoto />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
@@ -40,7 +40,7 @@ export default function ToolbarDisabledDemo() {
                     <IconAlignRight />
                 </Toggle>
                 <Toggle aria-label='Align Justify'>
-                    <IconAlignJustify />
+                    <IconAlignJustified />
                 </Toggle>
             </Toolbar.Group>
         </Toolbar>

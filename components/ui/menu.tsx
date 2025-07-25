@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCheck, IconChevronRight } from 'hq-icons'
+import { IconCheck, IconChevronRight } from '@tabler/icons-react'
 import type { CSSProperties, ComponentPropsWithRef } from 'react'
 import {
     Button,
@@ -139,5 +139,5 @@ Menu.Details = MenuDetails
 Menu.Label = MenuLabel
 Menu.Separator = MenuSeparator
 
-export { Menu, MenuItem, MenuContent, MenuSection, MenuLabel, MenuSeparator, MenuDetails }
+export { Menu, MenuContent, MenuDetails, MenuItem, MenuLabel, MenuSection, MenuSeparator }
 export type { MenuContentProps }

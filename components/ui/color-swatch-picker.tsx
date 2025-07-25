@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCircleCheck } from 'hq-icons'
+import { IconCircleCheck } from '@tabler/icons-react'
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
 import {
     ColorSwatchPickerItem,

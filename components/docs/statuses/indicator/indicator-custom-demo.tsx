@@ -1,11 +1,11 @@
 import { Avatar, Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
-import { IconCheck, IconInfo } from 'hq-icons'
+import { IconCheck, IconInfoCircle } from '@tabler/icons-react'
 
 export default function IndicatorCustomDemo() {
     return (
         <div className='flex flex-wrap gap-6'>
-            <Indicator className='size-9 bg-amber-600 *:[svg]:size-6' text={<IconInfo />}>
+            <Indicator className='size-9 bg-amber-600 *:[svg]:size-6' text={<IconInfoCircle />}>
                 <Button variant='outline'>Warning</Button>
             </Indicator>
             <Indicator className='bg-green-700' text={<IconCheck />}>

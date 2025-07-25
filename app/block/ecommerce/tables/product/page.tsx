@@ -2,7 +2,7 @@
 
 import { Card, Container, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
 
-import { IconEllipsisVertical, IconEye, IconHighlighter, IconPlus, IconTrash } from 'hq-icons'
+import { IconDotsVertical, IconEye, IconHighlight, IconPlus, IconTrash } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import type { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
@@ -94,14 +94,14 @@ export default function ProductManagement() {
                                     <Table.Cell className='flex justify-end'>
                                         <Menu>
                                             <Menu.Trigger>
-                                                <IconEllipsisVertical />
+                                                <IconDotsVertical />
                                             </Menu.Trigger>
                                             <Menu.Content placement='left top'>
                                                 <Menu.Item>
                                                     <IconEye /> View
                                                 </Menu.Item>
                                                 <Menu.Item>
-                                                    <IconHighlighter /> Edit
+                                                    <IconHighlight /> Edit
                                                 </Menu.Item>
                                                 <Menu.Separator />
                                                 <Menu.Item isDestructive>

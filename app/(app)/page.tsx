@@ -1,7 +1,7 @@
+import { IconApp } from '@/components/icons'
 import { Hero, HeroButton, HeroTitle, MainContent } from '@/components/layouts/hero'
 import { CLI } from '@/components/mdx/cli'
 import Sink from '@/components/sink'
-import { IconBrandCleon } from 'hq-icons'
 
 export default function Page() {
     return (
@@ -18,7 +18,7 @@ export default function Page() {
                 <main className='mt-6 flex flex-col gap-4 lg:flex-row lg:items-center'>
                     <CLI noMessage command='init' className='mb-2 min-w-60' />
                     <HeroButton href='/docs/getting-started/installation'>
-                        <IconBrandCleon />
+                        <IconApp />
                         Components
                     </HeroButton>
                 </main>

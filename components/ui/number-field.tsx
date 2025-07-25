@@ -3,7 +3,7 @@
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 
-import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from 'hq-icons'
+import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from '@tabler/icons-react'
 import type { Ref } from 'react'
 import {
     Button,

@@ -1,5 +1,5 @@
 import { Card, Menu, Pagination, Table } from '@/components/ui'
-import { IconEllipsisVertical, IconEye, IconPencil, IconTrash } from 'hq-icons'
+import { IconDots, IconEye, IconPencil, IconTrash } from '@tabler/icons-react'
 
 export default function CardTableDemo() {
     return (
@@ -29,7 +29,7 @@ export default function CardTableDemo() {
                                 <Table.Cell className='flex justify-end'>
                                     <Menu>
                                         <Menu.Trigger>
-                                            <IconEllipsisVertical />
+                                            <IconDots />
                                         </Menu.Trigger>
                                         <Menu.Content placement='left top'>
                                             <Menu.Item>

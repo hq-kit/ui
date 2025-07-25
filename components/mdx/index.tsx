@@ -16,7 +16,7 @@ import {
 } from '@/components/mdx/typography'
 
 import { Note } from '@/components/ui'
-import { IconCircleAlert } from 'hq-icons'
+import { IconAlertCircle } from '@tabler/icons-react'
 import Image from 'next/image'
 import type { ComponentProps } from 'react'
 import * as runtime from 'react/jsx-runtime'
@@ -49,7 +49,7 @@ const components = {
     Image,
     Note: ({ children, ...props }: ComponentProps<typeof Note>) => (
         <Note {...props} variant='destructive' className='my-4'>
-            <IconCircleAlert className='my-0.5' />
+            <IconAlertCircle className='my-0.5' />
             <Note.Description className='cols-start-2'>{children}</Note.Description>
         </Note>
     )

@@ -7,7 +7,7 @@ import { Separator, Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { slugify } from '@/lib/utils/modifiers'
 
-import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconPanelLeft } from 'hq-icons'
+import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconLayoutSidebar } from '@tabler/icons-react'
 import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
 import { Button, Collection } from 'react-aria-components'
 
@@ -217,7 +217,7 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                 <div className='relative grid w-full grid-cols-1 place-content-start bg-[#0d1117] dark:bg-[#0d1117]'>
                     <div className='relative flex h-12 items-center gap-2 border-b bg-[#18181b] px-4 py-1 text-white'>
                         <Button onPress={() => setSidebarOpen(!sidebarOpen)}>
-                            <IconPanelLeft className='size-4 rotate-90 lg:rotate-0' />
+                            <IconLayoutSidebar className='size-4 rotate-90 lg:rotate-0' />
                         </Button>
                         <Separator orientation='vertical' className='mx-2 hidden h-6 bg-[#3f3f46] lg:block' />
                         {selected === 'index' ? (

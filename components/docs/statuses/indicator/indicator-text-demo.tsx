@@ -1,6 +1,6 @@
 import { Avatar, Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
-import { IconBell, IconShoppingCart } from 'hq-icons'
+import { IconBell, IconShoppingCart } from '@tabler/icons-react'
 
 export default function IndicatorTextDemo() {
     return (

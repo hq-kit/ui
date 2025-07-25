@@ -3,7 +3,7 @@
 import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
 
 import type { DropEvent } from '@react-types/shared'
-import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from 'hq-icons'
+import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from '@tabler/icons-react'
 import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
 

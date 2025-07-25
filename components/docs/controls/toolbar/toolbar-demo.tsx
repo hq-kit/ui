@@ -3,20 +3,20 @@
 import { Checkbox, Menu, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
-    IconAlignJustify,
+    IconAlignJustified,
     IconAlignLeft,
     IconAlignRight,
     IconBold,
     IconChevronDown,
     IconCircleArrowLeft,
     IconCircleArrowRight,
-    IconImage,
     IconItalic,
     IconLayoutGrid,
     IconLink,
+    IconPhoto,
     IconStrikethrough,
     IconUnderline
-} from 'hq-icons'
+} from '@tabler/icons-react'
 
 export default function ToolbarDemo() {
     return (
@@ -47,7 +47,7 @@ export default function ToolbarDemo() {
                     <IconAlignRight />
                 </Toolbar.Item>
                 <Toolbar.Item aria-label='Align Justify'>
-                    <IconAlignJustify />
+                    <IconAlignJustified />
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
@@ -71,7 +71,7 @@ export default function ToolbarDemo() {
                             Insert Link
                         </Menu.Item>
                         <Menu.Item>
-                            <IconImage />
+                            <IconPhoto />
                             Insert Image
                         </Menu.Item>
                         <Menu.Item>

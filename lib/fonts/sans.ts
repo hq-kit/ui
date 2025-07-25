@@ -14,6 +14,7 @@ import {
     Nunito,
     Open_Sans,
     Outfit,
+    Oxanium,
     PT_Serif,
     Playfair_Display,
     Plus_Jakarta_Sans,
@@ -56,6 +57,7 @@ const libreBaskerville = Libre_Baskerville({
 })
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
 const ptSerif = PT_Serif({ subsets: ['latin'], variable: '--font-pt-serif', weight: ['400', '700'] })
+const oxanium = Oxanium({ subsets: ['latin'], variable: '--font-oxanium' })
 
 export const fontSans = cn(
     geist.variable,
@@ -82,7 +84,8 @@ export const fontSans = cn(
     sourceSerif4.variable,
     libreBaskerville.variable,
     spaceGrotesk.variable,
-    ptSerif.variable
+    ptSerif.variable,
+    oxanium.variable
 )
 
 export const fontSansFamilies = [
@@ -130,5 +133,6 @@ export const fontSansFamilies = [
         link: 'https://fonts.google.com/specimen/Libre+Baskerville'
     },
     { label: 'Space Grotesk', value: '--font-space-grotesk', link: 'https://fonts.google.com/specimen/Space+Grotesk' },
-    { label: 'PT Serif', value: '--font-pt-serif', link: 'https://fonts.google.com/specimen/PT+Serif' }
+    { label: 'PT Serif', value: '--font-pt-serif', link: 'https://fonts.google.com/specimen/PT+Serif' },
+    { label: 'Oxanium', value: '--font-oxanium', link: 'https://fonts.google.com/specimen/Oxanium' }
 ]

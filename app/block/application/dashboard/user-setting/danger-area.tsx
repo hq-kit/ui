@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, Form, Modal, Note, TextField } from '@/components/ui'
-import { IconUserX } from 'hq-icons'
+import { IconUserX } from '@tabler/icons-react'
 
 export default function SecuritySetting() {
     return (

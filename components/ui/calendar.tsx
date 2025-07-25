@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 import { type CalendarDate, getLocalTimeZone, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
-import { IconChevronLeft, IconChevronRight } from 'hq-icons'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import { type ComponentPropsWithRef, use } from 'react'
 import type { CalendarProps, CalendarState, DateValue, RangeCalendarProps } from 'react-aria-components'
 import {

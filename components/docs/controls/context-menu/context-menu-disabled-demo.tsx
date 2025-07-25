@@ -1,7 +1,7 @@
 'use client'
 
 import { ContextMenu } from '@/components/ui'
-import { IconEye, IconPencil, IconTrash } from 'hq-icons'
+import { IconEye, IconPencil, IconTrash } from '@tabler/icons-react'
 
 export default function ContextMenuDisabledDemo() {
     return (

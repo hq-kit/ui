@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconChevronRight } from 'hq-icons'
+import { IconChevronRight } from '@tabler/icons-react'
 import type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'
 import {
     Button,

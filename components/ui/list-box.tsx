@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCheck, IconGripVertical } from 'hq-icons'
+import { IconCheck, IconGripVertical } from '@tabler/icons-react'
 import type { ComponentPropsWithRef } from 'react'
 import type {
     ListBoxItemProps,
@@ -29,11 +29,11 @@ const listStyles = tv({
         itemStyle: [
             'group relative col-span-full grid grid-cols-subgrid items-center outline-hidden has-data-[slot=item-details]:items-start',
             'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
-            '**:data-[slot=icon]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
+            '**:[svg]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
             '**:data-avatar:*:size-6 **:data-avatar:mr-2 **:data-avatar:size-6 **:data-avatar:shrink-0',
             'focus:bg-accent focus:text-accent-foreground focus:*:[.text-muted-foreground]:text-accent-foreground',
             'hover:bg-accent/90 hover:text-accent-foreground hover:*:[.text-muted-foreground]:text-accent-foreground',
-            'selected:**:data-[slot=checked]:mr-2 selected:**:data-[slot=icon]:hidden selected:**:data-avatar:hidden has-data-avatar:selected:**:data-[slot=checked]:ml-1',
+            'selected:**:data-avatar:hidden selected:**:[svg]:not-data-[slot=checked]:hidden has-data-avatar:selected:**:[svg]:ml-1',
             'dragging:cursor-grabbing dragging:outline dragging:outline-primary',
             'disabled:pointer-events-none disabled:opacity-50'
         ]
@@ -146,5 +146,14 @@ ListBox.Item = ListBoxItem
 ListBox.Separator = ListBoxSeparator
 ListBox.Label = ListBoxLabel
 
-export { itemStyle, headerStyle, sectionStyle }
-export { ListBox, ListBoxSection, ListBoxDetails, ListBoxItem, ListBoxSeparator, ListBoxLabel }
+export {
+    ListBox,
+    ListBoxDetails,
+    ListBoxItem,
+    ListBoxLabel,
+    ListBoxSection,
+    ListBoxSeparator,
+    headerStyle,
+    itemStyle,
+    sectionStyle
+}

@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui'
 
-import { IconCircleCheck, IconSend, IconTrash } from 'hq-icons'
+import { IconCircleCheck, IconSend, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
 
 export default function ButtonLoaderDemo() {

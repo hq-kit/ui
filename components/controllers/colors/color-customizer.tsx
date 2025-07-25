@@ -3,18 +3,17 @@
 import { formatColor } from '@/components/controllers/colors/colors'
 import SelectFormat, { type ColorFormat } from '@/components/controllers/colors/select-format'
 import { tailwindColors } from '@/components/controllers/colors/tailwind-colors'
-import { Container, Popover, defaultColor, toast } from '@/components/ui'
+import { Container, Popover, toast } from '@/components/ui'
 import { copyToClipboard } from '@/lib/utils/modifiers'
 
-import { IconPalette } from 'hq-icons'
+import { IconPalette } from '@tabler/icons-react'
 import { useState } from 'react'
-import { Button, Collection, type Color } from 'react-aria-components'
+import { Button, Collection } from 'react-aria-components'
 
 type TailwindColor = keyof typeof tailwindColors
 
 export default function ColorCustomizer() {
     const [selectedFormat, setSelectedFormat] = useState<ColorFormat>('oklch')
-    const [customColor, setCustomColor] = useState<Color>(defaultColor)
     const [isCopied, setIsCopied] = useState<boolean>(false)
 
     const handleCopy = async (selectedColor: string) => {

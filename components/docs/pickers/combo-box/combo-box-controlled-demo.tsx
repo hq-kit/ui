@@ -1,7 +1,7 @@
 'use client'
 
 import { ComboBox, Toggle } from '@/components/ui'
-import { IconSquareCheckBig, IconTextCursorInput } from 'hq-icons'
+import { IconCheckbox, IconForms } from '@tabler/icons-react'
 import { useState } from 'react'
 import type { Key, Selection } from 'react-aria-components'
 
@@ -24,11 +24,11 @@ export default function ComboBoxControlledDemo() {
         <div className='space-y-4'>
             <Toggle.Group selectionMode='single' selectedKeys={mode} onSelectionChange={setMode}>
                 <Toggle id='selection'>
-                    <IconSquareCheckBig />
+                    <IconCheckbox />
                     Selection
                 </Toggle>
                 <Toggle id='input'>
-                    <IconTextCursorInput />
+                    <IconForms />
                     Input
                 </Toggle>
             </Toggle.Group>

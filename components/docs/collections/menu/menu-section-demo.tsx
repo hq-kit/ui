@@ -1,82 +1,77 @@
 'use client'
 
 import { Menu } from '@/components/ui'
-import { IconBrandArch, IconBrandDebian, IconBrandFedora, IconBrandUbuntu } from 'hq-icons'
 
 const items = [
     {
         id: '1',
-        name: 'Debian',
-        icon: IconBrandDebian,
+        name: 'Jawa Timur',
         distros: [
             {
                 id: '1-1',
-                name: 'MX'
+                name: 'Surabaya'
             },
             {
                 id: '1-2',
-                name: 'Kali'
+                name: 'Mojokerto'
             },
             {
                 id: '1-3',
-                name: 'Deepin'
+                name: 'Malang'
             }
         ]
     },
     {
         id: '2',
-        name: 'Ubuntu',
-        icon: IconBrandUbuntu,
+        name: 'Jawa Barat',
         distros: [
             {
                 id: '2-1',
-                name: 'Mint'
+                name: 'Bandung'
             },
             {
                 id: '2-2',
-                name: 'KDE Neon'
+                name: 'Cirebon'
             },
             {
                 id: '2-3',
-                name: 'Zorin'
+                name: 'Bogor'
             }
         ]
     },
     {
         id: '3',
-        name: 'Fedora',
-        icon: IconBrandFedora,
+        name: 'Jawa Tengah',
         distros: [
             {
                 id: '3-1',
-                name: 'CentOS'
+                name: 'Semarang'
             },
             {
                 id: '3-2',
-                name: 'Alma'
+                name: 'Solo'
             },
             {
                 id: '3-3',
-                name: 'Nobara'
+                name: 'Kudus'
             }
         ]
     },
     {
         id: 4,
-        name: 'Arch',
-        icon: IconBrandArch,
+        name: 'Banten',
         distros: [
             {
                 id: '4-1',
-                name: 'Endeavour'
+                name: 'Serang'
             },
             {
                 id: '4-2',
-                name: 'Garuda'
+                name: 'Tangerang'
             },
             {
                 id: '4-3',
-                name: 'CachyOS'
+                name: 'Tasikmalaya'
             }
         ]
     }
@@ -91,7 +86,6 @@ export default function MenuSectionDemo() {
                     <Menu.Section title={item.name} items={item.distros}>
                         {(distro) => (
                             <Menu.Item textValue={distro.name}>
-                                <item.icon />
                                 <Menu.Label>{distro.name}</Menu.Label>
                             </Menu.Item>
                         )}

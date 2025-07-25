@@ -1,21 +1,5 @@
 export const blocks = [
   {
-    "slug": "marketing/management/file-manager",
-    "uiComponents": [
-      "breadcrumbs.tsx",
-      "button.tsx",
-      "grid-list.tsx",
-      "search-field.tsx",
-      "toggle.tsx",
-      "link.tsx",
-      "sidebar.tsx"
-    ],
-    "components": [
-      "file-list.tsx",
-      "file-sidebar.tsx"
-    ]
-  },
-  {
     "slug": "application/social/chat",
     "uiComponents": [
       "avatar.tsx",

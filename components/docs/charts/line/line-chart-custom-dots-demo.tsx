@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'
-import { IconBadgeDollar } from 'hq-icons'
+import { IconCurrencyDollar } from '@tabler/icons-react'
 import { CartesianGrid, Line, LineChart, XAxis } from 'recharts'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -51,7 +51,7 @@ export default function LineChartCustomDotsDemo() {
                             dot={({ cx, cy, payload }) => {
                                 const r = 24
                                 return (
-                                    <IconBadgeDollar
+                                    <IconCurrencyDollar
                                         className='text-(--color-profit)'
                                         key={payload.month}
                                         x={cx - r / 2}

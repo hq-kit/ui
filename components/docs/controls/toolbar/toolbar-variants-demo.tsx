@@ -10,7 +10,7 @@ import {
     IconItalic,
     IconPencil,
     IconUnderline
-} from 'hq-icons'
+} from '@tabler/icons-react'
 
 export default function ToolbarVariantsDemo() {
     return (

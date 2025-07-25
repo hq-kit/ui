@@ -32,22 +32,22 @@ import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingNode, Quot
 import { $setBlocksType } from '@lexical/selection'
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils'
 import {
+    IconArrowBackUp,
+    IconArrowForwardUp,
+    IconBlockquote,
     IconBold,
-    IconHeading1,
-    IconHeading2,
-    IconHeading3,
+    IconH1,
+    IconH2,
+    IconH3,
     IconItalic,
     IconList,
-    IconListOrdered,
-    IconParagraph,
-    IconRedo,
+    IconListNumbers,
+    IconPilcrow,
     IconStrikethrough,
     IconSubscript,
     IconSuperscript,
-    IconTextQuote,
-    IconUnderline,
-    IconUndo
-} from 'hq-icons'
+    IconUnderline
+} from '@tabler/icons-react'
 import {
     $createParagraphNode,
     $getRoot,
@@ -235,13 +235,13 @@ function OnChange({ value, onChange, returnType }: OnChangeProps) {
 
 function BlockTypeDropdown({ blockType }: { blockType: string }) {
     const blockIcons = {
-        h1: <IconHeading1 />,
-        h2: <IconHeading2 />,
-        h3: <IconHeading3 />,
-        paragraph: <IconParagraph />,
+        h1: <IconH1 />,
+        h2: <IconH2 />,
+        h3: <IconH3 />,
+        paragraph: <IconPilcrow />,
         bullet: <IconList />,
-        number: <IconListOrdered />,
-        quote: <IconTextQuote />
+        number: <IconListNumbers />,
+        quote: <IconBlockquote />
     }
     const [editor] = useLexicalComposerContext()
 
@@ -289,19 +289,19 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
             </Toggle>
             <Menu.Content selectionMode='single' aria-label='Block type' selectedKeys={[blockType]}>
                 <Menu.Item id='paragraph' onAction={formatParagraph}>
-                    <IconParagraph />
+                    <IconPilcrow />
                     <Menu.Label>Paragraph</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='h1' onAction={() => formatHeading('h1')}>
-                    <IconHeading1 />
+                    <IconH1 />
                     <Menu.Label>Heading 1</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='h2' onAction={() => formatHeading('h2')}>
-                    <IconHeading2 />
+                    <IconH2 />
                     <Menu.Label>Heading 2</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='h3' onAction={() => formatHeading('h3')}>
-                    <IconHeading3 />
+                    <IconH3 />
                     <Menu.Label>Heading 3</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='bullet' onAction={formatUnorderedList}>
@@ -309,11 +309,11 @@ function BlockTypeDropdown({ blockType }: { blockType: string }) {
                     <Menu.Label>Unordered List</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='number' onAction={formatOrderedList}>
-                    <IconListOrdered />
+                    <IconListNumbers />
                     <Menu.Label>Ordered List</Menu.Label>
                 </Menu.Item>
                 <Menu.Item id='quote' onAction={formatQuote}>
-                    <IconTextQuote />
+                    <IconBlockquote />
                     <Menu.Label>Quote</Menu.Label>
                 </Menu.Item>
             </Menu.Content>
@@ -482,7 +482,7 @@ export function ToolbarPlugin() {
                     isSelected={false}
                     onPress={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
                 >
-                    <IconUndo />
+                    <IconArrowBackUp />
                 </Toolbar.Item>
                 <Toolbar.Item
                     icon
@@ -490,7 +490,7 @@ export function ToolbarPlugin() {
                     isSelected={false}
                     onPress={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
                 >
-                    <IconRedo />
+                    <IconArrowForwardUp />
                 </Toolbar.Item>
             </Toolbar.Group>
         </Toolbar>

@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconEllipsis } from 'hq-icons'
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconDots } from '@tabler/icons-react'
 import type { ReactNode, RefObject } from 'react'
 import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
 import { ListBox, ListBoxItem, ListBoxSection, Text, composeRenderProps } from 'react-aria-components'
@@ -64,7 +64,7 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
             {...props}
         >
             {slot === 'ellipsis' ? (
-                <IconEllipsis />
+                <IconDots />
             ) : slot === 'first' ? (
                 <IconChevronsLeft />
             ) : slot === 'last' ? (
@@ -80,7 +80,7 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
     )
 }
 
-interface PaginationLabelProps extends TextProps {
+interface PaginationLabelProps extends Omit<TextProps, 'onClick'> {
     current: number | string
     total?: number | string
 }

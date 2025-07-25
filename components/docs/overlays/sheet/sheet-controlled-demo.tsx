@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Sheet } from '@/components/ui'
-import { IconCircleCheck, IconTrash } from 'hq-icons'
+import { IconCircleCheck, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
 
 export default function SheetControlledDemo() {

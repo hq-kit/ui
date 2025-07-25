@@ -5,7 +5,7 @@ import { docs } from '@/components/docs/generated/docs'
 import { Command } from '@/components/ui'
 import { titleCase } from '@/lib/utils/modifiers'
 
-import { IconHome, IconLayoutDashboard, IconPackage, IconPalette, IconShapes } from 'hq-icons'
+import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
 import { usePathname } from 'next/navigation'
 import { Fragment, useEffect } from 'react'
 
@@ -37,10 +37,6 @@ export function CommandMenu({ openCommand, action }: OpenCloseProps) {
                 <Command.Item textValue='blocks' href='/blocks'>
                     <IconLayoutDashboard />
                     <Command.Label>Blocks</Command.Label>
-                </Command.Item>
-                <Command.Item textValue='icons' href='/icons'>
-                    <IconShapes />
-                    <Command.Label>Icons</Command.Label>
                 </Command.Item>
                 <Command.Item textValue='colors' href='/colors'>
                     <IconPalette />

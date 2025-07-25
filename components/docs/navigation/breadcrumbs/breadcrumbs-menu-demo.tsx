@@ -1,7 +1,7 @@
 'use client'
 
 import { Breadcrumbs, Menu } from '@/components/ui'
-import { IconChevronDown } from 'hq-icons'
+import { IconChevronDown } from '@tabler/icons-react'
 
 export default function BreadcrumbsMenuDemo() {
     return (

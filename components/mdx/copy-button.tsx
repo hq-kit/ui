@@ -2,7 +2,7 @@
 
 import { Tooltip } from '@/components/ui'
 import { cn } from '@/lib/utils'
-import { IconCheck, IconCopy } from 'hq-icons'
+import { IconCheck, IconCopy } from '@tabler/icons-react'
 import { Button, type ButtonProps } from 'react-aria-components'
 
 interface CopyButtonProps extends ButtonProps {

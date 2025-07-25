@@ -1,7 +1,7 @@
 'use client'
 
 import { Tree, TreeItem } from '@/components/ui'
-import { IconFileImage, IconFileText, IconFolder, IconFolderOpen } from 'hq-icons'
+import { IconFileText, IconFileTypeJpg, IconFolder, IconFolderOpen } from '@tabler/icons-react'
 
 export default function TreeWithIconDemo() {
     return (
@@ -43,13 +43,13 @@ export default function TreeWithIconDemo() {
                 </TreeItem.Content>
                 <TreeItem id='one' textValue='Image 1'>
                     <TreeItem.Content>
-                        <IconFileImage />
+                        <IconFileTypeJpg />
                         Image 1
                     </TreeItem.Content>
                 </TreeItem>
                 <TreeItem id='two' textValue='Image 2'>
                     <TreeItem.Content>
-                        <IconFileImage />
+                        <IconFileTypeJpg />
                         Image 2
                     </TreeItem.Content>
                 </TreeItem>

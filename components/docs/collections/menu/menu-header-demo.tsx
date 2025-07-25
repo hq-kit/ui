@@ -1,7 +1,7 @@
 'use client'
 
 import { Avatar, Menu } from '@/components/ui'
-import { IconCircleUser, IconLogOut, IconSettings } from 'hq-icons'
+import { IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react'
 
 export default function MenuHeaderDemo() {
     return (
@@ -16,7 +16,7 @@ export default function MenuHeaderDemo() {
                         <span className='font-normal text-muted-foreground'>@dq-alhq</span>
                     </Menu.Header>
                     <Menu.Item>
-                        <IconCircleUser />
+                        <IconUserCircle />
                         Profile
                     </Menu.Item>
                     <Menu.Item>
@@ -25,7 +25,7 @@ export default function MenuHeaderDemo() {
                     </Menu.Item>
                     <Menu.Separator />
                     <Menu.Item isDestructive>
-                        <IconLogOut />
+                        <IconLogout />
                         Log out
                     </Menu.Item>
                 </Menu.Content>

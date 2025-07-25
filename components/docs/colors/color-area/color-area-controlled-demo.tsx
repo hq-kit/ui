@@ -1,6 +1,6 @@
 'use client'
 
-import { ColorArea, SelectionBox } from '@/components/ui'
+import { ColorArea } from '@/components/ui'
 import { Select } from '@/components/ui/select'
 import { useState } from 'react'
 import { type ColorSpace, type Key, parseColor } from 'react-aria-components'
@@ -18,22 +18,20 @@ export default function ColorAreaControlledDemo() {
 
     return (
         <div className='flex flex-col items-center gap-2'>
-            <SelectionBox
+            <Select
                 className='w-full'
                 label='Color Spaces'
-                selectionMode='single'
-                orientation='horizontal'
-                value={colorSpace}
-                onChange={(v) => {
+                selectedKey={colorSpace}
+                onSelectionChange={(v) => {
                     setColorSpace(v)
                     setXChannel(v === 'rgb' ? 'red' : 'hue')
                     setYChannel(v === 'rgb' ? 'green' : 'saturation')
                 }}
             >
-                <SelectionBox.Item value='rgb'>RGB</SelectionBox.Item>
-                <SelectionBox.Item value='hsl'>HSL</SelectionBox.Item>
-                <SelectionBox.Item value='hsb'>HSB</SelectionBox.Item>
-            </SelectionBox>
+                <Select.Item id='rgb'>RGB</Select.Item>
+                <Select.Item id='hsl'>HSL</Select.Item>
+                <Select.Item id='hsb'>HSB</Select.Item>
+            </Select>
             <Select
                 label='X Channel'
                 className='w-full'

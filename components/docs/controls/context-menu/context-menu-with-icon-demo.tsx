@@ -1,7 +1,7 @@
 'use client'
 
 import { ContextMenu } from '@/components/ui'
-import { IconCopy, IconFolder, IconHighlighter, IconTrash, IconUpload } from 'hq-icons'
+import { IconCopy, IconFolder, IconHighlight, IconTrash, IconUpload } from '@tabler/icons-react'
 
 export default function ContextMenuWithIconDemo() {
     return (
@@ -16,7 +16,7 @@ export default function ContextMenuWithIconDemo() {
                     Open
                 </ContextMenu.Item>
                 <ContextMenu.Item>
-                    <IconHighlighter />
+                    <IconHighlight />
                     Rename
                 </ContextMenu.Item>
                 <ContextMenu.Item>

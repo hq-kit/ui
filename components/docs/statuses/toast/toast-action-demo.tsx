@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, toast } from '@/components/ui'
-import { IconEye } from 'hq-icons'
+import { IconEye } from '@tabler/icons-react'
 
 export default function ToastActionDemo() {
     return (

@@ -2,7 +2,7 @@
 
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-import { IconChevronRight, IconMenu } from 'hq-icons'
+import { IconChevronRight, IconMenu } from '@tabler/icons-react'
 import {
     type CSSProperties,
     type ComponentProps,
@@ -176,7 +176,7 @@ const Sidebar = ({
                     data-variant={variant}
                     data-open={open}
                     className={cn(
-                        'peer z-20 hidden bg-sidebar text-sidebar-foreground [--visual-viewport-vertical-padding:32px] **:data-[slot=icon]:shrink-0 md:block',
+                        'peer z-20 hidden bg-sidebar text-sidebar-foreground [--visual-viewport-vertical-padding:32px] md:block **:[svg]:shrink-0',
                         isInverse && 'dark **:dark'
                     )}
                 >
@@ -247,7 +247,7 @@ const SidebarFooter = ({ className, ...props }: ComponentProps<'div'>) => {
             className={cn(
                 'mt-auto flex flex-col overflow-hidden p-2',
                 '**:data-avatar:size-8 **:data-avatar:shrink-0',
-                collapsed && '**:data-[slot=icon]:hidden **:data-user:hidden **:[button]:p-0',
+                collapsed && '**:data-user:hidden **:[button]:p-0 **:[svg]:hidden',
                 hidden && 'hidden',
                 className
             )}
@@ -288,7 +288,9 @@ const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?
     )
 }
 
-interface SidebarItemProps extends DisclosureProps, Pick<LinkProps, 'href' | 'routerOptions' | 'onPress'> {
+interface SidebarItemProps
+    extends Omit<DisclosureProps, 'onClick'>,
+        Pick<LinkProps, 'href' | 'routerOptions' | 'onPress'> {
     isCurrent?: boolean
     tooltip?: ReactNode | string
     badge?: string | number | undefined

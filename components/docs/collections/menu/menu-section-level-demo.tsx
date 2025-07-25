@@ -11,7 +11,7 @@ import {
     IconItalic,
     IconScissors,
     IconUnderline
-} from 'hq-icons'
+} from '@tabler/icons-react'
 import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
 

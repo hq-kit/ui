@@ -1,13 +1,14 @@
 'use client'
+import { IconBrandGithub, IconSearch } from '@tabler/icons-react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Collection } from 'react-aria-components'
+
+import { IconApp } from '@/components/icons'
 import { CommandMenu } from '@/components/layouts/command-menu'
 import { MobileNav } from '@/components/layouts/mobile-nav'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, Keyboard, Link, Navbar, Separator, buttonStyle } from '@/components/ui'
-
-import { IconBrandCleon, IconBrandGithub, IconSearch } from 'hq-icons'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { Collection } from 'react-aria-components'
 
 export function AppNavbar() {
     const pathname = usePathname()
@@ -15,8 +16,7 @@ export function AppNavbar() {
         { id: 1, label: 'Home', url: '/', active: pathname === '/' },
         { id: 2, label: 'Components', url: '/docs', active: pathname.startsWith('/docs') },
         { id: 3, label: 'Blocks', url: '/blocks', active: pathname.startsWith('/blocks') },
-        { id: 4, label: 'Icons', url: '/icons', active: pathname.startsWith('/icons') },
-        { id: 5, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') }
+        { id: 4, label: 'Colors', url: '/colors', active: pathname.startsWith('/colors') }
     ]
 
     const [openNav, setOpenNav] = useState(false)
@@ -32,8 +32,8 @@ export function AppNavbar() {
             <Navbar isSticky isOpen={openNav} onOpenChange={setOpenNav}>
                 <Navbar.Nav className='xl:*:[div]:h-full xl:*:[div]:border-x'>
                     <Navbar.Logo href='/' aria-label='Home' className='flex items-center'>
-                        <IconBrandCleon />
-                        <span className='font-bold'>HQ UI</span>
+                        <IconApp />
+                        <span className='whitespace-nowrap font-bold'>HQ UI</span>
                     </Navbar.Logo>
                     <Navbar.Section className='md:ml-4'>
                         <Collection items={menuItems}>
@@ -58,8 +58,7 @@ export function AppNavbar() {
                                 aria-label='Github Repository'
                                 className={buttonStyle({
                                     variant: 'outline',
-                                    icon: true,
-                                    className: '[&_[data-slot=icon]]:text-foreground'
+                                    icon: true
                                 })}
                                 target='_blank'
                                 href={'https://github.com/hq-kit/ui'}
@@ -74,8 +73,8 @@ export function AppNavbar() {
                         <Navbar.Trigger aria-label='Toggle Navbar' />
                         <Separator orientation='vertical' className='mx-1 h-7' />
                         <Navbar.Logo href='/' aria-label='Home' className='flex items-center'>
-                            <IconBrandCleon />
-                            <span className='font-bold'>HQ UI</span>
+                            <IconApp />
+                            <span className='whitespace-nowrap font-bold'>HQ UI</span>
                         </Navbar.Logo>
                     </Navbar.Flex>
                     <Navbar.Flex>
@@ -88,8 +87,7 @@ export function AppNavbar() {
                             aria-label='Github Repository'
                             className={buttonStyle({
                                 variant: 'outline',
-                                icon: true,
-                                className: '[&_[data-slot=icon]]:text-foreground'
+                                icon: true
                             })}
                             target='_blank'
                             href={'https://github.com/hq-kit/ui'}

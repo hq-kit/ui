@@ -50,7 +50,7 @@ const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) =
 }
 
 interface TabProps extends RACTabProps {
-    ref?: Ref<HTMLButtonElement>
+    ref?: Ref<HTMLDivElement>
 }
 
 const Tab = ({ className, ref, ...props }: TabProps) => {

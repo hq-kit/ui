@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Form } from '@/components/ui'
-import { IconCamera, IconMic, IconPaperclip, IconSend } from 'hq-icons'
+import { IconCamera, IconMicrophone, IconPaperclip, IconSend } from '@tabler/icons-react'
 import { type FormEvent, type KeyboardEvent, useEffect, useRef } from 'react'
 
 interface MessageFormProps {
@@ -69,7 +69,7 @@ export default function MessageForm({ value, valueAction, sendAction }: MessageF
                     <span className='sr-only'>Upload Image</span>
                 </Button>
                 <Button variant='ghost' icon type='button'>
-                    <IconMic className='size-4' />
+                    <IconMicrophone className='size-4' />
                     <span className='sr-only'>Use Microphone</span>
                 </Button>
                 <Button variant='ghost' icon type='button'>

@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconEye, IconEyeClosed, IconLoaderCircle } from 'hq-icons'
+import { IconEye, IconEyeClosed, IconLoader3 } from '@tabler/icons-react'
 import { type ReactNode, type Ref, useState } from 'react'
 import {
     Button,
@@ -78,10 +78,7 @@ const TextField = ({
                                 />
                             </Button>
                         ) : props.isPending ? (
-                            <IconLoaderCircle
-                                className='mr-2 size-3.5 animate-spin text-muted-foreground'
-                                data-suffix
-                            />
+                            <IconLoader3 className='mr-2 size-3.5 animate-spin text-muted-foreground' data-suffix />
                         ) : props.suffix ? (
                             <span data-suffix className='mr-2 text-muted-foreground has-[button]:mr-0'>
                                 {props.suffix}

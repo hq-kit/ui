@@ -1,13 +1,13 @@
 'use client'
 
 import { Toggle } from '@/components/ui'
-import { IconHeading, IconParagraph } from 'hq-icons'
+import { IconHeading, IconPilcrow } from '@tabler/icons-react'
 
 export default function ToggleGroupDemo() {
     return (
         <Toggle.Group>
             <Toggle>
-                <IconParagraph />
+                <IconPilcrow />
                 Paragraph
             </Toggle>
             <Toggle>

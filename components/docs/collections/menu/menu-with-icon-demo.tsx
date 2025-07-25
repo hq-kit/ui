@@ -1,7 +1,7 @@
 'use client'
 
 import { Menu } from '@/components/ui'
-import { IconEye, IconPencil } from 'hq-icons'
+import { IconEye, IconPencil } from '@tabler/icons-react'
 
 export default function MenuWithIconDemo() {
     return (

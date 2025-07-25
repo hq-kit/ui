@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import { IconCheck, IconCopy } from 'hq-icons'
+import { IconCheck, IconCopy } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import rehypePrettyCode, { type Theme } from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'

@@ -5,13 +5,16 @@ import {
     IconArchive,
     IconDisc,
     IconFile,
-    IconFileImage,
     IconFileMusic,
-    IconFileText,
-    IconFileVideo,
+    IconFileTypeDocx,
+    IconFileTypeJpg,
+    IconFileTypePdf,
+    IconFileTypePng,
+    IconFileTypeTxt,
     IconFolder,
-    IconFolderOpen
-} from 'hq-icons'
+    IconFolderOpen,
+    IconMovie
+} from '@tabler/icons-react'
 import { Collection } from 'react-aria-components'
 
 export default function TreeCollectionsDemo() {
@@ -120,13 +123,19 @@ const FileIcon = ({ ext }: { ext: string }) => {
     let Icon: any
     switch (ext) {
         case 'jpg':
+            Icon = IconFileTypeJpg
+            break
         case 'png':
-            Icon = IconFileImage
+            Icon = IconFileTypePng
             break
         case 'txt':
+            Icon = IconFileTypeTxt
+            break
         case 'docx':
+            Icon = IconFileTypeDocx
+            break
         case 'pdf':
-            Icon = IconFileText
+            Icon = IconFileTypePdf
             break
         case 'mp3':
         case 'wav':
@@ -134,7 +143,7 @@ const FileIcon = ({ ext }: { ext: string }) => {
             break
         case 'mp4':
         case 'mkv':
-            Icon = IconFileVideo
+            Icon = IconMovie
             break
         case 'zip':
         case 'rar':

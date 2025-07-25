@@ -3,7 +3,7 @@
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import { cn } from '@/lib/utils'
-import { IconLoaderCircle } from 'hq-icons'
+import { IconLoader3 } from '@tabler/icons-react'
 import { Fragment, type HTMLAttributes, Suspense } from 'react'
 
 import { TabPanel } from 'react-aria-components'
@@ -32,7 +32,7 @@ export function Demo({ component, center = false, ...props }: DemoProps) {
                         <Suspense
                             fallback={
                                 <div className='flex w-full items-center justify-center text-muted-foreground text-sm'>
-                                    <IconLoaderCircle className='size-12 animate-spin' />
+                                    <IconLoader3 className='size-12 animate-spin' />
                                 </div>
                             }
                         >

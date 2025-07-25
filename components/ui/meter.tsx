@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconCircleAlert } from 'hq-icons'
+import { IconAlertCircle } from '@tabler/icons-react'
 import { Meter as RACMeter, type MeterProps as RACMeterProps } from 'react-aria-components'
 import { Label } from './form'
 
@@ -24,7 +24,7 @@ const Meter = ({ label, className, ...props }: MeterProps) => {
                             className={`flex items-center text-sm tabular-nums ${percentage >= 80 ? 'text-destructive' : 'text-muted-foreground'}`}
                         >
                             {percentage >= 80 && (
-                                <IconCircleAlert
+                                <IconAlertCircle
                                     aria-label='Alert'
                                     className='mr-1 inline size-4 fill-invalid text-destructive'
                                 />

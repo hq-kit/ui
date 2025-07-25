@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { IconChevronDown, IconMenu } from 'hq-icons'
+import { IconChevronDown, IconMenu } from '@tabler/icons-react'
 import { type ReactNode, type Ref, createContext, useContext } from 'react'
 import type {
     CellProps,

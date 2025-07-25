@@ -1,7 +1,7 @@
 import { Header } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { SearchField } from '@/components/ui/search-field'
-import { IconUserPlus } from 'hq-icons'
+import { IconUserPlus } from '@tabler/icons-react'
 
 export default function HeaderActionDemo() {
     return (

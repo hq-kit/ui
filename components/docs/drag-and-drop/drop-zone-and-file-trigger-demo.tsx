@@ -3,7 +3,7 @@
 import { Description, DropZone, FileTrigger } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
 
-import { IconImage } from 'hq-icons'
+import { IconPhoto } from '@tabler/icons-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
@@ -48,7 +48,7 @@ export default function DropZoneAndFileTriggerDemo() {
                             className='aspect-square size-full object-cover'
                         />
                     ) : (
-                        <IconImage className='size-5' />
+                        <IconPhoto className='size-5' />
                     )}
                 </div>
                 <div className='flex justify-center'>

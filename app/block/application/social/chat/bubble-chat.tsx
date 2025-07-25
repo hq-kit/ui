@@ -3,15 +3,15 @@
 import { Button, Menu } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import {
+    IconArrowForward,
     IconCheck,
-    IconCheckDouble,
+    IconChecks,
     IconChevronRight,
     IconClock,
-    IconForward,
-    IconInfo,
-    IconReply,
+    IconInfoCircle,
+    IconMessageReply,
     IconTrash
-} from 'hq-icons'
+} from '@tabler/icons-react'
 import type { ReactNode } from 'react'
 
 export interface BubbleChatProps {
@@ -26,8 +26,8 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
     const statusIcon: Record<string, ReactNode> = {
         pending: <IconClock className='size-5 text-fg' />,
         sent: <IconCheck className='size-5 text-fg' />,
-        delivered: <IconCheckDouble className='size-5 text-fg' />,
-        read: <IconCheckDouble className='size-5 text-success' />
+        delivered: <IconChecks className='size-5 text-fg' />,
+        read: <IconChecks className='size-5 text-success' />
     }
     return (
         <div className={cn('group flex items-start', role === 'send' ? 'flex-row-reverse' : 'flex-row')}>
@@ -63,15 +63,15 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                 </Button>
                 <Menu.Content placement={role === 'send' ? 'left' : 'right'} aria-label='Actions'>
                     <Menu.Item>
-                        <IconReply />
+                        <IconMessageReply />
                         Reply
                     </Menu.Item>
                     <Menu.Item>
-                        <IconForward />
+                        <IconArrowForward />
                         Forward
                     </Menu.Item>
                     <Menu.Item>
-                        <IconInfo />
+                        <IconInfoCircle />
                         Message Info
                     </Menu.Item>
                     <Menu.Item onAction={onDelete} isDestructive>

@@ -1,7 +1,7 @@
 'use client'
 
 import { Toggle } from '@/components/ui'
-import { IconPower } from 'hq-icons'
+import { IconPower } from '@tabler/icons-react'
 
 export default function ToggleDisabledDemo() {
     return (

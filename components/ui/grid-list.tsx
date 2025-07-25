@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconGripVertical } from 'hq-icons'
+import { IconGripVertical } from '@tabler/icons-react'
 import type { ReactNode } from 'react'
 import type { GridListItemProps, GridListProps as RACGridListProps } from 'react-aria-components'
 import {

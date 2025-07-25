@@ -1,5 +1,5 @@
 import { Badge, Card } from '@/components/ui'
-import { IconTrendingDown, IconTrendingUp } from 'hq-icons'
+import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react'
 
 export default function Stats() {
     return (

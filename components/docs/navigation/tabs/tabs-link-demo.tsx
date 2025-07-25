@@ -1,15 +1,14 @@
 'use client'
 
 import { Tabs } from '@/components/ui'
-import { IconBlocks, IconBookCopy, IconPalette, IconShapes, IconSwatchBook } from 'hq-icons'
+import { IconBlocks, IconBook, IconColorSwatch, IconPalette } from '@tabler/icons-react'
 
 const items = [
     { url: '/', label: 'Home' },
-    { url: 'https://hq-ui.vercel.app/docs', label: 'Components', icon: IconBookCopy },
+    { url: 'https://hq-ui.vercel.app/docs', label: 'Components', icon: IconBook },
     { url: 'https://hq-ui.vercel.app/blocks', label: 'Blocks', icon: IconBlocks },
-    { url: 'https://hq-ui.vercel.app/icons', label: 'Icons', icon: IconShapes },
     { url: 'https://hq-ui.vercel.app/colors', label: 'Colors', icon: IconPalette },
-    { url: 'https://hq-ui.vercel.app/themes', label: 'Themes', icon: IconSwatchBook }
+    { url: 'https://hq-ui.vercel.app/themes', label: 'Themes', icon: IconColorSwatch }
 ]
 
 export default function TabsLinkDemo() {

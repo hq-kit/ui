@@ -9,7 +9,7 @@ import {
     useThemeStore
 } from '@/lib/hooks/use-theme'
 
-import { IconMoon, IconSun } from 'hq-icons'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 import { useEffect } from 'react'
 
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {

@@ -2,7 +2,7 @@
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 
-import { IconLoader, IconSearch } from 'hq-icons'
+import { IconLoader, IconSearch } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
 import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'

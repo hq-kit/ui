@@ -3,7 +3,7 @@ import { Button, Link, Modal } from '@/components/ui'
 import { useThemeGenerator } from '@/lib/hooks/use-theme'
 import { getPreset } from '@/lib/themes'
 import { generateThemeCode } from '@/lib/themes/theme-generator'
-import { IconClipboard } from 'hq-icons'
+import { IconClipboardCopy } from '@tabler/icons-react'
 
 export const ThemeSnippet = () => {
     const { currentFontSansFamily, currentFontMonoFamily } = useThemeGenerator()
@@ -11,7 +11,7 @@ export const ThemeSnippet = () => {
         <>
             <Modal>
                 <Button>
-                    <IconClipboard />
+                    <IconClipboardCopy />
                     Copy code
                 </Button>
                 <Modal.Content size='2xl'>

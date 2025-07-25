@@ -2,9 +2,9 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconChevronRight, IconDot, IconMinus, IconSlash } from 'hq-icons'
+import { IconChevronRight, IconMinus, IconPointFilled, IconSlash } from '@tabler/icons-react'
 import { type ReactNode, createContext, use } from 'react'
-import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from 'react-aria-components'
+import type { BreadcrumbProps, BreadcrumbsProps } from 'react-aria-components'
 import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
 
 type BreadcrumbsContextProps = {
@@ -23,7 +23,7 @@ const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps
     )
 }
 
-interface BreadcrumbsItemProps extends BreadcrumbProps, Pick<LinkProps, 'href'> {
+interface BreadcrumbsItemProps extends BreadcrumbProps {
     href?: string
 }
 
@@ -46,8 +46,9 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
                         <Link
                             href={href}
                             className='inline-flex items-center gap-2 transition-colors hover:text-foreground'
-                            {...props}
-                        />
+                        >
+                            {props.children}
+                        </Link>
                     ) : (
                         (props.children as ReactNode)
                     )}
@@ -64,7 +65,7 @@ const Separator = ({ separator = 'chevron' }: { separator?: BreadcrumbsContextPr
             {separator === 'chevron' && <IconChevronRight />}
             {separator === 'slash' && <IconSlash />}
             {separator === 'dash' && <IconMinus />}
-            {separator === 'dot' && <IconDot />}
+            {separator === 'dot' && <IconPointFilled />}
         </span>
     )
 }

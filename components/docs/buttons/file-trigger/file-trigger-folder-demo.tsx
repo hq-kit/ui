@@ -1,7 +1,7 @@
 'use client'
 
 import { FileTrigger } from '@/components/ui'
-import { IconFolder } from 'hq-icons'
+import { IconFolder } from '@tabler/icons-react'
 
 export default function FileTriggerFolderDemo() {
     return (

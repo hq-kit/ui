@@ -2,7 +2,7 @@
 
 import { cn, fuzzyMatch } from '@/lib/utils'
 
-import { IconChevronDown, IconX } from 'hq-icons'
+import { IconChevronDown, IconX } from '@tabler/icons-react'
 import {
     Children,
     type KeyboardEvent,

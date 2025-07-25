@@ -1,7 +1,8 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { Button, Checkbox, Form, Header, Link, Separator, Skeleton, TextField, toast } from '@/components/ui'
-import { IconBrandCleon, IconBrandGithub, IconBrandGoogle, IconImage } from 'hq-icons'
+import { IconBrandGithub, IconBrandGoogle, IconPhoto } from '@tabler/icons-react'
 
 export default function Page() {
     return (
@@ -10,7 +11,7 @@ export default function Page() {
                 <div className='mx-auto w-full max-w-lg'>
                     <div className='mb-6 flex flex-col items-center justify-center'>
                         <Link href='#'>
-                            <IconBrandCleon className='mb-2 size-10' />
+                            <IconApp className='mb-2 size-10' />
                         </Link>
                         <Header title='Register' description='Fill in the form below to create your account' />
                     </div>
@@ -54,7 +55,7 @@ export default function Page() {
             </div>
             <div className='relative hidden lg:block'>
                 <Skeleton className='size-full' />
-                <IconImage className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-24 text-muted-foreground' />
+                <IconPhoto className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-24 text-muted-foreground' />
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'
-import { IconBadgeDollar, IconShoppingBag } from 'hq-icons'
+import { IconCurrencyDollar, IconShoppingBag } from '@tabler/icons-react'
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
 
 const chartData = [
@@ -28,7 +28,7 @@ const chartConfig = {
     profit: {
         label: 'Profit',
         color: 'var(--chart-2)',
-        icon: IconBadgeDollar
+        icon: IconCurrencyDollar
     }
 } satisfies ChartConfig
 

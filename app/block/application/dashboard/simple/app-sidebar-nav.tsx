@@ -1,14 +1,15 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar, Breadcrumbs, Link, Menu, SidebarNav } from '@/components/ui'
-import { IconBrandCleon, IconLogOut, IconSettings } from 'hq-icons'
+import { IconLogout, IconSettings } from '@tabler/icons-react'
 
 export default function AppSidebarNav() {
     return (
         <SidebarNav>
             <Link href='#' className='ml-auto pl-16 md:hidden'>
-                <IconBrandCleon className='size-6' />
+                <IconApp className='size-6' />
             </Link>
             <Breadcrumbs className='hidden md:flex'>
                 <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
@@ -31,7 +32,7 @@ export default function AppSidebarNav() {
                         Settings
                     </Menu.Item>
                     <Menu.Item href='#logout'>
-                        <IconLogOut />
+                        <IconLogout />
                         Log out
                     </Menu.Item>
                 </Menu.Content>

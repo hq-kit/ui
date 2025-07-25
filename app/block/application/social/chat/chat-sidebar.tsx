@@ -1,23 +1,23 @@
 'use client'
 
+import { IconApp } from '@/components/icons'
 import { Menu, Sidebar, User } from '@/components/ui'
 import {
-    IconBrandCleon,
     IconChevronRight,
-    IconFilm,
-    IconGroup,
     IconHeadphones,
-    IconLogOut,
+    IconLogout,
     IconMessage,
+    IconMovie,
     IconRss,
-    IconSettings
-} from 'hq-icons'
+    IconSettings,
+    IconUsersGroup
+} from '@tabler/icons-react'
 
 export default function ChatSidebar() {
     return (
         <Sidebar collapsible='dock' defaultOpen={false}>
             <Sidebar.Header>
-                <IconBrandCleon />
+                <IconApp />
                 <Sidebar.Label>Chat App</Sidebar.Label>
             </Sidebar.Header>
             <Sidebar.Content>
@@ -31,11 +31,11 @@ export default function ChatSidebar() {
                         <Sidebar.Label>Broadcast</Sidebar.Label>
                     </Sidebar.Item>
                     <Sidebar.Item href='#'>
-                        <IconFilm />
+                        <IconMovie />
                         <Sidebar.Label>Stories</Sidebar.Label>
                     </Sidebar.Item>
                     <Sidebar.Item href='#'>
-                        <IconGroup />
+                        <IconUsersGroup />
                         <Sidebar.Label>Communities</Sidebar.Label>
                     </Sidebar.Item>
                 </Sidebar.Section>
@@ -66,7 +66,7 @@ export default function ChatSidebar() {
                         </Menu.Item>
                         <Menu.Separator />
                         <Menu.Item href='#logout'>
-                            <IconLogOut />
+                            <IconLogout />
                             Log out
                         </Menu.Item>
                     </Menu.Content>

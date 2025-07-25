@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconX } from 'hq-icons'
+import { IconX } from '@tabler/icons-react'
 import { type ReactNode, type RefObject, createContext, useContext } from 'react'
 import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
 import { Button, Tag as RACTag, TagGroup as RACTagGroup, TagList, composeRenderProps } from 'react-aria-components'

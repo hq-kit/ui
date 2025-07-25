@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, Chart, type ChartConfig } from '@/components/ui'
-import { IconCircleDollar, IconShoppingCart } from 'hq-icons'
+import { IconCurrencyDollar, IconShoppingCart } from '@tabler/icons-react'
 import { Bar, BarChart, XAxis } from 'recharts'
 
 const chartData = Array.from({ length: 24 }, (_, index) => {
@@ -25,7 +25,7 @@ const chartConfig = {
     expenses: {
         label: 'Expenses',
         color: 'var(--chart-2)',
-        icon: IconCircleDollar
+        icon: IconCurrencyDollar
     }
 } satisfies ChartConfig
 

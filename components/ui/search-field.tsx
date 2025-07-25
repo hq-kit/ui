@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { IconLoader, IconSearch, IconX } from 'hq-icons'
+import { IconLoader, IconSearch, IconX } from '@tabler/icons-react'
 import type { Ref } from 'react'
 import {
     Button,
