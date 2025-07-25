@@ -54,7 +54,7 @@ const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...prop
                 cn(
                     'inline-flex size-9 cursor-pointer items-center justify-center gap-x-2 whitespace-nowrap border font-medium text-sm outline-hidden transition',
                     'pressed:bg-accent/80 pressed:text-accent-foreground hover:bg-accent hover:text-accent-foreground',
-                    'focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring/50',
+                    'focus-visible:z-10 focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring/50',
                     'selected:pointer-events-none selected:bg-primary selected:text-primary-foreground',
                     'disabled:cursor-default',
                     isCurrent && 'bg-primary text-primary-foreground',

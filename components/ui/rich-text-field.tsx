@@ -132,7 +132,7 @@ const RichTextField = ({
                                         disabled={isDisabled}
                                         className={cn(
                                             'min-h-32 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-2 text-base shadow-xs outline-none transition focus:outline-none sm:text-sm dark:bg-input/30',
-                                            'focus:border-ring focus:ring-4 focus:ring-ring/50',
+                                            'focus:border-ring focus:ring-[3px] focus:ring-ring/50',
                                             'invalid:border-destructive/70 invalid:ring-4 invalid:ring-destructive/20',
                                             isDisabled ? 'opacity-50' : 'hover:border-primary/60 '
                                         )}

@@ -27,11 +27,11 @@ const fieldGroupStyle = tv({
     base: [
         'flex h-9 items-center rounded-md border border-input bg-transparent shadow-xs transition dark:bg-input/30',
         'hover:border-ring group-invalid/field:hover:border-destructive/70!',
-        'focus-within:border-ring focus-within:ring-4 focus-within:ring-ring/50',
-        'group-open/field:border-ring group-open/field:ring-4 group-open/field:ring-ring/50',
-        'group-has-focus-visible/field:border-ring group-has-focus-visible/field:ring-4 group-has-focus-visible/field:ring-ring/50',
-        'group-has-focus-within/field:border-ring group-has-focus-within/field:ring-4 group-has-focus-within/field:ring-ring/50',
-        'group-has-focus/field:border-ring group-has-focus/field:ring-4 group-has-focus/field:ring-ring/50',
+        'focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50',
+        'group-open/field:border-ring group-open/field:ring-[3px] group-open/field:ring-ring/50',
+        'group-has-focus-visible/field:border-ring group-has-focus-visible/field:ring-[3px] group-has-focus-visible/field:ring-ring/50',
+        'group-has-focus-within/field:border-ring group-has-focus-within/field:ring-[3px] group-has-focus-within/field:ring-ring/50',
+        'group-has-focus/field:border-ring group-has-focus/field:ring-[3px] group-has-focus/field:ring-ring/50',
         'group-invalid/field:group-open/field:ring-destructive/20 group-invalid/field:group-has-focus-visible/field:ring-destructive/20 group-invalid/field:group-has-focus-within/field:ring-destructive/20 group-invalid/field:group-has-focus/field:ring-destructive/20',
         'group-invalid/field:group-open/field:border-destructive/70 group-invalid/field:group-has-focus-visible/field:border-destructive/70 group-invalid/field:group-has-focus-within/field:border-destructive/70 group-invalid/field:group-has-focus/field:border-destructive/70',
         '**:[input]:w-full **:[input]:p-2 **:[input]:text-base **:[input]:outline-hidden sm:**:[input]:text-sm',
@@ -41,7 +41,7 @@ const fieldGroupStyle = tv({
 
 const labelStyle = tv({
     base: [
-        'w-fit cursor-default font-medium text-foreground text-sm leading-none transition-colors',
+        'w-fit cursor-default font-medium text-foreground text-sm leading-none transition-colors focus:text-primary',
         'group-open/field:text-primary group-has-focus-visible/field:text-primary group-has-focus-within/field:text-primary group-has-focus/field:text-primary group-has-pressed/field:text-primary',
         'group-invalid/field:text-destructive! group-disabled/field:text-muted-foreground! group-has-invalid/field:text-destructive!',
         'group-disabled/field:text-muted-foreground group-has-disabled/field:text-muted-foreground'

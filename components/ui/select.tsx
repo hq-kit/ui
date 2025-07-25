@@ -55,13 +55,18 @@ const Select = <T extends object>({
     return (
         <RACSelect
             className={composeRenderProps(className, (className) =>
-                cn('group/field flex flex-col gap-y-1.5 **:data-placeholder:text-muted-foreground', className)
+                cn('group/field flex flex-col gap-y-1.5', className)
             )}
             ref={ref}
             {...props}
         >
             {label && <Label>{label}</Label>}
-            <Button className={cn(fieldGroupStyle(), 'w-full gap-x-2 p-2 text-base sm:text-sm')}>
+            <Button
+                className={fieldGroupStyle({
+                    className:
+                        'w-full gap-x-2 p-2 text-base outline-hidden! **:data-placeholder:text-muted-foreground sm:text-sm'
+                })}
+            >
                 {props.prefix ? (
                     <span className='ml-2 text-muted-foreground has-[button]:ml-0'>{props.prefix}</span>
                 ) : null}

@@ -63,7 +63,7 @@ const TextField = ({
                                 type='button'
                                 aria-label='Toggle visibility'
                                 onPress={() => setMasked((e) => !e)}
-                                className='mr-2 inline-flex items-center justify-center text-muted-foreground outline-hidden focus-visible:text-primary'
+                                className='mr-2 inline-flex items-center justify-center rounded-md p-0.5 text-muted-foreground focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-ring'
                             >
                                 <IconEye
                                     aria-hidden

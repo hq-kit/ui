@@ -67,7 +67,7 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
 const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <RACTableHeader ref={ref} className={cn('border-b bg-primary/10 text-foreground', className)} {...props}>
+        <RACTableHeader ref={ref} className={cn('border-b text-foreground', className)} {...props}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
                 <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
@@ -179,20 +179,16 @@ const TableRow = <T extends object>({ children, className, columns, id, ref, ...
         <Row
             ref={ref}
             id={id}
-            className={composeRenderProps(
-                className,
-                (className, { isSelected, isHovered, isFocusVisible, isDisabled, isFocusVisibleWithin }) =>
-                    cn(
-                        'group relative cursor-default not-last:border-b',
-                        'href' in props && 'cursor-pointer',
-                        isSelected && 'bg-primary/15 text-primary',
-                        isHovered && 'bg-primary/10 text-primary',
-                        {
-                            'bg-primary/15 text-primary outline outline-primary': isFocusVisible || isFocusVisibleWithin
-                        },
-                        isDisabled && 'pointer-events-none opacity-50',
-                        className
-                    )
+            className={composeRenderProps(className, (className) =>
+                cn(
+                    'group relative cursor-default not-last:border-b',
+                    'href' in props && 'cursor-pointer',
+                    'selected:bg-muted hover:bg-muted/50',
+                    'focus-visible:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50',
+                    'has-focus-visible:bg-muted has-focus-visible:outline-1 has-focus-visible:outline-ring',
+                    'disabled:pointer-events-none disabled:opacity-50',
+                    className
+                )
             )}
             {...props}
         >
