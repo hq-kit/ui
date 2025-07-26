@@ -34,7 +34,7 @@ export default function Layout() {
 ### Inertia.js
 To integrate with Inertia.js, you must first declare it in your `.d.ts` file, such as in `global.d.ts`.
 
-<Code code={`import { type VisitOptions } from '@inertiajs/core'
+<Code lang="ts" code={`import { type VisitOptions } from '@inertiajs/core'
 import { type AxiosInstance } from 'axios'
 import { type route as routeFn } from 'ziggy-js'
 
@@ -50,7 +50,7 @@ declare module 'react-aria-components' {
     interface RouterConfig {
         routerOptions: VisitOptions
     }
-}`} lang="ts" />
+}`}/>
 
 Next, execute `ziggy:generate` to generate the Ziggy routes in your terminal.
 ```bash
@@ -76,7 +76,6 @@ export default defineConfig({
     resolve: {
       alias: {
         'ziggy-js': resolve('vendor/tightenco/ziggy'),
-        ui: resolve('resources/js/components/ui/index.ts'), // optional if you want to use simple imports
       }
     }
 });
@@ -122,8 +121,8 @@ createInertiaApp({
     window.route = useRoute(Ziggy as any)
     const appElement = (
     <Providers>
-    <App {...props} />
-</Providers>
+      <App {...props} />
+    </Providers>
 )
 if (import.meta.env.SSR) {
     hydrateRoot(el, appElement)
@@ -137,7 +136,7 @@ progress: false
 
 I don't know if you need this or not, but if you care about `ssr.tsx`, you can add the following code:
 
-<Code code={`import { Ziggy as ziggy } from '@/ziggy'
+<Code lang="tsx" code={`import { Ziggy as ziggy } from '@/ziggy'
 import { createInertiaApp } from '@inertiajs/react'
 import createServer from '@inertiajs/react/server'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'

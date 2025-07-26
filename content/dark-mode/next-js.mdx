@@ -78,13 +78,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 ## Theme Switcher
 For theme switcher, you can use the `useTheme` hook from `next-themes` to get the current theme.
 
-<CLI command='install' items={['hq-icons']} />
+<CLI command='install' items={['@tabler/icons-react']} />
 
 Next you can create component `theme-switcher.tsx`
 
 <Code code={`'use client'
 
-import { IconMoon, IconSun } from 'hq-icons'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui'
 

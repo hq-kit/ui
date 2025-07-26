@@ -29,12 +29,12 @@ Astro supports inline scripts, so we can get localStorage and set the theme.
 ```
 
 ## Theme Switcher
-First, install the `hq-icons` package.
-<CLI command='install' items={['hq-icons']} />
+First, install the `@tabler/icons-react` package.
+<CLI command='install' items={['@tabler/icons-react']} />
 And then, add the following code the component where you want to use the theme switcher.
 <Code code={`'use client'
 
-import { IconMoon, IconSun } from 'hq-icons'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui'
 import { cn } from '@/lib/utils'

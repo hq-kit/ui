@@ -32,7 +32,7 @@ function getDeps(content: string) {
     const excludes = [
         'react',
         'react-aria-components',
-        'hq-icons',
+        '@tabler/icons-react',
         'tailwind-variants',
         '@/lib/hooks',
         '@/lib/utils',

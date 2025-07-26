@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.velite/docs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.velite/docs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/sans.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/sans.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/types/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/types/theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +157,7 @@
       <workItem from="1753357077264" duration="18576000" />
       <workItem from="1753428079189" duration="3965000" />
       <workItem from="1753455909166" duration="2635000" />
+      <workItem from="1753536689469" duration="38000" />
     </task>
     <servers />
   </component>

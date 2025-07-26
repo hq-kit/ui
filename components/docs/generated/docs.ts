@@ -8,27 +8,6 @@ type Docs = {
 
 export const docs: Docs[] = [
   {
-    "title": "getting-started",
-    "order": 0,
-    "items": [
-      {
-        "title": "Client Side Routing",
-        "url": "/docs/getting-started/client-side-routing",
-        "order": 3
-      },
-      {
-        "title": "Installation",
-        "url": "/docs/getting-started/installation",
-        "order": 2
-      },
-      {
-        "title": "Introduction",
-        "url": "/docs/getting-started/introduction",
-        "order": 1
-      }
-    ]
-  },
-  {
     "title": "dark-mode",
     "order": 1,
     "items": [
@@ -56,6 +35,27 @@ export const docs: Docs[] = [
         "title": "Vite",
         "url": "/docs/dark-mode/vite",
         "order": 2
+      }
+    ]
+  },
+  {
+    "title": "getting-started",
+    "order": 0,
+    "items": [
+      {
+        "title": "Client Side Routing",
+        "url": "/docs/getting-started/client-side-routing",
+        "order": 3
+      },
+      {
+        "title": "Installation",
+        "url": "/docs/getting-started/installation",
+        "order": 2
+      },
+      {
+        "title": "Introduction",
+        "url": "/docs/getting-started/introduction",
+        "order": 1
       }
     ]
   },
@@ -307,6 +307,27 @@ export const docs: Docs[] = [
         ]
       },
       {
+        "title": "media",
+        "order": 2,
+        "items": [
+          {
+            "title": "Avatar",
+            "url": "/docs/components/media/avatar",
+            "order": 2
+          },
+          {
+            "title": "Carousel",
+            "url": "/docs/components/media/carousel",
+            "order": 1
+          },
+          {
+            "title": "User",
+            "url": "/docs/components/media/user",
+            "order": 3
+          }
+        ]
+      },
+      {
         "title": "forms",
         "order": 7,
         "items": [
@@ -359,45 +380,33 @@ export const docs: Docs[] = [
         ]
       },
       {
-        "title": "media",
+        "title": "navigation",
         "order": 2,
         "items": [
           {
-            "title": "Avatar",
-            "url": "/docs/components/media/avatar",
+            "title": "Breadcrumbs",
+            "url": "/docs/components/navigation/breadcrumbs",
             "order": 2
           },
           {
-            "title": "Carousel",
-            "url": "/docs/components/media/carousel",
+            "title": "Disclosure",
+            "url": "/docs/components/navigation/disclosure",
+            "order": 5
+          },
+          {
+            "title": "Link",
+            "url": "/docs/components/navigation/link",
             "order": 1
           },
           {
-            "title": "User",
-            "url": "/docs/components/media/user",
+            "title": "Pagination",
+            "url": "/docs/components/navigation/pagination",
+            "order": 4
+          },
+          {
+            "title": "Tabs",
+            "url": "/docs/components/navigation/tabs",
             "order": 3
-          }
-        ]
-      },
-      {
-        "title": "pickers",
-        "order": 2,
-        "items": [
-          {
-            "title": "Combo Box",
-            "url": "/docs/components/pickers/combo-box",
-            "order": 2
-          },
-          {
-            "title": "Multi Select",
-            "url": "/docs/components/pickers/multi-select",
-            "order": 3,
-            "status": "beta"
-          },
-          {
-            "title": "Select",
-            "url": "/docs/components/pickers/select",
-            "order": 1
           }
         ]
       },
@@ -429,6 +438,28 @@ export const docs: Docs[] = [
             "title": "Tooltip",
             "url": "/docs/components/overlays/tooltip",
             "order": 4
+          }
+        ]
+      },
+      {
+        "title": "pickers",
+        "order": 2,
+        "items": [
+          {
+            "title": "Combo Box",
+            "url": "/docs/components/pickers/combo-box",
+            "order": 2
+          },
+          {
+            "title": "Multi Select",
+            "url": "/docs/components/pickers/multi-select",
+            "order": 3,
+            "status": "beta"
+          },
+          {
+            "title": "Select",
+            "url": "/docs/components/pickers/select",
+            "order": 1
           }
         ]
       },
@@ -476,37 +507,6 @@ export const docs: Docs[] = [
             "url": "/docs/components/statuses/toast",
             "order": 6,
             "status": "alpha"
-          }
-        ]
-      },
-      {
-        "title": "navigation",
-        "order": 2,
-        "items": [
-          {
-            "title": "Breadcrumbs",
-            "url": "/docs/components/navigation/breadcrumbs",
-            "order": 2
-          },
-          {
-            "title": "Disclosure",
-            "url": "/docs/components/navigation/disclosure",
-            "order": 5
-          },
-          {
-            "title": "Link",
-            "url": "/docs/components/navigation/link",
-            "order": 1
-          },
-          {
-            "title": "Pagination",
-            "url": "/docs/components/navigation/pagination",
-            "order": 4
-          },
-          {
-            "title": "Tabs",
-            "url": "/docs/components/navigation/tabs",
-            "order": 3
           }
         ]
       },

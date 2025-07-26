@@ -49,11 +49,11 @@ export const action = createThemeAction(themeSessionResolver)
 
 ## Theme Switcher
 For theme switcher, you can use the `useTheme` hook from `remix-themes` to get the current theme.
-<CLI command='install' items={['hq-icons']} />
+<CLI command='install' items={['@tabler/icons-react']} />
 Then, make sure you import the icons you want to use.
 
 <Code code={`import { Button } from '@/components/ui/button'
-import { IconMoon, IconSun } from 'hq-icons'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 import { Theme, useTheme } from '@/components/theme-provider'
 
 export function ThemeSwitcher({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
