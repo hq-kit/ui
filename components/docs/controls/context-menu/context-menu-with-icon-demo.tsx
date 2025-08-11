@@ -1,7 +1,7 @@
 'use client'
 
-import { ContextMenu } from '@/components/ui'
 import { IconCopy, IconFolder, IconHighlight, IconTrash, IconUpload } from '@tabler/icons-react'
+import { ContextMenu } from '@/components/ui'
 
 export default function ContextMenuWithIconDemo() {
     return (

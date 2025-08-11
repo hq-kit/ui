@@ -2,7 +2,7 @@ import { Avatar, ComboBox } from '@/components/ui'
 
 export default function ComboBoxAvatarDemo() {
     return (
-        <ComboBox placeholder='Select a user' label='Users' items={users} isRequired>
+        <ComboBox isRequired items={users} label='Users' placeholder='Select a user'>
             {(item) => (
                 <ComboBox.Item id={item.id} textValue={item.name}>
                     <Avatar src={item.image_url} />

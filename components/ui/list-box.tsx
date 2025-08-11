@@ -1,7 +1,5 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { IconCheck, IconGripVertical } from '@tabler/icons-react'
 import type { ComponentPropsWithRef } from 'react'
 import type {
     ListBoxItemProps,
@@ -10,17 +8,19 @@ import type {
     SeparatorProps,
     TextProps
 } from 'react-aria-components'
+import { IconCheck, IconGripVertical } from '@tabler/icons-react'
 import {
     Collection,
+    composeRenderProps,
     Header,
     ListBox as RACListBox,
     ListBoxItem as RACListBoxItem,
     ListBoxSection as RACListBoxSection,
     Separator,
-    Text,
-    composeRenderProps
+    Text
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 const listStyles = tv({
     slots: {
@@ -79,7 +79,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
                     )}
                     {values.isSelected && <IconCheck className='text-primary' data-slot='checked' />}
                     {typeof children === 'string' ? (
-                        <Text slot='label' className='col-start-2'>
+                        <Text className='col-start-2' slot='label'>
                             {children}
                         </Text>
                     ) : (
@@ -112,14 +112,14 @@ const ListBoxDetails = ({ label, description, ...props }: ListBoxDetailsProps) =
     const { children, title, ...restProps } = props
 
     return (
-        <div data-slot='item-details' className='col-start-2 flex flex-col gap-y-1' {...restProps}>
+        <div className='col-start-2 flex flex-col gap-y-1' data-slot='item-details' {...restProps}>
             {label && (
-                <Text slot='label' className='font-medium sm:text-sm'>
+                <Text className='font-medium sm:text-sm' slot='label'>
                     {label}
                 </Text>
             )}
             {description && (
-                <Text slot='description' className='text-muted-foreground text-xs' {...restProps}>
+                <Text className='text-muted-foreground text-xs' slot='description' {...restProps}>
                     {description}
                 </Text>
             )}
@@ -130,14 +130,14 @@ const ListBoxDetails = ({ label, description, ...props }: ListBoxDetailsProps) =
 
 const ListBoxSeparator = ({ className, ...props }: SeparatorProps) => (
     <Separator
-        orientation='horizontal'
         className={cn('-mx-1 col-span-full my-1 h-px bg-muted', className)}
+        orientation='horizontal'
         {...props}
     />
 )
 
 const ListBoxLabel = ({ className, ...props }: ComponentPropsWithRef<typeof Text>) => (
-    <Text slot='label' className={cn('col-start-2', className)} {...props} />
+    <Text className={cn('col-start-2', className)} slot='label' {...props} />
 )
 
 ListBox.Section = ListBoxSection

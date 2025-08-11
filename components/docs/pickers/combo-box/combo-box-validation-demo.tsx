@@ -1,9 +1,8 @@
 'use client'
 
-import { Button, ComboBox, Form } from '@/components/ui'
-import { type FormEvent, useState } from 'react'
-
 import type { Key } from 'react-aria-components'
+import { type FormEvent, useState } from 'react'
+import { Button, ComboBox, Form } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -20,8 +19,8 @@ export default function ComboBoxValidationDemo() {
         alert(value)
     }
     return (
-        <Form onSubmit={onSubmit} className='space-y-4'>
-            <ComboBox label='Linux Distro' items={items} selectedKey={value} onSelectionChange={setValue} isRequired>
+        <Form className='space-y-4' onSubmit={onSubmit}>
+            <ComboBox isRequired items={items} label='Linux Distro' onSelectionChange={setValue} selectedKey={value}>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
             <Button type='submit'>Submit</Button>

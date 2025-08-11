@@ -1,10 +1,10 @@
 'use client'
 
+import { IconBrandX, IconTrash } from '@tabler/icons-react'
 import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
 import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
 import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
 import { Breadcrumbs, Button, Card, ComboBox, DatePicker, Modal, Popover, Select, Tooltip } from '@/components/ui'
-import { IconBrandX, IconTrash } from '@tabler/icons-react'
 
 export default function OptionsSink() {
     return (
@@ -17,19 +17,19 @@ export default function OptionsSink() {
             <div className='mt-6 flex w-full items-center gap-2'>
                 <Select
                     aria-labelledby='per-page'
-                    id='per-page'
-                    placeholder='10'
                     className='lg:w-20'
                     defaultSelectedKey={'10'}
+                    id='per-page'
+                    placeholder='10'
                 >
                     <Select.Item id='10'>10</Select.Item>
                     <Select.Item id='20'>20</Select.Item>
                     <Select.Item id='30'>30</Select.Item>
                 </Select>
-                <DatePicker className='w-full' aria-label='Event date' />
+                <DatePicker aria-label='Event date' className='w-full' />
             </div>
             <div className='mt-4 flex items-end gap-1'>
-                <ComboBox className='w-full' placeholder='Select a user' label='Users' items={users}>
+                <ComboBox className='w-full' items={users} label='Users' placeholder='Select a user'>
                     {(item) => (
                         <ComboBox.Item id={item.id} textValue={item.name}>
                             {item.name}
@@ -37,7 +37,7 @@ export default function OptionsSink() {
                     )}
                 </ComboBox>
                 <Modal>
-                    <Button variant='destructive' icon>
+                    <Button icon variant='destructive'>
                         <IconTrash />
                     </Button>
                     <Modal.Content role='alertdialog' size='lg'>
@@ -51,7 +51,7 @@ export default function OptionsSink() {
                             <Button slot='close' variant='outline'>
                                 Cancel
                             </Button>
-                            <Button variant='destructive' className='min-w-24'>
+                            <Button className='min-w-24' variant='destructive'>
                                 <IconTrash /> Delete
                             </Button>
                         </Modal.Footer>

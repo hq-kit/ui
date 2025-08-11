@@ -1,7 +1,7 @@
 'use client'
 
-import { Card, SearchField, Table } from '@/components/ui'
 import { useAsyncList } from '@react-stately/data'
+import { Card, SearchField, Table } from '@/components/ui'
 
 interface Character {
     title: string
@@ -43,9 +43,9 @@ export default function TableFilteringDemo() {
                 <SearchField
                     isPending={list.isLoading}
                     label='Search Movies'
+                    onChange={list.setFilterText}
                     placeholder='Type to search...'
                     value={list.filterText}
-                    onChange={list.setFilterText}
                 />
             </Card.Header>
             <Card.Content>

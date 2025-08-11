@@ -1,11 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
 import { Collection, type CollectionProps } from '@react-aria/collections'
 import { IconUser } from '@tabler/icons-react'
 import { type ComponentProps, useEffect, useState } from 'react'
-import { type VariantProps, tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
     className?: string
@@ -81,19 +80,18 @@ const Avatar = ({ src, shape, size, alt, className, ...props }: AvatarProps & Co
 
     if (error) {
         return (
-            <span data-avatar={true} className={avatarStyle({ shape, size, className })}>
+            <span className={avatarStyle({ shape, size, className })} data-avatar={true}>
                 <FallbackImage alt={alt} />
             </span>
         )
     }
     return (
-        // biome-ignore lint/a11y/useAltText: <explanation>
         <img
-            src={src}
             alt={alt || 'Avatar'}
-            onError={handleError}
-            data-avatar
             className={avatarStyle({ shape, size, className })}
+            data-avatar
+            onError={handleError}
+            src={src}
             {...props}
         />
     )
@@ -102,12 +100,12 @@ const Avatar = ({ src, shape, size, alt, className, ...props }: AvatarProps & Co
 const FallbackImage = ({ alt }: { alt: string | undefined }) => {
     return alt ? (
         <svg
+            aria-hidden='true'
             className='size-full select-none bg-background fill-current p-[5%] font-medium text-[48px] uppercase'
             viewBox='0 0 100 100'
-            aria-hidden='true'
         >
             {alt && <title>{alt}</title>}
-            <text x='50%' y='50%' alignmentBaseline='middle' dominantBaseline='middle' textAnchor='middle' dy='.125em'>
+            <text alignmentBaseline='middle' dominantBaseline='middle' dy='.125em' textAnchor='middle' x='50%' y='50%'>
                 {getInitials(alt)}
             </text>
         </svg>

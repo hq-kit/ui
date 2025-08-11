@@ -1,7 +1,7 @@
 'use client'
 
-import { ListBox, Radio, RadioGroup } from '@/components/ui'
 import { useState } from 'react'
+import { ListBox, Radio, RadioGroup } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -21,10 +21,10 @@ export default function ListBoxMultipleDemo() {
     return (
         <div className='space-y-6'>
             <RadioGroup
-                orientation='horizontal'
                 label='Selection mode'
-                value={selectionMode}
                 onChange={setSelectionMode}
+                orientation='horizontal'
+                value={selectionMode}
             >
                 <Radio value='none'>None</Radio>
                 <Radio value='single'>Single</Radio>
@@ -32,8 +32,8 @@ export default function ListBoxMultipleDemo() {
             </RadioGroup>
 
             <ListBox
-                items={items}
                 aria-label='Select items'
+                items={items}
                 selectionMode={selectionMode as 'none' | 'single' | 'multiple'}
             >
                 {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}

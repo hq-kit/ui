@@ -1,7 +1,7 @@
 'use client'
 
-import { Tabs } from '@/components/ui'
 import { IconBinoculars, IconCurrencyDollar, IconGift, IconMessageHeart } from '@tabler/icons-react'
+import { Tabs } from '@/components/ui'
 
 export default function TabsIconsDemo() {
     return (

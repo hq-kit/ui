@@ -1,9 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import { AnimatePresence, motion } from 'motion/react'
 import { type ReactNode, use } from 'react'
-import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import {
     Button,
     Dialog,
@@ -12,6 +11,7 @@ import {
     OverlayTriggerStateContext,
     Modal as RACModal
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './dialog'
 
 const Modal = motion.create(RACModal)
@@ -43,19 +43,20 @@ const DrawerContent = ({
         <AnimatePresence>
             {(props?.isOpen || state?.isOpen) && (
                 <Overlay
-                    isDismissable
-                    isOpen={props?.isOpen || state?.isOpen}
-                    onOpenChange={props?.onOpenChange || state?.setOpen}
-                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
                     animate={{
                         backgroundColor: 'rgba(0, 0, 0, 0.5)',
                         backdropFilter: 'blur(4px)'
                     }}
-                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
                     className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
+                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
+                    isDismissable
+                    isOpen={props?.isOpen || state?.isOpen}
+                    onOpenChange={props?.onOpenChange || state?.setOpen}
                 >
                     {({ state }) => (
                         <Modal
+                            animate={{ x: 0, y: 0 }}
                             className={cn(
                                 'fixed max-h-full touch-none overflow-hidden bg-background align-middle text-foreground shadow-sm will-change-transform',
                                 side === 'top' &&
@@ -84,20 +85,24 @@ const DrawerContent = ({
                                     }`,
                                 className
                             )}
-                            initial={{
-                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
-                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
+                            drag={side === 'left' || side === 'right' ? 'x' : 'y'}
+                            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
+                            dragElastic={{
+                                top: side === 'top' ? 1 : 0,
+                                bottom: side === 'bottom' ? 1 : 0,
+                                left: side === 'left' ? 1 : 0,
+                                right: side === 'right' ? 1 : 0
                             }}
-                            animate={{ x: 0, y: 0 }}
+                            dragPropagation
+                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                             exit={{
                                 x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
                                 y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
                             }}
-                            drag={side === 'left' || side === 'right' ? 'x' : 'y'}
-                            whileDrag={{ cursor: 'grabbing' }}
-                            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                            transition={{ duration: 0.15, ease: 'easeInOut' }}
+                            initial={{
+                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
+                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
+                            }}
                             onDragEnd={(_, { offset, velocity }) => {
                                 if (side === 'bottom' && (velocity.y > 150 || offset.y > screen.height * 0.25)) {
                                     state.close()
@@ -112,23 +117,18 @@ const DrawerContent = ({
                                     state.close()
                                 }
                             }}
-                            dragElastic={{
-                                top: side === 'top' ? 1 : 0,
-                                bottom: side === 'bottom' ? 1 : 0,
-                                left: side === 'left' ? 1 : 0,
-                                right: side === 'right' ? 1 : 0
-                            }}
-                            dragPropagation
+                            transition={{ duration: 0.15, ease: 'easeInOut' }}
+                            whileDrag={{ cursor: 'grabbing' }}
                         >
                             <Dialog
                                 aria-label='Drawer'
-                                role='dialog'
                                 className={cn(
                                     'relative flex flex-col overflow-hidden outline-hidden will-change-auto',
                                     side === 'top' || side === 'bottom'
                                         ? 'mx-auto max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] max-w-lg'
                                         : 'h-full'
                                 )}
+                                role='dialog'
                             >
                                 {withNotch && side === 'bottom' && (
                                     <div className='notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20' />

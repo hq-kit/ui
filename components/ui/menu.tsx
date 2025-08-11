@@ -1,12 +1,12 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import type { ComponentPropsWithRef, CSSProperties } from 'react'
 import { IconCheck, IconChevronRight } from '@tabler/icons-react'
-import type { CSSProperties, ComponentPropsWithRef } from 'react'
 import {
     Button,
     type ButtonProps,
     Collection,
+    composeRenderProps,
     Header,
     type MenuProps,
     type MenuSectionProps,
@@ -19,10 +19,10 @@ import {
     MenuSection as RACMenuSection,
     MenuTrigger as RACMenuTrigger,
     SubmenuTrigger,
-    composeRenderProps,
     useSlottedContext
 } from 'react-aria-components'
-import { ListBoxDetails, ListBoxLabel, ListBoxSeparator, headerStyle, itemStyle, sectionStyle } from './list-box'
+import { cn } from '@/lib/utils'
+import { headerStyle, itemStyle, ListBoxDetails, ListBoxLabel, ListBoxSeparator, sectionStyle } from './list-box'
 import { PopoverContent } from './popover'
 
 const Menu = ({ ...props }: MenuTriggerProps) => <RACMenuTrigger {...props} />
@@ -51,9 +51,9 @@ const MenuContent = <T extends object>({ className, respectScreen = true, ...pro
     const optimalOffset = isSubmenuTrigger ? 0 : 8
     return (
         <PopoverContent
-            showArrow={false}
-            respectScreen={respectScreen}
             offset={props.offset ?? optimalOffset}
+            respectScreen={respectScreen}
+            showArrow={false}
             {...props}
         >
             <RACMenu
@@ -76,14 +76,16 @@ const MenuItem = ({ className, isDestructive = false, children, ...props }: Menu
     return (
         <RACMenuItem
             className={composeRenderProps(className, (className) =>
-                itemStyle({
-                    className: cn(
-                        isDestructive
-                            ? 'text-destructive **:text-destructive open:bg-destructive/10 open:text-destructive focus:bg-destructive/10 focus:text-destructive focus:**:text-destructive'
-                            : 'text-foreground',
-                        className
-                    )
-                })
+                cn(
+                    itemStyle({
+                        className: cn(
+                            isDestructive
+                                ? 'text-destructive **:text-destructive open:bg-destructive/10 open:text-destructive focus:bg-destructive/10 focus:text-destructive focus:**:text-destructive'
+                                : 'text-foreground'
+                        )
+                    }),
+                    className
+                )
             )}
             textValue={textValue}
             {...props}
@@ -92,7 +94,7 @@ const MenuItem = ({ className, isDestructive = false, children, ...props }: Menu
                 <>
                     {values.isSelected && <IconCheck className='mr-2 text-primary' data-slot='checked' />}
                     {typeof children === 'function' ? children(values) : children}
-                    {values.hasSubmenu && <IconChevronRight data-slot='chevron' className='ml-auto' />}
+                    {values.hasSubmenu && <IconChevronRight className='ml-auto' data-slot='chevron' />}
                 </>
             )}
         </RACMenuItem>

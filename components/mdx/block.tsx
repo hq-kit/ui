@@ -1,11 +1,10 @@
 'use client'
 
-import { Link, Toggle, buttonStyle } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
 import { IconBrowserMaximize, IconDeviceDesktop, IconDeviceMobile, IconDeviceTablet } from '@tabler/icons-react'
 import { useState } from 'react'
 import { type Key, TabPanel } from 'react-aria-components'
+import { buttonStyle, Link, Toggle } from '@/components/ui'
+import { cn } from '@/lib/utils'
 import { Fleet } from './fleet'
 import { TabsSwitcher } from './tabs-switcher'
 
@@ -18,11 +17,11 @@ export function Block({ page }: { page: string }) {
                     <div className={cn('relative w-full bg-background', 'flex min-h-56 items-center lg:min-h-80')}>
                         <div className='sm:-top-10 absolute right-0 z-20 hidden gap-1 sm:flex'>
                             <Toggle.Group
-                                size='sm'
                                 icon
-                                selectionMode='single'
-                                selectedKeys={screenWidth}
                                 onSelectionChange={setScreenWidth}
+                                selectedKeys={screenWidth}
+                                selectionMode='single'
+                                size='sm'
                             >
                                 <Toggle id='max-w-sm'>
                                     <IconDeviceMobile />
@@ -35,27 +34,27 @@ export function Block({ page }: { page: string }) {
                                 </Toggle>
                             </Toggle.Group>
                             <Link
-                                target='_blank'
                                 className={buttonStyle({
                                     icon: true,
                                     variant: 'outline',
                                     size: 'sm'
                                 })}
                                 href={`/block/${page}`}
+                                target='_blank'
                             >
                                 <IconBrowserMaximize />
                             </Link>
                         </div>
                         <iframe
-                            title='Preview'
+                            allowFullScreen
                             className={cn(
                                 'relative z-20 w-full overflow-hidden rounded-lg border',
                                 [...screenWidth].flat()
                             )}
                             height={768}
-                            style={{ zoom: 0.95 }}
-                            allowFullScreen
                             src={`/block/${page}`}
+                            style={{ zoom: 0.95 }}
+                            title='Preview'
                         />
                     </div>
                 </TabPanel>

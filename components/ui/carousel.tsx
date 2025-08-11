@@ -1,20 +1,19 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
+import type { ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import {
     type ComponentPropsWithRef,
-    type KeyboardEvent,
     createContext,
+    type KeyboardEvent,
     use,
     useCallback,
     useEffect,
     useState
 } from 'react'
-import type { ListBoxItemProps, ListBoxSectionProps } from 'react-aria-components'
-import { Button, ListBox, ListBoxItem, ListBoxSection, composeRenderProps } from 'react-aria-components'
+import { Button, composeRenderProps, ListBox, ListBoxItem, ListBoxSection } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -139,7 +138,7 @@ const Carousel = ({
                 canScrollNext
             }}
         >
-            <div onKeyDownCapture={handleKeyDown} className={cn('relative', className)} role='region' {...props}>
+            <div className={cn('relative', className)} onKeyDownCapture={handleKeyDown} role='region' {...props}>
                 {children}
             </div>
         </CarouselContext.Provider>
@@ -151,11 +150,11 @@ const CarouselContent = <T extends object>({ className, ...props }: ListBoxSecti
 
     return (
         <ListBox
-            layout={orientation === 'vertical' ? 'stack' : 'grid'}
             aria-label='Slides'
+            className='overflow-hidden'
+            layout={orientation === 'vertical' ? 'stack' : 'grid'}
             orientation={orientation}
             ref={carouselRef}
-            className='overflow-hidden'
         >
             <ListBoxSection
                 className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
@@ -187,18 +186,18 @@ const CarouselHandler = ({ className, ...props }: ComponentPropsWithRef<'div'>) 
     const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
     return (
         <div
-            slot='carousel-handler'
             className={cn(
                 'relative z-10 my-4 flex items-center gap-x-2',
                 orientation === 'horizontal' ? 'justify-end' : 'justify-center',
                 className
             )}
+            slot='carousel-handler'
             {...props}
         >
             <Button
                 aria-label='Previous Slide'
-                data-handler='previous'
                 className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border bg-background pressed:bg-accent/80 pressed:text-accent-foreground text-foreground shadow-sm outline-hidden hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50'
+                data-handler='previous'
                 isDisabled={!canScrollPrev}
                 onPress={scrollPrev}
             >
@@ -206,8 +205,8 @@ const CarouselHandler = ({ className, ...props }: ComponentPropsWithRef<'div'>) 
             </Button>
             <Button
                 aria-label='Next Slide'
-                data-handler='next'
                 className='inline-flex size-7 shrink-0 orientation-vertical:rotate-90 items-center justify-center rounded-md border bg-background pressed:bg-accent/80 pressed:text-accent-foreground text-foreground shadow-sm outline-hidden hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50'
+                data-handler='next'
                 isDisabled={!canScrollNext}
                 onPress={scrollNext}
             >

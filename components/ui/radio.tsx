@@ -1,9 +1,9 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ReactNode, Ref } from 'react'
 import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
-import { Radio as RACRadio, RadioGroup as RACRadioGroup, composeRenderProps } from 'react-aria-components'
+import { composeRenderProps, Radio as RACRadio, RadioGroup as RACRadioGroup } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface RadioGroupProps extends RACRadioGroupProps, FieldProps {}
@@ -12,8 +12,8 @@ const RadioGroup = ({ label, description, errorMessage, className, children, ...
     return (
         <RACRadioGroup
             {...props}
-            isInvalid={!!errorMessage || props.isInvalid}
             className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-2', className))}
+            isInvalid={!!errorMessage || props.isInvalid}
         >
             {(values) => (
                 <>
@@ -42,7 +42,6 @@ interface RadioProps extends RACRadioProps, Omit<FieldProps, 'errorMessage'> {
 const Radio = ({ label, description, className, children, ref, ...props }: RadioProps) => {
     return (
         <RACRadio
-            ref={ref}
             className={composeRenderProps(className, (className) =>
                 cn(
                     'group/box flex items-center gap-2',
@@ -52,6 +51,7 @@ const Radio = ({ label, description, className, children, ref, ...props }: Radio
                     className
                 )
             )}
+            ref={ref}
             {...props}
         >
             {(values) => (

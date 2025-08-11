@@ -1,11 +1,10 @@
 'use client'
 
-import { Avatar, Button, Card, DropZone, FileTrigger, Form, TextField, Textarea } from '@/components/ui'
-
 import type { DropEvent } from '@react-types/shared'
 import { IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandX } from '@tabler/icons-react'
 import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
+import { Avatar, Button, Card, DropZone, FileTrigger, Form, Textarea, TextField } from '@/components/ui'
 
 export default function AccountSetting() {
     const [droppedImage, setDroppedImage] = useState<string>('')
@@ -41,40 +40,40 @@ export default function AccountSetting() {
                     <Card.Content className='space-y-4'>
                         <div className='flex items-center gap-2'>
                             <DropZone
+                                className='size-10 overflow-hidden rounded-full p-0'
                                 getDropOperation={(types) =>
                                     types.has('image/jpeg') || types.has('image/png') ? 'copy' : 'cancel'
                                 }
                                 onDrop={onDropHandler}
-                                className='size-10 overflow-hidden rounded-full p-0'
                             >
-                                <Avatar src={droppedImage ?? ''} size='lg' />
-                                <input type='hidden' name='image' value={droppedImage ?? ''} />
+                                <Avatar size='lg' src={droppedImage ?? ''} />
+                                <input name='image' type='hidden' value={droppedImage ?? ''} />
                             </DropZone>
                             <FileTrigger
-                                size='sm'
                                 acceptedFileTypes={['image/png', 'image/jpeg']}
                                 onSelect={onSelectHandler}
+                                size='sm'
                             >
                                 Upload avatar
                             </FileTrigger>
                         </div>
                         <TextField
                             autoFocus
-                            label='Name'
-                            placeholder='Enter your name'
                             id='name'
-                            name='name'
                             isRequired
+                            label='Name'
+                            name='name'
+                            placeholder='Enter your name'
                         />
                         <TextField
-                            type='email'
+                            id='email'
                             isRequired
                             label='Email'
-                            placeholder='Enter your email'
-                            id='email'
                             name='email'
+                            placeholder='Enter your email'
+                            type='email'
                         />
-                        <Textarea label='Bio' placeholder='Enter your bio' id='bio' name='bio' />
+                        <Textarea id='bio' label='Bio' name='bio' placeholder='Enter your bio' />
                     </Card.Content>
                     <Card.Footer>
                         <Button>Save</Button>
@@ -88,10 +87,10 @@ export default function AccountSetting() {
                         <Card.Description>Your social accounts.</Card.Description>
                     </Card.Header>
                     <Card.Content className='grid gap-4 lg:grid-cols-2'>
-                        <TextField label='Github Username' prefix={<IconBrandGithub />} id='github' name='github' />
-                        <TextField label='X Username' prefix={<IconBrandX />} id='twitter' name='twitter' />
-                        <TextField label='Facebook' prefix={<IconBrandFacebook />} id='facebook' name='facebook' />
-                        <TextField label='Instagram' prefix={<IconBrandInstagram />} id='ig' name='ig' />
+                        <TextField id='github' label='Github Username' name='github' prefix={<IconBrandGithub />} />
+                        <TextField id='twitter' label='X Username' name='twitter' prefix={<IconBrandX />} />
+                        <TextField id='facebook' label='Facebook' name='facebook' prefix={<IconBrandFacebook />} />
+                        <TextField id='ig' label='Instagram' name='ig' prefix={<IconBrandInstagram />} />
                     </Card.Content>
                     <Card.Footer>
                         <Button>Save</Button>

@@ -6,9 +6,9 @@ export default function DateFieldDemo() {
     return (
         <div className='grid grid-cols-4 gap-2'>
             <DateField label='Default' />
-            <DateField label='Readonly' isReadOnly />
-            <DateField label='Invalid' isInvalid />
-            <DateField label='Disabled' isDisabled />
+            <DateField isReadOnly label='Readonly' />
+            <DateField isInvalid label='Invalid' />
+            <DateField isDisabled label='Disabled' />
         </div>
     )
 }

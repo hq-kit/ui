@@ -1,11 +1,10 @@
 'use client'
 
+import { Fragment } from 'react'
 import { docs } from '@/components/docs/generated/docs'
-
 import { Navbar } from '@/components/ui'
 import { useIsMobile } from '@/lib/hooks'
 import { titleCase } from '@/lib/utils/modifiers'
-import { Fragment } from 'react'
 
 export function MobileNav({ currentUrl }: { currentUrl: string }) {
     const isMobile = useIsMobile()
@@ -22,9 +21,9 @@ export function MobileNav({ currentUrl }: { currentUrl: string }) {
                                     (item, i) =>
                                         item.url && (
                                             <Navbar.Item
-                                                key={i}
                                                 href={item.url as string}
                                                 isCurrent={item.url === currentUrl}
+                                                key={i}
                                             >
                                                 {item.title}
                                             </Navbar.Item>
@@ -46,9 +45,9 @@ export function MobileNav({ currentUrl }: { currentUrl: string }) {
                                                 (item, i) =>
                                                     item.url && (
                                                         <Navbar.Item
-                                                            key={i}
                                                             href={item.url as string}
                                                             isCurrent={item.url === currentUrl}
+                                                            key={i}
                                                         >
                                                             {item.title}
                                                         </Navbar.Item>

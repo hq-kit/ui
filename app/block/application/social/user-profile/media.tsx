@@ -1,7 +1,7 @@
-import { Card } from '@/components/ui'
-import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { Collection } from 'react-aria-components'
+import { Card } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export default function Media() {
     const items = Array.from({ length: 17 }, (_, id) => ({
@@ -12,13 +12,13 @@ export default function Media() {
         <div className='grid grid-cols-2 gap-2 2xl:grid-cols-4'>
             <Collection items={items}>
                 {(item) => (
-                    <div key={item.id} className={cn(item.id % 5 === 0 && 'col-span-2')}>
+                    <div className={cn(item.id % 5 === 0 && 'col-span-2')} key={item.id}>
                         <Card>
                             <Image
-                                width={item.id % 5 === 0 ? 800 : 400}
+                                alt={item.title}
                                 height={300}
                                 src={`https://picsum.photos/${item.id % 5 === 0 ? 800 : 400}/300?random=${item.id}`}
-                                alt={item.title}
+                                width={item.id % 5 === 0 ? 800 : 400}
                             />
                         </Card>
                     </div>

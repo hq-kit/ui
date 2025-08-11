@@ -1,9 +1,8 @@
 'use client'
 
-import { Button, Form, MultiSelect } from '@/components/ui'
-import { type FormEvent, useState } from 'react'
-
 import type { Selection } from 'react-aria-components'
+import { type FormEvent, useState } from 'react'
+import { Button, Form, MultiSelect } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -28,10 +27,10 @@ export default function MultiSelectDemo() {
         <Form className='space-y-4' onSubmit={onSubmit}>
             <MultiSelect
                 errorMessage={Array.from(selected).length < 2 ? 'Select at least 2 distros' : undefined}
-                label='Linux Distro'
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
                 items={items}
+                label='Linux Distro'
+                onSelectionChange={setSelected}
+                selectedKeys={selected}
             >
                 {(item) => {
                     return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>

@@ -8,16 +8,16 @@ function DNDList({ items }: { items: { id: string; type: string; name: string }[
 
     return (
         <ListBox
-            selectedKeys={list.selectedKeys}
-            onSelectionChange={list.setSelectedKeys}
+            aria-label='Linux Distros'
             dragAndDropHooks={dragAndDropHooks}
             items={list.items}
+            onSelectionChange={list.setSelectedKeys}
             renderEmptyState={() => (
                 <div className='col-span-full flex items-center justify-center text-muted-foreground'>
                     Drop items here
                 </div>
             )}
-            aria-label='Linux Distros'
+            selectedKeys={list.selectedKeys}
         >
             {(item) => <ListBox.Item>{item.name}</ListBox.Item>}
         </ListBox>

@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@/components/ui'
 import { toast } from 'sonner'
+import { Button } from '@/components/ui'
 
 export default function SonnerDemo() {
     return <Button onPress={() => toast('This is Toast Message')}>Toast</Button>

@@ -1,24 +1,24 @@
 'use client'
 
-import { Button } from '@/components/ui'
 import { toast } from 'sonner'
+import { Button } from '@/components/ui'
 
 export default function SonnerStatusDemo() {
     return (
         <div className='flex flex-wrap gap-3'>
-            <Button variant='outline' onPress={() => toast('Everything is fine')}>
+            <Button onPress={() => toast('Everything is fine')} variant='outline'>
                 Default
             </Button>
-            <Button variant='outline' onPress={() => toast.error('The registration failed')}>
+            <Button onPress={() => toast.error('The registration failed')} variant='outline'>
                 Error
             </Button>
-            <Button variant='outline' onPress={() => toast.success('The registration was successful.')}>
+            <Button onPress={() => toast.success('The registration was successful.')} variant='outline'>
                 Success
             </Button>
-            <Button variant='outline' onPress={() => toast.warning('There was an issue during registration')}>
+            <Button onPress={() => toast.warning('There was an issue during registration')} variant='outline'>
                 Warning
             </Button>
-            <Button variant='outline' onPress={() => toast.info('Email is already registered.')}>
+            <Button onPress={() => toast.info('Email is already registered.')} variant='outline'>
                 Info
             </Button>
         </div>

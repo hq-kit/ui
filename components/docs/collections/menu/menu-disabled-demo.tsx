@@ -1,7 +1,7 @@
 'use client'
 
-import { Menu } from '@/components/ui'
 import { IconEye, IconPencil, IconTrash } from '@tabler/icons-react'
+import { Menu } from '@/components/ui'
 
 export default function MenuDisabledDemo() {
     return (

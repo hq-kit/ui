@@ -20,10 +20,10 @@ const items = [
 
 export default function SelectItemDetailsDemo() {
     return (
-        <Select label='Javascript Frameworks' items={items}>
+        <Select items={items} label='Javascript Frameworks'>
             {(item) => (
                 <Select.Item id={item.id} textValue={item.name}>
-                    <Select.Details label={item.name} description={item.description} />
+                    <Select.Details description={item.description} label={item.name} />
                 </Select.Item>
             )}
         </Select>

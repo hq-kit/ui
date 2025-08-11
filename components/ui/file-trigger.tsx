@@ -1,10 +1,8 @@
 'use client'
 
 import type { ReactNode, RefObject } from 'react'
-
-import { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
-
+import { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'
 import { Button, type buttonStyle } from './button'
 
 interface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof buttonStyle> {

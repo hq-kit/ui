@@ -14,7 +14,7 @@ export default function CommandSectionDemo() {
                 </Command.Item>
             </Command.Section>
             <Command.Separator />
-            <Command.Section title='Users' items={users}>
+            <Command.Section items={users} title='Users'>
                 {(item) => (
                     <Command.Item id={item.id} textValue={item.name}>
                         <Avatar src={item.image_url} />

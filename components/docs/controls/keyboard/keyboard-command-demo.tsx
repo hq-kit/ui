@@ -1,7 +1,7 @@
 'use client'
 
-import { Command, Keyboard } from '@/components/ui'
 import { IconFolder, IconLayoutSidebar, IconSettings, IconX } from '@tabler/icons-react'
+import { Command, Keyboard } from '@/components/ui'
 
 export default function KeyboardCommandDemo() {
     return (

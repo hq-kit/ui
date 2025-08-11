@@ -11,13 +11,13 @@ const items = [
 export default function TagGroupVariantDemo() {
     return (
         <div className='max-w-sm space-y-6'>
-            <Tag.Group variant='default' label='Default' items={items} selectionMode='multiple'>
+            <Tag.Group items={items} label='Default' selectionMode='multiple' variant='default'>
                 {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
-            <Tag.Group variant='secondary' label='Secondary' items={items} selectionMode='multiple'>
+            <Tag.Group items={items} label='Secondary' selectionMode='multiple' variant='secondary'>
                 {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
-            <Tag.Group variant='destructive' label='Destructive' items={items} selectionMode='multiple'>
+            <Tag.Group items={items} label='Destructive' selectionMode='multiple' variant='destructive'>
                 {(item) => <Tag>{item.name}</Tag>}
             </Tag.Group>
         </div>

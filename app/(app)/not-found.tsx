@@ -1,5 +1,5 @@
-import { Link } from '@/components/ui'
 import { IconHome } from '@tabler/icons-react'
+import { Link } from '@/components/ui'
 
 export default function NotFound() {
     return (
@@ -14,8 +14,8 @@ export default function NotFound() {
                         Sorry, we can't find that page. You'll find lots to explore on the home page.
                     </p>
                     <Link
-                        href='/'
                         className='my-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-center font-medium text-primary-foreground text-sm outline-hidden ring-ring hover:bg-primary/90 focus:ring-4'
+                        href='/'
                     >
                         <IconHome />
                         Back to Homepage

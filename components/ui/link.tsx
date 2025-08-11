@@ -1,7 +1,7 @@
 'use client'
 
+import { composeRenderProps, type LinkProps, Link as RACLink } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { type LinkProps, Link as RACLink, composeRenderProps } from 'react-aria-components'
 
 const Link = ({ className, ...props }: LinkProps) => {
     return (

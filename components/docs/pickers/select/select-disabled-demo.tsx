@@ -15,7 +15,7 @@ const items = [
 
 export default function SelectDisabledItemDemo() {
     return (
-        <Select label='Linux Distro' items={items}>
+        <Select items={items} label='Linux Distro'>
             {(item) => (
                 <Select.Item id={item.id} isDisabled={!item.available}>
                     {item.name}

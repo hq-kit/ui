@@ -1,16 +1,16 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import { IconCalendarFilled } from '@tabler/icons-react'
 import {
     Button,
+    composeRenderProps,
     type DateValue,
     DatePicker as RACDatePicker,
     type DatePickerProps as RACDatePickerProps,
     DateRangePicker as RACDateRangePicker,
-    type DateRangePickerProps as RACDateRangePickerProps,
-    composeRenderProps
+    type DateRangePickerProps as RACDateRangePickerProps
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Calendar, RangeCalendar } from './calendar'
 import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
@@ -46,12 +46,12 @@ const DatePicker = <T extends DateValue>({
                     </FieldGroup>
                     {description && <Description>{description}</Description>}
                     <FieldError>{errorMessage}</FieldError>
-                    <PopoverContent showArrow={false} className='p-4'>
+                    <PopoverContent className='p-4' showArrow={false}>
                         <Calendar />
                         <Button
-                            type='button'
-                            slot='close'
                             className='mt-2 w-full rounded-lg border pressed:bg-accent p-2 text-center hover:bg-accent/90 sm:hidden'
+                            slot='close'
+                            type='button'
                         >
                             Close
                         </Button>
@@ -83,11 +83,11 @@ const DateRangePicker = <T extends DateValue>({
                 <>
                     {label && <Label>{label}</Label>}
                     <FieldGroup className='w-auto min-w-40'>
-                        <DateInput slot='start' className='px-2 text-base tabular-nums lg:text-sm' />
+                        <DateInput className='px-2 text-base tabular-nums lg:text-sm' slot='start' />
                         <span aria-hidden='true' className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm'>
                             –
                         </span>
-                        <DateInput slot='end' className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm' />
+                        <DateInput className='flex-1 px-2 py-1.5 text-base tabular-nums lg:text-sm' slot='end' />
                         <Button className='mr-1 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg outline-hidden'>
                             <IconCalendarFilled
                                 aria-hidden
@@ -100,9 +100,9 @@ const DateRangePicker = <T extends DateValue>({
                     <PopoverContent showArrow={false}>
                         <RangeCalendar />
                         <Button
-                            type='button'
-                            slot='close'
                             className='mt-2 w-full rounded-lg border pressed:bg-accent p-2 text-center hover:bg-accent/90 sm:hidden'
+                            slot='close'
+                            type='button'
                         >
                             Close
                         </Button>

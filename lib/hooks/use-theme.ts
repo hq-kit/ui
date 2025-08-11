@@ -1,7 +1,7 @@
-import { fontMonoFamilies, fontSansFamilies } from '@/lib/fonts'
-import { type Preset, getPreset } from '@/lib/themes'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { fontMonoFamilies, fontSansFamilies } from '@/lib/fonts'
+import { getPreset, type Preset } from '@/lib/themes'
 
 type State = {
     presetTheme: Preset

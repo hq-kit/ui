@@ -13,7 +13,7 @@ export default function TableDragDemo() {
     const list = useList({ initialItems: items })
     const { dragAndDropHooks } = useDND({ list, operation: 'move' })
     return (
-        <Table aria-label='Pokemons' selectionMode='multiple' dragAndDropHooks={dragAndDropHooks}>
+        <Table aria-label='Pokemons' dragAndDropHooks={dragAndDropHooks} selectionMode='multiple'>
             <Table.Header>
                 <Table.Column>#</Table.Column>
                 <Table.Column isRowHeader>Name</Table.Column>

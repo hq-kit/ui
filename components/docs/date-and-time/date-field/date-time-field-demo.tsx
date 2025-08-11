@@ -1,8 +1,8 @@
 'use client'
 
-import { DateField } from '@/components/ui'
 import { getLocalTimeZone, now, parseZonedDateTime } from '@internationalized/date'
 import { useState } from 'react'
+import { DateField } from '@/components/ui'
 
 export default function DateTimeFieldDemo() {
     const today = parseZonedDateTime(now(getLocalTimeZone()).toString())
@@ -11,9 +11,9 @@ export default function DateTimeFieldDemo() {
         <DateField
             hideTimeZone
             hourCycle={24}
-            value={value}
-            onChange={(newValue) => setValue(newValue!)}
             label='Event date'
+            onChange={(newValue) => setValue(newValue!)}
+            value={value}
         />
     )
 }

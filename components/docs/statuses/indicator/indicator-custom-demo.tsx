@@ -1,6 +1,6 @@
+import { IconCheck, IconInfoCircle } from '@tabler/icons-react'
 import { Avatar, Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
-import { IconCheck, IconInfoCircle } from '@tabler/icons-react'
 
 export default function IndicatorCustomDemo() {
     return (

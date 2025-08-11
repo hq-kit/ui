@@ -1,9 +1,9 @@
 'use client'
 
+import { IconGauge, IconLogout, IconSearch, IconSettings, IconShield, IconShoppingBag } from '@tabler/icons-react'
 import { IconApp } from '@/components/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar, Breadcrumbs, Button, Menu, Navbar, Separator } from '@/components/ui'
-import { IconGauge, IconLogout, IconSearch, IconSettings, IconShield, IconShoppingBag } from '@tabler/icons-react'
 
 export default function AppNavbar({ children }: { children: React.ReactNode }) {
     return (
@@ -22,34 +22,34 @@ export default function AppNavbar({ children }: { children: React.ReactNode }) {
 
                 <Navbar.Section className='ml-auto hidden md:flex'>
                     <Navbar.Flex className='sm:gap-x-1'>
-                        <Button variant='ghost' icon aria-label='Search for products'>
+                        <Button aria-label='Search for products' icon variant='ghost'>
                             <IconSearch />
                         </Button>
                         <ThemeToggle variant='ghost' />
                     </Navbar.Flex>
-                    <Separator orientation='vertical' className='mr-3 ml-1 h-6' />
+                    <Separator className='mr-3 ml-1 h-6' orientation='vertical' />
                     <UserMenu />
                 </Navbar.Section>
             </Navbar.Nav>
             <Navbar.Compact>
                 <Navbar.Flex>
                     <Navbar.Trigger className='-ml-2' />
-                    <Separator orientation='vertical' className='h-6 sm:mx-1' />
+                    <Separator className='h-6 sm:mx-1' orientation='vertical' />
                     <Navbar.Logo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
                         <IconApp className='size-5' />
                     </Navbar.Logo>
                 </Navbar.Flex>
                 <Navbar.Flex>
                     <Navbar.Flex>
-                        <Button variant='ghost' icon aria-label='Search for products'>
+                        <Button aria-label='Search for products' icon variant='ghost'>
                             <IconSearch />
                         </Button>
-                        <Button variant='ghost' icon aria-label='Your Bag'>
+                        <Button aria-label='Your Bag' icon variant='ghost'>
                             <IconShoppingBag />
                         </Button>
                         <ThemeToggle variant='ghost' />
                     </Navbar.Flex>
-                    <Separator orientation='vertical' className='mr-3 ml-1 h-6' />
+                    <Separator className='mr-3 ml-1 h-6' orientation='vertical' />
                     <UserMenu />
                 </Navbar.Flex>
             </Navbar.Compact>
@@ -69,9 +69,9 @@ function UserMenu() {
     return (
         <Menu>
             <Menu.Trigger aria-label='Open Menu'>
-                <Avatar alt='DQ' size='sm' shape='square' src='https://github.com/dq-alhq.png' />
+                <Avatar alt='DQ' shape='square' size='sm' src='https://github.com/dq-alhq.png' />
             </Menu.Trigger>
-            <Menu.Content placement='bottom right' className='sm:min-w-56'>
+            <Menu.Content className='sm:min-w-56' placement='bottom right'>
                 <Menu.Header>
                     <span className='block'>DQ Al-Haqqi</span>
                     <span className='font-normal text-muted-foreground'>@dq-alhq</span>

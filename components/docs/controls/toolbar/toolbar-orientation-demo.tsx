@@ -1,6 +1,5 @@
 'use client'
 
-import { Menu, Toggle, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustified,
@@ -16,11 +15,12 @@ import {
     IconPointer,
     IconScissors
 } from '@tabler/icons-react'
+import { Menu, Toggle, Toolbar } from '@/components/ui'
 
 export default function ToolbarOrientationDemo() {
     return (
         <Toolbar aria-label='Toolbox' orientation='vertical'>
-            <Toolbar.Group icon aria-label='Toolbox'>
+            <Toolbar.Group aria-label='Toolbox' icon>
                 <Toolbar.Item aria-label='Cursor'>
                     <IconPointer />
                 </Toolbar.Item>
@@ -32,7 +32,7 @@ export default function ToolbarOrientationDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon aria-label='Gallery'>
+            <Toolbar.Group aria-label='Gallery' icon>
                 <Toolbar.Item aria-label='Camera'>
                     <IconCamera />
                 </Toolbar.Item>
@@ -41,7 +41,7 @@ export default function ToolbarOrientationDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon aria-label='Alignment'>
+            <Toolbar.Group aria-label='Alignment' icon>
                 <Toggle aria-label='Align Left'>
                     <IconAlignLeft />
                 </Toggle>

@@ -1,18 +1,17 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
+import type { ToastOptions } from 'react-aria-components'
 import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle, IconX } from '@tabler/icons-react'
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
-import type { ToastOptions } from 'react-aria-components'
 import {
     Button,
     Text,
     UNSTABLE_ToastContent as ToastContent,
+    UNSTABLE_Toast as Toaster,
     UNSTABLE_ToastQueue as ToastQueue,
-    UNSTABLE_ToastRegion as ToastRegion,
-    UNSTABLE_Toast as Toaster
+    UNSTABLE_ToastRegion as ToastRegion
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 interface ToastContentProps {
     title: string
@@ -60,17 +59,14 @@ const ToastProvider = () => {
             >
                 {({ toast }) => (
                     <Toaster
+                        className={cn('toast w-full will-change-transform sm:w-fit sm:min-w-xs')}
+                        key={toast.key}
                         style={{
                             viewTransitionName: toast.key
                         }}
-                        key={toast.key}
                         toast={toast}
-                        className={cn('toast w-full will-change-transform sm:w-fit sm:min-w-xs')}
                     >
                         <div
-                            onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)}
-                            key={toast.key}
                             className={cn('flex flex-col gap-2 rounded-lg border p-4', {
                                 'border-success-border bg-success-background text-success-foreground **:data-loader:stroke-success-foreground':
                                     toast.content.type === 'success',
@@ -82,6 +78,10 @@ const ToastProvider = () => {
                                     toast.content.type === 'warning',
                                 'bg-background text-foreground': toast.content.type === 'default'
                             })}
+                            key={toast.key}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                            role='none'
                         >
                             <div
                                 className={cn('flex items-start gap-2', {
@@ -98,11 +98,11 @@ const ToastProvider = () => {
                                     <IconAlertTriangle className='shrink-0' />
                                 ) : null}
                                 <ToastContent className='flex w-full flex-col'>
-                                    <Text slot='title' className='font-medium text-sm tracking-tight'>
+                                    <Text className='font-medium text-sm tracking-tight' slot='title'>
                                         {toast.content.title}
                                     </Text>
                                     {toast.content.description && (
-                                        <Text slot='description' className='text-xs'>
+                                        <Text className='text-xs' slot='description'>
                                             {toast.content.description}
                                         </Text>
                                     )}
@@ -115,8 +115,6 @@ const ToastProvider = () => {
                                 <div className='flex items-center justify-start gap-2'>
                                     {toast.content.action && (
                                         <Button
-                                            onPress={toast.content.action}
-                                            slot='close'
                                             className={cn(
                                                 'flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border px-2 py-1 text-sm outline-hidden pressed:brightness-90 backdrop-blur-2xl hover:brightness-80 focus-visible:ring-4 focus-visible:ring-ring *:[svg]:size-3',
                                                 {
@@ -131,15 +129,17 @@ const ToastProvider = () => {
                                                         toast.content.type === 'warning'
                                                 }
                                             )}
+                                            onPress={toast.content.action}
+                                            slot='close'
                                         >
                                             {toast.content.actionLabel || 'Action'}
                                         </Button>
                                     )}
                                     {toast.content.altAction && (
                                         <Button
+                                            className='flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-background pressed:bg-muted/60 px-2 py-1 text-foreground text-sm outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 *:[svg]:size-3'
                                             onPress={toast.content.altAction}
                                             slot='close'
-                                            className='flex cursor-pointer items-center justify-center gap-x-1.5 rounded-lg border bg-background pressed:bg-muted/60 px-2 py-1 text-foreground text-sm outline-hidden hover:bg-muted/40 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/20 *:[svg]:size-3'
                                         >
                                             {toast.content.altActionLabel || 'Cancel'}
                                         </Button>
@@ -180,25 +180,25 @@ const CountdownButton = ({ timeout, isPaused }: TimeoutButtonProps) => {
 
     return (
         <Button
-            slot='close'
             className='relative z-10 inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full bg-background pressed:text-foreground text-muted-foreground shadow-sm outline-hidden hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring dark:border'
+            slot='close'
         >
             <IconX className='size-3.5' />
             {timeout ? (
                 <svg className='-rotate-90 absolute size-fit'>
-                    <circle cx='50%' cy='50%' r={radius} stroke='current' strokeWidth='2' fill='none' />
+                    <circle cx='50%' cy='50%' fill='none' r={radius} stroke='current' strokeWidth='2' />
                     <circle
-                        data-loader
                         cx='50%'
                         cy='50%'
+                        data-loader
+                        fill='none'
                         r={radius}
                         stroke='currentColor'
-                        strokeWidth='2'
-                        fill='none'
                         strokeDasharray={circumference}
-                        style={{ transition: 'stroke-dashoffset 0.1s linear' }}
                         strokeDashoffset={calculateProgress()}
                         strokeLinecap='round'
+                        strokeWidth='2'
+                        style={{ transition: 'stroke-dashoffset 0.1s linear' }}
                     />
                 </svg>
             ) : null}

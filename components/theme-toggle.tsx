@@ -1,4 +1,7 @@
 'use client'
+
+import { IconMoon, IconSun } from '@tabler/icons-react'
+import { useEffect } from 'react'
 import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui'
 import {
@@ -8,9 +11,6 @@ import {
     syncThemeColor,
     useThemeStore
 } from '@/lib/hooks/use-theme'
-
-import { IconMoon, IconSun } from '@tabler/icons-react'
-import { useEffect } from 'react'
 
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
     const { resolvedTheme, setTheme } = useTheme()
@@ -38,10 +38,10 @@ export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'gh
 
     return (
         <Button
-            icon
-            variant={variant}
             aria-label={`Switch to ${resolvedTheme}` === 'light' ? 'dark' : 'light' + 'mode'}
+            icon
             onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
+            variant={variant}
         >
             <IconSun aria-hidden className='dark:-rotate-90 rotate-0 scale-100 transition-all dark:scale-0' />
             <IconMoon aria-hidden className='absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />

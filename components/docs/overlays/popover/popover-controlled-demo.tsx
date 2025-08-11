@@ -1,9 +1,8 @@
 'use client'
 
-import { Button, Popover } from '@/components/ui'
-
 import { IconCircleCheck, IconTrash } from '@tabler/icons-react'
 import { useRef, useState } from 'react'
+import { Button, Popover } from '@/components/ui'
 
 export default function PopoverControlledDemo() {
     const [open, setOpen] = useState<boolean>(false)
@@ -20,10 +19,10 @@ export default function PopoverControlledDemo() {
     }
     return (
         <>
-            <Button ref={triggerRef} onPress={() => setOpen(true)} variant='destructive'>
+            <Button onPress={() => setOpen(true)} ref={triggerRef} variant='destructive'>
                 Delete Account
             </Button>
-            <Popover.Content triggerRef={triggerRef} isOpen={open} onOpenChange={setOpen}>
+            <Popover.Content isOpen={open} onOpenChange={setOpen} triggerRef={triggerRef}>
                 <Popover.Header>
                     <Popover.Title>Confirm Deletion</Popover.Title>
                     <Popover.Description>
@@ -31,13 +30,13 @@ export default function PopoverControlledDemo() {
                     </Popover.Description>
                 </Popover.Header>
                 <Popover.Footer>
-                    <Button variant='outline' onPress={() => setOpen(false)}>
+                    <Button onPress={() => setOpen(false)} variant='outline'>
                         Cancel
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'default' : 'destructive'}
                         onPress={deleteAccount}
+                        variant={loading === 'success' ? 'default' : 'destructive'}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
                         {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}

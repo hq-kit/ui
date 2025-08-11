@@ -1,9 +1,9 @@
+import { Fragment } from 'react'
 import BlockCard from '@/components/controllers/blocks/block-card'
 import { BlocksBreadcrumbs } from '@/components/controllers/blocks/breadcrumbs'
 import BlocksCategories from '@/components/controllers/blocks/categories'
 import { listBlocks } from '@/components/docs/generated/list-blocks'
 import { Block } from '@/components/mdx/block'
-import { Fragment } from 'react'
 
 type Props = {
     params: Promise<{ slug: string[] }>
@@ -23,10 +23,10 @@ export default async function Page(props: Props) {
                             .filter((l) => l.section === slug[0])
                             .map((l, i) => (
                                 <BlockCard
-                                    href={`/blocks/${l.section}/${l.category}`}
-                                    title={l.category}
                                     description={`${l.blocks.length} blocks`}
+                                    href={`/blocks/${l.section}/${l.category}`}
                                     key={i}
+                                    title={l.category}
                                 />
                             ))}
                     </div>

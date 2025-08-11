@@ -1,7 +1,7 @@
 'use client'
 
-import { Tabs } from '@/components/ui'
 import { IconBlocks, IconBook, IconColorSwatch, IconPalette } from '@tabler/icons-react'
+import { Tabs } from '@/components/ui'
 
 const items = [
     { url: '/', label: 'Home' },
@@ -16,7 +16,7 @@ export default function TabsLinkDemo() {
         <Tabs aria-label='Navbar'>
             <Tabs.List items={items}>
                 {(item) => (
-                    <Tabs.Label id={item.label} href={item.url}>
+                    <Tabs.Label href={item.url} id={item.label}>
                         {item.icon && <item.icon />}
                         {item.label}
                     </Tabs.Label>

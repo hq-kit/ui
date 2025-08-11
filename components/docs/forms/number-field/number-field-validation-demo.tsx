@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Form, NumberField } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
+import { Button, Form, NumberField } from '@/components/ui'
 
 export default function NumberFieldValidationDemo() {
     const [value, setValue] = useState<number>()
@@ -13,10 +13,10 @@ export default function NumberFieldValidationDemo() {
         <Form className='space-y-4' onSubmit={onSubmit}>
             <NumberField
                 isRequired
-                validate={(v) => (v < 100 ? 'Value must be greater than 100' : null)}
                 label='Size'
-                value={value}
                 onChange={setValue}
+                validate={(v) => (v < 100 ? 'Value must be greater than 100' : null)}
+                value={value}
             />
             <Button type='submit'>Submit</Button>
         </Form>

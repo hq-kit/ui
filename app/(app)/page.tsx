@@ -16,7 +16,7 @@ export default function Page() {
                     </div>
                 </header>
                 <main className='mt-6 flex flex-col gap-4 lg:flex-row lg:items-center'>
-                    <CLI noMessage command='init' className='mb-2 min-w-60' />
+                    <CLI className='mb-2 min-w-60' command='init' noMessage />
                     <HeroButton href='/docs/getting-started/installation'>
                         <IconApp />
                         Components

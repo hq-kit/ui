@@ -83,7 +83,7 @@ export default function MenuSectionDemo() {
             <Menu.Trigger>Open</Menu.Trigger>
             <Menu.Content items={items}>
                 {(item) => (
-                    <Menu.Section title={item.name} items={item.distros}>
+                    <Menu.Section items={item.distros} title={item.name}>
                         {(distro) => (
                             <Menu.Item textValue={distro.name}>
                                 <Menu.Label>{distro.name}</Menu.Label>

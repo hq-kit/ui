@@ -1,7 +1,5 @@
 'use client'
 
-import { IconApp } from '@/components/icons'
-import { Menu, Sidebar, User } from '@/components/ui'
 import {
     IconChevronRight,
     IconHeadphones,
@@ -12,6 +10,8 @@ import {
     IconSettings,
     IconUsersGroup
 } from '@tabler/icons-react'
+import { IconApp } from '@/components/icons'
+import { Menu, Sidebar, User } from '@/components/ui'
 
 export default function ChatSidebar() {
     return (
@@ -22,7 +22,7 @@ export default function ChatSidebar() {
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section>
-                    <Sidebar.Item isCurrent href='#'>
+                    <Sidebar.Item href='#' isCurrent>
                         <IconMessage />
                         <Sidebar.Label>Chats</Sidebar.Label>
                     </Sidebar.Item>
@@ -44,14 +44,14 @@ export default function ChatSidebar() {
                 <Menu>
                     <Menu.Trigger className='group flex size-full items-center justify-between rounded-lg pressed:bg-muted p-2 hover:bg-muted'>
                         <User
-                            src='https://github.com/dq-alhq.png'
-                            name='DQ Al Haqqi'
                             description='@dq-alhq'
+                            name='DQ Al Haqqi'
                             shape='square'
+                            src='https://github.com/dq-alhq.png'
                         />
                         <IconChevronRight className='group-aria-expanded:-rotate-90 size-4' />
                     </Menu.Trigger>
-                    <Menu.Content placement='bottom right' className='sm:min-w-(--trigger-width)'>
+                    <Menu.Content className='sm:min-w-(--trigger-width)' placement='bottom right'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
                             <span className='font-normal text-muted-foreground'>@dq-alhq</span>

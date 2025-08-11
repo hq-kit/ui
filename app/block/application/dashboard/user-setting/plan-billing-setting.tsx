@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Card, DatePicker, Form, GridList, Note, TextField } from '@/components/ui'
 import { IconCreditCard, IconHash, IconLock, IconMap, IconUserCircle } from '@tabler/icons-react'
+import { Button, Card, DatePicker, Form, GridList, Note, TextField } from '@/components/ui'
 
 export default function PlanBillingSetting() {
     return (
@@ -25,25 +25,25 @@ export default function PlanBillingSetting() {
                     <h4 className='font-semibold text-lg'>Payment Details</h4>
                     <TextField
                         autoFocus
-                        prefix={<IconUserCircle />}
+                        id='card_holder'
                         label='Card Holder'
                         name='card_holder'
-                        id='card_holder'
+                        prefix={<IconUserCircle />}
                     />
                     <div className='grid gap-4 md:grid-cols-4'>
                         <TextField
                             className='md:col-span-2'
-                            prefix={<IconCreditCard />}
+                            id='card_number'
                             label='Card Number'
                             name='card_number'
-                            id='card_number'
+                            prefix={<IconCreditCard />}
                         />
-                        <DatePicker label='Expiration Date' name='expiration_date' id='expiration_date' />
-                        <TextField prefix={<IconLock />} label='CVC / CVC2' name='cvc' id='cvc' />
+                        <DatePicker id='expiration_date' label='Expiration Date' name='expiration_date' />
+                        <TextField id='cvc' label='CVC / CVC2' name='cvc' prefix={<IconLock />} />
                     </div>
                     <div className='grid gap-4 lg:grid-cols-2'>
-                        <TextField prefix={<IconMap />} label='Country' name='country' id='country' />
-                        <TextField prefix={<IconHash />} label='Zip / Postal Code' name='zip' id='zip' />
+                        <TextField id='country' label='Country' name='country' prefix={<IconMap />} />
+                        <TextField id='zip' label='Zip / Postal Code' name='zip' prefix={<IconHash />} />
                     </div>
                 </Card.Content>
                 <Card.Footer>

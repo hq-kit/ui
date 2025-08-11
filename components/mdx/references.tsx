@@ -1,7 +1,8 @@
 'use client'
 
-import { buttonStyle } from '@/components/ui'
-
+import type { FC, SVGProps } from 'react'
+import { type Icon, IconBell, IconChartBar, IconCommand, IconForms } from '@tabler/icons-react'
+import { Menu, MenuItem } from 'react-aria-components'
 import {
     IconApp,
     IconBrandAdobe,
@@ -16,9 +17,8 @@ import {
     IconBrandTailwind,
     IconBrandVite
 } from '@/components/icons'
-import { type Icon, IconBell, IconChartBar, IconCommand, IconForms } from '@tabler/icons-react'
-import type { FC, SVGProps } from 'react'
-import { Menu, MenuItem } from 'react-aria-components'
+import { buttonStyle } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 function extractAndFormat(url: string): string {
     const match = url.match(/\/([^/]+)\.html/)
@@ -110,17 +110,18 @@ export function DocRefs({ references }: { references: string[] }) {
     })
 
     return (
-        <Menu className='not-prose flex gap-x-2' aria-label='Link References' items={urls}>
+        <Menu aria-label='Link References' className='flex gap-x-2' items={urls}>
             {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
                 <MenuItem
-                    target='_blank'
-                    className={buttonStyle({
-                        variant: 'outline',
-                        size: 'xs',
-                        className: 'data-focus-visible:outline-2'
-                    })}
-                    id={item.url}
+                    className={cn(
+                        buttonStyle({
+                            variant: 'outline',
+                            size: 'xs'
+                        })
+                    )}
                     href={item.url}
+                    id={item.url}
+                    target='_blank'
                 >
                     <item.icon />
                     {item.title === 'Props Reference' ? (

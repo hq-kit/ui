@@ -3,7 +3,7 @@ import { DL, Header } from '@/components/ui'
 export default function DescriptionListHeadingDemo() {
     return (
         <div>
-            <Header title='PC Gaming' description='PC Gaming' />
+            <Header description='PC Gaming' title='PC Gaming' />
             <DL>
                 <DL.T>Processor</DL.T>
                 <DL.D>Intel Core i7-12700K</DL.D>

@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ColorSliderProps as RACColorSliderProps } from 'react-aria-components'
-import { ColorSlider as RACColorSlider, SliderOutput, SliderTrack, composeRenderProps } from 'react-aria-components'
+import { composeRenderProps, ColorSlider as RACColorSlider, SliderOutput, SliderTrack } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { ColorThumb } from './color-thumb'
 import { Label } from './form'
 
@@ -15,7 +15,6 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
     return (
         <RACColorSlider
             {...props}
-            slot='color-slider'
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
                     'group/field relative flex flex-col items-center gap-2',
@@ -23,6 +22,7 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
                     className
                 )
             )}
+            slot='color-slider'
         >
             {({ orientation }) => (
                 <>

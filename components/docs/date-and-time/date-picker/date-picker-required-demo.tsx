@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, DatePicker, Form } from '@/components/ui'
 import type { CalendarDate } from '@internationalized/date'
 import { type FormEvent, useState } from 'react'
+import { Button, DatePicker, Form } from '@/components/ui'
 
 export default function DatePickerValidationDemo() {
     const [value, setValue] = useState<CalendarDate>()
@@ -13,8 +13,8 @@ export default function DatePickerValidationDemo() {
     }
 
     return (
-        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
-            <DatePicker isRequired value={value} onChange={(v) => setValue(v!)} label='Event date' />
+        <Form className='flex flex-col gap-4' onSubmit={onSubmit}>
+            <DatePicker isRequired label='Event date' onChange={(v) => setValue(v!)} value={value} />
             <Button type='submit'>Submit</Button>
         </Form>
     )

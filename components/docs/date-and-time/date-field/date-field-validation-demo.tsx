@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, DateField, Form } from '@/components/ui'
 import type { CalendarDate } from '@internationalized/date'
 import { type FormEvent, useState } from 'react'
+import { Button, DateField, Form } from '@/components/ui'
 
 export default function DateFieldValidationDemo() {
     const [value, setValue] = useState<CalendarDate>()
@@ -12,8 +12,8 @@ export default function DateFieldValidationDemo() {
         alert(value)
     }
     return (
-        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
-            <DateField isRequired label='Event date' value={value} onChange={(v) => setValue(v!)} />
+        <Form className='flex flex-col gap-4' onSubmit={onSubmit}>
+            <DateField isRequired label='Event date' onChange={(v) => setValue(v!)} value={value} />
             <Button type='submit'>Submit</Button>
         </Form>
     )

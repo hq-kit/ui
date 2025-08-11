@@ -1,15 +1,15 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ComponentProps, ReactNode } from 'react'
 import {
     Button,
+    composeRenderProps,
     OverlayArrow,
     Tooltip as RACTooltip,
     type TooltipProps as RACTooltipProps,
-    TooltipTrigger as RACTooltipTrigger,
-    composeRenderProps
+    TooltipTrigger as RACTooltipTrigger
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 type TooltipProps = ComponentProps<typeof RACTooltipTrigger>
 const Tooltip = (props: TooltipProps) => <RACTooltipTrigger {...props} />
@@ -31,7 +31,6 @@ const TooltipContent = ({
     return (
         <RACTooltip
             {...props}
-            offset={offset}
             className={composeRenderProps(className, (className) =>
                 cn(
                     isInverse ? 'bg-popover-foreground text-popover' : 'bg-popover text-popover-foreground',
@@ -45,17 +44,18 @@ const TooltipContent = ({
                     className
                 )
             )}
+            offset={offset}
         >
             {showArrow && (
                 <OverlayArrow className='group'>
                     <svg
-                        width={12}
-                        height={12}
-                        viewBox='0 0 12 12'
                         className={cn(
                             'group-placement-left:-rotate-90 block group-placement-bottom:rotate-180 group-placement-right:rotate-90',
                             isInverse ? 'fill-popover-foreground' : 'fill-popover stroke-border'
                         )}
+                        height={12}
+                        viewBox='0 0 12 12'
+                        width={12}
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>

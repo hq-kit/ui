@@ -1,22 +1,22 @@
 'use client'
 
-import { Card, Carousel } from '@/components/ui'
 import Autoplay from 'embla-carousel-autoplay'
 import { useRef } from 'react'
+import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselAutoplayDemo() {
     const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }))
 
     return (
         <Carousel
+            className='w-full max-w-xs'
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
-            plugins={[plugin.current]}
             opts={{
                 loop: true,
                 align: 'center'
             }}
-            className='w-full max-w-xs'
+            plugins={[plugin.current]}
         >
             <Carousel.Content items={items}>
                 {(item) => (

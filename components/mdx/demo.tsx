@@ -1,12 +1,11 @@
 'use client'
 
+import { IconLoader3 } from '@tabler/icons-react'
+import { Fragment, type HTMLAttributes, Suspense } from 'react'
+import { TabPanel } from 'react-aria-components'
 import { previews } from '@/components/docs/generated/previews'
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import { cn } from '@/lib/utils'
-import { IconLoader3 } from '@tabler/icons-react'
-import { Fragment, type HTMLAttributes, Suspense } from 'react'
-
-import { TabPanel } from 'react-aria-components'
 import { Code } from './code'
 import { TabsSwitcher } from './tabs-switcher'
 
@@ -41,7 +40,7 @@ export function Demo({ component, center = false, ...props }: DemoProps) {
                     </div>
                 </TabPanel>
                 <TabPanel id='code'>
-                    <Code filename={component.split('/').pop()} code={codeString} />
+                    <Code code={codeString} filename={component.split('/').pop()} />
                 </TabPanel>
             </TabsSwitcher>
         </div>

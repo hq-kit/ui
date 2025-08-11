@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Form, Textarea } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
+import { Button, Form, Textarea } from '@/components/ui'
 
 export default function TextareaValidationDemo() {
     const [value, setValue] = useState('')
@@ -15,10 +15,10 @@ export default function TextareaValidationDemo() {
         <Form className='space-y-4' onSubmit={onSubmit}>
             <Textarea
                 isRequired
+                label='About'
+                onChange={setValue}
                 validate={(v) => (v.length < 10 ? 'Must be at least 10 characters' : null)}
                 value={value}
-                onChange={setValue}
-                label='About'
             />
             <Button type='submit'>Submit</Button>
         </Form>

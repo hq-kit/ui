@@ -1,12 +1,11 @@
 'use client'
 
+import type { ButtonProps, LinkProps } from 'react-aria-components'
+import { IconMenu } from '@tabler/icons-react'
+import { type ComponentPropsWithRef, createContext, type Ref, use, useCallback, useMemo, useState } from 'react'
+import { composeRenderProps, Link } from 'react-aria-components'
 import { useIsMobile } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
-
-import { IconMenu } from '@tabler/icons-react'
-import { type ComponentPropsWithRef, type Ref, createContext, use, useCallback, useMemo, useState } from 'react'
-import type { ButtonProps, LinkProps } from 'react-aria-components'
-import { Link, composeRenderProps } from 'react-aria-components'
 import { Button } from './button'
 import { Sheet } from './sheet'
 
@@ -84,11 +83,6 @@ const Navbar = ({
     return (
         <NavbarContext value={contextValue}>
             <header
-                data-navbar-variant={variant}
-                style={{
-                    // @ts-ignore
-                    '--navbar-height': HEIGHT
-                }}
                 className={cn(
                     'group/navbar [--navbar-breadcrumbs-height:0px] has-data-navbar-breadcrumbs:[--navbar-breadcrumbs-height:3rem]',
                     'relative isolate flex w-full flex-col',
@@ -97,6 +91,11 @@ const Navbar = ({
                     variant === 'inset' && 'min-h-dvh bg-sidebar',
                     className
                 )}
+                data-navbar-variant={variant}
+                style={{
+                    // @ts-ignore
+                    '--navbar-height': HEIGHT
+                }}
                 {...props}
             >
                 {children}
@@ -118,7 +117,7 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
         return (
             <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
                 <Sheet.Trigger className='sr-only' />
-                <Sheet.Content side='left' aria-label='Compact Navbar' data-navbar='compact'>
+                <Sheet.Content aria-label='Compact Navbar' data-navbar='compact' side='left'>
                     <Sheet.Body className='px-2 md:px-4'>{children}</Sheet.Body>
                 </Sheet.Content>
             </Sheet>
@@ -127,8 +126,6 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
 
     return (
         <div
-            data-navbar-nav='true'
-            ref={ref}
             className={cn(
                 'group peer hidden w-full items-center px-4 md:flex md:px-0',
                 'h-(--navbar-height)',
@@ -141,6 +138,8 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
                     'mx-auto md:px-6 [&>div]:mx-auto [&>div]:w-full [&>div]:items-center md:[&>div]:flex',
                 className
             )}
+            data-navbar-nav='true'
+            ref={ref}
             {...props}
         >
             <div>{children}</div>
@@ -156,16 +155,16 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
     const { toggleNavbar } = useNavbar()
     return (
         <Button
-            ref={ref}
-            data-navbar-trigger='true'
-            variant='ghost'
             aria-label={props['aria-label'] || 'Toggle Navbar'}
-            icon
             className={className}
+            data-navbar-trigger='true'
+            icon
             onPress={(event) => {
                 onPress?.(event)
                 toggleNavbar()
             }}
+            ref={ref}
+            variant='ghost'
             {...props}
         >
             <IconMenu />
@@ -178,8 +177,8 @@ const NavbarSection = ({ className, ...props }: ComponentPropsWithRef<'div'>) =>
     const { isCompact } = useNavbar()
     return (
         <div
-            data-navbar-section
             className={cn('flex', isCompact ? 'flex-col gap-y-1' : 'flex-row items-center gap-x-3', className)}
+            data-navbar-section
             {...props}
         >
             {'title' in props && <h4 className='-mx-2 my-4 px-5 font-medium text-sm md:hidden'>{props.title}</h4>}
@@ -194,7 +193,6 @@ interface NavbarItemProps extends LinkProps {
 
 const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => (
     <Link
-        data-navbar-item
         aria-current={isCurrent ? 'page' : undefined}
         className={composeRenderProps(className, (className) =>
             cn(
@@ -206,6 +204,7 @@ const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => (
                 className
             )
         )}
+        data-navbar-item
         {...props}
     />
 )
@@ -225,7 +224,7 @@ const NavbarLogo = ({ className, ...props }: LinkProps) => {
 }
 
 const NavbarFlex = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>) => {
-    return <div ref={ref} className={cn('flex items-center gap-2', className)} {...props} />
+    return <div className={cn('flex items-center gap-2', className)} ref={ref} {...props} />
 }
 
 interface NavbarCompactProps extends ComponentPropsWithRef<'div'> {
@@ -236,7 +235,6 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     const { variant } = useNavbar()
     return (
         <div
-            ref={ref}
             className={cn(
                 'flex justify-between bg-sidebar text-sidebar-foreground peer-has-[[data-navbar-variant=float]]:border peer-has-[[data-navbar-variant=float]]:border-sidebar-border md:hidden',
                 variant === 'float' && 'h-12 rounded-lg border px-3.5',
@@ -244,6 +242,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
                 variant === 'default' && 'h-14 border-b px-4',
                 className
             )}
+            ref={ref}
             {...props}
         />
     )
@@ -253,8 +252,6 @@ const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentProp
     const { variant } = useNavbar()
     return (
         <div
-            data-navbar-breadcrumbs={true}
-            ref={ref}
             className={cn(
                 'flex h-(--navbar-breadcrumbs-height) items-center',
                 variant === 'default' &&
@@ -265,6 +262,8 @@ const NavbarBreadcrumbs = ({ className, ref, children, ...props }: ComponentProp
                     'mx-auto w-full max-w-7xl rounded-lg bg-background px-2 text-foreground md:px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
                 className
             )}
+            data-navbar-breadcrumbs={true}
+            ref={ref}
             {...props}
         >
             <div className='mx-auto w-full'>{children}</div>
@@ -276,22 +275,24 @@ const NavbarInset = ({ className, ref, ...props }: ComponentPropsWithRef<'div'>)
     const { variant } = useNavbar()
     return (
         <div
-            ref={ref}
             className={cn(
-                'relative flex h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] w-full flex-col overflow-auto',
-                variant === 'inset' && 'bg-background pb-2 md:px-2',
+                'relative flex w-full flex-col overflow-auto',
+                variant === 'default' &&
+                    'max-h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)]',
+                variant === 'inset' &&
+                    'max-h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px))] overflow-auto bg-background pb-2 md:px-2',
                 variant === 'float' &&
-                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)] bg-background pb-2 md:px-2',
+                    'h-[calc(100vh-var(--navbar-height,0px)-var(--navbar-breadcrumbs-height,0px)-8px)] bg-background pb-2 md:px-0',
                 className
             )}
+            ref={ref}
         >
             <main
                 className={cn(
                     'mx-auto flex size-full flex-1 grow flex-col',
                     variant === 'inset' &&
-                        'border-sidebar-border bg-background px-4 shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
-                    variant === 'default' &&
-                        'max-w-7xl overflow-auto px-4 lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)',
+                        'max-h-fit overflow-auto border-sidebar-border bg-background px-4 shadow-sm md:rounded-lg md:border md:group-has-data-navbar-breadcrumbs/navbar:rounded-t-none md:group-has-data-navbar-breadcrumbs/navbar:border-t-0',
+                    variant === 'default' && 'overflow-auto',
                     variant === 'float' && 'max-w-7xl lg:max-w-(--breakpoint-xl) 2xl:max-w-(--breakpoint-2xl)'
                 )}
             >

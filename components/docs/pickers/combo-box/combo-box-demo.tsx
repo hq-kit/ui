@@ -11,16 +11,16 @@ const items = [
 export default function ComboBoxDemo() {
     return (
         <div className='grid gap-2 sm:grid-cols-4'>
-            <ComboBox label='Default' items={items}>
+            <ComboBox items={items} label='Default'>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
-            <ComboBox label='Readonly' items={items} isReadOnly>
+            <ComboBox isReadOnly items={items} label='Readonly'>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
-            <ComboBox label='Invalid' items={items} isInvalid>
+            <ComboBox isInvalid items={items} label='Invalid'>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
-            <ComboBox label='Disabled' items={items} isDisabled>
+            <ComboBox isDisabled items={items} label='Disabled'>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
         </div>

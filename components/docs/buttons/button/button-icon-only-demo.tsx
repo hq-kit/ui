@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@/components/ui'
 import { IconBrandNextjs } from '@tabler/icons-react'
+import { Button } from '@/components/ui'
 
 export default function ButtonIconOnlyDemo() {
     return (

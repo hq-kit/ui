@@ -1,6 +1,6 @@
-import { Card } from '@/components/ui'
 import Image from 'next/image'
 import { Collection } from 'react-aria-components'
+import { Card } from '@/components/ui'
 
 export default function Posts() {
     return (
@@ -14,7 +14,7 @@ export default function Posts() {
                                 <Card.Description>{item.date}</Card.Description>
                             </Card.Header>
                             <Card.Content className='space-y-2 text-justify'>
-                                <Image alt={item.title} src={item.image} width={400} height={300} />
+                                <Image alt={item.title} height={300} src={item.image} width={400} />
                                 <p>{item.content}</p>
                             </Card.Content>
                         </Card>

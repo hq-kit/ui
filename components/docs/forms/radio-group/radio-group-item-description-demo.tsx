@@ -3,16 +3,16 @@ import { Radio, RadioGroup } from '@/components/ui'
 export default function RadioGroupChildrenDescriptionDemo() {
     return (
         <RadioGroup label='Plan'>
-            <Radio value='bronze' description='Weekly subscription'>
+            <Radio description='Weekly subscription' value='bronze'>
                 Bronze
             </Radio>
-            <Radio value='silver' description='Monthly subscription'>
+            <Radio description='Monthly subscription' value='silver'>
                 Silver
             </Radio>
-            <Radio value='gold' description='Yearly subscription'>
+            <Radio description='Yearly subscription' value='gold'>
                 Gold
             </Radio>
-            <Radio value='platinum' description='Lifetime subscription'>
+            <Radio description='Lifetime subscription' value='platinum'>
                 Platinum
             </Radio>
         </RadioGroup>

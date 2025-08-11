@@ -12,7 +12,7 @@ export default function IndicatorPositionDemo() {
                 </Indicator>
             ))}
             {variants.map((variant) => (
-                <Indicator key={variant} variant={variant} isInverse>
+                <Indicator isInverse key={variant} variant={variant}>
                     <Button>{variant}</Button>
                 </Indicator>
             ))}

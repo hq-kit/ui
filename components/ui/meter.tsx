@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import { IconAlertCircle } from '@tabler/icons-react'
 import { Meter as RACMeter, type MeterProps as RACMeterProps } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Label } from './form'
 
 interface MeterProps extends RACMeterProps {

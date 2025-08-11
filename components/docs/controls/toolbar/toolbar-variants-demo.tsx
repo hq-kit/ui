@@ -1,6 +1,5 @@
 'use client'
 
-import { Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignLeft,
@@ -11,11 +10,12 @@ import {
     IconPencil,
     IconUnderline
 } from '@tabler/icons-react'
+import { Toolbar } from '@/components/ui'
 
 export default function ToolbarVariantsDemo() {
     return (
         <Toolbar aria-label='Toolbars'>
-            <Toolbar.Group icon aria-label='Text Formatting Options'>
+            <Toolbar.Group aria-label='Text Formatting Options' icon>
                 <Toolbar.Item aria-label='Bold'>
                     <IconBold />
                 </Toolbar.Item>
@@ -27,7 +27,7 @@ export default function ToolbarVariantsDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon variant='outline' aria-label='Alignment'>
+            <Toolbar.Group aria-label='Alignment' icon variant='outline'>
                 <Toolbar.Item aria-label='Align Left'>
                     <IconAlignLeft />
                 </Toolbar.Item>
@@ -39,7 +39,7 @@ export default function ToolbarVariantsDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group variant='outline' aria-label='Mode'>
+            <Toolbar.Group aria-label='Mode' variant='outline'>
                 <Toolbar.Item aria-label='View'>
                     <IconEye />
                     View

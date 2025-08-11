@@ -34,7 +34,7 @@ const User = ({ name, description, size = 'lg', ...props }: UserProps) => {
     return (
         <div className='inline-flex items-center justify-center gap-2 rounded-xl outline-none'>
             <Avatar {...props} size={sizes.avatar} />
-            <div data-user={true} className='inline-flex flex-col items-start'>
+            <div className='inline-flex flex-col items-start' data-user={true}>
                 <span className={`font-medium text-inherit ${sizes.name}`}>{name}</span>
                 {description && <span className={`text-muted-foreground ${sizes.description}`}>{description}</span>}
             </div>

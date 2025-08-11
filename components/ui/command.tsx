@@ -1,11 +1,10 @@
 'use client'
 
-import { cn, fuzzyMatch } from '@/lib/utils'
-
+import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
 import { IconLoader, IconSearch } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
-import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
 import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'
+import { cn, fuzzyMatch } from '@/lib/utils'
 import { Keyboard } from './keyboard'
 import { MenuItem, MenuLabel, MenuSection, MenuSeparator } from './menu'
 import { ModalContent } from './modal'
@@ -16,9 +15,9 @@ interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputVa
 
 const Command = <T extends object>({ ...props }: CommandProps<T>) => {
     return (
-        <div data-command className={cn('rounded-lg border', props.className)}>
+        <div className={cn('rounded-lg border', props.className)} data-command>
             <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
-                <TextField autoFocus className='border-b p-1' aria-label='Search'>
+                <TextField aria-label='Search' autoFocus className='border-b p-1'>
                     <Group className='flex items-center px-2'>
                         {props.isPending ? (
                             <IconLoader className='size-4 shrink-0 animate-spin text-muted-foreground' />
@@ -29,10 +28,10 @@ const Command = <T extends object>({ ...props }: CommandProps<T>) => {
                     </Group>
                 </TextField>
                 <Menu
+                    className='grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden sm:max-h-[30rem]'
                     renderEmptyState={() => (
                         <div className='col-span-full p-4 text-center text-muted-foreground'>No results found</div>
                     )}
-                    className='grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden sm:max-h-[30rem]'
                     {...props}
                 />
             </Autocomplete>
@@ -87,10 +86,10 @@ const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProp
 
     return (
         <ModalContent
-            isOpen={props.isOpen || shortcutOpen}
-            onOpenChange={props.onOpenChange || setShortcutOpen}
             aria-label='Commands'
             className='h-[70dvh] **:data-command:border-0 sm:h-auto sm:min-h-0'
+            isOpen={props.isOpen || shortcutOpen}
+            onOpenChange={props.onOpenChange || setShortcutOpen}
         >
             <Command {...props} />
         </ModalContent>

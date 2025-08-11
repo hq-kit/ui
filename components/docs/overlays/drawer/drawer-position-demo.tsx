@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Drawer } from '@/components/ui'
 import { useState } from 'react'
+import { Button, Drawer } from '@/components/ui'
 
 type Side = 'left' | 'right' | 'top' | 'bottom'
 export default function DrawerPositionDemo() {
@@ -20,10 +20,10 @@ export default function DrawerPositionDemo() {
             <div className='grid grid-cols-2 gap-2'>
                 {sides.map((side, i) => (
                     <Button
-                        variant='outline'
-                        onPress={() => openDrawer(side, true)}
-                        key={i}
                         className='first:col-span-full last:col-span-full'
+                        key={i}
+                        onPress={() => openDrawer(side, true)}
+                        variant='outline'
                     >
                         {side}
                     </Button>

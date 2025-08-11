@@ -1,7 +1,7 @@
 'use client'
 
-import { ContextMenu } from '@/components/ui'
 import { IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react'
+import { ContextMenu } from '@/components/ui'
 
 export default function ContextMenuSeparatorDemo() {
     return (

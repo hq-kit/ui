@@ -1,7 +1,7 @@
 'use client'
 
-import { Toggle } from '@/components/ui'
 import { IconEye, IconEyeClosed } from '@tabler/icons-react'
+import { Toggle } from '@/components/ui'
 
 export default function ToggleSizeDemo() {
     return (

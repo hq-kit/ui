@@ -1,6 +1,5 @@
 'use client'
 
-import { Toggle, Toolbar } from '@/components/ui'
 import {
     IconAlignJustified,
     IconAlignRight,
@@ -10,12 +9,13 @@ import {
     IconPointer,
     IconScissors
 } from '@tabler/icons-react'
+import { Toggle, Toolbar } from '@/components/ui'
 
 export default function ToolbarDisabledDemo() {
     return (
         <Toolbar aria-label='Toolbox'>
-            <Toolbar.Group icon aria-label='Toolbox'>
-                <Toggle isDisabled aria-label='Cursor'>
+            <Toolbar.Group aria-label='Toolbox' icon>
+                <Toggle aria-label='Cursor' isDisabled>
                     <IconPointer />
                 </Toggle>
                 <Toggle aria-label='Scissors'>
@@ -26,7 +26,7 @@ export default function ToolbarDisabledDemo() {
                 </Toggle>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon isDisabled aria-label='Gallery'>
+            <Toolbar.Group aria-label='Gallery' icon isDisabled>
                 <Toolbar.Item aria-label='Camera'>
                     <IconCamera />
                 </Toolbar.Item>
@@ -35,7 +35,7 @@ export default function ToolbarDisabledDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon aria-label='Alignment'>
+            <Toolbar.Group aria-label='Alignment' icon>
                 <Toggle aria-label='Align Right'>
                     <IconAlignRight />
                 </Toggle>

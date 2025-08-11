@@ -1,14 +1,13 @@
 'use client'
 
+import { IconPalette } from '@tabler/icons-react'
+import { useState } from 'react'
+import { Button, Collection } from 'react-aria-components'
 import { formatColor } from '@/components/controllers/colors/colors'
 import SelectFormat, { type ColorFormat } from '@/components/controllers/colors/select-format'
 import { tailwindColors } from '@/components/controllers/colors/tailwind-colors'
 import { Container, Popover, toast } from '@/components/ui'
 import { copyToClipboard } from '@/lib/utils/modifiers'
-
-import { IconPalette } from '@tabler/icons-react'
-import { useState } from 'react'
-import { Button, Collection } from 'react-aria-components'
 
 type TailwindColor = keyof typeof tailwindColors
 
@@ -32,11 +31,11 @@ export default function ColorCustomizer() {
                         <Button>
                             <IconPalette />
                         </Button>
-                        <Popover.Content placement='right' className='p-4'>
+                        <Popover.Content className='p-4' placement='right'>
                             In Progress
                         </Popover.Content>
                     </Popover>
-                    <SelectFormat selectedFormat={selectedFormat} action={setSelectedFormat} />
+                    <SelectFormat action={setSelectedFormat} selectedFormat={selectedFormat} />
                 </Container>
             </div>
             <Container>
@@ -57,7 +56,7 @@ export default function ColorCustomizer() {
                     </thead>
                     <tbody>
                         {Object.keys(tailwindColors).map((color, i) => (
-                            <tr key={i} className='h-8'>
+                            <tr className='h-8' key={i}>
                                 <td
                                     className='text-xs sm:text-sm'
                                     colSpan={2}

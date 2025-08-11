@@ -4,7 +4,7 @@ import { Tabs } from '@/components/ui'
 
 export default function TabsDisabledDemo() {
     return (
-        <Tabs disabledKeys={['c', 'a']} aria-label='Services'>
+        <Tabs aria-label='Services' disabledKeys={['c', 'a']}>
             <Tabs.List>
                 <Tabs.Label id='o'>Overview</Tabs.Label>
                 <Tabs.Label id='c'>Contact</Tabs.Label>

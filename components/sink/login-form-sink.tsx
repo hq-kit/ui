@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
+import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 
 export default function LoginFormSink() {
     return (
@@ -19,19 +19,19 @@ export default function LoginFormSink() {
             >
                 <Card.Content className='grid gap-4'>
                     <div className='flex gap-4'>
-                        <Button variant='outline' className='w-full'>
+                        <Button className='w-full' variant='outline'>
                             <IconBrandGithub className='size-4' />
                             Github
                         </Button>
-                        <Button variant='outline' className='w-full'>
+                        <Button className='w-full' variant='outline'>
                             <IconBrandGoogle className='size-4' />
                             Google
                         </Button>
                     </div>
                     <Separator />
                     <TextField isRequired label='Name' placeholder='Enter your Name' />
-                    <TextField isRequired label='Email' type='email' placeholder='Enter your email' />
-                    <TextField isRequired label='Password' type='password' placeholder='Enter your password' />
+                    <TextField isRequired label='Email' placeholder='Enter your email' type='email' />
+                    <TextField isRequired label='Password' placeholder='Enter your password' type='password' />
                     <Checkbox>I agree to the terms and conditions</Checkbox>
                 </Card.Content>
                 <Card.Footer className='justify-end gap-4'>

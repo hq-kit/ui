@@ -1,18 +1,17 @@
 'use client'
 
-import { useIsMobile } from '@/lib/hooks'
-import { cn } from '@/lib/utils'
-
-import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from '@tabler/icons-react'
 import type { Ref } from 'react'
+import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from '@tabler/icons-react'
 import {
     Button,
     type ButtonProps,
+    composeRenderProps,
     Input,
     NumberField as RACNumberField,
-    type NumberFieldProps as RACNumberFieldProps,
-    composeRenderProps
+    type NumberFieldProps as RACNumberFieldProps
 } from 'react-aria-components'
+import { useIsMobile } from '@/lib/hooks'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
@@ -32,9 +31,9 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
         >
             {label && <Label>{label}</Label>}
             <FieldGroup
-                isInvalid={props.isInvalid || !!errorMessage}
-                isDisabled={props.isDisabled}
                 className='overflow-hidden'
+                isDisabled={props.isDisabled}
+                isInvalid={props.isInvalid || !!errorMessage}
             >
                 {isMobile && (
                     <Stepper className='border-r' slot='decrement'>
@@ -48,10 +47,10 @@ const NumberField = ({ label, placeholder, description, className, errorMessage,
                     </Stepper>
                 ) : (
                     <div className='flex h-full flex-col divide-y border-s'>
-                        <Stepper slot='increment' className='h-5 w-7'>
+                        <Stepper className='h-5 w-7' slot='increment'>
                             <IconChevronUp />
                         </Stepper>
-                        <Stepper slot='decrement' className='h-5 w-7'>
+                        <Stepper className='h-5 w-7' slot='decrement'>
                             <IconChevronDown />
                         </Stepper>
                     </div>

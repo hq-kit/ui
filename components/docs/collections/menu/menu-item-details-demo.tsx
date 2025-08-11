@@ -1,8 +1,8 @@
 'use client'
 
-import { Menu } from '@/components/ui'
-import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Menu } from '@/components/ui'
 
 const items = [
     {
@@ -28,10 +28,10 @@ export default function MenuItemDetailsDemo() {
     return (
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
-            <Menu.Content items={items} selectionMode='single' selectedKeys={selected} onSelectionChange={setSelected}>
+            <Menu.Content items={items} onSelectionChange={setSelected} selectedKeys={selected} selectionMode='single'>
                 {(item) => (
                     <Menu.Item id={item.id} textValue={item.name}>
-                        <Menu.Details label={item.name} description={item.description} />
+                        <Menu.Details description={item.description} label={item.name} />
                     </Menu.Item>
                 )}
             </Menu.Content>

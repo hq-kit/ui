@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, DatePicker, Form } from '@/components/ui'
 import { getLocalTimeZone, parseDate, startOfYear, today } from '@internationalized/date'
 import { type FormEvent, useState } from 'react'
+import { Button, DatePicker, Form } from '@/components/ui'
 
 export default function DatePickerInvalidDemo() {
     const ly = startOfYear(today(getLocalTimeZone()))
@@ -14,13 +14,13 @@ export default function DatePickerInvalidDemo() {
     }
 
     return (
-        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
+        <Form className='flex flex-col gap-4' onSubmit={onSubmit}>
             <DatePicker
+                className='mb-2'
+                label='Delivery date'
+                onChange={(newValue) => setValue(newValue!)}
                 validate={(date) => (date < now ? 'Select a future date, please.' : null)}
                 value={value}
-                onChange={(newValue) => setValue(newValue!)}
-                label='Delivery date'
-                className='mb-2'
             />
 
             <Button type='submit'>Submit</Button>

@@ -11,7 +11,7 @@ const items = [
 
 export default function TagGroupDemo() {
     return (
-        <Tag.Group label='Linux Distros' selectionMode='multiple' items={items}>
+        <Tag.Group items={items} label='Linux Distros' selectionMode='multiple'>
             {(item) => <Tag>{item.name}</Tag>}
         </Tag.Group>
     )

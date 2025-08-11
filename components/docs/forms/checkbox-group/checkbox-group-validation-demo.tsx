@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Checkbox, CheckboxGroup, Form } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
+import { Button, Checkbox, CheckboxGroup, Form } from '@/components/ui'
 
 export default function CheckboxValidationDemo() {
     const [value, setValue] = useState<string[]>([])
@@ -12,12 +12,12 @@ export default function CheckboxValidationDemo() {
     return (
         <Form className='space-y-4' onSubmit={onSubmit}>
             <CheckboxGroup
-                onChange={setValue}
-                value={value}
-                isRequired
-                validate={(v) => (!v.includes('terms-conditions') ? 'Terms and conditions must be accepted' : null)}
-                label='Agreement'
                 description='Please read and agree before continuing'
+                isRequired
+                label='Agreement'
+                onChange={setValue}
+                validate={(v) => (!v.includes('terms-conditions') ? 'Terms and conditions must be accepted' : null)}
+                value={value}
             >
                 <Checkbox isRequired value='terms-conditions'>
                     Terms and conditions (required)

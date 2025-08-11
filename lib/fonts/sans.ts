@@ -1,8 +1,7 @@
-import { cn } from '@/lib/utils'
 import {
     Barlow,
-    DM_Sans,
     Delius_Swash_Caps,
+    DM_Sans,
     Gabriela,
     Geist,
     Inter,
@@ -15,10 +14,10 @@ import {
     Open_Sans,
     Outfit,
     Oxanium,
-    PT_Serif,
     Playfair_Display,
     Plus_Jakarta_Sans,
     Poppins,
+    PT_Serif,
     Raleway,
     Roboto,
     Source_Code_Pro,
@@ -27,6 +26,7 @@ import {
     Space_Grotesk,
     Ubuntu_Sans
 } from 'next/font/google'
+import { cn } from '@/lib/utils'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })

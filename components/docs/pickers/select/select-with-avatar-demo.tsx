@@ -2,7 +2,7 @@ import { Avatar, Select } from '@/components/ui'
 
 export default function SelectAvatarDemo() {
     return (
-        <Select label='User' items={users}>
+        <Select items={users} label='User'>
             {(item) => (
                 <Select.Item id={item.id} textValue={item.name}>
                     <Avatar src={item.image_url} />

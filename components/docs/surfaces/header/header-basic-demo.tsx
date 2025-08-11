@@ -1,5 +1,5 @@
 import { Header } from '@/components/ui'
 
 export default function HeaderBasicDemo() {
-    return <Header title='Users' description='Manage users, groups, and roles.' />
+    return <Header description='Manage users, groups, and roles.' title='Users' />
 }

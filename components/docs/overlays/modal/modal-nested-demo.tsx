@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Form, Modal, Textarea, toast } from '@/components/ui'
 import { useState } from 'react'
+import { Button, Form, Modal, Textarea, toast } from '@/components/ui'
 
 export default function ModalNestedDemo() {
     const [firstModal, setFirstModal] = useState<boolean>(false)
@@ -13,9 +13,9 @@ export default function ModalNestedDemo() {
             <Button onPress={() => setFirstModal(true)}>Register</Button>
 
             <Modal.Content
+                aria-label='Confirm Registration'
                 isOpen={firstModal}
                 onOpenChange={() => setFirstModal(false)}
-                aria-label='Confirm Registration'
             >
                 <Modal.Header>
                     <Modal.Title>Confirm Registration</Modal.Title>
@@ -36,6 +36,7 @@ export default function ModalNestedDemo() {
             </Modal.Content>
 
             <Modal.Content
+                aria-label='Profile Setup'
                 isOpen={secondModal}
                 onOpenChange={(open) => {
                     if (!open && !filled) {
@@ -43,7 +44,6 @@ export default function ModalNestedDemo() {
                     }
                     setSecondModal(open)
                 }}
-                aria-label='Profile Setup'
             >
                 <Modal.Header>
                     <Modal.Title>Set Up Your Profile</Modal.Title>
@@ -61,8 +61,8 @@ export default function ModalNestedDemo() {
                         <Textarea
                             isRequired
                             label='Bio'
-                            placeholder='Tell us something about yourself'
                             onInput={() => setFilled(true)}
+                            placeholder='Tell us something about yourself'
                         />
                     </Modal.Body>
                     <Modal.Footer>

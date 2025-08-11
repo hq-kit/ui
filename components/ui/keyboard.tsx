@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ComponentPropsWithRef } from 'react'
 import { Keyboard as RACKeyboard } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 type ShortcutKeyResult = {
     symbol: string
@@ -44,15 +44,15 @@ const Keyboard = ({
     if (!keys) return null
     return (
         <RACKeyboard
-            ref={ref}
             className={cn(
                 '!font-sans hidden w-fit space-x-0.5 justify-self-end rounded-sm border px-1.5 py-0.5 text-current/70 text-xs shadow group-hover:text-current group-focus:text-current group-disabled:opacity-50 sm:inline-flex rtl:space-x-reverse',
                 className
             )}
+            ref={ref}
             {...props}
         >
             {keys.map((key) => (
-                <abbr className='capitalize' key={key} aria-label={getShortcutKey(key).readable}>
+                <abbr aria-label={getShortcutKey(key).readable} className='capitalize' key={key}>
                     {getShortcutKey(key).symbol}
                 </abbr>
             ))}

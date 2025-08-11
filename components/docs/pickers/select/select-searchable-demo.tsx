@@ -10,7 +10,7 @@ const items = [
 
 export default function AutocompleteDemo() {
     return (
-        <Select label='Default' items={items} searchable>
+        <Select items={items} label='Default' searchable>
             {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
         </Select>
     )

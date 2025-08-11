@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Modal, TextField } from '@/components/ui'
 import { IconUserPlus } from '@tabler/icons-react'
 import { useState } from 'react'
+import { Button, Modal, TextField } from '@/components/ui'
 
 export default function TextFieldSuffixButtonDemo() {
     const [open, setOpen] = useState<boolean>(false)
@@ -27,7 +27,7 @@ export default function TextFieldSuffixButtonDemo() {
             <TextField
                 label='Name'
                 suffix={
-                    <Button aria-label='Add New User' onPress={() => setOpen(true)} icon variant='ghost'>
+                    <Button aria-label='Add New User' icon onPress={() => setOpen(true)} variant='ghost'>
                         <IconUserPlus />
                     </Button>
                 }

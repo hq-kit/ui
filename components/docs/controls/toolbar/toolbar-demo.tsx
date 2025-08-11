@@ -1,6 +1,5 @@
 'use client'
 
-import { Checkbox, Menu, Toolbar } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustified,
@@ -17,11 +16,12 @@ import {
     IconStrikethrough,
     IconUnderline
 } from '@tabler/icons-react'
+import { Checkbox, Menu, Toolbar } from '@/components/ui'
 
 export default function ToolbarDemo() {
     return (
         <Toolbar aria-label='Toolbars'>
-            <Toolbar.Group icon aria-label='Text Formatting Options'>
+            <Toolbar.Group aria-label='Text Formatting Options' icon>
                 <Toolbar.Item aria-label='Bold'>
                     <IconBold />
                 </Toolbar.Item>
@@ -36,7 +36,7 @@ export default function ToolbarDemo() {
                 </Toolbar.Item>
             </Toolbar.Group>
             <Toolbar.Separator />
-            <Toolbar.Group icon aria-label='Alignment'>
+            <Toolbar.Group aria-label='Alignment' icon>
                 <Toolbar.Item aria-label='Align Left'>
                     <IconAlignLeft />
                 </Toolbar.Item>

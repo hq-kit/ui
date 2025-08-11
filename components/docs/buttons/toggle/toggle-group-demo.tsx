@@ -1,7 +1,7 @@
 'use client'
 
-import { Toggle } from '@/components/ui'
 import { IconHeading, IconPilcrow } from '@tabler/icons-react'
+import { Toggle } from '@/components/ui'
 
 export default function ToggleGroupDemo() {
     return (

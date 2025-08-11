@@ -1,21 +1,20 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import type { MenuProps } from 'react-aria-components'
 import {
     type ComponentPropsWithRef,
+    createContext,
+    createRef,
     type Dispatch,
     type MouseEvent,
     type ReactNode,
     type RefObject,
     type SetStateAction,
-    createContext,
-    createRef,
     use,
     useRef,
     useState
 } from 'react'
-
-import type { MenuProps } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Menu, MenuContent } from './menu'
 
 interface ContextMenuContextProps {
@@ -70,10 +69,11 @@ const ContextMenuTrigger = ({ className, ...props }: ComponentPropsWithRef<'div'
     }
     return (
         <div
-            className={cn('relative cursor-default select-none outline-hidden disabled:opacity-50', className)}
             aria-haspopup='menu'
-            ref={areaRef}
+            className={cn('relative cursor-default select-none outline-hidden disabled:opacity-50', className)}
             onContextMenu={onContextMenu}
+            ref={areaRef}
+            role='none'
             {...props}
         />
     )
@@ -89,13 +89,13 @@ const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProp
     return contextMenuOffset ? (
         <MenuContent
             aria-label={props['aria-label'] ?? 'Context Menu'}
+            crossOffset={contextMenuOffset?.crossOffset}
             isOpen={!!contextMenuOffset}
             offset={contextMenuOffset?.offset ?? 0}
-            crossOffset={contextMenuOffset?.crossOffset}
-            triggerRef={triggerRef}
-            placement='bottom left'
-            onOpenChange={() => setContextMenuOffset(null)}
             onClose={() => setContextMenuOffset(null)}
+            onOpenChange={() => setContextMenuOffset(null)}
+            placement='bottom left'
+            triggerRef={triggerRef}
             {...props}
         />
     ) : null

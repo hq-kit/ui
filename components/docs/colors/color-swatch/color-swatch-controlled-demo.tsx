@@ -1,8 +1,8 @@
 'use client'
 
-import { ColorSwatchPicker } from '@/components/ui'
 import { useState } from 'react'
 import { parseColor } from 'react-aria-components'
+import { ColorSwatchPicker } from '@/components/ui'
 
 export default function ColorSwatchPickerDemo() {
     const [color, setColor] = useState(parseColor('#0d6efd'))
@@ -10,9 +10,9 @@ export default function ColorSwatchPickerDemo() {
         <div className='flex flex-col gap-4'>
             <ColorSwatchPicker
                 aria-label='Pick color'
-                value={color}
-                onChange={setColor}
                 className='flex justify-center gap-2'
+                onChange={setColor}
+                value={color}
             >
                 <ColorSwatchPicker.Item color='#f59e0b' />
                 <ColorSwatchPicker.Item color='#84cc16' />

@@ -1,7 +1,7 @@
 'use client'
 
-import { Keyboard, Tooltip } from '@/components/ui'
 import { IconBold } from '@tabler/icons-react'
+import { Keyboard, Tooltip } from '@/components/ui'
 
 export default function KeyboardTooltipDemo() {
     return (

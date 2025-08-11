@@ -1,9 +1,9 @@
 'use client'
 
-import { ComboBox, Toggle } from '@/components/ui'
+import type { Key, Selection } from 'react-aria-components'
 import { IconCheckbox, IconForms } from '@tabler/icons-react'
 import { useState } from 'react'
-import type { Key, Selection } from 'react-aria-components'
+import { ComboBox, Toggle } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -22,7 +22,7 @@ export default function ComboBoxControlledDemo() {
     const [mode, setMode] = useState<Selection>(new Set(['selection']))
     return (
         <div className='space-y-4'>
-            <Toggle.Group selectionMode='single' selectedKeys={mode} onSelectionChange={setMode}>
+            <Toggle.Group onSelectionChange={setMode} selectedKeys={mode} selectionMode='single'>
                 <Toggle id='selection'>
                     <IconCheckbox />
                     Selection
@@ -41,7 +41,7 @@ const ComboBoxControlledInput = () => {
     const [value, setValue] = useState<string>('')
     return (
         <div className='grid space-y-4'>
-            <ComboBox label='Linux Distro' inputValue={value} onInputChange={setValue} items={items}>
+            <ComboBox inputValue={value} items={items} label='Linux Distro' onInputChange={setValue}>
                 {(item) => (
                     <ComboBox.Item id={item.id} textValue={item.name}>
                         {item.name}
@@ -57,7 +57,7 @@ const ComboBoxControlledSelected = () => {
     const [selected, setSelected] = useState<Key | null>(null)
     return (
         <div className='grid space-y-4'>
-            <ComboBox label='Linux Distro' selectedKey={selected} onSelectionChange={setSelected} items={items}>
+            <ComboBox items={items} label='Linux Distro' onSelectionChange={setSelected} selectedKey={selected}>
                 {(item) => <ComboBox.Item id={item.id}>{item.name}</ComboBox.Item>}
             </ComboBox>
             <code>selected: {JSON.stringify(selected)}</code>

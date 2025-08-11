@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Sheet } from '@/components/ui'
 import { IconCircleCheck, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
+import { Button, Sheet } from '@/components/ui'
 
 export default function SheetControlledDemo() {
     const [open, setOpen] = useState<boolean>(false)
@@ -29,13 +29,13 @@ export default function SheetControlledDemo() {
                     </Sheet.Description>
                 </Sheet.Header>
                 <Sheet.Footer>
-                    <Button variant='outline' onPress={() => setOpen(false)}>
+                    <Button onPress={() => setOpen(false)} variant='outline'>
                         Cancel
                     </Button>
                     <Button
                         isPending={loading === 'loading'}
-                        variant={loading === 'success' ? 'default' : 'destructive'}
                         onPress={deleteAccount}
+                        variant={loading === 'success' ? 'default' : 'destructive'}
                     >
                         {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
                         {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}

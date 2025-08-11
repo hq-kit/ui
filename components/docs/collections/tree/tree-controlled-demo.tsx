@@ -1,18 +1,18 @@
 'use client'
 
-import { Tree, TreeItem } from '@/components/ui'
-import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeControlledDemo() {
     const [selected, setSelected] = useState<Selection>(new Set([]))
     return (
         <div className='space-y-6'>
             <Tree
-                className='w-full'
                 aria-label='Files'
-                selectedKeys={selected}
+                className='w-full'
                 onSelectionChange={setSelected}
+                selectedKeys={selected}
                 selectionMode='multiple'
             >
                 <TreeItem id='documents' textValue='Documents'>

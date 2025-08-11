@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import {
     DM_Mono,
     Fira_Code,
@@ -9,6 +8,7 @@ import {
     Source_Code_Pro,
     Ubuntu_Mono
 } from 'next/font/google'
+import { cn } from '@/lib/utils'
 
 const jetbrainsMono = JetBrains_Mono({
     subsets: ['latin'],

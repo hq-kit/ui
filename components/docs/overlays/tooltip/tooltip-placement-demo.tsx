@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Tooltip } from '@/components/ui'
 import type { TooltipProps } from 'react-aria-components'
+import { Button, Tooltip } from '@/components/ui'
 
 const placements: TooltipProps['placement'][] = [
     'left top',
@@ -24,9 +24,9 @@ export default function TooltipPlacementDemo() {
             {placements.map((place, i) => (
                 <Tooltip key={i}>
                     <Button
+                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
                         size='xs'
                         variant='outline'
-                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3'
                     >
                         {place}
                     </Button>

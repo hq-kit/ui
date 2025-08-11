@@ -1,7 +1,7 @@
 'use client'
 
-import { Command } from '@/components/ui'
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
+import { Command } from '@/components/ui'
 
 export default function CommandDemo() {
     return (

@@ -1,7 +1,7 @@
 'use client'
 
-import { Breadcrumbs } from '@/components/ui'
 import { usePathname } from 'next/navigation'
+import { Breadcrumbs } from '@/components/ui'
 
 export default function BreadcrumbsUrlDemo() {
     const pathname = usePathname()

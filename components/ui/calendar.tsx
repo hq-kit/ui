@@ -1,12 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
+import type { CalendarProps, CalendarState, DateValue, RangeCalendarProps } from 'react-aria-components'
 import { type CalendarDate, getLocalTimeZone, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import { type ComponentPropsWithRef, use } from 'react'
-import type { CalendarProps, CalendarState, DateValue, RangeCalendarProps } from 'react-aria-components'
 import {
     Button,
     CalendarCell,
@@ -20,6 +18,7 @@ import {
     RangeCalendar as RACRangeCalendar,
     useLocale
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Menu } from './menu'
 
 const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
@@ -32,7 +31,6 @@ const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
                 <CalendarGridBody>
                     {(date) => (
                         <CalendarCell
-                            date={date}
                             className={cn([
                                 'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-accent outside-month:text-muted-foreground pressed:text-accent-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground',
                                 'selected:bg-primary selected:text-primary-foreground selected:invalid:bg-destructive selected:invalid:text-destructive-foreground',
@@ -41,6 +39,7 @@ const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
                                 date.compare(now) === 0 &&
                                     'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-1 after:rounded-full after:bg-primary selected:after:bg-primary-foreground'
                             ])}
+                            date={date}
                         >
                             {date.day}
                         </CalendarCell>
@@ -61,15 +60,14 @@ const RangeCalendar = <T extends DateValue>({ visibleDuration = { months: 1 }, .
                     const id = index + 1
                     return (
                         <CalendarGrid
+                            className='w-full **:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg'
                             key={index}
                             offset={id >= 2 ? { months: id - 1 } : undefined}
-                            className='w-full **:[td]:px-0 **:[td]:py-[1.5px] **:[td]:first:*:rounded-s-lg **:[td]:last:*:rounded-e-lg'
                         >
                             <CalendarGridHeader />
                             <CalendarGridBody>
                                 {(date) => (
                                     <CalendarCell
-                                        date={date}
                                         className={cn([
                                             'relative flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg pressed:bg-accent outside-month:text-muted-foreground pressed:text-accent-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground',
                                             'selection-start:bg-primary selection-start:text-primary-foreground selection-start:invalid:bg-destructive selection-start:invalid:text-destructive-foreground',
@@ -80,6 +78,7 @@ const RangeCalendar = <T extends DateValue>({ visibleDuration = { months: 1 }, .
                                             date.compare(now) === 0 &&
                                                 'after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:mt-1 after:size-1 after:rounded after:bg-primary selected:selection-end:after:bg-primary-foreground selected:selection-start:after:bg-primary-foreground'
                                         ])}
+                                        date={date}
                                     >
                                         {date.day}
                                     </CalendarCell>
@@ -99,8 +98,8 @@ const CalendarHeader = ({ className, isRange, ...props }: ComponentPropsWithRef<
 
     return (
         <header
-            slot='calendar-header'
             className={cn('flex w-full items-center justify-between gap-1.5 pt-1 pr-1 pb-5 pl-1.5 sm:pb-4', className)}
+            slot='calendar-header'
             {...props}
         >
             <Button
@@ -160,13 +159,13 @@ const SelectMonth = ({ state }: { state: CalendarState }) => {
                 {months[selectedMonth - 1]}
             </Menu.Trigger>
             <Menu.Content
-                selectionMode='single'
-                selectedKeys={[selectedMonth]}
-                onSelectionChange={(v) => state.setFocusedDate(state.focusedDate.set({ month: Number([...v][0]) }))}
                 items={months.map((month, i) => ({ id: i + 1, textValue: month }))}
+                onSelectionChange={(v) => state.setFocusedDate(state.focusedDate.set({ month: Number([...v][0]) }))}
+                selectedKeys={[selectedMonth]}
+                selectionMode='single'
             >
                 {(item) => (
-                    <Menu.Item key={item.id} id={item.id} textValue={item.textValue}>
+                    <Menu.Item id={item.id} key={item.id} textValue={item.textValue}>
                         <Menu.Label>{item.textValue}</Menu.Label>
                     </Menu.Item>
                 )}
@@ -199,15 +198,15 @@ const SelectYear = ({ state }: { state: CalendarState }) => {
             </Menu.Trigger>
             <Menu.Content
                 aria-label='Select year'
-                selectedKeys={[20]}
-                selectionMode='single'
+                items={years.map((year, i) => ({ id: i, textValue: year.formatted }))}
                 onSelectionChange={(value) => {
                     state.setFocusedDate(state.focusedDate.set({ year: years[Number([...value][0])].value.year }))
                 }}
-                items={years.map((year, i) => ({ id: i, textValue: year.formatted }))}
+                selectedKeys={[20]}
+                selectionMode='single'
             >
                 {(item) => (
-                    <Menu.Item key={item.id} id={item.id} textValue={item.textValue}>
+                    <Menu.Item id={item.id} key={item.id} textValue={item.textValue}>
                         <Menu.Label>{item.textValue}</Menu.Label>
                     </Menu.Item>
                 )}

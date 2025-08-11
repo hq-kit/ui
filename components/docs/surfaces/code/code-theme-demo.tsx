@@ -1,9 +1,9 @@
 'use client'
 
-import { Code, Select } from '@/components/ui'
-import { useState } from 'react'
 import type { Key } from 'react-aria-components'
 import type { Theme } from 'rehype-pretty-code'
+import { useState } from 'react'
+import { Code, Select } from '@/components/ui'
 
 const themes = [
     'andromeeda',
@@ -83,7 +83,7 @@ export default function CodeThemeDemo() {
     const [theme, setTheme] = useState<Key | null>('dracula')
     return (
         <div className='space-y-4'>
-            <Select label='Theme' searchable selectedKey={theme} onSelectionChange={setTheme} items={themes}>
+            <Select items={themes} label='Theme' onSelectionChange={setTheme} searchable selectedKey={theme}>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
             <Code code={code} theme={theme as Theme} />

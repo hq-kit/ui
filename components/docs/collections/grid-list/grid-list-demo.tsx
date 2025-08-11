@@ -17,7 +17,7 @@ const items = [
 
 export default function GridListDemo() {
     return (
-        <GridList selectionMode='single' items={items} aria-label='Linux Distros'>
+        <GridList aria-label='Linux Distros' items={items} selectionMode='single'>
             {(item) => <GridList.Item id={item.id}>{item.name}</GridList.Item>}
         </GridList>
     )

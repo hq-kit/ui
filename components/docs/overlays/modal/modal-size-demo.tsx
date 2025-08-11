@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Modal } from '@/components/ui'
 import { type ComponentProps, useState } from 'react'
+import { Button, Modal } from '@/components/ui'
 
 type Size = Pick<ComponentProps<typeof Modal.Content>, 'size'>['size']
 const sizes: Size[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', 'full']
@@ -19,10 +19,10 @@ export default function ModalSizeDemo() {
             <div className='grid grid-cols-3 gap-2'>
                 {sizes.map((size, i) => (
                     <Button
-                        variant='outline'
+                        className='last:col-span-full'
                         key={i}
                         onPress={() => openModal(size, true)}
-                        className='last:col-span-full'
+                        variant='outline'
                     >
                         {size}
                     </Button>
@@ -35,7 +35,7 @@ export default function ModalSizeDemo() {
                     <Modal.Description>This won&apos;t affect on small screen</Modal.Description>
                 </Modal.Header>
                 <Modal.Footer>
-                    <Button variant='outline' onPress={() => setIsOpen(false)}>
+                    <Button onPress={() => setIsOpen(false)} variant='outline'>
                         Close
                     </Button>
                     <Button onPress={() => setIsOpen(false)}>Confirm</Button>

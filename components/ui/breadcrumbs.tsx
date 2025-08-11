@@ -1,11 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconChevronRight, IconMinus, IconPointFilled, IconSlash } from '@tabler/icons-react'
-import { type ReactNode, createContext, use } from 'react'
 import type { BreadcrumbProps, BreadcrumbsProps } from 'react-aria-components'
-import { Breadcrumb, Link, Breadcrumbs as RACBreadcrumbs, composeRenderProps } from 'react-aria-components'
+import { IconChevronRight, IconMinus, IconPointFilled, IconSlash } from '@tabler/icons-react'
+import { createContext, type ReactNode, use } from 'react'
+import { Breadcrumb, composeRenderProps, Link, Breadcrumbs as RACBreadcrumbs } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 type BreadcrumbsContextProps = {
     separator?: 'chevron' | 'slash' | 'dash' | 'dot'
@@ -44,8 +43,8 @@ const BreadcrumbsItem = ({ href, className, ...props }: BreadcrumbsItemProps) =>
                 <>
                     {href ? (
                         <Link
-                            href={href}
                             className='inline-flex items-center gap-2 transition-colors hover:text-foreground'
+                            href={href}
                         >
                             {props.children}
                         </Link>

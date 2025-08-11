@@ -1,6 +1,5 @@
 'use client'
 
-import { Tree, TreeItem } from '@/components/ui'
 import {
     IconArchive,
     IconDisc,
@@ -16,6 +15,7 @@ import {
     IconMovie
 } from '@tabler/icons-react'
 import { Collection } from 'react-aria-components'
+import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeCollectionsDemo() {
     const renderItem = (item: FileNode, i: number) => (
@@ -41,7 +41,7 @@ export default function TreeCollectionsDemo() {
     )
 
     return (
-        <Tree className='w-full' aria-label='Files' selectionMode='multiple' items={files}>
+        <Tree aria-label='Files' className='w-full' items={files} selectionMode='multiple'>
             {files.map((file, i) => renderItem(file, i))}
         </Tree>
     )

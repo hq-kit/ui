@@ -1,7 +1,7 @@
 'use client'
 
-import { FileTrigger } from '@/components/ui'
 import { IconFolder } from '@tabler/icons-react'
+import { FileTrigger } from '@/components/ui'
 
 export default function FileTriggerFolderDemo() {
     return (

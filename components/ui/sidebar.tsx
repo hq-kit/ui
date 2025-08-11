@@ -1,21 +1,5 @@
 'use client'
 
-import { useIsMobile } from '@/lib/hooks'
-import { cn } from '@/lib/utils'
-import { IconChevronRight, IconMenu } from '@tabler/icons-react'
-import {
-    type CSSProperties,
-    type ComponentProps,
-    type ComponentPropsWithRef,
-    type HTMLAttributes,
-    type ReactNode,
-    createContext,
-    use,
-    useCallback,
-    useEffect,
-    useMemo,
-    useState
-} from 'react'
 import type {
     ButtonProps,
     DisclosureGroupProps,
@@ -24,8 +8,23 @@ import type {
     LinkProps,
     TextProps
 } from 'react-aria-components'
+import { IconChevronRight, IconMenu } from '@tabler/icons-react'
+import {
+    type ComponentProps,
+    type ComponentPropsWithRef,
+    type CSSProperties,
+    createContext,
+    type HTMLAttributes,
+    type ReactNode,
+    use,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState
+} from 'react'
 import {
     Button,
+    composeRenderProps,
     DialogTrigger,
     Disclosure,
     DisclosureGroup,
@@ -34,9 +33,10 @@ import {
     Link,
     OverlayArrow,
     Popover,
-    Text,
-    composeRenderProps
+    Text
 } from 'react-aria-components'
+import { useIsMobile } from '@/lib/hooks'
+import { cn } from '@/lib/utils'
 import { Sheet } from './sheet'
 import { Tooltip } from './tooltip'
 
@@ -106,7 +106,12 @@ const Sidebar = ({
             } else {
                 setInternalOpenState(openState)
             }
-            document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+            cookieStore.set({
+                name: SIDEBAR_COOKIE_NAME,
+                value: String(openState),
+                expires: SIDEBAR_COOKIE_MAX_AGE,
+                path: '/'
+            })
         },
         [setOpenProp, open]
     )
@@ -153,12 +158,12 @@ const Sidebar = ({
         <SidebarContext value={contextValue}>
             {collapsible === 'none' && !isMobile ? (
                 <div
-                    style={{ width: WIDTH }}
                     className={cn(
                         'flex h-full min-h-screen flex-col border-r bg-sidebar text-sidebar-foreground',
                         isInverse && 'dark',
                         className
                     )}
+                    style={{ width: WIDTH }}
                 >
                     {children}
                 </div>
@@ -167,20 +172,27 @@ const Sidebar = ({
                     <Sheet.Trigger className='absolute top-2 left-2.5 z-50 inline-flex size-9 shrink-0 items-center justify-center rounded-md bg-sidebar pressed:bg-accent/80 text-muted-foreground outline-hidden hover:bg-accent focus-visible:border-sidebar-ring focus-visible:ring-4 focus-visible:ring-sidebar-ring/50'>
                         <IconMenu />
                     </Sheet.Trigger>
-                    <Sheet.Content className={isInverse ? 'dark' : ''} aria-label='Sidebar' side='left'>
+                    <Sheet.Content aria-label='Sidebar' className={isInverse ? 'dark' : ''} side='left'>
                         {children}
                     </Sheet.Content>
                 </Sheet>
             ) : (
                 <div
-                    data-variant={variant}
-                    data-open={open}
                     className={cn(
                         'peer z-20 hidden bg-sidebar text-sidebar-foreground [--visual-viewport-vertical-padding:32px] md:block **:[svg]:shrink-0',
                         isInverse && 'dark **:dark'
                     )}
+                    data-open={open}
+                    data-variant={variant}
                 >
                     <div
+                        className={cn(
+                            'sticky top-0 left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
+                            variant === 'float' && 'p-2',
+                            variant === 'inset' && 'bg-sidebar p-2',
+                            variant === 'default' && !collapsedHidden && 'border-r',
+                            collapsedHidden && 'p-0'
+                        )}
                         style={{
                             width: collapsedDock
                                 ? WIDTH_DOCK
@@ -192,16 +204,8 @@ const Sidebar = ({
                                       ? WIDTH_FLOAT_DOCK
                                       : WIDTH
                         }}
-                        className={cn(
-                            'sticky top-0 left-0 hidden backdrop-blur transition-[left,right,width] duration-200 ease-linear md:flex',
-                            variant === 'float' && 'p-2',
-                            variant === 'inset' && 'bg-sidebar p-2',
-                            variant === 'default' && !collapsedHidden && 'border-r',
-                            collapsedHidden && 'p-0'
-                        )}
                     >
                         <div
-                            data-sidebar='default'
                             className={cn(
                                 'flex size-full min-h-svh flex-col text-sidebar-foreground',
                                 variant === 'inset' && 'min-h-[calc(100vh-1rem)]',
@@ -209,6 +213,7 @@ const Sidebar = ({
                                     'min-h-[calc(100vh-1rem)] rounded-lg border border-sidebar-border bg-sidebar',
                                 className
                             )}
+                            data-sidebar='default'
                         >
                             {children}
                         </div>
@@ -224,7 +229,6 @@ const SidebarHeader = ({ className, ...props }: ComponentProps<'div'>) => {
     const collapsed = state === 'collapsed'
     return (
         <div
-            data-sidebar-header='true'
             className={cn(
                 'flex items-center gap-x-3 p-3 font-semibold *:[svg]:size-5',
                 collapsed && variant === 'float' && 'mt-1',
@@ -232,6 +236,7 @@ const SidebarHeader = ({ className, ...props }: ComponentProps<'div'>) => {
                 collapsed && collapsible === 'hidden' && 'hidden',
                 className
             )}
+            data-sidebar-header='true'
             {...props}
         />
     )
@@ -243,7 +248,6 @@ const SidebarFooter = ({ className, ...props }: ComponentProps<'div'>) => {
     const hidden = collapsed && collapsible === 'hidden'
     return (
         <div
-            data-sidebar-footer='true'
             className={cn(
                 'mt-auto flex flex-col overflow-hidden p-2',
                 '**:data-avatar:size-8 **:data-avatar:shrink-0',
@@ -251,6 +255,7 @@ const SidebarFooter = ({ className, ...props }: ComponentProps<'div'>) => {
                 hidden && 'hidden',
                 className
             )}
+            data-sidebar-footer='true'
             {...props}
         />
     )
@@ -258,11 +263,11 @@ const SidebarFooter = ({ className, ...props }: ComponentProps<'div'>) => {
 
 const SidebarBody = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     <div
-        slot='body'
         className={cn(
             'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col space-y-4 overflow-y-auto overflow-x-hidden py-2 will-change-scroll',
             className
         )}
+        slot='body'
         {...props}
     />
 )
@@ -270,7 +275,7 @@ const SidebarBody = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) =>
 const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?: string }) => {
     const { state } = useSidebar()
     return (
-        <section data-section={true} className={cn('col-span-full flex flex-col gap-y-1 px-2', className)}>
+        <section className={cn('col-span-full flex flex-col gap-y-1 px-2', className)} data-section={true}>
             {state !== 'collapsed' && 'title' in props && (
                 <Header className='flex shrink-0 items-center rounded-lg px-2 font-medium text-sidebar-accent-foreground text-xs outline-hidden transition-[margin,opa] duration-200 ease-linear'>
                     {props.title}
@@ -278,9 +283,9 @@ const SidebarSection = ({ className, ...props }: DisclosureGroupProps & { title?
             )}
             <DisclosureGroup
                 {...props}
-                data-section
                 allowsMultipleExpanded
                 className='group grid grid-cols-[auto_1fr_auto] gap-y-0.5'
+                data-section
             >
                 {props.children}
             </DisclosureGroup>
@@ -323,7 +328,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
     return 'href' in props && collapsedDock ? (
         <Tooltip delay={100}>
             {renderMenuWithHref}
-            <Tooltip.Content placement='right top' isInverse className='flex items-center gap-2'>
+            <Tooltip.Content className='flex items-center gap-2' isInverse placement='right top'>
                 {props.children as ReactNode}
             </Tooltip.Content>
         </Tooltip>
@@ -331,13 +336,13 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
         renderMenuWithHref
     ) : state === 'expanded' ? (
         <Disclosure
-            isExpanded
             className={composeRenderProps(className, (className) =>
                 cn(
                     'relative col-span-full grid grid-cols-subgrid items-center gap-x-3 gap-y-0.5 rounded-lg text-sm outline-hidden disabled:opacity-50 expanded:*:[button]:data-[slot=indicator]:rotate-90',
                     className
                 )
             )}
+            isExpanded
             {...props}
         />
     ) : (
@@ -346,7 +351,7 @@ const SidebarItem = ({ className, isCurrent, ...props }: SidebarItemProps) => {
 }
 
 const SidebarLabel = ({ className, ...props }: TextProps) => {
-    return <Text slot='label' className={cn('col-start-2 line-clamp-1 text-left', className)} {...props} />
+    return <Text className={cn('col-start-2 line-clamp-1 text-left', className)} slot='label' {...props} />
 }
 
 const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) => {
@@ -371,8 +376,8 @@ const SidebarSubItemTrigger = ({ children, className, ...props }: ButtonProps) =
                     {typeof children === 'function' ? children(values) : children}
                     {!collapsedDock && (
                         <IconChevronRight
-                            data-slot='indicator'
                             className={cn('ml-auto size-3.5 text-inherit transition-transform')}
+                            data-slot='indicator'
                         />
                     )}
                 </>
@@ -389,15 +394,15 @@ const SidebarSubItem = ({ children, className, ...props }: DisclosurePanelProps)
         </DisclosurePanel>
     ) : (
         <Popover
-            placement='right top'
             className='group flex flex-col rounded-lg border bg-sidebar p-1 **:[[slot=label]]:hidden'
+            placement='right top'
         >
             <OverlayArrow className='group'>
                 <svg
-                    width={12}
+                    className='group-placement-left:-rotate-90 block fill-sidebar stroke-sidebar-border group-placement-bottom:rotate-180 group-placement-right:rotate-90'
                     height={12}
                     viewBox='0 0 12 12'
-                    className='group-placement-left:-rotate-90 block fill-sidebar stroke-sidebar-border group-placement-bottom:rotate-180 group-placement-right:rotate-90'
+                    width={12}
                 >
                     <path d='M0 0 L6 6 L12 0' />
                 </svg>
@@ -414,7 +419,6 @@ const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) =
         collapsible !== 'none' && (
             <Button
                 aria-label='Toggle Sidebar'
-                onPress={toggleSidebar}
                 className={cn(
                     'absolute z-50 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground outline-hidden transition-transform',
                     'hover:bg-accent hover:text-accent-foreground',
@@ -423,6 +427,7 @@ const SidebarTrigger = ({ children, ...props }: ComponentProps<typeof Button>) =
                     variant === 'default' ? 'top-2 right-2' : 'top-4 right-4',
                     open ? 'translate-x-0' : `${variant === 'default' ? 'translate-x-12' : 'translate-x-16'}`
                 )}
+                onPress={toggleSidebar}
                 {...props}
             >
                 {children || <IconMenu className='size-4' />}
@@ -436,11 +441,7 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
     return (
         !isMobile && (
             <Button
-                data-rail
-                slot={null}
                 aria-label='Toggle Sidebar'
-                excludeFromTabOrder
-                onPress={toggleSidebar}
                 className={composeRenderProps(className, (className) =>
                     cn(
                         'fixed inset-y-0 max-h-full w-4 bg-transparent transition',
@@ -450,6 +451,10 @@ const SidebarRail = ({ className, ...props }: ButtonProps) => {
                         className
                     )
                 )}
+                data-rail
+                excludeFromTabOrder
+                onPress={toggleSidebar}
+                slot={null}
                 {...props}
             />
         )
@@ -478,11 +483,11 @@ const SidebarInset = ({ ...props }: ComponentProps<'main'>) => {
 const SidebarNav = ({ className, ...props }: ComponentPropsWithRef<'nav'>) => {
     return (
         <nav
-            slot='nav'
             className={cn(
                 'isolate flex min-h-12 items-center justify-between gap-x-2 rounded-t-lg border-b bg-sidebar/60 px-4 text-sidebar-foreground backdrop-blur-lg md:w-full md:justify-start',
                 'sticky top-0 z-10'
             )}
+            slot='nav'
             {...props}
         />
     )

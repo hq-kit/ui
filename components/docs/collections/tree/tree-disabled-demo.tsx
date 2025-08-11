@@ -4,7 +4,7 @@ import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeDisabledDemo() {
     return (
-        <Tree className='w-full' aria-label='Files'>
+        <Tree aria-label='Files' className='w-full'>
             <TreeItem id='documents' textValue='Documents'>
                 <TreeItem.Content>Documents</TreeItem.Content>
                 <TreeItem id='project' textValue='Project'>
@@ -14,7 +14,7 @@ export default function TreeDisabledDemo() {
                     </TreeItem>
                 </TreeItem>
             </TreeItem>
-            <TreeItem id='photos' textValue='Photos' isDisabled>
+            <TreeItem id='photos' isDisabled textValue='Photos'>
                 <TreeItem.Content>Photos</TreeItem.Content>
                 <TreeItem id='one' textValue='Image 1'>
                     <TreeItem.Content>Image 1</TreeItem.Content>

@@ -1,21 +1,20 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
 import { IconChevronDown } from '@tabler/icons-react'
 import { type Ref, use, useRef } from 'react'
 import {
     Button,
     type ButtonProps,
+    composeRenderProps,
     type DisclosurePanelProps,
     DisclosureStateContext,
     Disclosure as RACDisclosure,
     DisclosureGroup as RACDisclosureGroup,
     type DisclosureGroupProps as RACDisclosureGroupProps,
     DisclosurePanel as RACDisclosurePanel,
-    type DisclosureProps as RACDisclosureProps,
-    composeRenderProps
+    type DisclosureProps as RACDisclosureProps
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 interface AccordionProps extends RACDisclosureGroupProps {
     ref?: Ref<HTMLDivElement>
@@ -25,8 +24,8 @@ interface AccordionProps extends RACDisclosureGroupProps {
 const DisclosureGroup = ({ children, ref, className, ...props }: AccordionProps) => {
     return (
         <RACDisclosureGroup
-            ref={ref}
             data-slot='disclosure-group'
+            ref={ref}
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
@@ -49,8 +48,8 @@ interface CollapsibleProps extends RACDisclosureProps {
 const Disclosure = ({ className, ref, children, ...props }: CollapsibleProps) => {
     return (
         <RACDisclosure
-            ref={ref}
             data-slot='disclosure'
+            ref={ref}
             {...props}
             className={composeRenderProps(className, (className, { isDisabled }) =>
                 cn(
@@ -72,8 +71,6 @@ interface DisclosureTriggerProps extends ButtonProps {
 const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTriggerProps) => {
     return (
         <Button
-            ref={ref}
-            slot='trigger'
             className={composeRenderProps(className, (className) =>
                 cn(
                     'flex w-full flex-1 items-start justify-between gap-4 rounded-md py-4 text-left font-medium text-sm outline-none transition-all',
@@ -83,12 +80,14 @@ const DisclosureTrigger = ({ className, children, ref, ...props }: DisclosureTri
                     className
                 )
             )}
+            ref={ref}
+            slot='trigger'
             {...props}
         >
             {(values) => (
                 <>
                     {typeof children === 'function' ? children(values) : children}
-                    <IconChevronDown data-slot='indicator' className='text-muted-foreground transition-transform' />
+                    <IconChevronDown className='text-muted-foreground transition-transform' data-slot='indicator' />
                 </>
             )}
         </Button>
@@ -99,15 +98,15 @@ const DisclosurePanel = ({ className, children, ...props }: DisclosurePanelProps
     const contentRef = useRef<HTMLDivElement>(null)
     return (
         <RACDisclosurePanel
+            className={cn('overflow-hidden text-sm')}
             data-slot='disclosure-content'
             style={{
                 height: isExpanded ? contentRef?.current?.scrollHeight : 0,
                 transition: 'height 0.2s ease-in-out'
             }}
-            className={cn('overflow-hidden text-sm')}
             {...props}
         >
-            <div ref={contentRef} className={cn('pt-0 pb-4', className)}>
+            <div className={cn('pt-0 pb-4', className)} ref={contentRef}>
                 {children}
             </div>
         </RACDisclosurePanel>

@@ -1,7 +1,7 @@
 'use client'
 
-import { Card, Description, Slider } from '@/components/ui'
 import { useState } from 'react'
+import { Card, Description, Slider } from '@/components/ui'
 
 export default function SliderOrientationDemo() {
     const [equalizer, setEqualizer] = useState({
@@ -23,45 +23,45 @@ export default function SliderOrientationDemo() {
             <div className='flex justify-center gap-4 [&>*]:w-6'>
                 <Slider
                     aria-label='Sub Bass'
-                    value={equalizer.subBass}
                     onChange={(newValue) => handleSliderChange('subBass', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.subBass}
                 />
                 <Slider
                     aria-label='Bass'
-                    value={equalizer.bass}
                     onChange={(newValue) => handleSliderChange('bass', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.bass}
                 />
                 <Slider
                     aria-label='Low Mid'
-                    value={equalizer.lowMid}
                     onChange={(newValue) => handleSliderChange('lowMid', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.lowMid}
                 />
                 <Slider
                     aria-label='Mid'
-                    value={equalizer.mid}
                     onChange={(newValue) => handleSliderChange('mid', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.mid}
                 />
                 <Slider
                     aria-label='High Mid'
-                    value={equalizer.highMid}
                     onChange={(newValue) => handleSliderChange('highMid', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.highMid}
                 />
                 <Slider
                     aria-label='Presence'
-                    value={equalizer.presence}
                     onChange={(newValue) => handleSliderChange('presence', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.presence}
                 />
                 <Slider
                     aria-label='Brilliance'
-                    value={equalizer.brilliance}
                     onChange={(newValue) => handleSliderChange('brilliance', newValue as number)}
                     orientation='vertical'
+                    value={equalizer.brilliance}
                 />
             </div>
             <Description className='mt-6 block text-center'>Equilizer</Description>

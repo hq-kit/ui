@@ -1,13 +1,13 @@
 'use client'
 
-import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
 import { IconEye, IconLock } from '@tabler/icons-react'
+import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
 
 export default function TeamManagementSink() {
     return (
         <Card className='flex flex-col items-center justify-around gap-4 p-2 lg:col-span-3 lg:flex-row'>
             <AvatarGroup items={roles}>
-                {(item) => <Avatar id={item.id} alt={item.name} src={`https://i.pravatar.cc/150?img=2${item.id}`} />}
+                {(item) => <Avatar alt={item.name} id={item.id} src={`https://i.pravatar.cc/150?img=2${item.id}`} />}
             </AvatarGroup>
             <ColorPicker defaultValue={'#ff0000'} label='Color' />
             <Menu>
@@ -15,7 +15,7 @@ export default function TeamManagementSink() {
                 <Menu.Content items={roles}>
                     {(item) => (
                         <Menu.Item id={item.id} textValue={item.name}>
-                            <Menu.Details label={item.name} description={item.description} />
+                            <Menu.Details description={item.description} label={item.name} />
                         </Menu.Item>
                     )}
                 </Menu.Content>

@@ -1,9 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-
-import { cn } from '@/lib/utils'
-
 import { IconCheck, IconCopy } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import rehypePrettyCode, { type Theme } from 'rehype-pretty-code'
@@ -11,6 +7,8 @@ import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface CodeProps {
     lang?: string | { block?: string; inline?: string }
@@ -98,11 +96,11 @@ const Code = ({
 const CopyButton = ({ copied, className, onPress }: { copied: boolean; className?: string; onPress?: () => void }) => (
     <Button
         aria-label={copied ? 'Copied' : 'Copy'}
-        variant='outline'
-        icon
-        size='sm'
         className={className}
+        icon
         onPress={onPress}
+        size='sm'
+        variant='outline'
     >
         <IconCopy
             className={cn('size-4 rotate-0 scale-100 transition-all duration-200', copied && 'rotate-90 scale-0')}

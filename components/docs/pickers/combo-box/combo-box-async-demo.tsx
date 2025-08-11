@@ -1,8 +1,8 @@
 'use client'
 
-import { ComboBox } from '@/components/ui'
 import { IconSearch } from '@tabler/icons-react'
 import { useAsyncList } from 'react-stately'
+import { ComboBox } from '@/components/ui'
 
 export default function ComboBoxAsyncDemo() {
     const list = useAsyncList<{ title: string }>({
@@ -17,14 +17,14 @@ export default function ComboBoxAsyncDemo() {
     })
     return (
         <ComboBox
-            items={list.items}
-            onInputChange={list.setFilterText}
             inputValue={list.filterText}
             isPending={list.isLoading}
+            items={list.items}
+            onInputChange={list.setFilterText}
             prefix={<IconSearch />}
         >
             {(item) => (
-                <ComboBox.Item key={item.title} id={item.title}>
+                <ComboBox.Item id={item.title} key={item.title}>
                     {item.title}
                 </ComboBox.Item>
             )}

@@ -1,16 +1,15 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconGripVertical } from '@tabler/icons-react'
 import type { ReactNode } from 'react'
 import type { GridListItemProps, GridListProps as RACGridListProps } from 'react-aria-components'
+import { IconGripVertical } from '@tabler/icons-react'
 import {
     Button,
+    composeRenderProps,
     GridList as RACGridList,
-    GridListItem as RACGridListItem,
-    composeRenderProps
+    GridListItem as RACGridListItem
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Checkbox } from './checkbox'
 
 interface GridListProps<T extends object> extends RACGridListProps<T> {
@@ -28,7 +27,6 @@ const GridList = <T extends object>({
 }: GridListProps<T>) => (
     <RACGridList
         aria-label={props['aria-label'] ?? 'Grid list'}
-        layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
         className={composeRenderProps(className, (className) =>
             cn(
                 'group layout-stack:flex layout-stack:flex-col layout-stack:gap-0 layout-stack:divide-y layout-stack:rounded-lg layout-stack:border-y',
@@ -53,6 +51,7 @@ const GridList = <T extends object>({
                 className
             )
         )}
+        layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
         {...props}
     >
         {children}
@@ -86,8 +85,8 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
                 <>
                     {allowsDragging && (
                         <Button
-                            slot='drag'
                             className={cn('cursor-grab text-muted-foreground', isDragging && 'cursor-grabbing')}
+                            slot='drag'
                         >
                             <IconGripVertical />
                         </Button>

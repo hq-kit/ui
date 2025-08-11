@@ -5,7 +5,7 @@ import { Card, Carousel } from '@/components/ui'
 export default function CarouselOrientationDemo() {
     return (
         <Carousel orientation='vertical'>
-            <Carousel.Content items={items} className='h-32'>
+            <Carousel.Content className='h-32' items={items}>
                 {(item) => (
                     <Carousel.Item className='basis-1/2 md:basis-1/3'>
                         <Card>

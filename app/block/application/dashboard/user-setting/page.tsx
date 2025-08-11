@@ -17,7 +17,7 @@ export default function UserSetting() {
                     <Card.Description>Manage your account settings and preferences.</Card.Description>
                 </Card.Header>
             </Card>
-            <Tabs orientation={isMobile ? 'horizontal' : 'vertical'} aria-label='E-Learning Platform'>
+            <Tabs aria-label='E-Learning Platform' orientation={isMobile ? 'horizontal' : 'vertical'}>
                 <Tabs.List>
                     <Tabs.Label id='account'>Account</Tabs.Label>
                     <Tabs.Label id='security'>Security</Tabs.Label>

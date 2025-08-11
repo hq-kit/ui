@@ -1,6 +1,5 @@
 'use client'
 
-import { Menu } from '@/components/ui'
 import {
     IconBrandArc,
     IconBrandChrome,
@@ -9,6 +8,7 @@ import {
     IconBrandOpera,
     IconBrandSafari
 } from '@tabler/icons-react'
+import { Menu } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Chrome', icon: IconBrandChrome },

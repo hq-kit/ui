@@ -1,9 +1,9 @@
 'use client'
 
-import { Menu } from '@/components/ui'
 import type { Placement } from '@react-types/overlays'
-import { useState } from 'react'
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Menu } from '@/components/ui'
 
 const placements = [
     { position: 'bottom' },
@@ -36,11 +36,11 @@ export default function SingleMenuDemo() {
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
             <Menu.Content
-                placement={Array.from(selected)[0] as Placement}
-                selectionMode='single'
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
                 items={placements}
+                onSelectionChange={setSelected}
+                placement={Array.from(selected)[0] as Placement}
+                selectedKeys={selected}
+                selectionMode='single'
             >
                 {(item) => (
                     <Menu.Item id={item.position}>

@@ -27,11 +27,7 @@ function pascalCase(str: string): string {
 }
 
 async function copyToClipboard(text: string) {
-    try {
-        await navigator.clipboard.writeText(text)
-    } catch (err) {
-        console.error('Failed to copy: ', err)
-    }
+    await navigator.clipboard.writeText(text)
 }
 
 export { titleCase, slugify, pascalCase, copyToClipboard }

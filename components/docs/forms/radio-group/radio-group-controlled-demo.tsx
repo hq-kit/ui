@@ -1,13 +1,13 @@
 'use client'
 
-import { Radio, RadioGroup } from '@/components/ui'
 import { useState } from 'react'
+import { Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupControlledDemo() {
     const [selected, setSelected] = useState('')
     return (
         <div className='space-y-4'>
-            <RadioGroup label='Plan' value={selected} onChange={setSelected}>
+            <RadioGroup label='Plan' onChange={setSelected} value={selected}>
                 <Radio value='bronze'>Bronze</Radio>
                 <Radio value='silver'>Silver</Radio>
                 <Radio value='gold'>Gold</Radio>

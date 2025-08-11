@@ -79,9 +79,9 @@ const items = [
 
 export default function ListBoxSectionDemo() {
     return (
-        <ListBox items={items} aria-label='Bands' selectionMode='multiple'>
+        <ListBox aria-label='Bands' items={items} selectionMode='multiple'>
             {(item) => (
-                <ListBox.Section className='grid w-full gap-1' id={item.id} title={item.name} items={item.distros}>
+                <ListBox.Section className='grid w-full gap-1' id={item.id} items={item.distros} title={item.name}>
                     {(distro) => <ListBox.Item id={distro.id}>{distro.name}</ListBox.Item>}
                 </ListBox.Section>
             )}

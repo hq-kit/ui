@@ -1,8 +1,8 @@
 'use client'
 
-import { Tabs } from '@/components/ui'
 import { useState } from 'react'
 import { Collection, type Key } from 'react-aria-components'
+import { Tabs } from '@/components/ui'
 
 const items = [
     { id: 1, title: 'Overview', content: 'This is the overview tab content.' },
@@ -15,7 +15,7 @@ export default function TabsControlledDemo() {
     const [selected, setSelected] = useState<Key>(1)
     return (
         <div className='space-y-6'>
-            <Tabs aria-label='Project Management' selectedKey={selected} onSelectionChange={setSelected}>
+            <Tabs aria-label='Project Management' onSelectionChange={setSelected} selectedKey={selected}>
                 <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
                 <Collection items={items}>
                     {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}

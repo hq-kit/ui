@@ -1,14 +1,5 @@
 'use client'
 
-import { blocks } from '@/components/docs/generated/blocks'
-
-import blockSource from '@/components/docs/generated/blocks.json'
-import uiSource from '@/components/docs/generated/previews.json'
-import { CLI } from '@/components/mdx/cli'
-import { Code } from '@/components/mdx/code'
-import { Separator, Tooltip } from '@/components/ui'
-import { cn } from '@/lib/utils'
-
 import {
     IconBrandCss3,
     IconBrandJavascript,
@@ -22,6 +13,13 @@ import {
 import { useState } from 'react'
 import { Button, Collection, Disclosure, DisclosureGroup, DisclosurePanel } from 'react-aria-components'
 import { transform } from 'sucrase'
+import { blocks } from '@/components/docs/generated/blocks'
+import blockSource from '@/components/docs/generated/blocks.json'
+import uiSource from '@/components/docs/generated/previews.json'
+import { CLI } from '@/components/mdx/cli'
+import { Code } from '@/components/mdx/code'
+import { Separator, Tooltip } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 type FileNode = {
     id: string
@@ -98,32 +96,32 @@ export function Fleet({ page }: { page: string }) {
     }
 
     const renderItem = (item: FileNode) => (
-        <Disclosure key={item.id} className='w-full' id={item.id}>
+        <Disclosure className='w-full' id={item.id} key={item.id}>
             {item.children && item.children.length > 0 ? (
                 <>
                     <Button
-                        slot='trigger'
                         className='flex w-full cursor-pointer items-center gap-2 p-2 font-medium text-sm text-white hover:bg-[#34343a] aria-expanded:*:data-[slot=chevron]:rotate-90'
+                        slot='trigger'
                     >
                         <IconChevronRight className='size-4 transition-transform' data-slot='chevron' />
                         <IconFolder className='size-4' data-slot='folder' />
                         {item.textValue}
                     </Button>
                     <DisclosurePanel
-                        data-slot='panel'
                         className='w-full **:data-[slot=chevron]:ml-6 **:data-[slot=file]:**:[svg]:ml-6 **:data-[slot=panel]:**:[svg]:ml-12'
+                        data-slot='panel'
                     >
                         <Collection items={item.children}>{(item) => renderItem(item)}</Collection>
                     </DisclosurePanel>
                 </>
             ) : (
                 <Button
-                    data-slot='file'
-                    onPress={() => selectFile(item.id)}
                     className={cn(
                         'flex w-full cursor-pointer items-center gap-2 p-2 font-medium text-sm text-white hover:bg-[#34343a]',
                         file === item.id && 'bg-[#34343a]'
                     )}
+                    data-slot='file'
+                    onPress={() => selectFile(item.id)}
                 >
                     {item.textValue.endsWith('.tsx') || item.textValue.endsWith('.jsx') ? (
                         <IconBrandReact className='size-4 text-[#00bcd4]' />
@@ -144,11 +142,11 @@ export function Fleet({ page }: { page: string }) {
 
     return (
         <section className='flex flex-col gap-4'>
-            <CLI noMessage command='add' items={block.uiComponents.map((c) => c.replaceAll('.tsx', ''))} />
+            <CLI command='add' items={block.uiComponents.map((c) => c.replaceAll('.tsx', ''))} noMessage />
             <div className='flex w-full flex-col overflow-hidden rounded-lg **:border-[#3f3f46] lg:aspect-video lg:flex-row'>
                 <DisclosureGroup
                     allowsMultipleExpanded
-                    defaultExpandedKeys={['app', 'components']}
+                    aria-label='Files'
                     className={cn(
                         'flex flex-col gap-0.5 bg-[#18181b] text-sm outline-hidden dark:bg-[#18181b]',
                         'w-full overflow-hidden rounded-b-none text-white transition-[height] lg:transition-[width]',
@@ -156,7 +154,7 @@ export function Fleet({ page }: { page: string }) {
                             ? 'h-[20rem] overflow-y-auto border-b lg:h-full lg:w-[24rem] lg:border-r lg:border-b-0'
                             : 'h-0 border-r-none lg:w-0'
                     )}
-                    aria-label='Files'
+                    defaultExpandedKeys={['app', 'components']}
                 >
                     {files.map(renderItem)}
                 </DisclosureGroup>
@@ -176,7 +174,7 @@ export function Fleet({ page }: { page: string }) {
                             </Button>
                             <Tooltip.Content>Toggle sidebar</Tooltip.Content>
                         </Tooltip>
-                        <Separator orientation='vertical' className='mr-2 hidden h-6 bg-[#3f3f46] lg:block' />
+                        <Separator className='mr-2 hidden h-6 bg-[#3f3f46] lg:block' orientation='vertical' />
                         {file.endsWith('.ts') && isTs ? (
                             <IconBrandTypescript className='size-4 text-[#007acc]' />
                         ) : file.endsWith('.ts') ? (
@@ -195,8 +193,8 @@ export function Fleet({ page }: { page: string }) {
                         </span>
                         <Tooltip>
                             <Button
-                                onPress={toggleTsx}
                                 className='mr-10 ml-auto flex size-9 cursor-pointer items-center justify-center rounded-lg pressed:bg-zinc-400/50 hover:bg-zinc-400/40'
+                                onPress={toggleTsx}
                             >
                                 <IconBrandJavascript
                                     className={cn(
@@ -215,6 +213,7 @@ export function Fleet({ page }: { page: string }) {
                         </Tooltip>
                     </div>
                     <Code
+                        className='**:[button]:-mt-0.5 dark static overflow-auto rounded-none border-none p-4 **:[pre]:max-h-full **:[svg]:text-white'
                         code={
                             isTs
                                 ? code
@@ -224,10 +223,9 @@ export function Fleet({ page }: { page: string }) {
                                       disableESTransforms: true
                                   }).code
                         }
-                        withoutSwitcher
-                        lang={isTs ? 'tsx' : 'jsx'}
                         keepBackground={true}
-                        className='**:[button]:-mt-0.5 dark static overflow-auto rounded-none border-none p-4 **:[pre]:max-h-full **:[svg]:text-white'
+                        lang={isTs ? 'tsx' : 'jsx'}
+                        withoutSwitcher
                     />
                 </div>
             </div>

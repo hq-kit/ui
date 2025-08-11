@@ -1,16 +1,16 @@
 'use client'
 
-import { useIsMobile } from '@/lib/hooks'
 import type { CSSProperties, ReactNode, Ref } from 'react'
 import type { ButtonProps, DialogTriggerProps, ModalOverlayProps, PopoverProps } from 'react-aria-components'
 import {
     Button,
+    composeRenderProps,
     DialogTrigger,
     Modal,
     OverlayArrow,
-    Popover as RACPopover,
-    composeRenderProps
+    Popover as RACPopover
 } from 'react-aria-components'
+import { useIsMobile } from '@/lib/hooks'
 import {
     Dialog,
     DialogBody,
@@ -54,7 +54,7 @@ const PopoverContent = ({
                 )}
                 {...props}
             >
-                <Dialog role='dialog' aria-label={props['aria-label'] ?? 'Popover'}>
+                <Dialog aria-label={props['aria-label'] ?? 'Popover'} role='dialog'>
                     {children}
                 </Dialog>
             </Modal>
@@ -67,10 +67,10 @@ const PopoverContent = ({
             {showArrow && (
                 <OverlayArrow className='group'>
                     <svg
-                        width={12}
+                        className='group-placement-left:-rotate-90 block fill-popover stroke-border group-placement-bottom:rotate-180 group-placement-right:rotate-90'
                         height={12}
                         viewBox='0 0 12 12'
-                        className='group-placement-left:-rotate-90 block fill-popover stroke-border group-placement-bottom:rotate-180 group-placement-right:rotate-90'
+                        width={12}
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>

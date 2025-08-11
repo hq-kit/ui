@@ -1,8 +1,8 @@
 'use client'
 
-import { Table } from '@/components/ui'
 import { useAsyncList } from '@react-stately/data'
 import { IconLoader } from '@tabler/icons-react'
+import { Table } from '@/components/ui'
 
 interface Character {
     title: string
@@ -41,19 +41,19 @@ export default function TableSortingDemo() {
     return (
         <Table
             aria-label='Movies'
+            onSortChange={list.sort}
             selectionMode='multiple'
             sortDescriptor={list.sortDescriptor}
-            onSortChange={list.sort}
         >
             <Table.Header>
                 <Table.Column id='title' isRowHeader>
                     Title
                 </Table.Column>
-                <Table.Column id='director' allowsSorting>
+                <Table.Column allowsSorting id='director'>
                     Director
                 </Table.Column>
                 <Table.Column id='producer'>Producer</Table.Column>
-                <Table.Column id='release_date' allowsSorting>
+                <Table.Column allowsSorting id='release_date'>
                     Release Date
                 </Table.Column>
             </Table.Header>

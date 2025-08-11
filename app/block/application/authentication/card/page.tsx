@@ -1,9 +1,9 @@
 'use client'
 
-import { IconApp } from '@/components/icons'
-import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
+import { IconApp } from '@/components/icons'
+import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
 
 export default function Page() {
     return (
@@ -24,28 +24,28 @@ export default function Page() {
                 >
                     <Card.Content className='grid gap-4'>
                         <TextField isRequired label='Name' placeholder='Enter your Name' />
-                        <TextField isRequired label='Email' type='email' placeholder='Enter your email' />
-                        <TextField isRequired label='Password' type='password' placeholder='Enter your password' />
+                        <TextField isRequired label='Email' placeholder='Enter your email' type='email' />
+                        <TextField isRequired label='Password' placeholder='Enter your password' type='password' />
                         <TextField
                             isRequired
                             label='Confirm Password'
-                            type='password'
                             placeholder='Enter your password'
+                            type='password'
                         />
                         <Checkbox>I agree to the terms and conditions</Checkbox>
-                        <Button type='submit' className='w-full'>
+                        <Button className='w-full' type='submit'>
                             Login
                         </Button>
-                        <Link href='#' className='text-center text-muted-foreground text-sm hover:text-foreground'>
+                        <Link className='text-center text-muted-foreground text-sm hover:text-foreground' href='#'>
                             Don't have an account? Register
                         </Link>
                         <Separator>Or continue with</Separator>
                         <div className='flex gap-4 pb-6'>
-                            <Button variant='outline' className='w-full'>
+                            <Button className='w-full' variant='outline'>
                                 <IconBrandGithub className='size-4' />
                                 Github
                             </Button>
-                            <Button variant='outline' className='w-full'>
+                            <Button className='w-full' variant='outline'>
                                 <IconBrandGoogle className='size-4' />
                                 Google
                             </Button>

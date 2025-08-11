@@ -1,9 +1,8 @@
 'use client'
 
-import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatchPicker, defaultColor } from '@/components/ui'
-import { useState } from 'react'
-
 import type { Color } from 'react-aria-components'
+import { useState } from 'react'
+import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatchPicker, defaultColor } from '@/components/ui'
 
 export default function ColorPickerEnableSwatchDemo() {
     const [color, setColor] = useState(defaultColor)
@@ -11,13 +10,13 @@ export default function ColorPickerEnableSwatchDemo() {
         setColor(v)
     }
     return (
-        <ColorPicker value={color} onChange={(v) => colorChangeHandler(v)}>
+        <ColorPicker onChange={(v) => colorChangeHandler(v)} value={color}>
             <ColorArea colorSpace='hsb' xChannel='saturation' yChannel='brightness' />
-            <ColorSlider colorSpace='hsb' channel='hue' />
+            <ColorSlider channel='hue' colorSpace='hsb' />
             <ColorField aria-label='Hex color' />
-            <ColorSwatchPicker aria-label='Color swatch picker' layout='grid' className='flex flex-wrap gap-2'>
+            <ColorSwatchPicker aria-label='Color swatch picker' className='flex flex-wrap gap-2' layout='grid'>
                 {colors.map((color) => (
-                    <ColorSwatchPicker.Item key={color} color={color} />
+                    <ColorSwatchPicker.Item color={color} key={color} />
                 ))}
             </ColorSwatchPicker>
         </ColorPicker>

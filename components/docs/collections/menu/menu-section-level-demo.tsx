@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu } from '@/components/ui'
+import type { Selection } from 'react-aria-components'
 import {
     IconAlignCenter,
     IconAlignLeft,
@@ -13,7 +13,7 @@ import {
     IconUnderline
 } from '@tabler/icons-react'
 import { useState } from 'react'
-import type { Selection } from 'react-aria-components'
+import { Menu } from '@/components/ui'
 
 export default function MenuSectionLevelDemo() {
     const [style, setStyle] = useState<Selection>(new Set(['bold']))
@@ -38,9 +38,9 @@ export default function MenuSectionLevelDemo() {
                 </Menu.Section>
                 <Menu.Separator />
                 <Menu.Section
-                    selectionMode='multiple'
-                    selectedKeys={style}
                     onSelectionChange={setStyle}
+                    selectedKeys={style}
+                    selectionMode='multiple'
                     title='Text style'
                 >
                     <Menu.Item id='bold' textValue='Bold'>
@@ -58,9 +58,9 @@ export default function MenuSectionLevelDemo() {
                 </Menu.Section>
                 <Menu.Separator />
                 <Menu.Section
-                    selectionMode='single'
-                    selectedKeys={align}
                     onSelectionChange={setAlign}
+                    selectedKeys={align}
+                    selectionMode='single'
                     title='Text alignment'
                 >
                     <Menu.Item id='left' textValue='Left'>

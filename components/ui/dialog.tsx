@@ -1,21 +1,21 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { IconX } from '@tabler/icons-react'
 import type { ComponentPropsWithRef } from 'react'
+import { IconX } from '@tabler/icons-react'
 import {
     Button,
     type ButtonProps,
+    composeRenderProps,
     Heading,
     type ModalOverlayProps,
     Dialog as RACDialog,
     type DialogProps as RACDialogProps,
     type HeadingProps as RACHeadingProps,
     ModalOverlay as RACModalOverlay,
-    type TextProps,
-    composeRenderProps
+    type TextProps
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 const overlayStyle = tv({
     base: [
@@ -77,44 +77,44 @@ const popoverStyle = tv({
 
 const Dialog = ({ className, ...props }: RACDialogProps) => (
     <RACDialog
-        slot='dialog'
         aria-label='Dialog'
         className={cn(
             'relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden',
             className
         )}
+        slot='dialog'
         {...props}
     />
 )
 
 const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
     <RACModalOverlay
+        className={composeRenderProps(className, (className) => overlayStyle({ className }))}
         isDismissable={isDismissable}
         isKeyboardDismissDisabled={!isDismissable}
-        className={composeRenderProps(className, (className) => overlayStyle({ className }))}
         {...props}
     />
 )
 
 const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return <div slot='header' className={cn('flex flex-col p-4 text-center sm:text-left', className)} {...props} />
+    return <div className={cn('flex flex-col p-4 text-center sm:text-left', className)} slot='header' {...props} />
 }
 
 const DialogTitle = ({ className, ...props }: RACHeadingProps) => (
-    <Heading slot='title' className={cn('font-semibold text-lg/8', className)} {...props} />
+    <Heading className={cn('font-semibold text-lg/8', className)} slot='title' {...props} />
 )
 
 const DialogDescription = ({ className, ...props }: TextProps) => (
-    <p slot='description' className={cn('text-muted-foreground text-sm', className)} {...props} />
+    <p className={cn('text-muted-foreground text-sm', className)} slot='description' {...props} />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
     <div
-        slot='body'
         className={cn(
             'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-4 py-1 will-change-scroll',
             className
         )}
+        slot='body'
         {...props}
     />
 )
@@ -122,11 +122,11 @@ const DialogBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
 const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
     return (
         <div
-            slot='footer'
             className={cn(
                 'isolate mt-auto flex flex-col-reverse justify-center gap-2 p-4 sm:flex-row sm:justify-end',
                 className
             )}
+            slot='footer'
             {...props}
         />
     )
@@ -134,9 +134,9 @@ const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => 
 
 const DialogX = (props: ButtonProps) => (
     <Button
-        slot='close'
         aria-label='Close'
         className='absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-background pressed:bg-muted/50 text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring'
+        slot='close'
         {...props}
     >
         <IconX />

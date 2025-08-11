@@ -1,7 +1,6 @@
 'use client'
 
-import { Button, Menu } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 import {
     IconArrowForward,
     IconCheck,
@@ -12,7 +11,8 @@ import {
     IconMessageReply,
     IconTrash
 } from '@tabler/icons-react'
-import type { ReactNode } from 'react'
+import { Button, Menu } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export interface BubbleChatProps {
     message: string
@@ -55,13 +55,13 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
             </div>
             <Menu>
                 <Button
-                    variant='outline'
-                    icon
                     className='mx-2 size-7 p-1 opacity-0 pressed:opacity-100 transition group-hover:opacity-100'
+                    icon
+                    variant='outline'
                 >
                     <IconChevronRight className={cn('size-3', role === 'send' ? 'rotate-180' : '')} />
                 </Button>
-                <Menu.Content placement={role === 'send' ? 'left' : 'right'} aria-label='Actions'>
+                <Menu.Content aria-label='Actions' placement={role === 'send' ? 'left' : 'right'}>
                     <Menu.Item>
                         <IconMessageReply />
                         Reply
@@ -74,7 +74,7 @@ export default function BubbleChat({ message, time, role, status, onDelete }: Bu
                         <IconInfoCircle />
                         Message Info
                     </Menu.Item>
-                    <Menu.Item onAction={onDelete} isDestructive>
+                    <Menu.Item isDestructive onAction={onDelete}>
                         <IconTrash /> Delete
                     </Menu.Item>
                 </Menu.Content>

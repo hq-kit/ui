@@ -1,8 +1,8 @@
 'use client'
 
+import { Autocomplete } from 'react-aria-components'
 import { ListBox, SearchField } from '@/components/ui'
 import { fuzzyMatch } from '@/lib/utils'
-import { Autocomplete } from 'react-aria-components'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -21,7 +21,7 @@ export default function AutocompleteListBoxDemo() {
     return (
         <Autocomplete filter={fuzzyMatch}>
             <SearchField className='mb-2' />
-            <ListBox items={items} selectionMode='multiple' aria-label='Linux Distros'>
+            <ListBox aria-label='Linux Distros' items={items} selectionMode='multiple'>
                 {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
             </ListBox>
         </Autocomplete>

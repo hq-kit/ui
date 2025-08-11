@@ -1,7 +1,7 @@
 'use client'
 
-import { Form, TextField } from '@/components/ui'
 import { useState } from 'react'
+import { Form, TextField } from '@/components/ui'
 
 export default function FormRealtimeValidationDemo() {
     const [password, setPassword] = useState('')
@@ -19,13 +19,13 @@ export default function FormRealtimeValidationDemo() {
     return (
         <Form onSubmit={() => {}}>
             <TextField
+                errorMessage={errors}
                 isInvalid={!!errors.length}
                 label='Password'
+                onChange={setPassword}
                 placeholder='Enter your password'
                 type='password'
-                errorMessage={errors}
                 value={password}
-                onChange={setPassword}
             />
         </Form>
     )

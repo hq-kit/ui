@@ -22,9 +22,9 @@ export default function GridListRearrangeDemo() {
     return (
         <GridList
             aria-label='Linux Distros'
-            selectionMode='multiple'
-            items={list.items}
             dragAndDropHooks={dragAndDropHooks}
+            items={list.items}
+            selectionMode='multiple'
         >
             {(item) => (
                 <GridList.Item key={item.id} textValue={item.name}>

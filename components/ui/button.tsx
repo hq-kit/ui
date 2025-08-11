@@ -1,10 +1,11 @@
 'use client'
 
-import { IconLoader3 } from '@tabler/icons-react'
 import type { Ref } from 'react'
 import type { ButtonProps as RACButtonProps } from 'react-aria-components'
-import { Button as RACButton, composeRenderProps } from 'react-aria-components'
-import { type VariantProps, tv } from 'tailwind-variants'
+import { IconLoader3 } from '@tabler/icons-react'
+import { composeRenderProps, Button as RACButton } from 'react-aria-components'
+import { tv, type VariantProps } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 const buttonStyle = tv({
     base: [
@@ -51,13 +52,13 @@ interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyle> {
 const Button = ({ className, children, variant, size, icon, isPending, ...props }: ButtonProps) => (
     <RACButton
         className={composeRenderProps(className, (className) =>
-            buttonStyle({ variant, size, icon, isPending, className })
+            cn(buttonStyle({ variant, size, icon, isPending }), className)
         )}
         {...props}
     >
         {(values) => (
             <>
-                {isPending && <IconLoader3 data-slot='loader' className='animate-spin' />}
+                {isPending && <IconLoader3 className='animate-spin' data-slot='loader' />}
                 {typeof children === 'function' ? children(values) : children}
             </>
         )}

@@ -1,7 +1,7 @@
 'use client'
 
-import { Tabs } from '@/components/ui'
 import { Collection } from 'react-aria-components'
+import { Tabs } from '@/components/ui'
 
 const items = [
     { id: 1, title: 'Overview', content: 'This is the overview tab content.' },
@@ -13,7 +13,7 @@ const items = [
 export default function TabsOrientationDemo() {
     return (
         <div className='space-y-6'>
-            <Tabs orientation='vertical' aria-label='Project Management'>
+            <Tabs aria-label='Project Management' orientation='vertical'>
                 <Tabs.List items={items}>{(item) => <Tabs.Label>{item.title}</Tabs.Label>}</Tabs.List>
                 <Collection items={items}>
                     {(item) => <Tabs.Content key={item.id}>{item.content}</Tabs.Content>}

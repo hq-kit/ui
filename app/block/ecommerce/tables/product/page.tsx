@@ -1,11 +1,10 @@
 'use client'
 
-import { Card, Container, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
-
+import type { Key } from 'react-aria-components'
 import { IconDotsVertical, IconEye, IconHighlight, IconPlus, IconTrash } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
-import type { Key } from 'react-aria-components'
 import { useDebouncedCallback } from 'use-debounce'
+import { Card, Container, Menu, SearchField, Select, Table, Toolbar } from '@/components/ui'
 import Paginator from './paginator'
 
 type product = {
@@ -49,7 +48,7 @@ export default function ProductManagement() {
                     <Card.Title>Product Management</Card.Title>
                     <Card.Description>Manage your products</Card.Description>
                     <Toolbar className='flex justify-between pt-2'>
-                        <Select className='w-32' aria-label='Show' selectedKey={show} onSelectionChange={setShow}>
+                        <Select aria-label='Show' className='w-32' onSelectionChange={setShow} selectedKey={show}>
                             <Select.Item id={5} textValue='5'>
                                 5
                             </Select.Item>
@@ -61,8 +60,8 @@ export default function ProductManagement() {
                             </Select.Item>
                         </Select>
                         <Toolbar.Group aria-label='Actions'>
-                            <SearchField onChange={handleSearch} placeholder='Search...' aria-label='Search' />
-                            <Toolbar.Item aria-label='Create' size='md' icon variant='outline'>
+                            <SearchField aria-label='Search' onChange={handleSearch} placeholder='Search...' />
+                            <Toolbar.Item aria-label='Create' icon size='md' variant='outline'>
                                 <IconPlus />
                             </Toolbar.Item>
                         </Toolbar.Group>
@@ -116,7 +115,7 @@ export default function ProductManagement() {
                     </Table>
                 </Card.Content>
                 <Card.Footer>
-                    <Paginator total={total} page={page} show={Number(show)} action={setPage} />
+                    <Paginator action={setPage} page={page} show={Number(show)} total={total} />
                 </Card.Footer>
             </Card>
         </Container>

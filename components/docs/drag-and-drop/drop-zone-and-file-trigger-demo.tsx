@@ -1,12 +1,11 @@
 'use client'
 
-import { Description, DropZone, FileTrigger } from '@/components/ui'
 import type { DropEvent } from '@react-types/shared'
-
 import { IconPhoto } from '@tabler/icons-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import { isFileDropItem } from 'react-aria-components'
+import { Description, DropZone, FileTrigger } from '@/components/ui'
 
 export default function DropZoneAndFileTriggerDemo() {
     const [droppedImage, setDroppedImage] = useState<string | null>(null)
@@ -41,11 +40,11 @@ export default function DropZoneAndFileTriggerDemo() {
                 <div className='mx-auto grid size-12 place-content-center overflow-hidden rounded-full border bg-muted/70 group-drop-target:border-primary/70 group-drop-target:bg-ring'>
                     {droppedImage ? (
                         <Image
-                            width={20}
-                            height={20}
                             alt='Uploaded Image'
-                            src={droppedImage}
                             className='aspect-square size-full object-cover'
+                            height={20}
+                            src={droppedImage}
+                            width={20}
                         />
                     ) : (
                         <IconPhoto className='size-5' />
@@ -62,7 +61,7 @@ export default function DropZoneAndFileTriggerDemo() {
                 </div>
                 <Description>Or drag and drop PNG, JPG, GIF up to 10MB</Description>
             </div>
-            <input type='hidden' name='image' value={droppedImage ?? ''} />
+            <input name='image' type='hidden' value={droppedImage ?? ''} />
         </DropZone>
     )
 }

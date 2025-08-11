@@ -1,9 +1,9 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ComponentProps } from 'react'
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import { Button, Modal, DialogTrigger as SheetTrigger } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import {
     Dialog,
     DialogBody,
@@ -50,7 +50,6 @@ const SheetContent = ({
                 {...props}
             >
                 <Dialog
-                    role={role}
                     aria-label={props['aria-label'] ?? 'Sheet'}
                     className={cn(
                         'relative flex flex-col overflow-hidden outline-hidden',
@@ -58,6 +57,7 @@ const SheetContent = ({
                             ? 'max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))]'
                             : 'h-full max-h-screen'
                     )}
+                    role={role}
                 >
                     {(values) => (
                         <>

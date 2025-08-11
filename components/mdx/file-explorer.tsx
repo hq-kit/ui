@@ -1,15 +1,14 @@
 'use client'
 
+import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconLayoutSidebar } from '@tabler/icons-react'
+import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
+import { Button, Collection } from 'react-aria-components'
 import previews from '@/components/docs/generated/previews.json'
 import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
 import { Separator, Tree, TreeItem } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { slugify } from '@/lib/utils/modifiers'
-
-import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen, IconLayoutSidebar } from '@tabler/icons-react'
-import { type HTMLAttributes, type ReactNode, useEffect, useState } from 'react'
-import { Button, Collection } from 'react-aria-components'
 
 type FileNode = {
     id: string | number
@@ -96,12 +95,12 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                 selected === item.id && 'bg-primary/10 text-primary',
                 'cursor-pointer hover:bg-primary/10 hover:text-primary'
             )}
-            key={item.id}
             id={item.id}
-            textValue={item.title}
+            key={item.id}
             onAction={() => {
                 if (item.children.length === 0) setSelected(item.id as string)
             }}
+            textValue={item.title}
         >
             <TreeItem.Content>
                 {({ isExpanded, hasChildItems }) => (
@@ -201,16 +200,16 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                 {...props}
             >
                 <Tree
-                    defaultExpandedKeys={[1, 2, 3, 4]}
+                    aria-label='Files'
                     className={cn(
                         'max-h-none w-full min-w-0 rounded-b-none border-x-0 border-t-0 border-b text-white transition-[width] lg:w-[24rem] lg:rounded-r-none lg:rounded-l-lg lg:border-r lg:border-b-0',
                         sidebarOpen
                             ? 'min-h-40 overflow-y-auto'
                             : 'h-0 overflow-hidden border-none px-0 py-0 lg:h-auto lg:w-0 lg:py-2'
                     )}
-                    aria-label='Files'
-                    selectionMode='none'
+                    defaultExpandedKeys={[1, 2, 3, 4]}
                     items={files}
+                    selectionMode='none'
                 >
                     {files.map(renderItem)}
                 </Tree>
@@ -219,7 +218,7 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                         <Button onPress={() => setSidebarOpen(!sidebarOpen)}>
                             <IconLayoutSidebar className='size-4 rotate-90 lg:rotate-0' />
                         </Button>
-                        <Separator orientation='vertical' className='mx-2 hidden h-6 bg-[#3f3f46] lg:block' />
+                        <Separator className='mx-2 hidden h-6 bg-[#3f3f46] lg:block' orientation='vertical' />
                         {selected === 'index' ? (
                             <IconBrandTypescript className='size-4 text-[#007acc]' />
                         ) : (
@@ -228,9 +227,9 @@ export function FileExplorer({ page, className, ...props }: FileExplorerProps) {
                         {`${selected.split('/').pop()}.${selected === 'index' ? 'ts' : 'tsx'}`}
                     </div>
                     <Code
+                        className='no-scrollbar static overflow-y-auto rounded-none border-none [&_pre]:max-h-full [&_pre]:rounded-none **:[svg]:text-white'
                         code={code}
                         keepBackground={false}
-                        className='no-scrollbar static overflow-y-auto rounded-none border-none [&_pre]:max-h-full [&_pre]:rounded-none **:[svg]:text-white'
                     />
                 </div>
             </div>

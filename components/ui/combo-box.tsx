@@ -1,17 +1,16 @@
 'use client'
 
-import { cn, fuzzyMatch } from '@/lib/utils'
-
+import type { ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import { IconChevronDown, IconLoader, IconX } from '@tabler/icons-react'
 import { type ReactNode, type Ref, use } from 'react'
-import type { ComboBoxProps as RACComboboxProps } from 'react-aria-components'
 import {
     Button,
     ComboBoxStateContext,
+    composeRenderProps,
     ListBox,
-    ComboBox as RACCombobox,
-    composeRenderProps
+    ComboBox as RACCombobox
 } from 'react-aria-components'
+import { cn, fuzzyMatch } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Input, Label } from './form'
 import { ListBoxDetails, ListBoxItem, ListBoxSection } from './list-box'
 import { PopoverContent } from './popover'
@@ -37,9 +36,9 @@ const ComboBox = <T extends object>({
     ...props
 }: ComboBoxProps<T>) => (
     <RACCombobox
+        className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-1.5', className))}
         defaultFilter={fuzzyMatch}
         menuTrigger='focus'
-        className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-1.5', className))}
         ref={ref}
         {...props}
     >
@@ -66,11 +65,11 @@ const ComboBox = <T extends object>({
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
-        <PopoverContent respectScreen={false} showArrow={false} trigger='focus' isPicker>
+        <PopoverContent isPicker respectScreen={false} showArrow={false} trigger='focus'>
             <ListBox
                 aria-label='items'
-                items={items}
                 className='grid w-full grid-cols-[auto_1fr_1.5rem] gap-y-1 overflow-y-auto rounded-md outline-hidden'
+                items={items}
             >
                 {children}
             </ListBox>
@@ -82,14 +81,14 @@ const ClearButton = () => {
     const state = use(ComboBoxStateContext)!
     return (
         <Button
-            className='inline-flex cursor-pointer items-center justify-center rounded-md text-muted-foreground outline-hidden hover:text-foreground'
-            slot={null}
             aria-label='Clear'
+            className='inline-flex cursor-pointer items-center justify-center rounded-md text-muted-foreground outline-hidden hover:text-foreground'
             onPress={() => {
                 state.setInputValue('')
                 state.setSelectedKey(null)
                 state.open()
             }}
+            slot={null}
         >
             <IconX className='mr-2 size-4' />
         </Button>

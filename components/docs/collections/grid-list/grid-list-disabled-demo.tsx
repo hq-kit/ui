@@ -10,7 +10,7 @@ const items = [
 ]
 export default function GridListDisabledDemo() {
     return (
-        <GridList disabledKeys={[1, 3]} items={items} aria-label='Linux Distros' selectionMode='multiple'>
+        <GridList aria-label='Linux Distros' disabledKeys={[1, 3]} items={items} selectionMode='multiple'>
             {(item) => <GridList.Item id={item.id}>{item.name}</GridList.Item>}
         </GridList>
     )

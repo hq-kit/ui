@@ -1,14 +1,14 @@
 'use client'
 
-import { Button, Command } from '@/components/ui'
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
 import { useState } from 'react'
+import { Button, Command } from '@/components/ui'
 
 export default function CommandTriggerByKeyboardDemo() {
     const [open, setOpen] = useState<boolean>(false)
     return (
         <>
-            <Button variant='outline' onPress={() => setOpen(true)}>
+            <Button onPress={() => setOpen(true)} variant='outline'>
                 <Command.Shortcut keys={['meta', '/']} />
             </Button>
             <Command.Modal isOpen={open} onOpenChange={setOpen} shortcut={{ key: '/' }}>

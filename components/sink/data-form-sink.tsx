@@ -62,7 +62,7 @@ export default function DataFormSink() {
                         <Checkbox value='notifications'>Enable React Server Component</Checkbox>
                         <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
                     </CheckboxGroup>
-                    <MultiSelect className='w-full' label='Components' items={items}>
+                    <MultiSelect className='w-full' items={items} label='Components'>
                         {(item) => {
                             return <MultiSelect.Item textValue={item.name}>{item.name}</MultiSelect.Item>
                         }}

@@ -1,5 +1,5 @@
-import { defaultThemeState } from '@/lib/themes/default'
 import type { ThemePreset } from '@/lib/types/theme'
+import { defaultThemeState } from '@/lib/themes/default'
 
 export function getPreset(name: string): ThemePreset {
     if (name === 'default') {

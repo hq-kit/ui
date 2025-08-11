@@ -1,9 +1,8 @@
 'use client'
 
-import { Command } from '@/components/ui'
-import { useState } from 'react'
-
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Command } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Ubuntu' },
@@ -23,10 +22,10 @@ export default function CommandControlledDemo() {
     return (
         <div className='space-y-6'>
             <Command
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
-                items={items}
                 aria-label='Linux Distros'
+                items={items}
+                onSelectionChange={setSelected}
+                selectedKeys={selected}
                 selectionMode='multiple'
             >
                 {(item) => (

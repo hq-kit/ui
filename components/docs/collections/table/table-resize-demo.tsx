@@ -14,7 +14,7 @@ export default function TableResizeDemo() {
         <Table allowResize aria-label='Pokemons'>
             <Table.Header>
                 <Table.Column className='max-w-8'>#</Table.Column>
-                <Table.Column isRowHeader isResizable>
+                <Table.Column isResizable isRowHeader>
                     Name
                 </Table.Column>
                 <Table.Column isResizable>Type</Table.Column>

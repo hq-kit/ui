@@ -1,7 +1,6 @@
 'use client'
 
 import type { ReactNode, Ref } from 'react'
-
 import type {
     FieldErrorProps,
     FormProps,
@@ -12,16 +11,16 @@ import type {
     ValidationResult
 } from 'react-aria-components'
 import {
+    composeRenderProps,
     Group,
     FieldError as RACFieldError,
     Form as RACForm,
     Input as RACInput,
     Label as RACLabel,
-    Text,
-    composeRenderProps
+    Text
 } from 'react-aria-components'
-
 import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 const fieldGroupStyle = tv({
     base: [
@@ -65,16 +64,16 @@ interface FieldProps {
 }
 
 const Label = ({ className, ...props }: LabelProps) => (
-    <RACLabel slot='label' {...props} className={labelStyle({ className })} />
+    <RACLabel slot='label' {...props} className={cn(labelStyle(), className)} />
 )
 
 const Description = ({ className, ...props }: TextProps) => (
-    <Text {...props} slot='description' className={descriptionStyle({ className })} />
+    <Text {...props} className={cn(descriptionStyle(), className)} slot='description' />
 )
 
 const FieldError = ({ className, ...props }: FieldErrorProps) => {
     return Array.isArray(props.children) ? (
-        <RACFieldError {...props} className={composeRenderProps(className, (className) => errorStyle({ className }))}>
+        <RACFieldError {...props} className={composeRenderProps(className, (className) => cn(errorStyle(), className))}>
             <ul className='list-inside list-disc'>
                 {props.children.map((child, index) => (
                     <li key={index}>{child}</li>
@@ -82,15 +81,18 @@ const FieldError = ({ className, ...props }: FieldErrorProps) => {
             </ul>
         </RACFieldError>
     ) : (
-        <RACFieldError {...props} className={composeRenderProps(className, (className) => errorStyle({ className }))} />
+        <RACFieldError
+            {...props}
+            className={composeRenderProps(className, (className) => cn(errorStyle(), className))}
+        />
     )
 }
 
 const FieldGroup = ({ className, ref, ...props }: GroupProps & { ref?: Ref<HTMLDivElement> }) => {
     return (
         <Group
+            className={composeRenderProps(className, (className) => cn(fieldGroupStyle(), className))}
             ref={ref}
-            className={composeRenderProps(className, (className) => fieldGroupStyle({ className }))}
             {...props}
         />
     )

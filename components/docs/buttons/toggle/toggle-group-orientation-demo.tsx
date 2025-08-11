@@ -1,5 +1,5 @@
-import { Toggle } from '@/components/ui'
 import { IconCloud, IconCloudOff, IconLock, IconLockOpen, IconMoon, IconSun } from '@tabler/icons-react'
+import { Toggle } from '@/components/ui'
 
 export default function App() {
     return (

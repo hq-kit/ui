@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Card, Form, Modal, Note, TextField } from '@/components/ui'
 import { IconUserX } from '@tabler/icons-react'
+import { Button, Card, Form, Modal, Note, TextField } from '@/components/ui'
 
 export default function SecuritySetting() {
     return (
@@ -26,7 +26,7 @@ export default function SecuritySetting() {
                         </Modal.Header>
                         <Form onSubmit={() => {}}>
                             <Modal.Body>
-                                <TextField isRequired autoFocus label='Password' type='password' />
+                                <TextField autoFocus isRequired label='Password' type='password' />
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button slot='close' variant='outline'>

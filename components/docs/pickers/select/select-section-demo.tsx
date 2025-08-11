@@ -77,9 +77,9 @@ const items = [
 
 export default function SelectSectionDemo() {
     return (
-        <Select label='Linux Distro' items={items}>
+        <Select items={items} label='Linux Distro'>
             {(item) => (
-                <Select.Section title={item.name} items={item.distros}>
+                <Select.Section items={item.distros} title={item.name}>
                     {(distro) => <Select.Item id={distro.id}>{distro.name}</Select.Item>}
                 </Select.Section>
             )}

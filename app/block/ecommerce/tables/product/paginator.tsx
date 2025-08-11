@@ -40,32 +40,32 @@ export default function Paginator({ className, show, page, total, action }: Pagi
                 <Pagination>
                     {isMobile ? (
                         <>
-                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
-                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            <Pagination.Item isDisabled={meta.page === 1} onAction={actions.first} slot='first' />
+                            <Pagination.Item isDisabled={meta.page === 1} onAction={actions.prev} slot='previous' />
                             <Pagination.Label current={meta.page} total={meta.last_page} />
                             <Pagination.Item
-                                slot='next'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.next}
+                                slot='next'
                             />
                             <Pagination.Item
-                                slot='last'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.last}
+                                slot='last'
                             />
                         </>
                     ) : (
                         <>
-                            <Pagination.Item slot='first' isDisabled={meta.page === 1} onAction={actions.first} />
-                            <Pagination.Item slot='previous' isDisabled={meta.page === 1} onAction={actions.prev} />
+                            <Pagination.Item isDisabled={meta.page === 1} onAction={actions.first} slot='first' />
+                            <Pagination.Item isDisabled={meta.page === 1} onAction={actions.prev} slot='previous' />
                             {meta.page > 2 && (
-                                <Pagination.Item slot='first' onAction={actions.first}>
+                                <Pagination.Item onAction={actions.first} slot='first'>
                                     1
                                 </Pagination.Item>
                             )}
                             {meta.page > 3 && <Pagination.Item slot='ellipsis' />}
                             {meta.page !== 1 && (
-                                <Pagination.Item slot='previous' onAction={() => action(meta.page - 1)}>
+                                <Pagination.Item onAction={() => action(meta.page - 1)} slot='previous'>
                                     {meta.page - 1}
                                 </Pagination.Item>
                             )}
@@ -80,14 +80,14 @@ export default function Paginator({ className, show, page, total, action }: Pagi
                                 <Pagination.Item onAction={actions.last}>{meta.last_page}</Pagination.Item>
                             )}
                             <Pagination.Item
-                                slot='next'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.next}
+                                slot='next'
                             />
                             <Pagination.Item
-                                slot='last'
                                 isDisabled={meta.page === meta.last_page}
                                 onAction={actions.last}
+                                slot='last'
                             />
                         </>
                     )}

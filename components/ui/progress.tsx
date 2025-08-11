@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { Ref } from 'react'
-import { ProgressBar, type ProgressBarProps, composeRenderProps } from 'react-aria-components'
+import { composeRenderProps, ProgressBar, type ProgressBarProps } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Label } from './form'
 
 interface ProgressProps extends ProgressBarProps {
@@ -21,8 +21,8 @@ const Progress = ({ label, ref, circle, variant = 'default', className, ...props
                 }
             </style>
             <ProgressBar
-                ref={ref}
                 className={composeRenderProps(className, (className) => cn('flex flex-col gap-y-1.5', className))}
+                ref={ref}
                 {...props}
             >
                 {({ percentage, valueText, isIndeterminate }) => (
@@ -37,43 +37,43 @@ const Progress = ({ label, ref, circle, variant = 'default', className, ...props
                                     variant === 'destructive' && 'text-destructive',
                                     className
                                 )}
-                                viewBox='0 0 32 32'
                                 fill='none'
+                                viewBox='0 0 32 32'
                             >
                                 <circle
                                     cx='50%'
                                     cy='50%'
                                     r='calc(50% - 2px)'
-                                    strokeWidth={3}
                                     stroke='currentColor'
                                     strokeOpacity={0.25}
+                                    strokeWidth={3}
                                 />
                                 <circle
-                                    cx='50%'
-                                    cy='50%'
-                                    r='calc(50% - 2px)'
-                                    strokeWidth={3}
-                                    stroke='currentColor'
-                                    pathLength={100}
-                                    strokeDasharray='100 200'
-                                    strokeDashoffset={100 - (percentage ?? 30)}
-                                    strokeLinecap='round'
-                                    style={{ transition: 'stroke-dashoffset 0.1s linear' }}
                                     className={cn(
                                         'origin-center',
                                         isIndeterminate
                                             ? 'animate-[spin_1s_cubic-bezier(0.4,_0,_0.2,_1)_infinite]'
                                             : '-rotate-90'
                                     )}
+                                    cx='50%'
+                                    cy='50%'
+                                    pathLength={100}
+                                    r='calc(50% - 2px)'
+                                    stroke='currentColor'
+                                    strokeDasharray='100 200'
+                                    strokeDashoffset={100 - (percentage ?? 30)}
+                                    strokeLinecap='round'
+                                    strokeWidth={3}
+                                    style={{ transition: 'stroke-dashoffset 0.1s linear' }}
                                 />
                                 {!isIndeterminate && (
                                     <text
-                                        x='50%'
-                                        y='50%'
-                                        textAnchor='middle'
+                                        className='fill-current'
                                         dy='.35em'
                                         fontSize='calc(50% + 1px)'
-                                        className='fill-current'
+                                        textAnchor='middle'
+                                        x='50%'
+                                        y='50%'
                                     >
                                         {valueText}
                                     </text>
@@ -89,13 +89,6 @@ const Progress = ({ label, ref, circle, variant = 'default', className, ...props
                                 </div>
                                 <div className='relative h-2 min-w-64 overflow-hidden rounded-lg bg-muted outline-hidden'>
                                     <div
-                                        style={{
-                                            width: `${percentage}%`,
-                                            animation: isIndeterminate
-                                                ? 'indeterminate 1.5s infinite ease-in-out'
-                                                : 'none',
-                                            transition: 'width 0.1s linear'
-                                        }}
                                         className={cn(
                                             'absolute top-0 left-0 h-full rounded-full transition',
                                             variant === 'default' && 'bg-primary',
@@ -103,6 +96,13 @@ const Progress = ({ label, ref, circle, variant = 'default', className, ...props
                                             variant === 'destructive' && 'bg-destructive',
                                             isIndeterminate && 'w-[120px]'
                                         )}
+                                        style={{
+                                            width: `${percentage}%`,
+                                            animation: isIndeterminate
+                                                ? 'indeterminate 1.5s infinite ease-in-out'
+                                                : 'none',
+                                            transition: 'width 0.1s linear'
+                                        }}
                                     />
                                 </div>
                             </>

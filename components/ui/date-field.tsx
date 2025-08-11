@@ -1,17 +1,16 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ReactNode, Ref } from 'react'
-
 import {
+    composeRenderProps,
     type DateInputProps,
     DateSegment,
     type DateValue,
     DateField as RACDateField,
     type DateFieldProps as RACDateFieldProps,
-    DateInput as RACDateInput,
-    composeRenderProps
+    DateInput as RACDateInput
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
@@ -32,10 +31,10 @@ const DateField = <T extends DateValue>({
 }: DateFieldProps<T>) => {
     return (
         <RACDateField
-            isInvalid={props.isInvalid || !!errorMessage}
             className={composeRenderProps(className, (className) =>
                 cn('group/field flex flex-col gap-y-1.5', className)
             )}
+            isInvalid={props.isInvalid || !!errorMessage}
             ref={ref}
             {...props}
         >
@@ -61,12 +60,12 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
         >
             {(segment) => (
                 <DateSegment
-                    segment={segment}
                     className={cn(
                         'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-foreground tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
                         segment.isPlaceholder && 'text-muted-foreground',
                         'underline-offset-4 invalid:not-type-literal:text-destructive/70 focus:text-primary focus:underline invalid:focus:text-destructive'
                     )}
+                    segment={segment}
                 />
             )}
         </RACDateInput>

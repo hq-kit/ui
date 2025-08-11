@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ReactNode, RefObject } from 'react'
-import { Switch as RACSwitch, type SwitchProps as RACSwitchProps, composeRenderProps } from 'react-aria-components'
+import { composeRenderProps, Switch as RACSwitch, type SwitchProps as RACSwitchProps } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Label } from './form'
 
 interface SwitchProps extends RACSwitchProps {
@@ -12,10 +12,10 @@ interface SwitchProps extends RACSwitchProps {
 const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
     return (
         <RACSwitch
-            ref={ref}
             className={composeRenderProps(className, (className) =>
                 cn('group/field inline-flex touch-none items-center sm:text-sm', className)
             )}
+            ref={ref}
             {...props}
         >
             <div

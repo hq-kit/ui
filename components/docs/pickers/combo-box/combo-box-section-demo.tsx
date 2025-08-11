@@ -77,9 +77,9 @@ const items = [
 
 export default function ComboBoxSectionDemo() {
     return (
-        <ComboBox label='Linux Distro' items={items}>
+        <ComboBox items={items} label='Linux Distro'>
             {(item) => (
-                <ComboBox.Section title={item.name} items={item.distros}>
+                <ComboBox.Section items={item.distros} title={item.name}>
                     {(distro) => <ComboBox.Item id={distro.id}>{distro.name}</ComboBox.Item>}
                 </ComboBox.Section>
             )}

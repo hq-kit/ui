@@ -1,6 +1,6 @@
+import { IconBell, IconShoppingCart } from '@tabler/icons-react'
 import { Avatar, Button } from '@/components/ui'
 import { Indicator } from '@/components/ui/indicator'
-import { IconBell, IconShoppingCart } from '@tabler/icons-react'
 
 export default function IndicatorTextDemo() {
     return (
@@ -11,7 +11,7 @@ export default function IndicatorTextDemo() {
             <Indicator text='new'>
                 <Avatar shape='square' src='https://i.pravatar.cc/77' />
             </Indicator>
-            <Indicator text='99+' shape='square'>
+            <Indicator shape='square' text='99+'>
                 <Button icon variant='outline'>
                     <IconShoppingCart />
                 </Button>

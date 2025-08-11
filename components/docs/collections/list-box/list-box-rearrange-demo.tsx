@@ -22,9 +22,9 @@ export default function ListBoxRearrangeDemo() {
     return (
         <ListBox
             aria-label='Linux Distros'
-            selectionMode='multiple'
-            items={list.items}
             dragAndDropHooks={dragAndDropHooks}
+            items={list.items}
+            selectionMode='multiple'
         >
             {(item) => <ListBox.Item key={item.id}>{item.name}</ListBox.Item>}
         </ListBox>

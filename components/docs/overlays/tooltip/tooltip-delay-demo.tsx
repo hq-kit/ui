@@ -8,7 +8,7 @@ export default function TooltipDelayDemo() {
     return (
         <div className='flex gap-2'>
             {delays.map((delay, i) => (
-                <Tooltip key={i} delay={delay}>
+                <Tooltip delay={delay} key={i}>
                     <Button>
                         {delay}
                         {delay === 1500 && ' (default)'}

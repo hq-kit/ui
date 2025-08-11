@@ -1,8 +1,5 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { IconChevronDown, IconMenu } from '@tabler/icons-react'
-import { type ReactNode, type Ref, createContext, useContext } from 'react'
 import type {
     CellProps,
     ColumnProps,
@@ -12,20 +9,23 @@ import type {
     RowProps,
     TableBodyProps
 } from 'react-aria-components'
+import { IconChevronDown, IconMenu } from '@tabler/icons-react'
+import { createContext, type ReactNode, type Ref, use } from 'react'
 import {
     Button,
     Cell,
     Collection,
     Column,
+    composeRenderProps,
     ColumnResizer as RACColumnResizer,
     Table as RACTable,
     TableBody as RACTableBody,
     TableHeader as RACTableHeader,
     ResizableTableContainer,
     Row,
-    composeRenderProps,
     useTableOptions
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Checkbox } from './checkbox'
 
 interface TableProps extends RACTableProps {
@@ -37,22 +37,22 @@ const TableContext = createContext<TableProps>({
     allowResize: false
 })
 
-const useTableContext = () => useContext(TableContext)
+const useTableContext = () => use(TableContext)
+
+const Root = (props: TableProps) => (
+    <RACTable className='w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden' {...props} />
+)
 
 const Table = ({ className, ...props }: TableProps) => {
-    const renderTable = (
-        <RACTable
-            className={cn('w-full min-w-full caption-bottom border-spacing-0 text-sm outline-hidden', className)}
-            {...props}
-        />
-    )
     return (
         <TableContext.Provider value={props}>
-            <div slot='table' className='relative w-full overflow-auto rounded-lg border'>
+            <div className='relative w-full overflow-auto rounded-lg border' slot='table'>
                 {props.allowResize ? (
-                    <ResizableTableContainer className='overflow-auto'>{renderTable}</ResizableTableContainer>
+                    <ResizableTableContainer className='overflow-auto'>
+                        <Root {...props} />
+                    </ResizableTableContainer>
                 ) : (
-                    renderTable
+                    <Root {...props} />
                 )}
             </div>
         </TableContext.Provider>
@@ -67,7 +67,7 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
 const TableHeader = <T extends object>({ children, ref, className, columns, ...props }: TableHeaderProps<T>) => {
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
     return (
-        <RACTableHeader ref={ref} className={cn('border-b text-foreground', className)} {...props}>
+        <RACTableHeader className={cn('border-b text-foreground', className)} ref={ref} {...props}>
             {allowsDragging && <Column className='w-0' />}
             {selectionBehavior === 'toggle' && (
                 <Column className='w-0 pl-4'>{selectionMode === 'multiple' && <Checkbox slot='selection' />}</Column>
@@ -149,19 +149,17 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
         >
             {({ allowsSorting, sortDirection, isHovered }) => (
                 <div className='flex items-center gap-2'>
-                    <>
-                        {props.children as ReactNode}
-                        {allowsSorting && (
-                            <IconChevronDown
-                                className={cn(
-                                    'size-3.5 shrink-0 text-muted-foreground transition-transform',
-                                    sortDirection === 'ascending' ? '-rotate-180' : '',
-                                    isHovered && 'text-primary'
-                                )}
-                            />
-                        )}
-                        {isResizable && <ColumnResizer />}
-                    </>
+                    {props.children as ReactNode}
+                    {allowsSorting && (
+                        <IconChevronDown
+                            className={cn(
+                                'size-3.5 shrink-0 text-muted-foreground transition-transform',
+                                sortDirection === 'ascending' ? '-rotate-180' : '',
+                                isHovered && 'text-primary'
+                            )}
+                        />
+                    )}
+                    {isResizable && <ColumnResizer />}
                 </div>
             )}
         </Column>
@@ -177,8 +175,6 @@ const TableRow = <T extends object>({ children, className, columns, id, ref, ...
     const { selectionBehavior, allowsDragging } = useTableOptions()
     return (
         <Row
-            ref={ref}
-            id={id}
             className={composeRenderProps(className, (className) =>
                 cn(
                     'group relative cursor-default not-last:border-b',
@@ -190,6 +186,8 @@ const TableRow = <T extends object>({ children, className, columns, id, ref, ...
                     className
                 )
             )}
+            id={id}
+            ref={ref}
             {...props}
         >
             {allowsDragging && (

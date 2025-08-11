@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui'
-import { Indicator } from '@/components/ui/indicator'
 import { IconBell } from '@tabler/icons-react'
 import { Fragment } from 'react'
+import { Button } from '@/components/ui'
+import { Indicator } from '@/components/ui/indicator'
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as const
 const shapes = ['circle', 'square'] as const
@@ -15,8 +15,8 @@ export default function IndicatorVariantsDemo() {
                     {shapes.map((shape) => (
                         <Fragment key={shape}>
                             {variants.map((variant) => (
-                                <Indicator key={variant} size={size} shape={shape} variant={variant}>
-                                    <Button variant='outline' icon>
+                                <Indicator key={variant} shape={shape} size={size} variant={variant}>
+                                    <Button icon variant='outline'>
                                         <IconBell />
                                     </Button>
                                 </Indicator>

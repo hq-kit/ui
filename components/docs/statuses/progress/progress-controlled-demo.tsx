@@ -1,7 +1,7 @@
 'use client'
 
-import { Progress, Slider } from '@/components/ui'
 import { useState } from 'react'
+import { Progress, Slider } from '@/components/ui'
 
 export default function ProgressControlledDemo() {
     const [value, setValue] = useState(10)
@@ -10,7 +10,7 @@ export default function ProgressControlledDemo() {
         <div className='flex flex-col items-center gap-4'>
             <Progress circle label='Progress…' value={value} />
             <Progress label='Progress…' value={value} />
-            <Slider label='Control' value={value} onChange={(v) => setValue(v as number)} />
+            <Slider label='Control' onChange={(v) => setValue(v as number)} value={value} />
         </div>
     )
 }

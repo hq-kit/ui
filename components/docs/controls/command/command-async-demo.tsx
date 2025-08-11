@@ -1,7 +1,7 @@
 'use client'
 
-import { Command } from '@/components/ui'
 import { useAsyncList } from 'react-stately'
+import { Command } from '@/components/ui'
 
 export default function CommandSeparatorDemo() {
     const list = useAsyncList<{ title: string }>({
@@ -16,13 +16,13 @@ export default function CommandSeparatorDemo() {
     })
     return (
         <Command
-            items={list.items}
-            onInputChange={list.setFilterText}
             inputValue={list.filterText}
             isPending={list.isLoading}
+            items={list.items}
+            onInputChange={list.setFilterText}
         >
             {(item) => (
-                <Command.Item key={item.title} id={item.title} textValue={item.title}>
+                <Command.Item id={item.title} key={item.title} textValue={item.title}>
                     <Command.Label>{item.title}</Command.Label>
                 </Command.Item>
             )}

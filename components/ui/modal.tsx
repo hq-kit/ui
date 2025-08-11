@@ -1,10 +1,8 @@
 'use client'
 
 import type { ComponentProps } from 'react'
-
 import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
 import { Button, DialogTrigger, Modal as RACModal } from 'react-aria-components'
-
 import {
     Dialog,
     DialogBody,
@@ -43,13 +41,13 @@ const ModalContent = ({
     return (
         <DialogOverlay isDismissable={isDismissable} {...props}>
             <RACModal
-                isDismissable={isDismissable}
                 className={modalStyle({
                     size
                 })}
+                isDismissable={isDismissable}
                 {...props}
             >
-                <Dialog role={role} aria-label={props['aria-label'] ?? 'Modal'} className={className}>
+                <Dialog aria-label={props['aria-label'] ?? 'Modal'} className={className} role={role}>
                     {(values) => (
                         <>
                             {typeof children === 'function' ? children(values) : children}

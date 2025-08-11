@@ -6,7 +6,7 @@ export default function AccordionDisabledDemo() {
     return (
         <Accordion>
             {faqs.map((item, index) => (
-                <Accordion.Item isDisabled={index === 2} key={index} id={index}>
+                <Accordion.Item id={index} isDisabled={index === 2} key={index}>
                     <Accordion.Trigger>{item.q}</Accordion.Trigger>
                     <Accordion.Content>{item.a}</Accordion.Content>
                 </Accordion.Item>

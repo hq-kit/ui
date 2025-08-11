@@ -1,11 +1,11 @@
 'use client'
 
-import { Tree, TreeItem } from '@/components/ui'
 import { IconFileText, IconFileTypeJpg, IconFolder, IconFolderOpen } from '@tabler/icons-react'
+import { Tree, TreeItem } from '@/components/ui'
 
 export default function TreeWithIconDemo() {
     return (
-        <Tree className='w-full' aria-label='Files'>
+        <Tree aria-label='Files' className='w-full'>
             <TreeItem id='documents' textValue='Documents'>
                 <TreeItem.Content>
                     {({ isExpanded }) => (

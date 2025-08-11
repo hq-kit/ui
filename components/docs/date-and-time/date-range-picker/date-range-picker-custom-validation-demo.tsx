@@ -1,9 +1,9 @@
 'use client'
 
-import { Button, DateRangePicker, Form } from '@/components/ui'
-import { getLocalTimeZone, today } from '@internationalized/date'
 import type { FormEvent } from 'react'
+import { getLocalTimeZone, today } from '@internationalized/date'
 import { useState } from 'react'
+import { Button, DateRangePicker, Form } from '@/components/ui'
 
 export default function DateRangePickerCustomValidationDemo() {
     const now = today(getLocalTimeZone())
@@ -19,18 +19,18 @@ export default function DateRangePickerCustomValidationDemo() {
     }
 
     return (
-        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
+        <Form className='flex flex-col gap-4' onSubmit={onSubmit}>
             <DateRangePicker
-                label='Room Booking Dates'
-                validate={(range) =>
-                    range?.end.compare(range.start) > 7 ? 'Maximum booking duration is 1 week.' : null
-                }
                 defaultValue={{
                     start: today(getLocalTimeZone()),
                     end: today(getLocalTimeZone()).add({ weeks: 2 })
                 }}
-                value={value}
+                label='Room Booking Dates'
                 onChange={(v) => setValue(v!)}
+                validate={(range) =>
+                    range?.end.compare(range.start) > 7 ? 'Maximum booking duration is 1 week.' : null
+                }
+                value={value}
             />
             <Button type='submit'>Book Room</Button>
         </Form>

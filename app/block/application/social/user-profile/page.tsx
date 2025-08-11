@@ -1,10 +1,9 @@
 'use client'
 
-import { Avatar, Card, Container, Tabs } from '@/components/ui'
-
+import type { Key } from 'react-aria-components'
 import Image from 'next/image'
 import { useState } from 'react'
-import type { Key } from 'react-aria-components'
+import { Avatar, Card, Container, Tabs } from '@/components/ui'
 import About from './about'
 import Media from './media'
 import Posts from './posts'
@@ -17,25 +16,25 @@ export default function UserProfile() {
                 <Card className='w-full overflow-hidden'>
                     <Card.Content className='p-0 lg:h-96'>
                         <Image
-                            width={1920}
-                            height={1080}
-                            src='https://picsum.photos/id/1/1920/1080'
                             alt='profil'
                             className='object-contain'
+                            height={1080}
+                            src='https://picsum.photos/id/1/1920/1080'
+                            width={1920}
                         />
                     </Card.Content>
                 </Card>
                 <div className='relative mt-12 flex flex-col items-center gap-4 lg:mt-4 lg:flex-row'>
                     <Avatar
                         alt='logo'
-                        src='https://github.com/dq-alhq.png'
                         className='-translate-x-1/2 lg:-bottom-4 absolute bottom-32 left-1/2 size-24 rounded-full border bg-background p-1 lg:left-20 lg:size-44 lg:translate-x-0'
+                        src='https://github.com/dq-alhq.png'
                     />
                     <div className='flex w-full flex-col gap-1 lg:ml-72'>
                         <h3 className='text-center font-bold text-lg lg:text-left lg:text-4xl'>Diqi Al-Haqqi</h3>
                         <p className='text-center text-sm uppercase lg:text-left lg:text-lg'>East Java, Indonesia</p>
                     </div>
-                    <Tabs selectedKey={panel} onSelectionChange={setPanel} className='lg:w-[400px]'>
+                    <Tabs className='lg:w-[400px]' onSelectionChange={setPanel} selectedKey={panel}>
                         <Tabs.List className='w-full place-content-center'>
                             <Tabs.Label className='lg:text-xl' id={1}>
                                 Posts

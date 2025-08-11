@@ -1,7 +1,7 @@
 'use client'
 
-import { Tag } from '@/components/ui'
 import { useListData } from 'react-stately'
+import { Tag } from '@/components/ui'
 
 export default function TagGroupWithRemoveDemo() {
     const list = useListData({
@@ -15,10 +15,10 @@ export default function TagGroupWithRemoveDemo() {
 
     return (
         <Tag.Group
-            label='Linux Distros'
-            selectionMode='multiple'
-            onRemove={(keys) => list.remove(...keys)}
             items={list.items}
+            label='Linux Distros'
+            onRemove={(keys) => list.remove(...keys)}
+            selectionMode='multiple'
         >
             {(item) => <Tag>{item.name}</Tag>}
         </Tag.Group>

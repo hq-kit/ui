@@ -3,8 +3,8 @@ import { Pagination } from '@/components/ui'
 export default function PaginationDemo() {
     return (
         <Pagination>
-            <Pagination.Item slot='first' href='#first' />
-            <Pagination.Item slot='previous' href='#previous' />
+            <Pagination.Item href='#first' slot='first' />
+            <Pagination.Item href='#previous' slot='previous' />
             <Pagination.Item href='#1'>1</Pagination.Item>
             <Pagination.Item href='#2' isCurrent>
                 2
@@ -13,8 +13,8 @@ export default function PaginationDemo() {
             <Pagination.Item slot='ellipsis' />
             <Pagination.Item href='#6'>6</Pagination.Item>
             <Pagination.Item href='#7'>7</Pagination.Item>
-            <Pagination.Item slot='next' href='#next' />
-            <Pagination.Item slot='last' href='#last' />
+            <Pagination.Item href='#next' slot='next' />
+            <Pagination.Item href='#last' slot='last' />
         </Pagination>
     )
 }

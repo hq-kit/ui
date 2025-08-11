@@ -1,14 +1,13 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconCheck, IconMinus } from '@tabler/icons-react'
 import type { ReactNode, Ref } from 'react'
 import type {
     CheckboxGroupProps as RACCheckboxGroupProps,
     CheckboxProps as RACCheckboxProps
 } from 'react-aria-components'
-import { Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup, composeRenderProps } from 'react-aria-components'
+import { IconCheck, IconMinus } from '@tabler/icons-react'
+import { composeRenderProps, Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
@@ -39,7 +38,6 @@ interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'errorMessage
 const Checkbox = ({ className, children, label, description, ref, ...props }: CheckboxProps) => {
     return (
         <RACCheckbox
-            ref={ref}
             className={composeRenderProps(className, (className) =>
                 cn(
                     'group/box flex items-center gap-2',
@@ -49,6 +47,7 @@ const Checkbox = ({ className, children, label, description, ref, ...props }: Ch
                     className
                 )
             )}
+            ref={ref}
             {...props}
         >
             {({ isSelected, isIndeterminate }) => (

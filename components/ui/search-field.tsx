@@ -1,16 +1,15 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconLoader, IconSearch, IconX } from '@tabler/icons-react'
 import type { Ref } from 'react'
+import { IconLoader, IconSearch, IconX } from '@tabler/icons-react'
 import {
     Button,
+    composeRenderProps,
     Input,
     SearchField as RACSearchField,
-    type SearchFieldProps as RACSearchFieldProps,
-    composeRenderProps
+    type SearchFieldProps as RACSearchFieldProps
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
 interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
@@ -41,21 +40,21 @@ const SearchField = ({
             {({ isEmpty }) => (
                 <>
                     {label && <Label>{label}</Label>}
-                    <FieldGroup isInvalid={props.isInvalid || !!errorMessage} isDisabled={props.isDisabled}>
+                    <FieldGroup isDisabled={props.isDisabled} isInvalid={props.isInvalid || !!errorMessage}>
                         {isPending ? (
                             <IconLoader className='ml-2 size-4 shrink-0 animate-spin text-muted-foreground' />
                         ) : (
                             <IconSearch className='ml-2 size-4 shrink-0 text-muted-foreground' />
                         )}
                         <Input
-                            placeholder={placeholder ?? 'Search...'}
                             className='[&::-webkit-search-cancel-button]:hidden'
+                            placeholder={placeholder ?? 'Search...'}
                         />
                         {!isEmpty && (
                             <Button
-                                type='button'
                                 aria-label='Clear'
                                 className='mr-2 inline-flex cursor-pointer items-center justify-center rounded-md text-muted-foreground outline-offset-4'
+                                type='button'
                             >
                                 <IconX aria-hidden />
                             </Button>

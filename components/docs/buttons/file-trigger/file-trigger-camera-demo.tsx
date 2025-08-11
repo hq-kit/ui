@@ -1,7 +1,7 @@
 'use client'
 
-import { FileTrigger } from '@/components/ui'
 import { IconCamera } from '@tabler/icons-react'
+import { FileTrigger } from '@/components/ui'
 
 export default function FileTriggerCameraDemo() {
     return (

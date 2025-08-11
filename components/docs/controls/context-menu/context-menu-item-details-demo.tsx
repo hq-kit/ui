@@ -27,10 +27,10 @@ export default function ContextMenuItemDetailsDemo() {
                 <p className='hidden sm:flex'>Right click here!</p>
                 <p className='flex sm:hidden'>Hold your finger here!</p>
             </ContextMenu.Trigger>
-            <ContextMenu.Content items={items} aria-label='Bands'>
+            <ContextMenu.Content aria-label='Bands' items={items}>
                 {(item) => (
                     <ContextMenu.Item id={item.id} textValue={item.name}>
-                        <ContextMenu.Details label={item.name} description={item.description} />
+                        <ContextMenu.Details description={item.description} label={item.name} />
                     </ContextMenu.Item>
                 )}
             </ContextMenu.Content>

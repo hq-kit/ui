@@ -1,9 +1,9 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { docs } from '@/.velite'
 import { MDXContent } from '@/components/mdx'
 import { DocRefs } from '@/components/mdx/references'
 import { TableOfContents } from '@/components/mdx/toc'
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 
 type Props = {
     params: Promise<{ slug: string[] }>

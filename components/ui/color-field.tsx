@@ -1,14 +1,13 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconLoader3 } from '@tabler/icons-react'
 import type { ReactNode } from 'react'
 import type { ColorFieldProps as RACColorFieldProps } from 'react-aria-components'
-import { ColorField as RACColorField, composeRenderProps } from 'react-aria-components'
+import type { FieldProps } from './form'
+import { IconLoader3 } from '@tabler/icons-react'
+import { composeRenderProps, ColorField as RACColorField } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { ColorPicker } from './color-picker'
 import { ColorSwatch } from './color-swatch'
-import type { FieldProps } from './form'
 import { Description, FieldError, FieldGroup, Input, Label } from './form'
 
 interface ColorFieldProps extends RACColorFieldProps, FieldProps {
@@ -43,7 +42,7 @@ const ColorField = ({
                     {label && <Label>{label}</Label>}
                     <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {props.prefix ? (
-                            <span data-prefix={true} className='ml-2 text-muted-foreground has-[button]:ml-0'>
+                            <span className='ml-2 text-muted-foreground has-[button]:ml-0' data-prefix={true}>
                                 {props.prefix}
                             </span>
                         ) : null}
@@ -65,7 +64,7 @@ const ColorField = ({
                             <Input placeholder={placeholder ?? '#000'} />
                         </div>
                         {props.suffix ? (
-                            <span data-suffix={true} className='mr-2 text-muted-foreground has-[button]:mr-0'>
+                            <span className='mr-2 text-muted-foreground has-[button]:mr-0' data-suffix={true}>
                                 {props.suffix}
                             </span>
                         ) : null}

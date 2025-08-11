@@ -15,7 +15,7 @@ const items = [
 
 export default function ComboBoxDisabledDemo() {
     return (
-        <ComboBox label='Linux Distro' items={items}>
+        <ComboBox items={items} label='Linux Distro'>
             {(item) => (
                 <ComboBox.Item id={item.id} isDisabled={!item.available}>
                     {item.name}

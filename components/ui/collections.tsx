@@ -51,10 +51,10 @@ const useDND = <T extends object>({
         },
         renderDropIndicator: (e) => (
             <DropIndicator
-                target={e}
                 className={({ isDropTarget }) =>
                     isDropTarget ? 'col-span-full rounded-md outline outline-primary' : ''
                 }
+                target={e}
             />
         ),
         renderDragPreview: (items) => (

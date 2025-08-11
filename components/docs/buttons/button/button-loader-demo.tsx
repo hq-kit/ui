@@ -1,9 +1,8 @@
 'use client'
 
-import { Button } from '@/components/ui'
-
 import { IconCircleCheck, IconSend, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
+import { Button } from '@/components/ui'
 
 export default function ButtonLoaderDemo() {
     const [loading, setLoading] = useState<'idle' | 'loading' | 'success'>('idle')
@@ -22,8 +21,8 @@ export default function ButtonLoaderDemo() {
             </Button>
             <Button
                 isPending={loading === 'loading'}
-                variant={loading === 'success' ? 'default' : 'destructive'}
                 onPress={onPress}
+                variant={loading === 'success' ? 'default' : 'destructive'}
             >
                 {loading === 'success' ? <IconCircleCheck /> : <IconTrash />}
                 {loading === 'loading' ? 'Deleting...' : loading === 'success' ? 'Deleted' : 'Delete'}

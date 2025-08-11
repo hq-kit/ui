@@ -1,4 +1,3 @@
-import { Select } from '@/components/ui'
 import {
     IconBrandArc,
     IconBrandChrome,
@@ -7,6 +6,7 @@ import {
     IconBrandOpera,
     IconBrandSafari
 } from '@tabler/icons-react'
+import { Select } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Chrome', icon: IconBrandChrome },
@@ -19,7 +19,7 @@ const items = [
 
 export default function SelectWithIconDemo() {
     return (
-        <Select label='Linux Distro' items={items}>
+        <Select items={items} label='Linux Distro'>
             {(item) => (
                 <Select.Item id={item.id} textValue={item.name}>
                     <item.icon />

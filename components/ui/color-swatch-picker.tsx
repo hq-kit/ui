@@ -1,20 +1,20 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { IconCircleCheck } from '@tabler/icons-react'
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from 'react-aria-components'
+import { IconCircleCheck } from '@tabler/icons-react'
 import {
     ColorSwatchPickerItem,
-    ColorSwatchPicker as RACColorSwatchPicker,
-    composeRenderProps
+    composeRenderProps,
+    ColorSwatchPicker as RACColorSwatchPicker
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { ColorSwatch, isBrightColor } from './color-swatch'
 
 const ColorSwatchPicker = ({ children, className, layout = 'grid', ...props }: ColorSwatchPickerProps) => {
     return (
         <RACColorSwatchPicker
-            layout={layout}
             className={composeRenderProps(className, (className) => cn('flex gap-1', className))}
+            layout={layout}
             {...props}
         >
             {children}
@@ -41,8 +41,8 @@ const SwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) =
                     <ColorSwatch />
                     {isSelected && (
                         <IconCircleCheck
-                            style={{ color: isBrightColor(color.toString('hex')) ? '#3F3F46' : '#E4E4E7' }}
                             className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-5'
+                            style={{ color: isBrightColor(color.toString('hex')) ? '#3F3F46' : '#E4E4E7' }}
                         />
                     )}
                 </>

@@ -1,11 +1,11 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { type RefObject, createContext, use } from 'react'
 import type { ToggleButtonGroupProps, ToggleButtonProps } from 'react-aria-components'
-import { ToggleButton, ToggleButtonGroup, composeRenderProps } from 'react-aria-components'
 import type { VariantProps } from 'tailwind-variants'
+import { createContext, type RefObject, use } from 'react'
+import { composeRenderProps, ToggleButton, ToggleButtonGroup } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 
 type ToggleGroupContextProps = {
     isDisabled?: boolean
@@ -73,8 +73,6 @@ const ToggleGroup = ({
     return (
         <ToggleGroupContext.Provider value={{ variant, gap, orientation, size, icon, isDisabled: props.isDisabled }}>
             <ToggleButtonGroup
-                ref={ref}
-                orientation={orientation}
                 className={composeRenderProps(className, (className) =>
                     cn(
                         toggleGroupStyles({
@@ -84,6 +82,8 @@ const ToggleGroup = ({
                         className
                     )
                 )}
+                orientation={orientation}
+                ref={ref}
                 {...props}
             />
         </ToggleGroupContext.Provider>
@@ -136,8 +136,6 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
     const { variant: groupvariant, gap, size, orientation, icon, isDisabled: isGroupDisabled } = use(ToggleGroupContext)
     return (
         <ToggleButton
-            ref={ref}
-            isDisabled={props.isDisabled ?? isGroupDisabled}
             className={composeRenderProps(className, (classname) =>
                 cn(
                     toggleStyles({
@@ -150,6 +148,8 @@ const Toggle = ({ className, variant, ref, ...props }: ToggleProps) => {
                     classname
                 )
             )}
+            isDisabled={props.isDisabled ?? isGroupDisabled}
+            ref={ref}
             {...props}
         />
     )

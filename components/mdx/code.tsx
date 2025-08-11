@@ -1,24 +1,22 @@
 'use client'
 
-import { FileIcon } from '@/components/mdx/file-icon'
-
-import { Button, CopyButton, Tooltip } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { copyToClipboard } from '@/lib/utils/modifiers'
 import { useEffect, useState } from 'react'
-
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { transform } from 'sucrase'
 import { unified } from 'unified'
+import { FileIcon } from '@/components/mdx/file-icon'
+import { Button, CopyButton, Tooltip } from '@/components/ui'
+import { cn } from '@/lib/utils'
+import { copyToClipboard } from '@/lib/utils/modifiers'
 
 export function Code({
     lang = 'tsx',
     code,
     filename,
-    keepBackground = true,
+    keepBackground = false,
     withoutSwitcher = false,
     className
 }: {
@@ -50,7 +48,7 @@ export function Code({
                 <div className='flex items-center gap-1.5'>
                     {!withoutSwitcher && (
                         <Tooltip>
-                            <Button icon variant='ghost' size='sm' onPress={() => setIsTs(!isTs)}>
+                            <Button icon onPress={() => setIsTs(!isTs)} size='sm' variant='ghost'>
                                 <FileIcon lang={isTs ? 'ts' : 'js'} />
                             </Button>
                             <Tooltip.Content isInverse>
@@ -61,10 +59,8 @@ export function Code({
                     <CopyButton copied={copied} onPress={copyCode} />
                 </div>
             </div>
-            <div className='no-scrollbar max-h-96 overflow-y-auto'>
+            <div className='no-scrollbar max-h-96 max-w-full overflow-auto bg-[#0d1117]'>
                 <CodeHighlighter
-                    keepBackground={keepBackground}
-                    lang={lang}
                     code={
                         isTs
                             ? code
@@ -74,6 +70,8 @@ export function Code({
                                   disableESTransforms: true
                               }).code
                     }
+                    keepBackground={keepBackground}
+                    lang={lang}
                 />
             </div>
         </div>
@@ -86,7 +84,7 @@ interface CodeProps {
     keepBackground?: boolean
 }
 
-export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground }: CodeProps) => {
+export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground = true }: CodeProps) => {
     const [formattedCode, setFormattedCode] = useState('')
     const [error, setError] = useState('')
 
@@ -98,10 +96,10 @@ export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground }: CodeProp
                     .use(remarkRehype, { allowDangerousHtml: true })
                     .use(rehypePrettyCode, {
                         keepBackground: keepBackground,
-                        theme: 'github-dark-default',
+                        theme: 'github-dark-dimmed',
                         defaultLang: {
                             block: lang,
-                            inline: 'plaintext'
+                            inline: 'javascript'
                         }
                     })
                     .use(rehypeStringify, { allowDangerousHtml: true })
@@ -112,7 +110,7 @@ export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground }: CodeProp
                 console.error(err)
             }
         }
-        processCode()
+        processCode().then((r) => r)
     }, [code, lang, keepBackground])
 
     if (error) {

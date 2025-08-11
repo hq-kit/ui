@@ -1,11 +1,10 @@
 'use client'
 
-import { Skeleton } from '@/components/ui'
-import { cn } from '@/lib/utils'
 import { Fragment, Suspense, useEffect, useRef, useState } from 'react'
-
 import { Heading, Link } from 'react-aria-components'
 import scrollIntoView from 'scroll-into-view-if-needed'
+import { Skeleton } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface TableOfContentsProps {
     title: string
@@ -41,13 +40,13 @@ export function TableOfContents({ className, items }: Props) {
 
     return (
         <aside
-            ref={tocRef}
             className={cn(
                 'not-prose',
                 'no-scrollbar xl:-mr-6 xl:sticky xl:top-7 xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6',
                 'top-20',
                 className
             )}
+            ref={tocRef}
         >
             <nav aria-labelledby='on-this-page-title' className='xl:w-56'>
                 <Suspense
@@ -62,27 +61,25 @@ export function TableOfContents({ className, items }: Props) {
                         </div>
                     }
                 >
-                    <>
-                        <Heading level={2} className='mb-6 font-medium text-base text-foreground leading-7 lg:text-lg'>
-                            On this page
-                        </Heading>
-                        {items.length > 0 && (
-                            <ul className='flex flex-col gap-y-2.5'>
-                                {items.map((item) => (
-                                    <Fragment key={item.url}>
-                                        <TocLink item={item} activeId={activeId} />
-                                        {item.items.length > 0 && (
-                                            <ul className='flex flex-col gap-y-2.5 pl-4'>
-                                                {item.items.map((subItem) => (
-                                                    <TocLink key={subItem.url} item={subItem} activeId={activeId} />
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </Fragment>
-                                ))}
-                            </ul>
-                        )}
-                    </>
+                    <Heading className='mb-6 font-medium text-base text-foreground leading-7 lg:text-lg' level={2}>
+                        On this page
+                    </Heading>
+                    {items.length > 0 && (
+                        <ul className='flex flex-col gap-y-2.5'>
+                            {items.map((item) => (
+                                <Fragment key={item.url}>
+                                    <TocLink activeId={activeId} item={item} />
+                                    {item.items.length > 0 && (
+                                        <ul className='flex flex-col gap-y-2.5 pl-4'>
+                                            {item.items.map((subItem) => (
+                                                <TocLink activeId={activeId} item={subItem} key={subItem.url} />
+                                            ))}
+                                        </ul>
+                                    )}
+                                </Fragment>
+                            ))}
+                        </ul>
+                    )}
                 </Suspense>
             </nav>
         </aside>

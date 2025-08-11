@@ -17,7 +17,7 @@ const items = [
 
 export default function ListBoxDemo() {
     return (
-        <ListBox items={items} selectionMode='single' aria-label='Linux Distros'>
+        <ListBox aria-label='Linux Distros' items={items} selectionMode='single'>
             {(item) => <ListBox.Item id={item.id}>{item.name}</ListBox.Item>}
         </ListBox>
     )

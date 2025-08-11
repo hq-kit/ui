@@ -1,9 +1,8 @@
 'use client'
 
-import { Menu } from '@/components/ui'
-import { useState } from 'react'
-
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Menu } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Recent Files' },
@@ -20,10 +19,10 @@ export default function MultipleMenuDemo() {
         <Menu>
             <Menu.Trigger>Open</Menu.Trigger>
             <Menu.Content
-                selectionMode='multiple'
-                selectedKeys={selected}
-                onSelectionChange={setSelected}
                 items={items}
+                onSelectionChange={setSelected}
+                selectedKeys={selected}
+                selectionMode='multiple'
             >
                 {(item) => (
                     <Menu.Item id={item.id} textValue={item.name}>

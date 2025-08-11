@@ -1,15 +1,15 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { IconChevronRight } from '@tabler/icons-react'
 import type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'
+import { IconChevronRight } from '@tabler/icons-react'
 import {
     Button,
+    composeRenderProps,
     Tree as RACTree,
     TreeItem as RACTreeItem,
-    TreeItemContent,
-    composeRenderProps
+    TreeItemContent
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
     return (
@@ -46,12 +46,12 @@ const ItemContent = ({ children, ...props }: TreeItemContentProps) => (
             <>
                 {values.hasChildItems && (
                     <Button
-                        slot='chevron'
                         className='inline-flex size-4 items-center justify-center text-muted-foreground outline-hidden'
+                        slot='chevron'
                     >
                         <IconChevronRight
-                            data-slot='indicator'
                             className={cn('transition-transform', values.isExpanded && 'rotate-90')}
+                            data-slot='indicator'
                         />
                     </Button>
                 )}

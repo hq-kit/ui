@@ -1,5 +1,5 @@
-import { Note } from '@/components/ui'
 import { IconInfoCircle } from '@tabler/icons-react'
+import { Note } from '@/components/ui'
 
 export default function NoteWithIconDemo() {
     return (

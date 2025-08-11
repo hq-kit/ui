@@ -1,7 +1,7 @@
 'use client'
 
-import { Card, Carousel } from '@/components/ui'
 import Image from 'next/image'
+import { Card, Carousel } from '@/components/ui'
 
 export default function CarouselWithCollectionDemo() {
     return (
@@ -11,11 +11,11 @@ export default function CarouselWithCollectionDemo() {
                     <Carousel.Item id={item.id}>
                         <Card className='p-1'>
                             <Image
-                                className='h-40 rounded-lg object-cover object-center'
-                                src={`https://picsum.photos/id/${item.id}/400/300`}
                                 alt={`image ${item.id}`}
-                                width={400}
+                                className='h-40 rounded-lg object-cover object-center'
                                 height={300}
+                                src={`https://picsum.photos/id/${item.id}/400/300`}
+                                width={400}
                             />
                             <Card.Header className='p-3'>
                                 <Card.Title className='line-clamp-1 sm:text-lg'>{item.title}</Card.Title>

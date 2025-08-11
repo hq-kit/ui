@@ -1,5 +1,5 @@
 import { Textarea } from '@/components/ui'
 
 export default function TextareaAutosizeDemo() {
-    return <Textarea className='min-w-xs' autoSize label='About' />
+    return <Textarea autoSize className='min-w-xs' label='About' />
 }

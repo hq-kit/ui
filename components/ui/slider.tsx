@@ -1,16 +1,16 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { type HTMLAttributes, type Ref, use } from 'react'
 import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
+import { type HTMLAttributes, type Ref, use } from 'react'
 import {
+    composeRenderProps,
     Slider as RACSlider,
     SliderThumb as RACSliderThumb,
     SliderTrack as RACSliderTrack,
     SliderOutput,
-    SliderStateContext,
-    composeRenderProps
+    SliderStateContext
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Description, FieldError, type FieldProps, Label } from './form'
 
 interface SliderProps extends RACSliderProps, FieldProps {
@@ -20,7 +20,6 @@ interface SliderProps extends RACSliderProps, FieldProps {
 const Slider = ({ orientation = 'horizontal', className, ref, ...props }: SliderProps) => {
     return (
         <RACSlider
-            orientation={orientation}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
                     'group/field relative flex touch-none select-none flex-col gap-y-3',
@@ -28,6 +27,7 @@ const Slider = ({ orientation = 'horizontal', className, ref, ...props }: Slider
                     className
                 )
             )}
+            orientation={orientation}
             ref={ref}
             {...props}
         >
@@ -47,7 +47,7 @@ const Slider = ({ orientation = 'horizontal', className, ref, ...props }: Slider
                     <SliderTrack>
                         <SliderFiller />
                         {state.values.map((_, i) => (
-                            <SliderThumb key={i} index={i} />
+                            <SliderThumb index={i} key={i} />
                         ))}
                     </SliderTrack>
                     {props.description && <Description>{props.description}</Description>}

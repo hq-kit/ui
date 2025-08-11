@@ -1,9 +1,9 @@
 'use client'
 
-import { DatePicker } from '@/components/ui'
 import { getLocalTimeZone, parseDate, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
 import { useState } from 'react'
+import { DatePicker } from '@/components/ui'
 
 export default function DatePickerControlledDemo() {
     const now = today(getLocalTimeZone())
@@ -18,7 +18,7 @@ export default function DatePickerControlledDemo() {
                 <p>{value ? formatter.format(value.toDate(getLocalTimeZone())) : '--'}</p>
                 <p>{value ? value.toString() : '--'}</p>
             </div>
-            <DatePicker value={value} onChange={(newValue) => setValue(newValue!)} label='Event date' />
+            <DatePicker label='Event date' onChange={(newValue) => setValue(newValue!)} value={value} />
         </div>
     )
 }

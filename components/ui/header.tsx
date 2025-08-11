@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import type { ComponentPropsWithRef } from 'react'
+import { cn } from '@/lib/utils'
 
 interface HeaderProps extends ComponentPropsWithRef<'header'> {
     title?: string
@@ -8,11 +8,11 @@ interface HeaderProps extends ComponentPropsWithRef<'header'> {
 
 const Header = ({ title, description, className, children, ...props }: HeaderProps) => (
     <header
-        slot='header'
         className={cn(
             'grid items-start gap-1.5 md:auto-rows-min md:grid-rows-[auto_auto] md:has-[[slot=action]]:grid-cols-[1fr_auto]',
             className
         )}
+        slot='header'
         {...props}
     >
         {title && <HeaderTitle>{title}</HeaderTitle>}
@@ -26,16 +26,16 @@ const HeaderTitle = ({ className, ...props }: ComponentPropsWithRef<'h3'>) => (
 )
 
 const HeaderDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
-    <div slot='description' className={cn('text-muted-foreground text-sm md:row-start-2', className)} {...props} />
+    <div className={cn('text-muted-foreground text-sm md:row-start-2', className)} slot='description' {...props} />
 )
 
 const HeaderAction = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
     <div
-        slot='action'
         className={cn(
             'flex items-center gap-2 self-start justify-self-end md:col-start-2 md:row-span-2 md:row-start-1',
             className
         )}
+        slot='action'
         {...props}
     />
 )

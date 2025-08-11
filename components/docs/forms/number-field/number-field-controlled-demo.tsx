@@ -1,13 +1,13 @@
 'use client'
 
-import { NumberField } from '@/components/ui'
 import { useState } from 'react'
+import { NumberField } from '@/components/ui'
 
 export default function NumberFieldControlledDemo() {
     const [value, setValue] = useState<number>(100)
     return (
         <div className='space-y-2'>
-            <NumberField label='Size' value={value} onChange={setValue} />
+            <NumberField label='Size' onChange={setValue} value={value} />
             <code>value: {JSON.stringify(value)}</code>
         </div>
     )

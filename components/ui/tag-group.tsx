@@ -1,12 +1,11 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
-import { IconX } from '@tabler/icons-react'
-import { type ReactNode, type RefObject, createContext, useContext } from 'react'
 import type { TagGroupProps as RACTagGroupProps, TagListProps, TagProps } from 'react-aria-components'
-import { Button, Tag as RACTag, TagGroup as RACTagGroup, TagList, composeRenderProps } from 'react-aria-components'
+import { IconX } from '@tabler/icons-react'
+import { createContext, type ReactNode, type RefObject, useContext } from 'react'
+import { Button, composeRenderProps, Tag as RACTag, TagGroup as RACTagGroup, TagList } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn } from '@/lib/utils'
 import { badgeStyle } from './badge'
 import { Description, Label } from './form'
 
@@ -38,7 +37,7 @@ const TagGroup = <T extends object>({
     ...props
 }: TagGroupProps & TagListProps<T>) => {
     return (
-        <RACTagGroup ref={ref} className={cn('flex flex-col flex-wrap gap-1.5', className)} {...props}>
+        <RACTagGroup className={cn('flex flex-col flex-wrap gap-1.5', className)} ref={ref} {...props}>
             {label && <Label>{label}</Label>}
             <TagGroupContext.Provider
                 value={{
@@ -46,9 +45,9 @@ const TagGroup = <T extends object>({
                 }}
             >
                 <TagList
+                    className='flex flex-wrap gap-2 *:data-[slot=badge]:bg-primary'
                     items={items}
                     renderEmptyState={renderEmptyState}
-                    className='flex flex-wrap gap-2 *:data-[slot=badge]:bg-primary'
                 >
                     {children}
                 </TagList>
@@ -92,8 +91,8 @@ const Tag = (props: TagProps) => {
                         {props.children as ReactNode}
                         {allowsRemoving && (
                             <Button
-                                slot='remove'
                                 className='-mr-0.5 grid size-3.5 place-content-center rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-ring/50'
+                                slot='remove'
                             >
                                 <IconX className='size-3 shrink-0' />
                             </Button>

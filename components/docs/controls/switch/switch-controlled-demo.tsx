@@ -1,7 +1,7 @@
 'use client'
 
-import { Switch } from '@/components/ui'
 import React from 'react'
+import { Switch } from '@/components/ui'
 
 export default function SwitchControlledDemo() {
     const [value, setValue] = React.useState<boolean>(false)

@@ -39,7 +39,11 @@ function getDeps(content: string) {
         '@internationalized/date',
         '@react-aria/collections',
         '@react-aria/i18n',
-        '@react-types/overlays'
+        '@react-types/overlays',
+        'recharts/types/component/DefaultLegendContent',
+        'recharts/types/component/DefaultTooltipContent',
+        'recharts/types/component/Tooltip',
+        'recharts/types/shape/Curve'
     ]
     const replacement = [
         { from: 'motion/react', to: 'motion' },

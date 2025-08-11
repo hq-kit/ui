@@ -1,9 +1,9 @@
 'use client'
 
-import { Card, Carousel, type CarouselApi } from '@/components/ui'
-import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import { Button } from 'react-aria-components'
+import { Card, Carousel, type CarouselApi } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 export default function CarouselDApiDemo() {
     const [api, setApi] = useState<CarouselApi>()
@@ -29,7 +29,7 @@ export default function CarouselDApiDemo() {
     }
 
     return (
-        <Carousel setApi={setApi} className='w-full max-w-sm'>
+        <Carousel className='w-full max-w-sm' setApi={setApi}>
             <Carousel.Content items={Array.from({ length: 10 }, (_, id) => ({ id: id + 1 }))}>
                 {({ id }) => (
                     <Carousel.Item id={id}>
@@ -45,13 +45,13 @@ export default function CarouselDApiDemo() {
                 <div className='flex gap-1 py-2 text-center text-muted-foreground text-sm'>
                     {Array.from({ length: 10 }).map((_, index) => (
                         <Button
+                            aria-label={`Slide ${current} of ${count}`}
                             className={cn(
                                 'size-3 rounded-full transition',
                                 current === index + 1 ? 'bg-primary' : 'bg-muted hover:bg-primary/50'
                             )}
-                            aria-label={`Slide ${current} of ${count}`}
-                            onPress={() => handleSelect(index)}
                             key={index}
+                            onPress={() => handleSelect(index)}
                         />
                     ))}
                 </div>

@@ -1,73 +1,51 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-    "organizeImports": {
-        "enabled": true
+    "assist": {
+        "enabled": true,
+        "actions": {
+            "recommended": true,
+            "source": {
+                "organizeImports": {
+                    "level": "on",
+                    "options": {
+                        "groups": [
+                            {
+                                "type": true
+                            }
+                        ]
+                    }
+                },
+                "useSortedAttributes": "on",
+                "useSortedProperties": "on"
+            }
+        }
     },
     "files": {
-        "ignore": ["public/**/*", "**/.next/**", "components/docs/generated/**/*", "**/.velite/**"]
-    },
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "recommended": true,
-            "style": {
-                "useNumberNamespace": "off",
-                "noNonNullAssertion": "off",
-                "noParameterAssign": "warn",
-                "useImportType": "error"
-            },
-            "complexity": {
-                "useArrowFunction": "error"
-            },
-            "a11y": {
-                "noSvgWithoutTitle": "off",
-                "useValidAnchor": "off",
-                "useSemanticElements": "off"
-            },
-            "correctness": {
-                "useExhaustiveDependencies": "off",
-                "useHookAtTopLevel": "error",
-                "noUnusedImports": "error",
-                "noChildrenProp": "off",
-                "noUnknownFunction": "off"
-            },
-            "suspicious": {
-                "noExplicitAny": "off",
-                "noArrayIndexKey": "off",
-                "noConsoleLog": "error"
-            },
-            "security": {
-                "noDangerouslySetInnerHtml": "off"
-            },
-            "nursery": {
-                "useSortedClasses": {
-                    "level": "error",
-                    "fix": "safe",
-                    "options": {
-                        "attributes": ["classList"],
-                        "functions": ["cn", "tv", "composeRenderProps"]
-                    }
-                }
-            }
-        },
-        "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+        "includes": [
+            "app/**/*.{js,jsx,ts,tsx}",
+            "components/**/*.{js,jsx,ts,tsx}",
+            "lib/**/*.{js,jsx,ts,tsx}",
+            "content/**/*.{js,jsx,ts,tsx}",
+            "!node_modules/**",
+            "!.next/**"
+        ]
     },
     "formatter": {
         "enabled": true,
+        "bracketSpacing": true,
         "indentStyle": "space",
         "indentWidth": 4,
-        "lineWidth": 120,
-        "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+        "lineWidth": 120
     },
     "javascript": {
         "formatter": {
-            "enabled": true,
-            "quoteStyle": "single",
             "arrowParentheses": "always",
             "bracketSameLine": false,
             "bracketSpacing": true,
+            "enabled": true,
             "jsxQuoteStyle": "single",
             "quoteProperties": "asNeeded",
+            "quoteStyle": "single",
             "semicolons": "asNeeded",
             "trailingCommas": "none"
         }
@@ -75,6 +53,66 @@
     "json": {
         "formatter": {
             "trailingCommas": "none"
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "a11y": {
+                "noSvgWithoutTitle": "off",
+                "useSemanticElements": "off",
+                "useValidAnchor": "off"
+            },
+            "complexity": {
+                "useArrowFunction": "error"
+            },
+            "correctness": {
+                "noChildrenProp": "off",
+                "noUnknownFunction": "error",
+                "noUnusedImports": {
+                    "fix": "safe",
+                    "level": "error"
+                },
+                "useExhaustiveDependencies": "off",
+                "useHookAtTopLevel": "error"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "fix": "safe",
+                    "level": "error",
+                    "options": {
+                        "attributes": ["classList"],
+                        "functions": ["cn", "tv", "composeRenderProps"]
+                    }
+                }
+            },
+            "performance": {
+                "noImgElement": "off"
+            },
+            "recommended": true,
+            "security": {
+                "noDangerouslySetInnerHtml": "off"
+            },
+            "style": {
+                "noNonNullAssertion": "off",
+                "noParameterAssign": "warn",
+                "useImportType": "error",
+                "useNumberNamespace": "off",
+                "useTemplate": {
+                    "level": "warn",
+                    "fix": "safe"
+                }
+            },
+            "suspicious": {
+                "noArrayIndexKey": "off",
+                "noConsole": {
+                    "level": "error",
+                    "options": {
+                        "allow": ["assert", "error", "info", "warn"]
+                    }
+                },
+                "noExplicitAny": "off"
+            }
         }
     }
 }

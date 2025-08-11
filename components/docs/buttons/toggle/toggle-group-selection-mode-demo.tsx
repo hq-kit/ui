@@ -1,6 +1,5 @@
 'use client'
 
-import { Description, Toggle } from '@/components/ui'
 import {
     IconAlignCenter,
     IconAlignJustified,
@@ -11,6 +10,7 @@ import {
     IconStrikethrough,
     IconUnderline
 } from '@tabler/icons-react'
+import { Description, Toggle } from '@/components/ui'
 
 export default function ToggleGroupSelectionModeDemo() {
     return (

@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Form } from '@/components/ui'
 import { IconCamera, IconMicrophone, IconPaperclip, IconSend } from '@tabler/icons-react'
 import { type FormEvent, type KeyboardEvent, useEffect, useRef } from 'react'
+import { Button, Form, Textarea } from '@/components/ui'
 
 interface MessageFormProps {
     value: string
@@ -50,33 +50,32 @@ export default function MessageForm({ value, valueAction, sendAction }: MessageF
     }
 
     return (
-        <Form onSubmit={onSubmit} className='relative overflow-hidden rounded-lg border-t bg-background md:border'>
-            <div
-                contentEditable
-                ref={editorRef}
+        <Form className='relative overflow-hidden rounded-lg border-t bg-background md:border' onSubmit={onSubmit}>
+            <Textarea
+                aria-label='Message'
+                className='no-scrollbar min-h-32 w-full resize-none border-0 p-3 outline-none'
+                id='message'
                 onKeyDown={(e: KeyboardEvent) => {
                     if (e.key === 'Enter' && !e.shiftKey && value.trim() !== '') {
                         onSubmit(e as unknown as FormEvent<HTMLFormElement>)
                     }
                 }}
-                aria-label='Message'
-                id='message'
-                className='no-scrollbar min-h-32 w-full resize-none border-0 p-3 outline-none'
+                ref={editorRef}
             />
             <div className='flex items-center p-2'>
-                <Button variant='ghost' icon type='button'>
+                <Button icon type='button' variant='ghost'>
                     <IconCamera className='size-4' />
                     <span className='sr-only'>Upload Image</span>
                 </Button>
-                <Button variant='ghost' icon type='button'>
+                <Button icon type='button' variant='ghost'>
                     <IconMicrophone className='size-4' />
                     <span className='sr-only'>Use Microphone</span>
                 </Button>
-                <Button variant='ghost' icon type='button'>
+                <Button icon type='button' variant='ghost'>
                     <IconPaperclip className='size-4' />
                     <span className='sr-only'>Attach File</span>
                 </Button>
-                <Button isDisabled={value.trim() === ''} type='submit' size='sm' className='ml-auto gap-1.5'>
+                <Button className='ml-auto gap-1.5' isDisabled={value.trim() === ''} size='sm' type='submit'>
                     Send Message
                     <IconSend />
                 </Button>

@@ -11,13 +11,6 @@ const blocksOutputFilePathJson = path.resolve(docsDir, 'generated/blocks.json')
 const blockListOutputFilePath = path.resolve(docsDir, 'generated/list-blocks.ts')
 
 const slugify = (str: string) => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
-const titleCase = (str: string) =>
-    str
-        .replace(/-/g, ' ')
-        .toLowerCase()
-        .split(' ')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')
 
 function getBlocks(): string[] {
     const blocks: string[] = []

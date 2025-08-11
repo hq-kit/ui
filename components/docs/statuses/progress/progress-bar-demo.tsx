@@ -1,7 +1,7 @@
 'use client'
 
-import { Progress } from '@/components/ui'
 import { useEffect, useState } from 'react'
+import { Progress } from '@/components/ui'
 
 export default function ProgressBarDemo() {
     const [value, setValue] = useState(0)

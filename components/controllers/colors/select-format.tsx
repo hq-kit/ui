@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Menu } from '@/components/ui'
-import { IconColorSwatch } from '@tabler/icons-react'
 import type { Dispatch, SetStateAction } from 'react'
+import { IconColorSwatch } from '@tabler/icons-react'
+import { Button, Menu } from '@/components/ui'
 
 const ColorSelectors = [
     { type: 'hex', sample: '#0D6DFD' },
@@ -26,8 +26,8 @@ export default function SelectFormat({ selectedFormat, action }: SelectFormatPro
             </Button>
             <Menu.Content items={ColorSelectors}>
                 {(item) => (
-                    <Menu.Item onAction={() => action(item.type)} id={item.type} textValue={item.type}>
-                        <Menu.Details label={item.type} description={item.sample} />
+                    <Menu.Item id={item.type} onAction={() => action(item.type)} textValue={item.type}>
+                        <Menu.Details description={item.sample} label={item.type} />
                     </Menu.Item>
                 )}
             </Menu.Content>

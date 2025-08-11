@@ -1,11 +1,11 @@
 import { Providers } from '@/components/providers'
 import { fontMono, fontSans } from '@/lib/fonts'
 import '@/lib/styles/app.css'
-import { cn } from '@/lib/utils'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import type { CSSProperties, ReactNode } from 'react'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
@@ -77,15 +77,16 @@ export default function RootLayout({
 }>) {
     return (
         <html
-            lang='en'
-            suppressHydrationWarning
             className={cn(fontSans, fontMono)}
+            data-scroll-behavior='smooth'
+            lang='en'
             style={
                 {
                     '--font-sans': 'var(--font-geist)',
                     '--font-mono': 'var(--font-geist-mono)'
                 } as CSSProperties
             }
+            suppressHydrationWarning
         >
             <body className='min-h-dvh font-sans antialiased'>
                 <Providers>

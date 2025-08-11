@@ -1,7 +1,5 @@
 'use client'
 
-import { Avatar, Button, Menu, Popover } from '@/components/ui'
-
 import {
     IconCircleX,
     IconDotsVertical,
@@ -14,7 +12,7 @@ import {
 } from '@tabler/icons-react'
 import { type FormEvent, useState } from 'react'
 import { useDateFormatter } from 'react-aria'
-
+import { Avatar, Button, Menu, Popover } from '@/components/ui'
 import BubbleChat, { type BubbleChatProps } from './bubble-chat'
 import ContactList from './contact-list'
 import MessageForm from './message-form'
@@ -67,7 +65,7 @@ export default function ChatApp() {
                 <div className='sticky top-0 z-20 flex w-full items-center justify-between rounded-lg bg-background p-4'>
                     <h1 className='font-bold text-2xl'>Chats</h1>
                     <div className='flex items-center justify-between gap-2'>
-                        <Button variant='ghost' icon>
+                        <Button icon variant='ghost'>
                             <IconMessageDots className='!size-6' />
                         </Button>
                         <Menu>
@@ -94,7 +92,7 @@ export default function ChatApp() {
             <div className='relative flex h-full min-h-[50vh] flex-col rounded-lg bg-background lg:col-span-3'>
                 <div className='flex flex-row items-center gap-3 rounded-lg border-b p-2 md:border md:px-4'>
                     <Popover>
-                        <Button variant='ghost' icon className='md:hidden'>
+                        <Button className='md:hidden' icon variant='ghost'>
                             <IconUserSquareRounded />
                         </Button>
                         <Popover.Content aria-label='Contact List'>
@@ -140,7 +138,7 @@ export default function ChatApp() {
                         </div>
                     )}
                 </div>
-                <MessageForm value={message} valueAction={setMessage} sendAction={sendMessage} />
+                <MessageForm sendAction={sendMessage} value={message} valueAction={setMessage} />
             </div>
         </main>
     )

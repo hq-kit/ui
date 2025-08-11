@@ -4,7 +4,6 @@ import type { Placement } from '@react-types/overlays'
 import type { ReactNode } from 'react'
 import type { ColorPickerProps as RACColorPickerProps } from 'react-aria-components'
 import { Button, ColorPicker as RACColorPicker } from 'react-aria-components'
-
 import { ColorArea } from './color-area'
 import { ColorField } from './color-field'
 import { ColorSlider } from './color-slider'
@@ -35,7 +34,7 @@ const ColorPicker = ({
         <div className='group/field flex flex-col gap-y-2'>
             <RACColorPicker {...props}>
                 <Popover>
-                    <Button isDisabled={isDisabled} className='flex cursor-pointer items-center gap-2 outline-hidden'>
+                    <Button className='flex cursor-pointer items-center gap-2 outline-hidden' isDisabled={isDisabled}>
                         {props.trigger ?? (
                             <>
                                 <ColorSwatch className='size-6' />
@@ -43,7 +42,7 @@ const ColorPicker = ({
                             </>
                         )}
                     </Button>
-                    <PopoverContent showArrow={showArrow} placement={placement}>
+                    <PopoverContent placement={placement} showArrow={showArrow}>
                         <Popover.Body className='space-y-2 overflow-visible pb-4 sm:py-4'>
                             {children || (
                                 <>
@@ -53,7 +52,7 @@ const ColorPicker = ({
                                         xChannel='saturation'
                                         yChannel='brightness'
                                     />
-                                    <ColorSlider showOutput={false} colorSpace='hsb' channel='hue' />
+                                    <ColorSlider channel='hue' colorSpace='hsb' showOutput={false} />
                                     <ColorField aria-label='Hex' />
                                 </>
                             )}

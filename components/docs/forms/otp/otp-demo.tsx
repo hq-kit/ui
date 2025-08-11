@@ -8,7 +8,7 @@ export default function InputOtpDemo() {
             <OTP maxLength={6}>
                 <OTP.Group>
                     {[...Array(6)].map((_, index) => (
-                        <OTP.Slot key={index} index={index} />
+                        <OTP.Slot index={index} key={index} />
                     ))}
                 </OTP.Group>
             </OTP>

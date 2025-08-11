@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Form, Radio, RadioGroup } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
+import { Button, Form, Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupControlledDemo() {
     const [selected, setSelected] = useState<string>('')
@@ -11,7 +11,7 @@ export default function RadioGroupControlledDemo() {
     }
     return (
         <Form className='space-y-4' onSubmit={onSubmit}>
-            <RadioGroup isRequired label='Plan' value={selected} onChange={setSelected}>
+            <RadioGroup isRequired label='Plan' onChange={setSelected} value={selected}>
                 <Radio value='bronze'>Bronze</Radio>
                 <Radio value='silver'>Silver</Radio>
                 <Radio value='gold'>Gold</Radio>

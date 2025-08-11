@@ -11,13 +11,13 @@ const items = [
 export default function SelectDemo() {
     return (
         <div className='grid gap-2 sm:grid-cols-3'>
-            <Select label='Default' items={items}>
+            <Select items={items} label='Default'>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
-            <Select label='Invalid' items={items} isInvalid>
+            <Select isInvalid items={items} label='Invalid'>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
-            <Select label='Disabled' items={items} isDisabled>
+            <Select isDisabled items={items} label='Disabled'>
                 {(item) => <Select.Item id={item.id}>{item.name}</Select.Item>}
             </Select>
         </div>

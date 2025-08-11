@@ -11,9 +11,9 @@ const items = [
 
 export default function TagGroupControlledDemo() {
     return (
-        <Tag.Group label='Linux Distros' items={items}>
+        <Tag.Group items={items} label='Linux Distros'>
             {(item) => (
-                <Tag id={item.name} href={item.url}>
+                <Tag href={item.url} id={item.name}>
                     {item.name}
                 </Tag>
             )}

@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import { IconChevronDown } from '@tabler/icons-react'
 import { type ReactNode, useRef, useState } from 'react'
+import { cn } from '@/lib/utils'
 import { Button } from './button'
 
 interface SpoilerProps {
@@ -29,8 +29,8 @@ function Spoiler({
     return (
         <div className={cn('relative overflow-visible', className)}>
             <div
-                ref={contentRef}
                 className='overflow-hidden transition-all duration-300 ease-in-out'
+                ref={contentRef}
                 style={{
                     maxHeight: isExpanded ? contentRef.current?.scrollHeight : initialHeight,
                     opacity: isExpanded ? 1 : initialOpacity
@@ -47,10 +47,10 @@ function Spoiler({
                 />
             )}
             <Button
-                variant='outline'
-                size='sm'
                 className={cn('-translate-x-1/2 -bottom-4 absolute left-1/2 w-fit')}
                 onPress={() => setIsExpanded(!isExpanded)}
+                size='sm'
+                variant='outline'
             >
                 {isExpanded ? showLessText : showMoreText}
                 <IconChevronDown className={cn('size-4 transition', isExpanded && '-rotate-180')} />

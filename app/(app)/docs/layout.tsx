@@ -1,5 +1,5 @@
-import { Aside } from '@/components/layouts/aside'
 import type { ReactNode } from 'react'
+import { Aside } from '@/components/layouts/aside'
 
 export default async function Layout({ children }: { children: ReactNode }) {
     return (

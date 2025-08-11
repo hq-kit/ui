@@ -1,8 +1,8 @@
 'use client'
 
-import { Switch, TimeField } from '@/components/ui'
 import { Time } from '@internationalized/date'
 import { useState } from 'react'
+import { Switch, TimeField } from '@/components/ui'
 
 export default function TimeFieldHcDemo() {
     const [hc, setHc] = useState<12 | 24>(24)
@@ -14,7 +14,7 @@ export default function TimeFieldHcDemo() {
                     {hc} hour
                 </Switch>
             </div>
-            <TimeField value={value} onChange={(newValue) => setValue(newValue!)} hourCycle={hc} label='Event time' />
+            <TimeField hourCycle={hc} label='Event time' onChange={(newValue) => setValue(newValue!)} value={value} />
         </>
     )
 }

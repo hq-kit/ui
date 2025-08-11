@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Tooltip } from '@/components/ui'
 import { IconPointer } from '@tabler/icons-react'
+import { Button, Tooltip } from '@/components/ui'
 
 export default function TooltipWithoutArrowDemo() {
     return (

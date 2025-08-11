@@ -1,9 +1,9 @@
 'use client'
 
-import { Tooltip } from '@/components/ui'
-import { cn } from '@/lib/utils'
 import { IconCheck, IconCopy } from '@tabler/icons-react'
 import { Button, type ButtonProps } from 'react-aria-components'
+import { Tooltip } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
 interface CopyButtonProps extends ButtonProps {
     isCopied?: boolean

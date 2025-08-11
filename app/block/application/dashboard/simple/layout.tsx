@@ -1,5 +1,4 @@
 import { SidebarInset } from '@/components/ui'
-
 import AppSidebar from './app-sidebar'
 import AppSidebarNav from './app-sidebar-nav'
 

@@ -1,16 +1,16 @@
 'use client'
 
-import { Toggle } from '@/components/ui'
+import type { Key } from 'react-aria-components'
 import { IconBold, IconItalic, IconUnderline } from '@tabler/icons-react'
 import { useState } from 'react'
-import type { Key } from 'react-aria-components'
+import { Toggle } from '@/components/ui'
 
 export default function ToggleGroupControlledDemo() {
     const [selected, setSelected] = useState(new Set<Key>(['bold']))
 
     return (
         <div className='flex flex-col items-center space-y-6'>
-            <Toggle.Group icon selectionMode='multiple' selectedKeys={selected} onSelectionChange={setSelected}>
+            <Toggle.Group icon onSelectionChange={setSelected} selectedKeys={selected} selectionMode='multiple'>
                 <Toggle id='bold'>
                     <IconBold />
                 </Toggle>

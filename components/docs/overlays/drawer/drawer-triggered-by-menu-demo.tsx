@@ -1,10 +1,9 @@
 'use client'
 
-import { Button, Drawer, Menu } from '@/components/ui'
-
+import type { Key } from 'react-aria-components'
 import { IconBan, IconRestore, IconTrash } from '@tabler/icons-react'
 import { useState } from 'react'
-import type { Key } from 'react-aria-components'
+import { Button, Drawer, Menu } from '@/components/ui'
 
 export default function DrawerMenuDemo() {
     const [state, setState] = useState<Key>('')
@@ -78,10 +77,10 @@ export default function DrawerMenuDemo() {
                         Cancel
                     </Button>
                     <Button
-                        variant={state === 'restore' ? 'default' : 'destructive'}
                         isDisabled={loading}
                         isPending={loading}
                         onPress={actions(state)?.action}
+                        variant={state === 'restore' ? 'default' : 'destructive'}
                     >
                         {actions(state)?.confirmText}
                     </Button>

@@ -1,6 +1,6 @@
-import { Hero, HeroButton, HeroTitle } from '@/components/layouts/hero'
-import { IconBlocks, IconGitPullRequest } from '@tabler/icons-react'
 import type { ReactNode } from 'react'
+import { IconBlocks, IconGitPullRequest } from '@tabler/icons-react'
+import { Hero, HeroButton, HeroTitle } from '@/components/layouts/hero'
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (

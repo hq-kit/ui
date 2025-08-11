@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { DropZoneProps } from 'react-aria-components'
-import { DropZone as RACDropZone, composeRenderProps } from 'react-aria-components'
+import { composeRenderProps, DropZone as RACDropZone } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 
 const DropZone = ({ className, ...props }: DropZoneProps) => (
     <RACDropZone

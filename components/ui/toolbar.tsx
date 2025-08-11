@@ -1,22 +1,21 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { RefObject } from 'react'
 import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
 import {
+    composeRenderProps,
     Group,
     Toolbar as RACToolbar,
     Separator,
     ToolbarContext,
-    composeRenderProps,
     useSlottedContext
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { Toggle, ToggleGroupContext, type ToggleGroupContextProps, toggleGroupStyles } from './toggle'
 
 const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => (
     <ToolbarContext.Provider value={{ orientation }}>
         <RACToolbar
-            orientation={orientation}
             className={composeRenderProps(className, (className, { orientation }) =>
                 cn(
                     'group gap-2',
@@ -26,6 +25,7 @@ const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarPro
                     className
                 )
             )}
+            orientation={orientation}
             {...props}
         />
     </ToolbarContext.Provider>
@@ -40,7 +40,6 @@ const ToolbarGroup = ({ className, ref, variant = 'outline', gap, icon, size, ..
     return (
         <ToggleGroupContext.Provider value={{ variant, gap, size, icon, orientation, isDisabled: props.isDisabled }}>
             <Group
-                ref={ref}
                 className={composeRenderProps(className, (className) =>
                     cn(
                         toggleGroupStyles({
@@ -50,6 +49,7 @@ const ToolbarGroup = ({ className, ref, variant = 'outline', gap, icon, size, ..
                         className
                     )
                 )}
+                ref={ref}
                 {...props}
             />
         </ToggleGroupContext.Provider>
@@ -62,7 +62,7 @@ const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
         <Separator
             className={cn(
                 'bg-border',
-                orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : ' my-1.5 h-px w-fit min-w-8',
+                orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : 'my-1.5 h-px w-fit min-w-8',
                 className
             )}
             {...props}

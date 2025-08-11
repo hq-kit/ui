@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { type VariantProps, tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 const indicatorStyle = tv({
     base: 'absolute right-0.5 left-auto z-10 inline-flex w-auto translate-x-1/2 select-none items-center justify-center whitespace-nowrap border-2 py-[3px]',

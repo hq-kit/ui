@@ -1,5 +1,5 @@
-import { Card, Menu, Pagination, Table } from '@/components/ui'
 import { IconDots, IconEye, IconPencil, IconTrash } from '@tabler/icons-react'
+import { Card, Menu, Pagination, Table } from '@/components/ui'
 
 export default function CardTableDemo() {
     return (
@@ -56,20 +56,20 @@ export default function CardTableDemo() {
             <Card.Footer className='flex-col justify-between gap-2 md:flex-row'>
                 <div className='text-muted-foreground text-sm'>Showing 1 to 10 of 50 entries</div>
                 <Pagination>
-                    <Pagination.Item slot='first' href='#first' />
-                    <Pagination.Item slot='previous' href='#previous' />
+                    <Pagination.Item href='#first' slot='first' />
+                    <Pagination.Item href='#previous' slot='previous' />
                     <Pagination.Label className='lg:hidden' current={2} total={5} />
                     <Pagination.Pages className='hidden lg:flex'>
                         <Pagination.Item href='#1'>1</Pagination.Item>
-                        <Pagination.Item isCurrent href='#2'>
+                        <Pagination.Item href='#2' isCurrent>
                             2
                         </Pagination.Item>
                         <Pagination.Item href='#3'>3</Pagination.Item>
                         <Pagination.Item slot='ellipsis' />
                         <Pagination.Item href='#5'>5</Pagination.Item>
                     </Pagination.Pages>
-                    <Pagination.Item slot='next' href='#next' />
-                    <Pagination.Item slot='last' href='#last' />
+                    <Pagination.Item href='#next' slot='next' />
+                    <Pagination.Item href='#last' slot='last' />
                 </Pagination>
             </Card.Footer>
         </Card>

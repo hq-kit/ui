@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Popover } from '@/components/ui'
 import type { PopoverProps } from 'react-aria-components'
+import { Button, Popover } from '@/components/ui'
 
 const placements: PopoverProps['placement'][] = [
     'left top',
@@ -24,13 +24,13 @@ export default function PopoverPlacementDemo() {
             {placements.map((place, i) => (
                 <Popover key={i}>
                     <Button
+                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3 whitespace-normal py-5 text-[10px] sm:text-sm'
                         size='xs'
                         variant='outline'
-                        className='nth-10:col-span-2 nth-3:col-span-2 nth-6:col-span-3 nth-7:col-span-3 whitespace-normal py-5 text-[10px] sm:text-sm'
                     >
                         {place}
                     </Button>
-                    <Popover.Content placement={place} className='min-w-64 p-4'>
+                    <Popover.Content className='min-w-64 p-4' placement={place}>
                         Popover shown at <strong>{place}</strong>
                     </Popover.Content>
                 </Popover>

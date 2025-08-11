@@ -6,7 +6,7 @@ export default function ColorPickerDemo() {
     return (
         <div className='flex gap-6'>
             <ColorPicker label='Default' />
-            <ColorPicker label='Disabled' isDisabled />
+            <ColorPicker isDisabled label='Disabled' />
         </div>
     )
 }

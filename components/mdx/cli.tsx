@@ -1,10 +1,9 @@
 'use client'
 
+import { useState } from 'react'
+import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from '@/components/icons'
 import { CopyButton, Description, Menu, toast } from '@/components/ui'
 import { cn } from '@/lib/utils'
-
-import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from '@/components/icons'
-import { useState } from 'react'
 
 interface CLIProps {
     items?: string | string[]

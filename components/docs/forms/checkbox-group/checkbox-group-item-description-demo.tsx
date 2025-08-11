@@ -3,13 +3,13 @@ import { Checkbox, CheckboxGroup } from '@/components/ui'
 export default function CheckboxGroupItemDescriptionDemo() {
     return (
         <CheckboxGroup label='Email Settings'>
-            <Checkbox value='newsletter' description='Receive our newsletter once per week'>
+            <Checkbox description='Receive our newsletter once per week' value='newsletter'>
                 Newsletter
             </Checkbox>
-            <Checkbox value='deals' description='The best deals and sales for members'>
+            <Checkbox description='The best deals and sales for members' value='deals'>
                 Deals
             </Checkbox>
-            <Checkbox value='notifications' description='Notifications about your orders'>
+            <Checkbox description='Notifications about your orders' value='notifications'>
                 Notifications
             </Checkbox>
         </CheckboxGroup>

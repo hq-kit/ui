@@ -1,13 +1,13 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ReactNode, Ref } from 'react'
 import {
+    composeRenderProps,
     TimeField as RACTimeField,
     type TimeFieldProps as RACTimeFieldProps,
-    type TimeValue,
-    composeRenderProps
+    type TimeValue
 } from 'react-aria-components'
+import { cn } from '@/lib/utils'
 import { DateInput } from './date-field'
 import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
 
@@ -29,17 +29,17 @@ const TimeField = <T extends TimeValue>({
 }: TimeFieldProps<T>) => {
     return (
         <RACTimeField
-            isInvalid={props.isInvalid || !!errorMessage}
             className={composeRenderProps(className, (className) =>
                 cn('group/field flex flex-col gap-y-1.5', className)
             )}
+            isInvalid={props.isInvalid || !!errorMessage}
             ref={ref}
             {...props}
         >
             {({ isInvalid, isDisabled }) => (
                 <>
                     {label && <Label>{label}</Label>}
-                    <FieldGroup>
+                    <FieldGroup isDisabled={isDisabled} isInvalid={isInvalid}>
                         {prefix ? <span data-prefix={true}>{prefix}</span> : null}
                         <DateInput className='flex w-fit min-w-28 justify-around whitespace-nowrap p-2 sm:text-sm' />
                         {suffix ? <span data-suffix={true}>{suffix}</span> : null}

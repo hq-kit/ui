@@ -1,9 +1,9 @@
 'use client'
+import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { components } from '@/components/docs/generated/components'
 import previews from '@/components/docs/generated/previews.json'
 import { Description, Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
-import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { CLI } from './cli'
 import { Code } from './code'
 
@@ -52,10 +52,10 @@ export function Install({ component }: { component: string }) {
                 <Tabs.Label id='cli'>CLI</Tabs.Label>
                 <Tabs.Label id='manual'>Manual</Tabs.Label>
             </Tabs.List>
-            <Tabs.Content id='cli' className='w-full'>
+            <Tabs.Content className='w-full' id='cli'>
                 <CLI command='add' items={component} />
             </Tabs.Content>
-            <Tabs.Content id='manual' className='w-full'>
+            <Tabs.Content className='w-full' id='manual'>
                 <CLI command='install' items={deps} />
                 <SourceCode component={items} />
             </Tabs.Content>
@@ -96,16 +96,16 @@ export function SourceCode({ component, withMessage = true }: SourceCodeProps) {
                 </Description>
             )}
             <Tabs className='mt-2'>
-                <Tabs.List items={codeStrings} className='mb-2 w-fit'>
+                <Tabs.List className='mb-2 w-fit' items={codeStrings}>
                     {(item) => (
-                        <Tabs.Label key={item.name} id={`tab-${item.name}`}>
+                        <Tabs.Label id={`tab-${item.name}`} key={item.name}>
                             {item.name.includes('demo') ? 'main' : item.name}
                         </Tabs.Label>
                     )}
                 </Tabs.List>
                 {codeStrings.map((item) => (
-                    <Tabs.Content key={item.name} id={`tab-${item.name}`}>
-                        <Code lang='tsx' filename={`components/ui/${item.name}.tsx`} code={item.code} />
+                    <Tabs.Content id={`tab-${item.name}`} key={item.name}>
+                        <Code code={item.code} filename={`components/ui/${item.name}.tsx`} lang='tsx' />
                     </Tabs.Content>
                 ))}
             </Tabs>

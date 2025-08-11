@@ -1,9 +1,8 @@
 'use client'
 
-import { Table } from '@/components/ui'
-import { useState } from 'react'
-
 import type { Selection } from 'react-aria-components'
+import { useState } from 'react'
+import { Table } from '@/components/ui'
 
 const items = [
     { id: 1, name: 'Charizard', type: 'Fire, Flying', level: '67' },
@@ -17,9 +16,9 @@ export default function TableBulkDemo() {
         <div className='space-y-6'>
             <Table
                 aria-label='Books'
-                selectionMode='multiple'
-                selectedKeys={selectedKeys}
                 onSelectionChange={setSelectedKeys}
+                selectedKeys={selectedKeys}
+                selectionMode='multiple'
             >
                 <Table.Header>
                     <Table.Column className='w-0'>#</Table.Column>

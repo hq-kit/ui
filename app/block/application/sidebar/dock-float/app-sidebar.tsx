@@ -1,7 +1,5 @@
 'use client'
 
-import { IconApp } from '@/components/icons'
-import { Menu, Sidebar, User } from '@/components/ui'
 import {
     IconChevronRight,
     IconCreditCard,
@@ -14,21 +12,23 @@ import {
     IconShieldQuestion,
     IconTicket
 } from '@tabler/icons-react'
+import { IconApp } from '@/components/icons'
+import { Menu, Sidebar, User } from '@/components/ui'
 
 export default function AppSidebar() {
     return (
-        <Sidebar variant='float' collapsible='dock'>
+        <Sidebar collapsible='dock' variant='float'>
             <Sidebar.Header>
                 <IconApp />
                 <Sidebar.Label>HQ UI</Sidebar.Label>
             </Sidebar.Header>
             <Sidebar.Content>
                 <Sidebar.Section title='Overview'>
-                    <Sidebar.Item tooltip='Overview' isCurrent href='#'>
+                    <Sidebar.Item href='#' isCurrent tooltip='Overview'>
                         <IconGauge />
                         <Sidebar.Label>Overview</Sidebar.Label>
                     </Sidebar.Item>
-                    <Sidebar.Item href='#' badge='4 Pending' tooltip='Payments'>
+                    <Sidebar.Item badge='4 Pending' href='#' tooltip='Payments'>
                         <IconCreditCard />
                         <Sidebar.Label>Payments</Sidebar.Label>
                     </Sidebar.Item>
@@ -64,18 +64,18 @@ export default function AppSidebar() {
             <Sidebar.Footer>
                 <Menu>
                     <Menu.Trigger
-                        slot={null}
                         className='group flex size-full items-center justify-between rounded-lg pressed:bg-muted p-2 hover:bg-muted'
+                        slot={null}
                     >
                         <User
-                            src='https://github.com/dq-alhq.png'
-                            name='DQ Al Haqqi'
                             description='@dq-alhq'
+                            name='DQ Al Haqqi'
                             shape='square'
+                            src='https://github.com/dq-alhq.png'
                         />
                         <IconChevronRight className='group-aria-expanded:-rotate-90 size-4' />
                     </Menu.Trigger>
-                    <Menu.Content placement='top left' className='sm:min-w-(--trigger-width)'>
+                    <Menu.Content className='sm:min-w-(--trigger-width)' placement='top left'>
                         <Menu.Header>
                             <span className='block'>DQ Al Haqqi</span>
                             <span className='font-normal text-muted-foreground'>@dq-alhq</span>

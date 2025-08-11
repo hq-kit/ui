@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Form, SearchField } from '@/components/ui'
 import { type FormEvent, useState } from 'react'
+import { Button, Form, SearchField } from '@/components/ui'
 
 export default function SearchFieldValidationDemo() {
     const [value, setValue] = useState<string>('')
@@ -14,10 +14,10 @@ export default function SearchFieldValidationDemo() {
         <Form className='space-y-4' onSubmit={onSubmit}>
             <SearchField
                 isRequired
+                label='Search for Products'
+                onChange={setValue}
                 validate={(v) => (v.length < 3 ? 'Must be at least 3 characters' : null)}
                 value={value}
-                onChange={setValue}
-                label='Search for Products'
             />
             <Button type='submit'>Submit</Button>
         </Form>

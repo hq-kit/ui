@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import type { FC, ReactNode, SVGProps } from 'react'
 import {
     type Icon,
     IconBrandCss3,
@@ -10,7 +10,7 @@ import {
     IconFile,
     IconJson
 } from '@tabler/icons-react'
-import type { FC, ReactNode, SVGProps } from 'react'
+import { cn } from '@/lib/utils'
 
 export function FileIcon({ lang, className }: { lang: string; className?: string }): ReactNode {
     let Icon: FC<SVGProps<SVGSVGElement>> | Icon

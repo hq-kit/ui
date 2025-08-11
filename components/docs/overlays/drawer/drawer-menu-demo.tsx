@@ -1,7 +1,5 @@
 'use client'
 
-import { Avatar, Button, Checkbox, Description, Drawer, Menu, Modal, Select, TextField } from '@/components/ui'
-
 import {
     IconBook,
     IconBook2,
@@ -22,6 +20,7 @@ import {
 } from '@tabler/icons-react'
 import { useState } from 'react'
 import { Group, Menu as MenuPrimitive } from 'react-aria-components'
+import { Avatar, Button, Checkbox, Description, Drawer, Menu, Modal, Select, TextField } from '@/components/ui'
 
 export default function DrawerMenuDemo() {
     const [isOpen, setIsOpen] = useState(false)
@@ -35,7 +34,7 @@ export default function DrawerMenuDemo() {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='space-y-4'>
-                        <TextField prefix={<IconBrandGithub />} label='Status' placeholder="What's your status?" />
+                        <TextField label='Status' placeholder="What's your status?" prefix={<IconBrandGithub />} />
                         <Group>
                             <Checkbox>Busy</Checkbox>
                             <Description>
@@ -60,7 +59,7 @@ export default function DrawerMenuDemo() {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant='outline' onPress={closeModal}>
+                    <Button onPress={closeModal} variant='outline'>
                         Clear Status
                     </Button>
                     <Button onPress={closeModal}>Set Status</Button>
@@ -68,11 +67,11 @@ export default function DrawerMenuDemo() {
             </Modal.Content>
             <Drawer>
                 <Drawer.Trigger aria-label='Open menu'>
-                    <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' />
+                    <Avatar alt='dq-alhq' src='https://github.com/dq-alhq.png' />
                 </Drawer.Trigger>
                 <Drawer.Content>
                     <Drawer.Header className='sticky top-0 flex flex-row items-center bg-background p-4 sm:gap-3'>
-                        <Avatar src='https://github.com/dq-alhq.png' alt='dq-alhq' size='xl' />
+                        <Avatar alt='dq-alhq' size='xl' src='https://github.com/dq-alhq.png' />
                         <div>
                             <Drawer.Title>dq-alhq</Drawer.Title>
                             <Drawer.Description>DQ Al-Haqqi</Drawer.Description>

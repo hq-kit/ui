@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Form, TimeField } from '@/components/ui'
 import type { Time } from '@internationalized/date'
 import { type FormEvent, useState } from 'react'
+import { Button, Form, TimeField } from '@/components/ui'
 
 export default function TimeFieldValidationDemo() {
     const [value, setValue] = useState<Time>()
@@ -12,8 +12,8 @@ export default function TimeFieldValidationDemo() {
         alert(value)
     }
     return (
-        <Form onSubmit={onSubmit} className='flex flex-col gap-4'>
-            <TimeField label='Event time' isRequired value={value} onChange={(v) => setValue(v!)} />
+        <Form className='flex flex-col gap-4' onSubmit={onSubmit}>
+            <TimeField isRequired label='Event time' onChange={(v) => setValue(v!)} value={value} />
             <Button type='submit'>Submit</Button>
         </Form>
     )
