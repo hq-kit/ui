@@ -1,68 +1,59 @@
 'use client'
 
-import type { Ref } from 'react'
-import type { ButtonProps as RACButtonProps } from 'react-aria-components'
-import { IconLoader3 } from '@tabler/icons-react'
-import { composeRenderProps, Button as RACButton } from 'react-aria-components'
+import { IconLoader2 } from '@tabler/icons-react'
+import { composeRenderProps, Button as RACButton, type ButtonProps as RACButtonProps } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
 
-const buttonStyle = tv({
-    base: [
-        'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-hidden transition-all',
-        '**:[svg]:pointer-events-none **:[svg]:shrink-0',
-        'shadow-xs focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
-        'cursor-pointer disabled:pointer-events-none disabled:opacity-50'
-    ],
+const buttonVariants = tv({
+    base: "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     variants: {
         variant: {
-            default: 'bg-primary pressed:bg-primary/80 text-primary-foreground shadow-xs hover:bg-primary/90',
+            default: 'bg-primary text-primary-foreground hover:bg-primary/90',
             destructive:
-                'bg-destructive pressed:bg-destructive/80 text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40',
+                'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40',
             outline:
-                'border bg-background pressed:bg-accent/80 text-foreground shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
-            secondary: 'bg-secondary pressed:bg-secondary/80 text-secondary-foreground shadow-xs hover:bg-secondary/80',
-            ghost: 'pressed:bg-accent/80 shadow-none hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50'
+                'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
+            secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+            ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+            link: 'text-primary underline-offset-4 hover:underline'
         },
         size: {
-            xs: "gap-x-1.5 px-2 text-xs [--height:theme(spacing.6)] [--width:auto] [&_svg:not([class*='size-'])]:size-3.5",
-            sm: "gap-x-1.5 px-3 text-sm [--height:theme(spacing.8)] [--width:auto] [&_svg:not([class*='size-'])]:size-4",
-            md: "gap-x-2 px-4 text-sm [--height:theme(spacing.9)] [--width:auto] [&_svg:not([class*='size-'])]:size-4",
-            lg: "gap-x-2.5 px-5 text-base [--height:theme(spacing.10)] [--width:auto] [&_svg:not([class*='size-'])]:size-5"
-        },
-        icon: {
-            true: 'h-(--height) w-(--height) shrink-0 px-0',
-            false: 'h-(--height) w-(--width)'
+            default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+            sm: 'h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5',
+            lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+            icon: 'size-9',
+            'icon-sm': 'size-8',
+            'icon-lg': 'size-10'
         },
         isPending: {
-            true: "pointer-events-none cursor-default opacity-50 [&_svg:not([data-slot='loader'])]:hidden"
+            true: "pointer-events-none opacity-50 [&_svg:not([data-slot='loader'])]:hidden"
         }
     },
     defaultVariants: {
         variant: 'default',
-        size: 'md'
+        size: 'default'
     }
 })
 
-interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonStyle> {
-    ref?: Ref<HTMLButtonElement>
-    isPending?: boolean
-}
+interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonVariants> {}
 
-const Button = ({ className, children, variant, size, icon, isPending, ...props }: ButtonProps) => (
+const Button = ({ className, variant, size, children, ...props }: ButtonProps) => (
     <RACButton
         className={composeRenderProps(className, (className) =>
-            cn(buttonStyle({ variant, size, icon, isPending }), className)
+            cn(buttonVariants({ variant, size, isPending: props.isPending, className }))
         )}
+        data-slot='button'
         {...props}
     >
         {(values) => (
             <>
-                {isPending && <IconLoader3 className='animate-spin' data-slot='loader' />}
+                {values.isPending && <IconLoader2 className='size-4 animate-spin' data-slot='loader' />}
                 {typeof children === 'function' ? children(values) : children}
             </>
         )}
     </RACButton>
 )
 
-export { Button, buttonStyle }
+export type { ButtonProps }
+export { Button, buttonVariants }

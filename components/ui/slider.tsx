@@ -1,82 +1,85 @@
 'use client'
-
-import type { SliderProps as RACSliderProps, SliderThumbProps, SliderTrackProps } from 'react-aria-components'
-import { type HTMLAttributes, type Ref, use } from 'react'
+import { type ComponentProps, use } from 'react'
 import {
     composeRenderProps,
     Slider as RACSlider,
+    SliderOutput as RACSliderOutput,
     SliderThumb as RACSliderThumb,
     SliderTrack as RACSliderTrack,
-    SliderOutput,
+    type SliderProps,
     SliderStateContext
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './form'
 
-interface SliderProps extends RACSliderProps, FieldProps {
-    ref?: Ref<HTMLDivElement>
-}
+const SliderGroup = ({ className, ...props }: ComponentProps<'div'>) => (
+    <div className='flex items-center gap-x-3 *:data-[slot=icon]:size-5' {...props} />
+)
 
-const Slider = ({ orientation = 'horizontal', className, ref, ...props }: SliderProps) => {
-    return (
-        <RACSlider
-            className={composeRenderProps(className, (className, { orientation }) =>
-                cn(
-                    'group/field relative flex touch-none select-none flex-col gap-y-3',
-                    orientation === 'horizontal' ? 'w-full min-w-56' : 'h-full min-h-56 w-1.5 items-center',
-                    className
-                )
-            )}
-            orientation={orientation}
-            ref={ref}
-            {...props}
-        >
-            {({ orientation, state }) => (
-                <>
-                    <div className='flex text-foreground'>
-                        {props.label && <Label>{props.label}</Label>}
-                        <SliderOutput
-                            className={cn(
-                                'text-muted-foreground text-sm tabular-nums',
-                                orientation === 'horizontal' ? 'ml-auto' : 'mx-auto'
-                            )}
-                        >
-                            {state.values.map((_, i) => state.getThumbValueLabel(i)).join(' – ')}
-                        </SliderOutput>
-                    </div>
-                    <SliderTrack>
-                        <SliderFiller />
-                        {state.values.map((_, i) => (
-                            <SliderThumb index={i} key={i} />
-                        ))}
-                    </SliderTrack>
-                    {props.description && <Description>{props.description}</Description>}
-                    <FieldError>{props.errorMessage}</FieldError>
-                </>
-            )}
-        </RACSlider>
-    )
-}
+const Slider = ({ className, ...props }: SliderProps) => (
+    <RACSlider
+        className={composeRenderProps(className, (className) =>
+            cn(
+                'group relative flex touch-none select-none flex-col disabled:opacity-50',
+                'orientation-horizontal:w-full orientation-horizontal:min-w-fit orientation-horizontal:gap-y-2',
+                'orientation-vertical:h-full orientation-vertical:min-h-fit orientation-vertical:w-1.5 orientation-vertical:items-center orientation-vertical:gap-y-2',
+                className
+            )
+        )}
+        data-slot='control'
+        {...props}
+    />
+)
 
-const SliderTrack = ({ className, ...props }: SliderTrackProps) => {
-    return (
-        <RACSliderTrack
-            {...props}
-            className={composeRenderProps(className, (className, { orientation, isDisabled }) =>
-                cn([
-                    'relative cursor-pointer rounded-full bg-muted',
-                    orientation === 'horizontal' ? 'h-1.5 w-full' : 'w-1.5 flex-1/2',
-                    isDisabled ? 'cursor-default opacity-50' : 'cursor-pointer',
-                    className
-                ])
-            )}
-        />
-    )
-}
+const SliderOutput = ({ className, ...props }: ComponentProps<typeof RACSliderOutput>) => (
+    <RACSliderOutput
+        className={composeRenderProps(className, (className) => cn('font-medium text-base/6 sm:text-sm/6', className))}
+        {...props}
+    />
+)
 
-const SliderFiller = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
+const SliderThumb = ({ className, ...props }: ComponentProps<typeof RACSliderThumb>) => (
+    <RACSliderThumb
+        className={composeRenderProps(className, (className) =>
+            cn(
+                'top-[50%] left-[50%] size-5 rounded-full border border-foreground/10 bg-white outline-hidden ring-black transition-[width,height]',
+                className
+            )
+        )}
+        {...props}
+    />
+)
+
+const SliderTrack = ({ className, children, ...props }: ComponentProps<typeof RACSliderTrack>) => (
+    <RACSliderTrack
+        className={composeRenderProps(className, (className) =>
+            cn(
+                'bg-(--slider-track-bg,var(--color-secondary))',
+                'group/track relative cursor-default rounded-full',
+                'grow group-orientation-horizontal:h-1.5 group-orientation-horizontal:w-full group-orientation-vertical:w-1.5 group-orientation-vertical:flex-1',
+                'disabled:cursor-default disabled:opacity-60',
+                className
+            )
+        )}
+        {...props}
+    >
+        {(values) => (
+            <>
+                {typeof children === 'function'
+                    ? children(values)
+                    : (children ?? (
+                          <>
+                              <SliderFill />
+                              <SliderThumb />
+                          </>
+                      ))}
+            </>
+        )}
+    </RACSliderTrack>
+)
+
+const SliderFill = ({ className, ...props }: ComponentProps<'div'>) => {
     const state = use(SliderStateContext)
-    const { values, orientation, getThumbPercent } = state || {}
+    const { orientation, getThumbPercent, values } = state || {}
 
     const getStyle = () => {
         const percent0 = getThumbPercent ? getThumbPercent(0) * 100 : 0
@@ -85,39 +88,34 @@ const SliderFiller = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) =
         if (values?.length === 1) {
             return orientation === 'horizontal' ? { width: `${percent0}%` } : { height: `${percent0}%` }
         }
+
         return orientation === 'horizontal'
-            ? { left: `${percent0}%`, width: `${Math.abs(percent0 - percent1)}%` }
-            : { bottom: `${percent0}%`, height: `${Math.abs(percent0 - percent1)}%` }
+            ? {
+                  left: `${percent0}%`,
+                  width: `${Math.abs(percent0 - percent1)}%`
+              }
+            : {
+                  bottom: `${percent0}%`,
+                  height: `${Math.abs(percent0 - percent1)}%`
+              }
     }
 
     return (
         <div
+            {...props}
             className={cn(
-                'pointer-events-none absolute rounded-full bg-primary',
-                orientation === 'horizontal' ? 'h-full' : 'bottom-0 w-full',
+                'group-orientation-horizontal/top-0 pointer-events-none absolute rounded-full bg-primary group-disabled/track:opacity-60 group-orientation-vertical/track:bottom-0 group-orientation-horizontal/track:h-full group-orientation-vertical/track:w-full',
                 className
             )}
             style={getStyle()}
-            {...props}
         />
     )
 }
 
-const SliderThumb = ({ className, ...props }: SliderThumbProps) => {
-    return (
-        <RACSliderThumb
-            {...props}
-            className={composeRenderProps(className, (className, { isFocusVisible, isDragging, isDisabled }) =>
-                cn(
-                    'top-1/2 left-1/2 size-5 rounded-full border border-border bg-background outline-hidden transition',
-                    isFocusVisible && 'border-primary ring-4 ring-ring',
-                    isDragging && 'cursor-grabbing border-primary ring-4 ring-ring',
-                    isDisabled && 'opacity-50',
-                    className
-                )
-            )}
-        />
-    )
-}
+Slider.Group = SliderGroup
+Slider.Output = SliderOutput
+Slider.Thumb = SliderThumb
+Slider.Track = SliderTrack
+Slider.Fill = SliderFill
 
-export { Slider }
+export { SliderGroup, Slider, SliderOutput, SliderThumb, SliderTrack, SliderFill }

@@ -1,36 +1,35 @@
 'use client'
 
-import type { ReactNode, RefObject } from 'react'
-import { composeRenderProps, Switch as RACSwitch, type SwitchProps as RACSwitchProps } from 'react-aria-components'
+import { composeRenderProps, Label, Switch as RACSwitch, type SwitchProps } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Label } from './form'
 
-interface SwitchProps extends RACSwitchProps {
-    ref?: RefObject<HTMLLabelElement>
-}
-
-const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
-    return (
-        <RACSwitch
-            className={composeRenderProps(className, (className) =>
-                cn('group/field inline-flex touch-none items-center sm:text-sm', className)
-            )}
-            ref={ref}
-            {...props}
-        >
-            <div
-                className={cn(
-                    'mr-2 inline-flex h-5 w-8 items-center rounded-full border bg-input px-0.5 shadow-xs transition',
-                    'group-focus-visible/field:border-ring group-focus-visible/field:ring-2 group-focus-visible/field:ring-ring/50 group-focus-visible/field:ring-offset-2',
-                    'group-hover/field:border-ring group-selected/field:bg-primary',
-                    'cursor-pointer group-disabled/field:cursor-default group-disabled/field:opacity-50'
+const Switch = ({ children, className, ...props }: SwitchProps) => (
+    <RACSwitch
+        className={composeRenderProps(className, (className) =>
+            cn(
+                'group inline-flex items-center gap-2 data-disabled:cursor-not-allowed data-disabled:opacity-70',
+                className
+            )
+        )}
+        {...props}
+    >
+        {(values) => (
+            <>
+                <div className='peer inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent bg-input shadow-xs outline-hidden transition-all disabled:cursor-not-allowed disabled:opacity-50 group-data-focus-visible:border-ring group-data-selected:bg-primary group-data-focus-visible:ring-[3px] group-data-focus-visible:ring-ring/50 dark:bg-input/80'>
+                    <div className='pointer-events-none block size-4 translate-x-0 rounded-full bg-background ring-0 transition-transform group-data-selected:translate-x-[calc(100%-2px)] dark:bg-foreground dark:group-data-selected:bg-primary-foreground' />
+                </div>
+                {typeof children === 'function' ? (
+                    children(values)
+                ) : typeof children === 'string' ? (
+                    <Label className='text-sm transition group-has-invalid/box:text-destructive' elementType='span'>
+                        {children}
+                    </Label>
+                ) : (
+                    children
                 )}
-            >
-                <span className='size-3.5 rounded-full border bg-primary-foreground transition-transform group-selected/field:translate-x-3' />
-            </div>
-            <Label>{children as ReactNode}</Label>
-        </RACSwitch>
-    )
-}
+            </>
+        )}
+    </RACSwitch>
+)
 
 export { Switch }

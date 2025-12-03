@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/avatar.tsx",
+      "content": "'use client'\n\nimport { IconUser } from '@tabler/icons-react'\nimport { type HTMLAttributes, type ReactNode, useCallback, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\ninterface AvatarProps extends HTMLAttributes<HTMLDivElement> {\n    src?: string | null\n    alt?: string\n    fallback?: ReactNode\n    imgClassName?: string\n    fallbackClassName?: string\n}\n\nconst Avatar = ({ src, alt, fallback = null, className, imgClassName, fallbackClassName, ...props }: AvatarProps) => {\n    const [hasError, setHasError] = useState(false)\n    const [loaded, setLoaded] = useState(false)\n\n    const handleError = useCallback(() => {\n        setHasError(true)\n    }, [])\n\n    const handleLoad = useCallback(() => {\n        setLoaded(true)\n    }, [])\n\n    return (\n        <div\n            className={cn('relative flex size-8 shrink-0 overflow-hidden rounded-full bg-muted', className)}\n            data-slot='avatar'\n            {...props}\n        >\n            {src && !hasError ? (\n                <img\n                    alt={alt ?? ''}\n                    className={cn('aspect-square size-full', imgClassName)}\n                    data-slot='avatar-image'\n                    onError={handleError}\n                    onLoad={handleLoad}\n                    src={src}\n                />\n            ) : null}\n            {(!src || hasError || (src && !loaded && false)) && (\n                <div\n                    aria-hidden={!!src && !hasError ? 'true' : 'false'}\n                    className={cn(\n                        'flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground',\n                        fallbackClassName\n                    )}\n                    data-slot='avatar-fallback'\n                >\n                    {fallback ?? <IconUser />}\n                </div>\n            )}\n        </div>\n    )\n}\n\nexport { Avatar }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

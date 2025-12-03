@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { Text } from 'react-aria-components'
+import { toast } from 'sonner'
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from '@/components/icons'
-import { CopyButton, Description, Menu, toast } from '@/components/ui'
+import { CopyButton, DropdownMenu } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface CLIProps {
@@ -57,13 +59,13 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
     return (
         <section className='relative my-2 space-y-2'>
             {!noMessage && (
-                <Description className='max-w-none text-base'>
+                <Text className='max-w-none text-base'>
                     {message ? message : 'In the terminal, run the following command to begin:'}
-                </Description>
+                </Text>
             )}
             <div
                 className={cn(
-                    '!font-mono no-scrollbar mt-2 flex h-10 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#0d1117] py-2 text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
+                    'no-scrollbar mt-2 flex h-10 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#0d1117] py-2 font-mono! text-sm text-zinc-200 **:whitespace-nowrap dark:bg-[#0d1117]',
                     className
                 )}
             >
@@ -72,27 +74,27 @@ export function CLI({ items, message, command = 'init', noMessage, className }: 
                     <span className='mr-12 text-[#a5d6ff]'>{getCommandLine(pm)}</span>
                 </div>
                 <div className='absolute right-1 z-10'>
-                    <Menu>
+                    <DropdownMenu>
                         <CopyButton copied={copied} />
-                        <Menu.Content placement='left top'>
-                            <Menu.Item onAction={() => handleCopy('npm')}>
+                        <DropdownMenu.Content placement='left top'>
+                            <DropdownMenu.Item onAction={() => handleCopy('npm')}>
                                 <IconBrandNpm />
-                                <Menu.Label>NPM</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item onAction={() => handleCopy('bun')}>
+                                <DropdownMenu.Label>NPM</DropdownMenu.Label>
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item onAction={() => handleCopy('bun')}>
                                 <IconBrandBun />
-                                <Menu.Label>Bun</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item onAction={() => handleCopy('yarn')}>
+                                <DropdownMenu.Label>Bun</DropdownMenu.Label>
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item onAction={() => handleCopy('yarn')}>
                                 <IconBrandYarn />
-                                <Menu.Label>Yarn</Menu.Label>
-                            </Menu.Item>
-                            <Menu.Item onAction={() => handleCopy('pnpm')}>
+                                <DropdownMenu.Label>Yarn</DropdownMenu.Label>
+                            </DropdownMenu.Item>
+                            <DropdownMenu.Item onAction={() => handleCopy('pnpm')}>
                                 <IconBrandPnpm />
-                                <Menu.Label>PNPM</Menu.Label>
-                            </Menu.Item>
-                        </Menu.Content>
-                    </Menu>
+                                <DropdownMenu.Label>PNPM</DropdownMenu.Label>
+                            </DropdownMenu.Item>
+                        </DropdownMenu.Content>
+                    </DropdownMenu>
                 </div>
             </div>
         </section>

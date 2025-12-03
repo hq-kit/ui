@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-aria-components",
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "checkbox",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tree.tsx",
+      "content": "'use client'\n\nimport type { ReactNode } from 'react'\nimport type { TreeItemContentProps, TreeItemProps, TreeProps } from 'react-aria-components'\nimport { IconChevronRight, IconFile } from '@tabler/icons-react'\nimport {\n    Button,\n    composeRenderProps,\n    Tree as RACTree,\n    TreeItem as RACTreeItem,\n    TreeItemContent\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { Checkbox } from './checkbox'\n\nconst Tree = <T extends object>({ className, ...props }: TreeProps<T>) => (\n    <RACTree\n        className={composeRenderProps(className, (className) =>\n            cn(\n                'flex flex-col gap-0.5 text-sm outline-hidden',\n                \"[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n                className\n            )\n        )}\n        {...props}\n    />\n)\n\nconst TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) => (\n    <RACTreeItem\n        className={composeRenderProps(className, (className) =>\n            cn(\n                'relative flex cursor-default items-center gap-1 rounded-lg border border-transparent text-sm outline-hidden transition',\n                'pr-2 **:data-[slot=tree-item]:py-1.5',\n                'focus-visible:border-border focus-visible:ring-[3px] focus-visible:ring-ring/50',\n                'hover:bg-accent hover:text-accent-foreground',\n                'data-selected:bg-accent data-selected:text-accent-foreground',\n                'data-disabled:opacity-50',\n                className\n            )\n        )}\n        {...props}\n    />\n)\n\ninterface TreeItemLabelProps extends TreeItemContentProps {\n    icon?: ReactNode | boolean\n    iconExpanded?: ReactNode\n}\n\nconst TreeItemLabel = ({ children, icon, iconExpanded, ...props }: TreeItemLabelProps) => (\n    <TreeItemContent {...props}>\n        {(values) => (\n            <>\n                <div className='relative w-[calc(calc(var(--tree-item-level)-1)*calc(var(--spacing)*5.5))] shrink-0' />\n                {values.selectionMode === 'multiple' && values.selectionBehavior === 'toggle' && (\n                    <Checkbox className='mr-0.5' slot='selection' />\n                )}\n                {values.hasChildItems ? (\n                    <Button\n                        className='inline-flex w-full items-center justify-start gap-1 outline-hidden'\n                        data-slot='tree-item'\n                        slot='chevron'\n                    >\n                        <IconChevronRight\n                            className={cn('transition-transform', values.isExpanded && 'rotate-90')}\n                            data-slot='indicator'\n                        />\n                        {!values.isExpanded && (typeof icon === 'boolean' ? <IconFile /> : icon)}\n                        {values.hasChildItems && values.isExpanded && (iconExpanded ?? icon)}\n                        {typeof children === 'function' ? children(values) : children}\n                    </Button>\n                ) : (\n                    <span\n                        className='inline-flex w-full items-center justify-start gap-1 outline-hidden'\n                        data-slot='tree-item'\n                    >\n                        {typeof icon === 'boolean' ? <IconFile /> : icon}\n                        {typeof children === 'function' ? children(values) : children}\n                    </span>\n                )}\n            </>\n        )}\n    </TreeItemContent>\n)\n\nTree.Item = TreeItem\nTree.ItemLabel = TreeItemLabel\n\nexport { Tree, TreeItem, TreeItemLabel }\nexport type { TreeItemProps, TreeProps }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

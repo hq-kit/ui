@@ -1,13 +1,12 @@
 'use client'
+
 import { IconBrandGithub, IconSearch } from '@tabler/icons-react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Collection } from 'react-aria-components'
+import { Collection, Link } from 'react-aria-components'
 import { IconApp } from '@/components/icons'
-import { CommandMenu } from '@/components/layouts/command-menu'
-import { MobileNav } from '@/components/layouts/mobile-nav'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { Button, buttonStyle, Keyboard, Link, Navbar, Separator } from '@/components/ui'
+import { Button, buttonVariants, Kbd, KbdGroup, Navbar, Separator } from '@/components/ui'
 
 export function AppNavbar() {
     const pathname = usePathname()
@@ -26,67 +25,39 @@ export function AppNavbar() {
     }, [pathname])
 
     return (
-        <>
-            <CommandMenu action={setOpenCommand} openCommand={openCommand} />
-            <Navbar isOpen={openNav} isSticky onOpenChange={setOpenNav}>
-                <Navbar.Nav className='xl:*:[div]:h-full xl:*:[div]:border-x'>
-                    <Navbar.Logo aria-label='Home' className='flex items-center' href='/'>
-                        <IconApp />
-                        <span className='whitespace-nowrap font-bold'>HQ UI</span>
-                    </Navbar.Logo>
-                    <Navbar.Section className='md:ml-4'>
-                        <Collection items={menuItems}>
-                            {(item) => (
-                                <Navbar.Item href={item.url} isCurrent={item.active}>
-                                    {item.label}
-                                </Navbar.Item>
-                            )}
-                        </Collection>
-                    </Navbar.Section>
-                    <MobileNav currentUrl={pathname} />
-                    <Navbar.Section className='ml-auto hidden md:flex'>
-                        <Navbar.Flex>
-                            <Button onPress={() => setOpenCommand(true)} variant='outline'>
-                                <IconSearch />
-                                <span className='mr-2 text-muted-foreground'>Search...</span>
-                                <Keyboard keys={['meta', 'k']} />
-                            </Button>
-                            <ThemeToggle />
-                            <Separator className='mx-2 h-7' orientation='vertical' />
-                            <Link
-                                aria-label='Github Repository'
-                                className={buttonStyle({
-                                    variant: 'outline',
-                                    icon: true
-                                })}
-                                href={'https://github.com/hq-kit/ui'}
-                                target='_blank'
-                            >
-                                <IconBrandGithub />
-                            </Link>
-                        </Navbar.Flex>
-                    </Navbar.Section>
-                </Navbar.Nav>
-                <Navbar.Compact>
+        <Navbar isOpen={openNav} isSticky onOpenChange={setOpenNav}>
+            <Navbar.Nav>
+                <Navbar.Logo aria-label='Home' href='/'>
+                    <IconApp />
+                    <span className='whitespace-nowrap font-bold'>HQ UI</span>
+                </Navbar.Logo>
+                <Navbar.Section className='md:ml-4'>
+                    <Collection items={menuItems}>
+                        {(item) => (
+                            <Navbar.Item href={item.url} isCurrent={item.active}>
+                                {item.label}
+                            </Navbar.Item>
+                        )}
+                    </Collection>
+                </Navbar.Section>
+                {/* <MobileNav currentUrl={pathname} /> */}
+                <Navbar.Section className='ml-auto hidden md:flex'>
                     <Navbar.Flex>
-                        <Navbar.Trigger aria-label='Toggle Navbar' />
-                        <Separator className='mx-1 h-7' orientation='vertical' />
-                        <Navbar.Logo aria-label='Home' className='flex items-center' href='/'>
-                            <IconApp />
-                            <span className='whitespace-nowrap font-bold'>HQ UI</span>
-                        </Navbar.Logo>
-                    </Navbar.Flex>
-                    <Navbar.Flex>
-                        <Button icon onPress={() => setOpenCommand(true)} variant='outline'>
+                        <Button onPress={() => setOpenCommand(true)} variant='outline'>
                             <IconSearch />
+                            <span className='mr-2 text-muted-foreground'>Search...</span>
+                            <KbdGroup>
+                                <Kbd>⌘</Kbd>
+                                <Kbd>K</Kbd>
+                            </KbdGroup>
                         </Button>
                         <ThemeToggle />
                         <Separator className='mx-2 h-7' orientation='vertical' />
                         <Link
                             aria-label='Github Repository'
-                            className={buttonStyle({
+                            className={buttonVariants({
                                 variant: 'outline',
-                                icon: true
+                                size: 'icon'
                             })}
                             href={'https://github.com/hq-kit/ui'}
                             target='_blank'
@@ -94,8 +65,36 @@ export function AppNavbar() {
                             <IconBrandGithub />
                         </Link>
                     </Navbar.Flex>
-                </Navbar.Compact>
-            </Navbar>
-        </>
+                </Navbar.Section>
+            </Navbar.Nav>
+            <Navbar.Compact>
+                <Navbar.Flex>
+                    <Navbar.Trigger aria-label='Toggle Navbar' />
+                    <Separator className='mx-1 h-7' orientation='vertical' />
+                    <Navbar.Logo aria-label='Home' href='/'>
+                        <IconApp />
+                        <span className='whitespace-nowrap font-bold'>HQ UI</span>
+                    </Navbar.Logo>
+                </Navbar.Flex>
+                <Navbar.Flex>
+                    <Button onPress={() => setOpenCommand(true)} size='icon' variant='outline'>
+                        <IconSearch />
+                    </Button>
+                    <ThemeToggle />
+                    <Separator className='mx-2 h-7' orientation='vertical' />
+                    <Link
+                        aria-label='Github Repository'
+                        className={buttonVariants({
+                            variant: 'outline',
+                            size: 'icon'
+                        })}
+                        href={'https://github.com/hq-kit/ui'}
+                        target='_blank'
+                    >
+                        <IconBrandGithub />
+                    </Link>
+                </Navbar.Flex>
+            </Navbar.Compact>
+        </Navbar>
     )
 }

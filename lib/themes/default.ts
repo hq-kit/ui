@@ -1,4 +1,4 @@
-import type { ThemePreset } from '@/lib/types/theme'
+import type { ThemePreset } from '@/types/theme'
 
 export const COMMON_STYLES = [
     'font-sans',

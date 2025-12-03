@@ -5,6 +5,7 @@ const blocksDir = path.join(__dirname, '../../app/block')
 const uiDir = path.join(__dirname, '../../components/ui')
 const docsDir = path.join(__dirname, '../../components/docs')
 const libDir = path.join(__dirname, '../../lib')
+const hooksDir = path.join(__dirname, '../../hooks')
 
 const blocksOutputFilePath = path.resolve(docsDir, 'generated/blocks.ts')
 const blocksOutputFilePathJson = path.resolve(docsDir, 'generated/blocks.json')
@@ -106,8 +107,8 @@ for (const block of blocks) {
     listBlocks.find((b) => b.slug === slug)?.uiComponents.push(...Array.from(new Set(UIComponents)))
 }
 
-rawFiles['utils.ts'] = fs.readFileSync(path.join(libDir, 'utils/index.ts'), 'utf-8')
-rawFiles['hooks.ts'] = fs.readFileSync(path.join(libDir, 'hooks/index.ts'), 'utf-8')
+rawFiles['utils.ts'] = fs.readFileSync(path.join(libDir, 'utils.ts'), 'utf-8')
+rawFiles['hooks.ts'] = fs.readFileSync(path.join(hooksDir, 'use-mobile.ts'), 'utf-8')
 rawFiles['globals.css'] = fs.readFileSync(path.join(libDir, 'styles/default.css'), 'utf-8')
 
 type List = {

@@ -16,7 +16,8 @@ Note that links to external sites will default to the browser's native navigatio
 
 ## Router Provider
 The `RouterProvider` component accepts two properties: `navigate` and `useHref`. Assign `navigate` to a function from your routing framework that handles client-side navigation. `useHref` is optional and modifies a router-specific href to a standard HTML href, such as by adding a base path. Below are setup examples for various frameworks.
-```tsx
+
+```tsx title="provider.tsx"
 import { RouterProvider } from 'react-aria-components';
 import { useNavigate, useHref } from 'your-router';
 

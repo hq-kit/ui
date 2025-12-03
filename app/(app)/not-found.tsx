@@ -1,10 +1,10 @@
 import { IconHome } from '@tabler/icons-react'
-import { Link } from '@/components/ui'
+import Link from 'next/link'
 
 export default function NotFound() {
     return (
         <section className='flex h-[80vh] items-center justify-center'>
-            <div className='mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16'>
+            <div className='mx-auto max-w-7xl px-4 py-8 lg:px-6 lg:py-16'>
                 <div className='mx-auto max-w-screen-sm text-center'>
                     <h1 className='mb-4 font-extrabold text-7xl text-foreground tracking-tight lg:text-9xl'>404</h1>
                     <p className='mb-4 font-bold text-3xl text-foreground tracking-tight md:text-4xl'>

@@ -7,8 +7,8 @@ import previews from '@/components/docs/generated/previews.json'
 import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
 import { Separator, Tree, TreeItem } from '@/components/ui'
+import { slugify } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
-import { slugify } from '@/lib/utils/modifiers'
 
 type FileNode = {
     id: string | number

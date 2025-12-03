@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, Container, Tabs } from '@/components/ui'
-import { useIsMobile } from '@/lib/hooks'
+import { useIsMobile } from '@/hooks/use-mobile'
 import AccountSetting from './account-setting'
 import DangerArea from './danger-area'
 import PlanBillingSetting from './plan-billing-setting'

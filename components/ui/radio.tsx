@@ -1,75 +1,60 @@
 'use client'
 
-import type { ReactNode, Ref } from 'react'
-import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
-import { composeRenderProps, Radio as RACRadio, RadioGroup as RACRadioGroup } from 'react-aria-components'
+import { IconCircleFilled } from '@tabler/icons-react'
+import {
+    composeRenderProps,
+    Label,
+    Radio as RACRadio,
+    RadioGroup as RACRadioGroup,
+    type RadioGroupProps,
+    type RadioProps
+} from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './form'
 
-interface RadioGroupProps extends RACRadioGroupProps, FieldProps {}
-
-const RadioGroup = ({ label, description, errorMessage, className, children, ...props }: RadioGroupProps) => {
+const RadioGroup = ({ className, ...props }: RadioGroupProps) => {
     return (
         <RACRadioGroup
             {...props}
-            className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-2', className))}
-            isInvalid={!!errorMessage || props.isInvalid}
-        >
-            {(values) => (
-                <>
-                    {label && <Label>{label}</Label>}
-                    <div
-                        className={cn(
-                            'flex',
-                            values.orientation === 'horizontal' ? 'flex-wrap gap-2 sm:gap-4' : 'flex-col gap-2'
-                        )}
-                    >
-                        {typeof children === 'function' ? children(values) : children}
-                    </div>
-                    {description && <Description>{description}</Description>}
-                    <FieldError>{errorMessage}</FieldError>
-                </>
+            className={cn(
+                'space-y-3 has-[[slot=description]]:space-y-6 has-[[slot=description]]:**:data-[slot=label]:font-medium **:[[slot=description]]:block',
+                className
             )}
-        </RACRadioGroup>
+            data-slot='control'
+        />
     )
 }
 
-interface RadioProps extends RACRadioProps, Omit<FieldProps, 'errorMessage'> {
-    children?: ReactNode
-    ref?: Ref<HTMLLabelElement>
-}
-
-const Radio = ({ label, description, className, children, ref, ...props }: RadioProps) => {
+const Radio = ({ className, ...props }: RadioProps) => {
     return (
         <RACRadio
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'group/box flex items-center gap-2',
-                    {
-                        'items-start': description
-                    },
-                    className
-                )
-            )}
-            ref={ref}
+            className={composeRenderProps(className, (className) => cn('group/box flex items-center gap-2', className))}
             {...props}
         >
-            {(values) => (
+            {({ isSelected }) => (
                 <>
                     <div
                         className={cn(
-                            'size-4 shrink-0 rounded-full border bg-transparent transition dark:bg-input/30',
-                            'group-hover/box:border-primary/70',
-                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-destructive',
-                            'group-focus-visible/box:border-primary group-focus-visible/box:ring-[3px] group-focus-visible/box:ring-ring/50 group-focus-visible/box:group-has-invalid/box:border-destructive',
-                            'group-has-invalid/box:border-destructive/70 group-has-invalid/box:ring-destructive/20 group-has-invalid/box:group-hover/box:border-destructive/70',
-                            values.isSelected && 'border-[5px] border-primary group-has-invalid/box:border-destructive'
+                            'relative flex size-4 shrink-0 items-center justify-center rounded-full border bg-transparent shadow-xs transition dark:bg-input/30',
+                            'border-input group-hover/box:border-ring/50 group-has-invalid/box:border-destructive/70',
+                            'group-data-selected/box:group-data-has-invalid/box:border-destructive/70 group-data-selected/box:border-primary group-data-selected/box:bg-primary group-data-selected/box:text-primary-foreground group-data-selected/box:group-has-invalid/box:border-destructive/70 group-data-selected/box:group-has-invalid/box:bg-destructive group-data-selected/box:group-has-invalid/box:text-destructive-foreground dark:group-data-selected/box:bg-primary',
+                            'group-data-focus/box:border-primary group-data-focus/box:group-has-invalid/box:border-destructive/70',
+                            'group-data-focus-visible/box:border-primary/70 group-data-focus-visible/box:ring-[3px] group-data-focus-visible/box:ring-ring/50 group-data-focus-visible/box:group-has-invalid/box:border-destructive/70 group-data-focus-visible/box:group-has-invalid/box:ring-destructive/20',
+                            'group-data-indeterminate/box:border-primary group-data-indeterminate/box:bg-primary group-data-indeterminate/box:text-primary-foreground',
+                            className
                         )}
-                    />
-                    <div className='flex flex-col gap-y-1.5'>
-                        <span className='not-last:text-sm/4 text-sm'>{label ?? children}</span>
-                        {description && <Description>{description}</Description>}
+                    >
+                        {isSelected ? <IconCircleFilled className='size-2' /> : null}
                     </div>
+                    {typeof props.children === 'string' ? (
+                        <Label
+                            className='not-last:text-sm/4 text-sm transition group-has-invalid/box:text-destructive'
+                            elementType='span'
+                        >
+                            {props.children}
+                        </Label>
+                    ) : (
+                        props.children
+                    )}
                 </>
             )}
         </RACRadio>

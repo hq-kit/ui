@@ -11,8 +11,9 @@ import {
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
-type TooltipProps = ComponentProps<typeof RACTooltipTrigger>
-const Tooltip = (props: TooltipProps) => <RACTooltipTrigger {...props} />
+const Tooltip = (props: ComponentProps<typeof RACTooltipTrigger>) => (
+    <RACTooltipTrigger closeDelay={props.closeDelay ?? 100} delay={props.delay ?? 100} {...props} />
+)
 
 interface TooltipContentProps extends Omit<RACTooltipProps, 'children'> {
     showArrow?: boolean
@@ -23,7 +24,7 @@ interface TooltipContentProps extends Omit<RACTooltipProps, 'children'> {
 const TooltipContent = ({
     offset = 10,
     showArrow = true,
-    isInverse = false,
+    isInverse = true,
     className,
     children,
     ...props
@@ -35,12 +36,12 @@ const TooltipContent = ({
                 cn(
                     isInverse ? 'bg-popover-foreground text-popover' : 'bg-popover text-popover-foreground',
                     'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
-                    'entering:fade-in entering:animate-in',
-                    'exiting:fade-in exiting:direction-reverse exiting:animate-in',
-                    'entering:placement-top:slide-in-from-bottom-1 exiting:placement-top:slide-out-to-bottom-1',
-                    'entering:placement-bottom:slide-in-from-top-1 exiting:placement-bottom:slide-out-to-top-1',
-                    'entering:placement-left:slide-in-from-right-1 exiting:placement-left:slide-out-to-right-1',
-                    'entering:placement-right:slide-in-from-left-1 exiting:placement-right:slide-out-to-left-1',
+                    'data-entering:fade-in data-entering:zoom-in-95 data-entering:animate-in',
+                    'data-exiting:fade-out data-exiting:zoom-out-95 data-exiting:animate-out',
+                    'data-entering:data-[placement=top]:slide-in-from-bottom-2 data-exiting:data-[placement=top]:slide-out-to-bottom-2',
+                    'data-entering:data-[placement=bottom]:slide-in-from-top-2 data-exiting:data-[placement=bottom]:slide-out-to-top-2',
+                    'data-entering:data-[placement=left]:slide-in-from-right-2 data-exiting:data-[placement=left]:slide-out-to-right-2',
+                    'data-entering:data-[placement=right]:slide-in-from-left-2 data-exiting:data-[placement=right]:slide-out-to-left-2',
                     className
                 )
             )}
@@ -50,7 +51,7 @@ const TooltipContent = ({
                 <OverlayArrow className='group'>
                     <svg
                         className={cn(
-                            'group-placement-left:-rotate-90 block group-placement-bottom:rotate-180 group-placement-right:rotate-90',
+                            'group-data-[placement=left]:-rotate-90 block group-data-[placement=bottom]:rotate-180 group-data-[placement=right]:rotate-90',
                             isInverse ? 'fill-popover-foreground' : 'fill-popover stroke-border'
                         )}
                         height={12}
@@ -66,7 +67,8 @@ const TooltipContent = ({
     )
 }
 
-Tooltip.Trigger = Button
+const TooltipTrigger = Button
+Tooltip.Trigger = TooltipTrigger
 Tooltip.Content = TooltipContent
 
-export { Tooltip }
+export { Tooltip, TooltipContent, TooltipTrigger }

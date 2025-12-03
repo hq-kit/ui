@@ -1,43 +1,17 @@
 'use client'
 
-import type { Ref } from 'react'
-import {
-    composeRenderProps,
-    TextArea as RACTextArea,
-    TextField as RACTextField,
-    type TextFieldProps as RACTextFieldProps
-} from 'react-aria-components'
+import { TextArea, type TextAreaProps } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, fieldGroupStyle, Label } from './form'
 
-interface TextareaProps extends RACTextFieldProps, FieldProps {
-    autoSize?: boolean
-    placeholder?: string
-    ref?: Ref<HTMLDivElement>
-}
-
-const Textarea = ({ className, placeholder, label, description, errorMessage, ref, ...props }: TextareaProps) => {
-    return (
-        <RACTextField
-            className={composeRenderProps(className, (className) =>
-                cn('group/field flex flex-col gap-y-1.5', className)
-            )}
-            ref={ref}
-            {...props}
-        >
-            {label && <Label>{label}</Label>}
-            <RACTextArea
-                className={cn(
-                    fieldGroupStyle(),
-                    'h-auto min-h-14 w-full min-w-0 rounded-lg border border-input bg-transparent p-2 text-base shadow-xs outline-hidden transition duration-200 sm:text-sm dark:bg-input/30',
-                    props.autoSize && 'field-sizing-content resize-none'
-                )}
-                placeholder={placeholder}
-            />
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </RACTextField>
-    )
-}
+const Textarea = ({ className, ...props }: TextAreaProps) => (
+    <TextArea
+        className={cn(
+            'field-sizing-content flex min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40',
+            className
+        )}
+        data-slot='textarea'
+        {...props}
+    />
+)
 
 export { Textarea }

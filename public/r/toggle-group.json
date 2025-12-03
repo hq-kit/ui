@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "tailwind-variants",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "toggle",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toggle-group.tsx",
+      "content": "'use client'\n\nimport type { VariantProps } from 'tailwind-variants'\nimport { type CSSProperties, createContext, use } from 'react'\nimport {\n    composeRenderProps,\n    ToggleButton,\n    ToggleButtonGroup,\n    type ToggleButtonGroupProps,\n    type ToggleButtonProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { toggleVariants } from './toggle'\n\nconst ToggleGroupContext = createContext<\n    VariantProps<typeof toggleVariants> & {\n        spacing?: number\n    }\n>({\n    size: 'default',\n    variant: 'default',\n    spacing: 0\n})\n\nconst ToggleGroup = ({\n    className,\n    variant,\n    size,\n    spacing = 0,\n    ...props\n}: ToggleButtonGroupProps &\n    VariantProps<typeof toggleVariants> & {\n        spacing?: number\n    }) => (\n    <ToggleGroupContext.Provider value={{ variant, size, spacing }}>\n        <ToggleButtonGroup\n            className={composeRenderProps(className, (className) =>\n                cn(\n                    'group/toggle-group flex w-fit items-center gap-[--spacing(var(--gap))] rounded-md data-[spacing=default]:data-[variant=outline]:shadow-xs',\n                    className\n                )\n            )}\n            data-size={size}\n            data-slot='toggle-group'\n            data-spacing={spacing}\n            data-variant={variant}\n            style={{ '--gap': spacing } as CSSProperties}\n            {...props}\n        />\n    </ToggleGroupContext.Provider>\n)\n\nconst ToggleGroupItem = ({\n    className,\n    variant,\n    size,\n    ...props\n}: ToggleButtonProps & VariantProps<typeof toggleVariants>) => {\n    const context = use(ToggleGroupContext)\n\n    return (\n        <ToggleButton\n            className={cn(\n                toggleVariants({\n                    variant: context.variant || variant,\n                    size: context.size || size\n                }),\n                'w-auto min-w-0 shrink-0 px-3 focus:z-10 focus-visible:z-10',\n                'data-[spacing=0]:data-[variant=outline]:border-l-0 data-[spacing=0]:rounded-none data-[spacing=0]:shadow-none data-[spacing=0]:last:rounded-r-md data-[spacing=0]:data-[variant=outline]:first:border-l data-[spacing=0]:first:rounded-l-md',\n                className\n            )}\n            data-size={context.size || size}\n            data-slot='toggle-group-item'\n            data-spacing={context.spacing}\n            data-variant={context.variant || variant}\n            {...props}\n        />\n    )\n}\n\nToggleGroup.Item = ToggleGroupItem\n\nexport { ToggleGroup, ToggleGroupItem }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

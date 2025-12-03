@@ -44,4 +44,4 @@ Header.Title = HeaderTitle
 Header.Description = HeaderDescription
 Header.Action = HeaderAction
 
-export { Header }
+export { Header, HeaderTitle, HeaderDescription, HeaderAction }

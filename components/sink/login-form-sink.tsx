@@ -2,7 +2,9 @@
 
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
-import { Button, Card, Checkbox, Form, Separator, TextField, toast } from '@/components/ui'
+import { Form } from 'react-aria-components'
+import { toast } from 'sonner'
+import { Button, buttonVariants, Card, Checkbox, Field, Input, Separator } from '@/components/ui'
 
 export default function LoginFormSink() {
     return (
@@ -17,25 +19,41 @@ export default function LoginFormSink() {
                     toast.success('Dummy Login Successfully')
                 }}
             >
-                <Card.Content className='grid gap-4'>
-                    <div className='flex gap-4'>
-                        <Button className='w-full' variant='outline'>
+                <Card.Content className='flex flex-col gap-3'>
+                    <div className='grid grid-cols-2 gap-3'>
+                        <Button variant='outline'>
                             <IconBrandGithub className='size-4' />
                             Github
                         </Button>
-                        <Button className='w-full' variant='outline'>
+                        <Button variant='outline'>
                             <IconBrandGoogle className='size-4' />
                             Google
                         </Button>
                     </div>
-                    <Separator />
-                    <TextField isRequired label='Name' placeholder='Enter your Name' />
-                    <TextField isRequired label='Email' placeholder='Enter your email' type='email' />
-                    <TextField isRequired label='Password' placeholder='Enter your password' type='password' />
-                    <Checkbox>I agree to the terms and conditions</Checkbox>
+                    <Separator className='my-4' />
+                    <Field.Text isRequired>
+                        <Field.Label>Name</Field.Label>
+                        <Input placeholder='Enter your name' />
+                        <Field.Error />
+                    </Field.Text>
+                    <Field.Text isRequired type='email'>
+                        <Field.Label>Email</Field.Label>
+                        <Input placeholder='Enter your email' />
+                        <Field.Error />
+                    </Field.Text>
+                    <Field.Text isRequired type='password'>
+                        <Field.Label>Password</Field.Label>
+                        <Input placeholder='Enter your password' />
+                        <Field.Error />
+                    </Field.Text>
+                    <Field orientation='horizontal'>
+                        <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
+                    </Field>
                 </Card.Content>
                 <Card.Footer className='justify-end gap-4'>
-                    <Link href='#'>Register</Link>
+                    <Link className={buttonVariants({ variant: 'link' })} href='#'>
+                        Register
+                    </Link>
                     <Button type='submit'>Login</Button>
                 </Card.Footer>
             </Form>

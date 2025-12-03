@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { Card, Link } from '@/components/ui'
+import { Link } from 'react-aria-components'
+import { Card } from '@/components/ui'
 
 export default function BlockCard({ title, description, href }: any) {
     return (

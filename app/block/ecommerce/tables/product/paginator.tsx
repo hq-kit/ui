@@ -1,7 +1,7 @@
 'use client'
 
 import { Pagination } from '@/components/ui'
-import { useIsMobile } from '@/lib/hooks'
+import { useIsMobile } from '@/hooks/use-mobile'
 import { cn } from '@/lib/utils'
 
 interface PaginateProps {

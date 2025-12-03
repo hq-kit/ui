@@ -1,10 +1,10 @@
-import { Providers } from '@/components/providers'
-import { fontMono, fontSans } from '@/lib/fonts'
-import '@/lib/styles/app.css'
 import type { Metadata, Viewport } from 'next'
-import type { CSSProperties, ReactNode } from 'react'
+import { Providers } from '@/components/providers'
+import './globals.css'
+import type { ReactNode } from 'react'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { fontMono, fontSans } from '@/config/fonts'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -77,15 +77,9 @@ export default function RootLayout({
 }>) {
     return (
         <html
-            className={cn(fontSans, fontMono)}
+            className={cn(fontSans.variable, fontMono.variable)}
             data-scroll-behavior='smooth'
             lang='en'
-            style={
-                {
-                    '--font-sans': 'var(--font-geist)',
-                    '--font-mono': 'var(--font-geist-mono)'
-                } as CSSProperties
-            }
             suppressHydrationWarning
         >
             <body className='min-h-dvh font-sans antialiased'>

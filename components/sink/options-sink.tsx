@@ -1,89 +1,82 @@
 'use client'
 
 import { IconBrandX, IconTrash } from '@tabler/icons-react'
-import InputOtpControlledDemo from '@/components/docs/forms/otp/otp-controlled-demo'
-import MeterDemo from '@/components/docs/statuses/meter/meter-demo'
-import ProgressDemo from '@/components/docs/statuses/progress/progress-bar-demo'
-import { Breadcrumbs, Button, Card, ComboBox, DatePicker, Modal, Popover, Select, Tooltip } from '@/components/ui'
+import { Breadcrumb, Button, Card, ComboBox, Dialog, Input, Popover, Select, Tooltip } from '@/components/ui'
 
 export default function OptionsSink() {
     return (
         <Card className='p-4'>
-            <Breadcrumbs>
-                <Breadcrumbs.Item href='/'>Home</Breadcrumbs.Item>
-                <Breadcrumbs.Item href='/docs'>Docs</Breadcrumbs.Item>
-                <Breadcrumbs.Item>Components</Breadcrumbs.Item>
-            </Breadcrumbs>
+            <Breadcrumb>
+                <Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
+                <Breadcrumb.Item href='/docs'>Docs</Breadcrumb.Item>
+                <Breadcrumb.Item>Components</Breadcrumb.Item>
+            </Breadcrumb>
             <div className='mt-6 flex w-full items-center gap-2'>
-                <Select
-                    aria-labelledby='per-page'
-                    className='lg:w-20'
-                    defaultSelectedKey={'10'}
-                    id='per-page'
-                    placeholder='10'
-                >
-                    <Select.Item id='10'>10</Select.Item>
-                    <Select.Item id='20'>20</Select.Item>
-                    <Select.Item id='30'>30</Select.Item>
+                <Select aria-labelledby='per-page' className='lg:w-20' id='per-page' placeholder='Per Page'>
+                    <Select.Trigger>
+                        <Select.Value />
+                    </Select.Trigger>
+                    <Select.Content>
+                        <Select.Item id='10'>10</Select.Item>
+                        <Select.Item id='20'>20</Select.Item>
+                        <Select.Item id='30'>30</Select.Item>
+                    </Select.Content>
                 </Select>
-                <DatePicker aria-label='Event date' className='w-full' />
             </div>
             <div className='mt-4 flex items-end gap-1'>
-                <ComboBox className='w-full' items={users} label='Users' placeholder='Select a user'>
-                    {(item) => (
-                        <ComboBox.Item id={item.id} textValue={item.name}>
-                            {item.name}
-                        </ComboBox.Item>
-                    )}
+                <ComboBox aria-label='Users' className='w-full'>
+                    <ComboBox.Trigger>
+                        <Input placeholder='Select a user' />
+                    </ComboBox.Trigger>
+                    <ComboBox.Content items={users}>
+                        {(item) => (
+                            <ComboBox.Item id={item.id} textValue={item.name}>
+                                {item.name}
+                            </ComboBox.Item>
+                        )}
+                    </ComboBox.Content>
                 </ComboBox>
-                <Modal>
-                    <Button icon variant='destructive'>
+                <Dialog>
+                    <Button size='icon' variant='destructive'>
                         <IconTrash />
                     </Button>
-                    <Modal.Content role='alertdialog' size='lg'>
-                        <Modal.Header>
-                            <Modal.Title>Delete User?</Modal.Title>
-                            <Modal.Description>
+                    <Dialog.Content role='alertdialog'>
+                        <Dialog.Header>
+                            <Dialog.Title>Delete User?</Dialog.Title>
+                            <Dialog.Description>
                                 This action cannot be undone. This will permanently delete the user.
-                            </Modal.Description>
-                        </Modal.Header>
-                        <Modal.Footer>
+                            </Dialog.Description>
+                        </Dialog.Header>
+                        <Dialog.Footer className='mt-6'>
                             <Button slot='close' variant='outline'>
                                 Cancel
                             </Button>
                             <Button className='min-w-24' variant='destructive'>
                                 <IconTrash /> Delete
                             </Button>
-                        </Modal.Footer>
-                    </Modal.Content>
-                </Modal>
-            </div>
-            <div className='mt-4 grid gap-2'>
-                <ProgressDemo />
-                <MeterDemo />
+                        </Dialog.Footer>
+                    </Dialog.Content>
+                </Dialog>
             </div>
             <div className='mt-4 flex justify-center gap-5'>
                 <Tooltip>
-                    <Button aria-label='Follow My Twitter' icon>
+                    <Button aria-label='Follow My Twitter' size='icon'>
                         <IconBrandX />
                     </Button>
                     <Tooltip.Content>Follow me on X @dqalhq</Tooltip.Content>
                 </Tooltip>
                 <Popover>
                     <Button>Forgot Password</Button>
-                    <Popover.Content aria-label='Forgot Password' className='min-w-72'>
-                        <Popover.Header>
-                            <Popover.Title>Email</Popover.Title>
-                            <Popover.Description>We&apos;ll send you an email to log in.</Popover.Description>
-                        </Popover.Header>
-                        <Popover.Footer>
+                    <Popover.Content aria-label='Forgot Password'>
+                        <Dialog.Header>
+                            <Dialog.Title>Email</Dialog.Title>
+                            <Dialog.Description>We&apos;ll send you an email to log in.</Dialog.Description>
+                        </Dialog.Header>
+                        <Dialog.Footer>
                             <Button>Send Login Link</Button>
-                        </Popover.Footer>
+                        </Dialog.Footer>
                     </Popover.Content>
                 </Popover>
-            </div>
-            <div className='mt-4 flex justify-center'>
-                <InputOtpControlledDemo />
             </div>
         </Card>
     )

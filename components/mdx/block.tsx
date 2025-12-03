@@ -2,10 +2,9 @@
 
 import { IconBrowserMaximize, IconDeviceDesktop, IconDeviceMobile, IconDeviceTablet } from '@tabler/icons-react'
 import { useState } from 'react'
-import { type Key, TabPanel } from 'react-aria-components'
-import { buttonStyle, Link, Toggle } from '@/components/ui'
+import { type Key, Link, TabPanel } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Fleet } from './fleet'
+import { buttonVariants, ToggleGroup } from '../ui'
 import { TabsSwitcher } from './tabs-switcher'
 
 export function Block({ page }: { page: string }) {
@@ -16,28 +15,26 @@ export function Block({ page }: { page: string }) {
                 <TabPanel className='my-2' id='preview'>
                     <div className={cn('relative w-full bg-background', 'flex min-h-56 items-center lg:min-h-80')}>
                         <div className='sm:-top-10 absolute right-0 z-20 hidden gap-1 sm:flex'>
-                            <Toggle.Group
-                                icon
+                            <ToggleGroup
                                 onSelectionChange={setScreenWidth}
                                 selectedKeys={screenWidth}
                                 selectionMode='single'
                                 size='sm'
                             >
-                                <Toggle id='max-w-sm'>
+                                <ToggleGroup.Item id='max-w-sm'>
                                     <IconDeviceMobile />
-                                </Toggle>
-                                <Toggle id='max-w-3xl'>
+                                </ToggleGroup.Item>
+                                <ToggleGroup.Item id='max-w-3xl'>
                                     <IconDeviceTablet />
-                                </Toggle>
-                                <Toggle id='max-w-none'>
+                                </ToggleGroup.Item>
+                                <ToggleGroup.Item id='max-w-none'>
                                     <IconDeviceDesktop />
-                                </Toggle>
-                            </Toggle.Group>
+                                </ToggleGroup.Item>
+                            </ToggleGroup>
                             <Link
-                                className={buttonStyle({
-                                    icon: true,
+                                className={buttonVariants({
                                     variant: 'outline',
-                                    size: 'sm'
+                                    size: 'icon-sm'
                                 })}
                                 href={`/block/${page}`}
                                 target='_blank'
@@ -58,9 +55,7 @@ export function Block({ page }: { page: string }) {
                         />
                     </div>
                 </TabPanel>
-                <TabPanel id='code'>
-                    <Fleet page={page} />
-                </TabPanel>
+                <TabPanel id='code'>None</TabPanel>
             </TabsSwitcher>
         </div>
     )

@@ -1,45 +1,32 @@
 ---
 title: Installation
 description: Install the necessary packages and set up your project. This tool automates the process, streamlining your setup with no extra steps required.
-order: 2
 published: true
 ---
 
 ## Installation via CLI
 Before executing the command, ensure that **tailwind-css** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
 
-<Note>
-  This CLI will overwrite your **.css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
-</Note>
 
-### Initial Setup
-Begin by executing this command:
-
-<CLI command='init' />
-
-First, it will asks what your project type, if you’re using **Next.js**, **Laravel with Inertia**, **Astro with React** or **Vite.js with React** just select it.
-If none of them, select the **other** option and it will asks several question about your project structure.
+> This CLI will overwrite your **.css** file. It is recommended to use this in a **new project** rather than an existing one to avoid manual file additions.
 
 ### Add Components
 Next, use `add [component-name]` to add components in your project. This allows for selective installation without the need for a full setup. Install only what you need, or refer to the documentation to manually include components. Here's how to add a `combo-box`:
-<CLI command='add' items={['combo-box']} />
+<CLI command='add' items={['button']} />
 
 This command will ensure all necessary components are installed:
 ```bash
-✓ combo-box created
 ✓ select created
-✓ field created
-✓ list-box created
 ✓ popover created
 ✓ button created
 ```
 
-Sometimes, you may want to add components individually, such as `select` and `text-field`. You can easily do this by using the following command:
-<CLI command='add' items={['select', 'text-field']} />
+Sometimes, you may want to add components individually, such as `select` and `input`. You can easily do this by using the following command:
+<CLI command='add' items={['select', 'input']} />
 
 ### Select and Add Components
 You might prefer to select the components you want to include by adding them without specifying any items. Just use the following command to add components:
-<CLI command='add' items={[]} />
+<CLI command='add' items={['all']} />
 This command will present a list of available components, which you can navigate and select using the arrow keys and spacebar.
 
 ```bash
@@ -69,7 +56,8 @@ You should add the following code:
 You can customize your colors using these variables. By default, HQ UI utilizes oklch colors, but you have the option
 to switch to RGB, HSL, HSB, LCH, or simply HEX.
 
-<Code lang='css' filename='app.css' withoutSwitcher code={`@import "tailwindcss";
+```css title='app.css'
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @plugin 'tailwindcss-react-aria-components';
@@ -315,12 +303,14 @@ to switch to RGB, HSL, HSB, LCH, or simply HEX.
     pre::-webkit-scrollbar {
         display: none;
     }
-}`} />
+}
+```
 
 ### Utils
 Create a helper function. Usually located in `lib/utils.ts`:
 
-<Code lang='ts' filename='lib/utils.ts' code={`import { type ClassValue, clsx } from 'clsx'
+```ts title='lib/utils.ts'
+import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
@@ -336,12 +326,14 @@ export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
         textIndex++
     }
     return inputIndex === inputValue.length
-}`}/>
+}
+```
 
 ### Hooks
 Create a hook. Usually located in `lib/hooks.ts`:
 
-<Code lang='ts' filename='lib/hooks.ts' code={`import { useEffect, useState } from 'react'
+```ts title='hooks/use-mobile.ts'
+import { useEffect, useState } from 'react'
 
 const MOBILE_BREAKPOINT = 768
 
@@ -359,18 +351,20 @@ export function useIsMobile() {
     }, [])
 
     return !!isMobile
-}`}/>
+}
+```
 
 ## Simple Import
 Indeed, it's efficient because the index.ts file in your UI folder serves as a hub. Even if the button and badge
 components are in separate files, you can import them together easily:
 
-```
+```tsx
 import { Button, Sheet, Badge } from '@/components/ui'
 ```
 
 Create a file called index.ts in your UI folder, and add the following code to it:
-<Code lang='ts' filename='components/ui/index.ts' code={`export * from './avatar'
+```tsx title='components/ui/index.ts'
+export * from './avatar'
 export * from './badge'
 export * from './breadcrumbs'
 export * from './button'
@@ -442,7 +436,8 @@ export * from './toggle'
 export * from './toolbar'
 export * from './tooltip'
 export * from './tree'
-export * from './user'`} />
+export * from './user'
+```
 
 ### TS Config
 Next, incorporate the following settings into your `tsconfig.json` file:

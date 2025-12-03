@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/meter.tsx",
+      "content": "'use client'\n\nimport { createContext, use } from 'react'\nimport {\n    composeRenderProps,\n    Meter as RACMeter,\n    type MeterProps as RACMeterProps,\n    type MeterRenderProps as RACMeterRenderProps\n} from 'react-aria-components'\nimport { twMerge } from 'tailwind-merge'\nimport { cn } from '@/lib/utils'\n\ninterface MeterRenderProps extends RACMeterRenderProps {\n    color?: string\n}\n\nconst MeterContext = createContext<MeterRenderProps | null>(null)\n\ninterface MeterProps extends RACMeterProps, Pick<MeterRenderProps, 'color'> {}\n\nexport function Meter({ className, children, color, ...props }: MeterProps) {\n    return (\n        <RACMeter\n            data-slot='meter'\n            {...props}\n            className={composeRenderProps(className, (className) =>\n                cn(\n                    'w-full',\n                    '[&>[data-slot=meter-header]+[data-slot=meter-track]]:mt-2',\n                    '[&>[data-slot=meter-header]+[data-slot=meter-track]]:mt-2',\n                    \"[&>[data-slot=meter-header]+[slot='description']]:mt-1\",\n                    \"[&>[slot='description']+[data-slot=meter-track]]:mt-2\",\n                    '[&>[data-slot=meter-track]+[slot=description]]:mt-2',\n                    '[&>[data-slot=meter-track]+[slot=errorMessage]]:mt-2',\n                    '*:data-[slot=meter-header]:font-medium',\n                    className\n                )\n            )}\n        >\n            {(values) => (\n                <MeterContext value={{ ...values, color }}>\n                    {typeof children === 'function' ? children(values) : children}\n                </MeterContext>\n            )}\n        </RACMeter>\n    )\n}\n\nexport function MeterTrack({ className, ...props }: React.ComponentProps<'div'>) {\n    const { percentage, color } = use(MeterContext)!\n    return (\n        <div\n            className={twMerge(\n                '[--meter-height:--spacing(1.5)]',\n                '-outline-offset-1 relative h-(--meter-height) w-full overflow-hidden rounded-full bg-secondary outline outline-transparent',\n                className\n            )}\n            data-slot='meter-track'\n            {...props}\n        >\n            <div\n                className='absolute top-0 left-0 h-full rounded-full transition-[width] duration-200 ease-linear will-change-[width] motion-reduce:transition-none forced-colors:bg-[Highlight]'\n                data-slot='meter-fill'\n                style={{ width: `${percentage}%`, backgroundColor: color ?? getMeterColor(percentage) }}\n            />\n        </div>\n    )\n}\n\nexport function MeterValue({ className, ...props }: Omit<React.ComponentProps<'span'>, 'children'>) {\n    const { valueText } = use(MeterContext)!\n    return (\n        <span className={twMerge('text-base/6 sm:text-sm/6', className)} data-slot='meter-value' {...props}>\n            {valueText}\n        </span>\n    )\n}\n\nexport function MeterHeader({ className, ...props }: React.ComponentProps<'div'>) {\n    return (\n        <div className={twMerge('flex items-center justify-between', className)} data-slot='meter-header' {...props} />\n    )\n}\n\nfunction getMeterColor(value: number): string {\n    if (value < 50) return '#00ff00'\n    if (value < 80) return '#ffff00'\n    return '#ff0000'\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

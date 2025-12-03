@@ -1,82 +1,66 @@
 'use client'
 
-import type { ReactNode, Ref } from 'react'
-import type {
-    CheckboxGroupProps as RACCheckboxGroupProps,
-    CheckboxProps as RACCheckboxProps
-} from 'react-aria-components'
 import { IconCheck, IconMinus } from '@tabler/icons-react'
-import { composeRenderProps, Checkbox as RACCheckbox, CheckboxGroup as RACCheckboxGroup } from 'react-aria-components'
+import {
+  type CheckboxGroupProps,
+  type CheckboxProps,
+  composeRenderProps,
+  Label,
+  Checkbox as RACCheckbox,
+  CheckboxGroup as RACCheckboxGroup
+} from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './form'
 
-interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
-
-const CheckboxGroup = ({ className, children, label, description, errorMessage, ...props }: CheckboxGroupProps) => {
-    return (
-        <RACCheckboxGroup
-            {...props}
-            className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-2', className))}
-        >
-            {(values) => (
-                <>
-                    {label && <Label>{label}</Label>}
-                    {typeof children === 'function' ? children(values) : children}
-                    {description && <Description>{description}</Description>}
-                    <FieldError>{errorMessage}</FieldError>
-                </>
-            )}
-        </RACCheckboxGroup>
-    )
+const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
+  return (
+    <RACCheckboxGroup
+      {...props}
+      className={cn(
+        'space-y-2 has-[[slot=description]]:space-y-6 has-[[slot=description]]:**:data-[slot=label]:font-medium **:[[slot=description]]:block',
+        className
+      )}
+      data-slot='control'
+    />
+  )
 }
 
-interface CheckboxProps extends RACCheckboxProps, Omit<FieldProps, 'errorMessage'> {
-    children?: ReactNode
-    ref?: Ref<HTMLLabelElement>
-}
-
-const Checkbox = ({ className, children, label, description, ref, ...props }: CheckboxProps) => {
-    return (
-        <RACCheckbox
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'group/box flex items-center gap-2',
-                    {
-                        'items-start': description
-                    },
-                    className
-                )
+const Checkbox = ({ className, ...props }: CheckboxProps) => {
+  return (
+    <RACCheckbox
+      className={composeRenderProps(className, (className) => cn('group/box flex items-center gap-2', className))}
+      data-slot='control'
+      {...props}
+    >
+      {({ isSelected, isIndeterminate }) => (
+        <>
+          <div
+            className={cn(
+              'relative flex size-4 shrink-0 items-center justify-center rounded-[4px] border bg-transparent shadow-xs transition dark:bg-input/30',
+              'border-input group-hover/box:border-ring/50 group-has-invalid/box:border-destructive/70',
+              'group-data-selected/box:group-data-has-invalid/box:border-destructive/70 group-data-selected/box:border-primary group-data-selected/box:bg-primary group-data-selected/box:text-primary-foreground group-data-selected/box:group-has-invalid/box:border-destructive/70 group-data-selected/box:group-has-invalid/box:bg-destructive group-data-selected/box:group-has-invalid/box:text-destructive-foreground dark:group-data-selected/box:bg-primary',
+              'group-data-focus/box:border-primary group-data-focus/box:group-has-invalid/box:border-destructive/70',
+              'group-data-focus-visible/box:border-primary/70 group-data-focus-visible/box:ring-[3px] group-data-focus-visible/box:ring-ring/50 group-data-focus-visible/box:group-has-invalid/box:border-destructive/70 group-data-focus-visible/box:group-has-invalid/box:ring-destructive/20',
+              'group-data-indeterminate/box:border-primary group-data-indeterminate/box:bg-primary group-data-indeterminate/box:text-primary-foreground',
+              'dark:group-data-indeterminate/box:border-primary dark:group-data-indeterminate/box:bg-primary dark:group-data-indeterminate/box:text-primary-foreground',
+              className
             )}
-            ref={ref}
-            {...props}
-        >
-            {({ isSelected, isIndeterminate }) => (
-                <>
-                    <div
-                        className={cn(
-                            'flex size-4 shrink-0 items-center justify-center rounded-xs border bg-transparent transition dark:bg-input/30',
-                            'border-input group-hover/box:border-primary/70 group-has-invalid/box:border-destructive/70',
-                            'group-selected/box:border-primary group-selected/box:bg-primary group-selected/box:text-primary-foreground group-selected/box:group-has-invalid/box:border-destructive/70 group-selected/box:group-has-invalid/box:bg-destructive group-selected/box:group-has-invalid/box:text-destructive-foreground dark:group-selected/box:bg-primary',
-                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-destructive/70',
-                            'group-focus-visible/box:ring-[3px] group-focus-visible/box:ring-ring/50 group-focus-visible/box:group-has-invalid/box:border-destructive/70 group-focus-visible/box:group-has-invalid/box:ring-destructive/20',
-                            className
-                        )}
-                    >
-                        {isIndeterminate ? (
-                            <IconMinus className='size-3' />
-                        ) : isSelected ? (
-                            <IconCheck className='size-3' />
-                        ) : null}
-                    </div>
-
-                    <div className='flex flex-col gap-y-1.5'>
-                        <span className='not-last:text-sm/4 text-sm'>{label ?? children}</span>
-                        {description && <Description>{description}</Description>}
-                    </div>
-                </>
-            )}
-        </RACCheckbox>
-    )
+          >
+            {isIndeterminate ? <IconMinus className='size-3' /> : isSelected ? <IconCheck className='size-3' /> : null}
+          </div>
+          {typeof props.children === 'string' ? (
+            <Label
+              className='not-last:text-sm/4 text-sm transition group-has-invalid/box:text-destructive'
+              elementType='span'
+            >
+              {props.children}
+            </Label>
+          ) : (
+            props.children
+          )}
+        </>
+      )}
+    </RACCheckbox>
+  )
 }
 
 export { Checkbox, CheckboxGroup }

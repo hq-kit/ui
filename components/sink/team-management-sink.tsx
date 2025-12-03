@@ -1,35 +1,61 @@
 'use client'
 
-import { IconEye, IconLock } from '@tabler/icons-react'
-import { Avatar, AvatarGroup, Button, Card, ColorPicker, Menu, Toggle } from '@/components/ui'
+import { IconEye, IconEyeClosed, IconLock, IconLockOpen } from '@tabler/icons-react'
+import { Collection } from 'react-aria-components'
+import { Avatar, Button, Card, DropdownMenu, ToggleGroup } from '@/components/ui'
 
 export default function TeamManagementSink() {
     return (
         <Card className='flex flex-col items-center justify-around gap-4 p-2 lg:col-span-3 lg:flex-row'>
-            <AvatarGroup items={roles}>
-                {(item) => <Avatar alt={item.name} id={item.id} src={`https://i.pravatar.cc/150?img=2${item.id}`} />}
-            </AvatarGroup>
-            <ColorPicker defaultValue={'#ff0000'} label='Color' />
-            <Menu>
-                <Button>Options</Button>
-                <Menu.Content items={roles}>
+            <div className='-space-x-2 flex'>
+                <Collection items={roles}>
                     {(item) => (
-                        <Menu.Item id={item.id} textValue={item.name}>
-                            <Menu.Details description={item.description} label={item.name} />
-                        </Menu.Item>
+                        <Avatar alt={item.name} id={item.id} src={`https://i.pravatar.cc/150?img=2${item.id}`} />
                     )}
-                </Menu.Content>
-            </Menu>
-            <Toggle.Group>
-                <Toggle>
-                    <IconLock />
-                    Lock
-                </Toggle>
-                <Toggle>
-                    <IconEye />
-                    Readonly
-                </Toggle>
-            </Toggle.Group>
+                </Collection>
+            </div>
+            <DropdownMenu>
+                <Button>Options</Button>
+                <DropdownMenu.Content items={roles}>
+                    {(item) => (
+                        <DropdownMenu.Item id={item.id} textValue={item.name}>
+                            {item.name}
+                        </DropdownMenu.Item>
+                    )}
+                </DropdownMenu.Content>
+            </DropdownMenu>
+            <ToggleGroup size='sm' variant='outline'>
+                <ToggleGroup.Item>
+                    {(values) =>
+                        values.isSelected ? (
+                            <>
+                                <IconLock />
+                                Locked
+                            </>
+                        ) : (
+                            <>
+                                <IconLockOpen />
+                                Lock
+                            </>
+                        )
+                    }
+                </ToggleGroup.Item>
+                <ToggleGroup.Item>
+                    {(values) =>
+                        values.isSelected ? (
+                            <>
+                                <IconEye />
+                                Visible
+                            </>
+                        ) : (
+                            <>
+                                <IconEyeClosed />
+                                Hidden
+                            </>
+                        )
+                    }
+                </ToggleGroup.Item>
+            </ToggleGroup>
         </Card>
     )
 }

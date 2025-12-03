@@ -161,7 +161,7 @@ export const IconBrandVite = (props: SVGProps<SVGSVGElement>) => (
 export const IconBrandMotion = (props: SVGProps<SVGSVGElement>) => (
     <svg
         {...props}
-        className='!size-4'
+        className='size-4!'
         data-slot='icon'
         height={300}
         viewBox='0 0 300 300'

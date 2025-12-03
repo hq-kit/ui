@@ -1,6 +1,6 @@
 'use client'
 
-import { Breadcrumbs } from '@/components/ui'
+import { Breadcrumb } from '@/components/ui'
 
 export function BlocksBreadcrumbs({ pages }: { pages: string[] }) {
     const breadcrumbPages = [
@@ -8,12 +8,12 @@ export function BlocksBreadcrumbs({ pages }: { pages: string[] }) {
         ...pages.map((p) => ({ id: p, label: p, href: `/blocks/${p}` }))
     ]
     return (
-        <Breadcrumbs items={breadcrumbPages}>
+        <Breadcrumb items={breadcrumbPages}>
             {(item) => (
-                <Breadcrumbs.Item className='capitalize' href={item.href}>
+                <Breadcrumb.Item className='capitalize' href={item.href}>
                     {item.label}
-                </Breadcrumbs.Item>
+                </Breadcrumb.Item>
             )}
-        </Breadcrumbs>
+        </Breadcrumb>
     )
 }

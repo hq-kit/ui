@@ -2,8 +2,7 @@
 
 import { IconPhone } from '@tabler/icons-react'
 import Image from 'next/image'
-import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
-import { Card, DateField, NumberField, Tabs, Textarea, TextField } from '@/components/ui'
+import { Card, DateInput, DropZone, Field, InputGroup, Tabs, Textarea } from '@/components/ui'
 
 export default function UserProfileSink() {
     return (
@@ -17,7 +16,7 @@ export default function UserProfileSink() {
                     src='https://picsum.photos/640/320'
                     width={320}
                 />
-                <div className='-mt-20 mx-auto mb-3 flex w-full flex-shrink-0 flex-col items-center'>
+                <div className='-mt-20 mx-auto mb-3 flex w-full shrink-0 flex-col items-center'>
                     <Image
                         alt='DQ'
                         className='size-32 rounded-full'
@@ -30,30 +29,50 @@ export default function UserProfileSink() {
                         <p className='text-muted-foreground'>Developer</p>
                     </div>
                 </div>
-                <div className='rounded-lg border p-2'>
+                <div className='h-64 rounded-lg border p-2'>
                     <Tabs aria-label='Packages'>
                         <Tabs.List className='w-full justify-center'>
-                            <Tabs.Label id='t1'>Identity</Tabs.Label>
-                            <Tabs.Label id='t2'>Address</Tabs.Label>
-                            <Tabs.Label id='t3'>Upload Files</Tabs.Label>
+                            <Tabs.Trigger id='t1'>Identity</Tabs.Trigger>
+                            <Tabs.Trigger id='t2'>Address</Tabs.Trigger>
+                            <Tabs.Trigger id='t3'>Upload Files</Tabs.Trigger>
                         </Tabs.List>
                         <Tabs.Content className='p-1' id='t1'>
-                            <div className='mb-4 flex w-full items-end gap-3'>
-                                <DateField className='w-full' label='Birthdate' />
-                                {/*<TimeField label='Birthtime' />*/}
+                            <div className='mb-4 grid w-full grid-cols-3 items-end gap-3'>
+                                <Field.Date className='col-span-2'>
+                                    <Field.Label>Date of Birth</Field.Label>
+                                    <DateInput />
+                                </Field.Date>
+                                <Field.Time>
+                                    <Field.Label>Time</Field.Label>
+                                    <DateInput />
+                                </Field.Time>
                             </div>
                             <div className='my-2.5'>
-                                <TextField label='Phone' prefix='+62' suffix={<IconPhone />} />
+                                <Field.Text>
+                                    <Field.Label>Phone</Field.Label>
+                                    <InputGroup>
+                                        <InputGroup.Addon align='inline-start'>
+                                            <IconPhone />
+                                        </InputGroup.Addon>
+                                        <InputGroup.Input placeholder='Enter your phone number' />
+                                    </InputGroup>
+                                </Field.Text>
                             </div>
                         </Tabs.Content>
-                        <Tabs.Content className='p-1' id='t2'>
-                            <Textarea label='Address' />
-                            <div className='mt-2'>
-                                <NumberField label='Postal Code' />
-                            </div>
+                        <Tabs.Content className='space-y-4 p-1' id='t2'>
+                            <Field.Text>
+                                <Field.Label>Address</Field.Label>
+                                <Textarea placeholder='Enter your address' />
+                            </Field.Text>
+                            <Field.Number>
+                                <Field.Label>Pin Code</Field.Label>
+                                <InputGroup.Number placeholder='Enter your pin code' />
+                            </Field.Number>
                         </Tabs.Content>
                         <Tabs.Content className='p-1' id='t3'>
-                            <DropZoneAndFileTriggerDemo />
+                            <DropZone className='h-44'>
+                                <p className='select-none text-muted-foreground'>Drop files here</p>
+                            </DropZone>
                         </Tabs.Content>
                     </Tabs>
                 </div>

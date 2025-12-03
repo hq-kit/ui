@@ -34,4 +34,4 @@ const DD = ({ className, ...props }: ComponentPropsWithRef<'dd'>) => {
 DL.T = DT
 DL.D = DD
 
-export { DL }
+export { DL, DT, DD }

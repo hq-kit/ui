@@ -1,4 +1,4 @@
-import type { ThemePreset } from '@/lib/types/theme'
+import type { ThemePreset } from '@/types/theme'
 import { defaultThemeState } from '@/lib/themes/default'
 
 export function getPreset(name: string): ThemePreset {

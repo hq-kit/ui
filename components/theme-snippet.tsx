@@ -1,7 +1,7 @@
 import { IconClipboardCopy } from '@tabler/icons-react'
 import { Code } from '@/components/mdx/code'
 import { Button, Link, Modal } from '@/components/ui'
-import { useThemeGenerator } from '@/lib/hooks/use-theme'
+import { useThemeGenerator } from '@/hooks/use-theme'
 import { getPreset } from '@/lib/themes'
 import { generateThemeCode } from '@/lib/themes/theme-generator'
 

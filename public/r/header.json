@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/header.tsx",
+      "content": "import type { ComponentPropsWithRef } from 'react'\nimport { cn } from '@/lib/utils'\n\ninterface HeaderProps extends ComponentPropsWithRef<'header'> {\n    title?: string\n    description?: string\n}\n\nconst Header = ({ title, description, className, children, ...props }: HeaderProps) => (\n    <header\n        className={cn(\n            'grid items-start gap-1.5 md:auto-rows-min md:grid-rows-[auto_auto] md:has-[[slot=action]]:grid-cols-[1fr_auto]',\n            className\n        )}\n        slot='header'\n        {...props}\n    >\n        {title && <HeaderTitle>{title}</HeaderTitle>}\n        {description && <HeaderDescription>{description}</HeaderDescription>}\n        {!title && typeof children === 'string' ? <HeaderTitle>{children}</HeaderTitle> : children}\n    </header>\n)\n\nconst HeaderTitle = ({ className, ...props }: ComponentPropsWithRef<'h3'>) => (\n    <h3 slot='title' {...props} className={cn('font-semibold text-lg leading-none tracking-tight', className)} />\n)\n\nconst HeaderDescription = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (\n    <div className={cn('text-muted-foreground text-sm md:row-start-2', className)} slot='description' {...props} />\n)\n\nconst HeaderAction = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (\n    <div\n        className={cn(\n            'flex items-center gap-2 self-start justify-self-end md:col-start-2 md:row-span-2 md:row-start-1',\n            className\n        )}\n        slot='action'\n        {...props}\n    />\n)\n\nHeader.Title = HeaderTitle\nHeader.Description = HeaderDescription\nHeader.Action = HeaderAction\n\nexport { Header, HeaderTitle, HeaderDescription, HeaderAction }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "colors",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/colors.tsx",
+      "content": "'use client'\n\nimport {\n    type ColorAreaProps,\n    type ColorSwatchPickerItemProps,\n    type ColorSwatchPickerProps,\n    type ColorSwatchProps,\n    type ColorThumbProps,\n    type ColorWheelProps,\n    composeRenderProps,\n    ColorArea as RACColorArea,\n    ColorSwatch as RACColorSwatch,\n    ColorSwatchPicker as RACColorSwatchPicker,\n    ColorSwatchPickerItem as RACColorSwatchPickerItem,\n    ColorThumb as RACColorThumb,\n    ColorWheel as RACColorWheel,\n    SliderTrack as RACSliderTrack,\n    type SliderTrackProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst ColorWheel = ({ className, outerRadius = 100, innerRadius = 74, ...props }: ColorWheelProps) => (\n    <RACColorWheel\n        className={composeRenderProps(className, (className) => cn(className))}\n        innerRadius={innerRadius}\n        outerRadius={outerRadius}\n        {...props}\n    />\n)\n\nconst ColorArea = ({ className, ...props }: ColorAreaProps) => (\n    <RACColorArea\n        className={composeRenderProps(className, (className) =>\n            cn('size-48 shrink-0 rounded-md border border-border shadow-md', className)\n        )}\n        {...props}\n    />\n)\n\nconst SliderTrack = ({ className, ...props }: SliderTrackProps) => (\n    <RACSliderTrack\n        className={composeRenderProps(className, (className) =>\n            cn('h-7 w-48 rounded-md border border-border', className)\n        )}\n        {...props}\n    />\n)\n\nconst ColorThumb = ({ className, ...props }: ColorThumbProps) => (\n    <RACColorThumb\n        className={composeRenderProps(className, (className) =>\n            cn(\n                'z-10 box-border size-5 rounded-[50%] border-2 border-white shadow-md',\n                'data-focus-visible:size-6',\n                className\n            )\n        )}\n        {...props}\n    />\n)\n\nconst ColorSwatchPicker = ({ className, ...props }: ColorSwatchPickerProps) => (\n    <RACColorSwatchPicker\n        className={composeRenderProps(className, (className) => cn('flex flex-wrap gap-2', className))}\n        {...props}\n    />\n)\n\nconst ColorSwatchPickerItem = ({ className, ...props }: ColorSwatchPickerItemProps) => (\n    <RACColorSwatchPickerItem\n        className={composeRenderProps(className, (className) =>\n            cn(\n                'size-8 overflow-hidden rounded-md border-2 ring-offset-background transition-colors',\n                'data-selected:border-white',\n                'data-disabled:pointer-events-none data-disabled:opacity-50',\n                'data-focus-visible:outline-none data-focus-visible:ring-2 data-focus-visible:ring-ring',\n                className\n            )\n        )}\n        {...props}\n    />\n)\n\nconst ColorSwatch = ({ className, ...props }: ColorSwatchProps) => (\n    <RACColorSwatch className={composeRenderProps(className, (className) => cn('size-8', className))} {...props} />\n)\n\nexport { ColorArea, ColorSwatch, ColorSwatchPicker, ColorSwatchPickerItem, ColorThumb, ColorWheel, SliderTrack }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ import {
     IconBrandTailwind,
     IconBrandVite
 } from '@/components/icons'
-import { buttonStyle } from '@/components/ui'
+import { buttonVariants } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 function extractAndFormat(url: string): string {
@@ -114,9 +114,9 @@ export function DocRefs({ references }: { references: string[] }) {
             {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
                 <MenuItem
                     className={cn(
-                        buttonStyle({
+                        buttonVariants({
                             variant: 'outline',
-                            size: 'xs'
+                            size: 'sm'
                         })
                     )}
                     href={item.url}

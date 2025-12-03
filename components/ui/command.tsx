@@ -1,112 +1,176 @@
 'use client'
 
-import type { AutocompleteProps, ButtonProps, MenuProps, ModalOverlayProps } from 'react-aria-components'
-import { IconLoader, IconSearch } from '@tabler/icons-react'
-import { useEffect, useState } from 'react'
-import { Autocomplete, Button, Group, Input, Menu, TextField } from 'react-aria-components'
-import { cn, fuzzyMatch } from '@/lib/utils'
-import { Keyboard } from './keyboard'
-import { MenuItem, MenuLabel, MenuSection, MenuSeparator } from './menu'
-import { ModalContent } from './modal'
+import type { ComponentProps } from 'react'
+import { Collection } from '@react-aria/collections'
+import { IconSearch } from '@tabler/icons-react'
+import {
+    Autocomplete,
+    type AutocompleteProps,
+    Header,
+    Input,
+    Menu,
+    MenuItem,
+    type MenuItemProps,
+    type MenuProps,
+    MenuSection,
+    type MenuSectionProps,
+    SearchField,
+    type SearchFieldProps,
+    Separator,
+    type SeparatorProps
+} from 'react-aria-components'
+import { cn } from '@/lib/utils'
+import { Dialog, DialogDescription, DialogTitle } from './dialog'
 
-interface CommandProps<T> extends MenuProps<T>, Pick<AutocompleteProps, 'inputValue' | 'onInputChange'> {
-    isPending?: boolean
-}
-
-const Command = <T extends object>({ ...props }: CommandProps<T>) => {
-    return (
-        <div className={cn('rounded-lg border', props.className)} data-command>
-            <Autocomplete filter={fuzzyMatch} inputValue={props.inputValue} onInputChange={props.onInputChange}>
-                <TextField aria-label='Search' autoFocus className='border-b p-1'>
-                    <Group className='flex items-center px-2'>
-                        {props.isPending ? (
-                            <IconLoader className='size-4 shrink-0 animate-spin text-muted-foreground' />
-                        ) : (
-                            <IconSearch className='size-4 shrink-0 text-muted-foreground' />
-                        )}
-                        <Input className='w-full p-2 outline-hidden' placeholder='Search...' />
-                    </Group>
-                </TextField>
-                <Menu
-                    className='grid w-full grid-cols-[auto_1fr_auto] gap-y-1 overflow-y-auto p-2 outline-hidden sm:max-h-[30rem]'
-                    renderEmptyState={() => (
-                        <div className='col-span-full p-4 text-center text-muted-foreground'>No results found</div>
-                    )}
-                    {...props}
-                />
-            </Autocomplete>
-        </div>
-    )
-}
-
-interface CommandModalProps<T> extends CommandProps<T>, Pick<ModalOverlayProps, 'isOpen' | 'onOpenChange'> {
-    shortcut?: {
-        modifiers?: 'alt' | 'mod' | 'mod+alt' | 'mod+shift' | 'mod+alt+shift' | 'alt+shift'
-        key: string
-    }
-}
-
-const CommandModal = <T extends object>({ shortcut, ...props }: CommandModalProps<T>) => {
-    const [shortcutOpen, setShortcutOpen] = useState<boolean>(false)
-
-    useEffect(() => {
-        if (!shortcut) return
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (
-                e.key === shortcut?.key &&
-                (shortcut.modifiers === 'alt'
-                    ? e.altKey
-                    : shortcut.modifiers === 'mod+alt'
-                      ? e.altKey && (e.ctrlKey || e.metaKey)
-                      : shortcut.modifiers === 'mod+shift'
-                        ? e.shiftKey && (e.ctrlKey || e.metaKey)
-                        : shortcut.modifiers === 'mod+alt+shift'
-                          ? e.altKey && e.shiftKey && (e.ctrlKey || e.metaKey)
-                          : shortcut.modifiers === 'alt+shift'
-                            ? e.altKey && e.shiftKey
-                            : e.ctrlKey || e.metaKey)
-            ) {
-                e.preventDefault()
-                if (props.onOpenChange) {
-                    return props.onOpenChange(!props.isOpen)
-                }
-                setShortcutOpen(!shortcutOpen)
-            } else if (e.key === 'Escape') {
-                e.preventDefault()
-                if (props.onOpenChange) {
-                    return props.onOpenChange(false)
-                }
-                setShortcutOpen(false)
-            }
+export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
+    if (inputValue.length === 0) return true
+    if (textValue.length === 0) return false
+    let textIndex = 0
+    let inputIndex = 0
+    while (textIndex < textValue.length && inputIndex < inputValue.length) {
+        if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
+            inputIndex++
         }
-
-        document.addEventListener('keydown', handleKeyDown)
-        return () => document.removeEventListener('keydown', handleKeyDown)
-    })
-
-    return (
-        <ModalContent
-            aria-label='Commands'
-            className='h-[70dvh] **:data-command:border-0 sm:h-auto sm:min-h-0'
-            isOpen={props.isOpen || shortcutOpen}
-            onOpenChange={props.onOpenChange || setShortcutOpen}
-        >
-            <Command {...props} />
-        </ModalContent>
-    )
+        textIndex++
+    }
+    return inputIndex === inputValue.length
 }
 
-const CommandTrigger = (props: ButtonProps) => <Button {...props} />
+const Command = ({
+    className,
+    ...props
+}: AutocompleteProps & {
+    className?: string
+}) => (
+    <Autocomplete data-slot='command' filter={fuzzyMatch} {...props}>
+        <div
+            className={cn(
+                'flex size-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground',
+                className
+            )}
+        >
+            {props.children}
+        </div>
+    </Autocomplete>
+)
 
-Command.Modal = CommandModal
+const CommandDialog = ({
+    title = 'Command Palette',
+    description = 'Search for a command to run...',
+    children,
+    className,
+    showCloseButton = true,
+    ...props
+}: ComponentProps<typeof Dialog> & {
+    title?: string
+    description?: string
+    className?: string
+    showCloseButton?: boolean
+}) => (
+    <Dialog {...props}>
+        <Dialog.Trigger className='sr-only' />
+        <Dialog.Header className='sr-only'>
+            <DialogTitle>{title}</DialogTitle>
+            <DialogDescription>{description}</DialogDescription>
+        </Dialog.Header>
+        <Dialog.Content
+            className={cn(
+                'overflow-hidden p-0 **:data-[slot=command-input-wrapper]:h-12 [&_[data-slot=command-input-wrapper]_svg]:h-5 [&_[data-slot=command-input-wrapper]_svg]:w-5',
+                className
+            )}
+            closeButton={showCloseButton}
+        >
+            <Command>{children}</Command>
+        </Dialog.Content>
+    </Dialog>
+)
 
-Command.Trigger = CommandTrigger
+const CommandInput = ({ className, placeholder, ...props }: SearchFieldProps & { placeholder?: string }) => (
+    <SearchField
+        autoFocus
+        {...props}
+        aria-label='Filter'
+        className='flex h-10 items-center gap-2 border-b px-3'
+        data-slot='command-input-wrapper'
+    >
+        <IconSearch className='size-4 shrink-0 opacity-50' />
+        <Input
+            className={cn(
+                'flex w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden',
+                className
+            )}
+            data-slot='command-input'
+            placeholder={placeholder}
+        />
+    </SearchField>
+)
 
-Command.Item = MenuItem
-Command.Label = MenuLabel
-Command.Section = MenuSection
-Command.Separator = MenuSeparator
+const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
+    <Menu
+        className={cn('max-h-[300px] scroll-py-1 overflow-y-auto overflow-x-hidden px-1', className)}
+        data-slot='command-list'
+        {...props}
+    />
+)
 
-Command.Shortcut = Keyboard
+const CommandEmpty = ({ ...props }: ComponentProps<'div'>) => (
+    <div className='py-6 text-center text-sm' data-slot='command-empty' {...props} />
+)
 
-export { Command }
+const CommandGroup = <T extends object>({ className, title, ...props }: MenuSectionProps<T> & { title?: string }) => (
+    <MenuSection className={cn('mt-2 flex flex-col text-sm', className)} data-slot='command-group'>
+        {title && (
+            <Header className='pointer-events-none px-2 py-1 font-medium text-muted-foreground text-xs'>{title}</Header>
+        )}
+        <Collection items={props.items}>{props.children}</Collection>
+    </MenuSection>
+)
+
+const CommandSeparator = ({ className, ...props }: SeparatorProps) => (
+    <Separator className={cn('-mx-1 my-1 h-px bg-border', className)} data-slot='command-separator' {...props} />
+)
+
+const CommandItem = ({ className, ...props }: MenuItemProps) => (
+    <MenuItem
+        className={cn(
+            'group relative flex items-center gap-2 outline-hidden',
+            'select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6',
+            '**:[svg]:mr-2 **:[svg]:size-3.5 has-data-[slot=item-details]:**:[svg]:my-1',
+            'data-focused:bg-accent data-focused:text-accent-foreground data-focused:*:[.text-muted-foreground]:text-accent-foreground',
+            'data-hovered:bg-accent/90 data-hovered:text-accent-foreground data-hovered:*:[.text-muted-foreground]:text-accent-foreground',
+            'disabled:pointer-events-none disabled:opacity-50',
+            className
+        )}
+        data-slot='command-item'
+        {...props}
+    />
+)
+
+const CommandShortcut = ({ className, ...props }: ComponentProps<'span'>) => (
+    <span
+        className={cn('ml-auto text-muted-foreground text-xs tracking-widest', className)}
+        data-slot='command-shortcut'
+        {...props}
+    />
+)
+
+Command.Dialog = CommandDialog
+Command.Input = CommandInput
+Command.List = CommandList
+Command.Empty = CommandEmpty
+Command.Group = CommandGroup
+Command.Item = CommandItem
+Command.Shortcut = CommandShortcut
+Command.Separator = CommandSeparator
+
+export {
+    Command,
+    CommandDialog,
+    CommandInput,
+    CommandList,
+    CommandEmpty,
+    CommandGroup,
+    CommandItem,
+    CommandShortcut,
+    CommandSeparator
+}

@@ -15,7 +15,7 @@ import {
     useState
 } from 'react'
 import { cn } from '@/lib/utils'
-import { Menu, MenuContent } from './menu'
+import { DropdownMenu, DropdownMenuContent } from './dropdown-menu'
 
 interface ContextMenuContextProps {
     triggerRef: RefObject<HTMLDivElement | null>
@@ -87,7 +87,7 @@ type ContextMenuContentProps<T> = Omit<
 const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProps<T>, 'style'>) => {
     const { contextMenuOffset, setContextMenuOffset, triggerRef } = useContextMenu()
     return contextMenuOffset ? (
-        <MenuContent
+        <DropdownMenuContent
             aria-label={props['aria-label'] ?? 'Context Menu'}
             crossOffset={contextMenuOffset?.crossOffset}
             isOpen={!!contextMenuOffset}
@@ -104,11 +104,31 @@ const ContextMenuContent = <T extends object>(props: Omit<ContextMenuContentProp
 ContextMenu.Trigger = ContextMenuTrigger
 ContextMenu.Content = ContextMenuContent
 
-ContextMenu.Item = Menu.Item
-ContextMenu.Label = Menu.Label
-ContextMenu.Separator = Menu.Separator
-ContextMenu.Details = Menu.Details
-ContextMenu.Section = Menu.Section
-ContextMenu.Header = Menu.Header
+const ContextMenuItem = DropdownMenu.Item
+const ContextMenuSeparator = DropdownMenu.Separator
+const ContextMenuGroup = DropdownMenu.Group
+const ContextMenuLabel = DropdownMenu.Label
+const ContextMenuSub = DropdownMenu.Sub
+const ContextMenuSubTrigger = DropdownMenu.SubTrigger
+const ContextMenuSubContent = DropdownMenu.SubContent
 
-export { ContextMenu }
+ContextMenu.Item = ContextMenuItem
+ContextMenu.Separator = ContextMenuSeparator
+ContextMenu.Group = ContextMenuGroup
+ContextMenu.Label = ContextMenuLabel
+ContextMenu.Sub = ContextMenuSub
+ContextMenu.SubTrigger = ContextMenuSubTrigger
+ContextMenu.SubContent = ContextMenuSubContent
+
+export {
+    ContextMenu,
+    ContextMenuTrigger,
+    ContextMenuContent,
+    ContextMenuGroup,
+    ContextMenuLabel,
+    ContextMenuItem,
+    ContextMenuSub,
+    ContextMenuSubContent,
+    ContextMenuSubTrigger,
+    ContextMenuSeparator
+}

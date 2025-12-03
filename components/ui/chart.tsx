@@ -14,9 +14,14 @@ import type { ContentType as TooltipContentType } from 'recharts/types/component
 import type { CurveType } from 'recharts/types/shape/Curve'
 import {
     type ComponentProps,
+    type ComponentType,
+    type CSSProperties,
     createContext,
     Fragment,
+    type HTMLAttributes,
     type ReactElement,
+    type ReactNode,
+    type Ref,
     startTransition,
     use,
     useCallback,
@@ -44,7 +49,6 @@ import {
     YAxis as YAxisPrimitive
 } from 'recharts'
 import { cn } from '@/lib/utils'
-import { Separator } from './separator'
 
 type ChartType = 'default' | 'stacked' | 'percent'
 type ChartLayout = 'horizontal' | 'vertical' | 'radial'
@@ -52,8 +56,8 @@ type IntervalType = 'preserveStartEnd' | 'equidistantPreserveStart'
 
 export type ChartConfig = {
     [k in string]: {
-        label?: React.ReactNode
-        icon?: React.ComponentType
+        label?: ReactNode
+        icon?: ComponentType
     } & (
         | { color?: ChartColorKeys | (string & {}); theme?: never }
         | { color?: never; theme: Record<keyof typeof THEMES, string> }
@@ -146,8 +150,7 @@ function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key:
     return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config]
 }
 
-interface BaseChartProps<TValue extends ValueType, TName extends NameType>
-    extends React.HTMLAttributes<HTMLDivElement> {
+interface BaseChartProps<TValue extends ValueType, TName extends NameType> extends HTMLAttributes<HTMLDivElement> {
     config: ChartConfig
     data: Record<string, any>[]
     dataKey: string
@@ -164,7 +167,7 @@ interface BaseChartProps<TValue extends ValueType, TName extends NameType>
     cartesianGridProps?: CartesianGridProps
 
     legend?: LegendContentType | boolean
-    legendProps?: Omit<React.ComponentProps<typeof LegendPrimitive>, 'content' | 'ref'>
+    legendProps?: Omit<ComponentProps<typeof LegendPrimitive>, 'content' | 'ref'>
 
     xAxisProps?: XAxisPropsPrimitive
     yAxisProps?: YAxisPrimitiveProps
@@ -186,7 +189,7 @@ const Chart = ({
     ref,
     layout = 'horizontal',
     ...props
-}: Omit<React.ComponentProps<'div'>, 'children'> & {
+}: Omit<ComponentProps<'div'>, 'children'> & {
     config: ChartConfig
     data: Record<string, any>[]
     layout?: ChartLayout
@@ -262,7 +265,7 @@ ${colorConfig
     )
 }
 
-type ChartTooltipProps<TValue extends ValueType, TName extends NameType> = React.ComponentProps<
+type ChartTooltipProps<TValue extends ValueType, TName extends NameType> = ComponentProps<
     typeof TooltipPrimitive<TValue, TName>
 >
 
@@ -290,7 +293,7 @@ const ChartTooltip = <TValue extends ValueType, TName extends NameType>(props: C
     )
 }
 
-type ChartLegendProps = Omit<React.ComponentProps<typeof LegendPrimitive>, 'ref'>
+type ChartLegendProps = Omit<ComponentProps<typeof LegendPrimitive>, 'ref'>
 
 const ChartLegend = (props: ChartLegendProps) => {
     return <LegendPrimitive align='center' verticalAlign='bottom' {...props} />
@@ -381,7 +384,7 @@ const ChartTooltipContent = <TValue extends ValueType, TName extends NameType>({
     labelKey,
     ref
 }: TooltipContentProps<TValue, TName> &
-    React.ComponentProps<'div'> & {
+    ComponentProps<'div'> & {
         hideLabel?: boolean
         labelSeparator?: boolean
         hideIndicator?: boolean
@@ -429,13 +432,13 @@ const ChartTooltipContent = <TValue extends ValueType, TName extends NameType>({
     return (
         <div
             className={cn(
-                'inset-ring inset-ring-border grid min-w-[12rem] items-start rounded-lg bg-popover p-3 text-popover-foreground text-xs dark:inset-ring-foreground/10 dark:supports-[backdrop-blur]:bg-popover/70 dark:supports-[backdrop-blur]:backdrop-blur-xl',
+                'inset-ring inset-ring-border grid min-w-48 items-start rounded-lg bg-popover p-3 text-popover-foreground text-xs dark:inset-ring-foreground/10 dark:supports-backdrop-blur:bg-popover/70 dark:supports-backdrop-blur:backdrop-blur-xl',
                 className
             )}
             ref={ref}
         >
-            {!nestLabel ? <span>{tooltipLabel}</span> : null}
-            {labelSeparator && <Separator className='mt-2 mb-2.5 bg-foreground/10' />}
+            {!nestLabel ? <span className='font-medium'>{tooltipLabel}</span> : null}
+            {labelSeparator && <span aria-hidden className='mt-2 mb-3 block h-px w-full bg-background/10' />}
             <div className='grid gap-1.5'>
                 {payload.map((item, index) => {
                     const key = `${nameKey || item.name || item.dataKey || 'value'}`
@@ -471,7 +474,7 @@ const ChartTooltipContent = <TValue extends ValueType, TName extends NameType>({
                                                     {
                                                         '--color-bg': indicatorColor,
                                                         '--color-border': indicatorColor
-                                                    } as React.CSSProperties
+                                                    } as CSSProperties
                                                 }
                                             />
                                         )
@@ -510,7 +513,7 @@ type ChartLegendContentProps = ToggleButtonGroupProps &
         payload?: ReadonlyArray<LegendPayload>
         hideIcon?: boolean
         nameKey?: string
-        ref?: React.Ref<any>
+        ref?: Ref<any>
     }
 
 const ChartLegendContent = ({
@@ -762,7 +765,7 @@ interface BarChartProps<TValue extends ValueType, TName extends NameType> extend
     barRadius?: number
     barGap?: number
     barSize?: number
-    barProps?: Partial<React.ComponentProps<typeof Bar>>
+    barProps?: Partial<ComponentProps<typeof Bar>>
 
     chartProps?: Omit<ComponentProps<typeof BarChartPrimitive>, 'data' | 'stackOffset'>
 }
@@ -902,7 +905,7 @@ const BarChart = <TValue extends ValueType, TName extends NameType>({
 interface LineChartProps<TValue extends ValueType, TName extends NameType> extends BaseChartProps<TValue, TName> {
     connectNulls?: boolean
     lineProps?: LineProps
-    chartProps?: Omit<React.ComponentProps<typeof LineChartPrimitive>, 'data' | 'stackOffset'>
+    chartProps?: Omit<ComponentProps<typeof LineChartPrimitive>, 'data' | 'stackOffset'>
 }
 
 const LineChart = <TValue extends ValueType, TName extends NameType>({
@@ -1006,7 +1009,7 @@ const LineChart = <TValue extends ValueType, TName extends NameType>({
                                               '--line-color': getColorValue(
                                                   values.color || categoryColors.get(category)
                                               )
-                                          } as React.CSSProperties
+                                          } as CSSProperties
                                       }
                                       type='linear'
                                       {...lineProps}
@@ -1155,6 +1158,11 @@ const PieChart = <TValue extends ValueType, TName extends NameType>({
         </Chart>
     )
 }
+
+Chart.Bar = BarChart
+Chart.Area = AreaChart
+Chart.Line = LineChart
+Chart.Pie = PieChart
 
 export { Chart, BarChart, AreaChart, LineChart, PieChart }
 export type { BarChartProps, AreaChartProps, LineChartProps, PieChartProps }

@@ -1,11 +1,9 @@
-'use client'
-
-import type { ComponentPropsWithRef } from 'react'
+import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
 
-const badgeStyle = tv({
-    base: 'inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden whitespace-nowrap rounded-md border px-2 py-0.5 font-medium text-xs transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 *:[svg]:pointer-events-none *:[svg]:size-3',
+const badgeVariants = tv({
+    base: 'inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden whitespace-nowrap rounded-full border px-2 py-0.5 font-medium text-xs transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3',
     variants: {
         variant: {
             default: 'border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90',
@@ -20,8 +18,8 @@ const badgeStyle = tv({
     }
 })
 
-const Badge = ({ className, variant, ...props }: ComponentPropsWithRef<'span'> & VariantProps<typeof badgeStyle>) => (
-    <span className={cn(badgeStyle({ variant }), className)} data-slot='badge' {...props} />
+const Badge = ({ className, variant, ...props }: ComponentProps<'span'> & VariantProps<typeof badgeVariants>) => (
+    <span className={cn(badgeVariants({ variant }), className)} data-slot='badge' {...props} />
 )
 
-export { Badge, badgeStyle }
+export { Badge, badgeVariants }

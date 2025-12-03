@@ -2,9 +2,9 @@
 
 import type { ButtonProps, LinkProps } from 'react-aria-components'
 import { IconMenu } from '@tabler/icons-react'
-import { type ComponentPropsWithRef, createContext, type Ref, use, useCallback, useMemo, useState } from 'react'
+import { type ComponentPropsWithRef, createContext, use, useCallback, useMemo, useState } from 'react'
 import { composeRenderProps, Link } from 'react-aria-components'
-import { useIsMobile } from '@/lib/hooks'
+import { useIsMobile } from '@/hooks/use-mobile'
 import { cn } from '@/lib/utils'
 import { Button } from './button'
 import { Sheet } from './sheet'
@@ -93,7 +93,7 @@ const Navbar = ({
                 )}
                 data-navbar-variant={variant}
                 style={{
-                    // @ts-ignore
+                    // @ts-expect-error
                     '--navbar-height': HEIGHT
                 }}
                 {...props}
@@ -147,23 +147,18 @@ const NavbarNav = ({ useDefaultResponsive = true, className, ref, children, ...p
     )
 }
 
-interface NavbarTriggerProps extends ButtonProps {
-    ref?: Ref<HTMLButtonElement>
-}
-
-const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
+const NavbarTrigger = ({ className, onPress, ...props }: ButtonProps) => {
     const { toggleNavbar } = useNavbar()
     return (
         <Button
             aria-label={props['aria-label'] || 'Toggle Navbar'}
             className={className}
             data-navbar-trigger='true'
-            icon
             onPress={(event) => {
                 onPress?.(event)
                 toggleNavbar()
             }}
-            ref={ref}
+            size='icon'
             variant='ghost'
             {...props}
         >
@@ -236,7 +231,7 @@ const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
     return (
         <div
             className={cn(
-                'flex justify-between bg-sidebar text-sidebar-foreground peer-has-[[data-navbar-variant=float]]:border peer-has-[[data-navbar-variant=float]]:border-sidebar-border md:hidden',
+                'flex justify-between bg-sidebar text-sidebar-foreground peer-has-data-[navbar-variant=float]:border peer-has-data-[navbar-variant=float]:border-sidebar-border md:hidden',
                 variant === 'float' && 'h-12 rounded-lg border px-3.5',
                 variant === 'inset' && 'h-14 border-b px-4',
                 variant === 'default' && 'h-14 border-b px-4',
