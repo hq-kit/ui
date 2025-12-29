@@ -1,12 +1,18 @@
 'use client'
 
+import type { Component } from '@/types/search'
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import { Header, ListBox, ListBoxItem, type ListBoxItemProps, ListBoxSection } from 'react-aria-components'
-import { docs } from '@/.velite'
+import menus from '@/components-search.json'
 import { titleCase } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
+
+export type SidebarItem = {
+  section: string
+  children?: { title: string; slug: string }[]
+}
 
 export function Aside() {
   useEffect(() => {
@@ -20,27 +26,25 @@ export function Aside() {
     }
   }, [])
 
-  const gettingStarted = docs.filter((doc) => doc.slug.startsWith('getting-started'))
-  const darkModes = docs.filter((doc) => doc.slug.startsWith('dark-mode'))
-  const components = docs.filter((doc) => doc.slug.startsWith('components'))
-
-  const componentSections = Array.from(new Set(components.map((component) => component.slug.split('/')[1])))
+  const gettingStarted = menus[0] as SidebarItem
+  const darkModes = menus[1] as SidebarItem
+  const components = menus[2] as Component
 
   const sections = [
     {
       title: 'Getting Started',
-      items: gettingStarted
+      items: gettingStarted.children
     },
     {
       title: 'Dark Modes',
-      items: darkModes
+      items: darkModes.children
     },
     {
       title: 'Components',
       items: [],
-      sections: componentSections.map((section) => ({
-        title: titleCase(section),
-        items: components.filter((component) => component.slug.startsWith(`components/${section}`))
+      sections: components.children?.map((section) => ({
+        title: section.subsection,
+        items: section.children ?? []
       }))
     }
   ]
@@ -51,8 +55,8 @@ export function Aside() {
         <ListBox aria-label='Navigation' className='flex flex-col' key={section.title}>
           <ListBoxSection>
             <Header className='mt-4 mb-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
-            {section.items.map((item) => (
-              <MenuLink href={`/docs/${item.slug}`} key={item.slug} textValue={item.title}>
+            {section.items?.map((item) => (
+              <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                 {item.title}
               </MenuLink>
             ))}
@@ -60,8 +64,8 @@ export function Aside() {
           {section.sections?.map((section) => (
             <ListBoxSection key={section.title}>
               <Header className='mt-4 mb-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
-              {section.items.map((item) => (
-                <MenuLink href={`/docs/${item.slug}`} key={item.slug} textValue={item.title}>
+              {section.items?.map((item) => (
+                <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                   {item.title}
                 </MenuLink>
               ))}

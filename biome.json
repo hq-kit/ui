@@ -77,7 +77,7 @@
           "level": "error",
           "options": {
             "attributes": ["classList"],
-            "functions": ["cn", "cva", "composeRenderProps"]
+            "functions": ["cn", "tv", "twMerge", "composeRenderProps"]
           }
         }
       },

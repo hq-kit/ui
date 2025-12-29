@@ -26,15 +26,18 @@
       "@/*": [
         "./*"
       ],
-      "#docs": [
-        "./.velite"
+      "#docs/*": [
+        "./.source/*"
       ],
       "layouts/*": [
         "./components/docs/block/layouts/*"
       ],
       "components/*": [
         "./components/docs/block/components/*"
-      ]
+      ],
+      "content-collections": [
+        "./.content-collections/generated"
+      ],
     }
   },
   "include": [

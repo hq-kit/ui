@@ -9,7 +9,7 @@ export function TypographyH2(props: ComponentPropsWithRef<'h2'>) {
 }
 
 export function TypographyH3(props: ComponentPropsWithRef<'h3'>) {
-  return <h3 className='mt-6 scroll-m-20 font-semibold text-xl tracking-tight' {...props} />
+  return <h3 className='mt-6 mb-4 scroll-m-20 font-semibold text-xl tracking-tight' {...props} />
 }
 
 export function TypographyH4(props: ComponentPropsWithRef<'h4'>) {
@@ -48,12 +48,10 @@ export function TypographyTd(props: ComponentPropsWithRef<'td'>) {
   return <td className='border px-4 py-2' {...props} />
 }
 
-export function TypographyPre(props: ComponentPropsWithRef<'pre'>) {
-  return <pre className='my-2 w-full overflow-x-auto rounded-lg' {...props} />
-}
-
 export function TypographyCode(props: ComponentPropsWithRef<'code'>) {
-  return <code className='relative rounded p-[0.2rem] font-mono text-sm' {...props} />
+  return (
+    <code className='relative rounded bg-secondary p-[0.2rem] font-mono text-secondary-foreground text-sm' {...props} />
+  )
 }
 
 export function TypographySmall(props: ComponentPropsWithRef<'small'>) {

@@ -3,134 +3,130 @@
 import type { ComponentProps, ComponentPropsWithRef } from 'react'
 import { IconX } from '@tabler/icons-react'
 import {
-    Button,
-    type ButtonProps,
-    composeRenderProps,
-    type DialogProps,
-    type DialogTriggerProps,
-    Heading,
-    type ModalOverlayProps,
-    Dialog as RACDialog,
-    DialogTrigger as RACDialogTrigger,
-    type HeadingProps as RACHeadingProps,
-    Modal as RACModal,
-    ModalOverlay as RACModalOverlay,
-    Text,
-    type TextProps
+  Button,
+  type ButtonProps,
+  composeRenderProps,
+  type DialogProps,
+  type DialogTriggerProps,
+  Heading,
+  type ModalOverlayProps,
+  Dialog as RACDialog,
+  DialogTrigger as RACDialogTrigger,
+  type HeadingProps as RACHeadingProps,
+  Modal as RACModal,
+  ModalOverlay as RACModalOverlay,
+  Text,
+  type TextProps
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
 const Dialog = (props: DialogTriggerProps) => <RACDialogTrigger {...props} />
 
 const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
-    <RACModalOverlay
-        className={composeRenderProps(className, (className) =>
-            cn(
-                'fixed inset-0 isolate z-50 bg-black/50 [--visual-viewport-vertical-padding:32px]',
-                'data-entering:fade-in data-entering:animate-in data-entering:ease-out',
-                'data-exiting:fade-out data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in',
-                className
-            )
-        )}
-        isDismissable={isDismissable}
-        isKeyboardDismissDisabled={!isDismissable}
-        {...props}
-    />
+  <RACModalOverlay
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'fixed inset-0 isolate z-50 bg-black/50 [--visual-viewport-vertical-padding:32px]',
+        'data-entering:fade-in data-entering:animate-in data-entering:ease-out',
+        'data-exiting:fade-out data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in',
+        className
+      )
+    )}
+    isDismissable={isDismissable}
+    isKeyboardDismissDisabled={!isDismissable}
+    {...props}
+  />
 )
 
 interface DialogContentProps
-    extends Omit<ComponentProps<typeof RACModal>, 'children'>,
-        Omit<ModalOverlayProps, 'className' | 'children'> {
-    'aria-label'?: DialogProps['aria-label']
-    'aria-labelledby'?: DialogProps['aria-labelledby']
-    role?: DialogProps['role']
-    closeButton?: boolean
-    children?: DialogProps['children']
-    className?: DialogProps['className']
+  extends Omit<ComponentProps<typeof RACModal>, 'children'>,
+    Omit<ModalOverlayProps, 'className' | 'children'> {
+  'aria-label'?: DialogProps['aria-label']
+  'aria-labelledby'?: DialogProps['aria-labelledby']
+  role?: DialogProps['role']
+  closeButton?: boolean
+  children?: DialogProps['children']
+  className?: DialogProps['className']
 }
 
 const DialogContent = ({ role = 'dialog', closeButton = true, className, children, ...props }: DialogContentProps) => {
-    const isDismissable = role !== 'alertdialog'
-    return (
-        <DialogOverlay isDismissable={isDismissable} {...props}>
-            <RACModal
-                className={composeRenderProps(className, (className) =>
-                    cn(
-                        '-translate-x-1/2 -translate-y-1/2 fixed top-1/2 bottom-0 left-[50vw] z-50 h-fit w-full max-w-[calc(100%-2rem)] rounded-lg border bg-background shadow-lg transition sm:max-w-lg',
-                        'data-entering:fade-in data-entering:zoom-in-95 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 data-entering:animate-in data-entering:duration-200 data-entering:ease-out',
-                        'data-exiting:fade-out data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in',
-                        className
-                    )
-                )}
-                isDismissable={isDismissable}
-                {...props}
-            >
-                <RACDialog
-                    aria-label='Dialog'
-                    className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
-                    role={role}
-                    slot='dialog'
-                >
-                    {(values) => (
-                        <>
-                            {typeof children === 'function' ? children(values) : children}
-                            {closeButton && isDismissable && <DialogX />}
-                        </>
-                    )}
-                </RACDialog>
-            </RACModal>
-        </DialogOverlay>
-    )
+  const isDismissable = role !== 'alertdialog'
+  return (
+    <DialogOverlay isDismissable={isDismissable} {...props}>
+      <RACModal
+        className={composeRenderProps(className, (className) =>
+          cn(
+            'fixed top-1/2 bottom-0 left-[50vw] z-50 h-fit w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background shadow-lg transition sm:max-w-lg',
+            'data-entering:fade-in data-entering:zoom-in-95 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 data-entering:animate-in data-entering:duration-200 data-entering:ease-out',
+            'data-exiting:fade-out data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in',
+            className
+          )
+        )}
+        isDismissable={isDismissable}
+        {...props}
+      >
+        <RACDialog
+          aria-label='Dialog'
+          className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
+          role={role}
+          slot='dialog'
+        >
+          {(values) => (
+            <>
+              {typeof children === 'function' ? children(values) : children}
+              {closeButton && isDismissable && <DialogX />}
+            </>
+          )}
+        </RACDialog>
+      </RACModal>
+    </DialogOverlay>
+  )
 }
 
 const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return (
-        <div
-            className={cn('flex flex-col gap-2 p-6 pb-0 text-center sm:text-left', className)}
-            slot='header'
-            {...props}
-        />
-    )
+  return (
+    <div className={cn('flex flex-col gap-2 p-6 pb-0 text-center sm:text-left', className)} slot='header' {...props} />
+  )
 }
 
 const DialogTitle = ({ className, ...props }: RACHeadingProps) => (
-    <Heading className={cn('font-semibold text-lg leading-none', className)} slot='title' {...props} />
+  <Heading className={cn('font-semibold text-lg leading-none', className)} slot='title' {...props} />
 )
 
 const DialogDescription = ({ className, ...props }: TextProps) => (
-    <Text className={cn('text-muted-foreground text-sm', className)} slot='description' {...props} />
+  <Text className={cn('text-muted-foreground text-sm', className)} slot='description' {...props} />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
-    <div
-        className={cn(
-            'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll',
-            className
-        )}
-        slot='body'
-        {...props}
-    />
+  <div
+    className={cn(
+      'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll',
+      className
+    )}
+    slot='body'
+    {...props}
+  />
 )
 
 const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
-    return (
-        <div
-            className={cn('flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end', className)}
-            slot='footer'
-            {...props}
-        />
-    )
+  return (
+    <div
+      className={cn('flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end', className)}
+      slot='footer'
+      {...props}
+    />
+  )
 }
 
 const DialogX = (props: ButtonProps) => (
-    <Button
-        aria-label='Close'
-        className='absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-background text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring data-pressed:bg-muted/50'
-        slot='close'
-        {...props}
-    >
-        <IconX size={16} />
-    </Button>
+  <Button
+    aria-label='Close'
+    className='absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-background text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring data-pressed:bg-muted/50'
+    slot='close'
+    {...props}
+  >
+    <IconX size={16} />
+  </Button>
 )
 
 const DialogTrigger = (props: ButtonProps) => <Button {...props} />
@@ -146,14 +142,14 @@ Dialog.Description = DialogDescription
 Dialog.X = DialogX
 
 export {
-    Dialog,
-    DialogTrigger,
-    DialogContent,
-    DialogBody,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogOverlay,
-    DialogTitle,
-    DialogX
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogBody,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogX
 }

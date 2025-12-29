@@ -1,35 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeStringify from 'rehype-stringify'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import { transform } from 'sucrase'
-import { unified } from 'unified'
-import { FileIcon } from '@/components/mdx/file-icon'
-import { Button, CopyButton, Tooltip } from '@/components/ui'
+import React, { useState } from 'react'
+import { codeToHtml } from 'shiki'
 import { copyToClipboard } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
+import { CopyButton } from './copy-button'
 
-export function Code({
-  lang = 'tsx',
-  code,
-  filename,
-  keepBackground = false,
-  withoutSwitcher = false,
-  className
-}: {
+export interface CodeProps {
   lang?: string
   code: string
-  filename?: string
-  keepBackground?: boolean
-  withoutSwitcher?: boolean
   className?: string
-}) {
-  const [copied, setCopied] = useState<boolean>(false)
+  copy?: boolean
+}
 
-  const [isTs, setIsTs] = useState<boolean>(true)
+export const Code = ({ lang = 'tsx', code, className, copy = false, ...props }: CodeProps) => {
+  const [loading, setLoading] = useState(false)
+  const [formattedCode, setFormattedCode] = useState('')
+  const [error, setError] = useState('')
+  const [copied, setCopied] = useState<boolean>(false)
 
   const copyCode = async () => {
     await copyToClipboard(code).then(() => {
@@ -38,85 +26,52 @@ export function Code({
     })
   }
 
-  return (
-    <div className={cn('relative overflow-hidden rounded-lg border', className)}>
-      <div className={cn('flex items-center justify-between gap-1.5 border-b bg-accent p-1 text-accent-foreground')}>
-        <div className='flex items-center gap-2 pl-2'>
-          <FileIcon lang={lang} />
-          {filename && <span className='font-medium font-mono text-sm'>{filename}</span>}
-        </div>
-        <div className='flex items-center gap-1.5'>
-          {!withoutSwitcher && (
-            <Tooltip>
-              <Button onPress={() => setIsTs(!isTs)} size='icon-sm' variant='ghost'>
-                <FileIcon lang={isTs ? 'ts' : 'js'} />
-              </Button>
-              <Tooltip.Content isInverse>{isTs ? 'Switch to JavaScript' : 'Switch to TypeScript'}</Tooltip.Content>
-            </Tooltip>
-          )}
-          <CopyButton copied={copied} onPress={copyCode} />
-        </div>
-      </div>
-      <div className='no-scrollbar max-h-96 max-w-full overflow-auto'>
-        <CodeHighlighter
-          code={
-            isTs
-              ? code
-              : transform(code, {
-                  transforms: ['typescript', 'jsx'],
-                  jsxRuntime: 'preserve',
-                  disableESTransforms: true
-                }).code
-          }
-          keepBackground={keepBackground}
-          lang={lang}
-        />
-      </div>
-    </div>
-  )
-}
-
-interface CodeProps {
-  lang?: string
-  code: string
-  keepBackground?: boolean
-}
-
-export const CodeHighlighter = ({ lang = 'tsx', code, keepBackground = true }: CodeProps) => {
-  const [formattedCode, setFormattedCode] = useState('')
-  const [error, setError] = useState('')
-
-  useEffect(() => {
+  React.useEffect(() => {
+    setLoading(true)
     const processCode = async () => {
       try {
-        const file = await unified()
-          .use(remarkParse)
-          .use(remarkRehype, { allowDangerousHtml: true })
-          .use(rehypePrettyCode, {
-            keepBackground: keepBackground,
-            theme: {
-              dark: 'catppuccin-mocha',
-              light: 'catppuccin-latte'
-            },
-            defaultLang: {
-              block: lang,
-              inline: 'bash'
+        const file = await codeToHtml(code, {
+          lang: lang,
+          themes: { light: 'catppuccin-latte', dark: 'catppuccin-mocha' },
+          transformers: [
+            {
+              line(node, line) {
+                node.properties['data-line'] = line
+              },
+              span(node, line, col) {
+                node.properties['data-token'] = `token:${line}:${col}`
+              }
             }
-          })
-          .use(rehypeStringify, { allowDangerousHtml: true })
-          .process(`\`\`\`${lang}\n${code}\n\`\`\``)
+          ]
+        }).then((r) => r)
         setFormattedCode(String(file))
       } catch (err) {
         setError('Failed to process code. Please check the configuration.')
         console.error(err)
       }
     }
-    processCode()
-  }, [code, lang, keepBackground])
+    processCode().then(() => setLoading(false))
+  }, [code, lang])
 
   if (error) {
     return <p>Error: {error}</p>
   }
 
-  return <div dangerouslySetInnerHTML={{ __html: formattedCode }} />
+  return loading ? (
+    <div />
+  ) : (
+    <div className='relative w-full'>
+      <div
+        {...props}
+        className={cn(
+          'not-prose relative my-4 w-full max-w-none overflow-hidden rounded-lg text-sm/6 shadow-sm',
+          '*:[pre]:rounded-lg *:[pre]:py-2',
+          '**:[&::-webkit-scrollbar-thumb]:rounded-lg **:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 **:[&::-webkit-scrollbar-track]:rounded-lg **:[&::-webkit-scrollbar-track]:bg-muted **:[&::-webkit-scrollbar]:size-1.5 **:[&::-webkit-scrollbar]:bg-transparent **:[pre]:max-h-96 **:[pre]:overflow-auto',
+          className
+        )}
+        dangerouslySetInnerHTML={{ __html: formattedCode }}
+      />
+      {copy && <CopyButton className='absolute top-1.5 right-1.5 z-10 bg-card' isCopied={copied} onPress={copyCode} />}
+    </div>
+  )
 }

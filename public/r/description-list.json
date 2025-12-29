@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "description-list",
-  "type": "registry:ui",
   "registryDependencies": [
     "utils"
   ],
@@ -11,5 +10,6 @@
       "content": "import type { ComponentPropsWithRef } from 'react'\nimport { cn } from '@/lib/utils'\n\nconst DL = ({ className, ...props }: ComponentPropsWithRef<'dl'>) => {\n    return (\n        <dl\n            className={cn(\n                'grid grid-cols-1 text-base/6 sm:grid-cols-[min(50%,calc(var(--spacing)*80))_auto] sm:text-sm/6',\n                className\n            )}\n            {...props}\n        />\n    )\n}\n\nconst DT = ({ className, ...props }: ComponentPropsWithRef<'dt'>) => {\n    return (\n        <dt\n            className={cn('col-start-1 border-t pt-3 text-muted-foreground first:border-none sm:py-3', className)}\n            {...props}\n        />\n    )\n}\n\nconst DD = ({ className, ...props }: ComponentPropsWithRef<'dd'>) => {\n    return (\n        <dd\n            className={cn('pt-1 pb-3 text-foreground sm:border-t sm:nth-2:border-none sm:py-3', className)}\n            {...props}\n        />\n    )\n}\n\nDL.T = DT\nDL.D = DD\n\nexport { DL, DT, DD }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton",
-  "type": "registry:ui",
   "registryDependencies": [
     "utils"
   ],
@@ -11,5 +10,6 @@
       "content": "import type { ComponentProps } from 'react'\nimport { cn } from '@/lib/utils'\n\nconst Skeleton = ({ className, ...props }: ComponentProps<'div'>) => (\n    <div className={cn('animate-pulse rounded-md bg-accent', className)} data-slot='skeleton' {...props} />\n)\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

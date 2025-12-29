@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator",
-  "type": "registry:ui",
   "dependencies": [
     "react-aria-components"
   ],
@@ -14,5 +13,6 @@
       "content": "'use client'\n\nimport { Separator as RACSeparator, type SeparatorProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nfunction Separator({ className, orientation = 'horizontal', ...props }: SeparatorProps) {\n    return (\n        <RACSeparator\n            className={cn(\n                'shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px',\n                className\n            )}\n            data-slot='separator'\n            orientation={orientation}\n            {...props}\n        />\n    )\n}\n\nexport { Separator }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

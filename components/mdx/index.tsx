@@ -1,9 +1,17 @@
 import type { ComponentProps } from 'react'
 import { IconAlertCircle } from '@tabler/icons-react'
 import Image from 'next/image'
-import * as runtime from 'react/jsx-runtime'
+import { Block } from '@/components/mdx/block'
+import { BlockCode } from '@/components/mdx/block-code'
+import { CLI } from '@/components/mdx/cli'
+import { Code } from '@/components/mdx/code'
+import { Demo } from '@/components/mdx/demo'
+import { Grid } from '@/components/mdx/grids'
+import { Install } from '@/components/mdx/install'
+import { Preview } from '@/components/mdx/preview'
 import {
   TypographyA,
+  TypographyBlockquote,
   TypographyCode,
   TypographyH1,
   TypographyH2,
@@ -11,19 +19,16 @@ import {
   TypographyH4,
   TypographyOl,
   TypographyP,
-  TypographyPre,
+  TypographySmall,
   TypographyTable,
   TypographyTd,
   TypographyTh,
   TypographyTr,
   TypographyUl
 } from '@/components/mdx/typography'
-import { Alert } from '../ui'
-import { Block } from './block'
-import { CLI } from './cli'
-import { Code } from './code'
+import { Alert } from '@/components/ui/alert'
 
-const components = {
+export const mdxComponents = {
   h1: TypographyH1,
   h2: TypographyH2,
   h3: TypographyH3,
@@ -37,25 +42,21 @@ const components = {
   td: TypographyTd,
   th: TypographyTh,
   code: TypographyCode,
-  pre: TypographyPre,
+  pre: BlockCode,
+  blockquote: TypographyBlockquote,
+  small: TypographySmall,
   Code,
   CLI,
   Block,
   Image,
+  Install,
+  Demo,
+  Preview,
+  Grid,
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
     <Alert {...props} className='my-4' variant='destructive'>
       <IconAlertCircle className='my-0.5' />
-      <Alert.Description className='cols-start-2'>{children}</Alert.Description>
+      <Alert.Description className='cols-start-2 **:text-destructive/90!'>{children}</Alert.Description>
     </Alert>
   )
-}
-
-const useMDXComponent = (code: string) => {
-  const fn = new Function(code)
-  return fn({ ...runtime }).default
-}
-
-export function MDXContent({ code }: { code: string }) {
-  const Component = useMDXComponent(code)
-  return <Component components={{ ...components }} />
 }

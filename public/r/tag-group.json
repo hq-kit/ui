@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag-group",
+  "dependencies": [
+    "react-aria-components",
+    "@tabler/icons-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tag-group.tsx",
+      "content": "'use client'\n\nimport type { TagGroupProps, TagListProps, TagProps } from 'react-aria-components'\nimport { IconX } from '@tabler/icons-react'\nimport {\n  Button,\n  composeRenderProps,\n  Tag as RACTag,\n  TagGroup as RACTagGroup,\n  TagList as RACTagList\n} from 'react-aria-components'\nimport { twMerge } from 'tailwind-merge'\nimport { cn } from '@/lib/utils'\n\nfunction TagGroup({ className, ...props }: TagGroupProps) {\n  return (\n    <RACTagGroup\n      className={twMerge('flex flex-col gap-y-1 *:data-[slot=label]:font-medium', className)}\n      data-slot='control'\n      {...props}\n    />\n  )\n}\n\nexport function TagList<T extends object>({ className, ...props }: TagListProps<T>) {\n  return (\n    <RACTagList\n      className={composeRenderProps(className, (className) => cn('flex flex-wrap gap-1', className))}\n      {...props}\n    />\n  )\n}\n\nfunction Tag({ children, className, ...props }: TagProps) {\n  const textValue = typeof children === 'string' ? children : undefined\n\n  return (\n    <RACTag\n      className={composeRenderProps(className, (className) =>\n        cn(\n          'inset-ring inset-ring-input outline-hidden dark:bg-input/30',\n          'inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5',\n          '[&_svg:not([class*=\"size-\"])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n          'cursor-default rounded-full px-2',\n          'focus:ring-[3px] focus:ring-ring/50 focus-visible:ring-[3px] focus-visible:ring-ring/50',\n          'data-selected:inset-ring-ring/70 data-selected:bg-primary data-selected:text-primary-foreground',\n          'disabled:opacity-50',\n          'href' in props ? 'cursor-pointer' : 'cursor-default',\n          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',\n          className\n        )\n      )}\n      textValue={textValue}\n      {...props}\n    >\n      {({ allowsRemoving }) => (\n        <>\n          {children}\n          {allowsRemoving && (\n            <Button slot='remove'>\n              <IconX />\n            </Button>\n          )}\n        </>\n      )}\n    </RACTag>\n  )\n}\n\nTag.Group = TagGroup\n\nexport { TagGroup, Tag }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

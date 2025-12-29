@@ -53,6 +53,9 @@
     --color-code-number: var(--code-number);
     --color-selection: var(--selection);
     --color-selection-foreground: var(--selection-foreground);
+
+    --color-shiki-bg: var(--shiki-light-bg);
+    --color-shiki-dark-bg: var(--shiki-dark-bg);
 }
 
 :root {
@@ -199,6 +202,47 @@
     }
 }
 
+/* ==== Scrollbar dengan efek fade ==== */
+.scrollbar-fade {
+    --scrollbar-thumb: rgba(100, 100, 100, 0);
+    /* default transparan */
+    overflow-y: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+    /* Firefox */
+    transition: --scrollbar-thumb 0.3s ease;
+}
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+.scrollbar-fade::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar-fade::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-fade::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    opacity: 0;
+    /* awalnya hilang */
+    transition:
+        background-color 0.4s ease,
+        opacity 0.4s ease;
+    /* awalnya hilang */
+}
+
+/* Saat hover */
+.scrollbar-fade:hover {
+    --scrollbar-thumb: rgba(100, 100, 100, 0.6);
+    scrollbar-color: rgba(100, 100, 100, 0.6) transparent;
+}
+
+.scrollbar-fade:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
+}
+
 @utility border-ghost {
     @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
 }
@@ -208,8 +252,8 @@
     @apply relative;
 
     &:before {
-        @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
         content: counter(step);
+        @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
     }
 }
 
@@ -237,116 +281,60 @@
             @apply !mt-2;
         }
     }
-
-    [data-rehype-pretty-code-figure] {
-        background-color: var(--color-code);
-        color: var(--color-code-foreground);
-        border-radius: var(--radius-lg);
-        border-width: 0px;
-        border-color: var(--border);
-        margin-top: calc(var(--spacing) * 6);
-        overflow: hidden;
-        font-size: var(--text-sm);
-        outline: none;
-        position: relative;
-        @apply -mx-1 md:-mx-1;
-
-        &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
-            top: calc(var(--spacing) * 1.5) !important;
-        }
-    }
-
-    [data-rehype-pretty-code-title] {
-        border-bottom: color-mix(in oklab, var(--border) 30%, transparent);
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        padding-block: calc(var(--spacing) * 2.5);
-        padding-inline: calc(var(--spacing) * 4);
-        font-size: var(--text-sm);
-        font-family: var(--font-mono);
-        color: var(--color-code-foreground);
-    }
-
-    [data-line-numbers] {
-        display: grid;
-        min-width: 100%;
-        white-space: pre;
-        border: 0;
-        background: transparent;
-        padding: 0;
-        counter-reset: line;
-        box-decoration-break: clone;
-    }
-
-    [data-line-numbers] [data-line]::before {
-        font-size: var(--text-sm);
-        counter-increment: line;
-        content: counter(line);
-        display: inline-block;
-        width: calc(var(--spacing) * 16);
-        padding-right: calc(var(--spacing) * 6);
-        text-align: right;
-        color: var(--color-code-number);
-        background-color: var(--color-code);
-        position: sticky;
-        left: 0;
-    }
-
-    [data-line-numbers] [data-highlighted-line][data-line]::before {
-        background-color: var(--color-code-highlight);
-    }
-
-    [data-line] {
-        padding-top: calc(var(--spacing) * 0.5);
-        padding-bottom: calc(var(--spacing) * 0.5);
-        min-height: calc(var(--spacing) * 1);
-        width: 100%;
-        display: inline-block;
-    }
-
-    [data-line] span {
-        color: var(--shiki-light);
-
-        @variant dark {
-            color: var(--shiki-dark) !important;
-        }
-    }
-
-    [data-highlighted-line],
-    [data-highlighted-chars] {
-        position: relative;
-        background-color: var(--color-code-highlight);
-    }
-
-    [data-highlighted-line] {
-        &:after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 2px;
-            height: 100%;
-            content: "";
-            background-color: color-mix(in oklab,
-                    var(--muted-foreground) 50%,
-                    transparent);
-        }
-    }
-
-    [data-highlighted-chars] {
-        border-radius: var(--radius-sm);
-        padding-inline: 0.3rem;
-        padding-block: 0.1rem;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-    }
 }
 
-@layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
+.shiki {
+    background-color: var(--shiki-light-bg);
+}
 
-    body {
-        @apply bg-background text-foreground;
-    }
+.shiki span {
+    color: var(--shiki-light);
+}
+
+.dark .shiki,
+.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
+[data-line-numbers] {
+    display: grid;
+    min-width: 100%;
+    white-space: pre;
+    counter-reset: line;
+    box-decoration-break: clone;
+}
+
+[data-line-numbers] .line::before {
+    position: sticky;
+    left: 0;
+    display: inline-block;
+    width: calc(var(--spacing) * 16);
+    padding-right: calc(var(--spacing) * 6);
+    font-size: var(--text-sm);
+    text-align: right;
+    content: counter(line);
+    counter-increment: line;
+}
+
+code:not([data-line-numbers]) .line {
+    padding-inline: calc(var(--spacing) * 3);
+}
+
+.line.highlighted {
+    border-left: 2px solid rgba(255, 208, 0, 0.5);
+}
+
+.line {
+    display: inline-block;
+    width: 100%;
+    min-height: calc(var(--spacing) * 1);
+    padding-block: calc(var(--spacing) * 0.5);
+    border-left: 2px solid transparent;
+}
+
+.highlighted,
+.highlighted-chars {
+    position: relative;
+    background-color: rgba(255, 208, 0, 0.1);
 }

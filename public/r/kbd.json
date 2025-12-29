@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kbd",
-  "type": "registry:ui",
   "dependencies": [
     "react-aria-components"
   ],
@@ -11,8 +10,9 @@
   "files": [
     {
       "path": "components/ui/kbd.tsx",
-      "content": "'use client'\n\nimport type { ComponentProps } from 'react'\nimport { Keyboard } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst Kbd = ({ className, ...props }: ComponentProps<typeof Keyboard>) => (\n    <Keyboard\n        className={cn(\n            'pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-sm bg-muted px-1 font-medium font-sans text-muted-foreground text-xs',\n            \"[&_svg:not([class*='size-'])]:size-3\",\n            '[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10',\n            className\n        )}\n        data-slot='kbd'\n        {...props}\n    />\n)\n\nconst KbdGroup = ({ className, ...props }: ComponentProps<'div'>) => (\n    <kbd className={cn('inline-flex items-center gap-1', className)} data-slot='kbd-group' {...props} />\n)\n\nexport { Kbd, KbdGroup }\n",
+      "content": "'use client'\n\nimport type { ComponentProps } from 'react'\nimport { Keyboard } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\ntype ShortcutKeyResult = {\n  symbol: string\n  readable: string\n}\n\nconst shortcutKeyMap: Record<string, ShortcutKeyResult> = {\n  ctrl: { symbol: '⌃', readable: 'Control' },\n  mod: { symbol: '⌘', readable: 'Command/Control' },\n  win: { symbol: '⌘', readable: 'Win' },\n  meta: { symbol: '⌘', readable: 'Meta' },\n  alt: { symbol: '⌥', readable: 'Option/Alt' },\n  shift: { symbol: '⇧', readable: 'Shift' },\n  space: { symbol: '␣', readable: 'Space' },\n  tab: { symbol: '⇥', readable: 'Tab' },\n  delete: { symbol: '⌫', readable: 'Delete' },\n  capslock: { symbol: '⇪', readable: 'Caps Lock' },\n  up: { symbol: '↑', readable: 'Up' },\n  right: { symbol: '→', readable: 'Right' },\n  down: { symbol: '↓', readable: 'Down' },\n  left: { symbol: '←', readable: 'Left' },\n  pageup: { symbol: '⇞', readable: 'Page Up' },\n  pagedown: { symbol: '⇟', readable: 'Page Down' },\n  home: { symbol: '↖', readable: 'Home' },\n  end: { symbol: '↘', readable: 'End' },\n  enter: { symbol: '↵', readable: 'Enter' },\n  esc: { symbol: '⎋', readable: 'Escape' },\n  fn: { symbol: 'Fn', readable: 'Function' }\n}\n\ntype Key = keyof typeof shortcutKeyMap\n\nconst getShortcutKey = (key: Key): ShortcutKeyResult =>\n  shortcutKeyMap[key.toLowerCase()] || { symbol: key, readable: key }\n\nconst Kbd = ({ className, ...props }: ComponentProps<typeof Keyboard>) => (\n  <Keyboard\n    className={cn(\n      'pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-sm bg-muted px-1 font-medium font-sans text-muted-foreground text-xs',\n      \"[&_svg:not([class*='size-'])]:size-3\",\n      'in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10',\n      className\n    )}\n    data-slot='kbd'\n    {...props}\n  >\n    {String(props?.children).toLowerCase() in shortcutKeyMap\n      ? getShortcutKey(String(props.children).toLowerCase()).symbol\n      : props.children}\n  </Keyboard>\n)\n\nconst KbdGroup = ({ className, ...props }: ComponentProps<'div'>) => (\n  <kbd className={cn('inline-flex items-center gap-1', className)} data-slot='kbd-group' {...props} />\n)\n\nexport { Kbd, KbdGroup }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

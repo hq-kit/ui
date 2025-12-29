@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
-  "type": "registry:ui",
   "dependencies": [
     "react-aria-components",
     "tailwind-variants"
@@ -15,5 +14,6 @@
       "content": "'use client'\n\nimport type { ComponentProps } from 'react'\nimport { composeRenderProps, Toolbar, type ToolbarProps } from 'react-aria-components'\nimport { tv, type VariantProps } from 'tailwind-variants'\nimport { cn } from '@/lib/utils'\n\nconst buttonGroupVariants = tv({\n    base: \"flex w-fit items-stretch has-[>[data-slot=button-group]]:gap-2 [&>*]:focus-visible:relative [&>*]:focus-visible:z-10 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1\",\n    variants: {\n        orientation: {\n            horizontal:\n                '[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none',\n            vertical:\n                'flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none'\n        },\n        separator: {\n            true: 'data-[orientation=horizontal]:divide-x data-[orientation=vertical]:divide-y'\n        }\n    },\n    defaultVariants: {\n        orientation: 'horizontal',\n        separator: false\n    }\n})\n\ninterface ButtonGroupProps extends ToolbarProps, VariantProps<typeof buttonGroupVariants> {}\n\nconst ButtonGroup = ({ className, orientation, separator, ...props }: ButtonGroupProps) => (\n    <Toolbar\n        className={composeRenderProps(className, (className) =>\n            cn(buttonGroupVariants({ orientation, separator, className }))\n        )}\n        data-slot='button-group'\n        orientation={orientation ?? 'horizontal'}\n        {...props}\n    />\n)\n\nconst ButtonGroupText = ({ className, ...props }: ComponentProps<'div'>) => {\n    return (\n        <div\n            className={cn(\n                \"flex items-center gap-2 rounded-md border bg-muted px-4 font-medium text-sm shadow-xs *:data-[slot=icon]:pointer-events-none [&_svg:not([class*='size-'])]:size-4\",\n                className\n            )}\n            {...props}\n        />\n    )\n}\n\nexport { ButtonGroup, ButtonGroupText }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

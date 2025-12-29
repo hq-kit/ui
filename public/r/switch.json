@@ -1,18 +1,19 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch",
-  "type": "registry:ui",
   "dependencies": [
     "react-aria-components"
   ],
   "registryDependencies": [
+    "label",
     "utils"
   ],
   "files": [
     {
       "path": "components/ui/switch.tsx",
-      "content": "'use client'\n\nimport { composeRenderProps, Label, Switch as RACSwitch, type SwitchProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst Switch = ({ children, className, ...props }: SwitchProps) => (\n    <RACSwitch\n        className={composeRenderProps(className, (className) =>\n            cn(\n                'group inline-flex items-center gap-2 data-disabled:cursor-not-allowed data-disabled:opacity-70',\n                className\n            )\n        )}\n        {...props}\n    >\n        {(values) => (\n            <>\n                <div className='peer inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent bg-input shadow-xs outline-hidden transition-all disabled:cursor-not-allowed disabled:opacity-50 group-data-focus-visible:border-ring group-data-selected:bg-primary group-data-focus-visible:ring-[3px] group-data-focus-visible:ring-ring/50 dark:bg-input/80'>\n                    <div className='pointer-events-none block size-4 translate-x-0 rounded-full bg-background ring-0 transition-transform group-data-selected:translate-x-[calc(100%-2px)] dark:bg-foreground dark:group-data-selected:bg-primary-foreground' />\n                </div>\n                {typeof children === 'function' ? (\n                    children(values)\n                ) : typeof children === 'string' ? (\n                    <Label className='text-sm transition group-has-invalid/box:text-destructive' elementType='span'>\n                        {children}\n                    </Label>\n                ) : (\n                    children\n                )}\n            </>\n        )}\n    </RACSwitch>\n)\n\nexport { Switch }\n",
+      "content": "'use client'\n\nimport { useId } from 'react'\nimport { composeRenderProps, Switch as RACSwitch, type SwitchProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { Label } from './label'\n\nconst Switch = ({ className, ...props }: SwitchProps) => {\n  const id = useId()\n  return (\n    <div className='flex items-center gap-2'>\n      <RACSwitch\n        className={composeRenderProps(className, (className) =>\n          cn(\n            'peer group inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs outline-none transition-all',\n            'bg-input data-selected:bg-primary dark:bg-input/80',\n            'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',\n            'data-disabled:cursor-not-allowed data-disabled:opacity-50',\n            className\n          )\n        )}\n        data-slot='switch'\n        data-state={props.isSelected ? 'checked' : 'unchecked'}\n        id={props.id ?? id}\n        slot='switch'\n        {...props}\n      >\n        <span\n          className='pointer-events-none block size-4 translate-x-0 rounded-full bg-background ring-0 transition-transform group-data-selected:translate-x-[calc(100%-2px)] dark:bg-foreground dark:group-data-selected:bg-primary-foreground'\n          data-slot='thumb'\n          data-state={props.isSelected ? 'checked' : 'unchecked'}\n        />\n      </RACSwitch>\n      {props.children && typeof props.children === 'string' && <Label htmlFor={props.id ?? id}>{props.children}</Label>}\n    </div>\n  )\n}\n\nexport { Switch }\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }
