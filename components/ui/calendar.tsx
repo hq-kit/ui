@@ -64,7 +64,7 @@ const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
             const id = index + 1
             return (
               <CalendarGrid
-                className='**:[[role=gridcell]]:p-[3px]'
+                className='**:[[role=gridcell]]:p-0.75'
                 key={index}
                 offset={id >= 2 ? { months: id - 1 } : undefined}
               >
@@ -74,7 +74,7 @@ const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
           })}
         </div>
       ) : (
-        <CalendarGrid className='**:[[role=gridcell]]:p-[3px]'>{renderCalendarDate}</CalendarGrid>
+        <CalendarGrid className='**:[[role=gridcell]]:p-0.75'>{renderCalendarDate}</CalendarGrid>
       )}
     </RACCalendar>
   )
@@ -99,7 +99,7 @@ const RangeCalendar = <T extends DateValue>({ visibleDuration = { months: 1 }, .
           const id = index + 1
           return (
             <CalendarGrid
-              className='**:[[role=gridcell]]:py-[3px] **:[[role=gridcell]]:first:*:rounded-s-lg **:[[role=gridcell]]:last:*:rounded-e-lg'
+              className='**:[[role=gridcell]]:py-0.75 **:[[role=gridcell]]:first:*:rounded-s-lg **:[[role=gridcell]]:last:*:rounded-e-lg'
               key={index}
               offset={id >= 2 ? { months: id - 1 } : undefined}
             >

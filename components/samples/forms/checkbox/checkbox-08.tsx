@@ -1,21 +1,20 @@
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox, CheckboxGroup } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 
 const technologies = ['React', 'Next.js', 'Remix']
 
 const CheckboxHorizontalGroupDemo = () => {
   return (
-    <div className='space-y-4'>
+    <CheckboxGroup>
       <Label className='font-semibold'>Technologies</Label>
       <div className='flex flex-wrap items-center gap-x-4 gap-y-2'>
         {technologies.map((label) => (
-          <div className='flex items-center gap-2' key={label}>
-            <Checkbox id={label} />
-            <Label htmlFor={label}>{label}</Label>
-          </div>
+          <Checkbox key={label} value={label}>
+            {label}
+          </Checkbox>
         ))}
       </div>
-    </div>
+    </CheckboxGroup>
   )
 }
 

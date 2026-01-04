@@ -85,6 +85,19 @@ const fieldVariants = tv({
   }
 })
 
+const Field = ({
+  className,
+  orientation = 'vertical',
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof fieldVariants>) => (
+  <div
+    className={cn(fieldVariants({ orientation }), className)}
+    data-orientation={orientation}
+    data-slot='field'
+    {...props}
+  />
+)
+
 const TextField = ({
   className,
   orientation = 'vertical',
@@ -176,20 +189,12 @@ const DateRangePicker = <T extends DateValue>({
   />
 )
 
-const FieldContent = ({ className, ...props }: ComponentProps<'div'>) => (
-  <div
-    className={cn('group/field-content flex flex-1 flex-col gap-1.5 leading-snug', className)}
-    data-slot='field-content'
-    {...props}
-  />
-)
-
 const FieldLabel = ({ className, ...props }: ComponentProps<typeof Label>) => (
   <Label
     className={cn(
       'group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50',
       'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4',
-      'has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10',
+      'has-data-[state=checked]:border-primary has-data-selected:bg-primary/5 dark:has-data-selected:bg-primary/10',
       className
     )}
     data-slot='field-label'
@@ -265,7 +270,6 @@ Field.Group = FieldGroup
 Field.Legend = FieldLegend
 Field.Separator = FieldSeparator
 Field.Set = FieldSet
-Field.Content = FieldContent
 Field.Title = FieldTitle
 
 Field.Text = TextField
@@ -277,7 +281,7 @@ Field.Number = NumberField
 Field.Search = SearchField
 
 export {
-  type Field,
+  Field,
   FieldLabel,
   FieldDescription,
   FieldError,
@@ -285,7 +289,6 @@ export {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-  FieldContent,
   FieldTitle,
   DateField,
   TimeField,

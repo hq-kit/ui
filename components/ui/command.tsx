@@ -113,7 +113,7 @@ const CommandInput = ({
 const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
   <Menu
     className={cn(
-      'scrollbar-fade max-h-[300px] scroll-py-1 overflow-y-auto overflow-x-hidden px-1 py-1 has-data-[slot=title]:py-0',
+      'scrollbar-fade max-h-75 scroll-py-1 overflow-y-auto overflow-x-hidden px-1 py-1 has-data-[slot=title]:py-0',
       className
     )}
     data-slot='command-list'

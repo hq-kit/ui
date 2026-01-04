@@ -2,63 +2,70 @@
 
 import { IconCircleFilled } from '@tabler/icons-react'
 import {
-    composeRenderProps,
-    Label,
-    Radio as RACRadio,
-    RadioGroup as RACRadioGroup,
-    type RadioGroupProps,
-    type RadioProps
+  composeRenderProps,
+  Label,
+  Radio as RACRadio,
+  RadioGroup as RACRadioGroup,
+  type RadioGroupProps,
+  type RadioProps
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
 const RadioGroup = ({ className, ...props }: RadioGroupProps) => {
-    return (
-        <RACRadioGroup
-            {...props}
-            className={cn(
-                'space-y-3 has-[[slot=description]]:space-y-6 has-[[slot=description]]:**:data-[slot=label]:font-medium **:[[slot=description]]:block',
-                className
-            )}
-            data-slot='control'
-        />
-    )
+  return (
+    <RACRadioGroup
+      {...props}
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/radio-group flex gap-x-4 gap-y-2 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:items-center',
+          className
+        )
+      )}
+      data-slot='control'
+    />
+  )
 }
 
 const Radio = ({ className, ...props }: RadioProps) => {
-    return (
-        <RACRadio
-            className={composeRenderProps(className, (className) => cn('group/box flex items-center gap-2', className))}
-            {...props}
-        >
-            {({ isSelected }) => (
-                <>
-                    <div
-                        className={cn(
-                            'relative flex size-4 shrink-0 items-center justify-center rounded-full border bg-transparent shadow-xs transition dark:bg-input/30',
-                            'border-input group-hover/box:border-ring/50 group-has-invalid/box:border-destructive/70',
-                            'group-data-selected/box:group-data-has-invalid/box:border-destructive/70 group-data-selected/box:border-primary group-data-selected/box:bg-primary group-data-selected/box:text-primary-foreground group-data-selected/box:group-has-invalid/box:border-destructive/70 group-data-selected/box:group-has-invalid/box:bg-destructive group-data-selected/box:group-has-invalid/box:text-destructive-foreground dark:group-data-selected/box:bg-primary',
-                            'group-data-focus/box:border-primary group-data-focus/box:group-has-invalid/box:border-destructive/70',
-                            'group-data-focus-visible/box:border-primary/70 group-data-focus-visible/box:ring-[3px] group-data-focus-visible/box:ring-ring/50 group-data-focus-visible/box:group-has-invalid/box:border-destructive/70 group-data-focus-visible/box:group-has-invalid/box:ring-destructive/20',
-                            'group-data-indeterminate/box:border-primary group-data-indeterminate/box:bg-primary group-data-indeterminate/box:text-primary-foreground',
-                            className
-                        )}
-                    >
-                        {isSelected ? <IconCircleFilled className='size-2' /> : null}
-                    </div>
-                    {typeof props.children === 'string' ? (
-                        <Label
-                            className='not-last:text-sm/4 text-sm transition group-has-invalid/box:text-destructive'
-                            elementType='span'
-                        >
-                            {props.children}
-                        </Label>
-                    ) : (
-                        props.children
-                    )}
-                </>
+  return (
+    <RACRadio
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/radio flex items-center space-x-3 has-[&_p]:items-start **:[p]:mt-2 **:[p]:text-muted-foreground **:[p]:text-sm',
+          className
+        )
+      )}
+      {...props}
+    >
+      {(values) => (
+        <>
+          <div
+            className={cn(
+              'relative flex size-4 shrink-0 items-center justify-center rounded-full border bg-transparent shadow-xs transition dark:bg-input/30',
+              'border-input group-hover/radio:border-ring group-has-invalid/radio:border-destructive/70',
+              'group-data-selected/radio:group-data-has-invalid/radio:border-destructive/70 group-data-selected/radio:border-primary group-data-selected/radio:bg-primary group-data-selected/radio:text-primary-foreground group-data-selected/radio:group-has-invalid/radio:border-destructive/70 group-data-selected/radio:group-has-invalid/radio:bg-destructive group-data-selected/radio:group-has-invalid/radio:text-destructive-foreground dark:group-data-selected/radio:bg-primary',
+              'group-data-focus/radio:border-primary group-data-focus/radio:group-has-invalid/radio:border-destructive/70',
+              'group-data-focus-visible/radio:border-primary/70 group-data-focus-visible/radio:ring-[3px] group-data-focus-visible/radio:ring-ring/50 group-data-focus-visible/radio:group-has-invalid/radio:border-destructive/70 group-data-focus-visible/radio:group-has-invalid/radio:ring-destructive/20',
+              className
             )}
-        </RACRadio>
-    )
+            data-slot='box'
+          >
+            {values.isSelected ? <IconCircleFilled className='size-2' /> : null}
+          </div>
+          {typeof props.children === 'function' ? (
+            props.children(values)
+          ) : (
+            <Label
+              className='not-last:text-sm/4 text-sm transition group-has-invalid/radio:text-destructive'
+              elementType='span'
+            >
+              {props.children}
+            </Label>
+          )}
+        </>
+      )}
+    </RACRadio>
+  )
 }
 
 export { Radio, RadioGroup }

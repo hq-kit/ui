@@ -3,11 +3,7 @@
 import { Checkbox } from '@/components/ui/checkbox'
 
 const CheckboxIndeterminateDemo = () => {
-  return (
-    <div className='flex items-center gap-2'>
-      <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
-    </div>
-  )
+  return <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
 }
 
 export default CheckboxIndeterminateDemo

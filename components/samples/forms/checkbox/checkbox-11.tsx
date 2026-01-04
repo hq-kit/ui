@@ -1,4 +1,3 @@
-'use client'
 import { IconCircle, IconHeart, IconStar } from '@tabler/icons-react'
 import { Checkbox } from 'react-aria-components'
 

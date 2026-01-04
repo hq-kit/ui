@@ -1,24 +1,30 @@
 'use client'
 
 import { IconCheck, IconMinus } from '@tabler/icons-react'
-import { useId } from 'react'
 import {
   type CheckboxGroupProps,
   type CheckboxProps,
   composeRenderProps,
+  Label,
   Checkbox as RACCheckbox,
   CheckboxGroup as RACCheckboxGroup
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Label } from './label'
 
-const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
+const CheckboxGroup = ({
+  className,
+  orientation,
+  ...props
+}: CheckboxGroupProps & { orientation?: 'horizontal' | 'vertical' }) => {
   return (
     <RACCheckboxGroup
       {...props}
-      className={cn(
-        'space-y-2 has-[[slot=description]]:space-y-6 has-[[slot=description]]:**:data-[slot=label]:font-medium **:[[slot=description]]:block',
-        className
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/radio-group flex items-center gap-x-4 gap-y-2',
+          orientation === 'horizontal' ? 'flex-row items-center' : 'flex-col',
+          className
+        )
       )}
       data-slot='control'
     />
@@ -26,33 +32,50 @@ const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
 }
 
 const Checkbox = ({ className, ...props }: CheckboxProps) => {
-  const id = useId()
   return (
-    <div className='flex items-center gap-2'>
-      <RACCheckbox
-        className={composeRenderProps(className, (className) =>
-          cn(
-            'peer group/checkbox grid size-4 shrink-0 place-content-center rounded-[4px] border border-input shadow-xs outline-none transition focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-selected:border-primary data-selected:bg-primary data-selected:text-primary-foreground dark:bg-input/30 dark:data-selected:bg-primary dark:aria-invalid:ring-destructive/40',
-            className
-          )
-        )}
-        data-slot='checkbox'
-        data-state={props.isSelected ? 'checked' : 'unchecked'}
-        id={props.id ?? id}
-        slot='checkbox'
-        {...props}
-      >
-        <div
-          className='grid place-content-center text-current transition-none'
-          data-slot='checkbox-indicator'
-          data-state={props.isSelected ? 'checked' : 'unchecked'}
-        >
-          <IconMinus className='hidden size-3.5 group-data-indeterminate/checkbox:block group-data-selected/checkbox:hidden' />
-          <IconCheck className='hidden size-3.5 group-data-selected/checkbox:block group-data-indeterminate/checkbox:hidden' />
-        </div>
-      </RACCheckbox>
-      {props.children && typeof props.children === 'string' && <Label htmlFor={props.id ?? id}>{props.children}</Label>}
-    </div>
+    <RACCheckbox
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/checkbox peer flex items-center space-x-3 has-[&_p]:items-start **:[p]:mt-2 **:[p]:text-muted-foreground **:[p]:text-sm',
+          className
+        )
+      )}
+      data-slot='checkbox'
+      slot='checkbox'
+      {...props}
+    >
+      {(values) => (
+        <>
+          <div
+            className={cn(
+              'relative flex size-4 shrink-0 items-center justify-center rounded-[4px] border bg-transparent shadow-xs transition dark:bg-input/30',
+              'border-input group-hover/checkbox:border-ring group-has-invalid/checkbox:border-destructive/70',
+              'group-data-selected/checkbox:group-data-has-invalid/checkbox:border-destructive/70 group-data-selected/checkbox:border-primary group-data-selected/checkbox:bg-primary group-data-selected/checkbox:text-primary-foreground group-data-selected/checkbox:group-has-invalid/checkbox:border-destructive/70 group-data-selected/checkbox:group-has-invalid/checkbox:bg-destructive group-data-selected/checkbox:group-has-invalid/checkbox:text-destructive-foreground dark:group-data-selected/checkbox:bg-primary',
+              'group-data-focus/checkbox:border-primary group-data-focus/checkbox:group-has-invalid/checkbox:border-destructive/70',
+              'group-data-focus-visible/checkbox:border-primary/70 group-data-focus-visible/checkbox:ring-[3px] group-data-focus-visible/checkbox:ring-ring/50 group-data-focus-visible/checkbox:group-has-invalid/checkbox:border-destructive/70 group-data-focus-visible/checkbox:group-has-invalid/checkbox:ring-destructive/20',
+              'group-data-indeterminate/checkbox:border-primary group-data-indeterminate/checkbox:bg-primary group-data-indeterminate/checkbox:text-primary-foreground dark:group-data-indeterminate/checkbox:bg-primary',
+              className
+            )}
+            data-slot='box'
+          >
+            <div
+              className='flex items-center justify-center text-current transition-none'
+              data-slot='checkbox-indicator'
+            >
+              <IconMinus className='hidden size-3.5 group-data-indeterminate/checkbox:block group-data-selected/checkbox:hidden' />
+              <IconCheck className='hidden size-3.5 group-data-selected/checkbox:block group-data-indeterminate/checkbox:hidden' />
+            </div>
+          </div>
+          {typeof props.children === 'function' ? (
+            props.children(values)
+          ) : (
+            <Label className='text-sm transition group-has-invalid/checkbox:text-destructive' elementType='span'>
+              {props.children}
+            </Label>
+          )}
+        </>
+      )}
+    </RACCheckbox>
   )
 }
 

@@ -56,7 +56,9 @@ export const mdxComponents = {
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
     <Alert {...props} className='my-4' variant='destructive'>
       <IconAlertCircle className='my-0.5' />
-      <Alert.Description className='cols-start-2 **:text-destructive/90!'>{children}</Alert.Description>
+      <Alert.Description className='cols-start-2 not-prose! flex flex-wrap items-center **:text-destructive/90!'>
+        {children}
+      </Alert.Description>
     </Alert>
   )
 }

@@ -1,25 +1,28 @@
 'use client'
 
-import type { ComponentProps } from 'react'
-import { IconMinus, IconPlus, IconSearch } from '@tabler/icons-react'
+import { IconEye, IconEyeClosed, IconMinus, IconPlus, IconSearch, IconX } from '@tabler/icons-react'
+import { type ComponentProps, useState } from 'react'
+import { composeRenderProps, Group, type GroupProps, type InputProps, type TextAreaProps } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
 import { Button } from './button'
 import { Input } from './input'
 import { Textarea } from './textarea'
 
-const InputGroup = ({ className, ...props }: ComponentProps<'div'>) => (
-  <div
-    className={cn(
-      'group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30',
-      'h-9 min-w-0 has-[>textarea]:h-auto',
-      'has-[>[data-align=inline-start]]:[&>input]:pl-2',
-      'has-[>[data-align=inline-end]]:[&>input]:pr-2',
-      'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3',
-      'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3',
-      'has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50',
-      'has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40',
-      className
+const InputGroup = ({ className, ...props }: GroupProps) => (
+  <Group
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30',
+        'h-9 min-w-0 has-[>textarea]:h-auto',
+        'has-[>[data-align=inline-start]]:[&>input]:pl-2',
+        'has-[>[data-align=inline-end]]:[&>input]:pr-2',
+        'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3',
+        'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3',
+        'has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50',
+        'has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40',
+        className
+      )
     )}
     data-slot='input-group'
     role='group'
@@ -48,17 +51,10 @@ const InputGroupAddon = ({
   align = 'inline-start',
   ...props
 }: ComponentProps<'div'> & VariantProps<typeof inputGroupAddonVariants>) => (
-  // biome-ignore lint/a11y/useKeyWithClickEvents: false-positive
   <div
     className={cn(inputGroupAddonVariants({ align }), className)}
     data-align={align}
     data-slot='input-group-addon'
-    onClick={(e) => {
-      if ((e.target as HTMLElement).closest('button')) {
-        return
-      }
-      e.currentTarget.parentElement?.querySelector('input')?.focus()
-    }}
     role='group'
     {...props}
   />
@@ -116,7 +112,7 @@ const InputGroupInput = ({ className, ...props }: ComponentProps<typeof Input>) 
   />
 )
 
-const InputGroupTextarea = ({ className, ...props }: ComponentProps<'textarea'>) => (
+const InputGroupTextarea = ({ className, ...props }: TextAreaProps) => (
   <Textarea
     className={cn(
       'flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent',
@@ -127,7 +123,7 @@ const InputGroupTextarea = ({ className, ...props }: ComponentProps<'textarea'>)
   />
 )
 
-const NumberInput = ({ className, ...props }: ComponentProps<typeof Input>) => (
+const NumberInput = ({ className, ...props }: InputProps) => (
   <InputGroup>
     <InputGroupInput {...props} />
     <InputGroupAddon align='inline-end' className='gap-1'>
@@ -143,14 +139,36 @@ const NumberInput = ({ className, ...props }: ComponentProps<typeof Input>) => (
   </InputGroup>
 )
 
-const SearchInput = ({ className, ...props }: ComponentProps<typeof Input>) => (
+const SearchInput = ({ className, ...props }: InputProps) => (
   <InputGroup>
     <InputGroupAddon>
       <IconSearch />
     </InputGroupAddon>
-    <InputGroupInput {...props} />
+    <InputGroupInput className='[&::-webkit-search-cancel-button]:hidden' {...props} />
+    <InputGroupAddon align='inline-end' className='group-data-empty/field:hidden'>
+      <InputGroupButton>
+        <IconX />
+      </InputGroupButton>
+    </InputGroupAddon>
   </InputGroup>
 )
+
+const PasswordInput = ({ className, ...props }: InputProps) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+  return (
+    <InputGroup>
+      <InputGroupInput type={isVisible ? 'text' : 'password'} {...props} />
+      <InputGroupAddon align='inline-end'>
+        <InputGroupButton onPress={() => setIsVisible(!isVisible)}>
+          <IconEye className={cn('size-5 transition-transform sm:size-4', isVisible ? 'scale-0' : 'scale-100')} />
+          <IconEyeClosed
+            className={cn('absolute size-5 transition-transform sm:size-4', isVisible ? 'scale-100' : 'scale-0')}
+          />
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}
 
 InputGroup.Addon = InputGroupAddon
 InputGroup.Button = InputGroupButton
@@ -159,6 +177,7 @@ InputGroup.Input = InputGroupInput
 InputGroup.Textarea = InputGroupTextarea
 InputGroup.Number = NumberInput
 InputGroup.Search = SearchInput
+InputGroup.Password = PasswordInput
 
 export {
   InputGroup,
@@ -168,5 +187,6 @@ export {
   InputGroupInput,
   InputGroupTextarea,
   NumberInput,
-  SearchInput
+  SearchInput,
+  PasswordInput
 }

@@ -17,8 +17,8 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
       className={composeRenderProps(className, (className) =>
         cn(
           'inline-flex w-full items-center justify-start',
-          'h-9 min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
-          'data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50',
+          'h-9 min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
+          'hover:border-ring data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50',
           'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
           className
         )
@@ -27,7 +27,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
     >
       {(segment) => (
         <DateSegment
-          className='rounded-sm px-1 data-focused:bg-primary data-[type=literal]:p-0 data-focused:text-primary-foreground data-focused:outline-hidden'
+          className='rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-focused:bg-primary data-[type=literal]:p-0 data-focused:text-primary-foreground data-focused:outline-hidden'
           segment={segment}
         />
       )}

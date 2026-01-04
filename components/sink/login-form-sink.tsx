@@ -51,9 +51,7 @@ export default function LoginFormSink() {
             <Input placeholder='Enter your password' />
             <Field.Error />
           </Field.Text>
-          <Field orientation='horizontal'>
-            <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
-          </Field>
+          <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
         </Card.Content>
         <Card.Footer className='justify-end gap-4'>
           <Link className={buttonVariants({ variant: 'link' })} href='#'>

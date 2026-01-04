@@ -8,17 +8,10 @@ const CheckboxDescriptionDemo = () => {
   const id = useId()
 
   return (
-    <div className='flex items-start gap-2'>
-      <Checkbox defaultSelected id={id} />
-      <div className='grid gap-2'>
-        <Label className='leading-4' htmlFor={id}>
-          Accept terms and conditions
-        </Label>
-        <p className='text-muted-foreground text-xs'>
-          By clicking this checkbox, you agree to the terms and conditions.
-        </p>
-      </div>
-    </div>
+    <Checkbox defaultSelected id={id}>
+      <Label htmlFor={id}>Accept terms and conditions</Label>
+      <p>By clicking this checkbox, you agree to the terms and conditions.</p>
+    </Checkbox>
   )
 }
 

@@ -20,10 +20,9 @@ const CheckboxBadgeDemo = () => {
             onChange={(checked) =>
               setSelected(checked ? [...selected, label] : selected.filter((item) => item !== label))
             }
-          />
-          <label className='cursor-pointer select-none after:absolute after:inset-0' htmlFor={label}>
+          >
             {label}
-          </label>
+          </Checkbox>
         </Badge>
       ))}
     </div>

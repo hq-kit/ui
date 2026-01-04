@@ -6,7 +6,7 @@ import { Card } from '../ui/card'
 import { DateInput } from '../ui/date-input'
 import { DropZone } from '../ui/drop-zone'
 import { Field } from '../ui/field'
-import { InputGroup } from '../ui/input-group'
+import { InputGroup, NumberInput } from '../ui/input-group'
 import { Tabs } from '../ui/tabs'
 import { Textarea } from '../ui/textarea'
 
@@ -57,7 +57,7 @@ export default function UserProfileSink() {
                 <Field.Text>
                   <Field.Label>Phone</Field.Label>
                   <InputGroup>
-                    <InputGroup.Addon align='inline-start'>
+                    <InputGroup.Addon>
                       <IconPhone />
                     </InputGroup.Addon>
                     <InputGroup.Input placeholder='Enter your phone number' />
@@ -68,11 +68,11 @@ export default function UserProfileSink() {
             <Tabs.Content className='space-y-4 p-1' id='t2'>
               <Field.Text>
                 <Field.Label>Address</Field.Label>
-                <Textarea placeholder='Enter your address' />
+                <Textarea className='max-h-16 resize-none' placeholder='Enter your address' />
               </Field.Text>
               <Field.Number>
-                <Field.Label>Pin Code</Field.Label>
-                <InputGroup.Number placeholder='Enter your pin code' />
+                <Field.Label>Postal Code</Field.Label>
+                <NumberInput placeholder='Enter your postal code' />
               </Field.Number>
             </Tabs.Content>
             <Tabs.Content className='p-1' id='t3'>

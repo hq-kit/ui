@@ -4,16 +4,16 @@
     "section": "Getting Started",
     "children": [
       {
+        "slug": "/docs/getting-started/client-side-routing",
+        "title": "Client Side Routing"
+      },
+      {
         "slug": "/docs/getting-started/introduction",
         "title": "Introduction"
       },
       {
         "slug": "/docs/getting-started/installation",
         "title": "Installation"
-      },
-      {
-        "slug": "/docs/getting-started/client-side-routing",
-        "title": "Client Side Routing"
       }
     ]
   },
@@ -22,24 +22,24 @@
     "section": "Dark Mode",
     "children": [
       {
-        "slug": "/docs/dark-mode/vite",
-        "title": "Vite"
-      },
-      {
         "slug": "/docs/dark-mode/remix",
         "title": "Remix"
+      },
+      {
+        "slug": "/docs/dark-mode/vite",
+        "title": "Vite"
       },
       {
         "slug": "/docs/dark-mode/inertia-js",
         "title": "Inertia.js"
       },
       {
-        "slug": "/docs/dark-mode/astro",
-        "title": "Astro"
-      },
-      {
         "slug": "/docs/dark-mode/next-js",
         "title": "Next.js"
+      },
+      {
+        "slug": "/docs/dark-mode/astro",
+        "title": "Astro"
       }
     ]
   },
@@ -222,28 +222,16 @@
             "title": "Field"
           },
           {
+            "slug": "/docs/components/forms/input-group",
+            "title": "Input Group"
+          },
+          {
             "slug": "/docs/components/forms/input-o-t-p",
             "title": "Input O T P"
           },
           {
-            "slug": "/docs/components/forms/number-field",
-            "title": "Number Field"
-          },
-          {
             "slug": "/docs/components/forms/radio",
             "title": "Radio"
-          },
-          {
-            "slug": "/docs/components/forms/search-field",
-            "title": "Search Field"
-          },
-          {
-            "slug": "/docs/components/forms/text-field",
-            "title": "Text Field"
-          },
-          {
-            "slug": "/docs/components/forms/textarea",
-            "title": "Textarea"
           }
         ]
       },
@@ -276,10 +264,6 @@
           {
             "slug": "/docs/components/media/carousel",
             "title": "Carousel"
-          },
-          {
-            "slug": "/docs/components/media/user",
-            "title": "User"
           }
         ]
       },

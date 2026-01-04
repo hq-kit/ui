@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "components/ui/label.tsx",
-      "content": "'use client'\n\nimport { type LabelProps, Label as RACLabel } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nfunction Label({ className, ...props }: LabelProps) {\n  return (\n    <RACLabel\n      className={cn(\n        'flex select-none items-center gap-2 font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50',\n        className\n      )}\n      data-slot='label'\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "content": "'use client'\n\nimport { type LabelProps, Label as RACLabel } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nfunction Label({ className, ...props }: LabelProps) {\n  return (\n    <RACLabel\n      className={cn(\n        'flex select-none items-center gap-2 font-medium in-data-invalid:text-destructive text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50',\n        className\n      )}\n      data-slot='label'\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
       "type": "registry:ui"
     }
   ],
