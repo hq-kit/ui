@@ -18,7 +18,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
         cn(
           'inline-flex w-full items-center justify-start',
           'h-9 min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
-          'hover:border-ring data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50',
+          'hover:border-ring group-hover/field:border-ring data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50',
           'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
           className
         )

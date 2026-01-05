@@ -7,6 +7,7 @@ import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
 import { Demo } from '@/components/mdx/demo'
 import { Grid } from '@/components/mdx/grids'
+import { Iframe } from '@/components/mdx/iframe'
 import { Install } from '@/components/mdx/install'
 import { Preview } from '@/components/mdx/preview'
 import {
@@ -53,6 +54,7 @@ export const mdxComponents = {
   Demo,
   Preview,
   Grid,
+  Iframe,
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
     <Alert {...props} className='my-4' variant='destructive'>
       <IconAlertCircle className='my-0.5' />

@@ -4,10 +4,13 @@
   "dependencies": [
     "react-aria-components"
   ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/collapsible.tsx",
-      "content": "'use client'\n\nimport {\n    Button,\n    type ButtonProps,\n    Disclosure,\n    DisclosurePanel,\n    type DisclosurePanelProps,\n    type DisclosureProps\n} from 'react-aria-components'\n\nconst Collapsible = ({ ...props }: DisclosureProps) => {\n    return <Disclosure data-slot='collapsible' {...props} />\n}\n\nconst CollapsibleTrigger = ({ ...props }: ButtonProps) => {\n    return <Button data-slot='collapsible-trigger' slot='trigger' type='button' {...props} />\n}\n\nconst CollapsibleContent = ({ ...props }: DisclosurePanelProps) => {\n    return (\n        <DisclosurePanel\n            className='h-(--disclosure-panel-height) overflow-hidden transition-[height] duration-200'\n            data-slot='collapsible-content'\n            {...props}\n        />\n    )\n}\n\nCollapsible.Trigger = CollapsibleTrigger\nCollapsible.Content = CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
+      "content": "'use client'\n\nimport {\n  Button,\n  type ButtonProps,\n  composeRenderProps,\n  Disclosure,\n  DisclosurePanel,\n  type DisclosurePanelProps,\n  type DisclosureProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst Collapsible = ({ ...props }: DisclosureProps) => {\n  return (\n    <Disclosure\n      className={composeRenderProps(props.className, (className) => cn('group/collapsible', className))}\n      data-slot='collapsible'\n      {...props}\n    />\n  )\n}\n\nconst CollapsibleTrigger = ({ ...props }: ButtonProps) => {\n  return (\n    <Button\n      className={composeRenderProps(props.className, (className) => cn('group/collapsible-trigger', className))}\n      data-slot='collapsible-trigger'\n      slot='trigger'\n      type='button'\n      {...props}\n    />\n  )\n}\n\nconst CollapsibleContent = ({ ...props }: DisclosurePanelProps) => {\n  return (\n    <DisclosurePanel\n      className={composeRenderProps(props.className, (className) =>\n        cn('h-(--disclosure-panel-height) overflow-hidden transition-[height] duration-200', className)\n      )}\n      data-slot='collapsible-content'\n      {...props}\n    />\n  )\n}\n\nCollapsible.Trigger = CollapsibleTrigger\nCollapsible.Content = CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
       "type": "registry:ui"
     }
   ],

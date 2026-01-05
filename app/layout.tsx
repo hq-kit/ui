@@ -82,7 +82,7 @@ export default function RootLayout({
       lang='en'
       suppressHydrationWarning
     >
-      <body className='min-h-dvh font-sans antialiased'>
+      <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
         <Providers>
           {children}
           {process.env.NODE_ENV === 'production' && (

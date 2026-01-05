@@ -15,8 +15,8 @@ export function Demo({ component }: { component: Raw }) {
   const Component = previews[component].component
   const code = Raws[component].raw
   return (
-    <div className='group/demo relative rounded-lg border bg-card shadow-sm'>
-      <div className='absolute top-0 left-0 z-10 flex w-full items-center justify-between gap-1 bg-accent/50 p-2 opacity-0 backdrop-blur-2xl transition group-hover/demo:opacity-100'>
+    <div className='group/demo relative rounded-lg border shadow-sm'>
+      <div className='flex h-0 w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2'>
         <Badge className='font-medium text-xs' variant='outline'>
           {component.split('/').pop()}
         </Badge>
@@ -41,7 +41,7 @@ export function Demo({ component }: { component: Raw }) {
           </DialogContent>
         </Dialog>
       </div>
-      <div className='relative flex h-full min-h-52 items-center justify-center px-8 py-12 has-data-[slot=card]:w-full has-data-[slot=card]:p-0! **:data-[slot=card]:w-full **:data-[slot=card]:border-0 **:data-[slot=card]:shadow-none max-sm:px-4'>
+      <div className='relative flex min-h-52 items-center justify-center px-8 py-12 has-data-[slot=card]:w-full has-data-[slot=card]:p-0! **:data-[slot=card]:w-full **:data-[slot=card]:border-0 **:data-[slot=card]:shadow-none max-sm:px-4'>
         <Component />
       </div>
     </div>

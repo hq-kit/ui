@@ -21,8 +21,8 @@ const CheckboxGroup = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          'group/radio-group flex items-center gap-x-4 gap-y-2',
-          orientation === 'horizontal' ? 'flex-row items-center' : 'flex-col',
+          'group/radio-group flex gap-x-4 gap-y-2',
+          orientation === 'horizontal' ? 'flex-row items-center' : 'flex-col items-start',
           className
         )
       )}

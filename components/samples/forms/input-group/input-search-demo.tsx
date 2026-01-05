@@ -1,20 +1,14 @@
-'use client'
+import { IconSearch } from '@tabler/icons-react'
+import { InputGroup } from '@/components/ui/input-group'
 
-import { Form } from 'react-aria-components'
-import { Button } from '@/components/ui/button'
-import { FieldError, SearchField } from '@/components/ui/field'
-import { SearchInput } from '@/components/ui/input-group'
-import { Label } from '@/components/ui/label'
-
-export default function SearchFieldDemo() {
+export default function InputSearchDemo() {
   return (
-    <Form className='w-full space-y-4' onSubmit={(e) => e.preventDefault()}>
-      <SearchField>
-        <Label>Search</Label>
-        <SearchInput />
-        <FieldError />
-      </SearchField>
-      <Button type='submit'>Submit</Button>
-    </Form>
+    <InputGroup>
+      <InputGroup.Input placeholder='Search...' />
+      <InputGroup.Addon>
+        <IconSearch />
+      </InputGroup.Addon>
+      <InputGroup.Addon align='inline-end'>12 results</InputGroup.Addon>
+    </InputGroup>
   )
 }

@@ -84,6 +84,14 @@
         "subsection": "Collections",
         "children": [
           {
+            "slug": "/docs/components/collections/accordion",
+            "title": "Accordion"
+          },
+          {
+            "slug": "/docs/components/collections/collapsible",
+            "title": "Collapsible"
+          },
+          {
             "slug": "/docs/components/collections/dropdown-menu",
             "title": "Dropdown Menu"
           },
@@ -274,10 +282,6 @@
           {
             "slug": "/docs/components/navigation/breadcrumbs",
             "title": "Breadcrumbs"
-          },
-          {
-            "slug": "/docs/components/navigation/disclosure",
-            "title": "Disclosure"
           },
           {
             "slug": "/docs/components/navigation/link",

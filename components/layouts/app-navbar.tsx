@@ -50,7 +50,7 @@ export function AppNavbar() {
           <Navbar.Section className='md:ml-4'>
             <Collection items={menuItems}>
               {(item) => (
-                <Navbar.Item href={item.url} isCurrent={item.active}>
+                <Navbar.Item href={item.url} isActive={item.active}>
                   {item.label}
                 </Navbar.Item>
               )}

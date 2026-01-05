@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "components/ui/skeleton.tsx",
-      "content": "import type { ComponentProps } from 'react'\nimport { cn } from '@/lib/utils'\n\nconst Skeleton = ({ className, ...props }: ComponentProps<'div'>) => (\n    <div className={cn('animate-pulse rounded-md bg-accent', className)} data-slot='skeleton' {...props} />\n)\n\nexport { Skeleton }\n",
+      "content": "import { type HTMLAttributes, useId } from 'react'\nimport { cn } from '@/lib/utils'\n\ninterface SkeletonProps extends HTMLAttributes<HTMLDivElement> {\n  shape?: 'square' | 'circle'\n}\n\nconst Skeleton = ({ shape, className, ...props }: SkeletonProps) => {\n  const patternId = useId()\n  return (\n    <div\n      className={cn(\n        'relative shrink-0 animate-pulse overflow-hidden border',\n        shape === 'circle' ? 'rounded-full' : 'rounded-sm',\n        className\n      )}\n      style={{ opacity: 0.9 }}\n      {...props}\n    >\n      <svg className='absolute inset-0 size-full stroke-border' fill='none'>\n        <defs>\n          <pattern height='10' id={patternId} patternUnits='userSpaceOnUse' width='10' x='0' y='0'>\n            <path d='M-3 13 15-5M-5 5l18-18M-1 21 17 3' />\n          </pattern>\n        </defs>\n        <rect fill={`url(#${patternId})`} height='100%' stroke='none' width='100%' />\n      </svg>\n    </div>\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
   ],
