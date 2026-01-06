@@ -126,12 +126,14 @@ const NumberField = ({
 
 const SearchField = ({
   className,
+  isPending = false,
   orientation = 'vertical',
   ...props
-}: SearchFieldProps & VariantProps<typeof fieldVariants>) => (
+}: SearchFieldProps & VariantProps<typeof fieldVariants> & { isPending?: boolean }) => (
   <RACSearchField
     className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
     data-orientation={orientation}
+    data-pending={isPending}
     data-slot='field'
     {...props}
   />

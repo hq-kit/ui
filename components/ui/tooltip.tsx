@@ -35,7 +35,7 @@ const TooltipContent = ({
       className={composeRenderProps(className, (className) =>
         cn(
           isInverse ? 'bg-popover-foreground text-popover' : 'bg-popover text-popover-foreground',
-          'group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
+          'group origin-(--trigger-anchor-point) rounded-lg border px-2.5 py-1.5 text-sm will-change-transform',
           'data-entering:fade-in data-entering:zoom-in-95 data-entering:animate-in',
           'data-exiting:fade-out data-exiting:zoom-out-95 data-exiting:animate-out',
           'data-entering:data-[placement=top]:slide-in-from-bottom-2 data-exiting:data-[placement=top]:slide-out-to-bottom-2',

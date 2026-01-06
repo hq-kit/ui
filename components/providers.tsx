@@ -17,7 +17,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <RouterProvider navigate={router.push}>
       <ThemeProvider attribute='class' disableTransitionOnChange enableSystem storageKey='hq-theme'>
-        <Toaster />
+        <Toaster richColors />
         {children}
       </ThemeProvider>
     </RouterProvider>

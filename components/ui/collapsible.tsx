@@ -11,20 +11,20 @@ import {
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
-const Collapsible = ({ ...props }: DisclosureProps) => {
+const Collapsible = ({ className, ...props }: DisclosureProps) => {
   return (
     <Disclosure
-      className={composeRenderProps(props.className, (className) => cn('group/collapsible', className))}
+      className={composeRenderProps(className, (className) => cn('group/collapsible', className))}
       data-slot='collapsible'
       {...props}
     />
   )
 }
 
-const CollapsibleTrigger = ({ ...props }: ButtonProps) => {
+const CollapsibleTrigger = ({ className, ...props }: ButtonProps) => {
   return (
     <Button
-      className={composeRenderProps(props.className, (className) => cn('group/collapsible-trigger', className))}
+      className={composeRenderProps(className, (className) => cn('group/collapsible-trigger', className))}
       data-slot='collapsible-trigger'
       slot='trigger'
       type='button'
@@ -33,11 +33,11 @@ const CollapsibleTrigger = ({ ...props }: ButtonProps) => {
   )
 }
 
-const CollapsibleContent = ({ ...props }: DisclosurePanelProps) => {
+const CollapsibleContent = ({ className, ...props }: DisclosurePanelProps) => {
   return (
     <DisclosurePanel
-      className={composeRenderProps(props.className, (className) =>
-        cn('h-(--disclosure-panel-height) overflow-hidden transition-[height] duration-200', className)
+      className={composeRenderProps(className, (className) =>
+        cn('h-(--disclosure-panel-height) overflow-hidden duration-200 motion-safe:transition-[height]', className)
       )}
       data-slot='collapsible-content'
       {...props}

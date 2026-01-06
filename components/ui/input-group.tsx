@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEye, IconEyeClosed, IconMinus, IconPlus, IconSearch, IconX } from '@tabler/icons-react'
+import { IconEye, IconEyeClosed, IconLoader2, IconMinus, IconPlus, IconSearch, IconX } from '@tabler/icons-react'
 import { type ComponentProps, useState } from 'react'
 import { composeRenderProps, Group, type GroupProps, type InputProps, type TextAreaProps } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
@@ -142,7 +142,8 @@ const NumberInput = ({ className, ...props }: InputProps) => (
 const SearchInput = ({ className, ...props }: InputProps) => (
   <InputGroup>
     <InputGroupAddon>
-      <IconSearch />
+      <IconLoader2 className='in-data-[pending=true]:block hidden animate-spin' />
+      <IconSearch className='in-data-[pending=true]:hidden' />
     </InputGroupAddon>
     <InputGroupInput className='[&::-webkit-search-cancel-button]:hidden' {...props} />
     <InputGroupAddon align='inline-end' className='group-data-empty/field:hidden'>
@@ -153,7 +154,7 @@ const SearchInput = ({ className, ...props }: InputProps) => (
   </InputGroup>
 )
 
-const PasswordInput = ({ className, ...props }: InputProps) => {
+const PasswordInput = ({ className, ...props }: Omit<InputProps, 'type'>) => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   return (
     <InputGroup>

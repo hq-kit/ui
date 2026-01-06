@@ -32,6 +32,7 @@ const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverl
         className
       )
     )}
+    data-slot='overlay'
     isDismissable={isDismissable}
     isKeyboardDismissDisabled={!isDismissable}
     {...props}
@@ -39,20 +40,28 @@ const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverl
 )
 
 interface DialogContentProps
-  extends Omit<ComponentProps<typeof RACModal>, 'children'>,
-    Omit<ModalOverlayProps, 'className' | 'children'> {
+  extends Omit<ComponentProps<typeof RACModal>, 'children' | 'isDismissable'>,
+    Omit<ModalOverlayProps, 'className' | 'children' | 'isDismissable'> {
   'aria-label'?: DialogProps['aria-label']
   'aria-labelledby'?: DialogProps['aria-labelledby']
   role?: DialogProps['role']
   closeButton?: boolean
   children?: DialogProps['children']
   className?: DialogProps['className']
+  overlayClassName?: ModalOverlayProps['className']
 }
 
-const DialogContent = ({ role = 'dialog', closeButton = true, className, children, ...props }: DialogContentProps) => {
+const DialogContent = ({
+  role = 'dialog',
+  closeButton = true,
+  className,
+  children,
+  overlayClassName,
+  ...props
+}: DialogContentProps) => {
   const isDismissable = role !== 'alertdialog'
   return (
-    <DialogOverlay isDismissable={isDismissable} {...props}>
+    <DialogOverlay className={overlayClassName} isDismissable={isDismissable} {...props}>
       <RACModal
         className={composeRenderProps(className, (className) =>
           cn(
@@ -62,12 +71,13 @@ const DialogContent = ({ role = 'dialog', closeButton = true, className, childre
             className
           )
         )}
+        data-slot='modal'
         isDismissable={isDismissable}
         {...props}
       >
         <RACDialog
           aria-label='Dialog'
-          className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-hidden outline-hidden'
+          className='relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col space-y-4 overflow-hidden outline-hidden has-data-[slot=body]:space-y-0'
           role={role}
           slot='dialog'
         >
@@ -85,16 +95,20 @@ const DialogContent = ({ role = 'dialog', closeButton = true, className, childre
 
 const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<'div'>) => {
   return (
-    <div className={cn('flex flex-col gap-2 p-6 pb-0 text-center sm:text-left', className)} slot='header' {...props} />
+    <div
+      className={cn('flex flex-col gap-2 p-6 pb-0 text-center sm:text-left', className)}
+      data-slot='header'
+      {...props}
+    />
   )
 }
 
 const DialogTitle = ({ className, ...props }: RACHeadingProps) => (
-  <Heading className={cn('font-semibold text-lg leading-none', className)} slot='title' {...props} />
+  <Heading className={cn('font-semibold text-lg', className)} data-slot='title' {...props} />
 )
 
 const DialogDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn('text-muted-foreground text-sm', className)} slot='description' {...props} />
+  <Text className={cn('text-muted-foreground text-sm', className)} data-slot='description' {...props} />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
@@ -103,7 +117,7 @@ const DialogBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
       'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll',
       className
     )}
-    slot='body'
+    data-slot='body'
     {...props}
   />
 )
@@ -112,7 +126,7 @@ const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => 
   return (
     <div
       className={cn('flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end', className)}
-      slot='footer'
+      data-slot='footer'
       {...props}
     />
   )
@@ -121,7 +135,7 @@ const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<'div'>) => 
 const DialogX = (props: ButtonProps) => (
   <Button
     aria-label='Close'
-    className='absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-background text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring data-pressed:bg-muted/50'
+    className='absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-transparent text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring data-pressed:bg-muted/50'
     slot='close'
     {...props}
   >

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/link.tsx",
+      "content": "'use client'\n\nimport { composeRenderProps, Link as RACLink, type LinkProps as RACLinkProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\ninterface LinkProps extends RACLinkProps {\n  ref?: React.RefObject<HTMLAnchorElement>\n}\n\nconst Link = ({ className, ref, ...props }: LinkProps) => {\n  return (\n    <RACLink\n      className={composeRenderProps(className, (className) =>\n        cn(\n          [\n            'rounded outline-0 outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring',\n            'disabled:cursor-default disabled:text-muted-foreground',\n            'href' in props && 'cursor-pointer'\n          ],\n          className\n        )\n      )}\n      ref={ref}\n      {...props}\n    />\n  )\n}\n\nexport type { LinkProps }\nexport { Link }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

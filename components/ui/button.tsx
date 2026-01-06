@@ -1,5 +1,6 @@
 'use client'
 
+import type { Ref } from 'react'
 import { IconLoader2 } from '@tabler/icons-react'
 import { composeRenderProps, Button as RACButton, type ButtonProps as RACButtonProps } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
@@ -36,7 +37,9 @@ const buttonVariants = tv({
   }
 })
 
-interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonVariants> {}
+interface ButtonProps extends RACButtonProps, VariantProps<typeof buttonVariants> {
+  ref?: Ref<HTMLButtonElement>
+}
 
 const Button = ({ className, variant, size, children, ...props }: ButtonProps) => (
   <RACButton

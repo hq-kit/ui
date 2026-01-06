@@ -16,7 +16,7 @@ export function Demo({ component }: { component: Raw }) {
   const code = Raws[component].raw
   return (
     <div className='group/demo relative rounded-lg border shadow-sm'>
-      <div className='flex h-0 w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2'>
+      <div className='flex h-0 w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2 group-has-data-pressed/demo:h-12 group-has-data-pressed/demo:p-2'>
         <Badge className='font-medium text-xs' variant='outline'>
           {component.split('/').pop()}
         </Badge>
