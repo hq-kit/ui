@@ -1,6 +1,6 @@
 import { IconSelector } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { Collapsible, CollapsibleContent, } from '@/components/ui/collapsible'
 
 const CollapsibleDemo = () => {
   return (

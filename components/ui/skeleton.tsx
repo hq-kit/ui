@@ -17,7 +17,7 @@ const Skeleton = ({ shape, className, ...props }: SkeletonProps) => {
       style={{ opacity: 0.9 }}
       {...props}
     >
-      <svg className='absolute inset-0 size-full stroke-border' fill='none'>
+      <svg className='absolute inset-0 size-full stroke-muted' fill='none'>
         <defs>
           <pattern height='10' id={patternId} patternUnits='userSpaceOnUse' width='10' x='0' y='0'>
             <path d='M-3 13 15-5M-5 5l18-18M-1 21 17 3' />

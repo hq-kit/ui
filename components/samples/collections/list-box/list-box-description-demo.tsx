@@ -2,7 +2,7 @@
 
 import type { Selection } from 'react-aria-components'
 import { useState } from 'react'
-import { ListBox, ListBoxDetails, ListBoxItem, ListBoxLabel } from '@/components/ui/list-box'
+import { ListBox, ListBoxDetails, ListBoxItem } from '@/components/ui/list-box'
 
 export default function ListBoxDescriptionDemo() {
   const [selected, setSelected] = useState<Selection>(new Set([1]))
@@ -16,8 +16,7 @@ export default function ListBoxDescriptionDemo() {
     >
       {(item) => (
         <ListBoxItem id={item.id} textValue={item.name}>
-          <ListBoxLabel>{item.name}</ListBoxLabel>
-          <ListBoxDetails>{item.description}</ListBoxDetails>
+          <ListBoxDetails description={item.description} title={item.name} />
         </ListBoxItem>
       )}
     </ListBox>

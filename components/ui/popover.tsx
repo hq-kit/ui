@@ -29,7 +29,7 @@ const PopoverContent = ({ className, offset = 8, arrow = true, ...props }: Popov
                     {arrow && (
                         <OverlayArrow className='group'>
                             <svg
-                                className='group-data-[placement=left]:-rotate-90 block fill-popover stroke-border group-data-[placement=bottom]:rotate-180 group-data-[placement=right]:rotate-90'
+                                className='block fill-popover stroke-border group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90'
                                 height={12}
                                 viewBox='0 0 12 12'
                                 width={12}

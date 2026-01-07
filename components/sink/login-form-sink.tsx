@@ -4,12 +4,12 @@ import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import Link from 'next/link'
 import { Form } from 'react-aria-components'
 import { toast } from 'sonner'
-import { Button, buttonVariants } from '../ui/button'
-import { Card } from '../ui/card'
-import { Checkbox } from '../ui/checkbox'
-import { Field } from '../ui/field'
-import { Input } from '../ui/input'
-import { Separator } from '../ui/separator'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Field } from '@/components/ui/field'
+import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
 
 export default function LoginFormSink() {
   return (

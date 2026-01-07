@@ -249,6 +249,7 @@ const Chart = ({
           className
         )}
         data-chart={chartId}
+        data-slot='chart'
         ref={ref}
         {...props}
       >

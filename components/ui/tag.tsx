@@ -23,7 +23,10 @@ const TagGroup = ({ className, ...props }: TagGroupProps) => (
 
 const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => (
   <RACTagList
-    className={composeRenderProps(className, (className) => cn('group/tag-list flex flex-wrap gap-1', className))}
+    className={composeRenderProps(className, (className) =>
+      cn('group/tag-list flex flex-wrap gap-1 outline-hidden', className)
+    )}
+    data-slot='tag-list'
     {...props}
   />
 )
@@ -47,6 +50,7 @@ const Tag = ({ children, className, ...props }: TagProps) => {
           className
         )
       )}
+      data-slot='tag'
       textValue={textValue}
       {...props}
     >

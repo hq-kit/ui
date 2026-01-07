@@ -2,6 +2,7 @@
 
 import type { Selection } from 'react-aria-components'
 import { useState } from 'react'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Command, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 
 const items = [
@@ -20,19 +21,22 @@ const items = [
 export default function CommandControlledDemo() {
   const [selected, setSelected] = useState<Selection>(new Set([1]))
   return (
-    <div className='w-full space-y-6'>
-      <Command aria-label='Linux Distros'>
-        <CommandInput />
-        <CommandList items={items} onSelectionChange={setSelected} selectedKeys={selected} selectionMode='multiple'>
-          {(item) => (
-            <CommandItem id={item.id} textValue={item.name}>
-              {item.name}
-            </CommandItem>
-          )}
-        </CommandList>
-      </Command>
-
-      <code className='text-xs'>{JSON.stringify({ selected: [...selected] })}</code>
-    </div>
+    <Card className='w-full space-y-6'>
+      <CardContent>
+        <Command aria-label='Linux Distros'>
+          <CommandInput />
+          <CommandList items={items} onSelectionChange={setSelected} selectedKeys={selected} selectionMode='multiple'>
+            {(item) => (
+              <CommandItem id={item.id} textValue={item.name}>
+                {item.name}
+              </CommandItem>
+            )}
+          </CommandList>
+        </Command>
+      </CardContent>
+      <CardFooter>
+        <code className='text-xs'>{JSON.stringify({ selected: [...selected] })}</code>
+      </CardFooter>
+    </Card>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useDragAndDrop } from 'react-aria-components'
 import { useListData } from 'react-stately'
-import { ListBox, ListBoxItem, ListBoxLabel } from '@/components/ui/list-box'
+import { ListBox, ListBoxItem } from '@/components/ui/list-box'
 
 export default function ListBoxRearrangeDemo() {
   const list = useListData({
@@ -37,11 +37,7 @@ export default function ListBoxRearrangeDemo() {
       items={list.items}
       selectionMode='multiple'
     >
-      {(item) => (
-        <ListBoxItem key={item.id}>
-          <ListBoxLabel>{item.name}</ListBoxLabel>
-        </ListBoxItem>
-      )}
+      {(item) => <ListBoxItem key={item.id}>{item.name}</ListBoxItem>}
     </ListBox>
   )
 }

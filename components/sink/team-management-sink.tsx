@@ -2,11 +2,11 @@
 
 import { IconEye, IconEyeClosed, IconLock, IconLockOpen } from '@tabler/icons-react'
 import { Collection } from 'react-aria-components'
-import { Avatar } from '../ui/avatar'
-import { Button } from '../ui/button'
-import { Card } from '../ui/card'
-import { DropdownMenu } from '../ui/dropdown-menu'
-import { ToggleGroup } from '../ui/toggle-group'
+import { Avatar } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
+import { ToggleGroup } from '@/components/ui/toggle-group'
 
 export default function TeamManagementSink() {
   return (

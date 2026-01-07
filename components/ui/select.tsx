@@ -1,12 +1,15 @@
 'use client'
 
 import { IconCheck, IconChevronDown, IconSearch } from '@tabler/icons-react'
+import { createContext, type RefObject, use, useRef } from 'react'
 import {
   Autocomplete,
   Button,
   type ButtonProps,
   Collection,
   composeRenderProps,
+  Group,
+  type GroupProps,
   Header,
   Input,
   Label,
@@ -21,23 +24,41 @@ import {
   Select as RACSelect,
   SelectValue as RACSelectValue,
   SearchField,
+  SelectContext,
   type SelectProps,
   type SelectValueProps,
   Separator,
-  type SeparatorProps
+  type SeparatorProps,
+  useSlottedContext
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+
+const SelectTriggerRefContext = createContext<RefObject<HTMLDivElement | HTMLButtonElement | null> | null>(null)
+const useSelectTriggerRef = () => {
+  const ref = use(SelectTriggerRefContext)
+  if (!ref) {
+    throw new Error('useSelectTriggerRef must be used within Select with multiple selectionMode')
+  }
+  return ref
+}
 
 const Select = <T extends object, M extends 'single' | 'multiple' = 'single'>({
   className,
   ...props
 }: SelectProps<T, M>) => {
+  const triggerRef = useRef<HTMLDivElement | HTMLButtonElement | null>(null)
   return (
     <RACSelect
       className={composeRenderProps(className, (className) => cn('group/select grid gap-3', className))}
       data-slot='control'
       {...props}
-    />
+    >
+      {(values) => (
+        <SelectTriggerRefContext.Provider value={triggerRef}>
+          {typeof props.children === 'function' ? props.children(values) : props.children}
+        </SelectTriggerRefContext.Provider>
+      )}
+    </RACSelect>
   )
 }
 
@@ -50,27 +71,55 @@ const SelectTrigger = ({
   size = 'default',
   children,
   ...props
-}: ButtonProps & {
+}: Omit<ButtonProps, 'style'> & {
   size?: 'sm' | 'default'
-}) => (
-  <Button
-    className={cn(
-      "flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow,border] hover:border-ring focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 group-hover/select:border-ring data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/select:border-destructive group-data-invalid/select:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/select:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
-      className
-    )}
-    data-size={size}
-    data-slot='select-trigger'
-    type='button'
-    {...props}
-  >
-    {(values) => (
-      <>
-        {typeof children === 'function' ? children(values) : children}
-        <IconChevronDown className='size-4 text-muted-foreground transition group-data-open/select:rotate-180' />
-      </>
-    )}
-  </Button>
-)
+  children: Pick<ButtonProps, 'children'> | Pick<GroupProps, 'children'>
+}) => {
+  const context = useSlottedContext(SelectContext)!
+  const triggerRef = useSelectTriggerRef()
+  if (!context) return null
+
+  return context.selectionMode === 'multiple' ? (
+    <Group
+      className={cn(
+        "flex w-full items-center justify-between gap-2 overflow-hidden whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none transition-[color,box-shadow,border] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 hover:border-ring disabled:cursor-not-allowed disabled:opacity-50 group-hover/select:border-ring has-data-[slot=tag]:pl-1 data-[size=default]:min-h-9 data-[size=sm]:min-h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/select:border-destructive group-data-invalid/select:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/select:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      data-size={size}
+      data-slot='select-trigger'
+      ref={triggerRef as RefObject<HTMLDivElement>}
+      {...props}
+    >
+      {() => (
+        <>
+          {children}
+          <Button className='mb-2.5 flex h-full w-9 cursor-default items-end justify-end outline-hidden'>
+            <IconChevronDown className='size-4 text-muted-foreground transition group-data-open/select:rotate-180' />
+          </Button>
+        </>
+      )}
+    </Group>
+  ) : (
+    <Button
+      className={cn(
+        "flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow,border] hover:border-ring focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 group-hover/select:border-ring data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/select:border-destructive group-data-invalid/select:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/select:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      data-size={size}
+      data-slot='select-trigger'
+      ref={triggerRef as RefObject<HTMLButtonElement>}
+      type='button'
+      {...props}
+    >
+      {(values) => (
+        <>
+          {typeof children === 'function' ? children(values) : children}
+          <IconChevronDown className='size-4 text-muted-foreground transition group-data-open/select:rotate-180' />
+        </>
+      )}
+    </Button>
+  )
+}
 
 const SelectContent = <T extends object>({
   className,
@@ -79,26 +128,32 @@ const SelectContent = <T extends object>({
   isSearchable,
   ...props
 }: ListBoxProps<T> & Pick<PopoverProps, 'offset' | 'placement'> & { isSearchable?: boolean }) => {
+  const triggerRef = useSelectTriggerRef()
+
   const renderContent = () => (
     <ListBox
       className='flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit]'
       data-slot='select-content'
       layout='stack'
       orientation='vertical'
-      renderEmptyState={() => (
-        <div className='col-span-full p-4 text-center text-muted-foreground'>No results found</div>
-      )}
+      renderEmptyState={() => <div className='w-full p-4 text-center text-muted-foreground'>No results found</div>}
       {...props}
     />
   )
   return (
     <Popover
       className={cn(
-        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 min-w-(--trigger-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
+        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
         className
       )}
       offset={offset}
       placement={placement}
+      style={{
+        minWidth: triggerRef?.current?.offsetWidth ?? 'var(--trigger-width)',
+        width: triggerRef?.current?.offsetWidth
+      }}
+      trigger='focus'
+      triggerRef={triggerRef}
     >
       {isSearchable ? (
         <Autocomplete
@@ -143,27 +198,32 @@ const SelectGroup = <T extends object>({ title, ...props }: ListBoxSectionProps<
   </ListBoxSection>
 )
 
-const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => (
-  <ListBoxItem
-    className={cn(
-      "relative flex w-full cursor-default select-none items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
-      className
-    )}
-    data-slot='select-item'
-    {...props}
-  >
-    {(values) => (
-      <>
-        {typeof children === 'function' ? children(values) : children}
-        {values.isSelected && (
-          <span className='absolute right-2 flex size-3.5 items-center justify-center'>
-            <IconCheck className='size-4' />
-          </span>
-        )}
-      </>
-    )}
-  </ListBoxItem>
-)
+const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
+  const textValue = typeof children === 'string' ? children : undefined
+
+  return (
+    <ListBoxItem
+      className={cn(
+        "relative flex w-full cursor-default select-none items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden data-disabled:pointer-events-none data-focused:bg-accent data-focused:text-accent-foreground data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        className
+      )}
+      data-slot='select-item'
+      textValue={textValue}
+      {...props}
+    >
+      {(values) => (
+        <>
+          {typeof children === 'function' ? children(values) : children}
+          {values.isSelected && (
+            <span className='absolute right-2 flex size-3.5 items-center justify-center'>
+              <IconCheck className='size-4' />
+            </span>
+          )}
+        </>
+      )}
+    </ListBoxItem>
+  )
+}
 
 const SelectSeparator = ({ className, ...props }: SeparatorProps) => (
   <Separator

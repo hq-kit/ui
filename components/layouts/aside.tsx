@@ -1,10 +1,9 @@
 'use client'
 
 import type { Component } from '@/types/search'
-import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
-import { Header, ListBox, ListBoxItem, type ListBoxItemProps, ListBoxSection } from 'react-aria-components'
+import { useEffect, useRef } from 'react'
+import { Header, Menu, MenuItem, type MenuItemProps, MenuSection } from 'react-aria-components'
 import menus from '@/components-search.json'
 import { titleCase } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
@@ -15,17 +14,6 @@ export type SidebarItem = {
 }
 
 export function Aside() {
-  useEffect(() => {
-    const activeElement = document.querySelector('.is-active')
-
-    if (activeElement) {
-      activeElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      })
-    }
-  }, [])
-
   const gettingStarted = menus[0] as SidebarItem
   const darkModes = menus[1] as SidebarItem
   const components = menus[2] as Component
@@ -50,71 +38,57 @@ export function Aside() {
   ]
 
   return (
-    <aside className='scrollbar-fade sticky top-7 h-screen w-64 overflow-y-auto overflow-x-hidden py-16 pr-8 pl-0.5 transition xl:w-72'>
+    <aside className='scrollbar-fade sticky top-7 h-screen w-64 overflow-y-auto overflow-x-hidden py-16 pr-8 transition xl:w-72'>
       {sections.map((section) => (
-        <ListBox aria-label='Navigation' className='flex flex-col' key={section.title}>
-          <ListBoxSection>
-            <Header className='mt-4 mb-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
+        <Menu aria-label='Navigation' className='flex flex-col' key={section.title} selectionMode='none'>
+          <MenuSection>
+            <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
             {section.items?.map((item) => (
               <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                 {item.title}
               </MenuLink>
             ))}
-          </ListBoxSection>
+          </MenuSection>
           {section.sections?.map((section) => (
-            <ListBoxSection key={section.title}>
-              <Header className='mt-4 mb-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
+            <MenuSection key={section.title}>
+              <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
               {section.items?.map((item) => (
                 <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                   {item.title}
                 </MenuLink>
               ))}
-            </ListBoxSection>
+            </MenuSection>
           ))}
-        </ListBox>
+        </Menu>
       ))}
     </aside>
   )
 }
 
-const MenuLink = ({ href, className, ...props }: ListBoxItemProps) => {
+const MenuLink = ({ href, className, ...props }: MenuItemProps) => {
   const pathname = usePathname()
   const isActive = pathname === href
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (isActive && ref.current) {
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+  }, [isActive])
   return (
-    <ListBoxItem
+    <MenuItem
       className={cn(
-        'group relative flex w-full items-center py-1.5 text-muted-foreground text-sm transition-colors hover:font-semibold hover:text-foreground',
-        isActive && 'font-semibold text-foreground',
+        'group relative flex w-full items-center rounded-lg px-2 py-1.5 text-muted-foreground text-sm outline-hidden transition hover:font-semibold hover:text-foreground',
+        isActive && 'bg-accent font-semibold text-accent-foreground',
         className
       )}
       href={href}
+      ref={ref}
       {...props}
     >
-      {(values) => (
-        <>
-          {values.isHovered && (
-            <motion.div
-              className='h-4 w-1 rounded-full bg-muted-foreground'
-              layoutId='nav-indicator'
-              transition={{
-                type: 'spring',
-                stiffness: 500,
-                damping: 30,
-                duration: 0.2
-              }}
-            />
-          )}
-          <motion.span
-            animate={{
-              marginLeft: values.isHovered ? '6px' : '0'
-            }}
-            className='z-1 flex flex-row items-center gap-1.5'
-            transition={{ duration: 0.2 }}
-          >
-            {typeof props.children === 'function' ? props.children(values) : props.children}
-          </motion.span>
-        </>
-      )}
-    </ListBoxItem>
+      {props.children}
+    </MenuItem>
   )
 }

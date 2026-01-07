@@ -1,4 +1,7 @@
-import type { ComponentProps } from 'react'
+'use client'
+
+import type { ComponentPropsWithoutRef } from 'react'
+import { Link, type LinkProps } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
 
@@ -18,8 +21,14 @@ const badgeVariants = tv({
   }
 })
 
-const Badge = ({ className, variant, ...props }: ComponentProps<'span'> & VariantProps<typeof badgeVariants>) => (
-  <span className={cn(badgeVariants({ variant }), className)} data-slot='badge' {...props} />
-)
+const Badge = ({
+  className,
+  variant,
+  ...props
+}: Omit<LinkProps, 'className' | 'slot'> & ComponentPropsWithoutRef<'span'> & VariantProps<typeof badgeVariants>) => {
+  const Comp = 'href' in props ? Link : 'span'
+
+  return <Comp className={cn(badgeVariants({ variant }), className)} data-slot='badge' {...props} />
+}
 
 export { Badge, badgeVariants }

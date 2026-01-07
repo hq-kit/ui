@@ -2,7 +2,7 @@ import { IconStar } from '@tabler/icons-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent } from '@/components/ui/popover'
-import { ProgressBar, ProgressBarTrack } from '@/components/ui/progress'
+import { Progress } from '@/components/ui/progress'
 import { Separator } from '@/components/ui/separator'
 
 const ratings = {
@@ -50,9 +50,9 @@ const PopoverRatingsDemo = () => {
                 .map(([star, count]) => (
                   <li className='flex items-center gap-2' key={star}>
                     <span className='shrink-0 text-sm'>{star} star</span>
-                    <ProgressBar className='w-full' value={(count / totalReviews) * 100}>
-                      <ProgressBarTrack />
-                    </ProgressBar>
+                    <Progress className='w-full' value={(count / totalReviews) * 100}>
+                      <Progress.Track />
+                    </Progress>
                     <span className='shrink-0 text-sm'>{count.toString()}</span>
                   </li>
                 ))}

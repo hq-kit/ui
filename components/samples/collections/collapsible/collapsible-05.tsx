@@ -1,7 +1,7 @@
 import { IconChevronDown, IconStar } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { Collapsible, CollapsibleContent, } from '@/components/ui/collapsible'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
@@ -13,7 +13,7 @@ const CollapsibleFilterDemo = () => {
         <div className='flex items-center justify-between gap-4 px-4'>
           <div className='font-semibold text-sm'>Price Range</div>
             <Button size='icon-sm' slot='trigger' variant='ghost'>
-              <IconChevronDown className='text-muted-foreground transition-transform in-data-[expanded=true]:rotate-180' />
+              <IconChevronDown className='in-data-[expanded=true]:rotate-180 text-muted-foreground transition-transform' />
               <span className='sr-only'>Toggle</span>
             </Button>
         </div>
@@ -37,7 +37,7 @@ const CollapsibleFilterDemo = () => {
         <div className='flex items-center justify-between gap-4 px-4'>
           <div className='font-semibold text-sm'>Customer Ratings</div>
             <Button size='icon-sm' slot='trigger' variant='ghost'>
-              <IconChevronDown className='text-muted-foreground transition-transform in-data-[expanded=true]:rotate-180' />
+              <IconChevronDown className='in-data-[expanded=true]:rotate-180 text-muted-foreground transition-transform' />
               <span className='sr-only'>Toggle</span>
             </Button>
         </div>
@@ -79,7 +79,7 @@ const CollapsibleFilterDemo = () => {
         <div className='flex items-center justify-between gap-4 px-4'>
           <div className='font-semibold text-sm'>Brand</div>
             <Button size='icon-sm' slot='trigger' variant='ghost'>
-              <IconChevronDown className='text-muted-foreground transition-transform in-data-[expanded=true]:rotate-180' />
+              <IconChevronDown className='in-data-[expanded=true]:rotate-180 text-muted-foreground transition-transform' />
               <span className='sr-only'>Toggle</span>
             </Button>
         </div>
@@ -121,7 +121,7 @@ const CollapsibleFilterDemo = () => {
         <div className='flex items-center justify-between gap-4 px-4'>
           <div className='font-semibold text-sm'>Battery</div>
             <Button size='icon-sm' slot='trigger' variant='ghost'>
-              <IconChevronDown className='text-muted-foreground transition-transform in-data-[expanded=true]:rotate-180' />
+              <IconChevronDown className='in-data-[expanded=true]:rotate-180 text-muted-foreground transition-transform' />
               <span className='sr-only'>Toggle</span>
             </Button>
         </div>

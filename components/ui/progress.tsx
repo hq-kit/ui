@@ -2,13 +2,13 @@
 
 import type { ProgressBarProps, ProgressBarRenderProps } from 'react-aria-components'
 import { type ComponentProps, createContext, use } from 'react'
-import { ProgressBar as RACProgressBar } from 'react-aria-components'
+import { ProgressBar } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
-const ProgressBarContext = createContext<ProgressBarRenderProps | null>(null)
+const ProgressContext = createContext<ProgressBarRenderProps | null>(null)
 
-const ProgressBar = ({ className, children, ...props }: ProgressBarProps) => (
-  <RACProgressBar
+const Progress = ({ className, children, ...props }: ProgressBarProps) => (
+  <ProgressBar
     className={cn(
       'w-full',
       '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
@@ -24,19 +24,19 @@ const ProgressBar = ({ className, children, ...props }: ProgressBarProps) => (
     {...props}
   >
     {(values) => (
-      <ProgressBarContext value={{ ...values }}>
+      <ProgressContext value={{ ...values }}>
         {typeof children === 'function' ? children(values) : children}
-      </ProgressBarContext>
+      </ProgressContext>
     )}
-  </RACProgressBar>
+  </ProgressBar>
 )
 
-const ProgressBarHeader = ({ className, ...props }: ComponentProps<'div'>) => (
+const ProgressHeader = ({ className, ...props }: ComponentProps<'div'>) => (
   <div className={cn('flex items-center justify-between', className)} data-slot='progress-bar-header' {...props} />
 )
 
-const ProgressBarValue = ({ className, ...props }: Omit<ComponentProps<'span'>, 'children'>) => {
-  const { valueText } = use(ProgressBarContext)!
+const ProgressValue = ({ className, ...props }: Omit<ComponentProps<'span'>, 'children'>) => {
+  const { valueText } = use(ProgressContext)!
   return (
     <span className={cn('text-base/6 sm:text-sm/6', className)} {...props}>
       {valueText}
@@ -44,8 +44,8 @@ const ProgressBarValue = ({ className, ...props }: Omit<ComponentProps<'span'>, 
   )
 }
 
-const ProgressBarTrack = ({ className, ref, ...props }: ComponentProps<'div'>) => {
-  const { isIndeterminate, percentage } = use(ProgressBarContext)!
+const ProgressTrack = ({ className, ref, ...props }: ComponentProps<'div'>) => {
+  const { isIndeterminate, percentage } = use(ProgressContext)!
   return (
     <span className='relative block w-full' data-slot='progress-bar-track'>
       <style>{`
@@ -61,17 +61,18 @@ const ProgressBarTrack = ({ className, ref, ...props }: ComponentProps<'div'>) =
             'relative h-1.5 w-full min-w-52 overflow-hidden rounded-full bg-secondary outline-1 outline-transparent -outline-offset-1 will-change-transform',
             className
           )}
+          data-slot='track'
         >
           {!isIndeterminate ? (
             <div
               className='absolute top-0 left-0 h-full rounded-full bg-primary transition-[width] duration-200 ease-linear will-change-[width] motion-reduce:transition-none'
-              data-slot='progress-content'
+              data-slot='bar'
               style={{ width: `${percentage}%` }}
             />
           ) : (
             <div
               className='absolute top-0 h-full animate-[progress-slide_2000ms_ease-in-out_infinite] rounded-full bg-primary'
-              data-slot='progress-content'
+              data-slot='bar'
               style={{ width: '40%' }}
             />
           )}
@@ -81,8 +82,8 @@ const ProgressBarTrack = ({ className, ref, ...props }: ComponentProps<'div'>) =
   )
 }
 
-ProgressBar.Header = ProgressBarHeader
-ProgressBar.Value = ProgressBarValue
-ProgressBar.Track = ProgressBarTrack
+Progress.Header = ProgressHeader
+Progress.Value = ProgressValue
+Progress.Track = ProgressTrack
 
-export { ProgressBar, ProgressBarHeader, ProgressBarValue, ProgressBarTrack }
+export { Progress, ProgressHeader, ProgressValue, ProgressTrack }

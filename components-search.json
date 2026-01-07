@@ -226,6 +226,10 @@
             "title": "Checkbox"
           },
           {
+            "slug": "/docs/components/forms/combo-box",
+            "title": "Combo Box"
+          },
+          {
             "slug": "/docs/components/forms/field",
             "title": "Field"
           },
@@ -240,6 +244,10 @@
           {
             "slug": "/docs/components/forms/radio",
             "title": "Radio"
+          },
+          {
+            "slug": "/docs/components/forms/select",
+            "title": "Select"
           }
         ]
       },
@@ -325,37 +333,19 @@
       },
       {
         "id": 13,
-        "subsection": "Pickers",
-        "children": [
-          {
-            "slug": "/docs/components/pickers/combo-box",
-            "title": "Combo Box"
-          },
-          {
-            "slug": "/docs/components/pickers/select",
-            "title": "Select"
-          }
-        ]
-      },
-      {
-        "id": 14,
         "subsection": "Statuses",
         "children": [
+          {
+            "slug": "/docs/components/statuses/alert",
+            "title": "Alert"
+          },
           {
             "slug": "/docs/components/statuses/badge",
             "title": "Badge"
           },
           {
-            "slug": "/docs/components/statuses/indicator",
-            "title": "Indicator"
-          },
-          {
             "slug": "/docs/components/statuses/meter",
             "title": "Meter"
-          },
-          {
-            "slug": "/docs/components/statuses/note",
-            "title": "Note"
           },
           {
             "slug": "/docs/components/statuses/progress",
@@ -368,15 +358,11 @@
           {
             "slug": "/docs/components/statuses/sonner",
             "title": "Sonner"
-          },
-          {
-            "slug": "/docs/components/statuses/toast",
-            "title": "Toast"
           }
         ]
       },
       {
-        "id": 15,
+        "id": 14,
         "subsection": "Surfaces",
         "children": [
           {

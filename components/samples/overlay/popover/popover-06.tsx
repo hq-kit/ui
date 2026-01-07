@@ -4,7 +4,7 @@ import { IconDownload } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent } from '@/components/ui/popover'
-import { ProgressBar, ProgressBarTrack } from '@/components/ui/progress'
+import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 
 const PopoverDownloadDemo = () => {
@@ -68,9 +68,9 @@ const PopoverDownloadDemo = () => {
             <span className='flex-1 font-medium text-sm'>{getText()}</span>
             {!isCanceled && <span className='font-semibold text-sm'>{`${value}%`}</span>}
           </div>
-          <ProgressBar className='w-full' value={value}>
-            <ProgressBarTrack />
-          </ProgressBar>
+          <Progress className='w-full' value={value}>
+            <Progress.Track />
+          </Progress>
           <div className='grid grid-cols-2 gap-2'>
             <Button isDisabled={value === 100 || isCanceled} onClick={() => setIsPaused(!isPaused)} size='sm'>
               {isPaused ? 'Resume' : 'Pause'}

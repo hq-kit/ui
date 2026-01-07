@@ -25,7 +25,7 @@ const AccordionTrigger = ({ className, children, ...props }: ButtonProps) => {
   return (
     <Button
       className={cn(
-        'flex flex-1 items-start justify-between gap-4 w-full rounded-md py-4 text-left font-medium text-sm outline-none transition-all hover:underline focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 in-data-[expanded=true]:[&>svg]:rotate-180',
+        'flex w-full flex-1 items-start justify-between gap-4 rounded-md py-4 text-left font-medium text-sm outline-none transition-all hover:underline focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 in-data-[expanded=true]:[&>svg]:rotate-180',
         className
       )}
       data-slot='accordion-trigger'

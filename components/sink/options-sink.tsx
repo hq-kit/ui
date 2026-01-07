@@ -1,15 +1,14 @@
 'use client'
 
 import { IconBrandX, IconTrash } from '@tabler/icons-react'
-import { Breadcrumb } from '../ui/breadcrumb'
-import { Button } from '../ui/button'
-import { Card } from '../ui/card'
-import { ComboBox } from '../ui/combo-box'
-import { Dialog } from '../ui/dialog'
-import { Input } from '../ui/input'
-import { Popover } from '../ui/popover'
-import { Select } from '../ui/select'
-import { Tooltip } from '../ui/tooltip'
+import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { ComboBox } from '@/components/ui/combo-box'
+import { Dialog } from '@/components/ui/dialog'
+import { Popover } from '@/components/ui/popover'
+import { Select } from '@/components/ui/select'
+import { Tooltip } from '@/components/ui/tooltip'
 
 export default function OptionsSink() {
   return (
@@ -33,9 +32,7 @@ export default function OptionsSink() {
       </div>
       <div className='mt-4 flex items-end gap-1'>
         <ComboBox aria-label='Users' className='w-full'>
-          <ComboBox.Trigger>
-            <Input placeholder='Select a user' />
-          </ComboBox.Trigger>
+          <ComboBox.Input placeholder='Select a user' />
           <ComboBox.Content items={users}>
             {(item) => (
               <ComboBox.Item id={item.id} textValue={item.name}>

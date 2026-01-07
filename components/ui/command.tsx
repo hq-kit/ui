@@ -51,6 +51,7 @@ const Command = ({
         className
       )}
       data-pending={isPending}
+      data-slot='command'
     >
       {props.children}
     </div>
@@ -78,7 +79,7 @@ const CommandDialog = ({
     </Dialog.Header>
     <Dialog.Content
       className={cn(
-        'overflow-hidden p-0 **:data-[slot=command-input-wrapper]:h-12 [&_[data-slot=command-input-wrapper]_svg]:h-5 [&_[data-slot=command-input-wrapper]_svg]:w-5',
+        'overflow-hidden p-0 *:space-y-0 **:data-[slot=command-input-wrapper]:h-12 [&_[data-slot=command-input-wrapper]_svg]:h-5 [&_[data-slot=command-input-wrapper]_svg]:w-5',
         className
       )}
       closeButton={showCloseButton}

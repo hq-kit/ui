@@ -64,7 +64,7 @@ const CollapsibleListDemo = () => {
       </ul>
       <Button slot='trigger' size='sm' variant='outline'>
         <span className='in-data-[expanded=true]:hidden'>Show more</span>
-        <span className='hidden in-data-[expanded=true]:block'>Show less</span>
+        <span className='in-data-[expanded=true]:block hidden'>Show less</span>
         <IconChevronUp className='in-data-[expanded=true]:rotate-0 rotate-180 transition-transform' />
       </Button>
     </Collapsible>

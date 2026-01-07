@@ -3,9 +3,9 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import type { VariantProps } from 'tailwind-variants'
 import { Heading, type HeadingProps, Link, type LinkProps } from 'react-aria-components'
+import { buttonVariants } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '../ui/button'
-import { Container } from '../ui/container'
 
 const Hero = ({ children }: { children: ReactNode }) => (
   <div className='relative isolate overflow-hidden bg-background'>

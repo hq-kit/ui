@@ -41,7 +41,7 @@ export function Demo({ component }: { component: Raw }) {
           </DialogContent>
         </Dialog>
       </div>
-      <div className='relative flex min-h-52 items-center justify-center px-8 py-12 has-data-[slot=card]:w-full has-data-[slot=card]:p-0! **:data-[slot=card]:w-full **:data-[slot=card]:border-0 **:data-[slot=card]:shadow-none max-sm:px-4'>
+      <div className='relative flex min-h-52 items-center justify-center px-8 py-12 has-data-[slot=card]:w-full has-data-[slot=chart]:p-2! has-data-[slot=command]:p-0! has-data-[slot=chart]:**:data-[slot=card]:w-full max-sm:px-4'>
         <Component />
       </div>
     </div>

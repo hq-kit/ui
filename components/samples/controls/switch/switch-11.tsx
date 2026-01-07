@@ -11,10 +11,10 @@ const SwitchDualIconLabelDemo = () => {
   const toggleSwitch = () => setChecked((prev) => !prev)
 
   return (
-    <div className='group inline-flex items-center gap-2' data-state={checked ? 'checked' : 'unchecked'}>
+    <div className='group inline-flex items-center gap-2'>
       <button
         aria-controls={id}
-        className='cursor-pointer text-left font-medium text-sm group-data-[selected=true]:text-muted-foreground/70'
+        className='cursor-pointer text-left font-medium text-sm group-has-data-selected:text-muted-foreground/70'
         id={`${id}-light`}
         onClick={() => setChecked(false)}
         type='button'
@@ -30,7 +30,7 @@ const SwitchDualIconLabelDemo = () => {
       />
       <button
         aria-controls={id}
-        className='cursor-pointer text-right font-medium text-sm group-data-[selected=false]:text-muted-foreground/70'
+        className='cursor-pointer text-right font-medium text-muted-foreground/70 text-sm group-has-data-selected:text-foreground'
         id={`${id}-dark`}
         onClick={() => setChecked(true)}
         type='button'
