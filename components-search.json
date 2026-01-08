@@ -344,6 +344,10 @@
             "title": "Badge"
           },
           {
+            "slug": "/docs/components/statuses/empty",
+            "title": "Empty"
+          },
+          {
             "slug": "/docs/components/statuses/meter",
             "title": "Meter"
           },
