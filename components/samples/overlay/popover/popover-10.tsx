@@ -4,9 +4,8 @@ import { IconSearch } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { SearchField } from '@/components/ui/field'
-import { SearchInput } from '@/components/ui/input-group'
 import { Popover, PopoverContent } from '@/components/ui/popover'
+import { SearchField, SearchInput } from '@/components/ui/search-field'
 
 const users = [
   {

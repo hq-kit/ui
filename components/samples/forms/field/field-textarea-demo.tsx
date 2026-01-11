@@ -2,8 +2,9 @@
 
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
-import { FieldDescription, FieldError, FieldGroup, FieldLabel, FieldSet, TextField } from '@/components/ui/field'
-import { Textarea } from '@/components/ui/textarea'
+import { FieldDescription, FieldError, FieldGroup, FieldLabel, FieldSet } from '@/components/ui/field'
+import { Textarea } from '@/components/ui/input'
+import { TextField } from '@/components/ui/text-field'
 
 export default function FieldTextareaDemo() {
   return (

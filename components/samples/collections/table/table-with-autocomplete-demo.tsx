@@ -11,8 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import { SearchField } from '@/components/ui/field'
-import { SearchInput } from '@/components/ui/input-group'
+import { SearchField, SearchInput } from '@/components/ui/search-field'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@/components/ui/table'
 
 export default function TableDemo() {

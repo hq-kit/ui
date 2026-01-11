@@ -1,7 +1,9 @@
 import { IconApp } from '@/components/icons'
-import { Hero, HeroButton, HeroTitle, MainContent } from '@/components/layouts/hero'
+import { Hero, HeroTitle, MainContent } from '@/components/layouts/hero'
 import { CLI } from '@/components/mdx/cli'
 import Sink from '@/components/sink'
+import { buttonVariants } from '@/components/ui/button-group'
+import { Link } from '@/components/ui/link'
 
 export default function Page() {
   return (
@@ -19,10 +21,10 @@ export default function Page() {
           <div className='relative w-xs'>
             <CLI command='install' items='hq-ui' />
           </div>
-          <HeroButton href='/docs/getting-started/installation'>
+          <Link className={buttonVariants({ size: 'lg' })} href='/docs/getting-started/installation'>
             <IconApp />
             Components
-          </HeroButton>
+          </Link>
         </main>
       </Hero>
       <MainContent>

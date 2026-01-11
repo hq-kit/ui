@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 const Separator = ({ className, orientation = 'horizontal', ...props }: SeparatorProps) => (
   <RACSeparator
-    className={cn(className, 'shrink-0', orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px')}
+    className={cn(className, 'shrink-0 bg-muted', orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px')}
     data-slot='separator'
     orientation={orientation}
     {...props}

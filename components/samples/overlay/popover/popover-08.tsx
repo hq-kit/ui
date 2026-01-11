@@ -1,7 +1,7 @@
 import { IconMessage } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/input'
 import { Popover, PopoverContent } from '@/components/ui/popover'
-import { Textarea } from '@/components/ui/textarea'
 
 const PopoverFeedbackDemo = () => {
   return (

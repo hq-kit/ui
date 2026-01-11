@@ -3,29 +3,17 @@
 import type { ComponentProps, ReactNode } from 'react'
 import {
   composeRenderProps,
-  type DateFieldProps,
-  type DatePickerProps,
-  type DateRangePickerProps,
-  type DateValue,
   type FieldErrorProps,
-  type NumberFieldProps,
-  DateField as RACDateField,
-  DatePicker as RACDatePicker,
-  DateRangePicker as RACDateRangePicker,
+  type FormProps,
   FieldError as RACFieldError,
-  NumberField as RACNumberField,
-  SearchField as RACSearchField,
-  TextField as RACTextField,
-  TimeField as RACTimeField,
-  type SearchFieldProps,
-  type TextFieldProps,
-  type TimeFieldProps,
-  type TimeValue
+  Form as RACForm
 } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
 import { Label } from './label'
 import { Separator } from './separator'
+
+const Form = (props: FormProps) => <RACForm {...props} />
 
 const FieldSet = ({ className, ...props }: ComponentProps<'fieldset'>) => (
   <fieldset
@@ -92,99 +80,6 @@ const Field = ({
 }: React.ComponentProps<'div'> & VariantProps<typeof fieldVariants>) => (
   <div
     className={cn(fieldVariants({ orientation }), className)}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const TextField = ({
-  className,
-  orientation = 'vertical',
-  ...props
-}: TextFieldProps & VariantProps<typeof fieldVariants>) => (
-  <RACTextField
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const NumberField = ({
-  className,
-  orientation = 'vertical',
-  ...props
-}: NumberFieldProps & VariantProps<typeof fieldVariants>) => (
-  <RACNumberField
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const SearchField = ({
-  className,
-  isPending = false,
-  orientation = 'vertical',
-  ...props
-}: SearchFieldProps & VariantProps<typeof fieldVariants> & { isPending?: boolean }) => (
-  <RACSearchField
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-pending={isPending}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const DateField = <T extends DateValue>({
-  className,
-  orientation = 'vertical',
-  ...props
-}: DateFieldProps<T> & VariantProps<typeof fieldVariants>) => (
-  <RACDateField
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const TimeField = <T extends TimeValue>({
-  className,
-  orientation = 'vertical',
-  ...props
-}: TimeFieldProps<T> & VariantProps<typeof fieldVariants>) => (
-  <RACTimeField
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const DatePicker = <T extends DateValue>({
-  className,
-  orientation = 'vertical',
-  ...props
-}: DatePickerProps<T> & VariantProps<typeof fieldVariants>) => (
-  <RACDatePicker
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
-    data-orientation={orientation}
-    data-slot='field'
-    {...props}
-  />
-)
-
-const DateRangePicker = <T extends DateValue>({
-  className,
-  orientation = 'vertical',
-  ...props
-}: DateRangePickerProps<T> & VariantProps<typeof fieldVariants>) => (
-  <RACDateRangePicker
-    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
     data-orientation={orientation}
     data-slot='field'
     {...props}
@@ -274,15 +169,8 @@ Field.Separator = FieldSeparator
 Field.Set = FieldSet
 Field.Title = FieldTitle
 
-Field.Text = TextField
-Field.Date = DateField
-Field.DatePicker = DatePicker
-Field.DateRangePicker = DateRangePicker
-Field.Time = TimeField
-Field.Number = NumberField
-Field.Search = SearchField
-
 export {
+  Form,
   Field,
   FieldLabel,
   FieldDescription,
@@ -292,12 +180,5 @@ export {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-  DateField,
-  TimeField,
-  DateRangePicker,
-  DatePicker,
-  TextField,
-  NumberField,
-  SearchField,
   fieldVariants
 }

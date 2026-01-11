@@ -3,10 +3,10 @@
 import { IconMail } from '@tabler/icons-react'
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
-import { FieldDescription, FieldError, FieldLegend, FieldSet, TextField } from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
-import { InputGroup, InputGroupAddon, InputGroupInput, PasswordInput } from '@/components/ui/input-group'
+import { FieldDescription, FieldError, FieldLegend, FieldSet } from '@/components/ui/field'
+import { Input, InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { PasswordInput, TextField } from '@/components/ui/text-field'
 
 export default function FieldInputDemo() {
   return (

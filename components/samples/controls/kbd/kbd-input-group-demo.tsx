@@ -1,5 +1,5 @@
 import { IconSearch } from '@tabler/icons-react'
-import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input'
 import { Kbd } from '@/components/ui/kbd'
 
 export default function KbdInputGroup() {

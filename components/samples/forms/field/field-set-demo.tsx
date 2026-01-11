@@ -1,16 +1,9 @@
 'use client'
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
-import {
-  FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSet,
-  TextField
-} from '@/components/ui/field'
+import { FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
+import { TextField } from '@/components/ui/text-field'
 
 export default function FieldFieldsetDemo() {
   return (

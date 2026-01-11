@@ -2,9 +2,9 @@
 
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
-import { FieldError, SearchField } from '@/components/ui/field'
-import { SearchInput } from '@/components/ui/input-group'
+import { FieldError } from '@/components/ui/field'
 import { Label } from '@/components/ui/label'
+import { SearchField, SearchInput } from '@/components/ui/search-field'
 
 export default function SearchFieldDemo() {
   return (

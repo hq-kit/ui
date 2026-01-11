@@ -6,10 +6,9 @@ import { toast } from 'sonner'
 import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
-import { TextField } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/ui/input-group'
 import { Label } from '@/components/ui/label'
+import { PasswordInput, TextField } from '@/components/ui/text-field'
 
 const DrawerWithFormDemo = () => {
   const onSubmit = () => {

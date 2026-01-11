@@ -5,9 +5,8 @@ import type { ToggleProps } from '@/components/ui/toggle'
 import { IconBold, IconItalic, IconUnderline } from '@tabler/icons-react'
 import { useState } from 'react'
 import { Code } from '@/components/mdx/code'
-import { Field } from '@/components/ui/field'
-import { NumberInput } from '@/components/ui/input-group'
 import { Label } from '@/components/ui/label'
+import { NumberField, NumberInput } from '@/components/ui/number-field'
 import { Radio, RadioGroup } from '@/components/ui/radio'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
@@ -61,10 +60,10 @@ export default function ButtonPreview() {
               <Radio value='vertical'>Vertical</Radio>
             </div>
           </RadioGroup>
-          <Field.Number onChange={setSpacing} value={spacing}>
+          <NumberField onChange={setSpacing} value={spacing}>
             <Label>Spacing</Label>
             <NumberInput />
-          </Field.Number>
+          </NumberField>
           <Switch isSelected={isDisabled} onChange={setIsDisabled}>
             Disabled
           </Switch>

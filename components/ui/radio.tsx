@@ -1,5 +1,6 @@
 'use client'
 
+import type { VariantProps } from 'tailwind-variants'
 import { IconCircleFilled } from '@tabler/icons-react'
 import {
   composeRenderProps,
@@ -10,18 +11,15 @@ import {
   type RadioProps
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { fieldVariants } from './field'
 
-const RadioGroup = ({ className, ...props }: RadioGroupProps) => {
+const RadioGroup = ({ className, orientation, ...props }: RadioGroupProps & VariantProps<typeof fieldVariants>) => {
   return (
     <RACRadioGroup
       {...props}
-      className={composeRenderProps(className, (className) =>
-        cn(
-          'group/radio-group flex gap-x-4 gap-y-2 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:items-center',
-          className
-        )
-      )}
-      data-slot='control'
+      className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), 'w-fit', className))}
+      data-orientation={orientation}
+      data-slot='field'
     />
   )
 }

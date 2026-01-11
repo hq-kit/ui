@@ -1,5 +1,3 @@
-'use client'
-
 import { IconDeviceDesktop, IconDeviceIpad, IconDeviceMobile } from '@tabler/icons-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 

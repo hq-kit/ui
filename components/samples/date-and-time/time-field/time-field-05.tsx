@@ -1,8 +1,7 @@
 'use client'
 
 import { getLocalTimeZone, now, parseZonedDateTime } from '@internationalized/date'
-import { DateInput } from '@/components/ui/date-input'
-import { TimeField } from '@/components/ui/field'
+import { DateInput, TimeField } from '@/components/ui/date-field'
 import { Label } from '@/components/ui/label'
 
 export default function TimeFieldUncontrolled() {

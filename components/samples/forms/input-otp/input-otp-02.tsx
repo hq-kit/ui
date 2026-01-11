@@ -1,9 +1,7 @@
 'use client'
 
-import { useId } from 'react'
-
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp'
-
+import { useId } from 'react'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 import { Label } from '@/components/ui/label'
 

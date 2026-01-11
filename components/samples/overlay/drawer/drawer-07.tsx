@@ -2,8 +2,9 @@
 
 import { IconPlus } from '@tabler/icons-react'
 import { useState } from 'react'
-import { Autocomplete, Form } from 'react-aria-components'
+import { Form } from 'react-aria-components'
 import { toast } from 'sonner'
+import { Autocomplete } from '@/components/ui/autocomplete'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import {
@@ -15,13 +16,13 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/components/ui/drawer'
-import { NumberField, SearchField, TextField } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { NumberInput, SearchInput } from '@/components/ui/input-group'
 import { Label } from '@/components/ui/label'
+import { NumberField, NumberInput } from '@/components/ui/number-field'
+import { SearchField, SearchInput } from '@/components/ui/search-field'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@/components/ui/table'
-import { fuzzyMatch } from '@/lib/fuzzy-search'
+import { TextField } from '@/components/ui/text-field'
 
 const data: Payment[] = [
   {
@@ -103,7 +104,7 @@ const DataTableDensityDemo = () => {
 
   return (
     <div className='w-full'>
-      <Autocomplete filter={fuzzyMatch}>
+      <Autocomplete>
         <Card>
           <CardHeader>
             <div className='flex justify-between gap-2 max-sm:flex-col sm:items-center'>

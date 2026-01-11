@@ -21,7 +21,19 @@
     }
   },
   "files": {
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build", "!.source"],
+    "includes": [
+      "app/**/*.{js,jsx,ts,tsx}",
+      "components/**/*.{js,jsx,ts,tsx}",
+      "lib/**/*.{js,jsx,ts,tsx}",
+      "hooks/**/*.{js,jsx,ts,tsx}",
+      "scripts/**/*.{js,jsx,ts,tsx}",
+      "types/**/*.{js,jsx,ts,tsx}",
+      "config/**/*.{js,jsx,ts,tsx}",
+      "content/**/*.{md,mdx}",
+      "!node_modules",
+      "!.next",
+      "!.source"
+    ],
     "ignoreUnknown": false
   },
   "formatter": {

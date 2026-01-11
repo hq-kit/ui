@@ -1,10 +1,6 @@
 'use client'
 
-import type {
-  SeparatorProps,
-  ToggleButtonGroupProps,
-  ToolbarProps as ToolbarPrimitiveProps
-} from 'react-aria-components'
+import type { ToolbarProps as RACToolbarProps, SeparatorProps, ToggleButtonGroupProps } from 'react-aria-components'
 import { createContext, use, useContext } from 'react'
 import {
   composeRenderProps,
@@ -22,7 +18,7 @@ const ToolbarContext = createContext<ToolbarProps>({
   isCircle: false
 })
 
-interface ToolbarProps extends ToolbarPrimitiveProps {
+interface ToolbarProps extends RACToolbarProps {
   isCircle?: boolean
 }
 

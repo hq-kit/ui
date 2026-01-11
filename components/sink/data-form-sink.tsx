@@ -5,9 +5,11 @@ import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import { Card } from '../ui/card'
 import { Checkbox, CheckboxGroup } from '../ui/checkbox'
+import { Label } from '../ui/label'
 import { Radio, RadioGroup } from '../ui/radio'
-import { Select } from '../ui/select'
+import { Select, SelectValue } from '../ui/select'
 import { Switch } from '../ui/switch'
+import { Tag, TagGroup, TagList } from '../ui/tag'
 
 export default function DataFormSink() {
   return (
@@ -19,7 +21,7 @@ export default function DataFormSink() {
       <Form
         onSubmit={(e) => {
           e.preventDefault()
-          toast.success('Dummy Login Successfully')
+          toast.success('Data submitted')
         }}
       >
         <Card.Content className='space-y-4'>
@@ -45,9 +47,36 @@ export default function DataFormSink() {
             </Select.Content>
           </Select>
           <CheckboxGroup aria-label='Settings'>
+            <Label>Settings</Label>
             <Checkbox value='notifications'>Enable React Server Component</Checkbox>
             <Checkbox value='dark_mode'>Enable Dark Mode</Checkbox>
           </CheckboxGroup>
+          <Select aria-label='Components' placeholder='Select components' selectionMode='multiple'>
+            <Select.Trigger>
+              <SelectValue<(typeof components)[0]>>
+                {({ selectedItems, state }) => (
+                  <TagGroup
+                    aria-label='Selected states'
+                    onRemove={(keys) => {
+                      if (Array.isArray(state.value)) {
+                        state.setValue(state.value.filter((k) => !keys.has(k)))
+                      }
+                    }}
+                  >
+                    <TagList
+                      items={selectedItems.filter((item) => item != null)}
+                      renderEmptyState={() => 'No selected items'}
+                    >
+                      {(item) => <Tag>{item.name}</Tag>}
+                    </TagList>
+                  </TagGroup>
+                )}
+              </SelectValue>
+            </Select.Trigger>
+            <Select.Content items={components}>
+              {(item) => <Select.Item key={item.id}>{item.name}</Select.Item>}
+            </Select.Content>
+          </Select>
           <Switch>Notifications</Switch>
         </Card.Content>
         <Card.Footer className='justify-end'>
@@ -57,3 +86,17 @@ export default function DataFormSink() {
     </Card>
   )
 }
+
+const components = [
+  { id: 1, name: 'Buttons' },
+  { id: 2, name: 'Collections' },
+  { id: 3, name: 'Colors' },
+  { id: 4, name: 'Date' },
+  { id: 5, name: 'Dropzone' },
+  { id: 6, name: 'Forms' },
+  { id: 7, name: 'Media' },
+  { id: 8, name: 'Navigation' },
+  { id: 9, name: 'Overlays' },
+  { id: 10, name: 'Statuses' },
+  { id: 11, name: 'Surfaces' }
+]

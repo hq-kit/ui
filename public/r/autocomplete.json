@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "autocomplete",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "files": [
+    {
+      "path": "components/ui/autocomplete.tsx",
+      "content": "'use client'\n\nimport { type AutocompleteProps, Autocomplete as RACAutocomplete } from 'react-aria-components'\n\nexport const fuzzy = (textValue: string, inputValue: string): boolean => {\n  if (inputValue.length === 0) return true\n  if (textValue.length === 0) return false\n  let textIndex = 0\n  let inputIndex = 0\n  while (textIndex < textValue.length && inputIndex < inputValue.length) {\n    if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {\n      inputIndex++\n    }\n    textIndex++\n  }\n  return inputIndex === inputValue.length\n}\n\nconst Autocomplete = ({ ...props }: AutocompleteProps) => {\n  return <RACAutocomplete {...props} filter={props.filter ?? fuzzy} />\n}\n\nexport { Autocomplete }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

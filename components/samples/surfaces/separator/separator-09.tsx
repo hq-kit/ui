@@ -1,7 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 
-export const title = 'With Margins'
-
 const Example = () => (
   <div>
     <p className='text-sm'>Section 1</p>

@@ -2,23 +2,25 @@
 
 import type { ProgressBarProps, ProgressBarRenderProps } from 'react-aria-components'
 import { type ComponentProps, createContext, use } from 'react'
-import { ProgressBar } from 'react-aria-components'
+import { composeRenderProps, ProgressBar } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
 const ProgressContext = createContext<ProgressBarRenderProps | null>(null)
 
 const Progress = ({ className, children, ...props }: ProgressBarProps) => (
   <ProgressBar
-    className={cn(
-      'w-full',
-      '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
-      '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
-      "[&>[data-slot=progress-bar-header]+[slot='description']]:mt-1",
-      "[&>[slot='description']+[data-slot=progress-bar-track]]:mt-2",
-      '[&>[data-slot=progress-bar-track]+[slot=description]]:mt-2',
-      '[&>[data-slot=progress-bar-track]+[slot=errorMessage]]:mt-2',
-      '*:data-[slot=progress-bar-header]:font-medium',
-      className
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'w-full',
+        '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
+        '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
+        "[&>[data-slot=progress-bar-header]+[slot='description']]:mt-1",
+        "[&>[slot='description']+[data-slot=progress-bar-track]]:mt-2",
+        '[&>[data-slot=progress-bar-track]+[slot=description]]:mt-2',
+        '[&>[data-slot=progress-bar-track]+[slot=errorMessage]]:mt-2',
+        '*:data-[slot=progress-bar-header]:font-medium',
+        className
+      )
     )}
     data-slot='control'
     {...props}

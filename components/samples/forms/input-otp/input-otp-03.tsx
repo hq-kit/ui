@@ -1,5 +1,4 @@
 import { useId } from 'react'
-
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 import { Label } from '@/components/ui/label'
 
@@ -19,7 +18,7 @@ const InputOTPWithResendDemo = () => {
       </InputOTP>
       <p className='text-muted-foreground text-xs'>
         Didn&apos;t get the code?{' '}
-        <a href='#' className='text-primary hover:underline'>
+        <a className='text-primary hover:underline' href='#'>
           Resend code
         </a>
       </p>

@@ -1,7 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 
-export const title = 'Dotted Separator'
-
 const Example = () => (
   <div className='space-y-4'>
     <p className='text-sm'>Above</p>

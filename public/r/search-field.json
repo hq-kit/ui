@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-field",
+  "dependencies": [
+    "tailwind-variants",
+    "@tabler/icons-react",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "field",
+    "input",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/search-field.tsx",
+      "content": "'use client'\n\nimport type { VariantProps } from 'tailwind-variants'\nimport { IconLoader2, IconSearch, IconX } from '@tabler/icons-react'\nimport {\n  composeRenderProps,\n  type InputProps,\n  SearchField as RACSearchField,\n  type SearchFieldProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { fieldVariants } from './field'\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './input'\n\nconst SearchField = ({\n  className,\n  isPending = false,\n  orientation = 'vertical',\n  ...props\n}: SearchFieldProps & VariantProps<typeof fieldVariants> & { isPending?: boolean }) => (\n  <RACSearchField\n    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}\n    data-orientation={orientation}\n    data-pending={isPending}\n    data-slot='field'\n    {...props}\n  />\n)\n\nconst SearchInput = ({ className, ...props }: Omit<InputProps, 'type'>) => (\n  <InputGroup>\n    <InputGroupAddon>\n      <IconLoader2 className='in-data-[pending=true]:block hidden animate-spin' />\n      <IconSearch className='in-data-[pending=true]:hidden' />\n    </InputGroupAddon>\n    <InputGroupInput className='[&::-webkit-search-cancel-button]:hidden' {...props} />\n    <InputGroupAddon align='inline-end' className='group-data-empty/field:hidden'>\n      <InputGroupButton>\n        <IconX />\n      </InputGroupButton>\n    </InputGroupAddon>\n  </InputGroup>\n)\n\nexport { SearchField, SearchInput }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

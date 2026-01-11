@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field",
+  "dependencies": [
+    "tailwind-variants",
+    "@tabler/icons-react",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "field",
+    "input",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/number-field.tsx",
+      "content": "'use client'\n\nimport type { VariantProps } from 'tailwind-variants'\nimport { IconChevronDown, IconChevronUp } from '@tabler/icons-react'\nimport {\n  Button,\n  composeRenderProps,\n  type InputProps,\n  type NumberFieldProps,\n  NumberField as RACNumberField\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { fieldVariants } from './field'\nimport { InputGroup, InputGroupInput } from './input'\n\nconst NumberField = ({\n  className,\n  orientation = 'vertical',\n  ...props\n}: NumberFieldProps & VariantProps<typeof fieldVariants>) => (\n  <RACNumberField\n    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}\n    data-orientation={orientation}\n    data-slot='field'\n    {...props}\n  />\n)\n\nconst NumberInput = ({ className, ...props }: Omit<InputProps, 'type'>) => (\n  <InputGroup className='relative inline-flex h-9 w-full min-w-0 items-center overflow-hidden whitespace-nowrap rounded-md border border-input bg-transparent text-base shadow-xs outline-hidden transition-[color,box-shadow] data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-focus-within:border-ring data-disabled:opacity-50 data-focus-within:ring-[3px] data-focus-within:ring-ring/50 data-focus-within:has-aria-invalid:border-destructive data-focus-within:has-aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:data-focus-within:has-aria-invalid:ring-destructive/40'>\n    <InputGroupInput\n      {...props}\n      className='w-full grow px-3 py-2 text-center tabular-nums outline-none selection:bg-primary selection:text-primary-foreground'\n    />\n    <div className='flex h-[calc(100%+2px)] flex-col'>\n      <Button\n        className='-me-px flex h-1/2 w-6 flex-1 items-center justify-center border border-input bg-background text-muted-foreground text-sm transition-[color,box-shadow] hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50'\n        slot='increment'\n      >\n        <IconChevronUp className='size-3' />\n        <span className='sr-only'>Increment</span>\n      </Button>\n      <Button\n        className='-me-px -mt-px flex h-1/2 w-6 flex-1 items-center justify-center border border-input bg-background text-muted-foreground text-sm transition-[color,box-shadow] hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50'\n        slot='decrement'\n      >\n        <IconChevronDown className='size-3' />\n        <span className='sr-only'>Decrement</span>\n      </Button>\n    </div>\n  </InputGroup>\n)\n\nexport { NumberField, NumberInput }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

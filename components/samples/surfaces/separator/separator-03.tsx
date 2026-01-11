@@ -1,7 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 
-export const title = 'In Navigation'
-
 const Example = () => (
   <div className='flex items-center space-x-2 text-sm'>
     <a className='hover:underline' href='#'>

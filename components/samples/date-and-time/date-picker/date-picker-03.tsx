@@ -3,8 +3,8 @@
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
-import { DatePickerInput } from '@/components/ui/date-input'
-import { DatePicker, FieldError } from '@/components/ui/field'
+import { DatePicker, DatePickerInput } from '@/components/ui/date-field'
+import { FieldError } from '@/components/ui/field'
 import { Label } from '@/components/ui/label'
 import { PopoverContent } from '@/components/ui/popover'
 

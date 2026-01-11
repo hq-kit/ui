@@ -4,7 +4,6 @@ import type { ComponentProps } from 'react'
 import { Collection } from '@react-aria/collections'
 import { IconCheck, IconCircleFilled, IconLoader2, IconSearch } from '@tabler/icons-react'
 import {
-  Autocomplete,
   type AutocompleteProps,
   Header,
   Input,
@@ -20,21 +19,8 @@ import {
   type SeparatorProps
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { Autocomplete } from './autocomplete'
 import { Dialog, DialogDescription, DialogTitle } from './dialog'
-
-export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
-  if (inputValue.length === 0) return true
-  if (textValue.length === 0) return false
-  let textIndex = 0
-  let inputIndex = 0
-  while (textIndex < textValue.length && inputIndex < inputValue.length) {
-    if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
-      inputIndex++
-    }
-    textIndex++
-  }
-  return inputIndex === inputValue.length
-}
 
 const Command = ({
   className,
@@ -44,7 +30,7 @@ const Command = ({
   className?: string
   isPending?: boolean
 }) => (
-  <Autocomplete data-slot='command' filter={fuzzyMatch} {...props}>
+  <Autocomplete data-slot='command' {...props}>
     <div
       className={cn(
         'group/command flex size-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground',

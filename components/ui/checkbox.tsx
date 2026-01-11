@@ -1,5 +1,6 @@
 'use client'
 
+import type { VariantProps } from 'tailwind-variants'
 import { IconCheck, IconMinus } from '@tabler/icons-react'
 import {
   type CheckboxGroupProps,
@@ -10,23 +11,19 @@ import {
   CheckboxGroup as RACCheckboxGroup
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { fieldVariants } from './field'
 
 const CheckboxGroup = ({
   className,
   orientation,
   ...props
-}: CheckboxGroupProps & { orientation?: 'horizontal' | 'vertical' }) => {
+}: CheckboxGroupProps & VariantProps<typeof fieldVariants>) => {
   return (
     <RACCheckboxGroup
       {...props}
-      className={composeRenderProps(className, (className) =>
-        cn(
-          'group/radio-group flex gap-x-4 gap-y-2',
-          orientation === 'horizontal' ? 'flex-row items-center' : 'flex-col items-start',
-          className
-        )
-      )}
-      data-slot='control'
+      className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), 'w-fit', className))}
+      data-orientation={orientation}
+      data-slot='field'
     />
   )
 }

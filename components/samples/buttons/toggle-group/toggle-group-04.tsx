@@ -1,5 +1,3 @@
-'use client'
-
 import { IconBell, IconBellFilled, IconKey, IconKeyOff, IconMoon, IconSun } from '@tabler/icons-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 

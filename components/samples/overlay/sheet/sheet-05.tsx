@@ -5,11 +5,10 @@ import { Form } from 'react-aria-components'
 import { toast } from 'sonner'
 import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import { TextField } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/ui/input-group'
 import { Label } from '@/components/ui/label'
 import { Sheet, SheetBody, SheetContent, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import { PasswordInput, TextField } from '@/components/ui/text-field'
 
 const SheetWithFormDemo = () => {
   const onSubmit = () => {

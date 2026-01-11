@@ -10,7 +10,7 @@ const CollapsibleCardDemo = () => {
         <div className='flex items-center justify-between px-6 pb-6'>
           <CardTitle>How do I track my order?</CardTitle>
           <CardAction>
-            <Button slot='trigger' size='sm' variant='outline'>
+            <Button size='sm' slot='trigger' variant='outline'>
               <span className='in-data-[expanded=true]:hidden'>Show</span>
               <span className='in-data-[expanded=true]:block hidden'>Hide</span>
               <IconChevronUp className='in-data-[expanded=true]:rotate-0 rotate-180' />

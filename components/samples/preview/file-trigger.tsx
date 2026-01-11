@@ -5,12 +5,12 @@ import type { ButtonProps } from '@/components/ui/button'
 import { IconBrandAdobe } from '@tabler/icons-react'
 import { useState } from 'react'
 import { Code } from '@/components/mdx/code'
-import { Field } from '@/components/ui/field'
 import { FileTrigger } from '@/components/ui/file-trigger'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
+import { TextField } from '@/components/ui/text-field'
 
 export default function ButtonPreview() {
   const [isPending, setIsPending] = useState(false)
@@ -30,10 +30,10 @@ export default function ButtonPreview() {
     <div>
       <div className='flex flex-col gap-2 lg:flex-row-reverse'>
         <div className='flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l'>
-          <Field.Text isDisabled={iconOnly} onChange={setChildren} value={children}>
+          <TextField isDisabled={iconOnly} onChange={setChildren} value={children}>
             <Label>Children</Label>
             <Input />
-          </Field.Text>
+          </TextField>
           <Switch isDisabled={iconOnly} isSelected={withIcon} onChange={setWithIcon}>
             With Icon
           </Switch>

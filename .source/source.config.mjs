@@ -10,7 +10,6 @@ var docs = defineDocs({
       title: z.string(),
       description: z.string().optional(),
       references: z.array(z.string()).optional(),
-      order: z.number().optional(),
       published: z.boolean().default(true)
     }),
     async: false

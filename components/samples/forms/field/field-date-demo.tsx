@@ -1,8 +1,18 @@
+'use client'
+
 import { Form } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
 import { Calendar, RangeCalendar } from '@/components/ui/calendar'
-import { DateInput, DatePickerInput, DateRangePickerInput } from '@/components/ui/date-input'
-import { DateField, DatePicker, DateRangePicker, FieldError, TimeField } from '@/components/ui/field'
+import {
+  DateField,
+  DateInput,
+  DatePicker,
+  DatePickerInput,
+  DateRangePicker,
+  DateRangePickerInput,
+  TimeField
+} from '@/components/ui/date-field'
+import { FieldError } from '@/components/ui/field'
 import { Label } from '@/components/ui/label'
 import { PopoverContent } from '@/components/ui/popover'
 

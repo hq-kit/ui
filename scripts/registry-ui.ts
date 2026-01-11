@@ -4,8 +4,6 @@ import path from 'node:path'
 const baseDir = path.resolve(__dirname, '../components')
 const uiDir = path.join(baseDir, 'ui')
 
-const outputPathJson = path.resolve(__dirname, '../registry.json')
-
 function getComponents() {
   const components: string[] = []
   const files = fs.readdirSync(uiDir)

@@ -100,6 +100,10 @@
             "title": "Grid List"
           },
           {
+            "slug": "/docs/components/collections/item",
+            "title": "Item"
+          },
+          {
             "slug": "/docs/components/collections/list-box",
             "title": "List Box"
           },
@@ -122,28 +126,8 @@
         "subsection": "Colors",
         "children": [
           {
-            "slug": "/docs/components/colors/color-area",
-            "title": "Color Area"
-          },
-          {
-            "slug": "/docs/components/colors/color-field",
-            "title": "Color Field"
-          },
-          {
-            "slug": "/docs/components/colors/color-picker",
-            "title": "Color Picker"
-          },
-          {
-            "slug": "/docs/components/colors/color-slider",
-            "title": "Color Slider"
-          },
-          {
-            "slug": "/docs/components/colors/color-swatch-picker",
-            "title": "Color Swatch Picker"
-          },
-          {
-            "slug": "/docs/components/colors/color-wheel",
-            "title": "Color Wheel"
+            "slug": "/docs/components/colors/color",
+            "title": "Color"
           }
         ]
       },
@@ -234,20 +218,32 @@
             "title": "Field"
           },
           {
-            "slug": "/docs/components/forms/input-group",
-            "title": "Input Group"
+            "slug": "/docs/components/forms/input",
+            "title": "Input"
           },
           {
             "slug": "/docs/components/forms/input-o-t-p",
             "title": "Input O T P"
           },
           {
+            "slug": "/docs/components/forms/number-field",
+            "title": "Number Field"
+          },
+          {
             "slug": "/docs/components/forms/radio",
             "title": "Radio"
           },
           {
+            "slug": "/docs/components/forms/search-field",
+            "title": "Search Field"
+          },
+          {
             "slug": "/docs/components/forms/select",
             "title": "Select"
+          },
+          {
+            "slug": "/docs/components/forms/text-field",
+            "title": "Text Field"
           }
         ]
       },
@@ -374,24 +370,8 @@
             "title": "Card"
           },
           {
-            "slug": "/docs/components/surfaces/code",
-            "title": "Code"
-          },
-          {
-            "slug": "/docs/components/surfaces/description-list",
-            "title": "Description List"
-          },
-          {
-            "slug": "/docs/components/surfaces/header",
-            "title": "Header"
-          },
-          {
             "slug": "/docs/components/surfaces/separator",
             "title": "Separator"
-          },
-          {
-            "slug": "/docs/components/surfaces/spoiler",
-            "title": "Spoiler"
           }
         ]
       }

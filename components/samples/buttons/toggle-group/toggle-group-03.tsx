@@ -1,5 +1,3 @@
-'use client'
-
 import { IconAlignCenter, IconAlignJustified, IconAlignLeft, IconAlignRight } from '@tabler/icons-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 

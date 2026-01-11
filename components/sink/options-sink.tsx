@@ -1,16 +1,30 @@
 'use client'
 
 import { IconBrandX, IconTrash } from '@tabler/icons-react'
+import { useEffect, useState } from 'react'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { ComboBox } from '@/components/ui/combo-box'
 import { Dialog } from '@/components/ui/dialog'
-import { Popover } from '@/components/ui/popover'
+import { Popover, PopoverContent } from '@/components/ui/popover'
 import { Select } from '@/components/ui/select'
 import { Tooltip } from '@/components/ui/tooltip'
+import { RangeCalendar } from '../ui/calendar'
+import { DateRangePicker, DateRangePickerInput } from '../ui/date-field'
+import { Meter } from '../ui/meter'
+import { Progress } from '../ui/progress'
 
 export default function OptionsSink() {
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValue((prev) => (prev < 100 ? prev + 1 : 100))
+    }, 50)
+
+    return () => clearInterval(interval)
+  }, [])
   return (
     <Card className='p-4'>
       <Breadcrumb>
@@ -19,7 +33,7 @@ export default function OptionsSink() {
         <Breadcrumb.Item>Components</Breadcrumb.Item>
       </Breadcrumb>
       <div className='mt-6 flex w-full items-center gap-2'>
-        <Select aria-labelledby='per-page' className='lg:w-20' id='per-page' placeholder='Per Page'>
+        <Select aria-labelledby='per-page' className='lg:max-w-24' id='per-page' placeholder='Show'>
           <Select.Trigger>
             <Select.Value />
           </Select.Trigger>
@@ -29,8 +43,14 @@ export default function OptionsSink() {
             <Select.Item id='30'>30</Select.Item>
           </Select.Content>
         </Select>
+        <DateRangePicker aria-label='Date Filter'>
+          <DateRangePickerInput />
+          <PopoverContent className='w-auto p-0'>
+            <RangeCalendar />
+          </PopoverContent>
+        </DateRangePicker>
       </div>
-      <div className='mt-4 flex items-end gap-1'>
+      <div className='mt-4 flex items-end gap-2'>
         <ComboBox aria-label='Users' className='w-full'>
           <ComboBox.Input placeholder='Select a user' />
           <ComboBox.Content items={users}>
@@ -63,6 +83,12 @@ export default function OptionsSink() {
           </Dialog.Content>
         </Dialog>
       </div>
+      <Progress className='w-full' value={value}>
+        <Progress.Track />
+      </Progress>
+      <Meter className='w-full' value={value}>
+        <Meter.Track />
+      </Meter>
       <div className='mt-4 flex justify-center gap-5'>
         <Tooltip>
           <Button aria-label='Follow My Twitter' size='icon'>

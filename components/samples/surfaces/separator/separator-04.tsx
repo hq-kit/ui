@@ -1,7 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 
-export const title = 'Section Divider'
-
 const Example = () => (
   <div className='space-y-4'>
     <div>

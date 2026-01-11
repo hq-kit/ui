@@ -1,9 +1,6 @@
-'use client'
-
 import { getLocalTimeZone, now, parseZonedDateTime } from '@internationalized/date'
 import { useState } from 'react'
-import { DateInput } from '@/components/ui/date-input'
-import { DateField } from '@/components/ui/field'
+import { DateField, DateInput } from '@/components/ui/date-field'
 import { Label } from '@/components/ui/label'
 
 export default function DateTimeField() {

@@ -4,8 +4,7 @@ import type { CalendarDate } from '@internationalized/date'
 import { getLocalTimeZone, parseDate, today } from '@internationalized/date'
 import { useDateFormatter } from '@react-aria/i18n'
 import { useState } from 'react'
-import { DateInput } from '@/components/ui/date-input'
-import { DateField } from '@/components/ui/field'
+import { DateField, DateInput } from '@/components/ui/date-field'
 import { Label } from '@/components/ui/label'
 
 export default function DateFieldControlled() {

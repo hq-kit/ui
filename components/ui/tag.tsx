@@ -11,14 +11,11 @@ import {
   TagList as RACTagList
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { FieldError, TextField } from './field'
+import { FieldError, fieldVariants } from './field'
+import { TextField } from './text-field'
 
 const TagGroup = ({ className, ...props }: TagGroupProps) => (
-  <RACTagGroup
-    className={cn('group/tag-group flex flex-col gap-y-3 *:data-[slot=label]:font-medium', className)}
-    data-slot='control'
-    {...props}
-  />
+  <RACTagGroup className={cn(fieldVariants(), className)} data-slot='control' {...props} />
 )
 
 const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => (
@@ -41,7 +38,7 @@ const Tag = ({ children, className, ...props }: TagProps) => {
           'inset-ring inset-ring-input outline-hidden dark:bg-input/30',
           'inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5',
           '[&_svg:not([class*="size-"])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0',
-          'rounded-full px-2',
+          'rounded-md px-2',
           'data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50',
           'data-selected:inset-ring-ring/70 data-selected:bg-primary data-selected:text-primary-foreground',
           'data-disabled:opacity-50',

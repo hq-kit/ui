@@ -1,8 +1,7 @@
 'use client'
 
 import { RangeCalendar } from '@/components/ui/calendar'
-import { DateRangePickerInput } from '@/components/ui/date-input'
-import { DateRangePicker } from '@/components/ui/field'
+import { DateRangePicker, DateRangePickerInput } from '@/components/ui/date-field'
 import { Label } from '@/components/ui/label'
 import { PopoverContent } from '@/components/ui/popover'
 

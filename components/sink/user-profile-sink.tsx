@@ -3,12 +3,13 @@
 import { IconPhone } from '@tabler/icons-react'
 import Image from 'next/image'
 import { Card } from '../ui/card'
-import { DateInput } from '../ui/date-input'
+import { DateField, DateInput, TimeField } from '../ui/date-field'
 import { DropZone } from '../ui/drop-zone'
-import { Field } from '../ui/field'
-import { InputGroup, NumberInput } from '../ui/input-group'
+import { InputGroup, Textarea } from '../ui/input'
+import { Label } from '../ui/label'
+import { NumberField, NumberInput } from '../ui/number-field'
 import { Tabs } from '../ui/tabs'
-import { Textarea } from '../ui/textarea'
+import { TextField } from '../ui/text-field'
 
 export default function UserProfileSink() {
   return (
@@ -44,36 +45,36 @@ export default function UserProfileSink() {
             </Tabs.List>
             <Tabs.Content className='p-1' id='t1'>
               <div className='mb-4 grid w-full grid-cols-3 items-end gap-3'>
-                <Field.Date className='col-span-2'>
-                  <Field.Label>Date of Birth</Field.Label>
+                <DateField className='col-span-2'>
+                  <Label>Date of Birth</Label>
                   <DateInput />
-                </Field.Date>
-                <Field.Time>
-                  <Field.Label>Time</Field.Label>
+                </DateField>
+                <TimeField>
+                  <Label>Time</Label>
                   <DateInput />
-                </Field.Time>
+                </TimeField>
               </div>
               <div className='my-2.5'>
-                <Field.Text>
-                  <Field.Label>Phone</Field.Label>
+                <TextField>
+                  <Label>Phone</Label>
                   <InputGroup>
                     <InputGroup.Addon>
                       <IconPhone />
                     </InputGroup.Addon>
                     <InputGroup.Input placeholder='Enter your phone number' />
                   </InputGroup>
-                </Field.Text>
+                </TextField>
               </div>
             </Tabs.Content>
             <Tabs.Content className='space-y-4 p-1' id='t2'>
-              <Field.Text>
-                <Field.Label>Address</Field.Label>
+              <TextField>
+                <Label>Address</Label>
                 <Textarea className='max-h-16 resize-none' placeholder='Enter your address' />
-              </Field.Text>
-              <Field.Number>
-                <Field.Label>Postal Code</Field.Label>
+              </TextField>
+              <NumberField>
+                <Label>Postal Code</Label>
                 <NumberInput placeholder='Enter your postal code' />
-              </Field.Number>
+              </NumberField>
             </Tabs.Content>
             <Tabs.Content className='p-1' id='t3'>
               <DropZone className='h-44'>

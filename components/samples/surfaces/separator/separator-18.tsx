@@ -1,7 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 
-export const title = 'With Text Right'
-
 const Example = () => (
   <div className='w-full max-w-sm'>
     <div className='relative flex items-center gap-2'>

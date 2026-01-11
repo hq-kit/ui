@@ -1,13 +1,13 @@
 export const fuzzyMatch = (textValue: string, inputValue: string): boolean => {
-    if (inputValue.length === 0) return true
-    if (textValue.length === 0) return false
-    let textIndex = 0
-    let inputIndex = 0
-    while (textIndex < textValue.length && inputIndex < inputValue.length) {
-        if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
-            inputIndex++
-        }
-        textIndex++
+  if (inputValue.length === 0) return true
+  if (textValue.length === 0) return false
+  let textIndex = 0
+  let inputIndex = 0
+  while (textIndex < textValue.length && inputIndex < inputValue.length) {
+    if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
+      inputIndex++
     }
-    return inputIndex === inputValue.length
+    textIndex++
+  }
+  return inputIndex === inputValue.length
 }

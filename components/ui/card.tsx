@@ -3,7 +3,10 @@ import { cn } from '@/lib/utils'
 
 const Card = ({ className, ...props }: ComponentProps<'div'>) => (
   <div
-    className={cn('flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm', className)}
+    className={cn(
+      'group/card flex flex-col gap-(--gutter) rounded-lg border bg-card py-(--gutter) text-card-foreground shadow-xs [--gutter:--spacing(6)] has-[table]:overflow-hidden has-[table]:not-has-data-[slot=card-footer]:pb-0 **:data-[slot=table-header]:bg-muted/50 has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden',
+      className
+    )}
     data-slot='card'
     {...props}
   />

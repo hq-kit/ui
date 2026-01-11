@@ -9,6 +9,7 @@ import type {
   PopoverProps,
   SeparatorProps
 } from 'react-aria-components'
+import type { VariantProps } from 'tailwind-variants'
 import { IconCheck, IconSelector } from '@tabler/icons-react'
 import {
   Button,
@@ -23,24 +24,19 @@ import {
   Separator
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { fuzzy } from './autocomplete'
+import { fieldVariants } from './field'
 import { Input } from './input'
 
-const ComboBox = <T extends object>({ ...props }: ComboBoxProps<T>) => (
+const ComboBox = <T extends object>({
+  className,
+  orientation,
+  ...props
+}: ComboBoxProps<T> & VariantProps<typeof fieldVariants>) => (
   <RACCombobox
-    className={composeRenderProps(props.className, (className) => cn('group/field grid gap-3', className))}
-    defaultFilter={(textValue, inputValue) => {
-      if (inputValue.length === 0) return true
-      if (textValue.length === 0) return false
-      let textIndex = 0
-      let inputIndex = 0
-      while (textIndex < textValue.length && inputIndex < inputValue.length) {
-        if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
-          inputIndex++
-        }
-        textIndex++
-      }
-      return inputIndex === inputValue.length
-    }}
+    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
+    data-orientation={orientation}
+    defaultFilter={fuzzy}
     menuTrigger='focus'
     {...props}
   />

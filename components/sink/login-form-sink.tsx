@@ -10,6 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
+import { PasswordInput, TextField } from '../ui/text-field'
 
 export default function LoginFormSink() {
   return (
@@ -36,21 +37,21 @@ export default function LoginFormSink() {
             </Button>
           </div>
           <Separator className='my-4' />
-          <Field.Text isRequired>
+          <TextField isRequired>
             <Field.Label>Name</Field.Label>
             <Input placeholder='Enter your name' />
             <Field.Error />
-          </Field.Text>
-          <Field.Text isRequired type='email'>
+          </TextField>
+          <TextField isRequired type='email'>
             <Field.Label>Email</Field.Label>
             <Input placeholder='Enter your email' />
             <Field.Error />
-          </Field.Text>
-          <Field.Text isRequired type='password'>
+          </TextField>
+          <TextField isRequired type='password'>
             <Field.Label>Password</Field.Label>
-            <Input placeholder='Enter your password' />
+            <PasswordInput placeholder='Enter your password' />
             <Field.Error />
-          </Field.Text>
+          </TextField>
           <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
         </Card.Content>
         <Card.Footer className='justify-end gap-4'>

@@ -1,5 +1,3 @@
-'use client'
-
 import { IconUpload } from '@tabler/icons-react'
 import { FileTrigger } from '@/components/ui/file-trigger'
 
