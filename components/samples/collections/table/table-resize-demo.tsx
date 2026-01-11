@@ -5,9 +5,9 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 
 export default function TableResizeDemo() {
   return (
-    <Card>
+    <Card className='p-0'>
       <CardContent>
-        <Table allowResize aria-label='Vocalists'>
+        <Table allowResize aria-label='Vocalists' bleed>
           <TableHeader>
             <TableColumn className='max-w-10'>ID</TableColumn>
             <TableColumn isResizable isRowHeader>

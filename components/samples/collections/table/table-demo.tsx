@@ -14,9 +14,9 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 
 export default function TableDemo() {
   return (
-    <Card>
+    <Card className='p-0'>
       <CardContent>
-        <Table aria-label='Products'>
+        <Table aria-label='Products' bleed>
           <TableHeader>
             <TableColumn className='w-0'>#</TableColumn>
             <TableColumn isRowHeader>Name</TableColumn>

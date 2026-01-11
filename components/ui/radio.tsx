@@ -13,7 +13,11 @@ import {
 import { cn } from '@/lib/utils'
 import { fieldVariants } from './field'
 
-const RadioGroup = ({ className, orientation, ...props }: RadioGroupProps & VariantProps<typeof fieldVariants>) => {
+const RadioGroup = ({
+  className,
+  orientation = 'vertical',
+  ...props
+}: RadioGroupProps & VariantProps<typeof fieldVariants>) => {
   return (
     <RACRadioGroup
       {...props}

@@ -53,7 +53,7 @@ export default function ButtonPreview() {
               <SelectItem id='lg'>Large</SelectItem>
             </SelectContent>
           </Select>
-          <RadioGroup onChange={setOrientation} orientation='horizontal' value={orientation}>
+          <RadioGroup onChange={setOrientation} orientation='vertical' value={orientation}>
             <Label>Orientation</Label>
             <div className='flex gap-3'>
               <Radio value='horizontal'>Horizontal</Radio>

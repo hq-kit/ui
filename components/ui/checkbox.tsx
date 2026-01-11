@@ -15,7 +15,7 @@ import { fieldVariants } from './field'
 
 const CheckboxGroup = ({
   className,
-  orientation,
+  orientation = 'vertical',
   ...props
 }: CheckboxGroupProps & VariantProps<typeof fieldVariants>) => {
   return (

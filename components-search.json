@@ -140,10 +140,6 @@
             "title": "Command"
           },
           {
-            "slug": "/docs/components/controls/context-menu",
-            "title": "Context Menu"
-          },
-          {
             "slug": "/docs/components/controls/kbd",
             "title": "Kbd"
           },

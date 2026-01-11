@@ -8,10 +8,11 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 export default function TableBulkDemo() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set())
   return (
-    <Card>
+    <Card className='p-0'>
       <CardContent>
         <Table
           aria-label='Books'
+          bleed
           onSelectionChange={setSelectedKeys}
           selectedKeys={selectedKeys}
           selectionMode='multiple'
@@ -35,16 +36,16 @@ export default function TableBulkDemo() {
             )}
           </TableBody>
         </Table>
-        <p className='mt-2 block text-muted-fg [&>strong]:text-fg'>
-          {Array.from(selectedKeys).length > 0 ? (
-            <>
-              You have selected: <strong>{Array.from(selectedKeys).join(', ')}</strong>
-            </>
-          ) : (
-            'You have not selected anything.'
-          )}
-        </p>
       </CardContent>
+      <div className='flex justify-center pb-4 text-muted-foreground'>
+        {Array.from(selectedKeys).length > 0 ? (
+          <span className='flex items-center gap-2'>
+            You have selected: <strong>{Array.from(selectedKeys).join(', ')}</strong>
+          </span>
+        ) : (
+          'You have not selected anything.'
+        )}
+      </div>
     </Card>
   )
 }

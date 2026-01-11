@@ -25,9 +25,9 @@ export default function TableDragDemo() {
     }
   })
   return (
-    <Card>
+    <Card className='p-0'>
       <CardContent>
-        <Table allowResize aria-label='Movies' dragAndDropHooks={dragAndDropHooks} selectionMode='multiple'>
+        <Table allowResize aria-label='Movies' bleed dragAndDropHooks={dragAndDropHooks} selectionMode='multiple'>
           <TableHeader>
             <TableColumn>#</TableColumn>
             <TableColumn isRowHeader>Name</TableColumn>
@@ -44,7 +44,8 @@ export default function TableDragDemo() {
                 <TableCell>{item.releaseYear}</TableCell>
                 <TableCell>
                   <div className='flex items-center gap-x-2'>
-                    <IconStar className='size-3.5 text-warning' /> <span>{item.rating}</span>
+                    <IconStar className='size-3.5 shrink-0 text-warning' />
+                    <span>{item.rating}</span>
                   </div>
                 </TableCell>
               </TableRow>

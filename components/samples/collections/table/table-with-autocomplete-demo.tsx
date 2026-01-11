@@ -27,7 +27,7 @@ export default function TableDemo() {
               <SearchInput />
             </SearchField>
           </div>
-          <Table aria-label='Users' className='mt-4'>
+          <Table aria-label='Users' bleed className='mt-4 border-t'>
             <TableHeader>
               <TableColumn className='w-0'>#</TableColumn>
               <TableColumn isRowHeader>Name</TableColumn>

@@ -72,9 +72,8 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
               <IconGripVertical className='size-4' />
             </Button>
           )}
-
           {values.selectionMode === 'multiple' && values.selectionBehavior === 'toggle' && (
-            <Checkbox className='[--indicator-mt:0] *:gap-x-0 sm:[--indicator-mt:0]' slot='selection' />
+            <Checkbox className='space-x-0 [--indicator-mt:0] *:gap-x-0 sm:[--indicator-mt:0]' slot='selection' />
           )}
           {typeof children === 'function' ? children(values) : children}
         </>

@@ -14,7 +14,9 @@ import { cn } from '@/lib/utils'
 const Collapsible = ({ className, ...props }: DisclosureProps) => {
   return (
     <Disclosure
-      className={composeRenderProps(className, (className) => cn('group/collapsible', className))}
+      className={composeRenderProps(className, (className) =>
+        cn('group/collapsible data-disabled:**:text-muted-foreground', className)
+      )}
       data-slot='collapsible'
       {...props}
     />

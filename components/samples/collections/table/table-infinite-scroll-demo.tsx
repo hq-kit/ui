@@ -3,7 +3,6 @@
 import { IconLoader } from '@tabler/icons-react'
 import { Collection, TableLoadMoreItem } from 'react-aria-components'
 import { useAsyncList } from 'react-stately'
-import { Card, CardContent } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@/components/ui/table'
 
 interface Character {
@@ -35,44 +34,42 @@ export default function TableInfiniteScrollDemo() {
   })
 
   return (
-    <Card>
-      <CardContent>
-        <Table allowResize aria-label='People' className='h-72'>
-          <TableHeader className='sticky top-0 z-10 bg-muted'>
-            <TableColumn isRowHeader>Name</TableColumn>
-            <TableColumn>Height</TableColumn>
-            <TableColumn>Mass</TableColumn>
-            <TableColumn>Birth year</TableColumn>
-            <TableColumn>Gender</TableColumn>
-            <TableColumn>Eye</TableColumn>
-          </TableHeader>
-          <TableBody
-            renderEmptyState={() => (
-              <div className='flex h-full items-center justify-center p-4 text-muted-fg'>No characters found.</div>
+    <div className='overflow-hidden rounded-lg border'>
+      <Table allowResize aria-label='People' bleed className='h-72'>
+        <TableHeader className='sticky top-0 z-10 bg-muted'>
+          <TableColumn isRowHeader>Name</TableColumn>
+          <TableColumn>Height</TableColumn>
+          <TableColumn>Mass</TableColumn>
+          <TableColumn>Birth year</TableColumn>
+          <TableColumn>Gender</TableColumn>
+          <TableColumn>Eye</TableColumn>
+        </TableHeader>
+        <TableBody
+          renderEmptyState={() => (
+            <div className='flex h-full items-center justify-center p-4 text-muted-fg'>No characters found.</div>
+          )}
+        >
+          <Collection items={list.items}>
+            {(item) => (
+              <TableRow id={item.name}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.height}</TableCell>
+                <TableCell>{item.mass}</TableCell>
+                <TableCell>{item.birth_year}</TableCell>
+                <TableCell>{item.gender}</TableCell>
+                <TableCell>{item.eye_color}</TableCell>
+              </TableRow>
             )}
+          </Collection>
+          <TableLoadMoreItem
+            className='sticky inset-x-0 bottom-0 h-16'
+            isLoading={list.loadingState === 'loadingMore'}
+            onLoadMore={list.loadMore}
           >
-            <Collection items={list.items}>
-              {(item) => (
-                <TableRow id={item.name}>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.height}</TableCell>
-                  <TableCell>{item.mass}</TableCell>
-                  <TableCell>{item.birth_year}</TableCell>
-                  <TableCell>{item.gender}</TableCell>
-                  <TableCell>{item.eye_color}</TableCell>
-                </TableRow>
-              )}
-            </Collection>
-            <TableLoadMoreItem
-              className='sticky inset-x-0 bottom-0 h-16'
-              isLoading={list.loadingState === 'loadingMore'}
-              onLoadMore={list.loadMore}
-            >
-              <IconLoader aria-label='Loading more...' className='mx-auto animate-spin' />
-            </TableLoadMoreItem>
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+            <IconLoader aria-label='Loading more...' className='mx-auto animate-spin' />
+          </TableLoadMoreItem>
+        </TableBody>
+      </Table>
+    </div>
   )
 }

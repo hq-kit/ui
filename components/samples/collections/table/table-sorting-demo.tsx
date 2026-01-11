@@ -40,9 +40,9 @@ export default function TableSortingDemo() {
     }
   })
   return (
-    <Card>
+    <Card className='p-0'>
       <CardContent>
-        <Table aria-label='Movies' onSortChange={list.sort} sortDescriptor={list.sortDescriptor}>
+        <Table aria-label='Movies' bleed onSortChange={list.sort} sortDescriptor={list.sortDescriptor}>
           <TableHeader>
             <TableColumn id='title' isRowHeader>
               Title
