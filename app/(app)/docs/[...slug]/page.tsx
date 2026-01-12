@@ -9,6 +9,10 @@ type Props = {
   params: Promise<{ slug: string[] }>
 }
 
+export const revalidate = false
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params
   const doc = source.getPage(slug)
@@ -57,10 +61,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
-// export function generateStaticParams() {
-//   const docs = source.getPages()
-//   return docs.map((doc) => ({ slug: doc.slugs }))
-// }
+export function generateStaticParams() {
+  return source.generateParams()
+}
 
 export default async function DocsPage(props: Props) {
   const { slug } = await props.params

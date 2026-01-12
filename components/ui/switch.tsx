@@ -41,7 +41,9 @@ const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
           {typeof children === 'function' ? (
             children(values)
           ) : typeof children === 'string' ? (
-            <Label>{children}</Label>
+            <Label className='text-sm transition group-has-invalid/switch:text-destructive' elementType='span'>
+              {children}
+            </Label>
           ) : (
             children
           )}

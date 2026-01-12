@@ -52,7 +52,9 @@ export default function LoginFormSink() {
             <PasswordInput placeholder='Enter your password' />
             <Field.Error />
           </TextField>
-          <Checkbox isRequired>I agree to the terms and conditions</Checkbox>
+          <Checkbox aria-label='terms' isRequired>
+            I agree to the terms and conditions
+          </Checkbox>
         </Card.Content>
         <Card.Footer className='justify-end gap-4'>
           <Link className={buttonVariants({ variant: 'link' })} href='#'>

@@ -153,7 +153,7 @@ const SelectContent = <T extends object>({
       offset={offset}
       placement={placement}
       style={{
-        minWidth: triggerRef?.current?.offsetWidth ?? 'var(--trigger-width)',
+        minWidth: triggerRef?.current?.offsetWidth ?? '100%',
         width: triggerRef?.current?.offsetWidth
       }}
       trigger='focus'

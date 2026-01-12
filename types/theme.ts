@@ -14,7 +14,6 @@ export type ThemeStyleProps = {
   accent: string
   'accent-foreground': string
   destructive: string
-  'destructive-foreground': string
   border: string
   input: string
   ring: string
@@ -32,21 +31,30 @@ export type ThemeStyleProps = {
   'sidebar-border': string
   'sidebar-ring': string
   'font-sans'?: string
-  'font-serif'?: string
   'font-mono'?: string
   radius?: string
-  'shadow-color'?: string
-  'shadow-opacity'?: string
-  'shadow-blur'?: string
-  'shadow-spread'?: string
-  'shadow-offset-x'?: string
-  'shadow-offset-y'?: string
   'letter-spacing'?: string
   spacing?: string
+}
+
+export type ThemeMetadata = {
+  badge?: string
+}
+
+export type ThemeStyles = {
+  light: ThemeStyleProps
+  dark: Partial<ThemeStyleProps>
+  css?: Record<string, Record<string, string>>
+  meta?: ThemeMetadata
+}
+
+export type ThemeEditorState = {
+  styles: ThemeStyles
 }
 
 export type ThemePreset = {
   light?: Partial<ThemeStyleProps>
   dark?: Partial<ThemeStyleProps>
-  theme?: Record<string, Record<string, string>>
+  css?: Record<string, Record<string, string>>
+  meta?: ThemeMetadata
 }

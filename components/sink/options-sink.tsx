@@ -33,7 +33,7 @@ export default function OptionsSink() {
         <Breadcrumb.Item>Components</Breadcrumb.Item>
       </Breadcrumb>
       <div className='mt-6 flex w-full items-center gap-2'>
-        <Select aria-labelledby='per-page' className='lg:max-w-24' id='per-page' placeholder='Show'>
+        <Select aria-label='per-page' className='lg:max-w-24' id='per-page' placeholder='Show'>
           <Select.Trigger>
             <Select.Value />
           </Select.Trigger>
@@ -83,10 +83,10 @@ export default function OptionsSink() {
           </Dialog.Content>
         </Dialog>
       </div>
-      <Progress className='w-full' value={value}>
+      <Progress aria-label='Progress' className='w-full' value={value}>
         <Progress.Track />
       </Progress>
-      <Meter className='w-full' value={value}>
+      <Meter aria-label='Meter' className='w-full' value={value}>
         <Meter.Track />
       </Meter>
       <div className='mt-4 flex justify-center gap-5'>

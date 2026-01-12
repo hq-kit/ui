@@ -1,20 +1,13 @@
-import type { ThemePreset } from '@/types/theme'
+// Type Imports
+import type { ThemeStyles } from '@/types/theme'
 
-export const COMMON_STYLES = [
-  'font-sans',
-  'font-serif',
-  'font-mono',
-  'radius',
-  'shadow-opacity',
-  'shadow-blur',
-  'shadow-spread',
-  'shadow-offset-x',
-  'shadow-offset-y',
-  'letter-spacing',
-  'spacing'
-]
+export const COMMON_STYLES = ['font-sans', 'font-mono', 'radius', 'letter-spacing', 'spacing']
 
-export const defaultLightThemeStyles: ThemePreset['light'] = {
+export const DEFAULT_FONT_SANS = 'Inter, sans-serif'
+
+export const DEFAULT_FONT_MONO = 'JetBrains Mono, monospace'
+
+export const defaultLightThemeStyles: ThemeStyles['light'] = {
   background: 'oklch(1 0 0)',
   foreground: 'oklch(0.141 0.005 285.823)',
   card: 'oklch(1 0 0)',
@@ -47,15 +40,14 @@ export const defaultLightThemeStyles: ThemePreset['light'] = {
   'sidebar-accent-foreground': 'oklch(0.21 0.006 285.885)',
   'sidebar-border': 'oklch(0.92 0.004 286.32)',
   'sidebar-ring': 'oklch(0.705 0.015 286.067)',
-  'font-sans': '--font-geist',
-  'font-serif': '--font-geist',
-  'font-mono': '--font-geist-mono',
+  'font-sans': DEFAULT_FONT_SANS,
+  'font-mono': DEFAULT_FONT_MONO,
 
   'letter-spacing': '0em',
   spacing: '0.25rem'
 }
 
-export const defaultDarkThemeStyles: ThemePreset['dark'] = {
+export const defaultDarkThemeStyles: ThemeStyles['dark'] = {
   background: 'oklch(0.141 0.005 285.823)',
   foreground: 'oklch(0.985 0 0)',
   card: 'oklch(0.21 0.006 285.885)',
@@ -92,7 +84,8 @@ export const defaultDarkThemeStyles: ThemePreset['dark'] = {
   spacing: '0.25rem'
 }
 
-export const defaultThemeState: ThemePreset = {
+// Default theme state
+export const defaultThemeState: ThemeStyles = {
   light: defaultLightThemeStyles,
   dark: defaultDarkThemeStyles
 }

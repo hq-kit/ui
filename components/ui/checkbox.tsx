@@ -28,7 +28,7 @@ const CheckboxGroup = ({
   )
 }
 
-const Checkbox = ({ className, ...props }: CheckboxProps) => {
+const Checkbox = ({ className, children, ...props }: CheckboxProps) => {
   return (
     <RACCheckbox
       className={composeRenderProps(className, (className) =>
@@ -38,7 +38,6 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
         )
       )}
       data-slot='checkbox'
-      slot='checkbox'
       {...props}
     >
       {(values) => (
@@ -63,11 +62,11 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
               <IconCheck className='hidden size-3.5 group-data-selected/checkbox:block group-data-indeterminate/checkbox:hidden' />
             </div>
           </div>
-          {typeof props.children === 'function' ? (
-            props.children(values)
+          {typeof children === 'function' ? (
+            children(values)
           ) : (
             <Label className='text-sm transition group-has-invalid/checkbox:text-destructive' elementType='span'>
-              {props.children}
+              {children}
             </Label>
           )}
         </>

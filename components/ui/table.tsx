@@ -167,13 +167,12 @@ interface TableRowProps<T extends object> extends RowProps<T> {
   ref?: Ref<HTMLTableRowElement>
 }
 
-const TableRow = <T extends object>({ children, className, columns, id, ref, ...props }: TableRowProps<T>) => {
+const TableRow = <T extends object>({ children, className, columns, ref, ...props }: TableRowProps<T>) => {
   const { selectionBehavior, allowsDragging } = useTableOptions()
   const { striped } = use(TableContext)
   return (
     <Row
       data-slot='table-row'
-      id={id}
       ref={ref}
       {...props}
       className={composeRenderProps(
