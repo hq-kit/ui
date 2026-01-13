@@ -1,8 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { libHook } from './registry-lib-hook'
+import { registryStyles } from './registry-style'
 import { uiComponents } from './registry-ui'
-import {registryStyles} from "./registry-style";
 
 const registryFilePath = path.resolve(__dirname, '../registry.json')
 

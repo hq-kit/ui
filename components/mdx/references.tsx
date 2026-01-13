@@ -112,7 +112,7 @@ export function DocRefs({ references }: { references: string[] }) {
   })
 
   return (
-    <Menu aria-label='Link References' className='flex gap-x-2' items={urls}>
+    <Menu aria-label='Link References' className='flex flex-wrap gap-2' items={urls}>
       {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
         <MenuItem
           className={cn(

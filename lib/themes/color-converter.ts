@@ -216,5 +216,3 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     return colorValue
   }
 }
-
-export const convertToHSL = (colorValue: string): string => colorFormatter(colorValue, 'hsl')

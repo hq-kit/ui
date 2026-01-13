@@ -3,7 +3,7 @@
 import { IconColorSwatch } from '@tabler/icons-react'
 import ThemeControlPanel from '@/components/theme-customizer/theme-control-panel'
 import { Button } from '@/components/ui/button'
-import {Sheet, SheetBody, SheetContent, SheetDescription, SheetHeader, SheetTitle} from '@/components/ui/sheet'
+import { Sheet, SheetBody, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 
 export function ThemeCustomizer() {
   return (
@@ -16,9 +16,9 @@ export function ThemeCustomizer() {
           <SheetTitle>Theme Customizer</SheetTitle>
           <SheetDescription>Pick a style and color for your components.</SheetDescription>
         </SheetHeader>
-       <SheetBody>
-           <ThemeControlPanel />
-       </SheetBody>
+        <SheetBody>
+          <ThemeControlPanel />
+        </SheetBody>
       </SheetContent>
     </Sheet>
   )

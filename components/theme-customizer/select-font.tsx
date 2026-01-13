@@ -1,5 +1,5 @@
-import type {Key, SelectProps} from 'react-aria-components'
-import { useMemo, useState } from 'react'
+import type { SelectProps } from 'react-aria-components'
+import { useMemo } from 'react'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
@@ -12,7 +12,7 @@ const SelectFont = ({ fonts, defaultValue, label, ...props }: SelectFontProps) =
   const fontNames = useMemo(() => Object.keys(fonts), [fonts])
 
   return (
-    <Select name={label}  placeholder='Select theme font' {...props}>
+    <Select name={label} placeholder='Select theme font' {...props}>
       <Label>{label}</Label>
       <SelectTrigger>
         <SelectValue />

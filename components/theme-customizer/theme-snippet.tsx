@@ -43,9 +43,7 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
           <DialogDescription>Copy these CSS variables to use your theme in other projects.</DialogDescription>
         </DialogHeader>
         <DialogBody>
-          <div className='relative'>
-            {activeTheme && isPresetTheme && <CLI command='add' items={[activeTheme]} />}
-          </div>
+          <div className='relative'>{activeTheme && isPresetTheme && <CLI command='add' items={[activeTheme]} />}</div>
           <div>
             <div className='sticky top-0 w-full'>
               <Select

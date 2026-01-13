@@ -15,6 +15,7 @@ const sansSerifFontNames = [
   'Source Code Pro',
   'Lato',
   'Gabriela',
+  'Oxanium',
   'Delius Swash Caps'
 ]
 
@@ -45,6 +46,7 @@ export const fonts = {
   Geist: 'Geist, Geist Fallback, sans-serif',
   Merriweather: 'Merriweather, serif',
   'Playfair Display': 'Playfair Display, serif',
+  Barlow: 'Barlow, sans-serif',
   Lora: 'Lora, serif',
   'Source Serif 4': 'Source Serif 4, serif',
   'Libre Baskerville': 'Libre Baskerville, serif',
@@ -52,6 +54,7 @@ export const fonts = {
   'PT Serif': 'PT Serif, serif',
   Gabriela: 'Gabriela, Geist Fallback',
   'Delius Swash Caps': 'Delius Swash Caps, serif',
+  Oxanium: 'Oxanium, sans-serif',
 
   // Monospace fonts
   'JetBrains Mono': 'JetBrains Mono, monospace',

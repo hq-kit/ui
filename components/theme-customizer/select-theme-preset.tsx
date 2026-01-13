@@ -1,14 +1,15 @@
 'use client'
 
-import type { Key } from 'react-aria-components'
 import type { ThemePreset, ThemeStyleProps } from '@/types/theme'
 import { IconArrowsShuffle } from '@tabler/icons-react'
 import { useCallback, useMemo } from 'react'
+import { GridList, GridListItem, type Key } from 'react-aria-components'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { defaultThemeState } from '@/config/theme'
+import { titleCase } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
 
 type SelectThemePresetProps = {
@@ -21,32 +22,25 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
   const presetNames = useMemo(() => {
     const allPresets = Object.keys(presets)
 
-    // Separate presets with badges and those without
     const presetsWithBadges = allPresets.filter((name) => presets[name]?.meta?.badge)
     const presetsWithoutBadges = allPresets.filter((name) => !presets[name]?.meta?.badge)
 
-    // Sort each group alphabetically
     presetsWithBadges.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
     presetsWithoutBadges.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 
-    // Always keep 'default' as the first item in the list without badges
     return ['default', ...presetsWithBadges, ...presetsWithoutBadges.filter((name) => name !== 'default')]
   }, [presets])
 
   const value = presetNames?.find((name) => name === currentPreset)
 
-  // Helper function to get theme color
   const getThemeColor = (themeName: string, color: keyof ThemeStyleProps) => {
-    // If it's default theme, use the first preset as default
     const theme = themeName === 'default' ? defaultThemeState : presets[themeName]
-
     return theme?.light?.[color] || theme?.dark?.[color] || '#000000'
   }
 
   // Helper function to get badge for a theme
   const getThemeBadge = (themeName: string) => {
     if (themeName === 'default') return null
-
     return presets[themeName]?.meta?.badge || null
   }
 
@@ -59,13 +53,13 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
 
   return (
     <div className='flex flex-col gap-4'>
-        <Button className='cursor-pointer' onPress={randomize} variant='default'>
-          <IconArrowsShuffle className='size-4' />
-          Random
-        </Button>
+      <Button className='cursor-pointer' onPress={randomize} variant='default'>
+        <IconArrowsShuffle className='size-4' />
+        Random
+      </Button>
       <Select name='Theme Preset' onChange={onPresetChange} placeholder='Choose Theme' value={value}>
         <Label className='sr-only'>Preset</Label>
-        <SelectTrigger className='h-12 w-full cursor-pointer'>
+        <SelectTrigger className='w-full cursor-pointer'>
           <SelectValue />
         </SelectTrigger>
         <SelectContent isSearchable>
@@ -75,20 +69,19 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
               return (
                 <SelectItem className='flex items-center gap-3' id={name} key={name} textValue={name}>
                   <div className='flex items-center'>
-                    <div className='relative size-6.5 rounded border bg-background p-1'>
-                      <div className='grid h-full w-full grid-cols-2 grid-rows-2 gap-0.5'>
-                        <div className='rounded-[2px]' style={{ backgroundColor: getThemeColor(name, 'primary') }} />
-                        <div
-                          className='rounded-[2px]'
-                          style={{ backgroundColor: getThemeColor(name, 'destructive') }}
-                        />
-                        <div className='rounded-[2px]' style={{ backgroundColor: getThemeColor(name, 'secondary') }} />
-                        <div className='rounded-full' style={{ backgroundColor: getThemeColor(name, 'accent') }} />
+                    <div className='relative size-5 bg-background'>
+                      <div className='grid size-full grid-cols-2 grid-rows-2'>
+                        <div style={{ backgroundColor: getThemeColor(name, 'primary') }} />
+                        <div style={{ backgroundColor: getThemeColor(name, 'destructive') }} />
+                        <div style={{ backgroundColor: getThemeColor(name, 'secondary') }} />
+                        <div style={{ backgroundColor: getThemeColor(name, 'accent') }} />
                       </div>
                     </div>
                   </div>
                   <div className='flex items-center gap-2'>
-                    <span>{name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}</span>
+                    <span style={{ fontFamily: getThemeColor(name, 'font-sans') }}>
+                      {name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
+                    </span>
                     {badge && (
                       <Badge
                         className={cn('rounded-full', {
@@ -106,6 +99,41 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
           </SelectGroup>
         </SelectContent>
       </Select>
+      <GridList
+        aria-label='Preset Theme'
+        className='grid grid-cols-3 gap-2'
+        disallowEmptySelection
+        items={Object.entries(presets)
+          .map(([key, value]) => ({
+            title: key,
+            light: value.light,
+            dark: value.dark
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title))}
+        layout='grid'
+        onSelectionChange={(v) => onPresetChange([...v][0] as Key)}
+        selectedKeys={[value!]}
+        selectionMode='single'
+      >
+        {(item) => (
+          <GridListItem
+            className={({ isHovered, isSelected, isFocusVisible }) =>
+              cn(
+                'flex cursor-pointer items-center justify-center truncate text-ellipsis whitespace-nowrap rounded-lg px-2 py-1 font-semibold text-[10px] transition',
+                { 'ring-2 ring-ring': isFocusVisible || isSelected || isHovered }
+              )
+            }
+            id={item.title}
+            style={{
+              backgroundColor: item?.light?.primary,
+              color: item?.light?.['primary-foreground'],
+              fontFamily: item?.light?.['font-sans']
+            }}
+          >
+            {titleCase(item.title)}
+          </GridListItem>
+        )}
+      </GridList>
     </div>
   )
 }
