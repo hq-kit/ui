@@ -36,9 +36,7 @@
       "sidebar-border": "oklch(0 0 0)",
       "sidebar-ring": "oklch(0.65 0.24 26.97)",
       "font-sans": "DM Sans, sans-serif",
-      "font-mono": "Space Mono, monospace",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "font-mono": "Space Mono, monospace"
     },
     "dark": {
       "background": "oklch(0 0 0)",
@@ -71,9 +69,7 @@
       "sidebar-accent": "oklch(0.68 0.18 252.26)",
       "sidebar-accent-foreground": "oklch(0 0 0)",
       "sidebar-border": "oklch(1.00 0 0)",
-      "sidebar-ring": "oklch(0.70 0.19 23.19)",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "sidebar-ring": "oklch(0.70 0.19 23.19)"
     }
   },
   "css": {

@@ -1,8 +1,9 @@
 'use client'
 
-import type { ThemePreset, ThemeStyleProps } from '@/types/theme'
+import type { ThemeStyleProps } from '@/lib/themes/presets'
 import { useCallback, useEffect, useState } from 'react'
 import { type ColorSpace, getColorChannels } from 'react-aria-components'
+import { useTheme } from '@/components/providers'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import {
@@ -17,29 +18,14 @@ import {
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import { Select } from '@/components/ui/select'
-import { useSettings } from '@/hooks/use-settings'
+import { useDebounce } from '@/hooks/use-debounce'
+import { useThemeGenerator } from '@/hooks/use-theme'
 import { colorFormatter } from '@/lib/themes/color-converter'
 
 type ColorSwatchProps = {
   label: string
   value: string
   onChange: (value: string) => void
-}
-
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value)
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value)
-    }, delay)
-
-    return () => {
-      clearTimeout(handler)
-    }
-  }, [value, delay])
-
-  return debouncedValue
 }
 
 export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
@@ -122,47 +108,18 @@ export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
 }
 
 const ThemeColorPanel = () => {
-  const { settings, updateSettings } = useSettings()
-
-  const currentTheme = settings.theme.styles?.[settings.mode === 'system' ? 'light' : settings.mode] as
-    | Partial<ThemeStyleProps>
-    | undefined
+  const { updateColor: update, currentTheme: current } = useThemeGenerator()
+  const { resolvedTheme } = useTheme()
 
   const updateColor = useCallback(
     (key: keyof ThemeStyleProps, value: string) => {
-      if (!currentTheme) return
-
-      // apply common styles to both light and dark modes
-      if (key === 'font-sans' || key === 'font-mono' || key === 'radius') {
-        updateSettings({
-          theme: {
-            ...settings.theme,
-            styles: {
-              ...settings.theme.styles,
-              light: { ...settings.theme.styles?.light, [key]: value },
-              dark: { ...settings.theme.styles?.dark, [key]: value }
-            }
-          }
-        })
-
-        return
-      }
-
-      updateSettings({
-        theme: {
-          ...settings.theme,
-          styles: {
-            ...settings.theme.styles,
-            [settings.mode]: {
-              ...settings.theme.styles?.[settings.mode as keyof ThemePreset],
-              [key]: value
-            }
-          }
-        }
-      })
+      if (!current) return
+      update(key, resolvedTheme === 'dark' ? 'dark' : 'light', value)
     },
-    [currentTheme, settings.theme.styles]
+    [current, update, resolvedTheme]
   )
+
+  const currentTheme = current?.styles[resolvedTheme === 'dark' ? 'dark' : 'light']
 
   return (
     <div className='space-y-6'>

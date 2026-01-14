@@ -1,5 +1,5 @@
-import type { ThemePreset, ThemeStyleProps } from '@/types/theme'
 import type { ColorFormat } from './color-converter'
+import type { ThemeStyleProps, ThemeStyles } from './presets'
 import { colorFormatter } from './color-converter'
 
 type ThemeType = {
@@ -7,7 +7,7 @@ type ThemeType = {
   dark: ThemeStyleProps
 }
 
-export const generateThemeCode = (styles: ThemePreset, colorFormat: ColorFormat = 'oklch'): string => {
+export const generateThemeCode = (styles: ThemeStyles, colorFormat: ColorFormat = 'oklch'): string => {
   if (!('light' in styles) || !('dark' in styles)) {
     throw new Error('Invalid theme styles: missing light or dark mode')
   }

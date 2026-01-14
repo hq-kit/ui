@@ -8,21 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/references.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/references.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/select-font.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/select-font.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-snippet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-snippet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/color-converter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/color-converter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/fonts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/fonts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build-registry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-registry.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/registry-style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/registry-style.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +192,8 @@
       <workItem from="1768238098296" duration="51000" />
       <workItem from="1768238164423" duration="18067000" />
       <workItem from="1768280603284" duration="7343000" />
+      <workItem from="1768397852392" duration="27000" />
+      <workItem from="1768397931398" duration="6000" />
     </task>
     <servers />
   </component>

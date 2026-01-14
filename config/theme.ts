@@ -1,11 +1,7 @@
-// Type Imports
-import type { ThemeStyles } from '@/types/theme'
+import type { ThemeStyles } from '@/lib/themes/presets'
 
-export const COMMON_STYLES = ['font-sans', 'font-mono', 'radius', 'letter-spacing', 'spacing']
-
-export const DEFAULT_FONT_SANS = 'Inter, sans-serif'
-
-export const DEFAULT_FONT_MONO = 'JetBrains Mono, monospace'
+export const defaultFontSans = 'Inter, sans-serif'
+export const defaultFontMono = 'JetBrains Mono, monospace'
 
 export const defaultLightThemeStyles: ThemeStyles['light'] = {
   background: 'oklch(1 0 0)',
@@ -40,13 +36,9 @@ export const defaultLightThemeStyles: ThemeStyles['light'] = {
   'sidebar-accent-foreground': 'oklch(0.21 0.006 285.885)',
   'sidebar-border': 'oklch(0.92 0.004 286.32)',
   'sidebar-ring': 'oklch(0.705 0.015 286.067)',
-  'font-sans': DEFAULT_FONT_SANS,
-  'font-mono': DEFAULT_FONT_MONO,
-
-  'letter-spacing': '0em',
-  spacing: '0.25rem'
+  'font-sans': defaultFontSans,
+  'font-mono': defaultFontMono
 }
-
 export const defaultDarkThemeStyles: ThemeStyles['dark'] = {
   background: 'oklch(0.141 0.005 285.823)',
   foreground: 'oklch(0.985 0 0)',
@@ -78,13 +70,9 @@ export const defaultDarkThemeStyles: ThemeStyles['dark'] = {
   'sidebar-accent': 'oklch(0.274 0.006 286.033)',
   'sidebar-accent-foreground': 'oklch(0.985 0 0)',
   'sidebar-border': 'oklch(1 0 0 / 10%)',
-  'sidebar-ring': 'oklch(0.552 0.016 285.938)',
-
-  'letter-spacing': '0em',
-  spacing: '0.25rem'
+  'sidebar-ring': 'oklch(0.552 0.016 285.938)'
 }
 
-// Default theme state
 export const defaultThemeState: ThemeStyles = {
   light: defaultLightThemeStyles,
   dark: defaultDarkThemeStyles

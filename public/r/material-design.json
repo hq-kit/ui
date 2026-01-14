@@ -36,9 +36,7 @@
       "sidebar-border": "oklch(0.90 0 0)",
       "sidebar-ring": "oklch(0.56 0.11 228.27)",
       "font-sans": "Roboto, sans-serif",
-      "font-mono": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "font-mono": "Geist Mono, Geist Mono Fallback, ui-monospace"
     },
     "dark": {
       "background": "oklch(0.15 0.01 317.69)",
@@ -71,9 +69,7 @@
       "sidebar-accent": "oklch(0.30 0.01 319.52)",
       "sidebar-accent-foreground": "oklch(0.95 0.01 321.50)",
       "sidebar-border": "oklch(0.35 0.01 319.53 / 30%)",
-      "sidebar-ring": "oklch(0.59 0.11 225.82)",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "sidebar-ring": "oklch(0.59 0.11 225.82)"
     }
   },
   "css": {

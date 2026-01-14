@@ -35,10 +35,8 @@
       "sidebar-accent-foreground": "oklch(0.32 0 0)",
       "sidebar-border": "oklch(0.65 0.13 81.56)",
       "sidebar-ring": "oklch(0.75 0.15 83.98)",
-      "font-sans": "Delius Swash Caps",
-      "font-mono": "Delius Swash Caps",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "font-sans": "Delius Swash Caps, cursive",
+      "font-mono": "Delius Swash Caps, cursive"
     },
     "dark": {
       "background": "oklch(0.32 0 0)",
@@ -71,9 +69,7 @@
       "sidebar-accent": "oklch(0.75 0.15 83.98)",
       "sidebar-accent-foreground": "oklch(0.96 0.03 106.96)",
       "sidebar-border": "oklch(0.47 0.11 50.84)",
-      "sidebar-ring": "oklch(0.65 0.13 81.56)",
-      "letter-spacing": "0em",
-      "spacing": "0.25rem"
+      "sidebar-ring": "oklch(0.65 0.13 81.56)"
     }
   },
   "css": {

@@ -1,8 +1,8 @@
-import type { ThemeStyleProps } from '@/types/theme'
-import { COMMON_STYLES, defaultThemeState } from '@/config/theme'
+import type { ThemeStyleProps } from './presets'
+import { defaultThemeState } from '@/config/theme'
 
 export const variableNames = Object.keys(defaultThemeState.light || {})
-const nonColorVariables = COMMON_STYLES
+const nonColorVariables = ['font-sans', 'font-mono', 'radius']
 const VARIABLE_PREFIX = '--'
 
 export const parseCssInput = (input: string) => {

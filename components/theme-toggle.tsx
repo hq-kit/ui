@@ -1,49 +1,29 @@
 'use client'
 
-import type { Mode } from '@/contexts/setting-context'
 import { IconMoon, IconSun } from '@tabler/icons-react'
-import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
+import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui/button'
-import { useSettings } from '@/hooks/use-settings'
+import { useThemeGenerator } from '@/hooks/use-theme'
 
-const ThemeToggle = ({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) => {
-  const { setTheme } = useTheme()
-  const { settings, updateSettings } = useSettings()
+export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
+  const { resolvedTheme, setTheme } = useTheme()
 
-  const handleThemeToggle = () => {
-    const newMode: Mode = settings.mode === 'dark' ? 'light' : 'dark'
-
-    const updatedSettings = {
-      ...settings,
-      mode: newMode,
-      theme: {
-        ...settings.theme,
-        styles: {
-          light: settings.theme.styles?.light || {},
-          dark: settings.theme.styles?.dark || {}
-        }
-      }
-    }
-
-    updateSettings(updatedSettings)
-
-    setTheme(newMode)
-  }
+  const { currentTheme, updatePresetTheme } = useThemeGenerator()
 
   useEffect(() => {
-    if (settings.mode) {
-      setTheme(settings.mode)
-    }
-  }, [settings.mode, setTheme])
+    updatePresetTheme(currentTheme.preset, resolvedTheme === 'dark' ? 'dark' : 'light')
+  }, [currentTheme.preset, resolvedTheme])
 
   return (
-    <Button onPress={handleThemeToggle} size='icon' variant={variant}>
+    <Button
+      aria-label={`Switch to ${resolvedTheme}` === 'light' ? 'dark' : 'light' + 'mode'}
+      onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
+      size='icon'
+      variant={variant}
+    >
       <IconSun aria-hidden className='rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
       <IconMoon aria-hidden className='absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-      <span className='sr-only'>Toggle Theme</span>
     </Button>
   )
 }
-
-export { ThemeToggle }

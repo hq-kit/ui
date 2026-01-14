@@ -21,7 +21,6 @@ type ThemeVariablesDialogProps = {
 }
 
 const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: ThemeVariablesDialogProps) => {
-  // States
   const [colorFormat, setColorFormat] = useState<Key | null>('oklch')
 
   const themeStyles: ThemeStyles = {
