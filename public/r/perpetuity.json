@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "perpetuity",
+  "dependencies": [
+    "tw-animate-css"
+  ],
   "cssVars": {
     "light": {
       "background": "oklch(0.95 0.01 197.01)",
@@ -77,6 +80,7 @@
     }
   },
   "css": {
+    "@import \"tw-animate-css\"": {},
     "@layer base": {
       "body": {
         "letter-spacing": "var(--tracking-normal)"

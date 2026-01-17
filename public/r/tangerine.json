@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "tangerine",
+  "dependencies": [
+    "tw-animate-css"
+  ],
   "cssVars": {
     "light": {
       "background": "oklch(0.94 0.00 236.50)",
@@ -77,6 +80,7 @@
     }
   },
   "css": {
+    "@import \"tw-animate-css\"": {},
     "@layer base": {
       "body": {
         "letter-spacing": "var(--tracking-normal)"

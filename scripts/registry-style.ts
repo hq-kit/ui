@@ -10,8 +10,10 @@ for (const preset of presetList) {
     name: preset,
     extends: 'none',
     type: 'registry:style',
+    dependencies: ['tw-animate-css'],
     cssVars: getPresetThemeStyles(preset),
     css: {
+      '@import "tw-animate-css"': {},
       '@layer base': {
         body: {
           'letter-spacing': 'var(--tracking-normal)'
