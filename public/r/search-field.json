@@ -7,8 +7,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "field",
-    "input",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
     "utils"
   ],
   "files": [

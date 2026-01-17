@@ -356,7 +356,7 @@ const SidebarGroup = ({ className, ...props }: ComponentProps<'div'>) => (
   />
 )
 
-const SidebarGroupLabel = ({ className, asChild = false, ...props }: ComponentProps<'div'> & { asChild?: boolean }) => (
+const SidebarGroupLabel = ({ className, ...props }: ComponentProps<'div'>) => (
   <div
     className={cn(
       'flex h-8 shrink-0 items-center rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',

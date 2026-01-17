@@ -6,8 +6,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "autocomplete",
-    "dialog",
+    "http://localhost:3000/r/autocomplete",
+    "http://localhost:3000/r/dialog",
     "utils"
   ],
   "files": [

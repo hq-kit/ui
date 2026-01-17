@@ -7,8 +7,8 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "button",
-    "sheet",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/sheet",
     "utils",
     "use-mobile"
   ],

@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Header, Menu, MenuItem, type MenuItemProps, MenuSection } from 'react-aria-components'
 import menus from '@/components-search.json'
-import { titleCase } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
 
 export type SidebarItem = {
@@ -15,13 +14,18 @@ export type SidebarItem = {
 
 export function Aside() {
   const gettingStarted = menus[0] as SidebarItem
-  const darkModes = menus[1] as SidebarItem
-  const components = menus[2] as Component
+  const frameworkGuides = menus[1] as SidebarItem
+  const darkModes = menus[2] as SidebarItem
+  const components = menus[3] as Component
 
   const sections = [
     {
       title: 'Getting Started',
       items: gettingStarted.children
+    },
+    {
+      title: 'Framework Guides',
+      items: frameworkGuides.children
     },
     {
       title: 'Dark Modes',
@@ -42,7 +46,7 @@ export function Aside() {
       {sections.map((section) => (
         <Menu aria-label='Navigation' className='flex flex-col' key={section.title} selectionMode='none'>
           <MenuSection>
-            <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
+            <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{section.title}</Header>
             {section.items?.map((item) => (
               <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                 {item.title}
@@ -51,7 +55,7 @@ export function Aside() {
           </MenuSection>
           {section.sections?.map((section) => (
             <MenuSection key={section.title}>
-              <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{titleCase(section.title)}</Header>
+              <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{section.title}</Header>
               {section.items?.map((item) => (
                 <MenuLink href={item.slug} key={item.slug} textValue={item.title}>
                   {item.title}

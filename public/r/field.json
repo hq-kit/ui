@@ -6,8 +6,8 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "label",
-    "separator",
+    "http://localhost:3000/r/label",
+    "http://localhost:3000/r/separator",
     "utils"
   ],
   "files": [

@@ -4,38 +4,48 @@
     "section": "Getting Started",
     "children": [
       {
-        "slug": "/docs/getting-started/client-side-routing",
-        "title": "Client Side Routing"
-      },
-      {
         "slug": "/docs/getting-started/introduction",
         "title": "Introduction"
       },
       {
         "slug": "/docs/getting-started/installation",
         "title": "Installation"
+      },
+      {
+        "slug": "/docs/getting-started/client-side-routing",
+        "title": "Client Side Routing"
       }
     ]
   },
   {
     "id": 2,
+    "section": "Framework Guides",
+    "children": [
+      {
+        "slug": "/docs/framework-guides/next-js",
+        "title": "Next.js"
+      }
+    ]
+  },
+  {
+    "id": 3,
     "section": "Dark Mode",
     "children": [
       {
-        "slug": "/docs/dark-mode/remix",
-        "title": "Remix"
-      },
-      {
-        "slug": "/docs/dark-mode/vite",
-        "title": "Vite"
+        "slug": "/docs/dark-mode/next-js",
+        "title": "Next.js"
       },
       {
         "slug": "/docs/dark-mode/inertia-js",
         "title": "Inertia.js"
       },
       {
-        "slug": "/docs/dark-mode/next-js",
-        "title": "Next.js"
+        "slug": "/docs/dark-mode/vite",
+        "title": "Vite"
+      },
+      {
+        "slug": "/docs/dark-mode/remix",
+        "title": "Remix"
       },
       {
         "slug": "/docs/dark-mode/astro",
@@ -44,7 +54,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "section": "Components",
     "children": [
       {

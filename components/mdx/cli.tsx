@@ -9,7 +9,7 @@ import { copyToClipboard } from '@/lib/modifiers'
 
 interface CLIProps {
   items?: string | string[]
-  command: 'add' | 'install'
+  command: 'add' | 'install' | 'init'
 }
 
 const url = `${process.env.NEXT_PUBLIC_APP_URL}/r`
@@ -22,7 +22,10 @@ export function CLI({ items, command = 'add' }: CLIProps) {
     if (command === 'add') {
       return Array.isArray(items) ? items.map((item) => `${url}/${item}`).join(' ') : `${url}/${items}`
     }
-    return `${p === 'npm' ? 'i' : 'add'} ${Array.isArray(items) ? items.join(' ') : items}`
+    if (command === 'install') {
+      return `${p === 'npm' ? 'i' : 'add'} ${Array.isArray(items) ? items.join(' ') : items}`
+    }
+    return `${process.env.NEXT_PUBLIC_APP_URL}/r/theme-default`
   }
 
   const getPm = (p: 'npm' | 'yarn' | 'pnpm' | 'bun') => {
@@ -35,7 +38,19 @@ export function CLI({ items, command = 'add' }: CLIProps) {
         case 'yarn':
           return 'yarn dlx shadcn@latest add'
         case 'bun':
-          return 'bunx shadcn@latest add'
+          return 'bunx --bun shadcn@latest add'
+      }
+    }
+    if (command === 'init') {
+      switch (p) {
+        case 'npm':
+          return 'npx shadcn@latest init'
+        case 'pnpm':
+          return 'pnpm dlx shadcn@latest init'
+        case 'yarn':
+          return 'yarn dlx shadcn@latest init'
+        case 'bun':
+          return 'bunx --bun shadcn@latest init'
       }
     }
     return p

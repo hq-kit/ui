@@ -6,8 +6,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "field",
-    "text-field",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/text-field",
     "utils"
   ],
   "files": [

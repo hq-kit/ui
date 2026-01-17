@@ -6,7 +6,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "toggle",
+    "http://localhost:3000/r/toggle",
     "utils"
   ],
   "files": [

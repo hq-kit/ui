@@ -6,7 +6,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "button"
+    "http://localhost:3000/r/button"
   ],
   "files": [
     {

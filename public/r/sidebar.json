@@ -7,10 +7,10 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "button",
-    "input",
-    "sheet",
-    "tooltip",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/sheet",
+    "http://localhost:3000/r/tooltip",
     "utils",
     "use-mobile"
   ],

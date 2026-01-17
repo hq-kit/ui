@@ -5,8 +5,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "separator",
-    "toggle",
+    "http://localhost:3000/r/separator",
+    "http://localhost:3000/r/toggle",
     "utils"
   ],
   "files": [

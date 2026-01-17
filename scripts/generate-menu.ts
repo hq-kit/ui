@@ -32,7 +32,7 @@ export type Grouped =
       children: SubSection[]
     }
 
-const sectionOrder = ['getting-started', 'dark-mode', 'components']
+const sectionOrder = ['getting-started', 'framework-guides', 'dark-mode', 'components']
 
 async function walk(dir: string, basePath: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true })

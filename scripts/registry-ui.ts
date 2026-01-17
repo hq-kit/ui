@@ -68,7 +68,7 @@ const components = getComponents()
 const componentsList = []
 for (const component of components) {
   const content = fs.readFileSync(path.join(uiDir, component), 'utf8')
-  const childComponents = getChildComponents(content)
+  const childComponents = getChildComponents(content).map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
   const deps = getDeps(content)
 
   if (checkUtils(content)) {

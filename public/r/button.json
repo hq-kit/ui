@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "button-group",
+    "http://localhost:3000/r/button-group",
     "utils"
   ],
   "files": [

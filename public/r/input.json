@@ -6,7 +6,7 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "button",
+    "http://localhost:3000/r/button",
     "utils"
   ],
   "files": [

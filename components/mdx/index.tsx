@@ -56,7 +56,11 @@ export const mdxComponents = {
   Grid,
   Iframe,
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
-    <Alert {...props} className='my-4' variant='destructive'>
+    <Alert
+      {...props}
+      className='my-4 border-destructive bg-destructive/10 ring-2 ring-destructive/40'
+      variant='destructive'
+    >
       <IconAlertCircle className='my-0.5' />
       <Alert.Description className='cols-start-2 not-prose! flex flex-wrap items-center **:text-destructive/90!'>
         {children}
