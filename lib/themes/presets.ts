@@ -106,10 +106,8 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent-foreground': 'oklch(0 0 0)',
       'sidebar-border': 'oklch(0.85 0 0)',
       'sidebar-ring': 'oklch(0.83 0.09 248.95)',
-
       'font-sans': 'Gabriela, Geist Fallback, ui-sans-serif',
       'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
-
       radius: '0rem'
     },
     dark: {
@@ -542,10 +540,8 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent-foreground': 'oklch(0.20 0.01 18.05)',
       'sidebar-border': 'oklch(0.87 0.01 25.23)',
       'sidebar-ring': 'oklch(0.52 0.14 247.51)',
-
       'font-sans': 'Outfit, sans-serif',
       'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
-
       radius: '0rem'
     },
     dark: {
@@ -757,7 +753,6 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent-foreground': 'oklch(0.20 0 0)',
       'sidebar-border': 'oklch(0.92 0 0)',
       'sidebar-ring': 'oklch(0.71 0 0)',
-
       'font-sans': 'Source Serif 4, serif',
       'font-mono': 'JetBrains Mono, monospace',
       radius: '0.375rem'
@@ -1681,7 +1676,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.98 0.00 106.42)',
       'sidebar-accent-foreground': 'oklch(0.40 0.03 285.20)',
       'sidebar-border': 'oklch(0.94 0.00 48.72)',
-      'sidebar-ring': 'oklch(0.59 0.22 0.58)'
+      'sidebar-ring': 'oklch(0.59 0.22 0.58)',
+      'font-sans': 'Geist, Geist Fallback, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.24 0.02 307.53)',
@@ -1707,7 +1704,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.72 0.15 60.58)',
       'chart-4': 'oklch(0.62 0.20 312.74)',
       'chart-5': 'oklch(0.61 0.21 6.14)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.19 0.02 331.05)',
       'sidebar-foreground': 'oklch(0.86 0.03 343.66)',
       'sidebar-primary': 'oklch(0.49 0.22 264.38)',
@@ -1715,9 +1711,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.23 0.03 338.20)',
       'sidebar-accent-foreground': 'oklch(0.97 0.00 286.38)',
       'sidebar-border': 'oklch(0 0 0)',
-      'sidebar-ring': 'oklch(0.59 0.22 0.58)',
-      'font-sans': 'Geist, Geist Fallback, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'sidebar-ring': 'oklch(0.59 0.22 0.58)'
     }
   },
   twitter: {
@@ -1753,7 +1747,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.94 0.02 250.85)',
       'sidebar-accent-foreground': 'oklch(0.67 0.16 245.00)',
       'sidebar-border': 'oklch(0.93 0.01 238.52)',
-      'sidebar-ring': 'oklch(0.68 0.16 243.35)'
+      'sidebar-ring': 'oklch(0.68 0.16 243.35)',
+      'font-sans': 'Open Sans, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0 0 0)',
@@ -1779,7 +1775,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.82 0.16 82.53)',
       'chart-4': 'oklch(0.71 0.18 151.71)',
       'chart-5': 'oklch(0.59 0.22 10.58)',
-      radius: '1.3rem',
       sidebar: 'oklch(0.21 0.01 274.53)',
       'sidebar-foreground': 'oklch(0.89 0 0)',
       'sidebar-primary': 'oklch(0.68 0.16 243.35)',
@@ -1787,9 +1782,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.19 0.03 242.55)',
       'sidebar-accent-foreground': 'oklch(0.67 0.16 245.01)',
       'sidebar-border': 'oklch(0.38 0.02 240.59)',
-      'sidebar-ring': 'oklch(0.68 0.16 243.35)',
-      'font-sans': 'Open Sans, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
+      'sidebar-ring': 'oklch(0.68 0.16 243.35)'
     }
   },
   'mocha-mousse': {
@@ -1825,7 +1818,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.73 0.05 52.33)',
       'sidebar-accent-foreground': 'oklch(1.00 0 0)',
       'sidebar-border': 'oklch(0.64 0.04 52.39)',
-      'sidebar-ring': 'oklch(0.61 0.06 44.36)'
+      'sidebar-ring': 'oklch(0.61 0.06 44.36)',
+      'font-sans': 'DM Sans, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.27 0.01 48.18)',
@@ -1851,7 +1846,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.61 0.06 44.36)',
       'chart-4': 'oklch(0.54 0.05 37.21)',
       'chart-5': 'oklch(0.64 0.04 52.39)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.22 0.01 52.96)',
       'sidebar-foreground': 'oklch(0.95 0.01 102.46)',
       'sidebar-primary': 'oklch(0.73 0.05 52.33)',
@@ -1859,9 +1853,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.75 0.04 80.55)',
       'sidebar-accent-foreground': 'oklch(0.22 0.01 52.96)',
       'sidebar-border': 'oklch(0.41 0.03 40.36)',
-      'sidebar-ring': 'oklch(0.73 0.05 52.33)',
-      'font-sans': 'DM Sans, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
+      'sidebar-ring': 'oklch(0.73 0.05 52.33)'
     }
   },
   'doom-64': {
@@ -1897,7 +1889,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.59 0.10 245.74)',
       'sidebar-accent-foreground': 'oklch(1.00 0 0)',
       'sidebar-border': 'oklch(0.43 0 0)',
-      'sidebar-ring': 'oklch(0.50 0.19 27.48)'
+      'sidebar-ring': 'oklch(0.50 0.19 27.48)',
+      'font-sans': 'Oxanium, sans-serif',
+      'font-mono': 'Source Code Pro, monospace'
     },
     dark: {
       background: 'oklch(0.22 0 0)',
@@ -1923,7 +1917,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.75 0.12 244.75)',
       'chart-4': 'oklch(0.78 0.17 68.09)',
       'chart-5': 'oklch(0.65 0.03 40.80)',
-      radius: '0px',
       sidebar: 'oklch(0.19 0 0)',
       'sidebar-foreground': 'oklch(0.91 0 0)',
       'sidebar-primary': 'oklch(0.61 0.21 27.03)',
@@ -1931,9 +1924,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.75 0.12 244.75)',
       'sidebar-accent-foreground': 'oklch(0 0 0)',
       'sidebar-border': 'oklch(0.41 0 0)',
-      'sidebar-ring': 'oklch(0.61 0.21 27.03)',
-      'font-sans': 'Oxanium, sans-serif',
-      'font-mono': 'Source Code Pro, monospace'
+      'sidebar-ring': 'oklch(0.61 0.21 27.03)'
     }
   },
   catppuccin: {
@@ -1969,7 +1960,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.68 0.14 235.38)',
       'sidebar-accent-foreground': 'oklch(1.00 0 0)',
       'sidebar-border': 'oklch(0.81 0.02 271.20)',
-      'sidebar-ring': 'oklch(0.55 0.25 297.02)'
+      'sidebar-ring': 'oklch(0.55 0.25 297.02)',
+      'font-sans': 'Montserrat, sans-serif',
+      'font-mono': 'Fira Code, monospace'
     },
     dark: {
       background: 'oklch(0.22 0.03 284.06)',
@@ -1995,7 +1988,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.86 0.11 142.72)',
       'chart-4': 'oklch(0.82 0.10 52.63)',
       'chart-5': 'oklch(0.92 0.02 30.49)',
-      radius: '0.35rem',
       sidebar: 'oklch(0.18 0.02 284.20)',
       'sidebar-foreground': 'oklch(0.88 0.04 272.28)',
       'sidebar-primary': 'oklch(0.79 0.12 304.77)',
@@ -2003,9 +1995,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.85 0.08 210.25)',
       'sidebar-accent-foreground': 'oklch(0.24 0.03 283.91)',
       'sidebar-border': 'oklch(0.40 0.03 280.15)',
-      'sidebar-ring': 'oklch(0.79 0.12 304.77)',
-      'font-sans': 'Montserrat, sans-serif',
-      'font-mono': 'Fira Code, monospace'
+      'sidebar-ring': 'oklch(0.79 0.12 304.77)'
     }
   },
   graphite: {
@@ -2034,6 +2024,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.73 0 0)',
       'chart-5': 'oklch(0.81 0 0)',
       radius: '0.35rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Fira Code, monospace',
       sidebar: 'oklch(0.94 0 0)',
       'sidebar-foreground': 'oklch(0.32 0 0)',
       'sidebar-primary': 'oklch(0.49 0 0)',
@@ -2067,7 +2059,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.55 0 0)',
       'chart-4': 'oklch(0.46 0 0)',
       'chart-5': 'oklch(0.37 0 0)',
-      radius: '0.35rem',
       sidebar: 'oklch(0.24 0 0)',
       'sidebar-foreground': 'oklch(0.89 0 0)',
       'sidebar-primary': 'oklch(0.71 0 0)',
@@ -2075,9 +2066,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.37 0 0)',
       'sidebar-accent-foreground': 'oklch(0.89 0 0)',
       'sidebar-border': 'oklch(0.33 0 0)',
-      'sidebar-ring': 'oklch(0.71 0 0)',
-      'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Fira Code, monospace'
+      'sidebar-ring': 'oklch(0.71 0 0)'
     }
   },
   perpetuity: {
@@ -2113,7 +2102,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.90 0.03 201.89)',
       'sidebar-accent-foreground': 'oklch(0.38 0.06 212.66)',
       'sidebar-border': 'oklch(0.89 0.02 204.41)',
-      'sidebar-ring': 'oklch(0.56 0.09 203.28)'
+      'sidebar-ring': 'oklch(0.56 0.09 203.28)',
+      'font-sans': 'Source Code Pro, monospace',
+      'font-mono': 'Source Code Pro, monospace'
     },
     dark: {
       background: 'oklch(0.21 0.02 224.45)',
@@ -2139,7 +2130,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.58 0.08 195.07)',
       'chart-4': 'oklch(0.43 0.06 202.62)',
       'chart-5': 'oklch(0.31 0.05 204.16)',
-      radius: '0.125rem',
       sidebar: 'oklch(0.21 0.02 224.45)',
       'sidebar-foreground': 'oklch(0.85 0.13 195.04)',
       'sidebar-primary': 'oklch(0.85 0.13 195.04)',
@@ -2147,9 +2137,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.38 0.06 216.50)',
       'sidebar-accent-foreground': 'oklch(0.85 0.13 195.04)',
       'sidebar-border': 'oklch(0.38 0.06 216.50)',
-      'sidebar-ring': 'oklch(0.85 0.13 195.04)',
-      'font-sans': 'Source Code Pro, monospace',
-      'font-mono': 'Source Code Pro, monospace'
+      'sidebar-ring': 'oklch(0.85 0.13 195.04)'
     }
   },
   'kodama-grove': {
@@ -2185,7 +2173,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.92 0.02 88.00)',
       'sidebar-accent-foreground': 'oklch(0.43 0.03 59.22)',
       'sidebar-border': 'oklch(0.91 0.02 88.00)',
-      'sidebar-ring': 'oklch(0.73 0.06 130.85)'
+      'sidebar-ring': 'oklch(0.73 0.06 130.85)',
+      'font-sans': 'Merriweather, serif',
+      'font-mono': 'JetBrains Mono, monospace'
     },
     dark: {
       background: 'oklch(0.33 0.02 88.07)',
@@ -2211,7 +2201,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.59 0.05 137.62)',
       'chart-4': 'oklch(0.65 0.07 90.76)',
       'chart-5': 'oklch(0.52 0.04 137.19)',
-      radius: '0.425rem',
       sidebar: 'oklch(0.33 0.02 88.07)',
       'sidebar-foreground': 'oklch(0.92 0.02 82.12)',
       'sidebar-primary': 'oklch(0.68 0.06 132.45)',
@@ -2219,9 +2208,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.65 0.07 90.76)',
       'sidebar-accent-foreground': 'oklch(0.27 0.01 61.02)',
       'sidebar-border': 'oklch(0.44 0.02 84.55)',
-      'sidebar-ring': 'oklch(0.68 0.06 132.45)',
-      'font-sans': 'Merriweather, serif',
-      'font-mono': 'JetBrains Mono, monospace'
+      'sidebar-ring': 'oklch(0.68 0.06 132.45)'
     }
   },
   'cosmic-night': {
@@ -2250,6 +2237,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.64 0.19 281.81)',
       'chart-5': 'oklch(0.45 0.18 279.38)',
       radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'JetBrains Mono, monospace',
       sidebar: 'oklch(0.96 0.01 286.15)',
       'sidebar-foreground': 'oklch(0.30 0.06 282.42)',
       'sidebar-primary': 'oklch(0.54 0.18 288.03)',
@@ -2283,7 +2272,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.75 0.12 244.75)',
       'chart-4': 'oklch(0.71 0.10 186.68)',
       'chart-5': 'oklch(0.75 0.18 346.81)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.23 0.04 282.93)',
       'sidebar-foreground': 'oklch(0.92 0.03 285.88)',
       'sidebar-primary': 'oklch(0.72 0.16 290.40)',
@@ -2291,9 +2279,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.34 0.08 280.97)',
       'sidebar-accent-foreground': 'oklch(0.92 0.03 285.88)',
       'sidebar-border': 'oklch(0.33 0.06 282.58)',
-      'sidebar-ring': 'oklch(0.72 0.16 290.40)',
-      'font-sans': 'Inter, sans-serif',
-      'font-mono': 'JetBrains Mono, monospace'
+      'sidebar-ring': 'oklch(0.72 0.16 290.40)'
     }
   },
   tangerine: {
@@ -2329,7 +2315,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.91 0.02 243.82)',
       'sidebar-accent-foreground': 'oklch(0.38 0.14 265.52)',
       'sidebar-border': 'oklch(0.93 0.01 264.53)',
-      'sidebar-ring': 'oklch(0.64 0.17 36.44)'
+      'sidebar-ring': 'oklch(0.64 0.17 36.44)',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'JetBrains Mono, monospace'
     },
     dark: {
       background: 'oklch(0.26 0.03 262.67)',
@@ -2355,7 +2343,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.58 0.08 254.16)',
       'chart-4': 'oklch(0.50 0.08 259.49)',
       'chart-5': 'oklch(0.42 0.10 264.03)',
-      radius: '0.75rem',
       sidebar: 'oklch(0.31 0.03 267.74)',
       'sidebar-foreground': 'oklch(0.92 0 0)',
       'sidebar-primary': 'oklch(0.64 0.17 36.44)',
@@ -2363,9 +2350,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.34 0.06 267.59)',
       'sidebar-accent-foreground': 'oklch(0.88 0.06 254.13)',
       'sidebar-border': 'oklch(0.38 0.03 269.73)',
-      'sidebar-ring': 'oklch(0.64 0.17 36.44)',
-      'font-sans': 'Inter, sans-serif',
-      'font-mono': 'JetBrains Mono, monospace'
+      'sidebar-ring': 'oklch(0.64 0.17 36.44)'
     }
   },
   'quantum-rose': {
@@ -2401,7 +2386,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.88 0.08 344.88)',
       'sidebar-accent-foreground': 'oklch(0.44 0.17 352.38)',
       'sidebar-border': 'oklch(0.93 0.04 343.31)',
-      'sidebar-ring': 'oklch(0.60 0.24 0.13)'
+      'sidebar-ring': 'oklch(0.60 0.24 0.13)',
+      'font-sans': 'Poppins, sans-serif',
+      'font-mono': 'Space Mono, monospace'
     },
     dark: {
       background: 'oklch(0.18 0.05 313.72)',
@@ -2427,7 +2414,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.62 0.22 292.77)',
       'chart-4': 'oklch(0.61 0.16 278.72)',
       'chart-5': 'oklch(0.62 0.20 268.05)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.19 0.05 311.40)',
       'sidebar-foreground': 'oklch(0.86 0.13 326.64)',
       'sidebar-primary': 'oklch(0.75 0.23 332.02)',
@@ -2435,9 +2421,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.36 0.12 325.77)',
       'sidebar-accent-foreground': 'oklch(0.86 0.13 326.64)',
       'sidebar-border': 'oklch(0.33 0.12 313.54)',
-      'sidebar-ring': 'oklch(0.75 0.23 332.02)',
-      'font-sans': 'Poppins, sans-serif',
-      'font-mono': 'Space Mono, monospace'
+      'sidebar-ring': 'oklch(0.75 0.23 332.02)'
     }
   },
   'bold-tech': {
@@ -2501,7 +2485,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.54 0.25 293.01)',
       'chart-4': 'oklch(0.49 0.24 292.58)',
       'chart-5': 'oklch(0.43 0.21 292.76)',
-      radius: '0.625rem',
       sidebar: 'oklch(0.21 0.04 265.75)',
       'sidebar-foreground': 'oklch(0.93 0.03 272.79)',
       'sidebar-primary': 'oklch(0.61 0.22 292.72)',
@@ -2509,9 +2492,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.46 0.21 277.02)',
       'sidebar-accent-foreground': 'oklch(0.93 0.03 272.79)',
       'sidebar-border': 'oklch(0.28 0.14 291.09)',
-      'sidebar-ring': 'oklch(0.61 0.22 292.72)',
-      'font-sans': 'Roboto, sans-serif',
-      'font-mono': 'Fira Code, monospace'
+      'sidebar-ring': 'oklch(0.61 0.22 292.72)'
     }
   },
   'amber-minimal': {
@@ -2547,7 +2528,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.99 0.02 95.28)',
       'sidebar-accent-foreground': 'oklch(0.47 0.12 46.20)',
       'sidebar-border': 'oklch(0.93 0.01 264.53)',
-      'sidebar-ring': 'oklch(0.77 0.16 70.08)'
+      'sidebar-ring': 'oklch(0.77 0.16 70.08)',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'JetBrains Mono, monospace'
     },
     dark: {
       background: 'oklch(0.20 0 0)',
@@ -2573,7 +2556,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.47 0.12 46.20)',
       'chart-4': 'oklch(0.56 0.15 49.00)',
       'chart-5': 'oklch(0.47 0.12 46.20)',
-      radius: '0.375rem',
       sidebar: 'oklch(0.17 0 0)',
       'sidebar-foreground': 'oklch(0.92 0 0)',
       'sidebar-primary': 'oklch(0.77 0.16 70.08)',
@@ -2581,9 +2563,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.47 0.12 46.20)',
       'sidebar-accent-foreground': 'oklch(0.92 0.12 95.75)',
       'sidebar-border': 'oklch(0.37 0 0)',
-      'sidebar-ring': 'oklch(0.77 0.16 70.08)',
-      'font-sans': 'Inter, sans-serif',
-      'font-mono': 'JetBrains Mono, monospace'
+      'sidebar-ring': 'oklch(0.77 0.16 70.08)'
     }
   },
   supabase: {
@@ -2619,7 +2599,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.95 0 0)',
       'sidebar-accent-foreground': 'oklch(0.24 0 0)',
       'sidebar-border': 'oklch(0.90 0 0)',
-      'sidebar-ring': 'oklch(0.83 0.13 160.91)'
+      'sidebar-ring': 'oklch(0.83 0.13 160.91)',
+      'font-sans': 'Outfit, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.18 0 0)',
@@ -2645,7 +2627,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.71 0.16 293.54)',
       'chart-4': 'oklch(0.84 0.16 84.43)',
       'chart-5': 'oklch(0.78 0.13 181.91)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.18 0 0)',
       'sidebar-foreground': 'oklch(0.63 0 0)',
       'sidebar-primary': 'oklch(0.44 0.10 156.76)',
@@ -2653,9 +2634,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.31 0 0)',
       'sidebar-accent-foreground': 'oklch(0.99 0 0)',
       'sidebar-border': 'oklch(0.28 0 0)',
-      'sidebar-ring': 'oklch(0.80 0.18 151.71)',
-      'font-sans': 'Outfit, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'sidebar-ring': 'oklch(0.80 0.18 151.71)'
     }
   },
   'solar-dusk': {
@@ -2684,6 +2663,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.55 0.01 58.07)',
       'chart-5': 'oklch(0.68 0.14 75.83)',
       radius: '0.3rem',
+      'font-sans': 'Oxanium, sans-serif',
+      'font-mono': 'Fira Code, monospace',
       sidebar: 'oklch(0.94 0.02 83.26)',
       'sidebar-foreground': 'oklch(0.37 0.03 49.61)',
       'sidebar-primary': 'oklch(0.56 0.15 49.00)',
@@ -2717,7 +2698,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.80 0.16 86.05)',
       'chart-4': 'oklch(0.72 0.01 56.26)',
       'chart-5': 'oklch(0.55 0.01 58.07)',
-      radius: '0.3rem',
       sidebar: 'oklch(0.27 0.01 34.30)',
       'sidebar-foreground': 'oklch(0.97 0.00 106.42)',
       'sidebar-primary': 'oklch(0.70 0.19 47.60)',
@@ -2725,9 +2705,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.68 0.15 237.32)',
       'sidebar-accent-foreground': 'oklch(0.28 0.07 254.54)',
       'sidebar-border': 'oklch(0.37 0.01 67.56)',
-      'sidebar-ring': 'oklch(0.70 0.19 47.60)',
-      'font-sans': 'Oxanium, sans-serif',
-      'font-mono': 'Fira Code, monospace'
+      'sidebar-ring': 'oklch(0.70 0.19 47.60)'
     }
   },
   claymorphism: {
@@ -2763,7 +2741,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.94 0.03 321.94)',
       'sidebar-accent-foreground': 'oklch(0.37 0.03 259.73)',
       'sidebar-border': 'oklch(0.87 0.00 56.37)',
-      'sidebar-ring': 'oklch(0.59 0.20 277.12)'
+      'sidebar-ring': 'oklch(0.59 0.20 277.12)',
+      'font-sans': 'Plus Jakarta Sans, sans-serif',
+      'font-mono': 'Roboto Mono, monospace'
     },
     dark: {
       background: 'oklch(0.22 0.01 67.44)',
@@ -2789,7 +2769,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.51 0.23 276.97)',
       'chart-4': 'oklch(0.46 0.21 277.02)',
       'chart-5': 'oklch(0.40 0.18 277.37)',
-      radius: '1.25rem',
       sidebar: 'oklch(0.34 0.01 59.42)',
       'sidebar-foreground': 'oklch(0.93 0.01 255.51)',
       'sidebar-primary': 'oklch(0.68 0.16 276.93)',
@@ -2797,9 +2776,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.39 0.01 59.47)',
       'sidebar-accent-foreground': 'oklch(0.87 0.01 258.34)',
       'sidebar-border': 'oklch(0.34 0.01 59.42)',
-      'sidebar-ring': 'oklch(0.68 0.16 276.93)',
-      'font-sans': 'Plus Jakarta Sans, sans-serif',
-      'font-mono': 'Roboto Mono, monospace'
+      'sidebar-ring': 'oklch(0.68 0.16 276.93)'
     }
   },
   cyberpunk: {
@@ -2835,7 +2812,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.89 0.17 171.27)',
       'sidebar-accent-foreground': 'oklch(0.16 0.04 281.83)',
       'sidebar-border': 'oklch(0.92 0.01 225.09)',
-      'sidebar-ring': 'oklch(0.67 0.29 341.41)'
+      'sidebar-ring': 'oklch(0.67 0.29 341.41)',
+      'font-sans': 'Outfit, sans-serif',
+      'font-mono': 'Fira Code, monospace'
     },
     dark: {
       background: 'oklch(0.16 0.04 281.83)',
@@ -2861,7 +2840,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.84 0.15 209.29)',
       'chart-4': 'oklch(0.89 0.17 171.27)',
       'chart-5': 'oklch(0.92 0.19 101.41)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.16 0.04 281.83)',
       'sidebar-foreground': 'oklch(0.95 0.01 260.73)',
       'sidebar-primary': 'oklch(0.67 0.29 341.41)',
@@ -2869,9 +2847,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.89 0.17 171.27)',
       'sidebar-accent-foreground': 'oklch(0.16 0.04 281.83)',
       'sidebar-border': 'oklch(0.33 0.08 280.79)',
-      'sidebar-ring': 'oklch(0.67 0.29 341.41)',
-      'font-sans': 'Outfit, sans-serif',
-      'font-mono': 'Fira Code, monospace'
+      'sidebar-ring': 'oklch(0.67 0.29 341.41)'
     }
   },
   'ocean-breeze': {
@@ -2900,6 +2876,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.51 0.10 165.61)',
       'chart-5': 'oklch(0.43 0.09 166.91)',
       radius: '0.5rem',
+      'font-sans': 'DM Sans, sans-serif',
+      'font-mono': 'IBM Plex Mono, monospace',
       sidebar: 'oklch(0.95 0.03 236.82)',
       'sidebar-foreground': 'oklch(0.37 0.03 259.73)',
       'sidebar-primary': 'oklch(0.72 0.19 149.58)',
@@ -2933,7 +2911,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.72 0.19 149.58)',
       'chart-4': 'oklch(0.70 0.15 162.48)',
       'chart-5': 'oklch(0.60 0.13 163.23)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.28 0.04 260.03)',
       'sidebar-foreground': 'oklch(0.87 0.01 258.34)',
       'sidebar-primary': 'oklch(0.77 0.15 163.22)',
@@ -2941,9 +2918,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.37 0.03 259.73)',
       'sidebar-accent-foreground': 'oklch(0.71 0.01 286.07)',
       'sidebar-border': 'oklch(0.45 0.03 256.80)',
-      'sidebar-ring': 'oklch(0.77 0.15 163.22)',
-      'font-sans': 'DM Sans, sans-serif',
-      'font-mono': 'IBM Plex Mono, monospace'
+      'sidebar-ring': 'oklch(0.77 0.15 163.22)'
     }
   },
   'retro-arcade': {
@@ -2979,7 +2954,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.64 0.10 187.38)',
       'sidebar-accent-foreground': 'oklch(1.00 0 0)',
       'sidebar-border': 'oklch(0.65 0.02 205.26)',
-      'sidebar-ring': 'oklch(0.59 0.20 355.89)'
+      'sidebar-ring': 'oklch(0.59 0.20 355.89)',
+      'font-sans': 'Outfit, sans-serif',
+      'font-mono': 'Space Mono, monospace'
     },
     dark: {
       background: 'oklch(0.27 0.05 219.82)',
@@ -3005,7 +2982,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.59 0.20 355.89)',
       'chart-4': 'oklch(0.58 0.17 39.50)',
       'chart-5': 'oklch(0.59 0.21 27.12)',
-      radius: '0.25rem',
       sidebar: 'oklch(0.27 0.05 219.82)',
       'sidebar-foreground': 'oklch(0.70 0.02 196.79)',
       'sidebar-primary': 'oklch(0.59 0.20 355.89)',
@@ -3013,9 +2989,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.64 0.10 187.38)',
       'sidebar-accent-foreground': 'oklch(1.00 0 0)',
       'sidebar-border': 'oklch(0.52 0.03 219.14)',
-      'sidebar-ring': 'oklch(0.59 0.20 355.89)',
-      'font-sans': 'Outfit, sans-serif',
-      'font-mono': 'Space Mono, monospace'
+      'sidebar-ring': 'oklch(0.59 0.20 355.89)'
     }
   },
   candyland: {
@@ -3051,7 +3025,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.97 0.21 109.77)',
       'sidebar-accent-foreground': 'oklch(0 0 0)',
       'sidebar-border': 'oklch(0.87 0 0)',
-      'sidebar-ring': 'oklch(0.87 0.07 7.09)'
+      'sidebar-ring': 'oklch(0.87 0.07 7.09)',
+      'font-sans': 'Poppins, sans-serif',
+      'font-mono': 'Roboto Mono, monospace'
     },
     dark: {
       background: 'oklch(0.23 0.01 264.29)',
@@ -3077,7 +3053,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.81 0.08 225.75)',
       'chart-4': 'oklch(0.97 0.21 109.77)',
       'chart-5': 'oklch(0.87 0.18 90.38)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.23 0.01 264.29)',
       'sidebar-foreground': 'oklch(0.92 0 0)',
       'sidebar-primary': 'oklch(0.80 0.14 349.23)',
@@ -3085,9 +3060,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.81 0.08 225.75)',
       'sidebar-accent-foreground': 'oklch(0 0 0)',
       'sidebar-border': 'oklch(0.39 0 0)',
-      'sidebar-ring': 'oklch(0.80 0.14 349.23)',
-      'font-sans': 'Poppins, sans-serif',
-      'font-mono': 'Roboto Mono, monospace'
+      'sidebar-ring': 'oklch(0.80 0.14 349.23)'
     }
   },
   'northern-lights': {
@@ -3116,6 +3089,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.59 0.10 245.74)',
       'chart-5': 'oklch(0.59 0.16 148.24)',
       radius: '0.5rem',
+      'font-sans': 'Plus Jakarta Sans, sans-serif',
+      'font-mono': 'JetBrains Mono, monospace',
       sidebar: 'oklch(0.98 0.00 286.38)',
       'sidebar-foreground': 'oklch(0.32 0 0)',
       'sidebar-primary': 'oklch(0.65 0.15 150.31)',
@@ -3149,7 +3124,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.67 0.14 261.34)',
       'chart-4': 'oklch(0.83 0.11 211.96)',
       'chart-5': 'oklch(0.59 0.16 148.24)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.23 0.01 264.29)',
       'sidebar-foreground': 'oklch(0.92 0 0)',
       'sidebar-primary': 'oklch(0.65 0.15 150.31)',
@@ -3157,9 +3131,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.67 0.14 261.34)',
       'sidebar-accent-foreground': 'oklch(0.92 0 0)',
       'sidebar-border': 'oklch(0.39 0 0)',
-      'sidebar-ring': 'oklch(0.65 0.15 150.31)',
-      'font-sans': 'Plus Jakarta Sans, sans-serif',
-      'font-mono': 'JetBrains Mono, monospace'
+      'sidebar-ring': 'oklch(0.65 0.15 150.31)'
     }
   },
   'vintage-paper': {
@@ -3195,7 +3167,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.83 0.04 88.81)',
       'sidebar-accent-foreground': 'oklch(0.38 0.02 64.34)',
       'sidebar-border': 'oklch(0.86 0.03 84.59)',
-      'sidebar-ring': 'oklch(0.62 0.08 65.54)'
+      'sidebar-ring': 'oklch(0.62 0.08 65.54)',
+      'font-sans': 'Libre Baskerville, serif',
+      'font-mono': 'IBM Plex Mono, monospace'
     },
     dark: {
       background: 'oklch(0.27 0.01 57.65)',
@@ -3221,7 +3195,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.62 0.08 65.54)',
       'chart-4': 'oklch(0.56 0.06 68.58)',
       'chart-5': 'oklch(0.49 0.06 72.68)',
-      radius: '0.25rem',
       sidebar: 'oklch(0.27 0.01 57.65)',
       'sidebar-foreground': 'oklch(0.92 0.02 83.06)',
       'sidebar-primary': 'oklch(0.73 0.06 66.70)',
@@ -3229,9 +3202,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.42 0.03 56.34)',
       'sidebar-accent-foreground': 'oklch(0.92 0.02 83.06)',
       'sidebar-border': 'oklch(0.38 0.02 57.13)',
-      'sidebar-ring': 'oklch(0.73 0.06 66.70)',
-      'font-sans': 'Libre Baskerville, serif',
-      'font-mono': 'IBM Plex Mono, monospace'
+      'sidebar-ring': 'oklch(0.73 0.06 66.70)'
     }
   },
   'starry-night': {
@@ -3267,7 +3238,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.86 0.12 81.01)',
       'sidebar-accent-foreground': 'oklch(0.26 0.04 268.07)',
       'sidebar-border': 'oklch(0.78 0.02 251.19)',
-      'sidebar-ring': 'oklch(0.86 0.12 81.01)'
+      'sidebar-ring': 'oklch(0.86 0.12 81.01)',
+      'font-sans': 'Libre Baskerville, serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.22 0.02 275.84)',
@@ -3293,7 +3266,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.69 0.07 234.04)',
       'chart-4': 'oklch(0.62 0.04 262.04)',
       'chart-5': 'oklch(0.53 0.12 357.11)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.27 0.04 281.30)',
       'sidebar-foreground': 'oklch(0.94 0.01 266.70)',
       'sidebar-primary': 'oklch(0.48 0.12 263.38)',
@@ -3301,9 +3273,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.91 0.14 95.11)',
       'sidebar-accent-foreground': 'oklch(0.27 0.04 281.30)',
       'sidebar-border': 'oklch(0.31 0.03 281.77)',
-      'sidebar-ring': 'oklch(0.91 0.14 95.11)',
-      'font-sans': 'Libre Baskerville, serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'sidebar-ring': 'oklch(0.91 0.14 95.11)'
     }
   },
   vercel: {
@@ -3339,7 +3309,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.94 0 0)',
       'sidebar-accent-foreground': 'oklch(0 0 0)',
       'sidebar-border': 'oklch(0.94 0 0)',
-      'sidebar-ring': 'oklch(0 0 0)'
+      'sidebar-ring': 'oklch(0 0 0)',
+      'font-sans': 'Geist, Geist Fallback, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0 0 0)',
@@ -3365,7 +3337,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.56 0 0)',
       'chart-4': 'oklch(0.44 0 0)',
       'chart-5': 'oklch(0.92 0 0)',
-      radius: '0.5rem',
       sidebar: 'oklch(0.18 0 0)',
       'sidebar-foreground': 'oklch(1 0 0)',
       'sidebar-primary': 'oklch(1 0 0)',
@@ -3373,9 +3344,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.32 0 0)',
       'sidebar-accent-foreground': 'oklch(1 0 0)',
       'sidebar-border': 'oklch(0.32 0 0)',
-      'sidebar-ring': 'oklch(0.72 0 0)',
-      'font-sans': 'Geist, Geist Fallback, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'sidebar-ring': 'oklch(0.72 0 0)'
     }
   },
   mono: {
@@ -3411,7 +3380,9 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.97 0 0)',
       'sidebar-accent-foreground': 'oklch(0.20 0 0)',
       'sidebar-border': 'oklch(0.92 0 0)',
-      'sidebar-ring': 'oklch(0.71 0 0)'
+      'sidebar-ring': 'oklch(0.71 0 0)',
+      'font-sans': 'Geist Mono, Geist Mono Fallback, ui-monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.14 0 0)',
@@ -3437,7 +3408,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.56 0 0)',
       'chart-4': 'oklch(0.56 0 0)',
       'chart-5': 'oklch(0.56 0 0)',
-      radius: '0rem',
       sidebar: 'oklch(0.20 0 0)',
       'sidebar-foreground': 'oklch(0.99 0 0)',
       'sidebar-primary': 'oklch(0.99 0 0)',
@@ -3445,9 +3415,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent': 'oklch(0.27 0 0)',
       'sidebar-accent-foreground': 'oklch(0.99 0 0)',
       'sidebar-border': 'oklch(1.00 0 0)',
-      'sidebar-ring': 'oklch(0.44 0 0)',
-      'font-sans': 'Geist Mono, Geist Mono Fallback, ui-monospace',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'sidebar-ring': 'oklch(0.44 0 0)'
     }
   },
   intent: {
@@ -3483,7 +3451,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.707 0.165 254.624)',
       'chart-4': 'oklch(0.809 0.105 251.813)',
       'chart-5': 'oklch(0.882 0.059 254.128)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3519,7 +3489,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.882 0.059 254.128)'
     }
   },
-
   nebula: {
     light: {
       background: 'oklch(1 0 0)',
@@ -3553,6 +3522,8 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.673 0.182 276.935)',
       'chart-4': 'oklch(0.785 0.115 274.713)',
       'chart-5': 'oklch(0.87 0.065 274.039)',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
       radius: '0.5rem'
     },
     dark: {
@@ -3589,7 +3560,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.87 0.065 274.039)'
     }
   },
-
   ember: {
     light: {
       background: 'oklch(1 0 0)',
@@ -3623,7 +3593,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.75 0.183 55.934)',
       'chart-4': 'oklch(0.837 0.128 66.29)',
       'chart-5': 'oklch(0.901 0.076 70.697)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3659,7 +3631,6 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.901 0.076 70.},697)'
     }
   },
-
   lumen: {
     light: {
       background: 'oklch(1 0 0)',
@@ -3693,7 +3664,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.702 0.183 293.541)',
       'chart-4': 'oklch(0.811 0.111 293.571)',
       'chart-5': 'oklch(0.894 0.057 293.283)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3762,7 +3735,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.777 0.152 181.912)',
       'chart-4': 'oklch(0.855 0.138 181.071)',
       'chart-5': 'oklch(0.91 0.096 180.426)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3831,7 +3806,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.765 0.177 163.223)',
       'chart-4': 'oklch(0.845 0.143 164.978)',
       'chart-5': 'oklch(0.905 0.093 164.15)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3900,7 +3877,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.707 0.165 254.624)',
       'chart-4': 'oklch(0.809 0.105 251.813)',
       'chart-5': 'oklch(0.882 0.059 254.128)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3969,7 +3948,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.712 0.194 13.428)',
       'chart-4': 'oklch(0.81 0.117 11.638)',
       'chart-5': 'oklch(0.892 0.058 10.001)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4038,7 +4019,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.673 0.182 276.935)',
       'chart-4': 'oklch(0.785 0.115 274.713)',
       'chart-5': 'oklch(0.87 0.065 274.039)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4107,7 +4090,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.714 0.203 305.504)',
       'chart-4': 'oklch(0.827 0.119 306.383)',
       'chart-5': 'oklch(0.902 0.063 306.703)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4176,7 +4161,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.789 0.154 211.53)',
       'chart-4': 'oklch(0.865 0.127 207.078)',
       'chart-5': 'oklch(0.917 0.08 205.041)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4245,7 +4232,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.828 0.189 84.429)',
       'chart-4': 'oklch(0.879 0.169 91.605)',
       'chart-5': 'oklch(0.924 0.12 95.746)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4314,7 +4303,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.777 0.152 181.912)',
       'chart-4': 'oklch(0.855 0.138 181.071)',
       'chart-5': 'oklch(0.91 0.096 180.426)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4383,7 +4374,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.707 0.165 254.624)',
       'chart-4': 'oklch(0.809 0.105 251.813)',
       'chart-5': 'oklch(0.882 0.059 254.128)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4452,7 +4445,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.673 0.182 276.935)',
       'chart-4': 'oklch(0.785 0.115 274.713)',
       'chart-5': 'oklch(0.87 0.065 274.039)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4521,7 +4516,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.702 0.183 293.541)',
       'chart-4': 'oklch(0.811 0.111 293.571)',
       'chart-5': 'oklch(0.894 0.057 293.283)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4590,7 +4587,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.75 0.183 55.934)',
       'chart-4': 'oklch(0.837 0.128 66.29)',
       'chart-5': 'oklch(0.901 0.076 70.697)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4659,7 +4658,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.789 0.154 211.53)',
       'chart-4': 'oklch(0.865 0.127 207.078)',
       'chart-5': 'oklch(0.917 0.08 205.041)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4728,7 +4729,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.673 0.182 276.935)',
       'chart-4': 'oklch(0.785 0.115 274.713)',
       'chart-5': 'oklch(0.87 0.065 274.039)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4797,7 +4800,9 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-3': 'oklch(0.702 0.183 293.541)',
       'chart-4': 'oklch(0.811 0.111 293.571)',
       'chart-5': 'oklch(0.894 0.057 293.283)',
-      radius: '0.5rem'
+      radius: '0.5rem',
+      'font-sans': 'Inter, sans-serif',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',

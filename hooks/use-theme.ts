@@ -31,13 +31,21 @@ const getRoot = (): HTMLElement | null => {
   return cachedRoot
 }
 
+export const applyThemeToDOM = (vars: Partial<ThemeStyleProps>) => {
+  const root = document.documentElement
+
+  for (const [key, value] of Object.entries(vars)) {
+    root.style.setProperty(`--${key}`, value)
+  }
+}
+
 export const useThemeStore = create<State & Actions>()(
   devtools(
     persist(
       (set) => ({
         ...initialState,
         setPresetTheme: (preset: Preset, mode: 'light' | 'dark') => {
-          set((state) => ({ theme: { ...state.theme, preset, styles: getPresetThemeStyles(preset) } }))
+          set({ theme: { preset, styles: getPresetThemeStyles(preset) } })
           if (isBrowser) {
             const root = getRoot()
             if (!root) return
@@ -48,21 +56,16 @@ export const useThemeStore = create<State & Actions>()(
               [key: string]: string
             }
 
-            requestAnimationFrame(() => {
-              Object.entries(vars).forEach(([key, value]) => {
-                root.style.setProperty(`--${key}`, value)
-              })
-            })
+            applyThemeToDOM(vars)
           }
         },
         setFontSansFamily: (font) => {
           set((state) => ({
             theme: {
-              ...state.theme,
+              preset: 'custom',
               styles: {
                 ...state.theme.styles,
-                light: { ...state.theme.styles.light, 'font-sans': font },
-                dark: { ...state.theme.styles.dark, 'font-sans': font }
+                light: { ...state.theme.styles.light, 'font-sans': font }
               }
             }
           }))
@@ -76,11 +79,10 @@ export const useThemeStore = create<State & Actions>()(
         setFontMonoFamily: (font) => {
           set((state) => ({
             theme: {
-              ...state.theme,
+              preset: 'custom',
               styles: {
                 ...state.theme.styles,
-                light: { ...state.theme.styles.light, 'font-mono': font },
-                dark: { ...state.theme.styles.dark, 'font-mono': font }
+                light: { ...state.theme.styles.light, 'font-mono': font }
               }
             }
           }))
@@ -94,7 +96,7 @@ export const useThemeStore = create<State & Actions>()(
         setBorderRadius: (radius) => {
           set((state) => ({
             theme: {
-              ...state.theme,
+              preset: 'custom',
               styles: {
                 ...state.theme.styles,
                 light: { ...state.theme.styles.light, radius: radius }
@@ -111,7 +113,7 @@ export const useThemeStore = create<State & Actions>()(
         setColor: (variable, mode, value) => {
           set((state) => ({
             theme: {
-              ...state.theme,
+              preset: 'custom',
               styles: {
                 ...state.theme.styles,
                 [mode]: { ...state.theme.styles[mode], [variable]: value }
@@ -130,11 +132,14 @@ export const useThemeStore = create<State & Actions>()(
         }
       }),
       {
-        name: 'theme',
-        partialize: (state) => state.theme
+        name: 'hq-theme',
+        onRehydrateStorage: () => (state) => {
+          if (state?.theme) {
+            applyThemeToDOM(state.theme.styles)
+          }
+        }
       }
-    ),
-    { name: 'ThemeStore' }
+    )
   )
 )
 

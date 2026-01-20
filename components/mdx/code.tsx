@@ -58,7 +58,7 @@ export const Code = ({ lang = 'tsx', code, className, copy = false, ...props }: 
   }
 
   return loading ? (
-    <div />
+    <div className='h-12 w-full animate-pulse rounded-lg bg-muted' />
   ) : (
     <div className='relative w-full'>
       <div

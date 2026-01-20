@@ -19,7 +19,7 @@ import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import { Select } from '@/components/ui/select'
 import { useDebounce } from '@/hooks/use-debounce'
-import { useThemeGenerator } from '@/hooks/use-theme'
+import { useThemeStore } from '@/hooks/use-theme-customizer'
 import { colorFormatter } from '@/lib/themes/color-converter'
 
 type ColorSwatchProps = {
@@ -108,18 +108,19 @@ export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
 }
 
 const ThemeColorPanel = () => {
-  const { updateColor: update, currentTheme: current } = useThemeGenerator()
+  const { styles, setVar } = useThemeStore()
   const { resolvedTheme } = useTheme()
+  const mode = resolvedTheme === 'light' ? 'light' : 'dark'
 
   const updateColor = useCallback(
     (key: keyof ThemeStyleProps, value: string) => {
-      if (!current) return
-      update(key, resolvedTheme === 'dark' ? 'dark' : 'light', value)
+      if (!styles) return
+      setVar(key, value, mode)
     },
-    [current, update, resolvedTheme]
+    [styles]
   )
 
-  const currentTheme = current?.styles[resolvedTheme === 'dark' ? 'dark' : 'light']
+  const currentTheme = styles[mode === 'dark' ? 'dark' : 'light']
 
   return (
     <div className='space-y-6'>

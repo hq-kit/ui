@@ -1,17 +1,22 @@
 'use client'
 
-import type { ThemeStyles } from '@/lib/themes/presets'
+import type { Key } from 'react-aria-components'
 import { IconArrowsShuffle } from '@tabler/icons-react'
 import { useCallback, useMemo } from 'react'
-import { GridList, GridListItem, type Key } from 'react-aria-components'
 import { Button } from '@/components/ui/button'
-import { titleCase } from '@/lib/modifiers'
-import { cn } from '@/lib/utils'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { defaultThemeState } from '@/config/theme'
+import { type Preset, presets, type ThemeStyleProps, type ThemeStyles } from '@/lib/themes/presets'
 
 type SelectThemePresetProps = {
   presets: Record<string, ThemeStyles>
   currentPreset: string | null
   onPresetChange: (value: Key | null) => void
+}
+
+const getThemeColor = (themeName: Preset, color: keyof ThemeStyleProps) => {
+  const theme = themeName === 'default' ? defaultThemeState : presets[themeName]
+  return theme?.light?.[color] || theme?.dark?.[color] || '#000000'
 }
 
 const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThemePresetProps) => {
@@ -35,41 +40,45 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
         <IconArrowsShuffle className='size-4' />
         Random
       </Button>
-      <GridList
-        aria-label='Preset Theme'
-        className='grid grid-cols-3 gap-2'
-        disallowEmptySelection
-        items={Object.entries(presets)
-          .map(([key, value]) => ({
-            title: key,
-            light: value.light,
-            dark: value.dark
-          }))
-          .sort((a, b) => a.title.localeCompare(b.title))}
-        layout='grid'
-        onSelectionChange={(v) => onPresetChange([...v][0] as Key)}
-        selectedKeys={[value!]}
-        selectionMode='single'
-      >
-        {(item) => (
-          <GridListItem
-            className={({ isHovered, isSelected, isFocusVisible }) =>
-              cn(
-                'flex cursor-pointer items-center justify-center truncate text-ellipsis whitespace-nowrap rounded-lg px-2 py-1 font-semibold text-[10px] transition',
-                { 'ring-2 ring-ring': isFocusVisible || isSelected || isHovered }
-              )
-            }
-            id={item.title}
-            style={{
-              backgroundColor: item?.light?.primary,
-              color: item?.light?.['primary-foreground'],
-              fontFamily: item?.light?.['font-sans']
-            }}
-          >
-            {titleCase(item.title)}
-          </GridListItem>
-        )}
-      </GridList>
+      <Select onChange={onPresetChange} value={value}>
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent
+          items={Object.entries(presets)
+            .map(([key, value]) => ({
+              title: key,
+              light: value.light,
+              dark: value.dark
+            }))
+            .sort((a, b) => a.title.localeCompare(b.title))}
+        >
+          {(item) => (
+            <SelectItem className='flex items-center gap-3' id={item.title}>
+              {/* Theme Color Grid Icon */}
+              <div className='flex items-center'>
+                <div className='relative size-6.5 rounded border bg-background p-1'>
+                  <div className='grid h-full w-full grid-cols-2 grid-rows-2 gap-0.5'>
+                    <div className='rounded-[2px]' style={{ backgroundColor: getThemeColor(item.title, 'primary') }} />
+                    <div
+                      className='rounded-[2px]'
+                      style={{ backgroundColor: getThemeColor(item.title, 'destructive') }}
+                    />
+                    <div
+                      className='rounded-[2px]'
+                      style={{ backgroundColor: getThemeColor(item.title, 'secondary') }}
+                    />
+                    <div className='rounded-full' style={{ backgroundColor: getThemeColor(item.title, 'accent') }} />
+                  </div>
+                </div>
+              </div>
+              <div className='flex items-center gap-2'>
+                <span>{item.title.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}</span>
+              </div>
+            </SelectItem>
+          )}
+        </SelectContent>
+      </Select>
     </div>
   )
 }

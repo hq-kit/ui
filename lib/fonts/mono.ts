@@ -38,6 +38,11 @@ export const fontMonoFamilies = [
     label: 'Source Code Pro',
     value: 'Source Code Pro, monospace',
     link: 'family=Source+Code+Pro:ital,wght@0,200..900;1,200..900'
+  },
+  {
+    label: 'Delius Swash Caps',
+    value: 'Delius Swash Caps, cursive',
+    link: 'family=Delius+Swash+Caps'
   }
 ]
 

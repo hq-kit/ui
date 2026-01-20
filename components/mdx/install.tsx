@@ -22,7 +22,11 @@ export function ManualInstall({ component }: { component: string }) {
       .then((data) => {
         setContent(data.files[0].content)
         setDeps(data.dependencies)
-        setUiComponents(data.registryDependencies.filter((dep: string) => dep !== 'utils' && dep !== 'use-mobile'))
+        setUiComponents(
+          data.registryDependencies
+            .filter((dep: string) => dep !== 'utils' && dep !== 'use-mobile')
+            .map((dep: string) => dep.split('/').pop())
+        )
         setLibComponents(data.registryDependencies.filter((dep: string) => dep === 'utils'))
         setHooksComponents(data.registryDependencies.filter((dep: string) => dep === 'use-mobile'))
       })

@@ -22,8 +22,12 @@
     "section": "Framework Guides",
     "children": [
       {
-        "slug": "/docs/framework-guides/next-js",
-        "title": "Next.js"
+        "slug": "/docs/framework-guides/nextjs",
+        "title": "Nextjs"
+      },
+      {
+        "slug": "/docs/framework-guides/vite",
+        "title": "Vite"
       }
     ]
   },

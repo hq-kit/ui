@@ -1,19 +1,11 @@
 'use client'
 
 import { IconMoon, IconSun } from '@tabler/icons-react'
-import { useEffect } from 'react'
 import { useTheme } from '@/components/providers'
 import { Button } from '@/components/ui/button'
-import { useThemeGenerator } from '@/hooks/use-theme'
 
 export function ThemeToggle({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
   const { resolvedTheme, setTheme } = useTheme()
-
-  const { currentTheme, updatePresetTheme } = useThemeGenerator()
-
-  useEffect(() => {
-    updatePresetTheme(currentTheme.preset, resolvedTheme === 'dark' ? 'dark' : 'light')
-  }, [currentTheme.preset, resolvedTheme])
 
   return (
     <Button

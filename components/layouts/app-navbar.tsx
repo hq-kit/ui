@@ -2,9 +2,10 @@
 
 import { IconBrandGithub, IconSearch } from '@tabler/icons-react'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { Collection, Link } from 'react-aria-components'
+import { Fragment, useEffect, useState } from 'react'
+import { Collection, Header, Link } from 'react-aria-components'
 import { IconApp } from '@/components/icons'
+import { menus } from '@/components/layouts/menus'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button, buttonVariants } from '../ui/button'
 import { Kbd, KbdGroup } from '../ui/kbd'
@@ -56,7 +57,26 @@ export function AppNavbar() {
               )}
             </Collection>
           </Navbar.Section>
-          {/* <MobileNav currentUrl={pathname} /> */}
+          {menus().map((item) => (
+            <Navbar.Section aria-label='Navigation' className='md:hidden' key={item.title}>
+              <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{item.title}</Header>
+              {item.items?.map((item) => (
+                <Navbar.Item href={item.slug} isActive={pathname === item.slug} key={item.slug}>
+                  {item.title}
+                </Navbar.Item>
+              ))}
+              {item.sections?.map((section) => (
+                <Fragment key={section.title}>
+                  <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{section.title}</Header>
+                  {section.items?.map((item) => (
+                    <Navbar.Item href={item.slug} isActive={pathname === item.slug} key={item.slug}>
+                      {item.title}
+                    </Navbar.Item>
+                  ))}
+                </Fragment>
+              ))}
+            </Navbar.Section>
+          ))}
           <Navbar.Section className='ml-auto hidden md:flex'>
             <Navbar.Flex>
               <Button onPress={() => setOpenCommand(true)} variant='outline'>
@@ -67,8 +87,6 @@ export function AppNavbar() {
                   <Kbd>K</Kbd>
                 </KbdGroup>
               </Button>
-              <ThemeToggle />
-              <Separator className='mx-2 h-7' orientation='vertical' />
               <Link
                 aria-label='Github Repository'
                 className={buttonVariants({
@@ -80,6 +98,7 @@ export function AppNavbar() {
               >
                 <IconBrandGithub />
               </Link>
+              <ThemeToggle />
             </Navbar.Flex>
           </Navbar.Section>
         </Navbar.Nav>
@@ -96,8 +115,6 @@ export function AppNavbar() {
             <Button onPress={() => setOpenCommand(true)} size='icon' variant='outline'>
               <IconSearch />
             </Button>
-            <ThemeToggle />
-            <Separator className='mx-2 h-7' orientation='vertical' />
             <Link
               aria-label='Github Repository'
               className={buttonVariants({
@@ -109,6 +126,7 @@ export function AppNavbar() {
             >
               <IconBrandGithub />
             </Link>
+            <ThemeToggle />
           </Navbar.Flex>
         </Navbar.Compact>
       </Navbar>

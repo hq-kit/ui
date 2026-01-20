@@ -1,10 +1,9 @@
 'use client'
 
-import type { Component } from '@/types/search'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Header, Menu, MenuItem, type MenuItemProps, MenuSection } from 'react-aria-components'
-import menus from '@/components-search.json'
+import { menus } from '@/components/layouts/menus'
 import { cn } from '@/lib/utils'
 
 export type SidebarItem = {
@@ -13,37 +12,9 @@ export type SidebarItem = {
 }
 
 export function Aside() {
-  const gettingStarted = menus[0] as SidebarItem
-  const frameworkGuides = menus[1] as SidebarItem
-  const darkModes = menus[2] as SidebarItem
-  const components = menus[3] as Component
-
-  const sections = [
-    {
-      title: 'Getting Started',
-      items: gettingStarted.children
-    },
-    {
-      title: 'Framework Guides',
-      items: frameworkGuides.children
-    },
-    {
-      title: 'Dark Modes',
-      items: darkModes.children
-    },
-    {
-      title: 'Components',
-      items: [],
-      sections: components.children?.map((section) => ({
-        title: section.subsection,
-        items: section.children ?? []
-      }))
-    }
-  ]
-
   return (
     <aside className='scrollbar-fade sticky top-7 h-screen w-64 overflow-y-auto overflow-x-hidden py-16 pr-8 transition xl:w-72'>
-      {sections.map((section) => (
+      {menus().map((section) => (
         <Menu aria-label='Navigation' className='flex flex-col' key={section.title} selectionMode='none'>
           <MenuSection>
             <Header className='mt-4 mb-2 px-2 font-semibold text-foreground'>{section.title}</Header>

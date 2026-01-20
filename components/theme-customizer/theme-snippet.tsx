@@ -3,7 +3,6 @@
 import type { ReactNode } from 'react'
 import type { Key } from 'react-aria-components'
 import type { ColorFormat } from '@/lib/themes/color-converter'
-import type { ThemeStyleProps, ThemeStyles } from '@/types/theme'
 import { useState } from 'react'
 import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
@@ -11,7 +10,7 @@ import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, Dia
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { defaultDarkThemeStyles, defaultLightThemeStyles } from '@/config/theme'
 import { generateThemeCode } from '@/lib/themes/generator'
-import { presets } from '@/lib/themes/presets'
+import { presets, type ThemeStyleProps, type ThemeStyles } from '@/lib/themes/presets'
 
 type ThemeVariablesDialogProps = {
   lightTheme?: Partial<ThemeStyleProps>

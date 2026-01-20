@@ -24,18 +24,19 @@ export const BlockCode = ({ className, title, icon, copy = true, ...props }: Pre
     void navigator.clipboard.writeText(clone.textContent ?? '')
   }, [])
   const [checked, onClick] = useCopyButton(onCopy)
+
   return (
     <figure
       {...props}
       className={cn(
-        'not-prose relative my-4 overflow-hidden rounded-lg text-sm shadow-sm',
+        'not-prose relative my-4 rounded-lg text-sm shadow-sm',
         'border bg-shiki-bg dark:bg-shiki-dark-bg',
         className
       )}
       ref={areaRef}
     >
       {title ? (
-        <div className='flex w-full flex-row items-center gap-2 border-b bg-accent px-3 py-2 text-accent-foreground'>
+        <div className='flex w-full flex-row items-center gap-2 rounded-t-lg border-b bg-accent px-3 py-2 text-accent-foreground'>
           {icon ? (
             <div
               className='text-muted-fg [&_svg]:size-3.5'
@@ -54,7 +55,12 @@ export const BlockCode = ({ className, title, icon, copy = true, ...props }: Pre
       ) : (
         copy && <CopyButton className='absolute top-2 right-2 z-2' isCopied={checked} onPress={onClick} />
       )}
-      <pre className='w-full py-3 leading-relaxed focus-visible:outline-hidden **:[code]:bg-transparent **:[code]:p-0'>
+      <pre
+        className={cn(
+          'peer max-h-64 w-full overflow-auto py-3 leading-relaxed focus-visible:outline-hidden **:[code]:bg-transparent **:[code]:p-0',
+          '[&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar]:size-1.5 [&::-webkit-scrollbar]:bg-transparent'
+        )}
+      >
         {props.children}
       </pre>
     </figure>

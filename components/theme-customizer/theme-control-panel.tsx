@@ -8,25 +8,26 @@ import ThemeVariablesDialog from '@/components/theme-customizer/theme-snippet'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Slider, SliderFill, SliderOutput, SliderThumb, SliderTrack } from '@/components/ui/slider'
-import { useThemeGenerator } from '@/hooks/use-theme'
+import { defaultThemeState } from '@/config/theme'
+import { useThemeStore } from '@/hooks/use-theme-customizer'
 import { fontMonoFamilies } from '@/lib/fonts/mono'
 import { fontSansFamilies } from '@/lib/fonts/sans'
 import { presets } from '@/lib/themes/presets'
 import ThemeColorPanel from './theme-color-panel'
 
 const ThemeControlPanel = () => {
+  const { preset, styles, setPreset, setVar, resetMode } = useThemeStore()
   const { resolvedTheme, setTheme } = useTheme()
 
-  const { currentTheme, updatePresetTheme, updateFontSansFamily, updateFontMonoFamily, updateBorderRadius, reset } =
-    useThemeGenerator()
+  const mode = resolvedTheme === 'light' ? 'light' : 'dark'
 
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex gap-2'>
         <ThemeVariablesDialog
-          activeTheme={currentTheme.preset}
-          darkTheme={currentTheme.styles.dark}
-          lightTheme={currentTheme.styles.light}
+          activeTheme={preset}
+          darkTheme={styles.dark}
+          lightTheme={styles.light}
           trigger={
             <Button className='flex-1 cursor-pointer gap-2' size='lg' variant='outline'>
               <IconCopy className='size-4' />
@@ -34,7 +35,7 @@ const ThemeControlPanel = () => {
             </Button>
           }
         />
-        <Button className='flex-1 cursor-pointer gap-2' onPress={reset} size='lg' variant='outline'>
+        <Button className='flex-1 cursor-pointer gap-2' onPress={() => resetMode(mode)} size='lg' variant='outline'>
           <IconRotateClockwise className='size-4' />
           Reset
         </Button>
@@ -55,29 +56,31 @@ const ThemeControlPanel = () => {
         <SelectFont
           fonts={fontSansFamilies.sort((a, b) => a.label.localeCompare(b.label))}
           label='Font Sans'
-          onChange={(key) => updateFontSansFamily(key as string)}
-          value={currentTheme.styles.light['font-sans']}
+          onChange={(key) => setVar('font-sans', key as string, mode)}
+          value={styles.light['font-sans']}
         />
         <SelectFont
           fonts={fontMonoFamilies.sort((a, b) => a.label.localeCompare(b.label))}
           label='Font Mono'
-          onChange={(key) => updateFontMonoFamily(key as string)}
-          value={currentTheme.styles.light['font-mono']}
+          onChange={(key) => setVar('font-mono', key as string, mode)}
+          value={styles.light['font-mono']}
         />
       </div>
 
       <SelectThemePreset
-        currentPreset={currentTheme.preset}
-        onPresetChange={(v) => updatePresetTheme(v as string, resolvedTheme === 'dark' ? 'dark' : 'light')}
+        currentPreset={preset}
+        onPresetChange={(v) => setPreset(v as string, mode)}
         presets={presets}
       />
 
       <Slider
         maxValue={2.5}
         minValue={0}
-        onChange={(v) => updateBorderRadius(v.toString())}
+        onChange={(v) => setVar('radius', `${v}rem`, mode)}
         step={0.025}
-        value={parseFloat(currentTheme.styles.light.radius!.replace('rem', ''))}
+        value={parseFloat(
+          (styles.light.radius ? styles.light.radius! : defaultThemeState.light.radius!).replace('rem', '')
+        )}
       >
         <div className='flex items-center justify-between'>
           <Label>Radius</Label>

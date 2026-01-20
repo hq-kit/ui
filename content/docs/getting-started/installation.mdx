@@ -6,6 +6,8 @@ published: true
 
 ## Installation via CLI
 Before executing the command, ensure that **tailwind-css** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
+<CLI command='init' />
+or you can choose any theme listed [**here**](/themes)
 
 <Note>
 This CLI will overwrite your **.css** file. It is highly recommended to use this in a **new project**.
@@ -196,7 +198,7 @@ export function useIsMobile(mobileBreakpoint = 768) {
 
 ### TS Config
 Next, incorporate the following settings into your `tsconfig.json` file:
-```json {3-6}
+```json {3-6} title='tsconfig.json'
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -211,7 +213,7 @@ Next, incorporate the following settings into your `tsconfig.json` file:
 Ensure you configure the `paths` property correctly if your project includes a `src` folder. If you want to organize
 the UI folder, adjust your paths accordingly like this:
 
-```json {3-6}
+```json {3-6} title='tsconfig.json'
 {
   "compilerOptions": {
     "baseUrl": ".",

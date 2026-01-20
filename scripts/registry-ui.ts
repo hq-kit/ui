@@ -80,6 +80,7 @@ for (const component of components) {
 
   componentsList.push({
     name: component.replace('.tsx', ''),
+    extends: 'none',
     type: 'registry:ui',
     dependencies: deps ?? [],
     registryDependencies: childComponents ?? [],
@@ -91,5 +92,14 @@ for (const component of components) {
     ]
   })
 }
+
+componentsList.push({
+  name: 'all',
+  extends: 'none',
+  type: 'registry:ui',
+  title: 'All UI Components',
+  dependencies: [],
+  registryDependencies: components.map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
+})
 
 export const uiComponents = componentsList.sort((a, b) => a.name.localeCompare(b.name)).map((c) => c)
