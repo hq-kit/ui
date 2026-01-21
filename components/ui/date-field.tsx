@@ -1,75 +1,186 @@
 'use client'
 
-import type { ReactNode, Ref } from 'react'
+import type { VariantProps } from 'tailwind-variants'
+import { IconChevronDown } from '@tabler/icons-react'
 import {
-    composeRenderProps,
-    type DateInputProps,
-    DateSegment,
-    type DateValue,
-    DateField as RACDateField,
-    type DateFieldProps as RACDateFieldProps,
-    DateInput as RACDateInput
+  Button,
+  composeRenderProps,
+  type DateFieldProps,
+  type DateInputProps,
+  type DatePickerProps,
+  type DateRangePickerProps,
+  DateSegment,
+  type DateValue,
+  Group,
+  DateField as RACDateField,
+  DateInput as RACDateInput,
+  DatePicker as RACDatePicker,
+  DateRangePicker as RACDateRangePicker,
+  TimeField as RACTimeField,
+  type TimeFieldProps,
+  type TimeValue
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, FieldGroup, type FieldProps, Label } from './form'
-
-interface DateFieldProps<T extends DateValue> extends RACDateFieldProps<T>, FieldProps {
-    prefix?: ReactNode
-    suffix?: ReactNode
-    ref?: Ref<HTMLDivElement>
-}
+import { fieldVariants } from './field'
 
 const DateField = <T extends DateValue>({
-    prefix,
-    suffix,
-    label,
-    description,
-    errorMessage,
-    className,
-    ref,
-    ...props
-}: DateFieldProps<T>) => {
-    return (
-        <RACDateField
-            className={composeRenderProps(className, (className) =>
-                cn('group/field flex flex-col gap-y-1.5', className)
-            )}
-            isInvalid={props.isInvalid || !!errorMessage}
-            ref={ref}
-            {...props}
-        >
-            {label && <Label>{label}</Label>}
-            <FieldGroup>
-                {prefix ? <span data-slot='prefix'>{prefix}</span> : null}
-                <DateInput />
-                {suffix ? <span data-slot='suffix'>{suffix}</span> : null}
-            </FieldGroup>
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </RACDateField>
-    )
-}
+  className,
+  orientation = 'vertical',
+  ...props
+}: DateFieldProps<T> & VariantProps<typeof fieldVariants>) => (
+  <RACDateField
+    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
+    data-orientation={orientation}
+    data-slot='field'
+    {...props}
+  />
+)
+
+const TimeField = <T extends TimeValue>({
+  className,
+  orientation = 'vertical',
+  ...props
+}: TimeFieldProps<T> & VariantProps<typeof fieldVariants>) => (
+  <RACTimeField
+    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
+    data-orientation={orientation}
+    data-slot='field'
+    {...props}
+  />
+)
+
+const DatePicker = <T extends DateValue>({
+  className,
+  orientation = 'vertical',
+  ...props
+}: DatePickerProps<T> & VariantProps<typeof fieldVariants>) => (
+  <RACDatePicker
+    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
+    data-orientation={orientation}
+    data-slot='field'
+    {...props}
+  />
+)
+
+const DateRangePicker = <T extends DateValue>({
+  className,
+  orientation = 'vertical',
+  ...props
+}: DateRangePickerProps<T> & VariantProps<typeof fieldVariants>) => (
+  <RACDateRangePicker
+    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
+    data-orientation={orientation}
+    data-slot='field'
+    {...props}
+  />
+)
 
 const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) => {
-    return (
-        <RACDateInput
-            className={composeRenderProps(className, (className) =>
-                cn('bg-transparent p-2 text-base disabled:opacity-50 lg:text-sm', className)
-            )}
-            {...props}
-        >
-            {(segment) => (
-                <DateSegment
-                    className={cn(
-                        'inline shrink-0 rounded-sm p-0.5 type-literal:px-0 text-foreground tabular-nums tracking-wider caret-transparent outline-0 sm:text-sm sm:uppercase',
-                        segment.isPlaceholder && 'text-muted-foreground',
-                        'underline-offset-4 invalid:not-type-literal:text-destructive/70 focus:text-primary focus:underline invalid:focus:text-destructive'
-                    )}
-                    segment={segment}
-                />
-            )}
-        </RACDateInput>
-    )
+  return (
+    <RACDateInput
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'inline-flex w-full items-center justify-start',
+          'h-9 min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
+          'hover:border-ring group-hover/field:border-ring data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50',
+          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
+          className
+        )
+      )}
+      {...props}
+    >
+      {(segment) => (
+        <DateSegment
+          className='rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+          segment={segment}
+        />
+      )}
+    </RACDateInput>
+  )
 }
 
-export { DateField, DateInput }
+const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) => {
+  return (
+    <Group
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30',
+          'h-9 w-full min-w-0 rounded-md border border-input bg-transparent py-1 text-base shadow-xs outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
+          'in-data-open:border-ring in-data-open:ring-[3px] in-data-open:ring-ring/50',
+          'has-data-focus-within:border-ring has-data-focus-within:ring-[3px] has-data-focus-within:ring-ring/50',
+          'has-aria-invalid:border-destructive has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40',
+          className
+        )
+      )}
+    >
+      <RACDateInput className={cn('inline-flex items-center justify-start px-3')} {...props}>
+        {(segment) => (
+          <DateSegment
+            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+            segment={segment}
+          />
+        )}
+      </RACDateInput>
+      <Button
+        className={cn(
+          'touch-target ml-auto grid place-content-center outline-hidden',
+          'text-muted-foreground hover:text-foreground focus-visible:text-foreground data-pressed:text-foreground',
+          'px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6'
+        )}
+        data-slot='date-picker-trigger'
+      >
+        <IconChevronDown className='size-4 shrink-0' />
+      </Button>
+    </Group>
+  )
+}
+
+const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) => {
+  return (
+    <Group
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30',
+          'h-9 w-full min-w-0 rounded-md border border-input bg-transparent py-1 text-base shadow-xs outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30',
+          'in-data-open:border-ring in-data-open:ring-[3px] in-data-open:ring-ring/50',
+          'has-data-focus-within:border-ring has-data-focus-within:ring-[3px] has-data-focus-within:ring-ring/50',
+          'has-aria-invalid:border-destructive has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40',
+          className
+        )
+      )}
+    >
+      <RACDateInput className={cn('inline-flex items-center justify-start px-3')} slot='start' {...props}>
+        {(segment) => (
+          <DateSegment
+            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+            segment={segment}
+          />
+        )}
+      </RACDateInput>
+      <span
+        aria-hidden='true'
+        className='pointer-events-none z-10 -mx-3 block h-0.5 w-2 shrink-0 self-center rounded-full bg-foreground group-disabled/date-range-picker:text-opacity-50 sm:-mx-2'
+      />
+      <RACDateInput className={cn('inline-flex items-center justify-start px-3')} slot='end' {...props}>
+        {(segment) => (
+          <DateSegment
+            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+            segment={segment}
+          />
+        )}
+      </RACDateInput>
+      <Button
+        className={cn(
+          'touch-target ml-auto grid place-content-center outline-hidden',
+          'text-muted-foreground hover:text-foreground focus-visible:text-foreground data-pressed:text-foreground',
+          'px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6'
+        )}
+        data-slot='date-picker-trigger'
+      >
+        <IconChevronDown className='size-4 shrink-0' />
+      </Button>
+    </Group>
+  )
+}
+
+export { DateInput, DatePickerInput, DateRangePickerInput, DateField, TimeField, DatePicker, DateRangePicker }

@@ -1,110 +1,51 @@
-import {
-    DM_Mono,
-    Fira_Code,
-    Geist_Mono,
-    IBM_Plex_Mono,
-    JetBrains_Mono,
-    PT_Mono,
-    Source_Code_Pro,
-    Ubuntu_Mono
-} from 'next/font/google'
-import { cn } from '@/lib/utils'
-
-const jetbrainsMono = JetBrains_Mono({
-    subsets: ['latin'],
-    variable: '--font-jetbrains-mono'
-})
-
-const geistMono = Geist_Mono({
-    subsets: ['latin'],
-    variable: '--font-geist-mono'
-})
-
-const firaCode = Fira_Code({
-    subsets: ['latin'],
-    variable: '--font-fira-code'
-})
-
-const dmMono = DM_Mono({
-    subsets: ['latin'],
-    variable: '--font-dm-mono',
-    weight: ['400', '500']
-})
-
-const ptMono = PT_Mono({
-    subsets: ['latin'],
-    variable: '--font-pt-mono',
-    weight: ['400']
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-    subsets: ['latin'],
-    variable: '--font-ibm-plex-mono',
-    weight: ['500', '700']
-})
-
-const ubuntuMono = Ubuntu_Mono({
-    subsets: ['latin'],
-    variable: '--font-ubuntu-mono',
-    weight: ['400', '700']
-})
-
-const sourceCodePro = Source_Code_Pro({
-    subsets: ['latin'],
-    variable: '--font-source-code-pro',
-    weight: ['400', '700']
-})
-
-export const fontMono = cn(
-    dmMono.variable,
-    firaCode.variable,
-    geistMono.variable,
-    ibmPlexMono.variable,
-    jetbrainsMono.variable,
-    ptMono.variable,
-    ubuntuMono.variable,
-    sourceCodePro.variable
-)
-
 export const fontMonoFamilies = [
-    {
-        label: 'Geist Mono',
-        value: '--font-geist-mono',
-        link: 'https://vercel.com/font'
-    },
-    {
-        label: 'JetBrains Mono',
-        value: '--font-jetbrains-mono',
-        link: 'https://fonts.google.com/specimen/JetBrains+Mono'
-    },
-    {
-        label: 'Fira Code',
-        value: '--font-fira-code',
-        link: 'https://fonts.google.com/specimen/Fira+Code'
-    },
-    {
-        label: 'DM Mono',
-        value: '--font-dm-mono',
-        link: 'https://fonts.google.com/specimen/DM+Mono'
-    },
-    {
-        label: 'PT Mono',
-        value: '--font-pt-mono',
-        link: 'https://fonts.google.com/specimen/PT+Mono'
-    },
-    {
-        label: 'IBM Plex Mono',
-        value: '--font-ibm-plex-mono',
-        link: 'https://fonts.google.com/specimen/IBM+Plex+Mono'
-    },
-    {
-        label: 'Ubuntu Mono',
-        value: '--font-ubuntu-mono',
-        link: 'https://fonts.google.com/specimen/Ubuntu+Mono'
-    },
-    {
-        label: 'Source Code Pro',
-        value: '--font-source-code-pro',
-        link: 'https://fonts.google.com/specimen/Source+Code+Pro'
-    }
+  {
+    label: 'Geist Mono',
+    value: 'Geist Mono, Geist Mono Fallback, monospace',
+    link: 'family=Geist+Mono:wght@100..900'
+  },
+  {
+    label: 'JetBrains Mono',
+    value: 'JetBrains Mono, monospace',
+    link: 'family=JetBrains+Mono:ital,wght@0,100..800;1,100..800'
+  },
+  {
+    label: 'Fira Code',
+    value: 'Fira Code, monospace',
+    link: 'family=Fira+Code:wght@300..700'
+  },
+  {
+    label: 'DM Mono',
+    value: 'DM Mono, monospace',
+    link: 'family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500'
+  },
+  {
+    label: 'PT Mono',
+    value: 'PT Mono, monospace',
+    link: 'family=PT+Mono'
+  },
+  {
+    label: 'IBM Plex Mono',
+    value: 'IBM Plex Mono, monospace',
+    link: 'family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700'
+  },
+  {
+    label: 'Ubuntu Mono',
+    value: 'Ubuntu Mono, monospace',
+    link: 'family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700'
+  },
+  {
+    label: 'Source Code Pro',
+    value: 'Source Code Pro, monospace',
+    link: 'family=Source+Code+Pro:ital,wght@0,200..900;1,200..900'
+  },
+  {
+    label: 'Delius Swash Caps',
+    value: 'Delius Swash Caps, cursive',
+    link: 'family=Delius+Swash+Caps'
+  }
 ]
+
+export type FontMonoFamily = (typeof fontMonoFamilies)[number]
+
+export const fontMonoUrl = fontMonoFamilies.map((font) => font.link).join('&')

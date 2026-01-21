@@ -1,160 +1,99 @@
 'use client'
 
-import type { ButtonProps, DialogProps, DialogTriggerProps, ModalOverlayProps } from 'react-aria-components'
-import { AnimatePresence, motion } from 'motion/react'
-import { type ReactNode, use } from 'react'
-import {
-    Button,
-    Dialog,
-    DialogTrigger,
-    ModalOverlay,
-    OverlayTriggerStateContext,
-    Modal as RACModal
-} from 'react-aria-components'
+import type { ComponentProps } from 'react'
+import { Drawer as Vaul } from 'vaul'
 import { cn } from '@/lib/utils'
-import { DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './dialog'
 
-const Modal = motion.create(RACModal)
-const Overlay = motion.create(ModalOverlay)
+const Drawer = (props: ComponentProps<typeof Vaul.Root>) => <Vaul.Root data-slot='drawer' {...props} />
 
-const Drawer = (props: DialogTriggerProps) => <DialogTrigger {...props} />
+const DrawerTrigger = (props: ComponentProps<typeof Vaul.Trigger>) => (
+  <Vaul.Trigger data-slot='drawer-trigger' {...props} />
+)
 
-interface DrawerContentProps
-    extends Omit<ModalOverlayProps, 'className' | 'children' | 'isDismissable'>,
-        Pick<DialogProps, 'aria-label' | 'aria-labelledby' | 'role' | 'children' | 'className'> {
-    isFloating?: boolean
-    className?: string
-    style?: React.CSSProperties
-    side?: 'top' | 'bottom' | 'left' | 'right'
-    withNotch?: boolean
-}
+const DrawerPortal = (props: ComponentProps<typeof Vaul.Portal>) => <Vaul.Portal data-slot='drawer-portal' {...props} />
+
+const DrawerClose = (props: ComponentProps<typeof Vaul.Close>) => <Vaul.Close data-slot='drawer-close' {...props} />
+
+const DrawerOverlay = ({ className, ...props }: ComponentProps<typeof Vaul.Overlay>) => (
+  <Vaul.Overlay
+    className={cn(
+      'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=open]:animate-in',
+      className
+    )}
+    data-slot='drawer-overlay'
+    {...props}
+  />
+)
 
 const DrawerContent = ({
-    side = 'bottom',
-    isFloating = false,
-    withNotch = true,
-    children,
-    className,
-    ...props
-}: DrawerContentProps) => {
-    const state = use(OverlayTriggerStateContext)!
+  className,
+  children,
+  ...props
+}: ComponentProps<typeof Vaul.Content> & { overlayclassname?: string }) => (
+  <DrawerPortal data-slot='drawer-portal'>
+    <DrawerOverlay className={props.overlayclassname} />
+    <Vaul.Content
+      className={cn(
+        'group/drawer-content fixed z-50 flex h-auto flex-col bg-background',
+        'data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b',
+        'data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t',
+        'data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm',
+        'data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm',
+        className
+      )}
+      data-slot='drawer-content'
+      {...props}
+    >
+      <div className='mx-auto mt-4 hidden h-2 w-25 shrink-0 rounded-full bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block' />
+      {children}
+    </Vaul.Content>
+  </DrawerPortal>
+)
 
-    return (
-        <AnimatePresence>
-            {(props?.isOpen || state?.isOpen) && (
-                <Overlay
-                    animate={{
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                        backdropFilter: 'blur(4px)'
-                    }}
-                    className='fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]'
-                    exit={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', backdropFilter: 'blur(0px)' }}
-                    isDismissable
-                    isOpen={props?.isOpen || state?.isOpen}
-                    onOpenChange={props?.onOpenChange || state?.setOpen}
-                >
-                    {({ state }) => (
-                        <Modal
-                            animate={{ x: 0, y: 0 }}
-                            className={cn(
-                                'fixed max-h-full touch-none overflow-hidden bg-background align-middle text-foreground shadow-sm will-change-transform',
-                                side === 'top' &&
-                                    `${
-                                        isFloating
-                                            ? 'inset-x-2 top-2 rounded-lg border'
-                                            : 'inset-x-0 top-0 rounded-b-2xl border-b'
-                                    }`,
-                                side === 'right' &&
-                                    `w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left ${
-                                        isFloating
-                                            ? 'inset-y-2 right-2 rounded-lg border'
-                                            : 'inset-y-0 right-0 h-auto border-l'
-                                    }`,
-                                side === 'bottom' &&
-                                    `${
-                                        isFloating
-                                            ? 'inset-x-2 bottom-2 rounded-lg border'
-                                            : 'inset-x-0 bottom-0 rounded-t-2xl border-t'
-                                    }`,
-                                side === 'left' &&
-                                    `w-full max-w-xs overflow-y-auto **:[[slot=header]]:text-left ${
-                                        isFloating
-                                            ? 'inset-y-2 left-2 rounded-lg border'
-                                            : 'inset-y-0 left-0 h-auto border-r'
-                                    }`,
-                                className
-                            )}
-                            drag={side === 'left' || side === 'right' ? 'x' : 'y'}
-                            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-                            dragElastic={{
-                                top: side === 'top' ? 1 : 0,
-                                bottom: side === 'bottom' ? 1 : 0,
-                                left: side === 'left' ? 1 : 0,
-                                right: side === 'right' ? 1 : 0
-                            }}
-                            dragPropagation
-                            dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                            exit={{
-                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
-                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
-                            }}
-                            initial={{
-                                x: side === 'left' ? '-100%' : side === 'right' ? '100%' : 0,
-                                y: side === 'top' ? '-100%' : side === 'bottom' ? '100%' : 0
-                            }}
-                            onDragEnd={(_, { offset, velocity }) => {
-                                if (side === 'bottom' && (velocity.y > 150 || offset.y > screen.height * 0.25)) {
-                                    state.close()
-                                }
-                                if (side === 'top' && (velocity.y < -150 || offset.y < screen.height * 0.25)) {
-                                    state.close()
-                                }
-                                if (side === 'left' && velocity.x < -150) {
-                                    state.close()
-                                }
-                                if (side === 'right' && velocity.x > 150) {
-                                    state.close()
-                                }
-                            }}
-                            transition={{ duration: 0.15, ease: 'easeInOut' }}
-                            whileDrag={{ cursor: 'grabbing' }}
-                        >
-                            <Dialog
-                                aria-label='Drawer'
-                                className={cn(
-                                    'relative flex flex-col overflow-hidden outline-hidden will-change-auto',
-                                    side === 'top' || side === 'bottom'
-                                        ? 'mx-auto max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] max-w-lg'
-                                        : 'h-full'
-                                )}
-                                role='dialog'
-                            >
-                                {withNotch && side === 'bottom' && (
-                                    <div className='notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20' />
-                                )}
-                                {children as ReactNode}
-                                {withNotch && side === 'top' && (
-                                    <div className='notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20' />
-                                )}
-                            </Dialog>
-                        </Modal>
-                    )}
-                </Overlay>
-            )}
-        </AnimatePresence>
-    )
-}
+const DrawerHeader = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div
+    className={cn(
+      'flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-left',
+      className
+    )}
+    data-slot='drawer-header'
+    {...props}
+  />
+)
 
-Drawer.Trigger = (props: ButtonProps) => <Button {...props} />
+const DrawerFooter = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={cn('mt-auto flex flex-col gap-2 p-4', className)} data-slot='drawer-footer' {...props} />
+)
 
+const DrawerTitle = ({ className, ...props }: ComponentProps<typeof Vaul.Title>) => (
+  <Vaul.Title className={cn('font-semibold text-foreground', className)} data-slot='drawer-title' {...props} />
+)
+
+const DrawerDescription = ({ className, ...props }: ComponentProps<typeof Vaul.Description>) => (
+  <Vaul.Description
+    className={cn('text-muted-foreground text-sm', className)}
+    data-slot='drawer-description'
+    {...props}
+  />
+)
+
+Drawer.Trigger = DrawerTrigger
 Drawer.Content = DrawerContent
+Drawer.Header = DrawerHeader
+Drawer.Footer = DrawerFooter
+Drawer.Title = DrawerTitle
+Drawer.Description = DrawerDescription
+Drawer.Close = DrawerClose
 
-Drawer.Header = DialogHeader
-Drawer.Title = DialogTitle
-Drawer.Description = DialogDescription
-Drawer.Body = DialogBody
-Drawer.Footer = DialogFooter
-
-export { Drawer }
-export type { DrawerContentProps }
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription
+}

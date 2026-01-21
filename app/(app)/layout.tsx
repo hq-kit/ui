@@ -4,12 +4,12 @@ import { Footer } from '@/components/layouts/footer'
 import { ThemeCustomizer } from '@/components/theme-customizer'
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
-    return (
-        <>
-            <ThemeCustomizer />
-            <AppNavbar />
-            {children}
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <ThemeCustomizer />
+      <AppNavbar />
+      {children}
+      <Footer />
+    </>
+  )
 }

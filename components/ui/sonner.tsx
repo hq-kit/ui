@@ -1,21 +1,35 @@
-import { Toaster, type ToasterProps } from 'sonner'
-import { useTheme } from '@/components/providers'
+'use client'
 
-const Toast = ({ ...props }: ToasterProps) => {
-    const { theme = 'system' } = useTheme()
-    return (
-        <Toaster
-            className='toaster group'
-            richColors
-            theme={theme as ToasterProps['theme']}
-            toastOptions={{
-                className:
-                    '*:[svg]:self-start *:[svg]:shrink-0 font-sans rounded-lg! has-data-description:*:[svg]:mt-1 *:[svg]:mt-0.5 backdrop-blur-2xl'
-            }}
-            {...props}
-        />
-    )
+import type { CSSProperties } from 'react'
+import { IconAlertTriangle, IconCircleCheck, IconCircleX, IconInfoCircle, IconLoader2 } from '@tabler/icons-react'
+import { useTheme } from 'next-themes'
+import { Toaster as Sonner, type ToasterProps } from 'sonner'
+
+const Toaster = ({ ...props }: ToasterProps) => {
+  const { theme = 'system' } = useTheme()
+
+  return (
+    <Sonner
+      className='toaster group'
+      icons={{
+        success: <IconCircleCheck className='size-4' />,
+        info: <IconInfoCircle className='size-4' />,
+        warning: <IconAlertTriangle className='size-4' />,
+        error: <IconCircleX className='size-4' />,
+        loading: <IconLoader2 className='size-4 animate-spin' />
+      }}
+      style={
+        {
+          '--normal-bg': 'var(--popover)',
+          '--normal-text': 'var(--popover-foreground)',
+          '--normal-border': 'var(--border)',
+          '--border-radius': 'var(--radius)'
+        } as CSSProperties
+      }
+      theme={theme as ToasterProps['theme']}
+      {...props}
+    />
+  )
 }
 
-export { Toast }
-export type { ToasterProps }
+export { Toaster }

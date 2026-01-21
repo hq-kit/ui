@@ -1,89 +1,85 @@
 'use client'
 
-import type { Ref } from 'react'
-import type {
-    TabListProps as RACTabListProps,
-    TabPanelProps as RACTabPanelProps,
-    TabProps as RACTabProps,
-    TabsProps as RACTabsProps
+import {
+  composeRenderProps,
+  Tab as RACTab,
+  TabList as RACTabList,
+  TabPanel as RACTabPanel,
+  Tabs as RACTabs,
+  SelectionIndicator,
+  type TabListProps,
+  type TabPanelProps,
+  type TabProps,
+  type TabsProps
 } from 'react-aria-components'
-import { composeRenderProps, Tab as RACTab, Tabs as RACTabs, TabList, TabPanel } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 
-interface TabsProps extends RACTabsProps {
-    ref?: Ref<HTMLDivElement>
+const Tabs = ({ className, ...props }: TabsProps) => (
+  <RACTabs
+    className={composeRenderProps(className, (className) => cn('flex flex-col gap-2', className))}
+    data-slot='tabs'
+    {...props}
+  />
+)
+
+const TabsList = <T extends object>({ className, ...props }: TabListProps<T>) => {
+  return (
+    <RACTabList
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-0.75 text-muted-foreground',
+          className
+        )
+      )}
+      data-slot='tabs-list'
+      {...props}
+    />
+  )
 }
 
-const Tabs = ({ className, ref, ...props }: TabsProps) => {
-    return (
-        <RACTabs
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'group/tabs grid orientation-horizontal:grid-cols-1 orientation-vertical:grid-cols-[auto_1fr] gap-2',
-                    className
-                )
+const TabsTrigger = ({ className, ...props }: TabProps) => {
+  return (
+    <RACTab
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "group/tab relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-2 py-1 font-medium text-foreground text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:data-[selected=true]:text-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          'href' in props ? 'cursor-pointer' : 'cursor-default',
+          className
+        )
+      )}
+      data-slot='tabs-trigger'
+      {...props}
+    >
+      {(values) => (
+        <>
+          <SelectionIndicator
+            className={cn(
+              'transition-[color,box-shadow] group-focus-visible/tab:border-ring group-focus-visible/tab:outline-1 group-focus-visible/tab:outline-ring group-focus-visible/tab:ring-[3px] group-focus-visible/tab:ring-ring/50',
+              'absolute bottom-0 size-full rounded-md bg-background shadow-sm transition-[translate,width,height] duration-200 dark:border-input dark:bg-input/30'
             )}
-            ref={ref}
-            {...props}
-        />
-    )
+            data-slot='selected-indicator'
+          />
+          <span className='z-1 flex flex-row items-center gap-1.5'>
+            {typeof props.children === 'function' ? props.children(values) : props.children}
+          </span>
+        </>
+      )}
+    </RACTab>
+  )
 }
 
-interface TabListProps<T extends object> extends RACTabListProps<T> {
-    ref?: Ref<HTMLDivElement>
+const TabsContent = ({ className, ...props }: TabPanelProps) => {
+  return (
+    <RACTabPanel
+      className={composeRenderProps(className, (className) => cn('flex-1 outline-none', className))}
+      data-slot='tabs-content'
+      {...props}
+    />
+  )
 }
 
-const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
-    return (
-        <TabList
-            ref={ref}
-            {...props}
-            className={composeRenderProps(className, (className, { orientation }) =>
-                cn(
-                    'no-scrollbar inline-flex h-9 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground',
-                    orientation === 'horizontal' ? 'max-w-full items-center overflow-x-auto' : 'grid h-fit items-start',
-                    className
-                )
-            )}
-        />
-    )
-}
+Tabs.List = TabsList
+Tabs.Trigger = TabsTrigger
+Tabs.Content = TabsContent
 
-interface TabProps extends RACTabProps {
-    ref?: Ref<HTMLDivElement>
-}
-
-const Tab = ({ className, ref, ...props }: TabProps) => {
-    return (
-        <RACTab
-            ref={ref}
-            {...props}
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'inline-flex h-[calc(100%-1px)] flex-1 select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2 py-1 font-medium text-sm transition-[color,box-shadow]',
-                    'text-foreground dark:text-muted-foreground',
-                    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-                    'selected:bg-background selected:shadow-sm',
-                    'dark:selected:border-input dark:selected:bg-input/30 dark:selected:text-foreground',
-                    'focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
-                    'disabled:pointer-events-none disabled:opacity-50',
-                    className
-                )
-            )}
-        />
-    )
-}
-
-interface TabPanelProps extends RACTabPanelProps {
-    ref?: Ref<HTMLDivElement>
-}
-
-const Panel = ({ className, ref, ...props }: TabPanelProps) => {
-    return <TabPanel {...props} className={cn(className, 'flex-1 outline-hidden')} ref={ref} />
-}
-
-Tabs.List = List
-Tabs.Label = Tab
-Tabs.Content = Panel
-
-export { Tabs }
+export { Tabs, TabsList, TabsTrigger, TabsContent }

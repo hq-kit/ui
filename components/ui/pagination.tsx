@@ -1,112 +1,141 @@
 'use client'
 
-import type { ReactNode, RefObject } from 'react'
-import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps, TextProps } from 'react-aria-components'
-import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconDots } from '@tabler/icons-react'
-import { composeRenderProps, ListBox, ListBoxItem, ListBoxSection, Text } from 'react-aria-components'
+import type { ComponentProps } from 'react'
+import {
+  IconChevronLeft,
+  IconChevronLeftPipe,
+  IconChevronRight,
+  IconChevronRightPipe,
+  IconDots
+} from '@tabler/icons-react'
+import { Link, type LinkProps, Button as RACButton } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { type ButtonProps, buttonVariants } from './button'
 
-interface PaginationProps<T> extends ListBoxProps<T> {
-    ref?: RefObject<HTMLDivElement>
-}
+const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
+  <nav
+    aria-label='pagination'
+    className={cn('mx-auto flex w-full justify-center', className)}
+    data-slot='pagination'
+    {...props}
+  />
+)
 
-const Pagination = <T extends object>({ className, ref, ...props }: PaginationProps<T>) => {
-    return (
-        <ListBox
-            aria-label={props['aria-label'] || 'Pagination'}
-            className={composeRenderProps(className, (className) =>
-                cn('group -space-x-px flex *:first:rounded-l-lg *:last:rounded-r-lg', className)
-            )}
-            layout='grid'
-            orientation='horizontal'
-            ref={ref}
-            {...props}
-        />
-    )
-}
+const PaginationContent = ({ className, ...props }: ComponentProps<'ul'>) => (
+  <ul className={cn('flex flex-row items-center gap-1', className)} data-slot='pagination-content' {...props} />
+)
 
-interface PaginationPagesProps<T> extends ListBoxSectionProps<T> {
-    ref?: RefObject<HTMLElement>
-}
+const PaginationItem = ({ ...props }: ComponentProps<'li'>) => <li data-slot='pagination-item' {...props} />
 
-const PaginationPages = <T extends object>({ className, ref, ...props }: PaginationPagesProps<T>) => (
-    <ListBoxSection
-        ref={ref}
-        {...props}
-        className={cn('-space-x-px flex only:*:last:rounded-r-lg only:*:first:rounded-l-lg', className)}
+const PaginationLink = ({
+  className,
+  isActive,
+  size = 'icon',
+  ...props
+}: Omit<LinkProps, 'className' | 'slot'> &
+  ButtonProps & {
+    isActive?: boolean
+  }) => {
+  const Comp = 'href' in props ? Link : RACButton
+
+  return (
+    <Comp
+      aria-current={isActive ? 'page' : undefined}
+      className={cn(
+        buttonVariants({
+          variant: isActive ? 'outline' : 'ghost',
+          size
+        }),
+        className
+      )}
+      data-active={isActive}
+      data-slot='pagination-link'
+      {...props}
     />
-)
-
-interface PaginationItemProps extends ListBoxItemProps {
-    children?: ReactNode
-    className?: string
-    isCurrent?: boolean
-    slot?: 'ellipsis' | 'page' | 'last' | 'first' | 'previous' | 'next'
+  )
 }
 
-const PaginationItem = ({ slot = 'page', className, isCurrent, children, ...props }: PaginationItemProps) => {
-    const textValue = slot === 'page' ? children?.toString() : slot
-    return (
-        <ListBoxItem
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'inline-flex size-9 cursor-pointer items-center justify-center gap-x-2 whitespace-nowrap border font-medium text-sm outline-hidden transition',
-                    'pressed:bg-accent/80 pressed:text-accent-foreground hover:bg-accent hover:text-accent-foreground',
-                    'focus-visible:z-10 focus-visible:border-primary/70 focus-visible:ring-4 focus-visible:ring-ring/50',
-                    isCurrent
-                        ? 'pointer-events-none bg-primary text-primary-foreground'
-                        : 'disabled:cursor-default disabled:opacity-50',
-                    className
-                )
-            )}
-            isDisabled={props.isDisabled || slot === 'ellipsis'}
-            textValue={textValue}
-            {...props}
-        >
-            {slot === 'ellipsis' ? (
-                <IconDots />
-            ) : slot === 'first' ? (
-                <IconChevronsLeft />
-            ) : slot === 'last' ? (
-                <IconChevronsRight />
-            ) : slot === 'previous' ? (
-                <IconChevronLeft />
-            ) : slot === 'next' ? (
-                <IconChevronRight />
-            ) : (
-                children
-            )}
-        </ListBoxItem>
-    )
-}
-
-interface PaginationLabelProps extends Omit<TextProps, 'onClick'> {
-    current: number | string
-    total?: number | string
-}
-
-const PaginationLabel = ({ className, current, total, ...props }: PaginationLabelProps) => (
-    <ListBoxItem
-        className={cn(
-            'inline-flex h-9 select-none items-center justify-center gap-x-2 whitespace-nowrap border px-4 font-medium text-muted-foreground text-sm outline-hidden transition',
-            className
-        )}
-        isDisabled
-        textValue={`${String(current)}/${String(total)}`}
-        {...props}
+const PaginationPrevious = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => {
+  return (
+    <PaginationLink
+      aria-label='Go to previous page'
+      className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
+      size='default'
+      {...props}
     >
-        <Text className='text-primary'>{current}</Text>
-        {total && (
-            <>
-                <span>/</span>
-                <Text>{total}</Text>
-            </>
-        )}
-    </ListBoxItem>
+      <IconChevronLeft />
+      <span className='hidden sm:block'>Previous</span>
+    </PaginationLink>
+  )
+}
+
+const PaginationNext = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label='Go to next page'
+    className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
+    size='default'
+    {...props}
+  >
+    <span className='hidden sm:block'>Next</span>
+    <IconChevronRight />
+  </PaginationLink>
 )
 
-Pagination.Item = PaginationItem
-Pagination.Pages = PaginationPages
-Pagination.Label = PaginationLabel
+const PaginationFirst = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => {
+  return (
+    <PaginationLink
+      aria-label='Go to previous page'
+      className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
+      size='default'
+      {...props}
+    >
+      <IconChevronLeftPipe />
+      <span className='hidden sm:block'>Previous</span>
+    </PaginationLink>
+  )
+}
 
-export { Pagination }
+const PaginationLast = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label='Go to next page'
+    className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
+    size='default'
+    {...props}
+  >
+    <span className='hidden sm:block'>Next</span>
+    <IconChevronRightPipe />
+  </PaginationLink>
+)
+
+const PaginationEllipsis = ({ className, ...props }: ComponentProps<'span'>) => (
+  <span
+    aria-hidden
+    className={cn('flex size-9 items-center justify-center', className)}
+    data-slot='pagination-ellipsis'
+    {...props}
+  >
+    <IconDots className='size-4' />
+    <span className='sr-only'>More pages</span>
+  </span>
+)
+
+Pagination.Content = PaginationContent
+Pagination.Link = PaginationLink
+Pagination.Item = PaginationItem
+Pagination.Previous = PaginationPrevious
+Pagination.Next = PaginationNext
+Pagination.First = PaginationFirst
+Pagination.Last = PaginationLast
+Pagination.Ellipsis = PaginationEllipsis
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationLink,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationFirst,
+  PaginationLast,
+  PaginationEllipsis
+}

@@ -1,0 +1,75 @@
+'use client'
+
+import { IconLoader } from '@tabler/icons-react'
+import { Collection, TableLoadMoreItem } from 'react-aria-components'
+import { useAsyncList } from 'react-stately'
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@/components/ui/table'
+
+interface Character {
+  name: string
+  height: number
+  mass: number
+  birth_year: number
+  gender: string
+  eye_color: string
+  skin_color: string
+  hair_color: string
+}
+
+export default function TableInfiniteScrollDemo() {
+  const list = useAsyncList<Character>({
+    async load({ signal, cursor }) {
+      if (cursor) {
+        cursor = cursor.replace(/^http:\/\//i, 'https://')
+      }
+
+      const res = await fetch(cursor || 'https://swapi.py4e.com/api/people', { signal })
+      const json = await res.json()
+
+      return {
+        items: json.results,
+        cursor: json.next
+      }
+    }
+  })
+
+  return (
+    <div className='overflow-hidden rounded-lg border'>
+      <Table allowResize aria-label='People' bleed className='h-72'>
+        <TableHeader className='sticky top-0 z-10 bg-muted'>
+          <TableColumn isRowHeader>Name</TableColumn>
+          <TableColumn>Height</TableColumn>
+          <TableColumn>Mass</TableColumn>
+          <TableColumn>Birth year</TableColumn>
+          <TableColumn>Gender</TableColumn>
+          <TableColumn>Eye</TableColumn>
+        </TableHeader>
+        <TableBody
+          renderEmptyState={() => (
+            <div className='flex h-full items-center justify-center p-4 text-muted-fg'>No characters found.</div>
+          )}
+        >
+          <Collection items={list.items}>
+            {(item) => (
+              <TableRow id={item.name}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.height}</TableCell>
+                <TableCell>{item.mass}</TableCell>
+                <TableCell>{item.birth_year}</TableCell>
+                <TableCell>{item.gender}</TableCell>
+                <TableCell>{item.eye_color}</TableCell>
+              </TableRow>
+            )}
+          </Collection>
+          <TableLoadMoreItem
+            className='sticky inset-x-0 bottom-0 h-16'
+            isLoading={list.loadingState === 'loadingMore'}
+            onLoadMore={list.loadMore}
+          >
+            <IconLoader aria-label='Loading more...' className='mx-auto animate-spin' />
+          </TableLoadMoreItem>
+        </TableBody>
+      </Table>
+    </div>
+  )
+}

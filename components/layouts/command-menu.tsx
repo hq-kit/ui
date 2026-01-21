@@ -1,88 +1,46 @@
 'use client'
 
-import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from '@tabler/icons-react'
-import { usePathname } from 'next/navigation'
-import { Fragment, useEffect } from 'react'
-import { docs } from '@/components/docs/generated/docs'
-import { Command } from '@/components/ui'
-import { titleCase } from '@/lib/utils/modifiers'
+import { menus } from '@/components/layouts/menus'
+import { CommandDialog, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { slugify } from '@/lib/modifiers'
+import { BrandIcon, type BrandIconProps, ComponentIcon, type ComponentIconProps } from '../icons'
 
-export interface OpenCloseProps {
-    openCommand: boolean
-    action: (openCommand: boolean) => void
-}
-
-export function CommandMenu({ openCommand, action }: OpenCloseProps) {
-    const pathname = usePathname()
-
-    useEffect(() => {
-        if (action) {
-            action(false)
-        }
-    }, [pathname, action])
-
-    return (
-        <Command.Modal isOpen={openCommand} onOpenChange={action} shortcut={{ key: 'k' }}>
-            <Command.Section title='Pages'>
-                <Command.Item href='/' textValue='home'>
-                    <IconHome />
-                    <Command.Label>Home</Command.Label>
-                </Command.Item>
-                <Command.Item href='/docs' textValue='documenation'>
-                    <IconPackage />
-                    <Command.Label>Documentation</Command.Label>
-                </Command.Item>
-                <Command.Item href='/blocks' textValue='blocks'>
-                    <IconLayoutDashboard />
-                    <Command.Label>Blocks</Command.Label>
-                </Command.Item>
-                <Command.Item href='/colors' textValue='colors'>
-                    <IconPalette />
-                    <Command.Label>Colors</Command.Label>
-                </Command.Item>
-            </Command.Section>
-            {docs
-                .sort((a, b) => b.order - a.order)
-                .map((doc, i) => (
-                    <Command.Section key={i} title={titleCase(doc.title)}>
-                        {doc?.items
-                            ?.sort((a, b) => a.order - b.order)
-                            .map(
-                                (item, i) =>
-                                    item.url && (
-                                        <Command.Item href={item.url as string} key={i} textValue={item.title}>
-                                            <Command.Label>{item.title}</Command.Label>
-                                        </Command.Item>
-                                    )
-                            )}
-                    </Command.Section>
+export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
+  return (
+    <CommandDialog
+      className='top-auto bottom-0 max-w-none translate-y-0 ring-4 ring-accent/50 sm:top-1/2 sm:max-w-2xl sm:-translate-y-1/2'
+      isOpen={open}
+      onOpenChange={setOpen}
+      showCloseButton={false}
+    >
+      <CommandInput className='m-1.5 rounded-lg bg-input' placeholder='Type a command or search...' />
+      <CommandList>
+        {menus().map((section) => (
+          <CommandGroup aria-label={section.title} className='flex flex-col' key={section.title} title={section.title}>
+            {section.items?.map((item) => (
+              <CommandItem href={item.slug} key={item.slug} textValue={item.title}>
+                <BrandIcon className='size-4' name={item.title.toLowerCase() as BrandIconProps['name']} />
+                {item.title}
+              </CommandItem>
+            ))}
+            {section.sections?.map((section) => (
+              <CommandGroup
+                aria-label={section.title}
+                className='flex flex-col'
+                key={section.title}
+                title={section.title}
+              >
+                {section.items?.map((item) => (
+                  <CommandItem href={item.slug} key={item.slug} textValue={item.title}>
+                    <ComponentIcon name={slugify(item.title) as ComponentIconProps['name']} />
+                    {item.title}
+                  </CommandItem>
                 ))}
-            {docs
-                .filter((item) => item.title === 'components')
-                .map((item, i) => (
-                    <Fragment key={i}>
-                        {item.items
-                            ?.sort((a, b) => a.order - b.order)
-                            .map((item, i) => (
-                                <Command.Section key={i} title={titleCase(item.title)}>
-                                    {item?.items
-                                        ?.sort((a, b) => a.order - b.order)
-                                        .map(
-                                            (item, i) =>
-                                                item.url && (
-                                                    <Command.Item
-                                                        href={item.url as string}
-                                                        key={i}
-                                                        textValue={item.title}
-                                                    >
-                                                        <Command.Label>{item.title}</Command.Label>
-                                                    </Command.Item>
-                                                )
-                                        )}
-                                </Command.Section>
-                            ))}
-                    </Fragment>
-                ))}
-        </Command.Modal>
-    )
+              </CommandGroup>
+            ))}
+          </CommandGroup>
+        ))}
+      </CommandList>
+    </CommandDialog>
+  )
 }

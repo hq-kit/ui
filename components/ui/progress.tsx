@@ -1,117 +1,91 @@
 'use client'
 
-import type { Ref } from 'react'
-import { composeRenderProps, ProgressBar, type ProgressBarProps } from 'react-aria-components'
+import type { ProgressBarProps, ProgressBarRenderProps } from 'react-aria-components'
+import { type ComponentProps, createContext, use } from 'react'
+import { composeRenderProps, ProgressBar } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Label } from './form'
 
-interface ProgressProps extends ProgressBarProps {
-    label?: string
-    ref?: Ref<HTMLDivElement>
-    circle?: boolean
-    variant?: 'default' | 'secondary' | 'destructive'
+const ProgressContext = createContext<ProgressBarRenderProps | null>(null)
+
+const Progress = ({ className, children, ...props }: ProgressBarProps) => (
+  <ProgressBar
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'w-full',
+        '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
+        '[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2',
+        "[&>[data-slot=progress-bar-header]+[slot='description']]:mt-1",
+        "[&>[slot='description']+[data-slot=progress-bar-track]]:mt-2",
+        '[&>[data-slot=progress-bar-track]+[slot=description]]:mt-2',
+        '[&>[data-slot=progress-bar-track]+[slot=errorMessage]]:mt-2',
+        '*:data-[slot=progress-bar-header]:font-medium',
+        className
+      )
+    )}
+    data-slot='control'
+    {...props}
+  >
+    {(values) => (
+      <ProgressContext value={{ ...values }}>
+        {typeof children === 'function' ? children(values) : children}
+      </ProgressContext>
+    )}
+  </ProgressBar>
+)
+
+const ProgressHeader = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={cn('flex items-center justify-between', className)} data-slot='progress-bar-header' {...props} />
+)
+
+const ProgressValue = ({ className, ...props }: Omit<ComponentProps<'span'>, 'children'>) => {
+  const { valueText } = use(ProgressContext)!
+  return (
+    <span className={cn('text-base/6 sm:text-sm/6', className)} {...props}>
+      {valueText}
+    </span>
+  )
 }
 
-const Progress = ({ label, ref, circle, variant = 'default', className, ...props }: ProgressProps) => {
-    return (
-        <>
-            <style>
-                {
-                    '@keyframes indeterminate { from { transform: translateX(-100%); } to { transform: translateX(250px); } }'
-                }
-            </style>
-            <ProgressBar
-                className={composeRenderProps(className, (className) => cn('flex flex-col gap-y-1.5', className))}
-                ref={ref}
-                {...props}
-            >
-                {({ percentage, valueText, isIndeterminate }) => (
-                    <>
-                        {circle ? (
-                            <svg
-                                aria-label={label ?? 'Progress'}
-                                className={cn(
-                                    'size-20 shrink-0',
-                                    variant === 'default' && 'text-primary',
-                                    variant === 'secondary' && 'text-foreground',
-                                    variant === 'destructive' && 'text-destructive',
-                                    className
-                                )}
-                                fill='none'
-                                viewBox='0 0 32 32'
-                            >
-                                <circle
-                                    cx='50%'
-                                    cy='50%'
-                                    r='calc(50% - 2px)'
-                                    stroke='currentColor'
-                                    strokeOpacity={0.25}
-                                    strokeWidth={3}
-                                />
-                                <circle
-                                    className={cn(
-                                        'origin-center',
-                                        isIndeterminate
-                                            ? 'animate-[spin_1s_cubic-bezier(0.4,_0,_0.2,_1)_infinite]'
-                                            : '-rotate-90'
-                                    )}
-                                    cx='50%'
-                                    cy='50%'
-                                    pathLength={100}
-                                    r='calc(50% - 2px)'
-                                    stroke='currentColor'
-                                    strokeDasharray='100 200'
-                                    strokeDashoffset={100 - (percentage ?? 30)}
-                                    strokeLinecap='round'
-                                    strokeWidth={3}
-                                    style={{ transition: 'stroke-dashoffset 0.1s linear' }}
-                                />
-                                {!isIndeterminate && (
-                                    <text
-                                        className='fill-current'
-                                        dy='.35em'
-                                        fontSize='calc(50% + 1px)'
-                                        textAnchor='middle'
-                                        x='50%'
-                                        y='50%'
-                                    >
-                                        {valueText}
-                                    </text>
-                                )}
-                            </svg>
-                        ) : (
-                            <>
-                                <div className='flex justify-between gap-2'>
-                                    {label && <Label>{label}</Label>}
-                                    {valueText && (
-                                        <span className='text-muted-foreground text-sm tabular-nums'>{valueText}</span>
-                                    )}
-                                </div>
-                                <div className='relative h-2 min-w-64 overflow-hidden rounded-lg bg-muted outline-hidden'>
-                                    <div
-                                        className={cn(
-                                            'absolute top-0 left-0 h-full rounded-full transition',
-                                            variant === 'default' && 'bg-primary',
-                                            variant === 'secondary' && 'bg-muted-foreground',
-                                            variant === 'destructive' && 'bg-destructive',
-                                            isIndeterminate && 'w-[120px]'
-                                        )}
-                                        style={{
-                                            width: `${percentage}%`,
-                                            animation: isIndeterminate
-                                                ? 'indeterminate 1.5s infinite ease-in-out'
-                                                : 'none',
-                                            transition: 'width 0.1s linear'
-                                        }}
-                                    />
-                                </div>
-                            </>
-                        )}
-                    </>
-                )}
-            </ProgressBar>
-        </>
-    )
+const ProgressTrack = ({ className, ref, ...props }: ComponentProps<'div'>) => {
+  const { isIndeterminate, percentage } = use(ProgressContext)!
+  return (
+    <span className='relative block w-full' data-slot='progress-bar-track'>
+      <style>{`
+        @keyframes progress-slide {
+          0% { left: 0% }
+          50% { left: 100% }
+          100% { left: 0% }
+        }
+      `}</style>
+      <div className='flex w-full items-center gap-x-2' ref={ref} {...props}>
+        <div
+          className={cn(
+            'relative h-1.5 w-full min-w-52 overflow-hidden rounded-full bg-secondary outline-1 outline-transparent -outline-offset-1 will-change-transform',
+            className
+          )}
+          data-slot='track'
+        >
+          {!isIndeterminate ? (
+            <div
+              className='absolute top-0 left-0 h-full rounded-full bg-primary transition-[width] duration-200 ease-linear will-change-[width] motion-reduce:transition-none'
+              data-slot='bar'
+              style={{ width: `${percentage}%` }}
+            />
+          ) : (
+            <div
+              className='absolute top-0 h-full animate-[progress-slide_2000ms_ease-in-out_infinite] rounded-full bg-primary'
+              data-slot='bar'
+              style={{ width: '40%' }}
+            />
+          )}
+        </div>
+      </div>
+    </span>
+  )
 }
 
-export { Progress }
+Progress.Header = ProgressHeader
+Progress.Value = ProgressValue
+Progress.Track = ProgressTrack
+
+export { Progress, ProgressHeader, ProgressValue, ProgressTrack }

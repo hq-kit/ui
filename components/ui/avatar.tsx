@@ -1,118 +1,59 @@
 'use client'
 
-import { Collection, type CollectionProps } from '@react-aria/collections'
 import { IconUser } from '@tabler/icons-react'
-import { type ComponentProps, useEffect, useState } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { type HTMLAttributes, type ReactNode, useCallback, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-interface AvatarGroupProps<T extends object> extends CollectionProps<T> {
-    className?: string
+interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
+  src?: string | null
+  alt?: string
+  fallback?: ReactNode
+  imgClassName?: string
+  fallbackClassName?: string
 }
 
-const getInitials = (name: string): string =>
-    name.split(' ').slice(0, 2).length > 1
-        ? name
-              .split(' ')
-              .slice(0, 2)
-              .map((part) => part.charAt(0))
-              .join('')
-        : name.split('').slice(0, 2).join('')
+const Avatar = ({ src, alt, fallback = null, className, imgClassName, fallbackClassName, ...props }: AvatarProps) => {
+  const [hasError, setHasError] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
-const AvatarGroup = <T extends object>({ className, ...props }: AvatarGroupProps<T>) => {
-    return (
-        <div
-            className={cn(
-                '-space-x-2 flex items-center justify-center **:data-avatar:ring **:data-avatar:ring-border',
-                '**:data-avatar:transition-transform **:data-avatar:hover:z-30 **:data-avatar:hover:scale-110',
-                className
-            )}
-        >
-            <Collection {...props} />
-        </div>
-    )
-}
+  const handleError = useCallback(() => {
+    setHasError(true)
+  }, [])
 
-const avatarStyle = tv({
-    base: [
-        'inline-grid shrink-0 items-center justify-center align-middle *:col-start-1 *:row-start-1',
-        '-outline-offset-1 text-center outline-1 outline-foreground/20'
-    ],
-    variants: {
-        shape: {
-            square: 'rounded-lg *:rounded-lg',
-            circle: 'rounded-full *:rounded-full'
-        },
-        size: {
-            xs: 'size-6',
-            sm: 'size-7',
-            md: 'size-8',
-            lg: 'size-9',
-            xl: 'size-12',
-            '2xl': 'size-14',
-            '3xl': 'size-16',
-            '4xl': 'size-20',
-            '5xl': 'size-24'
-        }
-    },
-    defaultVariants: {
-        shape: 'circle',
-        size: 'lg'
-    }
-})
+  const handleLoad = useCallback(() => {
+    setLoaded(true)
+  }, [])
 
-interface AvatarProps extends VariantProps<typeof avatarStyle> {
-    src?: string | undefined
-    alt?: string
-    className?: string
-}
-
-const Avatar = ({ src, shape, size, alt, className, ...props }: AvatarProps & ComponentProps<'img'>) => {
-    const [error, setError] = useState(!src)
-
-    function handleError() {
-        setError(true)
-    }
-
-    useEffect(() => {
-        setError(!src)
-    }, [src])
-
-    if (error) {
-        return (
-            <span className={avatarStyle({ shape, size, className })} data-avatar={true}>
-                <FallbackImage alt={alt} />
-            </span>
-        )
-    }
-    return (
+  return (
+    <div
+      className={cn('relative flex size-8 shrink-0 overflow-hidden rounded-full bg-muted', className)}
+      data-slot='avatar'
+      {...props}
+    >
+      {src && !hasError ? (
         <img
-            alt={alt || 'Avatar'}
-            className={avatarStyle({ shape, size, className })}
-            data-avatar
-            onError={handleError}
-            src={src}
-            {...props}
+          alt={alt ?? ''}
+          className={cn('aspect-square size-full', imgClassName)}
+          data-slot='avatar-image'
+          onError={handleError}
+          onLoad={handleLoad}
+          src={src}
         />
-    )
-}
-
-const FallbackImage = ({ alt }: { alt: string | undefined }) => {
-    return alt ? (
-        <svg
-            aria-hidden='true'
-            className='size-full select-none bg-background fill-current p-[5%] font-medium text-[48px] uppercase'
-            viewBox='0 0 100 100'
+      ) : null}
+      {(!src || hasError || (src && !loaded && false)) && (
+        <div
+          aria-hidden={!!src && !hasError ? 'true' : 'false'}
+          className={cn(
+            'flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground',
+            fallbackClassName
+          )}
+          data-slot='avatar-fallback'
         >
-            {alt && <title>{alt}</title>}
-            <text alignmentBaseline='middle' dominantBaseline='middle' dy='.125em' textAnchor='middle' x='50%' y='50%'>
-                {getInitials(alt)}
-            </text>
-        </svg>
-    ) : (
-        <IconUser className='size-full place-self-center bg-background p-1.5' />
-    )
+          {fallback ?? <IconUser />}
+        </div>
+      )}
+    </div>
+  )
 }
 
-export { Avatar, AvatarGroup }
-export type { AvatarProps }
+export { Avatar }

@@ -1,0 +1,13 @@
+import { IconAlertTriangle } from '@tabler/icons-react'
+import { Button } from '@/components/ui/button'
+
+const ButtonCautionDemo = () => {
+  return (
+    <Button className='bg-amber-600/10 text-amber-600 hover:bg-amber-600/20 focus-visible:ring-amber-600/20 dark:bg-amber-400/10 dark:text-amber-400 dark:focus-visible:ring-amber-400/40 dark:hover:bg-amber-400/20'>
+      <IconAlertTriangle />
+      Caution
+    </Button>
+  )
+}
+
+export default ButtonCautionDemo

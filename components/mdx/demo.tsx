@@ -1,48 +1,49 @@
 'use client'
 
-import { IconLoader3 } from '@tabler/icons-react'
-import { Fragment, type HTMLAttributes, Suspense } from 'react'
-import { TabPanel } from 'react-aria-components'
-import { previews } from '@/components/docs/generated/previews'
-import jsonPreviews from '@/components/docs/generated/previews.json'
-import { cn } from '@/lib/utils'
+import { IconCode } from '@tabler/icons-react'
+import { previews } from '@/components/samples/generated/previews'
+import Raws from '@/components/samples/generated/previews.json'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { CLI } from './cli'
 import { Code } from './code'
-import { TabsSwitcher } from './tabs-switcher'
 
-interface DemoProps extends HTMLAttributes<HTMLDivElement> {
-    component: keyof typeof jsonPreviews
-    className?: string
-    center?: boolean
-}
+type Raw = keyof typeof Raws
 
-export function Demo({ component, center = false, ...props }: DemoProps) {
-    const Preview = previews[component] ? previews[component].component : Fragment
-    const codeString = jsonPreviews[component].raw ?? ''
-    return (
-        <div className='relative my-4' {...props}>
-            <TabsSwitcher aria-label='Component'>
-                <TabPanel id='preview'>
-                    <div
-                        className={cn(
-                            'not-prose **:not-prose relative w-full gap-4 overflow-auto rounded-lg border p-6',
-                            center && 'grid min-h-20 place-content-center py-6 sm:py-12'
-                        )}
-                    >
-                        <Suspense
-                            fallback={
-                                <div className='flex w-full items-center justify-center text-muted-foreground text-sm'>
-                                    <IconLoader3 className='size-12 animate-spin' />
-                                </div>
-                            }
-                        >
-                            <Preview />
-                        </Suspense>
-                    </div>
-                </TabPanel>
-                <TabPanel id='code'>
-                    <Code code={codeString} filename={component.split('/').pop()} />
-                </TabPanel>
-            </TabsSwitcher>
-        </div>
-    )
+export function Demo({ component }: { component: Raw }) {
+  const Component = previews[component].component
+  const code = Raws[component].raw
+  return (
+    <div className='group/demo relative overflow-hidden rounded-lg border shadow-sm'>
+      <div className='flex h-0 w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2 group-has-data-focused/demo:h-12 group-has-data-pressed/demo:h-12 group-has-data-focused/demo:p-2 group-has-data-pressed/demo:p-2'>
+        <Badge className='font-medium text-xs' variant='outline'>
+          {component.split('/').pop()}
+        </Badge>
+        <Dialog>
+          <Button size='icon-sm' variant='outline'>
+            <IconCode />
+          </Button>
+          <DialogContent className='sm:max-w-5xl'>
+            <DialogHeader>
+              <DialogTitle>{component.split('/').pop()}</DialogTitle>
+            </DialogHeader>
+            <DialogBody>
+              <div className='mb-2 space-y-2'>
+                <h3 className='font-medium text-sm'>CLI</h3>
+                <CLI command='add' items={`${component.split('/').pop()}`} />
+              </div>
+              <div>
+                <h3 className='font-medium text-sm'>Manual Code</h3>
+                <Code className='border shadow-sm' code={code} copy />
+              </div>
+            </DialogBody>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <div className='relative flex min-h-52 items-center justify-center px-8 py-12 has-data-[slot=card]:w-full has-data-[slot=chart]:p-2! has-data-[slot=command]:p-0! has-data-[slot=chart]:**:data-[slot=card]:w-full max-sm:px-4'>
+        <Component />
+      </div>
+    </div>
+  )
 }

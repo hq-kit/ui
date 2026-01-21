@@ -1,79 +1,73 @@
 'use client'
 
-import type { ReactNode, Ref } from 'react'
-import type { RadioGroupProps as RACRadioGroupProps, RadioProps as RACRadioProps } from 'react-aria-components'
-import { composeRenderProps, Radio as RACRadio, RadioGroup as RACRadioGroup } from 'react-aria-components'
+import type { VariantProps } from 'tailwind-variants'
+import { IconCircleFilled } from '@tabler/icons-react'
+import {
+  composeRenderProps,
+  Label,
+  Radio as RACRadio,
+  RadioGroup as RACRadioGroup,
+  type RadioGroupProps,
+  type RadioProps
+} from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Description, FieldError, type FieldProps, Label } from './form'
+import { fieldVariants } from './field'
 
-interface RadioGroupProps extends RACRadioGroupProps, FieldProps {}
-
-const RadioGroup = ({ label, description, errorMessage, className, children, ...props }: RadioGroupProps) => {
-    return (
-        <RACRadioGroup
-            {...props}
-            className={composeRenderProps(className, (className) => cn('group/field flex flex-col gap-2', className))}
-            isInvalid={!!errorMessage || props.isInvalid}
-        >
-            {(values) => (
-                <>
-                    {label && <Label>{label}</Label>}
-                    <div
-                        className={cn(
-                            'flex',
-                            values.orientation === 'horizontal' ? 'flex-wrap gap-2 sm:gap-4' : 'flex-col gap-2'
-                        )}
-                    >
-                        {typeof children === 'function' ? children(values) : children}
-                    </div>
-                    {description && <Description>{description}</Description>}
-                    <FieldError>{errorMessage}</FieldError>
-                </>
-            )}
-        </RACRadioGroup>
-    )
+const RadioGroup = ({
+  className,
+  orientation = 'vertical',
+  ...props
+}: RadioGroupProps & VariantProps<typeof fieldVariants>) => {
+  return (
+    <RACRadioGroup
+      {...props}
+      className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), 'w-fit', className))}
+      data-orientation={orientation}
+      data-slot='field'
+    />
+  )
 }
 
-interface RadioProps extends RACRadioProps, Omit<FieldProps, 'errorMessage'> {
-    children?: ReactNode
-    ref?: Ref<HTMLLabelElement>
-}
-
-const Radio = ({ label, description, className, children, ref, ...props }: RadioProps) => {
-    return (
-        <RACRadio
-            className={composeRenderProps(className, (className) =>
-                cn(
-                    'group/box flex items-center gap-2',
-                    {
-                        'items-start': description
-                    },
-                    className
-                )
+const Radio = ({ className, ...props }: RadioProps) => {
+  return (
+    <RACRadio
+      className={composeRenderProps(className, (className) =>
+        cn(
+          'group/radio flex items-center space-x-3 has-[&_p]:items-start **:[p]:mt-2 **:[p]:text-muted-foreground **:[p]:text-sm',
+          className
+        )
+      )}
+      {...props}
+    >
+      {(values) => (
+        <>
+          <div
+            className={cn(
+              'relative flex size-4 shrink-0 items-center justify-center rounded-full border bg-transparent shadow-xs transition dark:bg-input/30',
+              'border-input group-hover/radio:border-ring group-has-invalid/radio:border-destructive/70',
+              'group-data-selected/radio:group-data-has-invalid/radio:border-destructive/70 group-data-selected/radio:border-primary group-data-selected/radio:bg-primary group-data-selected/radio:text-primary-foreground group-data-selected/radio:group-has-invalid/radio:border-destructive/70 group-data-selected/radio:group-has-invalid/radio:bg-destructive group-data-selected/radio:group-has-invalid/radio:text-destructive-foreground dark:group-data-selected/radio:bg-primary',
+              'group-data-focus/radio:border-primary group-data-focus/radio:group-has-invalid/radio:border-destructive/70',
+              'group-data-focus-visible/radio:border-primary/70 group-data-focus-visible/radio:ring-[3px] group-data-focus-visible/radio:ring-ring/50 group-data-focus-visible/radio:group-has-invalid/radio:border-destructive/70 group-data-focus-visible/radio:group-has-invalid/radio:ring-destructive/20',
+              className
             )}
-            ref={ref}
-            {...props}
-        >
-            {(values) => (
-                <>
-                    <div
-                        className={cn(
-                            'size-4 shrink-0 rounded-full border bg-transparent transition dark:bg-input/30',
-                            'group-hover/box:border-primary/70',
-                            'group-focus/box:border-primary group-focus/box:group-has-invalid/box:border-destructive',
-                            'group-focus-visible/box:border-primary group-focus-visible/box:ring-[3px] group-focus-visible/box:ring-ring/50 group-focus-visible/box:group-has-invalid/box:border-destructive',
-                            'group-has-invalid/box:border-destructive/70 group-has-invalid/box:ring-destructive/20 group-has-invalid/box:group-hover/box:border-destructive/70',
-                            values.isSelected && 'border-[5px] border-primary group-has-invalid/box:border-destructive'
-                        )}
-                    />
-                    <div className='flex flex-col gap-y-1.5'>
-                        <span className='not-last:text-sm/4 text-sm'>{label ?? children}</span>
-                        {description && <Description>{description}</Description>}
-                    </div>
-                </>
-            )}
-        </RACRadio>
-    )
+            data-slot='box'
+          >
+            {values.isSelected ? <IconCircleFilled className='size-2' /> : null}
+          </div>
+          {typeof props.children === 'function' ? (
+            props.children(values)
+          ) : (
+            <Label
+              className='not-last:text-sm/4 text-sm transition group-has-invalid/radio:text-destructive'
+              elementType='span'
+            >
+              {props.children}
+            </Label>
+          )}
+        </>
+      )}
+    </RACRadio>
+  )
 }
 
 export { Radio, RadioGroup }

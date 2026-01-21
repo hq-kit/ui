@@ -1,77 +1,89 @@
 'use client'
 
-import type { RefObject } from 'react'
-import type { GroupProps, SeparatorProps, ToolbarProps } from 'react-aria-components'
+import type { ToolbarProps as RACToolbarProps, SeparatorProps, ToggleButtonGroupProps } from 'react-aria-components'
+import { createContext, use, useContext } from 'react'
 import {
-    composeRenderProps,
-    Group,
-    Toolbar as RACToolbar,
-    Separator,
-    ToolbarContext,
-    useSlottedContext
+  composeRenderProps,
+  ToggleButtonGroup,
+  ToggleButtonGroupContext,
+  Toolbar as ToolbarPrimitive,
+  useSlottedContext
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Toggle, ToggleGroupContext, type ToggleGroupContextProps, toggleGroupStyles } from './toggle'
+import { Separator } from './separator'
+import { Toggle, type ToggleProps } from './toggle'
 
-const Toolbar = ({ orientation = 'horizontal', className, ...props }: ToolbarProps) => (
-    <ToolbarContext.Provider value={{ orientation }}>
-        <RACToolbar
-            className={composeRenderProps(className, (className, { orientation }) =>
-                cn(
-                    'group gap-2',
-                    orientation === 'vertical'
-                        ? 'grid items-start'
-                        : 'flex flex-row [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-                    className
-                )
-            )}
-            orientation={orientation}
-            {...props}
-        />
-    </ToolbarContext.Provider>
-)
+const ToolbarContext = createContext<ToolbarProps>({
+  orientation: 'horizontal',
+  isCircle: false
+})
 
-interface ToolbarGroupProps extends GroupProps, Omit<ToggleGroupContextProps, 'orientation'> {
-    ref?: RefObject<HTMLDivElement>
+interface ToolbarProps extends RACToolbarProps {
+  isCircle?: boolean
 }
 
-const ToolbarGroup = ({ className, ref, variant = 'outline', gap, icon, size, ...props }: ToolbarGroupProps) => {
-    const { orientation } = useSlottedContext(ToolbarContext)!
-    return (
-        <ToggleGroupContext.Provider value={{ variant, gap, size, icon, orientation, isDisabled: props.isDisabled }}>
-            <Group
-                className={composeRenderProps(className, (className) =>
-                    cn(
-                        toggleGroupStyles({
-                            gap,
-                            orientation
-                        }),
-                        className
-                    )
-                )}
-                ref={ref}
-                {...props}
-            />
-        </ToggleGroupContext.Provider>
-    )
+const Toolbar = ({ orientation = 'horizontal', isCircle, className, ...props }: ToolbarProps) => {
+  return (
+    <ToolbarContext.Provider value={{ orientation, isCircle }}>
+      <ToolbarPrimitive
+        orientation={orientation}
+        {...props}
+        className={composeRenderProps(className, (className, { orientation }) =>
+          cn(
+            'group inset-ring inset-ring-border inline-flex flex-row gap-1.5 bg-overlay p-1.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+            isCircle ? 'rounded-full' : 'rounded-lg',
+            orientation === 'horizontal'
+              ? 'flex-row items-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+              : 'flex-col items-start',
+            className
+          )
+        )}
+      />
+    </ToolbarContext.Provider>
+  )
+}
+
+const ToolbarGroup = ({ className, ...props }: ToggleButtonGroupProps) => {
+  return (
+    <ToggleButtonGroupContext.Provider value={{ isDisabled: props.isDisabled }}>
+      <ToggleButtonGroup
+        className='flex gap-1.5 group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-start group-data-[orientation=horizontal]:items-center'
+        {...props}
+      />
+    </ToggleButtonGroupContext.Provider>
+  )
+}
+
+const ToolbarItem = ({ size = 'sm', variant = 'outline', ref, className, ...props }: ToggleProps) => {
+  const { isCircle } = use(ToolbarContext)
+  const groupContext = useSlottedContext(ToggleButtonGroupContext)
+  const isDisabled = groupContext?.isDisabled || props.isDisabled
+  return (
+    <Toggle
+      className={composeRenderProps(className, (className) =>
+        cn(isCircle ? 'rounded-full' : 'rounded-[calc(var(--radius-lg)-1px)]', className)
+      )}
+      data-slot='toolbar-item'
+      isDisabled={isDisabled}
+      ref={ref}
+      size={size}
+      variant={variant}
+      {...props}
+    />
+  )
 }
 
 const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
-    const { orientation } = useSlottedContext(ToolbarContext)!
-    return (
-        <Separator
-            className={cn(
-                'bg-border',
-                orientation === 'horizontal' ? 'mx-1.5 min-h-8 w-px' : 'my-1.5 h-px w-fit min-w-8',
-                className
-            )}
-            {...props}
-        />
-    )
+  const { orientation } = useContext(ToolbarContext)
+  const reverseOrientation = orientation === 'vertical' ? 'horizontal' : 'vertical'
+  return (
+    <Separator
+      className={cn(reverseOrientation === 'vertical' ? 'mx-0.5 h-6' : 'my-0.5 w-8', className)}
+      orientation={reverseOrientation}
+      {...props}
+    />
+  )
 }
 
-Toolbar.Group = ToolbarGroup
-Toolbar.Separator = ToolbarSeparator
-Toolbar.Item = Toggle
-
-export { Toolbar }
+export type { ToolbarProps }
+export { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarItem }

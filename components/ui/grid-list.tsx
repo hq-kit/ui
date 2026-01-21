@@ -1,104 +1,141 @@
 'use client'
 
-import type { ReactNode } from 'react'
-import type { GridListItemProps, GridListProps as RACGridListProps } from 'react-aria-components'
+import type { GridListItemProps, GridListProps, TextProps } from 'react-aria-components'
 import { IconGripVertical } from '@tabler/icons-react'
 import {
-    Button,
-    composeRenderProps,
-    GridList as RACGridList,
-    GridListItem as RACGridListItem
+  Button,
+  composeRenderProps,
+  GridListHeader as GridListHeaderPrimitive,
+  GridListItem as GridListItemPrimitive,
+  GridList as GridListPrimitive,
+  GridListSection as GridListSectionPrimitive,
+  Text
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import { Checkbox } from './checkbox'
 
-interface GridListProps<T extends object> extends RACGridListProps<T> {
-    columns?: 1 | 2 | 3 | 4 | 5 | 6 | 'auto'
-    gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-}
-
-const GridList = <T extends object>({
-    children,
-    layout,
-    className,
-    columns = 1,
-    gap = 0,
-    ...props
-}: GridListProps<T>) => (
-    <RACGridList
-        aria-label={props['aria-label'] ?? 'Grid list'}
-        className={composeRenderProps(className, (className) =>
-            cn(
-                'group layout-stack:flex layout-stack:flex-col layout-stack:gap-0 layout-stack:divide-y layout-stack:rounded-lg layout-stack:border-y',
-                {
-                    'flex grow flex-wrap': columns === 'auto',
-                    'grid grid-cols-1': columns === 1,
-                    'grid grid-cols-2': columns === 2,
-                    'grid grid-cols-3': columns === 3,
-                    'grid grid-cols-4': columns === 4,
-                    'grid grid-cols-5': columns === 5,
-                    'grid grid-cols-6': columns === 6
-                },
-                {
-                    'gap-0': gap === 0,
-                    'gap-1': gap === 1,
-                    'gap-2': gap === 2,
-                    'gap-3': gap === 3,
-                    'gap-4': gap === 4,
-                    'gap-5': gap === 5,
-                    'gap-6': gap === 6
-                },
-                className
-            )
-        )}
-        layout={columns === 1 && gap === 0 ? 'stack' : 'grid'}
-        {...props}
-    >
-        {children}
-    </RACGridList>
+const GridList = <T extends object>({ className, ...props }: GridListProps<T>) => (
+  <GridListPrimitive
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'relative flex flex-col gap-y-1 has-data-[slot=grid-list-section]:gap-y-6 *:data-drop-target:border *:data-drop-target:border-accent sm:text-sm/6',
+        className
+      )
+    )}
+    data-slot='grid-list'
+    {...props}
+  />
 )
 
-const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
-    const textValue = typeof children === 'string' ? children : undefined
-    return (
-        <RACGridListItem
-            textValue={textValue}
-            {...props}
-            className={composeRenderProps(
-                className,
-                (className, { isHovered, isSelected, isFocusVisible, isDisabled }) =>
-                    cn(
-                        'flex select-none items-center gap-2 px-3 py-2 text-foreground outline-hidden sm:text-sm',
-                        'group-layout-grid:rounded-lg group-layout-grid:border',
-                        'group-layout-stack:border-x group-layout-stack:last:rounded-b-lg group-layout-stack:first:rounded-t-lg',
-                        isHovered && 'bg-primary/10',
-                        {
-                            'bg-primary/10 text-primary group-layout-grid:border-primary/70 group-layout-stack:border-x-primary/70':
-                                isSelected || isFocusVisible
-                        },
-                        isDisabled && 'text-muted-foreground',
-                        className
-                    )
-            )}
-        >
-            {({ selectionMode, selectionBehavior, allowsDragging, isDragging }) => (
-                <>
-                    {allowsDragging && (
-                        <Button
-                            className={cn('cursor-grab text-muted-foreground', isDragging && 'cursor-grabbing')}
-                            slot='drag'
-                        >
-                            <IconGripVertical />
-                        </Button>
-                    )}
-                    {selectionMode === 'multiple' && selectionBehavior === 'toggle' && <Checkbox slot='selection' />}
-                    {children as ReactNode}
-                </>
-            )}
-        </RACGridListItem>
-    )
+const GridListSection = <T extends object>({
+  className,
+  ...props
+}: React.ComponentProps<typeof GridListSectionPrimitive<T>>) => {
+  return <GridListSectionPrimitive className={cn('space-y-1', className)} data-slot='grid-list-section' {...props} />
 }
 
-GridList.Item = GridListItem
+const GridListHeader = ({ className, ...props }: React.ComponentProps<typeof GridListHeaderPrimitive>) => {
+  return (
+    <GridListHeaderPrimitive
+      className={cn('mb-2 font-semibold text-sm/6', className)}
+      data-slot='grid-list-header'
+      {...props}
+    />
+  )
+}
 
-export { GridList }
+const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
+  const textValue = typeof children === 'string' ? children : undefined
+  return (
+    <GridListItemPrimitive
+      textValue={textValue}
+      {...props}
+      className={composeRenderProps(className, (className, { isHovered, isFocusVisible, isSelected }) =>
+        cn(
+          '[--grid-list-item-bg-active:var(--color-accent)] [--grid-list-item-text-active:var(--color-accent-foreground)]',
+          'group inset-ring inset-ring-border rounded-lg px-3 py-2.5',
+          'relative min-w-0 outline-hidden [--mr-icon:--spacing(2)]',
+          'flex min-w-0 cursor-default items-center gap-2 sm:gap-2.5',
+          'dragging:cursor-grab dragging:opacity-70 dragging:**:[[slot=drag]]:text-(--grid-list-item-text-active)',
+          '**:data-[slot=icon]:size-5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-foreground sm:**:data-[slot=icon]:size-4',
+          (isSelected || isHovered || isFocusVisible) &&
+            'inset-ring-ring/70 bg-(--grid-list-item-bg-active) text-(--grid-list-item-text-active) **:[.text-muted-foreground]:text-(--grid-list-item-text-active)/60',
+          'href' in props && 'cursor-pointer',
+          className
+        )
+      )}
+    >
+      {(values) => (
+        <>
+          {values.allowsDragging && (
+            <Button slot='drag'>
+              <IconGripVertical className='size-4' />
+            </Button>
+          )}
+          {values.selectionMode === 'multiple' && values.selectionBehavior === 'toggle' && (
+            <Checkbox className='space-x-0 [--indicator-mt:0] *:gap-x-0 sm:[--indicator-mt:0]' slot='selection' />
+          )}
+          {typeof children === 'function' ? children(values) : children}
+        </>
+      )}
+    </GridListItemPrimitive>
+  )
+}
+
+const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<'div'>) => (
+  <div
+    className={cn(
+      'flex items-center justify-center gap-2 rounded-lg border border-dashed p-6 [&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+      className
+    )}
+    ref={ref}
+    {...props}
+  />
+)
+
+const GridListSpacer = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
+  return <div aria-hidden className={cn('-ml-4 flex-1', className)} ref={ref} {...props} />
+}
+
+const GridListStart = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
+  return <div className={cn('relative flex items-center gap-x-2.5 sm:gap-x-3', className)} ref={ref} {...props} />
+}
+
+interface GridListTextProps extends TextProps {
+  ref?: React.Ref<HTMLDivElement>
+}
+
+const GridListLabel = ({ className, ref, ...props }: GridListTextProps) => (
+  <Text className={cn('font-medium', className)} ref={ref} {...props} />
+)
+
+const GridListDescription = ({ className, ref, ...props }: GridListTextProps) => (
+  <Text
+    className={cn('font-normal text-muted-foreground text-sm', className)}
+    ref={ref}
+    slot='description'
+    {...props}
+  />
+)
+
+GridList.Section = GridListSection
+GridList.Header = GridListHeader
+GridList.Start = GridListStart
+GridList.Spacer = GridListSpacer
+GridList.Item = GridListItem
+GridList.EmptyState = GridListEmptyState
+GridList.Label = GridListLabel
+GridList.Description = GridListDescription
+
+export type { GridListProps, GridListItemProps }
+export {
+  GridList,
+  GridListSection,
+  GridListHeader,
+  GridListStart,
+  GridListSpacer,
+  GridListItem,
+  GridListEmptyState,
+  GridListLabel,
+  GridListDescription
+}

@@ -1,114 +1,149 @@
 'use client'
-import { type ComponentPropsWithoutRef, useEffect, useState } from 'react'
-import { components } from '@/components/docs/generated/components'
-import previews from '@/components/docs/generated/previews.json'
-import { Description, Tabs } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { CLI } from './cli'
-import { Code } from './code'
+
+import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen } from '@tabler/icons-react'
+import { useEffect, useState } from 'react'
+import { CLI } from '@/components/mdx/cli'
+import { Code } from '@/components/mdx/code'
+import { Tabs } from '@/components/ui/tabs'
+import { Tree } from '@/components/ui/tree'
+
+export function ManualInstall({ component }: { component: string }) {
+  const [content, setContent] = useState<string | null>(null)
+  const [selectedFile, setSelectedFile] = useState<string>(component)
+  const [deps, setDeps] = useState<string[]>([])
+  const [uiComponents, setUiComponents] = useState<string[]>([])
+
+  const [libComponents, setLibComponents] = useState<string[]>([])
+  const [hooksComponents, setHooksComponents] = useState<string[]>([])
+
+  useEffect(() => {
+    fetch(`/r/${component}.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        setContent(data.files[0].content)
+        setDeps(data.dependencies)
+        setUiComponents(
+          data.registryDependencies
+            .filter((dep: string) => dep !== 'utils' && dep !== 'use-mobile')
+            .map((dep: string) => dep.split('/').pop())
+        )
+        setLibComponents(data.registryDependencies.filter((dep: string) => dep === 'utils'))
+        setHooksComponents(data.registryDependencies.filter((dep: string) => dep === 'use-mobile'))
+      })
+  }, [component])
+
+  function getContent(name: string) {
+    fetch(`/r/${name}.json`)
+      .then((res) => res.json())
+      .then((data) => setContent(data.files[0].content))
+      .then(() => setSelectedFile(name))
+  }
+
+  return (
+    <>
+      <p className='mb-4'>First install the dependencies</p>
+      <CLI command='install' items={deps} />
+
+      <p className='mb-4'>Add the files to your project</p>
+      <div className='relative mb-4 grid overflow-hidden rounded-xl border shadow-sm lg:h-96 lg:grid-cols-4 lg:*:last:col-span-3 lg:*:first:col-span-1'>
+        <div>
+          <h2 className='px-4 py-2 font-medium text-sm'>Files</h2>
+          <Fleet
+            components={deps}
+            hooksComponents={hooksComponents}
+            libComponents={libComponents}
+            selectedFile={selectedFile}
+            setSelectedFile={(file: string) => getContent(file)}
+            uiComponents={[component, ...uiComponents]}
+          />
+        </div>
+        <div className='**:my-0 **:[pre]:min-h-96'>
+          <Code code={content || ''} copy lang='tsx' />
+        </div>
+      </div>
+    </>
+  )
+}
+
+interface FleetProps {
+  uiComponents: string[]
+  libComponents: string[]
+  hooksComponents: string[]
+  components: string[]
+  selectedFile: string
+  setSelectedFile: (file: string) => void
+}
+
+export function Fleet({ uiComponents, libComponents, hooksComponents, selectedFile, setSelectedFile }: FleetProps) {
+  return (
+    <Tree
+      aria-label='Files'
+      className='gap-0 [--radius:0] **:data-[slot=indicator]:hidden **:data-[slot=tree-item]:pl-1'
+      defaultExpandedKeys={['components', 'ui']}
+      onSelectionChange={(value) =>
+        Array.from(value).flat().toString() ? setSelectedFile(Array.from(value).flat().toString()) : null
+      }
+      selectedKeys={[selectedFile]}
+      selectionMode='single'
+    >
+      <Tree.Item id='components' textValue='components'>
+        <Tree.ItemLabel icon={<IconFolder />} iconExpanded={<IconFolderOpen />}>
+          components
+        </Tree.ItemLabel>
+        {uiComponents.length > 0 && (
+          <Tree.Item id='ui' textValue='ui'>
+            <Tree.ItemLabel icon={<IconFolder />} iconExpanded={<IconFolderOpen />}>
+              ui
+            </Tree.ItemLabel>
+            {uiComponents.map((uiComponent) => (
+              <Tree.Item id={uiComponent} key={uiComponent} textValue={uiComponent}>
+                <Tree.ItemLabel icon={<IconBrandReact color='blue' />}>{uiComponent}.tsx</Tree.ItemLabel>
+              </Tree.Item>
+            ))}
+          </Tree.Item>
+        )}
+      </Tree.Item>
+      {libComponents.length > 0 && (
+        <Tree.Item id='lib' textValue='lib'>
+          <Tree.ItemLabel icon={<IconFolder />} iconExpanded={<IconFolderOpen />}>
+            lib
+          </Tree.ItemLabel>
+          {libComponents.map((libComponent) => (
+            <Tree.Item id={libComponent} key={libComponent} textValue={libComponent}>
+              <Tree.ItemLabel icon={<IconBrandTypescript color='blue' />}>{libComponent}.ts</Tree.ItemLabel>
+            </Tree.Item>
+          ))}
+        </Tree.Item>
+      )}
+      {hooksComponents.length > 0 && (
+        <Tree.Item id='hooks' textValue='hooks'>
+          <Tree.ItemLabel icon={<IconFolder />} iconExpanded={<IconFolderOpen />}>
+            hooks
+          </Tree.ItemLabel>
+          {hooksComponents.map((hookComponent) => (
+            <Tree.Item id={hookComponent} key={hookComponent} textValue={hookComponent}>
+              <Tree.ItemLabel icon={<IconBrandTypescript color='blue' />}>{hookComponent}.ts</Tree.ItemLabel>
+            </Tree.Item>
+          ))}
+        </Tree.Item>
+      )}
+    </Tree>
+  )
+}
 
 export function Install({ component }: { component: string }) {
-    const items: string[] = [component]
-    const deps: string[] = ['react-aria-components', '@tabler/icons-react']
-
-    const item = components.find((c) => c.name === component)
-    if (!item) {
-        return null
-    }
-    if (item.deps) {
-        for (const dep of item.deps) {
-            if (!deps.includes(dep)) {
-                deps.push(dep)
-            }
-        }
-    }
-    if (item.children) {
-        for (const child of item.children) {
-            if (!items.includes(child.name)) {
-                items.push(child.name)
-            }
-            const childItem = components.find((c) => c.name === child.name)
-            if (childItem) {
-                if (childItem.deps) {
-                    for (const dep of childItem.deps) {
-                        if (!deps.includes(dep)) {
-                            deps.push(dep)
-                        }
-                    }
-                }
-                if (childItem.children) {
-                    for (const grandchild of childItem.children) {
-                        if (!items.includes(grandchild.name)) {
-                            items.push(grandchild.name)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return (
-        <Tabs aria-label='Packages' className='my-6'>
-            <Tabs.List className='mb-2 w-fit'>
-                <Tabs.Label id='cli'>CLI</Tabs.Label>
-                <Tabs.Label id='manual'>Manual</Tabs.Label>
-            </Tabs.List>
-            <Tabs.Content className='w-full' id='cli'>
-                <CLI command='add' items={component} />
-            </Tabs.Content>
-            <Tabs.Content className='w-full' id='manual'>
-                <CLI command='install' items={deps} />
-                <SourceCode component={items} />
-            </Tabs.Content>
-        </Tabs>
-    )
-}
-
-interface SourceCodeProps extends ComponentPropsWithoutRef<'div'> {
-    component: string | string[]
-    withMessage?: boolean
-}
-
-export function SourceCode({ component, withMessage = true }: SourceCodeProps) {
-    const [codeStrings, setCodeStrings] = useState<{ name: string; code: string }[]>([])
-
-    useEffect(() => {
-        const componentArray = Array.isArray(component) ? component : [component]
-        const updatedCodeStrings = componentArray.map((show) => {
-            // @ts-expect-error no-type
-            const componentData = previews[show]
-            if (componentData) {
-                return {
-                    name: show,
-                    code: componentData.raw
-                }
-            }
-            console.error('Component not found:', show)
-            return { name: show, code: '' }
-        })
-        setCodeStrings(updatedCodeStrings)
-    }, [component])
-
-    return (
-        <section className={cn('space-y-2', withMessage ? 'my-4' : 'my-2')}>
-            {withMessage && (
-                <Description className='-mt-2 mb-4 max-w-none text-base'>
-                    Copy the code below and paste it into your component folder.
-                </Description>
-            )}
-            <Tabs className='mt-2'>
-                <Tabs.List className='mb-2 w-fit' items={codeStrings}>
-                    {(item) => (
-                        <Tabs.Label id={`tab-${item.name}`} key={item.name}>
-                            {item.name.includes('demo') ? 'main' : item.name}
-                        </Tabs.Label>
-                    )}
-                </Tabs.List>
-                {codeStrings.map((item) => (
-                    <Tabs.Content id={`tab-${item.name}`} key={item.name}>
-                        <Code code={item.code} filename={`components/ui/${item.name}.tsx`} lang='tsx' />
-                    </Tabs.Content>
-                ))}
-            </Tabs>
-        </section>
-    )
+  return (
+    <Tabs>
+      <Tabs.List>
+        <Tabs.Trigger id='cli'>CLI</Tabs.Trigger>
+        <Tabs.Trigger id='manual'>Manual</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content id='cli'>
+        <CLI command='add' items={component} />
+      </Tabs.Content>
+      <Tabs.Content id='manual'>
+        <ManualInstall component={component} />
+      </Tabs.Content>
+    </Tabs>
+  )
 }
