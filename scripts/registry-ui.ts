@@ -1,6 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import fs from 'node:fs'
 import path from 'node:path'
+import { siteConfig } from '@/config/site'
 
 const baseDir = path.resolve(__dirname, '../components')
 const uiDir = path.join(baseDir, 'ui')
@@ -71,7 +72,7 @@ const componentsList: RegistryItem[] = []
 
 for (const component of components) {
   const content = fs.readFileSync(path.join(uiDir, component), 'utf8')
-  const childComponents = getChildComponents(content).map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
+  const childComponents = getChildComponents(content).map((c) => `${siteConfig.url}/r/${c}`)
   const deps = getDeps(content)
 
   if (checkUtils(content)) {
@@ -103,7 +104,7 @@ componentsList.push({
   type: 'registry:ui',
   title: 'All UI Components',
   dependencies: [],
-  registryDependencies: components.map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
+  registryDependencies: components.map((c) => `${siteConfig.url}/r/${c}`)
 })
 
 export const uiComponents = componentsList.sort((a, b) => a.name.localeCompare(b.name)).map((c) => c)

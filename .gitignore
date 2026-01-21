@@ -42,4 +42,6 @@ next-env.d.ts
 
 # registry
 /public/r
+components-search.json
+registry.json
 /__registry__
