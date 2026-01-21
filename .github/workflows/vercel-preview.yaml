@@ -14,14 +14,24 @@ jobs:
         run: |
           curl -fsSL https://bun.sh/install | bash
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
+
       - name: Install shadcn
         run: bun add -g shadcn
 
       - name: Install Global Package with Bun
         run: bun install --global vercel@latest
 
-      - name: Generate Source Code Preview
-        run: bun run b
+      - name: Build Registry
+        run: bun run build:registry
+
+      - name: Generate Menu
+        run: bun run generate:menu
+
+      - name: Generate Preview
+        run: bun run generate:preview
+
+      - name: Build Shadcn
+        run: bun run shadcn:build
 
       - uses: amondnet/vercel-action@v25
         id: vercel-deploy

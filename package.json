@@ -15,7 +15,11 @@
         "lint": "biome check",
         "preview": "bun run build && bun run start",
         "start": "next start",
-        "b": "bun scripts/build-registry.ts && bun scripts/generate-menu.ts && bun scripts/generate-preview.ts && shadcn build"
+        "build:registry": "bun scripts/build-registry.ts",
+        "generate:menu": "bun scripts/generate-menu.ts",
+        "generate:preview": "bun scripts/generate-preview.ts",
+        "shadcn:build": "shadcn build",
+        "b": "bun run build:registry && bun run generate:menu && bun run generate:preview && bun run shadcn:build"
     },
     "version": "0.1.2",
     "dependencies": {

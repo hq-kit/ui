@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import { promises as fs } from 'node:fs'
 import { libHook } from './registry-lib-hook'
 import { samples } from './registry-samples'
 import { registryStyles } from './registry-style'
@@ -14,4 +14,4 @@ const registryContentJson = JSON.stringify(registryContent)
   .replaceAll(',"registryDependencies":[]', '')
   .replaceAll(',"dependencies":[]', '')
 
-fs.writeFileSync('registry.json', registryContentJson)
+await fs.writeFile('registry.json', registryContentJson)

@@ -25,8 +25,17 @@ jobs:
       - name: Install Global Package with Bun
         run: bun install --global vercel@latest
 
-      - name: Generate Source Code Preview
-        run: bun run b
+      - name: Build Registry
+        run: bun run build:registry
+
+      - name: Generate Menu
+        run: bun run generate:menu
+
+      - name: Generate Preview
+        run: bun run generate:preview
+
+      - name: Build Shadcn
+        run: bun run shadcn:build
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
