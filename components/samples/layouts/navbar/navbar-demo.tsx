@@ -11,7 +11,6 @@ import {
   IconLogout,
   IconSparkles
 } from '@tabler/icons-react'
-import { usePathname } from 'next/navigation'
 import { IconApp } from '@/components/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar } from '@/components/ui/avatar'
@@ -174,11 +173,10 @@ export default function NavbarDemo() {
 }
 
 const Navigation = ({ items }: { items: NavMenu }) => {
-  const pathname = usePathname()
   return items.map((item) =>
     item.items ? (
       <DropdownMenu key={item.title}>
-        <NavbarItem>
+        <NavbarItem isActive={item.title === 'Navbar'}>
           {item.icon && <item.icon />}
           <span>{item.title}</span>
           <IconChevronDown className='ml-auto in-aria-expanded:rotate-180 transition-transform' />
@@ -192,13 +190,14 @@ const Navigation = ({ items }: { items: NavMenu }) => {
         </DropdownMenuContent>
       </DropdownMenu>
     ) : (
-      <NavbarItem href={item.url} isActive={pathname === item.url} key={item.title}>
+      <NavbarItem href={item.url} key={item.title}>
         {item.icon && <item.icon />}
         <span>{item.title}</span>
       </NavbarItem>
     )
   )
 }
+
 const NavUser = ({
   user
 }: {

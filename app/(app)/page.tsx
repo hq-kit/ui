@@ -18,7 +18,7 @@ export default function Page() {
           </div>
         </header>
         <main className='mt-6 flex flex-col gap-4 lg:flex-row lg:items-center'>
-          <div className='relative w-xs'>
+          <div className='relative -mt-4 w-xs'>
             <CLI command='install' items='hq-ui' />
           </div>
           <Link className={buttonVariants({ size: 'lg' })} href='/docs/getting-started/installation'>

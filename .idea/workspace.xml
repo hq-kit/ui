@@ -5,81 +5,118 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/layouts/menus.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/theme-sync.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-theme-customizer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/registry-samples.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components-search.json" beforeDir="false" afterPath="$PROJECT_DIR$/components-search.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/app-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/app-navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/aside.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/command-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/command-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/block-code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/block-code.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/mdx/cli.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/cli.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/mdx/code.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/code.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/install.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/install.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/generated/previews.json" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/generated/previews.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-floating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-floating-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-inset-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/navbar/navbar-inset-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-fixed-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-fixed-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-icon-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-icon-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-icon-demo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-snippet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-snippet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-scripts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-scripts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/theme-toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-toggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/framework-guides/next-js.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/getting-started/installation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/getting-started/installation.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/use-settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/theme-scripts.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/theme-sync.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-sync.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-theme-customizer.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/use-theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/mono.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/mono.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scripts/create-previews.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scripts/list-blocks.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scripts/list-component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scripts/list-docs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/themes/presets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/accordion.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/accordion.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/alert.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/alert.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/amber-minimal.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/amber-minimal.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/aurora.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/aurora.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/autocomplete.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/autocomplete.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/avatar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/badge.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/badge.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/bold-tech.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/bold-tech.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/breadcrumb.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/breadcrumb.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/button-group.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/button-group.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/button.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/button.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/calendar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/calendar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/candyland.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/candyland.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/card.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/card.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/carousel.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/carousel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/cascade.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/cascade.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/catppuccin.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/catppuccin.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/chart.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/chart.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/checkbox.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/checkbox.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/citrine.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/citrine.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/claymorphism.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/claymorphism.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/cobalt.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/cobalt.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/collapsible.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/collapsible.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/colors.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/colors.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/combo-box.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/combo-box.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/command.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/container.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/container.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/cosmic-night.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/cosmic-night.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/cyberpunk.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/cyberpunk.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/date-field.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/date-field.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/dialog.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/dialog.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/doom-64.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/doom-64.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/drawer.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/drawer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/drop-zone.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/drop-zone.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/dropdown-menu.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/dropdown-menu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/ember.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/ember.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/empty.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/empty.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/field.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/field.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/file-trigger.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/file-trigger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/glint.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/glint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/graphite.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/graphite.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/grid-list.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/grid-list.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/header.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/header.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/honey.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/honey.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/input-otp.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/input-otp.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/input.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/input.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/intent.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/intent.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/item.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/item.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/kbd.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/kbd.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/kodama-grove.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/kodama-grove.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/label.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/label.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/link.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/link.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/list-box.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/list-box.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/lumen.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/lumen.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/marshmallow.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/marshmallow.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/marvel.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/marvel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/material-design.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/material-design.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/meter.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/meter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/mist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/mist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/mocha-mousse.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/mocha-mousse.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/mono.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/mono.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/native-select.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/native-select.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/navbar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/navbar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/nebula.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/nebula.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/northern-lights.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/northern-lights.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/nova.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/nova.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/number-field.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/number-field.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/ocean-breeze.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/ocean-breeze.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/orchid.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/orchid.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/pagination.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/pagination.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/perpetuity.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/perpetuity.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/popover.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/popover.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/prism.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/prism.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/pulse.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/pulse.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/quantum-rose.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/quantum-rose.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/radio.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/radio.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/registry.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/registry.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/retro-arcade.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/retro-arcade.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/rosette.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/rosette.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/search-field.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/search-field.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/select.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/select.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/separator.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/separator.json" afterDir="false" />
@@ -87,19 +124,34 @@
       <change beforePath="$PROJECT_DIR$/public/r/sidebar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/sidebar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/skeleton.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/skeleton.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/slider.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/slider.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/solar-dusk.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/solar-dusk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/solar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/solar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/sonner.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/sonner.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/spinner.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/spinner.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/starry-night.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/starry-night.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/supabase.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/supabase.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/switch.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/switch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/t3-chat.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/t3-chat.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/table.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/table.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/tabs.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tabs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/tag.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/tangerine.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tangerine.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/text-field.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/text-field.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/tide.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tide.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/toggle-group.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/toggle-group.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/toggle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/toolbar.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/toolbar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/tooltip.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tooltip.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/r/tree.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/tree.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/twitter.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/twitter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/vector.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/vector.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/vercel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/verdant.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/verdant.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/r/vintage-paper.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/r/vintage-paper.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registry.json" beforeDir="false" afterPath="$PROJECT_DIR$/registry.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build-registry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build-registry.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/registry-lib-hook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/registry-lib-hook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/registry-style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/registry-style.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/registry-ui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/registry-ui.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,7 +351,10 @@
       <workItem from="1768846869141" duration="137000" />
       <workItem from="1768877237280" duration="1244000" />
       <workItem from="1768880689830" duration="8907000" />
-      <workItem from="1768900813207" duration="639000" />
+      <workItem from="1768900813207" duration="1142000" />
+      <workItem from="1768928859065" duration="3204000" />
+      <workItem from="1768967946357" duration="457000" />
+      <workItem from="1768982648154" duration="18039000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "checkbox",
+  "title": "checkbox",
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",

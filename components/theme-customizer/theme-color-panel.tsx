@@ -1,7 +1,7 @@
 'use client'
 
 import type { ThemeStyleProps } from '@/lib/themes/presets'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { type ColorSpace, getColorChannels } from 'react-aria-components'
 import { useTheme } from '@/components/providers'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -18,36 +18,40 @@ import {
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import { Select } from '@/components/ui/select'
-import { useDebounce } from '@/hooks/use-debounce'
-import { useThemeStore } from '@/hooks/use-theme-customizer'
+import { useThemeGenerator } from '@/hooks/use-theme'
 import { colorFormatter } from '@/lib/themes/color-converter'
 
 type ColorSwatchProps = {
   label: string
   value: string
-  onChange: (value: string) => void
+  action: (value: string) => void
 }
 
-export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
-  const [localValue, setLocalValue] = useState(value)
+export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
+  const [color, setColor] = useState(value)
 
   const [isHexFormat, setIsHexFormat] = useState(false)
   const [space, setSpace] = useState<ColorSpace>('rgb')
 
-  const debouncedSearchTerm = useDebounce(localValue, 300)
+  const debounceRef = useRef<number>(0)
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      onChange(debouncedSearchTerm)
-    }
-  }, [debouncedSearchTerm])
-
-  useEffect(() => {
-    setLocalValue(colorFormatter(value, 'hex'))
+    setColor(colorFormatter(value, 'hex'))
   }, [value])
 
+  useEffect(() => {
+    if (colorFormatter(value, 'hex') === color) return
+    window.clearTimeout(debounceRef.current)
+
+    debounceRef.current = window.setTimeout(() => {
+      action(color)
+    }, 300)
+
+    return () => window.clearTimeout(debounceRef.current)
+  }, [color, action])
+
   return (
-    <ColorPicker onChange={(v) => setLocalValue(v.toString('hex'))} value={localValue}>
+    <ColorPicker onChange={(v) => setColor(v.toString('hex'))} value={color}>
       <Popover>
         <Button className='flex w-full items-center justify-start gap-2 p-2' variant='ghost'>
           <Swatch />
@@ -56,6 +60,7 @@ export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
         <PopoverContent>
           <div className='space-y-2'>
             <Select
+              aria-label='Color format'
               onChange={(s) => {
                 setSpace(s as ColorSpace)
                 setIsHexFormat(s === 'hex')
@@ -108,19 +113,18 @@ export const ColorSwatch = ({ label, value, onChange }: ColorSwatchProps) => {
 }
 
 const ThemeColorPanel = () => {
-  const { styles, setVar } = useThemeStore()
   const { resolvedTheme } = useTheme()
+  const { updateVar, currentStyles } = useThemeGenerator()
   const mode = resolvedTheme === 'light' ? 'light' : 'dark'
+  const currentTheme = currentStyles[mode === 'dark' ? 'dark' : 'light']
 
   const updateColor = useCallback(
     (key: keyof ThemeStyleProps, value: string) => {
-      if (!styles) return
-      setVar(key, value, mode)
+      if (!currentStyles) return
+      updateVar(key, value, mode)
     },
-    [styles]
+    [currentTheme, resolvedTheme]
   )
-
-  const currentTheme = styles[mode === 'dark' ? 'dark' : 'light']
 
   return (
     <div className='space-y-6'>
@@ -130,28 +134,28 @@ const ThemeColorPanel = () => {
           <AccordionTrigger className='cursor-pointer py-3 font-medium text-base'>Brand Colors</AccordionTrigger>
           <AccordionContent className='grid grid-cols-2'>
             <ColorSwatch
+              action={(value) => updateColor('primary', value)}
               label='Primary'
-              onChange={(value) => updateColor('primary', value)}
               value={currentTheme?.primary || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('primary-foreground', value)}
               label='Primary Foreground'
-              onChange={(value) => updateColor('primary-foreground', value)}
               value={currentTheme?.['primary-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('secondary', value)}
               label='Secondary'
-              onChange={(value) => updateColor('secondary', value)}
               value={currentTheme?.secondary || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('secondary-foreground', value)}
               label='Secondary Foreground'
-              onChange={(value) => updateColor('secondary-foreground', value)}
               value={currentTheme?.['secondary-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('destructive', value)}
               label='Destructive'
-              onChange={(value) => updateColor('destructive', value)}
               value={currentTheme?.destructive || ''}
             />
           </AccordionContent>
@@ -162,33 +166,29 @@ const ThemeColorPanel = () => {
           <AccordionTrigger className='cursor-pointer py-3 font-medium text-base'>Base Colors</AccordionTrigger>
           <AccordionContent className='grid grid-cols-2'>
             <ColorSwatch
+              action={(value) => updateColor('background', value)}
               label='Background'
-              onChange={(value) => updateColor('background', value)}
               value={currentTheme?.background || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('foreground', value)}
               label='Foreground'
-              onChange={(value) => updateColor('foreground', value)}
               value={currentTheme?.foreground || ''}
             />
+            <ColorSwatch action={(value) => updateColor('card', value)} label='Card' value={currentTheme?.card || ''} />
             <ColorSwatch
-              label='Card'
-              onChange={(value) => updateColor('card', value)}
-              value={currentTheme?.card || ''}
-            />
-            <ColorSwatch
+              action={(value) => updateColor('card-foreground', value)}
               label='Card Foreground'
-              onChange={(value) => updateColor('card-foreground', value)}
               value={currentTheme?.['card-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('popover', value)}
               label='Popover'
-              onChange={(value) => updateColor('popover', value)}
               value={currentTheme?.popover || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('popover-foreground', value)}
               label='Popover Foreground'
-              onChange={(value) => updateColor('popover-foreground', value)}
               value={currentTheme?.['popover-foreground'] || ''}
             />
           </AccordionContent>
@@ -199,40 +199,36 @@ const ThemeColorPanel = () => {
           <AccordionTrigger className='cursor-pointer py-3 font-medium text-base'>Other Colors</AccordionTrigger>
           <AccordionContent className='grid grid-cols-2'>
             <ColorSwatch
+              action={(value) => updateColor('muted', value)}
               label='Muted'
-              onChange={(value) => updateColor('muted', value)}
               value={currentTheme?.muted || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('muted-foreground', value)}
               label='Muted Foreground'
-              onChange={(value) => updateColor('muted-foreground', value)}
               value={currentTheme?.['muted-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('accent', value)}
               label='Accent'
-              onChange={(value) => updateColor('accent', value)}
               value={currentTheme?.accent || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('accent-foreground', value)}
               label='Accent Foreground'
-              onChange={(value) => updateColor('accent-foreground', value)}
               value={currentTheme?.['accent-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('border', value)}
               label='Border'
-              onChange={(value) => updateColor('border', value)}
               value={currentTheme?.border || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('input', value)}
               label='Input'
-              onChange={(value) => updateColor('input', value)}
               value={currentTheme?.input || ''}
             />
-            <ColorSwatch
-              label='Ring'
-              onChange={(value) => updateColor('ring', value)}
-              value={currentTheme?.ring || ''}
-            />
+            <ColorSwatch action={(value) => updateColor('ring', value)} label='Ring' value={currentTheme?.ring || ''} />
           </AccordionContent>
         </AccordionItem>
 
@@ -241,43 +237,43 @@ const ThemeColorPanel = () => {
           <AccordionTrigger className='cursor-pointer py-3 font-medium text-base'>Sidebar Colors</AccordionTrigger>
           <AccordionContent className='grid grid-cols-2'>
             <ColorSwatch
+              action={(value) => updateColor('sidebar', value)}
               label='Sidebar'
-              onChange={(value) => updateColor('sidebar', value)}
               value={currentTheme?.sidebar || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-foreground', value)}
               label='Sidebar Foreground'
-              onChange={(value) => updateColor('sidebar-foreground', value)}
               value={currentTheme?.['sidebar-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-primary', value)}
               label='Sidebar Primary'
-              onChange={(value) => updateColor('sidebar-primary', value)}
               value={currentTheme?.['sidebar-primary'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-primary-foreground', value)}
               label='Sidebar Primary Foreground'
-              onChange={(value) => updateColor('sidebar-primary-foreground', value)}
               value={currentTheme?.['sidebar-primary-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-accent', value)}
               label='Sidebar Accent'
-              onChange={(value) => updateColor('sidebar-accent', value)}
               value={currentTheme?.['sidebar-accent'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-accent-foreground', value)}
               label='Sidebar Accent Foreground'
-              onChange={(value) => updateColor('sidebar-accent-foreground', value)}
               value={currentTheme?.['sidebar-accent-foreground'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-border', value)}
               label='Sidebar Border'
-              onChange={(value) => updateColor('sidebar-border', value)}
               value={currentTheme?.['sidebar-border'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('sidebar-ring', value)}
               label='Sidebar Ring'
-              onChange={(value) => updateColor('sidebar-ring', value)}
               value={currentTheme?.['sidebar-ring'] || ''}
             />
           </AccordionContent>
@@ -288,28 +284,28 @@ const ThemeColorPanel = () => {
           <AccordionTrigger className='cursor-pointer py-3 font-medium text-base'>Chart Colors</AccordionTrigger>
           <AccordionContent className='grid grid-cols-2'>
             <ColorSwatch
+              action={(value) => updateColor('chart-1', value)}
               label='Chart 1'
-              onChange={(value) => updateColor('chart-1', value)}
               value={currentTheme?.['chart-1'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('chart-2', value)}
               label='Chart 2'
-              onChange={(value) => updateColor('chart-2', value)}
               value={currentTheme?.['chart-2'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('chart-3', value)}
               label='Chart 3'
-              onChange={(value) => updateColor('chart-3', value)}
               value={currentTheme?.['chart-3'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('chart-4', value)}
               label='Chart 4'
-              onChange={(value) => updateColor('chart-4', value)}
               value={currentTheme?.['chart-4'] || ''}
             />
             <ColorSwatch
+              action={(value) => updateColor('chart-5', value)}
               label='Chart 5'
-              onChange={(value) => updateColor('chart-5', value)}
               value={currentTheme?.['chart-5'] || ''}
             />
           </AccordionContent>

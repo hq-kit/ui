@@ -7,7 +7,12 @@ import { BrandIcon, type BrandIconProps, ComponentIcon, type ComponentIconProps 
 
 export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
   return (
-    <CommandDialog className='ring-4 max-w-none sm:max-w-2xl translate-y-0 sm:-translate-y-1/2 top-auto bottom-0 sm:top-1/2 ring-accent/50' isOpen={open} onOpenChange={setOpen} showCloseButton={false}>
+    <CommandDialog
+      className='top-auto bottom-0 max-w-none translate-y-0 ring-4 ring-accent/50 sm:top-1/2 sm:max-w-2xl sm:-translate-y-1/2'
+      isOpen={open}
+      onOpenChange={setOpen}
+      showCloseButton={false}
+    >
       <CommandInput className='m-1.5 rounded-lg bg-input' placeholder='Type a command or search...' />
       <CommandList>
         {menus().map((section) => (

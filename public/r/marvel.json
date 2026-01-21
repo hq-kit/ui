@@ -40,7 +40,7 @@
       "sidebar-border": "oklch(0.87 0.01 25.23)",
       "sidebar-ring": "oklch(0.52 0.14 247.51)",
       "font-sans": "Outfit, sans-serif",
-      "font-mono": "Geist Mono, Geist Mono Fallback, ui-monospace"
+      "font-mono": "Geist Mono, Geist Mono Fallback, monospace"
     },
     "dark": {
       "background": "oklch(0.12 0.01 38.49)",

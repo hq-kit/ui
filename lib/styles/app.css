@@ -215,11 +215,19 @@
 
 /* WebKit Browsers (Chrome, Edge, Safari) */
 .scrollbar-fade::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 .scrollbar-fade::-webkit-scrollbar-track {
     background: transparent;
+}
+
+.scrollbar-fade::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+    display: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
 }
 
 .scrollbar-fade::-webkit-scrollbar-thumb {

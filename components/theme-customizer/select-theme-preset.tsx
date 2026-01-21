@@ -23,7 +23,7 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
   const presetNames = useMemo(() => {
     const allPresets = Object.keys(presets)
 
-    return ['default', ...allPresets.filter((name) => name !== 'default')]
+    return ['default', ...allPresets]
   }, [presets])
 
   const value = presetNames?.find((name) => name === currentPreset)
@@ -40,21 +40,18 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
         <IconArrowsShuffle className='size-4' />
         Random
       </Button>
-      <Select onChange={onPresetChange} value={value}>
+      <Select aria-label='preset' onChange={onPresetChange} value={value}>
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
         <SelectContent
-          items={Object.entries(presets)
-            .map(([key, value]) => ({
-              title: key,
-              light: value.light,
-              dark: value.dark
-            }))
-            .sort((a, b) => a.title.localeCompare(b.title))}
+          isSearchable
+          items={presetNames.map((preset) => ({
+            title: preset
+          }))}
         >
           {(item) => (
-            <SelectItem className='flex items-center gap-3' id={item.title}>
+            <SelectItem className='flex items-center gap-3' id={item.title} textValue={item.title}>
               {/* Theme Color Grid Icon */}
               <div className='flex items-center'>
                 <div className='relative size-6.5 rounded border bg-background p-1'>

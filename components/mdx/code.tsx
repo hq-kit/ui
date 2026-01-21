@@ -66,7 +66,8 @@ export const Code = ({ lang = 'tsx', code, className, copy = false, ...props }: 
         className={cn(
           'not-prose relative my-4 w-full max-w-none overflow-hidden rounded-lg text-sm/6 shadow-sm',
           '*:[pre]:rounded-lg *:[pre]:py-2',
-          '**:[&::-webkit-scrollbar-thumb]:rounded-lg **:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 **:[&::-webkit-scrollbar-track]:rounded-lg **:[&::-webkit-scrollbar-track]:bg-muted **:[&::-webkit-scrollbar]:size-1.5 **:[&::-webkit-scrollbar]:bg-transparent **:[pre]:max-h-96 **:[pre]:overflow-auto',
+          '**:[pre]:max-h-96 **:[pre]:overflow-auto',
+          'scrollbar-fade',
           className
         )}
         dangerouslySetInnerHTML={{ __html: formattedCode }}

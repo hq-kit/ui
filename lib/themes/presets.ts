@@ -23,6 +23,18 @@ export function getPresetThemeStyles(name: Preset): ThemeStyles {
   }
 }
 
+export type Preset = keyof typeof presets
+
+export type ThemeStyles = {
+  light: Partial<ThemeStyleProps>
+  dark: Partial<ThemeStyleProps>
+}
+
+export type ThemeState = {
+  preset: Preset
+  styles: ThemeStyles
+}
+
 export type ThemeStyleProps = {
   background: string
   foreground: string
@@ -60,18 +72,6 @@ export type ThemeStyleProps = {
   radius?: string
 }
 
-export type ThemeStyles = {
-  light: Partial<ThemeStyleProps>
-  dark: Partial<ThemeStyleProps>
-}
-
-export type ThemeState = {
-  preset: Preset
-  styles: ThemeStyles
-}
-
-export type Preset = keyof typeof presets
-
 export const presets: Record<string, ThemeStyles> = {
   marshmallow: {
     light: {
@@ -107,7 +107,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.85 0 0)',
       'sidebar-ring': 'oklch(0.83 0.09 248.95)',
       'font-sans': 'Gabriela, Geist Fallback, ui-sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace',
       radius: '0rem'
     },
     dark: {
@@ -469,7 +469,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-ring': 'oklch(0.56 0.11 228.27)',
 
       'font-sans': 'Roboto, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace',
 
       radius: '1rem'
     },
@@ -541,7 +541,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.87 0.01 25.23)',
       'sidebar-ring': 'oklch(0.52 0.14 247.51)',
       'font-sans': 'Outfit, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace',
       radius: '0rem'
     },
     dark: {
@@ -1678,7 +1678,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.94 0.00 48.72)',
       'sidebar-ring': 'oklch(0.59 0.22 0.58)',
       'font-sans': 'Geist, Geist Fallback, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.24 0.02 307.53)',
@@ -2601,7 +2601,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.90 0 0)',
       'sidebar-ring': 'oklch(0.83 0.13 160.91)',
       'font-sans': 'Outfit, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.18 0 0)',
@@ -3240,7 +3240,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.78 0.02 251.19)',
       'sidebar-ring': 'oklch(0.86 0.12 81.01)',
       'font-sans': 'Libre Baskerville, serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.22 0.02 275.84)',
@@ -3311,7 +3311,7 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-border': 'oklch(0.94 0 0)',
       'sidebar-ring': 'oklch(0 0 0)',
       'font-sans': 'Geist, Geist Fallback, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0 0 0)',
@@ -3381,8 +3381,8 @@ export const presets: Record<string, ThemeStyles> = {
       'sidebar-accent-foreground': 'oklch(0.20 0 0)',
       'sidebar-border': 'oklch(0.92 0 0)',
       'sidebar-ring': 'oklch(0.71 0 0)',
-      'font-sans': 'Geist Mono, Geist Mono Fallback, ui-monospace',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-sans': 'Geist Mono, Geist Mono Fallback, monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.14 0 0)',
@@ -3453,7 +3453,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.882 0.059 254.128)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3523,7 +3523,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-4': 'oklch(0.785 0.115 274.713)',
       'chart-5': 'oklch(0.87 0.065 274.039)',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace',
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace',
       radius: '0.5rem'
     },
     dark: {
@@ -3595,7 +3595,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.901 0.076 70.697)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3666,7 +3666,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.894 0.057 293.283)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3737,7 +3737,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.91 0.096 180.426)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3808,7 +3808,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.905 0.093 164.15)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3879,7 +3879,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.882 0.059 254.128)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -3950,7 +3950,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.892 0.058 10.001)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4021,7 +4021,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.87 0.065 274.039)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4092,7 +4092,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.902 0.063 306.703)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4163,7 +4163,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.917 0.08 205.041)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4234,7 +4234,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.924 0.12 95.746)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4305,7 +4305,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.91 0.096 180.426)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4376,7 +4376,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.882 0.059 254.128)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4447,7 +4447,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.87 0.065 274.039)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4518,7 +4518,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.894 0.057 293.283)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4589,7 +4589,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.901 0.076 70.697)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4660,7 +4660,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.917 0.08 205.041)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4731,7 +4731,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.87 0.065 274.039)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',
@@ -4802,7 +4802,7 @@ export const presets: Record<string, ThemeStyles> = {
       'chart-5': 'oklch(0.894 0.057 293.283)',
       radius: '0.5rem',
       'font-sans': 'Inter, sans-serif',
-      'font-mono': 'Geist Mono, Geist Mono Fallback, ui-monospace'
+      'font-mono': 'Geist Mono, Geist Mono Fallback, monospace'
     },
     dark: {
       background: 'oklch(0.141 0.005 285.823)',

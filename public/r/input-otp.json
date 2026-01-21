@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "input-otp",
+  "title": "input-otp",
   "dependencies": [
     "@tabler/icons-react",
     "input-otp"

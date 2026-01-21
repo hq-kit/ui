@@ -73,10 +73,7 @@
       "sidebar-accent": "oklch(0.46 0.21 277.02)",
       "sidebar-accent-foreground": "oklch(0.93 0.03 272.79)",
       "sidebar-border": "oklch(0.28 0.14 291.09)",
-      "sidebar-ring": "oklch(0.61 0.22 292.72)",
-      "radius": "0.625rem",
-      "font-sans": "Roboto, sans-serif",
-      "font-mono": "Fira Code, monospace"
+      "sidebar-ring": "oklch(0.61 0.22 292.72)"
     }
   },
   "css": {

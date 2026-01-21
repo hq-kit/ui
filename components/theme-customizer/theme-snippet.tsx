@@ -6,6 +6,7 @@ import type { ColorFormat } from '@/lib/themes/color-converter'
 import { useState } from 'react'
 import { CLI } from '@/components/mdx/cli'
 import { Code } from '@/components/mdx/code'
+import { buttonVariants } from '@/components/ui/button'
 import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { defaultDarkThemeStyles, defaultLightThemeStyles } from '@/config/theme'
@@ -29,7 +30,6 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
 
   const themeCSS = generateThemeCode(themeStyles, colorFormat as ColorFormat)
 
-  // Check if the active theme exists in presets
   const isPresetTheme = activeTheme ? activeTheme in presets : false
 
   return (
@@ -41,9 +41,11 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
           <DialogDescription>Copy these CSS variables to use your theme in other projects.</DialogDescription>
         </DialogHeader>
         <DialogBody>
-          <div className='relative'>{activeTheme && isPresetTheme && <CLI command='add' items={[activeTheme]} />}</div>
-          <div>
-            <div className='sticky top-0 w-full'>
+          <div className='relative mb-4'>
+            {activeTheme && (isPresetTheme || activeTheme === 'default') && <CLI command='add' items={[activeTheme]} />}
+          </div>
+          <div className='relative'>
+            <div className='absolute top-5.5 right-11 z-10'>
               <Select
                 aria-label='Color'
                 name='color'
@@ -51,7 +53,13 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
                 placeholder='Format'
                 value={colorFormat}
               >
-                <SelectTrigger className='w-fit cursor-pointer gap-1 border bg-card outline-hidden focus:border-border focus:ring-transparent focus-visible:border'>
+                <SelectTrigger
+                  className={buttonVariants({
+                    variant: 'ghost',
+                    class: 'h-9 border-transparent bg-card hover:border-transparent dark:bg-card'
+                  })}
+                  size='sm'
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

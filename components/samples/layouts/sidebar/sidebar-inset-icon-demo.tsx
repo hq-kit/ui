@@ -12,7 +12,6 @@ import {
   IconSelector,
   IconSparkles
 } from '@tabler/icons-react'
-import { usePathname } from 'next/navigation'
 import { IconApp } from '@/components/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Avatar } from '@/components/ui/avatar'
@@ -189,10 +188,9 @@ export default function SidebarDemo({ ...props }: React.ComponentProps<typeof Si
 }
 
 const Navigation = ({ items }: { items: NavMenu }) => {
-  const pathname = usePathname()
   return items.map((item) =>
     item.items ? (
-      <Collapsible defaultExpanded={pathname.startsWith(item.url!)} key={item.title}>
+      <Collapsible defaultExpanded={true} key={item.title}>
         <SidebarMenuItem>
           <SidebarMenuButton tooltip={item.title}>
             {item.icon && <item.icon />}
@@ -203,7 +201,10 @@ const Navigation = ({ items }: { items: NavMenu }) => {
             <SidebarMenuSub>
               {item.items?.map((subItem) => (
                 <SidebarMenuSubItem key={subItem.title}>
-                  <SidebarMenuSubButton href={subItem.url} isActive={pathname === subItem.url}>
+                  <SidebarMenuSubButton
+                    href={subItem.url}
+                    isActive={subItem.url === '/block/layouts/sidebar/sidebar-inset-icon-demo'}
+                  >
                     {subItem.title}
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>

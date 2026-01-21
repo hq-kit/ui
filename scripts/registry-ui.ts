@@ -1,3 +1,4 @@
+import type { RegistryItem } from 'shadcn/schema'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -15,14 +16,14 @@ function getComponents() {
   return components
 }
 
-function getChildComponents(content: string) {
+export function getChildComponents(content: string) {
   const regex = /(?<=from\s+['"]\.\/)([^'"]+)/g
   const childrens = content.match(regex)
 
   return Array.from(new Set(childrens))
 }
 
-function getDeps(content: string) {
+export function getDeps(content: string) {
   const regex = /(?<=from\s+['"])([^'"]+)/g
   const excludes = [
     'react',
@@ -35,12 +36,13 @@ function getDeps(content: string) {
     'recharts/types/component/DefaultLegendContent',
     'recharts/types/component/DefaultTooltipContent',
     'recharts/types/component/Tooltip',
-    'recharts/types/shape/Curve'
+    'recharts/types/shape/Curve',
+    'next/navigation'
   ]
   const replacement = [{ from: 'motion/react', to: 'motion' }]
   const deps = content
     .match(regex)
-    ?.filter((dep) => !excludes.includes(dep) && !dep.includes('./'))
+    ?.filter((dep) => !excludes.includes(dep) && !dep.includes('./') && !dep.includes('@/components/'))
     .map((dep) => {
       for (const { from, to } of replacement) {
         if (dep.startsWith(from)) {
@@ -53,19 +55,20 @@ function getDeps(content: string) {
   return Array.from(new Set(deps))
 }
 
-function checkUtils(content: string) {
+export function checkUtils(content: string) {
   const regex = /(?<=from\s+['"])([^'"]+)/g
   return content.match(regex)?.includes('@/lib/utils')
 }
 
-function checkHooks(content: string) {
+export function checkHooks(content: string) {
   const regex = /(?<=from\s+['"])([^'"]+)/g
   return content.match(regex)?.includes('@/hooks/use-mobile')
 }
 
 const components = getComponents()
 
-const componentsList = []
+const componentsList: RegistryItem[] = []
+
 for (const component of components) {
   const content = fs.readFileSync(path.join(uiDir, component), 'utf8')
   const childComponents = getChildComponents(content).map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
@@ -81,6 +84,7 @@ for (const component of components) {
   componentsList.push({
     name: component.replace('.tsx', ''),
     extends: 'none',
+    title: component.replace('.tsx', ''),
     type: 'registry:ui',
     dependencies: deps ?? [],
     registryDependencies: childComponents ?? [],

@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "toggle",
+  "title": "toggle",
   "dependencies": [
     "react-aria-components",
     "tailwind-variants"

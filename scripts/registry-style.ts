@@ -1,6 +1,7 @@
+import type { RegistryItem } from 'shadcn/schema'
 import { getPresetThemeStyles, presets } from '@/lib/themes/presets'
 
-const registryStyle = []
+const registryStyle: RegistryItem[] = []
 
 const presetList = Object.keys(presets)
 presetList.push('default')
@@ -8,6 +9,7 @@ presetList.push('default')
 for (const preset of presetList) {
   registryStyle.push({
     name: preset,
+    title: preset,
     extends: 'none',
     type: 'registry:style',
     dependencies: ['tw-animate-css'],
@@ -22,4 +24,5 @@ for (const preset of presetList) {
     }
   })
 }
+
 export const registryStyles = registryStyle

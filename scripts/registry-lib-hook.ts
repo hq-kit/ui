@@ -1,4 +1,6 @@
-export const libHook = [
+import type { RegistryItem } from 'shadcn/schema'
+
+export const libHook: RegistryItem[] = [
   {
     name: 'utils',
     type: 'registry:lib',

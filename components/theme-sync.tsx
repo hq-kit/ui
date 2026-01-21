@@ -1,19 +1,22 @@
-// ThemeSync.tsx
 'use client'
 
-import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
-import { useThemeStore } from '@/hooks/use-theme-customizer'
+import { useTheme } from '@/components/providers'
+import { syncVars, useThemeGenerator } from '@/hooks/use-theme'
 
 export function ThemeSync() {
   const { resolvedTheme } = useTheme()
-  const apply = useThemeStore((s) => s.apply)
+  const { currentPreset, currentStyles } = useThemeGenerator()
+  const mode = resolvedTheme === 'light' ? 'light' : 'dark'
 
   useEffect(() => {
-    if (resolvedTheme === 'light' || resolvedTheme === 'dark') {
-      apply(resolvedTheme)
-    }
-  }, [resolvedTheme, apply])
+    syncVars({
+      ...currentStyles[mode],
+      'font-sans': currentStyles.light['font-sans'],
+      'font-mono': currentStyles.light['font-mono'],
+      radius: currentStyles.light.radius
+    })
+  }, [resolvedTheme, currentPreset, currentStyles])
 
   return null
 }

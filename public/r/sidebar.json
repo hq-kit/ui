@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "sidebar",
+  "title": "sidebar",
   "dependencies": [
     "@tabler/icons-react",
     "react-aria-components",
