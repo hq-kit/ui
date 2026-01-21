@@ -1,11 +1,8 @@
 import fs from 'node:fs'
-import path from 'node:path'
-import { samples } from '@/scripts/registry-samples'
 import { libHook } from './registry-lib-hook'
+import { samples } from './registry-samples'
 import { registryStyles } from './registry-style'
 import { uiComponents } from './registry-ui'
-
-const registryFilePath = path.resolve(__dirname, '../registry.json')
 
 const registryContent = {
   name: 'hq-ui',
@@ -17,4 +14,4 @@ const registryContentJson = JSON.stringify(registryContent)
   .replaceAll(',"registryDependencies":[]', '')
   .replaceAll(',"dependencies":[]', '')
 
-fs.writeFileSync(registryFilePath, registryContentJson)
+fs.writeFileSync('registry.json', registryContentJson)
