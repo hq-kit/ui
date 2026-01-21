@@ -47,4 +47,5 @@ jobs:
           ANALYTICS_CLIENT_ID: ${{ secrets.AN_CLIENT_ID }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
+
