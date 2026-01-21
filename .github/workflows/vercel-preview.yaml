@@ -14,6 +14,8 @@ jobs:
         run: |
           curl -fsSL https://bun.sh/install | bash
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
+      - name: Install shadcn
+        run: bun add -g shadcn
 
       - name: Install Global Package with Bun
         run: bun install --global vercel@latest
@@ -24,10 +26,10 @@ jobs:
       - uses: amondnet/vercel-action@v25
         id: vercel-deploy
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GH_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+            vercel-token: ${{ secrets.VERCEL_TOKEN }}
+            github-token: ${{ secrets.GH_TOKEN }}
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
       - name: preview-url
         run: |
           echo ${{ steps.vercel-deploy.outputs.preview-url }}

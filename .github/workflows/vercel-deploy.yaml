@@ -19,6 +19,9 @@ jobs:
           curl -fsSL https://bun.sh/install | bash
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
 
+      - name: Install shadcn
+        run: bun add -g shadcn
+
       - name: Install Global Package with Bun
         run: bun install --global vercel@latest
 
