@@ -17,8 +17,8 @@ export function AppNavbar() {
   const pathname = usePathname()
   const menuItems = [
     { id: 1, label: 'Home', url: '/', active: pathname === '/' },
-    { id: 2, label: 'Components', url: '/docs', active: pathname.startsWith('/docs') },
-    { id: 3, label: 'Blocks', url: '/blocks', active: pathname.startsWith('/blocks') }
+    { id: 2, label: 'Components', url: '/docs', active: pathname.startsWith('/docs') }
+    // { id: 3, label: 'Blocks', url: '/blocks', active: pathname.startsWith('/blocks') }
   ]
 
   const [openNav, setOpenNav] = useState(false)

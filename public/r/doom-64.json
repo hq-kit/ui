@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "doom-64",
+  "title": "doom-64",
   "dependencies": [
     "tw-animate-css"
   ],

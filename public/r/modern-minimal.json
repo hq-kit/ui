@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "modern-minimal",
+  "title": "modern-minimal",
   "dependencies": [
     "tw-animate-css"
   ],

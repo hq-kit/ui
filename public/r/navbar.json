@@ -9,8 +9,8 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/sheet",
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/sheet",
     "utils",
     "use-mobile"
   ],

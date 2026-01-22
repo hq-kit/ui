@@ -1,6 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import fs from 'node:fs'
 import path from 'node:path'
+import { siteConfig } from '@/config/site'
 import { checkHooks, checkUtils, getDeps } from '@/scripts/registry-ui'
 
 const baseDir = path.resolve(__dirname, '../components')
@@ -38,7 +39,7 @@ const samplesList: RegistryItem[] = []
 
 for (const component of components) {
   const content = fs.readFileSync(path.join(samplesDir, component.path), 'utf-8')
-  const uiComponents = getUIComponents(content).map((c) => `${process.env.NEXT_PUBLIC_APP_URL}/r/${c}`)
+  const uiComponents = getUIComponents(content).map((c) => `${siteConfig.url}/r/${c}`)
   const deps = getDeps(content)
 
   if (checkUtils(content)) {

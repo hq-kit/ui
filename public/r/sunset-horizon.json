@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "sunset-horizon",
+  "title": "sunset-horizon",
   "dependencies": [
     "tw-animate-css"
   ],

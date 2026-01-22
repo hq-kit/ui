@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "cascade",
+  "title": "cascade",
   "dependencies": [
     "tw-animate-css"
   ],

@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "orchid",
+  "title": "orchid",
   "dependencies": [
     "tw-animate-css"
   ],

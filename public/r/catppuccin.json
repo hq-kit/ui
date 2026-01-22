@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "extends": "none",
   "name": "catppuccin",
+  "title": "catppuccin",
   "dependencies": [
     "tw-animate-css"
   ],

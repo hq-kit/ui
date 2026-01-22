@@ -8,7 +8,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle",
+    "https://hq-ui.vercel.app/r/toggle",
     "utils"
   ],
   "files": [

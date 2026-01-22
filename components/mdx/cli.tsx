@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from '@/components/icons'
 import { CopyButton } from '@/components/mdx/copy-button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { siteConfig } from '@/config/site'
 import { copyToClipboard } from '@/lib/modifiers'
 
 interface CLIProps {
@@ -11,7 +12,7 @@ interface CLIProps {
   command: 'add' | 'install' | 'init'
 }
 
-const url = `${process.env.NEXT_PUBLIC_APP_URL}/r`
+const url = `${siteConfig.url}/r`
 
 export function CLI({ items, command = 'add' }: CLIProps) {
   const [pm, setPm] = useState<'npm' | 'yarn' | 'pnpm' | 'bun'>('npm')
@@ -24,7 +25,7 @@ export function CLI({ items, command = 'add' }: CLIProps) {
     if (command === 'install') {
       return ` ${p === 'npm' ? 'i' : 'add'} ${Array.isArray(items) ? items.join(' ') : items}`
     }
-    return ` ${process.env.NEXT_PUBLIC_APP_URL}/r/theme-default`
+    return ` ${url}/default`
   }
 
   const getPm = (p: 'npm' | 'yarn' | 'pnpm' | 'bun') => {

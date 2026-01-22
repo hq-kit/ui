@@ -8,8 +8,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/autocomplete",
-    "http://localhost:3000/r/dialog",
+    "https://hq-ui.vercel.app/r/autocomplete",
+    "https://hq-ui.vercel.app/r/dialog",
     "utils"
   ],
   "files": [

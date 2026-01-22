@@ -1,15 +1,13 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import { samples } from '@/scripts/registry-samples'
+import { promises as fs } from 'node:fs'
+import { siteConfig } from '@/config/site'
 import { libHook } from './registry-lib-hook'
+import { samples } from './registry-samples'
 import { registryStyles } from './registry-style'
 import { uiComponents } from './registry-ui'
 
-const registryFilePath = path.resolve(__dirname, '../registry.json')
-
 const registryContent = {
   name: 'hq-ui',
-  homepage: process.env.NEXT_PUBLIC_APP_URL,
+  homepage: siteConfig.url,
   items: [...libHook, ...uiComponents, ...registryStyles, ...samples]
 }
 
@@ -17,4 +15,4 @@ const registryContentJson = JSON.stringify(registryContent)
   .replaceAll(',"registryDependencies":[]', '')
   .replaceAll(',"dependencies":[]', '')
 
-fs.writeFileSync(registryFilePath, registryContentJson)
+await fs.writeFile('registry.json', registryContentJson)

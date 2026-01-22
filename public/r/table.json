@@ -8,7 +8,7 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/checkbox",
+    "https://hq-ui.vercel.app/r/checkbox",
     "utils"
   ],
   "files": [

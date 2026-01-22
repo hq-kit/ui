@@ -6,16 +6,17 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Providers } from '@/components/providers'
 import { ThemeSync } from '@/components/theme-sync'
 import { Toaster } from '@/components/ui/sonner'
+import { siteConfig } from '@/config/site'
 import { fontMonoUrl } from '@/lib/fonts/mono'
 import { fontSansUrl } from '@/lib/fonts/sans'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://hq-ui.vercel.app'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'HQ UI',
-    template: '%s | HQ UI'
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`
   },
-  description: 'Customizable React UI Components Library',
+  description: siteConfig.description,
   alternates: {
     canonical: './'
   },

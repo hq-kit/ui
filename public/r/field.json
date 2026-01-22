@@ -8,8 +8,8 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/label",
-    "http://localhost:3000/r/separator",
+    "https://hq-ui.vercel.app/r/label",
+    "https://hq-ui.vercel.app/r/separator",
     "utils"
   ],
   "files": [

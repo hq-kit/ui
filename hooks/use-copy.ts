@@ -2,10 +2,6 @@
 import type { ButtonProps } from 'react-aria-components'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-export function copyToClipboard(text: string): Promise<void> {
-  return navigator.clipboard.writeText(text)
-}
-
 export function useCopyButton(onCopy: () => void): [checked: boolean, onClick: ButtonProps['onPress']] {
   const [checked, setChecked] = useState(false)
   const timeoutRef = useRef<number | null>(null)
