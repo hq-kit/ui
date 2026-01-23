@@ -104,7 +104,7 @@ componentsList.push({
   type: 'registry:ui',
   title: 'All UI Components',
   dependencies: [],
-  registryDependencies: components.map((c) => `${siteConfig.url}/r/${c}`)
+  registryDependencies: components.map((c) => `${siteConfig.url}/r/${c.replace('.tsx', '')}`)
 })
 
 export const uiComponents = componentsList.sort((a, b) => a.name.localeCompare(b.name)).map((c) => c)
