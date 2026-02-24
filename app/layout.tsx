@@ -5,20 +5,20 @@ import { siteConfig } from '@/config/site'
 import { fontMonoUrl } from '@/lib/fonts/mono'
 import { fontSansUrl } from '@/lib/fonts/sans'
 import '@/lib/styles/app.css'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
   alternates: {
-    canonical: './',
+    canonical: './'
   },
   keywords: [
     'React',
@@ -52,29 +52,29 @@ export const metadata: Metadata = {
     'HQ UI UI Framework',
     'HQ UI Laravel Inertia',
     'HQ UI Laravel',
-    'HQ UI Inertia',
+    'HQ UI Inertia'
   ],
   authors: [
     {
       name: 'dq-alhq',
-      url: 'https://x.com/dqalhq',
-    },
+      url: 'https://x.com/dqalhq'
+    }
   ],
-  creator: 'dq-alhq',
+  creator: 'dq-alhq'
 }
 
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
   ],
   viewportFit: 'cover',
   width: 'device-width',
-  initialScale: 1,
+  initialScale: 1
 }
 
 export default async function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: ReactNode
 }>) {

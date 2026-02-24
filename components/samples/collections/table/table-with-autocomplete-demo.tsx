@@ -173,7 +173,9 @@ function AutocompleteHighlight({ children }: { children: string }) {
     return (
       <>
         {children.slice(0, index)}
-        <mark className='bg-primary text-primary-fg'>{children.slice(index, index + state.inputValue.length)}</mark>
+        <mark className='rounded bg-primary text-primary-foreground'>
+          {children.slice(index, index + state.inputValue.length)}
+        </mark>
         {children.slice(index + state.inputValue.length)}
       </>
     )

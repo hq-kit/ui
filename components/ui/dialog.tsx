@@ -26,9 +26,9 @@ const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverl
   <RACModalOverlay
     className={composeRenderProps(className, (className) =>
       cn(
-        'fixed inset-0 isolate z-50 bg-black/50 [--visual-viewport-vertical-padding:32px]',
-        'data-entering:fade-in data-entering:animate-in data-entering:ease-out',
-        'data-exiting:fade-out data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in',
+        'fixed inset-0 isolate z-50 bg-black/40 [--visual-viewport-vertical-padding:32px] supports-backdrop-filter:backdrop-blur-xs',
+        'data-entering:fade-in-0 data-entering:animate-in',
+        'data-exiting:fade-out-0 data-exiting:animate-out data-exiting:duration-150',
         className
       )
     )}

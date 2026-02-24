@@ -7,8 +7,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/separator",
-    "https://hq-ui.vercel.app/r/toggle",
+    "http://localhost:3000/r/separator",
+    "http://localhost:3000/r/toggle",
     "utils"
   ],
   "files": [

@@ -8,7 +8,7 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
+    "http://localhost:3000/r/button",
     "utils"
   ],
   "files": [
