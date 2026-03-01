@@ -152,7 +152,7 @@ const TableHeader = <T extends object>({ children, ref, columns, className, ...p
       )}
       {selectionBehavior === 'toggle' && (
         <Column
-          className={cn('first:pl-(--gutter,--spacing(2))', !bleed && 'sm:last:pr-1 sm:first:pl-1')}
+          className={cn('w-auto first:pl-(--gutter,--spacing(2))', !bleed && 'sm:last:pr-1 sm:first:pl-1')}
           data-slot='table-column'
         >
           {selectionMode === 'multiple' && <Checkbox slot='selection' />}
@@ -205,7 +205,7 @@ const TableRow = <T extends object>({ children, className, columns, ref, ...prop
         </TableCell>
       )}
       {selectionBehavior === 'toggle' && (
-        <TableCell className='px-0'>
+        <TableCell className='w-auto px-0'>
           <Checkbox slot='selection' />
         </TableCell>
       )}

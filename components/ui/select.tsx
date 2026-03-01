@@ -2,7 +2,6 @@
 
 import type { VariantProps } from 'tailwind-variants'
 import { IconCheck, IconChevronDown, IconSearch } from '@tabler/icons-react'
-import { createContext, type RefObject, use, useRef } from 'react'
 import {
   Autocomplete,
   Button,
@@ -35,21 +34,11 @@ import {
 import { cn } from '@/lib/utils'
 import { fieldVariants } from './field'
 
-const SelectTriggerRefContext = createContext<RefObject<HTMLDivElement | HTMLButtonElement | null> | null>(null)
-const useSelectTriggerRef = () => {
-  const ref = use(SelectTriggerRefContext)
-  if (!ref) {
-    throw new Error('useSelectTriggerRef must be used within Select with multiple selectionMode')
-  }
-  return ref
-}
-
 const Select = <T extends object, M extends 'single' | 'multiple' = 'single'>({
   className,
   orientation,
   ...props
 }: SelectProps<T, M> & VariantProps<typeof fieldVariants>) => {
-  const triggerRef = useRef<HTMLDivElement | HTMLButtonElement | null>(null)
   return (
     <RACSelect
       className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
@@ -57,11 +46,7 @@ const Select = <T extends object, M extends 'single' | 'multiple' = 'single'>({
       data-slot='field'
       {...props}
     >
-      {(values) => (
-        <SelectTriggerRefContext.Provider value={triggerRef}>
-          {typeof props.children === 'function' ? props.children(values) : props.children}
-        </SelectTriggerRefContext.Provider>
-      )}
+      {(values) => (typeof props.children === 'function' ? props.children(values) : props.children)}
     </RACSelect>
   )
 }
@@ -80,7 +65,6 @@ const SelectTrigger = ({
   children: Pick<ButtonProps, 'children'> | Pick<GroupProps, 'children'>
 }) => {
   const context = useSlottedContext(SelectContext)!
-  const triggerRef = useSelectTriggerRef()
   if (!context) return null
 
   return context.selectionMode === 'multiple' ? (
@@ -91,13 +75,11 @@ const SelectTrigger = ({
       )}
       data-size={size}
       data-slot='select-trigger'
-      ref={triggerRef as RefObject<HTMLDivElement>}
-      {...props}
     >
       {() => (
         <>
           {children}
-          <Button className='flex h-full w-9 cursor-default items-end justify-end outline-hidden'>
+          <Button {...props} className='flex h-full w-9 cursor-default items-end justify-end outline-hidden'>
             <IconChevronDown className='transition group-data-open/field:rotate-180' />
           </Button>
         </>
@@ -111,7 +93,6 @@ const SelectTrigger = ({
       )}
       data-size={size}
       data-slot='select-trigger'
-      ref={triggerRef as RefObject<HTMLButtonElement>}
       type='button'
       {...props}
     >
@@ -128,12 +109,11 @@ const SelectTrigger = ({
 const SelectContent = <T extends object>({
   className,
   offset = 4,
-  placement = 'bottom',
+  side = 'bottom',
   isSearchable,
   ...props
-}: ListBoxProps<T> & Pick<PopoverProps, 'offset' | 'placement'> & { isSearchable?: boolean }) => {
-  const triggerRef = useSelectTriggerRef()
-
+}: ListBoxProps<T> & Pick<PopoverProps, 'offset'> & { side?: 'bottom' | 'top'; isSearchable?: boolean }) => {
+  const isMultiple = useSlottedContext(SelectContext)?.selectionMode
   const renderContent = () => (
     <ListBox
       className='flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit]'
@@ -147,17 +127,16 @@ const SelectContent = <T extends object>({
   return (
     <Popover
       className={cn(
-        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 w-(--trigger-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
+        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
         className
       )}
       offset={offset}
-      placement={placement}
+      placement={isMultiple ? `${side} end` : side}
       style={{
-        minWidth: triggerRef?.current?.offsetWidth ?? 'var(--trigger-width)',
-        width: triggerRef?.current?.offsetWidth
+        minWidth: 'var(--trigger-width)',
+        width: 'auto'
       }}
       trigger='focus'
-      triggerRef={triggerRef}
     >
       {isSearchable ? (
         <Autocomplete

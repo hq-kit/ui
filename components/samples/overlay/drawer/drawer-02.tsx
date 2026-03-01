@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
@@ -35,9 +36,9 @@ const DrawerSidesDemo = () => {
           </div>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <Button slot='close' variant='outline'>
-              Close
-            </Button>
+            <DrawerClose asChild>
+              <Button variant='outline'>Close</Button>
+            </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
@@ -62,9 +63,9 @@ const DrawerSidesDemo = () => {
           </div>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <Button slot='close' variant='outline'>
-              Close
-            </Button>
+            <DrawerClose asChild>
+              <Button variant='outline'>Close</Button>
+            </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
@@ -89,9 +90,9 @@ const DrawerSidesDemo = () => {
           </div>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <Button slot='close' variant='outline'>
-              Close
-            </Button>
+            <DrawerClose asChild>
+              <Button variant='outline'>Close</Button>
+            </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
@@ -116,9 +117,9 @@ const DrawerSidesDemo = () => {
           </div>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <Button slot='close' variant='outline'>
-              Close
-            </Button>
+            <DrawerClose asChild>
+              <Button variant='outline'>Close</Button>
+            </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
