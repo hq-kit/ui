@@ -1,7 +1,7 @@
 'use client'
 
 import type { VariantProps } from 'tailwind-variants'
-import { IconCheck, IconChevronDown, IconSearch } from '@tabler/icons-react'
+import { IconCheck, IconSearch, IconSelector } from '@tabler/icons-react'
 import {
   Autocomplete,
   Button,
@@ -70,17 +70,29 @@ const SelectTrigger = ({
   return context.selectionMode === 'multiple' ? (
     <Group
       className={cn(
-        "flex w-full items-center justify-between gap-2 overflow-hidden whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none transition-[color,box-shadow,border] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 hover:border-ring disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring has-data-[slot=tag]:pl-1 data-[size=default]:min-h-9 data-[size=sm]:min-h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex w-full items-center justify-between gap-2 overflow-hidden whitespace-nowrap rounded-md border border-input bg-transparent py-1 pr-9 pl-3 text-sm shadow-xs outline-none transition-[color,box-shadow,border] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 hover:border-ring disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring has-aria-expanded:border-ring has-data-[slot=tag]:pl-1 has-aria-expanded:ring-[3px] has-aria-expanded:ring-ring/50 data-[size=default]:min-h-9 data-[size=sm]:min-h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
       data-slot='select-trigger'
+      onClick={(e) => {
+        const triggerButton: HTMLButtonElement | null | undefined = e.currentTarget.parentElement?.querySelector(
+          'button[data-slot="select-trigger-button"]'
+        )
+        if (triggerButton) triggerButton.click()
+      }}
     >
       {() => (
         <>
           {children}
-          <Button {...props} className='flex h-full w-9 cursor-default items-end justify-end outline-hidden'>
-            <IconChevronDown className='transition group-data-open/field:rotate-180' />
+          <Button
+            data-slot='select-trigger-button'
+            {...props}
+            className='absolute right-0 flex size-full cursor-default items-center justify-end pr-3 outline-hidden'
+          >
+            <div>
+              <IconSelector className='transition group-data-open/field:rotate-180' />
+            </div>
           </Button>
         </>
       )}
@@ -88,7 +100,7 @@ const SelectTrigger = ({
   ) : (
     <Button
       className={cn(
-        "flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow,border] hover:border-ring focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow,border] hover:border-ring focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring aria-expanded:border-ring aria-expanded:ring-[3px] aria-expanded:ring-ring/50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
@@ -99,7 +111,7 @@ const SelectTrigger = ({
       {(values) => (
         <>
           {typeof children === 'function' ? children(values) : children}
-          <IconChevronDown className='size-4 text-muted-foreground transition group-data-open/field:rotate-180' />
+          <IconSelector className='size-4 text-muted-foreground transition group-data-open/field:rotate-180' />
         </>
       )}
     </Button>
@@ -113,7 +125,6 @@ const SelectContent = <T extends object>({
   isSearchable,
   ...props
 }: ListBoxProps<T> & Pick<PopoverProps, 'offset'> & { side?: 'bottom' | 'top'; isSearchable?: boolean }) => {
-  const isMultiple = useSlottedContext(SelectContext)?.selectionMode
   const renderContent = () => (
     <ListBox
       className='flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit]'
@@ -127,14 +138,14 @@ const SelectContent = <T extends object>({
   return (
     <Popover
       className={cn(
-        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
+        'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 w-auto min-w-(--trigger-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
         className
       )}
       offset={offset}
-      placement={isMultiple ? `${side} end` : side}
+      placement={side}
       style={{
-        minWidth: 'var(--trigger-width)',
-        width: 'auto'
+        width: 'var(--trigger-width)'
+        // width: 'auto'
       }}
       trigger='focus'
     >

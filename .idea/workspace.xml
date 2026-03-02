@@ -8,22 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-fixed-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-fixed-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-floating-icon-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-icon-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-icon-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/layouts/sidebar/sidebar-inset-icon-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-02.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-02.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/button-group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button-group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tag.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +214,9 @@
       <workItem from="1768982648154" duration="18039000" />
       <workItem from="1771956084985" duration="3225000" />
       <workItem from="1772398350184" duration="22000" />
-      <workItem from="1772398389092" duration="4393000" />
+      <workItem from="1772398389092" duration="4480000" />
+      <workItem from="1772449917217" duration="475000" />
+      <workItem from="1772450403859" duration="2297000" />
     </task>
     <servers />
   </component>

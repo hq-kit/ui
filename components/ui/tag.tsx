@@ -55,8 +55,8 @@ const Tag = ({ children, className, ...props }: TagProps) => {
         <>
           {children}
           {allowsRemoving && (
-            <Button slot='remove'>
-              <IconX />
+            <Button className='z-10 rounded-full p-0.5 transition-colors hover:bg-destructive/20' slot='remove'>
+              <IconX className='size-3' />
             </Button>
           )}
         </>
