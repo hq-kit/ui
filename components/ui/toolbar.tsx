@@ -86,4 +86,4 @@ const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
 }
 
 export type { ToolbarProps }
-export { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarItem }
+export { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator }

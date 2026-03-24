@@ -1,13 +1,12 @@
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
-  DrawerClose,
+  DrawerBody,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from '@/components/ui/drawer'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -15,111 +14,103 @@ import { Label } from '@/components/ui/label'
 const DrawerSidesDemo = () => {
   return (
     <div className='grid grid-cols-2 gap-2'>
-      <Drawer direction='top'>
-        <DrawerTrigger asChild>
-          <Button variant='outline'>Top</Button>
-        </DrawerTrigger>
-        <DrawerContent>
+      <Drawer>
+        <Button variant='outline'>Top</Button>
+        <DrawerContent side='top'>
           <DrawerHeader>
             <DrawerTitle>Edit profile</DrawerTitle>
             <DrawerDescription>Make changes to your profile here. Click save when you&apos;re done.</DrawerDescription>
           </DrawerHeader>
-          <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+          <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-name'>Name</Label>
-              <Input defaultValue='Pedro Duarte' id='Drawer-demo-name' />
+              <Label htmlFor='drawer-demo-name'>Name</Label>
+              <Input defaultValue='Pedro Duarte' id='drawer-demo-name' />
             </div>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-username'>Username</Label>
-              <Input defaultValue='@peduarte' id='Drawer-demo-username' />
+              <Label htmlFor='drawer-demo-username'>Username</Label>
+              <Input defaultValue='@peduarte' id='drawer-demo-username' />
             </div>
-          </div>
+          </DrawerBody>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <DrawerClose asChild>
-              <Button variant='outline'>Close</Button>
-            </DrawerClose>
+            <Button slot='close' variant='outline'>
+              Close
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-      <Drawer direction='right'>
-        <DrawerTrigger asChild>
-          <Button variant='outline'>Right</Button>
-        </DrawerTrigger>
-        <DrawerContent>
+      <Drawer>
+        <Button variant='outline'>Right</Button>
+        <DrawerContent side='right'>
           <DrawerHeader>
             <DrawerTitle>Edit profile</DrawerTitle>
             <DrawerDescription>Make changes to your profile here. Click save when you&apos;re done.</DrawerDescription>
           </DrawerHeader>
-          <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+          <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-name'>Name</Label>
-              <Input defaultValue='Pedro Duarte' id='Drawer-demo-name' />
+              <Label htmlFor='drawer-demo-name'>Name</Label>
+              <Input defaultValue='Pedro Duarte' id='drawer-demo-name' />
             </div>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-username'>Username</Label>
-              <Input defaultValue='@peduarte' id='Drawer-demo-username' />
+              <Label htmlFor='drawer-demo-username'>Username</Label>
+              <Input defaultValue='@peduarte' id='drawer-demo-username' />
             </div>
-          </div>
+          </DrawerBody>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <DrawerClose asChild>
-              <Button variant='outline'>Close</Button>
-            </DrawerClose>
+            <Button slot='close' variant='outline'>
+              Close
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-      <Drawer direction='bottom'>
-        <DrawerTrigger asChild>
-          <Button variant='outline'>Bottom</Button>
-        </DrawerTrigger>
-        <DrawerContent>
+      <Drawer>
+        <Button variant='outline'>Bottom</Button>
+        <DrawerContent side='bottom'>
           <DrawerHeader>
             <DrawerTitle>Edit profile</DrawerTitle>
             <DrawerDescription>Make changes to your profile here. Click save when you&apos;re done.</DrawerDescription>
           </DrawerHeader>
-          <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+          <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-name'>Name</Label>
-              <Input defaultValue='Pedro Duarte' id='Drawer-demo-name' />
+              <Label htmlFor='drawer-demo-name'>Name</Label>
+              <Input defaultValue='Pedro Duarte' id='drawer-demo-name' />
             </div>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-username'>Username</Label>
-              <Input defaultValue='@peduarte' id='Drawer-demo-username' />
+              <Label htmlFor='drawer-demo-username'>Username</Label>
+              <Input defaultValue='@peduarte' id='drawer-demo-username' />
             </div>
-          </div>
+          </DrawerBody>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <DrawerClose asChild>
-              <Button variant='outline'>Close</Button>
-            </DrawerClose>
+            <Button slot='close' variant='outline'>
+              Close
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-      <Drawer direction='left'>
-        <DrawerTrigger asChild>
-          <Button variant='outline'>Left</Button>
-        </DrawerTrigger>
-        <DrawerContent>
+      <Drawer>
+        <Button variant='outline'>Left</Button>
+        <DrawerContent side='left'>
           <DrawerHeader>
             <DrawerTitle>Edit profile</DrawerTitle>
             <DrawerDescription>Make changes to your profile here. Click save when you&apos;re done.</DrawerDescription>
           </DrawerHeader>
-          <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+          <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-name'>Name</Label>
-              <Input defaultValue='Pedro Duarte' id='Drawer-demo-name' />
+              <Label htmlFor='drawer-demo-name'>Name</Label>
+              <Input defaultValue='Pedro Duarte' id='drawer-demo-name' />
             </div>
             <div className='grid gap-3'>
-              <Label htmlFor='Drawer-demo-username'>Username</Label>
-              <Input defaultValue='@peduarte' id='Drawer-demo-username' />
+              <Label htmlFor='drawer-demo-username'>Username</Label>
+              <Input defaultValue='@peduarte' id='drawer-demo-username' />
             </div>
-          </div>
+          </DrawerBody>
           <DrawerFooter>
             <Button type='submit'>Save changes</Button>
-            <DrawerClose asChild>
-              <Button variant='outline'>Close</Button>
-            </DrawerClose>
+            <Button slot='close' variant='outline'>
+              Close
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

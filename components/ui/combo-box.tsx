@@ -125,4 +125,4 @@ ComboBox.Group = ComboBoxGroup
 ComboBox.Item = ComboBoxItem
 ComboBox.Separator = ComboBoxSeparator
 
-export { ComboBox, ComboBoxContent, ComboBoxGroup, ComboBoxItem, ComboBoxInput, ComboBoxSeparator }
+export { ComboBox, ComboBoxContent, ComboBoxGroup, ComboBoxInput, ComboBoxItem, ComboBoxSeparator }

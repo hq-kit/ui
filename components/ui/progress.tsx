@@ -88,4 +88,4 @@ Progress.Header = ProgressHeader
 Progress.Value = ProgressValue
 Progress.Track = ProgressTrack
 
-export { Progress, ProgressHeader, ProgressValue, ProgressTrack }
+export { Progress, ProgressHeader, ProgressTrack, ProgressValue }

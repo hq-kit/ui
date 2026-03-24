@@ -45,7 +45,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxProps) => {
           <div
             className={cn(
               'relative flex size-4 shrink-0 items-center justify-center rounded-[4px] border bg-transparent shadow-xs transition dark:bg-input/30',
-              'border-input group-hover/checkbox:border-ring group-has-invalid/checkbox:border-destructive/70',
+              'border-input group-hover/checkbox:border-ring group-data-invalid/checkbox:border-destructive/70',
               'group-data-selected/checkbox:group-data-has-invalid/checkbox:border-destructive/70 group-data-selected/checkbox:border-primary group-data-selected/checkbox:bg-primary group-data-selected/checkbox:text-primary-foreground group-data-selected/checkbox:group-has-invalid/checkbox:border-destructive/70 group-data-selected/checkbox:group-has-invalid/checkbox:bg-destructive group-data-selected/checkbox:group-has-invalid/checkbox:text-destructive-foreground dark:group-data-selected/checkbox:bg-primary',
               'group-data-focus/checkbox:border-primary group-data-focus/checkbox:group-has-invalid/checkbox:border-destructive/70',
               'group-data-focus-visible/checkbox:border-primary/70 group-data-focus-visible/checkbox:ring-[3px] group-data-focus-visible/checkbox:ring-ring/50 group-data-focus-visible/checkbox:group-has-invalid/checkbox:border-destructive/70 group-data-focus-visible/checkbox:group-has-invalid/checkbox:ring-destructive/20',
@@ -65,7 +65,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxProps) => {
           {typeof children === 'function' ? (
             children(values)
           ) : (
-            <Label className='text-sm transition group-has-invalid/checkbox:text-destructive' elementType='span'>
+            <Label className='text-sm transition group-data-invalid/checkbox:text-destructive' elementType='span'>
               {children}
             </Label>
           )}

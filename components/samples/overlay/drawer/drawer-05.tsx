@@ -5,7 +5,7 @@ import { Form } from 'react-aria-components'
 import { toast } from 'sonner'
 import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
+import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { PasswordInput, TextField } from '@/components/ui/text-field'
@@ -22,15 +22,13 @@ const DrawerWithFormDemo = () => {
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant='outline'>Sign Up</Button>
-      </DrawerTrigger>
+      <Button variant='outline'>Sign Up</Button>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle className='text-center font-bold text-xl'>Sign Up</DrawerTitle>
         </DrawerHeader>
         <Form onSubmit={onSubmit}>
-          <div className='space-y-4 px-4'>
+          <DrawerBody className='space-y-4'>
             <TextField>
               <Label>First Name</Label>
               <Input placeholder='First name' />
@@ -55,7 +53,7 @@ const DrawerWithFormDemo = () => {
               <Label>Confirm Password</Label>
               <PasswordInput placeholder='Confirm password' />
             </TextField>
-          </div>
+          </DrawerBody>
           <DrawerFooter>
             <Button type='submit'>Create Account</Button>
             <Button slot='close' variant='outline'>

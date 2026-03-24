@@ -50,4 +50,4 @@ const CollapsibleContent = ({ className, ...props }: DisclosurePanelProps) => {
 Collapsible.Trigger = CollapsibleTrigger
 Collapsible.Content = CollapsibleContent
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+export { Collapsible, CollapsibleContent, CollapsibleTrigger }

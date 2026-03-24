@@ -30,4 +30,4 @@ async function copyToClipboard(text: string) {
   await navigator.clipboard.writeText(text)
 }
 
-export { titleCase, slugify, pascalCase, copyToClipboard }
+export { copyToClipboard, pascalCase, slugify, titleCase }

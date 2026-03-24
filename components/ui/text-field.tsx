@@ -43,4 +43,4 @@ const PasswordInput = ({ className, ...props }: Omit<InputProps, 'type'>) => {
   )
 }
 
-export { TextField, PasswordInput }
+export { PasswordInput, TextField }

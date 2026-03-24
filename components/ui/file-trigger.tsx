@@ -28,5 +28,5 @@ const FileTrigger = ({
   )
 }
 
-export { FileTrigger }
 export type { FileTriggerProps }
+export { FileTrigger }

@@ -131,11 +131,11 @@ Pagination.Ellipsis = PaginationEllipsis
 export {
   Pagination,
   PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
+  PaginationEllipsis,
   PaginationFirst,
+  PaginationItem,
   PaginationLast,
-  PaginationEllipsis
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
 }

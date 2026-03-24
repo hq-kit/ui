@@ -336,12 +336,12 @@ Navbar.Section = NavbarSection
 export {
   Navbar,
   NavbarBreadcrumbs,
-  NavbarInset,
-  NavbarNav,
   NavbarCompact,
   NavbarFlex,
-  NavbarTrigger,
-  NavbarLogo,
+  NavbarInset,
   NavbarItem,
-  NavbarSection
+  NavbarLogo,
+  NavbarNav,
+  NavbarSection,
+  NavbarTrigger
 }

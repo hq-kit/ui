@@ -86,5 +86,5 @@ const TreeItemLabel = ({ children, icon, iconExpanded, ...props }: TreeItemLabel
 Tree.Item = TreeItem
 Tree.ItemLabel = TreeItemLabel
 
-export { Tree, TreeItem, TreeItemLabel }
 export type { TreeItemProps, TreeProps }
+export { Tree, TreeItem, TreeItemLabel }

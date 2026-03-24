@@ -89,12 +89,18 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, 'children'>) =>
       )}
       {...props}
     >
-      {(segment) => (
-        <DateSegment
-          className='rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
-          segment={segment}
-        />
-      )}
+      {(segment) =>
+        segment.type === 'literal' ? (
+          <span aria-hidden className='select-none p-0' suppressHydrationWarning>
+            {segment.text}
+          </span>
+        ) : (
+          <DateSegment
+            className='rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+            segment={segment}
+          />
+        )
+      }
     </RACDateInput>
   )
 }
@@ -114,12 +120,18 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, 'children
       )}
     >
       <RACDateInput className={cn('inline-flex items-center justify-start px-3')} {...props}>
-        {(segment) => (
-          <DateSegment
-            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
-            segment={segment}
-          />
-        )}
+        {(segment) =>
+          segment.type === 'literal' ? (
+            <span aria-hidden className='select-none p-0' suppressHydrationWarning>
+              {segment.text}
+            </span>
+          ) : (
+            <DateSegment
+              className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+              segment={segment}
+            />
+          )
+        }
       </RACDateInput>
       <Button
         className={cn(
@@ -150,24 +162,36 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, 'chi
       )}
     >
       <RACDateInput className={cn('inline-flex items-center justify-start px-3')} slot='start' {...props}>
-        {(segment) => (
-          <DateSegment
-            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
-            segment={segment}
-          />
-        )}
+        {(segment) =>
+          segment.type === 'literal' ? (
+            <span aria-hidden className='select-none p-0' suppressHydrationWarning>
+              {segment.text}
+            </span>
+          ) : (
+            <DateSegment
+              className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+              segment={segment}
+            />
+          )
+        }
       </RACDateInput>
       <span
         aria-hidden='true'
         className='pointer-events-none z-10 -mx-3 block h-0.5 w-2 shrink-0 self-center rounded-full bg-foreground group-disabled/date-range-picker:text-opacity-50 sm:-mx-2'
       />
       <RACDateInput className={cn('inline-flex items-center justify-start px-3')} slot='end' {...props}>
-        {(segment) => (
-          <DateSegment
-            className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[type=literal]:p-0 data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
-            segment={segment}
-          />
-        )}
+        {(segment) =>
+          segment.type === 'literal' ? (
+            <span aria-hidden className='select-none p-0' suppressHydrationWarning>
+              {segment.text}
+            </span>
+          ) : (
+            <DateSegment
+              className='rounded-sm px-1 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden'
+              segment={segment}
+            />
+          )
+        }
       </RACDateInput>
       <Button
         className={cn(
@@ -183,4 +207,4 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, 'chi
   )
 }
 
-export { DateInput, DatePickerInput, DateRangePickerInput, DateField, TimeField, DatePicker, DateRangePicker }
+export { DateField, DateInput, DatePicker, DatePickerInput, DateRangePicker, DateRangePickerInput, TimeField }

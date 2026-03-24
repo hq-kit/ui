@@ -59,4 +59,4 @@ Accordion.Trigger = AccordionTrigger
 Accordion.Item = AccordionItem
 Accordion.Content = AccordionContent
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

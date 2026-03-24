@@ -76,4 +76,4 @@ Empty.Description = EmptyDescription
 Empty.Content = EmptyContent
 Empty.Media = EmptyMedia
 
-export { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, EmptyMedia, emptyMediaVariants }
+export { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, emptyMediaVariants }

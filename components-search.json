@@ -22,12 +22,12 @@
     "section": "Framework Guides",
     "children": [
       {
-        "slug": "/docs/framework-guides/vite",
-        "title": "Vite"
-      },
-      {
         "slug": "/docs/framework-guides/nextjs",
         "title": "Nextjs"
+      },
+      {
+        "slug": "/docs/framework-guides/vite",
+        "title": "Vite"
       }
     ]
   },
@@ -36,20 +36,20 @@
     "section": "Dark Mode",
     "children": [
       {
-        "slug": "/docs/dark-mode/vite",
-        "title": "Vite"
+        "slug": "/docs/dark-mode/astro",
+        "title": "Astro"
       },
       {
-        "slug": "/docs/dark-mode/inertia-js",
-        "title": "Inertia.js"
+        "slug": "/docs/dark-mode/vite",
+        "title": "Vite"
       },
       {
         "slug": "/docs/dark-mode/next-js",
         "title": "Next.js"
       },
       {
-        "slug": "/docs/dark-mode/astro",
-        "title": "Astro"
+        "slug": "/docs/dark-mode/inertia-js",
+        "title": "Inertia.js"
       },
       {
         "slug": "/docs/dark-mode/remix",

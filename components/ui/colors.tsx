@@ -168,15 +168,15 @@ const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => (
 
 export {
   ColorArea,
+  ColorField,
+  ColorPicker,
+  ColorSlider,
+  ColorSliderOutput,
+  ColorSliderTrack,
   ColorSwatch,
   ColorSwatchPicker,
   ColorSwatchPickerItem,
   ColorThumb,
   ColorWheel,
-  ColorSliderTrack,
-  ColorSlider,
-  type ColorWheelTrack,
-  ColorPicker,
-  ColorSliderOutput,
-  ColorField
+  type ColorWheelTrack
 }

@@ -125,6 +125,7 @@ const SheetBody = ({ className, ...props }: ComponentPropsWithRef<'div'>) => (
   <div
     className={cn(
       'isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll',
+      '[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1',
       className
     )}
     slot='body'
@@ -167,13 +168,13 @@ Sheet.X = SheetX
 
 export {
   Sheet,
-  SheetTrigger,
-  SheetContent,
   SheetBody,
+  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetOverlay,
   SheetTitle,
+  SheetTrigger,
   SheetX
 }

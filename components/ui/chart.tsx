@@ -1173,6 +1173,15 @@ const PieChart = <TValue extends ValueType, TName extends NameType>({
   )
 }
 
-export type { PieChartProps, BarChartProps, LineChartProps, AreaChartProps }
-export { Chart, LineChart, AreaChart, PieChart, BarChart }
-export { getColorValue, constructCategoryColors, DEFAULT_COLORS, CHART_COLORS }
+export type { AreaChartProps, BarChartProps, LineChartProps, PieChartProps }
+export {
+  AreaChart,
+  BarChart,
+  CHART_COLORS,
+  Chart,
+  constructCategoryColors,
+  DEFAULT_COLORS,
+  getColorValue,
+  LineChart,
+  PieChart
+}

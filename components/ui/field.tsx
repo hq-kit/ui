@@ -89,7 +89,7 @@ const Field = ({
 const FieldLabel = ({ className, ...props }: ComponentProps<typeof Label>) => (
   <Label
     className={cn(
-      'group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50',
+      'group/field-label peer/field-label flex w-fit gap-2 in-data-[slot=checkbox]:font-normal leading-snug group-data-[disabled=true]/field:opacity-50',
       'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4',
       'has-data-selected:border-primary has-data-selected:bg-primary/5 dark:has-data-selected:bg-primary/10',
       className
@@ -160,6 +160,24 @@ const FieldError = (props: FieldErrorProps) => {
   )
 }
 
+const FieldErrorNative = ({ errors, className = '' }: { className?: string; errors?: string | string[] }) => {
+  if (!errors || errors.length === 0) {
+    return null
+  }
+
+  return Array.isArray(errors) ? (
+    <ul className='flex flex-col'>
+      {errors.map((error, i) => (
+        <li className={cn('font-normal text-destructive text-sm', className)} key={i}>
+          {error}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className={cn('font-normal text-destructive text-sm', className)}>{errors}</p>
+  )
+}
+
 Field.Label = FieldLabel
 Field.Description = FieldDescription
 Field.Error = FieldError
@@ -168,17 +186,19 @@ Field.Legend = FieldLegend
 Field.Separator = FieldSeparator
 Field.Set = FieldSet
 Field.Title = FieldTitle
+Field.ErrorNative = FieldErrorNative
 
 export {
-  Form,
   Field,
-  FieldLabel,
   FieldDescription,
   FieldError,
+  FieldErrorNative,
   FieldGroup,
+  FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
   FieldTitle,
+  Form,
   fieldVariants
 }

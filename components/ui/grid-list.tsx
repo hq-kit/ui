@@ -127,15 +127,15 @@ GridList.EmptyState = GridListEmptyState
 GridList.Label = GridListLabel
 GridList.Description = GridListDescription
 
-export type { GridListProps, GridListItemProps }
+export type { GridListItemProps, GridListProps }
 export {
   GridList,
-  GridListSection,
-  GridListHeader,
-  GridListStart,
-  GridListSpacer,
-  GridListItem,
+  GridListDescription,
   GridListEmptyState,
+  GridListHeader,
+  GridListItem,
   GridListLabel,
-  GridListDescription
+  GridListSection,
+  GridListSpacer,
+  GridListStart
 }

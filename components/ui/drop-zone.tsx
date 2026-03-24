@@ -18,4 +18,5 @@ const DropZone = ({ className, ...props }: DropZoneProps) => (
     {...props}
   />
 )
+
 export { DropZone }

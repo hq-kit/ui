@@ -46,4 +46,4 @@ Alert.Title = AlertTitle
 Alert.Description = AlertDescription
 Alert.Action = AlertAction
 
-export { Alert, AlertTitle, AlertDescription, AlertAction }
+export { Alert, AlertAction, AlertDescription, AlertTitle }

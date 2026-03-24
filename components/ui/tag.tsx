@@ -203,4 +203,4 @@ const TagField = ({
   )
 }
 
-export { Tag, TagList, TagField, TagGroup }
+export { Tag, TagField, TagGroup, TagList }

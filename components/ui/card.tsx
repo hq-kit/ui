@@ -53,4 +53,4 @@ Card.Description = CardDescription
 Card.Action = CardAction
 Card.Content = CardContent
 
-export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent }
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

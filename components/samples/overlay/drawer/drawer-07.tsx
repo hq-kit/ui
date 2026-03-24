@@ -9,12 +9,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import {
   Drawer,
+  DrawerBody,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from '@/components/ui/drawer'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -111,13 +111,11 @@ const DataTableDensityDemo = () => {
               <SearchField aria-label='Search' className='max-w-sm' id='search'>
                 <SearchInput placeholder='Search ...' />
               </SearchField>
-              <Drawer onOpenChange={setIsDrawerOpen} open={isDrawerOpen}>
-                <DrawerTrigger asChild>
-                  <Button variant='outline'>
-                    <IconPlus />
-                    Add Users
-                  </Button>
-                </DrawerTrigger>
+              <Drawer isOpen={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+                <Button variant='outline'>
+                  <IconPlus />
+                  Add Users
+                </Button>
                 <DrawerContent>
                   <DrawerHeader>
                     <DrawerTitle>Add New User</DrawerTitle>
@@ -126,7 +124,7 @@ const DataTableDensityDemo = () => {
                     </DrawerDescription>
                   </DrawerHeader>
                   <Form onSubmit={handleAddUser}>
-                    <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+                    <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
                       <TextField name='name'>
                         <Label>Name</Label>
                         <Input placeholder='Enter user name' />
@@ -151,7 +149,7 @@ const DataTableDensityDemo = () => {
                           <SelectItem id='failed'>Failed</SelectItem>
                         </SelectContent>
                       </Select>
-                    </div>
+                    </DrawerBody>
                     <DrawerFooter>
                       <Button type='submit'>Add User</Button>
                       <Button slot='close' variant='outline'>

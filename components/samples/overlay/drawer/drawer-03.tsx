@@ -1,37 +1,35 @@
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
+  DrawerBody,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from '@/components/ui/drawer'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-const DrawerWithNoOverlayDemo = () => {
+const DrawerWithoutNotchDemo = () => {
   return (
-    <Drawer modal={false}>
-      <DrawerTrigger asChild>
-        <Button variant='outline'>No Overlay</Button>
-      </DrawerTrigger>
-      <DrawerContent overlayclassname='bg-transparent'>
+    <Drawer>
+      <Button variant='outline'>No Notch</Button>
+      <DrawerContent notch={false}>
         <DrawerHeader>
           <DrawerTitle>Edit profile</DrawerTitle>
           <DrawerDescription>Make changes to your profile here. Click save when you&apos;re done.</DrawerDescription>
         </DrawerHeader>
-        <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+        <DrawerBody className='grid flex-1 auto-rows-min gap-6'>
           <div className='grid gap-3'>
-            <Label htmlFor='Drawer-demo-name'>Name</Label>
-            <Input defaultValue='Pedro Duarte' id='Drawer-demo-name' />
+            <Label htmlFor='sheet-demo-name'>Name</Label>
+            <Input defaultValue='Pedro Duarte' id='sheet-demo-name' />
           </div>
           <div className='grid gap-3'>
-            <Label htmlFor='Drawer-demo-username'>Username</Label>
-            <Input defaultValue='@peduarte' id='Drawer-demo-username' />
+            <Label htmlFor='sheet-demo-username'>Username</Label>
+            <Input defaultValue='@peduarte' id='sheet-demo-username' />
           </div>
-        </div>
+        </DrawerBody>
         <DrawerFooter>
           <Button type='submit'>Save changes</Button>
           <Button slot='close' variant='outline'>
@@ -43,4 +41,4 @@ const DrawerWithNoOverlayDemo = () => {
   )
 }
 
-export default DrawerWithNoOverlayDemo
+export default DrawerWithoutNotchDemo

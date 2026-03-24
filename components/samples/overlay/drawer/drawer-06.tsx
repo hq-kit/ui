@@ -16,7 +16,7 @@ import {
 } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
+import { Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
 
 type NavigationItem = {
   name: string
@@ -180,19 +180,17 @@ const NavigationMenu = ({ item, level }: { level: number; item: NavigationItem }
 
 const DrawerWithNavigationMenuDemo = () => {
   return (
-    <Drawer direction='left'>
-      <DrawerTrigger asChild>
-        <Button variant='outline'>Navigation Menu</Button>
-      </DrawerTrigger>
-      <DrawerContent>
+    <Drawer>
+      <Button variant='outline'>Navigation Menu</Button>
+      <DrawerContent side='left'>
         <DrawerHeader>
           <DrawerTitle className='pl-1'>Menu</DrawerTitle>
         </DrawerHeader>
-        <div className='flex flex-col gap-2.5 px-4'>
+        <DrawerBody className='flex flex-col gap-2.5'>
           {navigationMenu.map((item) => (
             <NavigationMenu item={item} key={item.name} level={0} />
           ))}
-        </div>
+        </DrawerBody>
       </DrawerContent>
     </Drawer>
   )

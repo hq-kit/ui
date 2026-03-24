@@ -64,4 +64,4 @@ InputOTP.Group = InputOTPGroup
 InputOTP.Slot = InputOTPSlot
 InputOTP.Separator = InputOTPSeparator
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }

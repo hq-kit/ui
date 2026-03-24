@@ -9,14 +9,14 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/input",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/input",
     "utils"
   ],
   "files": [
     {
       "path": "components/ui/text-field.tsx",
-      "content": "'use client'\n\nimport type { VariantProps } from 'tailwind-variants'\nimport { IconEye, IconEyeClosed } from '@tabler/icons-react'\nimport { useState } from 'react'\nimport {\n  composeRenderProps,\n  type InputProps,\n  TextField as RACTextField,\n  type TextFieldProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { fieldVariants } from './field'\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './input'\n\nconst TextField = ({\n  className,\n  orientation = 'vertical',\n  ...props\n}: TextFieldProps & VariantProps<typeof fieldVariants>) => (\n  <RACTextField\n    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}\n    data-orientation={orientation}\n    data-slot='field'\n    {...props}\n  />\n)\n\nconst PasswordInput = ({ className, ...props }: Omit<InputProps, 'type'>) => {\n  const [isVisible, setIsVisible] = useState<boolean>(false)\n  return (\n    <InputGroup>\n      <InputGroupInput type={isVisible ? 'text' : 'password'} {...props} />\n      <InputGroupAddon align='inline-end'>\n        <InputGroupButton onPress={() => setIsVisible(!isVisible)}>\n          <IconEye className={cn('size-5 transition-transform sm:size-4', isVisible ? 'scale-0' : 'scale-100')} />\n          <IconEyeClosed\n            className={cn('absolute size-5 transition-transform sm:size-4', isVisible ? 'scale-100' : 'scale-0')}\n          />\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  )\n}\n\nexport { TextField, PasswordInput }\n",
+      "content": "'use client'\n\nimport type { VariantProps } from 'tailwind-variants'\nimport { IconEye, IconEyeClosed } from '@tabler/icons-react'\nimport { useState } from 'react'\nimport {\n  composeRenderProps,\n  type InputProps,\n  TextField as RACTextField,\n  type TextFieldProps\n} from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { fieldVariants } from './field'\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './input'\n\nconst TextField = ({\n  className,\n  orientation = 'vertical',\n  ...props\n}: TextFieldProps & VariantProps<typeof fieldVariants>) => (\n  <RACTextField\n    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}\n    data-orientation={orientation}\n    data-slot='field'\n    {...props}\n  />\n)\n\nconst PasswordInput = ({ className, ...props }: Omit<InputProps, 'type'>) => {\n  const [isVisible, setIsVisible] = useState<boolean>(false)\n  return (\n    <InputGroup>\n      <InputGroupInput type={isVisible ? 'text' : 'password'} {...props} />\n      <InputGroupAddon align='inline-end'>\n        <InputGroupButton onPress={() => setIsVisible(!isVisible)}>\n          <IconEye className={cn('size-5 transition-transform sm:size-4', isVisible ? 'scale-0' : 'scale-100')} />\n          <IconEyeClosed\n            className={cn('absolute size-5 transition-transform sm:size-4', isVisible ? 'scale-100' : 'scale-0')}\n          />\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  )\n}\n\nexport { PasswordInput, TextField }\n",
       "type": "registry:ui"
     }
   ],

@@ -8,12 +8,12 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/button"
+    "https://hq-ui.vercel.app/r/button"
   ],
   "files": [
     {
       "path": "components/ui/file-trigger.tsx",
-      "content": "'use client'\n\nimport type { ReactNode, RefObject } from 'react'\nimport type { VariantProps } from 'tailwind-variants'\nimport { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'\nimport { Button, type buttonVariants } from './button'\n\ninterface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof buttonVariants> {\n  isDisabled?: boolean\n  ref?: RefObject<HTMLInputElement>\n}\n\nconst FileTrigger = ({\n  variant,\n  size,\n  ref,\n  isDisabled,\n  isPending,\n  children,\n  ...props\n}: Omit<FileTriggerProps, 'children'> & { children: ReactNode }) => {\n  return (\n    <RACFileTrigger ref={ref} {...props}>\n      <Button isDisabled={isDisabled} isPending={isPending} size={size} variant={variant}>\n        {children}\n      </Button>\n    </RACFileTrigger>\n  )\n}\n\nexport { FileTrigger }\nexport type { FileTriggerProps }\n",
+      "content": "'use client'\n\nimport type { ReactNode, RefObject } from 'react'\nimport type { VariantProps } from 'tailwind-variants'\nimport { FileTrigger as RACFileTrigger, type FileTriggerProps as RACFileTriggerProps } from 'react-aria-components'\nimport { Button, type buttonVariants } from './button'\n\ninterface FileTriggerProps extends RACFileTriggerProps, VariantProps<typeof buttonVariants> {\n  isDisabled?: boolean\n  ref?: RefObject<HTMLInputElement>\n}\n\nconst FileTrigger = ({\n  variant,\n  size,\n  ref,\n  isDisabled,\n  isPending,\n  children,\n  ...props\n}: Omit<FileTriggerProps, 'children'> & { children: ReactNode }) => {\n  return (\n    <RACFileTrigger ref={ref} {...props}>\n      <Button isDisabled={isDisabled} isPending={isPending} size={size} variant={variant}>\n        {children}\n      </Button>\n    </RACFileTrigger>\n  )\n}\n\nexport type { FileTriggerProps }\nexport { FileTrigger }\n",
       "type": "registry:ui"
     }
   ],

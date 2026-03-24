@@ -1,26 +1,24 @@
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
+  DrawerBody,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from '@/components/ui/drawer'
 
 const DrawerWithScrollableContentDemo = () => {
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant='outline'>Scrollable Content</Button>
-      </DrawerTrigger>
+      <Button variant='outline'>Scrollable Content</Button>
       <DrawerContent className='lg:h-[calc(100vh-10rem)]'>
         <DrawerHeader>
           <DrawerTitle>Terms & Condition</DrawerTitle>
           <DrawerDescription>Make sure read the terms and conditions before proceeding.</DrawerDescription>
         </DrawerHeader>
-        <div className='space-y-1 overflow-y-auto px-4 text-sm'>
+        <DrawerBody className='space-y-1 text-sm'>
           <p className='mb-2 font-medium'>Last Updated: June 1, 2025</p>
 
           <h3>1. Introduction</h3>
@@ -111,7 +109,7 @@ const DrawerWithScrollableContentDemo = () => {
           <p>If you have any questions or concerns about these Terms and Conditions, please contact us at:</p>
           <p>Email: support@example.com</p>
           <p>Phone: +1 (800) 123-4567</p>
-        </div>
+        </DrawerBody>
         <DrawerFooter>
           <Button slot='close' type='submit'>
             Accept

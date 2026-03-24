@@ -50,4 +50,4 @@ const PopoverTrigger = (props: ButtonProps) => <Button {...props} />
 Popover.Trigger = PopoverTrigger
 Popover.Content = PopoverContent
 
-export { Popover, PopoverTrigger, PopoverContent }
+export { Popover, PopoverContent, PopoverTrigger }
