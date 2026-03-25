@@ -9,8 +9,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
     "utils"
   ],
   "files": [

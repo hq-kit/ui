@@ -9,7 +9,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button-group",
+    "http://localhost:3000/r/button-group",
     "utils"
   ],
   "files": [

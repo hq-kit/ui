@@ -9,9 +9,9 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/autocomplete",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input",
+    "http://localhost:3000/r/autocomplete",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
     "utils"
   ],
   "files": [
