@@ -4,21 +4,34 @@ import type { Key } from 'react-aria-components'
 import { IconBrandAdobe } from '@tabler/icons-react'
 import { useState } from 'react'
 import { Code } from '@/components/mdx/code'
-import { Button, type ButtonProps } from '@/components/ui/button'
+import { Button, type ButtonProps, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { TextField } from '@/components/ui/text-field'
 
+const variants = Object.keys(buttonVariants.variants.variant)
+const sizes = Object.keys(buttonVariants.variants.size)
+
 export default function ButtonPreview() {
   const [isPending, setIsPending] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
   const [children, setChildren] = useState('Button')
-  const [variant, setVariant] = useState<Key | null>('default')
-  const [size, setSize] = useState<Key | null>('default')
+  const [variant, setVariant] = useState<Key | null>(variants[0])
+  const [size, setSize] = useState<Key | null>(sizes[0])
   const [withIcon, setWithIcon] = useState(false)
   const [iconOnly, setIconOnly] = useState(false)
+
+  const onIconOnlyChange = (value: boolean) => {
+    setIconOnly(value)
+    if (value) {
+      setWithIcon(false)
+      setSize(sizes.find((size) => size.startsWith('icon')) as Key)
+    } else {
+      setSize(sizes[0] as Key)
+    }
+  }
 
   return (
     <div>
@@ -31,7 +44,7 @@ export default function ButtonPreview() {
           <Switch isDisabled={iconOnly} isSelected={withIcon} onChange={setWithIcon}>
             With Icon
           </Switch>
-          <Switch isDisabled={withIcon} isSelected={iconOnly} onChange={setIconOnly}>
+          <Switch isSelected={iconOnly} onChange={onIconOnlyChange}>
             Icon Only
           </Switch>
           <Select onChange={setVariant} value={variant}>
@@ -39,13 +52,8 @@ export default function ButtonPreview() {
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem id='default'>Default (Primary)</SelectItem>
-              <SelectItem id='secondary'>Secondary</SelectItem>
-              <SelectItem id='destructive'>Destructive</SelectItem>
-              <SelectItem id='ghost'>Ghost</SelectItem>
-              <SelectItem id='outline'>Outline</SelectItem>
-              <SelectItem id='link'>Link</SelectItem>
+            <SelectContent items={variants.map((variant) => ({ id: variant, textValue: variant }))}>
+              {(item) => <SelectItem id={item.id}>{item.textValue}</SelectItem>}
             </SelectContent>
           </Select>
           <Select onChange={setSize} value={size}>
@@ -53,13 +61,14 @@ export default function ButtonPreview() {
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem id='sm'>Small</SelectItem>
-              <SelectItem id='default'>Default (Medium)</SelectItem>
-              <SelectItem id='lg'>Large</SelectItem>
-              <SelectItem id='icon-sm'>Icon Small</SelectItem>
-              <SelectItem id='icon'>Icon Medium</SelectItem>
-              <SelectItem id='icon-lg'>Icon Large</SelectItem>
+            <SelectContent
+              items={
+                iconOnly
+                  ? sizes.filter((size) => size.startsWith('icon')).map((size) => ({ id: size, textValue: size }))
+                  : sizes.filter((size) => !size.startsWith('icon')).map((size) => ({ id: size, textValue: size }))
+              }
+            >
+              {(item) => <SelectItem id={item.id}>{item.textValue}</SelectItem>}
             </SelectContent>
           </Select>
           <Switch isSelected={isPending} onChange={setIsPending}>

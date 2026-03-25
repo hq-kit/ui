@@ -12,4 +12,4 @@ const Separator = ({ className, orientation = 'horizontal', ...props }: Separato
   />
 )
 
-export { Separator }
+export { Separator, type SeparatorProps }

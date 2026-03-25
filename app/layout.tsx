@@ -1,6 +1,5 @@
 import { Providers } from '@/components/providers'
 import { ThemeSync } from '@/components/theme-sync'
-import { Toaster } from '@/components/ui/sonner'
 import { siteConfig } from '@/config/site'
 import { fontMonoUrl } from '@/lib/fonts/mono'
 import { fontSansUrl } from '@/lib/fonts/sans'
@@ -87,7 +86,6 @@ export default async function RootLayout({
       <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
         <Providers>
           <ThemeSync />
-          <Toaster />
           {children}
           {process.env.NODE_ENV === 'production' && (
             <>

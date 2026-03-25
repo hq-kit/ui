@@ -44,7 +44,7 @@ export function ManualInstall({ component }: { component: string }) {
       <p className='mb-4'>First install the dependencies</p>
       <CLI command='install' items={deps} />
 
-      <p className='mb-4'>Add the files to your project</p>
+      <p className='my-4'>Add the files to your project</p>
       <div className='relative mb-4 grid overflow-hidden rounded-xl border shadow-sm lg:h-96 lg:grid-cols-4 lg:*:last:col-span-3 lg:*:first:col-span-1'>
         <div>
           <h2 className='px-4 py-2 font-medium text-sm'>Files</h2>

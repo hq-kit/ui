@@ -1,0 +1,28 @@
+$ next build
+[MDX] generated files in 268.60462399999994ms
+▲ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 33.4s
+  Skipping validation of types
+  Finished TypeScript config validation in 27ms ...
+  Collecting page data using 11 workers ...
+Error: Failed to collect configuration for /
+    at ignore-listed frames {
+  [cause]: TypeError: p.default.createContext is not a function
+      at module evaluation (.next/server/chunks/ssr/_0br4v4z._.js:1:22331)
+      at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:853:9)
+      at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:877:12)
+      at Context.esmImport [as i] (.next/server/chunks/ssr/[turbopack]_runtime.js:281:20)
+      at module evaluation (.next/server/chunks/ssr/_0br4v4z._.js:1:30608)
+      at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:853:9)
+      at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:877:12)
+      at Context.commonJsRequire [as r] (.next/server/chunks/ssr/[turbopack]_runtime.js:302:12)
+}
+
+> Build error occurred
+Error: Failed to collect page data for /
+    at ignore-listed frames {
+  type: 'Error'
+}
+error: script "build" exited with code 1
