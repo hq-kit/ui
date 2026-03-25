@@ -36,7 +36,7 @@ const tabs = [
 const TabsSoftVerticalDemo = () => {
   return (
     <div className='w-full max-w-md'>
-      <Tabs className='flex-row' defaultSelectedKey='explore'>
+      <Tabs defaultSelectedKey='explore' orientation='vertical'>
         <TabsList className='h-full flex-col bg-background'>
           {tabs.map((tab) => (
             <TabsTrigger

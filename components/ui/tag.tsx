@@ -35,12 +35,12 @@ const Tag = ({ children, className, ...props }: TagProps) => {
     <RACTag
       className={composeRenderProps(className, (className) =>
         cn(
-          'inset-ring inset-ring-input outline-hidden dark:bg-input/30',
+          'inset-ring inset-ring-input outline-hidden transition dark:bg-input/30',
           'inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5',
           '[&_svg:not([class*="size-"])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0',
           'rounded-md px-2',
           'data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50',
-          'data-selected:inset-ring-ring/70 data-selected:bg-primary data-selected:text-primary-foreground',
+          'data-selected:inset-ring-ring/70 data-selected:bg-primary data-selected:text-primary-foreground dark:data-selected:bg-primary',
           'data-disabled:opacity-50',
           'href' in props ? 'cursor-pointer' : 'cursor-default',
           'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',

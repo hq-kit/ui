@@ -55,8 +55,8 @@ export default function ToolbarDemo() {
           </ToolbarItem>
         </ToolbarGroup>
         <ToolbarSeparator />
-        <Checkbox>Spell Check</Checkbox>
         <ToolbarGroup className='ml-auto'>
+          <Checkbox>Spell Check</Checkbox>
           <DropdownMenu>
             <Button aria-label='Other options' size='sm' variant='outline'>
               Options...

@@ -10,6 +10,8 @@
     --breakpoint-4xl: 2000px;
     --font-sans: var(--font-sans);
     --font-mono: var(--font-mono);
+    --font-sans--font-feature-settings: "cv02", "cv03", "cv04", "cv11", "cv13";
+    --font-mono--font-feature-settings: "ss02", "zero";
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -141,6 +143,15 @@
         @apply scroll-smooth;
     }
 
+    html {
+        text-size-adjust: 100%;
+        font-variation-settings: normal;
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
+    }
+
     body {
         font-synthesis-weight: none;
         text-rendering: optimizeLegibility;
@@ -219,11 +230,9 @@
     background-color: var(--scrollbar-thumb);
     border-radius: 9999px;
     opacity: 0;
-    /* awalnya hilang */
     transition:
         background-color 0.4s ease,
         opacity 0.4s ease;
-    /* awalnya hilang */
 }
 
 /* Saat hover */

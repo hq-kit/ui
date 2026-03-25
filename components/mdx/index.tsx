@@ -9,6 +9,8 @@ import { Demo } from '@/components/mdx/demo'
 import { Grid } from '@/components/mdx/grids'
 import { Iframe } from '@/components/mdx/iframe'
 import { Install } from '@/components/mdx/install'
+import { McpRacTabs } from '@/components/mdx/mcp-rac-tabs'
+import { McpTabs } from '@/components/mdx/mcp-tabs'
 import { Preview } from '@/components/mdx/preview'
 import {
   TypographyA,
@@ -55,6 +57,8 @@ export const mdxComponents = {
   Preview,
   Grid,
   Iframe,
+  McpTabs,
+  McpRacTabs,
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
     <Alert
       {...props}

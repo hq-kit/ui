@@ -35,11 +35,11 @@ const tabs = [
 
 const TabsVerticalDemo = () => {
   return (
-    <div className='w-full max-w-md'>
-      <Tabs className='flex-row' defaultSelectedKey='explore'>
-        <TabsList className='h-full flex-col'>
+    <div>
+      <Tabs defaultSelectedKey='explore' orientation='vertical'>
+        <TabsList>
           {tabs.map((tab) => (
-            <TabsTrigger className='w-full' id={tab.value} key={tab.value}>
+            <TabsTrigger id={tab.value} key={tab.value}>
               {tab.name}
             </TabsTrigger>
           ))}

@@ -4,9 +4,9 @@ import type { ToolbarProps as RACToolbarProps, SeparatorProps, ToggleButtonGroup
 import { createContext, use, useContext } from 'react'
 import {
   composeRenderProps,
+  Toolbar as RACToolbar,
   ToggleButtonGroup,
   ToggleButtonGroupContext,
-  Toolbar as ToolbarPrimitive,
   useSlottedContext
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
@@ -25,7 +25,7 @@ interface ToolbarProps extends RACToolbarProps {
 const Toolbar = ({ orientation = 'horizontal', isCircle, className, ...props }: ToolbarProps) => {
   return (
     <ToolbarContext.Provider value={{ orientation, isCircle }}>
-      <ToolbarPrimitive
+      <RACToolbar
         orientation={orientation}
         {...props}
         className={composeRenderProps(className, (className, { orientation }) =>
@@ -78,7 +78,7 @@ const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
   const reverseOrientation = orientation === 'vertical' ? 'horizontal' : 'vertical'
   return (
     <Separator
-      className={cn(reverseOrientation === 'vertical' ? 'mx-0.5 h-6' : 'my-0.5 w-8', className)}
+      className={cn(reverseOrientation === 'vertical' ? 'mx-0.5 h-8' : 'my-0.5 w-8', className)}
       orientation={reverseOrientation}
       {...props}
     />

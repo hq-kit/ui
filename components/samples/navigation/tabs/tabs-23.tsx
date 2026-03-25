@@ -40,7 +40,7 @@ const tabs = [
 const TabsVerticalWithBadgeDemo = () => {
   return (
     <div className='w-full max-w-md'>
-      <Tabs className='flex-row' defaultSelectedKey='explore'>
+      <Tabs defaultSelectedKey='explore' orientation='vertical'>
         <TabsList className='h-full flex-col gap-1.5'>
           {tabs.map((tab) => (
             <TabsTrigger

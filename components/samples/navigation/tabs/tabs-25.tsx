@@ -37,10 +37,10 @@ const TabsCustomDemo = () => {
   return (
     <div className='w-full max-w-md'>
       <Tabs className='gap-4' defaultSelectedKey='explore'>
-        <TabsList className='gap-1 bg-background'>
+        <TabsList className='bg-background'>
           {tabs.map((tab) => (
             <TabsTrigger
-              className='text-muted-foreground hover:text-foreground data-selected:text-primary-foreground *:data-[slot=selected-indicator]:bg-primary *:data-[slot=selected-indicator]:transition-colors *:data-[slot=selected-indicator]:duration-300 hover:*:data-[slot=selected-indicator]:border hover:*:data-[slot=selected-indicator]:bg-muted dark:data-selected:text-primary-foreground dark:*:data-[slot=selected-indicator]:border-transparent dark:*:data-[slot=selected-indicator]:bg-primary'
+              className='text-muted-foreground hover:text-foreground data-selected:text-primary-foreground hover:data-selected:text-foreground *:data-[slot=selected-indicator]:bg-primary *:data-[slot=selected-indicator]:duration-300 hover:*:data-[slot=selected-indicator]:border hover:*:data-[slot=selected-indicator]:bg-muted dark:data-selected:text-primary-foreground dark:*:data-[slot=selected-indicator]:border-transparent dark:*:data-[slot=selected-indicator]:bg-primary'
               id={tab.value}
               key={tab.value}
             >

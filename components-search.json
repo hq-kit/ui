@@ -5,15 +5,23 @@
     "children": [
       {
         "slug": "/docs/getting-started/introduction",
-        "title": "Introduction"
-      },
-      {
-        "slug": "/docs/getting-started/client-side-routing",
-        "title": "Client Side Routing"
+        "title": "Introduction",
+        "order": 1
       },
       {
         "slug": "/docs/getting-started/installation",
-        "title": "Installation"
+        "title": "Installation",
+        "order": 2
+      },
+      {
+        "slug": "/docs/getting-started/client-side-routing",
+        "title": "Client Side Routing",
+        "order": 3
+      },
+      {
+        "slug": "/docs/getting-started/mcp-server",
+        "title": "MCP Server",
+        "order": 4
       }
     ]
   },
@@ -23,11 +31,13 @@
     "children": [
       {
         "slug": "/docs/framework-guides/nextjs",
-        "title": "Nextjs"
+        "title": "Nextjs",
+        "order": 999
       },
       {
         "slug": "/docs/framework-guides/vite",
-        "title": "Vite"
+        "title": "Vite",
+        "order": 999
       }
     ]
   },
@@ -37,23 +47,28 @@
     "children": [
       {
         "slug": "/docs/dark-mode/astro",
-        "title": "Astro"
-      },
-      {
-        "slug": "/docs/dark-mode/vite",
-        "title": "Vite"
-      },
-      {
-        "slug": "/docs/dark-mode/next-js",
-        "title": "Next.js"
+        "title": "Astro",
+        "order": 999
       },
       {
         "slug": "/docs/dark-mode/inertia-js",
-        "title": "Inertia.js"
+        "title": "Inertia.js",
+        "order": 999
+      },
+      {
+        "slug": "/docs/dark-mode/next-js",
+        "title": "Next.js",
+        "order": 999
       },
       {
         "slug": "/docs/dark-mode/remix",
-        "title": "Remix"
+        "title": "Remix",
+        "order": 999
+      },
+      {
+        "slug": "/docs/dark-mode/vite",
+        "title": "Vite",
+        "order": 999
       }
     ]
   },
@@ -67,19 +82,23 @@
         "children": [
           {
             "slug": "/docs/components/buttons/button",
-            "title": "Button"
+            "title": "Button",
+            "order": 999
           },
           {
             "slug": "/docs/components/buttons/file-trigger",
-            "title": "File Trigger"
+            "title": "File Trigger",
+            "order": 999
           },
           {
             "slug": "/docs/components/buttons/toggle",
-            "title": "Toggle"
+            "title": "Toggle",
+            "order": 999
           },
           {
             "slug": "/docs/components/buttons/toggle-group",
-            "title": "Toggle Group"
+            "title": "Toggle Group",
+            "order": 999
           }
         ]
       },
@@ -89,7 +108,8 @@
         "children": [
           {
             "slug": "/docs/components/charts/chart",
-            "title": "Chart"
+            "title": "Chart",
+            "order": 999
           }
         ]
       },
@@ -99,39 +119,48 @@
         "children": [
           {
             "slug": "/docs/components/collections/accordion",
-            "title": "Accordion"
+            "title": "Accordion",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/collapsible",
-            "title": "Collapsible"
+            "title": "Collapsible",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/dropdown-menu",
-            "title": "Dropdown Menu"
+            "title": "Dropdown Menu",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/grid-list",
-            "title": "Grid List"
+            "title": "Grid List",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/item",
-            "title": "Item"
+            "title": "Item",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/list-box",
-            "title": "List Box"
+            "title": "List Box",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/table",
-            "title": "Table"
+            "title": "Table",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/tag-group",
-            "title": "Tag Group"
+            "title": "Tag Group",
+            "order": 999
           },
           {
             "slug": "/docs/components/collections/tree",
-            "title": "Tree"
+            "title": "Tree",
+            "order": 999
           }
         ]
       },
@@ -141,7 +170,8 @@
         "children": [
           {
             "slug": "/docs/components/colors/color",
-            "title": "Color"
+            "title": "Color",
+            "order": 999
           }
         ]
       },
@@ -151,23 +181,28 @@
         "children": [
           {
             "slug": "/docs/components/controls/command",
-            "title": "Command"
+            "title": "Command",
+            "order": 999
           },
           {
             "slug": "/docs/components/controls/kbd",
-            "title": "Kbd"
+            "title": "Kbd",
+            "order": 999
           },
           {
             "slug": "/docs/components/controls/slider",
-            "title": "Slider"
+            "title": "Slider",
+            "order": 999
           },
           {
             "slug": "/docs/components/controls/switch",
-            "title": "Switch"
+            "title": "Switch",
+            "order": 999
           },
           {
             "slug": "/docs/components/controls/toolbar",
-            "title": "Toolbar"
+            "title": "Toolbar",
+            "order": 999
           }
         ]
       },
@@ -177,27 +212,33 @@
         "children": [
           {
             "slug": "/docs/components/date-and-time/calendar",
-            "title": "Calendar"
+            "title": "Calendar",
+            "order": 999
           },
           {
             "slug": "/docs/components/date-and-time/date-field",
-            "title": "Date Field"
+            "title": "Date Field",
+            "order": 999
           },
           {
             "slug": "/docs/components/date-and-time/date-picker",
-            "title": "Date Picker"
+            "title": "Date Picker",
+            "order": 999
           },
           {
             "slug": "/docs/components/date-and-time/date-range-picker",
-            "title": "Date Range Picker"
+            "title": "Date Range Picker",
+            "order": 999
           },
           {
             "slug": "/docs/components/date-and-time/range-calendar",
-            "title": "Range Calendar"
+            "title": "Range Calendar",
+            "order": 999
           },
           {
             "slug": "/docs/components/date-and-time/time-field",
-            "title": "Time Field"
+            "title": "Time Field",
+            "order": 999
           }
         ]
       },
@@ -207,7 +248,8 @@
         "children": [
           {
             "slug": "/docs/components/drag-and-drop/drop-zone",
-            "title": "Drop Zone"
+            "title": "Drop Zone",
+            "order": 999
           }
         ]
       },
@@ -217,43 +259,53 @@
         "children": [
           {
             "slug": "/docs/components/forms/checkbox",
-            "title": "Checkbox"
+            "title": "Checkbox",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/combo-box",
-            "title": "Combo Box"
+            "title": "Combo Box",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/field",
-            "title": "Field"
+            "title": "Field",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/input",
-            "title": "Input"
+            "title": "Input",
+            "order": 999
           },
           {
-            "slug": "/docs/components/forms/input-o-t-p",
-            "title": "Input O T P"
+            "slug": "/docs/components/forms/input-otp",
+            "title": "Input OTP",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/number-field",
-            "title": "Number Field"
+            "title": "Number Field",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/radio",
-            "title": "Radio"
+            "title": "Radio",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/search-field",
-            "title": "Search Field"
+            "title": "Search Field",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/select",
-            "title": "Select"
+            "title": "Select",
+            "order": 999
           },
           {
             "slug": "/docs/components/forms/text-field",
-            "title": "Text Field"
+            "title": "Text Field",
+            "order": 999
           }
         ]
       },
@@ -263,15 +315,18 @@
         "children": [
           {
             "slug": "/docs/components/layouts/container",
-            "title": "Container"
+            "title": "Container",
+            "order": 999
           },
           {
             "slug": "/docs/components/layouts/navbar",
-            "title": "Navbar"
+            "title": "Navbar",
+            "order": 999
           },
           {
             "slug": "/docs/components/layouts/sidebar",
-            "title": "Sidebar"
+            "title": "Sidebar",
+            "order": 999
           }
         ]
       },
@@ -281,11 +336,13 @@
         "children": [
           {
             "slug": "/docs/components/media/avatar",
-            "title": "Avatar"
+            "title": "Avatar",
+            "order": 999
           },
           {
             "slug": "/docs/components/media/carousel",
-            "title": "Carousel"
+            "title": "Carousel",
+            "order": 999
           }
         ]
       },
@@ -295,19 +352,23 @@
         "children": [
           {
             "slug": "/docs/components/navigation/breadcrumbs",
-            "title": "Breadcrumbs"
+            "title": "Breadcrumbs",
+            "order": 999
           },
           {
             "slug": "/docs/components/navigation/link",
-            "title": "Link"
+            "title": "Link",
+            "order": 999
           },
           {
             "slug": "/docs/components/navigation/pagination",
-            "title": "Pagination"
+            "title": "Pagination",
+            "order": 999
           },
           {
             "slug": "/docs/components/navigation/tabs",
-            "title": "Tabs"
+            "title": "Tabs",
+            "order": 999
           }
         ]
       },
@@ -317,23 +378,28 @@
         "children": [
           {
             "slug": "/docs/components/overlays/dialog",
-            "title": "Dialog"
+            "title": "Dialog",
+            "order": 999
           },
           {
             "slug": "/docs/components/overlays/drawer",
-            "title": "Drawer"
+            "title": "Drawer",
+            "order": 999
           },
           {
             "slug": "/docs/components/overlays/popover",
-            "title": "Popover"
+            "title": "Popover",
+            "order": 999
           },
           {
             "slug": "/docs/components/overlays/sheet",
-            "title": "Sheet"
+            "title": "Sheet",
+            "order": 999
           },
           {
             "slug": "/docs/components/overlays/tooltip",
-            "title": "Tooltip"
+            "title": "Tooltip",
+            "order": 999
           }
         ]
       },
@@ -343,31 +409,38 @@
         "children": [
           {
             "slug": "/docs/components/statuses/alert",
-            "title": "Alert"
+            "title": "Alert",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/badge",
-            "title": "Badge"
+            "title": "Badge",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/empty",
-            "title": "Empty"
+            "title": "Empty",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/meter",
-            "title": "Meter"
+            "title": "Meter",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/progress",
-            "title": "Progress"
+            "title": "Progress",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/skeleton",
-            "title": "Skeleton"
+            "title": "Skeleton",
+            "order": 999
           },
           {
             "slug": "/docs/components/statuses/sonner",
-            "title": "Sonner"
+            "title": "Sonner",
+            "order": 999
           }
         ]
       },
@@ -377,11 +450,13 @@
         "children": [
           {
             "slug": "/docs/components/surfaces/card",
-            "title": "Card"
+            "title": "Card",
+            "order": 999
           },
           {
             "slug": "/docs/components/surfaces/separator",
-            "title": "Separator"
+            "title": "Separator",
+            "order": 999
           }
         ]
       }

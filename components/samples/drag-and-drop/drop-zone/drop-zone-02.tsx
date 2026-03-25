@@ -52,7 +52,7 @@ export default function DropZoneFileTrigger() {
           <p className='text-muted-foreground text-sm'>Or drag and drop PNG, JPG, GIF up to 10MB</p>
         </div>
       )}
-      <input name='image' type='hidden' value={droppedImage} />
+      <input name='image' type='hidden' value={droppedImage ?? ''} />
     </DropZone>
   )
 }

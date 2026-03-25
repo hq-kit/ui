@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/separator.tsx",
-      "content": "'use client'\n\nimport { Separator as RACSeparator, type SeparatorProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst Separator = ({ className, orientation = 'horizontal', ...props }: SeparatorProps) => (\n  <RACSeparator\n    className={cn(className, 'shrink-0 bg-muted', orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px')}\n    data-slot='separator'\n    orientation={orientation}\n    {...props}\n  />\n)\n\nexport { Separator, type SeparatorProps }\n",
+      "content": "'use client'\n\nimport { Separator as RACSeparator, type SeparatorProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\n\nconst Separator = ({ className, orientation = 'horizontal', ...props }: SeparatorProps) => (\n  <RACSeparator\n    className={cn('shrink-0 bg-muted', orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px', className)}\n    data-slot='separator'\n    orientation={orientation}\n    {...props}\n  />\n)\n\nexport { Separator, type SeparatorProps }\n",
       "type": "registry:ui"
     }
   ],

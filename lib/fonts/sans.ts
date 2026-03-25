@@ -58,6 +58,16 @@ export const fontSansFamilies = [
     link: 'family=Delius+Swash+Caps'
   },
   {
+    label: 'Instrument Sans',
+    value: 'Instrument Sans, sans-serif',
+    link: 'family=Instrument+Sans:ital,wght@0,400..700;1,400..700'
+  },
+  {
+    label: 'Figtree',
+    value: 'Figtree, sans-serif',
+    link: 'family=Figtree:ital,wght@0,300..900;1,300..900'
+  },
+  {
     label: 'Merriweather',
     value: 'Merriweather, serif',
     link: 'family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900'

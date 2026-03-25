@@ -4,6 +4,7 @@ import path from 'node:path'
 export interface CollectionComponent {
   title: string
   slug: string
+  order?: number
 }
 
 export interface Component {
@@ -33,6 +34,23 @@ export type Grouped =
     }
 
 const sectionOrder = ['getting-started', 'framework-guides', 'dark-mode', 'components']
+const gettingStartedOrder = ['introduction', 'installation', 'client-side-routing', 'mcp-server']
+
+async function getFrontmatterOrder(filePath: string): Promise<number> {
+  const raw = await fs.readFile(filePath, 'utf-8')
+
+  const match = raw.match(/---\n([\s\S]*?)\n---/)
+  if (!match) return 999 // fallback kalau tidak ada order
+
+  const yaml = match[1]
+
+  for (const line of yaml.split('\n')) {
+    const [key, value] = line.split(':').map((s) => s.trim())
+    if (key === 'order') return Number(value)
+  }
+
+  return 999
+}
 
 async function walk(dir: string, basePath: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -54,7 +72,9 @@ async function walk(dir: string, basePath: string): Promise<string[]> {
 const specialCases: Record<string, string> = {
   cli: 'CLI',
   'next-js': 'Next.js',
-  'inertia-js': 'Inertia.js'
+  'inertia-js': 'Inertia.js',
+  'mcp-server': 'MCP Server',
+  'input-otp': 'Input OTP'
 }
 
 function titleize(name: string): string {
@@ -78,16 +98,18 @@ async function generate() {
     const name = path.basename(file, '.mdx')
     const slug = `/docs/${file.replace(/\.mdx$/, '').replace(/\\/g, '/')}`
     const title = titleize(name)
+    const fullPath = path.join(basePath, file)
+    const order = await getFrontmatterOrder(fullPath)
 
     if (section === 'components') {
       const subsection = parts[1]
       const key = String(subsection).toLowerCase()
       if (!componentSubGroups[key]) componentSubGroups[key] = []
 
-      componentSubGroups[key].push({ slug, title })
+      componentSubGroups[key].push({ slug, title, order })
     } else {
       if (!normalGroups[section]) normalGroups[section] = []
-      normalGroups[section].push({ slug, title })
+      normalGroups[section].push({ slug, title, order })
     }
   }
 
@@ -98,7 +120,7 @@ async function generate() {
         .map(([sub, items], subIndex) => ({
           id: subIndex + 1,
           subsection: titleize(sub),
-          children: items.sort((a, b) => a.title.localeCompare(b.title))
+          children: items.sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.title.localeCompare(b.title))
         }))
 
       return {
@@ -111,7 +133,9 @@ async function generate() {
     return {
       id: index + 1,
       section: titleize(section),
-      children: normalGroups[section] ?? []
+      children: (normalGroups[section] ?? []).sort(
+        (a, b) => (a.order ?? 999) - (b.order ?? 999) || a.title.localeCompare(b.title)
+      )
     }
   })
 

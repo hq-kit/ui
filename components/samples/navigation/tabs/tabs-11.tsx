@@ -37,13 +37,9 @@ const TabsUnderlineDemo = () => {
   return (
     <div className='w-full max-w-md'>
       <Tabs className='gap-4' defaultSelectedKey='explore'>
-        <TabsList className='rounded-none border-b bg-background p-0'>
+        <TabsList variant='line'>
           {tabs.map((tab) => (
-            <TabsTrigger
-              className='rounded-none *:data-[slot=selected-indicator]:h-full *:data-[slot=selected-indicator]:rounded-b-none *:data-[slot=selected-indicator]:border-0 *:data-[slot=selected-indicator]:border-primary *:data-[slot=selected-indicator]:border-b-2 *:data-[slot=selected-indicator]:bg-background *:data-[slot=selected-indicator]:shadow-none dark:*:data-[slot=selected-indicator]:border-primary'
-              id={tab.value}
-              key={tab.value}
-            >
+            <TabsTrigger id={tab.value} key={tab.value}>
               {tab.name}
             </TabsTrigger>
           ))}

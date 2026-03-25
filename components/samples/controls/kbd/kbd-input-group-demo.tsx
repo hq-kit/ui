@@ -1,6 +1,6 @@
 import { IconSearch } from '@tabler/icons-react'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input'
-import { Kbd } from '@/components/ui/kbd'
+import { Kbd, KbdGroup } from '@/components/ui/kbd'
 
 export default function KbdInputGroup() {
   return (
@@ -11,8 +11,10 @@ export default function KbdInputGroup() {
           <IconSearch />
         </InputGroupAddon>
         <InputGroupAddon align='inline-end'>
-          <Kbd>⌘</Kbd>
-          <Kbd>K</Kbd>
+          <KbdGroup>
+            <Kbd>⌘</Kbd>
+            <Kbd>K</Kbd>
+          </KbdGroup>
         </InputGroupAddon>
       </InputGroup>
     </div>

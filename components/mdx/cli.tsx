@@ -9,7 +9,7 @@ import { copyToClipboard } from '@/lib/modifiers'
 
 interface CLIProps {
   items?: string | string[]
-  command: 'add' | 'install' | 'init'
+  command: 'add' | 'install' | 'init' | 'execute'
 }
 
 const url = `${siteConfig.url}/r`
@@ -24,6 +24,9 @@ export function CLI({ items, command = 'add' }: CLIProps) {
     }
     if (command === 'install') {
       return ` ${p === 'npm' ? 'i' : 'add'} ${Array.isArray(items) ? items.join(' ') : items}`
+    }
+    if (command === 'execute') {
+      return ` ${items}`
     }
     return ` ${url}/default`
   }
@@ -51,6 +54,18 @@ export function CLI({ items, command = 'add' }: CLIProps) {
           return 'yarn dlx shadcn@latest init'
         case 'bun':
           return 'bunx --bun shadcn@latest init'
+      }
+    }
+    if (command === 'execute') {
+      switch (p) {
+        case 'npm':
+          return 'npx'
+        case 'pnpm':
+          return 'pnpm dlx'
+        case 'yarn':
+          return 'yarn dlx'
+        case 'bun':
+          return 'bunx --bun'
       }
     }
     return p

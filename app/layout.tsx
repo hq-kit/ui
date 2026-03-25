@@ -6,8 +6,6 @@ import { fontSansUrl } from '@/lib/fonts/sans'
 import '@/lib/styles/app.css'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -81,18 +79,11 @@ export default async function RootLayout({
     <html data-scroll-behavior='smooth' lang='en' suppressHydrationWarning>
       <head>
         <link href={`https://fonts.googleapis.com/css2?${fontSansUrl}&${fontMonoUrl}&display=swap`} rel='stylesheet' />
-        {/*<ThemeScript />*/}
       </head>
       <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
         <Providers>
           <ThemeSync />
           {children}
-          {process.env.NODE_ENV === 'production' && (
-            <>
-              <Analytics />
-              <SpeedInsights />
-            </>
-          )}
         </Providers>
       </body>
     </html>

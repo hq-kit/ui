@@ -41,11 +41,11 @@ const tabs = [
 const TabsVerticalWithTooltipDemo = () => {
   return (
     <div className='w-full max-w-md'>
-      <Tabs className='flex-row gap-4' defaultSelectedKey='explore'>
-        <TabsList className='h-full flex-col gap-2'>
+      <Tabs defaultSelectedKey='explore' orientation='vertical'>
+        <TabsList>
           {tabs.map(({ icon: Icon, name, value }) => (
             <Tooltip key={value}>
-              <TabsTrigger aria-label='tab-trigger' className='flex w-full flex-col items-center gap-1' id={value}>
+              <TabsTrigger aria-label='tab-trigger' id={value}>
                 <Icon />
               </TabsTrigger>
               <TooltipContent className='px-2 py-1 text-xs' placement='left'>

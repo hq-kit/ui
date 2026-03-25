@@ -37,10 +37,10 @@ const TabsSharpDemo = () => {
   return (
     <div className='w-full max-w-md'>
       <Tabs className='gap-4' defaultSelectedKey='explore'>
-        <TabsList className='rounded-none border-b bg-background p-0'>
+        <TabsList className='border-b' variant='line'>
           {tabs.map((tab) => (
             <TabsTrigger
-              className='*:data-[slot=selected-indicator]:h-full *:data-[slot=selected-indicator]:rounded-none *:data-[slot=selected-indicator]:border *:data-[slot=selected-indicator]:border-primary *:data-[slot=selected-indicator]:border-b-2 *:data-[slot=selected-indicator]:bg-background *:data-[slot=selected-indicator]:shadow-none dark:*:data-[slot=selected-indicator]:border-primary'
+              className='*:data-[slot=selected-indicator]:rounded-none *:data-[slot=selected-indicator]:border-primary'
               id={tab.value}
               key={tab.value}
             >

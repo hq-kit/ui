@@ -59,6 +59,7 @@ const TabsTrigger = ({ className, ...props }: TabProps) => (
       cn(
         "group/tab relative isolate flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1 font-medium text-foreground/60 text-sm outline-hidden transition-all hover:text-foreground data-disabled:pointer-events-none data-disabled:opacity-50 group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start dark:text-muted-foreground dark:hover:text-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         'data-selected:text-foreground group-data-[variant=line]/tabs-list:bg-transparent dark:data-selected:text-foreground',
+        'href' in props ? 'cursor-pointer' : 'cursor-default',
         className
       )
     )}
@@ -70,7 +71,7 @@ const TabsTrigger = ({ className, ...props }: TabProps) => (
         {typeof props.children === 'function' ? props.children(values) : props.children}
         <SelectionIndicator
           className={cn(
-            'absolute left-0 -z-1 size-full rounded-md border motion-safe:transition-[translate,width]',
+            'absolute left-0 -z-1 size-full rounded-md border motion-safe:transition-[translate,width,color]',
             'bg-background dark:border-input dark:bg-input/30',
             'group-focus-visible/tab:border-ring group-focus-visible/tab:outline-1 group-focus-visible/tab:outline-ring group-focus-visible/tab:ring-[3px] group-focus-visible/tab:ring-ring/50',
             'group-data-[variant=line]/tabs-list:border-transparent group-data-[variant=line]/tabs-list:bg-transparent dark:group-data-[variant=line]/tabs-list:border-transparent dark:group-data-[variant=line]/tabs-list:bg-transparent',
