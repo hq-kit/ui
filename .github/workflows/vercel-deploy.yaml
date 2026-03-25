@@ -7,9 +7,11 @@ on:
 
 jobs:
   build_and_deploy:
-    permissions: write-all
     runs-on: ubuntu-latest
     environment: Production
+
+    env:
+      NEXT_PUBLIC_APP_URL: ${{ secrets.APP_URL }}
 
     steps:
       - name: Checkout repo
@@ -18,22 +20,29 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
 
+      # ⚡ Cache biar install lebih cepat
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
       - name: Install Dependencies
         run: bun install
 
       - name: Run Build Scripts
         run: bun run b
-        env:
-          NEXT_PUBLIC_APP_URL: ${{ secrets.APP_URL }}
 
-      - name: Install Global Package with Bun
+      - name: Install Vercel CLI
         run: bun add -g vercel
 
-      - name: Pull Vercel Environment Information
+      - name: Pull Vercel Environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Build Project Artifacts
+      - name: Build Project (Vercel)
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        run: vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
