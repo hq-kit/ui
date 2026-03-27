@@ -1,0 +1,8 @@
+{
+  "pages": [
+    "introduction",
+    "installation",
+    "client-side-routing",
+    "mcp-server"
+  ]
+}

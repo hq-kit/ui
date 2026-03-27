@@ -1,0 +1,138 @@
+---
+title: Laravel
+description: Learn how to integrate HQ UI in Laravel with Inertia.js Project
+published: true
+order: 2
+---
+
+> This is a setup for Laravel with Inertia.js, if you aren't using Inertia in Laravel. You may use [**this**](/framework-guides/vite) guide instead.
+
+## Create New Project
+Make sure you have Laravel Installer installed, if not, run this command first.
+
+```bash
+composer global require laravel/installer
+```
+
+Run the **`laravel new --react`** command to create a new Laravel project with Inertia React or :
+
+```bash
+laravel new my-app --react
+```
+
+## Replace Components
+By default, Laravel will use original Shadcn UI components. Replace them with HQ UI components manually.
+Both Shadcn UI and HQ UI use similar `css` variables, so you can keep the **`resources/css/app.css`** file.
+
+### Registry
+First, add the HQ UI in your **`components.json`**:
+
+```json title="components.json"
+  ...
+  "registries": {
+    "@hq": "https://hq-ui.vercel.app/r/{name}"
+  }
+```
+### Add Components
+You can now start adding components to your project.
+<CLI command='add' items='button' registered />
+
+Or if you don't wan't to modify **`components.json`**, you can use this command
+<CLI command="add" items="button"/>
+
+## Client Side Routing
+React Aria components such as Link, Menu, Tabs, and Table transform elements into clickable links that navigate when clicked. These components utilize the href prop to render as an `<a>` tag, supporting attributes like target and download.
+
+### Client Provider
+To integrate with Inertia.js, you must first declare it in your .d.ts file, such as in **`resources/js/types/global.d.ts`**.
+
+```ts title="global.d.ts"
+import type { VisitOptions } from '@inertiajs/core'
+
+declare module 'react-aria-components' {
+    interface RouterConfig {
+        routerOptions: VisitOptions
+    }
+}
+```
+
+Create new file called **client-provider** in **`resources/js/components`**
+
+```tsx title="client-provider.tsx"
+import { router } from '@inertiajs/react'
+import type { PropsWithChildren } from 'react'
+import { RouterProvider } from 'react-aria-components'
+
+export function ClientProvider({ children }: PropsWithChildren) {
+    return (
+        <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
+            {children}
+        </RouterProvider>
+    )
+}
+```
+
+Then wrap your app with **`ClientProvider`** in **`resources/js/app.tsx`**
+
+```tsx title="app.tsx"
+import { createInertiaApp } from '@inertiajs/react'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import '../css/app.css'
+import { ClientProvider } from '@/components/client-provider'
+import { initializeTheme } from '@/hooks/use-appearance'
+
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
+
+createInertiaApp({
+    title: (title) => (title ? `${title} - ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
+    setup({ el, App, props }) {
+        const root = createRoot(el)
+
+        root.render(
+            <StrictMode>
+                <ClientProvider>
+                    <App {...props} />
+                </ClientProvider>
+            </StrictMode>,
+        )
+    },
+    progress: {
+        color: '#4B5563',
+    },
+})
+
+initializeTheme()
+```
+
+If you using SSR, wrap your app with **`ClientProvider`** in **`resources/js/ssr.tsx`**
+
+```tsx title="ssr.tsx"
+import { createInertiaApp } from '@inertiajs/react'
+import createServer from '@inertiajs/react/server'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import ReactDOMServer from 'react-dom/server'
+import { ClientProvider } from '@/components/client-provider'
+
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
+
+createServer((page) =>
+    createInertiaApp({
+        page,
+        render: ReactDOMServer.renderToString,
+        title: (title) => (title ? `${title} - ${appName}` : appName),
+        resolve: (name) =>
+            resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
+        setup: ({ App, props }) => {
+            return (
+                <ClientProvider>
+                    <App {...props} />
+                </ClientProvider>
+            )
+        },
+    }),
+)
+```

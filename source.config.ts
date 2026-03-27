@@ -1,15 +1,16 @@
 import { transformerMetaHighlight } from '@shikijs/transformers'
 import { remarkHeading, remarkImage } from 'fumadocs-core/mdx-plugins'
-import { defineConfig, defineDocs } from 'fumadocs-mdx/config'
+import {defineConfig, defineDocs, frontmatterSchema} from 'fumadocs-mdx/config'
 import { z } from 'zod'
 
 export const docs = defineDocs({
   dir: 'content/docs',
   docs: {
-    schema: z.object({
+    schema: frontmatterSchema.extend({
       title: z.string(),
       description: z.string().optional(),
       references: z.array(z.string()).optional(),
+      order: z.number().optional(),
       published: z.boolean().default(true)
     }),
     async: false

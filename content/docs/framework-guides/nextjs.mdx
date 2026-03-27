@@ -1,66 +1,96 @@
 ---
 title: Next.Js
-description: Learn how to integrate React Aria in Next.Js
+description: Learn how to integrate HQ UI in Next.Js (App Router)
 published: true
+order: 1
 ---
 
-
-## Create Project
+## Create New Project
 Run the **`init`** command to create a new Next.js project or to setup an existing one:
+
 <CLI command='init' />
-or you can choose any theme listed [**here**](/themes)
 
-## Add components
+### Registry
+First, add the HQ UI in your **`components.json`**:
+
+```json title="components.json"
+  ...
+  "registries": {
+    "@hq": "https://hq-ui.vercel.app/r/{name}"
+  }
+```
+### Add Components
 You can now start adding components to your project.
-<CLI command='add' items={['button']}/>
+<CLI command='add' items='button' registered />
 
-## Client Providers
-To integrate with Next.js (app router), ensure the locale on the server matches the client, and configure React Aria links to use the Next.js router.
+Or if you don't wan't to modify **`components.json`**, you can use this command
+<CLI command="add" items="button"/>
 
-```tsx title='components/client-provider.tsx'
+## Client Side Routing
+React Aria components such as Link, Menu, Tabs, and Table transform elements into clickable links that navigate when clicked. These components utilize the href prop to render as an `<a>` tag, supporting attributes like target and download.
+
+### Client Provider
+To integrate with Next.js (App Router), ensure the locale on the server matches the client, and configure React Aria links to use the Next.js router.
+
+```tsx title='client-provider.tsx'
 "use client"
 
 import { useRouter } from 'next/navigation'
-import { RouterProvider, I18nProvider } from 'react-aria-components'
+import { RouterProvider } from 'react-aria-components'
 
-// Configure the type of the `routerOptions` prop on all React Aria components.
 declare module 'react-aria-components' {
   interface RouterConfig {
     routerOptions: NonNullable<Parameters<ReturnType<typeof useRouter>['push']>[1]>
   }
 }
 
-export function ClientProviders({lang, children}) {
+export function ClientProviders({ children }: { children: React.ReactNode }) {
   const router = useRouter()
 
   return (
-    <I18nProvider locale={lang}>
-      <RouterProvider navigate={router.push}>
-        {children}
-      </RouterProvider>
-    </I18nProvider>
+    <RouterProvider navigate={router.push}>
+      {children}
+    </RouterProvider>
   )
 }
 ```
 
 Then use in your root layout
-```tsx {14-16} title='app/layout.tsx'
-import { headers } from 'next/headers'
-import { isRTL } from 'react-aria-components'
-import { ClientProviders } from '@/components/client-provider'
+```tsx {11-13} title='app/layout.tsx'
+import { Geist, Geist_Mono } from "next/font/google"
 
-export default async function RootLayout({children}) {
-  // Get the user's preferred language from the Accept-Language header.
-  // You could also get this from a database, URL param, etc.
-  const acceptLanguage = (await headers()).get('accept-language')
-  const lang = acceptLanguage?.split(/[,;]/)[0] || 'en-US'
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ClientProvider } from '@/components/client-provider'
 
+const fontSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const fontMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
+
+
+export default async function RootLayout({
+  children
+}: Readonly<{
+  children: React.ReactNode
+}>){
   return (
-    <html lang={lang} dir={isRTL(lang) ? 'rtl' : 'ltr'} suppressHydrationWarning>
+    <html
+      lang='en'
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
+    >
       <body>
-        <ClientProviders lang={lang}>
-          {children}
-        </ClientProviders>
+        <ThemeProvider>
+          <ClientProvider>
+            {children}
+          </ClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
@@ -68,49 +98,15 @@ export default async function RootLayout({children}) {
 ```
 
 ## Dark Mode
-You may use `next-themes` to implement dark mode in Next.Js
-<CLI command='install' items={['next-themes', '@tabler/icons-react']} />
-
 ### Theme Provider
-```tsx title='theme-provider.tsx'
-"use client"
-
-import { ThemeProvider as NextThemesProvider, type ThemeProviderProps, useTheme } from "next-themes"
-
-const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {
-  return (
-    <NextThemesProvider enableSystem storageKey="hq-theme" {...props}>
-      {children}
-    </NextThemesProvider>
-  )
-}
-
-export { ThemeProvider, useTheme }
-```
-
-Then use in your root layout
-```tsx {7-9} title='app/layout.tsx'
-import { ClientProviders } from '@/components/client-provider'
-import { ThemeProvider } from '@/components/theme-provider'
-...
-    <html lang={lang} dir={isRTL(lang) ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body>
-        <ClientProviders lang={lang}>
-          <ThemeProvider attribute='class'>
-            {children}
-          </ThemeProvider>
-        </ClientProviders>
-      </body>
-    </html>
-...
-```
+> If you are using the New Shadcn CLI, Theme Provider is already added. You can skip this step
 
 ### Theme Switcher
 
 ```tsx title='components/theme-switcher.tsx'
 'use client'
 
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from 'next-themes'
 import { IconMoon, IconSun } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 

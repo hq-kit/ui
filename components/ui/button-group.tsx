@@ -1,6 +1,5 @@
 import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
-import { Separator, type SeparatorProps } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = tv({
@@ -79,15 +78,4 @@ const ButtonGroupText = ({ className, ...props }: React.ComponentProps<'div'>) =
   />
 )
 
-const ButtonGroupSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator
-    className={cn(
-      'relative self-stretch bg-input data-[orientation=horizontal]:mx-px data-[orientation=vertical]:my-px data-[orientation=vertical]:h-auto data-[orientation=horizontal]:w-auto',
-      className
-    )}
-    data-slot='button-group-separator'
-    {...props}
-  />
-)
-
-export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonVariants }
+export { ButtonGroup, ButtonGroupText, buttonVariants }

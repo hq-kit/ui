@@ -1,126 +1,108 @@
 ---
 title: Vite
-description: Learn how to integrate React Aria in Vite
+description: Learn how to integrate HQ UI in Vite React Project
 published: true
 ---
 
-## Create Project
-Run the **`init`** command to create a new Vite React project or to setup an existing one:
-<CLI command='init' />
-or you can choose any theme listed [**here**](/themes)
+## Create New Project
+Run the **`init`** command to create a new Next.js project or to setup an existing one:
 
-## Add components
+<CLI command='init' />
+
+### Registry
+First, add the HQ UI in your **`components.json`**:
+
+```json title="components.json"
+  ...
+  "registries": {
+    "@hq": "https://hq-ui.vercel.app/r/{name}"
+  }
+```
+### Add Components
 You can now start adding components to your project.
-<CLI command='add' items={['button']}/>
+<CLI command='add' items='button' registered />
+
+Or if you don't wan't to modify **`components.json`**, you can use this command
+<CLI command="add" items="button"/>
+
+## Client Side Routing
+Vite does not support client side routing out of the box, but you can use **`react-router-dom`** or simply use Framework such as [**`nextjs`**](/framework-guides/nextjs), [**`react-router`**](/framework-guides/react-router), or [**`tanstack`**](/framework-guides/tanstack)
+
+### React Router Dom
+If you want to use **`react-router-dom`**, first install the package.
+
+<CLI command='install' items='react-router-dom' />
+
+### Client Provider
+First create a **`src/components/client-provider.tsx`** file
+
+```tsx title='client-provider.tsx'
+import type { PropsWithChildren } from "react";
+import { RouterProvider } from "react-aria-components";
+import { useNavigate } from "react-router-dom";
+
+export function ClientProvider({ children }: PropsWithChildren) {
+  const navigate = useNavigate();
+  return (
+    <RouterProvider navigate={(to, options) => navigate(to, options)}>
+      {children}
+    </RouterProvider>
+  );
+}
+```
+
+Modify your **`App.tsx`** file or create new file such as **`router.tsx`**
+
+```tsx title='router.tsx'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Link } from "react-aria-components"
+import Home from "./pages/home"
+import About from "./pages/about"
+import { ClientProvider } from "./components/client-provider"
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ClientProvider>
+        <nav>
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </ClientProvider>
+    </BrowserRouter>
+  )
+}
+```
+
+Use it in your root **`main.tsx`** file.
+```tsx title="main.tsx"
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./router.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+```
 
 ## Dark Mode
 ### Theme Provider
-```tsx title='theme-provider.tsx'
-import { createContext, use, useEffect, useState } from "react"
-
-type Theme = "dark" | "light" | "system"
-
-type ThemeProviderProps = {
-  children: React.ReactNode
-  defaultTheme?: Theme
-  storageKey?: string
-}
-
-type ThemeProviderState = {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
-
-const initialState: ThemeProviderState = {
-  theme: "system",
-  setTheme: () => null,
-}
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
-
-function ThemeProvider({
-  children,
-  defaultTheme = "system",
-  storageKey = "theme",
-  ...props
-}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage?.getItem(storageKey) as Theme) || defaultTheme
-    }
-    return defaultTheme
-  })
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const root = window.document.documentElement
-
-      root.classList.remove("light", "dark")
-
-      if (theme === "system") {
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        root.classList.add(systemTheme)
-        return
-      }
-
-      root.classList.add(theme)
-    }
-  }, [theme])
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem(storageKey, theme)
-      }
-      setTheme(theme)
-    },
-  }
-
-  return (
-    <ThemeProviderContext {...props} value={value}>
-      {children}
-    </ThemeProviderContext>
-  )
-}
-
-const useTheme = () => {
-  const context = use(ThemeProviderContext)
-  if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider")
-  return context
-}
-
-export { ThemeProvider, useTheme, type Theme, type ThemeProviderProps, type ThemeProviderState }
-```
-
-Then use in your root layout
-```tsx {9-11} title='App.tsx'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { ThemeProvider } from './components/theme-provider.tsx'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-)
-```
+> If you are using the New Shadcn CLI, Theme Provider is already added. You can skip this step
 
 ### Theme Switcher
 <CLI command='install' items={['@tabler/icons-react']} />
 
 ```tsx title='components/theme-switcher.tsx'
-'use client'
-
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from './theme-provider'
 import { IconMoon, IconSun } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
+import { Button } from './ui/button'
 
 export function ThemeSwitcher({ variant = 'outline' }: { variant?: 'outline' | 'ghost' }) {
   const { resolvedTheme, setTheme } = useTheme()

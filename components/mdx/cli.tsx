@@ -10,17 +10,22 @@ import { copyToClipboard } from '@/lib/modifiers'
 interface CLIProps {
   items?: string | string[]
   command: 'add' | 'install' | 'init' | 'execute'
+  registered?: boolean
 }
 
 const url = `${siteConfig.url}/r`
 
-export function CLI({ items, command = 'add' }: CLIProps) {
+export function CLI({ items, command = 'add', registered }: CLIProps) {
   const [pm, setPm] = useState<'npm' | 'yarn' | 'pnpm' | 'bun'>('npm')
   const [copied, setCopied] = useState(false)
 
   const getCommandLine = (p: 'npm' | 'yarn' | 'pnpm' | 'bun') => {
     if (command === 'add') {
-      return Array.isArray(items) ? items.map((item) => ` ${url}/${item}`).join(' ') : ` ${url}/${items}`
+      if (registered) {
+        return Array.isArray(items) ? items.map((item) => ` @hq/${item}`).join(' ') : ` @hq/${items}`
+      } else {
+        return Array.isArray(items) ? items.map((item) => ` ${url}/${item}`).join(' ') : ` ${url}/${items}`
+      }
     }
     if (command === 'install') {
       return ` ${p === 'npm' ? 'i' : 'add'} ${Array.isArray(items) ? items.join(' ') : items}`
@@ -73,7 +78,7 @@ export function CLI({ items, command = 'add' }: CLIProps) {
 
   const onAction = async (p: 'npm' | 'yarn' | 'pnpm' | 'bun') => {
     setPm(p)
-    await copyToClipboard(`${getPm(p)} ${getCommandLine(p)}`)
+    await copyToClipboard(`${getPm(p)}${getCommandLine(p)}`)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -85,7 +90,7 @@ export function CLI({ items, command = 'add' }: CLIProps) {
         <span className='text-[#40A02B] dark:text-[#A6E3A1]'>{getCommandLine(pm)}</span>
       </div>
       <DropdownMenu>
-        <CopyButton className='absolute top-1.5 right-1.5 bg-card' isCopied={copied} />
+        <CopyButton className='sticky top-1.5 right-1.5 bg-card' isCopied={copied} />
         <DropdownMenuContent offset={0} placement='left top'>
           <DropdownMenuItem onPress={() => onAction('npm')}>
             <IconBrandNpm className='size-3.5' />

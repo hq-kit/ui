@@ -33,8 +33,7 @@ export type Grouped =
       children: SubSection[]
     }
 
-const sectionOrder = ['getting-started', 'framework-guides', 'dark-mode', 'components']
-const gettingStartedOrder = ['introduction', 'installation', 'client-side-routing', 'mcp-server']
+const sectionOrder = ['getting-started', 'framework-guides', 'components']
 
 async function getFrontmatterOrder(filePath: string): Promise<number> {
   const raw = await fs.readFile(filePath, 'utf-8')
@@ -128,6 +127,15 @@ async function generate() {
         section: titleize(section),
         children
       }
+    }
+
+    if (section === 'getting-started') {
+      if (!normalGroups['getting-started']) normalGroups['getting-started'] = []
+      normalGroups['getting-started'].push({
+        slug: '/llms.txt',
+        title: 'LLMs',
+        order: 999
+      })
     }
 
     return {

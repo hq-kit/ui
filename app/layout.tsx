@@ -6,6 +6,7 @@ import { fontSansUrl } from '@/lib/fonts/sans'
 import '@/lib/styles/app.css'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
+import { headers } from 'next/headers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -75,13 +76,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode
 }>) {
+  const acceptLanguage = (await headers()).get('accept-language')
+  const lang = acceptLanguage?.split(/[,;]/)[0] || 'en-US'
   return (
-    <html data-scroll-behavior='smooth' lang='en' suppressHydrationWarning>
+    <html data-scroll-behavior='smooth' lang={lang} suppressHydrationWarning>
       <head>
         <link href={`https://fonts.googleapis.com/css2?${fontSansUrl}&${fontMonoUrl}&display=swap`} rel='stylesheet' />
       </head>
       <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
-        <Providers>
+        <Providers lang={lang}>
           <ThemeSync />
           {children}
         </Providers>

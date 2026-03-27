@@ -24,3 +24,38 @@ Choose your client and run one of the following commands:
 If you work with AI and use React Aria Component, you should consider using the React Aria MCP server.
 
 <McpRacTabs/>
+
+## Skills
+
+Skills give AI assistants like Claude Code project-aware context about hq-ui. When installed, your AI assistant knows how to find, install, compose, and customize components using the correct APIs and patterns for your project.
+
+<CLI command="execute" items="skills add https://github.com/hq-kit/ui --skill hq-ui"/>
+
+
+### Structure
+
+```
+hq-ui/
+├── SKILL.md              # Main skill definition
+└── rules/
+    ├── styling.md        # Semantic colors, cn, size-* shorthand, intent prop
+    ├── icons.md          # Tabler Icons rules, components that control icon sizing
+    ├── forms.md          # Fieldset, FieldLegend, TextField, FieldError, FieldDescription patterns
+    ├── components.md     # HTML → HQ UI component mapping
+    └── cli.md            # Search & install missing components from the registry
+```
+
+
+## Markdown files
+
+Every page in the docs is also published as a standalone Markdown file.
+
+To view it, add `.md` to the end of the page URL. You can also use the **Copy page** button on each page to copy the full content to your clipboard as Markdown.
+
+## llms.txt
+
+The [llms.txt](/llms.txt) file provides an index of all Markdown pages available across the React Aria documentation.
+
+## References
+- [React Aria](https://react-aria.adobe.com/ai?utm_source=intentui.com/ai&utm_medium=referral&utm_campaign=docs&utm_content=%2Fdocs%2Fmcp)
+- [Shadcn MCP](https://ui.shadcn.com/docs/mcp?utm_source=intentui.com/ai&utm_medium=referral&utm_campaign=docs&utm_content=%2Fdocs%2Fmcp)

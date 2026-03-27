@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { ThemeProvider, useTheme } from 'next-themes'
-import { RouterProvider } from 'react-aria-components'
+import { I18nProvider, RouterProvider } from 'react-aria-components'
 import { Toaster } from '@/components/ui/sonner'
 
 declare module 'react-aria-components' {
@@ -12,15 +12,21 @@ declare module 'react-aria-components' {
   }
 }
 
-const Providers = ({ children }: { children: ReactNode }) => {
+export function ClientProviders({ lang, children }: { lang: string; children: ReactNode }) {
+  return <I18nProvider locale={lang}>{children}</I18nProvider>
+}
+
+const Providers = ({ lang, children }: { lang: string; children: ReactNode }) => {
   const router = useRouter()
   return (
-    <RouterProvider navigate={router.push}>
-      <ThemeProvider attribute='class' defaultTheme='system' disableTransitionOnChange enableSystem storageKey='mode'>
-        <Toaster />
-        {children}
-      </ThemeProvider>
-    </RouterProvider>
+    <ClientProviders lang={lang}>
+      <RouterProvider navigate={router.push}>
+        <ThemeProvider attribute='class' defaultTheme='system' disableTransitionOnChange enableSystem storageKey='mode'>
+          <Toaster />
+          {children}
+        </ThemeProvider>
+      </RouterProvider>
+    </ClientProviders>
   )
 }
 

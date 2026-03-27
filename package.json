@@ -18,8 +18,9 @@
         "build:registry": "bun scripts/build-registry.ts",
         "generate:menu": "bun scripts/generate-menu.ts",
         "generate:preview": "bun scripts/generate-preview.ts",
+        "generate:llms": "bun scripts/generate-llms.ts",
         "shadcn:build": "shadcn build",
-        "b": "bun run build:registry && bun run generate:menu && bun run generate:preview && bun run shadcn:build"
+        "b": "bun run build:registry && bun run generate:menu && bun run generate:preview && bun run shadcn:build && bun run generate:llms"
     },
     "version": "0.1.2",
     "dependencies": {

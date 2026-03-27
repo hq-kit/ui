@@ -9,48 +9,48 @@ Components in `src/components/ui/` already define icon sizes via CSS selectors l
 ```tsx
 // ✅ Correct — let the component handle icon sizing
 <MenuItem>
-  <TrashIcon />
+  <IconTrash />
   Delete
 </MenuItem>
 
 <Button>
-  <PlusIcon />
+  <IconPlus />
   Add item
 </Button>
 
 <SelectItem textValue='english'>
-  <GlobeIcon />
+  <IconGlobe />
   English
 </SelectItem>
 
 <Badge>
-  <StarIcon />
+  <IconStar />
   Featured
 </Badge>
 
 <Tabs.Trigger>
-  <HomeIcon />
+  <IconHome />
   Home
 </Tabs.Trigger>
 
 // ❌ Wrong — do NOT add size classes inside these components
 <MenuItem>
-  <TrashIcon className="size-4" />
+  <IconTrash className="size-4" />
   Delete
 </MenuItem>
 
 <Button>
-  <PlusIcon className="h-5 w-5" />
+  <IconPlus className="h-5 w-5" />
   Add item
 </Button>
 
 <Badge>
-  <StarIcon className="size-3" />
+  <IconStar className="size-3" />
   Featured
 </Badge>
 
 <SelectItem textValue='english'>
-  <GlobeIcon className="size-4" />
+  <IconGlobe className="size-4" />
   English
 </SelectItem>
 ```
@@ -62,7 +62,7 @@ Only set icon size when using icons **outside** of HQ UI components, in custom l
 ```tsx
 // ✅ OK — icon is in a custom div, not inside an HQ UI component
 <div className="flex items-center gap-2">
-  <CheckIcon className="size-4 text-green-500" />
+  <IconCheck className="size-4 text-green-500" />
   <span>Completed</span>
 </div>
 ```

@@ -9,8 +9,7 @@ export type MenuItem = {
 export function menus() {
   const gettingStarted = list[0] as MenuItem
   const frameworkGuides = list[1] as MenuItem
-  const darkModes = list[2] as MenuItem
-  const components = list[3] as Component
+  const components = list[2] as Component
 
   return [
     {
@@ -22,13 +21,9 @@ export function menus() {
       items: frameworkGuides.children
     },
     {
-      title: 'Dark Modes',
-      items: darkModes.children
-    },
-    {
       title: 'Components',
       items: [],
-      sections: components.children?.map((section) => ({
+      sections: components?.children?.map((section) => ({
         title: section.subsection,
         items: section.children ?? []
       }))

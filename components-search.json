@@ -22,6 +22,11 @@
         "slug": "/docs/getting-started/mcp-server",
         "title": "MCP Server",
         "order": 4
+      },
+      {
+        "slug": "/llms.txt",
+        "title": "LLMs",
+        "order": 999
       }
     ]
   },
@@ -32,6 +37,16 @@
       {
         "slug": "/docs/framework-guides/nextjs",
         "title": "Nextjs",
+        "order": 1
+      },
+      {
+        "slug": "/docs/framework-guides/laravel",
+        "title": "Laravel",
+        "order": 2
+      },
+      {
+        "slug": "/docs/framework-guides/tanstack-start",
+        "title": "Tanstack Start",
         "order": 999
       },
       {
@@ -43,37 +58,6 @@
   },
   {
     "id": 3,
-    "section": "Dark Mode",
-    "children": [
-      {
-        "slug": "/docs/dark-mode/astro",
-        "title": "Astro",
-        "order": 999
-      },
-      {
-        "slug": "/docs/dark-mode/inertia-js",
-        "title": "Inertia.js",
-        "order": 999
-      },
-      {
-        "slug": "/docs/dark-mode/next-js",
-        "title": "Next.js",
-        "order": 999
-      },
-      {
-        "slug": "/docs/dark-mode/remix",
-        "title": "Remix",
-        "order": 999
-      },
-      {
-        "slug": "/docs/dark-mode/vite",
-        "title": "Vite",
-        "order": 999
-      }
-    ]
-  },
-  {
-    "id": 4,
     "section": "Components",
     "children": [
       {
