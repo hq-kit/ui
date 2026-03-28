@@ -60,7 +60,7 @@ export function Iframe({ component }: { component: Raw }) {
               <DialogBody>
                 <div className='mb-2 space-y-2'>
                   <h3 className='font-medium text-sm'>CLI</h3>
-                  <CLI command='add' items={`samples/${component}`} />
+                  <CLI command='add' items={`${component.split('/').pop()}`} />
                 </div>
                 <div>
                   <h3 className='font-medium text-sm'>Manual Code</h3>

@@ -2,7 +2,7 @@ import type { RegistryItem } from 'shadcn/schema'
 import fs from 'node:fs'
 import path from 'node:path'
 import { siteConfig } from '@/config/site'
-import { checkHooks, checkUtils, getDeps } from '@/scripts/registry-ui'
+import { checkHooks, getDeps } from '@/scripts/registry-ui'
 
 const baseDir = path.resolve(__dirname, '../components')
 const samplesDir = path.join(baseDir, 'samples')
@@ -42,9 +42,6 @@ for (const component of components) {
   const uiComponents = getUIComponents(content).map((c) => `${siteConfig.url}/r/${c}`)
   const deps = getDeps(content)
 
-  if (checkUtils(content)) {
-    uiComponents.push('utils')
-  }
   if (checkHooks(content)) {
     uiComponents.push('use-mobile')
   }
@@ -55,12 +52,12 @@ for (const component of components) {
     extends: 'none',
     dependencies: deps ?? [],
     registryDependencies: uiComponents,
-    type: 'registry:page',
+    type: 'registry:block',
     files: [
       {
         path: `components/samples/${component.path}`,
-        type: 'registry:page',
-        target: `app/${component.name}/page.tsx`
+        type: 'registry:component'
+        // target: `app/${component.name}/page.tsx`
       }
     ]
   })
