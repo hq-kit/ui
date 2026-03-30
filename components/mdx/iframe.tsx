@@ -9,7 +9,7 @@ import {
   IconWindowMaximize
 } from '@tabler/icons-react'
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type Raws from '@/components/samples/generated/previews.json'
 import { cn } from '@/lib/utils'
 import { Badge } from '../ui/badge'
@@ -23,6 +23,8 @@ type Raw = keyof typeof Raws
 
 export function Iframe({ component }: { component: Raw }) {
   const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
+  const [isVisible, setIsVisible] = useState(false)
+  const frameRef = useRef<HTMLDivElement | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [code, setCode] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -48,6 +50,27 @@ export function Iframe({ component }: { component: Raw }) {
       })
       .finally(() => setIsLoading(false))
   }, [apiPath, code, isLoading, isOpen])
+
+  useEffect(() => {
+    const element = frameRef.current
+    if (!element || isVisible) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (entry && entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px 0px' }
+    )
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [isVisible])
 
   return (
     <div className='group/demo relative overflow-hidden rounded-lg border bg-card shadow-sm'>
@@ -111,12 +134,17 @@ export function Iframe({ component }: { component: Raw }) {
           </Link>
         </div>
       </div>
-      <div className='relative flex min-h-56 w-full items-center bg-background lg:min-h-80'>
+      <div
+        className='relative flex min-h-56 w-full items-center bg-background lg:min-h-80'
+        onMouseEnter={() => setIsVisible(true)}
+        ref={frameRef}
+      >
         <iframe
           allowFullScreen
           className={cn('relative z-20 w-full overflow-hidden', [...screenWidth].flat())}
           height={768}
-          src={`/block/${component}`}
+          loading='lazy'
+          src={isVisible ? `/block/${component}` : undefined}
           style={{ zoom: 0.95 }}
           title='Preview'
         />

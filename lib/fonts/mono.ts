@@ -49,3 +49,6 @@ export const fontMonoFamilies = [
 export type FontMonoFamily = (typeof fontMonoFamilies)[number]
 
 export const fontMonoUrl = fontMonoFamilies.map((font) => font.link).join('&')
+
+const defaultMono = fontMonoFamilies.find((font) => font.label === 'JetBrains Mono') ?? fontMonoFamilies[0]
+export const defaultFontMonoUrl = defaultMono.link

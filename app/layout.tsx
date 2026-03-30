@@ -1,8 +1,8 @@
 import { Providers } from '@/components/providers'
 import { ThemeSyncClient } from '@/components/theme-sync-client'
 import { siteConfig } from '@/config/site'
-import { fontMonoUrl } from '@/lib/fonts/mono'
-import { fontSansUrl } from '@/lib/fonts/sans'
+import { defaultFontMonoUrl } from '@/lib/fonts/mono'
+import { defaultFontSansUrl } from '@/lib/fonts/sans'
 import '@/lib/styles/app.css'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
@@ -79,7 +79,12 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior='smooth' lang={lang} suppressHydrationWarning>
       <head>
-        <link href={`https://fonts.googleapis.com/css2?${fontSansUrl}&${fontMonoUrl}&display=swap`} rel='stylesheet' />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+        <link
+          href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
+          rel='stylesheet'
+        />
       </head>
       <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
         <Providers lang={lang}>

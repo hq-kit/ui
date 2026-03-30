@@ -100,3 +100,6 @@ export const fontSansFamilies = [
 export type FontSansFamily = (typeof fontSansFamilies)[number]
 
 export const fontSansUrl = fontSansFamilies.map((font) => font.link).join('&')
+
+const defaultSans = fontSansFamilies.find((font) => font.label === 'Inter') ?? fontSansFamilies[0]
+export const defaultFontSansUrl = defaultSans.link
