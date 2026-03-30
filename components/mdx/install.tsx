@@ -3,7 +3,7 @@
 import { IconBrandReact, IconBrandTypescript, IconFolder, IconFolderOpen } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import { CLI } from '@/components/mdx/cli'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Tabs } from '@/components/ui/tabs'
 import { Tree } from '@/components/ui/tree'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import {
   DropdownMenu,
   DropdownMenuContent,

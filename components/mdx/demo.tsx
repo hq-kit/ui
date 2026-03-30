@@ -1,26 +1,52 @@
 'use client'
 
 import { IconCode } from '@tabler/icons-react'
+import type Raws from '@/components/samples/generated/previews.json'
 import { previews } from '@/components/samples/generated/previews'
-import Raws from '@/components/samples/generated/previews.json'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { useEffect, useMemo, useState } from 'react'
 import { CLI } from './cli'
-import { Code } from './code'
+import { Code } from './code-client'
 
 type Raw = keyof typeof Raws
 
 export function Demo({ component }: { component: Raw }) {
   const Component = previews[component].component
-  const code = Raws[component].raw
+  const [isOpen, setIsOpen] = useState(false)
+  const [code, setCode] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const apiPath = useMemo(() => {
+    const slug = component.split('/').map(encodeURIComponent).join('/')
+    return `/api/preview/${slug}`
+  }, [component])
+
+  useEffect(() => {
+    if (!isOpen || code || isLoading) return
+    setIsLoading(true)
+    setError(null)
+    fetch(apiPath)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Failed to load code')
+        const data = (await res.json()) as { raw?: string }
+        setCode(data.raw ?? '')
+      })
+      .catch(() => {
+        setError('Failed to load code.')
+      })
+      .finally(() => setIsLoading(false))
+  }, [apiPath, code, isLoading, isOpen])
+
   return (
     <div className='group/demo relative overflow-hidden rounded-lg border shadow-sm'>
       <div className='flex w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 p-2 backdrop-blur-2xl'>
         <Badge className='font-medium text-xs' variant='outline'>
           {component.split('/').pop()}
         </Badge>
-        <Dialog>
+        <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
           <Button size='icon-sm' variant='outline'>
             <IconCode />
           </Button>
@@ -35,7 +61,13 @@ export function Demo({ component }: { component: Raw }) {
               </div>
               <div>
                 <h3 className='font-medium text-sm'>Manual Code</h3>
-                <Code className='border shadow-sm' code={code} copy />
+                {error ? (
+                  <p className='text-destructive text-sm'>{error}</p>
+                ) : code ? (
+                  <Code className='border shadow-sm' code={code} copy />
+                ) : (
+                  <div className='h-12 w-full animate-pulse rounded-lg border bg-muted' />
+                )}
               </div>
             </DialogBody>
           </DialogContent>

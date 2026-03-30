@@ -3,7 +3,7 @@
 import type { Key } from 'react-aria-components'
 import { IconBrandAdobe } from '@tabler/icons-react'
 import { useState } from 'react'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'

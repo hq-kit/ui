@@ -2,7 +2,7 @@
 
 import { IconChevronRight } from '@tabler/icons-react'
 import { useState } from 'react'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Switch } from '@/components/ui/switch'
 

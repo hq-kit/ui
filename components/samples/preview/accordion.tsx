@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Switch } from '@/components/ui/switch'
 

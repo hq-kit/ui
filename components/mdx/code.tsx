@@ -1,10 +1,6 @@
-'use client'
-
-import React, { useState } from 'react'
 import { codeToHtml } from 'shiki'
-import { copyToClipboard } from '@/lib/modifiers'
 import { cn } from '@/lib/utils'
-import { CopyButton } from './copy-button'
+import { CodeCopy } from './code-copy'
 
 export interface CodeProps {
   lang?: string
@@ -13,53 +9,36 @@ export interface CodeProps {
   copy?: boolean
 }
 
-export const Code = ({ lang = 'tsx', code, className, copy = false, ...props }: CodeProps) => {
-  const [loading, setLoading] = useState(false)
-  const [formattedCode, setFormattedCode] = useState('')
-  const [error, setError] = useState('')
-  const [copied, setCopied] = useState<boolean>(false)
+export const Code = async ({ lang = 'tsx', code, className, copy = false, ...props }: CodeProps) => {
+  let formattedCode = ''
+  let error: string | null = null
 
-  const copyCode = async () => {
-    await copyToClipboard(code).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }
-
-  React.useEffect(() => {
-    setLoading(true)
-    const processCode = async () => {
-      try {
-        const file = await codeToHtml(code, {
-          lang: lang,
-          themes: { light: 'catppuccin-latte', dark: 'catppuccin-mocha' },
-          transformers: [
-            {
-              line(node, line) {
-                node.properties['data-line'] = line
-              },
-              span(node, line, col) {
-                node.properties['data-token'] = `token:${line}:${col}`
-              }
+  try {
+    formattedCode = String(
+      await codeToHtml(code, {
+        lang: lang,
+        themes: { light: 'catppuccin-latte', dark: 'catppuccin-mocha' },
+        transformers: [
+          {
+            line(node, line) {
+              node.properties['data-line'] = line
+            },
+            span(node, line, col) {
+              node.properties['data-token'] = `token:${line}:${col}`
             }
-          ]
-        }).then((r) => r)
-        setFormattedCode(String(file))
-      } catch (err) {
-        setError('Failed to process code. Please check the configuration.')
-        console.error(err)
-      }
-    }
-    processCode().then(() => setLoading(false))
-  }, [code, lang])
+          }
+        ]
+      })
+    )
+  } catch {
+    error = 'Failed to process code. Please check the configuration.'
+  }
 
   if (error) {
     return <p>Error: {error}</p>
   }
 
-  return loading ? (
-    <div className='h-12 w-full animate-pulse rounded-lg bg-muted' />
-  ) : (
+  return (
     <div className='relative w-full'>
       <div
         {...props}
@@ -72,7 +51,7 @@ export const Code = ({ lang = 'tsx', code, className, copy = false, ...props }: 
         )}
         dangerouslySetInnerHTML={{ __html: formattedCode }}
       />
-      {copy && <CopyButton className='absolute top-1.5 right-1.5 z-10 bg-card' isCopied={copied} onPress={copyCode} />}
+      {copy && <CodeCopy className='absolute top-1.5 right-1.5 z-10 bg-card' code={code} />}
     </div>
   )
 }

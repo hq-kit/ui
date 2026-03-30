@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ThemeProvider, useTheme } from 'next-themes'
 import { I18nProvider, RouterProvider } from 'react-aria-components'
@@ -13,7 +14,15 @@ declare module 'react-aria-components' {
 }
 
 export function ClientProviders({ lang, children }: { lang: string; children: ReactNode }) {
-  return <I18nProvider locale={lang}>{children}</I18nProvider>
+  const [locale, setLocale] = useState(lang)
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return
+    const nextLocale = navigator.language || lang
+    setLocale(nextLocale)
+  }, [lang])
+
+  return <I18nProvider locale={locale}>{children}</I18nProvider>
 }
 
 const Providers = ({ lang, children }: { lang: string; children: ReactNode }) => {

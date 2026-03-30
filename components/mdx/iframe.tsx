@@ -9,21 +9,45 @@ import {
   IconWindowMaximize
 } from '@tabler/icons-react'
 import Link from 'next/link'
-import { useState } from 'react'
-import Raws from '@/components/samples/generated/previews.json'
+import { useEffect, useMemo, useState } from 'react'
+import type Raws from '@/components/samples/generated/previews.json'
 import { cn } from '@/lib/utils'
 import { Badge } from '../ui/badge'
 import { Button, buttonVariants } from '../ui/button'
 import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog'
 import { ToggleGroup } from '../ui/toggle-group'
 import { CLI } from './cli'
-import { Code } from './code'
+import { Code } from './code-client'
 
 type Raw = keyof typeof Raws
 
 export function Iframe({ component }: { component: Raw }) {
   const [screenWidth, setScreenWidth] = useState(new Set<Key>(['max-w-none']))
-  const code = Raws[component].raw
+  const [isOpen, setIsOpen] = useState(false)
+  const [code, setCode] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const apiPath = useMemo(() => {
+    const slug = component.split('/').map(encodeURIComponent).join('/')
+    return `/api/preview/${slug}`
+  }, [component])
+
+  useEffect(() => {
+    if (!isOpen || code || isLoading) return
+    setIsLoading(true)
+    setError(null)
+    fetch(apiPath)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Failed to load code')
+        const data = (await res.json()) as { raw?: string }
+        setCode(data.raw ?? '')
+      })
+      .catch(() => {
+        setError('Failed to load code.')
+      })
+      .finally(() => setIsLoading(false))
+  }, [apiPath, code, isLoading, isOpen])
 
   return (
     <div className='group/demo relative overflow-hidden rounded-lg border bg-card shadow-sm'>
@@ -49,7 +73,7 @@ export function Iframe({ component }: { component: Raw }) {
               <IconDeviceDesktop />
             </ToggleGroup.Item>
           </ToggleGroup>
-          <Dialog>
+          <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
             <Button size='icon-sm' variant='outline'>
               <IconCode />
             </Button>
@@ -64,7 +88,13 @@ export function Iframe({ component }: { component: Raw }) {
                 </div>
                 <div>
                   <h3 className='font-medium text-sm'>Manual Code</h3>
-                  <Code className='border shadow-sm' code={code} copy />
+                  {error ? (
+                    <p className='text-destructive text-sm'>{error}</p>
+                  ) : code ? (
+                    <Code className='border shadow-sm' code={code} copy />
+                  ) : (
+                    <div className='h-12 w-full animate-pulse rounded-lg border bg-muted' />
+                  )}
                 </div>
               </DialogBody>
             </DialogContent>

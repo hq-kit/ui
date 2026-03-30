@@ -3,7 +3,7 @@
 import type { Key } from 'react-aria-components'
 import { useMemo, useState } from 'react'
 import { I18nProvider, useLocale } from 'react-aria-components'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { RangeCalendar } from '@/components/ui/calendar'
 import { DateRangePicker, DateRangePickerInput } from '@/components/ui/date-field'
 import { Label } from '@/components/ui/label'

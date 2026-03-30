@@ -5,7 +5,7 @@ import { IconBrandVscode } from '@tabler/icons-react'
 import { useState } from 'react'
 import { IconBrandChatGPT, IconBrandClaude, IconBrandCursor, IconBrandGemini } from '@/components/icons'
 import { CLI } from '@/components/mdx/cli'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Tabs } from '@/components/ui/tabs'
 
 const commands = [

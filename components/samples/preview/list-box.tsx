@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useDragAndDrop, useListData } from 'react-aria-components'
-import { Code } from '@/components/mdx/code'
+import { Code } from '@/components/mdx/code-client'
 import { Label } from '@/components/ui/label'
 import { ListBox, ListBoxItem } from '@/components/ui/list-box'
 import { Radio, RadioGroup } from '@/components/ui/radio'

@@ -1,12 +1,11 @@
 import { Providers } from '@/components/providers'
-import { ThemeSync } from '@/components/theme-sync'
+import { ThemeSyncClient } from '@/components/theme-sync-client'
 import { siteConfig } from '@/config/site'
 import { fontMonoUrl } from '@/lib/fonts/mono'
 import { fontSansUrl } from '@/lib/fonts/sans'
 import '@/lib/styles/app.css'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-import { headers } from 'next/headers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -71,13 +70,12 @@ export const viewport: Viewport = {
   initialScale: 1
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: Readonly<{
   children: ReactNode
 }>) {
-  const acceptLanguage = (await headers()).get('accept-language')
-  const lang = acceptLanguage?.split(/[,;]/)[0] || 'en-US'
+  const lang = 'en-US'
   return (
     <html data-scroll-behavior='smooth' lang={lang} suppressHydrationWarning>
       <head>
@@ -85,7 +83,7 @@ export default async function RootLayout({
       </head>
       <body className='min-h-dvh bg-background font-sans text-foreground antialiased'>
         <Providers lang={lang}>
-          <ThemeSync />
+          <ThemeSyncClient />
           {children}
         </Providers>
       </body>

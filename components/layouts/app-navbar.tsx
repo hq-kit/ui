@@ -1,6 +1,7 @@
 'use client'
 
 import { IconBrandGithub, IconSearch } from '@tabler/icons-react'
+import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
 import { Collection, Header, Link } from 'react-aria-components'
@@ -11,7 +12,10 @@ import { Button, buttonVariants } from '../ui/button'
 import { Kbd, KbdGroup } from '../ui/kbd'
 import { Navbar } from '../ui/navbar'
 import { Separator } from '../ui/separator'
-import { CommandMenu } from './command-menu'
+
+const CommandMenu = dynamic(() => import('./command-menu').then((mod) => mod.CommandMenu), {
+  ssr: false
+})
 
 export function AppNavbar() {
   const pathname = usePathname()
