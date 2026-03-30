@@ -13,8 +13,11 @@ const initialState: ThemeState = {
   styles: getPresetThemeStyles('default')
 }
 
+const withDevtools =
+  process.env.NODE_ENV === 'development' ? devtools : <T>(initializer: T) => initializer
+
 export const useThemeStore = create<ThemeStore>()(
-  devtools(
+  withDevtools(
     persist(
       (set) => ({
         ...initialState,

@@ -45,7 +45,7 @@ export function AppNavbar() {
 
   return (
     <>
-      <CommandMenu open={openCommand} setOpen={setOpenCommand} />
+      {openCommand && <CommandMenu open={openCommand} setOpen={setOpenCommand} />}
       <Navbar isOpen={openNav} isSticky onOpenChange={setOpenNav}>
         <Navbar.Nav>
           <Navbar.Logo aria-label='Home' href='/'>
