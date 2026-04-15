@@ -100,7 +100,7 @@ const CommandInput = ({
 const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
   <Menu
     className={cn(
-      'max-h-75 scroll-py-1 overflow-y-auto overflow-x-hidden px-1 py-1 has-data-[slot=title]:py-0',
+      'max-h-75 scroll-py-1 overflow-y-auto overflow-x-hidden px-1 py-1 has-data-[slot=title]:pt-0',
       '[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1',
       className
     )}
