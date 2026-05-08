@@ -1,5 +1,5 @@
-import { Label } from '@/components/ui/label'
-import { Meter } from '@/components/ui/meter'
+import { Label } from "@/components/ui/label"
+import { Meter } from "@/components/ui/meter"
 
 const Example = () => {
   const current = 7
@@ -10,7 +10,7 @@ const Example = () => {
     <Meter value={value}>
       <Meter.Header>
         <Label>Tasks completed</Label>
-        <span className='font-medium'>
+        <span className="font-medium">
           {current} of {total}
         </span>
       </Meter.Header>

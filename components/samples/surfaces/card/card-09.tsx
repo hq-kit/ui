@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const CardOutlineDemo = () => {
   return (
-    <Card className='max-w-md gap-0 border-primary bg-transparent shadow-none'>
+    <Card className="max-w-md gap-0 border-primary bg-transparent shadow-none">
       <CardHeader>
         <CardTitle>Creative Clash</CardTitle>
       </CardHeader>

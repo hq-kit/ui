@@ -1,7 +1,7 @@
 export interface CollectionComponent {
   title: string
   slug: string
-  status?: 'new' | 'updated' | 'beta' | 'alpha'
+  status?: "new" | "updated" | "beta" | "alpha"
 }
 
 export interface Component {
@@ -30,7 +30,7 @@ export type Grouped =
       children: SubSection[]
     }
 
-import type { LazyExoticComponent } from 'react'
+import type { LazyExoticComponent } from "react"
 
 export type RegistryItem = {
   component: LazyExoticComponent<any>

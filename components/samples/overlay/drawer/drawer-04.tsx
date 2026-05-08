@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerBody,
@@ -7,19 +7,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle
-} from '@/components/ui/drawer'
+} from "@/components/ui/drawer"
 
 const DrawerWithScrollableContentDemo = () => {
   return (
     <Drawer>
-      <Button variant='outline'>Scrollable Content</Button>
-      <DrawerContent className='lg:h-[calc(100vh-10rem)]'>
+      <Button variant="outline">Scrollable Content</Button>
+      <DrawerContent className="lg:h-[calc(100vh-10rem)]">
         <DrawerHeader>
           <DrawerTitle>Terms & Condition</DrawerTitle>
           <DrawerDescription>Make sure read the terms and conditions before proceeding.</DrawerDescription>
         </DrawerHeader>
-        <DrawerBody className='space-y-1 text-sm'>
-          <p className='mb-2 font-medium'>Last Updated: June 1, 2025</p>
+        <DrawerBody className="space-y-1 text-sm">
+          <p className="mb-2 font-medium">Last Updated: June 1, 2025</p>
 
           <h3>1. Introduction</h3>
           <p>
@@ -67,7 +67,7 @@ const DrawerWithScrollableContentDemo = () => {
 
           <h3>7. Privacy and Data Protection</h3>
           <p>
-            Your privacy is important to us. Please refer to our <a href='#'>Privacy Policy</a> to understand how we
+            Your privacy is important to us. Please refer to our <a href="#">Privacy Policy</a> to understand how we
             collect, use, and protect your personal data.
           </p>
 
@@ -111,10 +111,10 @@ const DrawerWithScrollableContentDemo = () => {
           <p>Phone: +1 (800) 123-4567</p>
         </DrawerBody>
         <DrawerFooter>
-          <Button slot='close' type='submit'>
+          <Button slot="close" type="submit">
             Accept
           </Button>
-          <Button slot='close' variant='outline'>
+          <Button slot="close" variant="outline">
             Cancel
           </Button>
         </DrawerFooter>

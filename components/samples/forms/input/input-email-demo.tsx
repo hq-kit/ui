@@ -1,5 +1,5 @@
-import { IconMail } from '@tabler/icons-react'
-import { InputGroup } from '@/components/ui/input'
+import { IconMail } from "@tabler/icons-react"
+import { InputGroup } from "@/components/ui/input"
 
 export default function EmailFieldDemo() {
   return (

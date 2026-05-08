@@ -1,12 +1,12 @@
-import { IconBell } from '@tabler/icons-react'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconBell } from "@tabler/icons-react"
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'No Notifications'
+export const title = "No Notifications"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconBell />
       </EmptyMedia>
       <EmptyTitle>No notifications</EmptyTitle>

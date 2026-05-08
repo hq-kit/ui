@@ -1,16 +1,16 @@
-import { IconDeviceDesktop, IconDeviceIpad, IconDeviceMobile } from '@tabler/icons-react'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { IconDeviceDesktop, IconDeviceIpad, IconDeviceMobile } from "@tabler/icons-react"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 const ToggleGroupBasic = () => {
   return (
-    <ToggleGroup defaultSelectedKeys={['sm']} variant='outline'>
-      <ToggleGroupItem id='sm'>
+    <ToggleGroup defaultSelectedKeys={["sm"]} variant="outline">
+      <ToggleGroupItem id="sm">
         <IconDeviceMobile />
       </ToggleGroupItem>
-      <ToggleGroupItem id='md'>
+      <ToggleGroupItem id="md">
         <IconDeviceIpad />
       </ToggleGroupItem>
-      <ToggleGroupItem id='lg'>
+      <ToggleGroupItem id="lg">
         <IconDeviceDesktop />
       </ToggleGroupItem>
     </ToggleGroup>

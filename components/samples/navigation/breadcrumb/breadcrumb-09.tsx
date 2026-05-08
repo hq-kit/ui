@@ -1,13 +1,13 @@
-import { IconDashboard, IconDots } from '@tabler/icons-react'
-import { Badge } from '@/components/ui/badge'
-import { Breadcrumb, BreadcrumbItem } from '@/components/ui/breadcrumb'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { IconDashboard, IconDots } from "@tabler/icons-react"
+import { Badge } from "@/components/ui/badge"
+import { Breadcrumb, BreadcrumbItem } from "@/components/ui/breadcrumb"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Breadcrumb09() {
   return (
     <Breadcrumb>
-      <BreadcrumbItem href='#'>
-        <Badge variant='outline'>
+      <BreadcrumbItem href="#">
+        <Badge variant="outline">
           <IconDashboard />
           Dashboard
         </Badge>

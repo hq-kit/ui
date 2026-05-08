@@ -1,6 +1,6 @@
-import type { ElementType } from 'react'
-import type { registryItemFileSchema } from 'shadcn/schema'
-import type { z } from 'zod'
+import type { ElementType } from "react"
+import type { registryItemFileSchema } from "shadcn/schema"
+import type { z } from "zod"
 
 export type SectionType = {
   slug: string

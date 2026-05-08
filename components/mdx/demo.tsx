@@ -1,50 +1,44 @@
-"use client";
+"use client"
 
-import type Raws from "@/components/samples/generated/previews.json";
-import { IconCode } from "@tabler/icons-react";
-import { useEffect, useMemo, useState } from "react";
-import { previews } from "@/components/samples/generated/previews";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { CLI } from "./cli";
-import { Code } from "./code-client";
+import type Raws from "@/components/samples/generated/previews.json"
+import { IconCode } from "@tabler/icons-react"
+import { useEffect, useMemo, useState } from "react"
+import { previews } from "@/components/samples/generated/previews"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { CLI } from "./cli"
+import { Code } from "./code-client"
 
-type Raw = keyof typeof Raws;
+type Raw = keyof typeof Raws
 
 export function Demo({ component }: { component: Raw }) {
-  const Component = previews[component].component;
-  const [isOpen, setIsOpen] = useState(false);
-  const [code, setCode] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const Component = previews[component].component
+  const [isOpen, setIsOpen] = useState(false)
+  const [code, setCode] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const apiPath = useMemo(() => {
-    const slug = component.split("/").map(encodeURIComponent).join("/");
-    return `/api/preview/${slug}`;
-  }, [component]);
+    const slug = component.split("/").map(encodeURIComponent).join("/")
+    return `/api/preview/${slug}`
+  }, [component])
 
   useEffect(() => {
-    if (!isOpen || code || isLoading) return;
-    setIsLoading(true);
-    setError(null);
+    if (!isOpen || code || isLoading) return
+    setIsLoading(true)
+    setError(null)
     fetch(apiPath)
       .then(async (res) => {
-        if (!res.ok) throw new Error("Failed to load code");
-        const data = (await res.json()) as { raw?: string };
-        setCode(data.raw ?? "");
+        if (!res.ok) throw new Error("Failed to load code")
+        const data = (await res.json()) as { raw?: string }
+        setCode(data.raw ?? "")
       })
       .catch(() => {
-        setError("Failed to load code.");
+        setError("Failed to load code.")
       })
-      .finally(() => setIsLoading(false));
-  }, [apiPath, code, isLoading, isOpen]);
+      .finally(() => setIsLoading(false))
+  }, [apiPath, code, isLoading, isOpen])
 
   return (
     <div className="group/demo relative overflow-hidden rounded-lg border shadow-sm">
@@ -83,5 +77,5 @@ export function Demo({ component }: { component: Raw }) {
         <Component />
       </div>
     </div>
-  );
+  )
 }

@@ -1,14 +1,11 @@
-"use client";
+"use client"
 
-import type {
-  ProgressBarProps,
-  ProgressBarRenderProps,
-} from "react-aria-components";
-import { type ComponentProps, createContext, use } from "react";
-import { composeRenderProps, ProgressBar } from "react-aria-components";
-import { cn } from "@/lib/utils";
+import { type ComponentProps, createContext, use } from "react"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { ProgressBar, type ProgressBarProps, type ProgressBarRenderProps } from "react-aria-components/ProgressBar"
+import { cn } from "@/lib/utils"
 
-const ProgressContext = createContext<ProgressBarRenderProps | null>(null);
+const ProgressContext = createContext<ProgressBarRenderProps | null>(null)
 
 const Progress = ({ className, children, ...props }: ProgressBarProps) => (
   <ProgressBar
@@ -22,8 +19,8 @@ const Progress = ({ className, children, ...props }: ProgressBarProps) => (
         "[&>[data-slot=progress-bar-track]+[slot=description]]:mt-2",
         "[&>[data-slot=progress-bar-track]+[slot=errorMessage]]:mt-2",
         "*:data-[slot=progress-bar-header]:font-medium",
-        className,
-      ),
+        className
+      )
     )}
     data-slot="control"
     {...props}
@@ -34,30 +31,23 @@ const Progress = ({ className, children, ...props }: ProgressBarProps) => (
       </ProgressContext>
     )}
   </ProgressBar>
-);
+)
 
 const ProgressHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("flex items-center justify-between", className)}
-    data-slot="progress-bar-header"
-    {...props}
-  />
-);
+  <div className={cn("flex items-center justify-between", className)} data-slot="progress-bar-header" {...props} />
+)
 
-const ProgressValue = ({
-  className,
-  ...props
-}: Omit<ComponentProps<"span">, "children">) => {
-  const { valueText } = use(ProgressContext)!;
+const ProgressValue = ({ className, ...props }: Omit<ComponentProps<"span">, "children">) => {
+  const { valueText } = use(ProgressContext)!
   return (
     <span className={cn("text-base/6 sm:text-sm/6", className)} {...props}>
       {valueText}
     </span>
-  );
-};
+  )
+}
 
 const ProgressTrack = ({ className, ref, ...props }: ComponentProps<"div">) => {
-  const { isIndeterminate, percentage } = use(ProgressContext)!;
+  const { isIndeterminate, percentage } = use(ProgressContext)!
   return (
     <span className="relative block w-full" data-slot="progress-bar-track">
       <style>{`
@@ -71,7 +61,7 @@ const ProgressTrack = ({ className, ref, ...props }: ComponentProps<"div">) => {
         <div
           className={cn(
             "relative h-1.5 w-full min-w-52 overflow-hidden rounded-full bg-secondary outline-1 outline-transparent -outline-offset-1 will-change-transform",
-            className,
+            className
           )}
           data-slot="track"
         >
@@ -91,11 +81,11 @@ const ProgressTrack = ({ className, ref, ...props }: ComponentProps<"div">) => {
         </div>
       </div>
     </span>
-  );
-};
+  )
+}
 
-Progress.Header = ProgressHeader;
-Progress.Value = ProgressValue;
-Progress.Track = ProgressTrack;
+Progress.Header = ProgressHeader
+Progress.Value = ProgressValue
+Progress.Track = ProgressTrack
 
-export { Progress, ProgressHeader, ProgressTrack, ProgressValue };
+export { Progress, ProgressHeader, ProgressTrack, ProgressValue }

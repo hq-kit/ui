@@ -1,9 +1,9 @@
-import { Label } from '@/components/ui/label'
-import { NumberField, NumberInput } from '@/components/ui/number-field'
+import { Label } from "@/components/ui/label"
+import { NumberField, NumberInput } from "@/components/ui/number-field"
 
 export default function NumberFieldDemo() {
   return (
-    <div className='flex flex-col gap-2 lg:flex-row'>
+    <div className="flex flex-col gap-2 lg:flex-row">
       <NumberField>
         <Label>Basic</Label>
         <NumberInput />

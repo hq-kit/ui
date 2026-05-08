@@ -1,19 +1,19 @@
-'use client'
+"use client"
 
-import type { Selection } from 'react-aria-components'
-import { useState } from 'react'
-import { ListBox, ListBoxItem } from '@/components/ui/list-box'
+import type { Selection } from "react-aria-components"
+import { useState } from "react"
+import { ListBox, ListBoxItem } from "@/components/ui/list-box"
 
 export default function ListBoxMultipleDemo() {
   const [selected, setSelected] = useState<Selection>(new Set([3]))
   return (
     <div>
       <ListBox
-        aria-label='Fruits'
+        aria-label="Fruits"
         items={fruits}
         onSelectionChange={setSelected}
         selectedKeys={selected}
-        selectionMode='multiple'
+        selectionMode="multiple"
       >
         {(fruit) => (
           <ListBoxItem id={fruit.id} textValue={fruit.name}>
@@ -23,7 +23,7 @@ export default function ListBoxMultipleDemo() {
       </ListBox>
 
       {[...selected].length > 0 && (
-        <p className='mt-4 block'>Selected: {selected === 'all' ? 'All selected' : [...selected].join(', ')}</p>
+        <p className="mt-4 block">Selected: {selected === "all" ? "All selected" : [...selected].join(", ")}</p>
       )}
     </div>
   )
@@ -32,30 +32,30 @@ export default function ListBoxMultipleDemo() {
 const fruits = [
   {
     id: 1,
-    name: 'Apple'
+    name: "Apple"
   },
   {
     id: 2,
-    name: 'Banana'
+    name: "Banana"
   },
   {
     id: 3,
-    name: 'Orange'
+    name: "Orange"
   },
   {
     id: 4,
-    name: 'Strawberry'
+    name: "Strawberry"
   },
   {
     id: 5,
-    name: 'Grapes'
+    name: "Grapes"
   },
   {
     id: 6,
-    name: 'Mango'
+    name: "Mango"
   },
   {
     id: 7,
-    name: 'Pineapple'
+    name: "Pineapple"
   }
 ]

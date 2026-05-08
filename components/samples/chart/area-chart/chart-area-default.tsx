@@ -1,25 +1,25 @@
-'use client'
+"use client"
 
-import { IconTrendingUp } from '@tabler/icons-react'
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { IconTrendingUp } from "@tabler/icons-react"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-export const description = 'A simple area chart'
+export const description = "A simple area chart"
 
 const chartData = [
-  { month: 'January', desktop: 186 },
-  { month: 'February', desktop: 305 },
-  { month: 'March', desktop: 237 },
-  { month: 'April', desktop: 73 },
-  { month: 'May', desktop: 209 },
-  { month: 'June', desktop: 214 }
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 305 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 73 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 214 }
 ]
 
 const chartConfig = {
   desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)'
+    label: "Desktop",
+    color: "var(--chart-1)"
   }
 } satisfies ChartConfig
 
@@ -43,29 +43,29 @@ export default function ChartAreaDefault() {
             <CartesianGrid vertical={false} />
             <XAxis
               axisLine={false}
-              dataKey='month'
+              dataKey="month"
               tickFormatter={(value) => value.slice(0, 3)}
               tickLine={false}
               tickMargin={8}
             />
-            <ChartTooltip content={<ChartTooltipContent indicator='line' />} cursor={false} />
+            <ChartTooltip content={<ChartTooltipContent indicator="line" />} cursor={false} />
             <Area
-              dataKey='desktop'
-              fill='var(--color-desktop)'
+              dataKey="desktop"
+              fill="var(--color-desktop)"
               fillOpacity={0.4}
-              stroke='var(--color-desktop)'
-              type='natural'
+              stroke="var(--color-desktop)"
+              type="natural"
             />
           </AreaChart>
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className='flex w-full items-start gap-2 text-sm'>
-          <div className='grid gap-2'>
-            <div className='flex items-center gap-2 font-medium leading-none'>
-              Trending up by 5.2% this month <IconTrendingUp className='h-4 w-4' />
+        <div className="flex w-full items-start gap-2 text-sm">
+          <div className="grid gap-2">
+            <div className="flex items-center gap-2 font-medium leading-none">
+              Trending up by 5.2% this month <IconTrendingUp className="h-4 w-4" />
             </div>
-            <div className='flex items-center gap-2 text-muted-foreground leading-none'>January - June 2024</div>
+            <div className="flex items-center gap-2 text-muted-foreground leading-none">January - June 2024</div>
           </div>
         </div>
       </CardFooter>

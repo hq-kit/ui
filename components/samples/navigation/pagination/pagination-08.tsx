@@ -6,21 +6,21 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious
-} from '@/components/ui/pagination'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+} from "@/components/ui/pagination"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 const PaginationWithEllipsisDemo = () => {
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href='#' />
+          <PaginationPrevious href="#" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href='#'>1</PaginationLink>
+          <PaginationLink href="#">1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href='#' isActive>
+          <PaginationLink href="#" isActive>
             2
           </PaginationLink>
         </PaginationItem>
@@ -35,7 +35,7 @@ const PaginationWithEllipsisDemo = () => {
           </Tooltip>
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href='#' />
+          <PaginationNext href="#" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

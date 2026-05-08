@@ -1,12 +1,11 @@
-'use client'
+"use client"
 
-import type { ComponentProps } from 'react'
-import { Collection } from '@react-aria/collections'
-import { IconCheck, IconChevronRight, IconCircleFilled } from '@tabler/icons-react'
+import type { ComponentProps } from "react"
+import { IconCheck, IconChevronRight, IconCircleFilled } from "@tabler/icons-react"
+import { Button, type ButtonProps } from "react-aria-components/Button"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
-  Button,
-  type ButtonProps,
-  composeRenderProps,
+  Collection,
   Header,
   Menu,
   MenuItem,
@@ -22,22 +21,22 @@ import {
   type SeparatorProps,
   SubmenuTrigger,
   type SubmenuTriggerProps
-} from 'react-aria-components'
-import { cn } from '@/lib/utils'
+} from "react-aria-components/Menu"
+import { cn } from "@/lib/utils"
 
-const DropdownMenu = (props: MenuTriggerProps) => <MenuTrigger data-slot='dropdown-menu' {...props} />
+const DropdownMenu = (props: MenuTriggerProps) => <MenuTrigger data-slot="dropdown-menu" {...props} />
 
-const DropdownMenuTrigger = (props: ButtonProps) => <Button data-slot='dropdown-menu-trigger' {...props} />
+const DropdownMenuTrigger = (props: ButtonProps) => <Button data-slot="dropdown-menu-trigger" {...props} />
 
 const DropdownMenuContent = <T extends object>({
   className,
-  placement = 'bottom',
+  placement = "bottom",
   ...props
 }: MenuProps<T> &
-  Pick<PopoverProps, 'offset' | 'crossOffset' | 'placement' | 'isOpen' | 'onOpenChange' | 'triggerRef'>) => (
+  Pick<PopoverProps, "offset" | "crossOffset" | "placement" | "isOpen" | "onOpenChange" | "triggerRef">) => (
   <Popover
     className={cn(
-      'data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out',
+      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out",
       className
     )}
     crossOffset={props.crossOffset}
@@ -48,17 +47,17 @@ const DropdownMenuContent = <T extends object>({
     triggerRef={props.triggerRef}
   >
     <Menu
-      className='flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit] sm:min-w-40'
-      data-slot='dropdown-menu-content'
+      className="flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit] sm:min-w-40"
+      data-slot="dropdown-menu-content"
       {...props}
     />
   </Popover>
 )
 
 const DropdownMenuGroup = <T extends object>({ title, ...props }: MenuSectionProps<T> & { title?: string }) => (
-  <MenuSection className={cn('flex flex-col text-sm', props.className)} data-slot='command-group' {...props}>
+  <MenuSection className={cn("flex flex-col text-sm", props.className)} data-slot="command-group" {...props}>
     {title && (
-      <Header className='pointer-events-none px-2 py-1 font-medium text-muted-foreground text-xs'>{title}</Header>
+      <Header className="pointer-events-none px-2 py-1 font-medium text-muted-foreground text-xs">{title}</Header>
     )}
     <Collection items={props.items}>{props.children}</Collection>
   </MenuSection>
@@ -67,11 +66,11 @@ const DropdownMenuGroup = <T extends object>({ title, ...props }: MenuSectionPro
 const DropdownMenuItem = ({
   className,
   inset,
-  variant = 'default',
+  variant = "default",
   ...props
 }: MenuItemProps & {
   inset?: boolean
-  variant?: 'default' | 'destructive'
+  variant?: "default" | "destructive"
 }) => (
   <MenuItem
     className={composeRenderProps(className, (className) =>
@@ -81,7 +80,7 @@ const DropdownMenuItem = ({
       )
     )}
     data-inset={inset}
-    data-slot='dropdown-menu-item'
+    data-slot="dropdown-menu-item"
     data-variant={variant}
     {...props}
   >
@@ -90,22 +89,22 @@ const DropdownMenuItem = ({
         {values.isSelected && (
           <span
             className={cn(
-              'group-has-data-[slot=avatar]:absolute group-has-data-[slot=avatar]:right-0',
-              'group-has-data-[slot=icon]:absolute group-has-data-[slot=icon]:right-0'
+              "group-has-data-[slot=avatar]:absolute group-has-data-[slot=avatar]:right-0",
+              "group-has-data-[slot=icon]:absolute group-has-data-[slot=icon]:right-0"
             )}
           >
-            {values.selectionMode === 'single' && (
-              <IconCircleFilled className='mx-1 size-2 text-current' data-slot='check-indicator' />
+            {values.selectionMode === "single" && (
+              <IconCircleFilled className="mx-1 size-2 text-current" data-slot="check-indicator" />
             )}
-            {values.selectionMode === 'multiple' && (
-              <IconCheck className='size-4 text-current' data-slot='check-indicator' />
+            {values.selectionMode === "multiple" && (
+              <IconCheck className="size-4 text-current" data-slot="check-indicator" />
             )}
           </span>
         )}
 
-        {typeof props.children === 'function' ? props.children(values) : props.children}
+        {typeof props.children === "function" ? props.children(values) : props.children}
 
-        {values.hasSubmenu && <IconChevronRight className='absolute right-2 size-3.5' data-slot='chevron' />}
+        {values.hasSubmenu && <IconChevronRight className="absolute right-2 size-3.5" data-slot="chevron" />}
       </>
     )}
   </MenuItem>
@@ -120,29 +119,29 @@ const DropdownMenuLabel = ({
 }) => {
   return (
     <Header
-      className={cn('px-2 py-1.5 font-medium text-sm data-inset:pl-8', className)}
+      className={cn("px-2 py-1.5 font-medium text-sm data-inset:pl-8", className)}
       data-inset={inset}
-      data-slot='dropdown-menu-label'
+      data-slot="dropdown-menu-label"
       {...props}
     />
   )
 }
 
 const DropdownMenuSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator className={cn('-mx-1 my-1 h-px bg-border', className)} data-slot='dropdown-menu-separator' {...props} />
+  <Separator className={cn("-mx-1 my-1 h-px bg-border", className)} data-slot="dropdown-menu-separator" {...props} />
 )
 
-function DropdownMenuShortcut({ className, ...props }: ComponentProps<'span'>) {
+function DropdownMenuShortcut({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
-      className={cn('ml-auto text-muted-foreground text-xs tracking-widest', className)}
-      data-slot='dropdown-menu-shortcut'
+      className={cn("ml-auto text-muted-foreground text-xs tracking-widest", className)}
+      data-slot="dropdown-menu-shortcut"
       {...props}
     />
   )
 }
 
-const DropdownMenuSub = (props: SubmenuTriggerProps) => <SubmenuTrigger data-slot='dropdown-menu-sub' {...props} />
+const DropdownMenuSub = (props: SubmenuTriggerProps) => <SubmenuTrigger data-slot="dropdown-menu-sub" {...props} />
 
 const DropdownMenuSubTrigger = DropdownMenuItem
 

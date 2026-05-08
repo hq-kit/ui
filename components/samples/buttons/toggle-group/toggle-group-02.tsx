@@ -1,19 +1,19 @@
-import { IconBold, IconItalic, IconStrikethrough, IconUnderline } from '@tabler/icons-react'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { IconBold, IconItalic, IconStrikethrough, IconUnderline } from "@tabler/icons-react"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 const ToggleGroupMultipleSelection = () => {
   return (
-    <ToggleGroup defaultSelectedKeys={['sm']} selectionMode='multiple' variant='outline'>
-      <ToggleGroupItem id='bold'>
+    <ToggleGroup defaultSelectedKeys={["sm"]} selectionMode="multiple" variant="outline">
+      <ToggleGroupItem id="bold">
         <IconBold />
       </ToggleGroupItem>
-      <ToggleGroupItem id='italic'>
+      <ToggleGroupItem id="italic">
         <IconItalic />
       </ToggleGroupItem>
-      <ToggleGroupItem id='underline'>
+      <ToggleGroupItem id="underline">
         <IconUnderline />
       </ToggleGroupItem>
-      <ToggleGroupItem id='strike'>
+      <ToggleGroupItem id="strike">
         <IconStrikethrough />
       </ToggleGroupItem>
     </ToggleGroup>

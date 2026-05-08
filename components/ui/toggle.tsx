@@ -1,8 +1,9 @@
-'use client'
+"use client"
 
-import { composeRenderProps, ToggleButton, type ToggleButtonProps } from 'react-aria-components'
-import { tv, type VariantProps } from 'tailwind-variants'
-import { cn } from '@/lib/utils'
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { ToggleButton, type ToggleButtonProps } from "react-aria-components/ToggleButton"
+import { tv, type VariantProps } from "tailwind-variants"
+import { cn } from "@/lib/utils"
 
 const toggleVariants = tv({
   base: [
@@ -10,18 +11,18 @@ const toggleVariants = tv({
   ],
   variants: {
     variant: {
-      default: 'bg-transparent',
-      outline: 'border border-input bg-transparent shadow-xs hover:bg-muted'
+      default: "bg-transparent",
+      outline: "border border-input bg-transparent shadow-xs hover:bg-muted"
     },
     size: {
-      default: 'h-9 min-w-9 px-2',
-      sm: 'h-8 min-w-8 px-1.5',
-      lg: 'h-10 min-w-10 px-2.5'
+      default: "h-9 min-w-9 px-2",
+      sm: "h-8 min-w-8 px-1.5",
+      lg: "h-10 min-w-10 px-2.5"
     }
   },
   defaultVariants: {
-    variant: 'default',
-    size: 'default'
+    variant: "default",
+    size: "default"
   }
 })
 
@@ -32,7 +33,7 @@ export interface ToggleProps extends ToggleButtonProps, VariantProps<typeof togg
 const Toggle = ({ className, variant, size, ref, ...props }: ToggleProps) => (
   <ToggleButton
     className={composeRenderProps(className, (className) => cn(toggleVariants({ variant, size }), className))}
-    data-slot='toggle'
+    data-slot="toggle"
     ref={ref}
     {...props}
   />

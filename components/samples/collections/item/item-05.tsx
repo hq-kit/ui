@@ -1,32 +1,32 @@
-import { Item, ItemContent, ItemDescription, ItemGroup, ItemHeader, ItemTitle } from '@/components/ui/item'
+import { Item, ItemContent, ItemDescription, ItemGroup, ItemHeader, ItemTitle } from "@/components/ui/item"
 
 const models = [
   {
-    name: 'v0-1.5-sm',
-    description: 'Everyday tasks and UI generation.',
-    image: 'https://placehold.co/640x480'
+    name: "v0-1.5-sm",
+    description: "Everyday tasks and UI generation.",
+    image: "https://placehold.co/640x480"
   },
   {
-    name: 'v0-1.5-lg',
-    description: 'Advanced thinking or reasoning.',
-    image: 'https://placehold.co/640x480'
+    name: "v0-1.5-lg",
+    description: "Advanced thinking or reasoning.",
+    image: "https://placehold.co/640x480"
   },
   {
-    name: 'v0-2.0-mini',
-    description: 'Open Source model for everyone.',
-    image: 'https://placehold.co/640x480'
+    name: "v0-2.0-mini",
+    description: "Open Source model for everyone.",
+    image: "https://placehold.co/640x480"
   }
 ]
 
 const Example = () => (
-  <div className='flex w-full max-w-xl flex-col gap-6'>
-    <ItemGroup className='grid grid-cols-3 gap-4'>
+  <div className="flex w-full max-w-xl flex-col gap-6">
+    <ItemGroup className="grid grid-cols-3 gap-4">
       {models.map((model) => (
-        <Item className='bg-background' key={model.name} variant='outline'>
+        <Item className="bg-background" key={model.name} variant="outline">
           <ItemHeader>
             <img
               alt={model.name}
-              className='aspect-3/2 w-full rounded-sm object-cover'
+              className="aspect-3/2 w-full rounded-sm object-cover"
               height={480}
               src={model.image}
               width={640}

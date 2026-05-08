@@ -4,17 +4,17 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationPrevious
-} from '@/components/ui/pagination'
+} from "@/components/ui/pagination"
 
 const NumberlessPaginationDemo = () => {
   return (
     <Pagination>
-      <PaginationContent className='w-full justify-between'>
+      <PaginationContent className="w-full justify-between">
         <PaginationItem>
-          <PaginationPrevious className='border' href='#' />
+          <PaginationPrevious className="border" href="#" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext className='border' href='#' />
+          <PaginationNext className="border" href="#" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

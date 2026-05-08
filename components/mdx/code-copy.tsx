@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { copyToClipboard } from '@/lib/modifiers'
-import { CopyButton } from './copy-button'
+import { useState } from "react"
+import { copyToClipboard } from "@/lib/modifiers"
+import { CopyButton } from "./copy-button"
 
 interface CodeCopyProps {
   code: string

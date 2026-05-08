@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { IconUser } from '@tabler/icons-react'
-import { type HTMLAttributes, type ReactNode, useCallback, useState } from 'react'
-import { cn } from '@/lib/utils'
+import { IconUser } from "@tabler/icons-react"
+import { type HTMLAttributes, type ReactNode, useCallback, useState } from "react"
+import { cn } from "@/lib/utils"
 
 interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   src?: string | null
@@ -26,15 +26,15 @@ const Avatar = ({ src, alt, fallback = null, className, imgClassName, fallbackCl
 
   return (
     <div
-      className={cn('relative flex size-8 shrink-0 overflow-hidden rounded-full bg-muted', className)}
-      data-slot='avatar'
+      className={cn("relative flex size-8 shrink-0 overflow-hidden rounded-full bg-muted", className)}
+      data-slot="avatar"
       {...props}
     >
       {src && !hasError ? (
         <img
-          alt={alt ?? ''}
-          className={cn('aspect-square size-full', imgClassName)}
-          data-slot='avatar-image'
+          alt={alt ?? ""}
+          className={cn("aspect-square size-full", imgClassName)}
+          data-slot="avatar-image"
           onError={handleError}
           onLoad={handleLoad}
           src={src}
@@ -42,12 +42,12 @@ const Avatar = ({ src, alt, fallback = null, className, imgClassName, fallbackCl
       ) : null}
       {(!src || hasError || (src && !loaded && false)) && (
         <div
-          aria-hidden={!!src && !hasError ? 'true' : 'false'}
+          aria-hidden={src && !hasError ? "true" : "false"}
           className={cn(
-            'flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground',
+            "flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground",
             fallbackClassName
           )}
-          data-slot='avatar-fallback'
+          data-slot="avatar-fallback"
         >
           {fallback ?? <IconUser />}
         </div>

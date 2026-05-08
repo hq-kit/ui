@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { useEffect, useId, useState } from 'react'
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
-import { Label } from '@/components/ui/label'
+import { useEffect, useId, useState } from "react"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import { Label } from "@/components/ui/label"
 
 const InputOTPWithResendTimerDemo = () => {
   const [timeLeft, setTimeLeft] = useState(30)
@@ -22,7 +22,7 @@ const InputOTPWithResendTimerDemo = () => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
 
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
   const handleResend = () => {
@@ -30,7 +30,7 @@ const InputOTPWithResendTimerDemo = () => {
   }
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       <Label htmlFor={id}>Input OTP with resend timer</Label>
       <InputOTP id={id} maxLength={4}>
         <InputOTPGroup>
@@ -40,13 +40,13 @@ const InputOTPWithResendTimerDemo = () => {
           <InputOTPSlot index={3} />
         </InputOTPGroup>
       </InputOTP>
-      <p className='text-muted-foreground text-xs'>
+      <p className="text-muted-foreground text-xs">
         {timeLeft > 0 ? (
           `Resend available in ${formatTime(timeLeft)}`
         ) : (
           <a
-            className='underline hover:text-primary'
-            href='#'
+            className="underline hover:text-primary"
+            href="#"
             onClick={(e) => {
               e.preventDefault()
               handleResend()

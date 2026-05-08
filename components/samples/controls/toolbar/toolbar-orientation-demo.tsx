@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   IconAlignCenter,
@@ -9,39 +9,39 @@ import {
   IconItalic,
   IconStrikethrough,
   IconUnderline
-} from '@tabler/icons-react'
-import { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator } from '@/components/ui/toolbar'
+} from "@tabler/icons-react"
+import { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator } from "@/components/ui/toolbar"
 
 export default function ToolbarDemo() {
   return (
-    <span data-slot='layout'>
-      <Toolbar aria-label='Toolbars' orientation='vertical'>
-        <ToolbarGroup aria-label='Text Formatting Options'>
-          <ToolbarItem aria-label='Bold' defaultSelected>
+    <span data-slot="layout">
+      <Toolbar aria-label="Toolbars" orientation="vertical">
+        <ToolbarGroup aria-label="Text Formatting Options">
+          <ToolbarItem aria-label="Bold" defaultSelected>
             <IconBold />
           </ToolbarItem>
-          <ToolbarItem aria-label='Italic'>
+          <ToolbarItem aria-label="Italic">
             <IconItalic />
           </ToolbarItem>
-          <ToolbarItem aria-label='Underline'>
+          <ToolbarItem aria-label="Underline">
             <IconUnderline />
           </ToolbarItem>
-          <ToolbarItem aria-label='Strikethrough'>
+          <ToolbarItem aria-label="Strikethrough">
             <IconStrikethrough />
           </ToolbarItem>
         </ToolbarGroup>
         <ToolbarSeparator />
-        <ToolbarGroup aria-label='Alignment'>
-          <ToolbarItem aria-label='Align Left'>
+        <ToolbarGroup aria-label="Alignment">
+          <ToolbarItem aria-label="Align Left">
             <IconAlignLeft />
           </ToolbarItem>
-          <ToolbarItem aria-label='Align Center'>
+          <ToolbarItem aria-label="Align Center">
             <IconAlignCenter />
           </ToolbarItem>
-          <ToolbarItem aria-label='Align Right'>
+          <ToolbarItem aria-label="Align Right">
             <IconAlignRight />
           </ToolbarItem>
-          <ToolbarItem aria-label='Align Justify'>
+          <ToolbarItem aria-label="Align Justify">
             <IconAlignJustified />
           </ToolbarItem>
         </ToolbarGroup>

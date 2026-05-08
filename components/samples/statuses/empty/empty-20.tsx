@@ -1,12 +1,12 @@
-import { IconCalendar } from '@tabler/icons-react'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconCalendar } from "@tabler/icons-react"
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Empty with Multiple Paragraphs'
+export const title = "Empty with Multiple Paragraphs"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconCalendar />
       </EmptyMedia>
       <EmptyTitle>No upcoming events</EmptyTitle>

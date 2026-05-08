@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { parseColor } from '@react-stately/color'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState } from "react"
+import { parseColor } from "react-aria-components/ColorArea"
+import { Button } from "@/components/ui/button"
 import {
   ColorArea,
   ColorField,
@@ -11,28 +11,28 @@ import {
   ColorSliderTrack,
   ColorSwatch,
   ColorThumb
-} from '@/components/ui/colors'
-import { Input } from '@/components/ui/input'
-import { Popover, PopoverContent } from '@/components/ui/popover'
+} from "@/components/ui/colors"
+import { Input } from "@/components/ui/input"
+import { Popover, PopoverContent } from "@/components/ui/popover"
 
 export default function ColorPickerDemo() {
-  const [color, setColor] = useState(parseColor('#123456'))
+  const [color, setColor] = useState(parseColor("#123456"))
   return (
-    <ColorPicker defaultValue='rgb(120,140,200)' onChange={setColor} value={color}>
+    <ColorPicker defaultValue="rgb(120,140,200)" onChange={setColor} value={color}>
       <Popover>
-        <Button className='flex h-fit items-center gap-2 p-2' variant='ghost'>
+        <Button className="flex h-fit items-center gap-2 p-2" variant="ghost">
           <ColorSwatch />
           Select color
         </Button>
         <PopoverContent>
-          <div className='space-y-2'>
-            <ColorArea className='w-full' colorSpace='hsl' xChannel='hue' yChannel='lightness' />
-            <ColorSlider channel='saturation' colorSpace='hsl'>
+          <div className="space-y-2">
+            <ColorArea className="w-full" colorSpace="hsl" xChannel="hue" yChannel="lightness" />
+            <ColorSlider channel="saturation" colorSpace="hsl">
               <ColorSliderTrack>
                 <ColorThumb />
               </ColorSliderTrack>
             </ColorSlider>
-            <ColorField aria-label='Color'>
+            <ColorField aria-label="Color">
               <Input />
             </ColorField>
           </div>

@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,13 +11,13 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
 
 const DropdownMenuDemo = () => {
   return (
     <DropdownMenu>
-      <Button variant='outline'>Basic</Button>
-      <DropdownMenuContent className='w-56'>
+      <Button variant="outline">Basic</Button>
+      <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

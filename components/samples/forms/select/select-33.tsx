@@ -1,90 +1,90 @@
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Tag, TagGroup, TagList } from '@/components/ui/tag'
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tag, TagGroup, TagList } from "@/components/ui/tag"
 
 const options = [
   {
-    id: 'clothing',
-    name: 'Clothing'
+    id: "clothing",
+    name: "Clothing"
   },
   {
-    id: 'footwear',
-    name: 'Footwear'
+    id: "footwear",
+    name: "Footwear"
   },
   {
-    id: 'accessories',
-    name: 'Accessories'
+    id: "accessories",
+    name: "Accessories"
   },
   {
-    id: 'jewelry',
-    name: 'Jewelry',
+    id: "jewelry",
+    name: "Jewelry",
     disable: true
   },
   {
-    id: 'outerwear',
-    name: 'Outerwear'
+    id: "outerwear",
+    name: "Outerwear"
   },
   {
-    id: 'fragrance',
-    name: 'Fragrance'
+    id: "fragrance",
+    name: "Fragrance"
   },
   {
-    id: 'makeup',
-    name: 'Makeup'
+    id: "makeup",
+    name: "Makeup"
   },
   {
-    id: 'skincare',
-    name: 'Skincare'
+    id: "skincare",
+    name: "Skincare"
   },
   {
-    id: 'furniture',
-    name: 'Furniture'
+    id: "furniture",
+    name: "Furniture"
   },
   {
-    id: 'lighting',
-    name: 'Lighting'
+    id: "lighting",
+    name: "Lighting"
   },
   {
-    id: 'kitchenware',
-    name: 'Kitchenware',
+    id: "kitchenware",
+    name: "Kitchenware",
     disable: true
   },
   {
-    id: 'computers',
-    name: 'Computers'
+    id: "computers",
+    name: "Computers"
   },
   {
-    id: 'audio',
-    name: 'Audio'
+    id: "audio",
+    name: "Audio"
   },
   {
-    id: 'wearables',
-    name: 'Wearables'
+    id: "wearables",
+    name: "Wearables"
   },
   {
-    id: 'supplements',
-    name: 'Supplements'
+    id: "supplements",
+    name: "Supplements"
   },
   {
-    id: 'sportswear',
-    name: 'Sportswear'
+    id: "sportswear",
+    name: "Sportswear"
   }
 ]
 
 const MultipleSelectTagDemo = () => {
   return (
     <Select
-      className='w-full'
-      defaultValue={['clothing', 'footwear']}
-      placeholder='Select categories'
-      selectionMode='multiple'
+      className="w-full"
+      defaultValue={["clothing", "footwear"]}
+      placeholder="Select categories"
+      selectionMode="multiple"
     >
       <Label>Multiple Select</Label>
       <SelectTrigger>
         <SelectValue<(typeof options)[0]>>
           {({ selectedItems, state }) => (
             <TagGroup
-              aria-label='Selected states'
+              aria-label="Selected states"
               onRemove={(keys) => {
                 if (Array.isArray(state.value)) {
                   state.setValue(state.value.filter((k) => !keys.has(k)))
@@ -93,7 +93,7 @@ const MultipleSelectTagDemo = () => {
             >
               <TagList
                 items={selectedItems.filter((item) => item != null)}
-                renderEmptyState={() => 'No selected items'}
+                renderEmptyState={() => "No selected items"}
               >
                 {(item) => <Tag>{item.name}</Tag>}
               </TagList>

@@ -6,16 +6,17 @@
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",
-    "react-aria-components"
+    "react-aria-components/Button",
+    "react-aria-components/composeRenderProps"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/button-group",
+    "https://hq-ui.vercel.app/r/button-group",
     "utils"
   ],
   "files": [
     {
       "path": "components/ui/button.tsx",
-      "content": "'use client'\n\nimport type { Ref } from 'react'\nimport type { VariantProps } from 'tailwind-variants'\nimport { IconLoader2 } from '@tabler/icons-react'\nimport { composeRenderProps, Button as RACButton, type ButtonProps as RACButtonProps } from 'react-aria-components'\nimport { cn } from '@/lib/utils'\nimport { buttonVariants } from './button-group'\n\ninterface ButtonProps extends RACButtonProps, VariantProps<typeof buttonVariants> {\n  ref?: Ref<HTMLButtonElement>\n}\n\nconst Button = ({ className, variant, size, children, ...props }: ButtonProps) => (\n  <RACButton\n    className={composeRenderProps(className, (className) =>\n      cn(buttonVariants({ variant, size, isPending: props.isPending, className }))\n    )}\n    data-slot='button'\n    {...props}\n  >\n    {(values) => (\n      <>\n        {values.isPending && <IconLoader2 className='size-4 animate-spin' data-slot='loader' />}\n        {typeof children === 'function' ? children(values) : children}\n      </>\n    )}\n  </RACButton>\n)\n\nexport type { ButtonProps }\nexport { Button, buttonVariants }\n",
+      "content": "\"use client\"\n\nimport type { Ref } from \"react\"\nimport type { VariantProps } from \"tailwind-variants\"\nimport { IconLoader2 } from \"@tabler/icons-react\"\nimport { Button as RACButton, type ButtonProps as RACButtonProps } from \"react-aria-components/Button\"\nimport { composeRenderProps } from \"react-aria-components/composeRenderProps\"\nimport { cn } from \"@/lib/utils\"\nimport { buttonVariants } from \"./button-group\"\n\ninterface ButtonProps extends RACButtonProps, VariantProps<typeof buttonVariants> {\n  ref?: Ref<HTMLButtonElement>\n}\n\nconst Button = ({ className, variant, size, children, ...props }: ButtonProps) => (\n  <RACButton\n    className={composeRenderProps(className, (className) =>\n      cn(buttonVariants({ variant, size, isPending: props.isPending, className }))\n    )}\n    data-slot=\"button\"\n    {...props}\n  >\n    {(values) => (\n      <>\n        {values.isPending && <IconLoader2 className=\"size-4 animate-spin\" data-slot=\"loader\" />}\n        {typeof children === \"function\" ? children(values) : children}\n      </>\n    )}\n  </RACButton>\n)\n\nexport type { ButtonProps }\nexport { Button, buttonVariants }\n",
       "type": "registry:ui"
     }
   ],

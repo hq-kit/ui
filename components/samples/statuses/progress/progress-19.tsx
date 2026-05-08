@@ -1,5 +1,5 @@
-import { Label } from '@/components/ui/label'
-import { Progress } from '@/components/ui/progress'
+import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
 
 const Example = () => {
   const current = 7
@@ -10,7 +10,7 @@ const Example = () => {
     <Progress value={value}>
       <Progress.Header>
         <Label>Tasks completed</Label>
-        <span className='font-medium'>
+        <span className="font-medium">
           {current} of {total}
         </span>
       </Progress.Header>

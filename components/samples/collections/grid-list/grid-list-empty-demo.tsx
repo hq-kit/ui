@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import { IconAlertCircle } from '@tabler/icons-react'
-import { GridList, GridListEmptyState } from '@/components/ui/grid-list'
+import { IconAlertCircle } from "@tabler/icons-react"
+import { GridList, GridListEmptyState } from "@/components/ui/grid-list"
 
 export default function GridListRenderEmptyStateDemo() {
   return (
     <GridList
-      aria-label='Select items'
-      className='min-w-64'
+      aria-label="Select items"
+      className="min-w-64"
       items={items}
       renderEmptyState={() => (
         <GridListEmptyState>
@@ -15,7 +15,7 @@ export default function GridListRenderEmptyStateDemo() {
           No bands selected
         </GridListEmptyState>
       )}
-      selectionMode='multiple'
+      selectionMode="multiple"
     />
   )
 }

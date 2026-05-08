@@ -1,13 +1,13 @@
-import { IconPlus } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconPlus } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Empty with Single Action'
+export const title = "Empty with Single Action"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconPlus />
       </EmptyMedia>
       <EmptyTitle>No projects yet</EmptyTitle>

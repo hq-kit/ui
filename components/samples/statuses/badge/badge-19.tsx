@@ -1,13 +1,13 @@
-import { IconAlertCircle } from '@tabler/icons-react'
-import { Badge } from '@/components/ui/badge'
+import { IconAlertCircle } from "@tabler/icons-react"
+import { Badge } from "@/components/ui/badge"
 
 const BadgePendingDemo = () => {
   return (
     <Badge
-      className='rounded-sm border-amber-600 text-amber-600 dark:border-amber-400 dark:text-amber-400 [a&]:hover:bg-amber-600/10 [a&]:hover:text-amber-600/90 dark:[a&]:hover:bg-amber-400/10 dark:[a&]:hover:text-amber-400/90'
-      variant='outline'
+      className="rounded-sm border-amber-600 text-amber-600 dark:border-amber-400 dark:text-amber-400 [a&]:hover:bg-amber-600/10 [a&]:hover:text-amber-600/90 dark:[a&]:hover:bg-amber-400/10 dark:[a&]:hover:text-amber-400/90"
+      variant="outline"
     >
-      <IconAlertCircle className='size-3' />
+      <IconAlertCircle className="size-3" />
       Pending
     </Badge>
   )

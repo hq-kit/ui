@@ -1,4 +1,4 @@
-import type { RegistryItem } from 'shadcn/schema'
+import type { RegistryItem } from "shadcn/schema"
 
 export type FileTree = {
   name: string

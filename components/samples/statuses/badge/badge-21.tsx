@@ -1,13 +1,13 @@
-import { IconCircleCheck } from '@tabler/icons-react'
-import { Badge } from '@/components/ui/badge'
+import { IconCircleCheck } from "@tabler/icons-react"
+import { Badge } from "@/components/ui/badge"
 
 const BadgeSuccessfulDemo = () => {
   return (
     <Badge
-      className='rounded-sm border-green-600 text-green-600 dark:border-green-400 dark:text-green-400 [a&]:hover:bg-green-600/10 [a&]:hover:text-green-600/90 dark:[a&]:hover:bg-green-400/10 dark:[a&]:hover:text-green-400/90'
-      variant='outline'
+      className="rounded-sm border-green-600 text-green-600 dark:border-green-400 dark:text-green-400 [a&]:hover:bg-green-600/10 [a&]:hover:text-green-600/90 dark:[a&]:hover:bg-green-400/10 dark:[a&]:hover:text-green-400/90"
+      variant="outline"
     >
-      <IconCircleCheck className='size-3' />
+      <IconCircleCheck className="size-3" />
       Successful
     </Badge>
   )

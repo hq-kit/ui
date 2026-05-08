@@ -1,11 +1,11 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import fs from "node:fs"
+import path from "node:path"
 
-const baseDir = path.resolve(__dirname, '../components')
-const samplesDir = path.join(baseDir, 'samples')
-const uiDir = path.join(baseDir, 'ui')
-const outputMapFilePath = path.resolve(samplesDir, 'generated/previews.ts')
-const jsonOutputFilePath = path.resolve(samplesDir, 'generated/previews.json')
+const baseDir = path.resolve(__dirname, "../components")
+const samplesDir = path.join(baseDir, "samples")
+const uiDir = path.join(baseDir, "ui")
+const outputMapFilePath = path.resolve(samplesDir, "generated/previews.ts")
+const jsonOutputFilePath = path.resolve(samplesDir, "generated/previews.json")
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
   const files = fs.readdirSync(dirPath)
@@ -13,7 +13,7 @@ function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
     const filePath = path.join(dirPath, file)
     if (fs.statSync(filePath).isDirectory()) {
       getAllFiles(filePath, arrayOfFiles)
-    } else if (file.endsWith('.tsx')) {
+    } else if (file.endsWith(".tsx")) {
       arrayOfFiles.push(filePath)
     }
   }
@@ -21,16 +21,16 @@ function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
 }
 
 const components = [...getAllFiles(samplesDir), ...getAllFiles(uiDir)]
-  .filter((filePath) => !filePath.includes('/how') && !filePath.includes('/props')) // Exclude specific components
+  .filter((filePath) => !filePath.includes("/how") && !filePath.includes("/props")) // Exclude specific components
   .reduce(
     (acc, filePath) => {
-      const content = fs.readFileSync(filePath, 'utf8') // Read the file content
-      const relativePath = path.relative(baseDir, filePath).replace(/\\/g, '/').replace('.tsx', '')
+      const content = fs.readFileSync(filePath, "utf8") // Read the file content
+      const relativePath = path.relative(baseDir, filePath).replace(/\\/g, "/").replace(".tsx", "")
       const importPath = `@/components/${relativePath}`
-      const key = relativePath.split('/').slice(1).join('/')
-      const type = filePath.startsWith(samplesDir) ? 'docs' : 'ui' // Determine type based on folder path
+      const key = relativePath.split("/").slice(1).join("/")
+      const type = filePath.startsWith(samplesDir) ? "docs" : "ui" // Determine type based on folder path
 
-      if (type === 'docs' && !filePath.includes('block/components')) {
+      if (type === "docs" && !filePath.includes("block/components")) {
         // @ts-expect-error no-type
         acc.tsComponents[key] = {
           component: importPath
@@ -55,7 +55,7 @@ import { type LazyExoticComponent, lazy, type ReactElement } from 'react'
 export const previews: Record<string, { component: LazyExoticComponent<() => ReactElement> }> = {
 ${Object.keys(components.tsComponents)
   .map((key) => `"${key}": { component: lazy(() => import("@/components/samples/${key}")) },`)
-  .join('\n')}
+  .join("\n")}
 };
 `
 

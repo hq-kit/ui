@@ -1,15 +1,15 @@
-'use client'
+"use client"
 
-import { IconPointFilled } from '@tabler/icons-react'
-import { useId } from 'react'
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
-import { Label } from '@/components/ui/label'
+import { IconPointFilled } from "@tabler/icons-react"
+import { useId } from "react"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import { Label } from "@/components/ui/label"
 
 const InputOTPCustomSeparatorDemo = () => {
   const id = useId()
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       <Label htmlFor={id}>Input OTP Custom Separator</Label>
       <InputOTP id={id} maxLength={6}>
         <InputOTPGroup>
@@ -17,7 +17,7 @@ const InputOTPCustomSeparatorDemo = () => {
           <InputOTPSlot index={1} />
           <InputOTPSlot index={2} />
         </InputOTPGroup>
-        <div className='text-muted-foreground'>
+        <div className="text-muted-foreground">
           <IconPointFilled />
         </div>
         <InputOTPGroup>

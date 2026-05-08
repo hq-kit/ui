@@ -1,17 +1,17 @@
-import { promises as fs } from 'node:fs'
-import { siteConfig } from '@/config/site'
+import { promises as fs } from "node:fs"
+import { siteConfig } from "@/config/site"
 
 type Item = { slug: string; title: string }
 type SubSection = { subsection: string; children: Item[] }
 type Group = { section: string; children: Item[] | SubSection[] }
 
 async function build() {
-  const groups: Group[] = JSON.parse(await fs.readFile('components-search.json', 'utf8'))
+  const groups: Group[] = JSON.parse(await fs.readFile("components-search.json", "utf8"))
 
   const lines: string[] = []
 
   for (const group of groups) {
-    const isPrologue = group.section.toLowerCase() === 'getting started'
+    const isPrologue = group.section.toLowerCase() === "getting started"
 
     if (isPrologue) {
       for (const item of group.children as Item[]) lines.push(`- [${item.title}](${siteConfig.url}${item.slug}.md)`)
@@ -22,7 +22,7 @@ async function build() {
 
     const firstChild = group.children[0]
 
-    if ('subsection' in firstChild) {
+    if ("subsection" in firstChild) {
       for (const sub of group.children as SubSection[]) {
         lines.push(`\n### ${sub.subsection}`)
         for (const item of sub.children) lines.push(`- [${item.title}](${siteConfig.url}${item.slug}.md)`)
@@ -32,7 +32,7 @@ async function build() {
     }
   }
 
-  await fs.writeFile('public/llms.txt', lines.join('\n'))
+  await fs.writeFile("public/llms.txt", lines.join("\n"))
 }
 
 build()

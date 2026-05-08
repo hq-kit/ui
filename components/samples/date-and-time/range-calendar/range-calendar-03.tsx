@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { RangeCalendar } from '@/components/ui/calendar'
+import { RangeCalendar } from "@/components/ui/calendar"
 
 const RangeCalendarMultipleDemo = () => {
-  return <RangeCalendar className='rounded-lg border' visibleDuration={{ months: 3 }} />
+  return <RangeCalendar className="rounded-lg border" visibleDuration={{ months: 3 }} />
 }
 
 export default RangeCalendarMultipleDemo

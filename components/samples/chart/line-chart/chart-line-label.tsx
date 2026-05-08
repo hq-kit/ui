@@ -1,29 +1,29 @@
-'use client'
+"use client"
 
-import { IconTrendingUp } from '@tabler/icons-react'
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from 'recharts'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { IconTrendingUp } from "@tabler/icons-react"
+import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-export const description = 'A line chart with a label'
+export const description = "A line chart with a label"
 
 const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 }
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 }
 ]
 
 const chartConfig = {
   desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)'
+    label: "Desktop",
+    color: "var(--chart-1)"
   },
   mobile: {
-    label: 'Mobile',
-    color: 'var(--chart-2)'
+    label: "Mobile",
+    color: "var(--chart-2)"
   }
 } satisfies ChartConfig
 
@@ -48,34 +48,34 @@ export default function ChartLineLabel() {
             <CartesianGrid vertical={false} />
             <XAxis
               axisLine={false}
-              dataKey='month'
+              dataKey="month"
               tickFormatter={(value) => value.slice(0, 3)}
               tickLine={false}
               tickMargin={8}
             />
-            <ChartTooltip content={<ChartTooltipContent indicator='line' />} cursor={false} />
+            <ChartTooltip content={<ChartTooltipContent indicator="line" />} cursor={false} />
             <Line
               activeDot={{
                 r: 6
               }}
-              dataKey='desktop'
+              dataKey="desktop"
               dot={{
-                fill: 'var(--color-desktop)'
+                fill: "var(--color-desktop)"
               }}
-              stroke='var(--color-desktop)'
+              stroke="var(--color-desktop)"
               strokeWidth={2}
-              type='natural'
+              type="natural"
             >
-              <LabelList className='fill-foreground' fontSize={12} offset={12} position='top' />
+              <LabelList className="fill-foreground" fontSize={12} offset={12} position="top" />
             </Line>
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className='flex-col items-start gap-2 text-sm'>
-        <div className='flex gap-2 font-medium leading-none'>
-          Trending up by 5.2% this month <IconTrendingUp className='h-4 w-4' />
+      <CardFooter className="flex-col items-start gap-2 text-sm">
+        <div className="flex gap-2 font-medium leading-none">
+          Trending up by 5.2% this month <IconTrendingUp className="h-4 w-4" />
         </div>
-        <div className='text-muted-foreground leading-none'>Showing total visitors for the last 6 months</div>
+        <div className="text-muted-foreground leading-none">Showing total visitors for the last 6 months</div>
       </CardFooter>
     </Card>
   )

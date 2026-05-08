@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { IconAlertCircle, IconX } from '@tabler/icons-react'
-import { useState } from 'react'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { IconAlertCircle, IconX } from "@tabler/icons-react"
+import { useState } from "react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const AlertClosableDemo = () => {
   const [isActive, setIsActive] = useState(true)
@@ -10,15 +10,15 @@ const AlertClosableDemo = () => {
   if (!isActive) return null
 
   return (
-    <Alert className='flex justify-between'>
+    <Alert className="flex justify-between">
       <IconAlertCircle />
-      <div className='flex-1 flex-col justify-center gap-1'>
+      <div className="flex-1 flex-col justify-center gap-1">
         <AlertTitle>New message!</AlertTitle>
         <AlertDescription>12 unread messages. Tap to see.</AlertDescription>
       </div>
-      <button className='cursor-pointer' onClick={() => setIsActive(false)} type='button'>
-        <IconX className='size-5' />
-        <span className='sr-only'>Close</span>
+      <button className="cursor-pointer" onClick={() => setIsActive(false)} type="button">
+        <IconX className="size-5" />
+        <span className="sr-only">Close</span>
       </button>
     </Alert>
   )

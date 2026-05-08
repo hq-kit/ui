@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { IconLoader } from '@tabler/icons-react'
-import { Collection, ListBoxLoadMoreItem } from 'react-aria-components'
-import { useAsyncList } from 'react-stately'
-import { Card, CardContent } from '@/components/ui/card'
-import { ListBox, ListBoxItem } from '@/components/ui/list-box'
+import { IconLoader } from "@tabler/icons-react"
+import { Collection, ListBoxLoadMoreItem } from "react-aria-components"
+import { useAsyncList } from "react-stately"
+import { Card, CardContent } from "@/components/ui/card"
+import { ListBox, ListBoxItem } from "@/components/ui/list-box"
 
 interface Character {
   name: string
@@ -23,12 +23,12 @@ export default function ListBoxInfiniteScrollDemo() {
   })
 
   return (
-    <Card className='max-h-96 overflow-y-auto'>
+    <Card className="max-h-96 overflow-y-auto">
       <CardContent>
-        <ListBox aria-label='Pick a Pokemon' items={list.items} selectionMode='single'>
+        <ListBox aria-label="Pick a Pokemon" items={list.items} selectionMode="single">
           <Collection items={list.items}>{(item) => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}</Collection>
-          <ListBoxLoadMoreItem isLoading={list.loadingState === 'loadingMore'} onLoadMore={list.loadMore}>
-            <IconLoader aria-label='Loading more...' className='mx-auto mb-4 animate-spin' />
+          <ListBoxLoadMoreItem isLoading={list.loadingState === "loadingMore"} onLoadMore={list.loadMore}>
+            <IconLoader aria-label="Loading more..." className="mx-auto mb-4 animate-spin" />
           </ListBoxLoadMoreItem>
         </ListBox>
       </CardContent>

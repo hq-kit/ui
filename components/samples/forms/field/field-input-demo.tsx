@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import { IconMail } from '@tabler/icons-react'
-import { Form } from 'react-aria-components'
-import { Button } from '@/components/ui/button'
-import { FieldDescription, FieldError, FieldLegend, FieldSet } from '@/components/ui/field'
-import { Input, InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { PasswordInput, TextField } from '@/components/ui/text-field'
+import { IconMail } from "@tabler/icons-react"
+import { Form } from "react-aria-components"
+import { Button } from "@/components/ui/button"
+import { FieldDescription, FieldError, FieldLegend, FieldSet } from "@/components/ui/field"
+import { Input, InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { PasswordInput, TextField } from "@/components/ui/text-field"
 
 export default function FieldInputDemo() {
   return (
-    <Form className='w-full space-y-4' onSubmit={(e) => e.preventDefault()}>
+    <Form className="w-full space-y-4" onSubmit={(e) => e.preventDefault()}>
       <FieldSet>
         <FieldLegend>Profile</FieldLegend>
         <FieldDescription>Enter your personal information</FieldDescription>
@@ -20,7 +20,7 @@ export default function FieldInputDemo() {
           <FieldDescription>Choose a unique username for your account.</FieldDescription>
           <FieldError />
         </TextField>
-        <TextField isRequired type='email'>
+        <TextField isRequired type="email">
           <Label>Email</Label>
           <InputGroup>
             <InputGroupAddon>
@@ -36,7 +36,7 @@ export default function FieldInputDemo() {
           <PasswordInput />
           <FieldError />
         </TextField>
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </FieldSet>
     </Form>
   )

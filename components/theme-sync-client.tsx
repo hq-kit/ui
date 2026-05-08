@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 
-const ThemeSync = dynamic(() => import('@/components/theme-sync').then((mod) => mod.ThemeSync), {
+const ThemeSync = dynamic(() => import("@/components/theme-sync").then((mod) => mod.ThemeSync), {
   ssr: false
 })
 

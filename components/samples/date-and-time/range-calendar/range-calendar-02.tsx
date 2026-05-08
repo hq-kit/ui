@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { getLocalTimeZone, isWeekend, today } from '@internationalized/date'
-import { useLocale } from 'react-aria-components'
-import { RangeCalendar } from '@/components/ui/calendar'
+import { getLocalTimeZone, isWeekend, today } from "@internationalized/date"
+import { useLocale } from "react-aria-components"
+import { RangeCalendar } from "@/components/ui/calendar"
 
 const RangeCalendarDisabledDemo = () => {
   const { locale } = useLocale()
@@ -14,7 +14,7 @@ const RangeCalendarDisabledDemo = () => {
   ]
   return (
     <RangeCalendar
-      className='rounded-lg border'
+      className="rounded-lg border"
       isDateUnavailable={(date) =>
         isWeekend(date, locale) ||
         disabledRanges.some((interval) => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0)

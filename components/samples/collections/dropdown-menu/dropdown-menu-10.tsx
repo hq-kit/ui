@@ -1,5 +1,5 @@
-'use client'
-import { Button } from '@/components/ui/button'
+"use client"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,13 +7,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
 
 const DropdownMenuAlignEndDemo = () => {
   return (
     <DropdownMenu>
-      <Button variant='outline'>Align End</Button>
-      <DropdownMenuContent className='w-66' placement='end'>
+      <Button variant="outline">Align End</Button>
+      <DropdownMenuContent className="w-66" placement="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>
             New Tab<DropdownMenuShortcut>⌘ + T</DropdownMenuShortcut>

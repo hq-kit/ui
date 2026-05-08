@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
-import { Button } from 'react-aria-components'
-import { Carousel, type CarouselApi, CarouselButton, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import { cn } from '@/lib/utils'
+import { useEffect, useState } from "react"
+import { Button } from "react-aria-components"
+import { Carousel, type CarouselApi, CarouselButton, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import { cn } from "@/lib/utils"
 
 export default function CarouselDApiDemo() {
   const [api, setApi] = useState<CarouselApi>()
@@ -17,7 +17,7 @@ export default function CarouselDApiDemo() {
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
-    api.on('select', () => {
+    api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
@@ -30,26 +30,26 @@ export default function CarouselDApiDemo() {
   }
 
   return (
-    <Carousel className='w-full max-w-xs' setApi={setApi}>
+    <Carousel className="w-full max-w-xs" setApi={setApi}>
       <CarouselContent>
         {Array.from({ length: 10 }, (_, id) => ({ id: id + 1 })).map(({ id }) => (
           <CarouselItem key={id}>
-            <div className='flex items-center justify-center rounded-xl border p-6'>
-              <span className='font-semibold text-4xl'>{id}</span>
+            <div className="flex items-center justify-center rounded-xl border p-6">
+              <span className="font-semibold text-4xl">{id}</span>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className='mt-4 flex items-center justify-between'>
-        <div className='flex gap-1 py-2 text-center text-muted-foreground text-sm'>
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex gap-1 py-2 text-center text-muted-foreground text-sm">
           {Array.from({ length: 10 }).map((_, index) => (
             <Button
               aria-label={`Slide ${current} of ${count}`}
               className={cn(
-                'rounded-xl transition focus:outline-hidden',
+                "rounded-xl transition focus:outline-hidden",
                 current === index + 1
-                  ? 'h-3 w-5 bg-primary transition-all hover:bg-primary/80'
-                  : 'h-3 w-3 bg-foreground/10 hover:bg-foreground/15'
+                  ? "h-3 w-5 bg-primary transition-all hover:bg-primary/80"
+                  : "h-3 w-3 bg-foreground/10 hover:bg-foreground/15"
               )}
               key={index}
               onPress={() => handleSelect(index)}
@@ -57,9 +57,9 @@ export default function CarouselDApiDemo() {
           ))}
         </div>
 
-        <div className='space-x-2'>
-          <CarouselButton segment='previous' />
-          <CarouselButton segment='next' />
+        <div className="space-x-2">
+          <CarouselButton segment="previous" />
+          <CarouselButton segment="next" />
         </div>
       </div>
     </Carousel>

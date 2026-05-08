@@ -1,13 +1,13 @@
-import { IconMessage, IconPlus } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconMessage, IconPlus } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'No Messages'
+export const title = "No Messages"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconMessage />
       </EmptyMedia>
       <EmptyTitle>No messages yet</EmptyTitle>

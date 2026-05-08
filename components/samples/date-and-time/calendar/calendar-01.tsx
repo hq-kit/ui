@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { Calendar } from '@/components/ui/calendar'
+import { Calendar } from "@/components/ui/calendar"
 
 const CalendarDemo = () => {
-  return <Calendar className='rounded-lg border' />
+  return <Calendar className="rounded-lg border" />
 }
 
 export default CalendarDemo

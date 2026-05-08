@@ -1,12 +1,12 @@
-import { IconInbox } from '@tabler/icons-react'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconInbox } from "@tabler/icons-react"
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Empty with Description'
+export const title = "Empty with Description"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconInbox />
       </EmptyMedia>
       <EmptyTitle>Nothing here yet</EmptyTitle>

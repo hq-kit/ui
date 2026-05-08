@@ -1,20 +1,20 @@
-'use client'
+"use client"
 
-import { toast } from 'sonner'
-import { Button } from '@/components/ui/button'
+import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
 
 const SonnerWithActionDemo = () => {
   return (
     <Button
       onPress={() =>
-        toast('Action completed successfully!', {
+        toast("Action completed successfully!", {
           action: {
-            label: 'Undo',
-            onClick: () => alert('Undo')
+            label: "Undo",
+            onClick: () => alert("Undo")
           }
         })
       }
-      variant='outline'
+      variant="outline"
     >
       Toast with action
     </Button>

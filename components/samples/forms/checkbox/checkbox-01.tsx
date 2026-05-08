@@ -1,4 +1,4 @@
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from "@/components/ui/checkbox"
 
 const CheckboxDemo = () => <Checkbox>Accept terms and conditions</Checkbox>
 

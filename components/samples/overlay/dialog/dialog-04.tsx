@@ -1,18 +1,18 @@
-import { IconChevronLeft } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
-import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { IconChevronLeft } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 const DialogScrollableDemo = () => {
   return (
     <Dialog>
-      <Button variant='outline'>Scrollable Dialog</Button>
-      <DialogContent className='sm:max-w-md'>
-        <DialogHeader className='contents space-y-0 text-left'>
-          <DialogTitle className='px-6 pt-6'>Product Information</DialogTitle>
+      <Button variant="outline">Scrollable Dialog</Button>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="contents space-y-0 text-left">
+          <DialogTitle className="px-6 pt-6">Product Information</DialogTitle>
         </DialogHeader>
         <DialogBody>
-          <div className='space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground'>
-            <div className='space-y-1'>
+          <div className="space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground">
+            <div className="space-y-1">
               <p>
                 <strong>Product Name:</strong> SuperTech 2000
               </p>
@@ -21,7 +21,7 @@ const DialogScrollableDemo = () => {
                 offering superior functionality and innovative features.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Specifications:</strong>
               </p>
@@ -34,7 +34,7 @@ const DialogScrollableDemo = () => {
                 <li>Weight: 2.1kg</li>
               </ul>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Key Features:</strong>
               </p>
@@ -46,13 +46,13 @@ const DialogScrollableDemo = () => {
                 <li>Excellent build quality for durability</li>
               </ul>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Price:</strong>
               </p>
               <p>$2,499.99 (Includes 1-year warranty)</p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Customer Reviews:</strong>
               </p>
@@ -68,7 +68,7 @@ const DialogScrollableDemo = () => {
                 &rdquo;The SuperTech 2000 is a game-changer in the tech industry. Worth every penny!&rdquo; - Emma W.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Return Policy:</strong>
               </p>
@@ -77,7 +77,7 @@ const DialogScrollableDemo = () => {
                 within 30 days of purchase for a full refund.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Warranty:</strong>
               </p>
@@ -89,11 +89,11 @@ const DialogScrollableDemo = () => {
           </div>
         </DialogBody>
         <DialogFooter>
-          <Button slot='close' variant='outline'>
+          <Button slot="close" variant="outline">
             <IconChevronLeft />
             Back
           </Button>
-          <Button type='button'>Read More</Button>
+          <Button type="button">Read More</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

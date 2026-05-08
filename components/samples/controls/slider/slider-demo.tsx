@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import { Label } from '@/components/ui/label'
-import { Slider, SliderFill, SliderOutput, SliderThumb, SliderTrack } from '@/components/ui/slider'
+import { Label } from "@/components/ui/label"
+import { Slider, SliderFill, SliderOutput, SliderThumb, SliderTrack } from "@/components/ui/slider"
 
 export default function SliderDemo() {
   return (
     <Slider defaultValue={20}>
-      <div className='flex items-center justify-between'>
+      <div className="flex items-center justify-between">
         <Label>Opacity</Label>
         <SliderOutput />
       </div>

@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent } from '@/components/ui/tooltip'
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 const TooltipDemo = () => {
   return (
     <Tooltip>
-      <Button size='sm' variant='outline'>
+      <Button size="sm" variant="outline">
         Default
       </Button>
       <TooltipContent>

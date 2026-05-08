@@ -1,29 +1,29 @@
 function titleCase(str: string): string {
   return str
-    .replace(/-/g, ' ')
+    .replace(/-/g, " ")
     .toLowerCase()
-    .split(' ')
+    .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+    .join(" ")
 }
 
 function slugify(str: string): string {
   return str
     .trim()
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .toLowerCase()
-    .replace(/[^a-z0-9 -]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
 }
 
 function pascalCase(str: string): string {
   return str
-    .replace(/[_\-\s]+/g, ' ')
+    .replace(/[_\-\s]+/g, " ")
     .toLowerCase()
-    .split(' ')
+    .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('')
+    .join("")
 }
 
 async function copyToClipboard(text: string) {

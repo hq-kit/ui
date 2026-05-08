@@ -1,57 +1,57 @@
-'use client'
+"use client"
 
-import type { Key } from 'react-aria-components'
-import type { PieSectorShapeProps } from 'recharts/types/polar/Pie'
-import * as React from 'react'
-import { Label, Pie, PieChart, Sector } from 'recharts'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { type ChartConfig, ChartContainer, ChartStyle, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import type { Key } from "react-aria-components"
+import type { PieSectorShapeProps } from "recharts/types/polar/Pie"
+import * as React from "react"
+import { Label, Pie, PieChart, Sector } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartStyle, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-export const description = 'An interactive pie chart'
+export const description = "An interactive pie chart"
 
 const desktopData = [
-  { month: 'january', desktop: 186, fill: 'var(--color-january)' },
-  { month: 'february', desktop: 305, fill: 'var(--color-february)' },
-  { month: 'march', desktop: 237, fill: 'var(--color-march)' },
-  { month: 'april', desktop: 173, fill: 'var(--color-april)' },
-  { month: 'may', desktop: 209, fill: 'var(--color-may)' }
+  { month: "january", desktop: 186, fill: "var(--color-january)" },
+  { month: "february", desktop: 305, fill: "var(--color-february)" },
+  { month: "march", desktop: 237, fill: "var(--color-march)" },
+  { month: "april", desktop: 173, fill: "var(--color-april)" },
+  { month: "may", desktop: 209, fill: "var(--color-may)" }
 ]
 
 const chartConfig = {
   visitors: {
-    label: 'Visitors'
+    label: "Visitors"
   },
   desktop: {
-    label: 'Desktop'
+    label: "Desktop"
   },
   mobile: {
-    label: 'Mobile'
+    label: "Mobile"
   },
   january: {
-    label: 'January',
-    color: 'var(--chart-1)'
+    label: "January",
+    color: "var(--chart-1)"
   },
   february: {
-    label: 'February',
-    color: 'var(--chart-2)'
+    label: "February",
+    color: "var(--chart-2)"
   },
   march: {
-    label: 'March',
-    color: 'var(--chart-3)'
+    label: "March",
+    color: "var(--chart-3)"
   },
   april: {
-    label: 'April',
-    color: 'var(--chart-4)'
+    label: "April",
+    color: "var(--chart-4)"
   },
   may: {
-    label: 'May',
-    color: 'var(--chart-5)'
+    label: "May",
+    color: "var(--chart-5)"
   }
 } satisfies ChartConfig
 
 export default function ChartPieInteractive() {
-  const id = 'pie-interactive'
+  const id = "pie-interactive"
   const [activeMonth, setActiveMonth] = React.useState<Key | null>(desktopData[0].month)
 
   const activeIndex = React.useMemo(() => desktopData.findIndex((item) => item.month === activeMonth), [activeMonth])
@@ -74,18 +74,18 @@ export default function ChartPieInteractive() {
   )
 
   return (
-    <Card className='flex flex-col' data-chart={id}>
+    <Card className="flex flex-col" data-chart={id}>
       <ChartStyle config={chartConfig} id={id} />
-      <CardHeader className='flex-row items-start space-y-0 pb-0'>
-        <div className='grid gap-1'>
+      <CardHeader className="flex-row items-start space-y-0 pb-0">
+        <div className="grid gap-1">
           <CardTitle>Pie Chart - Interactive</CardTitle>
           <CardDescription>January - June 2024</CardDescription>
         </div>
-        <Select onChange={setActiveMonth} placeholder='Select month' value={activeMonth}>
-          <SelectTrigger aria-label='Select a value' className='ml-auto h-7 w-[130px] rounded-lg pl-2.5'>
+        <Select onChange={setActiveMonth} placeholder="Select month" value={activeMonth}>
+          <SelectTrigger aria-label="Select a value" className="ml-auto h-7 w-[130px] rounded-lg pl-2.5">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className='rounded-xl'>
+          <SelectContent className="rounded-xl">
             {months.map((key) => {
               const config = chartConfig[key as keyof typeof chartConfig]
 
@@ -94,10 +94,10 @@ export default function ChartPieInteractive() {
               }
 
               return (
-                <SelectItem className='rounded-lg [&_span]:flex' id={key} key={key}>
-                  <div className='flex items-center gap-2 text-xs'>
+                <SelectItem className="rounded-lg [&_span]:flex" id={key} key={key}>
+                  <div className="flex items-center gap-2 text-xs">
                     <span
-                      className='flex h-3 w-3 shrink-0 rounded-xs'
+                      className="flex h-3 w-3 shrink-0 rounded-xs"
                       style={{
                         backgroundColor: `var(--color-${key})`
                       }}
@@ -110,27 +110,27 @@ export default function ChartPieInteractive() {
           </SelectContent>
         </Select>
       </CardHeader>
-      <CardContent className='flex flex-1 justify-center pb-0'>
-        <ChartContainer className='mx-auto aspect-square w-full max-w-[300px]' config={chartConfig} id={id}>
+      <CardContent className="flex flex-1 justify-center pb-0">
+        <ChartContainer className="mx-auto aspect-square w-full max-w-[300px]" config={chartConfig} id={id}>
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
             <Pie
               data={desktopData}
-              dataKey='desktop'
+              dataKey="desktop"
               innerRadius={60}
-              nameKey='month'
+              nameKey="month"
               shape={renderPieShape}
               strokeWidth={5}
             >
               <Label
                 content={({ viewBox }) => {
-                  if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     return (
-                      <text dominantBaseline='middle' textAnchor='middle' x={viewBox.cx} y={viewBox.cy}>
-                        <tspan className='fill-foreground font-bold text-3xl' x={viewBox.cx} y={viewBox.cy}>
+                      <text dominantBaseline="middle" textAnchor="middle" x={viewBox.cx} y={viewBox.cy}>
+                        <tspan className="fill-foreground font-bold text-3xl" x={viewBox.cx} y={viewBox.cy}>
                           {desktopData[activeIndex].desktop.toLocaleString()}
                         </tspan>
-                        <tspan className='fill-muted-foreground' x={viewBox.cx} y={(viewBox.cy || 0) + 24}>
+                        <tspan className="fill-muted-foreground" x={viewBox.cx} y={(viewBox.cy || 0) + 24}>
                           Visitors
                         </tspan>
                       </text>

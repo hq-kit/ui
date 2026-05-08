@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const CardSoftDemo = () => {
   return (
-    <Card className='max-w-md gap-0 bg-primary/20'>
+    <Card className="max-w-md gap-0 bg-primary/20">
       <CardHeader>
         <CardTitle>Design Throwdown</CardTitle>
       </CardHeader>

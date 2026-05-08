@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export function useScrollPosition(ref: React.RefObject<HTMLElement | null>) {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -8,10 +8,10 @@ export function useScrollPosition(ref: React.RefObject<HTMLElement | null>) {
       setScrollPosition(ref.current?.scrollTop || 0)
     }
 
-    ref.current?.addEventListener('scroll', handleScroll)
+    ref.current?.addEventListener("scroll", handleScroll)
 
     return () => {
-      ref.current?.removeEventListener('scroll', handleScroll)
+      ref.current?.removeEventListener("scroll", handleScroll)
     }
   }, [])
 

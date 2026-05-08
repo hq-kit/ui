@@ -1,24 +1,18 @@
-import type { SVGProps } from 'react'
-import { cn } from '@/lib/utils'
+import type { SVGProps } from "react"
+import { cn } from "@/lib/utils"
 
 const Spinner = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
-  <svg
-    {...props}
-    aria-label='Loading'
-    className={cn('size-4', className)}
-    viewBox='0 0 24 24'
-    xmlns='http://www.w3.org/2000/svg'
-  >
+  <svg className={cn("size-4", className)} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
-      d='M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z'
-      fill='currentColor'
+      d="M12,23a9.63,9.63,0,0,1-8-9.5,9.51,9.51,0,0,1,6.79-9.1A1.66,1.66,0,0,0,12,2.81h0a1.67,1.67,0,0,0-1.94-1.64A11,11,0,0,0,12,23Z"
+      fill="currentColor"
     >
       <animateTransform
-        attributeName='transform'
-        dur='0.75s'
-        repeatCount='indefinite'
-        type='rotate'
-        values='0 12 12;360 12 12'
+        attributeName="transform"
+        dur="0.75s"
+        repeatCount="indefinite"
+        type="rotate"
+        values="0 12 12;360 12 12"
       />
     </path>
   </svg>

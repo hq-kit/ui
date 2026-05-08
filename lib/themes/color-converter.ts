@@ -1,19 +1,19 @@
-import chroma from 'chroma-js'
+import chroma from "chroma-js"
 
-export type ColorFormat = 'hsl' | 'rgb' | 'oklch' | 'hex'
+export type ColorFormat = "hsl" | "rgb" | "oklch" | "hex"
 
 const formatNumber = (num: number, precision = 2) => {
   return Number.isInteger(num) ? num.toString() : num.toFixed(precision)
 }
 
-export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'): string => {
+export const colorFormatter = (colorValue: string, format: ColorFormat = "oklch"): string => {
   try {
     // Extract alpha value if present
     let alpha = 1
     let processedColor = colorValue
 
     // Handle hex colors with alpha
-    if (colorValue.startsWith('#') && colorValue.length === 9) {
+    if (colorValue.startsWith("#") && colorValue.length === 9) {
       const alphaHex = colorValue.slice(7, 9)
 
       alpha = parseInt(alphaHex, 16) / 255
@@ -21,30 +21,30 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     }
 
     // Handle percentage-based alpha values (like "10%")
-    else if (colorValue.includes('/')) {
+    else if (colorValue.includes("/")) {
       const percentMatch = colorValue.match(/\/\s*([\d.]+)%?/)
 
       if (percentMatch) {
         // Handle both percentage and decimal values after /
-        alpha = percentMatch[1].includes('.') ? parseFloat(percentMatch[1]) : parseInt(percentMatch[1], 10) / 100
+        alpha = percentMatch[1].includes(".") ? parseFloat(percentMatch[1]) : parseInt(percentMatch[1], 10) / 100
 
         // Convert modern RGB syntax to rgba for chroma.js
-        if (colorValue.startsWith('rgb')) {
+        if (colorValue.startsWith("rgb")) {
           const rgbMatch = colorValue.match(/rgb\((.*?)\//)
 
           if (rgbMatch) {
-            const [r, g, b] = rgbMatch[1].split(' ').map((n) => parseInt(n.trim(), 10))
+            const [r, g, b] = rgbMatch[1].split(" ").map((n) => parseInt(n.trim(), 10))
 
             processedColor = `rgba(${r}, ${g}, ${b}, ${alpha})`
           }
         }
 
         // Convert modern HSL syntax to hsla for chroma.js
-        else if (colorValue.startsWith('hsl')) {
+        else if (colorValue.startsWith("hsl")) {
           const hslMatch = colorValue.match(/hsl\((.*?)\//)
 
           if (hslMatch) {
-            const [h, rawS, rawL] = hslMatch[1].split(' ').map((v) => parseFloat(v.replace('%', '')))
+            const [h, rawS, rawL] = hslMatch[1].split(" ").map((v) => parseFloat(v.replace("%", "")))
 
             // Ensure s and l are in the correct range (0-100)
             const s = rawS > 1 ? rawS : rawS * 100
@@ -58,11 +58,11 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     }
 
     // Handle HSL without alpha
-    else if (colorValue.startsWith('hsl(')) {
+    else if (colorValue.startsWith("hsl(")) {
       const hslMatch = colorValue.match(/hsl\((.*?)\)/)
 
       if (hslMatch) {
-        const [h, rawS, rawL] = hslMatch[1].split(' ').map((v) => parseFloat(v.replace('%', '')))
+        const [h, rawS, rawL] = hslMatch[1].split(" ").map((v) => parseFloat(v.replace("%", "")))
 
         // Ensure s and l are in the correct range (0-100)
         const s = rawS > 1 ? rawS : rawS * 100
@@ -73,20 +73,20 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     }
 
     // Handle legacy rgba/hsla format
-    else if (colorValue.includes('rgba(') || colorValue.includes('hsla(')) {
-      if (colorValue.startsWith('hsla(')) {
+    else if (colorValue.includes("rgba(") || colorValue.includes("hsla(")) {
+      if (colorValue.startsWith("hsla(")) {
         const hslaMatch = colorValue.match(/hsla\((.*?),(.*?),(.*?),(.*?)\)/)
 
         if (hslaMatch) {
           const [, h, s, l, a] = hslaMatch
           const hue = parseFloat(h.trim())
-          const sat = parseFloat(s.trim().replace('%', ''))
-          const light = parseFloat(l.trim().replace('%', ''))
+          const sat = parseFloat(s.trim().replace("%", ""))
+          const light = parseFloat(l.trim().replace("%", ""))
 
           alpha = parseFloat(a.trim())
           processedColor = `hsl(${hue}, ${sat}%, ${light}%)`
         }
-      } else if (colorValue.startsWith('rgba(')) {
+      } else if (colorValue.startsWith("rgba(")) {
         const rgbaMatch = colorValue.match(/rgba\((.*?),(.*?),(.*?),(.*?)\)/)
 
         if (rgbaMatch) {
@@ -111,36 +111,36 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     }
 
     // Handle special case for grayscale HSL values
-    if (colorValue.includes('hsl(') && (colorValue.includes(' 0%') || colorValue.includes('0%,'))) {
+    if (colorValue.includes("hsl(") && (colorValue.includes(" 0%") || colorValue.includes("0%,"))) {
       const matches = colorValue.match(/hsl\(\d+(?:\.\d+)?\s+\d+(?:\.\d+)?%\s+(\d+(?:\.\d+)?)%\)/)
 
       if (matches) {
         const l = parseFloat(matches[1])
 
         switch (format) {
-          case 'oklch':
+          case "oklch":
             return alpha < 1
               ? `oklch(${(l / 100).toFixed(2)} 0 0 / ${Math.round(alpha * 100)}%)`
               : `oklch(${(l / 100).toFixed(2)} 0 0)`
 
-          case 'rgb': {
+          case "rgb": {
             const val = Math.round((l / 100) * 255)
 
             return alpha < 1 ? `rgb(${val} ${val} ${val} / ${alpha})` : `rgb(${val} ${val} ${val})`
           }
 
-          case 'hex': {
+          case "hex": {
             const val = Math.round((l / 100) * 255)
-            const hex = val.toString(16).padStart(2, '0')
+            const hex = val.toString(16).padStart(2, "0")
 
             return alpha < 1
               ? `#${hex}${hex}${hex}${Math.round(alpha * 255)
                   .toString(16)
-                  .padStart(2, '0')}`
+                  .padStart(2, "0")}`
               : `#${hex}${hex}${hex}`
           }
 
-          case 'hsl':
+          case "hsl":
             return alpha < 1 ? `hsl(0 0% ${l}% / ${alpha})` : colorValue
           default:
             return colorValue
@@ -159,7 +159,7 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
     }
 
     switch (format) {
-      case 'hex': {
+      case "hex": {
         const hexColor = color.hex()
 
         // Always include alpha if it's less than 1
@@ -167,11 +167,11 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
           ? hexColor.slice(0, 7) +
               Math.round(alpha * 255)
                 .toString(16)
-                .padStart(2, '0')
+                .padStart(2, "0")
           : hexColor
       }
 
-      case 'rgb': {
+      case "rgb": {
         const [r, g, b] = color.rgb()
 
         return alpha < 1
@@ -179,7 +179,7 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
           : `rgb(${Math.round(r)} ${Math.round(g)} ${Math.round(b)})`
       }
 
-      case 'hsl': {
+      case "hsl": {
         const [h, s, l] = color.hsl()
 
         // Handle grayscale values in HSL
@@ -192,7 +192,7 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
           : `hsl(${Math.round(h)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%)`
       }
 
-      case 'oklch': {
+      case "oklch": {
         const [l, c, h] = color.oklch()
 
         // Handle grayscale values in OKLCH
@@ -211,7 +211,7 @@ export const colorFormatter = (colorValue: string, format: ColorFormat = 'oklch'
         return colorValue
     }
   } catch (error) {
-    console.warn('Color conversion error:', error)
+    console.warn("Color conversion error:", error)
 
     return colorValue
   }

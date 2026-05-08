@@ -1,13 +1,13 @@
-import { IconBan } from '@tabler/icons-react'
-import { Badge } from '@/components/ui/badge'
+import { IconBan } from "@tabler/icons-react"
+import { Badge } from "@/components/ui/badge"
 
 const BadgeFailedDemo = () => {
   return (
     <Badge
-      className='rounded-sm border-destructive text-destructive [a&]:hover:bg-destructive/10 [a&]:hover:text-destructive/90'
-      variant='outline'
+      className="rounded-sm border-destructive text-destructive [a&]:hover:bg-destructive/10 [a&]:hover:text-destructive/90"
+      variant="outline"
     >
-      <IconBan className='size-3' />
+      <IconBan className="size-3" />
       Failed
     </Badge>
   )

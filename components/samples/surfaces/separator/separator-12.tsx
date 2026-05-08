@@ -1,10 +1,10 @@
-import { Separator } from '@/components/ui/separator'
+import { Separator } from "@/components/ui/separator"
 
 const Example = () => (
-  <div className='space-y-4'>
-    <p className='text-sm'>Above</p>
-    <Separator className='border-t border-dashed bg-transparent' />
-    <p className='text-sm'>Below</p>
+  <div className="space-y-4">
+    <p className="text-sm">Above</p>
+    <Separator className="border-t border-dashed bg-transparent" />
+    <p className="text-sm">Below</p>
   </div>
 )
 

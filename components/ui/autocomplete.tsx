@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { type AutocompleteProps, Autocomplete as RACAutocomplete } from 'react-aria-components'
+import { type AutocompleteProps, Autocomplete as RACAutocomplete } from "react-aria-components/Autocomplete"
 
 export const fuzzy = (textValue: string, inputValue: string): boolean => {
   if (inputValue.length === 0) return true

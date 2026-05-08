@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useEffect, useRef } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useEffect, useRef } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface CardTransform {
   rotateX: number
@@ -57,7 +57,7 @@ const Card3dDemo = () => {
       )
 
       card.style.transform = `perspective(1000px) rotateX(${cardTransform.rotateX}deg) rotateY(${cardTransform.rotateY}deg) scale3d(${cardTransform.scale}, ${cardTransform.scale}, ${cardTransform.scale})`
-      card.style.boxShadow = '0 10px 35px rgba(0, 0, 0, 0.2)'
+      card.style.boxShadow = "0 10px 35px rgba(0, 0, 0, 0.2)"
 
       image.style.transform = `perspective(1000px) rotateX(${imageTransform.rotateX}deg) rotateY(${imageTransform.rotateY}deg) scale3d(${imageTransform.scale}, ${imageTransform.scale}, ${imageTransform.scale})`
 
@@ -69,8 +69,8 @@ const Card3dDemo = () => {
     }
 
     const handleMouseEnter = () => {
-      card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease'
-      image.style.transition = 'transform 0.2s ease'
+      card.style.transition = "transform 0.2s ease, box-shadow 0.2s ease"
+      image.style.transition = "transform 0.2s ease"
       animate()
     }
 
@@ -79,41 +79,41 @@ const Card3dDemo = () => {
         cancelAnimationFrame(animationFrameRef.current)
       }
 
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)'
-      card.style.boxShadow = 'none'
-      card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease'
+      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)"
+      card.style.boxShadow = "none"
+      card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease"
 
-      image.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)'
-      image.style.transition = 'transform 0.5s ease'
+      image.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)"
+      image.style.transition = "transform 0.5s ease"
     }
 
-    card.addEventListener('mouseenter', handleMouseEnter)
-    card.addEventListener('mousemove', handleMouseMove)
-    card.addEventListener('mouseleave', handleMouseLeave)
+    card.addEventListener("mouseenter", handleMouseEnter)
+    card.addEventListener("mousemove", handleMouseMove)
+    card.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
 
-      card.removeEventListener('mouseenter', handleMouseEnter)
-      card.removeEventListener('mousemove', handleMouseMove)
-      card.removeEventListener('mouseleave', handleMouseLeave)
+      card.removeEventListener("mouseenter", handleMouseEnter)
+      card.removeEventListener("mousemove", handleMouseMove)
+      card.removeEventListener("mouseleave", handleMouseLeave)
     }
   }, [])
 
   return (
-    <Card className='max-w-md' ref={cardRef}>
+    <Card className="max-w-md" ref={cardRef}>
       <CardHeader>
         <CardTitle>Dynamic 3D Hover Card</CardTitle>
       </CardHeader>
-      <CardContent className='space-y-6 text-sm'>
+      <CardContent className="space-y-6 text-sm">
         <img
-          alt='Banner'
-          className='aspect-video w-full rounded-md object-cover'
+          alt="Banner"
+          className="aspect-video w-full rounded-md object-cover"
           height={500}
           ref={imageRef}
-          src='https://cdn.shadcnstudio.com/ss-assets/components/card/image-10.png?width=350&format=auto'
+          src="https://cdn.shadcnstudio.com/ss-assets/components/card/image-10.png?width=350&format=auto"
           width={500}
         />
         <p>

@@ -1,12 +1,12 @@
-import { useId } from 'react'
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
-import { Label } from '@/components/ui/label'
+import { useId } from "react"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import { Label } from "@/components/ui/label"
 
 const InputOTPWithResendDemo = () => {
   const id = useId()
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       <Label htmlFor={id}>Input OTP with resend</Label>
       <InputOTP id={id} maxLength={4}>
         <InputOTPGroup>
@@ -16,9 +16,9 @@ const InputOTPWithResendDemo = () => {
           <InputOTPSlot index={3} />
         </InputOTPGroup>
       </InputOTP>
-      <p className='text-muted-foreground text-xs'>
-        Didn&apos;t get the code?{' '}
-        <a className='text-primary hover:underline' href='#'>
+      <p className="text-muted-foreground text-xs">
+        Didn&apos;t get the code?{" "}
+        <a className="text-primary hover:underline" href="#">
           Resend code
         </a>
       </p>

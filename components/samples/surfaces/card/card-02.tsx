@@ -1,39 +1,39 @@
-import { Avatar } from '@/components/ui/avatar'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Avatar } from "@/components/ui/avatar"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const avatars = [
   {
-    src: 'https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-3.png',
-    fallback: 'OS',
-    name: 'Olivia Sparks'
+    src: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-3.png",
+    fallback: "OS",
+    name: "Olivia Sparks"
   },
   {
-    src: 'https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-6.png',
-    fallback: 'HL',
-    name: 'Howard Lloyd'
+    src: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-6.png",
+    fallback: "HL",
+    name: "Howard Lloyd"
   },
   {
-    src: 'https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png',
-    fallback: 'HR',
-    name: 'Hallie Richards'
+    src: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png",
+    fallback: "HR",
+    name: "Hallie Richards"
   },
   {
-    src: 'https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-16.png',
-    fallback: 'JW',
-    name: 'Jenny Wilson'
+    src: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-16.png",
+    fallback: "JW",
+    name: "Jenny Wilson"
   }
 ]
 
 const CardMeetingNotesDemo = () => {
   return (
-    <Card className='max-w-md'>
+    <Card className="max-w-md">
       <CardHeader>
         <CardTitle>Meeting Notes</CardTitle>
         <CardDescription>Transcript from the meeting with the client.</CardDescription>
       </CardHeader>
-      <CardContent className='text-sm'>
+      <CardContent className="text-sm">
         <p>Client requested dashboard redesign with focus on mobile responsiveness.</p>
-        <ol className='mt-4 flex list-decimal flex-col gap-2 pl-6'>
+        <ol className="mt-4 flex list-decimal flex-col gap-2 pl-6">
           <li>New analytics widgets for daily/weekly metrics</li>
           <li>Simplified navigation menu</li>
           <li>Dark mode support</li>
@@ -42,11 +42,11 @@ const CardMeetingNotesDemo = () => {
         </ol>
       </CardContent>
       <CardFooter>
-        <div className='flex -space-x-2 hover:space-x-1'>
+        <div className="flex -space-x-2 hover:space-x-1">
           {avatars.map((avatar, index) => (
             <Avatar
               alt={avatar.name}
-              className='ring-2 ring-background transition-all duration-300 ease-in-out'
+              className="ring-2 ring-background transition-all duration-300 ease-in-out"
               fallback={avatar.fallback}
               key={index}
               src={avatar.src}

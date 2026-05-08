@@ -1,13 +1,13 @@
-import { IconSearch } from '@tabler/icons-react'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconSearch } from "@tabler/icons-react"
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Try Different Keywords'
+export const title = "Try Different Keywords"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
       <EmptyMedia>
-        <IconSearch className='size-8 text-muted-foreground' />
+        <IconSearch className="size-8 text-muted-foreground" />
       </EmptyMedia>
       <EmptyTitle>No results for your search</EmptyTitle>
       <EmptyDescription>

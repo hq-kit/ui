@@ -1,6 +1,6 @@
-import { getLocalTimeZone, parseDate, today } from '@internationalized/date'
-import { DateField, DateInput } from '@/components/ui/date-field'
-import { Label } from '@/components/ui/label'
+import { getLocalTimeZone, parseDate, today } from "@internationalized/date"
+import { DateField, DateInput } from "@/components/ui/date-field"
+import { Label } from "@/components/ui/label"
 
 export default function DateFieldUncontrolled() {
   const now = today(getLocalTimeZone())

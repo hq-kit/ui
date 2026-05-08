@@ -1,20 +1,19 @@
-import { create } from 'zustand'
-import { devtools, persist } from 'zustand/middleware'
-import { getPresetThemeStyles, type Preset, type ThemeState, type ThemeStyleProps } from '@/lib/themes/presets'
+import { create } from "zustand"
+import { devtools, persist } from "zustand/middleware"
+import { getPresetThemeStyles, type Preset, type ThemeState, type ThemeStyleProps } from "@/lib/themes/presets"
 
 export type ThemeStore = ThemeState & {
   setPreset: (preset: Preset) => void
-  setVar: (key: keyof ThemeStyleProps, value: string, mode: 'light' | 'dark') => void
+  setVar: (key: keyof ThemeStyleProps, value: string, mode: "light" | "dark") => void
   reset: () => void
 }
 
 const initialState: ThemeState = {
-  preset: 'default',
-  styles: getPresetThemeStyles('default')
+  preset: "default",
+  styles: getPresetThemeStyles("default")
 }
 
-const withDevtools =
-  process.env.NODE_ENV === 'development' ? devtools : <T>(initializer: T) => initializer
+const withDevtools = process.env.NODE_ENV === "development" ? devtools : <T>(initializer: T) => initializer
 
 export const useThemeStore = create<ThemeStore>()(
   withDevtools(
@@ -31,7 +30,7 @@ export const useThemeStore = create<ThemeStore>()(
         setVar: (key, value, mode) => {
           set((state) => ({
             ...state,
-            preset: 'custom',
+            preset: "custom",
             styles: {
               ...state.styles,
               [mode]: {
@@ -46,7 +45,7 @@ export const useThemeStore = create<ThemeStore>()(
         }
       }),
       {
-        name: 'hq-ui-theme',
+        name: "hq-ui-theme",
         version: 1
       }
     )
@@ -69,13 +68,13 @@ export const useThemeGenerator = () => {
 }
 
 const getRoot = () => {
-  if (typeof document === 'undefined') return null
+  if (typeof document === "undefined") return null
   return document.documentElement
 }
 
 const getIframes = () => {
-  if (typeof document === 'undefined') return []
-  return Array.from(document.querySelectorAll('iframe')) as HTMLIFrameElement[]
+  if (typeof document === "undefined") return []
+  return Array.from(document.querySelectorAll("iframe")) as HTMLIFrameElement[]
 }
 
 export const applyStyleToDom = (styles: Partial<ThemeStyleProps>) => {

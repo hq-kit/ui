@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { Label } from '@/components/ui/label'
-import { SearchField, SearchInput } from '@/components/ui/search-field'
+import { Label } from "@/components/ui/label"
+import { SearchField, SearchInput } from "@/components/ui/search-field"
 
 export default function SearchFieldDemo() {
   return (
-    <div className='flex flex-col gap-2 lg:flex-row'>
+    <div className="flex flex-col gap-2 lg:flex-row">
       <SearchField>
         <Label>Basic</Label>
         <SearchInput />

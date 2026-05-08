@@ -1,9 +1,9 @@
-'use client'
-import type { SelectProps } from 'react-aria-components'
-import type { FontMonoFamily } from '@/lib/fonts/mono'
-import type { FontSansFamily } from '@/lib/fonts/sans'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+"use client"
+import type { SelectProps } from "react-aria-components"
+import type { FontMonoFamily } from "@/lib/fonts/mono"
+import type { FontSansFamily } from "@/lib/fonts/sans"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 interface SelectFontProps extends SelectProps {
   fonts: FontMonoFamily[] | FontSansFamily[]
@@ -12,7 +12,7 @@ interface SelectFontProps extends SelectProps {
 
 const SelectFont = ({ fonts, label, ...props }: SelectFontProps) => {
   return (
-    <Select name={label} placeholder='Select theme font' {...props}>
+    <Select name={label} placeholder="Select theme font" {...props}>
       <Label>{label}</Label>
       <SelectTrigger>
         <SelectValue />

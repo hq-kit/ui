@@ -1,12 +1,12 @@
-import { IconAlertCircle } from '@tabler/icons-react'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { IconAlertCircle } from "@tabler/icons-react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const AlertOutlineWarningDemo = () => {
   return (
-    <Alert className='border-amber-600 text-amber-600 dark:border-amber-400 dark:text-amber-400'>
+    <Alert className="border-amber-600 text-amber-600 dark:border-amber-400 dark:text-amber-400">
       <IconAlertCircle />
       <AlertTitle>Your password is too weak</AlertTitle>
-      <AlertDescription className='text-amber-600/80 dark:text-amber-400/80'>
+      <AlertDescription className="text-amber-600/80 dark:text-amber-400/80">
         Try using a mix of uppercase letters, numbers, and symbols for better security.
       </AlertDescription>
     </Alert>

@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,13 +6,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle
-} from '@/components/ui/dialog'
+} from "@/components/ui/dialog"
 
 const AlertDialogDemo = () => {
   return (
     <Dialog>
-      <Button variant='outline'>Alert Dialog</Button>
-      <DialogContent role='alertdialog'>
+      <Button variant="outline">Alert Dialog</Button>
+      <DialogContent role="alertdialog">
         <DialogHeader>
           <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
@@ -21,7 +21,7 @@ const AlertDialogDemo = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button slot='close' variant='outline'>
+          <Button slot="close" variant="outline">
             Cancel
           </Button>
           <Button>Continue</Button>

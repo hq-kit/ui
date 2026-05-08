@@ -1,5 +1,5 @@
-import type { Component } from '@/types/search'
-import list from '@/components-search.json'
+import type { Component } from "@/types/search"
+import list from "@/components-search.json"
 
 export type MenuItem = {
   section: string
@@ -13,15 +13,15 @@ export function menus() {
 
   return [
     {
-      title: 'Getting Started',
+      title: "Getting Started",
       items: gettingStarted.children
     },
     {
-      title: 'Framework Guides',
+      title: "Framework Guides",
       items: frameworkGuides.children
     },
     {
-      title: 'Components',
+      title: "Components",
       items: [],
       sections: components?.children?.map((section) => ({
         title: section.subsection,

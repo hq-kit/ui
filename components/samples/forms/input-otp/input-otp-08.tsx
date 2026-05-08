@@ -1,14 +1,14 @@
-'use client'
+"use client"
 
-import { useId } from 'react'
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
-import { Label } from '@/components/ui/label'
+import { useId } from "react"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp"
+import { Label } from "@/components/ui/label"
 
 const InputOTPGroupedDemo = () => {
   const id = useId()
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       <Label htmlFor={id}>Input OTP Grouped</Label>
       <InputOTP id={id} maxLength={6}>
         <InputOTPGroup>

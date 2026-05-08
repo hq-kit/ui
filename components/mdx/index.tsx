@@ -1,17 +1,17 @@
-import type { ComponentProps } from 'react'
-import { IconAlertCircle } from '@tabler/icons-react'
-import Image from 'next/image'
-import { Block } from '@/components/mdx/block'
-import { BlockCode } from '@/components/mdx/block-code'
-import { CLI } from '@/components/mdx/cli'
-import { Code } from '@/components/mdx/code'
-import { Demo } from '@/components/mdx/demo'
-import { Grid } from '@/components/mdx/grids'
-import { Iframe } from '@/components/mdx/iframe'
-import { Install } from '@/components/mdx/install'
-import { McpRacTabs } from '@/components/mdx/mcp-rac-tabs'
-import { McpTabs } from '@/components/mdx/mcp-tabs'
-import { Preview } from '@/components/mdx/preview'
+import type { ComponentProps } from "react"
+import { IconAlertCircle } from "@tabler/icons-react"
+import Image from "next/image"
+import { Block } from "@/components/mdx/block"
+import { BlockCode } from "@/components/mdx/block-code"
+import { CLI } from "@/components/mdx/cli"
+import { Code } from "@/components/mdx/code"
+import { Demo } from "@/components/mdx/demo"
+import { Grid } from "@/components/mdx/grids"
+import { Iframe } from "@/components/mdx/iframe"
+import { Install } from "@/components/mdx/install"
+import { McpRacTabs } from "@/components/mdx/mcp-rac-tabs"
+import { McpTabs } from "@/components/mdx/mcp-tabs"
+import { Preview } from "@/components/mdx/preview"
 import {
   TypographyA,
   TypographyBlockquote,
@@ -28,8 +28,8 @@ import {
   TypographyTh,
   TypographyTr,
   TypographyUl
-} from '@/components/mdx/typography'
-import { Alert } from '@/components/ui/alert'
+} from "@/components/mdx/typography"
+import { Alert } from "@/components/ui/alert"
 
 export const mdxComponents = {
   h1: TypographyH1,
@@ -62,11 +62,11 @@ export const mdxComponents = {
   Note: ({ children, ...props }: ComponentProps<typeof Alert>) => (
     <Alert
       {...props}
-      className='my-4 border-destructive bg-destructive/10 ring-2 ring-destructive/40'
-      variant='destructive'
+      className="my-4 border-destructive bg-destructive/10 ring-2 ring-destructive/40"
+      variant="destructive"
     >
-      <IconAlertCircle className='my-0.5' />
-      <Alert.Description className='cols-start-2 not-prose! flex flex-wrap items-center **:text-destructive/90!'>
+      <IconAlertCircle className="my-0.5" />
+      <Alert.Description className="cols-start-2 not-prose! flex flex-wrap items-center **:text-destructive/90!">
         {children}
       </Alert.Description>
     </Alert>

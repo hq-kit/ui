@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   IconBell,
@@ -10,11 +10,11 @@ import {
   IconLayoutSidebar,
   IconLogout,
   IconSparkles
-} from '@tabler/icons-react'
-import { IconApp } from '@/components/icons'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { Avatar } from '@/components/ui/avatar'
-import { Breadcrumb } from '@/components/ui/breadcrumb'
+} from "@tabler/icons-react"
+import { IconApp } from "@/components/icons"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Avatar } from "@/components/ui/avatar"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,7 +23,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
 import {
   Navbar,
   NavbarBreadcrumbs,
@@ -35,9 +35,9 @@ import {
   NavbarNav,
   NavbarSection,
   NavbarTrigger
-} from '@/components/ui/navbar'
-import { Separator } from '@/components/ui/separator'
-import { Skeleton } from '@/components/ui/skeleton'
+} from "@/components/ui/navbar"
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
 
 type NavMenu = {
   title: string
@@ -51,121 +51,121 @@ type NavMenu = {
 
 const navigations: NavMenu = [
   {
-    title: 'Home',
-    url: '#',
+    title: "Home",
+    url: "#",
     icon: IconHome
   },
   {
-    title: 'Sidebars',
-    url: '/block/layouts/sidebar',
+    title: "Sidebars",
+    url: "/block/layouts/sidebar",
     icon: IconLayoutSidebar,
     items: [
       {
-        title: 'Default',
-        url: '/block/layouts/sidebar/sidebar-demo'
+        title: "Default",
+        url: "/block/layouts/sidebar/sidebar-demo"
       },
       {
-        title: 'Floating',
-        url: '/block/layouts/sidebar/sidebar-floating-demo'
+        title: "Floating",
+        url: "/block/layouts/sidebar/sidebar-floating-demo"
       },
       {
-        title: 'Inset',
-        url: '/block/layouts/sidebar/sidebar-inset-demo'
+        title: "Inset",
+        url: "/block/layouts/sidebar/sidebar-inset-demo"
       },
       {
-        title: 'Default Icon',
-        url: '/block/layouts/sidebar/sidebar-icon-demo'
+        title: "Default Icon",
+        url: "/block/layouts/sidebar/sidebar-icon-demo"
       },
       {
-        title: 'Floating Icon',
-        url: '/block/layouts/sidebar/sidebar-floating-icon-demo'
+        title: "Floating Icon",
+        url: "/block/layouts/sidebar/sidebar-floating-icon-demo"
       },
       {
-        title: 'Inset Icon',
-        url: '/block/layouts/sidebar/sidebar-inset-icon-demo'
+        title: "Inset Icon",
+        url: "/block/layouts/sidebar/sidebar-inset-icon-demo"
       },
       {
-        title: 'Fixed',
-        url: '/block/layouts/sidebar/sidebar-fixed-demo'
+        title: "Fixed",
+        url: "/block/layouts/sidebar/sidebar-fixed-demo"
       }
     ]
   },
   {
-    title: 'Navbars',
-    url: '/block/layouts/navbar',
+    title: "Navbars",
+    url: "/block/layouts/navbar",
     icon: IconLayoutNavbar,
     items: [
       {
-        title: 'Default',
-        url: '/block/layouts/navbar/navbar-demo'
+        title: "Default",
+        url: "/block/layouts/navbar/navbar-demo"
       },
       {
-        title: 'Floating',
-        url: '/block/layouts/navbar/navbar-floating-demo'
+        title: "Floating",
+        url: "/block/layouts/navbar/navbar-floating-demo"
       },
       {
-        title: 'Inset',
-        url: '/block/layouts/navbar/navbar-inset-demo'
+        title: "Inset",
+        url: "/block/layouts/navbar/navbar-inset-demo"
       }
     ]
   }
 ]
 
 const user = {
-  name: 'DQ Al Haqqi',
-  email: 'dq.alhaqqi@gmail.com',
-  avatar: 'https://github.com/dq-alhq.png'
+  name: "DQ Al Haqqi",
+  email: "dq.alhaqqi@gmail.com",
+  avatar: "https://github.com/dq-alhq.png"
 }
 
 export default function NavbarDemo() {
   return (
     <Navbar isSticky>
       <NavbarNav>
-        <NavbarLogo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
-          <IconApp className='size-6 sm:size-5' />
-          <span className='font-bold'>HQ UI</span>
+        <NavbarLogo aria-label="Goto documenation of Navbar" href="/docs/components/layouts/navbar">
+          <IconApp className="size-6 sm:size-5" />
+          <span className="font-bold">HQ UI</span>
         </NavbarLogo>
         <NavbarSection>
           <Navigation items={navigations} />
         </NavbarSection>
 
-        <NavbarSection className='ml-auto hidden md:flex'>
-          <NavbarFlex className='sm:gap-x-1'>
-            <ThemeToggle variant='ghost' />
+        <NavbarSection className="ml-auto hidden md:flex">
+          <NavbarFlex className="sm:gap-x-1">
+            <ThemeToggle variant="ghost" />
           </NavbarFlex>
           <NavUser user={user} />
         </NavbarSection>
       </NavbarNav>
       <NavbarCompact>
         <NavbarFlex>
-          <NavbarTrigger className='-ml-2' />
-          <Separator className='h-6 sm:mx-1' orientation='vertical' />
-          <NavbarLogo aria-label='Goto documenation of Navbar' href='/docs/components/layouts/navbar'>
-            <IconApp className='size-5' />
+          <NavbarTrigger className="-ml-2" />
+          <Separator className="h-6 sm:mx-1" orientation="vertical" />
+          <NavbarLogo aria-label="Goto documenation of Navbar" href="/docs/components/layouts/navbar">
+            <IconApp className="size-5" />
           </NavbarLogo>
         </NavbarFlex>
         <NavbarFlex>
           <Navbar.Flex>
-            <ThemeToggle variant='ghost' />
+            <ThemeToggle variant="ghost" />
           </Navbar.Flex>
           <NavUser user={user} />
         </NavbarFlex>
       </NavbarCompact>
       <NavbarBreadcrumbs>
         <Breadcrumb>
-          <Breadcrumb.Item href='#'>Home</Breadcrumb.Item>
-          <Breadcrumb.Item href='#'>Blocks</Breadcrumb.Item>
+          <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="#">Blocks</Breadcrumb.Item>
           <Breadcrumb.Item>Navbar</Breadcrumb.Item>
         </Breadcrumb>
       </NavbarBreadcrumbs>
       <NavbarInset>
-        <div className='flex flex-1 flex-col gap-4 py-4'>
-          <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
-            <Skeleton className='aspect-video rounded-xl' />
-            <Skeleton className='aspect-video rounded-xl' />
-            <Skeleton className='aspect-video rounded-xl' />
+        <div className="flex flex-1 flex-col gap-4 py-4">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            <Skeleton className="aspect-video rounded-xl" />
+            <Skeleton className="aspect-video rounded-xl" />
+            <Skeleton className="aspect-video rounded-xl" />
           </div>
-          <Skeleton className='min-h-screen flex-1 rounded-xl md:min-h-min' />
+          <Skeleton className="min-h-screen flex-1 rounded-xl md:min-h-min" />
         </div>
       </NavbarInset>
     </Navbar>
@@ -176,12 +176,12 @@ const Navigation = ({ items }: { items: NavMenu }) => {
   return items.map((item) =>
     item.items ? (
       <DropdownMenu key={item.title}>
-        <NavbarItem isActive={item.title === 'Navbar'}>
+        <NavbarItem isActive={item.title === "Navbar"}>
           {item.icon && <item.icon />}
           <span>{item.title}</span>
-          <IconChevronDown className='ml-auto in-aria-expanded:rotate-180 transition-transform' />
+          <IconChevronDown className="ml-auto in-aria-expanded:rotate-180 transition-transform" />
         </NavbarItem>
-        <DropdownMenuContent placement='bottom start'>
+        <DropdownMenuContent placement="bottom start">
           {item.items?.map((subItem) => (
             <DropdownMenuItem href={subItem.url} key={subItem.title}>
               {subItem.title}
@@ -209,16 +209,16 @@ const NavUser = ({
 }) => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'>
-        <Avatar alt={user.name} className='size-8 rounded-md' src={user.avatar} />
+      <DropdownMenuTrigger className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+        <Avatar alt={user.name} className="size-8 rounded-md" src={user.avatar} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='min-w-56 rounded-lg' placement='bottom end'>
-        <DropdownMenuLabel className='p-0 font-normal'>
-          <div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
-            <Avatar alt={user.name} className='size-8 rounded-md' src={user.avatar} />
-            <div className='grid flex-1 text-left text-sm leading-tight'>
-              <span className='truncate font-medium'>{user.name}</span>
-              <span className='truncate text-xs'>{user.email}</span>
+      <DropdownMenuContent className="min-w-56 rounded-lg" placement="bottom end">
+        <DropdownMenuLabel className="p-0 font-normal">
+          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+            <Avatar alt={user.name} className="size-8 rounded-md" src={user.avatar} />
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">{user.name}</span>
+              <span className="truncate text-xs">{user.email}</span>
             </div>
           </div>
         </DropdownMenuLabel>

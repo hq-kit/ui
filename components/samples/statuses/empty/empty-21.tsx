@@ -1,6 +1,6 @@
-import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Empty without Icon'
+export const title = "Empty without Icon"
 
 const Example = () => (
   <Empty>

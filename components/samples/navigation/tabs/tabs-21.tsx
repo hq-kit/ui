@@ -1,37 +1,37 @@
-import { IconBook, IconGift, IconHeart } from '@tabler/icons-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Tooltip, TooltipContent } from '@/components/ui/tooltip'
+import { IconBook, IconGift, IconHeart } from "@tabler/icons-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 const tabs = [
   {
-    name: 'Explore',
-    value: 'explore',
+    name: "Explore",
+    value: "explore",
     icon: IconBook,
     content: (
       <>
-        Discover <span className='font-semibold text-foreground'>fresh ideas</span>, trending topics, and hidden gems
+        Discover <span className="font-semibold text-foreground">fresh ideas</span>, trending topics, and hidden gems
         curated just for you. Start exploring and let your curiosity lead the way!
       </>
     )
   },
   {
-    name: 'Favorites',
-    value: 'favorites',
+    name: "Favorites",
+    value: "favorites",
     icon: IconHeart,
     content: (
       <>
-        All your <span className='font-semibold text-foreground'>favorites</span> are saved here. Revisit articles,
+        All your <span className="font-semibold text-foreground">favorites</span> are saved here. Revisit articles,
         collections, and moments you love, any time you want a little inspiration.
       </>
     )
   },
   {
-    name: 'Surprise Me',
-    value: 'surprise',
+    name: "Surprise Me",
+    value: "surprise",
     icon: IconGift,
     content: (
       <>
-        <span className='font-semibold text-foreground'>Surprise!</span> Here&apos;s something unexpected—a fun fact, a
+        <span className="font-semibold text-foreground">Surprise!</span> Here&apos;s something unexpected—a fun fact, a
         quirky tip, or a daily challenge. Come back for a new surprise every day!
       </>
     )
@@ -40,15 +40,15 @@ const tabs = [
 
 const TabsVerticalWithTooltipDemo = () => {
   return (
-    <div className='w-full max-w-md'>
-      <Tabs defaultSelectedKey='explore' orientation='vertical'>
+    <div className="w-full max-w-md">
+      <Tabs defaultSelectedKey="explore" orientation="vertical">
         <TabsList>
           {tabs.map(({ icon: Icon, name, value }) => (
             <Tooltip key={value}>
-              <TabsTrigger aria-label='tab-trigger' id={value}>
+              <TabsTrigger aria-label="tab-trigger" id={value}>
                 <Icon />
               </TabsTrigger>
-              <TooltipContent className='px-2 py-1 text-xs' placement='left'>
+              <TooltipContent className="px-2 py-1 text-xs" placement="left">
                 {name}
               </TooltipContent>
             </Tooltip>
@@ -57,7 +57,7 @@ const TabsVerticalWithTooltipDemo = () => {
 
         {tabs.map((tab) => (
           <TabsContent id={tab.value} key={tab.value}>
-            <p className='text-muted-foreground text-sm'>{tab.content}</p>
+            <p className="text-muted-foreground text-sm">{tab.content}</p>
           </TabsContent>
         ))}
       </Tabs>

@@ -1,5 +1,5 @@
-import { Label } from '@/components/ui/label'
-import { Progress } from '@/components/ui/progress'
+import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
 
 const Example = () => (
   <Progress value={65}>

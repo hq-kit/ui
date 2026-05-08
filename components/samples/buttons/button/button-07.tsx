@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 
 const ButtonLargeDemo = () => {
-  return <Button size='lg'>Large</Button>
+  return <Button size="lg">Large</Button>
 }
 
 export default ButtonLargeDemo

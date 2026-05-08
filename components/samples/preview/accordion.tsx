@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { Code } from '@/components/mdx/code-client'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { Switch } from '@/components/ui/switch'
+import { useState } from "react"
+import { Code } from "@/components/mdx/code-client"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Switch } from "@/components/ui/switch"
 
 export default function AccordionPreview() {
   const [allowsMultiple, setAllowsMultiple] = useState(false)
@@ -11,20 +11,20 @@ export default function AccordionPreview() {
 
   return (
     <div>
-      <div className='flex flex-col gap-2 lg:flex-row-reverse'>
-        <div className='flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l'>
-          <Switch className='whitespace-nowrap' isSelected={allowsMultiple} onChange={setAllowsMultiple}>
+      <div className="flex flex-col gap-2 lg:flex-row-reverse">
+        <div className="flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l">
+          <Switch className="whitespace-nowrap" isSelected={allowsMultiple} onChange={setAllowsMultiple}>
             Allows Multiple
           </Switch>
           <Switch isSelected={isDisabled} onChange={setIsDisabled}>
             Disabled
           </Switch>
         </div>
-        <div className='grid min-h-52 w-full place-items-center px-6'>
-          <Accordion allowsMultipleExpanded={allowsMultiple} className='w-full' isDisabled={isDisabled}>
-            <AccordionItem id='item-1'>
+        <div className="grid min-h-52 w-full place-items-center px-6">
+          <Accordion allowsMultipleExpanded={allowsMultiple} className="w-full" isDisabled={isDisabled}>
+            <AccordionItem id="item-1">
               <AccordionTrigger>Product Information</AccordionTrigger>
-              <AccordionContent className='flex flex-col gap-4 text-balance'>
+              <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p>
                   Our flagship product combines cutting-edge technology with sleek design. Built with premium materials,
                   it offers unparalleled performance and reliability.
@@ -35,9 +35,9 @@ export default function AccordionPreview() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem id='item-2'>
+            <AccordionItem id="item-2">
               <AccordionTrigger>Shipping Details</AccordionTrigger>
-              <AccordionContent className='flex flex-col gap-4 text-balance'>
+              <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p>
                   We offer worldwide shipping through trusted courier partners. Standard delivery takes 3-5 business
                   days, while express shipping ensures delivery within 1-2 business days.
@@ -48,9 +48,9 @@ export default function AccordionPreview() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem id='item-3'>
+            <AccordionItem id="item-3">
               <AccordionTrigger>Return Policy</AccordionTrigger>
-              <AccordionContent className='flex flex-col gap-4 text-balance'>
+              <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p>
                   We stand behind our products with a comprehensive 30-day return policy. If you&apos;re not completely
                   satisfied, simply return the item in its original condition.
@@ -65,10 +65,10 @@ export default function AccordionPreview() {
         </div>
       </div>
       <Code
-        className='my-0 size-full rounded-lg rounded-t-none border **:[pre]:rounded-t-none'
+        className="my-0 size-full rounded-lg rounded-t-none border **:[pre]:rounded-t-none"
         code={`import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
-<Accordion${allowsMultiple ? ' allowsMultipleExpanded' : ''}${isDisabled ? ' isDisabled' : ''} className='w-full'>
+<Accordion${allowsMultiple ? " allowsMultipleExpanded" : ""}${isDisabled ? " isDisabled" : ""} className='w-full'>
   <AccordionItem id='item-1'>
     <AccordionTrigger>Product Information</AccordionTrigger>
     <AccordionContent className='flex flex-col gap-4 text-balance'>

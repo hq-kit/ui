@@ -1,18 +1,18 @@
-import { IconChevronLeft } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
-import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { IconChevronLeft } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 const DialogFullScreenDemo = () => {
   return (
     <Dialog>
-      <Button variant='outline'>Fullscreen Dialog</Button>
-      <DialogContent className='h-[calc(100vh-2rem)] gap-0 p-0 sm:max-w-[calc(100vw-2rem)] *:[[slot=dialog]]:h-full *:[[slot=dialog]]:justify-between'>
+      <Button variant="outline">Fullscreen Dialog</Button>
+      <DialogContent className="h-[calc(100vh-2rem)] gap-0 p-0 sm:max-w-[calc(100vw-2rem)] *:[[slot=dialog]]:h-full *:[[slot=dialog]]:justify-between">
         <DialogHeader>
           <DialogTitle>Product Information</DialogTitle>
         </DialogHeader>
-        <DialogBody className='h-full'>
-          <div className='space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground'>
-            <div className='space-y-1'>
+        <DialogBody className="h-full">
+          <div className="space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground">
+            <div className="space-y-1">
               <p>
                 <strong>Product Name:</strong> SuperTech 2000
               </p>
@@ -21,7 +21,7 @@ const DialogFullScreenDemo = () => {
                 offering superior functionality and innovative features.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Specifications:</strong>
               </p>
@@ -34,7 +34,7 @@ const DialogFullScreenDemo = () => {
                 <li>Weight: 2.1kg</li>
               </ul>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Key Features:</strong>
               </p>
@@ -46,13 +46,13 @@ const DialogFullScreenDemo = () => {
                 <li>Excellent build quality for durability</li>
               </ul>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Price:</strong>
               </p>
               <p>$2,499.99 (Includes 1-year warranty)</p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Customer Reviews:</strong>
               </p>
@@ -68,7 +68,7 @@ const DialogFullScreenDemo = () => {
                 &rdquo;The SuperTech 2000 is a game-changer in the tech industry. Worth every penny!&rdquo; - Emma W.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Return Policy:</strong>
               </p>
@@ -77,7 +77,7 @@ const DialogFullScreenDemo = () => {
                 within 30 days of purchase for a full refund.
               </p>
             </div>
-            <div className='space-y-1'>
+            <div className="space-y-1">
               <p>
                 <strong>Warranty:</strong>
               </p>
@@ -89,11 +89,11 @@ const DialogFullScreenDemo = () => {
           </div>
         </DialogBody>
         <DialogFooter>
-          <Button slot='close' variant='outline'>
+          <Button slot="close" variant="outline">
             <IconChevronLeft />
             Back
           </Button>
-          <Button type='button'>Read More</Button>
+          <Button type="button">Read More</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

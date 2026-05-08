@@ -1,5 +1,5 @@
-import { Label } from '@/components/ui/label'
-import { Meter } from '@/components/ui/meter'
+import { Label } from "@/components/ui/label"
+import { Meter } from "@/components/ui/meter"
 
 const Example = () => (
   <Meter value={65}>

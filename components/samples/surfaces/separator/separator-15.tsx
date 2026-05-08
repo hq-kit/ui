@@ -1,13 +1,13 @@
-import { Separator } from '@/components/ui/separator'
+import { Separator } from "@/components/ui/separator"
 
 const Example = () => (
-  <div className='space-y-4'>
-    <p className='text-sm'>Above</p>
-    <div className='space-y-1'>
+  <div className="space-y-4">
+    <p className="text-sm">Above</p>
+    <div className="space-y-1">
       <Separator />
       <Separator />
     </div>
-    <p className='text-sm'>Below</p>
+    <p className="text-sm">Below</p>
   </div>
 )
 

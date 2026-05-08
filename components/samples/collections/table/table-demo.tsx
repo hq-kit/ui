@@ -1,24 +1,24 @@
-'use client'
+"use client"
 
-import { NumberFormatter } from '@internationalized/number'
-import { IconDotsVertical } from '@tabler/icons-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { NumberFormatter } from "@internationalized/number"
+import { IconDotsVertical } from "@tabler/icons-react"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@/components/ui/table'
+} from "@/components/ui/dropdown-menu"
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function TableDemo() {
   return (
-    <Card className='p-0'>
+    <Card className="p-0">
       <CardContent>
-        <Table aria-label='Products' bleed>
+        <Table aria-label="Products" bleed>
           <TableHeader>
-            <TableColumn className='w-0'>#</TableColumn>
+            <TableColumn className="w-0">#</TableColumn>
             <TableColumn isRowHeader>Name</TableColumn>
             <TableColumn>Category</TableColumn>
             <TableColumn>Price</TableColumn>
@@ -32,23 +32,23 @@ export default function TableDemo() {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.category}</TableCell>
                 <TableCell>
-                  {new NumberFormatter('en-US', {
-                    style: 'currency',
-                    currency: 'USD'
+                  {new NumberFormatter("en-US", {
+                    style: "currency",
+                    currency: "USD"
                   }).format(item.price)}
                 </TableCell>
                 <TableCell>{item.stock}</TableCell>
                 <TableCell>
-                  <div className='flex justify-end'>
+                  <div className="flex justify-end">
                     <DropdownMenu>
-                      <DropdownMenuTrigger className='size-6'>
+                      <DropdownMenuTrigger className="size-6">
                         <IconDotsVertical />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent aria-label='Actions' placement='left top'>
+                      <DropdownMenuContent aria-label="Actions" placement="left top">
                         <DropdownMenuItem>View</DropdownMenuItem>
                         <DropdownMenuItem>Edit</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem variant='destructive'>Delete</DropdownMenuItem>
+                        <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
@@ -64,59 +64,59 @@ export default function TableDemo() {
 
 export const products = [
   {
-    id: '1',
-    name: 'iPhone 13',
-    category: 'Electronics',
+    id: "1",
+    name: "iPhone 13",
+    category: "Electronics",
     price: 799,
-    brand: 'Apple',
+    brand: "Apple",
     stock: 150
   },
   {
-    id: '2',
-    name: 'Galaxy S21',
-    category: 'Electronics',
+    id: "2",
+    name: "Galaxy S21",
+    category: "Electronics",
     price: 699,
-    brand: 'Samsung',
+    brand: "Samsung",
     stock: 200
   },
   {
-    id: '3',
-    name: 'MacBook Pro',
-    category: 'Computers',
+    id: "3",
+    name: "MacBook Pro",
+    category: "Computers",
     price: 1299,
-    brand: 'Apple',
+    brand: "Apple",
     stock: 80
   },
   {
-    id: '4',
-    name: 'Dell XPS 13',
-    category: 'Computers',
+    id: "4",
+    name: "Dell XPS 13",
+    category: "Computers",
     price: 999,
-    brand: 'Dell',
+    brand: "Dell",
     stock: 50
   },
   {
-    id: '5',
-    name: 'Sony WH-1000XM4',
-    category: 'Headphones',
+    id: "5",
+    name: "Sony WH-1000XM4",
+    category: "Headphones",
     price: 349,
-    brand: 'Sony',
+    brand: "Sony",
     stock: 120
   },
   {
-    id: '6',
-    name: 'AirPods Pro',
-    category: 'Headphones',
+    id: "6",
+    name: "AirPods Pro",
+    category: "Headphones",
     price: 249,
-    brand: 'Apple',
+    brand: "Apple",
     stock: 180
   },
   {
-    id: '7',
-    name: 'Fitbit Charge 5',
-    category: 'Wearables',
+    id: "7",
+    name: "Fitbit Charge 5",
+    category: "Wearables",
     price: 179,
-    brand: 'Fitbit',
+    brand: "Fitbit",
     stock: 75
   }
 ]

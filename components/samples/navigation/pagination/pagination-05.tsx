@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from "@/components/ui/button"
 import {
   Pagination,
   PaginationContent,
@@ -8,17 +8,17 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious
-} from '@/components/ui/pagination'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/pagination"
+import { cn } from "@/lib/utils"
 
 const pages = [1, 2, 3]
 
 const BorderedPaginationDemo = () => {
   return (
     <Pagination>
-      <PaginationContent className='gap-0 divide-x overflow-hidden rounded-lg border'>
+      <PaginationContent className="gap-0 divide-x overflow-hidden rounded-lg border">
         <PaginationItem>
-          <PaginationPrevious className='rounded-none' href='#' />
+          <PaginationPrevious className="rounded-none" href="#" />
         </PaginationItem>
         {pages.map((page) => {
           const isActive = page === 2
@@ -29,12 +29,12 @@ const BorderedPaginationDemo = () => {
                 className={cn(
                   {
                     [buttonVariants({
-                      variant: 'default',
+                      variant: "default",
                       className:
-                        'hover:text-primary-foreground! dark:border-transparent dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/90 dark:hover:text-primary-foreground'
+                        "hover:text-primary-foreground! dark:border-transparent dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/90 dark:hover:text-primary-foreground"
                     })]: isActive
                   },
-                  'rounded-none border-none'
+                  "rounded-none border-none"
                 )}
                 href={`#${page}`}
                 isActive={isActive}
@@ -45,7 +45,7 @@ const BorderedPaginationDemo = () => {
           )
         })}
         <PaginationItem>
-          <PaginationNext className='rounded-none' href='#' />
+          <PaginationNext className="rounded-none" href="#" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

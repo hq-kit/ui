@@ -1,5 +1,5 @@
-import { IconAlertCircle } from '@tabler/icons-react'
-import { Alert, AlertTitle } from '@/components/ui/alert'
+import { IconAlertCircle } from "@tabler/icons-react"
+import { Alert, AlertTitle } from "@/components/ui/alert"
 
 const AlertDemo = () => {
   return (

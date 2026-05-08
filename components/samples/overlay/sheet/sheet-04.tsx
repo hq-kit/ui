@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetBody,
@@ -7,19 +7,19 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle
-} from '@/components/ui/sheet'
+} from "@/components/ui/sheet"
 
 const SheetWithScrollableContentDemo = () => {
   return (
     <Sheet>
-      <Button variant='outline'>Scrollable Content</Button>
+      <Button variant="outline">Scrollable Content</Button>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Terms & Condition</SheetTitle>
           <SheetDescription>Make sure read the terms and conditions before proceeding.</SheetDescription>
         </SheetHeader>
-        <SheetBody className='space-y-1 text-sm'>
-          <p className='mb-2 font-medium'>Last Updated: June 1, 2025</p>
+        <SheetBody className="space-y-1 text-sm">
+          <p className="mb-2 font-medium">Last Updated: June 1, 2025</p>
 
           <h3>1. Introduction</h3>
           <p>
@@ -67,7 +67,7 @@ const SheetWithScrollableContentDemo = () => {
 
           <h3>7. Privacy and Data Protection</h3>
           <p>
-            Your privacy is important to us. Please refer to our <a href='#'>Privacy Policy</a> to understand how we
+            Your privacy is important to us. Please refer to our <a href="#">Privacy Policy</a> to understand how we
             collect, use, and protect your personal data.
           </p>
 
@@ -111,10 +111,10 @@ const SheetWithScrollableContentDemo = () => {
           <p>Phone: +1 (800) 123-4567</p>
         </SheetBody>
         <SheetFooter>
-          <Button slot='close' type='submit'>
+          <Button slot="close" type="submit">
             Accept
           </Button>
-          <Button slot='close' variant='outline'>
+          <Button slot="close" variant="outline">
             Cancel
           </Button>
         </SheetFooter>

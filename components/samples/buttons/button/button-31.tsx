@@ -1,11 +1,11 @@
-import { IconBookmark } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
+import { IconBookmark } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
 
 const IconButtonDemo = () => {
   return (
-    <Button size='icon' variant='outline'>
+    <Button size="icon" variant="outline">
       <IconBookmark />
-      <span className='sr-only'>Bookmark</span>
+      <span className="sr-only">Bookmark</span>
     </Button>
   )
 }

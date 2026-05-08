@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useAsyncList } from 'react-stately'
-import { Command, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { useAsyncList } from "react-stately"
+import { Command, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 
 export default function CommandSeparatorDemo() {
   const list = useAsyncList<{ title: string }>({

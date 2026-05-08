@@ -1,11 +1,11 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from "@/components/ui/skeleton"
 
 const Example = () => (
-  <div className='flex w-full max-w-md flex-col gap-3'>
+  <div className="flex w-full max-w-md flex-col gap-3">
     {Array.from({ length: 5 }).map((_, i) => (
-      <div className='flex items-center gap-3' key={i}>
-        <Skeleton className='h-4 w-4 rounded-sm' />
-        <Skeleton className='h-4 flex-1' />
+      <div className="flex items-center gap-3" key={i}>
+        <Skeleton className="h-4 w-4 rounded-sm" />
+        <Skeleton className="h-4 flex-1" />
       </div>
     ))}
   </div>

@@ -1,17 +1,17 @@
-'use client'
+"use client"
 
-import { toast } from 'sonner'
-import { Button } from '@/components/ui/button'
+import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
 
 const ClosableSonnerDemo = () => {
   return (
     <Button
       onPress={() =>
-        toast('Action completed successfully!', {
+        toast("Action completed successfully!", {
           closeButton: true
         })
       }
-      variant='outline'
+      variant="outline"
     >
       Closable Toast
     </Button>

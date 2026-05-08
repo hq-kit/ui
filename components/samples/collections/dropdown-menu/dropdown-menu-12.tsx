@@ -1,19 +1,19 @@
-'use client'
-import { IconCurrencyDollar, IconHelp, IconReceipt, IconSettings, IconUser } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
+"use client"
+import { IconCurrencyDollar, IconHelp, IconReceipt, IconSettings, IconUser } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu"
 
 const DropdownMenuItemIconDemo = () => {
   return (
     <DropdownMenu>
-      <Button variant='outline'>Menu item with icon</Button>
-      <DropdownMenuContent className='w-56'>
+      <Button variant="outline">Menu item with icon</Button>
+      <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>User Profile</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem>

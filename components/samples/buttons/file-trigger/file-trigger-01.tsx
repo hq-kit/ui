@@ -1,5 +1,5 @@
-import { IconUpload } from '@tabler/icons-react'
-import { FileTrigger } from '@/components/ui/file-trigger'
+import { IconUpload } from "@tabler/icons-react"
+import { FileTrigger } from "@/components/ui/file-trigger"
 
 const FileTriggerBasic = () => {
   return (

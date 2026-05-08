@@ -1,22 +1,22 @@
-import { IconBook, IconExternalLink } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { IconBook, IconExternalLink } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
-export const title = 'Empty with Link Action'
+export const title = "Empty with Link Action"
 
 const Example = () => (
   <Empty>
     <EmptyHeader>
-      <EmptyMedia variant='icon'>
+      <EmptyMedia variant="icon">
         <IconBook />
       </EmptyMedia>
       <EmptyTitle>Get started with our guide</EmptyTitle>
       <EmptyDescription>Learn how to set up your first project and start building.</EmptyDescription>
     </EmptyHeader>
     <EmptyContent>
-      <Button className='gap-2' variant='link'>
+      <Button className="gap-2" variant="link">
         Read the documentation
-        <IconExternalLink className='h-4 w-4' />
+        <IconExternalLink className="h-4 w-4" />
       </Button>
     </EmptyContent>
   </Empty>

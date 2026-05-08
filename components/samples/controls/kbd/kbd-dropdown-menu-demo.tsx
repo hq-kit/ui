@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   DropdownMenu,
@@ -6,8 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuShortcut,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import { Kbd, KbdGroup } from '@/components/ui/kbd'
+} from "@/components/ui/dropdown-menu"
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
 
 export default function KeyboardMenuDemo() {
   return (

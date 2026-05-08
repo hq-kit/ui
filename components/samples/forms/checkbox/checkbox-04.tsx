@@ -1,10 +1,10 @@
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 
 const CheckboxTodoListDemo = () => {
   return (
     <Checkbox defaultSelected>
-      {({ isSelected }) => <Label className={isSelected ? 'line-through' : ''}>Simple todo list</Label>}
+      {({ isSelected }) => <Label className={isSelected ? "line-through" : ""}>Simple todo list</Label>}
     </Checkbox>
   )
 }

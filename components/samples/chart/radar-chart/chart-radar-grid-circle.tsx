@@ -1,58 +1,58 @@
-'use client'
+"use client"
 
-import { IconTrendingUp } from '@tabler/icons-react'
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { IconTrendingUp } from "@tabler/icons-react"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-export const description = 'A radar chart with a grid and circle'
+export const description = "A radar chart with a grid and circle"
 
 const chartData = [
-  { month: 'January', desktop: 186 },
-  { month: 'February', desktop: 305 },
-  { month: 'March', desktop: 237 },
-  { month: 'April', desktop: 273 },
-  { month: 'May', desktop: 209 },
-  { month: 'June', desktop: 214 }
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 305 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 273 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 214 }
 ]
 
 const chartConfig = {
   desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)'
+    label: "Desktop",
+    color: "var(--chart-1)"
   }
 } satisfies ChartConfig
 
 export default function ChartRadarGridCircle() {
   return (
     <Card>
-      <CardHeader className='items-center pb-4'>
+      <CardHeader className="items-center pb-4">
         <CardTitle>Radar Chart - Grid Circle</CardTitle>
         <CardDescription>Showing total visitors for the last 6 months</CardDescription>
       </CardHeader>
-      <CardContent className='pb-0'>
-        <ChartContainer className='mx-auto aspect-square max-h-[250px]' config={chartConfig}>
+      <CardContent className="pb-0">
+        <ChartContainer className="mx-auto aspect-square max-h-[250px]" config={chartConfig}>
           <RadarChart data={chartData}>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
-            <PolarGrid gridType='circle' />
-            <PolarAngleAxis dataKey='month' />
+            <PolarGrid gridType="circle" />
+            <PolarAngleAxis dataKey="month" />
             <Radar
-              dataKey='desktop'
+              dataKey="desktop"
               dot={{
                 r: 4,
                 fillOpacity: 1
               }}
-              fill='var(--color-desktop)'
+              fill="var(--color-desktop)"
               fillOpacity={0.6}
             />
           </RadarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className='flex-col gap-2 text-sm'>
-        <div className='flex items-center gap-2 font-medium leading-none'>
-          Trending up by 5.2% this month <IconTrendingUp className='h-4 w-4' />
+      <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 font-medium leading-none">
+          Trending up by 5.2% this month <IconTrendingUp className="h-4 w-4" />
         </div>
-        <div className='flex items-center gap-2 text-muted-foreground leading-none'>January - June 2024</div>
+        <div className="flex items-center gap-2 text-muted-foreground leading-none">January - June 2024</div>
       </CardFooter>
     </Card>
   )

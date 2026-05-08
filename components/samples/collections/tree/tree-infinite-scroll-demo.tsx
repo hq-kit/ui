@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { IconLoader } from '@tabler/icons-react'
-import { Collection, TreeLoadMoreItem, type TreeLoadMoreItemProps } from 'react-aria-components'
-import { useAsyncList } from 'react-stately'
-import { TreeItem as PrimitiveItem, Tree, TreeItemLabel } from '@/components/ui/tree'
+import { IconLoader } from "@tabler/icons-react"
+import { Collection, TreeLoadMoreItem, type TreeLoadMoreItemProps } from "react-aria-components"
+import { useAsyncList } from "react-stately"
+import { TreeItem as PrimitiveItem, Tree, TreeItemLabel } from "@/components/ui/tree"
 
 interface StarWarsCharacter {
   name: string
@@ -20,10 +20,10 @@ export default function TreeInfiniteScrollDemo() {
   const starWarsList = useAsyncList<StarWarsCharacter>({
     async load({ signal, cursor }) {
       if (cursor) {
-        cursor = cursor.replace(/^http:\/\//i, 'https://')
+        cursor = cursor.replace(/^http:\/\//i, "https://")
       }
 
-      const res = await fetch(cursor || 'https://swapi.py4e.com/api/people/?search=', {
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {
         signal
       })
       const json = await res.json()
@@ -48,15 +48,15 @@ export default function TreeInfiniteScrollDemo() {
   })
 
   return (
-    <div className='max-h-56 overflow-y-auto'>
-      <Tree aria-label='async loading tree' className='h-56 min-w-56 rounded-lg border p-2'>
-        <TreeItem id='pokemon' title='Pokemon'>
+    <div className="max-h-56 overflow-y-auto">
+      <Tree aria-label="async loading tree" className="h-56 min-w-56 rounded-lg border p-2">
+        <TreeItem id="pokemon" title="Pokemon">
           <Collection items={pokemonList.items}>
             {(item: Pokemon) => <TreeItem id={item.name} title={item.name} />}
           </Collection>
           <TreeLoader isLoading={pokemonList.isLoading} onLoadMore={pokemonList.loadMore} />
         </TreeItem>
-        <TreeItem id='starwars' title='Star Wars'>
+        <TreeItem id="starwars" title="Star Wars">
           <Collection items={starWarsList.items}>
             {(item: StarWarsCharacter) => <TreeItem id={item.name} title={item.name} />}
           </Collection>
@@ -88,12 +88,12 @@ const TreeLoader = ({ className, ...props }: TreeLoadMoreItemProps) => {
       {({ level }) => {
         return (
           <IconLoader
-            aria-label='Loading more...'
+            aria-label="Loading more..."
             style={{
-              animation: 'spin 1s linear infinite',
+              animation: "spin 1s linear infinite",
               marginLeft: `${level * 16}px`,
-              marginBottom: '8px',
-              marginTop: '8px'
+              marginBottom: "8px",
+              marginTop: "8px"
             }}
           />
         )

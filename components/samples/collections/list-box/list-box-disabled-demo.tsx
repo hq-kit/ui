@@ -1,15 +1,15 @@
-'use client'
+"use client"
 
-import { ListBox, ListBoxItem } from '@/components/ui/list-box'
+import { ListBox, ListBoxItem } from "@/components/ui/list-box"
 
 export default function ListBoxDisabledDemo() {
   return (
     <ListBox
-      aria-label='Fruits'
-      className='max-w-2xs'
+      aria-label="Fruits"
+      className="max-w-2xs"
       disabledKeys={[2, 3, 4, 5]}
       items={fruits}
-      selectionMode='multiple'
+      selectionMode="multiple"
     >
       {(fruit) => <ListBoxItem id={fruit.id}>{fruit.name}</ListBoxItem>}
     </ListBox>
@@ -19,30 +19,30 @@ export default function ListBoxDisabledDemo() {
 const fruits = [
   {
     id: 1,
-    name: 'Apple'
+    name: "Apple"
   },
   {
     id: 2,
-    name: 'Banana'
+    name: "Banana"
   },
   {
     id: 3,
-    name: 'Orange'
+    name: "Orange"
   },
   {
     id: 4,
-    name: 'Strawberry'
+    name: "Strawberry"
   },
   {
     id: 5,
-    name: 'Grapes'
+    name: "Grapes"
   },
   {
     id: 6,
-    name: 'Mango'
+    name: "Mango"
   },
   {
     id: 7,
-    name: 'Pineapple'
+    name: "Pineapple"
   }
 ]

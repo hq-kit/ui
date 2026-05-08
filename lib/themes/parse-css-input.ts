@@ -1,17 +1,17 @@
-import type { ThemeStyleProps } from './presets'
-import { defaultThemeState } from '@/config/theme'
+import type { ThemeStyleProps } from "./presets"
+import { defaultThemeState } from "@/config/theme"
 
 export const variableNames = Object.keys(defaultThemeState.light || {})
-const nonColorVariables = ['font-sans', 'font-mono', 'radius']
-const VARIABLE_PREFIX = '--'
+const nonColorVariables = ["font-sans", "font-mono", "radius"]
+const VARIABLE_PREFIX = "--"
 
 export const parseCssInput = (input: string) => {
   const lightColors: ThemeStyleProps = {} as ThemeStyleProps
   const darkColors: ThemeStyleProps = {} as ThemeStyleProps
 
   try {
-    const rootContent = extractCssBlockContent(input, ':root')
-    const darkContent = extractCssBlockContent(input, '.dark')
+    const rootContent = extractCssBlockContent(input, ":root")
+    const darkContent = extractCssBlockContent(input, ".dark")
 
     if (rootContent) {
       parseColorVariables(rootContent, lightColors, variableNames)
@@ -21,7 +21,7 @@ export const parseCssInput = (input: string) => {
       parseColorVariables(darkContent, darkColors, variableNames)
     }
   } catch (error) {
-    console.error('Error parsing CSS input:', error)
+    console.error("Error parsing CSS input:", error)
   }
 
   return { lightColors, darkColors }
@@ -37,8 +37,8 @@ const parseColorVariables = (cssContent: string, target: ThemeStyleProps, validN
   const variableDeclarations = cssContent.match(/--[^:]+:\s*[^;]+/g) || []
 
   variableDeclarations.forEach((declaration) => {
-    const [name, value] = declaration.split(':').map((part) => part.trim())
-    const cleanName = name.replace(VARIABLE_PREFIX, '')
+    const [name, value] = declaration.split(":").map((part) => part.trim())
+    const cleanName = name.replace(VARIABLE_PREFIX, "")
 
     if (validNames.includes(cleanName)) {
       if (nonColorVariables.includes(cleanName)) {
@@ -54,13 +54,13 @@ const parseColorVariables = (cssContent: string, target: ThemeStyleProps, validN
 }
 
 const processColorValue = (value: string): string => {
-  if (value.startsWith('oklch')) {
-    return value.replace(/\s+/g, ' ')
+  if (value.startsWith("oklch")) {
+    return value.replace(/\s+/g, " ")
   }
 
   return value
 }
 
 const escapeRegExp = (string: string): string => {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 }

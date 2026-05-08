@@ -49,9 +49,9 @@
       "bracketSameLine": false,
       "bracketSpacing": true,
       "enabled": true,
-      "jsxQuoteStyle": "single",
+      "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "quoteStyle": "single",
+      "quoteStyle": "double",
       "semicolons": "asNeeded",
       "trailingCommas": "none"
     }
