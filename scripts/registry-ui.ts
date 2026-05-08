@@ -44,6 +44,7 @@ export function getDeps(content: string) {
 
   const replacement = [
     { from: "motion/react", to: "motion" },
+    { from: "react-aria", to: "react-aria-components" },
     { from: "react-aria-components", to: "react-aria-components" }
   ]
 

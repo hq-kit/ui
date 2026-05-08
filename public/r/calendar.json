@@ -5,7 +5,6 @@
   "title": "calendar",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria/useDateFormatter",
     "react-aria-components"
   ],
   "registryDependencies": [
