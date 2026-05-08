@@ -4,8 +4,7 @@
   "name": "link",
   "title": "link",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Link"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

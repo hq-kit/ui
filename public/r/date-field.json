@@ -6,13 +6,7 @@
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",
-    "react-aria-components/Button",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/DateField",
-    "react-aria-components/DatePicker",
-    "react-aria-components/DateRangePicker",
-    "react-aria-components/Group",
-    "react-aria-components/TimeField"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

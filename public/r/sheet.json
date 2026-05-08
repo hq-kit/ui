@@ -5,9 +5,7 @@
   "title": "sheet",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Modal",
-    "react-aria-components/Text"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

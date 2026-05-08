@@ -5,8 +5,7 @@
   "title": "table",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Table"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/checkbox",

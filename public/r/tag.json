@@ -5,8 +5,7 @@
   "title": "tag",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/TagGroup"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

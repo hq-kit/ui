@@ -6,14 +6,7 @@
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",
-    "react-aria-components",
-    "react-aria-components/Autocomplete",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Group",
-    "react-aria-components/Header",
-    "react-aria-components/SearchField",
-    "react-aria-components/Select",
-    "react-aria-components/Separator"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

@@ -5,8 +5,7 @@
   "title": "toggle-group",
   "dependencies": [
     "tailwind-variants",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/ToggleButtonGroup"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/toggle",

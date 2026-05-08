@@ -6,10 +6,7 @@
   "dependencies": [
     "@tabler/icons-react",
     "react-aria/useDateFormatter",
-    "react-aria-components/Calendar",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Heading",
-    "react-aria-components/RangeCalendar"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/button",

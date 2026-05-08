@@ -4,9 +4,7 @@
   "name": "tooltip",
   "title": "tooltip",
   "dependencies": [
-    "react-aria-components/Button",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Tooltip"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

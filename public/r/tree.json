@@ -5,9 +5,7 @@
   "title": "tree",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/Button",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Tree"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/checkbox",

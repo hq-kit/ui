@@ -5,7 +5,7 @@
   "title": "file-trigger",
   "dependencies": [
     "tailwind-variants",
-    "react-aria-components/FileTrigger"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/button"

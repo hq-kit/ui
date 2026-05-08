@@ -4,8 +4,7 @@
   "name": "popover",
   "title": "popover",
   "dependencies": [
-    "react-aria-components/Button",
-    "react-aria-components/Popover"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

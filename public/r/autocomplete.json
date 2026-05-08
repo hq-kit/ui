@@ -4,7 +4,7 @@
   "name": "autocomplete",
   "title": "autocomplete",
   "dependencies": [
-    "react-aria-components/Autocomplete"
+    "react-aria-components"
   ],
   "files": [
     {

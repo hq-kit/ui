@@ -5,9 +5,7 @@
   "title": "drawer",
   "dependencies": [
     "motion",
-    "react-aria-components/Dialog",
-    "react-aria-components/Modal",
-    "react-aria-components/Text"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

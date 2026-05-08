@@ -4,8 +4,7 @@
   "name": "drop-zone",
   "title": "drop-zone",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/DropZone"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

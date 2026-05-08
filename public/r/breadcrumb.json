@@ -5,9 +5,7 @@
   "title": "breadcrumb",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/Breadcrumbs",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Link"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

@@ -4,9 +4,7 @@
   "name": "collapsible",
   "title": "collapsible",
   "dependencies": [
-    "react-aria-components/Button",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Disclosure"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

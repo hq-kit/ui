@@ -6,10 +6,7 @@
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",
-    "react-aria-components/Checkbox",
-    "react-aria-components/CheckboxGroup",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Label"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

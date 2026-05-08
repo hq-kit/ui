@@ -4,10 +4,7 @@
   "name": "input",
   "title": "input",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Group",
-    "react-aria-components/Input",
-    "react-aria-components/TextArea",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

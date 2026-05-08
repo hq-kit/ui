@@ -4,7 +4,7 @@
   "name": "item",
   "title": "item",
   "dependencies": [
-    "react-aria-components/Link",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

@@ -5,8 +5,7 @@
   "title": "pagination",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/Button",
-    "react-aria-components/Link"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/button",

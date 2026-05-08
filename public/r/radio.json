@@ -6,8 +6,7 @@
   "dependencies": [
     "tailwind-variants",
     "@tabler/icons-react",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/RadioGroup"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

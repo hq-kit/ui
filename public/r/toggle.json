@@ -4,8 +4,7 @@
   "name": "toggle",
   "title": "toggle",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/ToggleButton",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

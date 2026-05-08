@@ -5,9 +5,7 @@
   "title": "navbar",
   "dependencies": [
     "@tabler/icons-react",
-    "react-aria-components/Button",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Link",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

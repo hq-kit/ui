@@ -4,8 +4,7 @@
   "name": "tabs",
   "title": "tabs",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Tabs",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

@@ -5,9 +5,7 @@
   "title": "grid-list",
   "dependencies": [
     "react-aria-components",
-    "@tabler/icons-react",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/GridList"
+    "@tabler/icons-react"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/checkbox",

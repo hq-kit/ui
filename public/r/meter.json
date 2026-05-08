@@ -4,8 +4,7 @@
   "name": "meter",
   "title": "meter",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Meter"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

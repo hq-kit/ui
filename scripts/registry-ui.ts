@@ -26,6 +26,7 @@ export function getChildComponents(content: string) {
 
 export function getDeps(content: string) {
   const regex = /(?<=from\s+['"])([^'"]+)/g
+
   const excludes = [
     "react",
     "@/hooks/use-mobile",
@@ -40,7 +41,12 @@ export function getDeps(content: string) {
     "recharts/types/shape/Curve",
     "next/navigation"
   ]
-  const replacement = [{ from: "motion/react", to: "motion" }]
+
+  const replacement = [
+    { from: "motion/react", to: "motion" },
+    { from: "react-aria-components", to: "react-aria-components" }
+  ]
+
   const deps = content
     .match(regex)
     ?.filter((dep) => !excludes.includes(dep) && !dep.includes("./") && !dep.includes("@/components/"))
@@ -50,6 +56,7 @@ export function getDeps(content: string) {
           return to
         }
       }
+
       return dep
     })
 

@@ -4,11 +4,8 @@
   "name": "command",
   "title": "command",
   "dependencies": [
-    "react-aria-components/Autocomplete",
-    "@tabler/icons-react",
-    "react-aria-components/Collection",
-    "react-aria-components/Menu",
-    "react-aria-components/SearchField"
+    "react-aria-components",
+    "@tabler/icons-react"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/autocomplete",

@@ -4,10 +4,7 @@
   "name": "toolbar",
   "title": "toolbar",
   "dependencies": [
-    "react-aria-components",
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/ToggleButtonGroup",
-    "react-aria-components/Toolbar"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/separator",

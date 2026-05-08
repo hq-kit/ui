@@ -4,7 +4,7 @@
   "name": "label",
   "title": "label",
   "dependencies": [
-    "react-aria-components/Label"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

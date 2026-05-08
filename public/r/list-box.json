@@ -4,9 +4,7 @@
   "name": "list-box",
   "title": "list-box",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/ListBox",
-    "react-aria-components/Separator"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

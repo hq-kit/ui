@@ -4,8 +4,7 @@
   "name": "slider",
   "title": "slider",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/Slider"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"

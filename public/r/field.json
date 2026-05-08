@@ -4,9 +4,7 @@
   "name": "field",
   "title": "field",
   "dependencies": [
-    "react-aria-components/composeRenderProps",
-    "react-aria-components/FieldError",
-    "react-aria-components/Form",
+    "react-aria-components",
     "tailwind-variants"
   ],
   "registryDependencies": [

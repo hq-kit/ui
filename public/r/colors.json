@@ -5,14 +5,7 @@
   "title": "colors",
   "dependencies": [
     "tailwind-variants",
-    "react-aria-components/ColorArea",
-    "react-aria-components/ColorField",
-    "react-aria-components/ColorPicker",
-    "react-aria-components/ColorSlider",
-    "react-aria-components/ColorSwatch",
-    "react-aria-components/ColorSwatchPicker",
-    "react-aria-components/ColorWheel",
-    "react-aria-components/composeRenderProps"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "https://hq-ui.vercel.app/r/field",

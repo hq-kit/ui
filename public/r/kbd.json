@@ -4,7 +4,7 @@
   "name": "kbd",
   "title": "kbd",
   "dependencies": [
-    "react-aria-components/Keyboard"
+    "react-aria-components"
   ],
   "registryDependencies": [
     "utils"
