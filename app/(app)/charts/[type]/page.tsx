@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation"
 import { Demo } from "@/components/mdx/demo"
 import { previews } from "@/components/samples/generated/previews"
+import { type ChartType, chartTypes } from "@/types/components"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -10,9 +12,17 @@ interface ChartPageProps {
     type: string
   }>
 }
+export async function generateStaticParams() {
+  return chartTypes.map((type) => ({
+    type
+  }))
+}
 
 export default async function ChartPage({ params }: ChartPageProps) {
   const { type } = await params
+  if (!chartTypes.includes(type as ChartType)) {
+    return notFound()
+  }
   const chartList = Object.keys(previews).filter((key) => key.startsWith(`chart/${type}`))
   const fullWidthChart = chartList.filter((key) => key.includes("interactive"))
   return (

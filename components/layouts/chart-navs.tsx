@@ -13,9 +13,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 import { Tabs } from "@/components/ui/tabs"
 import { titleCase } from "@/lib/modifiers"
-
-export const chartTypes = ["area", "bar", "line", "pie", "radar", "radial", "tooltip"] as const
-export type ChartType = (typeof chartTypes)[number]
+import { type ChartType, chartTypes } from "@/types/components"
 
 export function ChartNavs() {
   const pathname = usePathname()
