@@ -21,7 +21,10 @@ const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => 
     {...props}
     className={composeRenderProps(className, (className) =>
       cn(
-        "flex w-full flex-col gap-y-0.5 overflow-y-auto rounded-lg border p-1 outline-hidden **:data-drop-target:h-2 **:data-drop-target:rounded-lg **:data-drop-target:bg-primary/50",
+        "cn-command cn-sidebar-header group/list-box flex size-full flex-col gap-1 overflow-hidden border",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:outline",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:outline-destructive",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
         className
       )
     )}
@@ -36,8 +39,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
     <RACListBoxItem
       className={composeRenderProps(className, (className) =>
         cn(
-          "relative flex w-full cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
-          "focus:bg-accent focus:text-accent-foreground",
+          "cn-command-item group/list-box-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
           "data-selected:bg-primary data-selected:text-primary-foreground",
           "data-dragging:cursor-grabbing data-dragging:outline data-dragging:outline-primary",
           className
@@ -53,9 +55,11 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
 }
 
 const ListBoxSection = <T extends object>({ title, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <RACListBoxSection className={cn("flex flex-col text-sm", props.className)} data-slot="list-box-section" {...props}>
+  <RACListBoxSection className={cn("cn-command-group", props.className)} data-slot="list-box-section" {...props}>
     {title && (
-      <Header className="pointer-events-none px-2 py-1 font-medium text-muted-foreground text-xs">{title}</Header>
+      <Header className="pointer-events-none" data-slot="title">
+        {title}
+      </Header>
     )}
     <Collection items={props.items}>{props.children}</Collection>
   </RACListBoxSection>

@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 const CardActionDemo = () => {
   const [isActive, setIsActive] = useState(true)
 
-  if (!isActive) return null
+  if (!isActive) return <Button onPress={() => setIsActive(true)}>Restore</Button>
 
   return (
     <Card className="relative max-w-lg shadow-none">

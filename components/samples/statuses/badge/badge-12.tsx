@@ -7,7 +7,12 @@ import { Badge } from "@/components/ui/badge"
 const BadgeClosableDemo = () => {
   const [isActive, setIsActive] = useState(true)
 
-  if (!isActive) return null
+  if (!isActive)
+    return (
+      <button onClick={() => setIsActive(true)} type="button">
+        Restore
+      </button>
+    )
 
   return (
     <Badge>

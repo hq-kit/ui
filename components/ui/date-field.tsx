@@ -1,8 +1,6 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { IconChevronDown } from "@tabler/icons-react"
-import { Button } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   type DateFieldProps,
@@ -14,10 +12,11 @@ import {
 } from "react-aria-components/DateField"
 import { type DatePickerProps, DatePicker as RACDatePicker } from "react-aria-components/DatePicker"
 import { type DateRangePickerProps, DateRangePicker as RACDateRangePicker } from "react-aria-components/DateRangePicker"
-import { Group } from "react-aria-components/Group"
 import { TimeField as RACTimeField, type TimeFieldProps, type TimeValue } from "react-aria-components/TimeField"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { fieldVariants } from "./field"
+import { InputGroup } from "./input"
 
 const DateField = <T extends DateValue>({
   className,
@@ -76,22 +75,21 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "inline-flex h-9 w-full min-w-0 items-center justify-start rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
-          "hover:border-ring group-hover/field:border-ring data-focus-within:border-ring data-focus-within:ring-[3px] data-focus-within:ring-ring/50",
-          "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+          "cn-input cn-date-input flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
       )}
+      slot="control"
       {...props}
     >
       {(segment) =>
         segment.type === "literal" ? (
-          <span aria-hidden className="select-none p-0" suppressHydrationWarning>
+          <span aria-hidden className="select-none p-0 text-muted-foreground" suppressHydrationWarning>
             {segment.text}
           </span>
         ) : (
           <DateSegment
-            className="rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden"
+            className="px-1 transition hover:outline focus:underline focus:outline-hidden data-placeholder:text-muted-foreground data-placeholder:focus:text-primary"
             segment={segment}
           />
         )
@@ -102,67 +100,68 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
 
 const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children">) => {
   return (
-    <Group
-      className={composeRenderProps(className, (className) =>
-        cn(
-          "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border border-input bg-transparent py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
-          "in-data-open:border-ring in-data-open:ring-[3px] in-data-open:ring-ring/50 hover:border-ring group-hover/field:border-ring",
-          "has-data-focus-within:border-ring has-data-focus-within:ring-[3px] has-data-focus-within:ring-ring/50",
-          "has-aria-invalid:border-destructive has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40",
-          className
-        )
-      )}
-    >
-      <RACDateInput className="inline-flex items-center justify-start px-3" {...props}>
+    <InputGroup>
+      <RACDateInput
+        className={composeRenderProps(className, (className) =>
+          cn(
+            "cn-input cn-input-group-input inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            className
+          )
+        )}
+        data-slot="input-group-control"
+        {...props}
+      >
         {(segment) =>
           segment.type === "literal" ? (
-            <span aria-hidden className="select-none p-0" suppressHydrationWarning>
+            <span aria-hidden className="select-none p-0 text-muted-foreground" suppressHydrationWarning>
               {segment.text}
             </span>
           ) : (
             <DateSegment
-              className="rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden"
+              className="px-1 transition hover:outline focus:underline focus:outline-hidden data-placeholder:text-muted-foreground data-placeholder:focus:text-primary"
               segment={segment}
             />
           )
         }
       </RACDateInput>
-      <Button
-        className={cn(
-          "touch-target ml-auto grid place-content-center outline-hidden",
-          "text-muted-foreground hover:text-foreground focus-visible:text-foreground data-pressed:text-foreground",
-          "px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6"
-        )}
-        data-slot="date-picker-trigger"
-      >
-        <IconChevronDown className="size-4 shrink-0" />
-      </Button>
-    </Group>
+      <InputGroup.Addon align="inline-end">
+        <InputGroup.Button data-slot="date-picker-trigger">
+          <IconPlaceholder
+            className="size-4 shrink-0"
+            hugeicons="ArrowDown01Icon"
+            lucide="ChevronDownIcon"
+            phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
+            tabler="IconChevronDown"
+          />
+        </InputGroup.Button>
+      </InputGroup.Addon>
+    </InputGroup>
   )
 }
 
 const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "children">) => {
   return (
-    <Group
-      className={composeRenderProps(className, (className) =>
-        cn(
-          "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border border-input bg-transparent py-1 text-base shadow-xs outline-none transition-[color,box-shadow,border] selection:bg-primary selection:text-primary-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
-          "in-data-open:border-ring in-data-open:ring-[3px] in-data-open:ring-ring/50 hover:border-ring group-hover/field:border-ring",
-          "has-data-focus-within:border-ring has-data-focus-within:ring-[3px] has-data-focus-within:ring-ring/50",
-          "has-aria-invalid:border-destructive has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40",
-          className
-        )
-      )}
-    >
-      <RACDateInput className={cn("inline-flex items-center justify-start px-3")} slot="start" {...props}>
+    <InputGroup>
+      <RACDateInput
+        className={composeRenderProps(className, (className) =>
+          cn(
+            "cn-input cn-input-group-input inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            className
+          )
+        )}
+        data-slot="input-group-control"
+        slot="start"
+        {...props}
+      >
         {(segment) =>
           segment.type === "literal" ? (
-            <span aria-hidden className="select-none p-0" suppressHydrationWarning>
+            <span aria-hidden className="select-none p-0 text-muted-foreground" suppressHydrationWarning>
               {segment.text}
             </span>
           ) : (
             <DateSegment
-              className="rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden"
+              className="px-1 transition hover:outline focus:underline focus:outline-hidden data-placeholder:text-muted-foreground data-placeholder:focus:text-primary"
               segment={segment}
             />
           )
@@ -170,33 +169,45 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       </RACDateInput>
       <span
         aria-hidden="true"
-        className="pointer-events-none z-10 -mx-3 block h-0.5 w-2 shrink-0 self-center rounded-full bg-foreground group-disabled/date-range-picker:text-opacity-50 sm:-mx-2"
+        className="pointer-events-none h-px w-2 shrink-0 rounded-[inherit] bg-foreground group-disabled/date-range-picker:text-opacity-50"
       />
-      <RACDateInput className={cn("inline-flex items-center justify-start px-3")} slot="end" {...props}>
+      <RACDateInput
+        className={composeRenderProps(className, (className) =>
+          cn(
+            "cn-input cn-input-group-input inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            className
+          )
+        )}
+        data-slot="input-group-control"
+        slot="end"
+        {...props}
+      >
         {(segment) =>
           segment.type === "literal" ? (
-            <span aria-hidden className="select-none p-0" suppressHydrationWarning>
+            <span aria-hidden className="select-none p-0 text-muted-foreground" suppressHydrationWarning>
               {segment.text}
             </span>
           ) : (
             <DateSegment
-              className="rounded-sm px-1 transition hover:ring hover:ring-ring/50 data-[placeholder=true]:data-focused:text-primary-foreground data-focused:bg-primary data-[placeholder=true]:text-muted-foreground data-focused:text-primary-foreground data-focused:outline-hidden"
+              className="px-1 transition hover:outline focus:underline focus:outline-hidden data-placeholder:text-muted-foreground data-placeholder:focus:text-primary"
               segment={segment}
             />
           )
         }
       </RACDateInput>
-      <Button
-        className={cn(
-          "touch-target ml-auto grid place-content-center outline-hidden",
-          "text-muted-foreground hover:text-foreground focus-visible:text-foreground data-pressed:text-foreground",
-          "px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6"
-        )}
-        data-slot="date-picker-trigger"
-      >
-        <IconChevronDown className="size-4 shrink-0" />
-      </Button>
-    </Group>
+      <InputGroup.Addon align="inline-end">
+        <InputGroup.Button data-slot="date-picker-trigger">
+          <IconPlaceholder
+            className="size-4 shrink-0"
+            hugeicons="ArrowDown01Icon"
+            lucide="ChevronDownIcon"
+            phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
+            tabler="IconChevronDown"
+          />
+        </InputGroup.Button>
+      </InputGroup.Addon>
+    </InputGroup>
   )
 }
 

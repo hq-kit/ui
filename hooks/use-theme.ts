@@ -1,10 +1,17 @@
 import { create } from "zustand"
 import { devtools, persist } from "zustand/middleware"
-import { getPresetThemeStyles, type Preset, type ThemeState, type ThemeStyleProps } from "@/lib/themes/presets"
+import {
+  getPresetThemeStyles,
+  type Preset,
+  type ThemeState,
+  type ThemeStyleProps,
+  type ThemeStyles
+} from "@/lib/themes/presets"
 
 export type ThemeStore = ThemeState & {
   setPreset: (preset: Preset) => void
   setVar: (key: keyof ThemeStyleProps, value: string, mode: "light" | "dark") => void
+  setCustom: (styles: ThemeStyles) => void
   reset: () => void
 }
 
@@ -16,19 +23,26 @@ const initialState: ThemeState = {
 const withDevtools = process.env.NODE_ENV === "development" ? devtools : <T>(initializer: T) => initializer
 
 export const useThemeStore = create<ThemeStore>()(
+  // @ts-expect-error
   withDevtools(
     persist(
       (set) => ({
         ...initialState,
-        setPreset: (preset) => {
+        setPreset: (preset: any) => {
           const styles = getPresetThemeStyles(preset)
           set({
             preset,
             styles
           })
         },
-        setVar: (key, value, mode) => {
-          set((state) => ({
+        setCustom: (styles: ThemeStyles) => {
+          set({
+            preset: "custom",
+            styles
+          })
+        },
+        setVar: (key: any, value: any, mode: any) => {
+          set((state: any) => ({
             ...state,
             preset: "custom",
             styles: {
@@ -56,6 +70,7 @@ export const useThemeGenerator = () => {
   const currentPreset = useThemeStore((state) => state.preset)
   const currentStyles = useThemeStore((state) => state.styles)
   const updatePreset = useThemeStore((state) => state.setPreset)
+  const updateCustom = useThemeStore((state) => state.setCustom)
   const updateVar = useThemeStore((state) => state.setVar)
   const reset = useThemeStore((state) => state.reset)
   return {
@@ -63,6 +78,7 @@ export const useThemeGenerator = () => {
     currentStyles,
     updatePreset,
     updateVar,
+    updateCustom,
     reset
   }
 }

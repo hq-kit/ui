@@ -1,5 +1,5 @@
 import { IconStar } from "@tabler/icons-react"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card"
 
 const CardTestimonialDemo = () => {
@@ -14,12 +14,10 @@ const CardTestimonialDemo = () => {
       </CardContent>
       <CardFooter className="justify-between gap-3 max-sm:flex-col max-sm:items-stretch">
         <div className="flex items-center gap-3">
-          <Avatar
-            alt="Hallie Richards"
-            className="ring-2 ring-ring"
-            fallback="SG"
-            src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-          />
+          <Avatar className="ring-2 ring-ring">
+            <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png" />
+            <AvatarFallback>SG</AvatarFallback>
+          </Avatar>
           <div className="flex flex-col gap-0.5">
             <CardTitle className="flex items-center gap-1 text-sm">Sam Green</CardTitle>
             <CardDescription>@SamG11</CardDescription>

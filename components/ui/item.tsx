@@ -1,31 +1,41 @@
+"use client"
+
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
-import { Link, type LinkProps } from "react-aria-components/Link"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
+import { Link, type LinkProps } from "./link"
 import { Separator } from "./separator"
 
 const ItemGroup = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("group/item-group flex flex-col", className)} data-slot="item-group" role="list" {...props} />
+  <div
+    className={cn("cn-item-group group/item-group flex w-full flex-col", className)}
+    data-slot="item-group"
+    role="list"
+    {...props}
+  />
 )
 
 const ItemSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
-  <Separator className={cn("my-0", className)} data-slot="item-separator" orientation="horizontal" {...props} />
+  <Separator
+    className={cn("cn-item-separator", className)}
+    data-slot="item-separator"
+    orientation="horizontal"
+    {...props}
+  />
 )
 
 const itemVariants = tv({
-  base: [
-    "group/item flex flex-wrap items-center rounded-md border border-transparent text-sm outline-none transition-colors transition-colors duration-100 hover:bg-accent/50 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "data-selected:bg-accent data-selected:text-accent-foreground"
-  ],
+  base: "cn-item group/item flex w-full flex-wrap items-center outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors",
   variants: {
     variant: {
-      default: "bg-transparent",
-      outline: "border-border",
-      muted: "bg-muted/50"
+      default: "cn-item-variant-default",
+      outline: "cn-item-variant-outline",
+      muted: "cn-item-variant-muted"
     },
     size: {
-      default: "gap-4 p-4",
-      sm: "gap-2.5 px-4 py-3"
+      default: "cn-item-size-default",
+      sm: "cn-item-size-sm",
+      xs: "cn-item-size-xs"
     }
   },
   defaultVariants: {
@@ -39,7 +49,7 @@ const Item = ({
   variant = "default",
   size = "default",
   ...props
-}: Omit<LinkProps, "slot" | "className"> &
+}: Omit<LinkProps, "slot" | "className" | "ref"> &
   Omit<ComponentPropsWithoutRef<"div">, "style"> &
   VariantProps<typeof itemVariants>) => {
   const Comp = "href" in props ? Link : "div"
@@ -56,12 +66,12 @@ const Item = ({
 }
 
 const itemMediaVariants = tv({
-  base: "flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none",
+  base: "cn-item-media flex shrink-0 items-center justify-center [&_svg]:pointer-events-none",
   variants: {
     variant: {
-      default: "bg-transparent",
-      icon: "size-8 rounded-sm border bg-muted [&_svg:not([class*='size-'])]:size-4",
-      image: "size-10 overflow-hidden rounded-sm [&_img]:size-full [&_img]:object-cover"
+      default: "cn-item-media-variant-default",
+      icon: "cn-item-media-variant-icon",
+      image: "cn-item-media-variant-image"
     }
   },
   defaultVariants: {
@@ -84,7 +94,7 @@ const ItemMedia = ({
 
 const ItemContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none", className)}
+    className={cn("cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none", className)}
     data-slot="item-content"
     {...props}
   />
@@ -92,7 +102,7 @@ const ItemContent = ({ className, ...props }: ComponentProps<"div">) => (
 
 const ItemTitle = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex w-fit items-center gap-2 font-medium text-sm leading-snug", className)}
+    className={cn("cn-item-title line-clamp-1 flex w-fit items-center", className)}
     data-slot="item-title"
     {...props}
   />
@@ -101,8 +111,7 @@ const ItemTitle = ({ className, ...props }: ComponentProps<"div">) => (
 const ItemDescription = ({ className, ...props }: ComponentProps<"p">) => (
   <p
     className={cn(
-      "line-clamp-2 text-balance font-normal text-muted-foreground text-sm leading-normal",
-      "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+      "cn-item-description line-clamp-2 font-normal [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
     )}
     data-slot="item-description"
@@ -111,12 +120,12 @@ const ItemDescription = ({ className, ...props }: ComponentProps<"p">) => (
 )
 
 const ItemActions = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex items-center gap-2", className)} data-slot="item-actions" {...props} />
+  <div className={cn("cn-item-actions flex items-center", className)} data-slot="item-actions" {...props} />
 )
 
 const ItemHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex basis-full items-center justify-between gap-2", className)}
+    className={cn("cn-item-header flex basis-full items-center justify-between", className)}
     data-slot="item-header"
     {...props}
   />
@@ -124,7 +133,7 @@ const ItemHeader = ({ className, ...props }: ComponentProps<"div">) => (
 
 const ItemFooter = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex basis-full items-center justify-between gap-2", className)}
+    className={cn("cn-item-footer flex basis-full items-center justify-between", className)}
     data-slot="item-footer"
     {...props}
   />

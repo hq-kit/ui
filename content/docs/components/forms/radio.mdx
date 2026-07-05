@@ -8,17 +8,34 @@ published: true
 ## Installation
 <Install component='radio' />
 
-## Blocks
-<Grid col={2}>
-<Demo component='forms/radio/radio-01' />
-<Demo component='forms/radio/radio-02' />
-<Demo component='forms/radio/radio-03' />
-<Demo component='forms/radio/radio-04' />
-<Demo component='forms/radio/radio-05' />
-<Demo component='forms/radio/radio-06' />
-<Demo component='forms/radio/radio-07' />
-<Demo component='forms/radio/radio-08' />
-<Demo component='forms/radio/radio-09' />
-<Demo component='forms/radio/radio-10' />
+## Examples
 
-</Grid>
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<Demo component='forms/radio/radio-group-description' />
+
+### Choice Card
+
+Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
+
+<Demo component='forms/radio/radio-group-choice-card' />
+
+### Fieldset
+
+Use `FieldSet` and `FieldLegend` to group radio items with a label and description.
+
+<Demo component='forms/radio/radio-group-fieldset' />
+
+### Disabled
+
+Use the `disabled` prop on `RadioGroupItem` to disable individual items.
+
+<Demo component='forms/radio/radio-group-disabled' />
+
+### Invalid
+
+Use `aria-invalid` on `RadioGroupItem` and `data-invalid` on `Field` to show validation errors.
+
+<Demo component='forms/radio/radio-group-invalid' />

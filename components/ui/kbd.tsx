@@ -40,12 +40,7 @@ const getShortcutKey = (key: Key): ShortcutKeyResult =>
 
 const Kbd = ({ className, ...props }: ComponentProps<typeof Keyboard>) => (
   <Keyboard
-    className={cn(
-      "pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-sm bg-muted px-1 font-medium font-sans text-muted-foreground text-xs",
-      "[&_svg:not([class*='size-'])]:size-3",
-      "in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10",
-      className
-    )}
+    className={cn("cn-kbd pointer-events-none inline-flex select-none items-center justify-center", className)}
     data-slot="kbd"
     {...props}
   >
@@ -56,7 +51,7 @@ const Kbd = ({ className, ...props }: ComponentProps<typeof Keyboard>) => (
 )
 
 const KbdGroup = ({ className, ...props }: ComponentProps<"div">) => (
-  <kbd className={cn("inline-flex items-center gap-1", className)} data-slot="kbd-group" {...props} />
+  <kbd className={cn("cn-kbd-group inline-flex items-center", className)} data-slot="kbd-group" {...props} />
 )
 
 export { Kbd, KbdGroup }

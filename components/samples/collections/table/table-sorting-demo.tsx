@@ -2,7 +2,6 @@
 
 import { IconLoader } from "@tabler/icons-react"
 import { useAsyncList } from "react-aria-components/useAsyncList"
-import { Card, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
 
 interface Character {
@@ -40,40 +39,36 @@ export default function TableSortingDemo() {
     }
   })
   return (
-    <Card className="p-0">
-      <CardContent>
-        <Table aria-label="Movies" bleed onSortChange={list.sort} sortDescriptor={list.sortDescriptor}>
-          <TableHeader>
-            <TableColumn id="title" isRowHeader>
-              Title
-            </TableColumn>
-            <TableColumn allowsSorting id="director">
-              Director
-            </TableColumn>
-            <TableColumn id="producer">Producer</TableColumn>
-            <TableColumn allowsSorting id="release_date">
-              Release Date
-            </TableColumn>
-          </TableHeader>
-          <TableBody
-            items={list.items}
-            renderEmptyState={() => (
-              <div className="grid place-content-center p-10">
-                <IconLoader className="size-4 animate-spin" />
-              </div>
-            )}
-          >
-            {(item) => (
-              <TableRow id={item.title}>
-                <TableCell className="whitespace-nowrap">{item.title}</TableCell>
-                <TableCell className="whitespace-nowrap">{item.director}</TableCell>
-                <TableCell className="whitespace-nowrap">{item.producer}</TableCell>
-                <TableCell>{item.release_date}</TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+    <Table aria-label="Movies" onSortChange={list.sort} sortDescriptor={list.sortDescriptor}>
+      <TableHeader>
+        <TableColumn id="title" isRowHeader>
+          Title
+        </TableColumn>
+        <TableColumn allowsSorting id="director">
+          Director
+        </TableColumn>
+        <TableColumn id="producer">Producer</TableColumn>
+        <TableColumn allowsSorting id="release_date">
+          Release Date
+        </TableColumn>
+      </TableHeader>
+      <TableBody
+        items={list.items}
+        renderEmptyState={() => (
+          <div className="grid place-content-center p-10">
+            <IconLoader className="size-4 animate-spin" />
+          </div>
+        )}
+      >
+        {(item) => (
+          <TableRow id={item.title}>
+            <TableCell className="whitespace-nowrap">{item.title}</TableCell>
+            <TableCell className="whitespace-nowrap">{item.director}</TableCell>
+            <TableCell className="whitespace-nowrap">{item.producer}</TableCell>
+            <TableCell>{item.release_date}</TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   )
 }

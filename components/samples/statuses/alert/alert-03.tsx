@@ -7,7 +7,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 const AlertClosableDemo = () => {
   const [isActive, setIsActive] = useState(true)
 
-  if (!isActive) return null
+  if (!isActive)
+    return (
+      <button onClick={() => setIsActive(true)} type="button">
+        Restore
+      </button>
+    )
 
   return (
     <Alert className="flex justify-between">

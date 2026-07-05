@@ -2,7 +2,6 @@
 
 import type { ComponentProps } from "react"
 import type { AutocompleteProps } from "react-aria-components/Autocomplete"
-import { IconCheck, IconCircleFilled, IconLoader2, IconSearch } from "@tabler/icons-react"
 import { Collection } from "react-aria-components/Collection"
 import {
   Header,
@@ -16,9 +15,11 @@ import {
   type SeparatorProps
 } from "react-aria-components/Menu"
 import { Input, SearchField, type SearchFieldProps } from "react-aria-components/SearchField"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { Autocomplete } from "./autocomplete"
 import { Dialog, DialogDescription, DialogTitle } from "./dialog"
+import { InputGroupAddon, inputGroupVariants } from "./input"
 
 const Command = ({
   className,
@@ -30,10 +31,7 @@ const Command = ({
 }) => (
   <Autocomplete data-slot="command" {...props}>
     <div
-      className={cn(
-        "group/command flex size-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
-        className
-      )}
+      className={cn("cn-command group/command flex size-full flex-col overflow-hidden", className)}
       data-pending={isPending}
       data-slot="command"
     >
@@ -47,7 +45,7 @@ const CommandDialog = ({
   description = "Search for a command to run...",
   children,
   className,
-  showCloseButton = true,
+  showCloseButton = false,
   ...props
 }: ComponentProps<typeof Dialog> & {
   title?: string
@@ -62,10 +60,7 @@ const CommandDialog = ({
       <DialogDescription>{description}</DialogDescription>
     </Dialog.Header>
     <Dialog.Content
-      className={cn(
-        "overflow-hidden p-0 *:space-y-0 **:data-[slot=command-input-wrapper]:h-12 [&_[data-slot=command-input-wrapper]_svg]:h-5 [&_[data-slot=command-input-wrapper]_svg]:w-5",
-        className
-      )}
+      className={cn("cn-command-dialog top-1/3 translate-y-0 overflow-hidden *:p-0", className)}
       closeButton={showCloseButton}
     >
       <Command>{children}</Command>
@@ -78,28 +73,49 @@ const CommandInput = ({
   placeholder = "Type a command or search...",
   ...props
 }: SearchFieldProps & { placeholder?: string }) => (
-  <SearchField
-    autoFocus
-    {...props}
-    aria-label="Filter"
-    className={cn("flex h-10 items-center gap-2 border-b px-3", className)}
-    data-slot="command-input-wrapper"
-  >
-    <IconSearch className="size-4 shrink-0 opacity-50 group-data-[pending=true]/command:hidden" />
-    <IconLoader2 className="hidden size-4 shrink-0 animate-spin opacity-50 group-data-[pending=true]/command:block" />
-    <Input
-      className="flex w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden"
-      data-slot="command-input"
-      placeholder={placeholder}
-    />
-  </SearchField>
+  <div className="cn-command-input-wrapper" data-slot="command-input-wrapper">
+    <SearchField
+      autoFocus
+      {...props}
+      aria-label="Filter"
+      className={cn(inputGroupVariants({ className: "cn-command-input-group" }), className)}
+      data-slot="command-input-wrapper"
+    >
+      <InputGroupAddon>
+        <IconPlaceholder
+          className="cn-command-input-icon group-data-[pending=true]/command:hidden"
+          data-slot="input-group-addon"
+          hugeicons="SearchIcon"
+          lucide="SearchIcon"
+          phosphor="MagnifyingGlassIcon"
+          remixicon="RiSearchLine"
+          tabler="IconSearch"
+        />
+        <IconPlaceholder
+          aria-label="Loading"
+          className="cn-command-input-icon hidden animate-spin group-data-[pending=true]/command:block"
+          data-slot="input-group-addon"
+          hugeicons="Loading03Icon"
+          lucide="LoaderIcon"
+          phosphor="SpinnerIcon"
+          remixicon="RiLoaderLine"
+          role="status"
+          tabler="IconLoader"
+        />
+      </InputGroupAddon>
+      <Input
+        className="cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden"
+        data-slot="command-input"
+        placeholder={placeholder}
+      />
+    </SearchField>
+  </div>
 )
 
 const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
   <Menu
     className={cn(
-      "max-h-75 scroll-py-1 overflow-y-auto overflow-x-hidden px-1 py-1 has-data-[slot=title]:pt-0",
-      "[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1",
+      "cn-command-list scroll-fade-y overflow-y-auto overflow-x-hidden p-1 has-data-[slot=command-group]:p-0",
       className
     )}
     data-slot="command-list"
@@ -112,9 +128,9 @@ const CommandEmpty = ({ ...props }: ComponentProps<"div">) => (
 )
 
 const CommandGroup = <T extends object>({ className, title, ...props }: MenuSectionProps<T> & { title?: string }) => (
-  <MenuSection className={cn("mt-2 flex flex-col text-sm", className)} data-slot="command-group">
+  <MenuSection className={cn("cn-command-group", className)} data-slot="command-group">
     {title && (
-      <Header className="pointer-events-none p-1.5 font-medium text-muted-foreground text-xs" data-slot="title">
+      <Header className="pointer-events-none" data-slot="title">
         {title}
       </Header>
     )}
@@ -123,18 +139,13 @@ const CommandGroup = <T extends object>({ className, title, ...props }: MenuSect
 )
 
 const CommandSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator className={cn("-mx-1 my-1 h-px bg-border", className)} data-slot="command-separator" {...props} />
+  <Separator className={cn("cn-command-separator", className)} data-slot="command-separator" {...props} />
 )
 
 const CommandItem = ({ className, ...props }: MenuItemProps) => (
   <MenuItem
     className={cn(
-      "group relative flex items-center gap-2 outline-hidden",
-      "select-none rounded-md px-2 py-1.5 text-base sm:text-sm/6",
-      '[&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:mr-2 [&_svg]:shrink-0 has-data-[slot=item-details]:**:[svg]:my-1',
-      "data-focused:bg-accent data-focused:text-accent-foreground data-focused:*:[.text-muted-foreground]:text-accent-foreground",
-      "data-hovered:bg-accent/90 data-hovered:text-accent-foreground data-hovered:*:[.text-muted-foreground]:text-accent-foreground",
-      "disabled:pointer-events-none disabled:opacity-50",
+      "cn-command-item group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       className
     )}
     data-slot="command-item"
@@ -144,19 +155,15 @@ const CommandItem = ({ className, ...props }: MenuItemProps) => (
       <>
         {typeof props.children === "function" ? props.children(values) : props.children}
         {values.isSelected && (
-          <span
-            className={cn(
-              "group-has-data-[slot=avatar]:absolute group-has-data-[slot=avatar]:right-0",
-              "group-has-data-[slot=icon]:absolute group-has-data-[slot=icon]:right-0"
-            )}
-          >
-            {values.selectionMode === "single" && (
-              <IconCircleFilled className="mx-1 size-2 text-current" data-slot="check-indicator" />
-            )}
-            {values.selectionMode === "multiple" && (
-              <IconCheck className="size-4 text-current" data-slot="check-indicator" />
-            )}
-          </span>
+          <IconPlaceholder
+            className="cn-command-item-indicator ml-auto group-has-data-[slot=command-shortcut]/command-item:hidden"
+            data-slot="check-indicator"
+            hugeicons="Tick02Icon"
+            lucide="CheckIcon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
+            tabler="IconCheck"
+          />
         )}
       </>
     )}
@@ -164,11 +171,7 @@ const CommandItem = ({ className, ...props }: MenuItemProps) => (
 )
 
 const CommandShortcut = ({ className, ...props }: ComponentProps<"span">) => (
-  <span
-    className={cn("ml-auto text-muted-foreground text-xs tracking-widest", className)}
-    data-slot="command-shortcut"
-    {...props}
-  />
+  <span className={cn("cn-command-shortcut", className)} data-slot="command-shortcut" {...props} />
 )
 
 Command.Dialog = CommandDialog

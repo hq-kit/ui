@@ -1,8 +1,7 @@
 "use client"
 
-import { Form } from "react-aria-components"
 import { Button } from "@/components/ui/button"
-import { FieldDescription, FieldLabel, FieldSet } from "@/components/ui/field"
+import { Description, FieldSet, Form, Label } from "@/components/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function FieldSelectDemo() {
@@ -10,7 +9,7 @@ export default function FieldSelectDemo() {
     <Form className="w-full space-y-4" onSubmit={(e) => e.preventDefault()}>
       <FieldSet>
         <Select isRequired placeholder="Choose department">
-          <FieldLabel>Department</FieldLabel>
+          <Label>Department</Label>
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
@@ -25,7 +24,7 @@ export default function FieldSelectDemo() {
             <SelectItem id="operations">Operations</SelectItem>
           </SelectContent>
         </Select>
-        <FieldDescription>Select your department or area of work.</FieldDescription>
+        <Description>Select your department or area of work.</Description>
         <Button type="submit">Submit</Button>
       </FieldSet>
     </Form>

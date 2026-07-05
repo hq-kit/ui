@@ -7,13 +7,8 @@ import { BrandIcon, type BrandIconProps, ComponentIcon, type ComponentIconProps 
 
 export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
   return (
-    <CommandDialog
-      className="top-auto bottom-0 max-w-none translate-y-0 ring-4 ring-accent/50 sm:top-1/2 sm:max-w-2xl sm:-translate-y-1/2"
-      isOpen={open}
-      onOpenChange={setOpen}
-      showCloseButton={false}
-    >
-      <CommandInput className="m-1.5 rounded-lg bg-input" placeholder="Type a command or search..." />
+    <CommandDialog isOpen={open} onOpenChange={setOpen} showCloseButton={false}>
+      <CommandInput placeholder="Search pages..." />
       <CommandList>
         {menus().map((section) => (
           <CommandGroup aria-label={section.title} className="flex flex-col" key={section.title} title={section.title}>
@@ -24,12 +19,7 @@ export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: 
               </CommandItem>
             ))}
             {section.sections?.map((section) => (
-              <CommandGroup
-                aria-label={section.title}
-                className="flex flex-col"
-                key={section.title}
-                title={section.title}
-              >
+              <CommandGroup aria-label={section.title} className="p-0" key={section.title} title={section.title}>
                 {section.items?.map((item) => (
                   <CommandItem href={item.slug} key={item.slug} textValue={item.title}>
                     <ComponentIcon name={slugify(item.title) as ComponentIconProps["name"]} />

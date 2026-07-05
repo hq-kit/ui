@@ -34,8 +34,8 @@ export default function TableInfiniteScrollDemo() {
   })
 
   return (
-    <div className="overflow-hidden rounded-lg border">
-      <Table allowResize aria-label="People" bleed className="h-72">
+    <div className="w-full overflow-hidden rounded-lg border">
+      <Table aria-label="People" className="h-72">
         <TableHeader className="sticky top-0 z-10 bg-muted">
           <TableColumn isRowHeader>Name</TableColumn>
           <TableColumn>Height</TableColumn>

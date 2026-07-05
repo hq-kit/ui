@@ -1,7 +1,7 @@
 "use client"
-import { Form } from "react-aria-components"
+
 import { Button } from "@/components/ui/button"
-import { FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from "@/components/ui/field"
+import { Description, FieldError, FieldGroup, FieldSet, Form, Label, Legend } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { TextField } from "@/components/ui/text-field"
 
@@ -9,22 +9,22 @@ export default function FieldFieldsetDemo() {
   return (
     <Form onSubmit={(e) => e.preventDefault()}>
       <FieldSet>
-        <FieldLegend>Address Information</FieldLegend>
-        <FieldDescription>We need your address to deliver your order.</FieldDescription>
+        <Legend>Address Information</Legend>
+        <Description>We need your address to deliver your order.</Description>
         <FieldGroup>
           <TextField isRequired>
-            <FieldLabel>Street Address</FieldLabel>
+            <Label>Street Address</Label>
             <Input placeholder="123 Main St" type="text" />
             <FieldError />
           </TextField>
           <div className="grid grid-cols-2 gap-4">
             <TextField isRequired>
-              <FieldLabel>City</FieldLabel>
+              <Label>City</Label>
               <Input placeholder="New York" type="text" />
               <FieldError />
             </TextField>
             <TextField isRequired>
-              <FieldLabel>Postal Code</FieldLabel>
+              <Label>Postal Code</Label>
               <Input placeholder="90502" type="text" />
               <FieldError />
             </TextField>

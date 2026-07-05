@@ -1,6 +1,8 @@
 "use client"
 
+import type { ComponentProps } from "react"
 import { Button, type ButtonProps } from "react-aria-components/Button"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   DialogTrigger,
   type DialogTriggerProps,
@@ -15,9 +17,11 @@ const Popover = (props: DialogTriggerProps) => <DialogTrigger data-slot="popover
 const PopoverContent = ({ className, offset = 8, arrow = true, ...props }: PopoverProps & { arrow?: boolean }) => {
   return (
     <RACPopover
-      className={cn(
-        "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out",
-        className
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "cn-popover-content z-50 w-72 outline-hidden has-data-[slot=calendar]:w-auto! has-data-[slot=calendar]:p-0!",
+          className
+        )
       )}
       data-slot="popover-content"
       offset={offset}
@@ -44,9 +48,24 @@ const PopoverContent = ({ className, offset = 8, arrow = true, ...props }: Popov
   )
 }
 
+const PopoverHeader = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-popover-header", className)} data-slot="popover-header" {...props} />
+)
+
+const PopoverTitle = ({ className, ...props }: ComponentProps<"h2">) => (
+  <div className={cn("cn-popover-title", className)} data-slot="popover-title" {...props} />
+)
+
+const PopoverDescription = ({ className, ...props }: ComponentProps<"p">) => (
+  <p className={cn("cn-popover-description", className)} data-slot="popover-description" {...props} />
+)
+
 const PopoverTrigger = (props: ButtonProps) => <Button {...props} />
 
 Popover.Trigger = PopoverTrigger
 Popover.Content = PopoverContent
+Popover.Header = PopoverHeader
+Popover.Title = PopoverTitle
+Popover.Description = PopoverDescription
 
-export { Popover, PopoverContent, PopoverTrigger }
+export { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger }

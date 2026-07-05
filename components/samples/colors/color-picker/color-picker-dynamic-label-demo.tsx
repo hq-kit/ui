@@ -3,15 +3,7 @@
 import { useState } from "react"
 import { parseColor } from "react-aria-components/ColorArea"
 import { Button } from "@/components/ui/button"
-import {
-  ColorArea,
-  ColorField,
-  ColorPicker,
-  ColorSlider,
-  ColorSliderTrack,
-  ColorSwatch,
-  ColorThumb
-} from "@/components/ui/colors"
+import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch } from "@/components/ui/colors"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent } from "@/components/ui/popover"
 
@@ -27,11 +19,7 @@ export default function ColorPickerDemo() {
         <PopoverContent>
           <div className="space-y-2">
             <ColorArea className="w-full" colorSpace="hsl" xChannel="hue" yChannel="lightness" />
-            <ColorSlider channel="saturation" colorSpace="hsl">
-              <ColorSliderTrack>
-                <ColorThumb />
-              </ColorSliderTrack>
-            </ColorSlider>
+            <ColorSlider channel="saturation" colorSpace="hsl"></ColorSlider>
             <ColorField aria-label="Color">
               <Input />
             </ColorField>

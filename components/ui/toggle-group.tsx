@@ -1,5 +1,6 @@
 "use client"
 
+import type { Selection } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
 import { type CSSProperties, createContext, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
@@ -28,7 +29,7 @@ const ToggleGroup = ({
   className,
   variant,
   size,
-  spacing = 0,
+  spacing = 2,
   ...props
 }: ToggleButtonGroupProps &
   VariantProps<typeof toggleVariants> & {
@@ -38,9 +39,7 @@ const ToggleGroup = ({
     <ToggleButtonGroup
       className={composeRenderProps(className, (className) =>
         cn(
-          "group/toggle-group flex w-fit gap-[--spacing(var(--gap))] rounded-md data-[spacing=default]:data-[variant=outline]:shadow-xs",
-          "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start",
-          "data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:items-center",
+          "cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
           className
         )
       )}
@@ -56,8 +55,8 @@ const ToggleGroup = ({
 
 const ToggleGroupItem = ({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "default",
   ref,
   ...props
 }: ToggleButtonProps & VariantProps<typeof toggleVariants> & { ref?: React.Ref<HTMLButtonElement> }) => {
@@ -68,12 +67,10 @@ const ToggleGroupItem = ({
       className={cn(
         toggleVariants({
           variant: context.variant || variant,
-          size: context.size || size
+          size: context.size || size,
+          className:
+            "cn-toggle-group-item shrink-0 focus:z-10 focus-visible:z-10 group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l"
         }),
-        "w-auto min-w-0 shrink-0 px-3 focus:z-10 focus-visible:z-10",
-        "data-[spacing=0]:rounded-none data-[spacing=0]:shadow-none",
-        "group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:first:rounded-l-md",
-        "group-data-[orientation=vertical]/toggle-group:w-full group-data-[orientation=vertical]/toggle-group:justify-start group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:last:rounded-b-md group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:first:rounded-t-md",
         className
       )}
       data-orientation={context.orientation}
@@ -89,4 +86,5 @@ const ToggleGroupItem = ({
 
 ToggleGroup.Item = ToggleGroupItem
 
+export type { Selection }
 export { ToggleGroup, ToggleGroupItem }

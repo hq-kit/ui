@@ -17,7 +17,7 @@ const AlertFileUploadDemo = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  if (!isActive) return null
+  if (!isActive) return <Button onPress={() => setIsActive(true)}>Restore</Button>
 
   return (
     <Alert className="flex justify-between">

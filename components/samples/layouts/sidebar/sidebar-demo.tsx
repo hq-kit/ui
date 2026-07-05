@@ -1,5 +1,5 @@
 "use client"
-
+import type { CSSProperties } from "react"
 import {
   IconBell,
   IconChevronRight,
@@ -10,11 +10,12 @@ import {
   IconLayoutSidebar,
   IconLogout,
   IconSelector,
-  IconSparkles
+  IconSparkles,
+  IconUser
 } from "@tabler/icons-react"
 import { IconApp } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
 import {
@@ -125,23 +126,31 @@ const user = {
   avatar: "https://github.com/dq-alhq.png"
 }
 
-export default function SidebarDemo({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export default function SidebarDemo() {
   return (
     <SidebarProvider
       style={
         {
           "--sidebar-width": "calc(var(--spacing) * 72)",
           "--header-height": "calc(var(--spacing) * 14)"
-        } as React.CSSProperties
+        } as CSSProperties
       }
     >
-      <Sidebar {...props}>
+      <Sidebar>
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton className="data-[slot=sidebar-menu-button]:p-1.5!" href="#">
-                <IconApp className="size-5!" />
-                <span className="font-semibold text-base">HQ UI</span>
+              <SidebarMenuButton
+                className="data-expanded:bg-sidebar-accent data-expanded:text-sidebar-accent-foreground"
+                size="lg"
+              >
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                  <IconApp className="size-4" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">HQ UI</span>
+                  <span className="truncate text-xs">Dashboard</span>
+                </div>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -163,7 +172,7 @@ export default function SidebarDemo({ ...props }: React.ComponentProps<typeof Si
         <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
           <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
             <SidebarTrigger className="-ml-1" />
-            <Separator className="mx-2 h-4" orientation="vertical" />
+            <Separator className="mx-2" orientation="vertical" />
             <Breadcrumb>
               <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
               <Breadcrumb.Item href="#">Blocks</Breadcrumb.Item>
@@ -192,7 +201,7 @@ const Navigation = ({ items }: { items: NavMenu }) => {
     item.items ? (
       <Collapsible defaultExpanded={true} key={item.title}>
         <SidebarMenuItem>
-          <SidebarMenuButton tooltip={item.title}>
+          <SidebarMenuButton slot="trigger" tooltip={item.title}>
             {item.icon && <item.icon />}
             <span>{item.title}</span>
             <IconChevronRight className="ml-auto transition-transform duration-200 group-data-expanded/collapsible:rotate-90" />
@@ -240,24 +249,30 @@ const NavUser = ({
       <SidebarMenuItem>
         <DropdownMenu>
           <SidebarMenuButton
-            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            className="data-expanded:bg-sidebar-accent data-expanded:text-sidebar-accent-foreground"
             size="lg"
           >
-            <Avatar alt={user.name} className="h-8 w-8 rounded-lg" src={user.avatar} />
+            <Avatar className="h-8 w-8">
+              <AvatarImage alt={user.name} src={user.avatar} />
+              <AvatarFallback>
+                <IconUser />
+              </AvatarFallback>
+            </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{user.name}</span>
               <span className="truncate text-xs">{user.email}</span>
             </div>
             <IconSelector className="ml-auto size-4" />
           </SidebarMenuButton>
-          <DropdownMenuContent
-            className="w-(--trigger-width) min-w-56 rounded-lg"
-            offset={4}
-            placement={isMobile ? "bottom end" : "top"}
-          >
+          <DropdownMenuContent className="w-(--trigger-width) min-w-56" placement={isMobile ? "bottom end" : "top"}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar alt={user.name} className="h-8 w-8 rounded-lg" src={user.avatar} />
+                <Avatar className="h-8 w-8">
+                  <AvatarImage alt={user.name} src={user.avatar} />
+                  <AvatarFallback>
+                    <IconUser />
+                  </AvatarFallback>
+                </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
                   <span className="truncate text-xs">{user.email}</span>

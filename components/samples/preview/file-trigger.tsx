@@ -2,12 +2,11 @@
 
 import type { Key } from "react-aria-components"
 import type { ButtonProps } from "@/components/ui/button"
-import { IconBrandAdobe } from "@tabler/icons-react"
 import { useState } from "react"
 import { Code } from "@/components/mdx/code-client"
+import { Label } from "@/components/ui/field"
 import { FileTrigger } from "@/components/ui/file-trigger"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { TextField } from "@/components/ui/text-field"
@@ -18,8 +17,6 @@ export default function ButtonPreview() {
   const [children, setChildren] = useState("Upload")
   const [variant, setVariant] = useState<Key | null>("default")
   const [size, setSize] = useState<Key | null>("default")
-  const [withIcon, setWithIcon] = useState(false)
-  const [iconOnly, setIconOnly] = useState(false)
 
   const [allowsMultiple, setAllowsMultiple] = useState(false)
   const [acceptDirectory, setAcceptDirectory] = useState(false)
@@ -30,16 +27,10 @@ export default function ButtonPreview() {
     <div>
       <div className="flex flex-col gap-2 lg:flex-row-reverse">
         <div className="flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l">
-          <TextField isDisabled={iconOnly} onChange={setChildren} value={children}>
+          <TextField onChange={setChildren} value={children}>
             <Label>Children</Label>
             <Input />
           </TextField>
-          <Switch isDisabled={iconOnly} isSelected={withIcon} onChange={setWithIcon}>
-            With Icon
-          </Switch>
-          <Switch isDisabled={withIcon} isSelected={iconOnly} onChange={setIconOnly}>
-            Icon Only
-          </Switch>
           <Select onChange={setVariant} value={variant}>
             <Label>Variant</Label>
             <SelectTrigger>
@@ -94,25 +85,16 @@ export default function ButtonPreview() {
             size={size as ButtonProps["size"]}
             variant={variant as ButtonProps["variant"]}
           >
-            {withIcon && <IconBrandAdobe />}
-            {iconOnly ? <IconBrandAdobe /> : children}
+            {children}
           </FileTrigger>
         </div>
       </div>
       <Code
         className="my-0 size-full rounded-lg rounded-t-none border **:[pre]:rounded-t-none"
-        code={`import { IconBrandAdobe } from '@tabler/icons-react'
-import { FileTrigger } from '@/components/ui/file-trigger'
+        code={`import { FileTrigger } from '@/components/ui/file-trigger'
 
 <FileTrigger${variant !== "default" ? ` variant="${variant}"` : ""}${size !== "default" ? ` size="${size}"` : ""}${acceptDirectory ? " acceptDirectory" : ""}${allowsMultiple ? " allowsMultiple" : ""}${camera ? ' defaultCamera="environment"' : ""}${isPending ? " isPending" : ""}${isDisabled ? " isDisabled" : ""}>
-  ${
-    iconOnly
-      ? `<IconBrandAdobe />`
-      : withIcon
-        ? `<IconBrandAdobe />
-  ${children}`
-        : children
-  }
+  ${children}
 </FileTrigger>`}
         copy
       />

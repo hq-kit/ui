@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Meter } from "@/components/ui/meter"
 
 const Example = () => {
@@ -8,13 +8,8 @@ const Example = () => {
 
   return (
     <Meter value={value}>
-      <Meter.Header>
-        <Label>Tasks completed</Label>
-        <span className="font-medium">
-          {current} of {total}
-        </span>
-      </Meter.Header>
-      <Meter.Track />
+      <Label>Tasks completed</Label>
+      <Meter.Value />
     </Meter>
   )
 }

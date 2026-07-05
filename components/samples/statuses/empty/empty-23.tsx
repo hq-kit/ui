@@ -1,5 +1,5 @@
 import { IconPlus } from "@tabler/icons-react"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
@@ -9,9 +9,18 @@ export default function EmptyAvatarGroup() {
       <EmptyHeader>
         <EmptyMedia>
           <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
-            <Avatar alt="@shadcn" fallback="CN" src="https://github.com/shadcn.png" />
-            <Avatar alt="@maxleiter" fallback="LR" src="https://github.com/maxleiter.png" />
-            <Avatar alt="@evilrabbit" fallback="ER" src="https://github.com/evilrabbit.png" />
+            <Avatar>
+              <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
           </div>
         </EmptyMedia>
         <EmptyTitle>No Team Members</EmptyTitle>

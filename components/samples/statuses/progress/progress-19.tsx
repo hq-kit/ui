@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Progress } from "@/components/ui/progress"
 
 const Example = () => {
@@ -8,13 +8,8 @@ const Example = () => {
 
   return (
     <Progress value={value}>
-      <Progress.Header>
-        <Label>Tasks completed</Label>
-        <span className="font-medium">
-          {current} of {total}
-        </span>
-      </Progress.Header>
-      <Progress.Track />
+      <Label>Tasks completed</Label>
+      <Progress.Value />
     </Progress>
   )
 }

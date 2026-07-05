@@ -1,7 +1,7 @@
 "use client"
 
 import { AnimatePresence, motion } from "motion/react"
-import { type ComponentPropsWithRef, use } from "react"
+import { type ComponentPropsWithRef, type ReactNode, use } from "react"
 import { OverlayTriggerStateContext } from "react-aria-components/Dialog"
 import {
   Button,
@@ -11,15 +11,15 @@ import {
   DialogTrigger,
   type DialogTriggerProps,
   Heading,
+  Modal,
   ModalOverlay,
   type ModalOverlayProps,
-  type HeadingProps as RACHeadingProps,
-  Modal as RACModal
+  type HeadingProps as RACHeadingProps
 } from "react-aria-components/Modal"
 import { Text, type TextProps } from "react-aria-components/Text"
 import { cn } from "@/lib/utils"
 
-const DrawerRoot = motion.create(RACModal)
+const DrawerRoot = motion.create(Dialog)
 const DrawerOverlay = motion.create(ModalOverlay)
 
 const Drawer = (props: DialogTriggerProps) => <DialogTrigger {...props} />
@@ -47,95 +47,67 @@ const DrawerContent = ({
     <AnimatePresence>
       {(props?.isOpen || state?.isOpen) && (
         <DrawerOverlay
-          animate={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-          className={cn(
-            "fixed inset-0 z-50 will-change-auto [--visual-viewport-vertical-padding:32px]",
-            isBlurred && "backdrop-blur-[1px] backdrop-filter"
-          )}
-          exit={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
+          className={cn("cn-drawer-overlay fixed inset-0 z-50")}
           isDismissable
           isOpen={props?.isOpen || state?.isOpen}
           onOpenChange={props?.onOpenChange || state?.setOpen}
         >
           {({ state }) => (
-            <DrawerRoot
-              animate={{ x: 0, y: 0 }}
-              className={cn(
-                "fixed max-h-full touch-none overflow-hidden bg-background align-middle text-foreground ring ring-input will-change-transform",
-                side === "top" && "inset-x-0 top-0 rounded-b-2xl",
-                side === "right" &&
-                  ["w-full max-w-xs overflow-y-auto", "**:[[slot=header]]:text-start", "inset-y-0 right-0 h-auto"].join(
-                    " "
-                  ),
-                side === "bottom" && "inset-x-0 bottom-0 rounded-t-2xl",
-                side === "left" &&
-                  ["w-full max-w-xs overflow-y-auto", "**:[[slot=header]]:text-start", "inset-y-0 left-0 h-auto"].join(
-                    " "
-                  ),
-                className
-              )}
-              drag={side === "left" || side === "right" ? "x" : "y"}
-              dragConstraints={{
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0
-              }}
-              dragElastic={{
-                top: side === "top" ? 1 : 0,
-                bottom: side === "bottom" ? 1 : 0,
-                left: side === "left" ? 1 : 0,
-                right: side === "right" ? 1 : 0
-              }}
-              dragPropagation
-              dragTransition={{
-                bounceStiffness: 600,
-                bounceDamping: 20
-              }}
-              exit={{
-                x: side === "left" ? "-100%" : side === "right" ? "100%" : 0,
-                y: side === "top" ? "-100%" : side === "bottom" ? "100%" : 0
-              }}
-              initial={{
-                x: side === "left" ? "-100%" : side === "right" ? "100%" : 0,
-                y: side === "top" ? "-100%" : side === "bottom" ? "100%" : 0
-              }}
-              onDragEnd={(_, { offset, velocity }) => {
-                if (side === "bottom" && (velocity.y > 150 || offset.y > screen.height * 0.25)) {
-                  state.close()
-                }
-                if (side === "top" && (velocity.y < -150 || offset.y < screen.height * 0.25)) {
-                  state.close()
-                }
-                if (side === "left" && velocity.x < -150) {
-                  state.close()
-                }
-                if (side === "right" && velocity.x > 150) {
-                  state.close()
-                }
-              }}
-              transition={{ duration: 0.15, ease: "easeInOut" }}
-              whileDrag={{ cursor: "grabbing" }}
-            >
-              <Dialog
+            <Modal>
+              <DrawerRoot
+                animate={{ x: 0, y: 0 }}
                 aria-label="Drawer"
-                className={cn(
-                  "relative flex flex-col overflow-hidden outline-hidden will-change-auto",
-                  side === "top" || side === "bottom"
-                    ? "mx-auto max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] max-w-lg"
-                    : "h-full max-h-screen"
-                )}
+                className={cn("group/drawer-content cn-drawer-content fixed z-50 touch-none", className)}
+                data-direction={side}
+                drag={side === "left" || side === "right" ? "x" : "y"}
+                dragConstraints={{
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0
+                }}
+                dragElastic={{
+                  top: side === "top" ? 1 : 0,
+                  bottom: side === "bottom" ? 1 : 0,
+                  left: side === "left" ? 1 : 0,
+                  right: side === "right" ? 1 : 0
+                }}
+                dragPropagation
+                dragTransition={{
+                  bounceStiffness: 600,
+                  bounceDamping: 20
+                }}
+                exit={{
+                  x: side === "left" ? "-100%" : side === "right" ? "100%" : 0,
+                  y: side === "top" ? "-100%" : side === "bottom" ? "100%" : 0
+                }}
+                initial={{
+                  x: side === "left" ? "-100%" : side === "right" ? "100%" : 0,
+                  y: side === "top" ? "-100%" : side === "bottom" ? "100%" : 0
+                }}
+                onDragEnd={(_, { offset, velocity }) => {
+                  if (side === "bottom" && (velocity.y > 150 || offset.y > screen.height * 0.25)) {
+                    state.close()
+                  }
+                  if (side === "top" && (velocity.y < -150 || offset.y < screen.height * 0.25)) {
+                    state.close()
+                  }
+                  if (side === "left" && velocity.x < -150) {
+                    state.close()
+                  }
+                  if (side === "right" && velocity.x > 150) {
+                    state.close()
+                  }
+                }}
                 role="dialog"
+                transition={{ duration: 0.15, ease: "easeInOut" }}
+                whileDrag={{ cursor: "grabbing" }}
               >
-                {notch && side === "bottom" && (
-                  <div className="notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20" />
-                )}
-                {children as React.ReactNode}
-                {notch && side === "top" && (
-                  <div className="notch sticky bottom-0 mx-auto mb-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-foreground/20" />
-                )}
-              </Dialog>
-            </DrawerRoot>
+                {notch && side === "bottom" && <div className="notch cn-drawer-handle shrink-0 touch-pan-y" />}
+                {children as ReactNode}
+                {notch && side === "top" && <div className="notch cn-drawer-handle mx-auto shrink-0 touch-pan-y" />}
+              </DrawerRoot>
+            </Modal>
           )}
         </DrawerOverlay>
       )}
@@ -144,24 +116,21 @@ const DrawerContent = ({
 }
 
 const DrawerHeader = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return (
-    <div className={cn("flex flex-col gap-2 p-6 pb-0 text-center sm:text-left", className)} slot="header" {...props} />
-  )
+  return <div className={cn("cn-drawer-header flex flex-col", className)} slot="header" {...props} />
 }
 
 const DrawerTitle = ({ className, ...props }: RACHeadingProps) => (
-  <Heading className={cn("font-semibold text-lg leading-none", className)} slot="title" {...props} />
+  <Heading className={cn("cn-drawer-title cn-font-heading", className)} slot="title" {...props} />
 )
 
 const DrawerDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn("text-muted-foreground text-sm", className)} slot="description" {...props} />
+  <Text className={cn("cn-drawer-description", className)} slot="description" {...props} />
 )
 
 const DrawerBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
     className={cn(
-      "isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll",
-      "[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1",
+      "no-scrollbar cn-drawer-footer flex touch-pan-y flex-col overflow-auto will-change-scroll",
       className
     )}
     slot="body"
@@ -170,13 +139,7 @@ const DrawerBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
 )
 
 const DrawerFooter = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return (
-    <div
-      className={cn("flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end", className)}
-      slot="footer"
-      {...props}
-    />
-  )
+  return <div className={cn("cn-drawer-footer mt-auto flex flex-col", className)} slot="footer" {...props} />
 }
 
 const DrawerTrigger = (props: ButtonProps) => <Button {...props} />

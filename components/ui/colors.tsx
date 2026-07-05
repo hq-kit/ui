@@ -13,9 +13,7 @@ import {
   type ColorSliderProps,
   ColorSlider as RACColorSlider,
   SliderOutput as RACSliderOutput,
-  SliderTrack as RACSliderTrack,
-  type SliderOutputProps,
-  type SliderTrackProps
+  type SliderOutputProps
 } from "react-aria-components/ColorSlider"
 import { type ColorSwatchProps, ColorSwatch as RACColorSwatch } from "react-aria-components/ColorSwatch"
 import {
@@ -26,6 +24,7 @@ import {
 } from "react-aria-components/ColorSwatchPicker"
 import { type ColorWheelProps, ColorWheelTrack, ColorWheel as RACColorWheel } from "react-aria-components/ColorWheel"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { SliderTrack } from "react-aria-components/Slider"
 import { cn } from "@/lib/utils"
 import { fieldVariants } from "./field"
 
@@ -58,14 +57,14 @@ const ColorWheel = ({
     {...props}
   >
     <ColorWheelTrack className="data-disabled:opacity-50 data-disabled:grayscale-50" />
-    <ColorThumb />
+    <ColorThumb className="rounded-full" />
   </RACColorWheel>
 )
 
 const ColorArea = ({ className, ...props }: ColorAreaProps) => (
   <RACColorArea
     className={composeRenderProps(className, (className) =>
-      cn("size-48 shrink-0 rounded-md shadow-md data-disabled:opacity-50 data-disabled:grayscale-50", className)
+      cn("cn-skeleton size-48 shrink-0 shadow-md data-disabled:opacity-50 data-disabled:grayscale-50", className)
     )}
     {...props}
   >
@@ -73,33 +72,31 @@ const ColorArea = ({ className, ...props }: ColorAreaProps) => (
   </RACColorArea>
 )
 
-const ColorSlider = ({ className, ...props }: ColorSliderProps) => (
+const ColorSlider = ({ className, children, ...props }: ColorSliderProps) => (
   <RACColorSlider
     className={composeRenderProps(className, (className) =>
       cn(
-        "grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=vertical]:flex data-[orientation=horizontal]:grid data-[orientation=horizontal]:w-full",
+        "group/slider cn-slider relative flex touch-none select-none flex-wrap gap-3 data-disabled:opacity-50",
+        "data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center",
         className
       )
     )}
     data-slot="color-slider"
     {...props}
-  />
-)
-
-const ColorSliderTrack = ({ className, ...props }: SliderTrackProps) => (
-  <RACSliderTrack
-    className={composeRenderProps(className, (className) =>
-      cn(
-        "group col-span-2 in-data-[orientation=horizontal]:h-6 in-data-[orientation=horizontal]:w-full rounded-md border border-border shadow-md",
-        "in-data-[orientation=vertical]:ml-[50%] in-data-[orientation=vertical]:h-56 in-data-[orientation=vertical]:w-6 in-data-[orientation=vertical]:-translate-x-[50%]",
-        "data-disabled:opacity-50 data-disabled:grayscale-50",
-        "bg-muted-foreground disabled:opacity-50",
-        className
-      )
+  >
+    {(values) => (
+      <>
+        {typeof children === "function" ? children(values) : children}
+        <SliderTrack
+          className="cn-slider-track cn-scroll-area-scrollbar relative block grow select-none bg-muted-foreground disabled:opacity-50 data-disabled:opacity-50 data-disabled:grayscale-50"
+          data-slot="color-slider-track"
+        >
+          <ColorThumb data-slot="color-slider-thumb" />
+        </SliderTrack>
+      </>
     )}
-    data-slot="color-slider-track"
-    {...props}
-  />
+  </RACColorSlider>
 )
 
 const ColorSliderOutput = ({ className, ...props }: SliderOutputProps) => (
@@ -115,8 +112,8 @@ const ColorThumb = ({ className, ...props }: ColorThumbProps) => (
   <RACColorThumb
     className={composeRenderProps(className, (className) =>
       cn(
-        "top-[50%] left-[50%] size-5 rounded-full border-2 border-white [box-shadow:0_0_0_1px_black,inset_0_0_0_1px_black]",
-        "data-dragging:size-6 data-focus-visible:size-6 data-dragging:bg-muted-foreground data-disabled:opacity-50",
+        "cn-slider-thumb select-none [box-shadow:0_0_0_1px_var(--background),inset_0_0_0_1px_var(--foreground)] disabled:opacity-50 group-data-[orientation=horizontal]/slider:top-1/2 group-data-[orientation=vertical]/slider:left-1/2",
+        "transition data-dragging:scale-120 data-focus-visible:scale-120 data-dragging:bg-muted-foreground data-disabled:opacity-50",
         className
       )
     )}
@@ -135,7 +132,7 @@ const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPic
   <RACColorSwatchPickerItem
     className={composeRenderProps(className, (className) =>
       cn(
-        "relative rounded-md outline-hidden",
+        "cn-skeleton relative outline-hidden",
         "data-selected:ring-3 data-selected:ring-ring/20 data-selected:*:inset-ring-current/40",
         "data-focus-visible:opacity-80 data-focus-visible:ring-ring/20 data-focus-visible:*:inset-ring-current/40",
         "data-hovered:opacity-90",
@@ -148,7 +145,7 @@ const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPic
     {(values) => (
       <>
         {values.isSelected && (
-          <span className="absolute top-0 left-0 box-border size-full rounded-md border-2 border-black outline-2 outline-white -outline-offset-4 dark:border-white dark:outline-black" />
+          <span className="absolute top-0 left-0 box-border size-full rounded-[inherit] border-2 border-black outline-2 outline-white -outline-offset-4 dark:border-white dark:outline-black" />
         )}
         {typeof children === "function" ? children(values) : children}
       </>
@@ -159,7 +156,7 @@ const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPic
 const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => (
   <RACColorSwatch
     className={composeRenderProps(className, (className) =>
-      cn("inset-ring-1 inset-ring-current/20 size-6 shrink-0 rounded-md", className)
+      cn("cn-button-size-icon-xs cn-skeleton inset-ring-1 inset-ring-current/20 shrink-0", className)
     )}
     data-slot="color-swatch"
     {...props}
@@ -172,11 +169,9 @@ export {
   ColorPicker,
   ColorSlider,
   ColorSliderOutput,
-  ColorSliderTrack,
   ColorSwatch,
   ColorSwatchPicker,
   ColorSwatchPickerItem,
   ColorThumb,
-  ColorWheel,
-  type ColorWheelTrack
+  ColorWheel
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Tag, TagGroup, TagList } from "@/components/ui/tag"
 
 const androidBrands = [

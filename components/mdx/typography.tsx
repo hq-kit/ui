@@ -9,7 +9,7 @@ export function TypographyH2(props: ComponentPropsWithRef<"h2">) {
 }
 
 export function TypographyH3(props: ComponentPropsWithRef<"h3">) {
-  return <h3 className="mt-6 mb-4 scroll-m-20 font-semibold text-xl tracking-tight" {...props} />
+  return <h3 className="mt-6 mb-2 scroll-m-20 font-semibold text-xl tracking-tight" {...props} />
 }
 
 export function TypographyH4(props: ComponentPropsWithRef<"h4">) {

@@ -18,7 +18,7 @@ export default function GridListControlledDemo() {
       >
         {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
       </GridList>
-      <p className="mt-2 block text-muted-fg [&>strong]:text-fg">
+      <p className="mt-2 block text-muted-foreground [&>strong]:text-foreground">
         You have selected: <strong>{Array.from(selectedKeys).join(", ")}</strong>
       </p>
     </div>

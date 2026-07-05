@@ -1,4 +1,4 @@
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const avatars = [
@@ -44,13 +44,10 @@ const CardMeetingNotesDemo = () => {
       <CardFooter>
         <div className="flex -space-x-2 hover:space-x-1">
           {avatars.map((avatar, index) => (
-            <Avatar
-              alt={avatar.name}
-              className="ring-2 ring-background transition-all duration-300 ease-in-out"
-              fallback={avatar.fallback}
-              key={index}
-              src={avatar.src}
-            />
+            <Avatar className="ring-2 ring-background transition-all duration-300 ease-in-out" key={index}>
+              <AvatarImage alt={avatar.name} src={avatar.src} />
+              <AvatarFallback>{avatar.fallback}</AvatarFallback>
+            </Avatar>
           ))}
         </div>
       </CardFooter>

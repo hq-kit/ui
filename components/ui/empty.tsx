@@ -2,12 +2,35 @@ import type { ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 
+function Empty({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "cn-empty flex w-full min-w-0 flex-1 flex-col items-center justify-center text-balance text-center",
+        className
+      )}
+      data-slot="empty"
+      {...props}
+    />
+  )
+}
+
+function EmptyHeader({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn("cn-empty-header flex max-w-sm flex-col items-center", className)}
+      data-slot="empty-header"
+      {...props}
+    />
+  )
+}
+
 const emptyMediaVariants = tv({
-  base: "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  base: "cn-empty-media flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
   variants: {
     variant: {
-      default: "bg-transparent",
-      icon: "flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground [&_svg:not([class*='size-'])]:size-6"
+      default: "cn-empty-media-default",
+      icon: "cn-empty-media-icon"
     }
   },
   defaultVariants: {
@@ -15,65 +38,46 @@ const emptyMediaVariants = tv({
   }
 })
 
-const Empty = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "flex min-w-0 flex-1 flex-col items-center justify-center gap-6 text-balance rounded-lg border-dashed p-6 text-center md:p-12",
-      className
-    )}
-    data-slot="empty"
-    {...props}
-  />
-)
-
-const EmptyHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("flex max-w-sm flex-col items-center gap-2 text-center", className)}
-    data-slot="empty-header"
-    {...props}
-  />
-)
-
-const EmptyMedia = ({
+function EmptyMedia({
   className,
   variant = "default",
   ...props
-}: ComponentProps<"div"> & VariantProps<typeof emptyMediaVariants>) => (
-  <div
-    className={cn(emptyMediaVariants({ variant, className }))}
-    data-slot="empty-icon"
-    data-variant={variant}
-    {...props}
-  />
-)
+}: ComponentProps<"div"> & VariantProps<typeof emptyMediaVariants>) {
+  return (
+    <div
+      className={cn(emptyMediaVariants({ variant, className }))}
+      data-slot="empty-icon"
+      data-variant={variant}
+      {...props}
+    />
+  )
+}
 
-const EmptyTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("font-medium text-lg tracking-tight", className)} data-slot="empty-title" {...props} />
-)
+function EmptyTitle({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("cn-empty-title cn-font-heading", className)} data-slot="empty-title" {...props} />
+}
 
-const EmptyDescription = ({ className, ...props }: ComponentProps<"p">) => (
-  <div
-    className={cn(
-      "text-muted-foreground text-sm/relaxed [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
-      className
-    )}
-    data-slot="empty-description"
-    {...props}
-  />
-)
+function EmptyDescription({ className, ...props }: ComponentProps<"p">) {
+  return (
+    <div
+      className={cn(
+        "cn-empty-description text-muted-foreground [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        className
+      )}
+      data-slot="empty-description"
+      {...props}
+    />
+  )
+}
 
-const EmptyContent = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("flex w-full min-w-0 max-w-sm flex-col items-center gap-4 text-balance text-sm", className)}
-    data-slot="empty-content"
-    {...props}
-  />
-)
+function EmptyContent({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn("cn-empty-content flex w-full min-w-0 max-w-sm flex-col items-center text-balance", className)}
+      data-slot="empty-content"
+      {...props}
+    />
+  )
+}
 
-Empty.Header = EmptyHeader
-Empty.Title = EmptyTitle
-Empty.Description = EmptyDescription
-Empty.Content = EmptyContent
-Empty.Media = EmptyMedia
-
-export { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, emptyMediaVariants }
+export { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle }

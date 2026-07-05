@@ -1,0 +1,51 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+references: ['https://react-aria.adobe.com/Modal#api']
+published: true
+---
+
+## Installation
+<Install component='alert-dialog' />
+
+## Examples
+
+### Basic
+
+A basic alert dialog with a title, description, and cancel and continue buttons.
+
+<Demo component='overlay/alert-dialog/alert-dialog-basic' />
+
+### Small
+
+Use the `size="sm"` prop to make the alert dialog smaller.
+
+<Demo component='overlay/alert-dialog/alert-dialog-small' />
+
+### Media
+
+Use the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+
+<Demo component='overlay/alert-dialog/alert-dialog-media' />
+
+### Small with Media
+
+Use the `size="sm"` prop to make the alert dialog smaller and the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+
+<Demo component='overlay/alert-dialog/alert-dialog-small-media' />
+
+### Destructive
+
+Use the `AlertDialogAction` component to add a destructive action button to the alert dialog.
+
+<Demo component='overlay/alert-dialog/alert-dialog-destructive' />
+
+## API Reference
+
+### size
+
+Use the `size` prop on the `AlertDialogContent` component to control the size of the alert dialog. It accepts the following values:
+
+| Prop   | Type                | Default     |
+| ------ | ------------------- | ----------- |
+| `size` | `"default" \| "sm"` | `"default"` |

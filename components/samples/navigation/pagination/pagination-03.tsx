@@ -25,10 +25,9 @@ const PaginationWithPrimaryButtonDemo = () => {
           <PaginationLink
             className={cn(
               buttonVariants({
-                variant: "default",
+                variant: "ghost",
                 size: "icon"
-              }),
-              "shadow-none! hover:text-primary-foreground! dark:border-transparent dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/90 dark:hover:text-primary-foreground"
+              })
             )}
             href="#"
             isActive

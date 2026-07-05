@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Progress, ProgressTrack } from "@/components/ui/progress"
 
 const AlertTaskDemo = () => {
@@ -16,12 +16,10 @@ const AlertTaskDemo = () => {
 
   return (
     <Alert className="flex gap-3">
-      <Avatar
-        alt="Hallie Richards"
-        className="rounded-sm"
-        fallback="HR"
-        src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-      />
+      <Avatar className="rounded-sm">
+        <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png" />
+        <AvatarFallback>HR</AvatarFallback>
+      </Avatar>
       <div className="flex flex-1 flex-col gap-2">
         <div className="flex-1 flex-col justify-center gap-1">
           <AlertTitle>@Rocky</AlertTitle>

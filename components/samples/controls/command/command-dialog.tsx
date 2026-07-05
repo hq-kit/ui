@@ -3,7 +3,14 @@
 import { IconHome, IconLayoutDashboard, IconPackage, IconPalette } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { CommandDialog, CommandInput, CommandItem, CommandList, CommandShortcut } from "@/components/ui/command"
+import {
+  CommandDialog,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandShortcut
+} from "@/components/ui/command"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 
 export default function CommandDialogDemo() {
@@ -31,22 +38,24 @@ export default function CommandDialogDemo() {
       <CommandDialog isOpen={open} onOpenChange={setOpen}>
         <CommandInput />
         <CommandList>
-          <CommandItem textValue="home">
-            <IconHome />
-            Home
-          </CommandItem>
-          <CommandItem textValue="documenation">
-            <IconPackage />
-            Documentation
-          </CommandItem>
-          <CommandItem textValue="blocks">
-            <IconLayoutDashboard />
-            Blocks
-          </CommandItem>
-          <CommandItem textValue="colors">
-            <IconPalette />
-            Colors
-          </CommandItem>
+          <CommandGroup title="Pages">
+            <CommandItem textValue="home">
+              <IconHome />
+              Home
+            </CommandItem>
+            <CommandItem textValue="documenation">
+              <IconPackage />
+              Documentation
+            </CommandItem>
+            <CommandItem textValue="blocks">
+              <IconLayoutDashboard />
+              Blocks
+            </CommandItem>
+            <CommandItem textValue="colors">
+              <IconPalette />
+              Colors
+            </CommandItem>
+          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

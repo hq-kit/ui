@@ -1,6 +1,5 @@
 "use client"
 
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import {
   type ComponentProps,
@@ -12,6 +11,7 @@ import {
   useEffect,
   useState
 } from "react"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { Button, type ButtonProps } from "./button"
 
@@ -204,12 +204,15 @@ const CarouselButton = ({
   const isNext = segment === "next"
   const canScroll = isNext ? canScrollNext : canScrollPrev
   const scroll = isNext ? scrollNext : scrollPrev
-  const Icon = isNext ? IconChevronRight : IconChevronLeft
 
   return (
     <Button
       aria-label={isNext ? "Next slide" : "Previous slide"}
-      className={cn([orientation === "vertical" ? "rotate-90" : "", "shrink-0"], className)}
+      className={cn(
+        [orientation === "vertical" ? "rotate-90" : "", "shrink-0"],
+        isNext ? "cn-carousel-next" : "cn-carousel-previous",
+        className
+      )}
       data-handler={segment}
       isDisabled={!canScroll}
       onPress={scroll}
@@ -217,7 +220,25 @@ const CarouselButton = ({
       variant={variant}
       {...props}
     >
-      <Icon className="size-4" />
+      {isNext ? (
+        <IconPlaceholder
+          className="size-4"
+          hugeicons="ArrowRight01Icon"
+          lucide="ChevronRightIcon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          tabler="IconChevronRight"
+        />
+      ) : (
+        <IconPlaceholder
+          className="size-4"
+          hugeicons="ArrowLeft01Icon"
+          lucide="ChevronLeftIcon"
+          phosphor="CaretLeftIcon"
+          remixicon="RiArrowLeftSLine"
+          tabler="IconChevronLeft"
+        />
+      )}
     </Button>
   )
 }

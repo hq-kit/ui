@@ -3,7 +3,7 @@
   "assist": {
     "enabled": true,
     "actions": {
-      "recommended": true,
+      "preset": "recommended",
       "source": {
         "organizeImports": {
           "level": "on",
@@ -23,6 +23,7 @@
   "files": {
     "includes": [
       "app/**/*.{js,jsx,ts,tsx}",
+      "bases/**/*.{js,jsx,ts,tsx}",
       "components/**/*.{js,jsx,ts,tsx}",
       "lib/**/*.{js,jsx,ts,tsx}",
       "hooks/**/*.{js,jsx,ts,tsx}",
@@ -96,7 +97,7 @@
       "performance": {
         "noImgElement": "off"
       },
-      "recommended": true,
+      "preset": "recommended",
       "security": {
         "noDangerouslySetInnerHtml": "off"
       },

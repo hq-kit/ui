@@ -1,35 +1,31 @@
 "use client"
 
 import type { ComponentProps, ComponentPropsWithRef } from "react"
-import { IconX } from "@tabler/icons-react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
-  Button,
-  type ButtonProps,
   type DialogProps,
   type DialogTriggerProps,
   Heading,
+  Modal,
   type ModalOverlayProps,
+  Button as RACButton,
+  type ButtonProps as RACButtonProps,
   Dialog as RACDialog,
   DialogTrigger as RACDialogTrigger,
   type HeadingProps as RACHeadingProps,
-  Modal as RACModal,
   ModalOverlay as RACModalOverlay
 } from "react-aria-components/Modal"
 import { Text, type TextProps } from "react-aria-components/Text"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
+import { Button, type ButtonProps } from "./button"
 
 const Dialog = (props: DialogTriggerProps) => <RACDialogTrigger {...props} />
 
 const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
   <RACModalOverlay
     className={composeRenderProps(className, (className) =>
-      cn(
-        "fixed inset-0 isolate z-50 bg-black/40 [--visual-viewport-vertical-padding:32px] supports-backdrop-filter:backdrop-blur-xs",
-        "data-entering:fade-in-0 data-entering:animate-in",
-        "data-exiting:fade-out-0 data-exiting:animate-out data-exiting:duration-150",
-        className
-      )
+      cn("cn-dialog-overlay fixed inset-0 isolate z-50", className)
     )}
     data-slot="overlay"
     isDismissable={isDismissable}
@@ -39,7 +35,7 @@ const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverl
 )
 
 interface DialogContentProps
-  extends Omit<ComponentProps<typeof RACModal>, "children" | "isDismissable">,
+  extends Omit<ComponentProps<typeof Modal>, "children" | "isDismissable">,
     Omit<ModalOverlayProps, "className" | "children" | "isDismissable"> {
   "aria-label"?: DialogProps["aria-label"]
   "aria-labelledby"?: DialogProps["aria-labelledby"]
@@ -61,12 +57,10 @@ const DialogContent = ({
   const isDismissable = role !== "alertdialog"
   return (
     <DialogOverlay className={overlayClassName} isDismissable={isDismissable} {...props}>
-      <RACModal
+      <Modal
         className={composeRenderProps(className, (className) =>
           cn(
-            "fixed top-1/2 bottom-0 left-[50vw] z-50 h-fit w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background shadow-lg transition sm:max-w-lg",
-            "data-entering:fade-in data-entering:zoom-in-95 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 data-entering:animate-in data-entering:duration-200 data-entering:ease-out",
-            "data-exiting:fade-out data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-150 data-exiting:ease-in",
+            "cn-dialog-modal fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-hidden",
             className
           )
         )}
@@ -76,7 +70,8 @@ const DialogContent = ({
       >
         <RACDialog
           aria-label="Dialog"
-          className="relative flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col space-y-4 overflow-hidden outline-hidden has-data-[slot=body]:space-y-0"
+          className="cn-dialog-content relative size-full outline-hidden"
+          data-slot="dialog-content"
           role={role}
           slot="dialog"
         >
@@ -87,34 +82,27 @@ const DialogContent = ({
             </>
           )}
         </RACDialog>
-      </RACModal>
+      </Modal>
     </DialogOverlay>
   )
 }
 
-const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return (
-    <div
-      className={cn("flex flex-col gap-2 p-6 pb-0 text-center sm:text-left", className)}
-      data-slot="header"
-      {...props}
-    />
-  )
-}
+const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
+  <div className={cn("cn-dialog-header flex flex-col", className)} data-slot="header" {...props} />
+)
 
 const DialogTitle = ({ className, ...props }: RACHeadingProps) => (
-  <Heading className={cn("font-semibold text-lg", className)} data-slot="title" {...props} />
+  <Heading className={cn("cn-dialog-title cn-font-heading", className)} data-slot="title" {...props} />
 )
 
 const DialogDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn("text-muted-foreground text-sm", className)} data-slot="description" {...props} />
+  <Text className={cn("cn-dialog-description", className)} data-slot="description" {...props} />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
     className={cn(
-      "isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto px-6 py-4 will-change-scroll",
-      "[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1",
+      "no-scrollbar cn-dialog-footer isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto will-change-scroll",
       className
     )}
     data-slot="body"
@@ -122,28 +110,21 @@ const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   />
 )
 
-const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return (
-    <div
-      className={cn("flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end", className)}
-      data-slot="footer"
-      {...props}
-    />
-  )
-}
+const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
+  <div
+    className={cn("cn-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)}
+    data-slot="footer"
+    {...props}
+  />
+)
 
 const DialogX = (props: ButtonProps) => (
-  <Button
-    aria-label="Close"
-    className="absolute top-2 right-2 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md bg-transparent text-muted-foreground outline-hidden hover:bg-muted/40 focus-visible:ring-4 focus-visible:ring-ring data-pressed:bg-muted/50"
-    slot="close"
-    {...props}
-  >
-    <IconX size={16} />
+  <Button aria-label="Close" className="cn-dialog-close" size="icon-sm" slot="close" variant="ghost" {...props}>
+    <IconPlaceholder hugeicons="Cancel01Icon" lucide="XIcon" phosphor="XIcon" remixicon="RiCloseLine" tabler="IconX" />
   </Button>
 )
 
-const DialogTrigger = (props: ButtonProps) => <Button {...props} />
+const DialogTrigger = (props: RACButtonProps) => <RACButton {...props} />
 
 Dialog.Trigger = DialogTrigger
 Dialog.Content = DialogContent

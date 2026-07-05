@@ -1,6 +1,7 @@
 "use client"
 
-import { Avatar } from "@/components/ui/avatar"
+import { IconUser } from "@tabler/icons-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Command, CommandGroup, CommandInput, CommandList } from "@/components/ui/command"
 
 export default function CommandSectionDemo() {
@@ -16,7 +17,12 @@ export default function CommandSectionDemo() {
         <CommandGroup items={users} title="Users">
           {(item) => (
             <Command.Item id={item.id} textValue={item.name}>
-              <Avatar alt={item.name} className="size-6" src={item.image_url} />
+              <Avatar className="size-6">
+                <AvatarImage alt={item.name} src={item.image_url} />
+                <AvatarFallback>
+                  <IconUser />
+                </AvatarFallback>
+              </Avatar>
               {item.name}
             </Command.Item>
           )}

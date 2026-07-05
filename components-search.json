@@ -107,6 +107,16 @@
             "order": 999
           },
           {
+            "slug": "/docs/components/collections/attachment",
+            "title": "Attachment",
+            "order": 999
+          },
+          {
+            "slug": "/docs/components/collections/bubble",
+            "title": "Bubble",
+            "order": 999
+          },
+          {
             "slug": "/docs/components/collections/collapsible",
             "title": "Collapsible",
             "order": 999
@@ -129,6 +139,11 @@
           {
             "slug": "/docs/components/collections/list-box",
             "title": "List Box",
+            "order": 999
+          },
+          {
+            "slug": "/docs/components/collections/message",
+            "title": "Message",
             "order": 999
           },
           {
@@ -262,6 +277,11 @@
             "order": 999
           },
           {
+            "slug": "/docs/components/forms/input-group",
+            "title": "Input Group",
+            "order": 999
+          },
+          {
             "slug": "/docs/components/forms/input-otp",
             "title": "Input OTP",
             "order": 999
@@ -360,6 +380,11 @@
         "id": 12,
         "subsection": "Overlays",
         "children": [
+          {
+            "slug": "/docs/components/overlays/alert-dialog",
+            "title": "Alert Dialog",
+            "order": 999
+          },
           {
             "slug": "/docs/components/overlays/dialog",
             "title": "Dialog",

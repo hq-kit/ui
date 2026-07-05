@@ -11,47 +11,73 @@ published: true
 ## Preview
 <Preview component='preview/button'/>
 
-## Blocks
+## Examples
 
-<Grid col={3}>
+### Size
 
-<Demo center component='buttons/button/button-01' />
-<Demo center component='buttons/button/button-02' />
-<Demo center component='buttons/button/button-03' />
-<Demo center component='buttons/button/button-04' />
-<Demo center component='buttons/button/button-05' />
-<Demo center component='buttons/button/button-06' />
-<Demo center component='buttons/button/button-07' />
-<Demo center component='buttons/button/button-08' />
-<Demo center component='buttons/button/button-09' />
-<Demo center component='buttons/button/button-10' />
-<Demo center component='buttons/button/button-11' />
-<Demo center component='buttons/button/button-12' />
-<Demo center component='buttons/button/button-13' />
-<Demo center component='buttons/button/button-14' />
-<Demo center component='buttons/button/button-15' />
-<Demo center component='buttons/button/button-16' />
-<Demo center component='buttons/button/button-17' />
-<Demo center component='buttons/button/button-19' />
-<Demo center component='buttons/button/button-20' />
-<Demo center component='buttons/button/button-21' />
-<Demo center component='buttons/button/button-22' />
-<Demo center component='buttons/button/button-23' />
-<Demo center component='buttons/button/button-24' />
-<Demo center component='buttons/button/button-25' />
-<Demo center component='buttons/button/button-26' />
-<Demo center component='buttons/button/button-27' />
-<Demo center component='buttons/button/button-28' />
-<Demo center component='buttons/button/button-29' />
-<Demo center component='buttons/button/button-30' />
-<Demo center component='buttons/button/button-31' />
-<Demo center component='buttons/button/button-32' />
-<Demo center component='buttons/button/button-33' />
-<Demo center component='buttons/button/button-34' />
-<Demo center component='buttons/button/button-35' />
-<Demo center component='buttons/button/button-36' />
-<Demo center component='buttons/button/button-37' />
-<Demo center component='buttons/button/button-38' />
+Use the `size` prop to change the size of the button.
 
+<Demo component='buttons/button/button-size' />
 
-</Grid>
+### Default
+
+<Demo component='buttons/button/button-default' />
+
+### Outline
+
+<Demo component='buttons/button/button-outline' />
+
+### Secondary
+
+<Demo component='buttons/button/button-secondary' />
+
+### Ghost
+
+<Demo component='buttons/button/button-ghost' />
+
+### Destructive
+
+<Demo component='buttons/button/button-destructive' />
+
+### Link
+
+<Demo component='buttons/button/button-link' />
+
+### Icon
+
+<Demo component='buttons/button/button-icon' />
+
+### With Icon
+
+You can add the `data-icon='inline-start'` or `data-icon='inline-end'` attribute to the icon for the correct spacing.
+
+<Demo component='buttons/button/button-with-icon' />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<Demo component='buttons/button/button-rounded' />
+
+### Spinner
+
+Render a `<Spinner />` component inside the button to show a loading state.
+
+<Demo component='buttons/button/button-spinner' />
+
+### As Link
+
+You can use the `buttonVariants` helper to make a link look like a button.
+
+<Demo component='buttons/button/button-aschild' />
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop      | Type                                                                                 | Default     |
+| --------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |

@@ -1,17 +1,16 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { IconCircleFilled } from "@tabler/icons-react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
-  Label,
-  Radio as RACRadio,
   RadioGroup as RACRadioGroup,
-  type RadioGroupProps,
-  type RadioProps
+  RadioButton,
+  RadioField,
+  type RadioFieldProps,
+  type RadioGroupProps
 } from "react-aria-components/RadioGroup"
 import { cn } from "@/lib/utils"
-import { fieldVariants } from "./field"
+import { fieldVariants, Label } from "./field"
 
 const RadioGroup = ({
   className,
@@ -21,53 +20,59 @@ const RadioGroup = ({
   return (
     <RACRadioGroup
       {...props}
-      className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), "w-fit", className))}
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "cn-radio-group w-full",
+          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
+          className
+        )
+      )}
       data-orientation={orientation}
       data-slot="field"
+      orientation={orientation}
     />
   )
 }
 
-const Radio = ({ className, ...props }: RadioProps) => {
+const Radio = ({ className, children, ...props }: RadioFieldProps) => {
   return (
-    <RACRadio
-      className={composeRenderProps(className, (className) =>
-        cn(
-          "group/radio flex items-center space-x-3 has-[&_p]:items-start **:[p]:mt-2 **:[p]:text-muted-foreground **:[p]:text-sm",
-          className
-        )
-      )}
+    <RadioField
+      className={composeRenderProps(className, (className) => cn("group/field", className))}
+      data-slot="radio"
       {...props}
     >
-      {(values) => (
-        <>
-          <div
-            className={cn(
-              "relative flex size-4 shrink-0 items-center justify-center rounded-full border bg-transparent shadow-xs transition dark:bg-input/30",
-              "border-input group-hover/radio:border-ring group-has-invalid/radio:border-destructive/70",
-              "group-data-selected/radio:group-data-has-invalid/radio:border-destructive/70 group-data-selected/radio:border-primary group-data-selected/radio:bg-primary group-data-selected/radio:text-primary-foreground group-data-selected/radio:group-has-invalid/radio:border-destructive/70 group-data-selected/radio:group-has-invalid/radio:bg-destructive group-data-selected/radio:group-has-invalid/radio:text-destructive-foreground dark:group-data-selected/radio:bg-primary",
-              "group-data-focus/radio:border-primary group-data-focus/radio:group-has-invalid/radio:border-destructive/70",
-              "group-data-focus-visible/radio:border-primary/70 group-data-focus-visible/radio:ring-[3px] group-data-focus-visible/radio:ring-ring/50 group-data-focus-visible/radio:group-has-invalid/radio:border-destructive/70 group-data-focus-visible/radio:group-has-invalid/radio:ring-destructive/20",
-              className
-            )}
-            data-slot="box"
-          >
-            {values.isSelected ? <IconCircleFilled className="size-2" /> : null}
-          </div>
-          {typeof props.children === "function" ? (
-            props.children(values)
-          ) : (
-            <Label
-              className="not-last:text-sm/4 text-sm transition group-has-invalid/radio:text-destructive"
-              elementType="span"
+      <RadioButton>
+        {composeRenderProps(children, (children) => (
+          <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
+            <div
+              className="cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              data-slot="radio-group-item"
+              slot="control"
             >
-              {props.children}
-            </Label>
-          )}
-        </>
-      )}
-    </RACRadio>
+              <div
+                className="cn-radio-group-indicator opacity-0 transition-opacity group-data-selected/field:opacity-100"
+                data-slot="radio-group-indicator"
+              >
+                <span className="cn-radio-group-indicator-icon" />
+              </div>
+            </div>
+            {typeof children === "string" ? (
+              <Label elementType="span">{children}</Label>
+            ) : children ? (
+              <div
+                className="cn-field-content group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
+                data-slot="field-content"
+              >
+                {children}
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </RadioButton>
+    </RadioField>
   )
 }
 
-export { Radio, RadioGroup }
+const RadioGroupItem = (props: RadioFieldProps) => <Radio {...props} />
+
+export { Radio, RadioGroup, RadioGroupItem }

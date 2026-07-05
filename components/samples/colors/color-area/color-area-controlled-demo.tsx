@@ -5,7 +5,7 @@ import type { ColorChannel } from "react-aria-components/ColorArea"
 import { useState } from "react"
 import { type ColorSpace, parseColor } from "react-aria-components/ColorArea"
 import { ColorArea } from "@/components/ui/colors"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Select } from "@/components/ui/select"
 
 const RGBchannels = ["red", "green", "blue"].map((channel) => ({ channel }))

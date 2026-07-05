@@ -1,27 +1,19 @@
 "use client"
 
 import type { Key } from "react-aria-components"
-import type Raws from "@/components/samples/generated/previews.json"
-import {
-  IconCode,
-  IconDeviceDesktop,
-  IconDeviceMobile,
-  IconDeviceTablet,
-  IconWindowMaximize
-} from "@tabler/icons-react"
 import Link from "next/link"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { Install } from "@/components/mdx/install"
+import { useStyle } from "@/components/style-provider"
 import { cn } from "@/lib/utils"
 import { Badge } from "../ui/badge"
 import { Button, buttonVariants } from "../ui/button"
 import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
 import { ToggleGroup } from "../ui/toggle-group"
-import { CLI } from "./cli"
-import { Code } from "./code-client"
 
-type Raw = keyof typeof Raws
-
-export function Iframe({ component }: { component: Raw }) {
+export function Iframe({ component }: { component: string }) {
+  const { style } = useStyle()
   const [screenWidth, setScreenWidth] = useState(new Set<Key>(["max-w-none"]))
   const [isVisible, setIsVisible] = useState(false)
   const frameRef = useRef<HTMLDivElement | null>(null)
@@ -30,26 +22,21 @@ export function Iframe({ component }: { component: Raw }) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const apiPath = useMemo(() => {
-    const slug = component.split("/").map(encodeURIComponent).join("/")
-    return `/api/preview/${slug}`
-  }, [component])
-
   useEffect(() => {
     if (!isOpen || code || isLoading) return
     setIsLoading(true)
     setError(null)
-    fetch(apiPath)
+    fetch(`/r/styles/${style}/${component}`)
       .then(async (res) => {
         if (!res.ok) throw new Error("Failed to load code")
-        const data = (await res.json()) as { raw?: string }
-        setCode(data.raw ?? "")
+        const data = await res.json()
+        setCode(data.files[0].content)
       })
       .catch(() => {
         setError("Failed to load code.")
       })
       .finally(() => setIsLoading(false))
-  }, [apiPath, code, isLoading, isOpen])
+  }, [style, code, isLoading, isOpen])
 
   useEffect(() => {
     const element = frameRef.current
@@ -73,7 +60,7 @@ export function Iframe({ component }: { component: Raw }) {
   }, [isVisible])
 
   return (
-    <div className="group/demo relative overflow-hidden rounded-lg border bg-card shadow-sm">
+    <div className="group/demo cn-card relative overflow-hidden py-0">
       <div className="flex h-0 w-full items-center justify-between gap-1 overflow-hidden bg-accent/50 backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2">
         <Badge className="font-medium text-xs" variant="outline">
           {component.split("/").pop()}
@@ -84,41 +71,53 @@ export function Iframe({ component }: { component: Raw }) {
             selectedKeys={screenWidth}
             selectionMode="single"
             size="sm"
+            spacing={0}
             variant="outline"
           >
             <ToggleGroup.Item id="max-w-sm">
-              <IconDeviceMobile />
+              <IconPlaceholder
+                hugeicons="SmartPhone01Icon"
+                lucide="SmartphoneIcon"
+                phosphor="DeviceMobileIcon"
+                remixicon="RiSmartphoneLine"
+                tabler="IconDeviceMobile"
+              />
             </ToggleGroup.Item>
             <ToggleGroup.Item id="max-w-3xl">
-              <IconDeviceTablet />
+              <IconPlaceholder
+                hugeicons="Tablet01Icon"
+                lucide="TabletIcon"
+                phosphor="DeviceTabletIcon"
+                remixicon="RiTabletLine"
+                tabler="IconDeviceTablet"
+              />
             </ToggleGroup.Item>
             <ToggleGroup.Item id="max-w-none">
-              <IconDeviceDesktop />
+              <IconPlaceholder
+                hugeicons="ComputerIcon"
+                lucide="MonitorIcon"
+                phosphor="DesktopIcon"
+                remixicon="RiComputerLine"
+                tabler="IconDeviceDesktop"
+              />
             </ToggleGroup.Item>
           </ToggleGroup>
           <Dialog isOpen={isOpen} onOpenChange={setIsOpen}>
             <Button size="icon-sm" variant="outline">
-              <IconCode />
+              <IconPlaceholder
+                hugeicons="CodeXmlIcon"
+                lucide="CodeXmlIcon"
+                phosphor="CodeIcon"
+                remixicon="RiCodeSSlashLine"
+                tabler="IconCode"
+              />
             </Button>
-            <DialogContent className="sm:max-w-5xl">
+            <DialogContent className="sm:max-w-7xl">
               <DialogHeader>
                 <DialogTitle>{component.split("/").pop()}</DialogTitle>
               </DialogHeader>
               <DialogBody>
-                <div className="mb-2 space-y-2">
-                  <h3 className="font-medium text-sm">CLI</h3>
-                  <CLI command="add" items={`${component.split("/").pop()}`} />
-                </div>
-                <div>
-                  <h3 className="font-medium text-sm">Manual Code</h3>
-                  {error ? (
-                    <p className="text-destructive text-sm">{error}</p>
-                  ) : code ? (
-                    <Code className="border shadow-sm" code={code} copy />
-                  ) : (
-                    <div className="h-12 w-full animate-pulse rounded-lg border bg-muted" />
-                  )}
-                </div>
+                <Install component={component.split("/").pop() || ""} />
               </DialogBody>
             </DialogContent>
           </Dialog>
@@ -130,7 +129,13 @@ export function Iframe({ component }: { component: Raw }) {
             href={`/block/${component}`}
             target="_blank"
           >
-            <IconWindowMaximize />
+            <IconPlaceholder
+              hugeicons="FullScreenIcon"
+              lucide="MaximizeIcon"
+              phosphor="CornersOutIcon"
+              remixicon="RiFullscreenLine"
+              tabler="IconMaximize"
+            />
           </Link>
         </div>
       </div>

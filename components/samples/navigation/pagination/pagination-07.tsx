@@ -1,5 +1,13 @@
-import { IconChevronLeft, IconChevronLeftPipe, IconChevronRight, IconChevronRightPipe } from "@tabler/icons-react"
-import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationFirst,
+  PaginationItem,
+  PaginationLast,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from "@/components/ui/pagination"
 
 const pages = [1, 2, 3]
 
@@ -8,14 +16,10 @@ const PaginationWithFirstAndLastPageButtonNavigation = () => {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationLink aria-label="Go to first page" className="rounded-full" href="#" size="icon">
-            <IconChevronLeftPipe className="size-4" />
-          </PaginationLink>
+          <PaginationFirst className="rounded-full p-0" text="" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink aria-label="Go to previous page" className="rounded-full" href="#" size="icon">
-            <IconChevronLeft className="size-4" />
-          </PaginationLink>
+          <PaginationPrevious className="rounded-full p-0" text="" />
         </PaginationItem>
         {pages.map((page) => (
           <PaginationItem key={page}>
@@ -25,14 +29,10 @@ const PaginationWithFirstAndLastPageButtonNavigation = () => {
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationLink aria-label="Go to next page" className="rounded-full" href="#" size="icon">
-            <IconChevronRight className="size-4" />
-          </PaginationLink>
+          <PaginationNext className="rounded-full p-0" text="" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink aria-label="Go to last page" className="rounded-full" href="#" size="icon">
-            <IconChevronRightPipe className="size-4" />
-          </PaginationLink>
+          <PaginationLast className="rounded-full p-0" text="" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

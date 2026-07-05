@@ -7,7 +7,7 @@ order: 4
 
 ## Registry
 To use the HQ UI registry, add the following entry to your `components.json`:
-```
+```json title="components.json"
 {
   "registries": {
     "@hq": "https://hq-ui.vercel.app/r/{name}"
@@ -34,7 +34,8 @@ Skills give AI assistants like Claude Code project-aware context about hq-ui. Wh
 
 ### Structure
 
-```
+
+<Code code={`
 hq-ui/
 ├── SKILL.md              # Main skill definition
 └── rules/
@@ -43,7 +44,7 @@ hq-ui/
     ├── forms.md          # Fieldset, FieldLegend, TextField, FieldError, FieldDescription patterns
     ├── components.md     # HTML → HQ UI component mapping
     └── cli.md            # Search & install missing components from the registry
-```
+`}  />
 
 
 ## Markdown files

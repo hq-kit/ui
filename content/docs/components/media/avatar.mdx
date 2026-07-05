@@ -7,27 +7,75 @@ published: true
 ## Installation
 <Install component='avatar' />
 
-## Blocks
+## Examples
 
-<Grid col={3}>
-<Demo component='media/avatar/avatar-01' />
-<Demo component='media/avatar/avatar-02' />
-<Demo component='media/avatar/avatar-03' />
-<Demo component='media/avatar/avatar-04' />
-<Demo component='media/avatar/avatar-05' />
-<Demo component='media/avatar/avatar-06' />
-<Demo component='media/avatar/avatar-07' />
-<Demo component='media/avatar/avatar-08' />
-<Demo component='media/avatar/avatar-09' />
-<Demo component='media/avatar/avatar-10' />
-<Demo component='media/avatar/avatar-11' />
-<Demo component='media/avatar/avatar-12' />
-<Demo component='media/avatar/avatar-13' />
-<Demo component='media/avatar/avatar-14' />
-<Demo component='media/avatar/avatar-15' />
-<Demo component='media/avatar/avatar-16' />
-<Demo component='media/avatar/avatar-17' />
-<Demo component='media/avatar/avatar-18' />
-<Demo component='media/avatar/avatar-19' />
-<Demo component='media/avatar/avatar-20' />
-</Grid>
+### Basic
+
+A basic avatar component with an image and a fallback.
+
+<Demo component='media/avatar/avatar-basic' />
+
+### Badge
+
+Use the `AvatarBadge` component to add a badge to the avatar. The badge is positioned at the bottom right of the avatar.
+
+<Demo component='media/avatar/avatar-badge' />
+
+Use the `className` prop to add custom styles to the badge such as custom colors, sizes, etc.
+
+```tsx showLineNumbers
+<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN">
+  <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+</Avatar>
+```
+
+### Badge with Icon
+
+You can also use an icon inside `<AvatarBadge>`.
+
+<Demo component='media/avatar/avatar-badge-icon' />
+
+### Avatar Group
+
+Use the `AvatarGroup` component to add a group of avatars.
+
+<Demo component='media/avatar/avatar-group' />
+
+### Avatar Group Count
+
+Use `<AvatarGroupCount>` to add a count to the group.
+
+<Demo component='media/avatar/avatar-group-count' />
+
+### Avatar Group with Icon
+
+You can also use an icon inside `<AvatarGroupCount>`.
+
+<Demo component='media/avatar/avatar-group-count-icon' />
+
+### Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+<Demo component='media/avatar/avatar-size' />
+
+### Dropdown
+
+You can use the `Avatar` component as a trigger for a dropdown menu.
+
+<Demo component='media/avatar/avatar-dropdown' />
+
+## API Reference
+
+### Avatar
+
+The `Avatar` component is the root component that wraps the avatar image and fallback.
+
+| Prop        | Type                        | Default       |
+| ----------- | --------------------------- | ------------- |
+| `size`      | `"default" \| "sm" \| "lg"` | `"default"`   |
+| `className` | `string`                    | -             |
+| `src`       | `string`                    | -             |
+| `alt`       | `string`                    | -             |
+| `className` | `string`                    | -             |
+| `fallback`  | `string`                    | `<IconUser/>` |

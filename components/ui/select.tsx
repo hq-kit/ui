@@ -1,7 +1,6 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { IconCheck, IconSearch, IconSelector } from "@tabler/icons-react"
 import { useSlottedContext } from "react-aria-components"
 import { Autocomplete } from "react-aria-components/Autocomplete"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
@@ -12,7 +11,7 @@ import {
   Button,
   type ButtonProps,
   Collection,
-  Label,
+  type Key,
   ListBox,
   ListBoxItem,
   type ListBoxItemProps,
@@ -28,8 +27,10 @@ import {
   type SelectValueProps
 } from "react-aria-components/Select"
 import { Separator, type SeparatorProps } from "react-aria-components/Separator"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { fieldVariants } from "./field"
+import { InputGroupAddon, inputGroupVariants } from "./input"
 
 const Select = <T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -49,7 +50,11 @@ const Select = <T extends object, M extends "single" | "multiple" = "single">({
 }
 
 const SelectValue = <T extends object>(props: SelectValueProps<T>) => (
-  <RACSelectValue data-slot="select-value" {...props} />
+  <RACSelectValue
+    className={cn("**:data-[slot=item-description]:hidden", props.className)}
+    data-slot="select-value"
+    {...props}
+  />
 )
 
 const SelectTrigger = ({
@@ -67,7 +72,7 @@ const SelectTrigger = ({
   return context.selectionMode === "multiple" ? (
     <Group
       className={cn(
-        "relative flex w-full items-center justify-between gap-2 overflow-hidden whitespace-nowrap rounded-md border border-input bg-transparent py-1 pr-9 pl-3 text-sm shadow-xs outline-none transition-[color,box-shadow,border] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 hover:border-ring disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring has-aria-expanded:border-ring has-data-[slot=tag]:pl-1 has-aria-expanded:ring-[3px] has-aria-expanded:ring-ring/50 data-[size=default]:min-h-9 data-[size=sm]:min-h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-select-trigger-multiple relative flex max-h-none min-h-fit w-fit items-center justify-between whitespace-nowrap py-1 outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
@@ -78,6 +83,7 @@ const SelectTrigger = ({
         )
         if (triggerButton) triggerButton.click()
       }}
+      slot="control"
     >
       {() => (
         <>
@@ -88,7 +94,14 @@ const SelectTrigger = ({
             className="absolute right-0 flex size-full cursor-default items-center justify-end pr-3 outline-hidden"
           >
             <div>
-              <IconSelector className="transition group-data-open/field:rotate-180" />
+              <IconPlaceholder
+                className="cn-select-trigger-icon"
+                hugeicons="UnfoldMoreIcon"
+                lucide="ChevronsUpDownIcon"
+                phosphor="CaretUpDownIcon"
+                remixicon="RiExpandUpDownLine"
+                tabler="IconSelector"
+              />
             </div>
           </Button>
         </>
@@ -97,18 +110,26 @@ const SelectTrigger = ({
   ) : (
     <Button
       className={cn(
-        "flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow,border] hover:border-ring focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 group-hover/field:border-ring aria-expanded:border-ring aria-expanded:ring-[3px] aria-expanded:ring-ring/50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-placeholder:text-muted-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:bg-input/30 dark:group-data-invalid/field:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
       data-slot="select-trigger"
+      slot="control"
       type="button"
       {...props}
     >
       {(values) => (
         <>
           {typeof children === "function" ? children(values) : children}
-          <IconSelector className="size-4 text-muted-foreground transition group-data-open/field:rotate-180" />
+          <IconPlaceholder
+            className="cn-select-trigger-icon"
+            hugeicons="UnfoldMoreIcon"
+            lucide="ChevronDownIcon"
+            phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
+            tabler="IconSelector"
+          />
         </>
       )}
     </Button>
@@ -118,13 +139,13 @@ const SelectTrigger = ({
 const SelectContent = <T extends object>({
   className,
   offset = 4,
-  side = "bottom",
+  placement = "bottom",
   isSearchable,
   ...props
-}: ListBoxProps<T> & Pick<PopoverProps, "offset"> & { side?: "bottom" | "top"; isSearchable?: boolean }) => {
+}: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset"> & { isSearchable?: boolean }) => {
   const renderContent = () => (
     <ListBox
-      className="flex max-h-[inherit] flex-col overflow-auto rounded-lg p-1 outline-hidden"
+      className="flex max-h-[inherit] flex-col overflow-auto rounded-lg p-1 outline-hidden has-data-[slot=select-group]:p-0"
       data-slot="select-content"
       layout="stack"
       orientation="vertical"
@@ -132,17 +153,15 @@ const SelectContent = <T extends object>({
       {...props}
     />
   )
+
   return (
     <Popover
       className={cn(
-        "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 flex h-max w-auto min-w-(--trigger-width) flex-col overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out",
+        "cn-select-content relative flex h-max w-auto min-w-(--trigger-width) flex-col overflow-hidden outline-hidden",
         className
       )}
       offset={offset}
-      placement={side}
-      style={{
-        width: "var(--trigger-width)"
-      }}
+      placement={placement}
       trigger="focus"
     >
       {isSearchable ? (
@@ -161,15 +180,42 @@ const SelectContent = <T extends object>({
             return inputIndex === inputValue.length
           }}
         >
-          <SearchField aria-label="Search" autoFocus className="relative flex">
-            <Label>
-              <IconSearch className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-            </Label>
-            <Input
-              className="h-9 w-full appearance-none border-b px-3 py-1 pl-9 text-sm outline-hidden [&::-webkit-search-cancel-button]:hidden"
-              placeholder="Search"
-            />
-          </SearchField>
+          <div className="cn-command-input-wrapper" data-slot="command-input-wrapper">
+            <SearchField
+              aria-label="Filter"
+              autoFocus
+              className={cn(inputGroupVariants({ className: "cn-command-input-group" }), className)}
+              data-slot="command-input-wrapper"
+            >
+              <InputGroupAddon>
+                <IconPlaceholder
+                  className="cn-command-input-icon group-data-[pending=true]/command:hidden"
+                  data-slot="input-group-addon"
+                  hugeicons="SearchIcon"
+                  lucide="SearchIcon"
+                  phosphor="MagnifyingGlassIcon"
+                  remixicon="RiSearchLine"
+                  tabler="IconSearch"
+                />
+                <IconPlaceholder
+                  aria-label="Loading"
+                  className="cn-command-input-icon hidden animate-spin group-data-[pending=true]/command:block"
+                  data-slot="input-group-addon"
+                  hugeicons="Loading03Icon"
+                  lucide="LoaderIcon"
+                  phosphor="SpinnerIcon"
+                  remixicon="RiLoaderLine"
+                  role="status"
+                  tabler="IconLoader"
+                />
+              </InputGroupAddon>
+              <Input
+                className="cn-command-input w-auto! outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden"
+                data-slot="command-input"
+                placeholder="Search ..."
+              />
+            </SearchField>
+          </div>
           {renderContent()}
         </Autocomplete>
       ) : (
@@ -179,12 +225,14 @@ const SelectContent = <T extends object>({
   )
 }
 
-const SelectGroup = <T extends object>({ title, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <ListBoxSection className={cn("flex flex-col text-sm", props.className)} data-slot="select-group" {...props}>
+const SelectGroup = <T extends object>({ title, children, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+  <ListBoxSection className={cn("cn-select-group", props.className)} data-slot="select-group" {...props}>
     {title && (
-      <Header className="pointer-events-none px-2 py-1 font-medium text-muted-foreground text-xs">{title}</Header>
+      <Header className="cn-select-label" data-slot="select-label">
+        {title}
+      </Header>
     )}
-    <Collection items={props.items}>{props.children}</Collection>
+    <Collection items={props.items}>{children}</Collection>
   </ListBoxSection>
 )
 
@@ -194,7 +242,7 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
   return (
     <ListBoxItem
       className={cn(
-        "relative flex w-full cursor-default select-none items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden data-disabled:pointer-events-none data-focused:bg-accent data-focused:text-accent-foreground data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "cn-select-item relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-slot="select-item"
@@ -203,12 +251,19 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
     >
       {(values) => (
         <>
-          {typeof children === "function" ? children(values) : children}
           {values.isSelected && (
-            <span className="absolute right-2 flex size-3.5 items-center justify-center">
-              <IconCheck className="size-4" />
+            <span className="cn-select-item-indicator">
+              <IconPlaceholder
+                className="cn-select-item-indicator-icon pointer-events-none"
+                hugeicons="Tick02Icon"
+                lucide="CheckIcon"
+                phosphor="CheckIcon"
+                remixicon="RiCheckLine"
+                tabler="IconCheck"
+              />
             </span>
           )}
+          {typeof children === "function" ? children(values) : children}
         </>
       )}
     </ListBoxItem>
@@ -217,7 +272,7 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
 
 const SelectSeparator = ({ className, ...props }: SeparatorProps) => (
   <Separator
-    className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
+    className={cn("cn-select-separator pointer-events-none", className)}
     data-slot="select-separator"
     {...props}
   />
@@ -230,4 +285,5 @@ Select.Separator = SelectSeparator
 Select.Trigger = SelectTrigger
 Select.Value = SelectValue
 
+export type { Key }
 export { Select, SelectContent, SelectGroup, SelectItem, SelectSeparator, SelectTrigger, SelectValue }

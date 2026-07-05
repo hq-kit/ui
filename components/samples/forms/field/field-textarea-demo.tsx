@@ -2,7 +2,7 @@
 
 import { Form } from "react-aria-components"
 import { Button } from "@/components/ui/button"
-import { FieldDescription, FieldError, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field"
+import { Description, FieldError, FieldGroup, FieldSet, Label } from "@/components/ui/field"
 import { Textarea } from "@/components/ui/input"
 import { TextField } from "@/components/ui/text-field"
 
@@ -12,9 +12,9 @@ export default function FieldTextareaDemo() {
       <FieldSet>
         <FieldGroup>
           <TextField isRequired>
-            <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
+            <Label htmlFor="feedback">Feedback</Label>
             <Textarea id="feedback" placeholder="Your feedback helps us improve..." rows={4} />
-            <FieldDescription>Share your thoughts about our service.</FieldDescription>
+            <Description>Share your thoughts about our service.</Description>
             <FieldError />
           </TextField>
         </FieldGroup>

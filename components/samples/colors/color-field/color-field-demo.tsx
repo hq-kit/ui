@@ -2,7 +2,7 @@
 
 import { ColorField } from "@/components/ui/colors"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 
 export default function ColorFieldDemo() {
   return (

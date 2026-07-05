@@ -1,5 +1,5 @@
 import { IconCirclePlus2 } from "@tabler/icons-react"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const CardInviteCardDemo = () => {
@@ -14,33 +14,30 @@ const CardInviteCardDemo = () => {
           <span className="font-semibold text-sm">Invite Member </span>
         </div>
         <div className="flex items-center gap-4">
-          <Avatar
-            alt="Hallie Richards"
-            fallback="JA"
-            src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-          />
+          <Avatar>
+            <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png" />
+            <AvatarFallback>JA</AvatarFallback>
+          </Avatar>
           <div className="flex flex-col">
             <span className="font-semibold text-sm">Jimmy Androson </span>
             <span className="text-muted-foreground text-sm">UI Designer</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Avatar
-            alt="Hallie Richards"
-            fallback="DA"
-            src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-2.png"
-          />
+          <Avatar>
+            <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-2.png" />
+            <AvatarFallback>DA</AvatarFallback>
+          </Avatar>
           <div className="flex flex-col">
             <span className="font-semibold text-sm">Dean Ambrose </span>
             <span className="text-muted-foreground text-sm">UX Designer</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Avatar
-            alt="Hallie Richards"
-            fallback="HR"
-            src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-3.png"
-          />
+          <Avatar>
+            <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-3.png" />
+            <AvatarFallback>HR</AvatarFallback>
+          </Avatar>
           <div className="flex flex-col">
             <span className="font-semibold text-sm">Anita John</span>
             <span className="text-muted-foreground text-sm">Branding</span>

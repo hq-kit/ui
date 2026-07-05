@@ -2,24 +2,19 @@
 
 import { IconVolume, IconVolume3 } from "@tabler/icons-react"
 import { useState } from "react"
-import { Label } from "@/components/ui/label"
-import { Slider, SliderFill, SliderGroup, SliderThumb, SliderTrack } from "@/components/ui/slider"
+import { Label } from "@/components/ui/field"
+import { Slider, SliderGroup } from "@/components/ui/slider"
 
 export default function SliderPrefixSuffixDemo() {
   const [volume, setVolume] = useState<number>(0.5)
   return (
-    <div className="flex w-full items-center gap-4 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:translate-y-3.5">
-      <Slider onChange={(v) => setVolume(v as number)} value={volume}>
+    <div className="w-full space-y-3">
+      <SliderGroup>
         <Label>Volume</Label>
-        <SliderGroup>
-          <IconVolume3 />
-          <SliderTrack>
-            <SliderFill />
-            <SliderThumb />
-          </SliderTrack>
-          <IconVolume />
-        </SliderGroup>
-      </Slider>
+        <IconVolume3 />
+        <Slider onChange={(v) => setVolume(v as number)} value={volume}></Slider>
+        <IconVolume />
+      </SliderGroup>
     </div>
   )
 }

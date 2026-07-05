@@ -4,7 +4,7 @@ import type { Key } from "react-aria-components/Collection"
 import type { ColorChannel } from "react-aria-components/ColorArea"
 import { useState } from "react"
 import { ColorArea } from "@/components/ui/colors"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Select } from "@/components/ui/select"
 
 const channels = ["red", "green", "blue", "alpha"].map((channel) => ({ channel }))

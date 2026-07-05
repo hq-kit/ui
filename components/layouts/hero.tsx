@@ -88,7 +88,7 @@ const HeroButton = ({ children, className, variant = "default", size = "lg", ...
 )
 
 const MainContent = ({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <Container className={cn("py-6 xl:border-x", className)} constrained {...props}>
+  <Container className={cn("xl:border-x", className)} constrained {...props}>
     {children}
   </Container>
 )

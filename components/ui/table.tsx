@@ -1,6 +1,5 @@
 "use client"
 
-import { IconChevronDown, IconGripVertical } from "@tabler/icons-react"
 import { createContext, type Ref, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
@@ -23,15 +22,13 @@ import {
   type TableBodyProps,
   useTableOptions
 } from "react-aria-components/Table"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { Checkbox } from "./checkbox"
 
 interface TableProps extends Omit<RACTableProps, "className"> {
   allowResize?: boolean
   className?: string
-  bleed?: boolean
-  grid?: boolean
-  striped?: boolean
   ref?: Ref<HTMLTableElement>
 }
 
@@ -39,33 +36,30 @@ const TableContext = createContext<TableProps>({
   allowResize: false
 })
 
-const Root = (props: TableProps) => (
-  <RACTable
-    className="w-full min-w-full caption-bottom text-sm/6 outline-hidden [--table-selected-bg:var(--color-secondary)]/50"
-    {...props}
-  />
+const Root = ({ className, ...props }: TableProps) => (
+  <RACTable className={composeRenderProps(className, (className) => cn("cn-table", className))} {...props} />
 )
 
-const Table = ({ allowResize, className, bleed = false, grid = false, striped = false, ref, ...props }: TableProps) => {
+const Table = ({ allowResize, className, ref, ...props }: TableProps) => {
   return (
-    <TableContext.Provider value={{ allowResize, bleed, grid, striped }}>
-      <div className="flow-root **:[.react-aria-DropIndicator]:bg-primary">
-        <div
-          className={cn(
-            "relative -mx-(--gutter) overflow-x-auto whitespace-nowrap [--gutter-y:--spacing(2)] has-data-[slot=table-resizable-container]:overflow-auto",
-            className
-          )}
-        >
-          <div className={cn("inline-block min-w-full align-middle", !bleed && "sm:px-(--gutter)")}>
-            {allowResize ? (
-              <ResizableTableContainer data-slot="table-resizable-container">
-                <Root ref={ref} {...props} />
-              </ResizableTableContainer>
-            ) : (
-              <Root {...props} ref={ref} />
-            )}
-          </div>
-        </div>
+    <TableContext.Provider value={{ allowResize }}>
+      <div
+        className={cn(
+          "cn-table-container has-data-[slot=table-resizable-container]:overflow-auto",
+          "[&_.react-aria-DropIndicator[data-drop-target]]:outline",
+          "[&_.react-aria-DropIndicator[data-drop-target]]:outline-destructive",
+          "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
+          className
+        )}
+        data-slot="table-container"
+      >
+        {allowResize ? (
+          <ResizableTableContainer data-slot="table-resizable-container">
+            <Root ref={ref} {...props} />
+          </ResizableTableContainer>
+        ) : (
+          <Root {...props} ref={ref} />
+        )}
       </div>
     </TableContext.Provider>
   )
@@ -76,34 +70,31 @@ const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
     {...props}
     className={composeRenderProps(className, (className) =>
       cn(
-        "absolute top-0 right-0 bottom-0 grid w-px &[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize touch-none place-content-center px-1 data-[resizable-direction=both]:cursor-ew-resize [&[data-resizing]>div]:bg-primary",
+        "absolute top-0 right-0 bottom-0 z-10 my-2 grid w-px &[data-resizable-direction=left]:cursor-e-resize &[data-resizable-direction=right]:cursor-w-resize touch-none place-content-center border-l px-1 data-[resizable-direction=both]:cursor-ew-resize data-resizing:border-l-primary",
         className
       )
     )}
-  >
-    <div className="h-full w-px bg-border py-(--gutter-y)" />
-  </RACColumnResizer>
+  />
 )
 
-const TableBody = <T extends object>(props: TableBodyProps<T>) => <RACTableBody data-slot="table-body" {...props} />
+const TableBody = <T extends object>({ className, ...props }: TableBodyProps<T>) => (
+  <RACTableBody
+    className={composeRenderProps(className, (className) => cn("cn-table-body", className))}
+    data-slot="table-body"
+    {...props}
+  />
+)
 
 const TableColumn = ({ isResizable = false, className, ...props }: ColumnProps & { isResizable?: boolean }) => {
-  const { bleed, grid } = use(TableContext)
   return (
     <Column
-      data-slot="table-column"
+      data-slot="table-head"
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          [
-            "text-left font-medium text-muted-foreground",
-            "relative outline-hidden data-[allows-sorting=true]:cursor-default data-dragging:cursor-grabbing",
-            "px-4 py-(--gutter-y)",
-            "first:pl-(--gutter,--spacing(2)) last:pr-(--gutter,--spacing(2))",
-            !bleed && "sm:last:pr-1 sm:first:pl-1",
-            grid && "border-l first:border-l-0",
-            isResizable && "overflow-hidden truncate"
-          ],
+          "cn-table-head relative",
+          "outline-hidden data-[allows-sorting=true]:cursor-default data-dragging:cursor-grabbing",
+          isResizable && "overflow-hidden truncate",
           className
         )
       )}
@@ -118,7 +109,14 @@ const TableColumn = ({ isResizable = false, className, ...props }: ColumnProps &
                 values.isHovered ? "bg-secondary-foreground/10" : ""
               )}
             >
-              <IconChevronDown className={values.sortDirection === "ascending" ? "rotate-180" : ""} />
+              <IconPlaceholder
+                className={values.sortDirection === "ascending" ? "rotate-180" : ""}
+                hugeicons="ArrowDown01Icon"
+                lucide="ChevronDownIcon"
+                phosphor="CaretDownIcon"
+                remixicon="RiArrowDownSLine"
+                tabler="IconChevronDown"
+              />
             </span>
           )}
           {isResizable && <ColumnResizer />}
@@ -133,28 +131,19 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
 }
 
 const TableHeader = <T extends object>({ children, ref, columns, className, ...props }: TableHeaderProps<T>) => {
-  const { bleed } = use(TableContext)
   const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
   return (
     <RACTableHeader
-      className={composeRenderProps(className, (className) => cn("border-b", className))}
+      className={composeRenderProps(className, (className) => cn("cn-table-header", className))}
       data-slot="table-header"
       ref={ref}
       {...props}
     >
-      {allowsDragging && (
-        <Column
-          className={cn("first:pl-(--gutter,--spacing(2))", !bleed && "sm:last:pr-1 sm:first:pl-1")}
-          data-slot="table-column"
-        />
-      )}
-      {selectionBehavior === "toggle" && (
-        <Column
-          className={cn("w-auto first:pl-(--gutter,--spacing(2))", !bleed && "sm:last:pr-1 sm:first:pl-1")}
-          data-slot="table-column"
-        >
-          {selectionMode === "multiple" && <Checkbox slot="selection" />}
-        </Column>
+      {allowsDragging && <TableColumn className="w-8" />}
+      {selectionBehavior === "toggle" && selectionMode === "multiple" && (
+        <TableColumn className="w-8">
+          <Checkbox slot="selection" />
+        </TableColumn>
       )}
       <Collection items={columns}>{children}</Collection>
     </RACTableHeader>
@@ -167,43 +156,40 @@ interface TableRowProps<T extends object> extends RowProps<T> {
 
 const TableRow = <T extends object>({ children, className, columns, ref, ...props }: TableRowProps<T>) => {
   const { selectionBehavior, allowsDragging } = useTableOptions()
-  const { striped } = use(TableContext)
   return (
     <Row
       data-slot="table-row"
       ref={ref}
       {...props}
-      className={composeRenderProps(
-        className,
-        (className, { isSelected, selectionMode, isFocusVisibleWithin, isDragging, isDisabled, isFocusVisible }) =>
-          cn(
-            "group relative cursor-default text-muted-foreground outline outline-transparent",
-            isFocusVisible && "bg-primary/5 outline-primary ring-3 ring-ring/20 hover:bg-primary/10",
-            isDragging && "cursor-grabbing bg-primary/10 text-foreground outline-primary",
-            isSelected && "bg-(--table-selected-bg) text-foreground hover:bg-(--table-selected-bg)/50",
-            striped && "even:bg-muted",
-            (props.href || props.onAction || selectionMode === "multiple") &&
-              "hover:bg-(--table-selected-bg) hover:text-foreground",
-            (props.href || props.onAction || selectionMode === "multiple") &&
-              isFocusVisibleWithin &&
-              "bg-(--table-selected-bg)/50 selected:bg-(--table-selected-bg)/50 text-foreground",
-            isDisabled && "opacity-50",
-            className
-          )
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "cn-table-row group relative cursor-default outline outline-transparent has-aria-expanded:bg-muted/50",
+          "data-dragging:cursor-grabbing data-disabled:opacity-50 data-dragging:outline-primary",
+          "data-drop-target:outline-primary",
+          className
+        )
       )}
     >
       {allowsDragging && (
-        <TableCell className="px-0">
+        <TableCell>
           <Button
-            className="grid place-content-center rounded-xs px-[calc(var(--gutter)/2)] outline-hidden focus-visible:ring focus-visible:ring-ring"
+            className="flex items-center justify-center rounded-xs outline-hidden focus-visible:ring focus-visible:ring-ring"
             slot="drag"
           >
-            <IconGripVertical className="size-4" />
+            <IconPlaceholder
+              className="size-4"
+              hugeicons="GripVerticalIcon"
+              lucide="GripVerticalIcon"
+              phosphor="DotsSixVerticalIcon"
+              remixicon="RiDraggable"
+              slot="selection"
+              tabler="IconGripVertical"
+            />
           </Button>
         </TableCell>
       )}
       {selectionBehavior === "toggle" && (
-        <TableCell className="w-auto px-0">
+        <TableCell>
           <Checkbox slot="selection" />
         </TableCell>
       )}
@@ -216,30 +202,58 @@ interface TableCellProps extends CellProps {
   ref?: Ref<HTMLTableCellElement>
 }
 const TableCell = ({ className, ref, ...props }: TableCellProps) => {
-  const { allowResize, bleed, grid, striped } = use(TableContext)
+  const { allowResize } = use(TableContext)
   return (
     <Cell
-      data-slot="table-cell"
-      ref={ref}
       {...props}
       className={composeRenderProps(className, (className) =>
-        cn(
-          "group px-4 py-(--gutter-y) align-middle outline-hidden first:pl-(--gutter,--spacing(2)) last:pr-(--gutter,--spacing(2)) group-has-data-focus-visible-within:text-foreground",
-          !striped && "border-b",
-          grid && "border-l first:border-l-0",
-          !bleed && "sm:last:pr-1 sm:first:pl-1",
-          allowResize && "overflow-hidden truncate",
-          className
-        )
+        cn("cn-table-cell outline outline-transparent", allowResize && "overflow-hidden truncate", className)
       )}
-    />
+      data-slot="table-cell"
+      ref={ref}
+      style={({ hasChildItems, isTreeColumn, level }) => ({
+        paddingInlineStart: isTreeColumn ? (hasChildItems ? 0 : 6) + (level - 1) * 22 : undefined
+      })}
+    >
+      {(values) => {
+        const children = typeof props.children === "function" ? props.children(values) : props.children
+        return values.isTreeColumn && values.hasChildItems ? (
+          <Button
+            className="flex shrink-0 items-center gap-1 rounded px-2 text-foreground hover:bg-secondary"
+            slot="chevron"
+          >
+            <IconPlaceholder
+              className="size-3.5 in-data-expanded:rotate-90 transition-transform"
+              hugeicons="ArrowRight01Icon"
+              lucide="ChevronRightIcon"
+              phosphor="CaretRightIcon"
+              remixicon="RiArrowRightSLine"
+              tabler="IconChevronRight"
+            />
+            {children}
+          </Button>
+        ) : (
+          children
+        )
+      }}
+    </Cell>
   )
 }
+
+const TableFooter = ({ className, ...props }: React.ComponentProps<"tfoot">) => (
+  <tfoot className={cn("cn-table-footer", className)} data-slot="table-footer" {...props} />
+)
+
+const TableCaption = ({ className, ...props }: React.ComponentProps<"caption">) => (
+  <caption className={cn("cn-table-caption", className)} data-slot="table-caption" {...props} />
+)
 
 Table.Header = TableHeader
 Table.Body = TableBody
 Table.Column = TableColumn
 Table.Cell = TableCell
 Table.Row = TableRow
+Table.Footer = TableFooter
+Table.Caption = TableCaption
 
-export { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow }
+export { Table, TableBody, TableCaption, TableCell, TableColumn, TableFooter, TableHeader, TableRow }

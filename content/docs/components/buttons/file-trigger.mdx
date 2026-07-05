@@ -11,19 +11,52 @@ published: true
 ## Preview
 <Preview component='preview/file-trigger' />
 
-## Blocks
 
-<Grid col={3}>
+## Examples
 
-<Demo component='buttons/file-trigger/file-trigger-01'/>
-<Demo component='buttons/file-trigger/file-trigger-02'/>
-<Demo component='buttons/file-trigger/file-trigger-03'/>
-<Demo component='buttons/file-trigger/file-trigger-04'/>
-<Demo component='buttons/file-trigger/file-trigger-05'/>
-<Demo component='buttons/file-trigger/file-trigger-06'/>
-<Demo component='buttons/file-trigger/file-trigger-07'/>
-<Demo component='buttons/file-trigger/file-trigger-08'/>
-<Demo component='buttons/file-trigger/file-trigger-09'/>
+### Folder
+A FileTrigger that allows users to select a folder from the file system.
 
-</Grid>
+<Demo component='buttons/file-trigger/file-trigger-folder-example' />
 
+### Multiple
+A FileTrigger that enables users to select multiple files.
+
+<Demo component='buttons/file-trigger/file-trigger-multiple-example' />
+
+### Camera
+A FileTrigger that lets users capture images using their device's camera.
+
+<Demo component='buttons/file-trigger/file-trigger-camera-example' />
+
+### Avatar
+A FileTrigger that allows users to select an avatar from their file system. It integrates components like `avatar` and `drop-zone`, enabling users to either drag and drop or manually select a file.
+
+This how you can use the FileTrigger combined with an Avatar component.
+<Demo component='buttons/file-trigger/file-trigger-avatar-example' />
+
+### Pending
+A FileTrigger can indicate a pending state using the `isPending` prop. This provides feedback for actions that take time, communicates the status to assistive technologies, and disables interactions except for focus.
+<Demo component='buttons/file-trigger/file-trigger-pending-example' />
+
+### Controlled
+You can use the `onSelect` prop to snag the selected files.
+<Demo component='buttons/file-trigger/file-trigger-controlled-example' />
+
+### Disabled
+A FileTrigger that is disabled.
+<Demo component='buttons/file-trigger/file-trigger-disabled-example' />
+
+## API Reference
+
+### FileTrigger
+
+The `FileTrigger` component opens the system file picker from a styled trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `isDisabled` | `boolean` | - |
+| `isPending` | `boolean` | - |

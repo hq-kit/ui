@@ -1,12 +1,9 @@
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Meter } from "@/components/ui/meter"
 
 const Example = () => (
   <Meter value={65}>
-    <Meter.Header>
-      <Label>Usage</Label>
-    </Meter.Header>
-    <Meter.Track />
+    <Label>Usage</Label>
   </Meter>
 )
 

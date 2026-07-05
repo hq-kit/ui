@@ -10,7 +10,7 @@ import {
   IconUserPlus
 } from "@tabler/icons-react"
 import { useState } from "react"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
@@ -22,12 +22,10 @@ const CardTweetDemo = () => {
     <Card className="max-w-md">
       <CardHeader className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <Avatar
-            alt="Hallie Richards"
-            className="ring-2 ring-ring"
-            fallback="PG"
-            src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-          />
+          <Avatar className="ring-2 ring-ring">
+            <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png" />
+            <AvatarFallback>PG</AvatarFallback>
+          </Avatar>
           <div className="flex flex-col gap-0.5">
             <CardTitle className="flex items-center gap-1 text-sm">
               Philip George <IconCircleCheck className="size-4 fill-sky-600 stroke-white dark:fill-sky-400" />

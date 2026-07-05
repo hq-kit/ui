@@ -1,20 +1,26 @@
 "use client"
 
+import type { Key } from "@/components/ui/select"
 import {
   IconBell,
   IconChevronDown,
+  IconChevronRight,
   IconCircleCheck,
   IconCreditCard,
   IconHome,
   IconLayoutNavbar,
   IconLayoutSidebar,
   IconLogout,
-  IconSparkles
+  IconSparkles,
+  IconUser
 } from "@tabler/icons-react"
+import { type ComponentType, useState } from "react"
 import { IconApp } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
+import { Card } from "@/components/ui/card"
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,25 +30,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-import {
-  Navbar,
-  NavbarBreadcrumbs,
-  NavbarCompact,
-  NavbarFlex,
-  NavbarInset,
-  NavbarItem,
-  NavbarLogo,
-  NavbarNav,
-  NavbarSection,
-  NavbarTrigger
-} from "@/components/ui/navbar"
-import { Separator } from "@/components/ui/separator"
+import { FieldGroup, Label } from "@/components/ui/field"
+import { Navbar, NavbarGroup, NavbarInset, NavbarMenu, NavbarMenuItem, useNavbar } from "@/components/ui/navbar"
+import { Select } from "@/components/ui/select"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Switch } from "@/components/ui/switch"
+import { cn } from "@/lib/utils"
 
 type NavMenu = {
   title: string
   url?: string
-  icon?: React.ComponentType<{ className?: string }>
+  icon?: ComponentType<{ className?: string }>
   items?: {
     title: string
     url: string
@@ -118,84 +116,135 @@ const user = {
 }
 
 export default function NavbarDemo() {
+  const [variant, setVariant] = useState<Key | null>("navbar")
+  const [sticky, setSticky] = useState<boolean>(false)
+  const [fluidNavbar, setFluidNavbar] = useState<boolean>(false)
+  const [fluidContent, setFluidContent] = useState<boolean>(false)
   return (
-    <Navbar isSticky>
-      <NavbarNav>
-        <NavbarLogo aria-label="Goto documenation of Navbar" href="/docs/components/layouts/navbar">
-          <IconApp className="size-6 sm:size-5" />
-          <span className="font-bold">HQ UI</span>
-        </NavbarLogo>
-        <NavbarSection>
-          <Navigation items={navigations} />
-        </NavbarSection>
-
-        <NavbarSection className="ml-auto hidden md:flex">
-          <NavbarFlex className="sm:gap-x-1">
-            <ThemeToggle variant="ghost" />
-          </NavbarFlex>
-          <NavUser user={user} />
-        </NavbarSection>
-      </NavbarNav>
-      <NavbarCompact>
-        <NavbarFlex>
-          <NavbarTrigger className="-ml-2" />
-          <Separator className="h-6 sm:mx-1" orientation="vertical" />
-          <NavbarLogo aria-label="Goto documenation of Navbar" href="/docs/components/layouts/navbar">
-            <IconApp className="size-5" />
-          </NavbarLogo>
-        </NavbarFlex>
-        <NavbarFlex>
-          <Navbar.Flex>
-            <ThemeToggle variant="ghost" />
-          </Navbar.Flex>
-          <NavUser user={user} />
-        </NavbarFlex>
-      </NavbarCompact>
-      <NavbarBreadcrumbs>
-        <Breadcrumb>
+    <Navbar.Provider>
+      <Navbar fluid={fluidNavbar} sticky={sticky} variant={variant as "navbar" | "inset" | "floating"}>
+        <Navbar.Content>
+          <Navbar.Header>
+            <Navbar.Menu>
+              <Navbar.MenuButton className="data-[slot=navbar-menu-button]:p-1.5!">
+                <IconApp className="size-5!" />
+                <span className="font-semibold text-base">HQ UI</span>
+              </Navbar.MenuButton>
+            </Navbar.Menu>
+          </Navbar.Header>
+          <NavbarGroup>
+            <NavbarMenu>
+              <Navigation items={navigations} />
+            </NavbarMenu>
+          </NavbarGroup>
+        </Navbar.Content>
+        <Breadcrumb className="flex-nowrap justify-end overflow-x-auto">
           <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
           <Breadcrumb.Item href="#">Blocks</Breadcrumb.Item>
           <Breadcrumb.Item>Navbar</Breadcrumb.Item>
         </Breadcrumb>
-      </NavbarBreadcrumbs>
-      <NavbarInset>
-        <div className="flex flex-1 flex-col gap-4 py-4">
+
+        <Navbar.Actions>
+          <ThemeToggle variant="ghost" />
+          <NavUser user={user} />
+        </Navbar.Actions>
+      </Navbar>
+      <NavbarInset fluid={fluidContent}>
+        <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <Skeleton className="aspect-video rounded-xl" />
-            <Skeleton className="aspect-video rounded-xl" />
-            <Skeleton className="aspect-video rounded-xl" />
+            <Skeleton />
+            <Card>
+              <Card.Content>
+                <FieldGroup>
+                  <Select aria-label="Variant" onChange={setVariant} value={variant}>
+                    <Label>Variant</Label>
+                    <Select.Trigger>
+                      <Select.Value />
+                    </Select.Trigger>
+                    <Select.Content>
+                      <Select.Item id="navbar">Navbar</Select.Item>
+                      <Select.Item id="inset">Inset</Select.Item>
+                      <Select.Item id="floating">Floating</Select.Item>
+                    </Select.Content>
+                  </Select>
+                  <Switch isSelected={sticky} onChange={setSticky}>
+                    Sticky Navbar
+                  </Switch>
+                  <Switch isSelected={fluidNavbar} onChange={setFluidNavbar}>
+                    Fluid Navbar
+                  </Switch>
+                  <Switch isSelected={fluidContent} onChange={setFluidContent}>
+                    Fluid Content
+                  </Switch>
+                </FieldGroup>
+              </Card.Content>
+            </Card>
+            <Skeleton />
           </div>
-          <Skeleton className="min-h-screen flex-1 rounded-xl md:min-h-min" />
+          <Skeleton className={cn("min-h-screen flex-1 md:min-h-full", sticky && "md:min-h-screen")} />
         </div>
       </NavbarInset>
-    </Navbar>
+    </Navbar.Provider>
   )
 }
 
 const Navigation = ({ items }: { items: NavMenu }) => {
-  return items.map((item) =>
-    item.items ? (
-      <DropdownMenu key={item.title}>
-        <NavbarItem isActive={item.title === "Navbar"}>
-          {item.icon && <item.icon />}
-          <span>{item.title}</span>
-          <IconChevronDown className="ml-auto in-aria-expanded:rotate-180 transition-transform" />
-        </NavbarItem>
-        <DropdownMenuContent placement="bottom start">
-          {item.items?.map((subItem) => (
-            <DropdownMenuItem href={subItem.url} key={subItem.title}>
-              {subItem.title}
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    ) : (
-      <NavbarItem href={item.url} key={item.title}>
-        {item.icon && <item.icon />}
-        <span>{item.title}</span>
-      </NavbarItem>
-    )
-  )
+  const { isMobile } = useNavbar()
+  return items.map((item) => {
+    if (item.items) {
+      return isMobile ? (
+        <Collapsible defaultExpanded={true} key={item.title}>
+          <Navbar.MenuItem>
+            <Navbar.MenuButton slot="trigger">
+              {item.icon && <item.icon />}
+              <span>{item.title}</span>
+              <IconChevronRight className="ml-auto transition-transform duration-200 group-data-expanded/collapsible:rotate-90" />
+            </Navbar.MenuButton>
+            <CollapsibleContent>
+              <Navbar.MenuSub>
+                {item.items?.map((subItem) => (
+                  <Navbar.MenuSubItem key={subItem.title}>
+                    <Navbar.MenuSubButton
+                      href={subItem.url}
+                      isActive={subItem.url === "/block/layouts/sidebar/sidebar-demo"}
+                    >
+                      {subItem.title}
+                    </Navbar.MenuSubButton>
+                  </Navbar.MenuSubItem>
+                ))}
+              </Navbar.MenuSub>
+            </CollapsibleContent>
+          </Navbar.MenuItem>
+        </Collapsible>
+      ) : (
+        <DropdownMenu key={item.title}>
+          <Navbar.MenuItem>
+            <Navbar.MenuButton isActive={item.title === "Navbar"}>
+              {item.icon && <item.icon />}
+              <span>{item.title}</span>
+              <IconChevronDown className="ml-auto in-aria-expanded:rotate-180 transition-transform" />
+            </Navbar.MenuButton>
+            <DropdownMenuContent placement="bottom start">
+              {item.items?.map((subItem) => (
+                <DropdownMenuItem href={subItem.url} key={subItem.title}>
+                  {subItem.title}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </Navbar.MenuItem>
+        </DropdownMenu>
+      )
+    } else {
+      return (
+        <NavbarMenuItem key={item.title}>
+          <Navbar.MenuButton href={item.url}>
+            {item.icon && <item.icon />}
+            <span>{item.title}</span>
+          </Navbar.MenuButton>
+        </NavbarMenuItem>
+      )
+    }
+  })
 }
 
 const NavUser = ({
@@ -210,12 +259,22 @@ const NavUser = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-        <Avatar alt={user.name} className="size-8 rounded-md" src={user.avatar} />
+        <Avatar className="size-8 rounded-md">
+          <AvatarImage alt={user.name} src={user.avatar} />
+          <AvatarFallback>
+            <IconUser />
+          </AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56 rounded-lg" placement="bottom end">
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar alt={user.name} className="size-8 rounded-md" src={user.avatar} />
+            <Avatar className="size-8 rounded-md">
+              <AvatarImage alt={user.name} src={user.avatar} />
+              <AvatarFallback>
+                <IconUser />
+              </AvatarFallback>
+            </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{user.name}</span>
               <span className="truncate text-xs">{user.email}</span>

@@ -75,9 +75,8 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode
 }>) {
-  const lang = "en-US"
   return (
-    <html data-scroll-behavior="smooth" lang={lang} suppressHydrationWarning>
+    <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -85,9 +84,10 @@ export default function RootLayout({
           href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
           rel="stylesheet"
         />
+        <title>{siteConfig.name}</title>
       </head>
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
-        <Providers lang={lang}>
+        <Providers>
           <ThemeSyncClient />
           {children}
         </Providers>

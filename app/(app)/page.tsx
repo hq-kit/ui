@@ -1,9 +1,6 @@
-import { IconApp } from "@/components/icons"
 import { Hero, HeroTitle, MainContent } from "@/components/layouts/hero"
 import { CLI } from "@/components/mdx/cli"
 import Sink from "@/components/sink"
-import { buttonVariants } from "@/components/ui/button-group"
-import { Link } from "@/components/ui/link"
 
 export default function Page() {
   return (
@@ -17,15 +14,9 @@ export default function Page() {
             accessible. Easy to customize and just copy & paste into your React projects.
           </div>
         </header>
-        <main className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-center">
-          <div className="relative -mt-4">
-            <CLI command="init" />
-          </div>
-          <Link className={buttonVariants({ size: "lg" })} href="/docs/getting-started/installation">
-            <IconApp />
-            Components
-          </Link>
-        </main>
+        <div className="max-w-3xl">
+          <CLI command="init" />
+        </div>
       </Hero>
       <MainContent>
         <Sink />

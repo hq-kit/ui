@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "./style-vega.css" layer(base);
+@import "./style-nova.css" layer(base);
+@import "./style-lyra.css" layer(base);
+@import "./style-maia.css" layer(base);
+@import "./style-mira.css" layer(base);
+@import "./style-luma.css" layer(base);
+@import "./style-sera.css" layer(base);
+@import "./style-rhea.css" layer(base);
+
+@import "./utils.css";
+
+@custom-variant style-vega (&:where(.style-vega *));
+@custom-variant style-nova (&:where(.style-nova *));
+@custom-variant style-lyra (&:where(.style-lyra *));
+@custom-variant style-maia (&:where(.style-maia *));
+@custom-variant style-mira (&:where(.style-mira *));
+@custom-variant style-luma (&:where(.style-luma *));
+@custom-variant style-sera (&:where(.style-sera *));
+@custom-variant style-rhea (&:where(.style-rhea *));
 @custom-variant dark (&:is(.dark *));
 
 @custom-variant fixed (&:is(.layout-fixed *));
@@ -129,7 +148,6 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
-
 @layer base {
     * {
         @apply border-border outline-ring/50;
@@ -167,6 +185,7 @@
     button:active {
         @apply opacity-60 md:opacity-100;
     }
+
 }
 
 @utility border-grid {
@@ -174,7 +193,7 @@
 }
 
 @utility section-soft {
-    @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-gradient-to-b;
+    @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-linear-to-b;
 }
 
 @utility theme-container {
@@ -186,7 +205,7 @@
 }
 
 @utility container {
-    @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
+    @apply 3xl:max-w-screen-2xl mx-auto max-w-350 px-4 lg:px-8;
 }
 
 @utility no-scrollbar {
@@ -268,19 +287,19 @@
 @layer components {
     .steps {
         &:first-child {
-            @apply !mt-0;
+            @apply mt-0!;
         }
 
         &:first-child>h3:first-child {
-            @apply !mt-0;
+            @apply mt-0!;
         }
 
         >h3 {
-            @apply !mt-16;
+            @apply mt-16!;
         }
 
         >h3+p {
-            @apply !mt-2;
+            @apply mt-2!;
         }
     }
 }

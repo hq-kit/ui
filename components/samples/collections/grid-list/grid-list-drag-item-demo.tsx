@@ -2,7 +2,7 @@
 
 import { useDragAndDrop } from "react-aria-components"
 import { useListData } from "react-stately"
-import { GridList, GridListEmptyState, GridListItem } from "@/components/ui/grid-list"
+import { GridList, GridListItem } from "@/components/ui/grid-list"
 
 function GridListDragDemo() {
   const list = useListData({
@@ -108,7 +108,7 @@ export function OtherEmptyList() {
       aria-label="Droppable list"
       dragAndDropHooks={dragAndDropHooks}
       items={list.items}
-      renderEmptyState={() => <GridListEmptyState>No bands selected</GridListEmptyState>}
+      renderEmptyState={() => <GridList.EmptyState>No bands selected</GridList.EmptyState>}
     >
       {(item) => <GridListItem>{item.name}</GridListItem>}
     </GridList>

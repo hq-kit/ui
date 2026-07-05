@@ -1,7 +1,7 @@
 "use client"
 
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { findNeighbour, type Root as PageTreeRoot } from "fumadocs-core/page-tree"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { buttonVariants } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
 import { cn } from "@/lib/utils"
@@ -20,7 +20,14 @@ export const Pager = ({ tree, url, className }: PageProps) => {
       {neighbours.previous && (
         <div className="group w-40">
           <Link className={buttonVariants({ variant: "outline" })} href={neighbours.previous.url}>
-            <IconChevronLeft className="transition-transform group-hover:-translate-x-0.5" />
+            <IconPlaceholder
+              className="transition-transform group-hover:-translate-x-0.5"
+              hugeicons="ArrowLeft01Icon"
+              lucide="ChevronLeftIcon"
+              phosphor="CaretLeftIcon"
+              remixicon="RiArrowLeftSLine"
+              tabler="IconChevronLeft"
+            />
             <span className="line-clamp-1 text-foreground">{neighbours.previous.name}</span>
           </Link>
         </div>
@@ -30,7 +37,14 @@ export const Pager = ({ tree, url, className }: PageProps) => {
         <div className="group ml-auto flex w-40 justify-end">
           <Link className={buttonVariants({ variant: "outline" })} href={neighbours.next.url}>
             <span className="line-clamp-1 text-foreground">{neighbours.next.name}</span>
-            <IconChevronRight className="transition-transform group-hover:translate-x-0.5" />
+            <IconPlaceholder
+              className="transition-transform group-hover:translate-x-0.5"
+              hugeicons="ArrowRight01Icon"
+              lucide="ChevronRightIcon"
+              phosphor="CaretRightIcon"
+              remixicon="RiArrowRightSLine"
+              tabler="IconChevronRight"
+            />
           </Link>
         </div>
       )}
@@ -46,14 +60,26 @@ export const MobilePager = ({ tree, url, className }: PageProps) => {
       {neighbours.previous && (
         <Link className={buttonVariants({ variant: "outline", size: "icon-sm" })} href={neighbours.previous.url}>
           <span className="sr-only">{neighbours.previous.name}</span>
-          <IconChevronLeft />
+          <IconPlaceholder
+            hugeicons="ArrowLeft01Icon"
+            lucide="ChevronLeftIcon"
+            phosphor="CaretLeftIcon"
+            remixicon="RiArrowLeftSLine"
+            tabler="IconChevronLeft"
+          />
         </Link>
       )}
 
       {neighbours.next && (
         <Link className={buttonVariants({ variant: "outline", size: "icon-sm" })} href={neighbours.next.url}>
           <span className="sr-only">{neighbours.next.name}</span>
-          <IconChevronRight />
+          <IconPlaceholder
+            hugeicons="ArrowRight01Icon"
+            lucide="ChevronRightIcon"
+            phosphor="CaretRightIcon"
+            remixicon="RiArrowRightSLine"
+            tabler="IconChevronRight"
+          />
         </Link>
       )}
     </div>

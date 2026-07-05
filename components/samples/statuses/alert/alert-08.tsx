@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 const AlertMultipleActionDemo = () => {
   const [isActive, setIsActive] = useState(true)
 
-  if (!isActive) return null
+  if (!isActive) return <Button onPress={() => setIsActive(true)}>Restore</Button>
 
   return (
     <Alert className="flex justify-between border-none bg-primary text-primary-foreground">

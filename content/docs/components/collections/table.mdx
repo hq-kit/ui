@@ -8,16 +8,46 @@ published: true
 ## Installation
 <Install component='table' />
 
-## Blocks
+## Examples
 
+### Searchable
+In the latest React Aria release, tables can now be made searchable since Autocomplete supports all collection types, including Table This allows users to filter table rows directly with their input.
 
-<div className='space-y-4'>
-<Demo component='collections/table/table-demo'/>
-<Demo component='collections/table/table-with-autocomplete-demo'/>
-<Demo component='collections/table/table-sorting-demo'/>
-<Demo component='collections/table/table-resize-demo'/>
-<Demo component='collections/table/table-drag-demo'/>
-<Demo component='collections/table/table-bulk-demo'/>
-<Demo component='collections/table/table-infinite-scroll-demo'/>
+This example comes from a tweet by Devon [here](https://x.com/devongovett/status/1960184396801015971).
+<Demo component='collections/table/table-with-autocomplete-demo' />
 
-</div>
+### Expandable rows
+Tables can have expandable rows to show additional details. This is useful for displaying more information without clutter
+ing the main table view.
+<Demo component='collections/table/table-expandable-demo' />
+
+### Bulk actions
+Tables may require bulk actions for handling multiple entries at once.
+<Demo component='collections/table/table-bulk-demo' />
+
+### Drag and drop
+Similar to [GridList](/docs/components/collections/grid-list), tables can also support drag and drop functionality.
+<Demo component='collections/table/table-drag-demo' />
+
+### Sorting
+Tables can be made sortable. Activate sorting by clicking on a column header.
+<Demo component='collections/table/table-sorting-demo' />
+
+### Resizable
+Tables can be made resizable. To enable resizing, set the `allowResize` prop to `true`. And to make a column resizable, set the `isResizable` prop to `true` on the column.
+<Demo component='collections/table/table-resize-demo' />
+
+### Infinite scrolling
+Tables can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user scrolls down, improving performance and user experience.
+<Demo component='collections/table/table-infinite-scroll-demo' />
+
+### Links
+To create a clickable link within a table row, use the `href` prop.
+
+```jsx
+<TableRow href='/collections/table-demo'/>
+```
+<Note>
+  For client-side routing, React Aria recommends using the <code className="font-semibold">onAction</code> event to handle navigation programmatically instead of passing an href prop.
+  This is because some collection items cannot be rendered as native elements due to HTML specification limitations.
+</Note>

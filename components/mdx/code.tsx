@@ -43,10 +43,9 @@ export const Code = async ({ lang = "tsx", code, className, copy = false, ...pro
       <div
         {...props}
         className={cn(
-          "not-prose relative my-4 w-full max-w-none overflow-hidden rounded-lg text-sm/6 shadow-sm",
-          "*:[pre]:rounded-lg *:[pre]:py-2",
+          "cn-skeleton not-prose relative my-4 w-full max-w-none overflow-hidden border text-sm shadow-sm",
           "**:[pre]:max-h-96 **:[pre]:overflow-auto",
-          "scrollbar-fade",
+          "**:[pre]:[&::-webkit-scrollbar-thumb]:rounded-lg **:[pre]:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 **:[pre]:[&::-webkit-scrollbar-track]:rounded-lg **:[pre]:[&::-webkit-scrollbar-track]:bg-muted **:[pre]:[&::-webkit-scrollbar]:size-1.5 **:[pre]:[&::-webkit-scrollbar]:bg-transparent",
           className
         )}
         dangerouslySetInnerHTML={{ __html: formattedCode }}

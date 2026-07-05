@@ -1,17 +1,18 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { IconChevronRight, IconFile } from "@tabler/icons-react"
 import { Button } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   Tree as RACTree,
   TreeItem as RACTreeItem,
+  type Selection,
   TreeItemContent,
   type TreeItemContentProps,
   type TreeItemProps,
   type TreeProps
 } from "react-aria-components/Tree"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { Checkbox } from "./checkbox"
 
@@ -21,6 +22,9 @@ const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => (
       cn(
         "flex flex-col gap-0.5 text-sm outline-hidden",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:border",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:border-primary",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
         className
       )
     )}
@@ -33,8 +37,8 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
   <RACTreeItem
     className={composeRenderProps(className, (className) =>
       cn(
-        "relative flex cursor-default items-center gap-1 rounded-lg border border-transparent text-sm outline-hidden transition",
-        "pr-2 **:data-[slot=tree-item]:py-1.5",
+        "cn-menubar-trigger relative flex cursor-default items-center gap-1 border border-transparent pr-2 text-sm outline-hidden transition",
+        "data-drop-target:border-primary",
         "focus-visible:border-border focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "hover:bg-accent hover:text-accent-foreground",
         "data-selected:bg-accent data-selected:text-accent-foreground",
@@ -56,27 +60,58 @@ const TreeItemLabel = ({ children, icon, iconExpanded, ...props }: TreeItemLabel
   <TreeItemContent {...props}>
     {(values) => (
       <>
-        <div className="relative w-[calc(calc(var(--tree-item-level)-1)*--spacing(5.5))] shrink-0" />
+        <div className="relative w-[calc(calc(var(--tree-item-level)-1)*(--spacing(5.5)))] shrink-0" />
         {values.selectionMode === "multiple" && values.selectionBehavior === "toggle" && (
-          <Checkbox className="mr-0.5" slot="selection" />
+          <Checkbox className="mr-0.5 w-min" slot="selection" />
         )}
         {values.hasChildItems ? (
-          <Button
-            className="inline-flex w-full items-center justify-start gap-1 outline-hidden"
-            data-slot="tree-item"
-            slot="chevron"
-          >
-            <IconChevronRight
-              className={cn("transition-transform", values.isExpanded && "rotate-90")}
-              data-slot="indicator"
-            />
-            {!values.isExpanded && (typeof icon === "boolean" ? <IconFile /> : icon)}
-            {values.hasChildItems && values.isExpanded && (iconExpanded ?? icon)}
-            {typeof children === "function" ? children(values) : children}
-          </Button>
-        ) : (
           <span className="inline-flex w-full items-center justify-start gap-1 outline-hidden" data-slot="tree-item">
-            {typeof icon === "boolean" ? <IconFile /> : icon}
+            <Button
+              className="inline-flex grow items-center justify-start gap-1 outline-hidden"
+              data-slot="tree-item"
+              slot="chevron"
+            >
+              <IconPlaceholder
+                className={cn("transition-transform", values.isExpanded && "rotate-90")}
+                data-slot="indicator"
+                hugeicons="ArrowRight01Icon"
+                lucide="ChevronRightIcon"
+                phosphor="CaretRightIcon"
+                remixicon="RiArrowRightSLine"
+                tabler="IconChevronRight"
+              />
+              {!values.isExpanded &&
+                (typeof icon === "boolean" ? (
+                  <IconPlaceholder
+                    hugeicons="File02Icon"
+                    lucide="FileIcon"
+                    phosphor="FileIcon"
+                    remixicon="RiFileLine"
+                    tabler="IconFile"
+                  />
+                ) : (
+                  icon
+                ))}
+              {values.hasChildItems && values.isExpanded && (iconExpanded ?? icon)}
+              {typeof children === "function" ? children(values) : children}
+            </Button>
+          </span>
+        ) : (
+          <span
+            className="inline-flex w-full items-center justify-start gap-1 whitespace-nowrap outline-hidden"
+            data-slot="tree-item"
+          >
+            {typeof icon === "boolean" ? (
+              <IconPlaceholder
+                hugeicons="File02Icon"
+                lucide="FileIcon"
+                phosphor="FileIcon"
+                remixicon="RiFileLine"
+                tabler="IconFile"
+              />
+            ) : (
+              icon
+            )}
             {typeof children === "function" ? children(values) : children}
           </span>
         )}
@@ -88,5 +123,5 @@ const TreeItemLabel = ({ children, icon, iconExpanded, ...props }: TreeItemLabel
 Tree.Item = TreeItem
 Tree.ItemLabel = TreeItemLabel
 
-export type { TreeItemProps, TreeProps }
+export type { Selection, TreeItemProps, TreeProps }
 export { Tree, TreeItem, TreeItemLabel }

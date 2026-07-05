@@ -1,29 +1,23 @@
 "use client"
 
 import type { ComponentProps } from "react"
-import {
-  IconChevronLeft,
-  IconChevronLeftPipe,
-  IconChevronRight,
-  IconChevronRightPipe,
-  IconDots
-} from "@tabler/icons-react"
 import { Button as RACButton } from "react-aria-components/Button"
 import { Link, type LinkProps } from "react-aria-components/Link"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { type ButtonProps, buttonVariants } from "./button"
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     aria-label="pagination"
-    className={cn("mx-auto flex w-full justify-center", className)}
+    className={cn("cn-pagination mx-auto flex w-full justify-center", className)}
     data-slot="pagination"
     {...props}
   />
 )
 
 const PaginationContent = ({ className, ...props }: ComponentProps<"ul">) => (
-  <ul className={cn("flex flex-row items-center gap-1", className)} data-slot="pagination-content" {...props} />
+  <ul className={cn("cn-pagination-content flex items-center", className)} data-slot="pagination-content" {...props} />
 )
 
 const PaginationItem = ({ ...props }: ComponentProps<"li">) => <li data-slot="pagination-item" {...props} />
@@ -56,66 +50,119 @@ const PaginationLink = ({
   )
 }
 
-const PaginationPrevious = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => {
+const PaginationFirst = ({
+  className,
+  text = "First",
+  ...props
+}: ComponentProps<typeof PaginationLink> & { text?: string }) => {
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
+      className={cn("cn-pagination-previous", className)}
       size="default"
       {...props}
     >
-      <IconChevronLeft />
-      <span className="hidden sm:block">Previous</span>
+      <IconPlaceholder
+        className="cn-rtl-flip"
+        data-icon="inline-start"
+        hugeicons="ChevronFirstIcon"
+        lucide="ChevronFirstIcon"
+        phosphor="CaretLineLeftIcon"
+        remixicon="RiSkipLeftLine"
+        tabler="IconChevronLeftPipe"
+      />
+      <span className="cn-pagination-previous-text hidden sm:block">{text}</span>
+    </PaginationLink>
+  )
+}
+const PaginationPrevious = ({
+  className,
+  text = "Previous",
+  ...props
+}: ComponentProps<typeof PaginationLink> & { text?: string }) => {
+  return (
+    <PaginationLink
+      aria-label="Go to previous page"
+      className={cn("cn-pagination-previous", className)}
+      size="default"
+      {...props}
+    >
+      <IconPlaceholder
+        className="cn-rtl-flip"
+        data-icon="inline-start"
+        hugeicons="ArrowLeft01Icon"
+        lucide="ChevronLeftIcon"
+        phosphor="CaretLeftIcon"
+        remixicon="RiArrowLeftSLine"
+        tabler="IconChevronLeft"
+      />
+      <span className="cn-pagination-previous-text hidden sm:block">{text}</span>
     </PaginationLink>
   )
 }
 
-const PaginationNext = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
+const PaginationNext = ({
+  className,
+  text = "Next",
+  ...props
+}: ComponentProps<typeof PaginationLink> & { text?: string }) => (
   <PaginationLink
     aria-label="Go to next page"
-    className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
+    className={cn("cn-pagination-next", className)}
     size="default"
     {...props}
   >
-    <span className="hidden sm:block">Next</span>
-    <IconChevronRight />
+    <span className="cn-pagination-next-text hidden sm:block">{text}</span>
+    <IconPlaceholder
+      className="cn-rtl-flip"
+      data-icon="inline-end"
+      hugeicons="ArrowRight01Icon"
+      lucide="ChevronRightIcon"
+      phosphor="CaretRightIcon"
+      remixicon="RiArrowRightSLine"
+      tabler="IconChevronRight"
+    />
   </PaginationLink>
 )
 
-const PaginationFirst = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => {
-  return (
-    <PaginationLink
-      aria-label="Go to previous page"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
-      size="default"
-      {...props}
-    >
-      <IconChevronLeftPipe />
-      <span className="hidden sm:block">First</span>
-    </PaginationLink>
-  )
-}
-
-const PaginationLast = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
+const PaginationLast = ({
+  className,
+  text = "Last",
+  ...props
+}: ComponentProps<typeof PaginationLink> & { text?: string }) => (
   <PaginationLink
-    aria-label="Go to next page"
-    className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
+    aria-label="Go to last page"
+    className={cn("cn-pagination-next", className)}
     size="default"
     {...props}
   >
-    <span className="hidden sm:block">Last</span>
-    <IconChevronRightPipe />
+    <span className="cn-pagination-next-text hidden sm:block">{text}</span>
+    <IconPlaceholder
+      className="cn-rtl-flip"
+      data-icon="inline-end"
+      hugeicons="ChevronLastIcon"
+      lucide="ChevronLastIcon"
+      phosphor="CaretLineRightIcon"
+      remixicon="RiSkipRightLine"
+      tabler="IconChevronRightPipe"
+    />
   </PaginationLink>
 )
 
 const PaginationEllipsis = ({ className, ...props }: ComponentProps<"span">) => (
   <span
     aria-hidden
-    className={cn("flex size-9 items-center justify-center", className)}
+    className={cn("cn-pagination-ellipsis flex items-center justify-center", className)}
     data-slot="pagination-ellipsis"
     {...props}
   >
-    <IconDots className="size-4" />
+    <IconPlaceholder
+      hugeicons="MoreHorizontalCircle01Icon"
+      lucide="MoreHorizontalIcon"
+      phosphor="DotsThreeIcon"
+      remixicon="RiMoreLine"
+      tabler="IconDots"
+    />
     <span className="sr-only">More pages</span>
   </span>
 )
@@ -123,9 +170,9 @@ const PaginationEllipsis = ({ className, ...props }: ComponentProps<"span">) => 
 Pagination.Content = PaginationContent
 Pagination.Link = PaginationLink
 Pagination.Item = PaginationItem
+Pagination.First = PaginationFirst
 Pagination.Previous = PaginationPrevious
 Pagination.Next = PaginationNext
-Pagination.First = PaginationFirst
 Pagination.Last = PaginationLast
 Pagination.Ellipsis = PaginationEllipsis
 

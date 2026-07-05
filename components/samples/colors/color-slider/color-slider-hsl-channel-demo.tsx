@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { type Color, parseColor } from "react-aria-components/ColorSlider"
-import { ColorSlider, ColorSliderOutput, ColorSliderTrack, ColorSwatch, ColorThumb } from "@/components/ui/colors"
-import { Label } from "@/components/ui/label"
+import { ColorSlider, ColorSliderOutput, ColorSwatch } from "@/components/ui/colors"
+import { Label } from "@/components/ui/field"
 
 export default function ColorSliderChannelsDemo() {
   const [color, setColor] = useState<Color>(parseColor("hsl(0, 100%, 50%)"))
@@ -14,30 +14,18 @@ export default function ColorSliderChannelsDemo() {
       <ColorSlider channel="hue" colorSpace="hsl" onChange={setColor} value={color}>
         <Label>Hue</Label>
         <ColorSliderOutput />
-        <ColorSliderTrack>
-          <ColorThumb />
-        </ColorSliderTrack>
       </ColorSlider>
       <ColorSlider channel="saturation" colorSpace="hsl" onChange={setColor} value={color}>
         <Label>Saturation</Label>
         <ColorSliderOutput />
-        <ColorSliderTrack>
-          <ColorThumb />
-        </ColorSliderTrack>
       </ColorSlider>
       <ColorSlider channel="lightness" colorSpace="hsl" onChange={setColor} value={color}>
         <Label>Lightness</Label>
         <ColorSliderOutput />
-        <ColorSliderTrack>
-          <ColorThumb />
-        </ColorSliderTrack>
       </ColorSlider>
       <ColorSlider channel="alpha" colorSpace="hsl" onChange={setColor} value={color}>
         <Label>Alpha</Label>
         <ColorSliderOutput />
-        <ColorSliderTrack>
-          <ColorThumb />
-        </ColorSliderTrack>
       </ColorSlider>
     </div>
   )

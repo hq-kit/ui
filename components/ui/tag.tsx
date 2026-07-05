@@ -1,6 +1,5 @@
 "use client"
 
-import { IconX } from "@tabler/icons-react"
 import { type ComponentProps, type KeyboardEvent, useEffect, useMemo, useRef, useState } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
@@ -14,7 +13,9 @@ import {
   type TagListProps,
   type TagProps
 } from "react-aria-components/TagGroup"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
+import { badgeVariants } from "./badge"
 import { FieldError, fieldVariants } from "./field"
 import { TextField } from "./text-field"
 
@@ -37,17 +38,11 @@ const Tag = ({ children, className, ...props }: TagProps) => {
 
   return (
     <RACTag
-      className={composeRenderProps(className, (className) =>
+      className={composeRenderProps(className, (className, { isSelected }) =>
         cn(
-          "inset-ring inset-ring-input outline-hidden transition dark:bg-input/30",
-          "inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5",
-          '[&_svg:not([class*="size-"])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0',
-          "rounded-md px-2",
-          "data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50",
-          "data-selected:inset-ring-ring/70 data-selected:bg-primary data-selected:text-primary-foreground dark:data-selected:bg-primary",
+          badgeVariants({ variant: isSelected ? "default" : "secondary" }),
           "data-disabled:opacity-50",
           "href" in props ? "cursor-pointer" : "cursor-default",
-          "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
           className
         )
       )}
@@ -59,8 +54,16 @@ const Tag = ({ children, className, ...props }: TagProps) => {
         <>
           {children}
           {allowsRemoving && (
-            <Button className="z-10 rounded-full p-0.5 transition-colors hover:bg-destructive/20" slot="remove">
-              <IconX className="size-3" />
+            <Button className="z-50 rounded-md p-0.5 transition-colors hover:bg-destructive/20" slot="remove">
+              <IconPlaceholder
+                className="size-2.5"
+                data-icon="inline-end"
+                hugeicons="Cancel01Icon"
+                lucide="XIcon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+                tabler="IconX"
+              />
             </Button>
           )}
         </>

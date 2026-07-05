@@ -3,9 +3,8 @@
 import { IconMinus, IconPlus } from "@tabler/icons-react"
 import { Form } from "react-aria-components"
 import { Button } from "@/components/ui/button"
-import { FieldError } from "@/components/ui/field"
+import { FieldError, Label } from "@/components/ui/field"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { NumberField, NumberInput } from "@/components/ui/number-field"
 
 export default function NumberFieldDemo() {

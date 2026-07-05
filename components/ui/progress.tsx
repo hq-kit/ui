@@ -2,6 +2,7 @@
 
 import { type ComponentProps, createContext, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { Label, type LabelProps } from "react-aria-components/Label"
 import { ProgressBar, type ProgressBarProps, type ProgressBarRenderProps } from "react-aria-components/ProgressBar"
 import { cn } from "@/lib/utils"
 
@@ -9,83 +10,70 @@ const ProgressContext = createContext<ProgressBarRenderProps | null>(null)
 
 const Progress = ({ className, children, ...props }: ProgressBarProps) => (
   <ProgressBar
-    className={composeRenderProps(className, (className) =>
-      cn(
-        "w-full",
-        "[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2",
-        "[&>[data-slot=progress-bar-header]+[data-slot=progress-bar-track]]:mt-2",
-        "[&>[data-slot=progress-bar-header]+[slot='description']]:mt-1",
-        "[&>[slot='description']+[data-slot=progress-bar-track]]:mt-2",
-        "[&>[data-slot=progress-bar-track]+[slot=description]]:mt-2",
-        "[&>[data-slot=progress-bar-track]+[slot=errorMessage]]:mt-2",
-        "*:data-[slot=progress-bar-header]:font-medium",
-        className
-      )
-    )}
-    data-slot="control"
+    className={composeRenderProps(className, (className) => cn("cn-progress-root flex flex-wrap gap-3", className))}
+    data-slot="progress"
     {...props}
   >
     {(values) => (
-      <ProgressContext value={{ ...values }}>
+      <ProgressContext.Provider value={{ ...values }}>
         {typeof children === "function" ? children(values) : children}
-      </ProgressContext>
+        <ProgressTrack>
+          <ProgressIndicator />
+        </ProgressTrack>
+      </ProgressContext.Provider>
     )}
   </ProgressBar>
-)
-
-const ProgressHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex items-center justify-between", className)} data-slot="progress-bar-header" {...props} />
 )
 
 const ProgressValue = ({ className, ...props }: Omit<ComponentProps<"span">, "children">) => {
   const { valueText } = use(ProgressContext)!
   return (
-    <span className={cn("text-base/6 sm:text-sm/6", className)} {...props}>
+    <span className={cn("cn-progress-value", className)} data-slot="progress-value" {...props}>
       {valueText}
     </span>
   )
 }
 
-const ProgressTrack = ({ className, ref, ...props }: ComponentProps<"div">) => {
-  const { isIndeterminate, percentage } = use(ProgressContext)!
+const ProgressLabel = ({ className, ...props }: LabelProps) => (
+  <Label className={cn("cn-progress-label", className)} data-slot="progress-label" {...props} />
+)
+
+const ProgressTrack = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-progress-track relative flex w-full items-center overflow-x-hidden", className)}
+    data-slot="progress-track"
+    {...props}
+  />
+)
+
+const ProgressIndicator = ({ className, ...props }: ComponentProps<"div">) => {
+  const { percentage, isIndeterminate } = use(ProgressContext)!
   return (
-    <span className="relative block w-full" data-slot="progress-bar-track">
+    <>
       <style>{`
         @keyframes progress-slide {
-          0% { left: 0% }
-          50% { left: 100% }
-          100% { left: 0% }
+          0% { inset-inline-start: 0% }
+          50% { inset-inline-start: 100% }
+          100% { inset-inline-start: 0% }
         }
       `}</style>
-      <div className="flex w-full items-center gap-x-2" ref={ref} {...props}>
-        <div
-          className={cn(
-            "relative h-1.5 w-full min-w-52 overflow-hidden rounded-full bg-secondary outline-1 outline-transparent -outline-offset-1 will-change-transform",
-            className
-          )}
-          data-slot="track"
-        >
-          {!isIndeterminate ? (
-            <div
-              className="absolute top-0 left-0 h-full rounded-full bg-primary transition-[width] duration-200 ease-linear will-change-[width] motion-reduce:transition-none"
-              data-slot="bar"
-              style={{ width: `${percentage}%` }}
-            />
-          ) : (
-            <div
-              className="absolute top-0 h-full animate-[progress-slide_2000ms_ease-in-out_infinite] rounded-full bg-primary"
-              data-slot="bar"
-              style={{ width: "40%" }}
-            />
-          )}
-        </div>
-      </div>
-    </span>
+      <div
+        className={cn(
+          "cn-progress-indicator absolute h-full transition-all",
+          isIndeterminate && "animate-[progress-slide_2000ms_ease-in-out_infinite]",
+          className
+        )}
+        data-slot="progress-indicator"
+        style={{ width: `${isIndeterminate ? 40 : percentage}%` }}
+        {...props}
+      />
+    </>
   )
 }
 
-Progress.Header = ProgressHeader
+Progress.Label = ProgressLabel
 Progress.Value = ProgressValue
 Progress.Track = ProgressTrack
+Progress.Indicator = ProgressIndicator
 
-export { Progress, ProgressHeader, ProgressTrack, ProgressValue }
+export { Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue }

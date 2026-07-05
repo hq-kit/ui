@@ -1,40 +1,33 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function TableResizeDemo() {
   return (
-    <Card className="p-0">
-      <CardContent>
-        <Table allowResize aria-label="Vocalists" bleed>
-          <TableHeader>
-            <TableColumn className="max-w-10">ID</TableColumn>
-            <TableColumn isResizable isRowHeader>
-              Name
-            </TableColumn>
-            <TableColumn isResizable>Email</TableColumn>
-            <TableColumn>Age</TableColumn>
-            <TableColumn>Role</TableColumn>
-            <TableColumn isResizable>Band</TableColumn>
-            <TableColumn>Status</TableColumn>
-          </TableHeader>
-          <TableBody items={items}>
-            {(item) => (
-              <TableRow id={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>{item.age}</TableCell>
-                <TableCell>{item.role}</TableCell>
-                <TableCell>{item.band}</TableCell>
-                <TableCell>{item.status}</TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+    <Table allowResize aria-label="Vocalists">
+      <TableHeader>
+        <TableColumn className="max-w-10">ID</TableColumn>
+        <TableColumn isRowHeader>Name</TableColumn>
+        <TableColumn isResizable>Email</TableColumn>
+        <TableColumn>Age</TableColumn>
+        <TableColumn>Role</TableColumn>
+        <TableColumn isResizable>Band</TableColumn>
+        <TableColumn>Status</TableColumn>
+      </TableHeader>
+      <TableBody items={items}>
+        {(item) => (
+          <TableRow id={item.id}>
+            <TableCell>{item.id}</TableCell>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.email}</TableCell>
+            <TableCell>{item.age}</TableCell>
+            <TableCell>{item.role}</TableCell>
+            <TableCell>{item.band}</TableCell>
+            <TableCell>{item.status}</TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   )
 }
 

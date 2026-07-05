@@ -12,8 +12,7 @@ import {
   DateRangePickerInput,
   TimeField
 } from "@/components/ui/date-field"
-import { FieldError } from "@/components/ui/field"
-import { Label } from "@/components/ui/label"
+import { FieldError, Label } from "@/components/ui/field"
 import { PopoverContent } from "@/components/ui/popover"
 
 export default function FieldDateDemo() {

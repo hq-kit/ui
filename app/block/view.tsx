@@ -1,11 +1,10 @@
 "use client"
 
-import type Raws from "@/components/samples/generated/previews.json"
+import type { PropsWithChildren } from "react"
 import { previews } from "@/components/samples/generated/previews"
 
-type Raw = keyof typeof Raws
-export default function View({ component }: { component: Raw }) {
+export default function View({ component, ...props }: PropsWithChildren & { component: string }) {
   const Component = previews[component]?.component
   if (!Component) return null
-  return <Component />
+  return <Component {...props} />
 }

@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { useDragAndDrop, useListData } from "react-aria-components"
 import { Code } from "@/components/mdx/code-client"
+import { Label } from "@/components/ui/field"
 import { GridList, GridListItem } from "@/components/ui/grid-list"
-import { Label } from "@/components/ui/label"
 import { Radio, RadioGroup } from "@/components/ui/radio"
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
@@ -21,6 +21,7 @@ const items = [
 export default function GridListPreview() {
   const [selectionMode, setSelectionMode] = useState<"multiple" | "single" | "none">("multiple")
   const [allowsDragging, setAllowsDragging] = useState(false)
+  const [orientation, setOrientation] = useState<"horizontal" | "vertical">("vertical")
 
   const list = useListData({
     initialItems: items
@@ -55,21 +56,28 @@ export default function GridListPreview() {
             <Radio value="multiple">Multiple</Radio>
             <Radio value="single">Single</Radio>
           </RadioGroup>
+          <RadioGroup onChange={(v) => setOrientation(v.toString() as "horizontal" | "vertical")} value={orientation}>
+            <Label className="whitespace-nowrap">Selection Mode</Label>
+            <Radio value="horizontal">Horizontal</Radio>
+            <Radio value="vertical">Vertical</Radio>
+          </RadioGroup>
         </div>
         <div className="grid min-h-52 w-full place-items-center px-6 py-4">
           <GridList
             aria-label="Favorite animal"
-            className={cn("w-full", !allowsDragging && "hidden")}
+            className={cn("w-full", !allowsDragging && "hidden!")}
             dragAndDropHooks={dragAndDropHooks}
             items={list.items}
+            orientation={orientation}
             selectionMode={selectionMode}
           >
             {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
           </GridList>
           <GridList
             aria-label="Favorite animal"
-            className={cn("w-full", allowsDragging && "hidden")}
+            className={cn("w-full", allowsDragging && "hidden!")}
             items={items}
+            orientation={orientation}
             selectionMode={selectionMode}
           >
             {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
@@ -85,6 +93,7 @@ export default function GridListPreview() {
   className='w-full'
   items={${allowsDragging ? "list.items" : "items"}}
   selectionMode={selectionMode}
+ 
 >
   {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
 </GridList>

@@ -3,11 +3,11 @@ import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 
 const alertVariants = tv({
-  base: "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  base: "cn-alert group/alert relative w-full",
   variants: {
     variant: {
-      default: "bg-card text-card-foreground",
-      destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
+      default: "cn-alert-variant-default",
+      destructive: "cn-alert-variant-destructive"
     }
   },
   defaultVariants: {
@@ -21,7 +21,7 @@ const Alert = ({ className, variant, ...props }: ComponentProps<"div"> & Variant
 
 const AlertTitle = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className)}
+    className={cn("cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className)}
     data-slot="alert-title"
     {...props}
   />
@@ -30,7 +30,7 @@ const AlertTitle = ({ className, ...props }: ComponentProps<"div">) => (
 const AlertDescription = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
+      "cn-alert-description [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
       className
     )}
     data-slot="alert-description"
@@ -38,8 +38,8 @@ const AlertDescription = ({ className, ...props }: ComponentProps<"div">) => (
   />
 )
 
-const AlertAction = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div className={cn("absolute top-2 right-2", className)} data-slot="alert-action" {...props} />
+const AlertAction = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-alert-action", className)} data-slot="alert-action" {...props} />
 )
 
 Alert.Title = AlertTitle

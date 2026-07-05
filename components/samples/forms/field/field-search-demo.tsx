@@ -1,9 +1,7 @@
 "use client"
 
-import { Form } from "react-aria-components"
 import { Button } from "@/components/ui/button"
-import { FieldError } from "@/components/ui/field"
-import { Label } from "@/components/ui/label"
+import { FieldError, Form, Label } from "@/components/ui/field"
 import { SearchField, SearchInput } from "@/components/ui/search-field"
 
 export default function SearchFieldDemo() {

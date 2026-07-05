@@ -2,15 +2,16 @@
 
 import { type HTMLAttributes, type ReactNode, useCallback, useRef } from "react"
 import { CopyButton } from "@/components/mdx/copy-button"
+import { FileIcon } from "@/components/mdx/file-icon"
 import { useCopyButton } from "@/hooks/use-copy"
 import { cn } from "@/lib/utils"
 
-export type PreProps = HTMLAttributes<HTMLElement> & {
+export type PreProps = HTMLAttributes<HTMLPreElement> & {
   copy?: boolean
   icon?: string | ReactNode
 }
 
-export const BlockCode = ({ className, title, icon, copy = true, ...props }: PreProps) => {
+export const BlockCode = ({ className, title, copy = true, ...props }: PreProps) => {
   const areaRef = useRef<HTMLDivElement>(null)
   const onCopy = useCallback(() => {
     const pre = areaRef.current?.getElementsByTagName("pre").item(0)
@@ -24,41 +25,40 @@ export const BlockCode = ({ className, title, icon, copy = true, ...props }: Pre
     void navigator.clipboard.writeText(clone.textContent ?? "")
   }, [])
   const [checked, onClick] = useCopyButton(onCopy)
-
   return (
     <figure
       {...props}
       className={cn(
-        "not-prose relative my-4 rounded-lg text-sm shadow-sm",
+        "not-prose cn-skeleton relative my-4 overflow-hidden text-sm shadow-sm",
         "border bg-shiki-bg dark:bg-shiki-dark-bg",
+        !title && "cn-item-size-sm flex flex-row-reverse items-center pr-0",
         className
       )}
       ref={areaRef}
     >
       {title ? (
-        <div className="flex w-full flex-row items-center gap-2 rounded-t-lg border-b bg-accent px-3 py-2 text-accent-foreground">
-          {icon ? (
-            <div
-              className="text-muted-fg [&_svg]:size-3.5"
-              dangerouslySetInnerHTML={
-                typeof icon === "string"
-                  ? {
-                      __html: icon
-                    }
-                  : undefined
-              }
-            />
+        <div className="cn-item-size-sm flex w-full flex-row items-center border-b bg-accent text-accent-foreground">
+          <FileIcon className="size-4 text-muted-foreground" lang={title.split(".").at(-1) ?? ""} />
+          <figcaption className="flex-1 truncate text-muted-foreground">{title}</figcaption>
+          {copy ? (
+            <CopyButton className="cn-alert-action z-10" data-icon="inline-end" isCopied={checked} onPress={onClick} />
           ) : null}
-          <figcaption className="flex-1 truncate text-muted-fg">{title}</figcaption>
-          {copy ? <CopyButton className="absolute top-1 right-1 z-2" isCopied={checked} onPress={onClick} /> : null}
         </div>
       ) : (
-        copy && <CopyButton className="absolute top-2 right-2 z-2" isCopied={checked} onPress={onClick} />
+        copy && (
+          <CopyButton
+            className="cn-alert-action top-2.5 z-10"
+            data-icon="inline-end"
+            isCopied={checked}
+            onPress={onClick}
+          />
+        )
       )}
       <pre
         className={cn(
-          "peer max-h-64 w-full overflow-auto py-3 leading-relaxed focus-visible:outline-hidden **:[code]:bg-transparent **:[code]:p-0",
-          "[&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar]:size-1.5 [&::-webkit-scrollbar]:bg-transparent"
+          "peer max-h-64 w-full overflow-auto px-0 leading-relaxed focus-visible:outline-hidden **:[code]:bg-transparent **:[code]:p-0",
+          "[&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar]:size-1.5 [&::-webkit-scrollbar]:bg-transparent",
+          title ? "py-2" : "py-0"
         )}
       >
         {props.children}

@@ -1,9 +1,8 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { IconCheck, IconSelector } from "@tabler/icons-react"
-import { Button } from "react-aria-components/Button"
 import {
+  Button,
   Collection,
   type ComboBoxProps,
   type InputProps,
@@ -20,6 +19,7 @@ import {
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { Header } from "react-aria-components/Header"
 import { Separator, type SeparatorProps } from "react-aria-components/Separator"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { fuzzy } from "./autocomplete"
 import { fieldVariants } from "./field"
@@ -40,10 +40,18 @@ const ComboBox = <T extends object>({
 )
 
 const ComboBoxInput = (props: InputProps) => (
-  <span className="relative isolate block has-[>svg:last-child]:[&_input]:pr-10" data-slot="control">
+  <span className="cn-combobox-trigger relative isolate block [&_input]:pr-8" data-slot="control" slot="control">
     <Input {...props} placeholder={props?.placeholder} />
     <Button className="absolute top-0 right-0 grid h-full w-11 cursor-default place-content-center sm:w-9">
-      <IconSelector className="-mr-1 size-5 text-muted-foreground sm:size-4" data-slot="chevron" />
+      <IconPlaceholder
+        className="cn-combobox-trigger-icon pointer-events-none"
+        data-slot="chevron"
+        hugeicons="ArrowDown01Icon"
+        lucide="ChevronDownIcon"
+        phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
+        tabler="IconChevronDown"
+      />
     </Button>
   </span>
 )
@@ -56,14 +64,14 @@ const ComboBoxContent = <T extends object>({
 }: ListBoxProps<T> & Pick<PopoverProps, "offset" | "placement">) => (
   <Popover
     className={cn(
-      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 min-w-(--trigger-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-entering:animate-in data-exiting:animate-out",
+      "cn-combobox-content cn-combobox-content-logical group/combobox-content relative min-w-(--trigger-width)",
       className
     )}
     offset={offset}
     placement={placement}
   >
     <ListBox
-      className="flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-auto rounded-lg p-1 outline-hidden sm:max-h-[inherit]"
+      className="cn-combobox-list flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-y-auto overscroll-contain rounded-lg p-1 outline-hidden sm:max-h-[inherit]"
       data-slot="select-content"
       layout="stack"
       orientation="vertical"
@@ -87,7 +95,7 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
   return (
     <ListBoxItem
       className={cn(
-        "relative flex w-full cursor-default select-none items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden data-disabled:pointer-events-none data-focused:bg-accent data-selected:bg-accent data-focused:text-accent-foreground data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "cn-combobox-item relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-slot="select-item"
@@ -98,8 +106,16 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
         <>
           {typeof children === "function" ? children(values) : children}
           {values.isSelected && (
-            <span className="absolute right-2 flex size-3.5 items-center justify-center">
-              <IconCheck className="size-4" data-slot="selected-indicator" />
+            <span className="cn-combobox-item-indicator">
+              <IconPlaceholder
+                className="cn-combobox-item-indicator-icon pointer-events-none"
+                data-slot="selection-indicator"
+                hugeicons="Tick02Icon"
+                lucide="CheckIcon"
+                phosphor="CheckIcon"
+                remixicon="RiCheckLine"
+                tabler="IconCheck"
+              />
             </span>
           )}
         </>
@@ -109,11 +125,7 @@ const ComboBoxItem = ({ className, children, ...props }: ListBoxItemProps) => {
 }
 
 const ComboBoxSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator
-    className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
-    data-slot="select-separator"
-    {...props}
-  />
+  <Separator className={cn("cn-combobox-separator", className)} data-slot="select-separator" {...props} />
 )
 
 ComboBox.Input = ComboBoxInput

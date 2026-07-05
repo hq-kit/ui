@@ -1,6 +1,6 @@
 "use client"
 
-import { IconCheck, IconCopy } from "@tabler/icons-react"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button, type ButtonProps } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Tooltip } from "../ui/tooltip"
@@ -12,15 +12,25 @@ interface CopyButtonProps extends ButtonProps {
 export const CopyButton = ({ isCopied, ...props }: CopyButtonProps) => {
   return (
     <Tooltip>
-      <Button aria-label="Copy" size="icon-sm" variant="ghost" {...props}>
-        <IconCopy
+      <Button aria-label="Copy" size="icon-sm" variant="secondary" {...props}>
+        <IconPlaceholder
           className={cn("size-4 rotate-0 scale-100 transition-all duration-200", isCopied && "rotate-90 scale-0")}
+          hugeicons="CopyIcon"
+          lucide="CopyIcon"
+          phosphor="CopyIcon"
+          remixicon="RiFileCopyLine"
+          tabler="IconCopy"
         />
-        <IconCheck
+        <IconPlaceholder
           className={cn(
             "absolute size-4 rotate-90 scale-0 transition-all duration-200",
             isCopied && "rotate-0 scale-100"
           )}
+          hugeicons="Tick02Icon"
+          lucide="CheckIcon"
+          phosphor="CheckIcon"
+          remixicon="RiCheckLine"
+          tabler="IconCheck"
         />
       </Button>
       <Tooltip.Content>Copy to clipboard</Tooltip.Content>

@@ -1,13 +1,13 @@
 import { Form } from "react-aria-components"
-import { Field, FieldDescription, FieldLabel, FieldSet } from "@/components/ui/field"
+import { Description, Field, FieldSet, Label } from "@/components/ui/field"
 import { Radio, RadioGroup } from "@/components/ui/radio"
 
 export default function FieldRadioDemo() {
   return (
     <Form onSubmit={(e) => e.preventDefault()}>
       <FieldSet>
-        <FieldLabel>Subscription Plan</FieldLabel>
-        <FieldDescription>Yearly and lifetime plans offer significant savings.</FieldDescription>
+        <Label>Subscription Plan</Label>
+        <Description>Yearly and lifetime plans offer significant savings.</Description>
         <RadioGroup defaultValue="monthly">
           <Radio value="monthly">Monthly ($9.99/month)</Radio>
           <Field orientation="horizontal">

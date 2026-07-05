@@ -1,65 +1,88 @@
 "use client"
 
-import type { GridListItemProps, GridListProps, TextProps } from "react-aria-components"
-import { IconGripVertical } from "@tabler/icons-react"
+import type { ComponentProps } from "react"
+import type { GridListItemProps, GridListProps, TextProps } from "react-aria-components/GridList"
+import type { VariantProps } from "tailwind-variants"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
-  Button,
-  GridListHeader as GridListHeaderPrimitive,
-  GridListItem as GridListItemPrimitive,
-  GridList as GridListPrimitive,
-  GridListSection as GridListSectionPrimitive,
+  Collection,
+  GridList as RACGridList,
+  GridListHeader as RACGridListHeader,
+  GridListItem as RACGridListItem,
+  GridListSection as RACGridListSection,
   Text
 } from "react-aria-components/GridList"
 import { cn } from "@/lib/utils"
+import { attachmentMediaVariants, attachmentVariants } from "./attachment"
+import { Button } from "./button"
 import { Checkbox } from "./checkbox"
 
 const GridList = <T extends object>({ className, ...props }: GridListProps<T>) => (
-  <GridListPrimitive
+  <RACGridList
     className={composeRenderProps(className, (className) =>
       cn(
-        "relative flex flex-col gap-y-1 has-data-[slot=grid-list-section]:gap-y-6 *:data-drop-target:border *:data-drop-target:border-accent sm:text-sm/6",
+        "cn-attachment-group scrollbar-none relative min-w-0 snap-x snap-mandatory overflow-auto overscroll-x-contain empty:flex empty:items-center empty:justify-center empty:text-sm empty:italic *:data-[slot=attachment]:flex-none *:data-[slot=attachment]:snap-start",
+        "data-[orientation=horizontal]:flex data-[orientation=horizontal]:w-full data-[orientation=horizontal]:flex-nowrap data-[orientation=horizontal]:overflow-x-auto",
+        "data-[orientation=vertical]:grid data-[orientation=vertical]:px-1",
+        "data-[layout=grid]:grid data-[layout=grid]:not-data-[orientation=vertical]:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:outline",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:outline-destructive",
+        "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
         className
       )
     )}
-    data-slot="grid-list"
+    data-slot="attachment-group"
     {...props}
   />
 )
 
 const GridListSection = <T extends object>({
   className,
+  title,
   ...props
-}: React.ComponentProps<typeof GridListSectionPrimitive<T>>) => {
-  return <GridListSectionPrimitive className={cn("space-y-1", className)} data-slot="grid-list-section" {...props} />
-}
-
-const GridListHeader = ({ className, ...props }: React.ComponentProps<typeof GridListHeaderPrimitive>) => {
+}: ComponentProps<typeof RACGridListSection<T>> & { title?: string }) => {
   return (
-    <GridListHeaderPrimitive
-      className={cn("mb-2 font-semibold text-sm/6", className)}
-      data-slot="grid-list-header"
-      {...props}
-    />
+    <RACGridListSection className={cn("cn-command-group", className)} data-slot="grid-list-section" {...props}>
+      {title && (
+        <RACGridListHeader className="pointer-events-none" data-slot="title">
+          {title}
+        </RACGridListHeader>
+      )}
+      <Collection items={props.items}>{props.children}</Collection>
+    </RACGridListSection>
   )
 }
 
-const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
+const GridListItem = ({
+  className,
+  state = "done",
+  size = "default",
+  orientation = "horizontal",
+  children,
+  ...props
+}: GridListItemProps &
+  VariantProps<typeof attachmentVariants> & {
+    state?: "idle" | "uploading" | "processing" | "error" | "done"
+  }) => {
+  const resolvedOrientation = orientation ?? "horizontal"
   const textValue = typeof children === "string" ? children : undefined
+
   return (
-    <GridListItemPrimitive
+    <RACGridListItem
+      data-orientation={resolvedOrientation}
+      data-size={size}
+      data-slot="attachment"
+      data-state={state}
       textValue={textValue}
       {...props}
-      className={composeRenderProps(className, (className, { isHovered, isFocusVisible, isSelected }) =>
+      className={composeRenderProps(className, (className) =>
         cn(
-          "[--grid-list-item-bg-active:var(--color-accent)] [--grid-list-item-text-active:var(--color-accent-foreground)]",
-          "group inset-ring inset-ring-border rounded-lg px-3 py-2.5",
-          "relative min-w-0 outline-hidden [--mr-icon:--spacing(2)]",
-          "flex min-w-0 cursor-default items-center gap-2 sm:gap-2.5",
-          "dragging:cursor-grab dragging:opacity-70 dragging:**:[[slot=drag]]:text-(--grid-list-item-text-active)",
-          "**:data-[slot=icon]:size-5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-foreground sm:**:data-[slot=icon]:size-4",
-          (isSelected || isHovered || isFocusVisible) &&
-            "inset-ring-ring/70 bg-(--grid-list-item-bg-active) text-(--grid-list-item-text-active) **:[.text-muted-foreground]:text-(--grid-list-item-text-active)/60",
+          attachmentVariants({ size, className }),
+          "select-none data-selected:bg-accent data-selected:text-accent-foreground",
+          "data-hovered:border data-hovered:border-ring",
+          "data-dragging:cursor-grabbing data-dragging:outline data-dragging:outline-primary",
+          typeof children === "string" &&
+            "cn-sidebar-header relative items-center data-[orientation=horizontal]:w-full",
           "href" in props && "cursor-pointer",
           className
         )
@@ -67,20 +90,79 @@ const GridListItem = ({ className, children, ...props }: GridListItemProps) => {
     >
       {(values) => (
         <>
-          {values.allowsDragging && (
-            <Button slot="drag">
-              <IconGripVertical className="size-4" />
-            </Button>
-          )}
           {values.selectionMode === "multiple" && values.selectionBehavior === "toggle" && (
-            <Checkbox className="space-x-0 [--indicator-mt:0] *:gap-x-0 sm:[--indicator-mt:0]" slot="selection" />
+            <GridListItemActions className="group-data-[orientation=vertical]/attachment:left-4">
+              <Checkbox className="w-auto" excludeFromTabOrder slot="selection" />
+            </GridListItemActions>
           )}
           {typeof children === "function" ? children(values) : children}
         </>
       )}
-    </GridListItemPrimitive>
+    </RACGridListItem>
   )
 }
+
+const GridListItemMedia = ({
+  className,
+  variant = "icon",
+  ...props
+}: ComponentProps<"div"> & VariantProps<typeof attachmentMediaVariants>) => (
+  <div
+    className={cn(attachmentMediaVariants({ variant, className }))}
+    data-slot="attachment-media"
+    data-variant={variant}
+    {...props}
+  />
+)
+
+const GridListItemContent = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-attachment-content min-w-0 max-w-full flex-1", className)}
+    data-slot="attachment-content"
+    {...props}
+  />
+)
+
+const GridListItemTitle = ({ className, ...props }: TextProps) => (
+  <Text
+    className={cn(
+      "cn-attachment-title group-data-[state=processing]/attachment:shimmer group-data-[state=uploading]/attachment:shimmer block min-w-0 max-w-full truncate",
+      className
+    )}
+    data-slot="attachment-title"
+    {...props}
+  />
+)
+
+const GridListItemDescription = ({ className, ...props }: TextProps) => (
+  <Text
+    className={cn(
+      "cn-attachment-description block min-w-0 truncate text-muted-foreground group-data-[state=error]/attachment:text-destructive/80",
+      "max-w-full",
+      className
+    )}
+    data-slot="attachment-description"
+    {...props}
+  />
+)
+
+const GridListItemActions = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-attachment-actions flex shrink-0 items-center", className)}
+    data-slot="attachment-actions"
+    {...props}
+  />
+)
+
+const GridListItemAction = ({ className, variant, size = "icon-xs", ...props }: ComponentProps<typeof Button>) => (
+  <Button
+    className={cn("cn-attachment-action", className)}
+    data-slot="attachment-action"
+    size={size}
+    variant={variant ?? "ghost"}
+    {...props}
+  />
+)
 
 const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
   <div
@@ -93,49 +175,25 @@ const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<"
   />
 )
 
-const GridListSpacer = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
-  return <div aria-hidden className={cn("-ml-4 flex-1", className)} ref={ref} {...props} />
-}
-
-const GridListStart = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
-  return <div className={cn("relative flex items-center gap-x-2.5 sm:gap-x-3", className)} ref={ref} {...props} />
-}
-
-interface GridListTextProps extends TextProps {
-  ref?: React.Ref<HTMLDivElement>
-}
-
-const GridListLabel = ({ className, ref, ...props }: GridListTextProps) => (
-  <Text className={cn("font-medium", className)} ref={ref} {...props} />
-)
-
-const GridListDescription = ({ className, ref, ...props }: GridListTextProps) => (
-  <Text
-    className={cn("font-normal text-muted-foreground text-sm", className)}
-    ref={ref}
-    slot="description"
-    {...props}
-  />
-)
-
 GridList.Section = GridListSection
-GridList.Header = GridListHeader
-GridList.Start = GridListStart
-GridList.Spacer = GridListSpacer
 GridList.Item = GridListItem
+GridList.ItemMedia = GridListItemMedia
+GridList.ItemContent = GridListItemContent
+GridList.ItemTitle = GridListItemTitle
+GridList.ItemDescription = GridListItemDescription
+GridList.ItemActions = GridListItemActions
+GridList.ItemAction = GridListItemAction
 GridList.EmptyState = GridListEmptyState
-GridList.Label = GridListLabel
-GridList.Description = GridListDescription
 
-export type { GridListItemProps, GridListProps }
 export {
   GridList,
-  GridListDescription,
   GridListEmptyState,
-  GridListHeader,
   GridListItem,
-  GridListLabel,
-  GridListSection,
-  GridListSpacer,
-  GridListStart
+  GridListItemAction,
+  GridListItemActions,
+  GridListItemContent,
+  GridListItemDescription,
+  GridListItemMedia,
+  GridListItemTitle,
+  GridListSection
 }

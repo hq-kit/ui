@@ -1,67 +1,46 @@
 "use client"
 
-import type { ComponentProps, ReactNode } from "react"
+import { type ComponentProps, type ReactNode, useMemo } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { type FieldErrorProps, FieldError as RACFieldError } from "react-aria-components/FieldError"
 import { type FormProps, Form as RACForm } from "react-aria-components/Form"
+import { type LabelProps, Label as RACLabel } from "react-aria-components/Label"
+import { Text, type TextProps } from "react-aria-components/Text"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
-import { Label } from "./label"
-import { Separator } from "./separator"
+import { Separator as RACSeparator } from "./separator"
 
 const Form = (props: FormProps) => <RACForm {...props} />
 
 const FieldSet = ({ className, ...props }: ComponentProps<"fieldset">) => (
-  <fieldset
-    className={cn(
-      "flex flex-col gap-6",
-      "has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
-      className
-    )}
-    data-slot="field-set"
-    {...props}
-  />
+  <fieldset className={cn("cn-field-set flex flex-col", className)} data-slot="field-set" {...props} />
 )
 
-const FieldLegend = ({
+const Legend = ({
   className,
   variant = "legend",
   ...props
 }: ComponentProps<"legend"> & { variant?: "legend" | "label" }) => (
-  <legend
-    className={cn("mb-3 font-medium", "data-[variant=legend]:text-base", "data-[variant=label]:text-sm", className)}
-    data-slot="field-legend"
-    data-variant={variant}
-    {...props}
-  />
+  <legend className={cn("cn-field-legend", className)} data-slot="field-legend" data-variant={variant} {...props} />
 )
 
 const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
-      className
-    )}
+    className={cn("cn-field-group group/field-group @container/field-group flex w-full flex-col", className)}
     data-slot="field-group"
     {...props}
   />
 )
 
 const fieldVariants = tv({
-  base: "group/field flex w-full gap-3 data-[invalid=true]:text-destructive",
+  base: "cn-field group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
   variants: {
     orientation: {
-      vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
-      horizontal: [
-        "flex-row items-center",
-        "[&>[data-slot=field-label]]:flex-auto",
-        "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px"
-      ],
-      responsive: [
-        "@md/field-group:flex-row flex-col @md/field-group:items-center @md/field-group:[&>*]:w-auto [&>*]:w-full [&>.sr-only]:w-auto",
-        "@md/field-group:[&>[data-slot=field-label]]:flex-auto",
-        "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px"
-      ]
+      vertical: "cn-field-orientation-vertical flex-col *:w-full [&>.sr-only]:w-auto",
+      horizontal:
+        "cn-field-orientation-horizontal flex-row items-center has-[>[data-slot=field-content]]:items-start *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:[&>[slot=control]]:mt-px",
+      responsive:
+        "cn-field-orientation-responsive @md/field-group:flex-row flex-col @md/field-group:items-center *:w-full @md/field-group:*:w-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:*:data-[slot=field-label]:flex-auto [&>.sr-only]:w-auto @md/field-group:has-[>[data-slot=field-content]]:[&>[slot=checkbox],[slot=radio]]:mt-px"
     }
   },
   defaultVariants: {
@@ -73,42 +52,49 @@ const Field = ({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) => (
+}: ComponentProps<"div"> & VariantProps<typeof fieldVariants>) => (
   <div
     className={cn(fieldVariants({ orientation }), className)}
     data-orientation={orientation}
     data-slot="field"
+    role="group"
     {...props}
   />
 )
 
-const FieldLabel = (props: ComponentProps<typeof Label>) => <Label {...props} />
-
-const FieldTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
+const Label = (props: LabelProps) => (
+  <RACLabel
     className={cn(
-      "flex w-fit items-center gap-2 font-medium text-sm leading-snug group-data-[disabled=true]/field:opacity-50",
-      className
+      "cn-label in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
+      "cn-field-label group/field-label peer/field-label flex w-fit",
+      "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+      props.className
     )}
     data-slot="field-label"
+    elementType="label"
     {...props}
   />
 )
 
-const FieldDescription = ({ className, ...props }: ComponentProps<"p">) => (
-  <p
+const Title = ({ className, ...props }: LabelProps) => (
+  <RACLabel className={cn("cn-field-title flex w-fit items-center", className)} data-slot="field-label" {...props} />
+)
+
+const Description = ({ className, ...props }: TextProps) => (
+  <Text
     className={cn(
-      "font-normal text-muted-foreground text-sm leading-normal group-has-data-[orientation=horizontal]/field:text-balance",
-      "nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5",
+      "cn-field-description font-normal leading-normal group-has-data-horizontal/field:text-balance",
+      "nth-last-2:-mt-1 last:mt-0",
       "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
     )}
     data-slot="field-description"
+    slot="description"
     {...props}
   />
 )
 
-const FieldSeparator = ({
+const Separator = ({
   children,
   className,
   ...props
@@ -116,15 +102,15 @@ const FieldSeparator = ({
   children?: ReactNode
 }) => (
   <div
-    className={cn("relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2", className)}
+    className={cn("cn-field-separator relative", className)}
     data-content={!!children}
     data-slot="field-separator"
     {...props}
   >
-    <Separator className="absolute inset-0 top-1/2" />
+    <RACSeparator className="absolute inset-0 top-1/2" />
     {children && (
       <span
-        className="relative mx-auto block w-fit bg-background px-2 text-muted-foreground"
+        className="cn-field-separator-content relative mx-auto block w-fit bg-background"
         data-slot="field-separator-content"
       >
         {children}
@@ -136,54 +122,75 @@ const FieldSeparator = ({
 const FieldError = (props: FieldErrorProps) => {
   return (
     <RACFieldError
-      className={composeRenderProps(props.className, (className) =>
-        cn("font-normal text-destructive text-xs", className)
-      )}
+      className={composeRenderProps(props.className, (className) => cn("cn-field-error font-normal", className))}
       data-slot="field-error"
       {...props}
     />
   )
 }
 
-const FieldErrorNative = ({ errors, className = "" }: { className?: string; errors?: string | string[] }) => {
-  if (!errors || errors.length === 0) {
+const FieldErrorNative = ({
+  className,
+  children,
+  errors,
+  ...props
+}: ComponentProps<"div"> & {
+  errors?: Array<{ message?: string } | undefined>
+}) => {
+  const content = useMemo(() => {
+    if (children) {
+      return children
+    }
+
+    if (!errors?.length) {
+      return null
+    }
+
+    const uniqueErrors = [...new Map(errors.map((error) => [error?.message, error])).values()]
+
+    if (uniqueErrors?.length === 1) {
+      return uniqueErrors[0]?.message
+    }
+
+    return (
+      <ul className="ml-4 flex list-disc flex-col gap-1">
+        {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
+      </ul>
+    )
+  }, [children, errors])
+
+  if (!content) {
     return null
   }
 
-  return Array.isArray(errors) ? (
-    <ul className="flex flex-col">
-      {errors.map((error, i) => (
-        <li className={cn("font-normal text-destructive text-sm", className)} key={i}>
-          {error}
-        </li>
-      ))}
-    </ul>
-  ) : (
-    <p className={cn("font-normal text-destructive text-sm", className)}>{errors}</p>
+  return (
+    <div className={cn("cn-field-error font-normal", className)} data-slot="field-error" role="alert" {...props}>
+      {content}
+    </div>
   )
 }
 
-Field.Label = FieldLabel
-Field.Description = FieldDescription
+Field.Label = Label
+Field.Description = Description
 Field.Error = FieldError
 Field.Group = FieldGroup
-Field.Legend = FieldLegend
-Field.Separator = FieldSeparator
+Field.Legend = Legend
+Field.Separator = Separator
 Field.Set = FieldSet
-Field.Title = FieldTitle
+Field.Title = Title
 Field.ErrorNative = FieldErrorNative
 
 export {
+  Description,
   Field,
-  FieldDescription,
   FieldError,
   FieldErrorNative,
   FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
   FieldSet,
-  FieldTitle,
   Form,
-  fieldVariants
+  fieldVariants,
+  Label,
+  Legend,
+  Separator,
+  Title
 }

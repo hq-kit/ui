@@ -18,6 +18,7 @@ export function ThemeCustomizerClient() {
       const id = window.requestIdleCallback(() => setIsReady(true))
       return () => window.cancelIdleCallback(id)
     }
+    // @ts-expect-error
     const id = window.setTimeout(() => setIsReady(true), 1200)
     return () => window.clearTimeout(id)
   }, [])

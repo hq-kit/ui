@@ -3,13 +3,13 @@
 import { IconDotsVertical } from "@tabler/icons-react"
 import { use, useMemo } from "react"
 import { Autocomplete, AutocompleteStateContext, useFilter } from "react-aria-components"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 import { SearchField, SearchInput } from "@/components/ui/search-field"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
@@ -27,7 +27,7 @@ export default function TableDemo() {
               <SearchInput />
             </SearchField>
           </div>
-          <Table aria-label="Users" bleed className="mt-4 border-t">
+          <Table aria-label="Users" className="mt-4 border-t">
             <TableHeader>
               <TableColumn className="w-0">#</TableColumn>
               <TableColumn isRowHeader>Name</TableColumn>
@@ -57,9 +57,9 @@ export default function TableDemo() {
                   <TableCell>
                     <div className="flex justify-end">
                       <DropdownMenu>
-                        <DropdownMenuTrigger className="size-6">
+                        <Button size="icon-sm" variant="ghost">
                           <IconDotsVertical />
-                        </DropdownMenuTrigger>
+                        </Button>
                         <DropdownMenuContent aria-label="Actions" placement="left top">
                           <DropdownMenuItem>View</DropdownMenuItem>
                           <DropdownMenuItem>Edit</DropdownMenuItem>

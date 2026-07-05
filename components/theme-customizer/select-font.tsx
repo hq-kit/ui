@@ -1,11 +1,11 @@
 "use client"
-import type { SelectProps } from "react-aria-components"
+import type { ComponentProps } from "react"
 import type { FontMonoFamily } from "@/lib/fonts/mono"
 import type { FontSansFamily } from "@/lib/fonts/sans"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-interface SelectFontProps extends SelectProps {
+interface SelectFontProps extends ComponentProps<typeof Select> {
   fonts: FontMonoFamily[] | FontSansFamily[]
   label: string
 }
@@ -17,7 +17,7 @@ const SelectFont = ({ fonts, label, ...props }: SelectFontProps) => {
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
-      <SelectContent items={fonts}>
+      <SelectContent className="w-max" items={fonts}>
         {(item) => (
           <SelectItem id={item.value} textValue={item.label}>
             <span

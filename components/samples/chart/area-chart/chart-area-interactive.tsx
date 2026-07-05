@@ -142,31 +142,31 @@ export default function ChartAreaInteractive() {
   })
 
   return (
-    <Card className="pt-0">
-      <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
-        <div className="grid flex-1 gap-1">
-          <CardTitle>Area Chart - Interactive</CardTitle>
-          <CardDescription>Showing total visitors for the last 3 months</CardDescription>
-        </div>
-        <Select onChange={setTimeRange} placeholder="Last 3 months" value={timeRange}>
-          <SelectTrigger aria-label="Select a value" className="hidden w-40 rounded-lg sm:ml-auto sm:flex">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent className="rounded-xl">
-            <SelectItem className="rounded-lg" id="90d">
-              Last 3 months
-            </SelectItem>
-            <SelectItem className="rounded-lg" id="30d">
-              Last 30 days
-            </SelectItem>
-            <SelectItem className="rounded-lg" id="7d">
-              Last 7 days
-            </SelectItem>
-          </SelectContent>
-        </Select>
+    <Card>
+      <CardHeader className="border-b">
+        <CardTitle>Area Chart - Interactive</CardTitle>
+        <CardDescription>Showing total visitors for the last 3 months</CardDescription>
+        <Card.Action>
+          <Select onChange={setTimeRange} placeholder="Last 3 months" value={timeRange}>
+            <SelectTrigger aria-label="Select a value" className="hidden w-40 rounded-lg sm:ml-auto sm:flex">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="rounded-xl">
+              <SelectItem className="rounded-lg" id="90d">
+                Last 3 months
+              </SelectItem>
+              <SelectItem className="rounded-lg" id="30d">
+                Last 30 days
+              </SelectItem>
+              <SelectItem className="rounded-lg" id="7d">
+                Last 7 days
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </Card.Action>
       </CardHeader>
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-        <ChartContainer className="aspect-auto h-[250px] w-full" config={chartConfig}>
+        <ChartContainer className="aspect-auto h-62.5 w-full" config={chartConfig}>
           <AreaChart data={filteredData}>
             <defs>
               <linearGradient id="fillDesktop" x1="0" x2="0" y1="0" y2="1">

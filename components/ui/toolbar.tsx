@@ -1,6 +1,6 @@
 "use client"
 
-import { type ComponentProps, createContext, use, useContext } from "react"
+import { type ComponentProps, type CSSProperties, createContext, use, useContext } from "react"
 import { useSlottedContext } from "react-aria-components"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
@@ -8,33 +8,32 @@ import {
   ToggleButtonGroupContext,
   type ToggleButtonGroupProps
 } from "react-aria-components/ToggleButtonGroup"
-import { Toolbar as RACToolbar, type ToolbarProps as RACToolbarProps } from "react-aria-components/Toolbar"
+import { Toolbar as RACToolbar, type ToolbarProps } from "react-aria-components/Toolbar"
 import { cn } from "@/lib/utils"
 import { Separator } from "./separator"
 import { Toggle, type ToggleProps } from "./toggle"
 
 const ToolbarContext = createContext<ToolbarProps>({
-  orientation: "horizontal",
-  isCircle: false
+  orientation: "horizontal"
 })
 
-interface ToolbarProps extends RACToolbarProps {
-  isCircle?: boolean
-}
-
-const Toolbar = ({ orientation = "horizontal", isCircle, className, ...props }: ToolbarProps) => {
+const Toolbar = ({
+  orientation = "horizontal",
+  spacing = 2,
+  className,
+  ...props
+}: ToolbarProps & {
+  spacing?: number
+}) => {
   return (
-    <ToolbarContext.Provider value={{ orientation, isCircle }}>
+    <ToolbarContext.Provider value={{ orientation }}>
       <RACToolbar
         orientation={orientation}
+        style={{ "--gap": spacing } as CSSProperties}
         {...props}
-        className={composeRenderProps(className, (className, { orientation }) =>
+        className={composeRenderProps(className, (className) =>
           cn(
-            "group inset-ring inset-ring-border inline-flex flex-row gap-1.5 bg-overlay p-1.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            isCircle ? "rounded-full" : "rounded-lg",
-            orientation === "horizontal"
-              ? "flex-row items-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              : "flex-col items-start",
+            "cn-toggle-group group/toolbar flex gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
             className
           )
         )}
@@ -44,10 +43,12 @@ const Toolbar = ({ orientation = "horizontal", isCircle, className, ...props }: 
 }
 
 const ToolbarGroup = ({ className, ...props }: ToggleButtonGroupProps) => {
+  const { orientation } = use(ToolbarContext)
   return (
     <ToggleButtonGroupContext.Provider value={{ isDisabled: props.isDisabled }}>
       <ToggleButtonGroup
-        className="flex gap-1.5 group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-start group-data-[orientation=horizontal]:items-center"
+        className="group/toggle-group flex gap-1.5 group-data-[orientation=vertical]/toolbar:flex-col group-data-[orientation=vertical]/toolbar:items-start group-data-[orientation=horizontal]/toolbar:items-center"
+        data-orientation={orientation}
         {...props}
       />
     </ToggleButtonGroupContext.Provider>
@@ -55,34 +56,15 @@ const ToolbarGroup = ({ className, ...props }: ToggleButtonGroupProps) => {
 }
 
 const ToolbarItem = ({ size = "sm", variant = "outline", ref, className, ...props }: ToggleProps) => {
-  const { isCircle } = use(ToolbarContext)
   const groupContext = useSlottedContext(ToggleButtonGroupContext)
   const isDisabled = groupContext?.isDisabled || props.isDisabled
-  return (
-    <Toggle
-      className={composeRenderProps(className, (className) =>
-        cn(isCircle ? "rounded-full" : "rounded-[calc(var(--radius-lg)-1px)]", className)
-      )}
-      data-slot="toolbar-item"
-      isDisabled={isDisabled}
-      ref={ref}
-      size={size}
-      variant={variant}
-      {...props}
-    />
-  )
+  return <Toggle data-slot="toolbar-item" isDisabled={isDisabled} ref={ref} size={size} variant={variant} {...props} />
 }
 
 const ToolbarSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => {
   const { orientation } = useContext(ToolbarContext)
   const reverseOrientation = orientation === "vertical" ? "horizontal" : "vertical"
-  return (
-    <Separator
-      className={cn(reverseOrientation === "vertical" ? "mx-0.5 h-8" : "my-0.5 w-8", className)}
-      orientation={reverseOrientation}
-      {...props}
-    />
-  )
+  return <Separator orientation={reverseOrientation} {...props} />
 }
 
 export type { ToolbarProps }

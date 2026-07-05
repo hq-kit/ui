@@ -23,6 +23,10 @@ const config = {
       {
         protocol: 'https',
         hostname: 'github.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatar.vercel.sh'
       }
     ]
   },
@@ -39,13 +43,22 @@ const config = {
   },
   async rewrites() {
     return [
-      { source: '/r/:slug', destination: '/r/:slug.json' },
-      { source: '/r/hooks/:slug', destination: '/r/:slug.json' },
-      { source: '/r/lib/:slug', destination: '/r/:slug.json' },
+      {
+        source: '/r/styles/radix-:styleName/:path*',
+        destination: '/r/styles/:styleName/:path*',
+      },
+      {
+        source: '/r/styles/:theme/:component([^\\.]+)',
+        destination: '/r/styles/:theme/:component.json',
+      },
+      {
+        source: '/r/:slug',
+        destination: '/r/styles/nova/:slug.json',
+      },
       {
         source: '/docs/:path*.md',
         destination: '/llm/:path*'
-      }
+      },
     ]
   },
   async redirects() {
@@ -56,9 +69,9 @@ const config = {
         permanent: false
       },
       {
-        source: '/docs/components/layouts/aside',
-        destination: '/docs/components/layouts/sidebar',
-        permanent: true
+        source: '/charts',
+        destination: '/charts/area',
+        permanent: false
       }
     ]
   }

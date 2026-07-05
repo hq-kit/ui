@@ -1,8 +1,9 @@
 "use client"
 
 import type { Root as PageTreeRoot } from "fumadocs-core/page-tree"
-import { IconCheck, IconChevronDown, IconCopy, IconMarkdown } from "@tabler/icons-react"
+import { IconMarkdown } from "@tabler/icons-react"
 import { useState } from "react"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { IconBrandGithub } from "@/components/icons"
 import { MobilePager } from "@/components/mdx/pager"
 import { Button } from "@/components/ui/button"
@@ -50,14 +51,39 @@ export function OpenIn({ tree, url, page }: { tree: PageTreeRoot; url: string; p
   return (
     <div className="not-prose fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-x-1.5 border-t bg-popover p-4 md:static md:z-auto md:ml-auto md:border-transparent md:border-t md:bg-transparent">
       <Button isPending={pending} onPress={() => void getMarkdown()} size="sm" variant="outline">
-        {pending ? <Spinner /> : copied ? <IconCheck /> : <IconCopy />}
+        {pending ? (
+          <Spinner />
+        ) : copied ? (
+          <IconPlaceholder
+            hugeicons="Tick02Icon"
+            lucide="CheckIcon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
+            tabler="IconCheck"
+          />
+        ) : (
+          <IconPlaceholder
+            hugeicons="CopyIcon"
+            lucide="CopyIcon"
+            phosphor="CopyIcon"
+            remixicon="RiFileCopyLine"
+            tabler="IconCopy"
+          />
+        )}
         Copy page
       </Button>
       <div className="flex items-center gap-x-1.5">
         <DropdownMenu>
           <Button size="sm" variant="outline">
             Open in
-            <IconChevronDown className="rotate-180 sm:rotate-0" />
+            <IconPlaceholder
+              className="rotate-180 sm:rotate-0"
+              hugeicons="ArrowDown01Icon"
+              lucide="ChevronDownIcon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
+              tabler="IconChevronDown"
+            />
           </Button>
           <DropdownMenuContent className="min-w-40" placement="bottom end">
             <DropdownMenuItem

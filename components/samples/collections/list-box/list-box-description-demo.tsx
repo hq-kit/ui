@@ -13,6 +13,7 @@ export default function ListBoxDescriptionDemo() {
       items={roles}
       onSelectionChange={setSelected}
       selectedKeys={selected}
+      selectionMode="single"
     >
       {(item) => (
         <ListBoxItem id={item.id} textValue={item.name}>

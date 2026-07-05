@@ -3,8 +3,10 @@
 import type { ReactNode } from "react"
 import { useRouter } from "next/navigation"
 import { ThemeProvider, useTheme } from "next-themes"
-import { useEffect, useState } from "react"
-import { I18nProvider, RouterProvider } from "react-aria-components"
+import { RouterProvider } from "react-aria-components"
+import { IconProvider } from "@/components/icon-provider"
+import { LocaleProvider } from "@/components/locale-provider"
+import { StyleProvider } from "@/components/style-provider"
 import { Toaster } from "@/components/ui/sonner"
 
 declare module "react-aria-components" {
@@ -13,29 +15,27 @@ declare module "react-aria-components" {
   }
 }
 
-export function ClientProviders({ lang, children }: { lang: string; children: ReactNode }) {
-  const [locale, setLocale] = useState(lang)
-
-  useEffect(() => {
-    if (typeof navigator === "undefined") return
-    const nextLocale = navigator.language || lang
-    setLocale(nextLocale)
-  }, [lang])
-
-  return <I18nProvider locale={locale}>{children}</I18nProvider>
-}
-
-const Providers = ({ lang, children }: { lang: string; children: ReactNode }) => {
+const Providers = ({ children }: { children: ReactNode }) => {
   const router = useRouter()
   return (
-    <ClientProviders lang={lang}>
-      <RouterProvider navigate={router.push}>
-        <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem storageKey="mode">
-          <Toaster />
-          {children}
-        </ThemeProvider>
-      </RouterProvider>
-    </ClientProviders>
+    <IconProvider>
+      <LocaleProvider>
+        <RouterProvider navigate={router.push}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+            enableSystem
+            storageKey="mode"
+          >
+            <StyleProvider>
+              <Toaster />
+              {children}
+            </StyleProvider>
+          </ThemeProvider>
+        </RouterProvider>
+      </LocaleProvider>
+    </IconProvider>
   )
 }
 

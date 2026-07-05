@@ -67,6 +67,7 @@ export const Code = ({ code, lang = "tsx", className, copy = false, ...props }: 
       }
     }
 
+    // @ts-expect-error
     const id = window.setTimeout(run, 0)
     return () => {
       cancelled = true
@@ -81,15 +82,15 @@ export const Code = ({ code, lang = "tsx", className, copy = false, ...props }: 
   return (
     <div className="relative w-full">
       {isLoading && !formattedCode ? (
-        <div className="h-12 w-full animate-pulse rounded-lg border bg-muted" />
+        <div className="cn-skeleton h-64 w-full animate-pulse border" />
       ) : (
         <div
           {...props}
           className={cn(
-            "not-prose relative my-4 w-full max-w-none overflow-hidden rounded-lg text-sm/6 shadow-sm",
-            "*:[pre]:rounded-lg *:[pre]:py-2",
-            "**:[pre]:max-h-96 **:[pre]:overflow-auto",
-            "scrollbar-fade",
+            "cn-skeleton not-prose relative my-4 w-full max-w-none overflow-hidden text-sm/6 shadow-sm",
+            "**:[pre]:py-2",
+            "**:[pre]:box-border **:[pre]:max-h-96 **:[pre]:overflow-auto",
+            "scrollbar-fade scroll-fade",
             className
           )}
           dangerouslySetInnerHTML={{ __html: formattedCode }}

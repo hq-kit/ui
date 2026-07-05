@@ -1,11 +1,11 @@
 "use client"
 
 import type { TableOfContents, TOCItemType } from "fumadocs-core/toc"
-import { IconList } from "@tabler/icons-react"
 import { Suspense, useEffect, useRef, useState } from "react"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { twMerge } from "tailwind-merge"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useScrollPosition } from "@/hooks/use-scroll-position"
 import { cn } from "@/lib/utils"
@@ -62,7 +62,15 @@ export function Toc({ className, items }: Props) {
             className="mb-6 flex items-center gap-x-2 font-medium text-base text-foreground leading-7 lg:text-sm"
             level={2}
           >
-            <IconList className="size-4 text-muted-foreground" /> On this page
+            <IconPlaceholder
+              className="size-4 text-muted-foreground"
+              hugeicons="LeftToRightListBulletIcon"
+              lucide="ListIcon"
+              phosphor="ListBulletsIcon"
+              remixicon="RiListUnordered"
+              tabler="IconList"
+            />{" "}
+            On this page
           </Heading>
           {items.length > 0 && (
             <ul className="flex flex-col gap-y-2.5">

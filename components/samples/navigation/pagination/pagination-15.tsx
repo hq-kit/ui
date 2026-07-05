@@ -2,7 +2,7 @@
 
 import { IconChevronLeft, IconChevronLeftPipe, IconChevronRight, IconChevronRightPipe } from "@tabler/icons-react"
 import { useId } from "react"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import {
   Pagination,
   PaginationContent,

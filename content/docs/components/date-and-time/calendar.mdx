@@ -11,11 +11,48 @@ published: true
 ## Preview
 <Preview component='preview/calendar' />
 
-## Blocks
 
-<Grid col={2}>
-<Demo center component='date-and-time/calendar/calendar-01' />
-<Demo center component='date-and-time/calendar/calendar-02' />
-</Grid>
-<Demo center component='date-and-time/calendar/calendar-03' />
-<Demo center component='date-and-time/calendar/calendar-04' />
+## Examples
+
+### Basic
+
+A basic calendar component. We used `className="rounded-lg border"` to style the calendar.
+
+<Demo component='date-and-time/calendar/calendar-basic' />
+
+### Presets
+
+<Demo component='date-and-time/calendar/calendar-presets' />
+
+### Date and Time Picker
+
+<Demo component='date-and-time/calendar/calendar-time' />
+
+### Booked dates
+<Demo component='date-and-time/calendar/calendar-booked-dates' />
+
+### Custom Cell Size
+
+<Demo component='date-and-time/calendar/calendar-custom-days' />
+
+You can customize the size of calendar cells using the `--cell-size` CSS variable. You can also make it responsive by using breakpoint-specific values:
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]"
+/>
+```
+
+Or use fixed values:
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:2.75rem] md:[--cell-size:3rem]"
+/>
+```

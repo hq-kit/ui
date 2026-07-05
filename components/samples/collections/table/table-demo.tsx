@@ -2,7 +2,6 @@
 
 import { NumberFormatter } from "@internationalized/number"
 import { IconDotsVertical } from "@tabler/icons-react"
-import { Card, CardContent } from "@/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,51 +13,47 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 
 export default function TableDemo() {
   return (
-    <Card className="p-0">
-      <CardContent>
-        <Table aria-label="Products" bleed>
-          <TableHeader>
-            <TableColumn className="w-0">#</TableColumn>
-            <TableColumn isRowHeader>Name</TableColumn>
-            <TableColumn>Category</TableColumn>
-            <TableColumn>Price</TableColumn>
-            <TableColumn>Stock</TableColumn>
-            <TableColumn />
-          </TableHeader>
-          <TableBody items={products}>
-            {(item) => (
-              <TableRow id={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.category}</TableCell>
-                <TableCell>
-                  {new NumberFormatter("en-US", {
-                    style: "currency",
-                    currency: "USD"
-                  }).format(item.price)}
-                </TableCell>
-                <TableCell>{item.stock}</TableCell>
-                <TableCell>
-                  <div className="flex justify-end">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger className="size-6">
-                        <IconDotsVertical />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent aria-label="Actions" placement="left top">
-                        <DropdownMenuItem>View</DropdownMenuItem>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+    <Table aria-label="Products">
+      <TableHeader>
+        <TableColumn className="w-0">#</TableColumn>
+        <TableColumn isRowHeader>Name</TableColumn>
+        <TableColumn>Category</TableColumn>
+        <TableColumn>Price</TableColumn>
+        <TableColumn>Stock</TableColumn>
+        <TableColumn />
+      </TableHeader>
+      <TableBody items={products}>
+        {(item) => (
+          <TableRow id={item.id}>
+            <TableCell>{item.id}</TableCell>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.category}</TableCell>
+            <TableCell>
+              {new NumberFormatter("en-US", {
+                style: "currency",
+                currency: "USD"
+              }).format(item.price)}
+            </TableCell>
+            <TableCell>{item.stock}</TableCell>
+            <TableCell>
+              <div className="flex justify-end">
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="size-6">
+                    <IconDotsVertical />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent aria-label="Actions" placement="left top">
+                    <DropdownMenuItem>View</DropdownMenuItem>
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   )
 }
 

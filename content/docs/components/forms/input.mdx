@@ -8,22 +8,82 @@ published: true
 <Install component='input' />
 
 
-## Blocks
-<Grid col={2}>
-<Demo component='forms/input/input-email-demo'/>
-<Demo component='forms/input/input-number-demo'/>
-<Demo component='forms/input/input-search-demo'/>
-<Demo component='forms/input/input-label-demo'/>
-<Demo component='forms/input/input-button-group-demo'/>
-<Demo component='forms/input/input-spinner-demo'/>
-<Demo component='forms/input/input-with-button-demo'/>
-<Demo component='forms/input/input-with-dropdown-demo'/>
-<Demo component='forms/input/input-with-icon-demo'/>
-<Demo component='forms/input/input-with-prefix-demo'/>
-<Demo component='forms/input/input-with-prefix-suffix-demo'/>
-<Demo component='forms/input/input-with-suffix-demo'/>
-<Demo component='forms/input/input-with-text'/>
-<Demo component='forms/input/input-with-tooltip'/>
-<Demo component='forms/input/textarea-addon-demo'/>
-<Demo component='forms/input/textarea-addon-2-demo'/>
-</Grid>
+## Examples
+
+### Basic
+
+<Demo component='forms/input/input-basic'  />
+
+### Field
+
+Use `Field`, `FieldLabel`, and `FieldDescription` to create an input with a
+label and description.
+
+<Demo component='forms/input/input-field'  />
+
+### Field Group
+
+Use `FieldGroup` to show multiple `Field` blocks and to build forms.
+
+<Demo component='forms/input/input-fieldgroup'  />
+
+### Disabled
+
+Use the `disabled` prop to disable the input. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
+
+<Demo component='forms/input/input-disabled'  />
+
+### Invalid
+
+Use the `aria-invalid` prop to mark the input as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
+
+<Demo component='forms/input/input-invalid'  />
+
+### File
+
+Use the `type="file"` prop to create a file input.
+
+<Demo component='forms/input/input-file'  />
+
+### Inline
+
+Use `Field` with `orientation="horizontal"` to create an inline input.
+Pair with `Button` to create a search input with a button.
+
+<Demo component='forms/input/input-inline'  />
+
+### Grid
+
+Use a grid layout to place multiple inputs side by side.
+
+<Demo component='forms/input/input-grid'  />
+
+### Required
+
+Use the `required` attribute to indicate required inputs.
+
+<Demo component='forms/input/input-required'  />
+
+### Badge
+
+Use `Badge` in the label to highlight a recommended field.
+
+<Demo component='forms/input/input-badge'  />
+
+### Input Group
+
+To add icons, text, or buttons inside an input, use the `InputGroup` component. See the [Input Group](/docs/components/input-group) component for more examples.
+
+<Demo component='forms/input/input-input-group'  />
+
+### Button Group
+
+To add buttons to an input, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) component for more examples.
+
+<Demo component='forms/input/input-button-group'  />
+
+### Form
+
+A full form example with multiple inputs, a select, and a button.
+
+<Demo component='forms/input/input-form' />

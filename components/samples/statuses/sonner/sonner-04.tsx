@@ -1,7 +1,7 @@
 "use client"
 
 import { toast } from "sonner"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 
 const SonnerWithAvatarDemo = () => {
@@ -10,11 +10,10 @@ const SonnerWithAvatarDemo = () => {
       onPress={() =>
         toast(
           <div className="flex items-center gap-2">
-            <Avatar
-              alt="Hallie Richards"
-              fallback="HR"
-              src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-            />
+            <Avatar>
+              <AvatarImage alt="Hallie Richards" src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png" />
+              <AvatarFallback>HR</AvatarFallback>
+            </Avatar>
             Hey Henry Richer, your profile is now up to date!
           </div>
         )

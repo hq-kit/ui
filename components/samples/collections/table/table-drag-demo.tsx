@@ -3,7 +3,6 @@
 import { IconStar } from "@tabler/icons-react"
 import { useDragAndDrop } from "react-aria-components"
 import { useListData } from "react-stately"
-import { Card, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function TableDragDemo() {
@@ -25,35 +24,31 @@ export default function TableDragDemo() {
     }
   })
   return (
-    <Card className="p-0">
-      <CardContent>
-        <Table allowResize aria-label="Movies" bleed dragAndDropHooks={dragAndDropHooks} selectionMode="multiple">
-          <TableHeader>
-            <TableColumn>#</TableColumn>
-            <TableColumn isRowHeader>Name</TableColumn>
-            <TableColumn>Genre</TableColumn>
-            <TableColumn>Release</TableColumn>
-            <TableColumn>Rating</TableColumn>
-          </TableHeader>
-          <TableBody items={list.items}>
-            {(item) => (
-              <TableRow>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.genre}</TableCell>
-                <TableCell>{item.releaseYear}</TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-x-2">
-                    <IconStar className="size-3.5 shrink-0 text-warning" />
-                    <span>{item.rating}</span>
-                  </div>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+    <Table aria-label="Movies" dragAndDropHooks={dragAndDropHooks} selectionMode="multiple">
+      <TableHeader>
+        <TableColumn>#</TableColumn>
+        <TableColumn isRowHeader>Name</TableColumn>
+        <TableColumn>Genre</TableColumn>
+        <TableColumn>Release</TableColumn>
+        <TableColumn>Rating</TableColumn>
+      </TableHeader>
+      <TableBody items={list.items}>
+        {(item) => (
+          <TableRow>
+            <TableCell>{item.id}</TableCell>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.genre}</TableCell>
+            <TableCell>{item.releaseYear}</TableCell>
+            <TableCell>
+              <div className="flex items-center gap-x-2">
+                <IconStar className="size-3.5 shrink-0 text-warning" />
+                <span>{item.rating}</span>
+              </div>
+            </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   )
 }
 

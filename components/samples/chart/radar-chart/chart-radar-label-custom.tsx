@@ -48,7 +48,7 @@ export default function ChartRadarLabelCustom() {
             <ChartTooltip content={<ChartTooltipContent indicator="line" />} cursor={false} />
             <PolarAngleAxis
               dataKey="month"
-              tick={({ x, y, textAnchor, index, ...props }) => {
+              tick={({ x, y, textAnchor, index, verticalAnchor, visibleTicksCount, payload, ...props }) => {
                 const data = chartData[index]
                 const yValue = typeof y === "number" ? y : 0
 

@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { NumberField, NumberInput } from "@/components/ui/number-field"
 
 export default function NumberFieldDemo() {

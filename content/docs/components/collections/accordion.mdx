@@ -11,16 +11,35 @@ published: true
 ## Preview
 <Preview component='preview/accordion'/>
 
-## Blocks
-<Grid col={2}>
-<Demo component='collections/accordion/accordion-01'/>
-<Demo component='collections/accordion/accordion-02'/>
-<Demo component='collections/accordion/accordion-03'/>
-<Demo component='collections/accordion/accordion-04'/>
-<Demo component='collections/accordion/accordion-05'/>
-<Demo component='collections/accordion/accordion-06'/>
-<Demo component='collections/accordion/accordion-07'/>
-<Demo component='collections/accordion/accordion-08'/>
-<Demo component='collections/accordion/accordion-09'/>
-<Demo component='collections/accordion/accordion-10'/>
-</Grid>
+
+## Examples
+
+### Basic
+
+A basic accordion that shows one item at a time. The first item is open by default.
+
+<Demo component='collections/accordion/accordion-basic' />
+
+### Multiple
+
+Use `allowMultipleExpanded` to allow multiple items to be open at the same time.
+
+<Demo component='collections/accordion/accordion-multiple' />
+
+### Disabled
+
+Use the `isDisabled` prop on `AccordionItem` to disable individual items.
+
+<Demo component='collections/accordion/accordion-with-disabled' />
+
+### Borders
+
+Add `border` to the `Accordion` and `border-b last:border-b-0` to the `AccordionItem` to add borders to the items.
+
+<Demo component='collections/accordion/accordion-with-borders' />
+
+### Card
+
+Wrap the `Accordion` in a `Card` component.
+
+<Demo component='collections/accordion/accordion-in-card' />

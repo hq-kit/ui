@@ -26,7 +26,6 @@ export function getChildComponents(content: string) {
 
 export function getDeps(content: string) {
   const regex = /(?<=from\s+['"])([^'"]+)/g
-
   const excludes = [
     "react",
     "@/hooks/use-mobile",
@@ -35,15 +34,12 @@ export function getDeps(content: string) {
     "@react-aria/collections",
     "@react-aria/i18n",
     "@react-types/overlays",
-    "recharts/types/component/DefaultLegendContent",
-    "recharts/types/component/DefaultTooltipContent",
-    "recharts/types/component/Tooltip",
-    "recharts/types/shape/Curve",
     "next/navigation"
   ]
 
   const replacement = [
     { from: "motion/react", to: "motion" },
+    { from: "recharts", to: "recharts" },
     { from: "react-aria", to: "react-aria-components" },
     { from: "react-aria-components", to: "react-aria-components" }
   ]
@@ -84,10 +80,10 @@ for (const component of components) {
   const deps = getDeps(content)
 
   if (checkUtils(content)) {
-    childComponents.push("utils")
+    childComponents.push(`${siteConfig.url}/r/utils`)
   }
   if (checkHooks(content)) {
-    childComponents.push("use-mobile")
+    childComponents.push(`${siteConfig.url}/r/use-mobile`)
   }
 
   componentsList.push({
@@ -100,7 +96,8 @@ for (const component of components) {
     files: [
       {
         path: `components/ui/${component}`,
-        type: "registry:ui"
+        type: "registry:ui",
+        target: `@ui/${component}`
       }
     ]
   })

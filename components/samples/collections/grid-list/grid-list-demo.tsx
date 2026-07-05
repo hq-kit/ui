@@ -4,8 +4,12 @@ import { GridList, GridListItem } from "@/components/ui/grid-list"
 
 export default function GridListDemo() {
   return (
-    <GridList aria-label="Select your favorite bands" className="min-w-64" items={items} selectionMode="single">
-      {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
+    <GridList aria-label="Select your favorite bands" items={items} selectionMode="single">
+      {(item) => (
+        <GridListItem id={item.id} size="xs">
+          {item.name}
+        </GridListItem>
+      )}
     </GridList>
   )
 }

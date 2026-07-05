@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from "@/components/icons"
 import { CopyButton } from "@/components/mdx/copy-button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { useStyle } from "@/components/style-provider"
+import { DropdownMenu } from "@/components/ui/dropdown-menu"
 import { siteConfig } from "@/config/site"
 import { copyToClipboard } from "@/lib/modifiers"
 
@@ -19,12 +20,16 @@ export function CLI({ items, command = "add", registered }: CLIProps) {
   const [pm, setPm] = useState<"npm" | "yarn" | "pnpm" | "bun">("npm")
   const [copied, setCopied] = useState(false)
 
+  const { style } = useStyle()
+
   const getCommandLine = (p: "npm" | "yarn" | "pnpm" | "bun") => {
     if (command === "add") {
       if (registered) {
         return Array.isArray(items) ? items.map((item) => ` @hq/${item}`).join(" ") : ` @hq/${items}`
       } else {
-        return Array.isArray(items) ? items.map((item) => ` ${url}/${item}`).join(" ") : ` ${url}/${items}`
+        return Array.isArray(items)
+          ? items.map((item) => ` ${url}/styles/${style}/${item}`).join(" ")
+          : ` ${url}/${style}/${items}`
       }
     }
     if (command === "install") {
@@ -40,25 +45,25 @@ export function CLI({ items, command = "add", registered }: CLIProps) {
     if (command === "add") {
       switch (p) {
         case "npm":
-          return "npx shadcn@latest add"
+          return "npx shadcn add"
         case "pnpm":
-          return "pnpm dlx shadcn@latest add"
+          return "pnpm dlx shadcn add"
         case "yarn":
-          return "yarn dlx shadcn@latest add"
+          return "yarn dlx shadcn add"
         case "bun":
-          return "bunx --bun shadcn@latest add"
+          return "bunx --bun shadcn add"
       }
     }
     if (command === "init") {
       switch (p) {
         case "npm":
-          return "npx shadcn@latest init"
+          return "npx shadcn init"
         case "pnpm":
-          return "pnpm dlx shadcn@latest init"
+          return "pnpm dlx shadcn init"
         case "yarn":
-          return "yarn dlx shadcn@latest init"
+          return "yarn dlx shadcn init"
         case "bun":
-          return "bunx --bun shadcn@latest init"
+          return "bunx --bun shadcn init"
       }
     }
     if (command === "execute") {
@@ -84,31 +89,31 @@ export function CLI({ items, command = "add", registered }: CLIProps) {
   }
 
   return (
-    <div className="no-scrollbar relative mt-4 flex h-11 w-full items-center justify-between gap-2 overflow-x-auto overflow-y-hidden rounded-lg border bg-[#eff1f5] py-2 text-sm **:whitespace-nowrap dark:bg-[#1e1e2e]">
-      <div className="px-3 font-mono!">
+    <div className="cn-item-size-sm cn-button-group-text no-scrollbar relative mt-4 flex items-center justify-between overflow-x-auto overflow-y-hidden border bg-[#eff1f5] pr-0 text-sm shadow-sm **:whitespace-nowrap dark:bg-[#1e1e2e]">
+      <div className="font-mono!">
         <span className="text-[#1e66f5] dark:text-[#89B4FA]">{getPm(pm)}</span>
         <span className="text-[#40A02B] dark:text-[#A6E3A1]">{getCommandLine(pm)}</span>
       </div>
       <DropdownMenu>
-        <CopyButton className="sticky top-1.5 right-1.5 bg-card" isCopied={copied} />
-        <DropdownMenuContent offset={0} placement="left top">
-          <DropdownMenuItem onPress={() => onAction("npm")}>
+        <CopyButton className="cn-alert-action sticky" data-icon="inline-end" isCopied={copied} />
+        <DropdownMenu.Content offset={-6} placement="left top">
+          <DropdownMenu.Item onPress={() => onAction("npm")}>
             <IconBrandNpm className="size-3.5" />
             NPM
-          </DropdownMenuItem>
-          <DropdownMenuItem onPress={() => onAction("yarn")}>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item onPress={() => onAction("yarn")}>
             <IconBrandYarn className="size-3.5" />
             Yarn
-          </DropdownMenuItem>
-          <DropdownMenuItem onPress={() => onAction("pnpm")}>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item onPress={() => onAction("pnpm")}>
             <IconBrandPnpm className="size-3.5" />
             PNPM
-          </DropdownMenuItem>
-          <DropdownMenuItem onPress={() => onAction("bun")}>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item onPress={() => onAction("bun")}>
             <IconBrandBun className="size-3.5" />
             Bun
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
       </DropdownMenu>
     </div>
   )

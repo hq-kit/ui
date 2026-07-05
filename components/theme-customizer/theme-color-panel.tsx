@@ -6,15 +6,7 @@ import { type ColorSpace, getColorChannels } from "react-aria-components"
 import { useTheme } from "@/components/providers"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
-import {
-  ColorArea,
-  ColorField,
-  ColorPicker,
-  ColorSlider,
-  ColorSliderTrack,
-  ColorThumb,
-  ColorSwatch as Swatch
-} from "@/components/ui/colors"
+import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch as Swatch } from "@/components/ui/colors"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent } from "@/components/ui/popover"
 import { Select } from "@/components/ui/select"
@@ -87,11 +79,7 @@ export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
             <ColorSlider
               channel={space === "hsl" ? "lightness" : space === "hsb" ? "brightness" : "blue"}
               colorSpace={space}
-            >
-              <ColorSliderTrack>
-                <ColorThumb />
-              </ColorSliderTrack>
-            </ColorSlider>
+            />
             {isHexFormat ? (
               <ColorField aria-label="Hex Color">
                 <Input />
@@ -128,10 +116,10 @@ const ThemeColorPanel = () => {
 
   return (
     <div className="space-y-6">
-      <Accordion allowsMultipleExpanded className="w-full space-y-2" defaultExpandedKeys={["brand"]}>
+      <Accordion allowsMultipleExpanded className="w-full" defaultExpandedKeys={["brand"]}>
         {/* Brand Colors */}
-        <AccordionItem className="rounded-lg border px-4" id="brand">
-          <AccordionTrigger className="cursor-pointer py-3 font-medium text-base">Brand Colors</AccordionTrigger>
+        <AccordionItem id="brand">
+          <AccordionTrigger>Brand Colors</AccordionTrigger>
           <AccordionContent className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("primary", value)}
@@ -162,8 +150,8 @@ const ThemeColorPanel = () => {
         </AccordionItem>
 
         {/* Base Colors */}
-        <AccordionItem className="rounded-lg border px-4" id="base">
-          <AccordionTrigger className="cursor-pointer py-3 font-medium text-base">Base Colors</AccordionTrigger>
+        <AccordionItem id="base">
+          <AccordionTrigger>Base Colors</AccordionTrigger>
           <AccordionContent className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("background", value)}
@@ -195,8 +183,8 @@ const ThemeColorPanel = () => {
         </AccordionItem>
 
         {/* Other Colors */}
-        <AccordionItem className="rounded-lg border px-4" id="other">
-          <AccordionTrigger className="cursor-pointer py-3 font-medium text-base">Other Colors</AccordionTrigger>
+        <AccordionItem id="other">
+          <AccordionTrigger>Other Colors</AccordionTrigger>
           <AccordionContent className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("muted", value)}
@@ -233,8 +221,8 @@ const ThemeColorPanel = () => {
         </AccordionItem>
 
         {/* Sidebar Colors */}
-        <AccordionItem className="border! rounded-lg px-4" id="sidebar">
-          <AccordionTrigger className="cursor-pointer py-3 font-medium text-base">Sidebar Colors</AccordionTrigger>
+        <AccordionItem id="sidebar">
+          <AccordionTrigger>Sidebar Colors</AccordionTrigger>
           <AccordionContent className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("sidebar", value)}
@@ -280,8 +268,8 @@ const ThemeColorPanel = () => {
         </AccordionItem>
 
         {/* Chart Colors */}
-        <AccordionItem className="border! rounded-lg px-4" id="chart">
-          <AccordionTrigger className="cursor-pointer py-3 font-medium text-base">Chart Colors</AccordionTrigger>
+        <AccordionItem id="chart">
+          <AccordionTrigger>Chart Colors</AccordionTrigger>
           <AccordionContent className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("chart-1", value)}

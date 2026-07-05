@@ -7,7 +7,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 const AlertGradientDemo = () => {
   const [isActive, setIsActive] = useState(true)
 
-  if (!isActive) return null
+  if (!isActive)
+    return (
+      <button onClick={() => setIsActive(true)} type="button">
+        Restore
+      </button>
+    )
 
   return (
     <Alert className="flex justify-between border-accent-foreground/20 bg-linear-to-b from-accent to-60% to-transparent text-accent-foreground">

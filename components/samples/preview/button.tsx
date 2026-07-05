@@ -5,8 +5,8 @@ import { IconBrandAdobe } from "@tabler/icons-react"
 import { useState } from "react"
 import { Code } from "@/components/mdx/code-client"
 import { Button, type ButtonProps, buttonVariants } from "@/components/ui/button"
+import { Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { TextField } from "@/components/ui/text-field"
@@ -91,9 +91,8 @@ export default function ButtonPreview() {
         </div>
       </div>
       <Code
-        className="my-0 size-full rounded-lg rounded-t-none border **:[pre]:rounded-t-none"
-        code={`import { IconBrandAdobe } from '@tabler/icons-react'
-import { Button } from '@/components/ui/button'
+        className="my-0 size-full border-t **:[pre]:rounded-t-none"
+        code={`${iconOnly || withIcon ? "import { IconBrandAdobe } from '@tabler/icons-react'\n" : ""}import { Button } from '@/components/ui/button'
 
 <Button${variant !== "default" ? ` variant="${variant}"` : ""}${size !== "default" ? ` size="${size}"` : ""}${isPending ? " isPending" : ""}${isDisabled ? " isDisabled" : ""}>
   ${

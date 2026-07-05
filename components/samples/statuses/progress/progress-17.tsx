@@ -1,12 +1,9 @@
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/field"
 import { Progress } from "@/components/ui/progress"
 
 const Example = () => (
   <Progress value={65}>
-    <Progress.Header>
-      <Label>Uploading...</Label>
-    </Progress.Header>
-    <Progress.Track />
+    <Label>Uploading...</Label>
   </Progress>
 )
 
