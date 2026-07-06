@@ -125,7 +125,7 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children
         }
       </RACDateInput>
       <InputGroup.Addon align="inline-end">
-        <InputGroup.Button data-slot="date-picker-trigger">
+        <InputGroup.Button data-slot="date-picker-trigger" size="icon-xs">
           <IconPlaceholder
             className="size-4 shrink-0"
             hugeicons="ArrowDown01Icon"
@@ -196,7 +196,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
         }
       </RACDateInput>
       <InputGroup.Addon align="inline-end">
-        <InputGroup.Button data-slot="date-picker-trigger">
+        <InputGroup.Button data-slot="date-picker-trigger" size="icon-xs">
           <IconPlaceholder
             className="size-4 shrink-0"
             hugeicons="ArrowDown01Icon"

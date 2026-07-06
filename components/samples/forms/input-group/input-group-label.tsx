@@ -1,6 +1,6 @@
 import { InfoIcon } from "lucide-react"
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
 import { Label } from "@/components/ui/field"
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function InputGroupLabel() {

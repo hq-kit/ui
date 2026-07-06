@@ -3,6 +3,7 @@
 import type { Key } from "react-aria-components"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { toast } from "sonner"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Install } from "@/components/mdx/install"
 import { useStyle } from "@/components/style-provider"
@@ -20,12 +21,10 @@ export function Iframe({ component }: { component: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [code, setCode] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!isOpen || code || isLoading) return
     setIsLoading(true)
-    setError(null)
     fetch(`/r/styles/${style}/${component}`)
       .then(async (res) => {
         if (!res.ok) throw new Error("Failed to load code")
@@ -33,7 +32,7 @@ export function Iframe({ component }: { component: string }) {
         setCode(data.files[0].content)
       })
       .catch(() => {
-        setError("Failed to load code.")
+        toast.error("Failed to load code.")
       })
       .finally(() => setIsLoading(false))
   }, [style, code, isLoading, isOpen])

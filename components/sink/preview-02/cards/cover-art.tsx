@@ -1,8 +1,8 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { buttonVariants } from "@/components/ui/button-group"
 import { Card, CardContent, CardDescription, CardFooter } from "@/components/ui/card"
-import { Item } from "@/components/ui/item"
 import { Label } from "@/components/ui/field"
+import { Item } from "@/components/ui/item"
 
 export function CoverArt() {
   return (

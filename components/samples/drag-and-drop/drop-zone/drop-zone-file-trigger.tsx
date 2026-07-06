@@ -4,6 +4,7 @@ import type { DropEvent } from "@react-types/shared"
 import { IconPhoto } from "@tabler/icons-react"
 import { useState } from "react"
 import { isFileDropItem } from "react-aria-components"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropZone } from "@/components/ui/drop-zone"
 import { FileTrigger } from "@/components/ui/file-trigger"
 
@@ -34,10 +35,15 @@ export default function DropZoneFileTrigger() {
       onDrop={onDropHandler}
     >
       {droppedImage ? (
-        <img alt="" className="aspect-square size-full object-contain" src={droppedImage} />
+        <Avatar>
+          <AvatarImage alt="uploaded" className="aspect-square size-full object-contain" src={droppedImage} />
+          <AvatarFallback>
+            <IconPhoto />
+          </AvatarFallback>
+        </Avatar>
       ) : (
         <div className="grid space-y-3">
-          <div className="mx-auto grid size-12 place-content-center rounded-full border bg-secondary/70 group-data-[drop-target]:border-primary/70 group-data-[drop-target]:bg-primary/20">
+          <div className="mx-auto grid size-12 place-content-center rounded-full border bg-secondary/70 group-data-drop-target:border-primary/70 group-data-drop-target:bg-primary/20">
             <IconPhoto className="size-5" />
           </div>
           <div className="flex justify-center">

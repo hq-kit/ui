@@ -7,8 +7,8 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
 
 export default function DialogCloseButton() {
   return (

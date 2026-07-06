@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { type Color, parseColor } from "react-aria-components/ColorField"
 import { ColorField } from "@/components/ui/colors"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
 
 export default function ColorFieldDemo() {
   const [color, setColor] = useState<Color | null>(parseColor("hsl(0, 100%, 50%)"))

@@ -14,7 +14,12 @@ import { cn } from "@/lib/utils"
 
 const Popover = (props: DialogTriggerProps) => <DialogTrigger data-slot="popover" {...props} />
 
-const PopoverContent = ({ className, offset = 8, arrow = true, ...props }: PopoverProps & { arrow?: boolean }) => {
+const PopoverContent = ({
+  className,
+  offset = 8,
+  showArrow = true,
+  ...props
+}: PopoverProps & { showArrow?: boolean }) => {
   return (
     <RACPopover
       className={composeRenderProps(className, (className) =>
@@ -29,13 +34,11 @@ const PopoverContent = ({ className, offset = 8, arrow = true, ...props }: Popov
     >
       {(values) => (
         <>
-          {arrow && (
+          {showArrow && (
             <OverlayArrow className="group">
               <svg
-                className="block fill-popover stroke-border group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90"
-                height={12}
+                className="size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-none block fill-popover stroke-foreground/10 drop-shadow-sm group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90"
                 viewBox="0 0 12 12"
-                width={12}
               >
                 <path d="M0 0 L6 6 L12 0" />
               </svg>

@@ -1,143 +1,156 @@
-"use client"
-
-import type { IconLibraryName } from "shadcn/icons"
 import { IconPlaceholder } from "@/components/icon-placeholder"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
-const PREVIEW_ICONS = [
-  {
-    lucide: "CopyIcon",
-    tabler: "IconCopy",
-    hugeicons: "Copy01Icon",
-    phosphor: "CopyIcon",
-    remixicon: "RiFileCopyLine"
-  },
-  {
-    lucide: "CircleAlertIcon",
-    tabler: "IconExclamationCircle",
-    hugeicons: "AlertCircleIcon",
-    phosphor: "WarningCircleIcon",
-    remixicon: "RiErrorWarningLine"
-  },
-  {
-    lucide: "TrashIcon",
-    tabler: "IconTrash",
-    hugeicons: "Delete02Icon",
-    phosphor: "TrashIcon",
-    remixicon: "RiDeleteBinLine"
-  },
-  {
-    lucide: "ShareIcon",
-    tabler: "IconShare",
-    hugeicons: "Share03Icon",
-    phosphor: "ShareIcon",
-    remixicon: "RiShareLine"
-  },
-  {
-    lucide: "ShoppingBagIcon",
-    tabler: "IconShoppingBag",
-    hugeicons: "ShoppingBag01Icon",
-    phosphor: "BagIcon",
-    remixicon: "RiShoppingBagLine"
-  },
-  {
-    lucide: "MoreHorizontalIcon",
-    tabler: "IconDots",
-    hugeicons: "MoreHorizontalCircle01Icon",
-    phosphor: "DotsThreeIcon",
-    remixicon: "RiMoreLine"
-  },
-  {
-    lucide: "Loader2Icon",
-    tabler: "IconLoader",
-    hugeicons: "Loading03Icon",
-    phosphor: "SpinnerIcon",
-    remixicon: "RiLoaderLine"
-  },
-  {
-    lucide: "PlusIcon",
-    tabler: "IconPlus",
-    hugeicons: "PlusSignIcon",
-    phosphor: "PlusIcon",
-    remixicon: "RiAddLine"
-  },
-  {
-    lucide: "MinusIcon",
-    tabler: "IconMinus",
-    hugeicons: "MinusSignIcon",
-    phosphor: "MinusIcon",
-    remixicon: "RiSubtractLine"
-  },
-  {
-    lucide: "ArrowLeftIcon",
-    tabler: "IconArrowLeft",
-    hugeicons: "ArrowLeft02Icon",
-    phosphor: "ArrowLeftIcon",
-    remixicon: "RiArrowLeftLine"
-  },
-  {
-    lucide: "ArrowRightIcon",
-    tabler: "IconArrowRight",
-    hugeicons: "ArrowRight02Icon",
-    phosphor: "ArrowRightIcon",
-    remixicon: "RiArrowRightLine"
-  },
-  {
-    lucide: "CheckIcon",
-    tabler: "IconCheck",
-    hugeicons: "Tick02Icon",
-    phosphor: "CheckIcon",
-    remixicon: "RiCheckLine"
-  },
-  {
-    lucide: "ChevronDownIcon",
-    tabler: "IconChevronDown",
-    hugeicons: "ArrowDown01Icon",
-    phosphor: "CaretDownIcon",
-    remixicon: "RiArrowDownSLine"
-  },
-  {
-    lucide: "ChevronRightIcon",
-    tabler: "IconChevronRight",
-    hugeicons: "ArrowRight01Icon",
-    phosphor: "CaretRightIcon",
-    remixicon: "RiArrowRightSLine"
-  },
-  {
-    lucide: "SearchIcon",
-    tabler: "IconSearch",
-    hugeicons: "Search01Icon",
-    phosphor: "MagnifyingGlassIcon",
-    remixicon: "RiSearchLine"
-  },
-  {
-    lucide: "SettingsIcon",
-    tabler: "IconSettings",
-    hugeicons: "Settings01Icon",
-    phosphor: "GearIcon",
-    remixicon: "RiSettingsLine"
-  }
-] satisfies Record<IconLibraryName, string>[]
 
 export function IconPreviewGrid() {
   return (
     <Card>
       <CardContent>
         <div className="grid grid-cols-8 place-items-center gap-4">
-          {PREVIEW_ICONS.map((icon, index) => (
-            <div
-              className="flex size-8 items-center justify-center rounded-md style-sera:rounded-none ring ring-border *:[svg]:size-4"
-              key={index}
-            >
-              <IconPlaceholder
-                hugeicons={icon.hugeicons}
-                lucide={icon.lucide}
-                phosphor={icon.phosphor}
-                remixicon={icon.remixicon}
-                tabler={icon.tabler}
-              />
-            </div>
-          ))}
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Copy01Icon"
+              lucide="CopyIcon"
+              phosphor="CopyIcon"
+              remixicon="RiFileCopyLine"
+              tabler="IconCopy"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="AlertCircleIcon"
+              lucide="CircleAlertIcon"
+              phosphor="WarningCircleIcon"
+              remixicon="RiErrorWarningLine"
+              tabler="IconAlertCircle"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Delete02Icon"
+              lucide="TrashIcon"
+              phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
+              tabler="IconTrash"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Share03Icon"
+              lucide="ShareIcon"
+              phosphor="ShareIcon"
+              remixicon="RiShareLine"
+              tabler="IconShare"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="ShoppingBag01Icon"
+              lucide="ShoppingBagIcon"
+              phosphor="BagIcon"
+              remixicon="RiShoppingBagLine"
+              tabler="IconShoppingBag"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="MoreHorizontalCircle01Icon"
+              lucide="MoreHorizontalIcon"
+              phosphor="DotsThreeIcon"
+              remixicon="RiMoreLine"
+              tabler="IconDots"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Loading03Icon"
+              lucide="Loader2Icon"
+              phosphor="SpinnerIcon"
+              remixicon="RiLoaderLine"
+              tabler="IconLoader"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="PlusSignIcon"
+              lucide="PlusIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
+              tabler="IconPlus"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="MinusSignIcon"
+              lucide="MinusIcon"
+              phosphor="MinusIcon"
+              remixicon="RiSubtractLine"
+              tabler="IconMinus"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="ArrowLeft02Icon"
+              lucide="ArrowLeftIcon"
+              phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
+              tabler="IconArrowLeft"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="ArrowRight02Icon"
+              lucide="ArrowRightIcon"
+              phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
+              tabler="IconArrowRight"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Tick02Icon"
+              lucide="CheckIcon"
+              phosphor="CheckIcon"
+              remixicon="RiCheckLine"
+              tabler="IconCheck"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="ArrowDown01Icon"
+              lucide="ChevronDownIcon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
+              tabler="IconChevronDown"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="ArrowRight01Icon"
+              lucide="ChevronRightIcon"
+              phosphor="CaretRightIcon"
+              remixicon="RiArrowRightSLine"
+              tabler="IconChevronRight"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Search01Icon"
+              lucide="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
+              tabler="IconSearch"
+            />
+          </Button>
+          <Button size="icon" variant="outline">
+            <IconPlaceholder
+              hugeicons="Settings01Icon"
+              lucide="SettingsIcon"
+              phosphor="GearIcon"
+              remixicon="RiSettingsLine"
+              tabler="IconSettings"
+            />
+          </Button>
         </div>
       </CardContent>
     </Card>

@@ -5,11 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/samples/preview/popover.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/samples/preview/tooltip.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(app)/charts/[type]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/charts/[type]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/iframe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-controlled-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsb-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsb-channel-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsl-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsl-channel-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-rgb-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-rgb-channel-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-field/date-field-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-field/date-field-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-custom-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-custom-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-custom-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-custom-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/time-field/time-field-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/time-field/time-field-validation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/drag-and-drop/drop-zone/drop-zone-file-trigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/drag-and-drop/drop-zone/drop-zone-file-trigger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/input-group/input-group-label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/input-group/input-group-label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/generated/previews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-close-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-close-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-basic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-basic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-sides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-sides.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-with-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-with-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-without-notch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-without-notch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/popover/popover-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/popover/popover-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-no-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-no-overlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-sides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-sides.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-with-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-with-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/toggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/surfaces/card/card-01.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/surfaces/card/card-01.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/sink/preview-02/cards/cover-art.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/preview-02/cards/cover-art.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/sink/preview/cards/icon-preview-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/preview/cards/icon-preview-grid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/docs/components/charts/chart.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/charts/chart.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/popover.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/overlays/popover.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/tooltip.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/overlays/tooltip.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/icons/__lucide__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__lucide__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/icons/__tabler__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__tabler__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/luma/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/luma/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/lyra/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/lyra/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/lyra/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/lyra/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/maia/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/maia/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/maia/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/maia/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/mira/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/mira/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/mira/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/mira/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/nova/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/nova/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/nova/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/nova/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/rhea/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/rhea/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/rhea/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/rhea/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/sera/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/sera/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/sera/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/sera/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/vega/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registries/ui/vega/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registry.json" beforeDir="false" afterPath="$PROJECT_DIR$/registry.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,61 +91,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.9271701954009844E-92" />
-      <entry key="S5" value="6.585595519039897E-37" />
-      <entry key="S10" value="2.145425475580896E-18" />
-      <entry key="S30" value="4.869083161642488E-6" />
-      <entry key="S60" value="0.006523499144491047" />
-      <entry key="M2" value="0.2592462371917635" />
-      <entry key="M5" value="3.3883386708438317" />
-      <entry key="M10" value="14.718903315144171" />
-      <entry key="M15" value="30.70976249174058" />
-      <entry key="M30" value="86.06578966670088" />
-      <entry key="H1" value="181.92031784120428" />
-      <entry key="H2" value="314.464070975937" />
-      <entry key="H4" value="511.4675678368924" />
-      <entry key="D1" value="1580.7455502146488" />
-      <entry key="W1" value="6143.478318945148" />
+      <entry key="MS100" value="2.4102832657794466" />
+      <entry key="MS500" value="4.122525086537378" />
+      <entry key="S2" value="4.751522237901064" />
+      <entry key="S5" value="4.902101841517734" />
+      <entry key="S10" value="5.072541106078081" />
+      <entry key="S30" value="7.377733962997532" />
+      <entry key="S60" value="11.769353112185136" />
+      <entry key="M2" value="18.91214428469997" />
+      <entry key="M5" value="35.751286129712476" />
+      <entry key="M10" value="57.02586344794085" />
+      <entry key="M15" value="73.61823350801849" />
+      <entry key="M30" value="112.64859218654806" />
+      <entry key="H1" value="182.95758660544908" />
+      <entry key="H2" value="321.34325418153827" />
+      <entry key="H4" value="555.2372274145214" />
+      <entry key="D1" value="1756.3780209271406" />
+      <entry key="W1" value="6390.9032110390945" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.000000000003059" />
-      <entry key="MS500" value="1.0049787524504659" />
-      <entry key="S2" value="1.2656324889816786" />
-      <entry key="S5" value="1.5917987815127288" />
-      <entry key="S10" value="1.8249466873086684" />
-      <entry key="S30" value="2.30214675058932" />
-      <entry key="S60" value="2.5786505605776844" />
-      <entry key="M2" value="2.7681948961928975" />
-      <entry key="M5" value="3.4943411386316026" />
-      <entry key="M10" value="8.472434924486251" />
-      <entry key="M15" value="16.059844868887808" />
-      <entry key="M30" value="41.32052313164619" />
-      <entry key="H1" value="82.52501058960758" />
-      <entry key="H2" value="133.89086934045233" />
-      <entry key="H4" value="202.35470743139777" />
-      <entry key="D1" value="580.6198626084011" />
-      <entry key="W1" value="1929.7120835430978" />
+      <entry key="MS100" value="4.521483332722587E-128" />
+      <entry key="MS500" value="3.3966921445608245E-26" />
+      <entry key="S2" value="4.293031219248311E-7" />
+      <entry key="S5" value="0.002838609706081297" />
+      <entry key="S10" value="0.053299170599857365" />
+      <entry key="S30" value="0.40389093844463775" />
+      <entry key="S60" value="0.7938881955353813" />
+      <entry key="M2" value="1.3714626069186608" />
+      <entry key="M5" value="3.342650829686604" />
+      <entry key="M10" value="7.570273180035174" />
+      <entry key="M15" value="11.771526818880881" />
+      <entry key="M30" value="22.700519112136515" />
+      <entry key="H1" value="44.96987501926346" />
+      <entry key="H2" value="94.05322563216869" />
+      <entry key="H4" value="177.23687542078386" />
+      <entry key="D1" value="604.2773143944462" />
+      <entry key="W1" value="1982.9486488297616" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.57828895115846E-4" />
-      <entry key="MS500" value="0.23377161076446862" />
-      <entry key="S2" value="0.9226058049169789" />
-      <entry key="S5" value="1.4204534811101852" />
-      <entry key="S10" value="1.7177545461537131" />
-      <entry key="S30" value="2.234091238016265" />
-      <entry key="S60" value="2.5395336151550763" />
-      <entry key="M2" value="3.0002308749737945" />
-      <entry key="M5" value="6.865608159632277" />
-      <entry key="M10" value="23.16219061265606" />
-      <entry key="M15" value="46.72729310256852" />
-      <entry key="M30" value="127.32424672894864" />
-      <entry key="H1" value="264.3799094181749" />
-      <entry key="H2" value="448.29992277700757" />
-      <entry key="H4" value="713.7789971444506" />
-      <entry key="D1" value="2161.345162956017" />
-      <entry key="W1" value="8073.180436772894" />
+      <entry key="MS100" value="2.2972649511802046" />
+      <entry key="MS500" value="4.080247645073557" />
+      <entry key="S2" value="4.739324290102282" />
+      <entry key="S5" value="4.898998670578815" />
+      <entry key="S10" value="5.114552782055497" />
+      <entry key="S30" value="7.752940074714642" />
+      <entry key="S60" value="12.52398178398678" />
+      <entry key="M2" value="20.238698919932627" />
+      <entry key="M5" value="39.03920831427773" />
+      <entry key="M10" value="64.53246300891618" />
+      <entry key="M15" value="85.32482580572125" />
+      <entry key="M30" value="135.28981036386293" />
+      <entry key="H1" value="227.8748150247116" />
+      <entry key="H2" value="415.34763188254493" />
+      <entry key="H4" value="732.4308163213378" />
+      <entry key="D1" value="2360.633176475177" />
+      <entry key="W1" value="8373.841474956396" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -313,7 +371,8 @@
       <workItem from="1783014798048" duration="25888000" />
       <workItem from="1783173630966" duration="17439000" />
       <workItem from="1783221003793" duration="26420000" />
-      <workItem from="1783278356322" duration="868000" />
+      <workItem from="1783278356322" duration="1666000" />
+      <workItem from="1783314791360" duration="7990000" />
     </task>
     <servers />
   </component>
