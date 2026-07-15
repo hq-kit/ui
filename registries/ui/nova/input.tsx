@@ -27,7 +27,7 @@ const Textarea = ({ className, ...props }: TextAreaProps) => (
   <TextArea
     className={composeRenderProps(className, (className) =>
       cn(
-        "border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors data-focus-within:ring-3 aria-invalid:ring-3 md:text-sm field-sizing-content flex min-h-16 w-full outline-none disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-muted-foreground",
+        "border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors focus-visible:ring-3 aria-invalid:ring-3 md:text-sm field-sizing-content flex min-h-16 w-full outline-none disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-muted-foreground",
         "[&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1",
         className
       )

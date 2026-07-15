@@ -5,69 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/samples/preview/popover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/samples/preview/tooltip.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/mdx/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/iframe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-controlled-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-controlled-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsb-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsb-channel-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsl-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-hsl-channel-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-rgb-channel-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/colors/color-field/color-field-rgb-channel-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-field/date-field-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-field/date-field-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-custom-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-custom-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-picker/date-picker-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-custom-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-custom-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/date-range-picker/date-range-picker-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/date-and-time/time-field/time-field-validation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/date-and-time/time-field/time-field-validation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/drag-and-drop/drop-zone/drop-zone-file-trigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/drag-and-drop/drop-zone/drop-zone-file-trigger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/forms/input-group/input-group-label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/input-group/input-group-label.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/generated/previews.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-close-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-close-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/dialog/dialog-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-basic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-basic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-sides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-sides.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-with-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-with-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-without-notch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/drawer/drawer-without-notch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/popover/popover-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/popover/popover-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-demo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-no-overlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-no-overlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-sides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-sides.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-with-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/overlay/sheet/sheet-with-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/preview/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/toggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/samples/surfaces/card/card-01.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/surfaces/card/card-01.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sink/preview-02/cards/cover-art.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/preview-02/cards/cover-art.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sink/preview/cards/icon-preview-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sink/preview/cards/icon-preview-grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/charts/chart.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/charts/chart.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/popover.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/overlays/popover.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/docs/components/overlays/tooltip.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/overlays/tooltip.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icons/__lucide__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__lucide__.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/icons/__tabler__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__tabler__.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/luma/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/luma/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/lyra/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/lyra/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/lyra/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/lyra/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/maia/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/maia/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/maia/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/maia/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/mira/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/mira/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/mira/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/mira/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/nova/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/nova/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/nova/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/nova/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/rhea/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/rhea/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/rhea/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/rhea/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/sera/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/sera/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/sera/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/sera/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/vega/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/date-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registries/ui/vega/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registry.json" beforeDir="false" afterPath="$PROJECT_DIR$/registry.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/popover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/tooltip.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-nova.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-nova.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,35 +110,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dq/Project/ui/components/blocks/landing-page-01/components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/dq/Project/ui/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.codeium.enabled": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "javascript.preferred.runtime.type.id": "bun",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/dq/Project/ui/components/blocks/landing-page-01/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/dq/Project/ui/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/blocks/landing-page-01/components" />
@@ -236,7 +181,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.24374.125" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.26222.58" />
       </set>
     </attachedChunks>
   </component>
@@ -373,6 +318,7 @@
       <workItem from="1783221003793" duration="26420000" />
       <workItem from="1783278356322" duration="1666000" />
       <workItem from="1783314791360" duration="7990000" />
+      <workItem from="1784116468275" duration="462000" />
     </task>
     <servers />
   </component>

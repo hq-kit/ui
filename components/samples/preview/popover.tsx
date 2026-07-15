@@ -1,3 +1,4 @@
+"use client"
 import type { Placement } from "react-aria-components/Popover"
 import {
   IconArrowBearLeft,
