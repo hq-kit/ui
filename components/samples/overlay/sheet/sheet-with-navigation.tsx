@@ -16,7 +16,7 @@ import {
 } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Sheet, SheetBody, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 
 type NavigationItem = {
   name: string
@@ -186,11 +186,11 @@ const SheetWithNavigationMenuDemo = () => {
         <SheetHeader>
           <SheetTitle className="pl-1">Menu</SheetTitle>
         </SheetHeader>
-        <SheetBody className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2.5">
           {navigationMenu.map((item) => (
             <NavigationMenu item={item} key={item.name} level={0} />
           ))}
-        </SheetBody>
+        </div>
       </SheetContent>
     </Sheet>
   )

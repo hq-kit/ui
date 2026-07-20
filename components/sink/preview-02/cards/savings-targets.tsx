@@ -4,7 +4,7 @@ import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader,
 import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input"
 import { Item, ItemContent, ItemDescription, ItemFooter, ItemGroup } from "@/components/ui/item"
-import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+import { Select } from "@/components/ui/native-select"
 import { Progress } from "@/components/ui/progress"
 
 export function SavingsTargets() {
@@ -71,11 +71,11 @@ export function SavingsTargets() {
             </Field>
             <Field>
               <Label htmlFor="invest-type">Order Type</Label>
-              <NativeSelect defaultValue="market" id="invest-type">
-                <NativeSelectOption value="market">Market Order</NativeSelectOption>
-                <NativeSelectOption value="limit">Limit Order</NativeSelectOption>
-                <NativeSelectOption value="stop">Stop Order</NativeSelectOption>
-              </NativeSelect>
+              <Select defaultValue="market" id="invest-type">
+                <Select.Item value="market">Market Order</Select.Item>
+                <Select.Item value="limit">Limit Order</Select.Item>
+                <Select.Item value="stop">Stop Order</Select.Item>
+              </Select>
               <Description>Market orders execute at the current price.</Description>
             </Field>
             <div className="flex flex-col gap-2">

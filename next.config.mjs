@@ -44,6 +44,10 @@ const config = {
   async rewrites() {
     return [
       {
+        source: '/r/styles/new-york/:path*',
+        destination: '/r/styles/nova/:path*',
+      },
+      {
         source: '/r/styles/radix-:styleName/:path*',
         destination: '/r/styles/:styleName/:path*',
       },

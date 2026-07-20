@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
 import { Input, Textarea } from "@/components/ui/input"
 import { Link } from "@/components/ui/link"
-import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+import { Select, SelectItem } from "@/components/ui/native-select"
 
 export function GithubProfile() {
   return (
@@ -26,10 +26,10 @@ export function GithubProfile() {
             </Field>
             <Field>
               <Label htmlFor="email">Public Email</Label>
-              <NativeSelect id="email">
-                <NativeSelectOption value="m@shadcn.com">m@shadcn.com</NativeSelectOption>
-                <NativeSelectOption value="m@gmail.com">m@gmail.com</NativeSelectOption>
-              </NativeSelect>
+              <Select id="email">
+                <SelectItem value="m@shadcn.com">m@shadcn.com</SelectItem>
+                <SelectItem value="m@gmail.com">m@gmail.com</SelectItem>
+              </Select>
               <Description>
                 You can manage verified email addresses in your <Link>email settings</Link>.
               </Description>

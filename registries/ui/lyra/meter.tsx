@@ -25,7 +25,7 @@ const Meter = ({ className, children, ...props }: MeterProps) => (
   </RACMeter>
 )
 
-const MeterValue = ({ className, ...props }: Omit<React.ComponentProps<"span">, "children">) => {
+const MeterValue = ({ className, ...props }: Omit<ComponentProps<"span">, "children">) => {
   const { valueText } = use(MeterContext)!
   return (
     <span className={cn("text-muted-foreground ml-auto text-xs tabular-nums", className)} data-slot="meter-value" {...props}>

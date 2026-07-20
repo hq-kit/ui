@@ -1,36 +1,35 @@
 "use client"
 
+import type { ComponentProps } from "react"
+import type { PopoverProps } from "react-aria-components/Select"
 import type { VariantProps } from "tailwind-variants"
-import { useSlottedContext } from "react-aria-components"
-import { Autocomplete } from "react-aria-components/Autocomplete"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
-import { Group, type GroupProps } from "react-aria-components/Group"
-import { Header } from "react-aria-components/Header"
-import { Input, SearchField } from "react-aria-components/SearchField"
 import {
-  Button,
+  Button as ButtonPrimitive,
   type ButtonProps,
-  Collection,
-  type Key,
-  ListBox,
-  ListBoxItem,
-  type ListBoxItemProps,
+  composeRenderProps,
+  Header as HeaderPrimitive,
+  ListBoxItem as ListBoxItemPrimitive,
+  ListBox as ListBoxPrimitive,
   type ListBoxProps,
-  ListBoxSection,
-  type ListBoxSectionProps,
-  Popover,
-  type PopoverProps,
-  Select as RACSelect,
-  SelectValue as RACSelectValue,
-  SelectContext,
+  ListBoxSection as ListBoxSectionPrimitive,
+  Popover as PopoverPrimitive,
+  SearchField,
+  type SearchFieldProps,
+  Select as SelectPrimitive,
   type SelectProps,
-  type SelectValueProps
-} from "react-aria-components/Select"
-import { Separator, type SeparatorProps } from "react-aria-components/Separator"
+  SelectValue as SelectValuePrimitive,
+  type SelectValueProps,
+  Separator as SeparatorPrimitive,
+  useSlottedContext
+} from "react-aria-components"
+import { Group, type GroupProps } from "react-aria-components/Group"
+import { Collection, type ListBoxSectionProps } from "react-aria-components/ListBox"
+import { SelectContext } from "react-aria-components/Select"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
+import { Autocomplete } from "./autocomplete"
 import { fieldVariants } from "./field"
-import { InputGroupAddon, inputGroupVariants } from "./input"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "./input"
 
 const Select = <T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -38,24 +37,42 @@ const Select = <T extends object, M extends "single" | "multiple" = "single">({
   ...props
 }: SelectProps<T, M> & VariantProps<typeof fieldVariants>) => {
   return (
-    <RACSelect
+    <SelectPrimitive
       className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
       data-orientation={orientation}
       data-slot="field"
       {...props}
     >
       {(values) => (typeof props.children === "function" ? props.children(values) : props.children)}
-    </RACSelect>
+    </SelectPrimitive>
   )
 }
 
-const SelectValue = <T extends object>(props: SelectValueProps<T>) => (
-  <RACSelectValue
-    className={cn("**:data-[slot=item-description]:hidden", props.className)}
-    data-slot="select-value"
-    {...props}
-  />
+const SelectGroup = <T extends object>({ title, children, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+  <ListBoxSectionPrimitive className={cn("cn-select-group", props.className)} data-slot="select-group" {...props}>
+    {title && (
+      <HeaderPrimitive className="cn-select-label" data-slot="select-label">
+        {title}
+      </HeaderPrimitive>
+    )}
+    <Collection items={props.items}>{children}</Collection>
+  </ListBoxSectionPrimitive>
 )
+
+function SelectValue<T extends object>({ className, children, ...props }: SelectValueProps<T>) {
+  return (
+    <SelectValuePrimitive
+      className={cn("cn-select-value cn-select-value-aria", className)}
+      data-slot="select-value"
+      {...props}
+    >
+      {typeof children === "function"
+        ? children
+        : ({ selectedItems, selectedText, defaultChildren }) =>
+            selectedItems.length > 1 ? selectedText : defaultChildren}
+    </SelectValuePrimitive>
+  )
+}
 
 const SelectTrigger = ({
   className,
@@ -88,7 +105,7 @@ const SelectTrigger = ({
       {() => (
         <>
           {children}
-          <Button
+          <ButtonPrimitive
             data-slot="select-trigger-button"
             {...props}
             className="absolute right-0 flex size-full cursor-default items-center justify-end pr-3 outline-hidden"
@@ -103,12 +120,12 @@ const SelectTrigger = ({
                 tabler="IconSelector"
               />
             </div>
-          </Button>
+          </ButtonPrimitive>
         </>
       )}
     </Group>
   ) : (
-    <Button
+    <ButtonPrimitive
       className={cn(
         "cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
@@ -132,127 +149,97 @@ const SelectTrigger = ({
           />
         </>
       )}
-    </Button>
+    </ButtonPrimitive>
   )
 }
 
-const SelectContent = <T extends object>({
-  className,
-  offset = 4,
+function SelectContent<T extends object>({
   placement = "bottom",
-  isSearchable,
+  offset = 4,
+  isSearchable = false,
   ...props
-}: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset"> & { isSearchable?: boolean }) => {
-  const renderContent = () => (
-    <ListBox
-      className="flex max-h-[inherit] flex-col overflow-auto rounded-lg p-1 outline-hidden has-data-[slot=select-group]:p-0"
+}: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset"> & { isSearchable?: boolean }) {
+  return isSearchable ? (
+    <SelectPopover offset={offset} placement={placement}>
+      <Autocomplete>
+        <SelectInput />
+        <SelectList renderEmptyState={() => <SelectEmpty>No items found.</SelectEmpty>} {...props} />
+      </Autocomplete>
+    </SelectPopover>
+  ) : (
+    <SelectPopover offset={offset} placement={placement}>
+      <SelectList {...props} />
+    </SelectPopover>
+  )
+}
+
+function SelectPopover({ className, placement = "bottom start", offset = 4, crossOffset = 0, ...props }: PopoverProps) {
+  return (
+    <PopoverPrimitive
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "cn-select-content-aria cn-menu-target relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
+          className
+        )
+      )}
+      crossOffset={crossOffset}
       data-slot="select-content"
-      layout="stack"
-      orientation="vertical"
-      renderEmptyState={() => <div className="w-full p-4 text-center text-muted-foreground">No results found</div>}
+      offset={offset}
+      placement={placement}
       {...props}
     />
   )
+}
 
+function SelectList<T extends object>({ className, ...props }: ListBoxProps<T>) {
   return (
-    <Popover
+    <ListBoxPrimitive
       className={cn(
-        "cn-select-content relative flex h-max w-auto min-w-(--trigger-width) flex-col overflow-hidden outline-hidden",
+        "group/select-list max-h-[inherit] overflow-y-auto overflow-x-hidden p-1 outline-hidden has-data-[slot=select-group]:p-0",
         className
       )}
-      offset={offset}
-      placement={placement}
-      trigger="focus"
-    >
-      {isSearchable ? (
-        <Autocomplete
-          filter={(textValue, inputValue) => {
-            if (inputValue.length === 0) return true
-            if (textValue.length === 0) return false
-            let textIndex = 0
-            let inputIndex = 0
-            while (textIndex < textValue.length && inputIndex < inputValue.length) {
-              if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
-                inputIndex++
-              }
-              textIndex++
-            }
-            return inputIndex === inputValue.length
-          }}
-        >
-          <div className="cn-command-input-wrapper" data-slot="command-input-wrapper">
-            <SearchField
-              aria-label="Filter"
-              autoFocus
-              className={cn(inputGroupVariants({ className: "cn-command-input-group" }), className)}
-              data-slot="command-input-wrapper"
-            >
-              <InputGroupAddon>
-                <IconPlaceholder
-                  className="cn-command-input-icon group-data-[pending=true]/command:hidden"
-                  data-slot="input-group-addon"
-                  hugeicons="SearchIcon"
-                  lucide="SearchIcon"
-                  phosphor="MagnifyingGlassIcon"
-                  remixicon="RiSearchLine"
-                  tabler="IconSearch"
-                />
-                <IconPlaceholder
-                  aria-label="Loading"
-                  className="cn-command-input-icon hidden animate-spin group-data-[pending=true]/command:block"
-                  data-slot="input-group-addon"
-                  hugeicons="Loading03Icon"
-                  lucide="LoaderIcon"
-                  phosphor="SpinnerIcon"
-                  remixicon="RiLoaderLine"
-                  role="status"
-                  tabler="IconLoader"
-                />
-              </InputGroupAddon>
-              <Input
-                className="cn-command-input w-auto! outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden"
-                data-slot="command-input"
-                placeholder="Search ..."
-              />
-            </SearchField>
-          </div>
-          {renderContent()}
-        </Autocomplete>
-      ) : (
-        renderContent()
-      )}
-    </Popover>
+      data-slot="select-list"
+      {...props}
+    />
   )
 }
 
-const SelectGroup = <T extends object>({ title, children, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <ListBoxSection className={cn("cn-select-group", props.className)} data-slot="select-group" {...props}>
-    {title && (
-      <Header className="cn-select-label" data-slot="select-label">
-        {title}
-      </Header>
-    )}
-    <Collection items={props.items}>{children}</Collection>
-  </ListBoxSection>
-)
-
-const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
-  const textValue = typeof children === "string" ? children : undefined
-
+function SelectInput({ className, ...props }: SearchFieldProps) {
   return (
-    <ListBoxItem
+    <SearchField {...props} autoFocus className={cn("p-1 pb-0", className)} data-slot="select-input-wrapper">
+      <InputGroup>
+        <InputGroupInput className="[&::-webkit-search-cancel-button]:hidden" data-slot="select-input" />
+        <InputGroupAddon>
+          <IconPlaceholder
+            className="cn-command-input-icon"
+            hugeicons="SearchIcon"
+            lucide="SearchIcon"
+            phosphor="MagnifyingGlassIcon"
+            remixicon="RiSearchLine"
+            tabler="IconSearch"
+          />
+        </InputGroupAddon>
+      </InputGroup>
+    </SearchField>
+  )
+}
+
+function SelectItem({ className, children, ...props }: ComponentProps<typeof ListBoxItemPrimitive>) {
+  return (
+    <ListBoxItemPrimitive
       className={cn(
-        "cn-select-item relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-select-item cn-select-item-aria relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-slot="select-item"
-      textValue={textValue}
+      textValue={typeof children === "string" ? children : undefined}
       {...props}
     >
-      {(values) => (
+      {composeRenderProps(children, (children, { isSelected }) => (
         <>
-          {values.isSelected && (
-            <span className="cn-select-item-indicator">
+          <span className="cn-select-item-text shrink-0 whitespace-nowrap">{children}</span>
+          <span className="cn-select-item-indicator">
+            {isSelected ? (
               <IconPlaceholder
                 className="cn-select-item-indicator-icon pointer-events-none"
                 hugeicons="Tick02Icon"
@@ -261,29 +248,49 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
                 remixicon="RiCheckLine"
                 tabler="IconCheck"
               />
-            </span>
-          )}
-          {typeof children === "function" ? children(values) : children}
+            ) : null}
+          </span>
         </>
-      )}
-    </ListBoxItem>
+      ))}
+    </ListBoxItemPrimitive>
   )
 }
 
-const SelectSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator
-    className={cn("cn-select-separator pointer-events-none", className)}
-    data-slot="select-separator"
-    {...props}
-  />
-)
+function SelectSeparator({ className, ...props }: ComponentProps<typeof SeparatorPrimitive>) {
+  return (
+    <SeparatorPrimitive
+      className={cn("cn-select-separator pointer-events-none", className)}
+      data-slot="select-separator"
+      {...props}
+    />
+  )
+}
+
+function SelectEmpty({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("cn-select-empty-aria", className)} data-slot="select-empty" {...props} />
+}
 
 Select.Content = SelectContent
 Select.Group = SelectGroup
+Select.Input = SelectInput
 Select.Item = SelectItem
+Select.List = SelectList
+Select.Popover = SelectPopover
 Select.Separator = SelectSeparator
 Select.Trigger = SelectTrigger
 Select.Value = SelectValue
+Select.Empty = SelectEmpty
 
-export type { Key }
-export { Select, SelectContent, SelectGroup, SelectItem, SelectSeparator, SelectTrigger, SelectValue }
+export {
+  Select,
+  SelectContent,
+  SelectEmpty,
+  SelectGroup,
+  SelectInput,
+  SelectItem,
+  SelectList,
+  SelectPopover,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue
+}

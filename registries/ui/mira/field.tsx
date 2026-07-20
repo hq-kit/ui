@@ -33,7 +33,7 @@ const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const fieldVariants = tv({
-  base: "hover:not-data-disabled:not-in-data-disabled:**:[[slot=control]]:border-ring! data-[invalid=true]:text-destructive gap-2 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
+  base: "data-[invalid=true]:text-destructive gap-2 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
   variants: {
     orientation: {
       vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
@@ -66,7 +66,7 @@ const Label = (props: LabelProps) => (
   <RACLabel
     className={cn(
       "gap-2 text-xs/relaxed leading-none font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
-      "has-data-selected:bg-primary/5 dark:has-data-selected:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2 group/field-label peer/field-label flex w-fit",
+      "has-group-data-selected/field:bg-primary/5 dark:has-group-data-selected/field:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2 group/field-label peer/field-label flex w-fit",
       "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
       props.className
     )}

@@ -21,7 +21,7 @@ const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => 
     {...props}
     className={composeRenderProps(className, (className) =>
       cn(
-        "bg-popover text-popover-foreground rounded-4xl p-1 gap-2 p-2 [--radius:var(--radius-xl)] group/list-box flex size-full flex-col gap-1 overflow-hidden border",
+        "bg-popover text-popover-foreground rounded-4xl p-2 [--radius:var(--radius-xl)] group/list-box flex size-full flex-col gap-1 overflow-hidden border",
         "[&_.react-aria-DropIndicator[data-drop-target]]:outline",
         "[&_.react-aria-DropIndicator[data-drop-target]]:outline-destructive",
         "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
@@ -39,7 +39,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
     <RACListBoxItem
       className={composeRenderProps(className, (className) =>
         cn(
-          "data-hovered:bg-muted data-hovered:text-foreground data-hovered:*:[svg]:text-foreground data-focused:bg-muted data-focused:text-foreground data-focused:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium outline-hidden select-none in-data-[slot=dialog-content]:rounded-3xl [&_svg:not([class*='size-'])]:size-4 group/list-box-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium outline-hidden select-none in-data-[slot=dialog-content]:rounded-3xl [&_svg:not([class*='size-'])]:size-4 group/list-box-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
           "data-selected:bg-primary data-selected:text-primary-foreground",
           "data-dragging:cursor-grabbing data-dragging:outline data-dragging:outline-primary",
           className
@@ -55,7 +55,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
 }
 
 const ListBoxSection = <T extends object>({ title, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <RACListBoxSection className={cn("text-foreground **:data-[slot=title]:text-muted-foreground overflow-hidden p-1.5 **:data-[slot=title]:px-3 **:data-[slot=title]:py-2 **:data-[slot=title]:text-xs **:data-[slot=title]:font-medium", props.className)} data-slot="list-box-section" {...props}>
+  <RACListBoxSection className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1.5 **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium", props.className)} data-slot="list-box-section" {...props}>
     {title && (
       <Header className="pointer-events-none" data-slot="title">
         {title}

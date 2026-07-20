@@ -5,9 +5,9 @@ import { Button as RACButton } from "react-aria-components/Button"
 import { Link, type LinkProps } from "react-aria-components/Link"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
-import { type ButtonProps, buttonVariants } from "./button"
+import { type Button, buttonVariants } from "./button"
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
+const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
   <nav
     aria-label="pagination"
     className={cn("mx-auto flex w-full justify-center", className)}
@@ -28,7 +28,7 @@ const PaginationLink = ({
   size = "icon",
   ...props
 }: Omit<LinkProps, "className" | "slot"> &
-  Omit<ButtonProps, "ref"> & {
+  Omit<ComponentProps<typeof Button>, "ref"> & {
     isActive?: boolean
   }) => {
   const Comp = "href" in props ? Link : RACButton

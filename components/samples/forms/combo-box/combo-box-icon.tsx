@@ -12,7 +12,7 @@ import {
   IconSchool,
   IconTractor
 } from "@tabler/icons-react"
-import { ComboBox, ComboBoxContent, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -70,17 +70,17 @@ const options = [
 
 export default function ComboboxOptionWithIIconDemo() {
   return (
-    <ComboBox>
+    <Combobox>
       <Label>Combobox option with icon</Label>
-      <ComboBoxInput placeholder="Select industry category" />
-      <ComboBoxContent items={options}>
+      <ComboboxInput placeholder="Select industry category" />
+      <ComboboxContent items={options}>
         {(option) => (
-          <ComboBoxItem id={option.value} textValue={option.label}>
+          <ComboboxItem id={option.value} textValue={option.label}>
             <option.icon className="size-4 text-muted-foreground" />
             <span>{option.label}</span>
-          </ComboBoxItem>
+          </ComboboxItem>
         )}
-      </ComboBoxContent>
-    </ComboBox>
+      </ComboboxContent>
+    </Combobox>
   )
 }

@@ -1,5 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { buttonVariants } from "@/components/ui/button-group"
+import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter } from "@/components/ui/card"
 import { Label } from "@/components/ui/field"
 import { Item } from "@/components/ui/item"

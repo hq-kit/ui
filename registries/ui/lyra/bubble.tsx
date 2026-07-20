@@ -1,14 +1,14 @@
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Link, type LinkProps } from "@/components/ui/link"
 import { cn } from "@/lib/utils"
+import { Link, type LinkProps } from "./link"
 
 const BubbleGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div className={cn("gap-2 flex min-w-0 flex-col", className)} data-slot="bubble-group" {...props} />
 )
 
 const bubbleVariants = tv({
-  base: "group/bubble relative flex w-fit min-w-0 flex-col",
+  base: "gap-1 data-[align=end]:self-end max-w-[80%] data-[variant=ghost]:max-w-full group-data-[align=end]/message:self-end group/bubble relative flex w-fit min-w-0 flex-col",
   variants: {
     variant: {
       default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",

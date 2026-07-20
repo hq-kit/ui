@@ -42,7 +42,7 @@ const GridListSection = <T extends object>({
   ...props
 }: ComponentProps<typeof RACGridListSection<T>> & { title?: string }) => {
   return (
-    <RACGridListSection className={cn("text-foreground **:data-[slot=title]:text-muted-foreground overflow-hidden p-1 **:data-[slot=title]:px-3 **:data-[slot=title]:py-2 **:data-[slot=title]:text-xs **:data-[slot=title]:font-medium", className)} data-slot="grid-list-section" {...props}>
+    <RACGridListSection className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium", className)} data-slot="grid-list-section" {...props}>
       {title && (
         <RACGridListHeader className="pointer-events-none" data-slot="title">
           {title}
@@ -164,7 +164,7 @@ const GridListItemAction = ({ className, variant, size = "icon-xs", ...props }: 
   />
 )
 
-const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
+const GridListEmptyState = ({ ref, className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
       'flex items-center justify-center gap-2 rounded-lg border border-dashed p-6 [&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',

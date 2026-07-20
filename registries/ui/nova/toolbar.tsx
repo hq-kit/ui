@@ -11,7 +11,7 @@ import {
 import { Toolbar as RACToolbar, type ToolbarProps } from "react-aria-components/Toolbar"
 import { cn } from "@/lib/utils"
 import { Separator } from "./separator"
-import { Toggle, type ToggleProps } from "./toggle"
+import { Toggle } from "./toggle"
 
 const ToolbarContext = createContext<ToolbarProps>({
   orientation: "horizontal"
@@ -55,7 +55,7 @@ const ToolbarGroup = ({ className, ...props }: ToggleButtonGroupProps) => {
   )
 }
 
-const ToolbarItem = ({ size = "sm", variant = "outline", ref, className, ...props }: ToggleProps) => {
+const ToolbarItem = ({ size = "sm", variant = "outline", ref, className, ...props }: ComponentProps<typeof Toggle>) => {
   const groupContext = useSlottedContext(ToggleButtonGroupContext)
   const isDisabled = groupContext?.isDisabled || props.isDisabled
   return <Toggle data-slot="toolbar-item" isDisabled={isDisabled} ref={ref} size={size} variant={variant} {...props} />

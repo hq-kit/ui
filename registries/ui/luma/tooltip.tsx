@@ -1,65 +1,69 @@
 "use client"
 
-import type { ComponentProps, ReactNode } from "react"
-import type { ButtonProps } from "react-aria-components"
-import { Button } from "react-aria-components/Button"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { Children, type ComponentProps, type ReactNode } from "react"
 import {
+  Focusable,
   OverlayArrow,
-  Tooltip as RACTooltip,
-  type TooltipProps as RACTooltipProps,
-  TooltipTrigger as RACTooltipTrigger
-} from "react-aria-components/Tooltip"
+  Tooltip as TooltipPrimitive,
+  TooltipTrigger as TooltipTriggerPrimitive
+} from "react-aria-components"
 import { cn } from "@/lib/utils"
 
-const Tooltip = (props: ComponentProps<typeof RACTooltipTrigger>) => (
-  <RACTooltipTrigger closeDelay={props.closeDelay ?? 100} delay={props.delay ?? 100} {...props} />
-)
+function Tooltip({ delay = 0, children, ...props }: ComponentProps<typeof TooltipTriggerPrimitive>) {
+  const [trigger, tooltip] = Children.toArray(children)
 
-interface TooltipContentProps extends Omit<RACTooltipProps, "children"> {
-  showArrow?: boolean
-  children: ReactNode
-  isInverse?: boolean
-}
-
-const TooltipContent = ({
-  offset = 10,
-  showArrow = true,
-  isInverse = true,
-  className,
-  children,
-  ...props
-}: TooltipContentProps) => {
   return (
-    <RACTooltip
-      {...props}
-      className={composeRenderProps(className, (className) =>
-        cn(
-          "data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-lg data-[placement=start]:slide-in-from-right-2 data-[placement=end]:slide-in-from-left-2 z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
-          className
-        )
-      )}
-      data-slot="tooltip-content"
-      offset={offset}
-    >
-      {children}
-      {showArrow && (
-        <OverlayArrow className="group">
-          <svg
-            className="size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px] data-[side=left]:translate-x-[-1.5px] data-[side=right]:translate-x-[1.5px] block fill-foreground group-data-[placement=bottom]:rotate-180 group-data-[placement=left]:-rotate-90 group-data-[placement=right]:rotate-90"
-            viewBox="0 0 12 12"
-          >
-            <path d="M0 0 L6 6 L12 0" />
-          </svg>
-        </OverlayArrow>
-      )}
-    </RACTooltip>
+    <TooltipTriggerPrimitive data-slot="tooltip-trigger" delay={delay} {...props}>
+      <Focusable>{trigger as ComponentProps<typeof Focusable>["children"]}</Focusable>
+      {tooltip}
+    </TooltipTriggerPrimitive>
   )
 }
 
-const TooltipTrigger = (props: ButtonProps) => <Button {...props} />
+function TooltipContent({
+  className,
+  placement = "top",
+  offset = 4,
+  crossOffset = 0,
+  children,
+  ...props
+}: Omit<ComponentProps<typeof TooltipPrimitive>, "children" | "className"> & {
+  className?: string
+  children?: ReactNode
+}) {
+  return (
+    <TooltipPrimitive
+      className={cn(
+        "data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-lg group z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
+        className
+      )}
+      crossOffset={crossOffset}
+      data-slot="tooltip-content"
+      offset={offset}
+      placement={placement}
+      {...props}
+    >
+      {children}
+      <OverlayArrow
+        className="size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px] group-data-[placement=left]:translate-x-[-1.5px] group-data-[placement=right]:translate-x-[1.5px] z-50 bg-foreground fill-foreground"
+        style={({ placement, defaultStyle }) => ({
+          ...defaultStyle,
+          rotate: "0deg",
+          translate: "0 0",
+          transform:
+            placement === "bottom"
+              ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
+              : placement === "top"
+                ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
+                : placement === "left"
+                  ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
+                  : "translate(calc(50% + 2px), -50%) rotate(45deg)"
+        })}
+      />
+    </TooltipPrimitive>
+  )
+}
 
-Tooltip.Trigger = TooltipTrigger
 Tooltip.Content = TooltipContent
 
-export { Tooltip, TooltipContent, TooltipTrigger }
+export { Tooltip, TooltipContent }

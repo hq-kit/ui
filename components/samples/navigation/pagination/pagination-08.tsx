@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious
 } from "@/components/ui/pagination"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 const PaginationWithEllipsisDemo = () => {
   return (
@@ -26,9 +26,7 @@ const PaginationWithEllipsisDemo = () => {
         </PaginationItem>
         <PaginationItem>
           <Tooltip>
-            <TooltipTrigger>
-              <PaginationEllipsis />
-            </TooltipTrigger>
+            <PaginationEllipsis />
             <TooltipContent>
               <p>8 other pages</p>
             </TooltipContent>

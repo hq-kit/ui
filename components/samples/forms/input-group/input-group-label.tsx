@@ -1,7 +1,7 @@
 import { InfoIcon } from "lucide-react"
 import { Label } from "@/components/ui/field"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 export default function InputGroupLabel() {
   return (
@@ -19,11 +19,9 @@ export default function InputGroupLabel() {
             Email
           </Label>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton aria-label="Help" className="ml-auto rounded-full" size="icon-xs" variant="ghost">
-                <InfoIcon />
-              </InputGroupButton>
-            </TooltipTrigger>
+            <InputGroupButton aria-label="Help" className="ml-auto rounded-full" size="icon-xs" variant="ghost">
+              <InfoIcon />
+            </InputGroupButton>
             <TooltipContent>
               <p>We&apos;ll use this to send you notifications</p>
             </TooltipContent>

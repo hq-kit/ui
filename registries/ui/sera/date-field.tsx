@@ -75,7 +75,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm data-focus-within:border-b-ring flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+          "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
       )}
@@ -104,7 +104,7 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm border-0 bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}
@@ -146,7 +146,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm border-0 bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}
@@ -174,7 +174,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm border-0 bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}

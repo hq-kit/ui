@@ -1,13 +1,5 @@
 import { Button } from "@/components/ui/button"
-import {
-  Sheet,
-  SheetBody,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 
 const SheetWithScrollableContentDemo = () => {
   return (
@@ -18,7 +10,7 @@ const SheetWithScrollableContentDemo = () => {
           <SheetTitle>Terms & Condition</SheetTitle>
           <SheetDescription>Make sure read the terms and conditions before proceeding.</SheetDescription>
         </SheetHeader>
-        <SheetBody className="space-y-1 text-sm">
+        <div className="space-y-1 text-sm">
           <p className="mb-2 font-medium">Last Updated: June 1, 2025</p>
 
           <h3>1. Introduction</h3>
@@ -109,7 +101,7 @@ const SheetWithScrollableContentDemo = () => {
           <p>If you have any questions or concerns about these Terms and Conditions, please contact us at:</p>
           <p>Email: support@example.com</p>
           <p>Phone: +1 (800) 123-4567</p>
-        </SheetBody>
+        </div>
         <SheetFooter>
           <Button slot="close" type="submit">
             Accept

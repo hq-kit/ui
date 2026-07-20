@@ -1,145 +1,150 @@
 "use client"
 
-import type { ComponentProps } from "react"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import type { ComponentProps, ReactNode } from "react"
 import {
-  type DialogProps,
-  type DialogTriggerProps,
+  Dialog as AlertDialogPrimitive,
+  DialogTrigger as AlertDialogTriggerPrimitive,
+  type DialogTriggerProps as AlertDialogTriggerPrimitiveProps,
   Heading,
-  type HeadingProps,
-  Modal,
-  type ModalOverlayProps,
-  Button as RACButton,
-  type ButtonProps as RACButtonProps,
-  Dialog as RACDialog,
-  DialogTrigger as RACDialogTrigger,
-  ModalOverlay as RACModalOverlay
-} from "react-aria-components/Modal"
-import { Text, type TextProps } from "react-aria-components/Text"
-import { Button } from "@/components/ui/button"
+  ModalOverlay as ModalOverlayPrimitive,
+  type ModalOverlayProps as ModalOverlayPrimitiveProps,
+  Modal as ModalPrimitive
+} from "react-aria-components"
 import { cn } from "@/lib/utils"
+import { Button } from "./button"
 
-const AlertDialog = (props: DialogTriggerProps) => <RACDialogTrigger data-slot="alert-dialog" {...props} />
-
-const AlertDialogOverlay = ({ className, ...props }: ModalOverlayProps) => (
-  <RACModalOverlay
-    className={composeRenderProps(className, (className) =>
-      cn("cn-alert-dialog-overlay fixed inset-0 isolate z-50", className)
-    )}
-    data-slot="overlay"
-    isDismissable={false}
-    isKeyboardDismissDisabled
-    {...props}
-  />
-)
-
-interface AlertDialogContentProps
-  extends Omit<ComponentProps<typeof Modal>, "children" | "isDismissable">,
-    Omit<ModalOverlayProps, "className" | "children" | "isDismissable"> {
-  "aria-label"?: DialogProps["aria-label"]
-  "aria-labelledby"?: DialogProps["aria-labelledby"]
-  children?: DialogProps["children"]
-  className?: DialogProps["className"]
-  overlayClassName?: ModalOverlayProps["className"]
-  size?: "default" | "sm"
+function AlertDialog({ ...props }: AlertDialogTriggerPrimitiveProps) {
+  return <AlertDialogTriggerPrimitive data-slot="alert-dialog-trigger" {...props} />
 }
 
-const AlertDialogContent = ({
+function AlertDialogOverlay({
+  className,
+  children,
+  ...props
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> & {
+  className?: string
+  children: ReactNode
+}) {
+  return (
+    <ModalOverlayPrimitive
+      className={cn("cn-alert-dialog-overlay-aria fixed inset-0 isolate z-50", className)}
+      data-slot="alert-dialog-overlay"
+      {...props}
+    >
+      {children}
+    </ModalOverlayPrimitive>
+  )
+}
+
+function AlertDialogContent({
   className,
   size = "default",
   children,
-  overlayClassName,
   ...props
-}: AlertDialogContentProps) => (
-  <AlertDialogOverlay className={overlayClassName} {...props}>
-    <Modal
-      className={composeRenderProps(className, (className) =>
-        cn(
-          "cn-dialog-modal group/alert-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-hidden",
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
+  Pick<ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
+    className?: string
+    size?: "default" | "sm"
+    children: ReactNode
+  }) {
+  return (
+    <AlertDialogOverlay {...props}>
+      <ModalPrimitive
+        className={cn(
+          "cn-alert-dialog-content-aria group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
-        )
-      )}
-      data-size={size}
-      data-slot="modal"
-      isDismissable={false}
-      {...props}
-    >
-      <RACDialog
-        aria-label="Alert Dialog"
-        className="cn-dialog-content relative grid w-full max-w-[inherit] outline-hidden sm:max-w-[inherit]"
+        )}
+        data-size={size}
         data-slot="alert-dialog-content"
-        role="alertdialog"
-        slot="dialog"
       >
-        {children}
-      </RACDialog>
-    </Modal>
-  </AlertDialogOverlay>
-)
+        <AlertDialogPrimitive
+          className="gap-[inherit] outline-none [display:inherit]"
+          data-slot="alert-dialog"
+          role="alertdialog"
+        >
+          {children}
+        </AlertDialogPrimitive>
+      </ModalPrimitive>
+    </AlertDialogOverlay>
+  )
+}
 
-const AlertDialogHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("cn-alert-dialog-header", className)} data-slot="alert-dialog-header" {...props} />
-)
+function AlertDialogHeader({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("cn-alert-dialog-header", className)} data-slot="alert-dialog-header" {...props} />
+}
 
-const AlertDialogFooter = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
-      className
-    )}
-    data-slot="alert-dialog-footer"
-    {...props}
-  />
-)
+function AlertDialogFooter({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
+        className
+      )}
+      data-slot="alert-dialog-footer"
+      {...props}
+    />
+  )
+}
 
-const AlertDialogMedia = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("cn-alert-dialog-media", className)} data-slot="alert-dialog-media" {...props} />
-)
+function AlertDialogMedia({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("cn-alert-dialog-media", className)} data-slot="alert-dialog-media" {...props} />
+}
 
-const AlertDialogTitle = ({ className, ...props }: HeadingProps) => (
-  <Heading
-    className={cn("cn-alert-dialog-title cn-font-heading", className)}
-    data-slot="alert-dialog-title"
-    {...props}
-  />
-)
+function AlertDialogTitle({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) {
+  return (
+    <Heading
+      className={cn("cn-alert-dialog-title cn-font-heading", className)}
+      data-slot="alert-dialog-title"
+      slot="title"
+      {...props}
+    />
+  )
+}
 
-const AlertDialogDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn("cn-alert-dialog-description", className)} data-slot="alert-dialog-description" {...props} />
-)
+function AlertDialogDescription({ className, ...props }: Omit<ComponentProps<"div">, "slot">) {
+  return (
+    <div className={cn("cn-alert-dialog-description", className)} data-slot="alert-dialog-description" {...props} />
+  )
+}
 
-const AlertDialogAction = ({ className, ...props }: ComponentProps<typeof Button>) => (
-  <Button className={cn("cn-alert-dialog-action", className)} data-slot="alert-dialog-action" {...props} />
-)
+function AlertDialogAction({ className, ...props }: ComponentProps<typeof Button>) {
+  return (
+    <Button
+      className={cn("cn-alert-dialog-action", className)}
+      data-slot="alert-dialog-action"
+      slot="close"
+      {...props}
+    />
+  )
+}
 
-const AlertDialogCancel = ({
+function AlertDialogCancel({
   className,
   variant = "outline",
   size = "default",
   ...props
-}: ComponentProps<typeof Button>) => (
-  <Button
-    className={cn("cn-alert-dialog-cancel", className)}
-    data-slot="alert-dialog-cancel"
-    size={size}
-    slot="close"
-    variant={variant}
-    {...props}
-  />
-)
-
-const AlertDialogTrigger = (props: RACButtonProps) => <RACButton {...props} />
+}: ComponentProps<typeof Button>) {
+  return (
+    <Button
+      className={cn("cn-alert-dialog-cancel", className)}
+      data-slot="alert-dialog-cancel"
+      size={size}
+      slot="close"
+      variant={variant}
+      {...props}
+    />
+  )
+}
 
 AlertDialog.Action = AlertDialogAction
 AlertDialog.Cancel = AlertDialogCancel
-AlertDialog.Content = AlertDialogContent
 AlertDialog.Description = AlertDialogDescription
 AlertDialog.Footer = AlertDialogFooter
 AlertDialog.Header = AlertDialogHeader
 AlertDialog.Media = AlertDialogMedia
 AlertDialog.Overlay = AlertDialogOverlay
 AlertDialog.Title = AlertDialogTitle
-AlertDialog.Trigger = AlertDialogTrigger
+AlertDialog.Content = AlertDialogContent
 
 export {
   AlertDialog,
@@ -151,6 +156,5 @@ export {
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
-  AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTitle
 }

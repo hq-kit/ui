@@ -1,18 +1,22 @@
-/**
- * generate-styled-components.ts
- *
- * Script ini membaca file CSS di lib/styles/style-*.css, mem-parse mapping
- * cn-class → tailwind classes, lalu menggantinya di setiap TSX component
- * di components/ui/**, dan output ke registries/ui/{style}/{component}.tsx
- *
- * Cara pakai:
- *   bun scripts/generate-styled-components.ts
- *   bun scripts/generate-styled-components.ts --style nova
- *   bun scripts/generate-styled-components.ts --style nova --component button
- */
-
 import { promises as fs } from "node:fs"
 import path from "node:path"
+import { twMerge } from "tailwind-merge"
+
+export function parseAndCleanCn(sourceCode: string): string {
+  // Regex membagi 3 bagian:
+  // Group 1: cn(
+  // Group 2: Isi string pertama di dalam kutip
+  // Group 3: Sisa parameter hingga tutup kurung )
+  const regex = /(cn\(\s*["'`])([^"'`]+)(["'`]\s*,?[\s\S]*?\))/g
+
+  return sourceCode.replace(regex, (match, prefix, classString, suffix) => {
+    // 1. Bersihkan string kelas menggunakan tailwind-merge
+    const cleanedClasses = twMerge(classString)
+
+    // 2. Gabungkan kembali sesuai format aslinya
+    return `${prefix}${cleanedClasses}${suffix}`
+  })
+}
 
 // ─── Config ─────────────────────────────────────────────────────────────────
 
@@ -126,8 +130,7 @@ function transformTsxContent(content: string, classMap: ClassMap): string {
   result = result.replace(/cn\("",\s*/g, "cn(") // cn("", x) → cn(x)
   result = result.replace(/,\s*""\)/g, ")") // cn(x, "") → cn(x)
   result = result.replace(/cn\(""\)/g, 'cn("")') // biarkan cn("") apa adanya (tidak bisa kita perbaiki tanpa tahu konteksnya)
-
-  return result
+  return parseAndCleanCn(result)
 }
 
 // ─── File Helpers ─────────────────────────────────────────────────────────────

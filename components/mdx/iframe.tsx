@@ -10,7 +10,7 @@ import { useStyle } from "@/components/style-provider"
 import { cn } from "@/lib/utils"
 import { Badge } from "../ui/badge"
 import { Button, buttonVariants } from "../ui/button"
-import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
 import { ToggleGroup } from "../ui/toggle-group"
 
 export function Iframe({ component }: { component: string }) {
@@ -115,9 +115,9 @@ export function Iframe({ component }: { component: string }) {
               <DialogHeader>
                 <DialogTitle>{component.split("/").pop()}</DialogTitle>
               </DialogHeader>
-              <DialogBody>
+              <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
                 <Install component={component.split("/").pop() || ""} />
-              </DialogBody>
+              </div>
             </DialogContent>
           </Dialog>
           <Link

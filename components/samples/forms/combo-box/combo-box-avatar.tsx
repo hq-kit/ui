@@ -1,6 +1,7 @@
+"use client"
 import { IconUser } from "@tabler/icons-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ComboBox, ComboBoxContent, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -26,12 +27,12 @@ const options = [
 
 export default function ComboBoxAvatar() {
   return (
-    <ComboBox>
+    <Combobox>
       <Label>Choose a distro</Label>
-      <ComboBoxInput placeholder="Choose a distro" />
-      <ComboBoxContent items={options}>
+      <ComboboxInput placeholder="Choose a distro" />
+      <ComboboxContent items={options}>
         {(option) => (
-          <ComboBoxItem id={option.id} textValue={option.name}>
+          <ComboboxItem id={option.id} textValue={option.name}>
             <Avatar>
               <AvatarImage alt={option.name} src={option.image_url} />
               <AvatarFallback>
@@ -39,9 +40,9 @@ export default function ComboBoxAvatar() {
               </AvatarFallback>
             </Avatar>
             {option.name}
-          </ComboBoxItem>
+          </ComboboxItem>
         )}
-      </ComboBoxContent>
-    </ComboBox>
+      </ComboboxContent>
+    </Combobox>
   )
 }

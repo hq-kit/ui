@@ -18,7 +18,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { Button } from "./button"
 import { Separator } from "./separator"
-import { Sheet } from "./sheet"
+import { SheetContent, SheetDescription, SheetHeader, SheetTitle } from "./sheet"
 import { Skeleton } from "./skeleton"
 
 const NAVBAR_HEIGHT = "3.5rem"
@@ -284,21 +284,21 @@ const NavbarContent = ({ className, ...props }: ComponentProps<"div">) => {
   const { isMobile, open, setOpen } = useNavbar()
   if (isMobile) {
     return (
-      <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
-        <Sheet.Trigger className="sr-only" />
-        <Sheet.Content
-          className="bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-          closeButton={false}
-          data-navbar="navbar"
-          side="left"
-        >
-          <Sheet.Header className="sr-only">
-            <Sheet.Title>Navbar</Sheet.Title>
-            <Sheet.Description>Displays the mobile navbar.</Sheet.Description>
-          </Sheet.Header>
-          <div className="no-scrollbar isolate flex flex-col overflow-auto will-change-scroll">{props.children}</div>
-        </Sheet.Content>
-      </Sheet>
+      <SheetContent
+        className="bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+        isOpen={open}
+        onOpenChange={setOpen}
+        {...props}
+        data-navbar="navbar"
+        showCloseButton={false}
+        side="left"
+      >
+        <SheetHeader className="sr-only">
+          <SheetTitle>Navbar</SheetTitle>
+          <SheetDescription>Displays the mobile navbar.</SheetDescription>
+        </SheetHeader>
+        <div className="no-scrollbar isolate flex flex-col overflow-auto will-change-scroll">{props.children}</div>
+      </SheetContent>
     )
   }
   return (

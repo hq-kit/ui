@@ -40,7 +40,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
         {composeRenderProps(children, (children) => (
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <span
-              className="cn-checkbox peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="cn-checkbox cn-checkbox-indicator peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
               data-slot="checkbox-indicator"
               slot="control"
             >

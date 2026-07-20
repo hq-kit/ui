@@ -3,7 +3,7 @@
 import type { Key, Selection } from "react-aria-components"
 import { IconCheckbox, IconForms } from "@tabler/icons-react"
 import { useState } from "react"
-import { ComboBox, ComboBoxContent, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
@@ -20,7 +20,7 @@ const options = [
   { id: 10, name: "NetBSD" }
 ]
 
-export default function ComboBoxControlledDemo() {
+export default function ComboboxControlledDemo() {
   const [mode, setMode] = useState<Selection>(new Set(["selection"]))
   return (
     <div className="space-y-4">
@@ -34,38 +34,38 @@ export default function ComboBoxControlledDemo() {
           Input
         </ToggleGroupItem>
       </ToggleGroup>
-      {Array.from(mode).includes("selection") ? <ComboBoxControlledSelected /> : <ComboBoxControlledInput />}
+      {Array.from(mode).includes("selection") ? <ComboboxControlledSelected /> : <ComboboxControlledInput />}
     </div>
   )
 }
 
-const ComboBoxControlledInput = () => {
+const ComboboxControlledInput = () => {
   const [value, setValue] = useState<string>("")
   return (
     <div className="grid space-y-4">
-      <ComboBox allowsCustomValue inputValue={value} onInputChange={setValue}>
+      <Combobox allowsCustomValue inputValue={value} onInputChange={setValue}>
         <Label>Controlled Input</Label>
-        <ComboBoxInput placeholder="Choose a distro" />
-        <ComboBoxContent items={options}>
-          {(option) => <ComboBoxItem id={option.id}>{option.name}</ComboBoxItem>}
-        </ComboBoxContent>
-      </ComboBox>
+        <ComboboxInput placeholder="Choose a distro" />
+        <ComboboxContent items={options}>
+          {(option) => <ComboboxItem id={option.id}>{option.name}</ComboboxItem>}
+        </ComboboxContent>
+      </Combobox>
       <code className="text-xs">value: {JSON.stringify(value)}</code>
     </div>
   )
 }
 
-const ComboBoxControlledSelected = () => {
+const ComboboxControlledSelected = () => {
   const [selected, setSelected] = useState<Key | null>(null)
   return (
     <div className="grid space-y-4">
-      <ComboBox onSelectionChange={setSelected} selectedKey={selected}>
+      <Combobox onSelectionChange={setSelected} selectedKey={selected}>
         <Label>Controlled Selection</Label>
-        <ComboBoxInput placeholder="Choose a distro" />
-        <ComboBoxContent items={options}>
-          {(option) => <ComboBoxItem id={option.id}>{option.name}</ComboBoxItem>}
-        </ComboBoxContent>
-      </ComboBox>
+        <ComboboxInput placeholder="Choose a distro" />
+        <ComboboxContent items={options}>
+          {(option) => <ComboboxItem id={option.id}>{option.name}</ComboboxItem>}
+        </ComboboxContent>
+      </Combobox>
       <code className="text-xs">selected: {JSON.stringify(selected)}</code>
     </div>
   )

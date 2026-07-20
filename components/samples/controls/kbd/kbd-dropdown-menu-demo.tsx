@@ -1,18 +1,18 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger
+  DropdownMenuShortcut
 } from "@/components/ui/dropdown-menu"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 
 export default function KeyboardMenuDemo() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>Options</DropdownMenuTrigger>
+      <Button>Options</Button>
       <DropdownMenuContent>
         <DropdownMenuItem>
           Copy

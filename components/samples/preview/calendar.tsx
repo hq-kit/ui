@@ -112,7 +112,7 @@ export default function CalendarPreview() {
         </div>
         <div className="grid min-h-52 w-full place-items-center">
           <I18nProvider locale={`${locale}-u-ca-${calendar}`}>
-            <Calendar />
+            <Calendar captionLayout="dropdown" />
           </I18nProvider>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function CalendarPreview() {
 import { Calendar } from '@/components/ui/calendar';
           
 <I18nProvider locale='${locale}-u-ca-${calendar}'>
-  <Calendar />
+  <Calendar captionLayout='dropdown' />
 </I18nProvider>`}
         copy
       />

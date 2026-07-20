@@ -1,9 +1,12 @@
 "use client"
 
-import type { ComponentPropsWithRef } from "react"
-import { getLocalTimeZone, today } from "@internationalized/date"
+import type { ComponentProps, ReactNode } from "react"
 import {
+  Calendar as AriaCalendar,
+  CalendarGridHeader as AriaCalendarGridHeader,
+  RangeCalendar as AriaRangeCalendar,
   CalendarCell,
+  type CalendarCellRenderProps,
   CalendarGrid,
   CalendarGridBody,
   CalendarHeaderCell,
@@ -12,198 +15,246 @@ import {
   type CalendarProps,
   CalendarYearPicker,
   type DateValue,
-  Calendar as RACCalendar,
-  CalendarGridHeader as RACCalendarGridHeader
-} from "react-aria-components/Calendar"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
-import { RangeCalendar as RACRangeCalendar, type RangeCalendarProps } from "react-aria-components/RangeCalendar"
+  type RangeCalendarProps
+} from "react-aria-components"
+import { tv } from "tailwind-variants"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
-import { Button } from "./button"
-import { Select } from "./select"
+import { Button, buttonVariants } from "./button"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select"
 
-const Calendar = <T extends DateValue>({
-  visibleDuration = { months: 1 },
-  withPicker = true,
-  ...props
-}: CalendarProps<T> & { withPicker?: boolean }) => {
-  const now = today(getLocalTimeZone())
-  const months = visibleDuration?.months || 1
+const cellVariants = tv({
+  base: "group/day relative mt-2 aspect-square h-full w-full cursor-default select-none rounded-(--cell-radius) p-0 text-center [&:is(:last-child>[data-selected=true])>div]:rounded-r-(--cell-radius)",
+  variants: {
+    showWeekNumber: {
+      false: "[&:is(:first-child>[data-selected=true])>div]:rounded-l-(--cell-radius)",
+      true: "[&:is(:nth-child(2)>[data-selected=true])>div]:rounded-l-(--cell-radius)"
+    },
+    isToday: {
+      true: "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none"
+    },
+    isSelectionStart: {
+      true: "relative isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted"
+    },
+    isSelectionEnd: {
+      true: "relative isolate z-0 rounded-r-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-muted"
+    },
+    isUnavailable: {
+      true: "text-muted-foreground opacity-50 [&>div]:line-through"
+    },
+    isDisabled: {
+      true: "text-muted-foreground opacity-50"
+    },
+    isOutsideMonth: {
+      true: "text-muted-foreground aria-selected:text-muted-foreground"
+    }
+  }
+})
+
+function Calendar<T extends DateValue, M extends "single" | "multiple" = "single">(
+  props: Omit<CalendarProps<T, M>, "visibleDuration"> & {
+    buttonVariant?: ComponentProps<typeof Button>["variant"]
+    captionLayout?: "label" | "dropdown"
+    numberOfMonths?: number
+    showWeekNumber?: boolean
+    headerFormat?: Intl.DateTimeFormatOptions
+    renderCell?: (
+      renderProps: CalendarCellRenderProps & {
+        defaultChildren: ReactNode
+      }
+    ) => ReactNode
+  }
+) {
   return (
-    <RACCalendar
+    <AriaCalendar
       {...props}
-      className={composeRenderProps(props.className, (className) =>
-        cn(
-          "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar grid w-fit place-items-center bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
-          className
-        )
+      className={cn(
+        "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+        props.className
       )}
       data-slot="calendar"
+      visibleDuration={{ months: props.numberOfMonths || 1 }}
     >
-      <div className="flex items-start gap-2">
-        {Array.from({ length: months }).map((_, i) => (
-          <div className="grid place-items-center" key={i}>
-            <CalendarHeader index={i} picker={withPicker} visibleMonths={months} />
-            <CalendarGrid key={i} offset={{ months: i }}>
-              <CalendarGridHeader />
-              <CalendarGridBody>
-                {(date) => (
-                  <CalendarCell
-                    className={cn([
-                      "relative mt-2 flex size-(--cell-size) shrink-0 cursor-pointer items-center justify-center rounded-(--cell-radius) outside-month:text-muted-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground data-pressed:bg-accent data-pressed:text-accent-foreground",
-                      "data-selected:data-invalid:bg-destructive data-selected:data-invalid:text-destructive-foreground data-selected:bg-primary data-selected:text-primary-foreground",
-                      "focus-visible:ring-2 focus-visible:ring-ring/50",
-                      "aria-disabled:pointer-events-none aria-disabled:opacity-50 data-outside-month:pointer-events-none data-outside-month:opacity-50",
-                      date.compare(now) === 0 &&
-                        "after:pointer-events-none after:absolute after:inset-s-1/2 after:bottom-1 after:z-10 after:size-1 after:-translate-x-1/2 after:rounded-(--cell-radius) after:bg-primary data-selected:after:bg-primary-foreground"
-                    ])}
-                    date={date}
-                  />
-                )}
-              </CalendarGridBody>
-            </CalendarGrid>
-          </div>
-        ))}
-      </div>
-    </RACCalendar>
+      <CalendarInner {...props} />
+    </AriaCalendar>
   )
 }
 
-const RangeCalendar = <T extends DateValue>({
-  visibleDuration = { months: 1 },
-  withPicker = true,
-  ...props
-}: RangeCalendarProps<T> & { withPicker?: boolean }) => {
-  const now = today(getLocalTimeZone())
-  const months = visibleDuration?.months || 1
+function RangeCalendar<T extends DateValue>(
+  props: RangeCalendarProps<T> & {
+    buttonVariant?: ComponentProps<typeof Button>["variant"]
+    captionLayout?: "label" | "dropdown"
+    headerFormat?: Intl.DateTimeFormatOptions
+    numberOfMonths?: number
+    showWeekNumber?: boolean
+    renderCell?: (
+      renderProps: CalendarCellRenderProps & {
+        defaultChildren: ReactNode
+      }
+    ) => ReactNode
+  }
+) {
   return (
-    <RACRangeCalendar
-      data-slot="calendar"
-      visibleDuration={visibleDuration}
+    <AriaRangeCalendar
       {...props}
-      className={composeRenderProps(props.className, (className) =>
-        cn(
-          "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar grid w-fit place-items-center bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
-          className
-        )
+      className={cn(
+        "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+        props.className
       )}
+      data-slot="calendar"
+      visibleDuration={{ months: props.numberOfMonths || 1 }}
     >
-      <div className="flex items-start gap-2">
-        {Array.from({ length: months }).map((_, i) => (
-          <div className="grid place-items-center" key={i}>
-            <CalendarHeader index={i} picker={withPicker} visibleMonths={months} />
-            <CalendarGrid key={i} offset={{ months: i }}>
-              <CalendarGridHeader />
-              <CalendarGridBody>
-                {(date) => (
-                  <CalendarCell
-                    className={cn([
-                      "relative mt-2 flex size-(--cell-size) shrink-0 cursor-pointer items-center justify-center rounded-(--cell-radius) outside-month:text-muted-foreground text-sm outline-hidden hover:bg-accent/90 hover:text-accent-foreground data-pressed:bg-accent data-pressed:text-accent-foreground",
-                      "data-selection-start:data-invalid:bg-destructive data-selection-start:data-invalid:text-destructive-foreground data-selection-start:bg-primary data-selection-start:text-primary-foreground",
-                      "data-selection-end:data-invalid:bg-destructive data-selection-end:data-invalid:text-destructive-foreground data-selection-end:bg-primary data-selection-end:text-primary-foreground",
-                      "data-selected:data-selection-end:rounded-r-(--cell-radius) data-selected:data-selection-start:rounded-l-(--cell-radius) data-selected:rounded-none data-selected:bg-accent data-selected:text-accent-foreground",
-                      "focus-visible:ring-2 focus-visible:ring-ring/50",
-                      "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
-                      date.compare(now) === 0 &&
-                        "after:pointer-events-none after:absolute after:inset-s-1/2 after:bottom-1 after:mt-1 after:size-1 after:-translate-x-1/2 after:rounded-(--cell-radius) after:bg-primary data-selected:data-selection-end:after:bg-primary-foreground data-selected:data-selection-start:after:bg-primary-foreground"
-                    ])}
-                    date={date}
-                  />
-                )}
-              </CalendarGridBody>
-            </CalendarGrid>
-          </div>
-        ))}
-      </div>
-    </RACRangeCalendar>
+      <CalendarInner {...props} isRange />
+    </AriaRangeCalendar>
   )
 }
 
-const CalendarHeader = ({
-  className,
-  picker = false,
-  index,
-  visibleMonths = 1,
-  ...props
-}: ComponentPropsWithRef<"header"> & { picker?: boolean; index: number; visibleMonths?: number }) => (
-  <header
-    className={cn(
-      "flex w-full items-center justify-between px-1 pt-1 pb-4",
-      "ltr:flex-row rtl:flex-row-reverse",
-      className
-    )}
-    slot="calendar-header"
-    {...props}
-  >
-    {index === 0 && (
-      <Button className="size-(--cell-size)" slot="previous" variant="ghost">
-        <IconPlaceholder
-          hugeicons="ArrowLeft01Icon"
-          lucide="ChevronLeftIcon"
-          phosphor="CaretLeftIcon"
-          remixicon="RiArrowLeftSLine"
-          tabler="IconChevronLeft"
-        />
-      </Button>
-    )}
-
-    {picker && visibleMonths === 1 ? (
-      <div className="flex items-center gap-1">
-        <CalendarMonthPicker>
-          {(values) => (
-            <Select className="w-min" {...values}>
-              <Select.Trigger>
-                <Select.Value />
-              </Select.Trigger>
-              <Select.Content items={values.items}>
-                {(item) => <Select.Item>{item.formatted}</Select.Item>}
-              </Select.Content>
-            </Select>
-          )}
-        </CalendarMonthPicker>
-        <CalendarYearPicker>
-          {(values) => (
-            <Select className="w-min" {...values}>
-              <Select.Trigger>
-                <Select.Value />
-              </Select.Trigger>
-              <Select.Content items={values.items}>
-                {(item) => <Select.Item>{item.formatted}</Select.Item>}
-              </Select.Content>
-            </Select>
-          )}
-        </CalendarYearPicker>
-      </div>
-    ) : (
-      <CalendarHeading
-        className="flex h-(--cell-size) w-full items-center justify-center text-center font-normal text-sm"
-        data-slot="calendar-heading"
-        offset={{ months: index }}
-      />
-    )}
-    {index === visibleMonths - 1 && (
-      <Button className="size-(--cell-size)" slot="next" variant="ghost">
-        <IconPlaceholder
-          hugeicons="ArrowRight01Icon"
-          lucide="ChevronRightIcon"
-          phosphor="CaretRightIcon"
-          remixicon="RiArrowRightSLine"
-          tabler="IconChevronRight"
-        />
-      </Button>
-    )}
-  </header>
-)
-
-const CalendarGridHeader = () => {
+function CalendarInner({
+  captionLayout = "label",
+  buttonVariant = "ghost",
+  numberOfMonths = 1,
+  showWeekNumber = false,
+  headerFormat,
+  renderCell,
+  isRange
+}: {
+  buttonVariant?: ComponentProps<typeof Button>["variant"]
+  captionLayout?: "label" | "dropdown"
+  numberOfMonths?: number
+  showWeekNumber?: boolean
+  headerFormat?: Intl.DateTimeFormatOptions
+  renderCell?: (renderProps: CalendarCellRenderProps & { defaultChildren: ReactNode }) => ReactNode
+  isRange?: boolean
+}) {
   return (
-    <RACCalendarGridHeader>
-      {(day) => (
-        <CalendarHeaderCell className="pb-2 text-center font-semibold text-muted-foreground text-sm sm:px-0 sm:py-0.5 lg:text-xs">
-          {day}
-        </CalendarHeaderCell>
+    <div className="relative flex flex-col gap-4 md:flex-row">
+      <header className="absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1">
+        <Button
+          className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
+          slot="previous"
+          variant={buttonVariant}
+        >
+          <IconPlaceholder
+            className="size-4"
+            hugeicons="ArrowLeftIcon"
+            lucide="ChevronLeftIcon"
+            phosphor="CaretLeftIcon"
+            remixicon="RiArrowLeftSLine"
+            tabler="IconChevronLeft"
+          />
+        </Button>
+        <Button
+          className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
+          slot="next"
+          variant={buttonVariant}
+        >
+          <IconPlaceholder
+            className="size-4"
+            hugeicons="ArrowRightIcon"
+            lucide="ChevronRightIcon"
+            phosphor="CaretRightIcon"
+            remixicon="RiArrowRightSLine"
+            tabler="IconChevronRight"
+          />
+        </Button>
+      </header>
+      {Array.from({ length: numberOfMonths }, (_, i) => (
+        <div className="flex w-full flex-col gap-4" key={i}>
+          <div className="flex h-(--cell-size) w-full items-center justify-center gap-1 px-(--cell-size)">
+            {captionLayout === "dropdown" ? (
+              <>
+                <MonthDropdown format={headerFormat} />
+                <YearDropdown format={headerFormat} />
+              </>
+            ) : (
+              <CalendarHeading
+                className="text-xs font-semibold uppercase tracking-wide select-none font-medium text-sm"
+                format={headerFormat}
+                offset={{ months: i }}
+              />
+            )}
+          </div>
+          <CalendarGrid className="w-full border-collapse" offset={{ months: i }}>
+            <AriaCalendarGridHeader>
+              {(day) => (
+                <CalendarHeaderCell className="select-none rounded-(--cell-radius) font-normal text-[0.8rem] text-muted-foreground">
+                  {day}
+                </CalendarHeaderCell>
+              )}
+            </AriaCalendarGridHeader>
+            <CalendarGridBody>
+              {(date) => (
+                <CalendarCell className={(renderProps) => cellVariants({ ...renderProps, showWeekNumber })} date={date}>
+                  {(renderProps) => (
+                    <div
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "relative isolate z-10 flex aspect-square h-full w-full min-w-(--cell-size) flex-col gap-1 border-0 font-normal leading-none data-[range-end=true]:rounded-(--cell-radius) data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[range-end=true]:bg-primary data-[range-middle=true]:bg-muted data-[range-start=true]:bg-primary data-[selected-single=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:text-foreground data-[range-start=true]:text-primary-foreground data-[selected-single=true]:text-primary-foreground group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70"
+                      )}
+                      data-range-end={renderProps.isSelectionEnd && isRange}
+                      data-range-middle={
+                        renderProps.isSelected &&
+                        !renderProps.isSelectionStart &&
+                        !renderProps.isSelectionEnd &&
+                        isRange
+                      }
+                      data-range-start={renderProps.isSelectionStart && isRange}
+                      data-selected-single={renderProps.isSelected && !isRange}
+                    >
+                      {renderCell ? renderCell(renderProps) : renderProps.defaultChildren}
+                    </div>
+                  )}
+                </CalendarCell>
+              )}
+            </CalendarGridBody>
+          </CalendarGrid>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function MonthDropdown({ format }: { format?: Intl.DateTimeFormatOptions }) {
+  return (
+    <CalendarMonthPicker format={format?.month}>
+      {(props) => (
+        <Select {...props} className="relative">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="min-w-0">
+            <SelectGroup>
+              {props.items.map((item) => (
+                <SelectItem id={item.id} key={item.id}>
+                  {item.formatted}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       )}
-    </RACCalendarGridHeader>
+    </CalendarMonthPicker>
+  )
+}
+
+function YearDropdown({ format }: { format?: Intl.DateTimeFormatOptions }) {
+  return (
+    <CalendarYearPicker format={format}>
+      {(props) => (
+        <Select {...props} className="relative">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="min-w-0">
+            {props.items.map((item) => (
+              <SelectItem id={item.id} key={item.id}>
+                {item.formatted}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
+    </CalendarYearPicker>
   )
 }
 

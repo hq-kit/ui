@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import { parseColor } from "react-aria-components/ColorArea"
+import { Button } from "@/components/ui/button"
 import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch } from "@/components/ui/colors"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Popover, PopoverContent } from "@/components/ui/popover"
 
 export default function ColorPickerDemo() {
   const [color, setColor] = useState(parseColor("#123456"))
@@ -13,9 +14,9 @@ export default function ColorPickerDemo() {
       <InputGroup>
         <InputGroupAddon>
           <Popover>
-            <PopoverTrigger>
+            <Button>
               <ColorSwatch />
-            </PopoverTrigger>
+            </Button>
             <PopoverContent>
               <div className="space-y-2">
                 <ColorArea className="w-full" colorSpace="hsl" xChannel="hue" yChannel="lightness" />

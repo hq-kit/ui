@@ -3,19 +3,23 @@
 import type { User } from "@/components/blocks/landing-page-01/components/data"
 import { IconBell, IconCircleCheck, IconCreditCard, IconLogout, IconSparkles, IconUser } from "@tabler/icons-react"
 import { Avatar } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import { DropdownMenu } from "@/components/ui/dropdown-menu"
 
 export const NavUser = ({ user }: { user: User }) => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+      <Button
+        className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+        variant="ghost"
+      >
         <Avatar className="size-8 rounded-md">
           <Avatar.Image alt={user.name} src={user.avatar} />
           <Avatar.Fallback>
             <IconUser />
           </Avatar.Fallback>
         </Avatar>
-      </DropdownMenu.Trigger>
+      </Button>
       <DropdownMenu.Content className="min-w-56 rounded-lg" placement="bottom end">
         <DropdownMenu.Label className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">

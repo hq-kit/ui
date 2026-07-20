@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, type Ref, use } from "react"
+import { type ComponentProps, createContext, type Ref, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   Button,
@@ -92,7 +92,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: ColumnProps &
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap has-[slot=selection]:pr-0 relative",
+          "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 relative",
           "outline-hidden data-[allows-sorting=true]:cursor-default data-dragging:cursor-grabbing",
           isResizable && "overflow-hidden truncate",
           className
@@ -163,7 +163,7 @@ const TableRow = <T extends object>({ children, className, columns, ref, ...prop
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "hover:bg-muted/50 data-selected:bg-muted border-b transition-colors group relative cursor-default outline outline-transparent has-aria-expanded:bg-muted/50",
+          "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors group relative cursor-default outline outline-transparent has-aria-expanded:bg-muted/50",
           "data-dragging:cursor-grabbing data-disabled:opacity-50 data-dragging:outline-primary",
           "data-drop-target:outline-primary",
           className
@@ -207,7 +207,7 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
     <Cell
       {...props}
       className={composeRenderProps(className, (className) =>
-        cn("p-2 align-middle whitespace-nowrap has-[slot=selection]:pr-0 outline outline-transparent", allowResize && "overflow-hidden truncate", className)
+        cn("p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 outline outline-transparent", allowResize && "overflow-hidden truncate", className)
       )}
       data-slot="table-cell"
       ref={ref}
@@ -240,11 +240,11 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
   )
 }
 
-const TableFooter = ({ className, ...props }: React.ComponentProps<"tfoot">) => (
+const TableFooter = ({ className, ...props }: ComponentProps<"tfoot">) => (
   <tfoot className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)} data-slot="table-footer" {...props} />
 )
 
-const TableCaption = ({ className, ...props }: React.ComponentProps<"caption">) => (
+const TableCaption = ({ className, ...props }: ComponentProps<"caption">) => (
   <caption className={cn("text-muted-foreground mt-4 text-xs", className)} data-slot="table-caption" {...props} />
 )
 

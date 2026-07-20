@@ -13,7 +13,7 @@ import {
 } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
-import { Button, type ButtonProps } from "./button"
+import { Button } from "./button"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -199,7 +199,7 @@ const CarouselButton = ({
   variant = "outline",
   size = "icon-sm",
   ...props
-}: ButtonProps & { segment: "previous" | "next" }) => {
+}: ComponentProps<typeof Button> & { segment: "previous" | "next" }) => {
   const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
   const isNext = segment === "next"
   const canScroll = isNext ? canScrollNext : canScrollPrev

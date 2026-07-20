@@ -16,7 +16,7 @@ const SelectIcon = ({ label, ...props }: SelectIconProps) => {
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="w-max" items={Object.values(iconLibraries)}>
+      <SelectContent items={Object.values(iconLibraries)}>
         {(item) => (
           <SelectItem id={item.name} textValue={item.title}>
             <BrandIcon name={item.name} /> {item.title}

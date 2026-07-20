@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Link, type LinkProps } from "@/components/ui/link"
+import { Link, type LinkProps } from "./link"
 import { cn } from "@/lib/utils"
 
 const markerVariants = tv({

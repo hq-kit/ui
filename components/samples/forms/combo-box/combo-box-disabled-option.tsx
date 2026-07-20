@@ -1,4 +1,5 @@
-import { ComboBox, ComboBoxContent, ComboBoxGroup, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+"use client"
+import { Combobox, ComboboxContent, ComboboxGroup, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -83,22 +84,22 @@ const options = [
   }
 ]
 
-export default function ComboBoxDisabledOption() {
+export default function ComboboxDisabledOption() {
   return (
-    <ComboBox>
+    <Combobox>
       <Label>Comobox option disabled</Label>
-      <ComboBoxInput placeholder="Choose a distro" />
-      <ComboBoxContent items={options}>
+      <ComboboxInput placeholder="Choose a distro" />
+      <ComboboxContent items={options}>
         {(option) => (
-          <ComboBoxGroup items={option.distros} title={option.name}>
+          <ComboboxGroup items={option.distros} title={option.name}>
             {(option) => (
-              <ComboBoxItem id={option.id} isDisabled={option.disabled}>
+              <ComboboxItem id={option.id} isDisabled={option.disabled}>
                 {option.name}
-              </ComboBoxItem>
+              </ComboboxItem>
             )}
-          </ComboBoxGroup>
+          </ComboboxGroup>
         )}
-      </ComboBoxContent>
-    </ComboBox>
+      </ComboboxContent>
+    </Combobox>
   )
 }

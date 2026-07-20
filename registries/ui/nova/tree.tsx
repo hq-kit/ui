@@ -37,7 +37,7 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
   <RACTreeItem
     className={composeRenderProps(className, (className) =>
       cn(
-        "hover:bg-muted data-selected:bg-muted rounded-sm px-1.5 py-0.5 text-sm font-medium relative flex cursor-default items-center gap-1 border border-transparent pr-2 text-sm outline-hidden transition",
+        "hover:bg-muted aria-expanded:bg-muted rounded-sm px-1.5 py-[2px] font-medium relative flex cursor-default items-center gap-1 border border-transparent pr-2 text-sm outline-hidden transition",
         "data-drop-target:border-primary",
         "focus-visible:border-border focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "hover:bg-accent hover:text-accent-foreground",

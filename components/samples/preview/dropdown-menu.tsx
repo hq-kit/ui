@@ -1,13 +1,13 @@
 "use client"
 
 import { Code } from "@/components/mdx/code-client"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 
 export default function DropdownMenuPreview() {
@@ -16,7 +16,7 @@ export default function DropdownMenuPreview() {
       <div className="flex flex-col lg:flex-row-reverse">
         <div className="grid min-h-52 w-full place-items-center px-6">
           <DropdownMenu>
-            <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+            <Button>Open</Button>
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -38,9 +38,10 @@ export default function DropdownMenuPreview() {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
           
 <DropdownMenu>
-  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <Button>Open</Button>
   <DropdownMenuContent>
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />

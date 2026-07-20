@@ -164,7 +164,7 @@ const GridListItemAction = ({ className, variant, size = "icon-xs", ...props }: 
   />
 )
 
-const GridListEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
+const GridListEmptyState = ({ ref, className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
       'flex items-center justify-center gap-2 rounded-lg border border-dashed p-6 [&_svg:not([class*="size-"])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',

@@ -24,7 +24,7 @@ const Switch = ({
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
               className={cn(
-                "dark:group-data-selected/field:bg-primary group-data-selected/field:bg-primary bg-input group-data-selected/field:border-primary border border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:ring-destructive/40 group-data-invalid/field:border-destructive dark:group-data-invalid/field:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 group-data-invalid/field:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25 peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50",
+                "group-data-selected/field:bg-primary not-group-data-selected/field:bg-input group-data-selected/field:border-primary border not-group-data-selected/field:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25 peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50",
                 className
               )}
               data-size={size}
@@ -32,7 +32,7 @@ const Switch = ({
               slot="control"
             >
               <span
-                className="bg-background dark:bg-foreground dark:group-data-selected/field:bg-primary-foreground group-data-[size=default]/switch:size-3.5 group-data-[size=sm]/switch:size-2.5 group-data-selected/field:translate-x-[calc(100%+2px)] translate-x-px pointer-events-none block ring-0 transition-transform"
+                className="bg-background dark:not-group-data-selected/field:bg-foreground dark:group-data-selected/field:bg-primary-foreground group-data-[size=default]/switch:size-3.5 group-data-[size=sm]/switch:size-2.5 group-data-selected/field:translate-x-[calc(100%+2px)] not-group-data-selected/field:translate-x-0.25 pointer-events-none block ring-0 transition-transform"
                 data-slot="switch-thumb"
               />
             </div>

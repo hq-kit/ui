@@ -1,103 +1,127 @@
 "use client"
 
-import type { ComponentProps, ComponentPropsWithRef } from "react"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react"
 import {
-  type DialogProps,
-  type DialogTriggerProps,
+  Dialog as DialogPrimitive,
+  DialogTrigger as DialogTriggerPrimitive,
+  type DialogTriggerProps as DialogTriggerPrimitiveProps,
   Heading,
-  Modal,
-  type ModalOverlayProps,
-  Button as RACButton,
-  type ButtonProps as RACButtonProps,
-  Dialog as RACDialog,
-  DialogTrigger as RACDialogTrigger,
-  type HeadingProps as RACHeadingProps,
-  ModalOverlay as RACModalOverlay
-} from "react-aria-components/Modal"
-import { Text, type TextProps } from "react-aria-components/Text"
+  ModalOverlay as ModalOverlayPrimitive,
+  type ModalOverlayProps as ModalOverlayPrimitiveProps,
+  Modal as ModalPrimitive
+} from "react-aria-components"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
-import { Button, type ButtonProps } from "./button"
+import { Button } from "./button"
 
-const Dialog = (props: DialogTriggerProps) => <RACDialogTrigger {...props} />
-
-const DialogOverlay = ({ className, isDismissable = true, ...props }: ModalOverlayProps) => (
-  <RACModalOverlay
-    className={composeRenderProps(className, (className) =>
-      cn("data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/20 duration-100 supports-backdrop-filter:backdrop-blur-sm fixed inset-0 isolate z-50", className)
-    )}
-    data-slot="overlay"
-    isDismissable={isDismissable}
-    isKeyboardDismissDisabled={!isDismissable}
-    {...props}
-  />
-)
-
-interface DialogContentProps
-  extends Omit<ComponentProps<typeof Modal>, "children" | "isDismissable">,
-    Omit<ModalOverlayProps, "className" | "children" | "isDismissable"> {
-  "aria-label"?: DialogProps["aria-label"]
-  "aria-labelledby"?: DialogProps["aria-labelledby"]
-  role?: DialogProps["role"]
-  closeButton?: boolean
-  children?: DialogProps["children"]
-  className?: DialogProps["className"]
-  overlayClassName?: ModalOverlayProps["className"]
+function Dialog({ ...props }: DialogTriggerPrimitiveProps) {
+  return <DialogTriggerPrimitive data-slot="dialog-trigger" {...props} />
 }
 
-const DialogContent = ({
-  role = "dialog",
-  closeButton = true,
+function DialogClose({ className, variant = "outline", size = "default", ...props }: ComponentProps<typeof Button>) {
+  return (
+    <Button className={cn(className)} data-slot="dialog-close" size={size} slot="close" variant={variant} {...props} />
+  )
+}
+
+function DialogOverlay({
   className,
   children,
-  overlayClassName,
   ...props
-}: DialogContentProps) => {
-  const isDismissable = role !== "alertdialog"
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> & {
+  className?: string
+  children: ReactNode
+}) {
   return (
-    <DialogOverlay className={overlayClassName} isDismissable={isDismissable} {...props}>
-      <Modal
-        className={composeRenderProps(className, (className) =>
-          cn(
-            "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/10 max-w-[calc(100%-2rem)] rounded-none shadow-md ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-hidden",
-            className
-          )
+    <ModalOverlayPrimitive
+      className={cn("data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/20 duration-100 supports-backdrop-filter:backdrop-blur-sm fixed inset-0 isolate z-50", className)}
+      data-slot="dialog-overlay"
+      {...props}
+    >
+      {children}
+    </ModalOverlayPrimitive>
+  )
+}
+
+function DialogContent({
+  className,
+  children,
+  showCloseButton = true,
+  isDismissable = true,
+  ...props
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
+  Pick<ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
+    className?: string
+    children: ReactNode
+    showCloseButton?: boolean
+  }) {
+  return (
+    <DialogOverlay isDismissable={isDismissable} {...props}>
+      <ModalPrimitive
+        className={cn(
+          "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-none p-6 text-sm shadow-md ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
+          className
         )}
-        data-slot="modal"
-        isDismissable={isDismissable}
-        {...props}
+        data-slot="dialog-content"
       >
-        <RACDialog
-          aria-label="Dialog"
-          className="grid gap-6 p-6 text-sm relative size-full outline-hidden"
-          data-slot="dialog-content"
-          role={role}
-          slot="dialog"
-        >
-          {(values) => (
-            <>
-              {typeof children === "function" ? children(values) : children}
-              {closeButton && isDismissable && <DialogX />}
-            </>
+        <DialogPrimitive className="gap-[inherit] outline-none [display:inherit]" data-slot="dialog">
+          {children}
+          {showCloseButton && (
+            <DialogClose className="absolute top-5 right-5 bg-secondary" size="icon-sm" variant="ghost">
+              <IconPlaceholder
+                hugeicons="Cancel01Icon"
+                lucide="XIcon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+                tabler="IconX"
+              />
+              <span className="sr-only">Close</span>
+            </DialogClose>
           )}
-        </RACDialog>
-      </Modal>
+        </DialogPrimitive>
+      </ModalPrimitive>
     </DialogOverlay>
   )
 }
 
-const DialogHeader = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
-  <div className={cn("gap-2 flex flex-col", className)} data-slot="header" {...props} />
-)
+function DialogHeader({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("gap-2 flex flex-col", className)} data-slot="dialog-header" {...props} />
+}
 
-const DialogTitle = ({ className, ...props }: RACHeadingProps) => (
-  <Heading className={cn("text-lg font-semibold leading-none uppercase tracking-wider", className)} data-slot="title" {...props} />
-)
+function DialogFooter({
+  className,
+  showCloseButton = false,
+  children,
+  ...props
+}: ComponentProps<"div"> & {
+  showCloseButton?: boolean
+}) {
+  return (
+    <div
+      className={cn("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)}
+      data-slot="dialog-footer"
+      {...props}
+    >
+      {children}
+      {showCloseButton && <DialogClose variant="outline">Close</DialogClose>}
+    </div>
+  )
+}
 
-const DialogDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn("text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3 leading-relaxed mt-0.5", className)} data-slot="description" {...props} />
-)
+function DialogTitle({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) {
+  return (
+    <Heading
+      className={cn("text-lg font-semibold leading-none uppercase tracking-wider", className)}
+      data-slot="dialog-title"
+      slot="title"
+      {...props}
+    />
+  )
+}
+
+function DialogDescription({ className, ...props }: Omit<ComponentProps<"div">, "slot">) {
+  return <div className={cn("text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3 leading-relaxed mt-0.5", className)} data-slot="dialog-description" {...props} />
+}
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
@@ -110,41 +134,23 @@ const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   />
 )
 
-const DialogFooter = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
-  <div
-    className={cn("gap-2 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)}
-    data-slot="footer"
-    {...props}
-  />
-)
-
-const DialogX = (props: ButtonProps) => (
-  <Button aria-label="Close" className="absolute top-5 right-5 bg-secondary" size="icon-sm" slot="close" variant="ghost" {...props}>
-    <IconPlaceholder hugeicons="Cancel01Icon" lucide="XIcon" phosphor="XIcon" remixicon="RiCloseLine" tabler="IconX" />
-  </Button>
-)
-
-const DialogTrigger = (props: RACButtonProps) => <RACButton {...props} />
-
-Dialog.Trigger = DialogTrigger
+Dialog.Close = DialogClose
 Dialog.Content = DialogContent
-Dialog.Body = DialogBody
+Dialog.Description = DialogDescription
 Dialog.Footer = DialogFooter
 Dialog.Header = DialogHeader
+Dialog.Body = DialogBody
 Dialog.Overlay = DialogOverlay
 Dialog.Title = DialogTitle
-Dialog.Description = DialogDescription
-Dialog.X = DialogX
 
 export {
   Dialog,
   DialogBody,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
-  DialogTitle,
-  DialogTrigger,
-  DialogX
+  DialogTitle
 }

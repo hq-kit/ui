@@ -17,7 +17,7 @@ const SelectFont = ({ fonts, label, ...props }: SelectFontProps) => {
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="w-max" items={fonts}>
+      <SelectContent items={fonts}>
         {(item) => (
           <SelectItem id={item.value} textValue={item.label}>
             <span

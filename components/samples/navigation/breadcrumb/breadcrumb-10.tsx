@@ -1,6 +1,7 @@
 import { IconDashboard, IconDots } from "@tabler/icons-react"
 import { Breadcrumb, BreadcrumbItem } from "@/components/ui/breadcrumb"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 
 export default function Breadcrumb10() {
@@ -12,9 +13,9 @@ export default function Breadcrumb10() {
       </BreadcrumbItem>
       <BreadcrumbItem>
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <Button size="icon-sm" variant="ghost">
             <IconDots />
-          </DropdownMenuTrigger>
+          </Button>
           <DropdownMenuContent>
             <DropdownMenuItem>Security</DropdownMenuItem>
             <DropdownMenuItem>Preferences</DropdownMenuItem>

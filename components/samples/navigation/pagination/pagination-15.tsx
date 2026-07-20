@@ -11,7 +11,7 @@ import {
   PaginationLink
 } from "@/components/ui/pagination"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 const pages = [1, 2, 3]
 
@@ -60,9 +60,7 @@ const TablePaginationDemo = () => {
           ))}
           <PaginationItem>
             <Tooltip>
-              <TooltipTrigger>
-                <PaginationEllipsis />
-              </TooltipTrigger>
+              <PaginationEllipsis />
               <TooltipContent>
                 <p>2 other pages</p>
               </TooltipContent>

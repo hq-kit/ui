@@ -2,11 +2,11 @@ import type { ComponentProps } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 
-type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
+type SelectProps = Omit<ComponentProps<"select">, "size"> & {
   size?: "sm" | "default"
 }
 
-function NativeSelect({ className, size = "default", ...props }: NativeSelectProps) {
+function Select({ className, size = "default", ...props }: SelectProps) {
   return (
     <div
       className={cn(
@@ -37,13 +37,13 @@ function NativeSelect({ className, size = "default", ...props }: NativeSelectPro
   )
 }
 
-function NativeSelectOption({ className, ...props }: ComponentProps<"option">) {
+function SelectItem({ className, ...props }: ComponentProps<"option">) {
   return (
     <option className={cn("bg-[Canvas] text-[CanvasText]", className)} data-slot="native-select-option" {...props} />
   )
 }
 
-function NativeSelectOptGroup({ className, ...props }: ComponentProps<"optgroup">) {
+function SelectGroup({ className, ...props }: ComponentProps<"optgroup">) {
   return (
     <optgroup
       className={cn("bg-[Canvas] text-[CanvasText]", className)}
@@ -53,7 +53,7 @@ function NativeSelectOptGroup({ className, ...props }: ComponentProps<"optgroup"
   )
 }
 
-NativeSelect.OptGroup = NativeSelectOptGroup
-NativeSelect.Option = NativeSelectOption
+Select.Group = SelectGroup
+Select.Item = SelectItem
 
-export { NativeSelect, NativeSelectOptGroup, NativeSelectOption }
+export { Select, SelectGroup, SelectItem }

@@ -1,4 +1,4 @@
-import { ComboBox, ComboBoxContent, ComboBoxGroup, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxGroup, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -76,18 +76,18 @@ const options = [
   }
 ]
 
-export default function ComboBoxGroupDemo() {
+export default function ComboboxGroupDemo() {
   return (
-    <ComboBox>
+    <Combobox>
       <Label>Combobox option Group</Label>
-      <ComboBoxInput placeholder="Choose a distro" />
-      <ComboBoxContent items={options}>
+      <ComboboxInput placeholder="Choose a distro" />
+      <ComboboxContent items={options}>
         {(option) => (
-          <ComboBoxGroup items={option.distros} title={option.name}>
-            {(option) => <ComboBoxItem>{option.name}</ComboBoxItem>}
-          </ComboBoxGroup>
+          <ComboboxGroup items={option.distros} title={option.name}>
+            {(option) => <ComboboxItem>{option.name}</ComboboxItem>}
+          </ComboboxGroup>
         )}
-      </ComboBoxContent>
-    </ComboBox>
+      </ComboboxContent>
+    </Combobox>
   )
 }

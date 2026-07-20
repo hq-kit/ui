@@ -15,32 +15,36 @@ const alertVariants = tv({
   }
 })
 
-const Alert = ({ className, variant, ...props }: ComponentProps<"div"> & VariantProps<typeof alertVariants>) => (
-  <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />
-)
+function Alert({ className, variant, ...props }: ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+  return <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />
+}
 
-const AlertTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className)}
-    data-slot="alert-title"
-    {...props}
-  />
-)
+function AlertTitle({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn("font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className)}
+      data-slot="alert-title"
+      {...props}
+    />
+  )
+}
 
-const AlertDescription = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "text-muted-foreground text-xs/relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
-      className
-    )}
-    data-slot="alert-description"
-    {...props}
-  />
-)
+function AlertDescription({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "text-muted-foreground text-xs/relaxed text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        className
+      )}
+      data-slot="alert-description"
+      {...props}
+    />
+  )
+}
 
-const AlertAction = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("absolute top-1.5 right-2", className)} data-slot="alert-action" {...props} />
-)
+function AlertAction({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("absolute top-1.5 right-2", className)} data-slot="alert-action" {...props} />
+}
 
 Alert.Title = AlertTitle
 Alert.Description = AlertDescription

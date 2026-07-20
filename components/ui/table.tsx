@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, type Ref, use } from "react"
+import { type ComponentProps, createContext, type Ref, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   Button,
@@ -240,11 +240,11 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
   )
 }
 
-const TableFooter = ({ className, ...props }: React.ComponentProps<"tfoot">) => (
+const TableFooter = ({ className, ...props }: ComponentProps<"tfoot">) => (
   <tfoot className={cn("cn-table-footer", className)} data-slot="table-footer" {...props} />
 )
 
-const TableCaption = ({ className, ...props }: React.ComponentProps<"caption">) => (
+const TableCaption = ({ className, ...props }: ComponentProps<"caption">) => (
   <caption className={cn("cn-table-caption", className)} data-slot="table-caption" {...props} />
 )
 

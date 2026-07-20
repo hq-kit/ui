@@ -1,15 +1,14 @@
 "use client"
 
-import type { DateValue } from "react-aria-components"
 import { getLocalTimeZone, today } from "@internationalized/date"
-import * as React from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 export default function CalendarWithPresets() {
   const now = today(getLocalTimeZone())
-  const [date, setDate] = React.useState<DateValue>(now)
+  const [date, setDate] = useState(now)
 
   return (
     <Card className="mx-auto w-fit max-w-75" size="sm">

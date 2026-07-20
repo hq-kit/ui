@@ -130,7 +130,7 @@ const AttachmentTrigger = ({
 
   return (
     <Comp
-      className={cn("absolute inset-0 z-10 outline-none absolute inset-0 z-10 outline-none", className)}
+      className={cn("absolute inset-0 z-10 outline-none", className)}
       data-slot="attachment-trigger"
       type={"href" in props ? undefined : (type ?? "button")}
       {...props}

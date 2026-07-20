@@ -74,7 +74,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       toastOptions={{
         classNames: {
-          toast: "rounded-none!"
+          toast: "rounded-none"
         }
       }}
       {...props}

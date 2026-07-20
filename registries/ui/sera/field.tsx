@@ -33,7 +33,7 @@ const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const fieldVariants = tv({
-  base: "hover:not-in-data-disabled:**:[[data-slot=radio-group-item],[data-slot=checkbox-indicator]]:border-ring! hover:not-data-disabled:**:[[slot=control]]:border-b-ring! data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
+  base: "data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
   variants: {
     orientation: {
       vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
@@ -65,8 +65,8 @@ const Field = ({
 const Label = (props: LabelProps) => (
   <RACLabel
     className={cn(
-      "gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm leading-relaxed group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
-      "has-data-selected:bg-primary/5 has-data-selected:border-primary/30 dark:has-data-selected:border-primary/20 dark:has-data-selected:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 leading-relaxed group/field-label peer/field-label flex w-fit",
+      "gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
+      "has-group-data-selected/field:bg-primary/5 has-group-data-selected/field:border-primary/30 dark:has-group-data-selected/field:border-primary/20 dark:has-group-data-selected/field:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 leading-relaxed group/field-label peer/field-label flex w-fit",
       "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
       props.className
     )}
@@ -77,7 +77,7 @@ const Label = (props: LabelProps) => (
 )
 
 const Title = ({ className, ...props }: LabelProps) => (
-  <RACLabel className={cn("gap-2 group-data-[disabled=true]/field:opacity-50 leading-normal font-semibold uppercase in-data-[slot=field-label]:font-semibold text-xs flex w-fit items-center", className)} data-slot="field-label" {...props} />
+  <RACLabel className={cn("gap-2 group-data-[disabled=true]/field:opacity-50 font-semibold uppercase in-data-[slot=field-label]:font-semibold text-xs flex w-fit items-center", className)} data-slot="field-label" {...props} />
 )
 
 const Description = ({ className, ...props }: TextProps) => (

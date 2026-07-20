@@ -1,36 +1,35 @@
 "use client"
 
+import type { ComponentProps } from "react"
+import type { PopoverProps } from "react-aria-components/Select"
 import type { VariantProps } from "tailwind-variants"
-import { useSlottedContext } from "react-aria-components"
-import { Autocomplete } from "react-aria-components/Autocomplete"
-import { composeRenderProps } from "react-aria-components/composeRenderProps"
-import { Group, type GroupProps } from "react-aria-components/Group"
-import { Header } from "react-aria-components/Header"
-import { Input, SearchField } from "react-aria-components/SearchField"
 import {
-  Button,
+  Button as ButtonPrimitive,
   type ButtonProps,
-  Collection,
-  type Key,
-  ListBox,
-  ListBoxItem,
-  type ListBoxItemProps,
+  composeRenderProps,
+  Header as HeaderPrimitive,
+  ListBoxItem as ListBoxItemPrimitive,
+  ListBox as ListBoxPrimitive,
   type ListBoxProps,
-  ListBoxSection,
-  type ListBoxSectionProps,
-  Popover,
-  type PopoverProps,
-  Select as RACSelect,
-  SelectValue as RACSelectValue,
-  SelectContext,
+  ListBoxSection as ListBoxSectionPrimitive,
+  Popover as PopoverPrimitive,
+  SearchField,
+  type SearchFieldProps,
+  Select as SelectPrimitive,
   type SelectProps,
-  type SelectValueProps
-} from "react-aria-components/Select"
-import { Separator, type SeparatorProps } from "react-aria-components/Separator"
+  SelectValue as SelectValuePrimitive,
+  type SelectValueProps,
+  Separator as SeparatorPrimitive,
+  useSlottedContext
+} from "react-aria-components"
+import { Group, type GroupProps } from "react-aria-components/Group"
+import { Collection, type ListBoxSectionProps } from "react-aria-components/ListBox"
+import { SelectContext } from "react-aria-components/Select"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
+import { Autocomplete } from "./autocomplete"
 import { fieldVariants } from "./field"
-import { InputGroupAddon, inputGroupVariants } from "./input"
+import { InputGroup, InputGroupAddon, InputGroupInput } from "./input"
 
 const Select = <T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -38,24 +37,42 @@ const Select = <T extends object, M extends "single" | "multiple" = "single">({
   ...props
 }: SelectProps<T, M> & VariantProps<typeof fieldVariants>) => {
   return (
-    <RACSelect
+    <SelectPrimitive
       className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}
       data-orientation={orientation}
       data-slot="field"
       {...props}
     >
       {(values) => (typeof props.children === "function" ? props.children(values) : props.children)}
-    </RACSelect>
+    </SelectPrimitive>
   )
 }
 
-const SelectValue = <T extends object>(props: SelectValueProps<T>) => (
-  <RACSelectValue
-    className={cn("**:data-[slot=item-description]:hidden", props.className)}
-    data-slot="select-value"
-    {...props}
-  />
+const SelectGroup = <T extends object>({ title, children, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
+  <ListBoxSectionPrimitive className={cn("scroll-my-1 p-1", props.className)} data-slot="select-group" {...props}>
+    {title && (
+      <HeaderPrimitive className="text-muted-foreground px-3 py-2.5 text-xs" data-slot="select-label">
+        {title}
+      </HeaderPrimitive>
+    )}
+    <Collection items={props.items}>{children}</Collection>
+  </ListBoxSectionPrimitive>
 )
+
+function SelectValue<T extends object>({ className, children, ...props }: SelectValueProps<T>) {
+  return (
+    <SelectValuePrimitive
+      className={cn("flex flex-1 text-left data-placeholder:text-muted-foreground", className)}
+      data-slot="select-value"
+      {...props}
+    >
+      {typeof children === "function"
+        ? children
+        : ({ selectedItems, selectedText, defaultChildren }) =>
+            selectedItems.length > 1 ? selectedText : defaultChildren}
+    </SelectValuePrimitive>
+  )
+}
 
 const SelectTrigger = ({
   className,
@@ -72,7 +89,7 @@ const SelectTrigger = ({
   return context.selectionMode === "multiple" ? (
     <Group
       className={cn(
-        "border-input data-placeholder:text-muted-foreground bg-input/30 dark:hover:bg-input/50 has-aria-expanded:border-ring has-aria-expanded:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-1.5 rounded-4xl border px-3 py-2 text-sm transition-colors has-aria-expanded:ring-[3px] aria-invalid:ring-[3px] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-4 relative flex max-h-none min-h-fit w-fit items-center justify-between whitespace-nowrap py-1 outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex max-h-none min-h-fit w-fit items-center justify-between whitespace-nowrap py-1 outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
@@ -88,7 +105,7 @@ const SelectTrigger = ({
       {() => (
         <>
           {children}
-          <Button
+          <ButtonPrimitive
             data-slot="select-trigger-button"
             {...props}
             className="absolute right-0 flex size-full cursor-default items-center justify-end pr-3 outline-hidden"
@@ -103,14 +120,14 @@ const SelectTrigger = ({
                 tabler="IconSelector"
               />
             </div>
-          </Button>
+          </ButtonPrimitive>
         </>
       )}
     </Group>
   ) : (
-    <Button
+    <ButtonPrimitive
       className={cn(
-        "border-input data-placeholder:text-muted-foreground bg-input/30 dark:hover:bg-input/50 aria-expanded:border-ring aria-expanded:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-1.5 rounded-4xl border px-3 py-2 text-sm transition-colors aria-expanded:ring-[3px] aria-invalid:ring-[3px] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-4 flex w-fit items-center justify-between whitespace-nowrap outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "border-input data-placeholder:text-muted-foreground bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-1.5 rounded-4xl border px-3 py-2 text-sm transition-colors focus-visible:ring-[3px] aria-invalid:ring-[3px] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-4 flex w-fit items-center justify-between whitespace-nowrap outline-none transition-[color,box-shadow,border] disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-size={size}
@@ -132,127 +149,97 @@ const SelectTrigger = ({
           />
         </>
       )}
-    </Button>
+    </ButtonPrimitive>
   )
 }
 
-const SelectContent = <T extends object>({
-  className,
-  offset = 4,
+function SelectContent<T extends object>({
   placement = "bottom",
-  isSearchable,
+  offset = 4,
+  isSearchable = false,
   ...props
-}: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset"> & { isSearchable?: boolean }) => {
-  const renderContent = () => (
-    <ListBox
-      className="flex max-h-[inherit] flex-col overflow-auto rounded-lg p-1 outline-hidden has-data-[slot=select-group]:p-0"
+}: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset"> & { isSearchable?: boolean }) {
+  return isSearchable ? (
+    <SelectPopover offset={offset} placement={placement}>
+      <Autocomplete>
+        <SelectInput />
+        <SelectList renderEmptyState={() => <SelectEmpty>No items found.</SelectEmpty>} {...props} />
+      </Autocomplete>
+    </SelectPopover>
+  ) : (
+    <SelectPopover offset={offset} placement={placement}>
+      <SelectList {...props} />
+    </SelectPopover>
+  )
+}
+
+function SelectPopover({ className, placement = "bottom start", offset = 4, crossOffset = 0, ...props }: PopoverProps) {
+  return (
+    <PopoverPrimitive
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/5 min-w-36 rounded-2xl shadow-2xl ring-1 duration-100 relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
+          className
+        )
+      )}
+      crossOffset={crossOffset}
       data-slot="select-content"
-      layout="stack"
-      orientation="vertical"
-      renderEmptyState={() => <div className="w-full p-4 text-center text-muted-foreground">No results found</div>}
+      offset={offset}
+      placement={placement}
       {...props}
     />
   )
+}
 
+function SelectList<T extends object>({ className, ...props }: ListBoxProps<T>) {
   return (
-    <Popover
+    <ListBoxPrimitive
       className={cn(
-        "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/5 min-w-36 rounded-2xl shadow-2xl ring-1 duration-100 relative flex h-max w-auto min-w-(--trigger-width) flex-col overflow-hidden outline-hidden",
+        "group/select-list max-h-[inherit] overflow-y-auto overflow-x-hidden p-1 outline-hidden has-data-[slot=select-group]:p-0",
         className
       )}
-      offset={offset}
-      placement={placement}
-      trigger="focus"
-    >
-      {isSearchable ? (
-        <Autocomplete
-          filter={(textValue, inputValue) => {
-            if (inputValue.length === 0) return true
-            if (textValue.length === 0) return false
-            let textIndex = 0
-            let inputIndex = 0
-            while (textIndex < textValue.length && inputIndex < inputValue.length) {
-              if (textValue.toLowerCase()[textIndex] === inputValue.toLowerCase()[inputIndex]) {
-                inputIndex++
-              }
-              textIndex++
-            }
-            return inputIndex === inputValue.length
-          }}
-        >
-          <div className="p-1 pb-0" data-slot="command-input-wrapper">
-            <SearchField
-              aria-label="Filter"
-              autoFocus
-              className={cn(inputGroupVariants({ className: "bg-input/30 h-9" }), className)}
-              data-slot="command-input-wrapper"
-            >
-              <InputGroupAddon>
-                <IconPlaceholder
-                  className="size-4 shrink-0 opacity-50 group-data-[pending=true]/command:hidden"
-                  data-slot="input-group-addon"
-                  hugeicons="SearchIcon"
-                  lucide="SearchIcon"
-                  phosphor="MagnifyingGlassIcon"
-                  remixicon="RiSearchLine"
-                  tabler="IconSearch"
-                />
-                <IconPlaceholder
-                  aria-label="Loading"
-                  className="size-4 shrink-0 opacity-50 hidden animate-spin group-data-[pending=true]/command:block"
-                  data-slot="input-group-addon"
-                  hugeicons="Loading03Icon"
-                  lucide="LoaderIcon"
-                  phosphor="SpinnerIcon"
-                  remixicon="RiLoaderLine"
-                  role="status"
-                  tabler="IconLoader"
-                />
-              </InputGroupAddon>
-              <Input
-                className="w-full text-sm w-auto! outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden"
-                data-slot="command-input"
-                placeholder="Search ..."
-              />
-            </SearchField>
-          </div>
-          {renderContent()}
-        </Autocomplete>
-      ) : (
-        renderContent()
-      )}
-    </Popover>
+      data-slot="select-list"
+      {...props}
+    />
   )
 }
 
-const SelectGroup = <T extends object>({ title, children, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <ListBoxSection className={cn("scroll-my-1 p-1", props.className)} data-slot="select-group" {...props}>
-    {title && (
-      <Header className="text-muted-foreground px-3 py-2.5 text-xs" data-slot="select-label">
-        {title}
-      </Header>
-    )}
-    <Collection items={props.items}>{children}</Collection>
-  </ListBoxSection>
-)
-
-const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
-  const textValue = typeof children === "string" ? children : undefined
-
+function SelectInput({ className, ...props }: SearchFieldProps) {
   return (
-    <ListBoxItem
+    <SearchField {...props} autoFocus className={cn("p-1 pb-0", className)} data-slot="select-input-wrapper">
+      <InputGroup>
+        <InputGroupInput className="[&::-webkit-search-cancel-button]:hidden" data-slot="select-input" />
+        <InputGroupAddon>
+          <IconPlaceholder
+            className="size-4 shrink-0 opacity-50"
+            hugeicons="SearchIcon"
+            lucide="SearchIcon"
+            phosphor="MagnifyingGlassIcon"
+            remixicon="RiSearchLine"
+            tabler="IconSearch"
+          />
+        </InputGroupAddon>
+      </InputGroup>
+    </SearchField>
+  )
+}
+
+function SelectItem({ className, children, ...props }: ComponentProps<typeof ListBoxItemPrimitive>) {
+  return (
+    <ListBoxItemPrimitive
       className={cn(
-        "data-focused:bg-accent data-focused:text-accent-foreground not-data-[variant=destructive]:data-focused:**:text-accent-foreground gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 data-focused:bg-accent data-focused:text-accent-foreground relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-slot="select-item"
-      textValue={textValue}
+      textValue={typeof children === "string" ? children : undefined}
       {...props}
     >
-      {(values) => (
+      {composeRenderProps(children, (children, { isSelected }) => (
         <>
-          {values.isSelected && (
-            <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+          <span className="flex flex-1 gap-2 shrink-0 whitespace-nowrap">{children}</span>
+          <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+            {isSelected ? (
               <IconPlaceholder
                 className="pointer-events-none"
                 hugeicons="Tick02Icon"
@@ -261,29 +248,49 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => {
                 remixicon="RiCheckLine"
                 tabler="IconCheck"
               />
-            </span>
-          )}
-          {typeof children === "function" ? children(values) : children}
+            ) : null}
+          </span>
         </>
-      )}
-    </ListBoxItem>
+      ))}
+    </ListBoxItemPrimitive>
   )
 }
 
-const SelectSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator
-    className={cn("bg-border/50 -mx-1 my-1 h-px pointer-events-none", className)}
-    data-slot="select-separator"
-    {...props}
-  />
-)
+function SelectSeparator({ className, ...props }: ComponentProps<typeof SeparatorPrimitive>) {
+  return (
+    <SeparatorPrimitive
+      className={cn("bg-border/50 -mx-1 my-1 h-px pointer-events-none", className)}
+      data-slot="select-separator"
+      {...props}
+    />
+  )
+}
+
+function SelectEmpty({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/select-list:flex", className)} data-slot="select-empty" {...props} />
+}
 
 Select.Content = SelectContent
 Select.Group = SelectGroup
+Select.Input = SelectInput
 Select.Item = SelectItem
+Select.List = SelectList
+Select.Popover = SelectPopover
 Select.Separator = SelectSeparator
 Select.Trigger = SelectTrigger
 Select.Value = SelectValue
+Select.Empty = SelectEmpty
 
-export type { Key }
-export { Select, SelectContent, SelectGroup, SelectItem, SelectSeparator, SelectTrigger, SelectValue }
+export {
+  Select,
+  SelectContent,
+  SelectEmpty,
+  SelectGroup,
+  SelectInput,
+  SelectItem,
+  SelectList,
+  SelectPopover,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue
+}

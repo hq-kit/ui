@@ -7,7 +7,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetBody, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { PasswordInput, TextField } from "@/components/ui/text-field"
 
 const SheetWithFormDemo = () => {
@@ -28,7 +28,7 @@ const SheetWithFormDemo = () => {
           <SheetTitle className="text-center font-bold text-xl">Sign Up</SheetTitle>
         </SheetHeader>
         <Form onSubmit={onSubmit}>
-          <SheetBody className="space-y-4">
+          <div className="space-y-4">
             <TextField>
               <Label>First Name</Label>
               <Input placeholder="First name" />
@@ -53,7 +53,7 @@ const SheetWithFormDemo = () => {
               <Label>Confirm Password</Label>
               <PasswordInput placeholder="Confirm password" />
             </TextField>
-          </SheetBody>
+          </div>
           <SheetFooter>
             <Button type="submit">Create Account</Button>
             <Button slot="close" variant="outline">

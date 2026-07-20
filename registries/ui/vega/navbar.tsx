@@ -18,7 +18,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { Button } from "./button"
 import { Separator } from "./separator"
-import { Sheet } from "./sheet"
+import { SheetContent, SheetDescription, SheetHeader, SheetTitle } from "./sheet"
 import { Skeleton } from "./skeleton"
 
 const NAVBAR_HEIGHT = "3.5rem"
@@ -284,21 +284,21 @@ const NavbarContent = ({ className, ...props }: ComponentProps<"div">) => {
   const { isMobile, open, setOpen } = useNavbar()
   if (isMobile) {
     return (
-      <Sheet isOpen={open} onOpenChange={setOpen} {...props}>
-        <Sheet.Trigger className="sr-only" />
-        <Sheet.Content
-          className="bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-          closeButton={false}
-          data-navbar="navbar"
-          side="left"
-        >
-          <Sheet.Header className="sr-only">
-            <Sheet.Title>Navbar</Sheet.Title>
-            <Sheet.Description>Displays the mobile navbar.</Sheet.Description>
-          </Sheet.Header>
-          <div className="no-scrollbar isolate flex flex-col overflow-auto will-change-scroll">{props.children}</div>
-        </Sheet.Content>
-      </Sheet>
+      <SheetContent
+        className="bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+        isOpen={open}
+        onOpenChange={setOpen}
+        {...props}
+        data-navbar="navbar"
+        showCloseButton={false}
+        side="left"
+      >
+        <SheetHeader className="sr-only">
+          <SheetTitle>Navbar</SheetTitle>
+          <SheetDescription>Displays the mobile navbar.</SheetDescription>
+        </SheetHeader>
+        <div className="no-scrollbar isolate flex flex-col overflow-auto will-change-scroll">{props.children}</div>
+      </SheetContent>
     )
   }
   return (
@@ -362,7 +362,7 @@ const NavbarMenuItem = ({ className, ...props }: ComponentProps<"li">) => (
 )
 
 const navbarMenuButtonVariants = tv({
-  base: "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-entering:hover:bg-sidebar-accent data-entering:hover:text-sidebar-accent-foreground gap-2 rounded-md p-2 text-left text-sm transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 data-active:font-medium peer/menu-button group/menu-button flex w-full items-center overflow-hidden outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground gap-2 rounded-md p-2 text-left text-sm transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 data-active:font-medium peer/menu-button group/menu-button flex w-full items-center overflow-hidden outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
       default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",

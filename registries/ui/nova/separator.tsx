@@ -1,15 +1,21 @@
 "use client"
 
-import { Separator as RACSeparator, type SeparatorProps } from "react-aria-components/Separator"
+import type { ComponentProps } from "react"
+import { Separator as SeparatorPrimitive } from "react-aria-components"
 import { cn } from "@/lib/utils"
 
-const Separator = ({ className, orientation = "horizontal", ...props }: SeparatorProps) => (
-  <RACSeparator
-    className={cn("shrink-0 bg-border", orientation === "horizontal" ? "h-px w-full" : "w-px self-stretch", className)}
-    data-slot="separator"
-    orientation={orientation}
-    {...props}
-  />
-)
+function Separator({ className, orientation = "horizontal", ...props }: ComponentProps<typeof SeparatorPrimitive>) {
+  return (
+    <SeparatorPrimitive
+      className={cn(
+        "block shrink-0 border-0 bg-border aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full aria-[orientation=vertical]:w-px aria-[orientation=vertical]:self-stretch [:is(hr)]:h-px [:is(hr)]:w-full",
+        className
+      )}
+      data-slot="separator"
+      orientation={orientation}
+      {...props}
+    />
+  )
+}
 
-export { Separator, type SeparatorProps }
+export { Separator }

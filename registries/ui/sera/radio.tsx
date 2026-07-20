@@ -45,7 +45,7 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
         {composeRenderProps(children, (children) => (
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
-              className="border-input bg-transparent group-data-selected/field:border-foreground group-data-invalid/field:group-data-selected/field:border-foreground group-data-invalid/field:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:ring-destructive/40 dark:group-data-invalid/field:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 group-data-invalid/field:ring-2 group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="border-input bg-transparent group-data-selected/field:border-foreground aria-invalid:aria-checked:border-foreground aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 aria-invalid:ring-2 group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
               data-slot="radio-group-item"
               slot="control"
             >

@@ -1,4 +1,5 @@
-import { ComboBox, ComboBoxContent, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+"use client"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -13,14 +14,14 @@ const options = [
   { id: "10", value: "Alpine" }
 ]
 
-export default function ComboBoxDemo() {
+export default function ComboboxDemo() {
   return (
-    <ComboBox>
+    <Combobox>
       <Label>Choose a distro</Label>
-      <ComboBoxInput placeholder="Choose a distro" />
-      <ComboBoxContent items={options}>
-        {(option) => <ComboBoxItem id={option.id}>{option.value}</ComboBoxItem>}
-      </ComboBoxContent>
-    </ComboBox>
+      <ComboboxInput placeholder="Choose a distro" />
+      <ComboboxContent items={options}>
+        {(option) => <ComboboxItem id={option.id}>{option.value}</ComboboxItem>}
+      </ComboboxContent>
+    </Combobox>
   )
 }

@@ -2,7 +2,7 @@
 
 import type { Selection } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
-import { type CSSProperties, createContext, use } from "react"
+import { type CSSProperties, createContext, type Ref, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   ToggleButton,
@@ -59,7 +59,7 @@ const ToggleGroupItem = ({
   size = "default",
   ref,
   ...props
-}: ToggleButtonProps & VariantProps<typeof toggleVariants> & { ref?: React.Ref<HTMLButtonElement> }) => {
+}: ToggleButtonProps & VariantProps<typeof toggleVariants> & { ref?: Ref<HTMLButtonElement> }) => {
   const context = use(ToggleGroupContext)
 
   return (

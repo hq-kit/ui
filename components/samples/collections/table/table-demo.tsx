@@ -2,12 +2,12 @@
 
 import { NumberFormatter } from "@internationalized/number"
 import { IconDotsVertical } from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
 
@@ -38,9 +38,9 @@ export default function TableDemo() {
             <TableCell>
               <div className="flex justify-end">
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="size-6">
+                  <Button size="icon-xs" variant="ghost">
                     <IconDotsVertical />
-                  </DropdownMenuTrigger>
+                  </Button>
                   <DropdownMenuContent aria-label="Actions" placement="left top">
                     <DropdownMenuItem>View</DropdownMenuItem>
                     <DropdownMenuItem>Edit</DropdownMenuItem>

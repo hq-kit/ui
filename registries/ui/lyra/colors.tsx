@@ -89,7 +89,7 @@ const ColorSlider = ({ className, children, ...props }: ColorSliderProps) => (
       <>
         {typeof children === "function" ? children(values) : children}
         <SliderTrack
-          className="bg-muted rounded-none group-data-[orientation=horizontal]/slider:h-1 group-data-[orientation=horizontal]/slider:w-full group-data-[orientation=vertical]/slider:h-full group-data-[orientation=vertical]/slider:w-1 data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent relative block grow select-none bg-muted-foreground disabled:opacity-50 data-disabled:opacity-50 data-disabled:grayscale-50"
+          className="bg-muted rounded-none data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1 data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent relative block grow select-none bg-muted-foreground disabled:opacity-50 data-disabled:opacity-50 data-disabled:grayscale-50"
           data-slot="color-slider-track"
         >
           <ColorThumb data-slot="color-slider-thumb" />

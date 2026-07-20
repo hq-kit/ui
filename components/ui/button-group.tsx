@@ -3,37 +3,6 @@ import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 import { Separator } from "./separator"
 
-const buttonVariants = tv({
-  base: "cn-button group/button inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap outline-none transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-  variants: {
-    variant: {
-      default: "cn-button-variant-default",
-      outline: "cn-button-variant-outline",
-      secondary: "cn-button-variant-secondary",
-      ghost: "cn-button-variant-ghost",
-      destructive: "cn-button-variant-destructive",
-      link: "cn-button-variant-link"
-    },
-    size: {
-      default: "cn-button-size-default",
-      xs: "cn-button-size-xs",
-      sm: "cn-button-size-sm",
-      lg: "cn-button-size-lg",
-      icon: "cn-button-size-icon",
-      "icon-xs": "cn-button-size-icon-xs",
-      "icon-sm": "cn-button-size-icon-sm",
-      "icon-lg": "cn-button-size-icon-lg"
-    },
-    isPending: {
-      true: "pointer-events-none opacity-50 [&_svg:not([data-slot='loader'])]:hidden"
-    }
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "default"
-  }
-})
-
 const buttonGroupVariants = tv({
   base: "cn-button-group group/button-group flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
   variants: {
@@ -82,4 +51,4 @@ const ButtonGroupSeparator = ({ className, orientation = "vertical", ...props }:
 ButtonGroup.Text = ButtonGroupText
 ButtonGroup.Separator = ButtonGroupSeparator
 
-export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonVariants }
+export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText }

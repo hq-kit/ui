@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Area, AreaChart, CartesianGrid } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { ComboBox, ComboBoxContent, ComboBoxInput, ComboBoxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
 import { Field, FieldGroup, Label } from "@/components/ui/field"
 import { Separator } from "@/components/ui/separator"
 
@@ -61,17 +61,17 @@ export function StockPerformance() {
         <FieldGroup>
           <Field>
             <Label htmlFor="ticker-select">Ticker</Label>
-            <ComboBox
+            <Combobox
               onChange={(value) => {
                 setTicker(value)
               }}
               value={ticker}
             >
-              <ComboBoxInput id="ticker-select" placeholder="Search ticker..." />
-              <ComboBoxContent items={TICKERS.map((t) => ({ id: t, value: t }))}>
-                {(item) => <ComboBoxItem>{item.value}</ComboBoxItem>}
-              </ComboBoxContent>
-            </ComboBox>
+              <ComboboxInput id="ticker-select" placeholder="Search ticker..." />
+              <ComboboxContent items={TICKERS.map((t) => ({ id: t, value: t }))}>
+                {(item) => <ComboboxItem>{item.value}</ComboboxItem>}
+              </ComboboxContent>
+            </Combobox>
           </Field>
         </FieldGroup>
         <Separator className="style-sera:hidden" />

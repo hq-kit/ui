@@ -1,4 +1,3 @@
-"use client"
 import type { ComponentProps } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"

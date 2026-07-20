@@ -24,7 +24,7 @@ const Switch = ({
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
               className={cn(
-                "dark:group-data-selected/field:bg-primary group-data-selected/field:bg-primary bg-input focus-visible:border-ring focus-visible:ring-ring/50 group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:ring-destructive/40 group-data-invalid/field:border-destructive dark:group-data-invalid/field:border-destructive/50 dark:bg-input/80 shrink-0 rounded-full border border-transparent focus-visible:ring-1 group-data-invalid/field:ring-1 data-[size=default]:h-[18.4px] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6 peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50",
+                "group-data-selected/field:bg-primary not-group-data-selected/field:bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 dark:not-group-data-selected/field:bg-input/80 shrink-0 rounded-full border border-transparent focus-visible:ring-1 aria-invalid:ring-1 data-[size=default]:h-[18.4px] data-[size=default]:w-[32px] data-[size=sm]:h-[14px] data-[size=sm]:w-[24px] peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50",
                 className
               )}
               data-size={size}
@@ -32,7 +32,7 @@ const Switch = ({
               slot="control"
             >
               <span
-                className="bg-background dark:bg-foreground dark:group-data-selected/field:bg-primary-foreground rounded-full group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:group-data-selected/field:translate-x-[calc(100%-2px)] group-data-[size=sm]/switch:group-data-selected/field:translate-x-[calc(100%-2px)] group-data-[size=default]/switch:translate-x-0 group-data-[size=sm]/switch:translate-x-0 pointer-events-none block ring-0 transition-transform"
+                className="bg-background dark:not-group-data-selected/field:bg-foreground dark:group-data-selected/field:bg-primary-foreground rounded-full group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:group-data-selected/field:translate-x-[calc(100%-2px)] group-data-[size=sm]/switch:group-data-selected/field:translate-x-[calc(100%-2px)] group-data-[size=default]/switch:not-group-data-selected/field:translate-x-0 group-data-[size=sm]/switch:not-group-data-selected/field:translate-x-0 pointer-events-none block ring-0 transition-transform"
                 data-slot="switch-thumb"
               />
             </div>

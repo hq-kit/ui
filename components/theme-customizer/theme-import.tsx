@@ -60,7 +60,7 @@ export function ThemeImport() {
           <Dialog.Title>Import Themes</Dialog.Title>
           <Dialog.Description>Paste the css code</Dialog.Description>
         </Dialog.Header>
-        <Dialog.Body className="max-h-[80vh]">
+        <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
           <div className="scroll-fade grid gap-3 overflow-auto sm:max-h-96 sm:grid-cols-2">
             <FieldGroup>
               <TextField onChange={onPaste}>
@@ -112,7 +112,7 @@ export function ThemeImport() {
                 ))}
             </div>
           </div>
-        </Dialog.Body>
+        </div>
         <Dialog.Footer>
           <Button slot="close" variant="secondary">
             Close

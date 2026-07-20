@@ -32,7 +32,7 @@ const Slider = ({ className, children, ...props }: SliderProps) => (
     {({ state }) => (
       <>
         {children}
-        <SliderTrack className="bg-muted rounded-none group-data-[orientation=horizontal]/slider:h-1 group-data-[orientation=horizontal]/slider:w-full group-data-[orientation=vertical]/slider:h-full group-data-[orientation=vertical]/slider:w-1 relative block grow select-none" data-slot="slider-track">
+        <SliderTrack className="bg-muted rounded-none data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1 relative block grow select-none" data-slot="slider-track">
           <SliderFill className="bg-primary select-none rounded-[inherit]" data-slot="slider-range" />
           {state.values.map((_, i) => (
             <SliderThumb

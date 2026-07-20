@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Link, type LinkProps } from "@/components/ui/link"
 import { cn } from "@/lib/utils"
+import { Link, type LinkProps } from "./link"
 
 const BubbleGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div className={cn("cn-bubble-group flex min-w-0 flex-col", className)} data-slot="bubble-group" {...props} />
