@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,33 +11,33 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Empty } from "@/components/ui/empty"
 import { Description, Field, Label } from "@/components/ui/field"
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item"
+import { InputGroup } from "@/components/ui/input"
+import { Item } from "@/components/ui/item"
 import { Link } from "@/components/ui/link"
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
 
 export function CodespacesCard() {
   const [isCreatingCodespace, setIsCreatingCodespace] = useState(false)
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Tabs defaultSelectedKey="codespaces">
-          <TabsList className="w-full">
-            <TabsTrigger id="codespaces">Codespaces</TabsTrigger>
-            <TabsTrigger id="local">Local</TabsTrigger>
-          </TabsList>
-          <TabsContent id="codespaces">
+          <Tabs.List className="w-full">
+            <Tabs.Trigger id="codespaces">Codespaces</Tabs.Trigger>
+            <Tabs.Trigger id="local">Local</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content id="codespaces">
             <Item className="px-1 pt-2" size="sm">
-              <ItemContent>
-                <ItemTitle>Codespaces</ItemTitle>
-                <ItemDescription>Your workspaces in the cloud</ItemDescription>
-              </ItemContent>
-              <ItemActions>
+              <Item.Content>
+                <Item.Title>Codespaces</Item.Title>
+                <Item.Description>Your workspaces in the cloud</Item.Description>
+              </Item.Content>
+              <Item.Actions>
                 <Tooltip>
                   <Button size="icon-sm" variant="ghost">
                     <IconPlaceholder
@@ -128,12 +128,12 @@ export function CodespacesCard() {
                     </DropdownMenuGroup>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </ItemActions>
+              </Item.Actions>
             </Item>
             <Separator className="-mx-2 my-2 w-auto!" />
             <Empty className="p-4">
-              <EmptyHeader>
-                <EmptyMedia variant="icon">
+              <Empty.Header>
+                <Empty.Media variant="icon">
                   <IconPlaceholder
                     hugeicons="ServerStackIcon"
                     lucide="ServerIcon"
@@ -141,11 +141,13 @@ export function CodespacesCard() {
                     remixicon="RiHardDriveLine"
                     tabler="IconServer"
                   />
-                </EmptyMedia>
-                <EmptyTitle>No codespaces</EmptyTitle>
-                <EmptyDescription>You don&apos;t have any codespaces with this repository checked out</EmptyDescription>
-              </EmptyHeader>
-              <EmptyContent>
+                </Empty.Media>
+                <Empty.Title>No codespaces</Empty.Title>
+                <Empty.Description>
+                  You don&apos;t have any codespaces with this repository checked out
+                </Empty.Description>
+              </Empty.Header>
+              <Empty.Content>
                 <Button
                   isDisabled={isCreatingCodespace}
                   onClick={() => {
@@ -162,17 +164,17 @@ export function CodespacesCard() {
                 <a className="text-muted-foreground text-xs underline underline-offset-4" href="#">
                   Learn more about codespaces
                 </a>
-              </EmptyContent>
+              </Empty.Content>
             </Empty>
             <Separator className="-mx-2 my-2 w-auto!" />
             <div className="p-1.5 text-muted-foreground text-xs">
               Codespace usage for this repository is paid for by <span className="font-medium">shadcn</span>.
             </div>
-          </TabsContent>
-          <TabsContent id="local">
+          </Tabs.Content>
+          <Tabs.Content id="local">
             <Item className="hidden p-0" size="sm">
-              <ItemContent>
-                <ItemTitle className="gap-2">
+              <Item.Content>
+                <Item.Title className="gap-2">
                   <IconPlaceholder
                     className="size-4"
                     hugeicons="ComputerTerminal01Icon"
@@ -182,9 +184,9 @@ export function CodespacesCard() {
                     tabler="IconTerminal"
                   />
                   Clone
-                </ItemTitle>
-              </ItemContent>
-              <ItemActions>
+                </Item.Title>
+              </Item.Content>
+              <Item.Actions>
                 <Tooltip>
                   <Button size="icon" variant="ghost">
                     <IconPlaceholder
@@ -197,23 +199,23 @@ export function CodespacesCard() {
                   </Button>
                   <TooltipContent placement="left">Which remote URL should I use?</TooltipContent>
                 </Tooltip>
-              </ItemActions>
+              </Item.Actions>
             </Item>
             <Tabs defaultSelectedKey="https">
-              <TabsList className="w-full justify-start border-b *:[button]:flex-0" variant="line">
-                <TabsTrigger id="https">HTTPS</TabsTrigger>
-                <TabsTrigger id="ssh">SSH</TabsTrigger>
-                <TabsTrigger id="cli">GitHub CLI</TabsTrigger>
-              </TabsList>
+              <Tabs.List className="w-full justify-start border-b *:[button]:flex-0" variant="line">
+                <Tabs.Trigger id="https">HTTPS</Tabs.Trigger>
+                <Tabs.Trigger id="ssh">SSH</Tabs.Trigger>
+                <Tabs.Trigger id="cli">GitHub CLI</Tabs.Trigger>
+              </Tabs.List>
               <div className="rounded-md border bg-muted/30 p-2">
-                <TabsContent id="https">
+                <Tabs.Content id="https">
                   <Field className="gap-2">
                     <Label className="sr-only" htmlFor="https-url">
                       HTTPS URL
                     </Label>
                     <InputGroup>
-                      <InputGroupAddon align="inline-end">
-                        <InputGroupButton size="icon-xs" variant="ghost">
+                      <InputGroup.Addon align="inline-end">
+                        <InputGroup.Button size="icon-xs" variant="ghost">
                           <IconPlaceholder
                             hugeicons="Copy01Icon"
                             lucide="CopyIcon"
@@ -221,21 +223,21 @@ export function CodespacesCard() {
                             remixicon="RiFileCopyLine"
                             tabler="IconCopy"
                           />
-                        </InputGroupButton>
-                      </InputGroupAddon>
-                      <InputGroupInput defaultValue="https://github.com/shadcn-ui/ui.git" id="https-url" readOnly />
+                        </InputGroup.Button>
+                      </InputGroup.Addon>
+                      <InputGroup.Input defaultValue="https://github.com/shadcn-ui/ui.git" id="https-url" readOnly />
                     </InputGroup>
                     <Description>Clone using the web URL.</Description>
                   </Field>
-                </TabsContent>
-                <TabsContent id="ssh">
+                </Tabs.Content>
+                <Tabs.Content id="ssh">
                   <Field className="gap-2">
                     <Label className="sr-only" htmlFor="ssh-url">
                       SSH URL
                     </Label>
                     <InputGroup>
-                      <InputGroupAddon align="inline-end">
-                        <InputGroupButton size="icon-xs" variant="ghost">
+                      <InputGroup.Addon align="inline-end">
+                        <InputGroup.Button size="icon-xs" variant="ghost">
                           <IconPlaceholder
                             hugeicons="Copy01Icon"
                             lucide="CopyIcon"
@@ -243,21 +245,21 @@ export function CodespacesCard() {
                             remixicon="RiFileCopyLine"
                             tabler="IconCopy"
                           />
-                        </InputGroupButton>
-                      </InputGroupAddon>
-                      <InputGroupInput defaultValue="git@github.com:shadcn-ui/ui.git" id="ssh-url" readOnly />
+                        </InputGroup.Button>
+                      </InputGroup.Addon>
+                      <InputGroup.Input defaultValue="git@github.com:shadcn-ui/ui.git" id="ssh-url" readOnly />
                     </InputGroup>
                     <Description>Use a password-protected SSH key.</Description>
                   </Field>
-                </TabsContent>
-                <TabsContent id="cli">
+                </Tabs.Content>
+                <Tabs.Content id="cli">
                   <Field className="gap-2">
                     <Label className="sr-only" htmlFor="cli-command">
                       CLI Command
                     </Label>
                     <InputGroup>
-                      <InputGroupAddon align="inline-end">
-                        <InputGroupButton size="icon-xs" variant="ghost">
+                      <InputGroup.Addon align="inline-end">
+                        <InputGroup.Button size="icon-xs" variant="ghost">
                           <IconPlaceholder
                             hugeicons="Copy01Icon"
                             lucide="CopyIcon"
@@ -265,15 +267,15 @@ export function CodespacesCard() {
                             remixicon="RiFileCopyLine"
                             tabler="IconCopy"
                           />
-                        </InputGroupButton>
-                      </InputGroupAddon>
-                      <InputGroupInput defaultValue="gh repo clone shadcn-ui/ui" id="cli-command" readOnly />
+                        </InputGroup.Button>
+                      </InputGroup.Addon>
+                      <InputGroup.Input defaultValue="gh repo clone shadcn-ui/ui" id="cli-command" readOnly />
                     </InputGroup>
                     <Description>
                       Work fast with our official CLI. <Link>Learn more</Link>
                     </Description>
                   </Field>
-                </TabsContent>
+                </Tabs.Content>
               </div>
             </Tabs>
             <Separator className="-mx-2 my-2 w-auto!" />
@@ -301,9 +303,9 @@ export function CodespacesCard() {
                 Download ZIP
               </Button>
             </div>
-          </TabsContent>
+          </Tabs.Content>
         </Tabs>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

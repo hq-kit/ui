@@ -1,32 +1,28 @@
 "use client"
 
 import type { ComponentProps, HTMLAttributes } from "react"
-import { Link as LinkPrimitive, type LinkProps } from "react-aria-components"
+import { Link, type LinkProps } from "react-aria-components/Link"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 import { Separator } from "./separator"
 
-function ItemGroup({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-item-group group/item-group flex w-full flex-col", className)}
-      data-slot="item-group"
-      role="list"
-      {...props}
-    />
-  )
-}
+const ItemGroup = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-item-group group/item-group flex w-full flex-col", className)}
+    data-slot="item-group"
+    role="list"
+    {...props}
+  />
+)
 
-function ItemSeparator({ className, ...props }: ComponentProps<typeof Separator>) {
-  return (
-    <Separator
-      className={cn("cn-item-separator", className)}
-      data-slot="item-separator"
-      orientation="horizontal"
-      {...props}
-    />
-  )
-}
+const ItemSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
+  <Separator
+    className={cn("cn-item-separator", className)}
+    data-slot="item-separator"
+    orientation="horizontal"
+    {...props}
+  />
+)
 
 const itemVariants = tv({
   base: "cn-item group/item flex w-full flex-wrap items-center outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors",
@@ -48,13 +44,13 @@ const itemVariants = tv({
   }
 })
 
-function Item({
+const Item = ({
   className,
   variant = "default",
   size = "default",
   ...props
-}: Omit<LinkProps, "children"> & HTMLAttributes<HTMLElement> & VariantProps<typeof itemVariants>) {
-  const Element = "href" in props ? LinkPrimitive : "div"
+}: Omit<LinkProps, "children"> & HTMLAttributes<HTMLElement> & VariantProps<typeof itemVariants>) => {
+  const Element = "href" in props ? Link : "div"
   return (
     <Element
       className={cn(itemVariants({ variant, size, className }))}
@@ -80,77 +76,66 @@ const itemMediaVariants = tv({
   }
 })
 
-function ItemMedia({
+const ItemMedia = ({
   className,
   variant = "default",
   ...props
-}: ComponentProps<"div"> & VariantProps<typeof itemMediaVariants>) {
-  return (
-    <div
-      className={cn(itemMediaVariants({ variant, className }))}
-      data-slot="item-media"
-      data-variant={variant}
-      {...props}
-    />
-  )
-}
+}: ComponentProps<"div"> & VariantProps<typeof itemMediaVariants>) => (
+  <div
+    className={cn(itemMediaVariants({ variant, className }))}
+    data-slot="item-media"
+    data-variant={variant}
+    {...props}
+  />
+)
 
-function ItemContent({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none", className)}
-      data-slot="item-content"
-      {...props}
-    />
-  )
-}
+const ItemContent = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none", className)}
+    data-slot="item-content"
+    {...props}
+  />
+)
 
-function ItemTitle({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-item-title line-clamp-1 flex w-fit items-center", className)}
-      data-slot="item-title"
-      {...props}
-    />
-  )
-}
+const ItemTitle = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-item-title line-clamp-1 flex w-fit items-center", className)}
+    data-slot="item-title"
+    {...props}
+  />
+)
 
-function ItemDescription({ className, ...props }: ComponentProps<"p">) {
-  return (
-    <p
-      className={cn(
-        "cn-item-description line-clamp-2 font-normal [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
-        className
-      )}
-      data-slot="item-description"
-      {...props}
-    />
-  )
-}
+const ItemDescription = ({ className, ...props }: ComponentProps<"p">) => (
+  <p
+    className={cn(
+      "cn-item-description line-clamp-2 font-normal [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+      className
+    )}
+    data-slot="item-description"
+    {...props}
+  />
+)
 
-function ItemActions({ className, ...props }: ComponentProps<"div">) {
-  return <div className={cn("cn-item-actions flex items-center", className)} data-slot="item-actions" {...props} />
-}
+const ItemActions = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-item-actions flex items-center", className)} data-slot="item-actions" {...props} />
+)
 
-function ItemHeader({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-item-header flex basis-full items-center justify-between", className)}
-      data-slot="item-header"
-      {...props}
-    />
-  )
-}
+const ItemHeader = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-item-header flex basis-full items-center justify-between", className)}
+    data-slot="item-header"
+    {...props}
+  />
+)
 
-function ItemFooter({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-item-footer flex basis-full items-center justify-between", className)}
-      data-slot="item-footer"
-      {...props}
-    />
-  )
-}
+const ItemFooter = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-item-footer flex basis-full items-center justify-between", className)}
+    data-slot="item-footer"
+    {...props}
+  />
+)
+
 Item.Media = ItemMedia
 Item.Content = ItemContent
 Item.Actions = ItemActions

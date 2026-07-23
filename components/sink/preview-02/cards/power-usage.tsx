@@ -2,7 +2,7 @@
 
 import { Bar, BarChart, XAxis } from "recharts"
 import { useStyle } from "@/components/style-provider"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
@@ -31,11 +31,11 @@ export function PowerUsage() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Power Usage</CardTitle>
-        <CardDescription>Whole Home</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Header>
+        <Card.Title>Power Usage</Card.Title>
+        <Card.Description>Whole Home</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <ChartContainer className="h-35 w-full" config={chartConfig}>
           <BarChart data={chartData} margin={{ left: 0, right: 0, top: 4, bottom: 0 }}>
             <XAxis axisLine={false} className="text-xs" dataKey="hour" tickLine={false} tickMargin={6} />
@@ -54,14 +54,14 @@ export function PowerUsage() {
             <span className="font-semibold text-chart-1 text-lg tabular-nums">+1.2 kW</span>
           </div>
         </div>
-      </CardContent>
-      <CardFooter className="flex-col items-start gap-1">
+      </Card.Content>
+      <Card.Footer className="flex-col items-start gap-1">
         <span className="text-muted-foreground text-sm">Battery Level</span>
         <div className="flex w-full items-center gap-2">
           <Progress className="flex-1" value={85} />
           <span className="font-medium text-sm tabular-nums">85%</span>
         </div>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

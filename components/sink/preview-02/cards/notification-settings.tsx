@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
+import { Description, FieldGroup, Label } from "@/components/ui/field"
 
 const NOTIFICATIONS = [
   {
@@ -51,34 +51,35 @@ export function NotificationSettings() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>Choose what you want to be notified about.</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Notifications</Card.Title>
+        <Card.Description>Choose what you want to be notified about.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field orientation="horizontal">
-            <Checkbox
-              id="notify-all"
-              isIndeterminate={someChecked}
-              isSelected={allChecked}
-              onChange={(v) => handleSelectAll(v)}
-            />
-            Select all
-          </Field>
+          <Checkbox
+            id="notify-all"
+            isIndeterminate={someChecked}
+            isSelected={allChecked}
+            onChange={(v) => handleSelectAll(v)}
+          />
+          Select all
           {NOTIFICATIONS.map((n) => (
-            <Field key={n.id} orientation="horizontal">
-              <Checkbox id={`notify-${n.id}`} isSelected={checked[n.id]} onChange={(v) => handleToggle(n.id, v)}>
-                <Label htmlFor={`notify-${n.id}`}>{n.label}</Label>
-                <Description>{n.description}</Description>
-              </Checkbox>
-            </Field>
+            <Checkbox
+              id={`notify-${n.id}`}
+              isSelected={checked[n.id]}
+              key={n.id}
+              onChange={(v) => handleToggle(n.id, v)}
+            >
+              <Label htmlFor={`notify-${n.id}`}>{n.label}</Label>
+              <Description>{n.description}</Description>
+            </Checkbox>
           ))}
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">Save Preferences</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -13,7 +13,7 @@ const Input = ({ className, ...props }: InputProps) => (
   <RACInput
     className={composeRenderProps(className, (className) =>
       cn(
-        "cn-input w-full min-w-0 outline-none transition-[color,box-shadow,border] file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+        "cn-input cn-control w-full min-w-0 outline-none transition-[color,box-shadow,border] file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         className
       )
     )}
@@ -39,7 +39,7 @@ const Textarea = ({ className, ...props }: TextAreaProps) => (
 )
 
 const inputGroupVariants = tv({
-  base: "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto"
+  base: "group/input-group cn-input-group cn-input-group-aria relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto"
 })
 
 const InputGroup = ({ className, ...props }: GroupProps) => (

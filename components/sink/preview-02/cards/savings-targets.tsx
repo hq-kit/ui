@@ -1,74 +1,75 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
-import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input"
-import { Item, ItemContent, ItemDescription, ItemFooter, ItemGroup } from "@/components/ui/item"
+import { InputGroup } from "@/components/ui/input"
+import { Item } from "@/components/ui/item"
 import { Select } from "@/components/ui/native-select"
 import { Progress } from "@/components/ui/progress"
+import { TextField } from "@/components/ui/text-field"
 
 export function SavingsTargets() {
   return (
     <div className="grid grid-cols-2 gap-(--gap)">
       <Card>
-        <CardHeader>
-          <CardTitle>Savings Targets</CardTitle>
-          <CardDescription>Active milestones for 2024</CardDescription>
-          <CardAction>
+        <Card.Header>
+          <Card.Title>Savings Targets</Card.Title>
+          <Card.Description>Active milestones for 2024</Card.Description>
+          <Card.Action>
             <Button size="sm" variant="outline">
               New Goal
             </Button>
-          </CardAction>
-        </CardHeader>
-        <CardContent>
-          <ItemGroup className="gap-3">
+          </Card.Action>
+        </Card.Header>
+        <Card.Content>
+          <Item.Group className="gap-3">
             <Item className="flex-col items-stretch" variant="muted">
-              <ItemContent className="gap-3">
-                <ItemDescription className="cn-font-heading font-medium text-muted-foreground text-xs uppercase tracking-wider">
+              <Item.Content className="gap-3">
+                <Item.Description className="cn-font-heading font-medium text-muted-foreground text-xs uppercase tracking-wider">
                   Retirement
-                </ItemDescription>
+                </Item.Description>
                 <span className="font-semibold text-3xl tabular-nums">$420,000</span>
                 <Progress value={65} />
-              </ItemContent>
-              <ItemFooter>
+              </Item.Content>
+              <Item.Footer>
                 <span className="text-muted-foreground text-sm">65% achieved</span>
                 <span className="font-medium text-sm tabular-nums">$273,000</span>
-              </ItemFooter>
+              </Item.Footer>
             </Item>
             <Item className="flex-col items-stretch" variant="muted">
-              <ItemContent className="gap-3">
-                <ItemDescription className="cn-font-heading font-medium text-muted-foreground text-xs uppercase tracking-wider">
+              <Item.Content className="gap-3">
+                <Item.Description className="cn-font-heading font-medium text-muted-foreground text-xs uppercase tracking-wider">
                   Real Estate
-                </ItemDescription>
+                </Item.Description>
                 <span className="font-semibold text-3xl tabular-nums">$85,000</span>
                 <Progress value={32} />
-              </ItemContent>
-              <ItemFooter>
+              </Item.Content>
+              <Item.Footer>
                 <span className="text-muted-foreground text-sm">32% achieved</span>
                 <span className="font-medium text-sm tabular-nums">$27,200</span>
-              </ItemFooter>
+              </Item.Footer>
             </Item>
-          </ItemGroup>
-        </CardContent>
-        <CardFooter>
-          <CardDescription className="text-center">You have not met your targets for this year.</CardDescription>
-        </CardFooter>
+          </Item.Group>
+        </Card.Content>
+        <Card.Footer>
+          <Card.Description className="text-center">You have not met your targets for this year.</Card.Description>
+        </Card.Footer>
       </Card>
       <Card>
-        <CardHeader>
-          <CardTitle>Buy Investment</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-1 flex-col gap-3">
+        <Card.Header>
+          <Card.Title>Buy Investment</Card.Title>
+        </Card.Header>
+        <Card.Content className="flex flex-1 flex-col gap-3">
           <FieldGroup className="flex-1">
-            <Field>
-              <Label htmlFor="invest-amount">Amount to Invest</Label>
+            <TextField defaultValue="1,000.00">
+              <Label>Amount to Invest</Label>
               <InputGroup>
-                <InputGroupAddon>
-                  <InputGroupText>$</InputGroupText>
-                </InputGroupAddon>
-                <InputGroupInput defaultValue="1,000.00" id="invest-amount" />
+                <InputGroup.Addon>
+                  <InputGroup.Text>$</InputGroup.Text>
+                </InputGroup.Addon>
+                <InputGroup.Input />
               </InputGroup>
-            </Field>
+            </TextField>
             <Field>
               <Label htmlFor="invest-type">Order Type</Label>
               <Select defaultValue="market" id="invest-type">
@@ -89,13 +90,13 @@ export function SavingsTargets() {
               </div>
             </div>
           </FieldGroup>
-        </CardContent>
-        <CardFooter className="flex-col gap-3">
+        </Card.Content>
+        <Card.Footer className="flex-col gap-3">
           <Button className="w-full">Review Order</Button>
-          <CardDescription className="text-center">
+          <Card.Description className="text-center">
             Trades are typically executed within minutes during market hours.
-          </CardDescription>
-        </CardFooter>
+          </Card.Description>
+        </Card.Footer>
       </Card>
     </div>
   )

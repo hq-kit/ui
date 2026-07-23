@@ -1,18 +1,19 @@
 "use client"
 
-import type { Key } from "react-aria-components"
 import { IconBrandAdobe } from "@tabler/icons-react"
-import { useState } from "react"
-import { Code } from "@/components/mdx/code-client"
-import { Button, type ButtonProps, buttonVariants } from "@/components/ui/button"
+import { type ComponentProps, useState } from "react"
+import { ComponentPreview } from "@/components/component-preview"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { type Key, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { TextField } from "@/components/ui/text-field"
 
 const variants = Object.keys(buttonVariants.variants.variant)
 const sizes = Object.keys(buttonVariants.variants.size)
+
+type ButtonProps = ComponentProps<typeof Button>
 
 export default function ButtonPreview() {
   const [isPending, setIsPending] = useState(false)
@@ -34,9 +35,9 @@ export default function ButtonPreview() {
   }
 
   return (
-    <div>
-      <div className="flex flex-col gap-2 lg:flex-row-reverse">
-        <div className="flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l">
+    <>
+      <ComponentPreview>
+        <ComponentPreview.Settings>
           <TextField isDisabled={iconOnly} onChange={setChildren} value={children}>
             <Label>Children</Label>
             <Input />
@@ -77,8 +78,8 @@ export default function ButtonPreview() {
           <Switch isSelected={isDisabled} onChange={setIsDisabled}>
             Disabled
           </Switch>
-        </div>
-        <div className="grid min-h-52 w-full place-items-center">
+        </ComponentPreview.Settings>
+        <ComponentPreview.View>
           <Button
             isDisabled={isDisabled}
             isPending={isPending}
@@ -88,10 +89,9 @@ export default function ButtonPreview() {
             {withIcon && <IconBrandAdobe />}
             {iconOnly ? <IconBrandAdobe /> : children}
           </Button>
-        </div>
-      </div>
-      <Code
-        className="my-0 size-full border-t **:[pre]:rounded-t-none"
+        </ComponentPreview.View>
+      </ComponentPreview>
+      <ComponentPreview.Code
         code={`${iconOnly || withIcon ? "import { IconBrandAdobe } from '@tabler/icons-react'\n" : ""}import { Button } from '@/components/ui/button'
 
 <Button${variant !== "default" ? ` variant="${variant}"` : ""}${size !== "default" ? ` size="${size}"` : ""}${isPending ? " isPending" : ""}${isDisabled ? " isDisabled" : ""}>
@@ -104,8 +104,7 @@ export default function ButtonPreview() {
         : children
   }
 </Button>`}
-        copy
       />
-    </div>
+    </>
   )
 }

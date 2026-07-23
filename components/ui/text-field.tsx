@@ -2,12 +2,8 @@
 
 import type { VariantProps } from "tailwind-variants"
 import { useState } from "react"
-import {
-  composeRenderProps,
-  type InputProps,
-  TextField as RACTextField,
-  type TextFieldProps
-} from "react-aria-components"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { type InputProps, TextField as RACTextField, type TextFieldProps } from "react-aria-components/TextField"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 import { fieldVariants } from "./field"

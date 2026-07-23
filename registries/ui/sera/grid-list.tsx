@@ -10,6 +10,7 @@ import {
   GridListHeader as RACGridListHeader,
   GridListItem as RACGridListItem,
   GridListSection as RACGridListSection,
+  type Selection,
   Text
 } from "react-aria-components/GridList"
 import { cn } from "@/lib/utils"
@@ -84,6 +85,7 @@ const GridListItem = ({
           typeof children === "string" &&
             "gap-2 p-2 [--radius:0] relative items-center data-[orientation=horizontal]:w-full",
           "href" in props && "cursor-pointer",
+          "data-disabled:pointer-events-none data-disabled:opacity-50",
           className
         )
       )}
@@ -185,6 +187,7 @@ GridList.ItemActions = GridListItemActions
 GridList.ItemAction = GridListItemAction
 GridList.EmptyState = GridListEmptyState
 
+export type { Selection }
 export {
   GridList,
   GridListEmptyState,

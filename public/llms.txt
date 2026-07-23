@@ -58,7 +58,7 @@
 
 ### Forms
 - [Checkbox](http://localhost:3000/docs/components/forms/checkbox.md)
-- [Combo Box](http://localhost:3000/docs/components/forms/combo-box.md)
+- [Combobox](http://localhost:3000/docs/components/forms/combobox.md)
 - [Field](http://localhost:3000/docs/components/forms/field.md)
 - [Input](http://localhost:3000/docs/components/forms/input.md)
 - [Input Group](http://localhost:3000/docs/components/forms/input-group.md)

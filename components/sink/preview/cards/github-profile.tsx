@@ -1,54 +1,56 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
+import { Card } from "@/components/ui/card"
+import { Description, FieldGroup, Label } from "@/components/ui/field"
 import { Input, Textarea } from "@/components/ui/input"
 import { Link } from "@/components/ui/link"
-import { Select, SelectItem } from "@/components/ui/native-select"
+import { Select } from "@/components/ui/select"
+import { TextField } from "@/components/ui/text-field"
 
 export function GithubProfile() {
   return (
     <Card className="mx-auto w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Profile</CardTitle>
-        <CardDescription>Manage your profile information.</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Profile</Card.Title>
+        <Card.Description>Manage your profile information.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <form id="profile">
           <FieldGroup>
-            <Field>
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="shadcn" />
+            <TextField>
+              <Label>Name</Label>
+              <Input placeholder="shadcn" />
               <Description>
                 Your name may appear around GitHub where you contribute or are mentioned. You can remove it at any time.
               </Description>
-            </Field>
-            <Field>
-              <Label htmlFor="email">Public Email</Label>
-              <Select id="email">
-                <SelectItem value="m@shadcn.com">m@shadcn.com</SelectItem>
-                <SelectItem value="m@gmail.com">m@gmail.com</SelectItem>
-              </Select>
-              <Description>
-                You can manage verified email addresses in your <Link>email settings</Link>.
-              </Description>
-            </Field>
-            <Field>
-              <Label htmlFor="bio">Bio</Label>
-              <Textarea id="bio" placeholder="Tell us a little bit about yourself" />
+            </TextField>
+            <Select>
+              <Label>Public Email</Label>
+              <Select.Trigger>
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Item value="m@shadcn.com">m@shadcn.com</Select.Item>
+                <Select.Item value="m@gmail.com">m@gmail.com</Select.Item>
+              </Select.Content>
+            </Select>
+            <Description>
+              You can manage verified email addresses in your <Link>email settings</Link>.
+            </Description>
+            <TextField>
+              <Label>Bio</Label>
+              <Textarea placeholder="Tell us a little bit about yourself" />
               <Description>
                 You can <span>@mention</span> other users and organizations to link to them.
               </Description>
-            </Field>
+            </TextField>
           </FieldGroup>
         </form>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="style-sera:w-full" form="profile">
           Save Profile
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

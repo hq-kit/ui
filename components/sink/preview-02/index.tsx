@@ -34,63 +34,61 @@ import { UpcomingPayments } from "./cards/upcoming-payments"
 
 export default function Preview02() {
   return (
-    <div className="contain-[paint] scroll-fade-x overflow-x-auto overflow-y-hidden 3xl:[--gap:--spacing(12)] [--gap:--spacing(4)] dark:bg-background md:[--gap:--spacing(10)] style-lyra:md:[--gap:--spacing(6)] style-mira:md:[--gap:--spacing(6)]">
-      <div className="flex w-full min-w-max justify-center">
-        <div
-          className="grid w-[2400px] grid-cols-7 items-start gap-(--gap) overflow-y-auto p-(--gap) px-0 md:w-[3000px] style-lyra:md:w-[2600px] style-mira:md:w-[2600px] dark:bg-background *:[div]:gap-(--gap)"
-          data-slot="capture-target"
-        >
-          <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <ContributionHistory />
-            <EmptyDistributeTrack />
-            <QrConnect />
-            <DividendIncome />
-            <IndexInvesting />
-            <SyncingState />
-          </div>
-          <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <PayoutThreshold />
-            <ClaimableBalance />
-            <Preferences />
-            <SavingsProgress />
-            <KitchenIsland />
-          </div>
-          <div className="col-span-2 flex flex-col p-1 [contain-intrinsic-size:760px_1200px] [content-visibility:auto]">
-            <SavingsTargets />
-            <RecentTransactions />
-            <div className="grid grid-cols-2 items-start gap-(--gap)">
-              <div className="flex flex-col gap-(--gap)">
-                <SidebarNav />
-                <Faq />
-              </div>
-              <div className="flex flex-col gap-(--gap)">
-                <Payments />
-                <FrontDoor />
-              </div>
+    <div className="flex w-full min-w-max justify-center">
+      <div
+        className="grid w-[2400px] grid-cols-7 items-start gap-(--gap) overflow-y-auto px-0 md:w-[3000px] style-lyra:md:w-[2600px] style-mira:md:w-[2600px] dark:bg-background *:[div]:gap-(--gap)"
+        data-slot="capture-target"
+      >
+        <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+          <ContributionHistory />
+          <EmptyDistributeTrack />
+          <QrConnect />
+          <DividendIncome />
+          <IndexInvesting />
+          <SyncingState />
+        </div>
+        <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+          <PayoutThreshold />
+          <ClaimableBalance />
+          <Preferences />
+          <SavingsProgress />
+          <KitchenIsland />
+        </div>
+        <div className="col-span-2 flex flex-col p-1 [contain-intrinsic-size:760px_1200px] [content-visibility:auto]">
+          <SavingsTargets />
+          <RecentTransactions />
+          <div className="grid grid-cols-2 items-start gap-(--gap)">
+            <div className="flex flex-col gap-(--gap)">
+              <SidebarNav />
+              <Faq />
             </div>
-            <ReleaseCatalog />
+            <div className="flex flex-col gap-(--gap)">
+              <Payments />
+              <FrontDoor />
+            </div>
           </div>
-          <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <AccountAccess />
-            <CardOverview />
-            <TransferFunds />
-            <CoverArt />
-            <LoadingCard />
-          </div>
-          <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <ReceivingMethod />
-            <PowerUsage />
-            <EmptyConnectBank />
-            <UpcomingPayments />
-            <RollerShades />
-          </div>
-          <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <StockPerformance />
-            <EmptyExploreCatalog />
-            <NewMilestone />
-            <SocialLinks />
-            <NotificationSettings />
-          </div>
+          <ReleaseCatalog />
+        </div>
+        <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+          <AccountAccess />
+          <CardOverview />
+          <TransferFunds />
+          <CoverArt />
+          <LoadingCard />
+        </div>
+        <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+          <ReceivingMethod />
+          <PowerUsage />
+          <EmptyConnectBank />
+          <UpcomingPayments />
+          <RollerShades />
+        </div>
+        <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+          <StockPerformance />
+          <EmptyExploreCatalog />
+          <NewMilestone />
+          <SocialLinks />
+          <NotificationSettings />
         </div>
       </div>
     </div>

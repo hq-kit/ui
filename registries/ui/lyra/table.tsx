@@ -19,6 +19,9 @@ import {
   ResizableTableContainer,
   Row,
   type RowProps,
+  type Selection,
+  type SortDescriptor,
+  type SortDirection,
   type TableBodyProps,
   useTableOptions
 } from "react-aria-components/Table"
@@ -256,4 +259,5 @@ Table.Row = TableRow
 Table.Footer = TableFooter
 Table.Caption = TableCaption
 
+export type { Selection, SortDescriptor, SortDirection }
 export { Table, TableBody, TableCaption, TableCell, TableColumn, TableFooter, TableHeader, TableRow }

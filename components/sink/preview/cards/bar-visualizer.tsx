@@ -1,9 +1,8 @@
 "use client"
 
-import * as React from "react"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { forwardRef, memo, useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
 type AgentState = "connecting" | "initializing" | "listening" | "speaking" | "thinking"
@@ -212,7 +211,7 @@ const useBarAnimator = (state: AnimationState, columns: number, interval: number
 }
 
 // Memoized Bar component to prevent unnecessary re-renders.
-const Bar = React.memo<{
+const Bar = memo<{
   heightPct: number
   isHighlighted: boolean
   state?: AgentState
@@ -235,7 +234,7 @@ const Bar = React.memo<{
 
 Bar.displayName = "Bar"
 
-const BarVisualizerComponent = React.forwardRef<
+const BarVisualizerComponent = forwardRef<
   HTMLDivElement,
   {
     state?: AgentState
@@ -367,7 +366,7 @@ const BarVisualizerComponent = React.forwardRef<
 
 BarVisualizerComponent.displayName = "BarVisualizerComponent"
 
-const BarVisualizer = React.memo(BarVisualizerComponent, (prevProps, nextProps) => {
+const BarVisualizer = memo(BarVisualizerComponent, (prevProps, nextProps) => {
   return (
     prevProps.state === nextProps.state &&
     prevProps.barCount === nextProps.barCount &&
@@ -388,11 +387,11 @@ export function BarVisualizerCard() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Audio Frequency Visualizer</CardTitle>
-        <CardDescription>Real-time frequency band visualization with animated state transitions</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Audio Frequency Visualizer</Card.Title>
+        <Card.Description>Real-time frequency band visualization with animated state transitions</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <BarVisualizer
           barCount={20}
           className="h-40 max-w-full"
@@ -401,8 +400,8 @@ export function BarVisualizerCard() {
           minHeight={15}
           state={state}
         />
-      </CardContent>
-      <CardFooter className="gap-2">
+      </Card.Content>
+      <Card.Footer className="gap-2">
         <Button
           onClick={() => setState("connecting")}
           size="sm"
@@ -416,7 +415,7 @@ export function BarVisualizerCard() {
         <Button onClick={() => setState("speaking")} size="sm" variant={state === "speaking" ? "default" : "outline"}>
           Speaking
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

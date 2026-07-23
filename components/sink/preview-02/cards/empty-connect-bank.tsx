@@ -1,14 +1,14 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 
 export function EmptyConnectBank() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="p-4">
-          <EmptyMedia variant="icon">
+          <Empty.Media variant="icon">
             <IconPlaceholder
               hugeicons="CreditCardIcon"
               lucide="CreditCardIcon"
@@ -16,18 +16,18 @@ export function EmptyConnectBank() {
               remixicon="RiBankCardLine"
               tabler="IconCreditCard"
             />
-          </EmptyMedia>
-          <EmptyHeader>
-            <EmptyTitle>Connect Bank</EmptyTitle>
-            <EmptyDescription>
+          </Empty.Media>
+          <Empty.Header>
+            <Empty.Title>Connect Bank</Empty.Title>
+            <Empty.Description>
               Link your payout method to receive monthly royalty distributions automatically.
-            </EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+            </Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button>Set Up Payouts</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

@@ -1,8 +1,7 @@
 "use client"
 
 import type { Key } from "react-aria-components"
-import type { ButtonProps } from "@/components/ui/button"
-import { useState } from "react"
+import { type ComponentProps, useState } from "react"
 import { Code } from "@/components/mdx/code-client"
 import { Label } from "@/components/ui/field"
 import { FileTrigger } from "@/components/ui/file-trigger"
@@ -10,6 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { TextField } from "@/components/ui/text-field"
+
+type FileTriggerProps = ComponentProps<typeof FileTrigger>
 
 export default function ButtonPreview() {
   const [isPending, setIsPending] = useState(false)
@@ -82,8 +83,8 @@ export default function ButtonPreview() {
             defaultCamera={camera ? "environment" : undefined}
             isDisabled={isDisabled}
             isPending={isPending}
-            size={size as ButtonProps["size"]}
-            variant={variant as ButtonProps["variant"]}
+            size={size as FileTriggerProps["size"]}
+            variant={variant as FileTriggerProps["variant"]}
           >
             {children}
           </FileTrigger>

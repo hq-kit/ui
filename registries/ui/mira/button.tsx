@@ -1,7 +1,7 @@
 "use client"
 
 import type { RefAttributes } from "react"
-import { Button as ButtonPrimitive, type ButtonProps } from "react-aria-components/Button"
+import { type ButtonProps, Button as RACButton } from "react-aria-components/Button"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { Link, type LinkProps } from "react-aria-components/Link"
 import { tv, type VariantProps } from "tailwind-variants"
@@ -50,7 +50,7 @@ const Button = ({
   VariantProps<typeof buttonVariants> & {
     className?: string
   }) => (
-  <ButtonPrimitive
+  <RACButton
     className={composeRenderProps(className, (className) =>
       cn(buttonVariants({ variant, size, isPending: props.isPending, className }))
     )}
@@ -77,7 +77,7 @@ const Button = ({
         {typeof children === "function" ? children(values) : children}
       </>
     )}
-  </ButtonPrimitive>
+  </RACButton>
 )
 
 const LinkButton = ({

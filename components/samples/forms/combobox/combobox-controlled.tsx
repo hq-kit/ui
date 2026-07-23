@@ -3,7 +3,7 @@
 import type { Key, Selection } from "react-aria-components"
 import { IconCheckbox, IconForms } from "@tabler/icons-react"
 import { useState } from "react"
-import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combobox"
 import { Label } from "@/components/ui/field"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 

@@ -1,39 +1,39 @@
 "use client"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Card } from "@/components/ui/card"
+import { Field, Label } from "@/components/ui/field"
+import { ToggleGroup } from "@/components/ui/toggle-group"
 
 export function BookAppointment() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Book Appointment</CardTitle>
-        <CardDescription>Dr. Sarah Chen · Cardiology</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <FieldGroup>
+      <Card.Header>
+        <Card.Title>Book Appointment</Card.Title>
+        <Card.Description>Dr. Sarah Chen · Cardiology</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
+        <Field.Group>
           <Field>
-            <Label>Available on March 18, 2026</Label>
+            <Label slot="label">Available on March 18, 2026</Label>
             <ToggleGroup defaultSelectedKeys={["slot-0"]} selectionMode="multiple" spacing={2}>
               {["9:00 AM", "10:30 AM", "11:00 AM", "1:30 PM"].map((time, index) => (
-                <ToggleGroupItem id={`slot-${index}`} key={time}>
+                <ToggleGroup.Item id={`slot-${index}`} key={time}>
                   {time}
-                </ToggleGroupItem>
+                </ToggleGroup.Item>
               ))}
             </ToggleGroup>
           </Field>
-        </FieldGroup>
+        </Field.Group>
         <Alert>
-          <AlertTitle>New patient?</AlertTitle>
-          <AlertDescription>Please arrive 15 minutes early.</AlertDescription>
+          <Alert.Title>New patient?</Alert.Title>
+          <Alert.Description>Please arrive 15 minutes early.</Alert.Description>
         </Alert>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">Book Appointment</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

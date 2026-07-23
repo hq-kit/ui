@@ -1,6 +1,7 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
+import { getLocalTimeZone, parseDate, today } from "@internationalized/date"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   type DateFieldProps,
@@ -75,7 +76,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-none border bg-transparent px-2.5 py-1 text-xs file:h-6 file:text-xs file:font-medium focus-visible:ring-1 aria-invalid:ring-1 md:text-xs flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+          "dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-none border bg-transparent px-2.5 py-1 text-xs file:h-6 file:text-xs file:font-medium focus-visible:ring-1 aria-invalid:ring-1 md:text-xs data-focus-within:ring-1 data-focus-within:border-ring data-focus-within:ring-ring/50 flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
       )}
@@ -211,4 +212,16 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
   )
 }
 
-export { DateField, DateInput, DatePicker, DatePickerInput, DateRangePicker, DateRangePickerInput, TimeField }
+export type { DateValue }
+export {
+  DateField,
+  DateInput,
+  DatePicker,
+  DatePickerInput,
+  DateRangePicker,
+  DateRangePickerInput,
+  getLocalTimeZone,
+  parseDate,
+  TimeField,
+  today
+}

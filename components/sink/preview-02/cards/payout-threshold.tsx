@@ -3,21 +3,22 @@
 import { useState } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
 import { Textarea } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
+import { TextField } from "@/components/ui/text-field"
 
 export function PayoutThreshold() {
   const [amount, setAmount] = useState([2500])
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Payout Threshold</CardTitle>
-        <CardDescription>Set the minimum balance required before a payout is triggered.</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Payout Threshold</Card.Title>
+        <Card.Description>Set the minimum balance required before a payout is triggered.</Card.Description>
+        <Card.Action>
           <Button className="bg-muted" size="icon-sm" variant="ghost">
             <IconPlaceholder
               hugeicons="Cancel01Icon"
@@ -27,26 +28,24 @@ export function PayoutThreshold() {
               tabler="IconX"
             />
           </Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="preferred-currency">Preferred Currency</Label>
-            <Select defaultValue="usd">
-              <SelectTrigger className="w-full" id="preferred-currency">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem id="usd">USD — United States Dollar</SelectItem>
-                  <SelectItem id="eur">EUR — Euro</SelectItem>
-                  <SelectItem id="gbp">GBP — British Pound</SelectItem>
-                  <SelectItem id="jpy">JPY — Japanese Yen</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
+          <Select defaultValue="usd">
+            <Label>Preferred Currency</Label>
+            <Select.Trigger className="w-full">
+              <Select.Value />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Item id="usd">USD — United States Dollar</Select.Item>
+                <Select.Item id="eur">EUR — Euro</Select.Item>
+                <Select.Item id="gbp">GBP — British Pound</Select.Item>
+                <Select.Item id="jpy">JPY — Japanese Yen</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select>
           <Field>
             <div className="flex items-baseline justify-between">
               <Label htmlFor="min-payout">Minimum Payout Amount</Label>
@@ -65,19 +64,15 @@ export function PayoutThreshold() {
               <Description>$10,000 (MAX)</Description>
             </div>
           </Field>
-          <Field>
-            <Label htmlFor="payout-notes">Notes</Label>
-            <Textarea
-              className="min-h-25"
-              id="payout-notes"
-              placeholder="Add any notes for this payout configuration..."
-            />
-          </Field>
+          <TextField>
+            <Label>Notes</Label>
+            <Textarea className="min-h-25" placeholder="Add any notes for this payout configuration..." />
+          </TextField>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">Save Threshold</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

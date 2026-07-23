@@ -605,7 +605,7 @@
   }
 
   .cn-field {
-    @apply data-[invalid=true]:text-destructive gap-3;
+    @apply hover:not-in-data-disabled:**:[[data-slot=radio-group-item],[data-slot=checkbox-indicator]]:border-ring! hover:not-data-disabled:**:[[slot=control]]:border-b-ring! data-[invalid=true]:text-destructive gap-3;
   }
 
   .cn-field-content {
@@ -652,6 +652,14 @@
   /* MARK: Input */
   .cn-input {
     @apply border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base transition-[color,border-color] file:h-7 file:text-sm file:font-medium md:text-sm;
+  }
+
+  .cn-date-input {
+    @apply data-focus-within:border-b-ring;
+  }
+
+  .cn-input-group-aria {
+    @apply has-data-focus-within:border-b-ring;
   }
 
   /* MARK: Input OTP */

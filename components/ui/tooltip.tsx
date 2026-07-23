@@ -4,12 +4,12 @@ import { Children, type ComponentProps, type ReactNode } from "react"
 import {
   Focusable,
   OverlayArrow,
-  Tooltip as TooltipPrimitive,
+  Tooltip as RACTooltip,
   TooltipTrigger as TooltipTriggerPrimitive
-} from "react-aria-components"
+} from "react-aria-components/Tooltip"
 import { cn } from "@/lib/utils"
 
-function Tooltip({ delay = 0, children, ...props }: ComponentProps<typeof TooltipTriggerPrimitive>) {
+const Tooltip = ({ delay = 0, children, ...props }: ComponentProps<typeof TooltipTriggerPrimitive>) => {
   const [trigger, tooltip] = Children.toArray(children)
 
   return (
@@ -20,30 +20,32 @@ function Tooltip({ delay = 0, children, ...props }: ComponentProps<typeof Toolti
   )
 }
 
-function TooltipContent({
+const TooltipContent = ({
   className,
   placement = "top",
   offset = 4,
   crossOffset = 0,
   children,
+  showArrow = true,
   ...props
-}: Omit<ComponentProps<typeof TooltipPrimitive>, "children" | "className"> & {
+}: Omit<ComponentProps<typeof RACTooltip>, "children" | "className"> & {
   className?: string
   children?: ReactNode
-}) {
-  return (
-    <TooltipPrimitive
-      className={cn(
-        "cn-tooltip-content-aria group z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
-        className
-      )}
-      crossOffset={crossOffset}
-      data-slot="tooltip-content"
-      offset={offset}
-      placement={placement}
-      {...props}
-    >
-      {children}
+  showArrow?: boolean
+}) => (
+  <RACTooltip
+    className={cn(
+      "cn-tooltip-content-aria group z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
+      className
+    )}
+    crossOffset={crossOffset}
+    data-slot="tooltip-content"
+    offset={offset}
+    placement={placement}
+    {...props}
+  >
+    {children}
+    {showArrow && (
       <OverlayArrow
         className="cn-tooltip-arrow z-50 bg-foreground fill-foreground"
         style={({ placement, defaultStyle }) => ({
@@ -60,9 +62,9 @@ function TooltipContent({
                   : "translate(calc(50% + 2px), -50%) rotate(45deg)"
         })}
       />
-    </TooltipPrimitive>
-  )
-}
+    )}
+  </RACTooltip>
+)
 
 Tooltip.Content = TooltipContent
 

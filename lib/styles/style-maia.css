@@ -342,7 +342,7 @@
   }
 
   .cn-combobox-chips {
-    @apply bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-9 flex-wrap items-center gap-1.5 rounded-4xl border bg-clip-padding px-2.5 py-1.5 text-sm transition-colors focus-within:ring-[3px] has-aria-invalid:ring-[3px] has-data-[slot=combobox-chip]:px-1.5;
+    @apply bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-9 flex-wrap items-center gap-1.5 rounded-4xl border bg-clip-padding pl-2.5 pr-1.5 py-1.5 text-sm transition-colors focus-within:ring-[3px] has-aria-invalid:ring-[3px] has-data-[slot=combobox-chip]:px-1.5;
   }
 
   .cn-combobox-chip {
@@ -613,7 +613,7 @@
   }
 
   .cn-field {
-    @apply data-[invalid=true]:text-destructive gap-3;
+    @apply hover:not-data-disabled:not-in-data-disabled:**:[[slot=control]]:border-ring! data-[invalid=true]:text-destructive gap-3;
   }
 
   .cn-field-content {
@@ -660,6 +660,14 @@
   /* MARK: Input */
   .cn-input {
     @apply bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 rounded-4xl border px-3 py-1 text-base transition-colors file:h-7 file:text-sm file:font-medium focus-visible:ring-[3px] aria-invalid:ring-[3px] md:text-sm;
+  }
+
+  .cn-date-input {
+    @apply data-focus-within:ring-[3px] data-focus-within:border-ring data-focus-within:ring-ring/50;
+  }
+
+  .cn-input-group-aria {
+    @apply has-data-focus-within:ring-[3px] has-data-focus-within:border-ring has-data-focus-within:ring-ring/50;
   }
 
   /* MARK: Input OTP */

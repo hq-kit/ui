@@ -4,7 +4,7 @@ import { type ComponentProps, type ReactNode, useMemo } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { type FieldErrorProps, FieldError as RACFieldError } from "react-aria-components/FieldError"
 import { type FormProps, Form as RACForm } from "react-aria-components/Form"
-import { type LabelProps, Label as RACLabel } from "react-aria-components/Label"
+import { LabelContext, type LabelProps, Label as RACLabel } from "react-aria-components/Label"
 import { Text, type TextProps } from "react-aria-components/Text"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
@@ -33,7 +33,7 @@ const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const fieldVariants = tv({
-  base: "data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
+  base: "hover:not-data-disabled:not-in-data-disabled:**:[[slot=control]]:border-ring! data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
   variants: {
     orientation: {
       vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
@@ -62,19 +62,28 @@ const Field = ({
   />
 )
 
-const Label = (props: LabelProps) => (
-  <RACLabel
-    className={cn(
-      "gap-2 text-sm leading-none font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
-      "has-group-data-selected/field:bg-primary/5 has-group-data-selected/field:border-primary/30 dark:has-group-data-selected/field:border-primary/20 dark:has-group-data-selected/field:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 group/field-label peer/field-label flex w-fit",
-      "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
-      props.className
-    )}
-    data-slot="field-label"
-    elementType="label"
-    {...props}
-  />
-)
+const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
+  const label = (
+    <RACLabel
+      className={cn(
+        "gap-2 text-sm leading-none font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
+        "has-group-data-selected/field:bg-primary/5 has-group-data-selected/field:border-primary/30 dark:has-group-data-selected/field:border-primary/20 dark:has-group-data-selected/field:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 group/field-label peer/field-label flex w-fit",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+        className
+      )}
+      data-slot="field-label"
+      htmlFor={htmlFor}
+      slot={slot}
+      {...props}
+    />
+  )
+
+  if (htmlFor && slot === undefined) {
+    return <LabelContext.Provider value={null}>{label}</LabelContext.Provider>
+  }
+
+  return label
+}
 
 const Title = ({ className, ...props }: LabelProps) => (
   <RACLabel className={cn("gap-2 text-sm font-medium group-data-[disabled=true]/field:opacity-50 flex w-fit items-center", className)} data-slot="field-label" {...props} />

@@ -1,14 +1,14 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 
 export function FrontDoor() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Front Door</CardTitle>
-        <CardDescription>Smart Lock Pro</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Front Door</Card.Title>
+        <Card.Description>Smart Lock Pro</Card.Description>
+        <Card.Action>
           <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
             Locked
             <IconPlaceholder
@@ -20,15 +20,15 @@ export function FrontDoor() {
               tabler="IconLock"
             />
           </div>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,var(--border)_10px,var(--border)_11px)] bg-muted">
           <Badge className="absolute top-2 right-2" variant="destructive">
             Live
           </Badge>
         </div>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

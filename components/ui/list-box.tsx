@@ -10,6 +10,7 @@ import {
   ListBox as RACListBox,
   ListBoxItem as RACListBoxItem,
   ListBoxSection as RACListBoxSection,
+  type Selection,
   Text,
   type TextProps
 } from "react-aria-components/ListBox"
@@ -98,4 +99,5 @@ ListBox.Details = ListBoxDetails
 ListBox.Item = ListBoxItem
 ListBox.Separator = ListBoxSeparator
 
+export type { Selection }
 export { ListBox, ListBoxDetails, ListBoxItem, ListBoxSection, ListBoxSeparator }

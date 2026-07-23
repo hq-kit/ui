@@ -15,36 +15,32 @@ const alertVariants = tv({
   }
 })
 
-function Alert({ className, variant, ...props }: ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />
-}
+const Alert = ({ className, variant, ...props }: ComponentProps<"div"> & VariantProps<typeof alertVariants>) => (
+  <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />
+)
 
-function AlertTitle({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className)}
-      data-slot="alert-title"
-      {...props}
-    />
-  )
-}
+const AlertTitle = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn("cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className)}
+    data-slot="alert-title"
+    {...props}
+  />
+)
 
-function AlertDescription({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "cn-alert-description [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
-        className
-      )}
-      data-slot="alert-description"
-      {...props}
-    />
-  )
-}
+const AlertDescription = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "cn-alert-description [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+      className
+    )}
+    data-slot="alert-description"
+    {...props}
+  />
+)
 
-function AlertAction({ className, ...props }: ComponentProps<"div">) {
-  return <div className={cn("cn-alert-action", className)} data-slot="alert-action" {...props} />
-}
+const AlertAction = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-alert-action", className)} data-slot="alert-action" {...props} />
+)
 
 Alert.Title = AlertTitle
 Alert.Description = AlertDescription

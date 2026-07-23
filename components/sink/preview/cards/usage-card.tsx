@@ -1,7 +1,5 @@
-"use client"
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Item, ItemActions, ItemContent, ItemGroup, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { Card } from "@/components/ui/card"
+import { Item } from "@/components/ui/item"
 
 // Usage items with percentage and value.
 const items = [
@@ -88,26 +86,26 @@ function CircularGauge({ percentage }: { percentage: number }) {
 export function UsageCard() {
   return (
     <Card className="w-full max-w-sm gap-4">
-      <CardHeader>
-        <CardTitle className="px-1 text-sm">5 days remaining in cycle</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ItemGroup className="gap-0">
+      <Card.Header>
+        <Card.Title className="px-1 text-sm">5 days remaining in cycle</Card.Title>
+      </Card.Header>
+      <Card.Content>
+        <Item.Group className="gap-0">
           {items.map((item) => (
             <Item className="px-0 group-hover/item-group:bg-transparent" href="#" key={item.name} size="xs">
-              <ItemMedia className="text-primary" variant="icon">
+              <Item.Media className="text-primary" variant="icon">
                 <CircularGauge percentage={item.percentage} />
-              </ItemMedia>
-              <ItemContent className="inline-block truncate">
-                <ItemTitle className="inline">{item.name}</ItemTitle>
-              </ItemContent>
-              <ItemActions>
+              </Item.Media>
+              <Item.Content className="inline-block truncate">
+                <Item.Title className="inline">{item.name}</Item.Title>
+              </Item.Content>
+              <Item.Actions>
                 <span className="font-medium font-mono text-muted-foreground text-xs tabular-nums">{item.value}</span>
-              </ItemActions>
+              </Item.Actions>
             </Item>
           ))}
-        </ItemGroup>
-      </CardContent>
+        </Item.Group>
+      </Card.Content>
     </Card>
   )
 }

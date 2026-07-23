@@ -1,11 +1,11 @@
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 
 export function AlbumCard() {
   return (
     <Card>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Content className="flex flex-col gap-4">
         <div className="relative overflow-hidden rounded-lg">
           <img
             alt="Synthetic Horizons EP cover art"
@@ -15,11 +15,11 @@ export function AlbumCard() {
           <Badge className="absolute top-3 right-3">$26,033.79</Badge>
         </div>
         <div className="flex flex-col gap-1">
-          <CardTitle>Synthetic Horizons EP</CardTitle>
-          <CardDescription className="text-xs uppercase tracking-wider">Released Aug 14, 2023</CardDescription>
+          <Card.Title>Synthetic Horizons EP</Card.Title>
+          <Card.Description className="text-xs uppercase tracking-wider">Released Aug 14, 2023</Card.Description>
         </div>
-      </CardContent>
-      <CardFooter className="flex-col gap-4">
+      </Card.Content>
+      <Card.Footer className="flex-col gap-4">
         <Separator />
         <div className="grid w-full grid-cols-2 gap-4">
           <div className="flex flex-col gap-0.5">
@@ -33,7 +33,7 @@ export function AlbumCard() {
             <span className="font-medium text-lg tabular-nums">6,198,524</span>
           </div>
         </div>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
+import { getLocalTimeZone, parseDate, today } from "@internationalized/date"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   type DateFieldProps,
@@ -75,7 +76,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+          "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm data-focus-within:border-b-ring flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
       )}
@@ -211,4 +212,16 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
   )
 }
 
-export { DateField, DateInput, DatePicker, DatePickerInput, DateRangePicker, DateRangePickerInput, TimeField }
+export type { DateValue }
+export {
+  DateField,
+  DateInput,
+  DatePicker,
+  DatePickerInput,
+  DateRangePicker,
+  DateRangePickerInput,
+  getLocalTimeZone,
+  parseDate,
+  TimeField,
+  today
+}

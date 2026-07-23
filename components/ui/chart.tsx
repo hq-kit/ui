@@ -39,7 +39,7 @@ type ChartContextProps = {
 
 const ChartContext = createContext<ChartContextProps | null>(null)
 
-function useChart() {
+const useChart = () => {
   const context = useContext(ChartContext)
 
   if (!context) {
@@ -49,7 +49,7 @@ function useChart() {
   return context
 }
 
-function ChartContainer({
+const ChartContainer = ({
   id,
   className,
   children,
@@ -63,7 +63,7 @@ function ChartContainer({
     width: number
     height: number
   }
-}) {
+}) => {
   const uniqueId = useId()
   const chartId = `chart-${id ?? uniqueId.replace(/:/g, "")}`
 
@@ -116,7 +116,7 @@ ${colorConfig
 
 const ChartTooltip = Tooltip
 
-function ChartTooltipContent({
+const ChartTooltipContent = ({
   active,
   payload,
   className,
@@ -137,7 +137,7 @@ function ChartTooltipContent({
     indicator?: "line" | "dot" | "dashed"
     nameKey?: string
     labelKey?: string
-  } & Omit<DefaultTooltipContentProps<TooltipValueType, TooltipNameType>, "accessibilityLayer">) {
+  } & Omit<DefaultTooltipContentProps<TooltipValueType, TooltipNameType>, "accessibilityLayer">) => {
   const { config } = useChart()
 
   const tooltipLabel = useMemo(() => {
@@ -238,7 +238,7 @@ function ChartTooltipContent({
 
 const ChartLegend = Legend
 
-function ChartLegendContent({
+const ChartLegendContent = ({
   className,
   hideIcon = false,
   payload,
@@ -247,7 +247,7 @@ function ChartLegendContent({
 }: ComponentProps<"div"> & {
   hideIcon?: boolean
   nameKey?: string
-} & DefaultLegendContentProps) {
+} & DefaultLegendContentProps) => {
   const { config } = useChart()
 
   if (!payload?.length) {
@@ -285,7 +285,7 @@ function ChartLegendContent({
   )
 }
 
-function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key: string) {
+const getPayloadConfigFromPayload = (config: ChartConfig, payload: unknown, key: string) => {
   if (typeof payload !== "object" || payload === null) {
     return undefined
   }

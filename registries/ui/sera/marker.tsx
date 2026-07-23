@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Link, type LinkProps } from "./link"
 import { cn } from "@/lib/utils"
+import { Link, type LinkProps } from "./link"
 
 const markerVariants = tv({
   base: "gap-2 text-xs text-muted-foreground [a]:hover:text-foreground [a]:underline-offset-3 [a]:underline [&_svg:not([class*='size-'])]:size-4 min-h-4 text-left uppercase tracking-wide group/marker relative flex w-full items-center",

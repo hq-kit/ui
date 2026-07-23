@@ -2,21 +2,20 @@
 
 import type { ComponentProps, ReactNode } from "react"
 import {
-  Calendar as AriaCalendar,
-  CalendarGridHeader as AriaCalendarGridHeader,
-  RangeCalendar as AriaRangeCalendar,
   CalendarCell,
   type CalendarCellRenderProps,
   CalendarGrid,
   CalendarGridBody,
+  CalendarGridHeader,
   CalendarHeaderCell,
   CalendarHeading,
   CalendarMonthPicker,
   type CalendarProps,
   CalendarYearPicker,
   type DateValue,
-  type RangeCalendarProps
-} from "react-aria-components"
+  Calendar as RACCalendar
+} from "react-aria-components/Calendar"
+import { RangeCalendar as RACRangeCalendar, type RangeCalendarProps } from "react-aria-components/RangeCalendar"
 import { tv } from "tailwind-variants"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
@@ -51,7 +50,7 @@ const cellVariants = tv({
   }
 })
 
-function Calendar<T extends DateValue, M extends "single" | "multiple" = "single">(
+const Calendar = <T extends DateValue, M extends "single" | "multiple" = "single">(
   props: Omit<CalendarProps<T, M>, "visibleDuration"> & {
     buttonVariant?: ComponentProps<typeof Button>["variant"]
     captionLayout?: "label" | "dropdown"
@@ -64,23 +63,21 @@ function Calendar<T extends DateValue, M extends "single" | "multiple" = "single
       }
     ) => ReactNode
   }
-) {
-  return (
-    <AriaCalendar
-      {...props}
-      className={cn(
-        "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(6)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
-        props.className
-      )}
-      data-slot="calendar"
-      visibleDuration={{ months: props.numberOfMonths || 1 }}
-    >
-      <CalendarInner {...props} />
-    </AriaCalendar>
-  )
-}
+) => (
+  <RACCalendar
+    {...props}
+    className={cn(
+      "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(6)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+      props.className
+    )}
+    data-slot="calendar"
+    visibleDuration={{ months: props.numberOfMonths || 1 }}
+  >
+    <CalendarInner {...props} />
+  </RACCalendar>
+)
 
-function RangeCalendar<T extends DateValue>(
+const RangeCalendar = <T extends DateValue>(
   props: RangeCalendarProps<T> & {
     buttonVariant?: ComponentProps<typeof Button>["variant"]
     captionLayout?: "label" | "dropdown"
@@ -93,23 +90,21 @@ function RangeCalendar<T extends DateValue>(
       }
     ) => ReactNode
   }
-) {
-  return (
-    <AriaRangeCalendar
-      {...props}
-      className={cn(
-        "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(6)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
-        props.className
-      )}
-      data-slot="calendar"
-      visibleDuration={{ months: props.numberOfMonths || 1 }}
-    >
-      <CalendarInner {...props} isRange />
-    </AriaRangeCalendar>
-  )
-}
+) => (
+  <RACRangeCalendar
+    {...props}
+    className={cn(
+      "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(6)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+      props.className
+    )}
+    data-slot="calendar"
+    visibleDuration={{ months: props.numberOfMonths || 1 }}
+  >
+    <CalendarInner {...props} isRange />
+  </RACRangeCalendar>
+)
 
-function CalendarInner({
+const CalendarInner = ({
   captionLayout = "label",
   buttonVariant = "ghost",
   numberOfMonths = 1,
@@ -125,137 +120,128 @@ function CalendarInner({
   headerFormat?: Intl.DateTimeFormatOptions
   renderCell?: (renderProps: CalendarCellRenderProps & { defaultChildren: ReactNode }) => ReactNode
   isRange?: boolean
-}) {
-  return (
-    <div className="relative flex flex-col gap-4 md:flex-row">
-      <header className="absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1">
-        <Button
-          className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
-          slot="previous"
-          variant={buttonVariant}
-        >
-          <IconPlaceholder
-            className="size-4"
-            hugeicons="ArrowLeftIcon"
-            lucide="ChevronLeftIcon"
-            phosphor="CaretLeftIcon"
-            remixicon="RiArrowLeftSLine"
-            tabler="IconChevronLeft"
-          />
-        </Button>
-        <Button
-          className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
-          slot="next"
-          variant={buttonVariant}
-        >
-          <IconPlaceholder
-            className="size-4"
-            hugeicons="ArrowRightIcon"
-            lucide="ChevronRightIcon"
-            phosphor="CaretRightIcon"
-            remixicon="RiArrowRightSLine"
-            tabler="IconChevronRight"
-          />
-        </Button>
-      </header>
-      {Array.from({ length: numberOfMonths }, (_, i) => (
-        <div className="flex w-full flex-col gap-4" key={i}>
-          <div className="flex h-(--cell-size) w-full items-center justify-center gap-1 px-(--cell-size)">
-            {captionLayout === "dropdown" ? (
-              <>
-                <MonthDropdown format={headerFormat} />
-                <YearDropdown format={headerFormat} />
-              </>
-            ) : (
-              <CalendarHeading
-                className="select-none font-medium text-sm"
-                format={headerFormat}
-                offset={{ months: i }}
-              />
-            )}
-          </div>
-          <CalendarGrid className="w-full border-collapse" offset={{ months: i }}>
-            <AriaCalendarGridHeader>
-              {(day) => (
-                <CalendarHeaderCell className="select-none rounded-(--cell-radius) font-normal text-[0.8rem] text-muted-foreground">
-                  {day}
-                </CalendarHeaderCell>
-              )}
-            </AriaCalendarGridHeader>
-            <CalendarGridBody>
-              {(date) => (
-                <CalendarCell className={(renderProps) => cellVariants({ ...renderProps, showWeekNumber })} date={date}>
-                  {(renderProps) => (
-                    <div
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "relative isolate z-10 flex aspect-square h-full w-full min-w-(--cell-size) flex-col gap-1 border-0 font-normal leading-none data-[range-end=true]:rounded-(--cell-radius) data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[range-end=true]:bg-primary data-[range-middle=true]:bg-muted data-[range-start=true]:bg-primary data-[selected-single=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:text-foreground data-[range-start=true]:text-primary-foreground data-[selected-single=true]:text-primary-foreground group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70"
-                      )}
-                      data-range-end={renderProps.isSelectionEnd && isRange}
-                      data-range-middle={
-                        renderProps.isSelected &&
-                        !renderProps.isSelectionStart &&
-                        !renderProps.isSelectionEnd &&
-                        isRange
-                      }
-                      data-range-start={renderProps.isSelectionStart && isRange}
-                      data-selected-single={renderProps.isSelected && !isRange}
-                    >
-                      {renderCell ? renderCell(renderProps) : renderProps.defaultChildren}
-                    </div>
-                  )}
-                </CalendarCell>
-              )}
-            </CalendarGridBody>
-          </CalendarGrid>
+}) => (
+  <div className="relative flex flex-col gap-4 md:flex-row">
+    <header className="absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1">
+      <Button
+        className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
+        slot="previous"
+        variant={buttonVariant}
+      >
+        <IconPlaceholder
+          className="size-4"
+          hugeicons="ArrowLeftIcon"
+          lucide="ChevronLeftIcon"
+          phosphor="CaretLeftIcon"
+          remixicon="RiArrowLeftSLine"
+          tabler="IconChevronLeft"
+        />
+      </Button>
+      <Button
+        className="size-(--cell-size) select-none p-0 aria-disabled:opacity-50"
+        slot="next"
+        variant={buttonVariant}
+      >
+        <IconPlaceholder
+          className="size-4"
+          hugeicons="ArrowRightIcon"
+          lucide="ChevronRightIcon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          tabler="IconChevronRight"
+        />
+      </Button>
+    </header>
+    {Array.from({ length: numberOfMonths }, (_, i) => (
+      <div className="flex w-full flex-col gap-4" key={i}>
+        <div className="flex h-(--cell-size) w-full items-center justify-center gap-1 px-(--cell-size)">
+          {captionLayout === "dropdown" ? (
+            <>
+              <MonthDropdown format={headerFormat} />
+              <YearDropdown format={headerFormat} />
+            </>
+          ) : (
+            <CalendarHeading
+              className="select-none font-medium text-sm"
+              format={headerFormat}
+              offset={{ months: i }}
+            />
+          )}
         </div>
-      ))}
-    </div>
-  )
-}
+        <CalendarGrid className="w-full border-collapse" offset={{ months: i }}>
+          <CalendarGridHeader>
+            {(day) => (
+              <CalendarHeaderCell className="select-none rounded-(--cell-radius) font-normal text-[0.8rem] text-muted-foreground">
+                {day}
+              </CalendarHeaderCell>
+            )}
+          </CalendarGridHeader>
+          <CalendarGridBody>
+            {(date) => (
+              <CalendarCell className={(renderProps) => cellVariants({ ...renderProps, showWeekNumber })} date={date}>
+                {(renderProps) => (
+                  <div
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "relative isolate z-10 flex aspect-square h-full w-full min-w-(--cell-size) flex-col gap-1 border-0 font-normal leading-none data-[range-end=true]:rounded-(--cell-radius) data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) data-[range-end=true]:bg-primary data-[range-middle=true]:bg-muted data-[range-start=true]:bg-primary data-[selected-single=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:text-foreground data-[range-start=true]:text-primary-foreground data-[selected-single=true]:text-primary-foreground group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-ring/50 dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70"
+                    )}
+                    data-range-end={renderProps.isSelectionEnd && isRange}
+                    data-range-middle={
+                      renderProps.isSelected && !renderProps.isSelectionStart && !renderProps.isSelectionEnd && isRange
+                    }
+                    data-range-start={renderProps.isSelectionStart && isRange}
+                    data-selected-single={renderProps.isSelected && !isRange}
+                  >
+                    {renderCell ? renderCell(renderProps) : renderProps.defaultChildren}
+                  </div>
+                )}
+              </CalendarCell>
+            )}
+          </CalendarGridBody>
+        </CalendarGrid>
+      </div>
+    ))}
+  </div>
+)
 
-function MonthDropdown({ format }: { format?: Intl.DateTimeFormatOptions }) {
-  return (
-    <CalendarMonthPicker format={format?.month}>
-      {(props) => (
-        <Select {...props} className="relative">
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent className="min-w-0">
-            <SelectGroup>
-              {props.items.map((item) => (
-                <SelectItem id={item.id} key={item.id}>
-                  {item.formatted}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      )}
-    </CalendarMonthPicker>
-  )
-}
-
-function YearDropdown({ format }: { format?: Intl.DateTimeFormatOptions }) {
-  return (
-    <CalendarYearPicker format={format}>
-      {(props) => (
-        <Select {...props} className="relative">
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent className="min-w-0">
+const MonthDropdown = ({ format }: { format?: Intl.DateTimeFormatOptions }) => (
+  <CalendarMonthPicker format={format?.month}>
+    {(props) => (
+      <Select {...props} className="relative">
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="min-w-0">
+          <SelectGroup>
             {props.items.map((item) => (
               <SelectItem id={item.id} key={item.id}>
                 {item.formatted}
               </SelectItem>
             ))}
-          </SelectContent>
-        </Select>
-      )}
-    </CalendarYearPicker>
-  )
-}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    )}
+  </CalendarMonthPicker>
+)
+
+const YearDropdown = ({ format }: { format?: Intl.DateTimeFormatOptions }) => (
+  <CalendarYearPicker format={format}>
+    {(props) => (
+      <Select {...props} className="relative">
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="min-w-0">
+          {props.items.map((item) => (
+            <SelectItem id={item.id} key={item.id}>
+              {item.formatted}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    )}
+  </CalendarYearPicker>
+)
 
 export { Calendar, RangeCalendar }

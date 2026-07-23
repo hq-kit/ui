@@ -1,14 +1,14 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 
 export function EmptyExploreCatalog() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="p-4">
-          <EmptyMedia variant="icon">
+          <Empty.Media variant="icon">
             <IconPlaceholder
               hugeicons="AudioWave01Icon"
               lucide="AudioLinesIcon"
@@ -16,16 +16,16 @@ export function EmptyExploreCatalog() {
               remixicon="RiRecordCircleLine"
               tabler="IconPlayerRecordFilled"
             />
-          </EmptyMedia>
-          <EmptyHeader>
-            <EmptyTitle>Explore Catalog</EmptyTitle>
-            <EmptyDescription>Check your ISRC codes, metadata, and visual assets before going live.</EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+          </Empty.Media>
+          <Empty.Header>
+            <Empty.Title>Explore Catalog</Empty.Title>
+            <Empty.Description>Check your ISRC codes, metadata, and visual assets before going live.</Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button>View Catalog</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

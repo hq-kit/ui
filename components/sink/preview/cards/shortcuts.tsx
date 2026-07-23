@@ -1,6 +1,6 @@
 import { Fragment } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Item, ItemActions, ItemGroup, ItemHeader, ItemSeparator, ItemTitle } from "@/components/ui/item"
+import { Card } from "@/components/ui/card"
+import { Item } from "@/components/ui/item"
 import { Kbd } from "@/components/ui/kbd"
 
 const shortcuts = [
@@ -14,30 +14,30 @@ const shortcuts = [
 export function Shortcuts() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <div className="flex flex-col gap-3">
           <div className="font-medium text-sm">Shortcuts</div>
-          <ItemGroup className="gap-2 text-muted-foreground" data-size="xs">
+          <Item.Group className="gap-2 text-muted-foreground" data-size="xs">
             {shortcuts.map(({ label, keys }, i) => (
               <Fragment key={label}>
-                {i > 0 && <ItemSeparator />}
+                {i > 0 && <Item.Separator />}
                 <Item className="border-0 px-0 py-0" size="xs" variant="default">
-                  <ItemHeader>
-                    <ItemTitle className="font-normal">{label}</ItemTitle>
-                    <ItemActions>
+                  <Item.Header>
+                    <Item.Title className="font-normal">{label}</Item.Title>
+                    <Item.Actions>
                       <div className="flex gap-1">
                         {keys.map((key) => (
                           <Kbd key={key}>{key}</Kbd>
                         ))}
                       </div>
-                    </ItemActions>
-                  </ItemHeader>
+                    </Item.Actions>
+                  </Item.Header>
                 </Item>
               </Fragment>
             ))}
-          </ItemGroup>
+          </Item.Group>
         </div>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

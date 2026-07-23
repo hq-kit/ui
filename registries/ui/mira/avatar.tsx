@@ -3,29 +3,27 @@
 import { type ComponentProps, useState } from "react"
 import { cn } from "@/lib/utils"
 
-function Avatar({
+const Avatar = ({
   className,
   size = "default",
   ...props
 }: ComponentProps<"div"> & {
   size?: "default" | "sm" | "lg"
-}) {
-  return (
-    <div
-      className={cn(
-        "size-8 rounded-full after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
-        className
-      )}
-      data-size={size}
-      data-slot="avatar"
-      {...props}
-    />
-  )
-}
+}) => (
+  <div
+    className={cn(
+      "size-8 rounded-full after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+      className
+    )}
+    data-size={size}
+    data-slot="avatar"
+    {...props}
+  />
+)
 
 type ImageState = "loading" | "loaded" | "error"
 
-function AvatarImage({ className, ...props }: ComponentProps<"img">) {
+const AvatarImage = ({ className, ...props }: ComponentProps<"img">) => {
   const [state, setState] = useState<ImageState>(props.src ? "loading" : "error")
   return (
     <img
@@ -40,61 +38,53 @@ function AvatarImage({ className, ...props }: ComponentProps<"img">) {
   )
 }
 
-function AvatarFallback({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "bg-muted text-muted-foreground rounded-full flex size-full items-center justify-center text-sm peer-[*]:hidden group-data-[size=sm]/avatar:text-xs peer-data-[state=error]:flex",
-        className
-      )}
-      data-slot="avatar-fallback"
-      {...props}
-    />
-  )
-}
+const AvatarFallback = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "bg-muted text-muted-foreground rounded-full flex size-full items-center justify-center text-sm peer-[*]:hidden group-data-[size=sm]/avatar:text-xs peer-data-[state=error]:flex",
+      className
+    )}
+    data-slot="avatar-fallback"
+    {...props}
+  />
+)
 
-function AvatarBadge({ className, ...props }: ComponentProps<"span">) {
-  return (
-    <span
-      className={cn(
-        "bg-primary text-primary-foreground ring-background absolute right-0 bottom-0 z-10 inline-flex select-none items-center justify-center rounded-full bg-blend-color ring-2",
-        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
-        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
-        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
-        className
-      )}
-      data-slot="avatar-badge"
-      {...props}
-    />
-  )
-}
+const AvatarBadge = ({ className, ...props }: ComponentProps<"span">) => (
+  <span
+    className={cn(
+      "bg-primary text-primary-foreground ring-background absolute right-0 bottom-0 z-10 inline-flex select-none items-center justify-center rounded-full bg-blend-color ring-2",
+      "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
+      "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
+      "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
+      className
+    )}
+    data-slot="avatar-badge"
+    {...props}
+  />
+)
 
-function AvatarGroup({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
-        className
-      )}
-      data-slot="avatar-group"
-      {...props}
-    />
-  )
-}
+const AvatarGroup = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+      className
+    )}
+    data-slot="avatar-group"
+    {...props}
+  />
+)
 
-function AvatarGroupCount({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "bg-muted text-muted-foreground size-8 rounded-full text-xs/relaxed group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3 relative flex shrink-0 items-center justify-center ring-2 ring-background",
-        "",
-        className
-      )}
-      data-slot="avatar-group-count"
-      {...props}
-    />
-  )
-}
+const AvatarGroupCount = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "bg-muted text-muted-foreground size-8 rounded-full text-xs/relaxed group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3 relative flex shrink-0 items-center justify-center ring-2 ring-background",
+      "",
+      className
+    )}
+    data-slot="avatar-group-count"
+    {...props}
+  />
+)
 
 Avatar.Image = AvatarImage
 Avatar.Fallback = AvatarFallback

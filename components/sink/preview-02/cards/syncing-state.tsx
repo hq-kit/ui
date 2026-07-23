@@ -1,27 +1,27 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 import { Spinner } from "@/components/ui/spinner"
 
 export function SyncingState() {
   return (
     <Card>
-      <CardContent className="p-0">
+      <Card.Content className="p-0">
         <Empty className="p-4">
-          <EmptyHeader>
-            <EmptyMedia variant="icon">
+          <Empty.Header>
+            <Empty.Media variant="icon">
               <Spinner />
-            </EmptyMedia>
-            <EmptyTitle>Syncing your accounts</EmptyTitle>
-            <EmptyDescription>
+            </Empty.Media>
+            <Empty.Title>Syncing your accounts</Empty.Title>
+            <Empty.Description>
               We&apos;re pulling in your latest transactions. This usually takes a few seconds.
-            </EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+            </Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button variant="outline">Cancel</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

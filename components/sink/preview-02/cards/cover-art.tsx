@@ -1,13 +1,13 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/field"
 import { Item } from "@/components/ui/item"
 
 export function CoverArt() {
   return (
     <Card>
-      <CardContent className="flex flex-col gap-3">
+      <Card.Content className="flex flex-col gap-3">
         <Label
           className="text-center font-normal text-muted-foreground text-xs uppercase tracking-wider"
           htmlFor="cover-art"
@@ -27,17 +27,17 @@ export function CoverArt() {
           </label>
         </Item>
         <input accept="image/jpeg,image/png" className="sr-only" id="cover-art" type="file" />
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
+      </Card.Content>
+      <Card.Footer className="flex-col gap-2">
         <label className={buttonVariants({ variant: "secondary", className: "w-full" })} htmlFor="cover-art">
           Upload Artwork
         </label>
-        <CardDescription className="text-center text-xs">
+        <Card.Description className="text-center text-xs">
           Minimum 3000 × 3000px
           <br />
           JPEG or PNG only
-        </CardDescription>
-      </CardFooter>
+        </Card.Description>
+      </Card.Footer>
     </Card>
   )
 }

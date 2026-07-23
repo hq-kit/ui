@@ -1,12 +1,11 @@
 "use client"
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectValue } from "@/components/ui/select"
-import { Tag, TagGroup, TagList } from "@/components/ui/tag"
-import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+import { Card } from "@/components/ui/card"
+import { Combobox, ComboboxChip, ComboboxChips } from "@/components/ui/combobox"
+import { Tooltip } from "@/components/ui/tooltip"
 
 // Users available for assignment.
 const users = [
@@ -22,10 +21,10 @@ const users = [
 export function AssignIssue() {
   return (
     <Card className="w-full max-w-sm" size="sm">
-      <CardHeader className="border-b">
-        <CardTitle className="text-sm">Assign Issue</CardTitle>
-        <CardDescription className="text-sm">Select users to assign to this issue.</CardDescription>
-        <CardAction>
+      <Card.Header className="border-b">
+        <Card.Title className="text-sm">Assign Issue</Card.Title>
+        <Card.Description className="text-sm">Select users to assign to this issue.</Card.Description>
+        <Card.Action>
           <Tooltip>
             <Button size="icon-xs" variant="outline">
               <IconPlaceholder
@@ -36,46 +35,26 @@ export function AssignIssue() {
                 tabler="IconPlus"
               />
             </Button>
-            <TooltipContent>Add user</TooltipContent>
+            <Tooltip.Content>Add user</Tooltip.Content>
           </Tooltip>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
-        <Select defaultValue={[users[0].id]} selectionMode="multiple">
-          <Select.Trigger>
-            <SelectValue<(typeof users)[0]>>
-              {({ selectedItems, state }) => (
-                <TagGroup
-                  aria-label="Selected states"
-                  onRemove={(keys) => {
-                    if (Array.isArray(state.value)) {
-                      state.setValue(state.value.filter((k) => !keys.has(k)))
-                    }
-                  }}
-                >
-                  <TagList
-                    items={selectedItems.filter((item) => item != null)}
-                    renderEmptyState={() => "No selected items"}
-                  >
-                    {(item) => <Tag>{item.name}</Tag>}
-                  </TagList>
-                </TagGroup>
-              )}
-            </SelectValue>
-          </Select.Trigger>
-          <Select.Content items={users}>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
+        <Combobox defaultValue={[users[0].id]} selectionMode="multiple">
+          <ComboboxChips<(typeof users)[0]>>{(value) => <ComboboxChip>{value.name}</ComboboxChip>}</ComboboxChips>
+          <Combobox.Content items={users}>
             {(user) => (
-              <Select.Item textValue={user.name}>
+              <Combobox.Item textValue={user.name}>
                 <Avatar className="size-5">
-                  <AvatarImage alt={user.name} src={`https://github.com/${user.name}.png`} />
-                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  <Avatar.Image alt={user.name} src={`https://github.com/${user.name}.png`} />
+                  <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
                 {user.name}
-              </Select.Item>
+              </Combobox.Item>
             )}
-          </Select.Content>
-        </Select>
-      </CardContent>
+          </Combobox.Content>
+        </Combobox>
+      </Card.Content>
     </Card>
   )
 }

@@ -30,6 +30,11 @@ export const fontMonoFamilies = [
     link: "family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700"
   },
   {
+    label: "Google Sans Code",
+    value: "Google Sans Code, monospace",
+    link: "family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1"
+  },
+  {
     label: "Ubuntu Mono",
     value: "Ubuntu Mono, monospace",
     link: "family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700"

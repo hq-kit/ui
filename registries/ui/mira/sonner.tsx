@@ -1,9 +1,9 @@
 "use client"
 
 import type { CSSProperties } from "react"
-import { useTheme } from "next-themes"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { IconPlaceholder } from "@/components/icon-placeholder"
+import { useTheme } from "@/components/providers"
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme()

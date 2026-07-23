@@ -1,21 +1,21 @@
 "use client"
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
+import { FileTrigger } from "@/components/ui/file-trigger"
 
 export function FileUpload() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>File Upload</CardTitle>
-        <CardDescription>Drag and drop or browse</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>File Upload</Card.Title>
+        <Card.Description>Drag and drop or browse</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <Empty className="border">
-          <EmptyHeader>
-            <EmptyMedia variant="icon">
+          <Empty.Header>
+            <Empty.Media variant="icon">
               <IconPlaceholder
                 hugeicons="CloudUploadIcon"
                 lucide="UploadCloudIcon"
@@ -23,15 +23,15 @@ export function FileUpload() {
                 remixicon="RiUploadCloudLine"
                 tabler="IconCloudUpload"
               />
-            </EmptyMedia>
-            <EmptyTitle>Upload files</EmptyTitle>
-            <EmptyDescription>PNG, JPG, PDF up to 10MB</EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
-            <Button>Browse Files</Button>
-          </EmptyContent>
+            </Empty.Media>
+            <Empty.Title>Upload files</Empty.Title>
+            <Empty.Description>PNG, JPG, PDF up to 10MB</Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
+            <FileTrigger>Browse Files</FileTrigger>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

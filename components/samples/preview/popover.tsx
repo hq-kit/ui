@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { NumberField, NumberInput } from "@/components/ui/number-field"
 import { Popover } from "@/components/ui/popover"
-import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
 
 const placements: { placement: Placement; colSpan: number; icon: ReactNode }[] = [
@@ -36,7 +35,6 @@ export default function PopoverPreview() {
   const [options, setOptions] = useState({
     offset: 4,
     crossOffset: 0,
-    showArrow: true,
     placement: "top right"
   })
   return (
@@ -51,9 +49,6 @@ export default function PopoverPreview() {
             <Label>Cross Offset</Label>
             <NumberInput />
           </NumberField>
-          <Switch isSelected={options.showArrow} onChange={(e) => setOptions({ ...options, showArrow: e })}>
-            Show Arrow
-          </Switch>
         </div>
         <div className="grid w-full place-items-center py-4">
           <div className="grid grid-cols-6 gap-1">

@@ -2,32 +2,21 @@
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Card } from "@/components/ui/card"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarSeparator
-} from "@/components/ui/sidebar"
+import { Sidebar } from "@/components/ui/sidebar"
 
 export function SidebarNav() {
   return (
     <div className="grid grid-cols-2 items-start gap-6">
       <Card className="overflow-hidden py-0">
-        <SidebarProvider className="min-h-0">
+        <Sidebar.Provider className="min-h-0">
           <Sidebar className="w-full bg-transparent" collapsible="none">
-            <SidebarContent className="gap-0">
-              <SidebarGroup className="pb-1">
-                <SidebarGroupLabel>Overview</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton isActive>
+            <Sidebar.Content className="gap-0">
+              <Sidebar.Group className="pb-1">
+                <Sidebar.GroupLabel>Overview</Sidebar.GroupLabel>
+                <Sidebar.GroupContent>
+                  <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton isActive>
                         <IconPlaceholder
                           hugeicons="DashboardSquare01Icon"
                           lucide="LayoutDashboardIcon"
@@ -36,10 +25,10 @@ export function SidebarNav() {
                           tabler="IconLayoutDashboard"
                         />
                         Dashboard
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="ArrowDataTransferHorizontalIcon"
                           lucide="ArrowLeftRightIcon"
@@ -48,10 +37,10 @@ export function SidebarNav() {
                           tabler="IconArrowsLeftRight"
                         />
                         Transactions
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="AnalyticsUpIcon"
                           lucide="TrendingUpIcon"
@@ -60,10 +49,10 @@ export function SidebarNav() {
                           tabler="IconTrendingUp"
                         />
                         Investments
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="BankIcon"
                           lucide="Building2Icon"
@@ -72,10 +61,10 @@ export function SidebarNav() {
                           tabler="IconBuildingBank"
                         />
                         Accounts
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="PieChartIcon"
                           lucide="PieChartIcon"
@@ -84,18 +73,18 @@ export function SidebarNav() {
                           tabler="IconChartPie"
                         />
                         Spending
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-              <SidebarSeparator className="w-auto!" />
-              <SidebarGroup className="pt-1">
-                <SidebarGroupLabel>Planning</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.Menu>
+                </Sidebar.GroupContent>
+              </Sidebar.Group>
+              <Sidebar.Separator className="w-auto!" />
+              <Sidebar.Group className="pt-1">
+                <Sidebar.GroupLabel>Planning</Sidebar.GroupLabel>
+                <Sidebar.GroupContent>
+                  <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="Target02Icon"
                           lucide="TargetIcon"
@@ -104,10 +93,10 @@ export function SidebarNav() {
                           tabler="IconTarget"
                         />
                         Goals
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="Wallet01Icon"
                           lucide="WalletIcon"
@@ -116,10 +105,10 @@ export function SidebarNav() {
                           tabler="IconWallet"
                         />
                         Budget
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="ChartBarLineIcon"
                           lucide="FileBarChartIcon"
@@ -128,10 +117,10 @@ export function SidebarNav() {
                           tabler="IconReportAnalytics"
                         />
                         Reports
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="File02Icon"
                           lucide="FileTextIcon"
@@ -140,25 +129,25 @@ export function SidebarNav() {
                           tabler="IconFileText"
                         />
                         Documents
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            </SidebarContent>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.Menu>
+                </Sidebar.GroupContent>
+              </Sidebar.Group>
+            </Sidebar.Content>
           </Sidebar>
-        </SidebarProvider>
+        </Sidebar.Provider>
       </Card>
       <Card className="overflow-hidden py-0">
-        <SidebarProvider className="min-h-0">
+        <Sidebar.Provider className="min-h-0">
           <Sidebar className="w-full bg-transparent" collapsible="none">
-            <SidebarContent className="gap-0">
-              <SidebarGroup className="pb-1">
-                <SidebarGroupLabel>Account</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+            <Sidebar.Content className="gap-0">
+              <Sidebar.Group className="pb-1">
+                <Sidebar.GroupLabel>Account</Sidebar.GroupLabel>
+                <Sidebar.GroupContent>
+                  <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="UserIcon"
                           lucide="UserIcon"
@@ -167,10 +156,10 @@ export function SidebarNav() {
                           tabler="IconUser"
                         />
                         Profile
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton isActive>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton isActive>
                         <IconPlaceholder
                           hugeicons="CreditCardIcon"
                           lucide="CreditCardIcon"
@@ -179,10 +168,10 @@ export function SidebarNav() {
                           tabler="IconCreditCard"
                         />
                         Billing
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="Notification03Icon"
                           lucide="BellIcon"
@@ -191,10 +180,10 @@ export function SidebarNav() {
                           tabler="IconBell"
                         />
                         Notifications
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="ShieldIcon"
                           lucide="ShieldIcon"
@@ -203,10 +192,10 @@ export function SidebarNav() {
                           tabler="IconShield"
                         />
                         Security
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="PaintBoardIcon"
                           lucide="PaintbrushIcon"
@@ -215,18 +204,18 @@ export function SidebarNav() {
                           tabler="IconPalette"
                         />
                         Appearance
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-              <SidebarSeparator className="w-auto!" />
-              <SidebarGroup className="pt-1">
-                <SidebarGroupLabel>Support</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.Menu>
+                </Sidebar.GroupContent>
+              </Sidebar.Group>
+              <Sidebar.Separator className="w-auto!" />
+              <Sidebar.Group className="pt-1">
+                <Sidebar.GroupLabel>Support</Sidebar.GroupLabel>
+                <Sidebar.GroupContent>
+                  <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="HelpCircleIcon"
                           lucide="CircleHelpIcon"
@@ -235,10 +224,10 @@ export function SidebarNav() {
                           tabler="IconHelp"
                         />
                         Help Center
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="Message01Icon"
                           lucide="MessageSquareIcon"
@@ -247,10 +236,10 @@ export function SidebarNav() {
                           tabler="IconMessage"
                         />
                         Contact Us
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="BookOpen02Icon"
                           lucide="BookOpenIcon"
@@ -259,10 +248,10 @@ export function SidebarNav() {
                           tabler="IconBook"
                         />
                         Documentation
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
                         <IconPlaceholder
                           hugeicons="ActivityIcon"
                           lucide="ActivityIcon"
@@ -271,14 +260,14 @@ export function SidebarNav() {
                           tabler="IconActivity"
                         />
                         Status
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            </SidebarContent>
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.Menu>
+                </Sidebar.GroupContent>
+              </Sidebar.Group>
+            </Sidebar.Content>
           </Sidebar>
-        </SidebarProvider>
+        </Sidebar.Provider>
       </Card>
     </div>
   )

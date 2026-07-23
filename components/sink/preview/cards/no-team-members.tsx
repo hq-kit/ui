@@ -1,40 +1,38 @@
-"use client"
-
-import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/components/ui/avatar"
+import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 
 export function NoTeamMembers() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="h-56 border">
-          <EmptyHeader>
-            <EmptyMedia>
-              <AvatarGroup className="grayscale">
+          <Empty.Header>
+            <Empty.Media>
+              <Avatar.Group className="grayscale">
                 <Avatar size="lg">
-                  <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <Avatar.Image alt="@shadcn" src="https://github.com/shadcn.png" />
+                  <Avatar.Fallback>CN</Avatar.Fallback>
                 </Avatar>
                 <Avatar size="lg">
-                  <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
-                  <AvatarFallback>LR</AvatarFallback>
+                  <Avatar.Image alt="@maxleiter" src="https://github.com/maxleiter.png" />
+                  <Avatar.Fallback>LR</Avatar.Fallback>
                 </Avatar>
                 <Avatar size="lg">
-                  <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
-                  <AvatarFallback>ER</AvatarFallback>
+                  <Avatar.Image alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
+                  <Avatar.Fallback>ER</Avatar.Fallback>
                 </Avatar>
-              </AvatarGroup>
-            </EmptyMedia>
-            <EmptyTitle>No Team Members</EmptyTitle>
-            <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+              </Avatar.Group>
+            </Empty.Media>
+            <Empty.Title>No Team Members</Empty.Title>
+            <Empty.Description>Invite your team to collaborate on this project.</Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button size="sm">Invite Members</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import type { ComponentPropsWithoutRef } from "react"
-import { Link, type LinkProps } from "react-aria-components"
+import { Link, type LinkProps } from "react-aria-components/Link"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 

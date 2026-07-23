@@ -1,19 +1,18 @@
-"use client"
-
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Description, Field, FieldGroup, FieldSet, Label, Legend } from "@/components/ui/field"
+import { Card } from "@/components/ui/card"
+import { Description, FieldGroup, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio"
+import { Radio, RadioGroup } from "@/components/ui/radio"
+import { TextField } from "@/components/ui/text-field"
 
 export function ReceivingMethod() {
   return (
     <Card>
-      <CardHeader>
-        <CardDescription>Payout Preferences</CardDescription>
-        <CardTitle>Receiving Method</CardTitle>
-        <CardAction>
+      <Card.Header>
+        <Card.Description>Payout Preferences</Card.Description>
+        <Card.Title>Receiving Method</Card.Title>
+        <Card.Action>
           <Button className="bg-muted" size="icon-sm" variant="ghost">
             <IconPlaceholder
               hugeicons="Cancel01Icon"
@@ -23,49 +22,39 @@ export function ReceivingMethod() {
               tabler="IconX"
             />
           </Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="account-holder">Account Holder Name</Label>
-            <Input defaultValue="Synthetic Horizons Music LLC" id="account-holder" />
-          </Field>
-          <FieldSet>
-            <Legend variant="label">Receiving Method</Legend>
-            <RadioGroup
-              className="grid grid-cols-1 style-sera:grid-cols-1 items-start gap-3 md:grid-cols-2"
-              defaultValue="bank"
-            >
-              <Label htmlFor="method-bank">
-                <Field className="pb-2.5" orientation="horizontal">
-                  <RadioGroupItem id="method-bank" value="bank">
-                    <Label>Bank Transfer</Label>
-                    <Description>SWIFT / IBAN</Description>
-                  </RadioGroupItem>
-                </Field>
-              </Label>
-              <Label htmlFor="method-paypal">
-                <Field className="pb-2.5" orientation="horizontal">
-                  <RadioGroupItem id="method-paypal" value="paypal">
-                    <Label>PayPal</Label>
-                    <Description className="line-clamp-1">Instant Payout</Description>
-                  </RadioGroupItem>
-                </Field>
-              </Label>
-            </RadioGroup>
-          </FieldSet>
-          <Field>
-            <Label htmlFor="iban">IBAN / Account Number</Label>
-            <Input id="iban" placeholder="DE89 3704 0044 ...." />
-          </Field>
+          <TextField defaultValue="Synthetic Horizons Music LLC">
+            <Label>Account Holder Name</Label>
+            <Input />
+          </TextField>
+          <RadioGroup
+            className="grid grid-cols-1 style-sera:grid-cols-1 items-start gap-3 md:grid-cols-2"
+            defaultValue="bank"
+          >
+            <Label className="col-span-full">Receiving Method</Label>
+            <Radio id="method-bank" value="bank">
+              <Label>Bank Transfer</Label>
+              <Description>SWIFT / IBAN</Description>
+            </Radio>
+            <Radio id="method-paypal" value="paypal">
+              <Label>PayPal</Label>
+              <Description className="line-clamp-1">Instant Payout</Description>
+            </Radio>
+          </RadioGroup>
+          <TextField>
+            <Label>IBAN / Account Number</Label>
+            <Input placeholder="DE89 3704 0044 ...." />
+          </TextField>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full" isDisabled>
           Save Payout Settings
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

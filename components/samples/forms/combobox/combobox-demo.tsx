@@ -1,5 +1,5 @@
 "use client"
-import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combobox"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -18,7 +18,7 @@ export default function ComboboxDemo() {
   return (
     <Combobox>
       <Label>Choose a distro</Label>
-      <ComboboxInput placeholder="Choose a distro" />
+      <ComboboxInput placeholder="Choose a distro" showClear />
       <ComboboxContent items={options}>
         {(option) => <ComboboxItem id={option.id}>{option.value}</ComboboxItem>}
       </ComboboxContent>

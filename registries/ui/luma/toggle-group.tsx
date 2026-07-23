@@ -1,6 +1,6 @@
 "use client"
 
-import type { Selection } from "react-aria-components"
+import type { Key } from "react-aria-components/ToggleButtonGroup"
 import type { VariantProps } from "tailwind-variants"
 import { type CSSProperties, createContext, type Ref, use } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
@@ -86,5 +86,5 @@ const ToggleGroupItem = ({
 
 ToggleGroup.Item = ToggleGroupItem
 
-export type { Selection }
+export type { Key }
 export { ToggleGroup, ToggleGroupItem }

@@ -1,10 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export function SkeletonLoading() {
   return (
     <Card>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Content className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <Skeleton className="size-10 rounded-full" />
           <div className="flex flex-1 flex-col gap-2">
@@ -21,7 +21,7 @@ export function SkeletonLoading() {
           <Skeleton className="h-8 w-20" />
           <Skeleton className="h-8 w-20" />
         </div>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

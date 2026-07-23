@@ -39,7 +39,7 @@ const Hero = ({ children }: { children: ReactNode }) => (
       </defs>
       <rect fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" height="100%" strokeWidth={0} width="100%" />
     </svg>
-    <Container className="border-b pt-10 pb-6 lg:py-16 xl:border-x">{children}</Container>
+    <Container className="border-b pt-10 pb-6 lg:pb-6 xl:border-x">{children}</Container>
   </div>
 )
 

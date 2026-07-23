@@ -1,8 +1,8 @@
 "use client"
 
 import { type ComponentProps, type CSSProperties, createContext, use, useContext } from "react"
-import { useSlottedContext } from "react-aria-components"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { useSlottedContext } from "react-aria-components/slots"
 import {
   ToggleButtonGroup,
   ToggleButtonGroupContext,
@@ -24,23 +24,21 @@ const Toolbar = ({
   ...props
 }: ToolbarProps & {
   spacing?: number
-}) => {
-  return (
-    <ToolbarContext.Provider value={{ orientation }}>
-      <RACToolbar
-        orientation={orientation}
-        style={{ "--gap": spacing } as CSSProperties}
-        {...props}
-        className={composeRenderProps(className, (className) =>
-          cn(
-            "rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] group/toolbar flex gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
-            className
-          )
-        )}
-      />
-    </ToolbarContext.Provider>
-  )
-}
+}) => (
+  <ToolbarContext.Provider value={{ orientation }}>
+    <RACToolbar
+      orientation={orientation}
+      style={{ "--gap": spacing } as CSSProperties}
+      {...props}
+      className={composeRenderProps(className, (className) =>
+        cn(
+          "rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] group/toolbar flex gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
+          className
+        )
+      )}
+    />
+  </ToolbarContext.Provider>
+)
 
 const ToolbarGroup = ({ className, ...props }: ToggleButtonGroupProps) => {
   const { orientation } = use(ToolbarContext)

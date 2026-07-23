@@ -1,20 +1,21 @@
 "use client"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
-import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input"
-import { Item, ItemContent } from "@/components/ui/item"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card } from "@/components/ui/card"
+import { FieldGroup, Label } from "@/components/ui/field"
+import { InputGroup } from "@/components/ui/input"
+import { Item } from "@/components/ui/item"
+import { Select } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { TextField } from "@/components/ui/text-field"
 
 export function TransferFunds() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Transfer Funds</CardTitle>
-        <CardDescription>Move money between your connected accounts.</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Transfer Funds</Card.Title>
+        <Card.Description>Move money between your connected accounts.</Card.Description>
+        <Card.Action>
           <Button className="bg-muted" size="icon-sm" variant="ghost">
             <IconPlaceholder
               hugeicons="Cancel01Icon"
@@ -24,49 +25,45 @@ export function TransferFunds() {
               tabler="IconX"
             />
           </Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="transfer-amount">Amount to Transfer</Label>
+          <TextField defaultValue="1,200.00">
+            <Label>Amount to Transfer</Label>
             <InputGroup>
-              <InputGroupAddon>
-                <InputGroupText>$</InputGroupText>
-              </InputGroupAddon>
-              <InputGroupInput defaultValue="1,200.00" id="transfer-amount" />
+              <InputGroup.Addon>
+                <InputGroup.Text>$</InputGroup.Text>
+              </InputGroup.Addon>
+              <InputGroup.Input />
             </InputGroup>
-          </Field>
-          <Field>
-            <Label htmlFor="from-account">From Account</Label>
-            <Select defaultValue="checking">
-              <SelectTrigger className="w-full" id="from-account">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem id="checking">Main Checking (··8402) — $12,450.00</SelectItem>
-                  <SelectItem id="business">Business (··7731) — $8,920.00</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
-          <Field>
-            <Label htmlFor="to-account">To Account</Label>
-            <Select defaultValue="savings">
-              <SelectTrigger className="w-full" id="to-account">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem id="savings">High Yield Savings (··1192) — $42,100.00</SelectItem>
-                  <SelectItem id="investment">Investment (··3349) — $18,200.00</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
+          </TextField>
+          <Select className="w-full" defaultValue="checking">
+            <Label>From Account</Label>
+            <Select.Trigger>
+              <Select.Value />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Item id="checking">Main Checking (··8402) — $12,450.00</Select.Item>
+                <Select.Item id="business">Business (··7731) — $8,920.00</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select>
+          <Select className="w-full" defaultValue="savings">
+            <Label>To Account</Label>
+            <Select.Trigger>
+              <Select.Value />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Item id="savings">High Yield Savings (··1192) — $42,100.00</Select.Item>
+                <Select.Item id="investment">Investment (··3349) — $18,200.00</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select>
           <Item className="flex-col items-stretch" variant="muted">
-            <ItemContent className="gap-3">
+            <Item.Content className="gap-3">
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground text-sm">Estimated arrival</span>
                 <span className="font-medium text-sm">Today, Apr 14</span>
@@ -81,13 +78,13 @@ export function TransferFunds() {
                 <span className="font-medium text-sm">Total amount</span>
                 <span className="font-semibold text-sm tabular-nums">$1,200.00</span>
               </div>
-            </ItemContent>
+            </Item.Content>
           </Item>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">Confirm Transfer</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

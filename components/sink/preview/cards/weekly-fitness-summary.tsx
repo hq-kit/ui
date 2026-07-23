@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 
 const FITNESS_WEEKLY_LOAD = [
   { day: "M", load: 84 },
@@ -17,11 +17,11 @@ const FITNESS_WEEKLY_LOAD = [
 export function WeeklyFitnessSummary() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Weekly Fitness Summary</CardTitle>
-        <CardDescription>Calories and workout load by day</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Header>
+        <Card.Title>Weekly Fitness Summary</Card.Title>
+        <Card.Description>Calories and workout load by day</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <div className="grid grid-cols-7 gap-1.5">
           {FITNESS_WEEKLY_LOAD.map((day, index) => (
             <div className="rounded-md p-1.5 text-center ring ring-border" key={`${day.day}-${index}`}>
@@ -39,10 +39,10 @@ export function WeeklyFitnessSummary() {
             </div>
           ))}
         </div>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">View details</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

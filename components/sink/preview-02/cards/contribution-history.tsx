@@ -3,9 +3,9 @@
 import { Bar, BarChart, XAxis } from "recharts"
 import { useStyle } from "@/components/style-provider"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { Item, ItemContent, ItemDescription } from "@/components/ui/item"
+import { Item } from "@/components/ui/item"
 
 const chartData = [
   { month: "Dec", amount: 800 },
@@ -29,11 +29,11 @@ export function ContributionHistory() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Contribution History</CardTitle>
-        <CardDescription>Last 6 months of activity</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Contribution History</Card.Title>
+        <Card.Description>Last 6 months of activity</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <ChartContainer className="h-50 w-full" config={chartConfig}>
           <BarChart accessibilityLayer data={chartData} margin={{ left: 0, right: 0, top: 8, bottom: 0 }}>
             <XAxis axisLine={false} dataKey="month" tickLine={false} tickMargin={8} />
@@ -41,32 +41,32 @@ export function ContributionHistory() {
             <Bar dataKey="amount" fill="var(--color-amount)" maxBarSize={40} radius={isRounded ? [6, 6, 0, 0] : 0} />
           </BarChart>
         </ChartContainer>
-      </CardContent>
-      <CardContent>
+      </Card.Content>
+      <Card.Content>
         <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
           <Item className="flex-col items-stretch" variant="muted">
-            <ItemContent className="gap-1">
-              <ItemDescription className="font-medium text-muted-foreground text-xs uppercase tracking-wider">
+            <Item.Content className="gap-1">
+              <Item.Description className="font-medium text-muted-foreground text-xs uppercase tracking-wider">
                 Upcoming
-              </ItemDescription>
+              </Item.Description>
               <span className="cn-font-heading font-semibold text-lg">May 25, 2024</span>
               <span className="text-muted-foreground text-sm">$1,000 scheduled</span>
-            </ItemContent>
+            </Item.Content>
           </Item>
           <Item className="flex-col items-stretch" variant="muted">
-            <ItemContent className="gap-1">
-              <ItemDescription className="font-medium text-muted-foreground text-xs uppercase tracking-wider">
+            <Item.Content className="gap-1">
+              <Item.Description className="font-medium text-muted-foreground text-xs uppercase tracking-wider">
                 Auto-Save Plan
-              </ItemDescription>
+              </Item.Description>
               <span className="cn-font-heading font-semibold text-lg">Accelerated</span>
               <span className="text-muted-foreground text-sm">Recurring weekly</span>
-            </ItemContent>
+            </Item.Content>
           </Item>
         </div>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">View Full Report</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

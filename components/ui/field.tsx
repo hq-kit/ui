@@ -4,7 +4,7 @@ import { type ComponentProps, type ReactNode, useMemo } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { type FieldErrorProps, FieldError as RACFieldError } from "react-aria-components/FieldError"
 import { type FormProps, Form as RACForm } from "react-aria-components/Form"
-import { type LabelProps, Label as RACLabel } from "react-aria-components/Label"
+import { LabelContext, type LabelProps, Label as RACLabel } from "react-aria-components/Label"
 import { Text, type TextProps } from "react-aria-components/Text"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
@@ -62,19 +62,28 @@ const Field = ({
   />
 )
 
-const Label = (props: LabelProps) => (
-  <RACLabel
-    className={cn(
-      "cn-label in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
-      "cn-field-label group/field-label peer/field-label flex w-fit",
-      "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
-      props.className
-    )}
-    data-slot="field-label"
-    elementType="label"
-    {...props}
-  />
-)
+const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
+  const label = (
+    <RACLabel
+      className={cn(
+        "cn-label in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
+        "cn-field-label group/field-label peer/field-label flex w-fit",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+        className
+      )}
+      data-slot="field-label"
+      htmlFor={htmlFor}
+      slot={slot}
+      {...props}
+    />
+  )
+
+  if (htmlFor && slot === undefined) {
+    return <LabelContext.Provider value={null}>{label}</LabelContext.Provider>
+  }
+
+  return label
+}
 
 const Title = ({ className, ...props }: LabelProps) => (
   <RACLabel className={cn("cn-field-title flex w-fit items-center", className)} data-slot="field-label" {...props} />

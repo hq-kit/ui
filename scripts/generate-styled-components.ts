@@ -3,17 +3,10 @@ import path from "node:path"
 import { twMerge } from "tailwind-merge"
 
 export function parseAndCleanCn(sourceCode: string): string {
-  // Regex membagi 3 bagian:
-  // Group 1: cn(
-  // Group 2: Isi string pertama di dalam kutip
-  // Group 3: Sisa parameter hingga tutup kurung )
   const regex = /(cn\(\s*["'`])([^"'`]+)(["'`]\s*,?[\s\S]*?\))/g
 
-  return sourceCode.replace(regex, (match, prefix, classString, suffix) => {
-    // 1. Bersihkan string kelas menggunakan tailwind-merge
+  return sourceCode.replace(regex, (_match, prefix, classString, suffix) => {
     const cleanedClasses = twMerge(classString)
-
-    // 2. Gabungkan kembali sesuai format aslinya
     return `${prefix}${cleanedClasses}${suffix}`
   })
 }

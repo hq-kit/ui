@@ -3,7 +3,7 @@
 import { Bar, BarChart } from "recharts"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart"
 
 const sleepChartData = [
@@ -36,11 +36,11 @@ const sleepChartConfig = {
 export function SleepReport() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Sleep Report</CardTitle>
-        <CardDescription>Last night · 7h 24m</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-3">
+      <Card.Header>
+        <Card.Title>Sleep Report</Card.Title>
+        <Card.Description>Last night · 7h 24m</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-3">
         <ChartContainer className="h-32 w-full" config={sleepChartConfig}>
           <BarChart
             accessibilityLayer
@@ -66,13 +66,13 @@ export function SleepReport() {
             </div>
           ))}
         </div>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Badge variant="outline">Good</Badge>
         <Button className="ml-auto" size="sm" variant="outline">
           Details
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

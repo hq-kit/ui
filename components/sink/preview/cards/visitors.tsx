@@ -2,7 +2,7 @@
 
 import { Area, AreaChart, XAxis } from "recharts"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const areaChartData = [
@@ -30,17 +30,17 @@ const trendPrefix = trendPercent > 0 ? "+" : ""
 export function Visitors() {
   return (
     <Card className="pb-0">
-      <CardHeader>
-        <CardTitle>Visitors</CardTitle>
-        <CardDescription>Last 6 months </CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Visitors</Card.Title>
+        <Card.Description>Last 6 months </Card.Description>
+        <Card.Action>
           <Badge variant={trendPercent >= 0 ? "secondary" : "destructive"}>
             {trendPrefix}
             {trendPercent}% vs last month
           </Badge>
-        </CardAction>
-      </CardHeader>
-      <CardContent className="px-0">
+        </Card.Action>
+      </Card.Header>
+      <Card.Content className="px-0">
         <ChartContainer className="h-48 w-full" config={areaChartConfig}>
           <AreaChart accessibilityLayer data={areaChartData} margin={{ left: 0, right: 0, top: 6, bottom: 0 }}>
             <XAxis
@@ -62,7 +62,7 @@ export function Visitors() {
             />
           </AreaChart>
         </ChartContainer>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

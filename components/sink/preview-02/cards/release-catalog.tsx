@@ -1,11 +1,9 @@
-"use client"
-
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input"
-import { Item, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from "@/components/ui/item"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Card } from "@/components/ui/card"
+import { InputGroup } from "@/components/ui/input"
+import { Item } from "@/components/ui/item"
+import { ToggleGroup } from "@/components/ui/toggle-group"
 
 const HOLDINGS = [
   {
@@ -45,10 +43,10 @@ const HOLDINGS = [
 export function ReleaseCatalog() {
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <div className="flex items-center justify-between gap-3">
           <InputGroup className="max-w-sm">
-            <InputGroupAddon>
+            <InputGroup.Addon>
               <IconPlaceholder
                 hugeicons="Search01Icon"
                 lucide="SearchIcon"
@@ -56,31 +54,31 @@ export function ReleaseCatalog() {
                 remixicon="RiSearchLine"
                 tabler="IconSearch"
               />
-            </InputGroupAddon>
-            <InputGroupInput placeholder="Search holdings or tickers..." />
+            </InputGroup.Addon>
+            <InputGroup.Input placeholder="Search holdings or tickers..." />
           </InputGroup>
           <ToggleGroup defaultSelectedKeys={["etfs"]} selectionMode="single" spacing={1} variant="outline">
-            <ToggleGroupItem id="stocks">Stocks</ToggleGroupItem>
-            <ToggleGroupItem id="etfs">ETFs</ToggleGroupItem>
-            <ToggleGroupItem id="reits">REITs</ToggleGroupItem>
+            <ToggleGroup.Item id="stocks">Stocks</ToggleGroup.Item>
+            <ToggleGroup.Item id="etfs">ETFs</ToggleGroup.Item>
+            <ToggleGroup.Item id="reits">REITs</ToggleGroup.Item>
           </ToggleGroup>
         </div>
-      </CardHeader>
-      <CardContent>
-        <ItemGroup>
+      </Card.Header>
+      <Card.Content>
+        <Item.Group>
           {HOLDINGS.map((holding) => (
             <Item key={holding.ticker} variant="muted">
-              <ItemMedia>
+              <Item.Media>
                 <div className="flex size-12 items-center justify-center rounded-lg border font-semibold text-sm">
                   {holding.ticker}
                 </div>
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>{holding.name}</ItemTitle>
-                <ItemDescription className="text-xs uppercase tracking-wider">
+              </Item.Media>
+              <Item.Content>
+                <Item.Title>{holding.name}</Item.Title>
+                <Item.Description className="text-xs uppercase tracking-wider">
                   {holding.shares} Shares · {holding.added}
-                </ItemDescription>
-              </ItemContent>
+                </Item.Description>
+              </Item.Content>
               <div className="flex shrink-0 items-center gap-6">
                 <Badge variant="outline">{holding.type}</Badge>
                 <div className="flex flex-col items-end gap-0.5">
@@ -90,8 +88,8 @@ export function ReleaseCatalog() {
               </div>
             </Item>
           ))}
-        </ItemGroup>
-      </CardContent>
+        </Item.Group>
+      </Card.Content>
     </Card>
   )
 }

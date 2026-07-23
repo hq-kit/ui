@@ -1,28 +1,27 @@
-"use client"
-
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
+import { Card } from "@/components/ui/card"
+import { FieldGroup, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { Item } from "@/components/ui/item"
+import { PasswordInput, TextField } from "@/components/ui/text-field"
 
 export function AccountAccess() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Account Access</CardTitle>
-        <CardDescription>Update your credentials or re-authenticate.</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Account Access</Card.Title>
+        <Card.Description>Update your credentials or re-authenticate.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="email-address">Email Address</Label>
-            <Input defaultValue="artist@studio.inc" id="email-address" type="email" />
-          </Field>
-          <Field>
+          <TextField defaultValue="artist@studio.inc" type="email">
+            <Label>Email Address</Label>
+            <Input />
+          </TextField>
+          <TextField defaultValue="password123" type="password">
             <div className="flex items-center justify-between">
-              <Label htmlFor="current-password">Current Password</Label>
+              <Label>Current Password</Label>
               <a
                 className="font-medium text-muted-foreground text-xs uppercase tracking-wider hover:text-foreground"
                 href="#"
@@ -30,11 +29,11 @@ export function AccountAccess() {
                 Forgot?
               </a>
             </div>
-            <Input defaultValue="password123" id="current-password" type="password" />
-          </Field>
+            <PasswordInput />
+          </TextField>
         </FieldGroup>
-      </CardContent>
-      <CardFooter className="flex-col gap-4">
+      </Card.Content>
+      <Card.Footer className="flex-col gap-4">
         <Button className="w-full">
           <IconPlaceholder
             hugeicons="SquareLock02Icon"
@@ -46,7 +45,7 @@ export function AccountAccess() {
           Update Security
         </Button>
         <Item href="#" variant="muted">
-          <ItemMedia variant="icon">
+          <Item.Media variant="icon">
             <IconPlaceholder
               className="text-destructive"
               hugeicons="AlertCircleIcon"
@@ -55,11 +54,11 @@ export function AccountAccess() {
               remixicon="RiErrorWarningLine"
               tabler="IconAlertCircle"
             />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Danger Zone</ItemTitle>
-            <ItemDescription className="line-clamp-1">Archive account and remove catalog</ItemDescription>
-          </ItemContent>
+          </Item.Media>
+          <Item.Content>
+            <Item.Title>Danger Zone</Item.Title>
+            <Item.Description className="line-clamp-1">Archive account and remove catalog</Item.Description>
+          </Item.Content>
           <IconPlaceholder
             className="size-4"
             hugeicons="ArrowRight01Icon"
@@ -69,7 +68,7 @@ export function AccountAccess() {
             tabler="IconArrowRight"
           />
         </Item>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

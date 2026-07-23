@@ -1,7 +1,7 @@
 "use client"
 
 import { Label, Pie, PieChart } from "recharts"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Separator } from "@/components/ui/separator"
 
@@ -24,7 +24,7 @@ const chartConfig = {
 export function SavingsProgress() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <ChartContainer className="mx-auto aspect-square max-h-55" config={chartConfig}>
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
@@ -57,8 +57,8 @@ export function SavingsProgress() {
             </Pie>
           </PieChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col gap-0">
+      </Card.Content>
+      <Card.Footer className="flex-col gap-0">
         <div className="flex w-full items-center justify-between py-3">
           <span className="text-muted-foreground text-sm">Projected Finish</span>
           <span className="font-semibold text-sm">October 2024</span>
@@ -73,7 +73,7 @@ export function SavingsProgress() {
           <span className="text-muted-foreground text-sm">Top Contributor</span>
           <span className="font-semibold text-sm">Auto-Transfer</span>
         </div>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Item, ItemActions, ItemContent, ItemGroup, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { Card } from "@/components/ui/card"
+import { Item } from "@/components/ui/item"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import { type Selection, ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { type Key, ToggleGroup } from "@/components/ui/toggle-group"
 
 const SCENES = {
   cooking: { brightness: [90], colorTemp: [70], volume: [30], fade: [0] },
@@ -17,15 +17,15 @@ const SCENES = {
 
 export function KitchenIsland() {
   const [enabled, setEnabled] = useState(true)
-  const [scene, setScene] = useState("cooking")
+  const [scene, setScene] = useState(new Set<Key>("cooking"))
   const [brightness, setBrightness] = useState([90])
   const [colorTemp, setColorTemp] = useState([70])
   const [volume, setVolume] = useState([30])
   const [fade, setFade] = useState([0])
 
-  const handleSceneChange = (value: Selection) => {
+  const handleSceneChange = (value: Set<Key>) => {
     if (!value) return
-    setScene([...value].join(""))
+    setScene(value)
     const preset = SCENES[[...value].join("") as keyof typeof SCENES]
     setBrightness([...preset.brightness])
     setColorTemp([...preset.colorTemp])
@@ -35,41 +35,41 @@ export function KitchenIsland() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Kitchen Island</CardTitle>
-        <CardDescription>Hue Color Ambient</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Kitchen Island</Card.Title>
+        <Card.Description>Hue Color Ambient</Card.Description>
+        <Card.Action>
           <Switch isSelected={enabled} onChange={setEnabled} />
-        </CardAction>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+        </Card.Action>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <span className="sr-only">Scenes</span>
           <ToggleGroup
             className="flex-wrap"
             onSelectionChange={handleSceneChange}
-            selectedKeys={[scene]}
+            selectedKeys={scene}
             selectionMode="single"
             spacing={1}
             variant="outline"
           >
-            <ToggleGroupItem id="cooking" isDisabled={!enabled}>
+            <ToggleGroup.Item id="cooking" isDisabled={!enabled}>
               Cooking
-            </ToggleGroupItem>
-            <ToggleGroupItem id="dining" isDisabled={!enabled}>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item id="dining" isDisabled={!enabled}>
               Dining
-            </ToggleGroupItem>
-            <ToggleGroupItem id="nightlight" isDisabled={!enabled}>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item id="nightlight" isDisabled={!enabled}>
               Nightlight
-            </ToggleGroupItem>
-            <ToggleGroupItem id="focus" isDisabled={!enabled}>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item id="focus" isDisabled={!enabled}>
               Focus
-            </ToggleGroupItem>
+            </ToggleGroup.Item>
           </ToggleGroup>
         </div>
-        <ItemGroup>
+        <Item.Group>
           <Item size="sm" variant="outline">
-            <ItemMedia variant="icon">
+            <Item.Media variant="icon">
               <IconPlaceholder
                 hugeicons="Sun03Icon"
                 lucide="SunIcon"
@@ -77,11 +77,11 @@ export function KitchenIsland() {
                 remixicon="RiSunLine"
                 tabler="IconSun"
               />
-            </ItemMedia>
-            <ItemContent className="flex-row items-center gap-3">
-              <ItemTitle className="shrink-0">Brightness</ItemTitle>
-            </ItemContent>
-            <ItemActions className="flex-1">
+            </Item.Media>
+            <Item.Content className="flex-row items-center gap-3">
+              <Item.Title className="shrink-0">Brightness</Item.Title>
+            </Item.Content>
+            <Item.Actions className="flex-1">
               <Slider
                 className="w-full"
                 isDisabled={!enabled}
@@ -89,10 +89,10 @@ export function KitchenIsland() {
                 onChange={(e) => setBrightness(e as number[])}
                 value={brightness}
               />
-            </ItemActions>
+            </Item.Actions>
           </Item>
           <Item size="sm" variant="outline">
-            <ItemMedia variant="icon">
+            <Item.Media variant="icon">
               <IconPlaceholder
                 hugeicons="ThermometerWarmIcon"
                 lucide="ThermometerIcon"
@@ -100,21 +100,21 @@ export function KitchenIsland() {
                 remixicon="RiThermometerLine"
                 tabler="IconThermometer"
               />
-            </ItemMedia>
-            <ItemContent className="flex-row items-center gap-3">
-              <ItemTitle className="shrink-0">Color Temp</ItemTitle>
-            </ItemContent>
-            <ItemActions className="flex-1">
+            </Item.Media>
+            <Item.Content className="flex-row items-center gap-3">
+              <Item.Title className="shrink-0">Color Temp</Item.Title>
+            </Item.Content>
+            <Item.Actions className="flex-1">
               <Slider
                 isDisabled={!enabled}
                 maxValue={100}
                 onChange={(e) => setColorTemp(e as number[])}
                 value={colorTemp}
               />
-            </ItemActions>
+            </Item.Actions>
           </Item>
           <Item size="sm" variant="outline">
-            <ItemMedia variant="icon">
+            <Item.Media variant="icon">
               <IconPlaceholder
                 hugeicons="VolumeHighIcon"
                 lucide="Volume2Icon"
@@ -122,16 +122,16 @@ export function KitchenIsland() {
                 remixicon="RiVolumeUpLine"
                 tabler="IconVolume"
               />
-            </ItemMedia>
-            <ItemContent className="flex-row items-center gap-3">
-              <ItemTitle className="shrink-0">Volume</ItemTitle>
-            </ItemContent>
-            <ItemActions className="flex-1">
+            </Item.Media>
+            <Item.Content className="flex-row items-center gap-3">
+              <Item.Title className="shrink-0">Volume</Item.Title>
+            </Item.Content>
+            <Item.Actions className="flex-1">
               <Slider isDisabled={!enabled} maxValue={100} onChange={(e) => setVolume(e as number[])} value={volume} />
-            </ItemActions>
+            </Item.Actions>
           </Item>
           <Item size="sm" variant="outline">
-            <ItemMedia variant="icon">
+            <Item.Media variant="icon">
               <IconPlaceholder
                 hugeicons="Clock03Icon"
                 lucide="TimerIcon"
@@ -139,16 +139,16 @@ export function KitchenIsland() {
                 remixicon="RiTimerLine"
                 tabler="IconClock"
               />
-            </ItemMedia>
-            <ItemContent className="flex-row items-center gap-3">
-              <ItemTitle className="shrink-0">Fade</ItemTitle>
-            </ItemContent>
-            <ItemActions className="flex-1">
+            </Item.Media>
+            <Item.Content className="flex-row items-center gap-3">
+              <Item.Title className="shrink-0">Fade</Item.Title>
+            </Item.Content>
+            <Item.Actions className="flex-1">
               <Slider isDisabled={!enabled} maxValue={100} onChange={(e) => setFade(e as number[])} value={fade} />
-            </ItemActions>
+            </Item.Actions>
           </Item>
-        </ItemGroup>
-      </CardContent>
+        </Item.Group>
+      </Card.Content>
     </Card>
   )
 }

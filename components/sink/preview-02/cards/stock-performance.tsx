@@ -3,10 +3,10 @@
 import type { Key } from "react-aria-components/ComboBox"
 import { useState } from "react"
 import { Area, AreaChart, CartesianGrid } from "recharts"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
+import { Combobox } from "@/components/ui/combobox"
+import { FieldGroup, Label } from "@/components/ui/field"
 import { Separator } from "@/components/ui/separator"
 
 const TICKERS = ["VOO", "VIG", "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
@@ -53,26 +53,24 @@ export function StockPerformance() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Stock Performance</CardTitle>
-        <CardDescription>6-month price history.</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Header>
+        <Card.Title>Stock Performance</Card.Title>
+        <Card.Description>6-month price history.</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <FieldGroup>
-          <Field>
-            <Label htmlFor="ticker-select">Ticker</Label>
-            <Combobox
-              onChange={(value) => {
-                setTicker(value)
-              }}
-              value={ticker}
-            >
-              <ComboboxInput id="ticker-select" placeholder="Search ticker..." />
-              <ComboboxContent items={TICKERS.map((t) => ({ id: t, value: t }))}>
-                {(item) => <ComboboxItem>{item.value}</ComboboxItem>}
-              </ComboboxContent>
-            </Combobox>
-          </Field>
+          <Combobox
+            onChange={(value) => {
+              setTicker(value)
+            }}
+            value={ticker}
+          >
+            <Label>Ticker</Label>
+            <Combobox.Input placeholder="Search ticker..." />
+            <Combobox.Content items={TICKERS.map((t) => ({ id: t, value: t }))}>
+              {(item) => <Combobox.Item>{item.value}</Combobox.Item>}
+            </Combobox.Content>
+          </Combobox>
         </FieldGroup>
         <Separator className="style-sera:hidden" />
         <ChartContainer className="h-50 w-full" config={chartConfig}>
@@ -88,7 +86,7 @@ export function StockPerformance() {
             <Area dataKey="price" fill="url(#fillPrice)" stroke="var(--color-price)" strokeWidth={2} type="monotone" />
           </AreaChart>
         </ChartContainer>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

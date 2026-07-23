@@ -89,6 +89,11 @@ export const fontSansFamilies = [
     link: "family=Libre+Baskerville:ital,wght@0,400..700;1,400..700"
   },
   {
+    label: "Google Sans",
+    value: "Google Sans, sans-serif",
+    link: "family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700"
+  },
+  {
     label: "Space Grotesk",
     value: "Space Grotesk, sans-serif",
     link: "family=Space+Grotesk:wght@300..700"

@@ -1,76 +1,67 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Field, FieldGroup, Label } from "@/components/ui/field"
 import { Input, Textarea } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
+import { TextField } from "@/components/ui/text-field"
 
 export function ReportBug() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Report Bug</CardTitle>
-        <CardDescription>Help us fix issues faster.</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Report Bug</Card.Title>
+        <Card.Description>Help us fix issues faster.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="bug-title">Title</Label>
-            <Input id="bug-title" placeholder="Brief description of the issue" />
-          </Field>
+          <TextField>
+            <Label>Title</Label>
+            <Input placeholder="Brief description of the issue" />
+          </TextField>
           <div className="grid grid-cols-2 gap-3">
-            <Field>
-              <Label htmlFor="bug-severity">Severity</Label>
-              <Select defaultValue="medium">
-                <SelectTrigger className="w-full" id="bug-severity">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem id="critical">Critical</SelectItem>
-                    <SelectItem id="high">High</SelectItem>
-                    <SelectItem id="medium">Medium</SelectItem>
-                    <SelectItem id="low">Low</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </Field>
-            <Field>
-              <Label htmlFor="bug-component">Component</Label>
-              <Select defaultValue="dashboard">
-                <SelectTrigger className="w-full" id="bug-component">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem id="dashboard">Dashboard</SelectItem>
-                    <SelectItem id="auth">Auth</SelectItem>
-                    <SelectItem id="api">API</SelectItem>
-                    <SelectItem id="billing">Billing</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </Field>
+            <Select defaultValue="medium">
+              <Label>Severity</Label>
+              <Select.Trigger className="w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item id="critical">Critical</Select.Item>
+                  <Select.Item id="high">High</Select.Item>
+                  <Select.Item id="medium">Medium</Select.Item>
+                  <Select.Item id="low">Low</Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select>
+            <Select defaultValue="dashboard">
+              <Label>Component</Label>
+              <Select.Trigger className="w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item id="dashboard">Dashboard</Select.Item>
+                  <Select.Item id="auth">Auth</Select.Item>
+                  <Select.Item id="api">API</Select.Item>
+                  <Select.Item id="billing">Billing</Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select>
           </div>
-          <Field>
-            <Label htmlFor="bug-steps">Steps to reproduce</Label>
-            <Textarea
-              className="min-h-24 resize-none"
-              id="bug-steps"
-              placeholder="1. Go to&#10;2. Click on&#10;3. Observe..."
-            />
-          </Field>
+          <TextField>
+            <Label>Steps to reproduce</Label>
+            <Textarea className="min-h-24 resize-none" placeholder="1. Go to&#10;2. Click on&#10;3. Observe..." />
+          </TextField>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Field className="justify-end style-sera:justify-center" orientation="horizontal">
           <Button className="style-sera:flex-1" variant="outline">
             Attach File
           </Button>
           <Button className="style-sera:flex-1">Submit Bug</Button>
         </Field>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

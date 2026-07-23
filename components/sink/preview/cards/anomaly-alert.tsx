@@ -1,23 +1,23 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 
 export function AnomalyAlert() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="h-48">
-          <EmptyHeader>
-            <EmptyTitle>Get alerted for anomalies</EmptyTitle>
-            <EmptyDescription>Automatically monitor your projects for anomalies and get notified.</EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+          <Empty.Header>
+            <Empty.Title>Get alerted for anomalies</Empty.Title>
+            <Empty.Description>Automatically monitor your projects for anomalies and get notified.</Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button>Upgrade to Observability Plus</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

@@ -1,5 +1,4 @@
-"use client"
-import { Combobox, ComboboxContent, ComboboxGroup, ComboboxInput, ComboboxItem } from "@/components/ui/combo-box"
+import { Combobox, ComboboxContent, ComboboxGroup, ComboboxInput, ComboboxItem } from "@/components/ui/combobox"
 import { Label } from "@/components/ui/field"
 
 const options = [
@@ -9,8 +8,7 @@ const options = [
     distros: [
       {
         id: "1-1",
-        name: "MX",
-        disabled: true
+        name: "MX"
       },
       {
         id: "1-2",
@@ -18,8 +16,7 @@ const options = [
       },
       {
         id: "1-3",
-        name: "Deepin",
-        disabled: true
+        name: "Deepin"
       }
     ]
   },
@@ -33,8 +30,7 @@ const options = [
       },
       {
         id: "2-2",
-        name: "KDE Neon",
-        disabled: true
+        name: "KDE Neon"
       },
       {
         id: "2-3",
@@ -52,13 +48,11 @@ const options = [
       },
       {
         id: "3-2",
-        name: "Alma",
-        disabled: true
+        name: "Alma"
       },
       {
         id: "3-3",
-        name: "Nobara",
-        disabled: true
+        name: "Nobara"
       }
     ]
   },
@@ -68,13 +62,11 @@ const options = [
     distros: [
       {
         id: "4-1",
-        name: "Endeavour",
-        disabled: true
+        name: "Endeavour"
       },
       {
         id: "4-2",
-        name: "Garuda",
-        disabled: true
+        name: "Garuda"
       },
       {
         id: "4-3",
@@ -84,19 +76,15 @@ const options = [
   }
 ]
 
-export default function ComboboxDisabledOption() {
+export default function ComboboxGroupDemo() {
   return (
     <Combobox>
-      <Label>Comobox option disabled</Label>
+      <Label>Combobox option Group</Label>
       <ComboboxInput placeholder="Choose a distro" />
       <ComboboxContent items={options}>
         {(option) => (
           <ComboboxGroup items={option.distros} title={option.name}>
-            {(option) => (
-              <ComboboxItem id={option.id} isDisabled={option.disabled}>
-                {option.name}
-              </ComboboxItem>
-            )}
+            {(option) => <ComboboxItem>{option.name}</ComboboxItem>}
           </ComboboxGroup>
         )}
       </ComboboxContent>

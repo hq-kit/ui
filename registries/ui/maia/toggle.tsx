@@ -1,7 +1,8 @@
 "use client"
 
 import type { Ref } from "react"
-import { composeRenderProps, type ToggleButtonProps, ToggleButton as TogglePrimitive } from "react-aria-components"
+import { composeRenderProps } from "react-aria-components/composeRenderProps"
+import { ToggleButton as RACToggle, type ToggleButtonProps } from "react-aria-components/ToggleButton"
 import { tv, type VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 
@@ -24,19 +25,17 @@ const toggleVariants = tv({
   }
 })
 
-function Toggle({
+const Toggle = ({
   className,
   variant = "default",
   size = "default",
   ...props
-}: ToggleButtonProps & VariantProps<typeof toggleVariants> & { ref?: Ref<HTMLButtonElement> }) {
-  return (
-    <TogglePrimitive
-      className={composeRenderProps(className, (className) => cn(toggleVariants({ variant, size, className })))}
-      data-slot="toggle"
-      {...props}
-    />
-  )
-}
+}: ToggleButtonProps & VariantProps<typeof toggleVariants> & { ref?: Ref<HTMLButtonElement> }) => (
+  <RACToggle
+    className={composeRenderProps(className, (className) => cn(toggleVariants({ variant, size, className })))}
+    data-slot="toggle"
+    {...props}
+  />
+)
 
 export { Toggle, toggleVariants }

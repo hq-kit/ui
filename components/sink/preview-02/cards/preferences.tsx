@@ -1,18 +1,18 @@
 "use client"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Description, Field, FieldGroup, Label, Separator } from "@/components/ui/field"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 
 export function Preferences() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Preferences</CardTitle>
-        <CardDescription>Manage your account settings and notifications.</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Preferences</Card.Title>
+        <Card.Description>Manage your account settings and notifications.</Card.Description>
+        <Card.Action>
           <Button className="bg-muted" size="icon-sm" variant="ghost">
             <IconPlaceholder
               hugeicons="Cancel01Icon"
@@ -22,24 +22,24 @@ export function Preferences() {
               tabler="IconX"
             />
           </Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
           <Field>
             <Label htmlFor="default-currency">Default Currency</Label>
             <Select defaultValue="usd">
-              <SelectTrigger className="w-full" id="default-currency">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem id="usd">USD — United States Dollar</SelectItem>
-                  <SelectItem id="eur">EUR — Euro</SelectItem>
-                  <SelectItem id="gbp">GBP — British Pound</SelectItem>
-                  <SelectItem id="jpy">JPY — Japanese Yen</SelectItem>
-                </SelectGroup>
-              </SelectContent>
+              <Select.Trigger className="w-full" id="default-currency">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item id="usd">USD — United States Dollar</Select.Item>
+                  <Select.Item id="eur">EUR — Euro</Select.Item>
+                  <Select.Item id="gbp">GBP — British Pound</Select.Item>
+                  <Select.Item id="jpy">JPY — Japanese Yen</Select.Item>
+                </Select.Group>
+              </Select.Content>
             </Select>
           </Field>
           <Separator className="-my-4 style-sera:hidden" />
@@ -53,11 +53,11 @@ export function Preferences() {
             <Description>Monthly royalty reports and distribution updates</Description>
           </Switch>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button variant="outline">Reset</Button>
         <Button className="ml-auto">Save Preferences</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

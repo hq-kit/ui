@@ -1,23 +1,25 @@
 "use client"
-import Preview01 from "@/components/sink/preview"
-import Preview02 from "@/components/sink/preview-02"
-import { Tabs } from "@/components/ui/tabs"
 
-export default function Sink() {
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
+
+const Preview1 = dynamic(() => import("./preview/index"), { ssr: false })
+const Preview2 = dynamic(() => import("./preview-02/index"), { ssr: false })
+
+export default function Sink({ component }: { component: string }) {
   return (
-    <Tabs className="mt-4">
-      <Tabs.List className="w-full">
-        <Tabs.Trigger id="1">Preview 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Preview 2</Tabs.Trigger>
-      </Tabs.List>
-      <Tabs.Contents>
-        <Tabs.Content id="1">
-          <Preview01 />
-        </Tabs.Content>
-        <Tabs.Content id="2">
-          <Preview02 />
-        </Tabs.Content>
-      </Tabs.Contents>
-    </Tabs>
+    <Suspense fallback={<Skeleton className="min-h-svh w-full" />}>
+      {(() => {
+        switch (component) {
+          case "preview-1":
+            return <Preview1 />
+          case "preview-2":
+            return <Preview2 />
+          default:
+            return <Preview1 />
+        }
+      })()}
+    </Suspense>
   )
 }

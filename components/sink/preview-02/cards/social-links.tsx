@@ -1,21 +1,22 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input"
+import { Card } from "@/components/ui/card"
+import { FieldGroup, Label } from "@/components/ui/field"
+import { InputGroup } from "@/components/ui/input"
+import { TextField } from "@/components/ui/text-field"
 
 export function SocialLinks() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Social Links</CardTitle>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Social Links</Card.Title>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="spotify-url">Spotify Artist URL</Label>
+          <TextField defaultValue="spotify.com/artist/3j...2k">
+            <Label>Spotify Artist URL</Label>
             <InputGroup>
-              <InputGroupAddon>
+              <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="PlusSignCircleIcon"
                   lucide="CirclePlusIcon"
@@ -23,14 +24,14 @@ export function SocialLinks() {
                   remixicon="RiAddCircleLine"
                   tabler="IconCirclePlus"
                 />
-              </InputGroupAddon>
-              <InputGroupInput defaultValue="spotify.com/artist/3j...2k" id="spotify-url" />
+              </InputGroup.Addon>
+              <InputGroup.Input />
             </InputGroup>
-          </Field>
-          <Field>
-            <Label htmlFor="instagram-handle">Instagram Handle</Label>
+          </TextField>
+          <TextField defaultValue="@julianduryea_music">
+            <Label>Instagram Handle</Label>
             <InputGroup>
-              <InputGroupAddon>
+              <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="Camera01Icon"
                   lucide="CameraIcon"
@@ -38,14 +39,14 @@ export function SocialLinks() {
                   remixicon="RiCameraLine"
                   tabler="IconCamera"
                 />
-              </InputGroupAddon>
-              <InputGroupInput defaultValue="@julianduryea_music" id="instagram-handle" />
+              </InputGroup.Addon>
+              <InputGroup.Input />
             </InputGroup>
-          </Field>
-          <Field>
-            <Label htmlFor="soundcloud-url">SoundCloud URL</Label>
+          </TextField>
+          <TextField>
+            <Label>SoundCloud URL</Label>
             <InputGroup>
-              <InputGroupAddon>
+              <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="CloudUploadIcon"
                   lucide="CloudIcon"
@@ -53,14 +54,14 @@ export function SocialLinks() {
                   remixicon="RiCloudLine"
                   tabler="IconCloud"
                 />
-              </InputGroupAddon>
-              <InputGroupInput id="soundcloud-url" placeholder="soundcloud.com/username" />
+              </InputGroup.Addon>
+              <InputGroup.Input placeholder="soundcloud.com/username" />
             </InputGroup>
-          </Field>
-          <Field>
-            <Label htmlFor="website-url">Website</Label>
+          </TextField>
+          <TextField>
+            <Label>Website</Label>
             <InputGroup>
-              <InputGroupAddon>
+              <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="Globe02Icon"
                   lucide="GlobeIcon"
@@ -68,18 +69,18 @@ export function SocialLinks() {
                   remixicon="RiGlobalLine"
                   tabler="IconWorld"
                 />
-              </InputGroupAddon>
-              <InputGroupInput id="website-url" placeholder="https://yoursite.com" />
+              </InputGroup.Addon>
+              <InputGroup.Input placeholder="https://yoursite.com" />
             </InputGroup>
-          </Field>
+          </TextField>
         </FieldGroup>
-      </CardContent>
-      <CardFooter className="justify-end style-sera:justify-center gap-2">
+      </Card.Content>
+      <Card.Footer className="justify-end style-sera:justify-center gap-2">
         <Button className="style-sera:flex-1" variant="secondary">
           Discard
         </Button>
         <Button className="style-sera:flex-1">Save Changes</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

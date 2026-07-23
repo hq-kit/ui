@@ -1,0 +1,155 @@
+:root {
+    /* Background putih standar Bootstrap (#FFFFFF) */
+    --background: oklch(1 0 0);
+    /* Teks utama Bootstrap (#212529) */
+    --foreground: oklch(0.25 0.01 255);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.25 0.01 255);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.25 0.01 255);
+
+    /* Bootstrap Primary Blue (#0d6efd) */
+    --primary: oklch(0.54 0.17 256);
+    --primary-foreground: oklch(1 0 0);
+
+    /* Bootstrap Secondary (#6c757d) */
+    --secondary: oklch(0.55 0.01 255);
+    --secondary-foreground: oklch(1 0 0);
+
+    /* Background abu-abu muda untuk elemen muted (#f8f9fa) */
+    --muted: oklch(0.98 0 0);
+    --muted-foreground: oklch(0.55 0.01 255);
+
+    /* Aksen abu-abu muda untuk hover */
+    --accent: oklch(0.98 0 0);
+    --accent-foreground: oklch(0.25 0.01 255);
+
+    /* Bootstrap Danger Red (#dc3545) */
+    --destructive: oklch(0.54 0.18 25);
+    --destructive-foreground: oklch(1 0 0);
+
+    /* Border dan Input standar Bootstrap (#dee2e6) */
+    --border: oklch(0.90 0.01 255);
+    --input: oklch(0.90 0.01 255);
+
+    /* Ring fokus Bootstrap (Primary Blue dengan opacity 25%) */
+    --ring: oklch(0.54 0.17 256 / 25%);
+
+    /* Chart menggunakan palet warna standar Bootstrap (Primary, Success, Warning, Danger, Info) */
+    --chart-1: oklch(0.54 0.17 256);
+    --chart-2: oklch(0.55 0.14 150);
+    --chart-3: oklch(0.82 0.14 85);
+    --chart-4: oklch(0.54 0.18 25);
+    --chart-5: oklch(0.75 0.12 215);
+
+    --sidebar: oklch(0.98 0 0);
+    --sidebar-foreground: oklch(0.25 0.01 255);
+    --sidebar-primary: oklch(0.54 0.17 256);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.90 0.01 255);
+    --sidebar-accent-foreground: oklch(0.25 0.01 255);
+    --sidebar-border: oklch(0.90 0.01 255);
+    --sidebar-ring: oklch(0.54 0.17 256 / 25%);
+
+    --font-sans: Roboto, sans-serif;
+    --font-mono: "Fira Code", monospace;
+
+    --radius: 0.375rem;
+}
+
+.dark {
+    /* Background standar Bootstrap 5.3 Dark Mode (#212529) */
+    --background: oklch(0.25 0.01 255);
+    /* Teks putih terang (#f8f9fa) */
+    --foreground: oklch(0.98 0 0);
+
+    /* Latar kartu sedikit lebih terang dari background utama (#2b3035) */
+    --card: oklch(0.29 0.01 255);
+    --card-foreground: oklch(0.98 0 0);
+
+    --popover: oklch(0.29 0.01 255);
+    --popover-foreground: oklch(0.98 0 0);
+
+    /* Primary tetap dipertahankan, atau sedikit disesuaikan untuk kontras */
+    --primary: oklch(0.54 0.17 256);
+    --primary-foreground: oklch(1 0 0);
+
+    /* Dark Secondary (#343a40) */
+    --secondary: oklch(0.32 0.01 255);
+    --secondary-foreground: oklch(0.98 0 0);
+
+    --muted: oklch(0.32 0.01 255);
+    /* Teks muted abu-abu di dark mode (#adb5bd) */
+    --muted-foreground: oklch(0.72 0.01 255);
+
+    --accent: oklch(0.32 0.01 255);
+    --accent-foreground: oklch(0.98 0 0);
+
+    /* Danger versi Dark Mode yang lebih lembut */
+    --destructive: oklch(0.65 0.18 25);
+    --destructive-foreground: oklch(1 0 0);
+
+    /* Border Dark Mode Bootstrap (#495057) */
+    --border: oklch(0.40 0.01 255);
+    --input: oklch(0.40 0.01 255);
+    --ring: oklch(0.54 0.17 256 / 25%);
+
+    --chart-1: oklch(0.65 0.15 256);
+    --chart-2: oklch(0.65 0.14 150);
+    --chart-3: oklch(0.85 0.12 85);
+    --chart-4: oklch(0.65 0.18 25);
+    --chart-5: oklch(0.80 0.10 215);
+
+    --sidebar: oklch(0.25 0.01 255);
+    --sidebar-foreground: oklch(0.98 0 0);
+    --sidebar-primary: oklch(0.54 0.17 256);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.32 0.01 255);
+    --sidebar-accent-foreground: oklch(0.98 0 0);
+    --sidebar-border: oklch(0.40 0.01 255);
+    --sidebar-ring: oklch(0.54 0.17 256 / 25%);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+
+    --radius-sm: calc(var(--radius) - 2px);
+    --radius-md: var(--radius);
+    --radius-lg: calc(var(--radius) + 2px);
+    --radius-xl: calc(var(--radius) + 6px);
+}

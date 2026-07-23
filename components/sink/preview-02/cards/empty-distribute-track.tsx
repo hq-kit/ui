@@ -1,14 +1,14 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
 
 export function EmptyDistributeTrack() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="p-4">
-          <EmptyMedia variant="icon">
+          <Empty.Media variant="icon">
             <IconPlaceholder
               hugeicons="Add01Icon"
               lucide="PlusIcon"
@@ -16,18 +16,18 @@ export function EmptyDistributeTrack() {
               remixicon="RiAddLine"
               tabler="IconPlus"
             />
-          </EmptyMedia>
-          <EmptyHeader>
-            <EmptyTitle>Distribute Track</EmptyTitle>
-            <EmptyDescription>
+          </Empty.Media>
+          <Empty.Header>
+            <Empty.Title>Distribute Track</Empty.Title>
+            <Empty.Description>
               Upload your first master to start reaching listeners on Spotify, Apple Music, and more.
-            </EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+            </Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <Button>Create Release</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

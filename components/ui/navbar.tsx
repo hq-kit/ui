@@ -34,7 +34,7 @@ type NavbarContextProps = {
 
 const NavbarContext = createContext<NavbarContextProps | null>(null)
 
-function useNavbar() {
+const useNavbar = () => {
   const context = useContext(NavbarContext)
   if (!context) {
     throw new Error("useNavbar must be used within a NavbarProvider.")
@@ -109,7 +109,7 @@ const NavbarProvider = ({
   )
 }
 
-function Navbar({
+const Navbar = ({
   variant = "navbar",
   fluid = false,
   container = false,
@@ -122,7 +122,7 @@ function Navbar({
   sticky?: boolean
   fluid?: boolean
   container?: boolean
-}) {
+}) => {
   const { isMobile } = useNavbar()
   const [visible, setVisible] = useState(true)
 

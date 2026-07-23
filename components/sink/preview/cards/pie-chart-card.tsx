@@ -2,7 +2,7 @@
 
 import { Label, Pie, PieChart } from "recharts"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import {
   type ChartConfig,
   ChartContainer,
@@ -50,14 +50,14 @@ export function PieChartCard() {
 
   return (
     <Card>
-      <CardHeader className="pb-0">
-        <CardTitle>Browser Share</CardTitle>
-        <CardDescription>January - June 2026</CardDescription>
-        <CardAction>
+      <Card.Header className="pb-0">
+        <Card.Title>Browser Share</Card.Title>
+        <Card.Description>January - June 2026</Card.Description>
+        <Card.Action>
           <Badge variant="outline">{topBrowserLabel}</Badge>
-        </CardAction>
-      </CardHeader>
-      <CardContent className="pt-0">
+        </Card.Action>
+      </Card.Header>
+      <Card.Content className="pt-0">
         <ChartContainer className="mx-auto aspect-square max-h-47.5" config={pieChartConfig}>
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
@@ -82,14 +82,14 @@ export function PieChartCard() {
             <ChartLegend className="translate-y-2" content={<ChartLegendContent nameKey="browser" />} />
           </PieChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col items-stretch gap-2">
+      </Card.Content>
+      <Card.Footer className="flex-col items-stretch gap-2">
         <div className="flex items-center text-xs">
           <span className="font-medium">{topBrowserLabel}</span>
           <span className="ml-auto text-muted-foreground tabular-nums">{topBrowserShare}%</span>
         </div>
         <Progress className="**:data-[slot=progress-indicator]:bg-chart-3" value={topBrowserShare} />
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

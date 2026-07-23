@@ -7,7 +7,7 @@ import { previews } from "@/components/samples/generated/previews"
 import { useStyle } from "@/components/style-provider"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import { CLI } from "./cli"
 import { Code } from "./code-client"
@@ -69,7 +69,7 @@ export function Demo({
             <DialogHeader>
               <DialogTitle>{component.split("/").pop()}</DialogTitle>
             </DialogHeader>
-            <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
+            <DialogBody>
               <div className="mb-2 space-y-2">
                 <h3 className="font-medium text-sm">CLI</h3>
                 <CLI command="add" items={`${component.split("/").pop()}`} />
@@ -82,7 +82,7 @@ export function Demo({
                   <div className="cn-skeleton h-64 w-full animate-pulse border" />
                 )}
               </div>
-            </div>
+            </DialogBody>
           </DialogContent>
         </Dialog>
       </div>

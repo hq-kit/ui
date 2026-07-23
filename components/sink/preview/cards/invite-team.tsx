@@ -2,38 +2,41 @@
 
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, Label } from "@/components/ui/field"
-import { Input, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/field"
+import { Input, InputGroup } from "@/components/ui/input"
+import { Select } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { TextField } from "@/components/ui/text-field"
 
 export function InviteTeam() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Invite Team</CardTitle>
-        <CardDescription>Add members to your workspace</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <Card.Header>
+        <Card.Title>Invite Team</Card.Title>
+        <Card.Description>Add members to your workspace</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <div className="flex flex-col gap-3">
           {[
             { email: "alex@example.com", role: "Editor" },
             { email: "sam@example.com", role: "Viewer" }
           ].map((invite) => (
             <div className="flex items-center gap-2" key={invite.email}>
-              <Input className="flex-1" defaultValue={invite.email} />
-              <Select defaultValue={invite.role.toLowerCase()}>
-                <SelectTrigger className="w-24">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem id="admin">Admin</SelectItem>
-                    <SelectItem id="editor">Editor</SelectItem>
-                    <SelectItem id="viewer">Viewer</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
+              <TextField aria-label="Email" className="flex-1" defaultValue={invite.email}>
+                <Input />
+              </TextField>
+              <Select aria-label="Role" className="w-24" defaultValue={invite.role.toLowerCase()}>
+                <Select.Trigger>
+                  <Select.Value />
+                </Select.Trigger>
+                <Select.Content placement="end">
+                  <Select.Group>
+                    <Select.Item id="admin">Admin</Select.Item>
+                    <Select.Item id="editor">Editor</Select.Item>
+                    <Select.Item id="viewer">Viewer</Select.Item>
+                  </Select.Group>
+                </Select.Content>
               </Select>
             </div>
           ))}
@@ -50,12 +53,12 @@ export function InviteTeam() {
           Add another
         </Button>
         <Separator />
-        <Field>
-          <Label htmlFor="invite-link">Or share invite link</Label>
+        <TextField defaultValue="https://app.co/invite/x8f2k" isReadOnly>
+          <Label>Or share invite link</Label>
           <InputGroup>
-            <InputGroupInput defaultValue="https://app.co/invite/x8f2k" id="invite-link" readOnly />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton aria-label="Copy link" size="icon-xs">
+            <InputGroup.Input />
+            <InputGroup.Addon align="inline-end">
+              <InputGroup.Button aria-label="Copy link" size="icon-xs">
                 <IconPlaceholder
                   hugeicons="Copy01Icon"
                   lucide="CopyIcon"
@@ -63,14 +66,14 @@ export function InviteTeam() {
                   remixicon="RiFileCopyLine"
                   tabler="IconCopy"
                 />
-              </InputGroupButton>
-            </InputGroupAddon>
+              </InputGroup.Button>
+            </InputGroup.Addon>
           </InputGroup>
-        </Field>
-      </CardContent>
-      <CardFooter>
+        </TextField>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">Send Invites</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -3,7 +3,7 @@
 import { Area, AreaChart } from "recharts"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const chartData = [
@@ -25,17 +25,17 @@ const chartConfig = {
 export function AnalyticsCard() {
   return (
     <Card className="mx-auto w-full max-w-sm data-[size=sm]:pb-0" size="sm">
-      <CardHeader>
-        <CardTitle>Analytics</CardTitle>
-        <CardDescription>
+      <Card.Header>
+        <Card.Title>Analytics</Card.Title>
+        <Card.Description>
           418.2K Visitors <Badge>+10%</Badge>
-        </CardDescription>
-        <CardAction>
+        </Card.Description>
+        <Card.Action>
           <Button size="sm" variant="outline">
             View Analytics
           </Button>
-        </CardAction>
-      </CardHeader>
+        </Card.Action>
+      </Card.Header>
       <ChartContainer className="aspect-[1/0.35]" config={chartConfig}>
         <AreaChart
           accessibilityLayer

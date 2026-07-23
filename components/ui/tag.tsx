@@ -134,14 +134,14 @@ const TagField = ({
     return () => form.removeEventListener("submit", onSubmit)
   }, [isRequired, list.length, errorText])
 
-  function handleKeyDown(e: KeyboardEvent) {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" || e.key === "," || e.key === ";") {
       e.preventDefault()
       addTag()
     }
   }
 
-  function addTag() {
+  const addTag = () => {
     if (selection === "all") return
     const next = new Set<Key>(Array.from(selection))
     inputValue.split(splitPattern).forEach((raw) => {
@@ -158,7 +158,7 @@ const TagField = ({
     setTouched(true)
   }
 
-  function removeKeys(keys: Selection) {
+  const removeKeys = (keys: Selection) => {
     if (selection === "all") return
     const next = new Set<Key>(Array.from(selection))
     if (keys !== "all") {
@@ -209,5 +209,9 @@ const TagField = ({
     </div>
   )
 }
+
+Tag.Group = TagGroup
+Tag.List = TagList
+Tag.Field = TagField
 
 export { Tag, TagField, TagGroup, TagList }

@@ -1,86 +1,81 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
+import { FieldGroup, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
+import { TextField } from "@/components/ui/text-field"
 
 export function ShippingAddress() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Shipping Address</CardTitle>
-        <CardDescription>Where should we deliver?</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Shipping Address</Card.Title>
+        <Card.Description>Where should we deliver?</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="shipping-street">Street address</Label>
-            <Input id="shipping-street" placeholder="123 Main Street" />
-          </Field>
-          <Field>
-            <Label htmlFor="shipping-apt">Apt / Suite</Label>
-            <Input id="shipping-apt" placeholder="Apt 4B" />
-          </Field>
+          <TextField>
+            <Label>Street address</Label>
+            <Input placeholder="123 Main Street" />
+          </TextField>
+          <TextField>
+            <Label>Apt / Suite</Label>
+            <Input placeholder="Apt 4B" />
+          </TextField>
           <FieldGroup className="grid grid-cols-2">
-            <Field>
-              <Label htmlFor="shipping-city">City</Label>
-              <Input id="shipping-city" placeholder="San Francisco" />
-            </Field>
-            <Field>
-              <Label htmlFor="shipping-state">State</Label>
-              <Select defaultValue="CA">
-                <SelectTrigger className="w-full" id="shipping-state">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem id="CA">California</SelectItem>
-                    <SelectItem id="NY">New York</SelectItem>
-                    <SelectItem id="TX">Texas</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </Field>
+            <TextField>
+              <Label>City</Label>
+              <Input placeholder="San Francisco" />
+            </TextField>
+            <Select defaultValue="CA">
+              <Label>State</Label>
+              <Select.Trigger className="w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item id="CA">California</Select.Item>
+                  <Select.Item id="NY">New York</Select.Item>
+                  <Select.Item id="TX">Texas</Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select>
           </FieldGroup>
           <FieldGroup className="grid grid-cols-2">
-            <Field>
-              <Label htmlFor="shipping-zip">ZIP Code</Label>
-              <Input id="shipping-zip" placeholder="94102" />
-            </Field>
-            <Field>
-              <Label htmlFor="shipping-country">Country</Label>
-              <Select defaultValue="US">
-                <SelectTrigger className="w-full" id="shipping-country">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem id="US">United States</SelectItem>
-                    <SelectItem id="CA">Canada</SelectItem>
-                    <SelectItem id="UK">United Kingdom</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </Field>
+            <TextField>
+              <Label>ZIP Code</Label>
+              <Input placeholder="94102" />
+            </TextField>
+            <Select defaultValue="US">
+              <Label>Country</Label>
+              <Select.Trigger className="w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item id="US">United States</Select.Item>
+                  <Select.Item id="CA">Canada</Select.Item>
+                  <Select.Item id="UK">United Kingdom</Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select>
           </FieldGroup>
-          <Field orientation="horizontal">
-            <Checkbox defaultSelected id="shipping-save">
-              Save as default address
-            </Checkbox>
-          </Field>
+          <Checkbox defaultSelected id="shipping-save">
+            Save as default address
+          </Checkbox>
         </FieldGroup>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button size="sm" variant="outline">
           Cancel
         </Button>
         <Button className="ml-auto" size="sm">
           Save Address
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

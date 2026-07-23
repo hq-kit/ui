@@ -2,139 +2,114 @@
 
 import type { ComponentProps, ReactNode } from "react"
 import {
-  Dialog as AlertDialogPrimitive,
-  DialogTrigger as AlertDialogTriggerPrimitive,
-  type DialogTriggerProps as AlertDialogTriggerPrimitiveProps,
+  Dialog,
+  DialogTrigger,
+  type DialogTriggerProps,
   Heading,
-  ModalOverlay as ModalOverlayPrimitive,
-  type ModalOverlayProps as ModalOverlayPrimitiveProps,
-  Modal as ModalPrimitive
-} from "react-aria-components"
+  Modal,
+  ModalOverlay,
+  type ModalOverlayProps
+} from "react-aria-components/Modal"
 import { cn } from "@/lib/utils"
 import { Button } from "./button"
 
-function AlertDialog({ ...props }: AlertDialogTriggerPrimitiveProps) {
-  return <AlertDialogTriggerPrimitive data-slot="alert-dialog-trigger" {...props} />
-}
+const AlertDialog = ({ ...props }: DialogTriggerProps) => <DialogTrigger data-slot="alert-dialog-trigger" {...props} />
 
-function AlertDialogOverlay({
+const AlertDialogOverlay = ({
   className,
   children,
   ...props
-}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> & {
+}: Omit<ModalOverlayProps, "className" | "children"> & {
   className?: string
   children: ReactNode
-}) {
-  return (
-    <ModalOverlayPrimitive
-      className={cn("cn-alert-dialog-overlay-aria fixed inset-0 isolate z-50", className)}
-      data-slot="alert-dialog-overlay"
-      {...props}
-    >
-      {children}
-    </ModalOverlayPrimitive>
-  )
-}
+}) => (
+  <ModalOverlay
+    className={cn("cn-alert-dialog-overlay-aria fixed inset-0 isolate z-50", className)}
+    data-slot="alert-dialog-overlay"
+    {...props}
+  >
+    {children}
+  </ModalOverlay>
+)
 
-function AlertDialogContent({
+const AlertDialogContent = ({
   className,
   size = "default",
   children,
   ...props
-}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
-  Pick<ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
+}: Omit<ModalOverlayProps, "className" | "children"> &
+  Pick<ComponentProps<typeof Modal>, "isDismissable"> & {
     className?: string
     size?: "default" | "sm"
     children: ReactNode
-  }) {
-  return (
-    <AlertDialogOverlay {...props}>
-      <ModalPrimitive
-        className={cn(
-          "cn-alert-dialog-content-aria group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
-          className
-        )}
-        data-size={size}
-        data-slot="alert-dialog-content"
-      >
-        <AlertDialogPrimitive
-          className="gap-[inherit] outline-none [display:inherit]"
-          data-slot="alert-dialog"
-          role="alertdialog"
-        >
-          {children}
-        </AlertDialogPrimitive>
-      </ModalPrimitive>
-    </AlertDialogOverlay>
-  )
-}
-
-function AlertDialogHeader({ className, ...props }: ComponentProps<"div">) {
-  return <div className={cn("cn-alert-dialog-header", className)} data-slot="alert-dialog-header" {...props} />
-}
-
-function AlertDialogFooter({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
+  }) => (
+  <AlertDialogOverlay {...props}>
+    <Modal
       className={cn(
-        "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
+        "cn-alert-dialog-content-aria group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
         className
       )}
-      data-slot="alert-dialog-footer"
-      {...props}
-    />
-  )
-}
+      data-size={size}
+      data-slot="alert-dialog-content"
+    >
+      <Dialog className="gap-[inherit] outline-none [display:inherit]" data-slot="alert-dialog" role="alertdialog">
+        {children}
+      </Dialog>
+    </Modal>
+  </AlertDialogOverlay>
+)
 
-function AlertDialogMedia({ className, ...props }: ComponentProps<"div">) {
-  return <div className={cn("cn-alert-dialog-media", className)} data-slot="alert-dialog-media" {...props} />
-}
+const AlertDialogHeader = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-alert-dialog-header", className)} data-slot="alert-dialog-header" {...props} />
+)
 
-function AlertDialogTitle({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) {
-  return (
-    <Heading
-      className={cn("cn-alert-dialog-title cn-font-heading", className)}
-      data-slot="alert-dialog-title"
-      slot="title"
-      {...props}
-    />
-  )
-}
+const AlertDialogFooter = ({ className, ...props }: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
+      className
+    )}
+    data-slot="alert-dialog-footer"
+    {...props}
+  />
+)
 
-function AlertDialogDescription({ className, ...props }: Omit<ComponentProps<"div">, "slot">) {
-  return (
-    <div className={cn("cn-alert-dialog-description", className)} data-slot="alert-dialog-description" {...props} />
-  )
-}
+const AlertDialogMedia = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={cn("cn-alert-dialog-media", className)} data-slot="alert-dialog-media" {...props} />
+)
 
-function AlertDialogAction({ className, ...props }: ComponentProps<typeof Button>) {
-  return (
-    <Button
-      className={cn("cn-alert-dialog-action", className)}
-      data-slot="alert-dialog-action"
-      slot="close"
-      {...props}
-    />
-  )
-}
+const AlertDialogTitle = ({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) => (
+  <Heading
+    className={cn("cn-alert-dialog-title cn-font-heading", className)}
+    data-slot="alert-dialog-title"
+    slot="title"
+    {...props}
+  />
+)
 
-function AlertDialogCancel({
+const AlertDialogDescription = ({ className, ...props }: Omit<ComponentProps<"div">, "slot">) => (
+  <div className={cn("cn-alert-dialog-description", className)} data-slot="alert-dialog-description" {...props} />
+)
+
+const AlertDialogAction = ({ className, ...props }: ComponentProps<typeof Button>) => (
+  <Button className={cn("cn-alert-dialog-action", className)} data-slot="alert-dialog-action" slot="close" {...props} />
+)
+
+const AlertDialogCancel = ({
   className,
   variant = "outline",
   size = "default",
   ...props
-}: ComponentProps<typeof Button>) {
-  return (
-    <Button
-      className={cn("cn-alert-dialog-cancel", className)}
-      data-slot="alert-dialog-cancel"
-      size={size}
-      slot="close"
-      variant={variant}
-      {...props}
-    />
-  )
-}
+}: ComponentProps<typeof Button>) => (
+  <Button
+    className={cn("cn-alert-dialog-cancel", className)}
+    data-slot="alert-dialog-cancel"
+    size={size}
+    slot="close"
+    variant={variant}
+    {...props}
+  />
+)
 
 AlertDialog.Action = AlertDialogAction
 AlertDialog.Cancel = AlertDialogCancel

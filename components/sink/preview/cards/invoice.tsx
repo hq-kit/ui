@@ -2,8 +2,8 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/ui/table"
+import { Card } from "@/components/ui/card"
+import { Table } from "@/components/ui/table"
 
 const INVOICE_ITEMS = [
   { item: "Design System License", qty: 1, unitPrice: 499 },
@@ -26,59 +26,59 @@ function formatCurrency(value: number) {
 export function Invoice() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Invoice #INV-2847</CardTitle>
-        <CardDescription>Due March 30, 2026</CardDescription>
-        <CardAction>
+      <Card.Header>
+        <Card.Title>Invoice #INV-2847</Card.Title>
+        <Card.Description>Due March 30, 2026</Card.Description>
+        <Card.Action>
           <Badge variant="secondary">Pending</Badge>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
+        </Card.Action>
+      </Card.Header>
+      <Card.Content>
         <Table>
-          <TableHeader>
-            <TableColumn isRowHeader>Item</TableColumn>
-            <TableColumn className="text-right">Qty</TableColumn>
-            <TableColumn className="text-right">Rate</TableColumn>
-            <TableColumn className="text-right">Amount</TableColumn>
-          </TableHeader>
-          <TableBody>
+          <Table.Header>
+            <Table.Column isRowHeader>Item</Table.Column>
+            <Table.Column className="text-right">Qty</Table.Column>
+            <Table.Column className="text-right">Rate</Table.Column>
+            <Table.Column className="text-right">Amount</Table.Column>
+          </Table.Header>
+          <Table.Body>
             {INVOICE_ITEMS.map((row) => (
-              <TableRow key={row.item}>
-                <TableCell>{row.item}</TableCell>
-                <TableCell className="text-right tabular-nums">{row.qty}</TableCell>
-                <TableCell className="text-right tabular-nums">{formatCurrency(row.unitPrice)}</TableCell>
-                <TableCell className="text-right tabular-nums">{formatCurrency(row.qty * row.unitPrice)}</TableCell>
-              </TableRow>
+              <Table.Row key={row.item}>
+                <Table.Cell>{row.item}</Table.Cell>
+                <Table.Cell className="text-right tabular-nums">{row.qty}</Table.Cell>
+                <Table.Cell className="text-right tabular-nums">{formatCurrency(row.unitPrice)}</Table.Cell>
+                <Table.Cell className="text-right tabular-nums">{formatCurrency(row.qty * row.unitPrice)}</Table.Cell>
+              </Table.Row>
             ))}
-            <TableRow>
-              <TableCell className="text-right" colSpan={3}>
+            <Table.Row>
+              <Table.Cell className="text-right" colSpan={3}>
                 Subtotal
-              </TableCell>
-              <TableCell className="text-right tabular-nums">{formatCurrency(subtotal)}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-right" colSpan={3}>
+              </Table.Cell>
+              <Table.Cell className="text-right tabular-nums">{formatCurrency(subtotal)}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell className="text-right" colSpan={3}>
                 Tax
-              </TableCell>
-              <TableCell className="text-right tabular-nums">$0.00</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="text-right" colSpan={3}>
+              </Table.Cell>
+              <Table.Cell className="text-right tabular-nums">$0.00</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell className="text-right" colSpan={3}>
                 Total Due
-              </TableCell>
-              <TableCell className="text-right tabular-nums">{formatCurrency(totalDue)}</TableCell>
-            </TableRow>
-          </TableBody>
+              </Table.Cell>
+              <Table.Cell className="text-right tabular-nums">{formatCurrency(totalDue)}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
         </Table>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button size="sm" variant="outline">
           Download PDF
         </Button>
         <Button className="ml-auto" size="sm">
           Pay Now
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

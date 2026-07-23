@@ -1,9 +1,8 @@
 "use client"
 
-import type * as React from "react"
-import { useEffect, useRef, useState } from "react"
+import { type HTMLAttributes, useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
 const LiveWaveform = ({
@@ -29,7 +28,7 @@ const LiveWaveform = ({
   onStreamEnd,
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
+}: HTMLAttributes<HTMLDivElement> & {
   active?: boolean
   processing?: boolean
   deviceId?: string
@@ -440,11 +439,11 @@ export function LiveWaveformCard() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Live Audio Waveform</CardTitle>
-        <CardDescription>Real-time microphone input visualization with audio reactivity</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Live Audio Waveform</Card.Title>
+        <Card.Description>Real-time microphone input visualization with audio reactivity</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <LiveWaveform
           active={active}
           barColor="gray"
@@ -456,8 +455,8 @@ export function LiveWaveformCard() {
           mode={mode}
           processing={processing}
         />
-      </CardContent>
-      <CardFooter className="gap-2">
+      </Card.Content>
+      <Card.Footer className="gap-2">
         <Button onClick={handleToggleActive} size="sm" variant={active ? "default" : "outline"}>
           {active ? "Stop" : "Start"} Listening
         </Button>
@@ -467,7 +466,7 @@ export function LiveWaveformCard() {
         <Button onClick={() => setMode(mode === "static" ? "scrolling" : "static")} size="sm" variant="outline">
           {mode === "static" ? "Static" : "Scrolling"}
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

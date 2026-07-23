@@ -58,7 +58,7 @@ const MeterIndicator = ({ className, ...props }: ComponentProps<"div">) => {
   )
 }
 
-function getMeterColor(value: number): string {
+const getMeterColor = (value: number): string => {
   if (value < 50) return "var(--color-green-600)"
   if (value < 80) return "var(--color-orange-500)"
   return "var(--destructive)"

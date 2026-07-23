@@ -1,14 +1,14 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export function LoadingCard() {
   return (
     <Card>
-      <CardHeader>
+      <Card.Header>
         <Skeleton className="h-5 w-32" />
         <Skeleton className="h-4 w-48" />
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4">
         <Skeleton className="h-32 w-full rounded-lg" />
         <div className="flex flex-col gap-2">
           <Skeleton className="h-4 w-full" />
@@ -19,7 +19,7 @@ export function LoadingCard() {
           <Skeleton className="h-9 flex-1 rounded-md" />
           <Skeleton className="h-9 flex-1 rounded-md" />
         </div>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

@@ -1,9 +1,9 @@
 "use client"
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Accordion } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card } from "@/components/ui/card"
+import { Tabs } from "@/components/ui/tabs"
 
 const GENERAL_QUESTIONS = [
   {
@@ -54,10 +54,10 @@ function QuestionList({ questions }: { questions: { q: string; a: string }[] }) 
   return (
     <Accordion defaultExpandedKeys={["item-0"]}>
       {questions.map((item, index) => (
-        <AccordionItem id={`item-${index}`} key={index}>
-          <AccordionTrigger>{item.q}</AccordionTrigger>
-          <AccordionContent>{item.a}</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item id={`item-${index}`} key={index}>
+          <Accordion.Trigger>{item.q}</Accordion.Trigger>
+          <Accordion.Content>{item.a}</Accordion.Content>
+        </Accordion.Item>
       ))}
     </Accordion>
   )
@@ -66,38 +66,38 @@ function QuestionList({ questions }: { questions: { q: string; a: string }[] }) 
 export function Faq() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Tabs defaultSelectedKey="general">
-          <TabsList className="w-full">
-            <TabsTrigger className="flex-1" id="general">
+          <Tabs.List className="w-full">
+            <Tabs.Trigger className="flex-1" id="general">
               General
-            </TabsTrigger>
-            <TabsTrigger className="flex-1" id="billing">
+            </Tabs.Trigger>
+            <Tabs.Trigger className="flex-1" id="billing">
               Billing
-            </TabsTrigger>
-            <TabsTrigger className="flex-1" id="goals">
+            </Tabs.Trigger>
+            <Tabs.Trigger className="flex-1" id="goals">
               Goals
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent id="general">
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content id="general">
             <QuestionList questions={GENERAL_QUESTIONS} />
-          </TabsContent>
-          <TabsContent id="billing">
+          </Tabs.Content>
+          <Tabs.Content id="billing">
             <QuestionList questions={BILLING_QUESTIONS} />
-          </TabsContent>
-          <TabsContent id="goals">
+          </Tabs.Content>
+          <Tabs.Content id="goals">
             <QuestionList questions={GOALS_QUESTIONS} />
-          </TabsContent>
+          </Tabs.Content>
         </Tabs>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full" variant="outline">
           Contact Support
         </Button>
         <Button className="w-full" variant="link">
           Learn More
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

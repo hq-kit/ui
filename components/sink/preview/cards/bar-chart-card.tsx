@@ -3,7 +3,7 @@
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { useStyle } from "@/components/style-provider"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import {
   type ChartConfig,
   ChartContainer,
@@ -44,14 +44,14 @@ export function BarChartCard() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Traffic channels</CardTitle>
-        <CardDescription className="line-clamp-2 text-sm leading-snug">
+      <Card.Header>
+        <Card.Title className="text-lg">Traffic channels</Card.Title>
+        <Card.Description className="line-clamp-2 text-sm leading-snug">
           Monthly desktop and mobile traffic for the last six months—compare volume and mix across platforms and devices
           at a glance.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4 pt-0">
+        </Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-4 pt-0">
         <ChartContainer className="max-h-45 w-full" config={barChartConfig}>
           <BarChart accessibilityLayer data={barChartData} margin={{ left: 0, right: 0, top: 8, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -85,10 +85,10 @@ export function BarChartCard() {
             </div>
           </div>
         </div>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button className="w-full">View report</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

@@ -13,7 +13,7 @@ export default function SelectWithAvatarDemo() {
       <Select.Content items={users}>
         {(item) => (
           <Select.Item textValue={item.name}>
-            <Avatar className="size-6">
+            <Avatar className="size-5">
               <AvatarImage alt={item.name} src={item.image_url} />
               <AvatarFallback>
                 <IconUser />

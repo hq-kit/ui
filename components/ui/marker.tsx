@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Link, type LinkProps } from "./link"
 import { cn } from "@/lib/utils"
+import { Link, type LinkProps } from "./link"
 
 const markerVariants = tv({
   base: "cn-marker group/marker relative flex w-full items-center",

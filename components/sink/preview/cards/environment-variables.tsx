@@ -1,16 +1,14 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 
 export function EnvironmentVariables() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Environment Variables</CardTitle>
-        <CardDescription>Production · 8 variables</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-2">
+      <Card.Header>
+        <Card.Title>Environment Variables</Card.Title>
+        <Card.Description>Production · 8 variables</Card.Description>
+      </Card.Header>
+      <Card.Content className="flex flex-col gap-2">
         {[
           { key: "DATABASE_URL", masked: true },
           { key: "NEXT_PUBLIC_API", masked: false },
@@ -24,11 +22,11 @@ export function EnvironmentVariables() {
             <span className="ml-auto text-muted-foreground">{env.masked ? "••••••••" : "https://api.example.com"}</span>
           </div>
         ))}
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Button variant="outline">Edit</Button>
         <Button className="ml-auto">Deploy</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

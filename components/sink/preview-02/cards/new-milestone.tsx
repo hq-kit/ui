@@ -1,41 +1,42 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
+import { Card } from "@/components/ui/card"
+import { FieldGroup, Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { TextField } from "@/components/ui/text-field"
 
 export function NewMilestone() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Set a new milestone</CardTitle>
-        <CardDescription>Define your financial target and we&apos;ll help you pace your savings.</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Set a new milestone</Card.Title>
+        <Card.Description>Define your financial target and we&apos;ll help you pace your savings.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <FieldGroup>
-          <Field>
-            <Label htmlFor="goal-name">Goal Name</Label>
-            <Input id="goal-name" placeholder="e.g. New Car, Home Downpayment" />
-          </Field>
+          <TextField>
+            <Label>Goal Name</Label>
+            <Input placeholder="e.g. New Car, Home Downpayment" />
+          </TextField>
           <div className="grid grid-cols-2 gap-3">
-            <Field>
-              <Label htmlFor="target-amount">Target Amount</Label>
-              <Input defaultValue="$15,000" id="target-amount" />
-            </Field>
-            <Field>
-              <Label htmlFor="target-date">Target Date</Label>
-              <Input defaultValue="Dec 2025" id="target-date" />
-            </Field>
+            <TextField defaultValue="$15,000">
+              <Label>Target Amount</Label>
+              <Input />
+            </TextField>
+            <TextField defaultValue="Dec 2025">
+              <Label>Target Date</Label>
+              <Input />
+            </TextField>
           </div>
         </FieldGroup>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
+      </Card.Content>
+      <Card.Footer className="flex-col gap-2">
         <Button className="w-full">Create Goal</Button>
         <Button className="w-full" variant="outline">
           Cancel
         </Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }

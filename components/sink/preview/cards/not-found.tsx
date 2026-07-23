@@ -1,27 +1,25 @@
-"use client"
-
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input"
+import { Card } from "@/components/ui/card"
+import { Empty } from "@/components/ui/empty"
+import { InputGroup } from "@/components/ui/input"
 import { Kbd } from "@/components/ui/kbd"
 
 export function NotFound() {
   return (
     <Card>
-      <CardContent>
+      <Card.Content>
         <Empty className="h-72">
-          <EmptyHeader>
-            <EmptyTitle>404 - Not Found</EmptyTitle>
-            <EmptyDescription>
+          <Empty.Header>
+            <Empty.Title>404 - Not Found</Empty.Title>
+            <Empty.Description>
               The page you&apos;re looking for doesn&apos;t exist. Try searching for what you need below.
-            </EmptyDescription>
-          </EmptyHeader>
-          <EmptyContent>
+            </Empty.Description>
+          </Empty.Header>
+          <Empty.Content>
             <InputGroup className="w-3/4">
-              <InputGroupInput placeholder="Try searching for pages..." />
-              <InputGroupAddon>
+              <InputGroup.Input placeholder="Try searching for pages..." />
+              <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="Search01Icon"
                   lucide="SearchIcon"
@@ -29,15 +27,15 @@ export function NotFound() {
                   remixicon="RiSearchLine"
                   tabler="IconSearch"
                 />
-              </InputGroupAddon>
-              <InputGroupAddon align="inline-end">
+              </InputGroup.Addon>
+              <InputGroup.Addon align="inline-end">
                 <Kbd>/</Kbd>
-              </InputGroupAddon>
+              </InputGroup.Addon>
             </InputGroup>
             <Button variant="link">Go to homepage</Button>
-          </EmptyContent>
+          </Empty.Content>
         </Empty>
-      </CardContent>
+      </Card.Content>
     </Card>
   )
 }

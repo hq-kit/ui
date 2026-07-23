@@ -1,18 +1,12 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle
-} from "@/components/ui/dialog"
-import { Field, FieldGroup, Label } from "@/components/ui/field"
+import { Card } from "@/components/ui/card"
+import { Dialog } from "@/components/ui/dialog"
+import { FieldGroup, Label } from "@/components/ui/field"
 import { Input, Textarea } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
+import { TextField } from "@/components/ui/text-field"
 import { useThemeGenerator } from "@/hooks/use-theme"
 import { fontMonoFamilies } from "@/lib/fonts/mono"
 import { fontSansFamilies } from "@/lib/fonts/sans"
@@ -22,7 +16,7 @@ export function TypographySpecimen() {
 
   return (
     <Card>
-      <CardContent className="flex flex-col gap-2">
+      <Card.Content className="flex flex-col gap-2">
         <div className="font-medium text-muted-foreground text-xs uppercase">
           {fontSansFamilies.find((f) => f.value === currentStyles.light["font-sans"])?.label} -{" "}
           {fontMonoFamilies.find((f) => f.value === currentStyles.light["font-mono"])?.label}
@@ -36,62 +30,56 @@ export function TypographySpecimen() {
         <p className="text-muted-foreground text-sm leading-relaxed">
           Thoughtful spacing and cadence help paragraphs scan quickly without feeling dense.
         </p>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <Dialog>
           <Button className="w-full" variant="outline">
             Share Feedback
           </Button>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Share Feedback</DialogTitle>
-              <DialogDescription>Let us know how we can improve your experience.</DialogDescription>
-            </DialogHeader>
+          <Dialog.Content>
+            <Dialog.Header>
+              <Dialog.Title>Share Feedback</Dialog.Title>
+              <Dialog.Description>Let us know how we can improve your experience.</Dialog.Description>
+            </Dialog.Header>
             <FieldGroup>
               <div className="grid grid-cols-2 gap-3">
-                <Field>
-                  <Label htmlFor="feedback-name">Name</Label>
-                  <Input id="feedback-name" placeholder="Your name" />
-                </Field>
-                <Field>
-                  <Label htmlFor="feedback-email">Email</Label>
-                  <Input id="feedback-email" placeholder="you@example.com" type="email" />
-                </Field>
+                <TextField>
+                  <Label>Name</Label>
+                  <Input placeholder="Your name" />
+                </TextField>
+                <TextField>
+                  <Label>Email</Label>
+                  <Input placeholder="you@example.com" type="email" />
+                </TextField>
               </div>
-              <Field>
-                <Label htmlFor="feedback-category">Category</Label>
-                <Select defaultValue="general">
-                  <SelectTrigger className="w-full" id="feedback-category">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem id="general">General</SelectItem>
-                      <SelectItem id="bug">Bug Report</SelectItem>
-                      <SelectItem id="feature">Feature Request</SelectItem>
-                      <SelectItem id="improvement">Improvement</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </Field>
-              <Field>
-                <Label htmlFor="feedback-message">Message</Label>
-                <Textarea
-                  className="min-h-24 resize-none"
-                  id="feedback-message"
-                  placeholder="Tell us what's on your mind..."
-                />
-              </Field>
+              <Select defaultValue="general">
+                <Label>Category</Label>
+                <Select.Trigger className="w-full">
+                  <Select.Value />
+                </Select.Trigger>
+                <Select.Content>
+                  <Select.Group>
+                    <Select.Item id="general">General</Select.Item>
+                    <Select.Item id="bug">Bug Report</Select.Item>
+                    <Select.Item id="feature">Feature Request</Select.Item>
+                    <Select.Item id="improvement">Improvement</Select.Item>
+                  </Select.Group>
+                </Select.Content>
+              </Select>
+              <TextField>
+                <Label>Message</Label>
+                <Textarea className="min-h-24 resize-none" placeholder="Tell us what's on your mind..." />
+              </TextField>
             </FieldGroup>
-            <DialogFooter>
+            <Dialog.Footer>
               <Button slot="close" variant="outline">
                 Cancel
               </Button>
               <Button>Submit</Button>
-            </DialogFooter>
-          </DialogContent>
+            </Dialog.Footer>
+          </Dialog.Content>
         </Dialog>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   )
 }
