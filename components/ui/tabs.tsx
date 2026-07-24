@@ -88,10 +88,7 @@ const TabsTrigger = ({ className, ...props }: TabProps) => (
 const TabsContents = <T extends object>({ className, ...props }: TabPanelsProps<T>) => (
   <RACTabPanels
     {...props}
-    className={cn(
-      "cn-tabs-content relative h-(--tab-panel-height) flex-1 outline-none motion-safe:transition-[height]",
-      className
-    )}
+    className={cn("relative h-(--tab-panel-height) flex-1 outline-none motion-safe:transition-[height]", className)}
   />
 )
 

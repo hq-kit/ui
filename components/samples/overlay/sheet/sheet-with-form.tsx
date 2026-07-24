@@ -7,7 +7,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet } from "@/components/ui/sheet"
 import { PasswordInput, TextField } from "@/components/ui/text-field"
 
 const SheetWithFormDemo = () => {
@@ -23,12 +23,12 @@ const SheetWithFormDemo = () => {
   return (
     <Sheet>
       <Button variant="outline">Sign Up</Button>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle className="text-center font-bold text-xl">Sign Up</SheetTitle>
-        </SheetHeader>
+      <Sheet.Content>
+        <Sheet.Header>
+          <Sheet.Title className="text-center font-bold text-xl">Sign Up</Sheet.Title>
+        </Sheet.Header>
         <Form onSubmit={onSubmit}>
-          <div className="space-y-4">
+          <Sheet.Body className="space-y-4">
             <TextField>
               <Label>First Name</Label>
               <Input placeholder="First name" />
@@ -53,15 +53,13 @@ const SheetWithFormDemo = () => {
               <Label>Confirm Password</Label>
               <PasswordInput placeholder="Confirm password" />
             </TextField>
-          </div>
-          <SheetFooter>
+          </Sheet.Body>
+          <Sheet.Footer>
             <Button type="submit">Create Account</Button>
-            <Button slot="close" variant="outline">
-              Close
-            </Button>
-          </SheetFooter>
+            <Sheet.Close>Close</Sheet.Close>
+          </Sheet.Footer>
         </Form>
-      </SheetContent>
+      </Sheet.Content>
     </Sheet>
   )
 }

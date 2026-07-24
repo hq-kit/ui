@@ -147,8 +147,8 @@ const TagField = ({
     inputValue.split(splitPattern).forEach((raw) => {
       const formatted = raw
         .trim()
-        .replace(/\s\s+/g)
-        .replace(/\t|\\t|\r|\\r|\n|\\n/g)
+        .replace(/\s\s+/g, "")
+        .replace(/\t|\\t|\r|\\r|\n|\\n/g, "")
       if (formatted === "") return
       const exists = Array.from(next).some((id) => String(id).toLocaleLowerCase() === formatted.toLocaleLowerCase())
       if (!exists) next.add(formatted)

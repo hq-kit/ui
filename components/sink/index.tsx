@@ -1,25 +1,27 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { Suspense } from "react"
-import { Skeleton } from "@/components/ui/skeleton"
+import { Tabs } from "@/components/ui/tabs"
 
-const Preview1 = dynamic(() => import("./preview/index"), { ssr: false })
-const Preview2 = dynamic(() => import("./preview-02/index"), { ssr: false })
-
-export default function Sink({ component }: { component: string }) {
+const Preview1 = dynamic(() => import("./preview-01"))
+const Preview2 = dynamic(() => import("./preview-02"))
+const sinks = [
+  { id: "preview-1", label: "1", component: Preview1 },
+  { id: "preview-2", label: "2", component: Preview2 }
+]
+export default function Sink() {
   return (
-    <Suspense fallback={<Skeleton className="min-h-svh w-full" />}>
-      {(() => {
-        switch (component) {
-          case "preview-1":
-            return <Preview1 />
-          case "preview-2":
-            return <Preview2 />
-          default:
-            return <Preview1 />
-        }
-      })()}
-    </Suspense>
+    <Tabs className="m-(--gap)">
+      <Tabs.List className="w-full" items={sinks}>
+        {(item) => <Tabs.Trigger>{item.label}</Tabs.Trigger>}
+      </Tabs.List>
+      {sinks.map((item) => (
+        <Tabs.Content id={item.id} key={item.id}>
+          <div className="scrollbar-fade scroll-fade-x overflow-auto p-(--gap) px-0 contain-content">
+            <item.component />
+          </div>
+        </Tabs.Content>
+      ))}
+    </Tabs>
   )
 }

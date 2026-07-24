@@ -1,11 +1,12 @@
 "use client"
 
+import type { ComponentProps } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { Button, type ButtonProps } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
+import { Tooltip } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { Tooltip } from "../ui/tooltip"
 
-interface CopyButtonProps extends ButtonProps {
+interface CopyButtonProps extends ComponentProps<typeof Button> {
   isCopied?: boolean
 }
 

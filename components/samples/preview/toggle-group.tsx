@@ -1,9 +1,8 @@
 "use client"
 
 import type { Key } from "react-aria-components"
-import type { ToggleProps } from "@/components/ui/toggle"
 import { IconBold, IconItalic, IconUnderline } from "@tabler/icons-react"
-import { useState } from "react"
+import { type ComponentProps, useState } from "react"
 import { Code } from "@/components/mdx/code-client"
 import { Label } from "@/components/ui/field"
 import { NumberField, NumberInput } from "@/components/ui/number-field"
@@ -11,6 +10,8 @@ import { Radio, RadioGroup } from "@/components/ui/radio"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+
+type ToggleProps = ComponentProps<typeof ToggleGroup>
 
 export default function ButtonPreview() {
   const [isDisabled, setIsDisabled] = useState(false)

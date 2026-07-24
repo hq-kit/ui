@@ -121,7 +121,7 @@ function transformTsxContent(content: string, classMap: ClassMap): string {
   // ── Normalize cn("") → cn(className) dan cn("", className) → cn(className)
   // Ketika seluruh class string jadi kosong setelah cleanup
   result = result.replace(/cn\("",\s*/g, "cn(") // cn("", x) → cn(x)
-  result = result.replace(/,\s*""\)/g, ")") // cn(x, "") → cn(x)
+  // result = result.replace(/,\s*""\)/g, ")") // cn(x, "") → cn(x)
   result = result.replace(/cn\(""\)/g, 'cn("")') // biarkan cn("") apa adanya (tidak bisa kita perbaiki tanpa tahu konteksnya)
   return parseAndCleanCn(result)
 }

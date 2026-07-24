@@ -45,11 +45,7 @@ const Button = ({
   size,
   children,
   ...props
-}: Omit<ButtonProps, "className"> &
-  RefAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
-    className?: string
-  }) => (
+}: ButtonProps & RefAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>) => (
   <RACButton
     className={composeRenderProps(className, (className) =>
       cn(buttonVariants({ variant, size, isPending: props.isPending, className }))
@@ -85,12 +81,11 @@ const LinkButton = ({
   variant = "default",
   size = "default",
   ...props
-}: Omit<LinkProps, "className"> &
-  VariantProps<typeof buttonVariants> & {
-    className?: string
-  }) => (
+}: LinkProps & VariantProps<typeof buttonVariants>) => (
   <Link
-    className={cn(buttonVariants({ variant, size, className }))}
+    className={composeRenderProps(className, (className) =>
+      cn(buttonVariants({ variant, size, isPending: props.isPending, className }))
+    )}
     data-size={size}
     data-slot="button"
     data-variant={variant}
@@ -100,5 +95,4 @@ const LinkButton = ({
 
 Button.Link = LinkButton
 
-export type { ButtonProps }
 export { Button, buttonVariants, LinkButton }

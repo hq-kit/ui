@@ -70,7 +70,7 @@ const CommandDialog = ({
   </Dialog>
 )
 
-const CommandInput = ({ className, ...props }: InputProps) => (
+const CommandInput = ({ className, isPending, ...props }: InputProps & { isPending?: boolean }) => (
   <SearchField
     aria-label={props.placeholder || "Search"}
     autoFocus
@@ -87,14 +87,28 @@ const CommandInput = ({ className, ...props }: InputProps) => (
         data-slot="command-input"
       />
       <InputGroupAddon>
-        <IconPlaceholder
-          className="cn-command-input-icon"
-          hugeicons="SearchIcon"
-          lucide="SearchIcon"
-          phosphor="MagnifyingGlassIcon"
-          remixicon="RiSearchLine"
-          tabler="IconSearch"
-        />
+        {isPending ? (
+          <IconPlaceholder
+            aria-label="Loading"
+            className="cn-command-input-icon animate-spin"
+            data-slot="loader"
+            hugeicons="Loading03Icon"
+            lucide="LoaderIcon"
+            phosphor="SpinnerIcon"
+            remixicon="RiLoaderLine"
+            role="status"
+            tabler="IconLoader"
+          />
+        ) : (
+          <IconPlaceholder
+            className="cn-command-input-icon"
+            hugeicons="SearchIcon"
+            lucide="SearchIcon"
+            phosphor="MagnifyingGlassIcon"
+            remixicon="RiSearchLine"
+            tabler="IconSearch"
+          />
+        )}
       </InputGroupAddon>
     </InputGroup>
   </SearchField>

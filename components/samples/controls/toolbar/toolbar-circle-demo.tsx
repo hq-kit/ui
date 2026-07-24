@@ -6,7 +6,7 @@ import { Toolbar, ToolbarGroup, ToolbarItem } from "@/components/ui/toolbar"
 export default function ToolbarCircleDemo() {
   return (
     <span data-slot="layout">
-      <Toolbar aria-label="Toolbars" isCircle>
+      <Toolbar aria-label="Toolbars">
         <ToolbarGroup aria-label="Text Formatting Options" isDisabled>
           <ToolbarItem aria-label="Bold" defaultSelected>
             <IconBold />

@@ -45,7 +45,7 @@ export default function MessageAttachmentDemo() {
               <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
             </AttachmentContent>
             <AttachmentActions>
-              <AttachmentAction aria-label="Download" size="icon-sm" title="Download" type="button" variant="secondary">
+              <AttachmentAction aria-label="Download" size="icon-sm" type="button" variant="secondary">
                 <DownloadIcon />
               </AttachmentAction>
             </AttachmentActions>

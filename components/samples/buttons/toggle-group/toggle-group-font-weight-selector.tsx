@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { Description, Field, Label } from "@/components/ui/field"
-import { type Selection, ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { type Key, ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 export default function ToggleGroupFontWeightSelector() {
-  const [fontWeight, setFontWeight] = useState<Selection>(new Set(["normal"]))
+  const [fontWeight, setFontWeight] = useState(new Set<Key>(["normal"]))
   return (
     <Field>
       <Label>Font Weight</Label>

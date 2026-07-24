@@ -15,8 +15,8 @@ export default function CommandSeparatorDemo() {
     }
   })
   return (
-    <Command inputValue={list.filterText} isPending={list.isLoading} onInputChange={list.setFilterText}>
-      <CommandInput />
+    <Command inputValue={list.filterText} onInputChange={list.setFilterText}>
+      <CommandInput isPending={list.isLoading} />
       <CommandList items={list.items}>
         {(item) => (
           <CommandItem id={item.title} key={item.title} textValue={item.title}>

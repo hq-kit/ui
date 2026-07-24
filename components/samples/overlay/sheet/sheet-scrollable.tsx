@@ -1,16 +1,18 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet } from "@/components/ui/sheet"
 
 const SheetWithScrollableContentDemo = () => {
   return (
     <Sheet>
       <Button variant="outline">Scrollable Content</Button>
-      <SheetContent side="right">
-        <SheetHeader>
-          <SheetTitle>Terms & Condition</SheetTitle>
-          <SheetDescription>Make sure read the terms and conditions before proceeding.</SheetDescription>
-        </SheetHeader>
-        <div className="space-y-1 text-sm">
+      <Sheet.Content side="right">
+        <Sheet.Header>
+          <Sheet.Title>Terms & Condition</Sheet.Title>
+          <Sheet.Description>Make sure read the terms and conditions before proceeding.</Sheet.Description>
+        </Sheet.Header>
+        <Sheet.Body className="space-y-1 text-sm">
           <p className="mb-2 font-medium">Last Updated: June 1, 2025</p>
 
           <h3>1. Introduction</h3>
@@ -101,16 +103,14 @@ const SheetWithScrollableContentDemo = () => {
           <p>If you have any questions or concerns about these Terms and Conditions, please contact us at:</p>
           <p>Email: support@example.com</p>
           <p>Phone: +1 (800) 123-4567</p>
-        </div>
-        <SheetFooter>
+        </Sheet.Body>
+        <Sheet.Footer>
           <Button slot="close" type="submit">
             Accept
           </Button>
-          <Button slot="close" variant="outline">
-            Cancel
-          </Button>
-        </SheetFooter>
-      </SheetContent>
+          <Sheet.Close>Cancel</Sheet.Close>
+        </Sheet.Footer>
+      </Sheet.Content>
     </Sheet>
   )
 }

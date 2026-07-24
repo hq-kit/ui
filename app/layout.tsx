@@ -78,12 +78,21 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect to font services */}
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
+
+        {/* Preload default fonts with swap strategy */}
+        <link
+          as="style"
+          href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
+          rel="preload"
+        />
         <link
           href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
           rel="stylesheet"
         />
+
         <title>{siteConfig.name}</title>
       </head>
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">

@@ -1,3 +1,5 @@
+"use client"
+
 import {
   IconBook,
   IconCalendar,
@@ -15,8 +17,8 @@ import {
   type TablerIcon
 } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Collapsible } from "@/components/ui/collapsible"
+import { Sheet } from "@/components/ui/sheet"
 
 type NavigationItem = {
   name: string
@@ -164,16 +166,16 @@ const NavigationMenu = ({ item, level }: { level: number; item: NavigationItem }
       className="flex flex-col gap-0 transition-[gap] data-expanded:gap-1.5"
       style={{ paddingLeft: `${level === 0 ? 0 : 1.5}rem` }}
     >
-      <CollapsibleTrigger className="flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 *:[svg]:size-4 *:[svg]:shrink-0">
+      <Collapsible.Trigger className="flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 *:[svg]:size-4 *:[svg]:shrink-0">
         {level === 0 ? <item.icon /> : <IconCircle />}
         <span className="flex-1 text-start text-sm">{item.name}</span>
         <IconChevronRight className="size-4 shrink-0 in-data-expanded:rotate-90 transition-transform" />
-      </CollapsibleTrigger>
-      <CollapsibleContent className="flex flex-col gap-1.5">
+      </Collapsible.Trigger>
+      <Collapsible.Content className="flex flex-col gap-1.5">
         {item.children.map((item) => (
           <NavigationMenu item={item} key={item.name} level={level + 1} />
         ))}
-      </CollapsibleContent>
+      </Collapsible.Content>
     </Collapsible>
   )
 }
@@ -182,16 +184,16 @@ const SheetWithNavigationMenuDemo = () => {
   return (
     <Sheet>
       <Button variant="outline">Navigation Menu</Button>
-      <SheetContent side="left">
-        <SheetHeader>
-          <SheetTitle className="pl-1">Menu</SheetTitle>
-        </SheetHeader>
-        <div className="flex flex-col gap-2.5">
+      <Sheet.Content side="left">
+        <Sheet.Header>
+          <Sheet.Title className="pl-1">Menu</Sheet.Title>
+        </Sheet.Header>
+        <Sheet.Body className="flex flex-col gap-2.5">
           {navigationMenu.map((item) => (
             <NavigationMenu item={item} key={item.name} level={0} />
           ))}
-        </div>
-      </SheetContent>
+        </Sheet.Body>
+      </Sheet.Content>
     </Sheet>
   )
 }

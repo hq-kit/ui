@@ -19,6 +19,7 @@ import { IconApp } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
+import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
 import {
@@ -27,8 +28,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 import { FieldGroup, Label } from "@/components/ui/field"
 import { Navbar, NavbarGroup, NavbarInset, NavbarMenu, NavbarMenuItem, useNavbar } from "@/components/ui/navbar"
@@ -122,7 +122,12 @@ export default function NavbarDemo() {
   const [fluidContent, setFluidContent] = useState<boolean>(false)
   return (
     <Navbar.Provider>
-      <Navbar fluid={fluidNavbar} sticky={sticky} variant={variant as "navbar" | "inset" | "floating"}>
+      <Navbar
+        container={!fluidContent}
+        fluid={fluidNavbar}
+        sticky={sticky}
+        variant={variant as "navbar" | "inset" | "floating"}
+      >
         <Navbar.Content>
           <Navbar.Header>
             <Navbar.Menu>
@@ -149,7 +154,7 @@ export default function NavbarDemo() {
           <NavUser user={user} />
         </Navbar.Actions>
       </Navbar>
-      <NavbarInset fluid={fluidContent}>
+      <NavbarInset>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <Skeleton />
@@ -258,14 +263,18 @@ const NavUser = ({
 }) => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+      <Button
+        className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+        size="icon"
+        variant="ghost"
+      >
         <Avatar className="size-8 rounded-md">
           <AvatarImage alt={user.name} src={user.avatar} />
           <AvatarFallback>
             <IconUser />
           </AvatarFallback>
         </Avatar>
-      </DropdownMenuTrigger>
+      </Button>
       <DropdownMenuContent className="min-w-56 rounded-lg" placement="bottom end">
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">

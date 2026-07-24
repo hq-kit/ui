@@ -12,13 +12,13 @@ export default function MessageActionsDemo() {
             <BubbleContent>The install failure is coming from the workspace package.</BubbleContent>
           </Bubble>
           <MessageFooter>
-            <Button aria-label="Copy" size="icon" title="Copy" variant="ghost">
+            <Button aria-label="Copy" size="icon" variant="ghost">
               <CopyIcon />
             </Button>
-            <Button aria-label="Like" size="icon" title="Like" variant="ghost">
+            <Button aria-label="Like" size="icon" variant="ghost">
               <ThumbsUpIcon />
             </Button>
-            <Button aria-label="Dislike" size="icon" title="Dislike" variant="ghost">
+            <Button aria-label="Dislike" size="icon" variant="ghost">
               <ThumbsDownIcon />
             </Button>
           </MessageFooter>
@@ -31,7 +31,7 @@ export default function MessageActionsDemo() {
           </Bubble>
           <MessageFooter className="gap-2">
             <span className="font-normal text-destructive">Failed to send</span>
-            <Button aria-label="Retry" size="icon-xs" title="Retry" variant="ghost">
+            <Button aria-label="Retry" size="icon-xs" variant="ghost">
               <RefreshCcwIcon />
             </Button>
           </MessageFooter>

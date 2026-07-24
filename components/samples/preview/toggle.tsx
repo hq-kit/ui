@@ -2,14 +2,16 @@
 
 import type { Key } from "react-aria-components"
 import { IconBrandAdobe } from "@tabler/icons-react"
-import { useState } from "react"
+import { type ComponentProps, useState } from "react"
 import { Code } from "@/components/mdx/code-client"
 import { Label } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { TextField } from "@/components/ui/text-field"
-import { Toggle, type ToggleProps } from "@/components/ui/toggle"
+import { Toggle } from "@/components/ui/toggle"
+
+type ToggleProps = ComponentProps<typeof Toggle>
 
 export default function ButtonPreview() {
   const [isDisabled, setIsDisabled] = useState(false)
