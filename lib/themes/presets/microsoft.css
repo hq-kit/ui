@@ -43,11 +43,10 @@
     --sidebar-border: oklch(0.88 0 0);
     --sidebar-ring: oklch(0.55 0.15 255 / 50%);
 
-    /* Microsoft Fonts (Segoe UI Variable untuk Windows 11) */
-    --font-sans: 'Inter';
-    --font-mono: 'Cascadia Code';
 
-    /* Border radius Windows 11 (umumnya 4px hingga 6px untuk tombol/input) */
+    --font-sans: Inter;
+    --font-mono: Cascadia Code;
+
     --radius: 0.375rem;
 }
 

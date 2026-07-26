@@ -5,10 +5,10 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { CLI } from "@/components/mdx/cli"
 import { Code } from "@/components/mdx/code-client"
 import { FileIcon } from "@/components/mdx/file-icon"
-import { useStyle } from "@/components/style-provider"
 import { Button } from "@/components/ui/button"
 import { Tabs } from "@/components/ui/tabs"
 import { type Selection, Tree, TreeItem } from "@/components/ui/tree"
+import { useStyle } from "@/hooks/use-style"
 import { cn } from "@/lib/utils"
 
 export function ManualInstall({ component }: { component: string }) {

@@ -2,11 +2,11 @@
 
 import { Bar, BarChart } from "recharts"
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { useStyle } from "@/components/style-provider"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Item } from "@/components/ui/item"
+import { useStyle } from "@/hooks/use-style"
 
 const HOLDINGS = [
   {

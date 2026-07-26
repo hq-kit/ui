@@ -18,7 +18,7 @@ const CheckboxGroup = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "grid gap-2 w-full",
+          "grid w-full gap-2",
           "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
@@ -40,7 +40,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
         {composeRenderProps(children, (children) => (
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <span
-              className="border-input dark:bg-input/30 group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:group-data-selected/field:bg-primary group-data-selected/field:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-none border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-1 aria-invalid:ring-1 [&>svg]:size-3.5 peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="peer relative flex size-4 shrink-0 items-center justify-center rounded-none border border-input outline-none transition-colors focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50 group-has-disabled/field:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary group-data-selected/field:border-primary group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:bg-input/30 dark:group-data-selected/field:bg-primary dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&>svg]:size-3.5"
               data-slot="checkbox-indicator"
               slot="control"
             >
@@ -65,7 +65,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
               <Label elementType="span">{children}</Label>
             ) : children ? (
               <div
-                className="gap-0.5 group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
+                className="group/field-content flex flex-1 flex-col gap-0.5 leading-snug *:data-[slot=field-label]:leading-snug"
                 data-slot="field-content"
               >
                 {children}

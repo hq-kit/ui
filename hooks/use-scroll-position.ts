@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import { type RefObject, useEffect, useState } from "react"
 
-export function useScrollPosition(ref: React.RefObject<HTMLElement | null>) {
+export function useScrollPosition(ref: RefObject<HTMLElement | null>) {
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {

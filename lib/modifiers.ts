@@ -1,6 +1,7 @@
 function titleCase(str: string): string {
   return str
     .replace(/-/g, " ")
+    .replace(/_/g, " ")
     .toLowerCase()
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

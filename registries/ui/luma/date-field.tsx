@@ -76,7 +76,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "bg-input/50 border-transparent focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 rounded-3xl border px-3 py-1 text-base file:h-7 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm data-focus-within:border-ring data-focus-within:ring-ring/30 data-focus-within:ring-3 flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-9 w-full min-w-0 items-center rounded-3xl border border-transparent bg-input/50 px-3 py-1 text-base outline-none transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-focus-within:border-ring data-focus-within:ring-3 data-focus-within:ring-ring/30 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
           className
         )
       )}
@@ -105,7 +105,7 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 px-3 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-9 w-full min-w-0 items-center justify-center rounded-none border-0 border-transparent bg-transparent px-3 py-1 text-base shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-sm dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}
@@ -147,7 +147,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 px-3 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-9 w-full min-w-0 items-center justify-center rounded-none border-0 border-transparent bg-transparent px-3 py-1 text-base shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-sm dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}
@@ -175,7 +175,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-transparent focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 px-3 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-9 w-full min-w-0 items-center justify-center rounded-none border-0 border-transparent bg-transparent px-3 py-1 text-base shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-sm dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}

@@ -43,8 +43,8 @@
     --sidebar-border: oklch(0.88 0 0);
     --sidebar-ring: oklch(0.55 0.16 255 / 40%);
 
-    --font-sans: 'Google Sans', sans-serif;
-    --font-mono: 'Google Sans Code', monospace;
+    --font-sans: Google Sans;
+    --font-mono: Google Sans Code;
 
     --radius: 0.5rem;
 }

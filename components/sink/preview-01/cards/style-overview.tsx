@@ -1,8 +1,8 @@
 "use client"
 
-import { useStyle } from "@/components/style-provider"
 import { Card } from "@/components/ui/card"
 import { Tooltip } from "@/components/ui/tooltip"
+import { useStyle } from "@/hooks/use-style"
 
 export function StyleOverview() {
   const { style } = useStyle()

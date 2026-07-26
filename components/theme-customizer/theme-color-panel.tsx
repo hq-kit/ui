@@ -4,11 +4,11 @@ import type { ThemeStyleProps } from "@/lib/themes/presets"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { type ColorSpace, getColorChannels } from "react-aria-components"
 import { useTheme } from "@/components/providers"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Accordion, AccordionItem } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch as Swatch } from "@/components/ui/colors"
 import { Input } from "@/components/ui/input"
-import { Popover, PopoverContent } from "@/components/ui/popover"
+import { Popover } from "@/components/ui/popover"
 import { Select } from "@/components/ui/select"
 import { useThemeGenerator } from "@/hooks/use-theme"
 import { colorFormatter } from "@/lib/themes/color-converter"
@@ -49,7 +49,7 @@ export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
           <Swatch />
           {label.replace("Foreground", "FG")}
         </Button>
-        <PopoverContent>
+        <Popover.Content>
           <div className="space-y-2">
             <Select
               aria-label="Color format"
@@ -94,7 +94,7 @@ export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
               </div>
             ) : null}
           </div>
-        </PopoverContent>
+        </Popover.Content>
       </Popover>
     </ColorPicker>
   )
@@ -119,8 +119,8 @@ const ThemeColorPanel = () => {
       <Accordion allowsMultipleExpanded className="w-full" defaultExpandedKeys={["brand"]}>
         {/* Brand Colors */}
         <AccordionItem id="brand">
-          <AccordionTrigger>Brand Colors</AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2">
+          <Accordion.Trigger>Brand Colors</Accordion.Trigger>
+          <Accordion.Content className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("primary", value)}
               label="Primary"
@@ -146,13 +146,13 @@ const ThemeColorPanel = () => {
               label="Destructive"
               value={currentTheme?.destructive || ""}
             />
-          </AccordionContent>
+          </Accordion.Content>
         </AccordionItem>
 
         {/* Base Colors */}
-        <AccordionItem id="base">
-          <AccordionTrigger>Base Colors</AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2">
+        <Accordion.Item id="base">
+          <Accordion.Trigger>Base Colors</Accordion.Trigger>
+          <Accordion.Content className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("background", value)}
               label="Background"
@@ -179,13 +179,13 @@ const ThemeColorPanel = () => {
               label="Popover Foreground"
               value={currentTheme?.["popover-foreground"] || ""}
             />
-          </AccordionContent>
-        </AccordionItem>
+          </Accordion.Content>
+        </Accordion.Item>
 
         {/* Other Colors */}
-        <AccordionItem id="other">
-          <AccordionTrigger>Other Colors</AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2">
+        <Accordion.Item id="other">
+          <Accordion.Trigger>Other Colors</Accordion.Trigger>
+          <Accordion.Content className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("muted", value)}
               label="Muted"
@@ -217,13 +217,13 @@ const ThemeColorPanel = () => {
               value={currentTheme?.input || ""}
             />
             <ColorSwatch action={(value) => updateColor("ring", value)} label="Ring" value={currentTheme?.ring || ""} />
-          </AccordionContent>
-        </AccordionItem>
+          </Accordion.Content>
+        </Accordion.Item>
 
         {/* Sidebar Colors */}
-        <AccordionItem id="sidebar">
-          <AccordionTrigger>Sidebar Colors</AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2">
+        <Accordion.Item id="sidebar">
+          <Accordion.Trigger>Sidebar Colors</Accordion.Trigger>
+          <Accordion.Content className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("sidebar", value)}
               label="Sidebar"
@@ -264,13 +264,13 @@ const ThemeColorPanel = () => {
               label="Sidebar Ring"
               value={currentTheme?.["sidebar-ring"] || ""}
             />
-          </AccordionContent>
-        </AccordionItem>
+          </Accordion.Content>
+        </Accordion.Item>
 
         {/* Chart Colors */}
-        <AccordionItem id="chart">
-          <AccordionTrigger>Chart Colors</AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2">
+        <Accordion.Item id="chart">
+          <Accordion.Trigger>Chart Colors</Accordion.Trigger>
+          <Accordion.Content className="grid grid-cols-2">
             <ColorSwatch
               action={(value) => updateColor("chart-1", value)}
               label="Chart 1"
@@ -296,8 +296,8 @@ const ThemeColorPanel = () => {
               label="Chart 5"
               value={currentTheme?.["chart-5"] || ""}
             />
-          </AccordionContent>
-        </AccordionItem>
+          </Accordion.Content>
+        </Accordion.Item>
       </Accordion>
     </div>
   )

@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from "react"
 import { toast } from "sonner"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Install } from "@/components/mdx/install"
-import { useStyle } from "@/components/style-provider"
+import { Badge } from "@/components/ui/badge"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Dialog } from "@/components/ui/dialog"
+import { ToggleGroup } from "@/components/ui/toggle-group"
+import { useStyle } from "@/hooks/use-style"
 import { cn } from "@/lib/utils"
-import { Badge } from "../ui/badge"
-import { Button, buttonVariants } from "../ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
-import { ToggleGroup } from "../ui/toggle-group"
 
 export function Iframe({ component }: { component: string }) {
   const { style } = useStyle()
@@ -111,14 +111,14 @@ export function Iframe({ component }: { component: string }) {
                 tabler="IconCode"
               />
             </Button>
-            <DialogContent className="sm:max-w-7xl">
-              <DialogHeader>
-                <DialogTitle>{component.split("/").pop()}</DialogTitle>
-              </DialogHeader>
+            <Dialog.Content className="sm:max-w-7xl">
+              <Dialog.Header>
+                <Dialog.Title>{component.split("/").pop()}</Dialog.Title>
+              </Dialog.Header>
               <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
                 <Install component={component.split("/").pop() || ""} />
               </div>
-            </DialogContent>
+            </Dialog.Content>
           </Dialog>
           <Link
             className={buttonVariants({

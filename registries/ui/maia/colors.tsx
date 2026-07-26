@@ -64,7 +64,10 @@ const ColorWheel = ({
 const ColorArea = ({ className, ...props }: ColorAreaProps) => (
   <RACColorArea
     className={composeRenderProps(className, (className) =>
-      cn("bg-muted rounded-xl size-48 shrink-0 shadow-md data-disabled:opacity-50 data-disabled:grayscale-50", className)
+      cn(
+        "size-48 shrink-0 rounded-xl bg-muted shadow-md data-disabled:opacity-50 data-disabled:grayscale-50",
+        className
+      )
     )}
     {...props}
   >
@@ -76,7 +79,7 @@ const ColorSlider = ({ className, children, ...props }: ColorSliderProps) => (
   <RACColorSlider
     className={composeRenderProps(className, (className) =>
       cn(
-        "group/slider data-[orientation=vertical]:min-h-40 relative flex touch-none select-none flex-wrap gap-3 data-disabled:opacity-50",
+        "group/slider relative flex touch-none select-none flex-wrap gap-3 data-[orientation=vertical]:min-h-40 data-disabled:opacity-50",
         "data-[orientation=horizontal]:w-full",
         "data-[orientation=vertical]:h-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center",
         className
@@ -89,7 +92,7 @@ const ColorSlider = ({ className, children, ...props }: ColorSliderProps) => (
       <>
         {typeof children === "function" ? children(values) : children}
         <SliderTrack
-          className="bg-muted rounded-4xl data-[orientation=horizontal]:h-3 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3 data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent relative block grow select-none bg-muted-foreground disabled:opacity-50 data-disabled:opacity-50 data-disabled:grayscale-50"
+          className="relative block grow select-none rounded-4xl bg-muted bg-muted-foreground disabled:opacity-50 data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:h-3 data-[orientation=vertical]:h-full data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:w-3 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent data-disabled:opacity-50 data-disabled:grayscale-50"
           data-slot="color-slider-track"
         >
           <ColorThumb data-slot="color-slider-thumb" />
@@ -112,7 +115,7 @@ const ColorThumb = ({ className, ...props }: ColorThumbProps) => (
   <RACColorThumb
     className={composeRenderProps(className, (className) =>
       cn(
-        "border-primary ring-ring/50 size-4 rounded-4xl border bg-white shadow-sm transition-colors hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden select-none [box-shadow:0_0_0_1px_var(--background),inset_0_0_0_1px_var(--foreground)] disabled:opacity-50 group-data-[orientation=horizontal]/slider:top-1/2 group-data-[orientation=vertical]/slider:left-1/2",
+        "size-4 select-none rounded-4xl border border-primary bg-white shadow-sm ring-ring/50 transition-colors [box-shadow:0_0_0_1px_var(--background),inset_0_0_0_1px_var(--foreground)] hover:ring-4 focus-visible:outline-hidden focus-visible:ring-4 disabled:opacity-50 group-data-[orientation=horizontal]/slider:top-1/2 group-data-[orientation=vertical]/slider:left-1/2",
         "transition data-dragging:scale-120 data-focus-visible:scale-120 data-dragging:bg-muted-foreground data-disabled:opacity-50",
         className
       )
@@ -132,7 +135,7 @@ const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPic
   <RACColorSwatchPickerItem
     className={composeRenderProps(className, (className) =>
       cn(
-        "bg-muted rounded-xl relative outline-hidden",
+        "relative rounded-xl bg-muted outline-hidden",
         "data-selected:ring-3 data-selected:ring-ring/20 data-selected:*:inset-ring-current/40",
         "data-focus-visible:opacity-80 data-focus-visible:ring-ring/20 data-focus-visible:*:inset-ring-current/40",
         "data-hovered:opacity-90",
@@ -156,7 +159,10 @@ const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPic
 const ColorSwatch = ({ className, ...props }: ColorSwatchProps) => (
   <RACColorSwatch
     className={composeRenderProps(className, (className) =>
-      cn("size-6 [&_svg:not([class*='size-'])]:size-3 bg-muted rounded-xl inset-ring-1 inset-ring-current/20 shrink-0", className)
+      cn(
+        "inset-ring-1 inset-ring-current/20 size-6 shrink-0 rounded-xl bg-muted [&_svg:not([class*='size-'])]:size-3",
+        className
+      )
     )}
     data-slot="color-swatch"
     {...props}

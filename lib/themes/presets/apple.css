@@ -43,8 +43,8 @@
     --sidebar-border: oklch(0.88 0.005 259);
     --sidebar-ring: oklch(0.57 0.21 260 / 40%);
 
-    --font-sans: 'Instrument Sans, sans-serif';
-    --font-mono: 'Geist Mono, Geist Mono Fallback, monospace';
+    --font-sans: Instrument Sans;
+    --font-mono: Geist Mono;
 
     --radius: 0.5rem;
 }

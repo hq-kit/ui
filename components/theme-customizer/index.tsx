@@ -3,7 +3,7 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import ThemeControlPanel from "@/components/theme-customizer/theme-control-panel"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetBody, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet } from "@/components/ui/sheet"
 
 export function ThemeCustomizer() {
   return (
@@ -21,15 +21,15 @@ export function ThemeCustomizer() {
           tabler="IconColorSwatch"
         />
       </Button>
-      <SheetContent overlayClassName="bg-transparent backdrop-blur-none!">
-        <SheetHeader>
-          <SheetTitle>Theme Customizer</SheetTitle>
-          <SheetDescription>Pick a style and color for your components.</SheetDescription>
-        </SheetHeader>
-        <SheetBody>
+      <Sheet.Content overlayClassName="bg-transparent backdrop-blur-none!">
+        <Sheet.Header>
+          <Sheet.Title>Theme Customizer</Sheet.Title>
+          <Sheet.Description>Pick a style and color for your components.</Sheet.Description>
+        </Sheet.Header>
+        <Sheet.Body>
           <ThemeControlPanel />
-        </SheetBody>
-      </SheetContent>
+        </Sheet.Body>
+      </Sheet.Content>
     </Sheet>
   )
 }

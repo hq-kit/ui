@@ -14,7 +14,7 @@ const InputOTP = ({
 }) => (
   <OTPInput
     className={cn("disabled:cursor-not-allowed", className)}
-    containerClassName={cn("gap-2 flex items-center has-disabled:opacity-50", containerClassName)}
+    containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
     data-slot="input-otp"
     spellCheck={false}
     {...props}
@@ -22,7 +22,14 @@ const InputOTP = ({
 )
 
 const InputOTPGroup = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("has-aria-invalid:border-b-destructive dark:has-aria-invalid:border-b-destructive/50 rounded-none gap-1 flex items-center", className)} data-slot="input-otp-group" {...props} />
+  <div
+    className={cn(
+      "flex items-center gap-1 rounded-none has-aria-invalid:border-b-destructive dark:has-aria-invalid:border-b-destructive/50",
+      className
+    )}
+    data-slot="input-otp-group"
+    {...props}
+  />
 )
 
 const InputOTPSlot = ({
@@ -37,7 +44,10 @@ const InputOTPSlot = ({
 
   return (
     <div
-      className={cn("border-transparent border-b-input bg-transparent data-[active=true]:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 size-10 border text-sm transition-[color,border-color] outline-none first:rounded-none last:rounded-none relative flex items-center justify-center data-[active=true]:z-10", className)}
+      className={cn(
+        "relative flex size-10 items-center justify-center border border-transparent border-b-input bg-transparent text-sm outline-none transition-[color,border-color] first:rounded-none last:rounded-none aria-invalid:border-b-destructive data-[active=true]:z-10 data-[active=true]:border-b-ring dark:aria-invalid:border-b-destructive/50",
+        className
+      )}
       data-active={isActive}
       data-slot="input-otp-slot"
       slot="control"
@@ -46,7 +56,7 @@ const InputOTPSlot = ({
       {char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
         </div>
       )}
     </div>
@@ -56,7 +66,7 @@ const InputOTPSlot = ({
 const InputOTPSeparator = (props: ComponentProps<"div">) => (
   // biome-ignore lint/a11y/useFocusableInteractive: false-positive
   <div
-    className="[&_svg:not([class*='size-'])]:size-3.5 flex items-center"
+    className="flex items-center [&_svg:not([class*='size-'])]:size-3.5"
     data-slot="input-otp-separator"
     // biome-ignore lint/a11y/useAriaPropsForRole: false-positive
     role="separator"

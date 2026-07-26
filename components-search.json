@@ -122,6 +122,11 @@
             "order": 999
           },
           {
+            "slug": "/docs/components/collections/context-menu",
+            "title": "Context Menu",
+            "order": 999
+          },
+          {
             "slug": "/docs/components/collections/dropdown-menu",
             "title": "Dropdown Menu",
             "order": 999

@@ -102,7 +102,7 @@ const SelectContent = <T extends object>({
   >
     {isSearchable ? (
       <Autocomplete>
-        <SearchField autoFocus className="p-1 pb-0" data-slot="select-input-wrapper">
+        <SearchField aria-label="Search" autoFocus className="p-1 pb-0" data-slot="select-input-wrapper">
           <InputGroup>
             <InputGroupInput className="[&::-webkit-search-cancel-button]:hidden" data-slot="select-input" />
             <InputGroupAddon>

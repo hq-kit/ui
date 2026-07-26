@@ -26,6 +26,7 @@
 - [Attachment](http://localhost:3000/docs/components/collections/attachment.md)
 - [Bubble](http://localhost:3000/docs/components/collections/bubble.md)
 - [Collapsible](http://localhost:3000/docs/components/collections/collapsible.md)
+- [Context Menu](http://localhost:3000/docs/components/collections/context-menu.md)
 - [Dropdown Menu](http://localhost:3000/docs/components/collections/dropdown-menu.md)
 - [Grid List](http://localhost:3000/docs/components/collections/grid-list.md)
 - [Item](http://localhost:3000/docs/components/collections/item.md)

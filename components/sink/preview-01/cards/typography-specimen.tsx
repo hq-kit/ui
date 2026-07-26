@@ -8,8 +8,6 @@ import { Input, Textarea } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { TextField } from "@/components/ui/text-field"
 import { useThemeGenerator } from "@/hooks/use-theme"
-import { fontMonoFamilies } from "@/lib/fonts/mono"
-import { fontSansFamilies } from "@/lib/fonts/sans"
 
 export function TypographySpecimen() {
   const { currentStyles } = useThemeGenerator()
@@ -18,8 +16,7 @@ export function TypographySpecimen() {
     <Card>
       <Card.Content className="flex flex-col gap-2">
         <div className="font-medium text-muted-foreground text-xs uppercase">
-          {fontSansFamilies.find((f) => f.value === currentStyles.light["font-sans"])?.label} -{" "}
-          {fontMonoFamilies.find((f) => f.value === currentStyles.light["font-mono"])?.label}
+          {currentStyles.light["font-sans"]} - {currentStyles.light["font-mono"]}
         </div>
         <p className="cn-font-heading font-medium style-sera:font-semibold style-sera:text-lg text-2xl style-sera:uppercase style-sera:tracking-wider">
           Designing with rhythm and hierarchy.

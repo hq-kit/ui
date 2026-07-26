@@ -6,8 +6,8 @@ import type { ColorFormat } from "@/lib/themes/color-converter"
 import { useState } from "react"
 import { CLI } from "@/components/mdx/cli"
 import { Code } from "@/components/mdx/code-client"
-import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Select, SelectItem } from "@/components/ui/select"
+import { Dialog } from "@/components/ui/dialog"
+import { Select } from "@/components/ui/select"
 import { defaultDarkThemeStyles, defaultLightThemeStyles } from "@/config/theme"
 import { generateThemeCode } from "@/lib/themes/generator"
 import { presets, type ThemeStyleProps, type ThemeStyles } from "@/lib/themes/presets"
@@ -34,12 +34,12 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
   return (
     <Dialog>
       {trigger}
-      <DialogContent className="sm:max-w-195">
-        <DialogHeader>
-          <DialogTitle>Theme Variables</DialogTitle>
-          <DialogDescription>Copy these CSS variables to use your theme in other projects.</DialogDescription>
-        </DialogHeader>
-        <DialogBody>
+      <Dialog.Content className="sm:max-w-195">
+        <Dialog.Header>
+          <Dialog.Title>Theme Variables</Dialog.Title>
+          <Dialog.Description>Copy these CSS variables to use your theme in other projects.</Dialog.Description>
+        </Dialog.Header>
+        <Dialog.Body>
           {activeTheme && (isPresetTheme || activeTheme === "default") && <CLI command="add" items={[activeTheme]} />}
           <div className="relative">
             <div className="absolute top-5.5 right-10 z-10">
@@ -55,18 +55,18 @@ const ThemeVariablesDialog = ({ lightTheme, darkTheme, trigger, activeTheme }: T
                 </Select.Trigger>
                 <Select.Content>
                   <Select.Group>
-                    <SelectItem id="oklch">OKLCH</SelectItem>
-                    <SelectItem id="hsl">HSL</SelectItem>
-                    <SelectItem id="rgb">RGB</SelectItem>
-                    <SelectItem id="hex">HEX</SelectItem>
+                    <Select.Item id="oklch">OKLCH</Select.Item>
+                    <Select.Item id="hsl">HSL</Select.Item>
+                    <Select.Item id="rgb">RGB</Select.Item>
+                    <Select.Item id="hex">HEX</Select.Item>
                   </Select.Group>
                 </Select.Content>
               </Select>
             </div>
             <Code className="border shadow-sm" code={themeCSS} copy lang="css" />
           </div>
-        </DialogBody>
-      </DialogContent>
+        </Dialog.Body>
+      </Dialog.Content>
     </Dialog>
   )
 }

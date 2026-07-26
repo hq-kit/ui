@@ -1,35 +1,34 @@
 "use client"
 import type { ComponentProps } from "react"
-import type { FontMonoFamily } from "@/lib/fonts/mono"
-import type { FontSansFamily } from "@/lib/fonts/sans"
+import type { Font } from "@/lib/fonts"
 import { Label } from "@/components/ui/field"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select } from "@/components/ui/select"
 
 interface SelectFontProps extends ComponentProps<typeof Select> {
-  fonts: FontMonoFamily[] | FontSansFamily[]
+  fonts: Font[]
   label: string
 }
 
 const SelectFont = ({ fonts, label, ...props }: SelectFontProps) => {
   return (
-    <Select name={label} placeholder="Select theme font" {...props}>
+    <Select aria-label={label} id={label} name={label} placeholder="Select theme font" {...props}>
       <Label>{label}</Label>
-      <SelectTrigger>
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent items={fonts}>
+      <Select.Trigger>
+        <Select.Value />
+      </Select.Trigger>
+      <Select.Content isSearchable items={fonts}>
         {(item) => (
-          <SelectItem id={item.value} textValue={item.label}>
+          <Select.Item id={item.label} textValue={item.label}>
             <span
               style={{
-                fontFamily: item.value
+                fontFamily: item.label
               }}
             >
               {item.label}
             </span>
-          </SelectItem>
+          </Select.Item>
         )}
-      </SelectContent>
+      </Select.Content>
     </Select>
   )
 }

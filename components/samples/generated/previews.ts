@@ -870,6 +870,36 @@ export const previews: Record<string, { component: LazyExoticComponent<(props: P
     "collections/grid-list/grid-list-demo": {
       component: lazy(() => import("@/components/samples/collections/grid-list/grid-list-demo"))
     },
+    "collections/context-menu/context-menu-sides": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-sides"))
+    },
+    "collections/context-menu/context-menu-destructive": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-destructive"))
+    },
+    "collections/context-menu/context-menu-basic": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-basic"))
+    },
+    "collections/context-menu/context-menu-demo": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-demo"))
+    },
+    "collections/context-menu/context-menu-shortcuts": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-shortcuts"))
+    },
+    "collections/context-menu/context-menu-submenu": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-submenu"))
+    },
+    "collections/context-menu/context-menu-checkboxes": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-checkboxes"))
+    },
+    "collections/context-menu/context-menu-icons": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-icons"))
+    },
+    "collections/context-menu/context-menu-groups": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-groups"))
+    },
+    "collections/context-menu/context-menu-radio": {
+      component: lazy(() => import("@/components/samples/collections/context-menu/context-menu-radio"))
+    },
     "collections/collapsible/collapsible-basic": {
       component: lazy(() => import("@/components/samples/collections/collapsible/collapsible-basic"))
     },

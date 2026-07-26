@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { devtools, persist } from "zustand/middleware"
+import { persist } from "zustand/middleware"
 import {
   getPresetThemeStyles,
   type Preset,
@@ -20,49 +20,43 @@ const initialState: ThemeState = {
   styles: getPresetThemeStyles("default")
 }
 
-const withDevtools = process.env.NODE_ENV === "development" ? devtools : <T>(initializer: T) => initializer
-
 export const useThemeStore = create<ThemeStore>()(
-  // @ts-expect-error
-  withDevtools(
-    persist(
-      (set) => ({
-        ...initialState,
-        setPreset: (preset: any) => {
-          const styles = getPresetThemeStyles(preset)
-          set({
-            preset,
-            styles
-          })
-        },
-        setCustom: (styles: ThemeStyles) => {
-          set({
-            preset: "custom",
-            styles
-          })
-        },
-        setVar: (key: any, value: any, mode: any) => {
-          set((state: any) => ({
-            ...state,
-            preset: "custom",
-            styles: {
-              ...state.styles,
-              [mode]: {
-                ...state.styles[mode],
-                [key]: value
-              }
+  persist(
+    (set) => ({
+      ...initialState,
+      setPreset: (preset: Preset) => {
+        const styles = getPresetThemeStyles(preset)
+        set({
+          preset,
+          styles
+        })
+      },
+      setCustom: (styles: ThemeStyles) => {
+        set({
+          preset: "custom",
+          styles
+        })
+      },
+      setVar: (key: keyof ThemeStyleProps, value: string, mode: "light" | "dark") => {
+        set((state) => ({
+          preset: "custom",
+          styles: {
+            ...state.styles,
+            [mode]: {
+              ...state.styles[mode],
+              [key]: value
             }
-          }))
-        },
-        reset: () => {
-          set(initialState)
-        }
-      }),
-      {
-        name: "hq-ui-theme",
-        version: 1
+          }
+        }))
+      },
+      reset: () => {
+        set(initialState)
       }
-    )
+    }),
+    {
+      name: "hq-ui-theme",
+      version: 1
+    }
   )
 )
 

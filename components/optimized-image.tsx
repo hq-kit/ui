@@ -6,12 +6,6 @@ interface OptimizedImageProps extends Omit<ImageProps, "priority"> {
   isLazy?: boolean
 }
 
-/**
- * OptimizedImage - Wrapper for Next.js Image with sensible defaults
- * - Lazy loading by default
- * - Responsive sizing
- * - WebP format with fallback
- */
 export function OptimizedImage({ priority = false, isLazy = true, ...props }: OptimizedImageProps) {
   return (
     <Image
@@ -19,7 +13,6 @@ export function OptimizedImage({ priority = false, isLazy = true, ...props }: Op
       loading={isLazy ? "lazy" : "eager"}
       priority={priority}
       sizes={props.sizes || "(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"}
-      // Add custom styles if needed
       style={{
         maxWidth: "100%",
         height: "auto",

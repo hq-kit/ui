@@ -193,20 +193,7 @@ export default function ChartAreaInteractive() {
               tickLine={false}
               tickMargin={8}
             />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  indicator="dot"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric"
-                    })
-                  }}
-                />
-              }
-              cursor={false}
-            />
+            <ChartTooltip content={<ChartTooltipContent indicator="dot" />} cursor={false} />
             <Area dataKey="mobile" fill="url(#fillMobile)" stackId="a" stroke="var(--color-mobile)" type="natural" />
             <Area dataKey="desktop" fill="url(#fillDesktop)" stackId="a" stroke="var(--color-desktop)" type="natural" />
             <ChartLegend content={<ChartLegendContent />} />

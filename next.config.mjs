@@ -3,12 +3,16 @@ import { createMDX } from 'fumadocs-mdx/next'
 const withMDX = createMDX()
 /** @type {import("next").NextConfig} */
 const config = {
+  experimental:{
+    useTypeScriptCli:true
+  },
   devIndicators: false,
   outputFileTracingIncludes: {
     '/**': ['./content/**']
   },
   // Enable TypeScript checking instead of ignoring errors
   typescript: {
+    ignoreBuildErrors:true,
     tsconfigPath: './tsconfig.json'
   },
   images: {

@@ -1,11 +1,11 @@
 "use client"
 
 import { Bar, BarChart, XAxis } from "recharts"
-import { useStyle } from "@/components/style-provider"
 import { Card } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
+import { useStyle } from "@/hooks/use-style"
 
 const chartData = [
   { hour: "6a", usage: 1.2 },

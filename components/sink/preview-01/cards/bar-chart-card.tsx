@@ -1,7 +1,6 @@
 "use client"
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-import { useStyle } from "@/components/style-provider"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
@@ -12,6 +11,7 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart"
+import { useStyle } from "@/hooks/use-style"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },

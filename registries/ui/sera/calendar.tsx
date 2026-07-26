@@ -67,7 +67,7 @@ const Calendar = <T extends DateValue, M extends "single" | "multiple" = "single
   <RACCalendar
     {...props}
     className={cn(
-      "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+      "group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent p-3 [--cell-radius:0] [--cell-size:--spacing(8)]",
       props.className
     )}
     data-slot="calendar"
@@ -94,7 +94,7 @@ const RangeCalendar = <T extends DateValue>(
   <RACRangeCalendar
     {...props}
     className={cn(
-      "p-3 [--cell-radius:0] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+      "group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent p-3 [--cell-radius:0] [--cell-size:--spacing(8)]",
       props.className
     )}
     data-slot="calendar"
@@ -162,7 +162,7 @@ const CalendarInner = ({
             </>
           ) : (
             <CalendarHeading
-              className="text-xs font-semibold uppercase tracking-wide select-none font-medium text-sm"
+              className="select-none font-medium font-semibold text-sm text-xs uppercase tracking-wide"
               format={headerFormat}
               offset={{ months: i }}
             />

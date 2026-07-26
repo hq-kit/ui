@@ -4,7 +4,6 @@ import type { IconLibraryName } from "shadcn/icons"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { DEFAULT_LIBRARY, useIcon } from "@/components/icon-provider"
 import { useTheme } from "@/components/providers"
-import { DEFAULT_STYLE, type STYLE, useStyle } from "@/components/style-provider"
 import SelectFont from "@/components/theme-customizer/select-font"
 import SelectIcon from "@/components/theme-customizer/select-icon"
 import SelectStyle from "@/components/theme-customizer/select-style"
@@ -18,20 +17,20 @@ import { Label } from "@/components/ui/field"
 import { Separator } from "@/components/ui/separator"
 import { Slider, SliderOutput } from "@/components/ui/slider"
 import { defaultThemeState } from "@/config/theme"
+import { type Style, useStyle } from "@/hooks/use-style"
 import { useThemeGenerator } from "@/hooks/use-theme"
-import { fontMonoFamilies } from "@/lib/fonts/mono"
-import { fontSansFamilies } from "@/lib/fonts/sans"
+import { FONT_MONO, FONT_SANS } from "@/lib/fonts"
 import { presets } from "@/lib/themes/presets"
 
 const ThemeControlPanel = () => {
   const { resolvedTheme, setTheme } = useTheme()
   const { currentPreset, currentStyles, updatePreset, updateVar, reset } = useThemeGenerator()
   const { iconLibrary, setIconLibrary } = useIcon()
-  const { style, setStyle } = useStyle()
+  const { style, reset: resetStyle, updateStyle } = useStyle()
 
   const resetTheme = () => {
     reset()
-    setStyle(DEFAULT_STYLE)
+    resetStyle()
     setIconLibrary(DEFAULT_LIBRARY)
   }
   return (
@@ -105,18 +104,18 @@ const ThemeControlPanel = () => {
           onChange={(key) => setIconLibrary(key as IconLibraryName)}
           value={iconLibrary}
         />
-        <SelectStyle label={"Style"} onChange={(key) => setStyle(key as STYLE)} value={style} />
+        <SelectStyle label={"Style"} onChange={(key) => updateStyle(key as Style)} value={style} />
       </div>
       <Separator />
       <div className="grid grid-cols-2 gap-2">
         <SelectFont
-          fonts={fontSansFamilies.sort((a, b) => a.label.localeCompare(b.label))}
+          fonts={FONT_SANS.sort((a, b) => a.label.localeCompare(b.label))}
           label="Font Sans"
           onChange={(key) => updateVar("font-sans", key as string, "light")}
           value={currentStyles.light["font-sans"]}
         />
         <SelectFont
-          fonts={fontMonoFamilies.sort((a, b) => a.label.localeCompare(b.label))}
+          fonts={FONT_MONO.sort((a, b) => a.label.localeCompare(b.label))}
           label="Font Mono"
           onChange={(key) => updateVar("font-mono", key as string, "light")}
           value={currentStyles.light["font-mono"]}

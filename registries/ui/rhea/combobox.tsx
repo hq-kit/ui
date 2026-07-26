@@ -92,14 +92,14 @@ const ComboboxInput = ({
     <InputGroupAddon align="inline-end">
       {showTrigger && (
         <InputGroupButton
-          className="[&_svg:not([class*='size-'])]:size-4 group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent"
+          className="group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent [&_svg:not([class*='size-'])]:size-4"
           data-slot="combobox-trigger"
           isDisabled={disabled}
           size="icon-xs"
           variant="ghost"
         >
           <IconPlaceholder
-            className="text-muted-foreground size-4 pointer-events-none"
+            className="pointer-events-none size-4 text-muted-foreground"
             hugeicons="ArrowDown01Icon"
             lucide="ChevronDownIcon"
             phosphor="CaretDownIcon"
@@ -117,7 +117,11 @@ const ComboboxInput = ({
 const ComboboxChips = <T extends object>(props: TagListProps<T> & { isDisabled?: boolean }) => {
   const state = use(ComboBoxStateContext)
   return (
-    <Group className="bg-input/50 border-transparent focus-within:border-ring focus-within:ring-ring/30 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-8 flex-wrap items-center gap-1 rounded-2xl border bg-clip-padding pl-2.5 pr-1 py-1 text-sm transition-[color,box-shadow] duration-200 focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1" data-slot="combobox-chips" slot="control">
+    <Group
+      className="flex min-h-8 flex-wrap items-center gap-1 rounded-2xl border border-transparent bg-input/50 bg-clip-padding py-1 pr-1 pl-2.5 text-sm transition-[color,box-shadow] duration-200 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/30 has-aria-invalid:border-destructive has-data-[slot=combobox-chip]:px-1 has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:border-destructive/50 dark:has-aria-invalid:ring-destructive/40"
+      data-slot="combobox-chips"
+      slot="control"
+    >
       <ComboBoxValue<T> className="contents">
         {({ selectedItems, state }) => (
           <TagGroup
@@ -156,7 +160,7 @@ const ComboboxChips = <T extends object>(props: TagListProps<T> & { isDisabled?:
         variant="ghost"
       >
         <IconPlaceholder
-          className="text-muted-foreground size-4 pointer-events-none"
+          className="pointer-events-none size-4 text-muted-foreground"
           hugeicons="ArrowDown01Icon"
           lucide="ChevronDownIcon"
           phosphor="CaretDownIcon"
@@ -171,7 +175,7 @@ const ComboboxChips = <T extends object>(props: TagListProps<T> & { isDisabled?:
 const ComboboxChip = ({ className, ...props }: TagProps) => (
   <Tag
     className={cn(
-      "bg-input text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-2xl px-1.5 text-xs font-medium whitespace-nowrap has-data-[slot=combobox-chip-remove]:pr-0.5 dark:bg-input/60 has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50",
+      "flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 whitespace-nowrap rounded-2xl bg-input px-1.5 font-medium text-foreground text-xs has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-data-[slot=combobox-chip-remove]:pr-0.5 has-disabled:opacity-50 dark:bg-input/60",
       className
     )}
     data-slot="combobox-chip"
@@ -187,14 +191,14 @@ const ComboboxContent = <T extends object>({
 }: ListBoxProps<T> & Pick<PopoverProps, "offset" | "placement">) => (
   <Popover
     className={cn(
-      "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/5 dark:ring-foreground/10 *:data-[slot=input-group]:bg-input/50 *:data-[slot=input-group]:border-input/30 max-h-72 min-w-36 overflow-hidden rounded-2xl shadow-lg ring-1 duration-100 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:shadow-none relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point)",
+      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 relative isolate z-50 max-h-72 w-(--trigger-width) min-w-36 origin-(--trigger-anchor-point) overflow-hidden rounded-2xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-100 data-entering:animate-in data-exiting:animate-out *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/50 *:data-[slot=input-group]:shadow-none dark:ring-foreground/10",
       className
     )}
     offset={offset}
     placement={placement}
   >
     <ListBox
-      className="no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto p-1 data-empty:p-0 flex max-h-[calc(var(--visual-viewport-height)-10rem)] flex-col overflow-y-auto overscroll-contain rounded-lg p-1 outline-hidden sm:max-h-[inherit]"
+      className="no-scrollbar flex max-h-[calc(var(--visual-viewport-height)-10rem)] max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 flex-col overflow-y-auto overflow-y-auto overscroll-contain rounded-lg p-1 p-1 outline-hidden data-empty:p-0 sm:max-h-[inherit]"
       data-slot="select-content"
       layout="stack"
       orientation="vertical"
@@ -209,7 +213,7 @@ const ComboboxItem = <T extends object>({ className, children, ...props }: ListB
   return (
     <ListBoxItem
       className={cn(
-        "data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground gap-2 min-h-7 rounded-xl py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 data-focused:bg-accent data-focused:text-accent-foreground not-data-[variant=destructive]:data-focused:**:text-accent-foreground relative flex w-full cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex min-h-7 w-full cursor-default select-none items-center gap-2 rounded-xl py-1.5 pr-8 pl-2 text-sm outline-hidden data-disabled:pointer-events-none data-focused:bg-accent data-highlighted:bg-accent data-focused:text-accent-foreground data-highlighted:text-accent-foreground data-disabled:opacity-50 not-data-[variant=destructive]:data-focused:**:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       data-slot="combobox-item"
@@ -240,7 +244,7 @@ const ComboboxItem = <T extends object>({ className, children, ...props }: ListB
 const ComboboxGroup = <T extends object>({ title, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
   <ListBoxSection className={cn(props.className)} data-slot="combobox-group" {...props}>
     {title && (
-      <Header className="text-muted-foreground px-2 py-1.5 text-xs" data-slot="combobox-label">
+      <Header className="px-2 py-1.5 text-muted-foreground text-xs" data-slot="combobox-label">
         {title}
       </Header>
     )}
@@ -249,11 +253,18 @@ const ComboboxGroup = <T extends object>({ title, ...props }: ListBoxSectionProp
 )
 
 const ComboboxEmpty = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/combobox-content:flex", className)} data-slot="combobox-empty" {...props} />
+  <div
+    className={cn(
+      "hidden w-full justify-center py-2 text-center text-muted-foreground text-sm group-data-empty/combobox-content:flex",
+      className
+    )}
+    data-slot="combobox-empty"
+    {...props}
+  />
 )
 
 const ComboboxSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator className={cn("bg-border -mx-1 my-1 h-px", className)} data-slot="combobox-separator" {...props} />
+  <Separator className={cn("-mx-1 my-1 h-px bg-border", className)} data-slot="combobox-separator" {...props} />
 )
 
 Combobox.Chip = ComboboxChip

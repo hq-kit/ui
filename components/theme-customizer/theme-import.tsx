@@ -7,7 +7,7 @@ import { useTheme } from "@/components/providers"
 import { Button } from "@/components/ui/button"
 import { ColorPicker, ColorSwatch as Swatch } from "@/components/ui/colors"
 import { Dialog } from "@/components/ui/dialog"
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
+import { Empty } from "@/components/ui/empty"
 import { FieldGroup, Label } from "@/components/ui/field"
 import { Input, Textarea } from "@/components/ui/input"
 import { TextField } from "@/components/ui/text-field"
@@ -60,7 +60,7 @@ export function ThemeImport() {
           <Dialog.Title>Import Themes</Dialog.Title>
           <Dialog.Description>Paste the css code</Dialog.Description>
         </Dialog.Header>
-        <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
+        <Dialog.Body>
           <div className="scroll-fade grid gap-3 overflow-auto sm:max-h-96 sm:grid-cols-2">
             <FieldGroup>
               <TextField onChange={onPaste}>
@@ -71,8 +71,8 @@ export function ThemeImport() {
             <div className="cn-skeleton grid grid-cols-2 overflow-auto">
               {!isValid && (
                 <Empty className="col-span-full">
-                  <EmptyHeader>
-                    <EmptyMedia variant="icon">
+                  <Empty.Header>
+                    <Empty.Media variant="icon">
                       <IconPlaceholder
                         hugeicons="Alert02Icon"
                         lucide="TriangleAlertIcon"
@@ -80,10 +80,10 @@ export function ThemeImport() {
                         remixicon="RiErrorWarningLine"
                         tabler="IconAlertTriangle"
                       />
-                    </EmptyMedia>
-                    <EmptyTitle>Invalid Value</EmptyTitle>
-                    <EmptyDescription>Check your pasted code</EmptyDescription>
-                  </EmptyHeader>
+                    </Empty.Media>
+                    <Empty.Title>Invalid Value</Empty.Title>
+                    <Empty.Description>Check your pasted code</Empty.Description>
+                  </Empty.Header>
                 </Empty>
               )}
               {parsed &&
@@ -112,7 +112,7 @@ export function ThemeImport() {
                 ))}
             </div>
           </div>
-        </div>
+        </Dialog.Body>
         <Dialog.Footer>
           <Button slot="close" variant="secondary">
             Close

@@ -2,13 +2,21 @@ import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
 const Card = ({ className, size = "default", ...props }: ComponentProps<"div"> & { size?: "default" | "sm" }) => (
-  <div className={cn("bg-card text-card-foreground ring-foreground/5 gap-(--card-spacing) overflow-hidden py-(--card-spacing) text-sm shadow-sm ring-1 [--card-spacing:--spacing(8)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(5)] *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none group/card flex flex-col", className)} data-size={size} data-slot="card" {...props} />
+  <div
+    className={cn(
+      "group/card flex flex-col gap-(--card-spacing) overflow-hidden bg-card py-(--card-spacing) text-card-foreground text-sm shadow-sm ring-1 ring-foreground/5 [--card-spacing:--spacing(8)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(5)] *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none",
+      className
+    )}
+    data-size={size}
+    data-slot="card"
+    {...props}
+  />
 )
 
 const CardHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "gap-1.5 rounded-none px-(--card-spacing) [.border-b]:pb-(--card-spacing) group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+      "group/card-header @container/card-header grid auto-rows-min items-start gap-1.5 rounded-none px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
       className
     )}
     data-slot="card-header"
@@ -17,11 +25,15 @@ const CardHeader = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const CardTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("text-lg font-semibold tracking-wider uppercase", className)} data-slot="card-title" {...props} />
+  <div className={cn("font-semibold text-lg uppercase tracking-wider", className)} data-slot="card-title" {...props} />
 )
 
 const CardDescription = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("text-muted-foreground text-sm leading-relaxed", className)} data-slot="card-description" {...props} />
+  <div
+    className={cn("text-muted-foreground text-sm leading-relaxed", className)}
+    data-slot="card-description"
+    {...props}
+  />
 )
 
 const CardAction = ({ className, ...props }: ComponentProps<"div">) => (
@@ -37,7 +49,11 @@ const CardContent = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const CardFooter = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("px-(--card-spacing) [.border-t]:pt-(--card-spacing) flex items-center", className)} data-slot="card-footer" {...props} />
+  <div
+    className={cn("flex items-center px-(--card-spacing) [.border-t]:pt-(--card-spacing)", className)}
+    data-slot="card-footer"
+    {...props}
+  />
 )
 
 Card.Header = CardHeader

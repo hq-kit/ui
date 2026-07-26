@@ -26,7 +26,10 @@ const Breadcrumb = <T extends object>({
       <RACBreadcrumbs
         data-slot="breadcrumb-list"
         {...props}
-        className={cn("text-muted-foreground gap-1.5 text-xs/relaxed wrap-break-word flex flex-wrap items-center", className)}
+        className={cn(
+          "wrap-break-word flex flex-wrap items-center gap-1.5 text-muted-foreground text-xs/relaxed",
+          className
+        )}
       />
     </BreadcrumbsProvider>
   )
@@ -43,7 +46,7 @@ const BreadcrumbItem = ({ className, ...props }: BreadcrumbsItemProps & Omit<Lin
     <RACBreadcrumb
       className={composeRenderProps(className, (className, { isCurrent }) =>
         cn(
-          "gap-1 inline-flex items-center [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "inline-flex items-center gap-1 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
           isCurrent ? "text-foreground" : "text-muted-foreground hover:*:[a]:text-foreground",
           className
         )
@@ -53,7 +56,7 @@ const BreadcrumbItem = ({ className, ...props }: BreadcrumbsItemProps & Omit<Lin
     >
       {({ isCurrent }) => (
         <>
-          <Link className="hover:text-foreground transition-colors flex items-center gap-2" {...props} />
+          <Link className="flex items-center gap-2 transition-colors hover:text-foreground" {...props} />
           {!isCurrent && separator}
         </>
       )}

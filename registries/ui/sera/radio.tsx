@@ -22,7 +22,7 @@ const RadioGroup = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "grid gap-3 w-full",
+          "grid w-full gap-3",
           "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
@@ -45,7 +45,7 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
         {composeRenderProps(children, (children) => (
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
-              className="border-input bg-transparent group-data-selected/field:border-foreground aria-invalid:aria-checked:border-foreground aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 aria-invalid:ring-2 group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="group/radio-group-item peer relative flex aspect-square size-4.5 shrink-0 rounded-full border border border-input bg-transparent outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-foreground group-data-selected/field:border-foreground dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
               data-slot="radio-group-item"
               slot="control"
             >
@@ -53,14 +53,14 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
                 className="flex size-4.5 items-center justify-center opacity-0 transition-opacity group-data-selected/field:opacity-100"
                 data-slot="radio-group-indicator"
               >
-                <span className="bg-foreground absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground" />
               </div>
             </div>
             {typeof children === "string" ? (
               <Label elementType="span">{children}</Label>
             ) : children ? (
               <div
-                className="gap-1 group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
+                className="group/field-content flex flex-1 flex-col gap-1 leading-snug *:data-[slot=field-label]:leading-snug"
                 data-slot="field-content"
               >
                 {children}

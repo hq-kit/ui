@@ -1,11 +1,12 @@
 import { Providers } from "@/components/providers"
-import { ThemeSyncClient } from "@/components/theme-sync-client"
 import { siteConfig } from "@/config/site"
-import { defaultFontMonoUrl } from "@/lib/fonts/mono"
-import { defaultFontSansUrl } from "@/lib/fonts/sans"
 import "@/lib/styles/app.css"
 import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
+import { StyleProvider } from "@/components/providers/style-provider"
+import { ThemeSyncClient } from "@/components/theme-sync-client"
+import { fontMono } from "@/lib/fonts/font-mono"
+import { fontSans } from "@/lib/fonts/font-sans"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -76,30 +77,19 @@ export default function RootLayout({
   children: ReactNode
 }>) {
   return (
-    <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
-      <head>
-        {/* Preconnect to font services */}
-        <link href="https://fonts.googleapis.com" rel="preconnect" />
-        <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
-
-        {/* Preload default fonts with swap strategy */}
-        <link
-          as="style"
-          href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
-          rel="preload"
-        />
-        <link
-          href={`https://fonts.googleapis.com/css2?${defaultFontSansUrl}&${defaultFontMonoUrl}&display=swap`}
-          rel="stylesheet"
-        />
-
-        <title>{siteConfig.name}</title>
-      </head>
+    <html
+      className={`${fontSans} ${fontMono} style-nova`}
+      data-scroll-behavior="smooth"
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
-        <Providers>
-          <ThemeSyncClient />
-          {children}
-        </Providers>
+        <StyleProvider>
+          <Providers>
+            <ThemeSyncClient />
+            {children}
+          </Providers>
+        </StyleProvider>
       </body>
     </html>
   )

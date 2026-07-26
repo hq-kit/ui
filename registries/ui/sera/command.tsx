@@ -33,7 +33,7 @@ const Command = ({
   style?: CSSProperties
 }) => (
   <div
-    className={cn("bg-popover text-popover-foreground flex size-full flex-col overflow-hidden", className)}
+    className={cn("flex size-full flex-col overflow-hidden bg-popover text-popover-foreground", className)}
     data-slot="command"
     dir={dir}
     style={style}
@@ -71,17 +71,12 @@ const CommandDialog = ({
 )
 
 const CommandInput = ({ className, isPending, ...props }: InputProps & { isPending?: boolean }) => (
-  <SearchField
-    aria-label={props.placeholder || "Search"}
-    autoFocus
-    className="p-1"
-    data-slot="command-input-wrapper"
-  >
-    <InputGroup className="bg-transparent border-transparent border-b-input px-3">
+  <SearchField aria-label={props.placeholder || "Search"} autoFocus className="p-1" data-slot="command-input-wrapper">
+    <InputGroup className="border-transparent border-b-input bg-transparent px-3">
       <Input
         {...props}
         className={cn(
-          "w-full text-sm px-2 outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden",
+          "w-full px-2 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden",
           className
         )}
         data-slot="command-input"
@@ -90,7 +85,7 @@ const CommandInput = ({ className, isPending, ...props }: InputProps & { isPendi
         {isPending ? (
           <IconPlaceholder
             aria-label="Loading"
-            className="size-3.5 shrink-0 opacity-50 animate-spin"
+            className="size-3.5 shrink-0 animate-spin opacity-50"
             data-slot="loader"
             hugeicons="Loading03Icon"
             lucide="LoaderIcon"
@@ -117,7 +112,7 @@ const CommandInput = ({ className, isPending, ...props }: InputProps & { isPendi
 const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
   <Menu
     {...props}
-    className={cn("no-scrollbar max-h-72 scroll-py-1 outline-none overflow-y-auto overflow-x-hidden", className)}
+    className={cn("no-scrollbar max-h-72 scroll-py-1 overflow-y-auto overflow-x-hidden outline-none", className)}
     data-slot="command-list"
   />
 )
@@ -127,7 +122,13 @@ const CommandEmpty = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const CommandGroup = <T extends object>({ className, title, ...props }: MenuSectionProps<T> & { title?: string }) => (
-  <MenuSection className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1.5 **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-semibold **:[[cmdk-group-heading]]:uppercase **:[[cmdk-group-heading]]:tracking-wider", className)} data-slot="command-group">
+  <MenuSection
+    className={cn(
+      "overflow-hidden p-1.5 text-foreground **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:font-semibold **:[[cmdk-group-heading]]:text-muted-foreground **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:uppercase **:[[cmdk-group-heading]]:tracking-wider",
+      className
+    )}
+    data-slot="command-group"
+  >
     {title && (
       <Header className="pointer-events-none" cmdk-group-heading="" data-slot="title">
         {title}
@@ -138,14 +139,14 @@ const CommandGroup = <T extends object>({ className, title, ...props }: MenuSect
 )
 
 const CommandSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator className={cn("bg-border/50 -mx-1.5 my-1.5 h-px", className)} data-slot="command-separator" {...props} />
+  <Separator className={cn("-mx-1.5 my-1.5 h-px bg-border/50", className)} data-slot="command-separator" {...props} />
 )
 
 const CommandItem = <T extends object>({ className, children, textValue, ...props }: MenuItemProps<T>) => (
   <MenuItem
     {...props}
     className={cn(
-      "data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-none px-3 py-2 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-none [&_svg:not([class*='size-'])]:size-3.5 data-focused:bg-muted data-focused:text-foreground data-focused:*:[svg]:text-foreground group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "group/command-item relative flex cursor-default select-none items-center gap-2 in-data-[slot=dialog-content]:rounded-none rounded-none px-3 py-2 text-sm outline-hidden data-[disabled=true]:pointer-events-none data-focused:bg-muted data-selected:bg-muted data-focused:text-foreground data-selected:text-foreground data-[disabled=true]:opacity-50 [&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 data-focused:*:[svg]:text-foreground data-selected:*:[svg]:text-foreground",
       className
     )}
     data-slot="command-item"
@@ -169,7 +170,10 @@ const CommandItem = <T extends object>({ className, children, textValue, ...prop
 
 const CommandShortcut = ({ className, ...props }: ComponentProps<"span">) => (
   <span
-    className={cn("text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest group-data-focused/command-item:text-foreground", className)}
+    className={cn(
+      "ml-auto text-muted-foreground text-xs tracking-widest group-data-focused/command-item:text-foreground group-data-selected/command-item:text-foreground",
+      className
+    )}
     data-slot="command-shortcut"
     {...props}
   />

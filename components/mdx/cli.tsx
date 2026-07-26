@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { IconBrandBun, IconBrandNpm, IconBrandPnpm, IconBrandYarn } from "@/components/icons"
 import { CopyButton } from "@/components/mdx/copy-button"
-import { useStyle } from "@/components/style-provider"
 import { DropdownMenu } from "@/components/ui/dropdown-menu"
 import { siteConfig } from "@/config/site"
+import { useStyle } from "@/hooks/use-style"
 import { copyToClipboard } from "@/lib/modifiers"
 
 interface CLIProps {

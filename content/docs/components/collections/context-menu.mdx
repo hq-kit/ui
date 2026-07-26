@@ -1,0 +1,84 @@
+---
+title: Context Menu
+description: Displays a menu of actions triggered by a right click.
+references: ['https://react-aria.adobe.com/Menu#api']
+---
+
+## Installation
+<Install component='context-menu' />
+
+## Examples
+
+### Basic
+
+A simple context menu with a few actions.
+
+<Demo component='collections/context-menu/context-menu-basic' />
+
+### Submenu
+
+Use `ContextMenuSub` to nest secondary actions.
+
+<Demo component='collections/context-menu/context-menu-submenu' />
+
+### Shortcuts
+
+Add `ContextMenuShortcut` to show keyboard hints.
+
+<Demo component='collections/context-menu/context-menu-shortcuts' />
+
+### Groups
+
+Group related actions and separate them with dividers.
+
+<Demo component='collections/context-menu/context-menu-groups' />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<Demo component='collections/context-menu/context-menu-icons' />
+
+### Checkboxes
+
+Use `selectionMode="multiple"` for toggles.
+
+<Demo component="collections/context-menu/context-menu-checkboxes" />
+
+### Radio
+
+Use `selectionMode="single"` for exclusive choices.
+
+<Demo component='collections/context-menu/context-menu-radio'/>
+
+### Destructive
+
+Use `variant="destructive"` to style the menu item as destructive.
+
+<Demo component='collections/context-menu/context-menu-destructive' />
+
+### Placement
+
+Control submenu placement with the `placement` prop.
+
+<Demo component='collections/context-menu/context-menu-sides' />
+
+Use `placement="end"` to place the menu on the logical end side of the trigger.
+
+```tsx showLineNumbers
+<ContextMenuTrigger>
+  <Pressable>
+    <div role="button">Right click here</div>
+  </Pressable>
+  <ContextMenu placement="end">
+    <ContextMenuItem>Profile</ContextMenuItem>
+    <ContextMenuItem>Billing</ContextMenuItem>
+    <ContextMenuItem>Team</ContextMenuItem>
+    <ContextMenuItem>Subscription</ContextMenuItem>
+  </ContextMenu>
+</ContextMenuTrigger>
+```
+
+### API Reference
+
+See the [React Aria](https://react-aria.adobe.com/Menu#api) documentation for more information.
