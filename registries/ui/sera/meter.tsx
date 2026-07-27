@@ -28,27 +28,19 @@ const Meter = ({ className, children, ...props }: MeterProps) => (
 const MeterValue = ({ className, ...props }: Omit<ComponentProps<"span">, "children">) => {
   const { valueText } = use(MeterContext)!
   return (
-    <span
-      className={cn("ml-auto text-muted-foreground text-sm tabular-nums", className)}
-      data-slot="meter-value"
-      {...props}
-    >
+    <span className={cn("text-muted-foreground ml-auto text-sm tabular-nums", className)} data-slot="meter-value" {...props}>
       {valueText}
     </span>
   )
 }
 
 const MeterLabel = ({ className, ...props }: LabelProps) => (
-  <Label
-    className={cn("font-semibold text-xs uppercase tracking-wide", className)}
-    data-slot="progress-label"
-    {...props}
-  />
+  <Label className={cn("text-xs font-semibold tracking-wide uppercase", className)} data-slot="progress-label" {...props} />
 )
 
 const MeterTrack = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("relative flex h-0.5 w-full items-center overflow-x-hidden rounded-none bg-muted", className)}
+    className={cn("bg-muted h-0.5 rounded-none relative flex w-full items-center overflow-x-hidden", className)}
     data-slot="progress-track"
     {...props}
   />

@@ -26,7 +26,7 @@ const getThemeFont = (themeName: Preset) => {
 
 const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThemePresetProps) => {
   const presetNames = useMemo(() => {
-    const allPresets = Object.keys(presets)
+    const allPresets = Object.keys(presets).sort((a, b) => a.localeCompare(b))
 
     return ["default", ...allPresets]
   }, [presets])
@@ -64,7 +64,7 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
         >
           {(item) => (
             <Select.Item className="flex items-center gap-3" id={item.title} textValue={item.title}>
-              <div className="relative grid aspect-square size-6 grid-cols-2 grid-rows-2 gap-0 overflow-hidden rounded-[inherit] border p-0">
+              <div className="relative grid aspect-square size-5 grid-cols-2 grid-rows-2 gap-0 overflow-hidden rounded-[inherit] border p-0">
                 <div style={{ backgroundColor: getThemeColor(item.title, "primary") }} />
                 <div style={{ backgroundColor: getThemeColor(item.title, "destructive") }} />
                 <div style={{ backgroundColor: getThemeColor(item.title, "secondary") }} />

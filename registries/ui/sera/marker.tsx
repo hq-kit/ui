@@ -4,13 +4,12 @@ import { cn } from "@/lib/utils"
 import { Link, type LinkProps } from "./link"
 
 const markerVariants = tv({
-  base: "group/marker relative flex min-h-4 w-full items-center gap-2 text-left text-muted-foreground text-xs uppercase tracking-wide [&_svg:not([class*='size-'])]:size-4 [a]:underline [a]:underline-offset-3 [a]:hover:text-foreground",
+  base: "gap-2 text-xs text-muted-foreground [a]:hover:text-foreground [a]:underline-offset-3 [a]:underline [&_svg:not([class*='size-'])]:size-4 min-h-4 text-left uppercase tracking-wide group/marker relative flex w-full items-center",
   variants: {
     variant: {
       default: "",
-      separator:
-        "before:mr-1 before:h-px before:min-w-0 before:flex-1 before:bg-border after:ml-1 after:h-px after:min-w-0 after:flex-1 after:bg-border",
-      border: "border-border border-b pb-2"
+      separator: "before:h-px before:min-w-0 before:flex-1 before:bg-border after:h-px after:min-w-0 after:flex-1 after:bg-border before:mr-1 after:ml-1",
+      border: "border-b border-border pb-2"
     }
   }
 })
@@ -30,23 +29,11 @@ const Marker = ({
 }
 
 const MarkerIcon = ({ className, ...props }: ComponentProps<"span">) => (
-  <span
-    aria-hidden="true"
-    className={cn("size-4 shrink-0 [&_svg:not([class*='size-'])]:size-4", className)}
-    data-slot="marker-icon"
-    {...props}
-  />
+  <span aria-hidden="true" className={cn("size-4 [&_svg:not([class*='size-'])]:size-4 shrink-0", className)} data-slot="marker-icon" {...props} />
 )
 
 const MarkerContent = ({ className, ...props }: ComponentProps<"span">) => (
-  <span
-    className={cn(
-      "wrap-break-word min-w-0 group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
-      className
-    )}
-    data-slot="marker-content"
-    {...props}
-  />
+  <span className={cn("group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center *:[a]:hover:text-foreground *:[a]:underline *:[a]:underline-offset-3 wrap-break-word min-w-0", className)} data-slot="marker-content" {...props} />
 )
 
 Marker.Content = MarkerContent

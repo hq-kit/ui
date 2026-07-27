@@ -37,7 +37,7 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
   <RACTreeItem
     className={composeRenderProps(className, (className) =>
       cn(
-        "relative flex cursor-default items-center gap-1 gap-1.5 rounded-md border border-transparent px-1.5 py-1 pr-2 text-sm text-sm outline-hidden transition focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-disabled:opacity-50 data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive!",
+        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 relative flex cursor-default items-center gap-1 border border-transparent pr-2 text-sm outline-hidden transition",
         "data-drop-target:border-primary",
         "focus-visible:border-border focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "hover:bg-accent hover:text-accent-foreground",

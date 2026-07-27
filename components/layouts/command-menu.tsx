@@ -7,7 +7,7 @@ import { BrandIcon, type BrandIconProps, ComponentIcon, type ComponentIconProps 
 
 export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
   return (
-    <Command.Dialog isOpen={open} onOpenChange={setOpen} showCloseButton={false}>
+    <Command.Dialog className="sm:min-w-xl" isOpen={open} onOpenChange={setOpen} showCloseButton={false}>
       <Command.Input placeholder="Search pages..." />
       <Command.List>
         {menus().map((section) => (

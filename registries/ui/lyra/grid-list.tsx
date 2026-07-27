@@ -22,7 +22,7 @@ const GridList = <T extends object>({ className, ...props }: GridListProps<T>) =
   <RACGridList
     className={composeRenderProps(className, (className) =>
       cn(
-        "scrollbar-none relative min-w-0 snap-x snap-mandatory scroll-px-1 gap-3 overflow-auto overscroll-x-contain py-1 empty:flex empty:items-center empty:justify-center empty:text-sm empty:italic *:data-[slot=attachment]:flex-none *:data-[slot=attachment]:snap-start",
+        "gap-3 scroll-px-1 py-1 scrollbar-none relative min-w-0 snap-x snap-mandatory overflow-auto overscroll-x-contain empty:flex empty:items-center empty:justify-center empty:text-sm empty:italic *:data-[slot=attachment]:flex-none *:data-[slot=attachment]:snap-start",
         "data-[orientation=horizontal]:flex data-[orientation=horizontal]:w-full data-[orientation=horizontal]:flex-nowrap data-[orientation=horizontal]:overflow-x-auto",
         "data-[orientation=vertical]:grid data-[orientation=vertical]:px-1",
         "data-[layout=grid]:grid data-[layout=grid]:not-data-[orientation=vertical]:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]",
@@ -43,14 +43,7 @@ const GridListSection = <T extends object>({
   ...props
 }: ComponentProps<typeof RACGridListSection<T>> & { title?: string }) => {
   return (
-    <RACGridListSection
-      className={cn(
-        "overflow-hidden text-foreground **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-muted-foreground **:[[cmdk-group-heading]]:text-xs",
-        className
-      )}
-      data-slot="grid-list-section"
-      {...props}
-    >
+    <RACGridListSection className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs", className)} data-slot="grid-list-section" {...props}>
       {title && (
         <RACGridListHeader className="pointer-events-none" data-slot="title">
           {title}
@@ -89,7 +82,8 @@ const GridListItem = ({
           "select-none data-selected:bg-accent data-selected:text-accent-foreground",
           "data-hovered:border data-hovered:border-ring",
           "data-dragging:cursor-grabbing data-dragging:outline data-dragging:outline-primary",
-          typeof children === "string" && "relative items-center gap-2 p-2 data-[orientation=horizontal]:w-full",
+          typeof children === "string" &&
+            "gap-2 p-2 relative items-center data-[orientation=horizontal]:w-full",
           "href" in props && "cursor-pointer",
           "data-disabled:pointer-events-none data-disabled:opacity-50",
           className
@@ -125,10 +119,7 @@ const GridListItemMedia = ({
 
 const GridListItemContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "min-w-0 max-w-full flex-1 leading-tight group-data-[orientation=vertical]/attachment:px-1",
-      className
-    )}
+    className={cn("leading-tight group-data-[orientation=vertical]/attachment:px-1 min-w-0 max-w-full flex-1", className)}
     data-slot="attachment-content"
     {...props}
   />
@@ -137,7 +128,7 @@ const GridListItemContent = ({ className, ...props }: ComponentProps<"div">) => 
 const GridListItemTitle = ({ className, ...props }: TextProps) => (
   <Text
     className={cn(
-      "group-data-[state=processing]/attachment:shimmer group-data-[state=uploading]/attachment:shimmer block min-w-0 max-w-full truncate font-medium",
+      "font-medium group-data-[state=processing]/attachment:shimmer group-data-[state=uploading]/attachment:shimmer block min-w-0 max-w-full truncate",
       className
     )}
     data-slot="attachment-title"
@@ -148,7 +139,7 @@ const GridListItemTitle = ({ className, ...props }: TextProps) => (
 const GridListItemDescription = ({ className, ...props }: TextProps) => (
   <Text
     className={cn(
-      "mt-0.5 block min-w-0 truncate text-muted-foreground text-xs group-data-[state=error]/attachment:text-destructive/80",
+      "mt-0.5 text-xs block min-w-0 truncate text-muted-foreground group-data-[state=error]/attachment:text-destructive/80",
       "max-w-full",
       className
     )}
@@ -159,17 +150,20 @@ const GridListItemDescription = ({ className, ...props }: TextProps) => (
 
 const GridListItemActions = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "relative z-20 flex shrink-0 items-center group-data-[orientation=vertical]/attachment:absolute group-data-[orientation=vertical]/attachment:top-3 group-data-[orientation=vertical]/attachment:right-3 group-data-[orientation=vertical]/attachment:gap-1",
-      className
-    )}
+    className={cn("group-data-[orientation=vertical]/attachment:absolute group-data-[orientation=vertical]/attachment:top-3 group-data-[orientation=vertical]/attachment:right-3 relative z-20 group-data-[orientation=vertical]/attachment:gap-1 flex shrink-0 items-center", className)}
     data-slot="attachment-actions"
     {...props}
   />
 )
 
 const GridListItemAction = ({ className, variant, size = "icon-xs", ...props }: ComponentProps<typeof Button>) => (
-  <Button className={cn(className)} data-slot="attachment-action" size={size} variant={variant ?? "ghost"} {...props} />
+  <Button
+    className={cn(className)}
+    data-slot="attachment-action"
+    size={size}
+    variant={variant ?? "ghost"}
+    {...props}
+  />
 )
 
 const GridListEmptyState = ({ ref, className, ...props }: ComponentProps<"div">) => (

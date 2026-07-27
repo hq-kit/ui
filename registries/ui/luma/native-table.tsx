@@ -16,45 +16,23 @@ const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => (
 )
 
 const TableFooter = ({ className, ...props }: ComponentProps<"tfoot">) => (
-  <tfoot
-    className={cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className)}
-    data-slot="table-footer"
-    {...props}
-  />
+  <tfoot className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)} data-slot="table-footer" {...props} />
 )
 
 const TableRow = ({ className, ...props }: ComponentProps<"tr">) => (
-  <tr
-    className={cn(
-      "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",
-      className
-    )}
-    data-slot="table-row"
-    {...props}
-  />
+  <tr className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors has-aria-expanded:bg-muted/50", className)} data-slot="table-row" {...props} />
 )
 
 const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
-  <th
-    className={cn(
-      "h-12 whitespace-nowrap px-3 text-left align-middle font-medium text-foreground [&:has([role=checkbox])]:pr-0",
-      className
-    )}
-    data-slot="table-head"
-    {...props}
-  />
+  <th className={cn("text-foreground h-12 px-3 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)} data-slot="table-head" {...props} />
 )
 
 const TableCell = ({ className, ...props }: ComponentProps<"td">) => (
-  <td
-    className={cn("whitespace-nowrap p-3 align-middle [&:has([role=checkbox])]:pr-0", className)}
-    data-slot="table-cell"
-    {...props}
-  />
+  <td className={cn("p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)} data-slot="table-cell" {...props} />
 )
 
 const TableCaption = ({ className, ...props }: ComponentProps<"caption">) => (
-  <caption className={cn("mt-4 text-muted-foreground text-sm", className)} data-slot="table-caption" {...props} />
+  <caption className={cn("text-muted-foreground mt-4 text-sm", className)} data-slot="table-caption" {...props} />
 )
 
 Table.Header = TableHeader

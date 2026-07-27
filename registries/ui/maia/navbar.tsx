@@ -180,7 +180,7 @@ const Navbar = ({
       />
       <div
         className={cn(
-          "fixed inset-x-0 z-30 mx-auto h-(--navbar-height) bg-sidebar transition-all group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border",
+          "bg-sidebar group-data-[variant=floating]:ring-sidebar-border group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 fixed inset-x-0 z-30 mx-auto h-(--navbar-height) transition-all",
           sticky || visible ? "translate-y-0" : "-translate-y-[calc(var(--navbar-height)+var(--navbar-gap)+1px)]",
           variant === "floating"
             ? "top-(--navbar-gap) w-(--navbar-width) max-w-7xl group-data-[fluid=true]:max-w-full xl:max-w-(--breakpoint-xl)"
@@ -201,7 +201,7 @@ const Navbar = ({
           data-slot="navbar-inner"
         >
           {isMobile && (
-            <div className="mr-2 flex items-center gap-2 p-2 [--radius:var(--radius-xl)]">
+            <div className="gap-2 p-2 [--radius:var(--radius-xl)] mr-2 flex items-center">
               <NavbarTrigger />
               <Separator orientation="vertical" />
             </div>
@@ -244,7 +244,7 @@ const NavbarTrigger = ({ className, onPress, ...props }: ComponentProps<typeof B
 const NavbarInset = ({ className, ...props }: ComponentProps<"main">) => (
   <main
     className={cn(
-      "relative mx-auto flex min-h-[calc(100vh-(var(--navbar-height)+var(--navbar-gap)))] flex-col overflow-auto bg-background peer-data-[variant=floating]:min-h-[calc(100vh-(var(--navbar-height)+var(--navbar-gap)))] md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:mt-0! md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm",
+      "bg-background md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 relative mx-auto flex min-h-[calc(100vh-(var(--navbar-height)+var(--navbar-gap)))] flex-col overflow-auto peer-data-[variant=floating]:min-h-[calc(100vh-(var(--navbar-height)+var(--navbar-gap)))] md:peer-data-[variant=inset]:mt-0!",
       "w-[calc(100%-var(--navbar-gap))] peer-data-[variant=default]:w-full peer-data-[container=true]:max-w-7xl xl:peer-data-[container=true]:max-w-(--breakpoint-xl)",
       className
     )}
@@ -255,7 +255,7 @@ const NavbarInset = ({ className, ...props }: ComponentProps<"main">) => (
 
 const NavbarHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("sticky left-0 z-10 flex items-center gap-2 bg-sidebar p-2 [--radius:var(--radius-xl)]", className)}
+    className={cn("gap-2 p-2 [--radius:var(--radius-xl)] sticky left-0 z-10 flex items-center bg-sidebar", className)}
     data-navbar="header"
     data-slot="navbar-header"
     {...props}
@@ -264,7 +264,7 @@ const NavbarHeader = ({ className, ...props }: ComponentProps<"div">) => (
 
 const NavbarActions = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("ml-auto flex items-center gap-2 p-2 [--radius:var(--radius-xl)]", className)}
+    className={cn("gap-2 p-2 [--radius:var(--radius-xl)] ml-auto flex items-center", className)}
     data-navbar="actions"
     data-slot="navbar-actions"
     {...props}
@@ -273,7 +273,7 @@ const NavbarActions = ({ className, ...props }: ComponentProps<"div">) => (
 
 const NavbarSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
   <Separator
-    className={cn("mx-2 h-full w-px bg-sidebar-border", className)}
+    className={cn("bg-sidebar-border mx-2 h-full w-px", className)}
     data-navbar="separator"
     data-slot="sidebar-separator"
     {...props}
@@ -304,7 +304,7 @@ const NavbarContent = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        "no-scrollbar flex min-h-0 flex-1 gap-2 overflow-auto [--radius:var(--radius-xl)]",
+        "no-scrollbar gap-2 [--radius:var(--radius-xl)] flex min-h-0 flex-1 overflow-auto",
         "scroll-fade-r mr-12 flex-row items-center",
         "in-data-[slot=sheet-content]:mr-0 in-data-[slot=sheet-content]:flex-col in-data-[slot=sheet-content]:items-start",
         className
@@ -319,7 +319,7 @@ const NavbarContent = ({ className, ...props }: ComponentProps<"div">) => {
 const NavbarGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "relative flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col p-2",
+      "p-2 relative flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col",
       className
     )}
     data-navbar="group"
@@ -331,7 +331,7 @@ const NavbarGroup = ({ className, ...props }: ComponentProps<"div">) => (
 const NavbarGroupContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col text-sm",
+      "text-sm flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col",
       className
     )}
     data-navbar="group-content"
@@ -343,7 +343,7 @@ const NavbarGroupContent = ({ className, ...props }: ComponentProps<"div">) => (
 const NavbarMenu = ({ className, ...props }: ComponentProps<"ul">) => (
   <ul
     className={cn(
-      "flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col gap-2",
+      "gap-2 flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col",
       className
     )}
     data-navbar="menu"
@@ -362,12 +362,11 @@ const NavbarMenuItem = ({ className, ...props }: ComponentProps<"li">) => (
 )
 
 const navbarMenuButtonVariants = tv({
-  base: "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-lg px-3 py-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground gap-2 rounded-lg px-3 py-2 text-left text-sm transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 data-active:font-medium peer/menu-button group/menu-button flex w-full items-center overflow-hidden outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
       default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-      outline:
-        "bg-background shadow-[0_0_0_1px_var(--sidebar-border)] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_var(--sidebar-accent)]"
+      outline: "bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_var(--sidebar-border)] hover:shadow-[0_0_0_1px_var(--sidebar-accent)]"
     },
     size: {
       default: "h-9 text-sm",
@@ -420,7 +419,7 @@ const NavbarMenuSkeleton = ({
 
   return (
     <div
-      className={cn("flex h-8 items-center gap-2 rounded-md px-2", className)}
+      className={cn("h-8 gap-2 rounded-md px-2 flex items-center", className)}
       data-navbar="menu-skeleton"
       data-slot="navbar-menu-skeleton"
       {...props}
@@ -443,7 +442,7 @@ const NavbarMenuSub = ({ className, ...props }: ComponentProps<"ul">) => {
   return (
     <ul
       className={cn(
-        "mx-3.5 flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 translate-x-px flex-row in-data-[slot=sheet-content]:flex-col gap-1 border-sidebar-border border-l px-2.5 py-0.5 group-data-[collapsible=icon]:hidden",
+        "border-sidebar-border mx-3.5 translate-x-px gap-1 border-l px-2.5 py-0.5 group-data-[collapsible=icon]:hidden flex in-data-[slot=sheet-content]:w-full in-data-[slot=sheet-content]:min-w-0 flex-row in-data-[slot=sheet-content]:flex-col",
         className
       )}
       data-navbar="menu-sub"
@@ -477,7 +476,7 @@ const NavbarMenuSubButton = ({
 }) => (
   <Link
     className={cn(
-      "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-hidden ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:bg-sidebar-accent data-[size=md]:text-sm data-[size=sm]:text-xs data-active:text-sidebar-accent-foreground group-data-[collapsible=icon]:hidden [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
+      "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:hidden [&>span:last-child]:truncate [&>svg]:shrink-0",
       className
     )}
     {...(isActive && { "data-active": "true" })}

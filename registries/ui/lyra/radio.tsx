@@ -22,7 +22,7 @@ const RadioGroup = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "grid w-full gap-2",
+          "grid gap-2 w-full",
           "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
@@ -45,7 +45,7 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
         {composeRenderProps(children, (children) => (
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
-              className="group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border border-input outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary group-data-selected/field:border-primary group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:bg-input/30 dark:group-data-selected/field:bg-primary dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+              className="border-input dark:bg-input/30 group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:group-data-selected/field:bg-primary group-data-selected/field:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4 rounded-full focus-visible:ring-3 aria-invalid:ring-3 group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
               data-slot="radio-group-item"
               slot="control"
             >
@@ -53,14 +53,14 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
                 className="flex size-4 items-center justify-center opacity-0 transition-opacity group-data-selected/field:opacity-100"
                 data-slot="radio-group-indicator"
               >
-                <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground" />
+                <span className="bg-primary-foreground absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
               </div>
             </div>
             {typeof children === "string" ? (
               <Label elementType="span">{children}</Label>
             ) : children ? (
               <div
-                className="group/field-content flex flex-1 flex-col gap-0.5 leading-snug *:data-[slot=field-label]:leading-snug"
+                className="gap-0.5 group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
                 data-slot="field-content"
               >
                 {children}

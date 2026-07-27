@@ -237,10 +237,7 @@ Examples:
       await fs.writeFile(outputFile, transformed, "utf-8")
 
       totalGenerated++
-      console.info(`   ✅ ${component.name}.tsx`)
     }
-
-    console.info()
   }
 
   console.info(`✨ Done! ${totalGenerated} file(s) generated.`)

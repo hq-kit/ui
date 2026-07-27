@@ -30,7 +30,7 @@ const SheetOverlay = ({
 }) => (
   <ModalOverlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/10 text-xs/relaxed transition-opacity duration-150 data-entering:opacity-0 data-exiting:opacity-0 supports-backdrop-filter:backdrop-blur-xs",
+      "bg-black/10 text-xs/relaxed supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-50 transition-opacity duration-150 data-entering:opacity-0 data-exiting:opacity-0",
       className
     )}
     data-slot="sheet-overlay"
@@ -59,7 +59,7 @@ const SheetContent = ({
   <SheetOverlay {...props} className={overlayClassName}>
     <Modal
       className={cn(
-        "fixed z-50 flex flex-col bg-popover bg-clip-padding text-popover-foreground text-xs/relaxed shadow-lg transition duration-200 ease-in-out data-[side=left]:data-entering:translate-x-[-2.5rem] data-[side=left]:data-exiting:translate-x-[-2.5rem] data-[side=right]:data-entering:translate-x-[2.5rem] data-[side=right]:data-exiting:translate-x-[2.5rem] data-[side=bottom]:data-entering:translate-y-[2.5rem] data-[side=bottom]:data-exiting:translate-y-[2.5rem] data-[side=top]:data-entering:translate-y-[-2.5rem] data-[side=top]:data-exiting:translate-y-[-2.5rem] data-[side=bottom]:inset-x-0 data-[side=top]:inset-x-0 data-[side=left]:inset-y-0 data-[side=right]:inset-y-0 data-[side=top]:top-0 data-[side=right]:right-0 data-[side=bottom]:bottom-0 data-[side=left]:left-0 data-[side=bottom]:h-auto data-[side=left]:h-full data-[side=right]:h-full data-[side=top]:h-auto data-[side=left]:w-3/4 data-[side=right]:w-3/4 data-[side=bottom]:border-t data-[side=left]:border-r data-[side=top]:border-b data-[side=right]:border-l data-entering:opacity-0 data-exiting:opacity-0 data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm",
+        "bg-popover text-popover-foreground fixed z-50 flex flex-col bg-clip-padding text-xs/relaxed shadow-lg transition duration-200 ease-in-out data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:border-t data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:border-l data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:border-b data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm data-[side=left]:data-entering:translate-x-[-2.5rem] data-[side=left]:data-exiting:translate-x-[-2.5rem] data-[side=right]:data-entering:translate-x-[2.5rem] data-[side=right]:data-exiting:translate-x-[2.5rem] data-[side=bottom]:data-entering:translate-y-[2.5rem] data-[side=bottom]:data-exiting:translate-y-[2.5rem] data-[side=top]:data-entering:translate-y-[-2.5rem] data-[side=top]:data-exiting:translate-y-[-2.5rem] data-entering:opacity-0 data-exiting:opacity-0",
         className
       )}
       data-side={side}
@@ -88,12 +88,15 @@ const SheetContent = ({
 )
 
 const SheetHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex flex-col gap-0.5 p-4", className)} data-slot="sheet-header" {...props} />
+  <div className={cn("gap-0.5 p-4 flex flex-col", className)} data-slot="sheet-header" {...props} />
 )
 
 const SheetBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
-    className={cn("no-scrollbar isolate flex flex-col gap-2 overflow-auto p-4 py-0! will-change-scroll", className)}
+    className={cn(
+      "no-scrollbar gap-2 p-4 isolate flex flex-col overflow-auto py-0! will-change-scroll",
+      className
+    )}
     data-slot="sheet-body"
     slot="body"
     {...props}
@@ -101,12 +104,12 @@ const SheetBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
 )
 
 const SheetFooter = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("mt-auto flex flex-col gap-2 p-4", className)} data-slot="sheet-footer" {...props} />
+  <div className={cn("gap-2 p-4 mt-auto flex flex-col", className)} data-slot="sheet-footer" {...props} />
 )
 
 const SheetTitle = ({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) => (
   <Heading
-    className={cn("font-medium text-foreground text-sm", className)}
+    className={cn("text-foreground text-sm font-medium", className)}
     data-slot="sheet-title"
     slot="title"
     {...props}

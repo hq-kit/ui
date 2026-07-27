@@ -8,7 +8,9 @@ import {
   IBM_Plex_Mono,
   JetBrains_Mono,
   PT_Mono,
+  Roboto_Mono,
   Source_Code_Pro,
+  Space_Mono,
   Ubuntu_Mono
 } from "next/font/google"
 import { cn } from "@/lib/utils"
@@ -72,6 +74,18 @@ const bubbleGum = Bubblegum_Sans({
   weight: "400"
 })
 
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  weight: "400"
+})
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+  weight: "400"
+})
+
 export const fontMono = cn(
   jetbrainsMono.variable,
   geistMono.variable,
@@ -79,8 +93,10 @@ export const fontMono = cn(
   googleCode.variable,
   cascadiaCode.variable,
   dmMono.variable,
+  robotoMono.variable,
   bubbleGum.variable,
   sourceCodePro.variable,
+  spaceMono.variable,
   ubuntuMono.variable,
   ptMono.variable,
   ibmPlexMono.variable

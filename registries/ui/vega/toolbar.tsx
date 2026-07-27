@@ -32,7 +32,7 @@ const Toolbar = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "group/toolbar flex gap-[--spacing(var(--gap))] rounded-md data-[spacing=0]:data-[variant=outline]:shadow-xs data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
+          "rounded-md data-[spacing=0]:data-[variant=outline]:shadow-xs group/toolbar flex gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
           className
         )
       )}

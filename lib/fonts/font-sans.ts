@@ -1,4 +1,6 @@
 import {
+  Antic,
+  Architects_Daughter,
   DM_Sans,
   EB_Garamond,
   Figtree,
@@ -8,6 +10,8 @@ import {
   Instrument_Sans,
   Instrument_Serif,
   Inter,
+  Lexend,
+  Libre_Baskerville,
   Lora,
   Manrope,
   Merriweather,
@@ -15,9 +19,12 @@ import {
   Noto_Sans,
   Noto_Serif,
   Nunito_Sans,
+  Open_Sans,
   Outfit,
   Oxanium,
   Playfair_Display,
+  Plus_Jakarta_Sans,
+  Poppins,
   Public_Sans,
   Quicksand,
   Raleway,
@@ -159,10 +166,55 @@ const quickSand = Quicksand({
   variable: "--font-quick-sand"
 })
 
+const lexend = Lexend({
+  subsets: ["latin"],
+  variable: "--font-lexend"
+})
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans"
+})
+
+const architect = Architects_Daughter({
+  subsets: ["latin"],
+  variable: "--font-architects",
+  weight: "400"
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta"
+})
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"]
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  variable: "--font-libre-baskerville"
+})
+
+const antic = Antic({
+  subsets: ["latin"],
+  variable: "--font-antic",
+  weight: "400"
+})
+
 export const fontSans = cn(
   geistSans.variable,
   inter.variable,
+  libreBaskerville.variable,
+  poppins.variable,
+  jakarta.variable,
+  openSans.variable,
+  antic.variable,
+  lexend.variable,
   notoSans.variable,
+  architect.variable,
   nunitoSans.variable,
   figtree.variable,
   roboto.variable,

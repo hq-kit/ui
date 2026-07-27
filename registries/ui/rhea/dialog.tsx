@@ -29,10 +29,7 @@ const DialogOverlay = ({
   children: ReactNode
 }) => (
   <ModalOverlay
-    className={cn(
-      "data-exiting:fade-out-0 data-entering:fade-in-0 fixed inset-0 isolate z-50 bg-black/30 duration-100 data-entering:animate-in data-exiting:animate-out supports-backdrop-filter:backdrop-blur-sm",
-      className
-    )}
+    className={cn("data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/30 duration-100 supports-backdrop-filter:backdrop-blur-sm fixed inset-0 isolate z-50", className)}
     data-slot="dialog-overlay"
     {...props}
   >
@@ -55,7 +52,7 @@ const DialogContent = ({
   <DialogOverlay isDismissable={isDismissable} {...props}>
     <RACModal
       className={cn(
-        "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-[min(var(--radius-4xl),24px)] bg-popover p-6 text-popover-foreground text-sm shadow-xl outline-none ring-1 ring-foreground/5 duration-100 data-entering:animate-in data-exiting:animate-out sm:max-w-md dark:ring-foreground/10",
+        "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/5 dark:ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-[min(var(--radius-4xl),24px)] p-6 text-sm shadow-xl ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
         className
       )}
       data-slot="dialog-content"
@@ -80,7 +77,7 @@ const DialogContent = ({
 )
 
 const DialogHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex flex-col gap-1.5", className)} data-slot="dialog-header" {...props} />
+  <div className={cn("gap-1.5 flex flex-col", className)} data-slot="dialog-header" {...props} />
 )
 
 const DialogFooter = ({
@@ -103,7 +100,7 @@ const DialogFooter = ({
 
 const DialogTitle = ({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) => (
   <Heading
-    className={cn("font-medium text-base leading-none", className)}
+    className={cn("text-base leading-none font-medium", className)}
     data-slot="dialog-title"
     slot="title"
     {...props}
@@ -111,20 +108,13 @@ const DialogTitle = ({ className, ...props }: Omit<ComponentProps<typeof Heading
 )
 
 const DialogDescription = ({ className, ...props }: Omit<ComponentProps<"div">, "slot">) => (
-  <div
-    className={cn(
-      "text-muted-foreground text-sm *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
-      className
-    )}
-    data-slot="dialog-description"
-    {...props}
-  />
+  <div className={cn("text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3", className)} data-slot="dialog-description" {...props} />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
     className={cn(
-      "no-scrollbar isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col gap-2 overflow-auto will-change-scroll",
+      "no-scrollbar gap-2 isolate flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding))] flex-col overflow-auto will-change-scroll",
       className
     )}
     data-slot="body"

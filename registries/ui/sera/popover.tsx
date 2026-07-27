@@ -26,10 +26,7 @@ const PopoverContent = ({
   className?: string
 }) => (
   <RACPopover
-    className={cn(
-      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 flex w-72 origin-(--trigger-anchor-point) flex-col gap-4 rounded-none bg-popover p-4 text-popover-foreground text-sm shadow-md outline-hidden ring-1 ring-foreground/10 duration-100 data-entering:animate-in data-exiting:animate-out",
-      className
-    )}
+    className={cn("bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/10 flex flex-col gap-4 rounded-none p-4 text-sm shadow-md ring-1 duration-100 z-50 w-72 origin-(--trigger-anchor-point) outline-hidden", className)}
     crossOffset={crossOffset}
     data-slot="popover-content"
     offset={offset}
@@ -43,15 +40,11 @@ const PopoverHeader = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const PopoverTitle = ({ className, ...props }: ComponentProps<typeof Heading>) => (
-  <Heading className={cn("font-semibold text-xs uppercase", className)} data-slot="popover-title" {...props} />
+  <Heading className={cn("text-xs font-semibold uppercase", className)} data-slot="popover-title" {...props} />
 )
 
 const PopoverDescription = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("mt-0.5 text-muted-foreground text-sm leading-relaxed", className)}
-    data-slot="popover-description"
-    {...props}
-  />
+  <div className={cn("text-muted-foreground text-sm leading-relaxed mt-0.5", className)} data-slot="popover-description" {...props} />
 )
 
 Popover.Description = PopoverDescription

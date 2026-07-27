@@ -31,7 +31,7 @@ const AccordionTrigger = ({
   <Heading className="flex">
     <Button
       className={cn(
-        "group/accordion-trigger relative flex flex-1 items-start justify-between rounded-md border border-transparent py-4 text-left font-medium text-sm outline-none transition-all hover:underline focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
+        "focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground rounded-md py-4 text-left text-sm font-medium hover:underline focus-visible:ring-3 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent outline-none transition-all disabled:pointer-events-none disabled:opacity-50",
         className
       )}
       data-slot="accordion-trigger"
@@ -63,7 +63,7 @@ const AccordionTrigger = ({
 
 const AccordionContent = ({ className, children, ...props }: DisclosurePanelProps) => (
   <DisclosurePanel
-    className="h-(--disclosure-panel-height) overflow-clip text-sm transition-[height] data-closed:animate-accordion-up data-open:animate-accordion-down"
+    className="data-open:animate-accordion-down data-closed:animate-accordion-up text-sm h-(--disclosure-panel-height) overflow-clip transition-[height]"
     data-slot="accordion-content"
     {...props}
   >

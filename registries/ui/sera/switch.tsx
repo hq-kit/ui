@@ -24,7 +24,7 @@ const Switch = ({
           <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
             <div
               className={cn(
-                "peer group/switch relative inline-flex shrink-0 items-center rounded-none border not-group-data-selected/field:border-input/50 not-group-data-selected/field:bg-input outline-none transition-all after:absolute focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 data-[size=default]:h-4.5 data-[size=sm]:h-3.5 data-[size=default]:w-8.25 data-[size=sm]:w-6.25 group-data-disabled/field:cursor-not-allowed group-data-selected/field:border-primary group-data-selected/field:bg-primary group-data-disabled/field:opacity-50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+                "group-data-selected/field:bg-primary not-group-data-selected/field:bg-input group-data-selected/field:border-primary border not-group-data-selected/field:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25 peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50",
                 className
               )}
               data-size={size}
@@ -32,7 +32,7 @@ const Switch = ({
               slot="control"
             >
               <span
-                className="pointer-events-none block not-group-data-selected/field:translate-x-0.25 bg-background ring-0 transition-transform group-data-[size=default]/switch:size-3.5 group-data-[size=sm]/switch:size-2.5 group-data-selected/field:translate-x-[calc(100%+2px)] dark:not-group-data-selected/field:bg-foreground dark:group-data-selected/field:bg-primary-foreground"
+                className="bg-background dark:not-group-data-selected/field:bg-foreground dark:group-data-selected/field:bg-primary-foreground group-data-[size=default]/switch:size-3.5 group-data-[size=sm]/switch:size-2.5 group-data-selected/field:translate-x-[calc(100%+2px)] not-group-data-selected/field:translate-x-0.25 pointer-events-none block ring-0 transition-transform"
                 data-slot="switch-thumb"
               />
             </div>
@@ -40,7 +40,7 @@ const Switch = ({
               <Label elementType="span">{children}</Label>
             ) : children ? (
               <div
-                className="group/field-content flex flex-1 flex-col gap-1 leading-snug *:data-[slot=field-label]:leading-snug"
+                className="gap-1 group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
                 data-slot="field-content"
               >
                 {children}

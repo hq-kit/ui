@@ -13,14 +13,7 @@ import { Separator as RACSeparator } from "./separator"
 const Form = (props: FormProps) => <RACForm {...props} />
 
 const FieldSet = ({ className, ...props }: ComponentProps<"fieldset">) => (
-  <fieldset
-    className={cn(
-      "flex flex-col gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
-      className
-    )}
-    data-slot="field-set"
-    {...props}
-  />
+  <fieldset className={cn("gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 flex flex-col", className)} data-slot="field-set" {...props} />
 )
 
 const Legend = ({
@@ -28,27 +21,19 @@ const Legend = ({
   variant = "legend",
   ...props
 }: ComponentProps<"legend"> & { variant?: "legend" | "label" }) => (
-  <legend
-    className={cn("mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base", className)}
-    data-slot="field-legend"
-    data-variant={variant}
-    {...props}
-  />
+  <legend className={cn("mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base", className)} data-slot="field-legend" data-variant={variant} {...props} />
 )
 
 const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
-      className
-    )}
+    className={cn("gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 group/field-group @container/field-group flex w-full flex-col", className)}
     data-slot="field-group"
     {...props}
   />
 )
 
 const fieldVariants = tv({
-  base: "group/field flex w-full gap-3 has-data-invalid:text-destructive data-[invalid=true]:text-destructive data-invalid:text-destructive hover:not-data-disabled:not-in-data-disabled:**:[[slot=control]]:border-ring!",
+  base: "hover:not-data-disabled:not-in-data-disabled:**:[[slot=control]]:border-ring! data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
   variants: {
     orientation: {
       vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
@@ -81,8 +66,8 @@ const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
   const label = (
     <RACLabel
       className={cn(
-        "in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center gap-2 font-medium text-sm leading-none peer-disabled:opacity-50 group-data-[disabled=true]:opacity-50",
-        "group/field-label peer/field-label flex w-fit gap-2 leading-snug has-[>[data-slot=field]]:rounded-2xl has-[>[data-slot=field]]:border has-group-data-selected/field:bg-input/30 *:data-[slot=field]:p-4 group-data-[disabled=true]/field:opacity-50",
+        "gap-2 text-sm leading-none font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
+        "has-group-data-selected/field:bg-input/30 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-2xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 group/field-label peer/field-label flex w-fit",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -101,20 +86,13 @@ const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
 }
 
 const Title = ({ className, ...props }: LabelProps) => (
-  <RACLabel
-    className={cn(
-      "flex w-fit items-center gap-2 font-medium text-sm group-data-[disabled=true]/field:opacity-50",
-      className
-    )}
-    data-slot="field-label"
-    {...props}
-  />
+  <RACLabel className={cn("gap-2 text-sm font-medium group-data-[disabled=true]/field:opacity-50 flex w-fit items-center", className)} data-slot="field-label" {...props} />
 )
 
 const Description = ({ className, ...props }: TextProps) => (
   <Text
     className={cn(
-      "text-left font-normal text-muted-foreground text-sm leading-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
+      "text-muted-foreground text-left text-sm [[data-variant=legend]+&]:-mt-1.5 font-normal leading-normal group-has-data-horizontal/field:text-balance",
       "nth-last-2:-mt-1 last:mt-0",
       "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
@@ -133,7 +111,7 @@ const Separator = ({
   children?: ReactNode
 }) => (
   <div
-    className={cn("relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2", className)}
+    className={cn("-my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 relative", className)}
     data-content={!!children}
     data-slot="field-separator"
     {...props}
@@ -141,7 +119,7 @@ const Separator = ({
     <RACSeparator className="absolute inset-0 top-1/2" />
     {children && (
       <span
-        className="relative mx-auto block w-fit bg-background px-2 text-muted-foreground"
+        className="text-muted-foreground px-2 relative mx-auto block w-fit bg-background"
         data-slot="field-separator-content"
       >
         {children}
@@ -153,9 +131,7 @@ const Separator = ({
 const FieldError = (props: FieldErrorProps) => {
   return (
     <RACFieldError
-      className={composeRenderProps(props.className, (className) =>
-        cn("font-normal text-destructive text-sm", className)
-      )}
+      className={composeRenderProps(props.className, (className) => cn("text-destructive text-sm font-normal", className))}
       data-slot="field-error"
       {...props}
     />
@@ -197,12 +173,7 @@ const FieldErrorNative = ({
   }
 
   return (
-    <div
-      className={cn("font-normal text-destructive text-sm", className)}
-      data-slot="field-error"
-      role="alert"
-      {...props}
-    >
+    <div className={cn("text-destructive text-sm font-normal", className)} data-slot="field-error" role="alert" {...props}>
       {content}
     </div>
   )

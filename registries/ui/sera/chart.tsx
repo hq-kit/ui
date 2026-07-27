@@ -65,7 +65,7 @@ const ChartContainer = ({
   }
 }) => {
   const uniqueId = useId()
-  const chartId = `chart-${id ?? uniqueId.replace(/:/g, "")}`
+  const chartId = `chart-${id ?? uniqueId.replace(/:/g,"")}`
 
   return (
     <ChartContext.Provider value={{ config }}>
@@ -100,11 +100,11 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
             ([theme, prefix]) => `
 ${prefix} [data-chart=${id}] {
 ${colorConfig
-  .map(([key, itemConfig]) => {
-    const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ?? itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
-  })
-  .join("\n")}
+ .map(([key, itemConfig]) => {
+ const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ?? itemConfig.color
+ return color ?`  --color-${key}: ${color};`: null
+ })
+ .join("\n")}
 }
 `
           )
@@ -146,7 +146,7 @@ const ChartTooltipContent = ({
     }
 
     const [item] = payload
-    const key = `${labelKey ?? item?.dataKey ?? item?.name ?? "value"}`
+    const key = `${labelKey ?? item?.dataKey ?? item?.name ??"value"}`
     const itemConfig = getPayloadConfigFromPayload(config, item, key)
     const value = !labelKey && typeof label === "string" ? (config[label]?.label ?? label) : itemConfig?.label
 
@@ -168,18 +168,13 @@ const ChartTooltipContent = ({
   const nestLabel = payload.length === 1 && indicator !== "dot"
 
   return (
-    <div
-      className={cn(
-        "grid min-w-32 items-start gap-1.5 bg-popover px-2.5 py-1.5 text-popover-foreground text-xs shadow-sm ring-1 ring-foreground/10",
-        className
-      )}
-    >
+    <div className={cn("bg-popover text-popover-foreground ring-foreground/10 gap-1.5 px-2.5 py-1.5 text-xs shadow-sm ring-1 grid min-w-32 items-start", className)}>
       {!nestLabel ? tooltipLabel : null}
       <div className="grid gap-1.5">
         {payload
           .filter((item) => item.type !== "none")
           .map((item, index) => {
-            const key = `${nameKey ?? item.name ?? item.dataKey ?? "value"}`
+            const key = `${nameKey ?? item.name ?? item.dataKey ??"value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
             const indicatorColor = color ?? item.payload?.fill ?? item.color
 
@@ -264,7 +259,7 @@ const ChartLegendContent = ({
       {payload
         .filter((item) => item.type !== "none")
         .map((item, index) => {
-          const key = `${nameKey ?? item.dataKey ?? "value"}`
+          const key = `${nameKey ?? item.dataKey ??"value"}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
           return (

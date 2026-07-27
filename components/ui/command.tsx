@@ -117,7 +117,7 @@ const CommandInput = ({ className, isPending, ...props }: InputProps & { isPendi
 const CommandList = <T extends object>({ className, ...props }: MenuProps<T>) => (
   <Menu
     {...props}
-    className={cn("cn-command-list overflow-y-auto overflow-x-hidden", className)}
+    className={cn("cn-command-list flex-1 overflow-y-auto overflow-x-hidden", className)}
     data-slot="command-list"
   />
 )

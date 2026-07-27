@@ -61,17 +61,36 @@ export type ThemeStyleProps = {
   "chart-3": string
   "chart-4": string
   "chart-5": string
-  sidebar: string
-  "sidebar-foreground": string
-  "sidebar-primary": string
-  "sidebar-primary-foreground": string
-  "sidebar-accent": string
-  "sidebar-accent-foreground": string
-  "sidebar-border": string
-  "sidebar-ring": string
+  sidebar?: string
+  "sidebar-foreground"?: string
+  "sidebar-primary"?: string
+  "sidebar-primary-foreground"?: string
+  "sidebar-accent"?: string
+  "sidebar-accent-foreground"?: string
+  "sidebar-border"?: string
+  "sidebar-ring"?: string
   "font-sans"?: string
   "font-mono"?: string
   radius?: string
+  "shadow-color"?: string
+  "shadow-opacity"?: string
+  "shadow-blur"?: string
+  "shadow-spread"?: string
+  "shadow-offset-x"?: string
+  "shadow-offset-y"?: string
+  "letter-spacing"?: string
+  spacing?: string
+  "shadow-x"?: string
+  "shadow-y"?: string
+  "shadow-2xs"?: string
+  "shadow-xs"?: string
+  "shadow-sm"?: string
+  shadow?: string
+  "shadow-md"?: string
+  "shadow-lg"?: string
+  "shadow-xl"?: string
+  "shadow-2xl"?: string
+  "tracking-normal"?: string
 }
 
 export const presets: Record<string, ThemeStyles> = {

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 const Empty = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 text-balance border-dashed p-12 text-center",
+      "gap-4 border-dashed p-12 flex w-full min-w-0 flex-1 flex-col items-center justify-center text-balance text-center",
       className
     )}
     data-slot="empty"
@@ -14,7 +14,11 @@ const Empty = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const EmptyHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex max-w-sm flex-col items-center gap-2", className)} data-slot="empty-header" {...props} />
+  <div
+    className={cn("gap-2 flex max-w-sm flex-col items-center", className)}
+    data-slot="empty-header"
+    {...props}
+  />
 )
 
 const emptyMediaVariants = tv({
@@ -22,7 +26,7 @@ const emptyMediaVariants = tv({
   variants: {
     variant: {
       default: "bg-transparent",
-      icon: "flex size-10 shrink-0 items-center justify-center rounded-none bg-muted text-foreground [&_svg:not([class*='size-'])]:size-5"
+      icon: "bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-none [&_svg:not([class*='size-'])]:size-5"
     }
   },
   defaultVariants: {
@@ -44,13 +48,13 @@ const EmptyMedia = ({
 )
 
 const EmptyTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("font-semibold text-lg uppercase tracking-wider", className)} data-slot="empty-title" {...props} />
+  <div className={cn("text-lg font-semibold tracking-wider uppercase", className)} data-slot="empty-title" {...props} />
 )
 
 const EmptyDescription = ({ className, ...props }: ComponentProps<"p">) => (
   <div
     className={cn(
-      "mt-0.5 text-muted-foreground text-sm/relaxed [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+      "text-sm/relaxed mt-0.5 text-muted-foreground [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
     )}
     data-slot="empty-description"
@@ -60,7 +64,7 @@ const EmptyDescription = ({ className, ...props }: ComponentProps<"p">) => (
 
 const EmptyContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("flex w-full min-w-0 max-w-sm flex-col items-center gap-4 text-balance text-sm", className)}
+    className={cn("gap-4 text-sm flex w-full min-w-0 max-w-sm flex-col items-center text-balance", className)}
     data-slot="empty-content"
     {...props}
   />

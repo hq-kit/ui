@@ -76,7 +76,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "flex h-10 w-full min-w-0 items-center border border-transparent border-b-input bg-transparent px-0 py-1 text-base outline-none transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:border-b-ring disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-b-destructive data-focus-within:border-b-ring md:text-sm dark:aria-invalid:border-b-destructive/50",
+          "border-transparent border-b-input bg-transparent focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 border px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm data-focus-within:border-b-ring flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
       )}
@@ -105,7 +105,7 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "inline-flex h-10 w-full min-w-0 items-center justify-center border-0 border-transparent border-b-input bg-transparent px-0 py-1 text-base outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-b-ring focus-visible:ring-0 group-has-[>[data-align=inline-end]]/input-group:pr-2 group-has-[>[data-align=inline-start]]/input-group:pl-2 aria-invalid:border-b-destructive aria-invalid:ring-0 md:text-sm dark:bg-transparent dark:aria-invalid:border-b-destructive/50",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}
@@ -147,7 +147,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "inline-flex h-10 w-full min-w-0 items-center justify-center border-0 border-transparent border-b-input bg-transparent px-0 py-1 text-base outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-b-ring focus-visible:ring-0 group-has-[>[data-align=inline-end]]/input-group:pr-2 group-has-[>[data-align=inline-start]]/input-group:pl-2 aria-invalid:border-b-destructive aria-invalid:ring-0 md:text-sm dark:bg-transparent dark:aria-invalid:border-b-destructive/50",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}
@@ -175,7 +175,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "inline-flex h-10 w-full min-w-0 items-center justify-center border-0 border-transparent border-b-input bg-transparent px-0 py-1 text-base outline-none ring-0 transition-[color,box-shadow,border] file:h-7 file:font-medium file:text-sm focus-visible:border-b-ring focus-visible:ring-0 group-has-[>[data-align=inline-end]]/input-group:pr-2 group-has-[>[data-align=inline-start]]/input-group:pl-2 aria-invalid:border-b-destructive aria-invalid:ring-0 md:text-sm dark:bg-transparent dark:aria-invalid:border-b-destructive/50",
+            "border-transparent border-b-input focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 px-0 py-1 text-base file:h-7 file:text-sm file:font-medium md:text-sm bg-transparent ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent group-has-[>[data-align=inline-start]]/input-group:pl-2 group-has-[>[data-align=inline-end]]/input-group:pr-2 inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
             className
           )
         )}

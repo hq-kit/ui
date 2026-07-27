@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { Separator } from "./separator"
 
 const buttonGroupVariants = tv({
-  base: "group/button-group flex w-fit items-stretch rounded-none *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-none [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
+  base: "rounded-none has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-none group/button-group flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
   variants: {
     orientation: {
       horizontal:
@@ -33,19 +33,13 @@ const ButtonGroup = ({
 )
 
 const ButtonGroupText = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "flex items-center gap-2 rounded-none border bg-muted px-2.5 font-medium text-xs [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
-      className
-    )}
-    {...props}
-  />
+  <div className={cn("bg-muted gap-2 rounded-none border px-2.5 text-xs font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none", className)} {...props} />
 )
 
 const ButtonGroupSeparator = ({ className, orientation = "vertical", ...props }: ComponentProps<typeof Separator>) => (
   <Separator
     className={cn(
-      "relative self-stretch bg-input data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto",
+      "bg-input relative self-stretch data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto",
       className
     )}
     data-slot="button-group-separator"

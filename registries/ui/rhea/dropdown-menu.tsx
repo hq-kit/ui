@@ -39,7 +39,7 @@ const DropdownMenuContent = ({
   }) => (
   <Popover
     className={cn(
-      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 z-50 w-(--trigger-width) min-w-32 origin-(--trigger-anchor-point) overflow-y-auto rounded-2xl bg-popover p-1 text-popover-foreground shadow-lg outline-none ring-1 ring-foreground/5 duration-100 data-entering:animate-in data-exiting:animate-out data-exiting:overflow-hidden dark:ring-foreground/10",
+      "data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/5 dark:ring-foreground/10 bg-popover text-popover-foreground min-w-32 rounded-2xl p-1 shadow-lg ring-1 duration-100 z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-y-auto outline-none data-exiting:overflow-hidden",
       className
     )}
     crossOffset={crossOffset}
@@ -67,7 +67,7 @@ const DropdownMenuLabel = ({
   inset?: boolean
 }) => (
   <Header
-    className={cn("px-2 py-1 text-muted-foreground text-xs data-inset:pl-7", className)}
+    className={cn("text-muted-foreground px-2 py-1 text-xs data-inset:pl-7", className)}
     data-inset={inset}
     data-slot="dropdown-menu-label"
     {...props}
@@ -78,11 +78,9 @@ const dropdownMenuItemVariants = tv({
   base: "group/dropdown-menu-item relative flex cursor-default select-none items-center whitespace-nowrap outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   variants: {
     selectionMode: {
-      none: "min-h-7 gap-2 rounded-xl px-2 py-1.5 text-sm focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive",
-      single:
-        "min-h-7 gap-2 rounded-xl py-1.5 pr-8 pl-2 text-sm focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4",
-      multiple:
-        "min-h-7 gap-2 rounded-xl py-1.5 pr-8 pl-2 text-sm focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4"
+      none: "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2 min-h-7 rounded-xl px-2 py-1.5 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4",
+      single: "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground gap-2 min-h-7 rounded-xl py-1.5 pr-8 pl-2 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4",
+      multiple: "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground gap-2 min-h-7 rounded-xl py-1.5 pr-8 pl-2 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4"
     }
   }
 })
@@ -111,7 +109,7 @@ const DropdownMenuItem = ({
       <>
         {selectionMode !== "none" ? (
           <span
-            className="pointer-events-none absolute right-2 flex items-center justify-center"
+            className="absolute right-2 flex items-center justify-center pointer-events-none"
             data-slot={
               selectionMode === "single"
                 ? "dropdown-menu-radio-item-indicator"
@@ -149,7 +147,7 @@ const DropdownMenuSubTrigger = ({
 }) => (
   <MenuItem
     className={cn(
-      "flex min-h-7 cursor-default select-none items-center gap-2 rounded-xl px-2 py-1.5 text-sm outline-hidden focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-open:bg-accent data-inset:pl-7 data-open:text-accent-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2 min-h-7 rounded-xl px-2 py-1.5 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 flex cursor-default select-none items-center outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0",
       className
     )}
     data-inset={inset}
@@ -181,10 +179,7 @@ const DropdownMenuSubContent = ({
   ...props
 }: ComponentProps<typeof DropdownMenuContent>) => (
   <DropdownMenuContent
-    className={cn(
-      "w-auto min-w-[96px] rounded-2xl bg-popover p-1 text-popover-foreground shadow-lg ring-1 ring-foreground/5 duration-100 dark:ring-foreground/10",
-      className
-    )}
+    className={cn("ring-foreground/5 dark:ring-foreground/10 bg-popover text-popover-foreground min-w-[96px] rounded-2xl p-1 shadow-lg ring-1 duration-100 w-auto", className)}
     crossOffset={crossOffset}
     data-slot="dropdown-menu-sub-content"
     offset={offset}
@@ -194,18 +189,11 @@ const DropdownMenuSubContent = ({
 )
 
 const DropdownMenuSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
-  <Separator className={cn("-mx-1 my-1 h-px bg-border/50", className)} data-slot="dropdown-menu-separator" {...props} />
+  <Separator className={cn("bg-border/50 -mx-1 my-1 h-px", className)} data-slot="dropdown-menu-separator" {...props} />
 )
 
 const DropdownMenuShortcut = ({ className, ...props }: ComponentProps<"span">) => (
-  <span
-    className={cn(
-      "ml-auto text-muted-foreground text-xs tracking-widest group-focus/dropdown-menu-item:text-accent-foreground",
-      className
-    )}
-    data-slot="dropdown-menu-shortcut"
-    {...props}
-  />
+  <span className={cn("text-muted-foreground group-focus/dropdown-menu-item:text-accent-foreground ml-auto text-xs tracking-widest", className)} data-slot="dropdown-menu-shortcut" {...props} />
 )
 
 DropdownMenu.Group = DropdownMenuGroup

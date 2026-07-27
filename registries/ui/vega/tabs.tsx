@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils"
 const Tabs = ({ className, orientation = "horizontal", ...props }: TabsProps) => (
   <RACTabs
     className={composeRenderProps(className, (className) =>
-      cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className)
+      cn("gap-2 group/tabs flex data-[orientation=horizontal]:flex-col", className)
     )}
     data-orientation={orientation}
     data-slot="tabs"
@@ -28,7 +28,7 @@ const Tabs = ({ className, orientation = "horizontal", ...props }: TabsProps) =>
   />
 )
 const tabsListVariants = tv({
-  base: "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground data-[variant=line]:rounded-none group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col",
+  base: "rounded-lg p-[3px] group-data-[orientation=horizontal]/tabs:h-9 data-[variant=line]:rounded-none group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col",
   variants: {
     variant: {
       default: "bg-muted",
@@ -57,7 +57,7 @@ const TabsTrigger = ({ className, ...props }: TabProps) => (
   <RACTab
     className={composeRenderProps(className, (className) =>
       cn(
-        "group/tab relative isolate inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2 py-1 font-medium text-foreground/60 text-sm transition-all hover:text-foreground focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 data-disabled:pointer-events-none data-disabled:opacity-50 group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none [&_svg:not([class*='size-'])]:size-4 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 group/tab relative isolate inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-foreground/60 transition-all hover:text-foreground focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-disabled:pointer-events-none data-disabled:opacity-50 group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
         "data-selected:text-foreground group-data-[variant=line]/tabs-list:bg-transparent dark:data-selected:text-foreground",
         "href" in props ? "cursor-pointer" : "cursor-default",
         className
@@ -94,7 +94,7 @@ const TabsContents = <T extends object>({ className, ...props }: TabPanelsProps<
 
 const TabsContent = ({ className, ...props }: TabPanelProps) => (
   <RACTabPanel
-    className={composeRenderProps(className, (className) => cn("flex-1 text-sm outline-none", className))}
+    className={composeRenderProps(className, (className) => cn("text-sm flex-1 outline-none", className))}
     data-slot="tabs-content"
     {...props}
   />

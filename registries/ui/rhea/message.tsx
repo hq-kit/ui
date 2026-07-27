@@ -2,15 +2,12 @@ import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
 const MessageGroup = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("flex min-w-0 flex-col gap-2", className)} data-slot="message-group" {...props} />
+  <div className={cn("gap-2 flex min-w-0 flex-col", className)} data-slot="message-group" {...props} />
 )
 
 const Message = ({ className, align = "start", ...props }: ComponentProps<"div"> & { align?: "start" | "end" }) => (
   <div
-    className={cn(
-      "group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse",
-      className
-    )}
+    className={cn("text-sm gap-2 group/message relative flex w-full min-w-0 data-[align=end]:flex-row-reverse", className)}
     data-align={align}
     data-slot="message"
     {...props}
@@ -20,7 +17,7 @@ const Message = ({ className, align = "start", ...props }: ComponentProps<"div">
 const MessageAvatar = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8",
+      "min-w-8 group-has-data-[slot=message-footer]/message:-translate-y-8 flex w-fit shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted",
       className
     )}
     data-slot="message-avatar"
@@ -30,10 +27,7 @@ const MessageAvatar = ({ className, ...props }: ComponentProps<"div">) => (
 
 const MessageContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "wrap-break-word flex w-full min-w-0 flex-col gap-2.5 group-data-[align=end]/message:*:data-slot:self-end",
-      className
-    )}
+    className={cn("gap-2.5 group-data-[align=end]/message:*:data-slot:self-end wrap-break-word flex w-full min-w-0 flex-col", className)}
     data-slot="message-content"
     {...props}
   />
@@ -41,10 +35,7 @@ const MessageContent = ({ className, ...props }: ComponentProps<"div">) => (
 
 const MessageHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn(
-      "flex min-w-0 max-w-full items-center px-3 font-medium text-muted-foreground text-xs group-has-data-[variant=ghost]/message:px-0",
-      className
-    )}
+    className={cn("text-xs font-medium text-muted-foreground px-3 group-has-data-[variant=ghost]/message:px-0 flex min-w-0 max-w-full items-center", className)}
     data-slot="message-header"
     {...props}
   />
@@ -53,7 +44,7 @@ const MessageHeader = ({ className, ...props }: ComponentProps<"div">) => (
 const MessageFooter = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "flex min-w-0 max-w-full items-center px-3 font-medium text-muted-foreground text-xs group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end",
+      "text-xs font-medium text-muted-foreground px-3 group-has-data-[variant=ghost]/message:px-0 flex min-w-0 max-w-full items-center group-data-[align=end]/message:justify-end",
       className
     )}
     data-slot="message-footer"

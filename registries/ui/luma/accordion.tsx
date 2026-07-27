@@ -16,19 +16,11 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from "@/lib/utils"
 
 const Accordion = ({ className, ...props }: DisclosureGroupProps) => (
-  <DisclosureGroup
-    className={cn("flex w-full flex-col overflow-hidden rounded-2xl border", className)}
-    data-slot="accordion"
-    {...props}
-  />
+  <DisclosureGroup className={cn("overflow-hidden rounded-2xl border flex w-full flex-col", className)} data-slot="accordion" {...props} />
 )
 
 const AccordionItem = ({ className, ...props }: DisclosureProps) => (
-  <Disclosure
-    className={cn("not-last:border-b data-open:bg-muted/50", className)}
-    data-slot="accordion-item"
-    {...props}
-  />
+  <Disclosure className={cn("data-open:bg-muted/50 not-last:border-b", className)} data-slot="accordion-item" {...props} />
 )
 
 const AccordionTrigger = ({
@@ -39,7 +31,7 @@ const AccordionTrigger = ({
   <Heading className="flex">
     <Button
       className={cn(
-        "group/accordion-trigger relative flex flex-1 items-start justify-between gap-6 border border-transparent p-4 text-left font-medium text-sm outline-none transition-all hover:underline disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
+        "**:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-4 text-left text-sm font-medium hover:underline **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent outline-none transition-all disabled:pointer-events-none disabled:opacity-50",
         className
       )}
       data-slot="accordion-trigger"
@@ -71,7 +63,7 @@ const AccordionTrigger = ({
 
 const AccordionContent = ({ className, children, ...props }: DisclosurePanelProps) => (
   <DisclosurePanel
-    className="h-(--disclosure-panel-height) overflow-clip px-4 text-sm transition-[height] data-closed:animate-accordion-up data-open:animate-accordion-down"
+    className="data-open:animate-accordion-down data-closed:animate-accordion-up px-4 text-sm h-(--disclosure-panel-height) overflow-clip transition-[height]"
     data-slot="accordion-content"
     {...props}
   >

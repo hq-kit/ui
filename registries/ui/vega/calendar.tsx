@@ -67,7 +67,7 @@ const Calendar = <T extends DateValue, M extends "single" | "multiple" = "single
   <RACCalendar
     {...props}
     className={cn(
-      "group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(8)]",
+      "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
       props.className
     )}
     data-slot="calendar"
@@ -94,7 +94,7 @@ const RangeCalendar = <T extends DateValue>(
   <RACRangeCalendar
     {...props}
     className={cn(
-      "group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(8)]",
+      "p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(8)] group/calendar w-fit bg-background in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
       props.className
     )}
     data-slot="calendar"
@@ -161,7 +161,11 @@ const CalendarInner = ({
               <YearDropdown format={headerFormat} />
             </>
           ) : (
-            <CalendarHeading className="select-none font-medium text-sm" format={headerFormat} offset={{ months: i }} />
+            <CalendarHeading
+              className="select-none font-medium text-sm"
+              format={headerFormat}
+              offset={{ months: i }}
+            />
           )}
         </div>
         <CalendarGrid className="w-full border-collapse" offset={{ months: i }}>

@@ -1,7 +1,7 @@
 import type { ThemeStyles } from "@/lib/themes/presets"
 
-export const defaultFontSans = "Inter, sans-serif"
-export const defaultFontMono = "JetBrains Mono, monospace"
+export const defaultFontSans = "Geist"
+export const defaultFontMono = "Geist Mono"
 
 export const defaultLightThemeStyles: ThemeStyles["light"] = {
   background: "oklch(1 0 0)",

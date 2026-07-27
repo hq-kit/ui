@@ -94,7 +94,7 @@ const SelectContent = <T extends object>({
   ...props
 }: ListBoxProps<T> & Pick<PopoverProps, "placement" | "offset" | "crossOffset"> & { isSearchable?: boolean }) => (
   <Popover
-    className="cn-select-content-aria cn-menu-target relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden"
+    className="cn-select-content-aria cn-menu-target relative isolate z-50 grid w-(--trigger-width) origin-(--trigger-anchor-point) grid-rows-[auto_1fr] overflow-hidden"
     crossOffset={crossOffset}
     data-slot="select-content"
     offset={offset}

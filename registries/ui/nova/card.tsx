@@ -2,21 +2,13 @@ import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
 const Card = ({ className, size = "default", ...props }: ComponentProps<"div"> & { size?: "default" | "sm" }) => (
-  <div
-    className={cn(
-      "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-card-foreground text-sm ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-[>img:first-child]:pt-0 has-data-[slot=card-footer]:pb-0 data-[size=sm]:has-data-[slot=card-footer]:pb-0 data-[size=sm]:[--card-spacing:--spacing(3)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
-      className
-    )}
-    data-size={size}
-    data-slot="card"
-    {...props}
-  />
+  <div className={cn("ring-foreground/10 bg-card text-card-foreground gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) text-sm ring-1 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col", className)} data-size={size} data-slot="card" {...props} />
 )
 
 const CardHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={cn(
-      "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
+      "gap-1 rounded-t-xl px-(--card-spacing) [.border-b]:pb-(--card-spacing) group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
       className
     )}
     data-slot="card-header"
@@ -25,11 +17,7 @@ const CardHeader = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const CardTitle = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("font-medium text-base leading-snug group-data-[size=sm]/card:text-sm", className)}
-    data-slot="card-title"
-    {...props}
-  />
+  <div className={cn("text-base leading-snug font-medium group-data-[size=sm]/card:text-sm", className)} data-slot="card-title" {...props} />
 )
 
 const CardDescription = ({ className, ...props }: ComponentProps<"div">) => (
@@ -49,11 +37,7 @@ const CardContent = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const CardFooter = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={cn("flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)", className)}
-    data-slot="card-footer"
-    {...props}
-  />
+  <div className={cn("bg-muted/50 rounded-b-xl border-t p-(--card-spacing) flex items-center", className)} data-slot="card-footer" {...props} />
 )
 
 Card.Header = CardHeader

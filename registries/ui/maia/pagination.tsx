@@ -17,7 +17,7 @@ const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
 )
 
 const PaginationContent = ({ className, ...props }: ComponentProps<"ul">) => (
-  <ul className={cn("flex items-center gap-1", className)} data-slot="pagination-content" {...props} />
+  <ul className={cn("gap-1 flex items-center", className)} data-slot="pagination-content" {...props} />
 )
 
 const PaginationItem = ({ ...props }: ComponentProps<"li">) => <li data-slot="pagination-item" {...props} />
@@ -56,7 +56,12 @@ const PaginationFirst = ({
   ...props
 }: ComponentProps<typeof PaginationLink> & { text?: string }) => {
   return (
-    <PaginationLink aria-label="Go to previous page" className={cn("pl-2!", className)} size="default" {...props}>
+    <PaginationLink
+      aria-label="Go to previous page"
+      className={cn("pl-2!", className)}
+      size="default"
+      {...props}
+    >
       <IconPlaceholder
         className=""
         data-icon="inline-start"
@@ -76,7 +81,12 @@ const PaginationPrevious = ({
   ...props
 }: ComponentProps<typeof PaginationLink> & { text?: string }) => {
   return (
-    <PaginationLink aria-label="Go to previous page" className={cn("pl-2!", className)} size="default" {...props}>
+    <PaginationLink
+      aria-label="Go to previous page"
+      className={cn("pl-2!", className)}
+      size="default"
+      {...props}
+    >
       <IconPlaceholder
         className=""
         data-icon="inline-start"
@@ -96,7 +106,12 @@ const PaginationNext = ({
   text = "Next",
   ...props
 }: ComponentProps<typeof PaginationLink> & { text?: string }) => (
-  <PaginationLink aria-label="Go to next page" className={cn("pr-2!", className)} size="default" {...props}>
+  <PaginationLink
+    aria-label="Go to next page"
+    className={cn("pr-2!", className)}
+    size="default"
+    {...props}
+  >
     <span className="hidden sm:block">{text}</span>
     <IconPlaceholder
       className=""
@@ -115,7 +130,12 @@ const PaginationLast = ({
   text = "Last",
   ...props
 }: ComponentProps<typeof PaginationLink> & { text?: string }) => (
-  <PaginationLink aria-label="Go to last page" className={cn("pr-2!", className)} size="default" {...props}>
+  <PaginationLink
+    aria-label="Go to last page"
+    className={cn("pr-2!", className)}
+    size="default"
+    {...props}
+  >
     <span className="hidden sm:block">{text}</span>
     <IconPlaceholder
       className=""
@@ -132,10 +152,7 @@ const PaginationLast = ({
 const PaginationEllipsis = ({ className, ...props }: ComponentProps<"span">) => (
   <span
     aria-hidden
-    className={cn(
-      "flex size-9 items-center items-center justify-center justify-center [&_svg:not([class*='size-'])]:size-4",
-      className
-    )}
+    className={cn("size-9 items-center justify-center [&_svg:not([class*='size-'])]:size-4 flex items-center justify-center", className)}
     data-slot="pagination-ellipsis"
     {...props}
   >

@@ -208,7 +208,11 @@ const CarouselButton = ({
   return (
     <Button
       aria-label={isNext ? "Next slide" : "Previous slide"}
-      className={cn([orientation === "vertical" ? "rotate-90" : "", "shrink-0"], isNext ? "" : "", className)}
+      className={cn(
+        [orientation === "vertical" ? "rotate-90" : "", "shrink-0"],
+        isNext ? "" : "",
+        className
+      )}
       data-handler={segment}
       isDisabled={!canScroll}
       onPress={scroll}
