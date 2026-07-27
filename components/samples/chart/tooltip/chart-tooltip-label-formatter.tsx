@@ -49,21 +49,7 @@ export default function ChartTooltipLabelFormatter() {
             />
             <Bar dataKey="running" fill="var(--color-running)" radius={[0, 0, 4, 4]} stackId="a" />
             <Bar dataKey="swimming" fill="var(--color-swimming)" radius={[4, 4, 0, 0]} stackId="a" />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric"
-                    })
-                  }}
-                />
-              }
-              cursor={false}
-              defaultIndex={1}
-            />
+            <ChartTooltip content={<ChartTooltipContent />} cursor={false} defaultIndex={1} />
           </BarChart>
         </ChartContainer>
       </CardContent>

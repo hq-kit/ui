@@ -79,7 +79,7 @@ export function PieChartCard() {
                 }}
               />
             </Pie>
-            <ChartLegend className="translate-y-2" content={<ChartLegendContent nameKey="browser" />} />
+            <ChartLegend content={<ChartLegendContent nameKey="browser" />} />
           </PieChart>
         </ChartContainer>
       </Card.Content>

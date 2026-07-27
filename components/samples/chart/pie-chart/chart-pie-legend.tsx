@@ -51,10 +51,7 @@ export default function ChartPieLegend() {
         <ChartContainer className="mx-auto aspect-square max-h-[300px]" config={chartConfig}>
           <PieChart>
             <Pie data={chartData} dataKey="visitors" />
-            <ChartLegend
-              className="-translate-y-2 flex-wrap gap-2 *:basis-1/4 *:justify-center"
-              content={<ChartLegendContent nameKey="browser" />}
-            />
+            <ChartLegend content={<ChartLegendContent nameKey="browser" />} />
           </PieChart>
         </ChartContainer>
       </CardContent>
