@@ -1,14 +1,12 @@
 "use client"
 
+import type { Key } from "@/components/ui/select"
 import { IconBrandAdobe } from "@tabler/icons-react"
 import { type ComponentProps, useState } from "react"
 import { ComponentPreview } from "@/components/component-preview"
+import { FieldSelect, FieldText } from "@/components/forms"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Label } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import { type Key, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { TextField } from "@/components/ui/text-field"
 
 const variants = Object.keys(buttonVariants.variants.variant)
 const sizes = Object.keys(buttonVariants.variants.size)
@@ -38,40 +36,38 @@ export default function ButtonPreview() {
     <>
       <ComponentPreview>
         <ComponentPreview.Settings>
-          <TextField isDisabled={iconOnly} onChange={setChildren} value={children}>
-            <Label>Children</Label>
-            <Input />
-          </TextField>
+          <FieldText
+            isDisabled={iconOnly}
+            label="Children"
+            name="children"
+            onChange={setChildren}
+            placeholder="Button"
+            value={children}
+          />
           <Switch isDisabled={iconOnly} isSelected={withIcon} onChange={setWithIcon}>
             With Icon
           </Switch>
           <Switch isSelected={iconOnly} onChange={onIconOnlyChange}>
             Icon Only
           </Switch>
-          <Select onChange={setVariant} value={variant}>
-            <Label>Variant</Label>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent items={variants.map((variant) => ({ id: variant, textValue: variant }))}>
-              {(item) => <SelectItem id={item.id}>{item.textValue}</SelectItem>}
-            </SelectContent>
-          </Select>
-          <Select onChange={setSize} value={size}>
-            <Label>Size</Label>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent
-              items={
-                iconOnly
-                  ? sizes.filter((size) => size.startsWith("icon")).map((size) => ({ id: size, textValue: size }))
-                  : sizes.filter((size) => !size.startsWith("icon")).map((size) => ({ id: size, textValue: size }))
-              }
-            >
-              {(item) => <SelectItem id={item.id}>{item.textValue}</SelectItem>}
-            </SelectContent>
-          </Select>
+          <FieldSelect
+            items={variants.map((variant) => ({ id: variant, label: variant }))}
+            label={"Variant"}
+            name={"variant"}
+            onChange={setVariant}
+            value={variant}
+          />
+          <FieldSelect
+            items={
+              iconOnly
+                ? sizes.filter((size) => size.startsWith("icon")).map((size) => ({ id: size, label: size }))
+                : sizes.filter((size) => !size.startsWith("icon")).map((size) => ({ id: size, label: size }))
+            }
+            label={"Size"}
+            name={"size"}
+            onChange={setSize}
+            value={size}
+          />
           <Switch isSelected={isPending} onChange={setIsPending}>
             Pending
           </Switch>

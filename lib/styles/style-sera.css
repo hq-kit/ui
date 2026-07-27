@@ -276,7 +276,7 @@
   }
 
   .cn-checkbox-aria {
-    @apply data-selected:bg-primary data-selected:text-primary-foreground dark:data-selected:bg-primary data-selected:border-primary data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-primary data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:ring-2;
+    @apply group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:group-data-selected/field:bg-primary group-data-selected/field:border-primary group-data-focus-visible/field:border-ring group-data-focus-visible/field:ring-ring/30 group-data-focus-visible/field:ring-2 group-data-invalid/field:group-data-selected/field:border-primary group-data-invalid/field:border-destructive dark:group-data-invalid/field:border-destructive/50 group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:ring-destructive/40 group-data-invalid/field:ring-2;
   }
 
   .cn-checkbox-indicator {
@@ -958,7 +958,7 @@
   }
 
   .cn-radio-group-item-aria {
-    @apply data-selected:border-foreground data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-foreground data-invalid:border-destructive data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 dark:data-invalid:border-destructive/50 data-invalid:ring-2;
+    @apply group-data-selected/field:border-foreground group-data-focus-visible/field:border-ring group-data-focus-visible/field:ring-ring/30 group-data-focus-visible/field:ring-2 group-data-invalid/field:group-data-selected/field:border-foreground group-data-invalid/field:border-destructive group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:ring-destructive/40 dark:group-data-invalid/field:border-destructive/50 group-data-invalid/field:ring-2;
   }
 
   .cn-radio-group-indicator {
@@ -985,7 +985,7 @@
 
   /* MARK: Select */
   .cn-select-trigger {
-    @apply border-transparent border-b-input bg-transparent data-placeholder:text-muted-foreground focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 gap-1.5 rounded-none border py-2 px-0 text-sm transition-[color,border-color] data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5;
+    @apply border-transparent border-b-input bg-transparent data-placeholder:text-muted-foreground focus-visible:border-b-ring group-data-invalid/field:border-b-destructive dark:group-data-invalid/field:border-b-destructive/50 gap-1.5 rounded-none border py-2 px-0 text-sm transition-[color,border-color] data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-select-value {

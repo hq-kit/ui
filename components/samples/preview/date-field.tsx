@@ -3,69 +3,68 @@
 import type { Key } from "react-aria-components"
 import { useMemo, useState } from "react"
 import { I18nProvider, useLocale } from "react-aria-components"
+import { FieldSelect } from "@/components/forms"
 import { Code } from "@/components/mdx/code-client"
 import { DateField, DateInput } from "@/components/ui/date-field"
-import { Label } from "@/components/ui/field"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const localesList = [
-  { value: "fr-FR" },
-  { value: "fr-CA" },
-  { value: "de-DE" },
-  { value: "en-US" },
-  { value: "en-GB" },
-  { value: "ja-JP" },
-  { value: "da-DK" },
-  { value: "nl-NL" },
-  { value: "fi-FI" },
-  { value: "it-IT" },
-  { value: "nb-NO" },
-  { value: "es-ES" },
-  { value: "sv-SE" },
-  { value: "pt-BR" },
-  { value: "zh-CN" },
-  { value: "zh-TW" },
-  { value: "ko-KR" },
-  { value: "bg-BG" },
-  { value: "hr-HR" },
-  { value: "cs-CZ" },
-  { value: "et-EE" },
-  { value: "hu-HU" },
-  { value: "lv-LV" },
-  { value: "lt-LT" },
-  { value: "pl-PL" },
-  { value: "ro-RO" },
-  { value: "ru-RU" },
-  { value: "sr-SP" },
-  { value: "sk-SK" },
-  { value: "sl-SI" },
-  { value: "tr-TR" },
-  { value: "uk-UA" },
-  { value: "ar-AE" },
-  { value: "ar-DZ" },
-  { value: "AR-EG" },
-  { value: "ar-SA" },
-  { value: "el-GR" },
-  { value: "he-IL" },
-  { value: "fa-AF" },
-  { value: "am-ET" },
-  { value: "hi-IN" },
-  { value: "th-TH" }
+  { id: "fr-FR" },
+  { id: "fr-CA" },
+  { id: "de-DE" },
+  { id: "en-US" },
+  { id: "en-GB" },
+  { id: "ja-JP" },
+  { id: "da-DK" },
+  { id: "nl-NL" },
+  { id: "fi-FI" },
+  { id: "it-IT" },
+  { id: "nb-NO" },
+  { id: "es-ES" },
+  { id: "sv-SE" },
+  { id: "pt-BR" },
+  { id: "zh-CN" },
+  { id: "zh-TW" },
+  { id: "ko-KR" },
+  { id: "bg-BG" },
+  { id: "hr-HR" },
+  { id: "cs-CZ" },
+  { id: "et-EE" },
+  { id: "hu-HU" },
+  { id: "lv-LV" },
+  { id: "lt-LT" },
+  { id: "pl-PL" },
+  { id: "ro-RO" },
+  { id: "ru-RU" },
+  { id: "sr-SP" },
+  { id: "sk-SK" },
+  { id: "sl-SI" },
+  { id: "tr-TR" },
+  { id: "uk-UA" },
+  { id: "ar-AE" },
+  { id: "ar-DZ" },
+  { id: "AR-EG" },
+  { id: "ar-SA" },
+  { id: "el-GR" },
+  { id: "he-IL" },
+  { id: "fa-AF" },
+  { id: "am-ET" },
+  { id: "hi-IN" },
+  { id: "th-TH" }
 ]
 const calendars = [
-  { value: "gregory", label: "Gregorian" },
-  { value: "japanese", label: "Japanese" },
-  { value: "buddhist", label: "Buddhist" },
-  { value: "roc", label: "Taiwan" },
-  { value: "persian", label: "Persian" },
-  { value: "indian", label: "Indian" },
-  { value: "islamic-umalqura", label: "Islamic (Umm al-Qura)" },
-  { value: "islamic-civil", label: "Islamic Civil" },
-  { value: "islamic-tbla", label: "Islamic Tabular" },
-  { value: "hebrew", label: "Hebrew" },
-  { value: "coptic", label: "Coptic" },
-  { value: "ethiopic", label: "Ethiopic" },
-  { value: "ethioaa", label: "Ethiopic (Amete Alem)" }
+  { id: "gregory", label: "Gregorian" },
+  { id: "japanese", label: "Japanese" },
+  { id: "buddhist", label: "Buddhist" },
+  { id: "roc", label: "Taiwan" },
+  { id: "persian", label: "Persian" },
+  { id: "indian", label: "Indian" },
+  { id: "islamic-umalqura", label: "Islamic (Umm al-Qura)" },
+  { id: "islamic-civil", label: "Islamic Civil" },
+  { id: "islamic-tbla", label: "Islamic Tabular" },
+  { id: "hebrew", label: "Hebrew" },
+  { id: "coptic", label: "Coptic" },
+  { id: "ethiopic", label: "Ethiopic" },
+  { id: "ethioaa", label: "Ethiopic (Amete Alem)" }
 ]
 
 export default function DateFieldPreview() {
@@ -75,7 +74,7 @@ export default function DateFieldPreview() {
   const locales = useMemo(() => {
     return localesList
       .map((item) => {
-        const locale = new Intl.Locale(item.value)
+        const locale = new Intl.Locale(item.id)
         return {
           ...item,
           label: `${langDisplay.of(locale.language)} (${regionDisplay.of(locale.region!)})`
@@ -91,24 +90,8 @@ export default function DateFieldPreview() {
     <div>
       <div className="flex flex-col gap-2 lg:flex-row-reverse">
         <div className="flex flex-col gap-4 border-b p-4 lg:border-b-0 lg:border-l">
-          <Select onChange={setLocale} value={locale}>
-            <Label>Locale</Label>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent items={locales}>
-              {(item) => <SelectItem id={item.value}>{item.label}</SelectItem>}
-            </SelectContent>
-          </Select>
-          <Select onChange={setCalendar} value={calendar}>
-            <Label>Calendar</Label>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent items={calendars}>
-              {(item) => <SelectItem id={item.value}>{item.label}</SelectItem>}
-            </SelectContent>
-          </Select>
+          <FieldSelect items={locales} label={"Locales"} name={"locales"} onChange={setLocale} value={locale} />
+          <FieldSelect items={calendars} label={"Calendar"} name={"calendar"} onChange={setCalendar} value={calendar} />
         </div>
         <div className="grid min-h-52 w-full place-items-center">
           <div className="max-w-xs">

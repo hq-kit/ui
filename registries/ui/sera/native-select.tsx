@@ -8,15 +8,12 @@ type SelectProps = Omit<ComponentProps<"select">, "size"> & {
 
 const Select = ({ className, size = "default", ...props }: SelectProps) => (
   <div
-    className={cn(
-      "group/native-select relative w-fit has-[select:disabled]:opacity-50",
-      className
-    )}
+    className={cn("group/native-select relative w-fit has-[select:disabled]:opacity-50", className)}
     data-size={size}
     data-slot="native-select-wrapper"
   >
     <select
-      className="border-transparent border-b-input bg-transparent placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 w-full min-w-0 appearance-none rounded-none border py-2 pr-8 pl-0 text-sm transition-[color,border-color] select-none data-[size=sm]:h-9 outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
+      className="h-10 w-full min-w-0 select-none appearance-none rounded-none border border-transparent border-b-input bg-transparent py-2 pr-8 pl-0 text-sm outline-none transition-[color,border-color] selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:border-b-ring disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-b-destructive data-[size=sm]:h-9 dark:aria-invalid:border-b-destructive/50"
       data-size={size}
       data-slot="native-select"
       slot="control"
@@ -24,7 +21,7 @@ const Select = ({ className, size = "default", ...props }: SelectProps) => (
     />
     <IconPlaceholder
       aria-hidden="true"
-      className="text-muted-foreground top-1/2 right-0 size-3.5 -translate-y-1/2 pointer-events-none absolute select-none"
+      className="pointer-events-none absolute top-1/2 right-0 size-3.5 -translate-y-1/2 select-none text-muted-foreground"
       data-slot="native-select-icon"
       hugeicons="UnfoldMoreIcon"
       lucide="ChevronsUpDownIcon"

@@ -19,7 +19,8 @@ const CheckboxGroup = ({
       className={composeRenderProps(className, (className) =>
         cn(
           "cn-radio-group w-full",
-          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
+          "has-data-invalid:text-destructive data-invalid:text-destructive",
+          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-description]:w-full data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
       )}
@@ -38,9 +39,11 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
     >
       <CheckboxButton data-slot="checkbox">
         {composeRenderProps(children, (children) => (
-          <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
+          <div
+            className={cn(fieldVariants({ orientation: "horizontal", className: "in-data-invalid:text-destructive" }))}
+          >
             <span
-              className="cn-checkbox cn-checkbox-indicator peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="cn-checkbox cn-checkbox-aria cn-checkbox-indicator peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
               data-slot="checkbox-indicator"
               slot="control"
             >

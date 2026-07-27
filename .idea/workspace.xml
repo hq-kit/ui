@@ -5,21 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9ce9605-e66e-47b1-8e73-f8818540c639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/blue-light.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/midnight-tokyo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/neo-brutalism.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/t3-chat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/twitter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/presets/vuexy.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/forms.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layouts/menu-link.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/samples/forms/field/field-combobox-demo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/browser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.source/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.source/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layouts/command-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/command-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layouts/aside.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layouts/aside.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/mdx/open-in.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/mdx/open-in.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-checkbox-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-checkbox-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-date-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-date-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-input-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-input-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-number-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-number-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-radio-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-radio-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-search-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-search-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-select-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-select-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-slider-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-slider-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/field/field-textarea-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/field/field-textarea-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/number-field/number-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/number-field/number-field-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/search-field/search-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/search-field/search-field-demo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/forms/text-field/text-field-demo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/samples/generated/previews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/generated/previews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/attachment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/attachment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/samples/preview/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/samples/preview/date-field.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/select-theme-preset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/command.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/command.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-color-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-customizer/theme-control-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/date-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/date-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/radio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/radio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/docs/components/forms/field.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/docs/components/forms/field.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fonts/font-mono.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/font-mono.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fonts/font-sans.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/font-sans.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__hugeicons__.ts" afterDir="false" />
@@ -27,13 +47,17 @@
       <change beforePath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__phosphor__.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__remixicon__.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/icons/__tabler__.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/icons/__tabler__.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-luma.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-luma.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-lyra.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-lyra.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-maia.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-maia.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-mira.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-mira.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-nova.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-nova.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-rhea.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-rhea.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-sera.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-sera.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/styles/style-vega.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/styles/style-vega.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/themes/generated-themes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/generated-themes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets/claude.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets/claude.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets/cloudflare.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets/cloudflare.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets/cutie.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets/cutie.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets/discord.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets/discord.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/themes/presets/zen.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/themes/presets/zen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registries/ui/luma/accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/accordion.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registries/ui/luma/alert-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/alert-dialog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registries/ui/luma/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/luma/alert.tsx" afterDir="false" />
@@ -469,7 +493,6 @@
       <change beforePath="$PROJECT_DIR$/registries/ui/vega/tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/tooltip.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registries/ui/vega/tree.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/registries/ui/vega/tree.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registry.json" beforeDir="false" afterPath="$PROJECT_DIR$/registry.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate-styled-components.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate-styled-components.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -567,42 +590,42 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dq/Project/ui/components/blocks/landing-page-01/components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/opt/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.codeium.enabled": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "javascript.preferred.runtime.type.id": "bun",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/dq/Project/ui/components/samples/forms/field",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/opt/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/samples/forms/field" />
       <recent name="$PROJECT_DIR$/components/blocks/landing-page-01/components" />
       <recent name="$PROJECT_DIR$/components/blocks/landing-page-01" />
       <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/components/blocks/dashboard-01/components" />
-      <recent name="$PROJECT_DIR$/app/(app)/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/stores" />
@@ -785,6 +808,7 @@
       <workItem from="1784909708855" duration="7007000" />
       <workItem from="1785064330448" duration="30445000" />
       <workItem from="1785131970713" duration="6692000" />
+      <workItem from="1785144980183" duration="15761000" />
     </task>
     <servers />
   </component>

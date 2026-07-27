@@ -1,7 +1,7 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { getLocalTimeZone, parseDate, today } from "@internationalized/date"
+import { type CalendarDate, getLocalTimeZone, parseDate, today } from "@internationalized/date"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   type DateFieldProps,
@@ -76,7 +76,7 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
     <RACDateInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "bg-input/20 dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-7 rounded-md border px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium focus-visible:ring-2 aria-invalid:ring-2 md:text-xs/relaxed data-focus-within:border-ring data-focus-within:ring-ring/30 data-focus-within:ring-2 flex w-full min-w-0 items-center outline-none transition-[color,box-shadow,border] placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-7 w-full min-w-0 items-center rounded-md border border-input bg-input/20 px-2 py-0.5 text-sm outline-none transition-[color,box-shadow,border] file:h-6 file:font-medium file:text-xs/relaxed placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 data-focus-within:border-ring data-focus-within:ring-2 data-focus-within:ring-ring/30 md:text-xs/relaxed dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
           className
         )
       )}
@@ -105,7 +105,7 @@ const DatePickerInput = ({ className, ...props }: Omit<DateInputProps, "children
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-input focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-7 px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium md:text-xs/relaxed rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-7 w-full min-w-0 items-center justify-center rounded-none border-0 border-input bg-transparent px-2 py-0.5 text-sm shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-6 file:font-medium file:text-xs/relaxed focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-xs/relaxed dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}
@@ -147,7 +147,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-input focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-7 px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium md:text-xs/relaxed rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-7 w-full min-w-0 items-center justify-center rounded-none border-0 border-input bg-transparent px-2 py-0.5 text-sm shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-6 file:font-medium file:text-xs/relaxed focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-xs/relaxed dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}
@@ -175,7 +175,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
       <RACDateInput
         className={composeRenderProps(className, (className) =>
           cn(
-            "border-input focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-7 px-2 py-0.5 text-sm file:h-6 file:text-xs/relaxed file:font-medium md:text-xs/relaxed rounded-none bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent inline-flex w-full min-w-0 items-center justify-center border-0 outline-none transition-[color,box-shadow,border]",
+            "inline-flex h-7 w-full min-w-0 items-center justify-center rounded-none border-0 border-input bg-transparent px-2 py-0.5 text-sm shadow-none outline-none ring-0 transition-[color,box-shadow,border] file:h-6 file:font-medium file:text-xs/relaxed focus-visible:border-ring focus-visible:ring-0 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-0 aria-invalid:ring-destructive/20 md:text-xs/relaxed dark:bg-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
             className
           )
         )}
@@ -212,7 +212,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
   )
 }
 
-export type { DateValue }
+export type { CalendarDate, DateValue }
 export {
   DateField,
   DateInput,

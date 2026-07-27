@@ -5,7 +5,7 @@ import { SearchField, SearchInput } from "@/components/ui/search-field"
 
 export default function SearchFieldDemo() {
   return (
-    <div className="flex flex-col gap-2 lg:flex-row">
+    <div className="flex flex-col gap-2">
       <SearchField>
         <Label>Basic</Label>
         <SearchInput />

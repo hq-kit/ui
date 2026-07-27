@@ -91,7 +91,7 @@ export default function CalendarPreview() {
     <div>
       <div className="flex flex-col gap-2 lg:flex-row-reverse">
         <div className="flex flex-col gap-4 border-b p-4 lg:border-b-0 lg:border-l">
-          <Select onChange={setLocale} value={locale}>
+          <Select name="locale" onChange={setLocale} value={locale}>
             <Label>Locale</Label>
             <SelectTrigger>
               <SelectValue />
@@ -100,7 +100,7 @@ export default function CalendarPreview() {
               {(item) => <SelectItem id={item.value}>{item.label}</SelectItem>}
             </SelectContent>
           </Select>
-          <Select onChange={setCalendar} value={calendar}>
+          <Select name="calendar" onChange={setCalendar} value={calendar}>
             <Label>Calendar</Label>
             <SelectTrigger>
               <SelectValue />

@@ -47,7 +47,9 @@ const DrawerContent = ({
     <AnimatePresence>
       {(props?.isOpen || state?.isOpen) && (
         <DrawerOverlay
-          className={cn("data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/20 supports-backdrop-filter:backdrop-blur-sm fixed inset-0 z-50")}
+          className={cn(
+            "data-exiting:fade-out-0 data-entering:fade-in-0 fixed inset-0 z-50 bg-black/20 data-entering:animate-in data-exiting:animate-out supports-backdrop-filter:backdrop-blur-sm"
+          )}
           isDismissable
           isOpen={props?.isOpen || state?.isOpen}
           onOpenChange={props?.onOpenChange || state?.setOpen}
@@ -57,7 +59,10 @@ const DrawerContent = ({
               <DrawerRoot
                 animate={{ x: 0, y: 0 }}
                 aria-label="Drawer"
-                className={cn("group/drawer-content bg-popover text-popover-foreground flex h-auto flex-col text-sm data-[direction=bottom]:inset-x-0 data-[direction=bottom]:bottom-0 data-[direction=bottom]:mt-24 data-[direction=bottom]:max-h-[80vh] data-[direction=bottom]:rounded-none data-[direction=bottom]:border-t data-[direction=left]:inset-y-0 data-[direction=left]:left-0 data-[direction=left]:w-3/4 data-[direction=left]:rounded-none data-[direction=left]:border-r data-[direction=right]:inset-y-0 data-[direction=right]:right-0 data-[direction=right]:w-3/4 data-[direction=right]:rounded-none data-[direction=right]:border-l data-[direction=top]:inset-x-0 data-[direction=top]:top-0 data-[direction=top]:mb-24 data-[direction=top]:max-h-[80vh] data-[direction=top]:rounded-none data-[direction=top]:border-b data-[direction=left]:sm:max-w-sm data-[direction=right]:sm:max-w-sm fixed z-50 touch-none", className)}
+                className={cn(
+                  "group/drawer-content fixed z-50 flex h-auto touch-none flex-col bg-popover text-popover-foreground text-sm data-[direction=bottom]:inset-x-0 data-[direction=top]:inset-x-0 data-[direction=left]:inset-y-0 data-[direction=right]:inset-y-0 data-[direction=top]:top-0 data-[direction=right]:right-0 data-[direction=bottom]:bottom-0 data-[direction=left]:left-0 data-[direction=bottom]:mt-24 data-[direction=top]:mb-24 data-[direction=bottom]:max-h-[80vh] data-[direction=top]:max-h-[80vh] data-[direction=left]:w-3/4 data-[direction=right]:w-3/4 data-[direction=bottom]:rounded-none data-[direction=left]:rounded-none data-[direction=right]:rounded-none data-[direction=top]:rounded-none data-[direction=bottom]:border-t data-[direction=left]:border-r data-[direction=top]:border-b data-[direction=right]:border-l data-[direction=left]:sm:max-w-sm data-[direction=right]:sm:max-w-sm",
+                  className
+                )}
                 data-direction={side}
                 drag={side === "left" || side === "right" ? "x" : "y"}
                 dragConstraints={{
@@ -103,9 +108,13 @@ const DrawerContent = ({
                 transition={{ duration: 0.15, ease: "easeInOut" }}
                 whileDrag={{ cursor: "grabbing" }}
               >
-                {notch && side === "bottom" && <div className="notch bg-muted mx-auto group-data-[direction=top]/drawer-content:mb-4 group-data-[direction=bottom]/drawer-content:mt-4 h-1.5 w-25 shrink-0 rounded-none shrink-0 touch-pan-y" />}
+                {notch && side === "bottom" && (
+                  <div className="notch mx-auto h-1.5 w-25 shrink-0 shrink-0 touch-pan-y rounded-none bg-muted group-data-[direction=bottom]/drawer-content:mt-4 group-data-[direction=top]/drawer-content:mb-4" />
+                )}
                 {children as ReactNode}
-                {notch && side === "top" && <div className="notch bg-muted mx-auto group-data-[direction=top]/drawer-content:mb-4 group-data-[direction=bottom]/drawer-content:mt-4 h-1.5 w-25 shrink-0 rounded-none mx-auto shrink-0 touch-pan-y" />}
+                {notch && side === "top" && (
+                  <div className="notch mx-auto mx-auto h-1.5 w-25 shrink-0 shrink-0 touch-pan-y rounded-none bg-muted group-data-[direction=bottom]/drawer-content:mt-4 group-data-[direction=top]/drawer-content:mb-4" />
+                )}
               </DrawerRoot>
             </Modal>
           )}
@@ -116,30 +125,44 @@ const DrawerContent = ({
 }
 
 const DrawerHeader = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return <div className={cn("gap-1 p-4 group-data-[direction=bottom]/drawer-content:text-center group-data-[direction=top]/drawer-content:text-center md:gap-2 md:text-left flex flex-col", className)} slot="header" {...props} />
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-1 p-4 group-data-[direction=bottom]/drawer-content:text-center group-data-[direction=top]/drawer-content:text-center md:gap-2 md:text-left",
+        className
+      )}
+      slot="header"
+      {...props}
+    />
+  )
 }
 
 const DrawerTitle = ({ className, ...props }: RACHeadingProps) => (
-  <Heading className={cn("text-foreground text-lg font-semibold uppercase tracking-wider", className)} slot="title" {...props} />
+  <Heading
+    className={cn("font-semibold text-foreground text-lg uppercase tracking-wider", className)}
+    slot="title"
+    {...props}
+  />
 )
 
 const DrawerDescription = ({ className, ...props }: TextProps) => (
-  <Text className={cn("text-muted-foreground text-sm leading-relaxed mt-0.5", className)} slot="description" {...props} />
+  <Text
+    className={cn("mt-0.5 text-muted-foreground text-sm leading-relaxed", className)}
+    slot="description"
+    {...props}
+  />
 )
 
 const DrawerBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (
   <div
-    className={cn(
-      "no-scrollbar gap-2 p-4 flex touch-pan-y flex-col overflow-auto will-change-scroll",
-      className
-    )}
+    className={cn("no-scrollbar flex touch-pan-y flex-col gap-2 overflow-auto p-4 will-change-scroll", className)}
     slot="body"
     {...props}
   />
 )
 
 const DrawerFooter = ({ className, ...props }: ComponentPropsWithRef<"div">) => {
-  return <div className={cn("gap-2 p-4 mt-auto flex flex-col", className)} slot="footer" {...props} />
+  return <div className={cn("mt-auto flex flex-col gap-2 p-4", className)} slot="footer" {...props} />
 }
 
 const DrawerTrigger = (props: ButtonProps) => <Button {...props} />

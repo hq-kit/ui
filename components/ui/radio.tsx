@@ -23,7 +23,8 @@ const RadioGroup = ({
       className={composeRenderProps(className, (className) =>
         cn(
           "cn-radio-group w-full",
-          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
+          "has-data-invalid:text-destructive data-invalid:text-destructive",
+          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-description]:w-full data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
       )}
@@ -43,9 +44,11 @@ const Radio = ({ className, children, ...props }: RadioFieldProps) => {
     >
       <RadioButton>
         {composeRenderProps(children, (children) => (
-          <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
+          <div
+            className={cn(fieldVariants({ orientation: "horizontal", className: "in-data-invalid:text-destructive" }))}
+          >
             <div
-              className="cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="cn-radio-group-item cn-radio-group-item-aria group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
               data-slot="radio-group-item"
               slot="control"
             >

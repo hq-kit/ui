@@ -37,7 +37,7 @@ const ContextMenuContent = ({
   }) => (
   <Popover
     className={cn(
-      "data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 ring-foreground/10 text-popover-foreground min-w-48 rounded-none p-1.5 shadow-md ring-1 duration-100 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground! **:data-[slot$=-item]:data-focused:bg-foreground/10 z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-y-auto overflow-x-hidden outline-none data-exiting:overflow-hidden",
+      "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 relative z-50 w-(--trigger-width) min-w-48 origin-(--trigger-anchor-point) animate-none! overflow-y-auto overflow-x-hidden rounded-none bg-popover/70 p-1.5 text-popover-foreground shadow-md outline-none ring-1 ring-foreground/10 duration-100 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 data-entering:animate-in data-exiting:animate-out data-exiting:overflow-hidden **:data-[slot$=-item]:data-focused:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[variant=destructive]:**:text-accent-foreground! **:data-[variant=destructive]:text-accent-foreground! **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[variant=destructive]:focus:bg-foreground/10!",
       className
     )}
     crossOffset={crossOffset}
@@ -140,7 +140,10 @@ const ContextMenuLabel = ({
   inset?: boolean
 }) => (
   <Header
-    className={cn("px-3 py-2 text-xs uppercase tracking-wider data-inset:pl-9.5 font-semibold text-muted-foreground", className)}
+    className={cn(
+      "px-3 py-2 font-semibold text-muted-foreground text-xs uppercase tracking-wider data-inset:pl-9.5",
+      className
+    )}
     data-inset={inset}
     data-slot="context-menu-label"
     {...props}
@@ -151,9 +154,11 @@ const contextMenuItemVariants = tv({
   base: "group/context-menu-item relative flex cursor-default select-none items-center outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   variants: {
     selectionMode: {
-      none: "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground gap-2.5 rounded-none px-3 py-2 text-xs font-medium uppercase tracking-wider data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5",
-      single: "focus:bg-accent focus:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-xs font-medium uppercase tracking-wider data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5",
-      multiple: "focus:bg-accent focus:text-accent-foreground gap-2.5 rounded-none py-2 pr-8 pl-3 text-xs font-medium uppercase tracking-wider data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5"
+      none: "gap-2.5 rounded-none px-3 py-2 font-medium text-xs uppercase tracking-wider focus:bg-accent focus:text-accent-foreground data-inset:pl-9.5 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg:not([class*='size-'])]:size-3.5 focus:*:[svg]:text-accent-foreground data-[variant=destructive]:*:[svg]:text-destructive",
+      single:
+        "gap-2.5 rounded-none py-2 pr-8 pl-3 font-medium text-xs uppercase tracking-wider focus:bg-accent focus:text-accent-foreground data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5",
+      multiple:
+        "gap-2.5 rounded-none py-2 pr-8 pl-3 font-medium text-xs uppercase tracking-wider focus:bg-accent focus:text-accent-foreground data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5"
     }
   }
 })
@@ -182,7 +187,7 @@ const ContextMenuItem = ({
       <>
         {selectionMode !== "none" ? (
           <span
-            className="absolute right-2 pointer-events-none"
+            className="pointer-events-none absolute right-2"
             data-slot={
               selectionMode === "single" ? "context-menu-radio-item-indicator" : "context-menu-checkbox-item-indicator"
             }
@@ -218,7 +223,7 @@ const ContextMenuSubTrigger = ({
 }) => (
   <MenuItem
     className={cn(
-      "focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground rounded-none px-3 py-2 text-xs font-medium uppercase tracking-wider data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5 flex cursor-default select-none items-center outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "flex cursor-default select-none items-center rounded-none px-3 py-2 font-medium text-xs uppercase tracking-wider outline-hidden focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-inset:pl-9.5 data-open:text-accent-foreground [&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       className
     )}
     data-inset={inset}
@@ -250,7 +255,10 @@ const ContextMenuSubContent = ({
   ...props
 }: ComponentProps<typeof ContextMenuContent>) => (
   <ContextMenuContent
-    className={cn("ring-foreground/10 text-popover-foreground min-w-32 rounded-none p-1.5 shadow-md ring-1 duration-100 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground! w-auto", className)}
+    className={cn(
+      "relative w-auto min-w-32 animate-none! rounded-none bg-popover/70 p-1.5 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[variant=destructive]:**:text-accent-foreground! **:data-[variant=destructive]:text-accent-foreground! **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[variant=destructive]:focus:bg-foreground/10!",
+      className
+    )}
     crossOffset={crossOffset}
     data-slot="context-menu-sub-content"
     offset={offset}
@@ -260,11 +268,22 @@ const ContextMenuSubContent = ({
 )
 
 const ContextMenuSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
-  <Separator className={cn("bg-border/50 -mx-1.5 my-1.5 h-px", className)} data-slot="context-menu-separator" {...props} />
+  <Separator
+    className={cn("-mx-1.5 my-1.5 h-px bg-border/50", className)}
+    data-slot="context-menu-separator"
+    {...props}
+  />
 )
 
 const ContextMenuShortcut = ({ className, ...props }: ComponentProps<"span">) => (
-  <span className={cn("text-muted-foreground group-focus/context-menu-item:text-accent-foreground ml-auto text-xs tracking-widest", className)} data-slot="context-menu-shortcut" {...props} />
+  <span
+    className={cn(
+      "ml-auto text-muted-foreground text-xs tracking-widest group-focus/context-menu-item:text-accent-foreground",
+      className
+    )}
+    data-slot="context-menu-shortcut"
+    {...props}
+  />
 )
 
 ContextMenu.Group = ContextMenuGroup

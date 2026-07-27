@@ -29,7 +29,10 @@ const DialogOverlay = ({
   children: ReactNode
 }) => (
   <ModalOverlay
-    className={cn("data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 isolate z-50", className)}
+    className={cn(
+      "data-exiting:fade-out-0 data-entering:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 data-entering:animate-in data-exiting:animate-out supports-backdrop-filter:backdrop-blur-xs",
+      className
+    )}
     data-slot="dialog-overlay"
     {...props}
   >
@@ -52,7 +55,7 @@ const DialogContent = ({
   <DialogOverlay isDismissable={isDismissable} {...props}>
     <RACModal
       className={cn(
-        "bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-none p-4 text-xs/relaxed ring-1 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
+        "data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-none bg-popover p-4 text-popover-foreground text-xs/relaxed outline-none ring-1 ring-foreground/10 duration-100 data-entering:animate-in data-exiting:animate-out sm:max-w-sm",
         className
       )}
       data-slot="dialog-content"
@@ -77,7 +80,7 @@ const DialogContent = ({
 )
 
 const DialogHeader = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("gap-1 text-left flex flex-col", className)} data-slot="dialog-header" {...props} />
+  <div className={cn("flex flex-col gap-1 text-left", className)} data-slot="dialog-header" {...props} />
 )
 
 const DialogFooter = ({
@@ -99,16 +102,18 @@ const DialogFooter = ({
 )
 
 const DialogTitle = ({ className, ...props }: Omit<ComponentProps<typeof Heading>, "slot">) => (
-  <Heading
-    className={cn("text-sm font-medium", className)}
-    data-slot="dialog-title"
-    slot="title"
-    {...props}
-  />
+  <Heading className={cn("font-medium text-sm", className)} data-slot="dialog-title" slot="title" {...props} />
 )
 
 const DialogDescription = ({ className, ...props }: Omit<ComponentProps<"div">, "slot">) => (
-  <div className={cn("text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed *:[a]:underline *:[a]:underline-offset-3", className)} data-slot="dialog-description" {...props} />
+  <div
+    className={cn(
+      "text-muted-foreground text-xs/relaxed *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
+      className
+    )}
+    data-slot="dialog-description"
+    {...props}
+  />
 )
 
 const DialogBody = ({ className, ...props }: ComponentPropsWithRef<"div">) => (

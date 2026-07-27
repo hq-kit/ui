@@ -37,7 +37,7 @@ import { cn } from "@/lib/utils"
 
 const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-geist-sans"
+  variable: "--font-sans"
 })
 
 const inter = Inter({

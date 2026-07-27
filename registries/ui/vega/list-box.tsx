@@ -22,7 +22,7 @@ const ListBox = <T extends object>({ className, ...props }: ListBoxProps<T>) => 
     {...props}
     className={composeRenderProps(className, (className) =>
       cn(
-        "bg-popover text-popover-foreground rounded-xl! p-2 group/list-box flex size-full flex-col gap-1 overflow-hidden border",
+        "group/list-box flex size-full flex-col gap-1 overflow-hidden rounded-xl! border bg-popover p-2 text-popover-foreground",
         "[&_.react-aria-DropIndicator[data-drop-target]]:outline",
         "[&_.react-aria-DropIndicator[data-drop-target]]:outline-destructive",
         "[&_.react-aria-DropIndicator[data-drop-target]]:transform-[translateZ(0)]",
@@ -40,7 +40,7 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
     <RACListBoxItem
       className={composeRenderProps(className, (className) =>
         cn(
-          "data-selected:bg-muted data-selected:text-foreground data-selected:**:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! [&_svg:not([class*='size-'])]:size-4 group/list-box-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "group/list-box-item relative flex cursor-default select-none items-center gap-2 in-data-[slot=dialog-content]:rounded-lg! rounded-sm px-2 py-1.5 text-sm outline-hidden data-[disabled=true]:pointer-events-none data-selected:bg-muted data-selected:text-foreground data-[disabled=true]:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 data-selected:**:[svg]:text-foreground",
           "data-selected:bg-primary data-selected:text-primary-foreground",
           "data-dragging:cursor-grabbing data-dragging:outline data-dragging:outline-primary",
           className
@@ -56,7 +56,14 @@ const ListBoxItem = ({ children, className, ...props }: ListBoxItemProps) => {
 }
 
 const ListBoxSection = <T extends object>({ title, ...props }: ListBoxSectionProps<T> & { title?: string }) => (
-  <RACListBoxSection className={cn("text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium", props.className)} data-slot="list-box-section" {...props}>
+  <RACListBoxSection
+    className={cn(
+      "overflow-hidden p-1 text-foreground **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-muted-foreground **:[[cmdk-group-heading]]:text-xs",
+      props.className
+    )}
+    data-slot="list-box-section"
+    {...props}
+  >
     {title && (
       <Header className="pointer-events-none" data-slot="title">
         {title}

@@ -142,7 +142,7 @@ const ThemeControlPanel = () => {
           )
         )}
       >
-        <Label>Radius</Label>
+        <Label elementType="span">Radius</Label>
         <SliderOutput children={({ state }) => <>{state.values} rem</>} />
       </Slider>
       <ThemeColorPanel />

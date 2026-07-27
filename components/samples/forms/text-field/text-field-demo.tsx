@@ -4,7 +4,7 @@ import { TextField } from "@/components/ui/text-field"
 
 export default function TextFieldDemo() {
   return (
-    <div className="flex flex-col gap-2 lg:flex-row">
+    <div className="flex flex-col gap-2">
       <TextField>
         <Label>Basic</Label>
         <Input />

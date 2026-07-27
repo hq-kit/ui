@@ -28,19 +28,23 @@ const Progress = ({ className, children, ...props }: ProgressBarProps) => (
 const ProgressValue = ({ className, ...props }: Omit<ComponentProps<"span">, "children">) => {
   const { valueText } = use(ProgressContext)!
   return (
-    <span className={cn("text-muted-foreground ml-auto text-xs/relaxed tabular-nums", className)} data-slot="progress-value" {...props}>
+    <span
+      className={cn("ml-auto text-muted-foreground text-xs/relaxed tabular-nums", className)}
+      data-slot="progress-value"
+      {...props}
+    >
       {valueText}
     </span>
   )
 }
 
 const ProgressLabel = ({ className, ...props }: LabelProps) => (
-  <Label className={cn("text-xs/relaxed font-medium", className)} data-slot="progress-label" {...props} />
+  <Label className={cn("font-medium text-xs/relaxed", className)} data-slot="progress-label" {...props} />
 )
 
 const ProgressTrack = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("bg-muted h-1 rounded-md relative flex w-full items-center overflow-x-hidden", className)}
+    className={cn("relative flex h-1 w-full items-center overflow-x-hidden rounded-md bg-muted", className)}
     data-slot="progress-track"
     {...props}
   />
@@ -59,7 +63,7 @@ const ProgressIndicator = ({ className, ...props }: ComponentProps<"div">) => {
 `}</style>
       <div
         className={cn(
-          "bg-primary absolute h-full transition-all",
+          "absolute h-full bg-primary transition-all",
           isIndeterminate && "animate-[progress-slide_2000ms_ease-in-out_infinite]",
           className
         )}

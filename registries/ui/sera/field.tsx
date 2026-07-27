@@ -13,7 +13,14 @@ import { Separator as RACSeparator } from "./separator"
 const Form = (props: FormProps) => <RACForm {...props} />
 
 const FieldSet = ({ className, ...props }: ComponentProps<"fieldset">) => (
-  <fieldset className={cn("gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 flex flex-col", className)} data-slot="field-set" {...props} />
+  <fieldset
+    className={cn(
+      "flex flex-col gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
+      className
+    )}
+    data-slot="field-set"
+    {...props}
+  />
 )
 
 const Legend = ({
@@ -21,19 +28,27 @@ const Legend = ({
   variant = "legend",
   ...props
 }: ComponentProps<"legend"> & { variant?: "legend" | "label" }) => (
-  <legend className={cn("mb-3 font-semibold uppercase data-[variant=label]:text-xs data-[variant=legend]:text-xs", className)} data-slot="field-legend" data-variant={variant} {...props} />
+  <legend
+    className={cn("mb-3 font-semibold uppercase data-[variant=label]:text-xs data-[variant=legend]:text-xs", className)}
+    data-slot="field-legend"
+    data-variant={variant}
+    {...props}
+  />
 )
 
 const FieldGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-10 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 group/field-group @container/field-group flex w-full flex-col", className)}
+    className={cn(
+      "group/field-group @container/field-group flex w-full flex-col gap-10 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
+      className
+    )}
     data-slot="field-group"
     {...props}
   />
 )
 
 const fieldVariants = tv({
-  base: "hover:not-in-data-disabled:**:[[data-slot=radio-group-item],[data-slot=checkbox-indicator]]:border-ring! hover:not-data-disabled:**:[[slot=control]]:border-b-ring! data-[invalid=true]:text-destructive gap-3 group/field flex w-full has-data-invalid:text-destructive data-invalid:text-destructive",
+  base: "group/field flex w-full gap-3 has-data-invalid:text-destructive data-[invalid=true]:text-destructive data-invalid:text-destructive hover:not-in-data-disabled:**:[[data-slot=radio-group-item],[data-slot=checkbox-indicator]]:border-ring! hover:not-data-disabled:**:[[slot=control]]:border-b-ring!",
   variants: {
     orientation: {
       vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
@@ -66,8 +81,8 @@ const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
   const label = (
     <RACLabel
       className={cn(
-        "gap-2 font-semibold peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal uppercase text-xs tracking-wide peer-data-[slot=checkbox]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:normal-case peer-data-[slot=switch]:tracking-normal in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center",
-        "has-group-data-selected/field:bg-primary/5 has-group-data-selected/field:border-primary/30 dark:has-group-data-selected/field:border-primary/20 dark:has-group-data-selected/field:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 leading-relaxed group/field-label peer/field-label flex w-fit",
+        "in-data-disabled:pointer-events-none flex in-data-disabled:cursor-not-allowed select-none items-center gap-2 font-semibold text-xs uppercase tracking-wide peer-disabled:opacity-50 group-data-[disabled=true]:opacity-50 peer-data-[slot=checkbox]:font-normal peer-data-[slot=radio-group-item]:font-normal peer-data-[slot=switch]:font-normal peer-data-[slot=checkbox]:text-sm peer-data-[slot=radio-group-item]:text-sm peer-data-[slot=switch]:text-sm peer-data-[slot=checkbox]:normal-case peer-data-[slot=radio-group-item]:normal-case peer-data-[slot=switch]:normal-case peer-data-[slot=checkbox]:tracking-normal peer-data-[slot=radio-group-item]:tracking-normal peer-data-[slot=switch]:tracking-normal",
+        "group/field-label peer/field-label flex w-fit gap-2 leading-relaxed has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border has-group-data-selected/field:border-primary/30 has-group-data-selected/field:bg-primary/5 *:data-[slot=field]:p-4 group-data-[disabled=true]/field:opacity-50 dark:has-group-data-selected/field:border-primary/20 dark:has-group-data-selected/field:bg-primary/10",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -86,13 +101,20 @@ const Label = ({ className, htmlFor, slot, ...props }: LabelProps) => {
 }
 
 const Title = ({ className, ...props }: LabelProps) => (
-  <RACLabel className={cn("gap-2 group-data-[disabled=true]/field:opacity-50 font-semibold uppercase in-data-[slot=field-label]:font-semibold text-xs flex w-fit items-center", className)} data-slot="field-label" {...props} />
+  <RACLabel
+    className={cn(
+      "flex w-fit items-center gap-2 font-semibold in-data-[slot=field-label]:font-semibold text-xs uppercase group-data-[disabled=true]/field:opacity-50",
+      className
+    )}
+    data-slot="field-label"
+    {...props}
+  />
 )
 
 const Description = ({ className, ...props }: TextProps) => (
   <Text
     className={cn(
-      "text-muted-foreground text-left text-sm [[data-variant=legend]+&]:-mt-1.5 normal-case tracking-normal font-normal leading-normal group-has-data-horizontal/field:text-balance",
+      "text-left font-normal text-muted-foreground text-sm normal-case leading-normal tracking-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
       "nth-last-2:-mt-1 last:mt-0",
       "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
@@ -111,7 +133,7 @@ const Separator = ({
   children?: ReactNode
 }) => (
   <div
-    className={cn("-my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 relative", className)}
+    className={cn("relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2", className)}
     data-content={!!children}
     data-slot="field-separator"
     {...props}
@@ -119,7 +141,7 @@ const Separator = ({
     <RACSeparator className="absolute inset-0 top-1/2" />
     {children && (
       <span
-        className="text-muted-foreground px-2 relative mx-auto block w-fit bg-background"
+        className="relative mx-auto block w-fit bg-background px-2 text-muted-foreground"
         data-slot="field-separator-content"
       >
         {children}
@@ -131,7 +153,9 @@ const Separator = ({
 const FieldError = (props: FieldErrorProps) => {
   return (
     <RACFieldError
-      className={composeRenderProps(props.className, (className) => cn("text-destructive text-sm font-normal", className))}
+      className={composeRenderProps(props.className, (className) =>
+        cn("font-normal text-destructive text-sm", className)
+      )}
       data-slot="field-error"
       {...props}
     />
@@ -173,7 +197,12 @@ const FieldErrorNative = ({
   }
 
   return (
-    <div className={cn("text-destructive text-sm font-normal", className)} data-slot="field-error" role="alert" {...props}>
+    <div
+      className={cn("font-normal text-destructive text-sm", className)}
+      data-slot="field-error"
+      role="alert"
+      {...props}
+    >
       {content}
     </div>
   )

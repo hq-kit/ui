@@ -7,6 +7,7 @@ import { StyleProvider } from "@/components/providers/style-provider"
 import { ThemeSyncClient } from "@/components/theme-sync-client"
 import { fontMono } from "@/lib/fonts/font-mono"
 import { fontSans } from "@/lib/fonts/font-sans"
+import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -78,7 +79,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${fontSans} ${fontMono} style-nova`}
+      className={cn(fontSans, fontMono, "style-nova")}
       data-scroll-behavior="smooth"
       lang="en"
       suppressHydrationWarning

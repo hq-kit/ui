@@ -2,14 +2,9 @@
 
 import type { ThemeStyleProps } from "@/lib/themes/presets"
 import { useCallback, useEffect, useRef, useState } from "react"
-import { type ColorSpace, getColorChannels } from "react-aria-components"
 import { useTheme } from "@/components/providers"
 import { Accordion, AccordionItem } from "@/components/ui/accordion"
-import { Button } from "@/components/ui/button"
-import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch as Swatch } from "@/components/ui/colors"
-import { Input } from "@/components/ui/input"
-import { Popover } from "@/components/ui/popover"
-import { Select } from "@/components/ui/select"
+import { Field, Label } from "@/components/ui/field"
 import { useThemeGenerator } from "@/hooks/use-theme"
 import { colorFormatter } from "@/lib/themes/color-converter"
 
@@ -21,9 +16,6 @@ type ColorSwatchProps = {
 
 export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
   const [color, setColor] = useState(value)
-
-  const [isHexFormat, setIsHexFormat] = useState(false)
-  const [space, setSpace] = useState<ColorSpace>("rgb")
 
   const debounceRef = useRef<number>(0)
 
@@ -37,66 +29,16 @@ export const ColorSwatch = ({ label, value, action }: ColorSwatchProps) => {
 
     debounceRef.current = window.setTimeout(() => {
       action(color)
-    }, 300)
+    }, 1000)
 
     return () => window.clearTimeout(debounceRef.current)
   }, [color, action])
 
   return (
-    <ColorPicker onChange={(v) => setColor(v.toString("hex"))} value={color}>
-      <Popover>
-        <Button className="flex w-full items-center justify-start gap-2 p-2" variant="ghost">
-          <Swatch />
-          {label.replace("Foreground", "FG")}
-        </Button>
-        <Popover.Content>
-          <div className="space-y-2">
-            <Select
-              aria-label="Color format"
-              onChange={(s) => {
-                setSpace(s as ColorSpace)
-                setIsHexFormat(s === "hex")
-              }}
-              value={space}
-            >
-              <Select.Trigger>
-                <Select.Value />
-              </Select.Trigger>
-              <Select.Content>
-                {["rgb", "hex", "hsl", "hsb"].map((s) => (
-                  <Select.Item id={s} key={s}>
-                    {s.toUpperCase()}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select>
-            <ColorArea
-              className="w-full"
-              colorSpace={space}
-              xChannel={space === "hsl" || space === "hsb" ? "hue" : "red"}
-              yChannel={space === "hsl" || space === "hsb" ? "saturation" : "green"}
-            />
-            <ColorSlider
-              channel={space === "hsl" ? "lightness" : space === "hsb" ? "brightness" : "blue"}
-              colorSpace={space}
-            />
-            {isHexFormat ? (
-              <ColorField aria-label="Hex Color">
-                <Input />
-              </ColorField>
-            ) : getColorChannels(space).length > 0 ? (
-              <div className="flex gap-2">
-                {getColorChannels(space).map((channel) => (
-                  <ColorField aria-label={channel} channel={channel} colorSpace={space} key={channel}>
-                    <Input />
-                  </ColorField>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        </Popover.Content>
-      </Popover>
-    </ColorPicker>
+    <Field orientation="horizontal">
+      <input className="size-5" id={label} onChange={(e) => setColor(e.target.value)} type="color" value={color} />
+      <Label htmlFor={label}>{label.replace("Foreground", "FG")}</Label>
+    </Field>
   )
 }
 
@@ -116,7 +58,7 @@ const ThemeColorPanel = () => {
 
   return (
     <div className="space-y-6">
-      <Accordion allowsMultipleExpanded className="w-full" defaultExpandedKeys={["brand"]}>
+      <Accordion allowsMultipleExpanded className="w-full">
         {/* Brand Colors */}
         <AccordionItem id="brand">
           <Accordion.Trigger>Brand Colors</Accordion.Trigger>

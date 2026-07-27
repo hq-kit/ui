@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-geist-mono"
+  variable: "--font-mono"
 })
 
 const firaCode = Fira_Code({

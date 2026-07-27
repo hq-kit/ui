@@ -52,7 +52,7 @@ const SelectThemePreset = ({ presets, currentPreset, onPresetChange }: SelectThe
         />
         Random
       </Button>
-      <Select aria-label="preset" onChange={onPresetChange} value={value}>
+      <Select aria-label="preset" name="preset" onChange={onPresetChange} value={value}>
         <Select.Trigger>
           <Select.Value className="rounded-[inherit]" />
         </Select.Trigger>

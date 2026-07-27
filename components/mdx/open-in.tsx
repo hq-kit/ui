@@ -107,7 +107,11 @@ export function OpenIn({ tree, url, page }: { tree: PageTreeRoot; url: string; p
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img alt="t3" className="size-4!" src="https://t3.chat/favicon.ico?favicon.71cdc391.ico" />
+              <img
+                alt="t3"
+                className="size-4!"
+                src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/t3-chat.webp"
+              />
               T3 chat
             </DropdownMenuItem>
             <DropdownMenuItem

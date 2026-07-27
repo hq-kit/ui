@@ -1,14 +1,23 @@
 "use client"
 
+import { type FormEvent, useState } from "react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Description, FieldSet, Form, Label } from "@/components/ui/field"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { type Key, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function FieldSelectDemo() {
+  const [department, setDepartment] = useState<Key | null>()
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    toast("Form submitted", {
+      description: JSON.stringify({ department }, null, 2)
+    })
+  }
   return (
-    <Form className="w-full space-y-4" onSubmit={(e) => e.preventDefault()}>
+    <Form className="w-full" onSubmit={onSubmit}>
       <FieldSet>
-        <Select isRequired placeholder="Choose department">
+        <Select isRequired onChange={setDepartment} placeholder="Choose department" value={department}>
           <Label>Department</Label>
           <SelectTrigger>
             <SelectValue />

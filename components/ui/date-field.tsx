@@ -1,7 +1,7 @@
 "use client"
 
 import type { VariantProps } from "tailwind-variants"
-import { getLocalTimeZone, parseDate, today } from "@internationalized/date"
+import { type CalendarDate, getLocalTimeZone, parseDate, today } from "@internationalized/date"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   type DateFieldProps,
@@ -212,7 +212,7 @@ const DateRangePickerInput = ({ className, ...props }: Omit<DateInputProps, "chi
   )
 }
 
-export type { DateValue }
+export type { CalendarDate, DateValue }
 export {
   DateField,
   DateInput,

@@ -18,8 +18,9 @@ const CheckboxGroup = ({
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "grid gap-3 w-full",
-          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
+          "grid w-full gap-3",
+          "has-data-invalid:text-destructive data-invalid:text-destructive",
+          "data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-description]:w-full data-[orientation=horizontal]:**:data-[slot=field-label]:w-full",
           className
         )
       )}
@@ -38,9 +39,11 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
     >
       <CheckboxButton data-slot="checkbox">
         {composeRenderProps(children, (children) => (
-          <div className={cn(fieldVariants({ orientation: "horizontal" }))}>
+          <div
+            className={cn(fieldVariants({ orientation: "horizontal", className: "in-data-invalid:text-destructive" }))}
+          >
             <span
-              className="bg-input/90 group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground dark:group-data-selected/field:bg-primary group-data-selected/field:border-primary border-transparent aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[5px] border transition-shadow group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 [&>svg]:size-3.5 peer relative shrink-0 outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50"
+              className="peer relative flex size-4 shrink-0 items-center justify-center rounded-[5px] border border-transparent bg-input/90 outline-none transition-shadow focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50 group-has-disabled/field:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary group-data-invalid/field:group-data-selected/field:border-primary group-data-focus-visible/field:border-ring group-data-invalid/field:border-destructive group-data-selected/field:border-primary group-data-selected/field:border-primary group-data-selected/field:bg-primary group-data-selected/field:bg-primary group-data-selected/field:text-primary-foreground group-data-selected/field:text-primary-foreground group-data-focus-visible/field:ring-3 group-data-focus-visible/field:ring-ring/30 group-data-invalid/field:ring-3 group-data-invalid/field:ring-destructive/20 dark:group-data-invalid/field:border-destructive/50 dark:group-data-selected/field:bg-primary dark:group-data-selected/field:bg-primary dark:group-data-invalid/field:ring-destructive/40 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&>svg]:size-3.5"
               data-slot="checkbox-indicator"
               slot="control"
             >
@@ -65,7 +68,7 @@ const Checkbox = ({ className, children, ...props }: CheckboxFieldProps) => {
               <Label elementType="span">{children}</Label>
             ) : children ? (
               <div
-                className="gap-1 group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug"
+                className="group/field-content flex flex-1 flex-col gap-1 leading-snug *:data-[slot=field-label]:leading-snug"
                 data-slot="field-content"
               >
                 {children}

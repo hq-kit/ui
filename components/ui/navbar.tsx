@@ -157,7 +157,7 @@ const Navbar = ({
   return (
     <div
       className={cn(
-        "group peer relative z-10 text-sidebar-foreground",
+        "group peer relative z-50 text-sidebar-foreground",
         variant === "floating"
           ? "mx-auto min-h-[calc(var(--navbar-height)+var(--navbar-gap))] w-full max-w-7xl xl:max-w-(--breakpoint-xl)"
           : "min-h-(--navbar-height)"

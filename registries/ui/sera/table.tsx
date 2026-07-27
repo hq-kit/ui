@@ -40,7 +40,10 @@ const TableContext = createContext<TableProps>({
 })
 
 const Root = ({ className, ...props }: TableProps) => (
-  <RACTable className={composeRenderProps(className, (className) => cn("w-full caption-bottom text-sm", className))} {...props} />
+  <RACTable
+    className={composeRenderProps(className, (className) => cn("w-full caption-bottom text-sm", className))}
+    {...props}
+  />
 )
 
 const Table = ({ allowResize, className, ref, ...props }: TableProps) => {
@@ -95,7 +98,7 @@ const TableColumn = ({ isResizable = false, className, ...props }: ColumnProps &
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "text-muted-foreground h-12 px-3 text-left align-middle text-xs font-medium uppercase tracking-wider whitespace-nowrap [&:has([role=checkbox])]:pr-0 relative",
+          "relative h-12 whitespace-nowrap px-3 text-left align-middle font-medium text-muted-foreground text-xs uppercase tracking-wider [&:has([role=checkbox])]:pr-0",
           "outline-hidden data-[allows-sorting=true]:cursor-default data-dragging:cursor-grabbing",
           isResizable && "overflow-hidden truncate",
           className
@@ -166,7 +169,7 @@ const TableRow = <T extends object>({ children, className, columns, ref, ...prop
       {...props}
       className={composeRenderProps(className, (className) =>
         cn(
-          "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors group relative cursor-default outline outline-transparent has-aria-expanded:bg-muted/50",
+          "group relative cursor-default border-b outline outline-transparent transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",
           "data-dragging:cursor-grabbing data-disabled:opacity-50 data-dragging:outline-primary",
           "data-drop-target:outline-primary",
           className
@@ -210,7 +213,11 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
     <Cell
       {...props}
       className={composeRenderProps(className, (className) =>
-        cn("p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 outline outline-transparent", allowResize && "overflow-hidden truncate", className)
+        cn(
+          "whitespace-nowrap p-3 align-middle outline outline-transparent [&:has([role=checkbox])]:pr-0",
+          allowResize && "overflow-hidden truncate",
+          className
+        )
       )}
       data-slot="table-cell"
       ref={ref}
@@ -244,11 +251,15 @@ const TableCell = ({ className, ref, ...props }: TableCellProps) => {
 }
 
 const TableFooter = ({ className, ...props }: ComponentProps<"tfoot">) => (
-  <tfoot className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)} data-slot="table-footer" {...props} />
+  <tfoot
+    className={cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className)}
+    data-slot="table-footer"
+    {...props}
+  />
 )
 
 const TableCaption = ({ className, ...props }: ComponentProps<"caption">) => (
-  <caption className={cn("text-muted-foreground mt-4 text-sm", className)} data-slot="table-caption" {...props} />
+  <caption className={cn("mt-4 text-muted-foreground text-sm", className)} data-slot="table-caption" {...props} />
 )
 
 Table.Header = TableHeader

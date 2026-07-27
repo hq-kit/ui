@@ -8,7 +8,10 @@ import { Separator } from "./separator"
 
 const ItemGroup = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 group/item-group flex w-full flex-col", className)}
+    className={cn(
+      "group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2",
+      className
+    )}
     data-slot="item-group"
     role="list"
     {...props}
@@ -16,26 +19,21 @@ const ItemGroup = ({ className, ...props }: ComponentProps<"div">) => (
 )
 
 const ItemSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
-  <Separator
-    className={cn("my-2", className)}
-    data-slot="item-separator"
-    orientation="horizontal"
-    {...props}
-  />
+  <Separator className={cn("my-2", className)} data-slot="item-separator" orientation="horizontal" {...props} />
 )
 
 const itemVariants = tv({
-  base: "[a]:hover:bg-muted rounded-none border text-sm group/item flex w-full flex-wrap items-center outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors",
+  base: "group/item flex w-full flex-wrap items-center rounded-none border text-sm outline-none transition-colors duration-100 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted",
   variants: {
     variant: {
       default: "border-transparent",
       outline: "border-border",
-      muted: "bg-muted/50 border-transparent"
+      muted: "border-transparent bg-muted/50"
     },
     size: {
       default: "gap-3.5 px-4 py-3.5",
       sm: "gap-3.5 px-3.5 py-3",
-      xs: "gap-2.5 px-3 py-2.5 in-data-[slot=dropdown-menu-content]:p-0"
+      xs: "gap-2.5 in-data-[slot=dropdown-menu-content]:p-0 px-3 py-2.5"
     }
   },
   defaultVariants: {
@@ -63,12 +61,13 @@ const Item = ({
 }
 
 const itemMediaVariants = tv({
-  base: "gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start flex shrink-0 items-center justify-center [&_svg]:pointer-events-none",
+  base: "flex shrink-0 items-center justify-center gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start [&_svg]:pointer-events-none",
   variants: {
     variant: {
       default: "bg-transparent",
       icon: "[&_svg:not([class*='size-'])]:size-4",
-      image: "size-10 overflow-hidden rounded-none group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 group-data-[size=xs]/item:rounded-none [&_img]:size-full [&_img]:object-cover"
+      image:
+        "size-10 overflow-hidden rounded-none group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 group-data-[size=xs]/item:rounded-none [&_img]:size-full [&_img]:object-cover"
     }
   },
   defaultVariants: {
@@ -91,7 +90,10 @@ const ItemMedia = ({
 
 const ItemContent = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-1 group-data-[size=xs]/item:gap-0.5 flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none", className)}
+    className={cn(
+      "flex flex-1 flex-col gap-1 group-data-[size=xs]/item:gap-0.5 [&+[data-slot=item-content]]:flex-none",
+      className
+    )}
     data-slot="item-content"
     {...props}
   />
@@ -99,7 +101,10 @@ const ItemContent = ({ className, ...props }: ComponentProps<"div">) => (
 
 const ItemTitle = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-2 text-xs leading-snug font-semibold uppercase underline-offset-4 line-clamp-1 flex w-fit items-center", className)}
+    className={cn(
+      "line-clamp-1 flex w-fit items-center gap-2 font-semibold text-xs uppercase leading-snug underline-offset-4",
+      className
+    )}
     data-slot="item-title"
     {...props}
   />
@@ -108,7 +113,7 @@ const ItemTitle = ({ className, ...props }: ComponentProps<"div">) => (
 const ItemDescription = ({ className, ...props }: ComponentProps<"p">) => (
   <p
     className={cn(
-      "text-muted-foreground text-left text-sm leading-relaxed line-clamp-2 font-normal [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+      "line-clamp-2 text-left font-normal text-muted-foreground text-sm leading-relaxed [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
       className
     )}
     data-slot="item-description"
@@ -117,12 +122,12 @@ const ItemDescription = ({ className, ...props }: ComponentProps<"p">) => (
 )
 
 const ItemActions = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={cn("gap-2 flex items-center", className)} data-slot="item-actions" {...props} />
+  <div className={cn("flex items-center gap-2", className)} data-slot="item-actions" {...props} />
 )
 
 const ItemHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-2 flex basis-full items-center justify-between", className)}
+    className={cn("flex basis-full items-center justify-between gap-2", className)}
     data-slot="item-header"
     {...props}
   />
@@ -130,7 +135,7 @@ const ItemHeader = ({ className, ...props }: ComponentProps<"div">) => (
 
 const ItemFooter = ({ className, ...props }: ComponentProps<"div">) => (
   <div
-    className={cn("gap-2 flex basis-full items-center justify-between", className)}
+    className={cn("flex basis-full items-center justify-between gap-2", className)}
     data-slot="item-footer"
     {...props}
   />

@@ -32,12 +32,17 @@ export default function AttachmentPreview() {
     <div>
       <div className="flex flex-col gap-2 lg:flex-row-reverse">
         <div className="flex flex-col gap-2 border-b p-4 lg:border-b-0 lg:border-l">
-          <RadioGroup onChange={(v) => setOrientation(v.toString() as "horizontal" | "vertical")} value={orientation}>
+          <RadioGroup
+            name="group-orientation"
+            onChange={(v) => setOrientation(v.toString() as "horizontal" | "vertical")}
+            value={orientation}
+          >
             <Label className="whitespace-nowrap">Group Orientation</Label>
             <Radio value="horizontal">Horizontal</Radio>
             <Radio value="vertical">Vertical</Radio>
           </RadioGroup>
           <RadioGroup
+            name="item-orientation"
             onChange={(v) => setItemOrientation(v.toString() as "horizontal" | "vertical")}
             value={itemOrientation}
           >
