@@ -17,20 +17,20 @@ export function ShippingAddress() {
       </Card.Header>
       <Card.Content>
         <FieldGroup>
-          <TextField>
+          <TextField autoComplete="address-line1" name="street">
             <Label>Street address</Label>
             <Input placeholder="123 Main Street" />
           </TextField>
-          <TextField>
+          <TextField autoComplete="address-line2" name="apt-suite">
             <Label>Apt / Suite</Label>
             <Input placeholder="Apt 4B" />
           </TextField>
           <FieldGroup className="grid grid-cols-2">
-            <TextField>
+            <TextField autoComplete="address-level2" name="city">
               <Label>City</Label>
               <Input placeholder="San Francisco" />
             </TextField>
-            <Select defaultValue="CA">
+            <Select defaultValue="CA" name="state">
               <Label>State</Label>
               <Select.Trigger className="w-full">
                 <Select.Value />
@@ -45,11 +45,11 @@ export function ShippingAddress() {
             </Select>
           </FieldGroup>
           <FieldGroup className="grid grid-cols-2">
-            <TextField>
+            <TextField autoComplete="postal-code" name="zip">
               <Label>ZIP Code</Label>
               <Input placeholder="94102" />
             </TextField>
-            <Select defaultValue="US">
+            <Select autoComplete="country" defaultValue="US" name="country">
               <Label>Country</Label>
               <Select.Trigger className="w-full">
                 <Select.Value />
@@ -63,7 +63,7 @@ export function ShippingAddress() {
               </Select.Content>
             </Select>
           </FieldGroup>
-          <Checkbox defaultSelected id="shipping-save">
+          <Checkbox defaultSelected name="shipping-save">
             Save as default address
           </Checkbox>
         </FieldGroup>

@@ -40,7 +40,7 @@ export function AssignIssue() {
         </Card.Action>
       </Card.Header>
       <Card.Content>
-        <Combobox defaultValue={[users[0].id]} selectionMode="multiple">
+        <Combobox aria-label="Users" defaultValue={[users[0].id]} selectionMode="multiple">
           <ComboboxChips<(typeof users)[0]>>{(value) => <ComboboxChip>{value.name}</ComboboxChip>}</ComboboxChips>
           <Combobox.Content items={users}>
             {(user) => (

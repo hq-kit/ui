@@ -8,12 +8,13 @@ import { ButtonGroup } from "@/components/ui/button-group"
 import { Card } from "@/components/ui/card"
 import { Checkbox, CheckboxGroup } from "@/components/ui/checkbox"
 import { DropdownMenu } from "@/components/ui/dropdown-menu"
-import { Field, FieldGroup } from "@/components/ui/field"
+import { FieldGroup } from "@/components/ui/field"
 import { InputGroup, Textarea } from "@/components/ui/input"
 import { Item } from "@/components/ui/item"
 import { Radio, RadioGroup } from "@/components/ui/radio"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
+import { TextField } from "@/components/ui/text-field"
 
 export function UIElements() {
   return (
@@ -42,7 +43,7 @@ export function UIElements() {
         </div>
         <Slider aria-label="Slider" className="flex-1" maxValue={1000} minValue={0} step={10} />
         <FieldGroup>
-          <Field>
+          <TextField aria-label="Name" autoComplete="name" name="name">
             <InputGroup>
               <InputGroup.Input placeholder="Name" />
               <InputGroup.Addon align="inline-end">
@@ -57,10 +58,10 @@ export function UIElements() {
                 </InputGroup.Text>
               </InputGroup.Addon>
             </InputGroup>
-          </Field>
-          <Field className="flex-1">
+          </TextField>
+          <TextField aria-label="Message" className="flex-1" name="message">
             <Textarea className="resize-none" placeholder="Message" />
-          </Field>
+          </TextField>
         </FieldGroup>
         <div className="flex items-center gap-2">
           <div className="flex gap-2">
@@ -68,13 +69,13 @@ export function UIElements() {
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="outline">Outline</Badge>
           </div>
-          <RadioGroup className="ml-auto" defaultValue="apple" orientation="horizontal">
-            <Radio value="apple" />
-            <Radio value="banana" />
+          <RadioGroup aria-label="Fruit" className="ml-auto" defaultValue="apple" name="fruit" orientation="horizontal">
+            <Radio aria-label="Apple" value="apple" />
+            <Radio aria-label="Banana" value="banana" />
           </RadioGroup>
-          <CheckboxGroup orientation="horizontal">
-            <Checkbox defaultSelected value="1" />
-            <Checkbox value="2" />
+          <CheckboxGroup aria-label="Options" name="options" orientation="horizontal">
+            <Checkbox aria-label="Option 1" defaultSelected value="1" />
+            <Checkbox aria-label="Option 2" value="2" />
           </CheckboxGroup>
         </div>
         <div className="flex items-center gap-4">

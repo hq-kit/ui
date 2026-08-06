@@ -121,6 +121,7 @@ const ComboboxChips = <T extends object>(props: TagListProps<T> & { isDisabled?:
       <ComboBoxValue<T> className="contents">
         {({ selectedItems, state }) => (
           <TagGroup
+            aria-label="Items"
             className={cn("contents", props.className)}
             data-slot="combobox-chip-list"
             onRemove={(keys) => {

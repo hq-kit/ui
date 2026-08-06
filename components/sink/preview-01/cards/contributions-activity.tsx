@@ -16,7 +16,7 @@ export function ContributionsActivity() {
             <FieldSet>
               <Legend className="sr-only">Contributions & activity</Legend>
               <Checkbox>
-                <Label>Make profile private and hide activity</Label>
+                <Label elementType="span">Make profile private and hide activity</Label>
                 <Description>
                   Enabling this will hide your contributions and activity from your GitHub profile and from social
                   features like followers, stars, feeds, leaderboards and releases.

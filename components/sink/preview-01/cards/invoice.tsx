@@ -34,7 +34,7 @@ export function Invoice() {
         </Card.Action>
       </Card.Header>
       <Card.Content>
-        <Table>
+        <Table aria-label="Invoice items" className="w-full">
           <Table.Header>
             <Table.Column isRowHeader>Item</Table.Column>
             <Table.Column className="text-right">Qty</Table.Column>

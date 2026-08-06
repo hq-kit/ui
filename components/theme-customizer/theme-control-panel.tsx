@@ -1,6 +1,7 @@
 "use client"
 
 import type { IconLibraryName } from "shadcn/icons"
+import { useEffect } from "react"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { DEFAULT_LIBRARY, useIcon } from "@/components/icon-provider"
 import { useTheme } from "@/components/providers"
@@ -19,7 +20,7 @@ import { Slider, SliderOutput } from "@/components/ui/slider"
 import { defaultThemeState } from "@/config/theme"
 import { type Style, useStyle } from "@/hooks/use-style"
 import { useThemeGenerator } from "@/hooks/use-theme"
-import { FONT_MONO, FONT_SANS } from "@/lib/fonts"
+import { FONT_MONO, FONT_SANS, fontVariables } from "@/lib/fonts"
 import { presets } from "@/lib/themes/presets"
 
 const ThemeControlPanel = () => {
@@ -27,6 +28,14 @@ const ThemeControlPanel = () => {
   const { currentPreset, currentStyles, updatePreset, updateVar, reset } = useThemeGenerator()
   const { iconLibrary, setIconLibrary } = useIcon()
   const { style, reset: resetStyle, updateStyle } = useStyle()
+
+  useEffect(() => {
+    const fontClasses = fontVariables.split(" ")
+    const root = document.documentElement
+
+    root.classList.add(...fontClasses)
+    return () => root.classList.remove(...fontClasses)
+  }, [])
 
   const resetTheme = () => {
     reset()

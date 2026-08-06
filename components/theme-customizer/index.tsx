@@ -1,9 +1,13 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import ThemeControlPanel from "@/components/theme-customizer/theme-control-panel"
 import { Button } from "@/components/ui/button"
 import { Sheet } from "@/components/ui/sheet"
+
+const ThemeControlPanel = dynamic(() => import("@/components/theme-customizer/theme-control-panel"), {
+  loading: () => null
+})
 
 export function ThemeCustomizer() {
   return (

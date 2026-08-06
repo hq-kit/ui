@@ -14,12 +14,12 @@ export function ReportBug() {
       </Card.Header>
       <Card.Content>
         <FieldGroup>
-          <TextField>
+          <TextField name="title">
             <Label>Title</Label>
             <Input placeholder="Brief description of the issue" />
           </TextField>
           <div className="grid grid-cols-2 gap-3">
-            <Select defaultValue="medium">
+            <Select defaultValue="medium" name="severity">
               <Label>Severity</Label>
               <Select.Trigger className="w-full">
                 <Select.Value />
@@ -33,7 +33,7 @@ export function ReportBug() {
                 </Select.Group>
               </Select.Content>
             </Select>
-            <Select defaultValue="dashboard">
+            <Select defaultValue="dashboard" name="component">
               <Label>Component</Label>
               <Select.Trigger className="w-full">
                 <Select.Value />
@@ -48,7 +48,7 @@ export function ReportBug() {
               </Select.Content>
             </Select>
           </div>
-          <TextField>
+          <TextField name="steps-to-reproduce">
             <Label>Steps to reproduce</Label>
             <Textarea className="min-h-24 resize-none" placeholder="1. Go to&#10;2. Click on&#10;3. Observe..." />
           </TextField>

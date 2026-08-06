@@ -33,7 +33,8 @@ export function StyleOverview() {
             "--chart-5"
           ].map((variant) => (
             <Tooltip key={variant}>
-              <div className="flex flex-col flex-wrap items-center gap-2" key={variant}>
+              {/** biome-ignore lint/a11y/useFocusableInteractive: focusable */}
+              <div className="flex flex-col flex-wrap items-center gap-2" key={variant} role="button">
                 <div
                   className="relative aspect-square w-full rounded-lg style-sera:rounded-none bg-(--color) after:absolute after:inset-0 after:rounded-lg style-sera:after:rounded-none after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten"
                   style={

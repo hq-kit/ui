@@ -23,10 +23,16 @@ export function InviteTeam() {
             { email: "sam@example.com", role: "Viewer" }
           ].map((invite) => (
             <div className="flex items-center gap-2" key={invite.email}>
-              <TextField aria-label="Email" className="flex-1" defaultValue={invite.email}>
+              <TextField
+                aria-label="Email"
+                autoComplete="email"
+                className="flex-1"
+                defaultValue={invite.email}
+                name="email"
+              >
                 <Input />
               </TextField>
-              <Select aria-label="Role" className="w-24" defaultValue={invite.role.toLowerCase()}>
+              <Select aria-label="Role" className="w-24" defaultValue={invite.role.toLowerCase()} name="role">
                 <Select.Trigger>
                   <Select.Value />
                 </Select.Trigger>
@@ -53,7 +59,7 @@ export function InviteTeam() {
           Add another
         </Button>
         <Separator />
-        <TextField defaultValue="https://app.co/invite/x8f2k" isReadOnly>
+        <TextField defaultValue="https://app.co/invite/x8f2k" isReadOnly name="invite-link">
           <Label>Or share invite link</Label>
           <InputGroup>
             <InputGroup.Input />

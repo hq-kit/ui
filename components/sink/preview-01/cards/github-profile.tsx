@@ -16,14 +16,14 @@ export function GithubProfile() {
       <Card.Content>
         <form id="profile">
           <FieldGroup>
-            <TextField>
+            <TextField autoComplete="name" name="name">
               <Label>Name</Label>
               <Input placeholder="shadcn" />
               <Description>
                 Your name may appear around GitHub where you contribute or are mentioned. You can remove it at any time.
               </Description>
             </TextField>
-            <Select>
+            <Select aria-label="Public Email" name="public-email">
               <Label>Public Email</Label>
               <Select.Trigger>
                 <Select.Value />
@@ -36,7 +36,7 @@ export function GithubProfile() {
             <Description>
               You can manage verified email addresses in your <Link>email settings</Link>.
             </Description>
-            <TextField>
+            <TextField name="bio">
               <Label>Bio</Label>
               <Textarea placeholder="Tell us a little bit about yourself" />
               <Description>

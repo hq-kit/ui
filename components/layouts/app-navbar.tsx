@@ -8,9 +8,9 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { IconApp, IconBrandGithub } from "@/components/icons"
 import { menus } from "@/components/layouts/menus"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Button, buttonVariants } from "../ui/button"
-import { Kbd, KbdGroup } from "../ui/kbd"
-import { Navbar, useNavbar } from "../ui/navbar"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
+import { Navbar, useNavbar } from "@/components/ui/navbar"
 
 const CommandMenu = dynamic(() => import("./command-menu").then((mod) => mod.CommandMenu), {
   ssr: false,
@@ -86,48 +86,7 @@ const MobileMenuItems = memo(({ pathname }: { pathname: string }) => {
 })
 MobileMenuItems.displayName = "MobileMenuItems"
 
-// Memoized navbar actions component
-const NavbarActions = memo(
-  ({ isMobile, setOpenCommand }: { isMobile: boolean; setOpenCommand: (open: boolean) => void }) => {
-    return (
-      <Navbar.Actions>
-        <Button onPress={() => setOpenCommand(true)} size={isMobile ? "icon" : "default"} variant="outline">
-          <IconPlaceholder
-            hugeicons="SearchIcon"
-            lucide="SearchIcon"
-            phosphor="MagnifyingGlassIcon"
-            remixicon="RiSearchLine"
-            tabler="IconSearch"
-          />
-          {!isMobile && (
-            <>
-              <span className="mr-2 text-muted-foreground">Search...</span>
-              <KbdGroup>
-                <Kbd>⌘</Kbd>
-                <Kbd>K</Kbd>
-              </KbdGroup>
-            </>
-          )}
-        </Button>
-        <Link
-          aria-label="Github Repository"
-          className={buttonVariants({
-            variant: "outline",
-            size: "icon"
-          })}
-          href={"https://github.com/hq-kit/ui"}
-          target="_blank"
-        >
-          <IconBrandGithub />
-        </Link>
-        <ThemeToggle />
-      </Navbar.Actions>
-    )
-  }
-)
-NavbarActions.displayName = "NavbarActions"
-
-function AppNavbarComponent() {
+export function AppNavbar() {
   const pathname = usePathname()
   const { open, setOpen, isMobile } = useNavbar()
   const [openCommand, setOpenCommand] = useState(false)
@@ -174,11 +133,39 @@ function AppNavbarComponent() {
             </Navbar.Menu>
           </Navbar.Header>
         )}
-        <NavbarActions isMobile={isMobile} setOpenCommand={setOpenCommand} />
+        <Navbar.Actions>
+          <Button onPress={() => setOpenCommand(true)} size={isMobile ? "icon" : "default"} variant="outline">
+            <IconPlaceholder
+              hugeicons="SearchIcon"
+              lucide="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
+              tabler="IconSearch"
+            />
+            {!isMobile && (
+              <>
+                <span className="mr-2 text-muted-foreground">Search...</span>
+                <KbdGroup>
+                  <Kbd>⌘</Kbd>
+                  <Kbd>K</Kbd>
+                </KbdGroup>
+              </>
+            )}
+          </Button>
+          <Link
+            aria-label="Github Repository"
+            className={buttonVariants({
+              variant: "outline",
+              size: "icon"
+            })}
+            href={"https://github.com/hq-kit/ui"}
+            target="_blank"
+          >
+            <IconBrandGithub />
+          </Link>
+          <ThemeToggle />
+        </Navbar.Actions>
       </Navbar>
     </>
   )
 }
-
-export const AppNavbar = memo(AppNavbarComponent)
-AppNavbar.displayName = "AppNavbar"

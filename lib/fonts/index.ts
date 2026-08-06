@@ -1,6 +1,6 @@
 import { titleCase } from "@/lib/modifiers"
-import { fontMono } from "./font-mono"
-import { fontSans } from "./font-sans"
+import { fontMonoVariables } from "./font-mono"
+import { fontSansVariables } from "./font-sans"
 
 export interface Font {
   label: string
@@ -25,5 +25,6 @@ export function extractAndFormatFonts(input: string): Font[] {
   })
 }
 
-export const FONT_SANS = extractAndFormatFonts(fontSans)
-export const FONT_MONO = extractAndFormatFonts(fontMono)
+export const FONT_SANS = extractAndFormatFonts(fontSansVariables)
+export const FONT_MONO = extractAndFormatFonts(fontMonoVariables)
+export const fontVariables = `${fontSansVariables} ${fontMonoVariables}`

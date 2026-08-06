@@ -18,7 +18,7 @@ export function NotFound() {
           </Empty.Header>
           <Empty.Content>
             <InputGroup className="w-3/4">
-              <InputGroup.Input placeholder="Try searching for pages..." />
+              <InputGroup.Input name="search" placeholder="Try searching for pages..." />
               <InputGroup.Addon>
                 <IconPlaceholder
                   hugeicons="Search01Icon"

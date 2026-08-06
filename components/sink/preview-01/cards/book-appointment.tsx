@@ -16,7 +16,7 @@ export function BookAppointment() {
       <Card.Content className="flex flex-col gap-4">
         <Field.Group>
           <Field>
-            <Label slot="label">Available on March 18, 2026</Label>
+            <Label elementType="span">Available on March 18, 2026</Label>
             <ToggleGroup defaultSelectedKeys={["slot-0"]} selectionMode="multiple" spacing={2}>
               {["9:00 AM", "10:30 AM", "11:00 AM", "1:30 PM"].map((time, index) => (
                 <ToggleGroup.Item id={`slot-${index}`} key={time}>

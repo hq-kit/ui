@@ -88,7 +88,7 @@ export function PieChartCard() {
           <span className="font-medium">{topBrowserLabel}</span>
           <span className="ml-auto text-muted-foreground tabular-nums">{topBrowserShare}%</span>
         </div>
-        <Progress className="**:data-[slot=progress-indicator]:bg-chart-3" value={topBrowserShare} />
+        <Progress aria-label="Top" className="**:data-[slot=progress-indicator]:bg-chart-3" value={topBrowserShare} />
       </Card.Footer>
     </Card>
   )
