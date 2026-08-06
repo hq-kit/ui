@@ -2,7 +2,8 @@
 
 import { menus } from "@/components/layouts/menus"
 import { Command } from "@/components/ui/command"
-import { BrandIcon, type BrandIconProps } from "../icons"
+import { slugify } from "@/lib/modifiers"
+import { BrandIcon, type BrandIconProps, ComponentIcon, type ComponentIconProps } from "../icons"
 
 export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
   return (
@@ -17,7 +18,7 @@ export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: 
                 {item.title}
               </Command.Item>
             ))}
-            {/* {section.sections?.map((section) => (
+            {section.sections?.map((section) => (
               <Command.Group aria-label={section.title} className="p-0" key={section.title} title={section.title}>
                 {section.items?.map((item) => (
                   <Command.Item href={item.slug} key={item.slug} textValue={item.title}>
@@ -26,7 +27,7 @@ export function CommandMenu({ open, setOpen }: { open: boolean; setOpen: (open: 
                   </Command.Item>
                 ))}
               </Command.Group>
-            ))} */}
+            ))}
           </Command.Group>
         ))}
       </Command.List>
