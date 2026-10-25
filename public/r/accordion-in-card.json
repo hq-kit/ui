@@ -5,8 +5,8 @@
   "title": "accordion-in-card",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/accordion",
-    "http://localhost:3000/r/card"
+    "https://hq-ui.vercel.app/r/accordion",
+    "https://hq-ui.vercel.app/r/card"
   ],
   "files": [
     {

@@ -72,9 +72,9 @@ export default function TailwindColorSwatch({ value, onChange }: Props) {
     Array.isArray(set)
       ? set.map((color) => ({
           id: color.oklch,
-          name: `${name}-${color.scale}`
+          name: `${name}-${color}`
         }))
-      : [{ id: set.oklch, name }]
+      : [{ id: set, name }]
   )
 
   const grid = useGridNavigation(items.length)
@@ -88,7 +88,7 @@ export default function TailwindColorSwatch({ value, onChange }: Props) {
               {...grid(index)}
               aria-label={item.id}
               aria-pressed={value === item.id}
-              className="h-3.25 w-full rounded-none border border-transparent outline-hidden focus:z-10 focus:border-white focus:ring-2 focus:ring-ring"
+              className="focus:ring-ring h-3.25 w-full rounded-none border border-transparent outline-hidden focus:z-10 focus:border-white focus:ring-2"
               onClick={() => onChange?.(item.id)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {

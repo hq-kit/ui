@@ -3,13 +3,14 @@
   "name": "spinner",
   "title": "spinner",
   "dependencies": [
+    "@tabler/icons-react",
     "cn"
   ],
   "registryDependencies": [],
   "files": [
     {
       "path": "components/ui/spinner.tsx",
-      "content": "import type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst Spinner = ({ className, ...props }: ComponentProps<\"svg\">) => (\n  <IconPlaceholder\n    aria-label=\"Loading\"\n    className={cn(\"size-4 animate-spin\", className)}\n    hugeicons=\"Loading03Icon\"\n    lucide=\"Loader2Icon\"\n    phosphor=\"SpinnerIcon\"\n    remixicon=\"RiLoaderLine\"\n    role=\"status\"\n    tabler=\"IconLoader\"\n    {...props}\n  />\n)\n\nexport { Spinner }\n",
+      "content": "import type { ComponentProps } from \"react\"\nimport { IconLoader2 } from \"@tabler/icons-react\"\nimport { cn } from \"cn\"\n\nconst Spinner = ({ className, ...props }: ComponentProps<\"svg\">) => (\n  <IconLoader2 aria-label=\"Loading\" className={cn(\"size-4 animate-spin\", className)} role=\"status\" {...props} />\n)\n\nexport { Spinner }\n",
       "type": "registry:ui"
     }
   ],

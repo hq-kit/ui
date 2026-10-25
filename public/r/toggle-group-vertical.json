@@ -7,12 +7,12 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle"
+    "https://hq-ui.vercel.app/r/toggle"
   ],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-group-vertical.tsx",
-      "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\nexport default function ToggleGroupVertical() {\n  return (\n    <ToggleGroup defaultSelectedKeys={[\"bold\", \"italic\"]} orientation=\"vertical\" selectionMode=\"multiple\" spacing={1}>\n      <ToggleGroupItem aria-label=\"Toggle bold\" id=\"bold\">\n        <BoldIcon />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle italic\" id=\"italic\">\n        <ItalicIcon />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle underline\" id=\"underline\">\n        <UnderlineIcon />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
+      "content": "import { BoldIcon, ItalicIcon, UnderlineIcon } from \"lucide-react\"\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\nexport default () => {\n  return (\n    <ToggleGroup defaultSelectedKeys={[\"bold\", \"italic\"]} orientation=\"vertical\" selectionMode=\"multiple\">\n      <ToggleGroupItem aria-label=\"Toggle bold\" id=\"bold\">\n        <BoldIcon />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle italic\" id=\"italic\">\n        <ItalicIcon />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle underline\" id=\"underline\">\n        <UnderlineIcon />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

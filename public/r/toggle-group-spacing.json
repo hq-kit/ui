@@ -5,12 +5,12 @@
   "title": "toggle-group-spacing",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle"
+    "https://hq-ui.vercel.app/r/toggle"
   ],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-group-spacing.tsx",
-      "content": "import { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\nexport default function ToggleGroupSpacing() {\n  return (\n    <ToggleGroup defaultSelectedKeys={[\"top\"]} size=\"sm\" spacing={0} variant=\"outline\">\n      <ToggleGroupItem aria-label=\"Toggle top\" id=\"top\">\n        Top\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle bottom\" id=\"bottom\">\n        Bottom\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle left\" id=\"left\">\n        Left\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle right\" id=\"right\">\n        Right\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
+      "content": "import { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\nexport default () => {\n  return (\n    <ToggleGroup defaultSelectedKeys={[\"top\"]} size=\"sm\" spacing={2} variant=\"outline\">\n      <ToggleGroupItem aria-label=\"Toggle top\" id=\"top\">\n        Top\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle bottom\" id=\"bottom\">\n        Bottom\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle left\" id=\"left\">\n        Left\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle right\" id=\"right\">\n        Right\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

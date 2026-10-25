@@ -3,12 +3,8 @@
   "extends": "none",
   "name": "toggle-demo",
   "title": "toggle-demo",
-  "dependencies": [
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/toggle"
-  ],
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["http://localhost:3000/r/toggle"],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-demo.tsx",

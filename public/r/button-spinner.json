@@ -4,9 +4,7 @@
   "name": "button-spinner",
   "title": "button-spinner",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/button"
-  ],
+  "registryDependencies": ["http://localhost:3000/r/button"],
   "files": [
     {
       "path": "components/samples/buttons/button/button-spinner.tsx",

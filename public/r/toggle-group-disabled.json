@@ -7,7 +7,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle"
+    "https://hq-ui.vercel.app/r/toggle"
   ],
   "files": [
     {

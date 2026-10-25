@@ -5,10 +5,10 @@
   "title": "date-range-picker-controlled",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/calendar",
-    "http://localhost:3000/r/date-field",
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/popover"
+    "https://hq-ui.vercel.app/r/calendar",
+    "https://hq-ui.vercel.app/r/date-field",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/popover"
   ],
   "files": [
     {

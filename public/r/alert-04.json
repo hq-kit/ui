@@ -4,17 +4,16 @@
   "name": "alert-04",
   "title": "alert-04",
   "dependencies": [
-    "@tabler/icons-react",
-    "react-aria-components"
+    "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/alert",
-    "http://localhost:3000/r/button"
+    "https://hq-ui.vercel.app/r/alert",
+    "https://hq-ui.vercel.app/r/button"
   ],
   "files": [
     {
       "path": "components/samples/statuses/alert/alert-04.tsx",
-      "content": "import { IconAlertCircle, IconArrowRight } from \"@tabler/icons-react\"\nimport { Link } from \"react-aria-components\"\nimport { Alert, AlertTitle } from \"@/components/ui/alert\"\nimport { buttonVariants } from \"@/components/ui/button\"\n\nconst AlertWithLinkDemo = () => {\n  return (\n    <Alert className=\"flex items-center justify-between border-sky-600 text-sky-600 dark:border-sky-400 dark:text-sky-400 [&>svg]:translate-y-0\">\n      <IconAlertCircle />\n      <AlertTitle className=\"flex-1\">New message!</AlertTitle>\n      <Link\n        className={buttonVariants({\n          variant: \"outline\",\n          className:\n            \"h-7 cursor-pointer rounded-md border-sky-600 px-2 text-sky-600! hover:bg-sky-600/10 focus-visible:border-sky-600 focus-visible:ring-sky-600/20 dark:border-sky-400 dark:text-sky-400! dark:focus-visible:border-sky-400 dark:focus-visible:ring-sky-400/40 dark:hover:bg-sky-400/10\"\n        })}\n        href=\"#\"\n      >\n        Link\n        <IconArrowRight />\n      </Link>\n    </Alert>\n  )\n}\n\nexport default AlertWithLinkDemo\n",
+      "content": "import { IconAlertCircle, IconArrowRight } from \"@tabler/icons-react\"\nimport { Alert, AlertAction, AlertTitle } from \"@/components/ui/alert\"\nimport { LinkButton } from \"@/components/ui/button\"\n\nconst AlertWithLinkDemo = () => {\n  return (\n    <Alert variant={\"info\"}>\n      <IconAlertCircle />\n      <AlertTitle className=\"flex-1\">New message!</AlertTitle>\n      <AlertAction>\n        <LinkButton className={\"-mt-px w-fit\"} href=\"#\" size={\"xs\"} variant={\"info\"}>\n          Link\n          <IconArrowRight />\n        </LinkButton>\n      </AlertAction>\n    </Alert>\n  )\n}\n\nexport default AlertWithLinkDemo\n",
       "type": "registry:component"
     }
   ],

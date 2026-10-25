@@ -5,7 +5,7 @@
   "title": "progress-09",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/progress"
+    "https://hq-ui.vercel.app/r/progress"
   ],
   "files": [
     {

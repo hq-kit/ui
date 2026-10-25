@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-group",
   "title": "toggle-group",
-  "dependencies": [
-    "react-aria-components",
-    "cn"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/toggle"
-  ],
+  "dependencies": ["react-aria-components", "cn"],
+  "registryDependencies": ["http://localhost:3000/r/toggle"],
   "files": [
     {
       "path": "components/ui/toggle-group.tsx",

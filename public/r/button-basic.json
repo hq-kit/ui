@@ -5,7 +5,7 @@
   "title": "button-basic",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button"
+    "https://hq-ui.vercel.app/r/button"
   ],
   "files": [
     {

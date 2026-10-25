@@ -10,7 +10,7 @@ export default function ColorSliderChannelsDemo() {
 
   return (
     <div className="flex w-full flex-col gap-2">
-      <ColorSwatch className="w-full rounded-lg border" color={color} />
+      <ColorSwatch className="w-full rounded-lg border" color={color.toString("hex")} />
       <ColorSlider channel="red" colorSpace="rgb" onChange={setColor} value={color}>
         <Label>Red</Label>
         <ColorSliderOutput />

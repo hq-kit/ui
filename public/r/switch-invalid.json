@@ -5,8 +5,8 @@
   "title": "switch-invalid",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/switch"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/switch"
   ],
   "files": [
     {

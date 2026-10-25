@@ -7,12 +7,12 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/context-menu"
+    "https://hq-ui.vercel.app/r/context-menu"
   ],
   "files": [
     {
       "path": "components/samples/collections/context-menu/context-menu-basic.tsx",
-      "content": "\"use client\"\n\nimport { Pressable } from \"react-aria-components\"\nimport { ContextMenu, ContextMenuContent, ContextMenuGroup, ContextMenuItem } from \"@/components/ui/context-menu\"\n\nexport default function ContextMenuBasic() {\n  return (\n    <ContextMenu>\n      <Pressable>\n        <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n          <span className=\"pointer-fine:inline-block hidden\">Right click here</span>\n          <span className=\"pointer-coarse:inline-block hidden\">Long press here</span>\n        </div>\n      </Pressable>\n      <ContextMenuContent>\n        <ContextMenuGroup>\n          <ContextMenuItem>Back</ContextMenuItem>\n          <ContextMenuItem isDisabled>Forward</ContextMenuItem>\n          <ContextMenuItem>Reload</ContextMenuItem>\n        </ContextMenuGroup>\n      </ContextMenuContent>\n    </ContextMenu>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { Pressable } from \"react-aria-components\"\nimport { ContextMenu, ContextMenuContent, ContextMenuGroup, ContextMenuItem } from \"@/components/ui/context-menu\"\n\nexport default function ContextMenuBasic() {\n  return (\n    <ContextMenu>\n      <Pressable>\n        <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n          <span className=\"hidden pointer-fine:inline-block\">Right click here</span>\n          <span className=\"hidden pointer-coarse:inline-block\">Long press here</span>\n        </div>\n      </Pressable>\n      <ContextMenuContent>\n        <ContextMenuGroup>\n          <ContextMenuItem>Back</ContextMenuItem>\n          <ContextMenuItem isDisabled>Forward</ContextMenuItem>\n          <ContextMenuItem>Reload</ContextMenuItem>\n        </ContextMenuGroup>\n      </ContextMenuContent>\n    </ContextMenu>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

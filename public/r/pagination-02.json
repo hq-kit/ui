@@ -3,12 +3,8 @@
   "extends": "none",
   "name": "pagination-02",
   "title": "pagination-02",
-  "dependencies": [
-    "@tabler/icons-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/pagination"
-  ],
+  "dependencies": ["@tabler/icons-react"],
+  "registryDependencies": ["https://hq-ui.vercel.app/r/pagination"],
   "files": [
     {
       "path": "components/samples/navigation/pagination/pagination-02.tsx",

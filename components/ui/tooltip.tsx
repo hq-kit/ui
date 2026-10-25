@@ -19,12 +19,14 @@ function TooltipContent({
   className,
   placement = "top",
   offset = 4,
+  showArrow = true,
   crossOffset = 0,
   children,
   ...props
 }: Omit<ComponentProps<typeof RACTooltip>, "children" | "className"> & {
   className?: string
   children?: ReactNode
+  showArrow?: boolean
 }) {
   return (
     <RACTooltip
@@ -39,22 +41,24 @@ function TooltipContent({
       {...props}
     >
       {children}
-      <OverlayArrow
-        className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
-        style={({ placement, defaultStyle }) => ({
-          ...defaultStyle,
-          rotate: "0deg",
-          translate: "0 0",
-          transform:
-            placement === "bottom"
-              ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
-              : placement === "top"
-                ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
-                : placement === "left"
-                  ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
-                  : "translate(calc(50% + 2px), -50%) rotate(45deg)"
-        })}
-      />
+      {showArrow && (
+        <OverlayArrow
+          className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs"
+          style={({ placement, defaultStyle }) => ({
+            ...defaultStyle,
+            rotate: "0deg",
+            translate: "0 0",
+            transform:
+              placement === "bottom"
+                ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
+                : placement === "top"
+                  ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
+                  : placement === "left"
+                    ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
+                    : "translate(calc(50% + 2px), -50%) rotate(45deg)"
+          })}
+        />
+      )}
     </RACTooltip>
   )
 }

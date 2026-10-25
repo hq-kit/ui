@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "file-trigger-basic",
+  "title": "file-trigger-basic",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://hq-ui.vercel.app/r/file-trigger"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/file-trigger/file-trigger-basic.tsx",
+      "content": "import { FileTrigger } from \"@/components/ui/file-trigger\"\n\nexport default () => {\n  return <FileTrigger />\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

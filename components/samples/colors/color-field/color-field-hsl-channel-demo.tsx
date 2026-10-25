@@ -11,7 +11,7 @@ export default function ColorFieldChannelsDemo() {
 
   return (
     <div className="flex flex-col gap-2">
-      <ColorSwatch className="w-full rounded-lg border" color={color!} />
+      <ColorSwatch className="w-full rounded-lg border" color={color?.toString("hex")} />
       <ColorField channel="hue" colorSpace="hsl" onChange={setColor} value={color}>
         <Label>Hue</Label>
         <Input />

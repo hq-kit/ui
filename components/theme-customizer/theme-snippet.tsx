@@ -9,7 +9,7 @@ import { Dialog } from "@/components/ui/dialog"
 import { useCopyButton } from "@/hooks/use-copy"
 import { copyToClipboard } from "@/lib/modifiers"
 import { generateThemeCode } from "@/lib/themes/generate-theme-code"
-import { CopyButton } from "../mdx/copy"
+import { CopyButton } from "../mdx/copy-button"
 import { Label } from "../ui/field"
 import { Select } from "../ui/select"
 

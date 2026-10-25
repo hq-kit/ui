@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/context-menu"
+    "https://hq-ui.vercel.app/r/context-menu"
   ],
   "files": [
     {

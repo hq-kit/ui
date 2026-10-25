@@ -8,7 +8,7 @@
     "react-stately"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/list-box"
+    "https://hq-ui.vercel.app/r/list-box"
   ],
   "files": [
     {

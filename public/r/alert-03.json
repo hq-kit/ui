@@ -7,12 +7,13 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/alert"
+    "https://hq-ui.vercel.app/r/alert",
+    "https://hq-ui.vercel.app/r/button"
   ],
   "files": [
     {
       "path": "components/samples/statuses/alert/alert-03.tsx",
-      "content": "\"use client\"\n\nimport { IconAlertCircle, IconX } from \"@tabler/icons-react\"\nimport { useState } from \"react\"\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\n\nconst AlertClosableDemo = () => {\n  const [isActive, setIsActive] = useState(true)\n\n  if (!isActive)\n    return (\n      <button onClick={() => setIsActive(true)} type=\"button\">\n        Restore\n      </button>\n    )\n\n  return (\n    <Alert className=\"flex justify-between\">\n      <IconAlertCircle />\n      <div className=\"flex-1 flex-col justify-center gap-1\">\n        <AlertTitle>New message!</AlertTitle>\n        <AlertDescription>12 unread messages. Tap to see.</AlertDescription>\n      </div>\n      <button className=\"cursor-pointer\" onClick={() => setIsActive(false)} type=\"button\">\n        <IconX className=\"size-5\" />\n        <span className=\"sr-only\">Close</span>\n      </button>\n    </Alert>\n  )\n}\n\nexport default AlertClosableDemo\n",
+      "content": "\"use client\"\n\nimport { IconAlertCircle, IconArrowBackUp, IconX } from \"@tabler/icons-react\"\nimport { useState } from \"react\"\nimport { Alert, AlertAction, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\nimport { Button } from \"@/components/ui/button\"\n\nconst AlertClosableDemo = () => {\n  const [isActive, setIsActive] = useState(true)\n\n  if (!isActive)\n    return (\n      <Button onPress={() => setIsActive(true)}>\n        <IconArrowBackUp />\n        Restore\n      </Button>\n    )\n\n  return (\n    <Alert>\n      <IconAlertCircle />\n      <AlertTitle>New message!</AlertTitle>\n      <AlertDescription>12 unread messages. Tap to see.</AlertDescription>\n      <AlertAction>\n        <Button aria-label=\"close\" onPress={() => setIsActive(false)} size={\"icon-xs\"} variant={\"outline\"}>\n          <IconX />\n        </Button>\n      </AlertAction>\n    </Alert>\n  )\n}\n\nexport default AlertClosableDemo\n",
       "type": "registry:component"
     }
   ],

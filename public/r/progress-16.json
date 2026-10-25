@@ -5,8 +5,8 @@
   "title": "progress-16",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/progress"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/progress"
   ],
   "files": [
     {

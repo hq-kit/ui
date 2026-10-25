@@ -5,16 +5,16 @@
   "title": "sheet-sides",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/input",
-    "http://localhost:3000/r/sheet",
-    "http://localhost:3000/r/text-field"
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/input",
+    "https://hq-ui.vercel.app/r/sheet",
+    "https://hq-ui.vercel.app/r/text-field"
   ],
   "files": [
     {
       "path": "components/samples/overlay/sheet/sheet-sides.tsx",
-      "content": "\"use client\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Form, Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\nimport { Sheet } from \"@/components/ui/sheet\"\nimport { TextField } from \"@/components/ui/text-field\"\n\nconst sides = [\"left\", \"right\", \"top\", \"bottom\"]\n\nconst SheetSidesDemo = () => {\n  return (\n    <div className=\"grid grid-cols-2 gap-2\">\n      {sides.map((side) => (\n        <Sheet key={side}>\n          <Button variant=\"outline\">{side}</Button>\n          <Sheet.Content position={side as \"top\" | \"left\" | \"right\" | \"bottom\"}>\n            <Sheet.Header>\n              <Sheet.Title>Edit profile</Sheet.Title>\n              <Sheet.Description>\n                Make changes to your profile here. Click save when you&apos;re done.\n              </Sheet.Description>\n            </Sheet.Header>\n            <Sheet.Body>\n              <Form className=\"grid flex-1 auto-rows-min gap-6\">\n                <TextField defaultValue=\"Pedro Duarte\">\n                  <Label>Name</Label>\n                  <Input />\n                </TextField>\n                <TextField defaultValue=\"@peduarte\">\n                  <Label>Username</Label>\n                  <Input />\n                </TextField>\n              </Form>\n            </Sheet.Body>\n            <Sheet.Footer>\n              <Button type=\"submit\">Save changes</Button>\n              <Sheet.Close>Close</Sheet.Close>\n            </Sheet.Footer>\n          </Sheet.Content>\n        </Sheet>\n      ))}\n    </div>\n  )\n}\n\nexport default SheetSidesDemo\n",
+      "content": "\"use client\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Form, Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\nimport { Sheet } from \"@/components/ui/sheet\"\nimport { TextField } from \"@/components/ui/text-field\"\n\nconst sides = [\"left\", \"right\", \"top\", \"bottom\"]\n\nconst SheetSidesDemo = () => {\n  return (\n    <div className=\"grid grid-cols-2 gap-2\">\n      {sides.map((side) => (\n        <Sheet key={side}>\n          <Button variant=\"outline\">{side}</Button>\n          <Sheet.Content position={side as \"top\" | \"left\" | \"right\" | \"bottom\"}>\n            <Sheet.Header>\n              <Sheet.Title>Edit profile</Sheet.Title>\n              <Sheet.Description>\n                Make changes to your profile here. Click save when you&apos;re done.\n              </Sheet.Description>\n            </Sheet.Header>\n            <Sheet.Body>\n              <Form className=\"grid flex-1 auto-rows-min gap-6\">\n                <TextField defaultValue=\"Pedro Duarte\">\n                  <Label>Name</Label>\n                  <Input />\n                </TextField>\n                <TextField defaultValue=\"@peduarte\">\n                  <Label>Username</Label>\n                  <Input />\n                </TextField>\n              </Form>\n            </Sheet.Body>\n            <Sheet.Footer>\n              <Button type=\"submit\">Save changes</Button>\n              <Button slot=\"close\" variant=\"outline\">\n                Cancel\n              </Button>\n            </Sheet.Footer>\n          </Sheet.Content>\n        </Sheet>\n      ))}\n    </div>\n  )\n}\n\nexport default SheetSidesDemo\n",
       "type": "registry:component"
     }
   ],

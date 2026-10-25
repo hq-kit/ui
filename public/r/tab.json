@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tab",
   "title": "tab",
-  "dependencies": [
-    "cn",
-    "react-aria-components"
-  ],
+  "dependencies": ["cn", "react-aria-components"],
   "registryDependencies": [],
   "files": [
     {

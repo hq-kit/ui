@@ -3,12 +3,8 @@
   "extends": "none",
   "name": "toggle-outline",
   "title": "toggle-outline",
-  "dependencies": [
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/toggle"
-  ],
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["http://localhost:3000/r/toggle"],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-outline.tsx",

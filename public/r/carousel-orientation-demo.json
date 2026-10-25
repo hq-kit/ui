@@ -5,7 +5,7 @@
   "title": "carousel-orientation-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/carousel"
+    "https://hq-ui.vercel.app/r/carousel"
   ],
   "files": [
     {

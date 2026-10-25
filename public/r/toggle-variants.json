@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "toggle-variants",
+  "title": "toggle-variants",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://hq-ui.vercel.app/r/toggle"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/toggle/toggle-variants.tsx",
+      "content": "import { Toggle } from \"@/components/ui/toggle\"\n\nexport default () => {\n  return (\n    <div className=\"flex gap-2\">\n      <Toggle variant=\"outline\">Outline</Toggle>\n      <Toggle variant=\"ghost\">Ghost</Toggle>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

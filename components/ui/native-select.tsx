@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react"
+import { IconSelector } from "@tabler/icons-react"
 import { cn } from "cn"
-import { IconPlaceholder } from "@/components/icon-placeholder"
 
 type SelectProps = Omit<ComponentProps<"select">, "size"> & {
   size?: "sm" | "default"
@@ -22,15 +22,10 @@ const Select = ({ className, size = "default", ...props }: SelectProps) => (
       slot="control"
       {...props}
     />
-    <IconPlaceholder
+    <IconSelector
       aria-hidden="true"
       className="cn-native-select-icon pointer-events-none absolute select-none"
       data-slot="native-select-icon"
-      hugeicons="UnfoldMoreIcon"
-      lucide="ChevronsUpDownIcon"
-      phosphor="CaretUpDownIcon"
-      remixicon="RiExpandUpDownLine"
-      tabler="IconSelector"
     />
   </div>
 )

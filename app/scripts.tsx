@@ -1,4 +1,4 @@
-import { FONT_STORAGE_KEY, STYLE_STORAGE_KEY, THEME_STORAGE_KEY } from "@/stores/keys"
+import { FONT_STORAGE_KEY, THEME_STORAGE_KEY } from "@/stores/keys"
 
 export function Scripts() {
   const code = `
@@ -8,11 +8,9 @@ export function Scripts() {
       const fonts = localStorage.getItem('${FONT_STORAGE_KEY}')
       const fontSans = JSON.parse(fonts)?.state?.fontSans || 'Geist'
       const fontMono = JSON.parse(fonts)?.state?.fontMono || 'Geist Mono'
-      const style = JSON.parse(localStorage.getItem('${STYLE_STORAGE_KEY}'))?.state?.style || 'nova'
 
       root.style.setProperty('--font-sans', fontSans)
       root.style.setProperty('--font-mono', fontMono)
-      root.setAttribute('data-style', style)
 
       const themes = localStorage.getItem('${THEME_STORAGE_KEY}');
       

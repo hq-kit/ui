@@ -5,8 +5,8 @@
   "title": "slider-step-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/slider"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/slider"
   ],
   "files": [
     {

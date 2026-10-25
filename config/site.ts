@@ -8,10 +8,10 @@ export const siteConfig = {
     url: "https://x.com/dqalhq"
   },
   links: {
-    github: "https://github.com/dq-alhq/hq-ui"
+    github: "https://github.com/hq-kit/-ui"
   },
   repo: {
-    url: "https://github.com/dq-alhq/hq-ui"
+    url: "https://github.com/hq-kit/-ui"
   },
   cli: {
     version: "latest",

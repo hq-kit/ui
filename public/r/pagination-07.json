@@ -4,9 +4,7 @@
   "name": "pagination-07",
   "title": "pagination-07",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/pagination"
-  ],
+  "registryDependencies": ["https://hq-ui.vercel.app/r/pagination"],
   "files": [
     {
       "path": "components/samples/navigation/pagination/pagination-07.tsx",

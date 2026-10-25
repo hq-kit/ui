@@ -7,7 +7,7 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/select"
+    "https://hq-ui.vercel.app/r/select"
   ],
   "files": [
     {

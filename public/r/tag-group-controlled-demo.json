@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/tag"
+    "https://hq-ui.vercel.app/r/tag"
   ],
   "files": [
     {

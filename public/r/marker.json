@@ -6,7 +6,7 @@
     "cn"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/link"
+    "https://hq-ui.vercel.app/r/link"
   ],
   "files": [
     {

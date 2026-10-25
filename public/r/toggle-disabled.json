@@ -5,12 +5,12 @@
   "title": "toggle-disabled",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle"
+    "https://hq-ui.vercel.app/r/toggle"
   ],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-disabled.tsx",
-      "content": "import { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleDisabled() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Toggle aria-label=\"Toggle disabled\" isDisabled>\n        Disabled\n      </Toggle>\n      <Toggle aria-label=\"Toggle disabled outline\" isDisabled variant=\"outline\">\n        Disabled\n      </Toggle>\n    </div>\n  )\n}\n",
+      "content": "import { Toggle } from \"@/components/ui/toggle\"\n\nexport default () => {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Toggle aria-label=\"Toggle disabled\" isDisabled>\n        Disabled\n      </Toggle>\n      <Toggle aria-label=\"Toggle disabled outline\" isDisabled variant=\"ghost\">\n        Disabled\n      </Toggle>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

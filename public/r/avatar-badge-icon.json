@@ -7,7 +7,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/avatar"
+    "https://hq-ui.vercel.app/r/avatar"
   ],
   "files": [
     {

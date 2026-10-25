@@ -1,5 +1,5 @@
 "use client"
-import { IconPlaceholder } from "@/components/icon-placeholder"
+import { IconLayoutSidebar } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/field"
 import { Popover } from "@/components/ui/popover"
@@ -22,13 +22,7 @@ export const SidebarControl = ({ value, onChange }: Props) => {
     <Popover>
       <Tooltip>
         <Button className="fixed top-28 right-0 z-50 rounded-r-none" size="icon" variant="destructive">
-          <IconPlaceholder
-            hugeicons="SidebarLeftIcon"
-            lucide="PanelLeftIcon"
-            phosphor="SidebarIcon"
-            remixicon="RiSideBarLine"
-            tabler="IconLayoutSidebar"
-          />
+          <IconLayoutSidebar />
         </Button>
         <Tooltip.Content placement="left top">For Development only, Remove this on Production</Tooltip.Content>
       </Tooltip>

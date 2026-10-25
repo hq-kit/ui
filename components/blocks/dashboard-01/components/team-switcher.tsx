@@ -1,8 +1,8 @@
 "use client"
 
 import type { Team } from "./data"
+import { IconCircle, IconPlus, IconSelector } from "@tabler/icons-react"
 import { useState } from "react"
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import { DropdownMenu } from "@/components/ui/dropdown-menu"
 import { Sidebar, useSidebar } from "@/components/ui/sidebar"
 
@@ -22,32 +22,14 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
             className="data-expanded:bg-sidebar-accent data-expanded:text-sidebar-accent-foreground"
             size="lg"
           >
-            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-              {activeTeam.logo ? (
-                <activeTeam.logo className="size-4" />
-              ) : (
-                <IconPlaceholder
-                  className="size-4"
-                  hugeicons="CircleIcon"
-                  lucide="CircleIcon"
-                  phosphor="CircleIcon"
-                  remixicon="RiCircleLine"
-                  tabler="IconCircle"
-                />
-              )}
+            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+              {activeTeam.logo ? <activeTeam.logo className="size-4" /> : <IconCircle className="size-4" />}
             </div>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{activeTeam.name}</span>
               <span className="truncate text-xs">{activeTeam.plan}</span>
             </div>
-            <IconPlaceholder
-              className="ml-auto"
-              hugeicons="UnfoldMoreIcon"
-              lucide="ChevronsUpDownIcon"
-              phosphor="CaretUpDownIcon"
-              remixicon="RiExpandUpDownLine"
-              tabler="IconSelector"
-            />
+            <IconSelector className="ml-auto" />
           </Sidebar.MenuButton>
           <DropdownMenu.Content className="min-w-56" offset={4} placement={isMobile ? "bottom start" : "right top"}>
             <DropdownMenu.Label className="text-muted-foreground text-xs">Teams</DropdownMenu.Label>
@@ -57,14 +39,7 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
                   {team.logo ? (
                     <team.logo className="size-3.5 shrink-0" />
                   ) : (
-                    <IconPlaceholder
-                      className="size-3.5 shrink-0"
-                      hugeicons="CircleIcon"
-                      lucide="CircleIcon"
-                      phosphor="CircleIcon"
-                      remixicon="RiCircleLine"
-                      tabler="IconCircle"
-                    />
+                    <IconCircle className="size-3.5 shrink-0" />
                   )}
                 </div>
                 {team.name}
@@ -74,16 +49,9 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
             <DropdownMenu.Separator />
             <DropdownMenu.Item className="gap-2 p-2">
               <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                <IconPlaceholder
-                  className="size-4"
-                  hugeicons="PlusSignIcon"
-                  lucide="PlusIcon"
-                  phosphor="PlusIcon"
-                  remixicon="RiAddLine"
-                  tabler="IconPlus"
-                />
+                <IconPlus className="size-4" />
               </div>
-              <div className="font-medium text-muted-foreground">Add team</div>
+              <div className="text-muted-foreground font-medium">Add team</div>
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu>

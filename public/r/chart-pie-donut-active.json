@@ -8,8 +8,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/card",
-    "http://localhost:3000/r/chart"
+    "https://hq-ui.vercel.app/r/card",
+    "https://hq-ui.vercel.app/r/chart"
   ],
   "files": [
     {

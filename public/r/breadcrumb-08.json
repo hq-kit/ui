@@ -5,7 +5,7 @@
   "title": "breadcrumb-08",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/breadcrumb"
+    "https://hq-ui.vercel.app/r/breadcrumb"
   ],
   "files": [
     {

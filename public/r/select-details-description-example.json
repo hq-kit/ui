@@ -5,9 +5,9 @@
   "title": "select-details-description-example",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/item",
-    "http://localhost:3000/r/select"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/item",
+    "https://hq-ui.vercel.app/r/select"
   ],
   "files": [
     {

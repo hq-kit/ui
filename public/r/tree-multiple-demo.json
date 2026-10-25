@@ -5,7 +5,7 @@
   "title": "tree-multiple-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/tree"
+    "https://hq-ui.vercel.app/r/tree"
   ],
   "files": [
     {

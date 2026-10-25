@@ -5,7 +5,7 @@
   "title": "input-otp-separator",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/input-otp"
+    "https://hq-ui.vercel.app/r/input-otp"
   ],
   "files": [
     {

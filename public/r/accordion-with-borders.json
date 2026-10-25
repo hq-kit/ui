@@ -5,7 +5,7 @@
   "title": "accordion-with-borders",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/accordion"
+    "https://hq-ui.vercel.app/r/accordion"
   ],
   "files": [
     {

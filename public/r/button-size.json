@@ -3,12 +3,8 @@
   "extends": "none",
   "name": "button-size",
   "title": "button-size",
-  "dependencies": [
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/button"
-  ],
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["http://localhost:3000/r/button"],
   "files": [
     {
       "path": "components/samples/buttons/button/button-size.tsx",

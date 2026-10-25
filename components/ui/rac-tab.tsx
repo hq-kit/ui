@@ -1,5 +1,6 @@
 "use client"
 import { cva } from "class-variance-authority"
+import { cn } from "cn"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   Tab as RACTab,
@@ -14,9 +15,8 @@ import {
   type TabProps,
   type TabsProps
 } from "react-aria-components/Tabs"
-import { twMerge } from "tailwind-merge"
 
-const tabsStyles = cva("flex gap-2 font-sans max-w-full", {
+const tabsStyles = cva("flex max-w-full gap-2 font-sans", {
   variants: {
     orientation: {
       horizontal: "flex-col",
@@ -36,7 +36,7 @@ export function Tabs(props: TabsProps) {
   )
 }
 
-const tabListStyles = cva("flex max-w-full p-1 -m-1 overflow-x-auto overflow-y-clip [scrollbar-width:none]", {
+const tabListStyles = cva("-m-1 flex max-w-full [scrollbar-width:none] overflow-x-auto overflow-y-clip p-1", {
   variants: {
     orientation: {
       horizontal: "flex-row",
@@ -57,11 +57,11 @@ export function TabList<T>(props: TabListProps<T>) {
 }
 
 const tabProps = cva(
-  "group relative flex items-center cursor-default rounded-full px-3 py-1.5 text-sm font-medium transition forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
+  "group relative flex cursor-default items-center rounded-full px-3 py-1.5 text-sm font-medium transition forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
   {
     variants: {
       isDisabled: {
-        true: "text-neutral-200 dark:text-neutral-600 forced-colors:text-[GrayText] selected:text-white dark:selected:text-neutral-500 forced-colors:selected:text-[HighlightText] selected:bg-neutral-200 dark:selected:bg-neutral-600 forced-colors:selected:bg-[GrayText]"
+        true: "selected:text-white dark:selected:text-neutral-500 forced-colors:selected:text-[HighlightText] selected:bg-neutral-200 dark:selected:bg-neutral-600 forced-colors:selected:bg-[GrayText] text-neutral-200 dark:text-neutral-600 forced-colors:text-[GrayText]"
       }
     }
   }
@@ -89,16 +89,13 @@ export function TabPanels<T>(props: TabPanelsProps<T>) {
   return (
     <RACTabPanels
       {...props}
-      className={twMerge(
-        "relative h-(--tab-panel-height) overflow-clip motion-safe:transition-[height]",
-        props.className
-      )}
+      className={cn("relative h-(--tab-panel-height) overflow-clip motion-safe:transition-[height]", props.className)}
     />
   )
 }
 
 const tabPanelStyles = cva(
-  "flex-1 box-border p-4 text-sm text-neutral-900 dark:text-neutral-100 transition entering:opacity-0 exiting:opacity-0 exiting:absolute exiting:top-0 exiting:left-0 exiting:w-full"
+  "entering:opacity-0 exiting:opacity-0 exiting:absolute exiting:top-0 exiting:left-0 exiting:w-full box-border flex-1 p-4 text-sm text-neutral-900 transition dark:text-neutral-100"
 )
 
 export function TabPanel(props: TabPanelProps) {

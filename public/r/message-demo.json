@@ -5,10 +5,10 @@
   "title": "message-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/avatar",
-    "http://localhost:3000/r/bubble",
-    "http://localhost:3000/r/marker",
-    "http://localhost:3000/r/message"
+    "https://hq-ui.vercel.app/r/avatar",
+    "https://hq-ui.vercel.app/r/bubble",
+    "https://hq-ui.vercel.app/r/marker",
+    "https://hq-ui.vercel.app/r/message"
   ],
   "files": [
     {

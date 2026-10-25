@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react"
+import type { ComponentProps, CSSProperties, ReactNode } from "react"
 import {
   IconChevronLeft,
   IconChevronLeftPipe,
@@ -6,105 +6,124 @@ import {
   IconChevronRightPipe,
   IconDots
 } from "@tabler/icons-react"
+import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
-import { Button, buttonVariants } from "./button"
-import { Link, type LinkProps } from "./link"
+import { Button } from "react-aria-components"
+import { Link } from "./link"
 
-const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
-  <nav
-    aria-label="pagination"
-    className={cn("mx-auto flex w-full justify-center", className)}
-    data-slot="pagination"
-    {...props}
-  />
+const paginationVariants = cva(
+  "group/pagination **:data-[slot=link]:data-active:bg-accent **:data-[slot=link]:data-active:border-ring **:data-[slot=link]:data-active:text-accent-foreground **:data-[slot=link]:hover:bg-muted mx-auto flex inline-flex w-full items-center justify-center gap-[--spacing(var(--gap))] **:data-[slot=link]:inline-flex **:data-[slot=link]:items-center **:data-[slot=link]:justify-center **:data-[slot=link]:border **:data-[slot=link]:bg-transparent **:data-[slot=link]:active:translate-y-px [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:self-center",
+  {
+    variants: {
+      variant: {
+        outline: "**:data-[slot=link]:border-input",
+        ghost: "**:data-[slot=link]:border-transparent"
+      },
+      size: {
+        md: "**:data-[slot=link]:h-8 **:data-[slot=link]:min-w-8 **:data-[slot=link]:gap-1.5 [&_svg:not([class*='size-'])]:size-4",
+        xs: "**:text-xs **:data-[slot=link]:h-6 **:data-[slot=link]:min-w-6 **:data-[slot=link]:gap-1 [&_svg:not([class*='size-'])]:size-3",
+        sm: "**:text-[0.8rem] **:data-[slot=link]:h-7 **:data-[slot=link]:min-w-7 **:data-[slot=link]:gap-1 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "**:data-[slot=link]:h-9 **:data-[slot=link]:min-w-9 **:data-[slot=link]:gap-1.5 [&_svg:not([class*='size-'])]:size-4.5"
+      }
+    },
+    defaultVariants: {
+      variant: "outline",
+      size: "md"
+    }
+  }
 )
 
-const PaginationContent = ({ className, ...props }: ComponentProps<"ul">) => (
-  <ul className={cn("flex items-center gap-0.5", className)} data-slot="pagination-content" {...props} />
-)
-
-const PaginationItem = ({ ...props }: ComponentProps<"li">) => <li data-slot="pagination-item" {...props} />
-
-const PaginationLink = ({
+const Pagination = ({
   className,
+  spacing = 0,
+  variant = "outline",
+  size = "md",
+  ...props
+}: ComponentProps<"ul"> & VariantProps<typeof paginationVariants> & { spacing?: number }) => (
+  <nav aria-label="pagination" data-slot="pagination">
+    <ul
+      className={cn(paginationVariants({ variant, size }), className)}
+      data-size={size}
+      data-slot="pagination-content"
+      data-spacing={spacing}
+      data-variant={variant}
+      style={{ "--gap": spacing } as CSSProperties}
+      {...props}
+    />
+  </nav>
+)
+
+const PaginationItem = ({
   isActive,
-  size = "icon",
   ...props
-}: ComponentProps<typeof Button> & {
+}: Omit<ComponentProps<typeof Button>, "variant" | "size"> & {
   isActive?: boolean
-} & Omit<LinkProps, "size">) => {
-  return "href" in props ? (
-    <Link
-      aria-current={isActive ? "page" : undefined}
-      className={buttonVariants({
-        size,
-        variant: isActive ? "outline" : "ghost",
-        className: props.isDisabled ? "disabled" : ""
-      })}
-      data-active={isActive}
-      data-slot="pagination-link"
-      {...props}
-    />
-  ) : (
-    <Button
-      aria-current={isActive ? "page" : undefined}
-      data-active={isActive}
-      data-slot="pagination-link"
-      size={size}
-      variant={isActive ? "outline" : "ghost"}
-      {...props}
-    />
+} & Omit<ComponentProps<typeof Link>, "variant" | "size">) => {
+  return (
+    <li
+      className="group/pagination-item *:rounded-lg *:px-2 group-data-[spacing=0]/pagination:*:rounded-none group-data-[spacing=0]/pagination:first:*:rounded-s-lg group-data-[spacing=0]/pagination:last:*:rounded-e-lg"
+      data-slot="pagination-item"
+    >
+      {"href" in props ? (
+        <Link
+          aria-current={isActive ? "page" : undefined}
+          className={cn(props.isDisabled ? "disabled" : "", props.className)}
+          data-active={isActive}
+          data-slot="link"
+          {...props}
+        />
+      ) : (
+        <Button
+          aria-current={isActive ? "page" : undefined}
+          className={cn(props.className)}
+          data-active={isActive}
+          data-slot="link"
+          isDisabled={props.isDisabled}
+          {...props}
+        />
+      )}
+    </li>
   )
 }
 
-const PaginationFirst = ({ text = "First", ...props }: ComponentProps<typeof PaginationLink> & { text?: string }) => {
+const PaginationFirst = ({ children, ...props }: ComponentProps<typeof PaginationItem>) => {
   return (
-    <PaginationLink aria-label="Go to previous page" size="md" {...props}>
+    <PaginationItem aria-label="Go to previous page" {...props}>
       <IconChevronLeftPipe />
-      <span className="sr-only">{text}</span>
-    </PaginationLink>
+      {children as ReactNode}
+    </PaginationItem>
   )
 }
-const PaginationPrevious = ({
-  text = "Previous",
-  ...props
-}: ComponentProps<typeof PaginationLink> & { text?: string }) => {
+const PaginationPrevious = ({ children, ...props }: ComponentProps<typeof PaginationItem>) => {
   return (
-    <PaginationLink aria-label="Go to previous page" size="md" {...props}>
+    <PaginationItem aria-label="Go to previous page" {...props}>
       <IconChevronLeft />
-      <span className="sr-only">{text}</span>
-    </PaginationLink>
+      {children as ReactNode}
+    </PaginationItem>
   )
 }
 
-const PaginationNext = ({ text = "Next", ...props }: ComponentProps<typeof PaginationLink> & { text?: string }) => (
-  <PaginationLink aria-label="Go to next page" size="md" {...props}>
-    <span className="sr-only">{text}</span>
+const PaginationNext = ({ children, ...props }: ComponentProps<typeof PaginationItem>) => (
+  <PaginationItem aria-label="Go to next page" {...props}>
+    {children as ReactNode}
     <IconChevronRight />
-  </PaginationLink>
+  </PaginationItem>
 )
 
-const PaginationLast = ({ text = "Last", ...props }: ComponentProps<typeof PaginationLink> & { text?: string }) => (
-  <PaginationLink aria-label="Go to last page" size="md" {...props}>
-    <span className="sr-only">{text}</span>
+const PaginationLast = ({ children, ...props }: ComponentProps<typeof PaginationItem>) => (
+  <PaginationItem aria-label="Go to last page" {...props}>
+    {children as ReactNode}
     <IconChevronRightPipe />
-  </PaginationLink>
+  </PaginationItem>
 )
 
-const PaginationEllipsis = ({ className, ...props }: ComponentProps<"span">) => (
-  <span
-    aria-hidden
-    className={cn("flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4", className)}
-    data-slot="pagination-ellipsis"
-    {...props}
-  >
+const PaginationEllipsis = (props: Omit<ComponentProps<typeof PaginationItem>, "href" | "isActive">) => (
+  <PaginationItem aria-hidden data-slot="link" {...props}>
     <IconDots />
     <span className="sr-only">More pages</span>
-  </span>
+  </PaginationItem>
 )
 
-Pagination.Content = PaginationContent
-Pagination.Link = PaginationLink
 Pagination.Item = PaginationItem
 Pagination.First = PaginationFirst
 Pagination.Previous = PaginationPrevious
@@ -114,12 +133,10 @@ Pagination.Ellipsis = PaginationEllipsis
 
 export {
   Pagination,
-  PaginationContent,
   PaginationEllipsis,
   PaginationFirst,
   PaginationItem,
   PaginationLast,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious
 }

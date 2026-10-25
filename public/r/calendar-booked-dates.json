@@ -5,8 +5,8 @@
   "title": "calendar-booked-dates",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/calendar",
-    "http://localhost:3000/r/card"
+    "https://hq-ui.vercel.app/r/calendar",
+    "https://hq-ui.vercel.app/r/card"
   ],
   "files": [
     {

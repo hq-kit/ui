@@ -1,11 +1,11 @@
 "use client"
 
 import type { VariantProps } from "class-variance-authority"
+import { IconEye, IconEyeClosed } from "@tabler/icons-react"
 import { cn } from "cn"
 import { useState } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import { type InputProps, TextField as RACTextField, type TextFieldProps } from "react-aria-components/TextField"
-import { IconPlaceholder } from "@/components/icon-placeholder"
 import { fieldVariants } from "./field"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "./input"
 
@@ -29,21 +29,9 @@ const PasswordInput = ({ className, ...props }: Omit<InputProps, "type">) => {
       <InputGroupInput type={isVisible ? "text" : "password"} {...props} />
       <InputGroupAddon align="inline-end">
         <InputGroupButton excludeFromTabOrder onPress={() => setIsVisible(!isVisible)}>
-          <IconPlaceholder
-            className={cn("size-5 transition-transform sm:size-4", isVisible ? "scale-0" : "scale-100")}
-            hugeicons="EyeIcon"
-            lucide="EyeIcon"
-            phosphor="EyeIcon"
-            remixicon="RiEyeLine"
-            tabler="IconEye"
-          />
-          <IconPlaceholder
+          <IconEye className={cn("size-5 transition-transform sm:size-4", isVisible ? "scale-0" : "scale-100")} />
+          <IconEyeClosed
             className={cn("absolute size-5 transition-transform sm:size-4", isVisible ? "scale-100" : "scale-0")}
-            hugeicons="EyeClosedIcon"
-            lucide="EyeClosedIcon"
-            phosphor="EyeClosedIcon"
-            remixicon="RiEyeCloseLine"
-            tabler="IconEyeClosed"
           />
         </InputGroupButton>
       </InputGroupAddon>

@@ -4,10 +4,7 @@
   "name": "button-aschild",
   "title": "button-aschild",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/link"
-  ],
+  "registryDependencies": ["http://localhost:3000/r/button", "http://localhost:3000/r/link"],
   "files": [
     {
       "path": "components/samples/buttons/button/button-aschild.tsx",

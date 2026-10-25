@@ -4,9 +4,7 @@
   "name": "grid-list-multiple-demo",
   "title": "grid-list-multiple-demo",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/grid-list"
-  ],
+  "registryDependencies": ["http://localhost:3000/r/grid-list"],
   "files": [
     {
       "path": "components/samples/collections/grid-list/grid-list-multiple-demo.tsx",

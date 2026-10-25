@@ -7,12 +7,12 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/alert"
+    "https://hq-ui.vercel.app/r/alert"
   ],
   "files": [
     {
       "path": "components/samples/statuses/alert/alert-19.tsx",
-      "content": "import { IconChecks } from \"@tabler/icons-react\"\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\n\nconst AlertOutlineSuccessDemo = () => {\n  return (\n    <Alert className=\"border-green-600 text-green-600 dark:border-green-400 dark:text-green-400\">\n      <IconChecks />\n      <AlertTitle>Account created successfully</AlertTitle>\n      <AlertDescription className=\"text-green-600/80 dark:text-green-400/80\">\n        You are all set! You can now log in and start exploring your dashboard.\n      </AlertDescription>\n    </Alert>\n  )\n}\n\nexport default AlertOutlineSuccessDemo\n",
+      "content": "import { IconChecks } from \"@tabler/icons-react\"\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\n\nconst AlertOutlineSuccessDemo = () => {\n  return (\n    <Alert variant={\"success\"}>\n      <IconChecks />\n      <AlertTitle>Account created successfully</AlertTitle>\n      <AlertDescription>You are all set! You can now log in and start exploring your dashboard.</AlertDescription>\n    </Alert>\n  )\n}\n\nexport default AlertOutlineSuccessDemo\n",
       "type": "registry:component"
     }
   ],

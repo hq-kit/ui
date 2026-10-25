@@ -7,7 +7,7 @@
     "sonner"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/bubble"
+    "https://hq-ui.vercel.app/r/bubble"
   ],
   "files": [
     {

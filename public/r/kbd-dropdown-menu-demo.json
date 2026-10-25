@@ -5,9 +5,9 @@
   "title": "kbd-dropdown-menu-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/dropdown-menu",
-    "http://localhost:3000/r/kbd"
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/dropdown-menu",
+    "https://hq-ui.vercel.app/r/kbd"
   ],
   "files": [
     {

@@ -1,5 +1,5 @@
 "use client"
-import { IconPlaceholder } from "@/components/icon-placeholder"
+import { IconX } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Description, Field, FieldGroup, Label } from "@/components/ui/field"
@@ -23,13 +23,7 @@ export function PayoutThreshold() {
         <Card.Description>Set the minimum balance required before a payout is triggered.</Card.Description>
         <Card.Action>
           <Button aria-label="Dismiss payout threshold" className="bg-muted" size="icon-sm" variant="ghost">
-            <IconPlaceholder
-              hugeicons="Cancel01Icon"
-              lucide="XIcon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-              tabler="IconX"
-            />
+            <IconX />
           </Button>
         </Card.Action>
       </Card.Header>
@@ -47,7 +41,7 @@ export function PayoutThreshold() {
           <Field>
             <div className="flex items-baseline justify-between">
               <Label elementType="span">Minimum Payout Amount</Label>
-              <span className="font-semibold text-2xl tabular-nums">$2500.00</span>
+              <span className="text-2xl font-semibold tabular-nums">$2500.00</span>
             </div>
             <Progress aria-labelledby="min-payout-label" aria-valuetext="$2,500 of $10,000" value={25} />
             <div className="flex items-center justify-between">

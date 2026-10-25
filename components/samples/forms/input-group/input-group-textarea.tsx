@@ -14,12 +14,12 @@ export default function InputGroupTextareaExample() {
         <InputGroupTextarea className="min-h-50" id="textarea-code-32" placeholder="console.log('Hello, world!');" />
         <InputGroupAddon align="block-end" className="border-t">
           <InputGroupText>Line 1, Column 1</InputGroupText>
-          <InputGroupButton className="ml-auto" size="sm" variant="default">
+          <InputGroupButton className="ml-auto" size="sm">
             Run <IconCornerDownLeft />
           </InputGroupButton>
         </InputGroupAddon>
         <InputGroupAddon align="block-start" className="border-b">
-          <InputGroupText className="font-medium font-mono">
+          <InputGroupText className="font-mono font-medium">
             <IconBrandJavascript />
             script.js
           </InputGroupText>

@@ -5,12 +5,16 @@
   "title": "grid-list-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/grid-list"
+    "https://hq-ui.vercel.app/r/card",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/grid-list",
+    "https://hq-ui.vercel.app/r/radio",
+    "https://hq-ui.vercel.app/r/toolbar"
   ],
   "files": [
     {
       "path": "components/samples/collections/grid-list/grid-list-demo.tsx",
-      "content": "\"use client\"\n\nimport { GridList, GridListItem } from \"@/components/ui/grid-list\"\n\nexport default function GridListDemo() {\n  return (\n    <GridList aria-label=\"Select your favorite bands\" items={items} selectionMode=\"single\">\n      {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}\n    </GridList>\n  )\n}\n\nconst items = [\n  { id: \"1\", name: \"The Beatles\" },\n  { id: \"2\", name: \"Led Zeppelin\" },\n  { id: \"3\", name: \"Pink Floyd\" },\n  { id: \"4\", name: \"Queen\" },\n  { id: \"5\", name: \"The Rolling Stones\" },\n  { id: \"6\", name: \"The Who\" }\n]\n",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { Card } from \"@/components/ui/card\"\nimport { Label } from \"@/components/ui/field\"\nimport { GridList, GridListItem } from \"@/components/ui/grid-list\"\nimport { Radio, RadioGroup } from \"@/components/ui/radio\"\nimport { Toolbar } from \"@/components/ui/toolbar\"\n\nexport default () => {\n  const [selectionMode, setSelectionMode] = useState<\"none\" | \"single\" | \"multiple\">(\"none\")\n  const [layout, setLayout] = useState<\"grid\" | \"stack\">(\"stack\")\n  return (\n    <>\n      <Toolbar className=\"absolute top-0 left-0 w-full flex-wrap border-b px-4 py-2 sm:flex-nowrap\">\n        <RadioGroup\n          onChange={(v) => setSelectionMode(v as \"none\" | \"single\" | \"multiple\")}\n          orientation=\"horizontal\"\n          value={selectionMode}\n        >\n          <Label>Selection Mode</Label>\n          <Radio value=\"none\">None</Radio>\n          <Radio value=\"multiple\">Multiple</Radio>\n          <Radio value=\"single\">Single</Radio>\n        </RadioGroup>\n        <RadioGroup onChange={(v) => setLayout(v as \"grid\" | \"stack\")} orientation=\"horizontal\" value={layout}>\n          <Label>Layout</Label>\n          <Radio value=\"stack\">Stack</Radio>\n          <Radio value=\"grid\">Grid</Radio>\n        </RadioGroup>\n      </Toolbar>\n      <Card className=\"mt-20 w-full p-0 sm:mt-10\">\n        <GridList\n          aria-label=\"Select your favorite linux distro\"\n          items={linuxDistros}\n          layout={layout}\n          selectionMode={selectionMode}\n        >\n          {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}\n        </GridList>\n      </Card>\n    </>\n  )\n}\n\nconst linuxDistros = [\n  {\n    id: 1,\n    name: \"Ubuntu\"\n  },\n  {\n    id: 2,\n    name: \"Debian\"\n  },\n  {\n    id: 3,\n    name: \"Linux Mint\"\n  },\n  {\n    id: 4,\n    name: \"Fedora\"\n  },\n  {\n    id: 5,\n    name: \"Arch Linux\"\n  },\n  {\n    id: 6,\n    name: \"Manjaro\"\n  },\n  {\n    id: 7,\n    name: \"openSUSE\"\n  },\n  {\n    id: 8,\n    name: \"Kali Linux\"\n  },\n  {\n    id: 9,\n    name: \"Pop!_OS\"\n  },\n  {\n    id: 10,\n    name: \"Rocky Linux\"\n  }\n]\n",
       "type": "registry:component"
     }
   ],

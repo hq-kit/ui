@@ -3,12 +3,8 @@
   "extends": "none",
   "name": "button-with-icon-data",
   "title": "button-with-icon-data",
-  "dependencies": [
-    "@tabler/icons-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/button"
-  ],
+  "dependencies": ["@tabler/icons-react"],
+  "registryDependencies": ["http://localhost:3000/r/button"],
   "files": [
     {
       "path": "components/samples/buttons/button/button-with-icon-data.tsx",

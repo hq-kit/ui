@@ -3,14 +3,12 @@
   "extends": "none",
   "name": "pagination-15",
   "title": "pagination-15",
-  "dependencies": [
-    "@tabler/icons-react"
-  ],
+  "dependencies": ["@tabler/icons-react"],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/pagination",
-    "http://localhost:3000/r/select",
-    "http://localhost:3000/r/tooltip"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/pagination",
+    "https://hq-ui.vercel.app/r/select",
+    "https://hq-ui.vercel.app/r/tooltip"
   ],
   "files": [
     {

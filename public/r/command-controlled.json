@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/command"
+    "https://hq-ui.vercel.app/r/command"
   ],
   "files": [
     {

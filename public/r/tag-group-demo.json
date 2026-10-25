@@ -5,8 +5,8 @@
   "title": "tag-group-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/tag"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/tag"
   ],
   "files": [
     {

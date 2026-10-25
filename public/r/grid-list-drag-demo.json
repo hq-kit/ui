@@ -8,7 +8,7 @@
     "react-stately"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/grid-list"
+    "https://hq-ui.vercel.app/r/grid-list"
   ],
   "files": [
     {

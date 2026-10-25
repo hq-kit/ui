@@ -5,8 +5,8 @@
   "title": "card-02",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/avatar",
-    "http://localhost:3000/r/card"
+    "https://hq-ui.vercel.app/r/avatar",
+    "https://hq-ui.vercel.app/r/card"
   ],
   "files": [
     {

@@ -5,8 +5,8 @@
   "title": "date-field-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/date-field",
-    "http://localhost:3000/r/field"
+    "https://hq-ui.vercel.app/r/date-field",
+    "https://hq-ui.vercel.app/r/field"
   ],
   "files": [
     {

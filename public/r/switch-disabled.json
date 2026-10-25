@@ -5,7 +5,7 @@
   "title": "switch-disabled",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/switch"
+    "https://hq-ui.vercel.app/r/switch"
   ],
   "files": [
     {

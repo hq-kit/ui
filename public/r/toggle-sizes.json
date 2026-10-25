@@ -3,14 +3,16 @@
   "extends": "none",
   "name": "toggle-sizes",
   "title": "toggle-sizes",
-  "dependencies": [],
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle"
+    "https://hq-ui.vercel.app/r/toggle"
   ],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-sizes.tsx",
-      "content": "import { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleSizes() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Toggle aria-label=\"Toggle small\" size=\"sm\" variant=\"outline\">\n        Small\n      </Toggle>\n      <Toggle aria-label=\"Toggle default\" size=\"default\" variant=\"outline\">\n        Default\n      </Toggle>\n      <Toggle aria-label=\"Toggle large\" size=\"lg\" variant=\"outline\">\n        Large\n      </Toggle>\n    </div>\n  )\n}\n",
+      "content": "import { IconBell, IconBellOff } from \"@tabler/icons-react\"\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default () => {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-2\">\n      <div className=\"flex items-start gap-2\">\n        <Toggle size=\"xs\">Extra Small</Toggle>\n        <Toggle size=\"icon-xs\">{({ isSelected }) => (isSelected ? <IconBell /> : <IconBellOff />)}</Toggle>\n      </div>\n      <div className=\"flex items-start gap-2\">\n        <Toggle size=\"sm\">Small</Toggle>\n        <Toggle size=\"icon-sm\">{({ isSelected }) => (isSelected ? <IconBell /> : <IconBellOff />)}</Toggle>\n      </div>\n      <div className=\"flex items-start gap-2\">\n        <Toggle>Medium</Toggle>\n        <Toggle size=\"icon\">{({ isSelected }) => (isSelected ? <IconBell /> : <IconBellOff />)}</Toggle>\n      </div>\n      <div className=\"flex items-start gap-2\">\n        <Toggle size=\"lg\">Large</Toggle>\n        <Toggle size=\"icon-lg\">{({ isSelected }) => (isSelected ? <IconBell /> : <IconBellOff />)}</Toggle>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

@@ -5,8 +5,8 @@
   "title": "search-field-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/search-field"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/search-field"
   ],
   "files": [
     {

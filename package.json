@@ -10,13 +10,11 @@
     "format": "biome format --write",
     "content": "velite --clean",
     "build:registry": "bun scripts/build-registry.ts",
-    "build:icons": "bun scripts/build-icons.ts",
-    "build:styles": "bun scripts/build-styles.ts",
     "gen:menu": "bun scripts/generate-menu.ts",
     "gen:preview": "bun scripts/generate-preview.ts",
     "gen:llms": "bun scripts/generate-llms.ts",
     "gen:presets": "bun scripts/generate-theme-presets.ts",
-    "b": "bun run gen:presets && bun run gen:menu && bun run gen:preview && bun run gen:llms && bun run build:icons && bun run build:styles && bun run build:registry"
+    "b": "bun run gen:presets && bun run gen:menu && bun run gen:preview && bun run gen:llms && bun run build:registry && shadcn build"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.49.0",

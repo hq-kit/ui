@@ -5,7 +5,7 @@
   "title": "color-swatch-picker-hex-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/colors"
+    "https://hq-ui.vercel.app/r/colors"
   ],
   "files": [
     {

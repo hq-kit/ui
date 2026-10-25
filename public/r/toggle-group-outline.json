@@ -4,9 +4,7 @@
   "name": "toggle-group-outline",
   "title": "toggle-group-outline",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/toggle"
-  ],
+  "registryDependencies": ["http://localhost:3000/r/toggle"],
   "files": [
     {
       "path": "components/samples/buttons/toggle/toggle-group-outline.tsx",

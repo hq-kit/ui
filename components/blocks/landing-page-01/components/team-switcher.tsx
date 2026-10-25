@@ -1,11 +1,10 @@
 "use client"
 
 import type { Team } from "./data"
-import { IconCircle, IconPlus } from "@tabler/icons-react"
+import { IconCircle, IconPlus, IconSelector } from "@tabler/icons-react"
 import { useState } from "react"
 import { DropdownMenu } from "@/components/ui/dropdown-menu"
 import { Navbar } from "@/components/ui/navbar"
-import { IconSelector } from "@/lib/icons/__tabler__"
 
 export function TeamSwitcher({ teams }: { teams: Team[] }) {
   const [activeTeam, setActiveTeam] = useState(teams[0])

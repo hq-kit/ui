@@ -7,14 +7,14 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/colors",
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/input"
+    "https://hq-ui.vercel.app/r/colors",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/input"
   ],
   "files": [
     {
       "path": "components/samples/colors/color-field/color-field-hsl-channel-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { type Color, parseColor } from \"react-aria-components/ColorField\"\nimport { ColorField, ColorSwatch } from \"@/components/ui/colors\"\nimport { Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\n\nexport default function ColorFieldChannelsDemo() {\n  const [color, setColor] = useState<Color | null>(parseColor(\"hsl(0, 100%, 50%)\"))\n\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <ColorSwatch className=\"w-full rounded-lg border\" color={color!} />\n      <ColorField channel=\"hue\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Hue</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"saturation\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Saturation</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"lightness\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Lightness</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"alpha\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Alpha</Label>\n        <Input />\n      </ColorField>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { type Color, parseColor } from \"react-aria-components/ColorField\"\nimport { ColorField, ColorSwatch } from \"@/components/ui/colors\"\nimport { Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\n\nexport default function ColorFieldChannelsDemo() {\n  const [color, setColor] = useState<Color | null>(parseColor(\"hsl(0, 100%, 50%)\"))\n\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <ColorSwatch className=\"w-full rounded-lg border\" color={color?.toString(\"hex\")} />\n      <ColorField channel=\"hue\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Hue</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"saturation\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Saturation</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"lightness\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Lightness</Label>\n        <Input />\n      </ColorField>\n      <ColorField channel=\"alpha\" colorSpace=\"hsl\" onChange={setColor} value={color}>\n        <Label>Alpha</Label>\n        <Input />\n      </ColorField>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

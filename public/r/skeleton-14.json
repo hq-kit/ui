@@ -5,7 +5,7 @@
   "title": "skeleton-14",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/skeleton"
+    "https://hq-ui.vercel.app/r/skeleton"
   ],
   "files": [
     {

@@ -17,25 +17,22 @@ export default () => {
           setTimeout(() => setIsSaving(false), 4000)
         }}
       >
-        {({isPending}) => (
-          <>
-            {isPending ? 'Saving' : 'Save'}
-          </>
-       )}
+        {({ isPending }) => <>{isPending ? "Saving" : "Save"}</>}
       </Button>
-      <Button variant={'outline'}
+      <Button
+        variant={"outline"}
         isPending={isUploading}
         onPress={() => {
           setIsUploading(true)
           setTimeout(() => setIsUploading(false), 4000)
         }}
       >
-        {({isPending}) => (
+        {({ isPending }) => (
           <>
             <IconUpload />
-            {isPending ? 'Uploading' : 'Upload'}
+            {isPending ? "Uploading" : "Upload"}
           </>
-       )}
+        )}
       </Button>
       <Button
         isPending={isDeleting}

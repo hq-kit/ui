@@ -5,10 +5,10 @@
   "title": "card-01",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/card",
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/input"
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/card",
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/input"
   ],
   "files": [
     {

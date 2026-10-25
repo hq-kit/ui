@@ -5,8 +5,8 @@
   "title": "radio-group-description",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/field",
-    "http://localhost:3000/r/radio"
+    "https://hq-ui.vercel.app/r/field",
+    "https://hq-ui.vercel.app/r/radio"
   ],
   "files": [
     {

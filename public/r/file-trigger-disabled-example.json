@@ -4,9 +4,7 @@
   "name": "file-trigger-disabled-example",
   "title": "file-trigger-disabled-example",
   "dependencies": [],
-  "registryDependencies": [
-    "http://localhost:3000/r/file-trigger"
-  ],
+  "registryDependencies": ["http://localhost:3000/r/file-trigger"],
   "files": [
     {
       "path": "components/samples/buttons/file-trigger/file-trigger-disabled-example.tsx",

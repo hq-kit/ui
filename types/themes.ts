@@ -43,6 +43,25 @@ export type ThemeStyleProps = {
   radius?: string
   "font-sans"?: string
   "font-mono"?: string
+  spacing?: string
+  "letter-spacing"?: string
+  "tracking-normal"?: string
+  shadow?: string
+  "shadow-color"?: string
+  "shadow-opacity"?: string
+  "shadow-blur"?: string
+  "shadow-spread"?: string
+  "shadow-offset-x"?: string
+  "shadow-offset-y"?: string
+  "shadow-x"?: string
+  "shadow-y"?: string
+  "shadow-2xs"?: string
+  "shadow-xs"?: string
+  "shadow-sm"?: string
+  "shadow-md"?: string
+  "shadow-lg"?: string
+  "shadow-xl"?: string
+  "shadow-2xl"?: string
 }
 
 export type Preset = {

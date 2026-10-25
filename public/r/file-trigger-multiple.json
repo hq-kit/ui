@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "file-trigger-multiple",
+  "title": "file-trigger-multiple",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://hq-ui.vercel.app/r/file-trigger"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/file-trigger/file-trigger-multiple.tsx",
+      "content": "import { FileTrigger } from \"@/components/ui/file-trigger\"\n\nexport default () => {\n  return <FileTrigger allowsMultiple />\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

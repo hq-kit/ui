@@ -5,7 +5,7 @@
   "title": "meter-10",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/meter"
+    "https://hq-ui.vercel.app/r/meter"
   ],
   "files": [
     {

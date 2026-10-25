@@ -5,8 +5,8 @@
   "title": "dialog-sticky-footer",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/dialog"
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/dialog"
   ],
   "files": [
     {

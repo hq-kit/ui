@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "pagination-sizes",
+  "title": "pagination-sizes",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://hq-ui.vercel.app/r/pagination"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/pagination/pagination-sizes.tsx",
+      "content": "import { Pagination } from \"@/components/ui/pagination\"\n\nexport default () => {\n  return (\n    <div className=\"grid gap-2\">\n      <Pagination size={\"xs\"}>\n        <Pagination.First href=\"#\" />\n        <Pagination.Previous href=\"#\" />\n        <Pagination.Next href=\"#\" />\n        <Pagination.Last href=\"#\" />\n      </Pagination>\n      <Pagination size={\"sm\"}>\n        <Pagination.First href=\"#\" />\n        <Pagination.Previous href=\"#\" />\n        <Pagination.Next href=\"#\" />\n        <Pagination.Last href=\"#\" />\n      </Pagination>\n      <Pagination size={\"md\"}>\n        <Pagination.First href=\"#\" />\n        <Pagination.Previous href=\"#\" />\n        <Pagination.Next href=\"#\" />\n        <Pagination.Last href=\"#\" />\n      </Pagination>\n      <Pagination size={\"lg\"}>\n        <Pagination.First href=\"#\" />\n        <Pagination.Previous href=\"#\" />\n        <Pagination.Next href=\"#\" />\n        <Pagination.Last href=\"#\" />\n      </Pagination>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

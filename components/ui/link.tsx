@@ -15,7 +15,7 @@ export function Link({ className, ref, ...props }: LinkProps) {
       className={composeRenderProps(className, (className) =>
         cn(
           [
-            "outline-0 outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring",
+            "focus-visible:outline-ring outline-0 outline-offset-2 focus-visible:outline-2",
             "disabled:cursor-default disabled:opacity-50",
             "href" in props && "cursor-pointer"
           ],

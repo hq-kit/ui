@@ -5,8 +5,8 @@
   "title": "dropdown-menu-shortcuts",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/dropdown-menu"
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/dropdown-menu"
   ],
   "files": [
     {

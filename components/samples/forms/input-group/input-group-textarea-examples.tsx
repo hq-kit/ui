@@ -47,7 +47,7 @@ export default function InputGroupTextareaExamples() {
           <InputGroupTextarea id="prompt-31" />
           <InputGroupAddon align="block-start">
             <InputGroupText>Ask, Search or Chat...</InputGroupText>
-            <InfoIcon className="ml-auto text-muted-foreground" />
+            <InfoIcon className="text-muted-foreground ml-auto" />
           </InputGroupAddon>
         </InputGroup>
         <Description>This is a description of the input group.</Description>
@@ -58,7 +58,7 @@ export default function InputGroupTextareaExamples() {
           <InputGroupTextarea id="textarea-header-footer-30" placeholder="Enter your text here..." />
           <InputGroupAddon align="block-end">
             <InputGroupText>0/280 characters</InputGroupText>
-            <InputGroupButton className="ml-auto rounded-full" size="icon-xs" variant="default">
+            <InputGroupButton className="ml-auto rounded-full" size="icon-xs">
               <ArrowUpIcon />
               <span className="sr-only">Send</span>
             </InputGroupButton>
@@ -73,9 +73,7 @@ export default function InputGroupTextareaExamples() {
             <InputGroupButton className="ml-auto" size="sm" variant="ghost">
               Cancel
             </InputGroupButton>
-            <InputGroupButton size="sm" variant="default">
-              Post Comment
-            </InputGroupButton>
+            <InputGroupButton size="sm">Post Comment</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       </Field>
@@ -88,7 +86,7 @@ export default function InputGroupTextareaExamples() {
             placeholder="console.log('Hello, world!');"
           />
           <InputGroupAddon align="block-start" className="border-b">
-            <InputGroupText className="font-medium font-mono">
+            <InputGroupText className="font-mono font-medium">
               <CodeIcon />
               script.js
             </InputGroupText>

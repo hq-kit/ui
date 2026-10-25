@@ -7,7 +7,7 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/tabs"
+    "https://hq-ui.vercel.app/r/tabs"
   ],
   "files": [
     {

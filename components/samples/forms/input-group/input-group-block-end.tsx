@@ -27,7 +27,7 @@ export default function InputGroupBlockEnd() {
           <InputGroupTextarea id="block-end-textarea" placeholder="Write a comment..." />
           <InputGroupAddon align="block-end">
             <InputGroupText>0/280</InputGroupText>
-            <InputGroupButton className="ml-auto" size="sm" variant="default">
+            <InputGroupButton className="ml-auto" size="sm">
               Post
             </InputGroupButton>
           </InputGroupAddon>

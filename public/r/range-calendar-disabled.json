@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/calendar"
+    "https://hq-ui.vercel.app/r/calendar"
   ],
   "files": [
     {

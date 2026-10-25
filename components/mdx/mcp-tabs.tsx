@@ -45,8 +45,8 @@ export function McpTabs() {
   const [tab, setTab] = useState<Key>("codex")
   return (
     <div className="my-2">
-      <Tabs className="gap-0 overflow-hidden rounded-lg border bg-muted" onSelectionChange={setTab} selectedKey={tab}>
-        <Tabs.List className="w-full bg-muted" items={commands} variant="default">
+      <Tabs className="bg-muted gap-0 overflow-hidden rounded-lg border" onSelectionChange={setTab} selectedKey={tab}>
+        <Tabs.List className="bg-muted w-full" items={commands} variant="fill">
           {(command) => (
             <Tabs.Trigger key={command.label}>
               <command.icon />

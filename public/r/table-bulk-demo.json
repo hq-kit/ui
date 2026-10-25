@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/table"
+    "https://hq-ui.vercel.app/r/table"
   ],
   "files": [
     {

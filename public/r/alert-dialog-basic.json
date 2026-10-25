@@ -5,8 +5,8 @@
   "title": "alert-dialog-basic",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/alert-dialog",
-    "http://localhost:3000/r/button"
+    "https://hq-ui.vercel.app/r/alert-dialog",
+    "https://hq-ui.vercel.app/r/button"
   ],
   "files": [
     {

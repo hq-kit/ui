@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "pagination-controls",
+  "title": "pagination-controls",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://hq-ui.vercel.app/r/pagination"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/pagination/pagination-controls.tsx",
+      "content": "import { Pagination } from \"@/components/ui/pagination\"\n\nexport default () => {\n  return (\n    <Pagination>\n      <Pagination.First href=\"#\">First</Pagination.First>\n      <Pagination.Previous href=\"#\">Prev</Pagination.Previous>\n      <Pagination.Item href=\"#\">1</Pagination.Item>\n      <Pagination.Item isActive>2</Pagination.Item>\n      <Pagination.Item href=\"#\">3</Pagination.Item>\n      <Pagination.Ellipsis />\n      <Pagination.Item href=\"#\">25</Pagination.Item>\n      <Pagination.Next href=\"#\">Next</Pagination.Next>\n      <Pagination.Last href=\"#\">Last</Pagination.Last>\n    </Pagination>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

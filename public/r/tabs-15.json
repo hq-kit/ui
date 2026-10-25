@@ -5,7 +5,7 @@
   "title": "tabs-15",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/tabs"
+    "https://hq-ui.vercel.app/r/tabs"
   ],
   "files": [
     {

@@ -3,13 +3,8 @@
   "extends": "none",
   "name": "pagination-05",
   "title": "pagination-05",
-  "dependencies": [
-    "cn"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/pagination"
-  ],
+  "dependencies": ["cn"],
+  "registryDependencies": ["https://hq-ui.vercel.app/r/button", "https://hq-ui.vercel.app/r/pagination"],
   "files": [
     {
       "path": "components/samples/navigation/pagination/pagination-05.tsx",

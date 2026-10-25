@@ -5,7 +5,7 @@
   "title": "badge-08",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/badge"
+    "https://hq-ui.vercel.app/r/badge"
   ],
   "files": [
     {

@@ -7,9 +7,9 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/bubble",
-    "http://localhost:3000/r/button",
-    "http://localhost:3000/r/tooltip"
+    "https://hq-ui.vercel.app/r/bubble",
+    "https://hq-ui.vercel.app/r/button",
+    "https://hq-ui.vercel.app/r/tooltip"
   ],
   "files": [
     {

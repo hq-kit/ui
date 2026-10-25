@@ -5,7 +5,7 @@
   "title": "list-box-section-demo",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/list-box"
+    "https://hq-ui.vercel.app/r/list-box"
   ],
   "files": [
     {

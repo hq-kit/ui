@@ -5,7 +5,7 @@
   "title": "empty-21",
   "dependencies": [],
   "registryDependencies": [
-    "http://localhost:3000/r/empty"
+    "https://hq-ui.vercel.app/r/empty"
   ],
   "files": [
     {

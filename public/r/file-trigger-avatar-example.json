@@ -3,12 +3,7 @@
   "extends": "none",
   "name": "file-trigger-avatar-example",
   "title": "file-trigger-avatar-example",
-  "dependencies": [
-    "@react-types/shared",
-    "@tabler/icons-react",
-    "cn",
-    "react-aria-components"
-  ],
+  "dependencies": ["@react-types/shared", "@tabler/icons-react", "cn", "react-aria-components"],
   "registryDependencies": [
     "http://localhost:3000/r/avatar",
     "http://localhost:3000/r/drop-zone",
