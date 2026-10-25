@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "file-trigger-avatar-example",
+  "title": "file-trigger-avatar-example",
+  "dependencies": [
+    "@react-types/shared",
+    "@tabler/icons-react",
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/drop-zone",
+    "http://localhost:3000/r/file-trigger"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/file-trigger/file-trigger-avatar-example.tsx",
+      "content": "\"use client\"\n\nimport type { DropEvent } from \"@react-types/shared\"\nimport { IconUser } from \"@tabler/icons-react\"\nimport { cn } from \"cn\"\nimport { useEffect, useState } from \"react\"\nimport { isFileDropItem } from \"react-aria-components/useDragAndDrop\"\nimport { Avatar } from \"@/components/ui/avatar\"\nimport { DropZone } from \"@/components/ui/drop-zone\"\nimport { FileTrigger } from \"@/components/ui/file-trigger\"\n\nexport default function FileTriggerAvatarDemo() {\n  const [droppedImage, setDroppedImage] = useState<string | undefined>(undefined)\n\n  useEffect(() => {\n    return () => {\n      if (droppedImage) {\n        URL.revokeObjectURL(droppedImage)\n      }\n    }\n  }, [droppedImage])\n\n  const onDropHandler = async (e: DropEvent) => {\n    const item = e.items.filter(isFileDropItem).find((item) => item.type === \"image/jpeg\" || item.type === \"image/png\")\n    if (item) {\n      const file = await item.getFile()\n      setDroppedImage(URL.createObjectURL(file))\n    }\n  }\n\n  async function onSelectHandler(files: FileList | null) {\n    if (files) {\n      const file = files.item(0)\n\n      if (file) {\n        setDroppedImage(URL.createObjectURL(file))\n      }\n    }\n  }\n\n  return (\n    <div className=\"flex items-center gap-2\">\n      <DropZone\n        className={cn(\n          \"size-10 overflow-hidden rounded-full p-0 **:data-[slot=avatar]:bg-transparent **:data-[slot=avatar]:outline-hidden\"\n        )}\n        getDropOperation={() => \"copy\"}\n        onDrop={onDropHandler}\n      >\n        <Avatar>\n          <Avatar.Image src={droppedImage} />\n          <Avatar.Fallback>\n            <IconUser />\n          </Avatar.Fallback>\n        </Avatar>\n        <input name=\"image\" type=\"hidden\" value={droppedImage} />\n      </DropZone>\n      <FileTrigger acceptedFileTypes={[\"image/png\", \"image/jpeg\"]} onSelect={onSelectHandler} size=\"sm\">\n        Upload avatar\n      </FileTrigger>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

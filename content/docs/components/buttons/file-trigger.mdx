@@ -1,0 +1,46 @@
+---
+title: File Trigger
+description: A FileTrigger allows a user to access the file system with any pressable React Aria or React Spectrum component, or custom components built with usePress.
+references: ['https://react-aria.adobe.com/FileTrigger#api']
+published: true
+order: 2
+---
+
+<Demo component='buttons/file-trigger/file-trigger-basic' />
+
+## Installation
+<Install component='file-trigger' />
+
+## Examples
+
+### Folder
+A FileTrigger that allows users to select a folder from the file system.
+<Demo component='buttons/file-trigger/file-trigger-folder' />
+
+### Multiple
+A FileTrigger that enables users to select multiple files.
+
+<Demo component='buttons/file-trigger/file-trigger-multiple' />
+
+### Camera
+A FileTrigger that lets users capture images using their device's camera.
+
+<Demo component='buttons/file-trigger/file-trigger-camera' />
+
+### Avatar
+A FileTrigger that allows users to select an avatar from their file system. It integrates components like `avatar` and `drop-zone`, enabling users to either drag and drop or manually select a file.
+
+This how you can use the FileTrigger combined with an Avatar component.
+<Demo component='buttons/file-trigger/file-trigger-avatar' />
+
+### Pending
+A FileTrigger can indicate a pending state using the `isPending` prop. This provides feedback for actions that take time, communicates the status to assistive technologies, and disables interactions except for focus.
+<Demo component='buttons/file-trigger/file-trigger-pending' />
+
+### Controlled
+You can use the `onSelect` prop to snag the selected files.
+<Demo component='buttons/file-trigger/file-trigger-controlled' />
+
+### Disabled
+A FileTrigger that is disabled.
+<Demo component='buttons/file-trigger/file-trigger-disabled' />

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-with-buttons",
+  "title": "input-group-with-buttons",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-with-buttons.tsx",
+      "content": "import { CopyIcon, TrashIcon } from \"lucide-react\"\nimport { Field, FieldGroup, Label } from \"@/components/ui/field\"\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from \"@/components/ui/input\"\n\nexport default function InputGroupWithButtons() {\n  return (\n    <FieldGroup>\n      <Field>\n        <Label htmlFor=\"input-button-13\">Button</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-13\" />\n          <InputGroupAddon>\n            <InputGroupButton>Default</InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-14\" />\n          <InputGroupAddon>\n            <InputGroupButton variant=\"outline\">Outline</InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-15\" />\n          <InputGroupAddon>\n            <InputGroupButton variant=\"secondary\">Secondary</InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-16\" />\n          <InputGroupAddon align=\"inline-end\">\n            <InputGroupButton variant=\"secondary\">Button</InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-17\" />\n          <InputGroupAddon align=\"inline-end\">\n            <InputGroupButton size=\"icon-xs\">\n              <CopyIcon />\n            </InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput id=\"input-button-18\" />\n          <InputGroupAddon align=\"inline-end\">\n            <InputGroupButton size=\"icon-xs\" variant=\"secondary\">\n              <TrashIcon />\n            </InputGroupButton>\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n    </FieldGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

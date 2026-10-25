@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-inline-end",
+  "title": "input-group-inline-end",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-inline-end.tsx",
+      "content": "import { EyeOffIcon } from \"lucide-react\"\nimport { Description, Field, Label } from \"@/components/ui/field\"\nimport { InputGroup, InputGroupAddon, InputGroupInput } from \"@/components/ui/input\"\n\nexport default function InputGroupInlineEnd() {\n  return (\n    <Field className=\"max-w-sm\">\n      <Label htmlFor=\"inline-end-input\">Input</Label>\n      <InputGroup>\n        <InputGroupInput id=\"inline-end-input\" placeholder=\"Enter password\" type=\"password\" />\n        <InputGroupAddon align=\"inline-end\">\n          <EyeOffIcon />\n        </InputGroupAddon>\n      </InputGroup>\n      <Description>Icon positioned at the end.</Description>\n    </Field>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

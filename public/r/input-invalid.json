@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-invalid",
+  "title": "input-invalid",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input/input-invalid.tsx",
+      "content": "import { Description, Field, Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\n\nexport default function InputInvalid() {\n  return (\n    <Field data-invalid>\n      <Label htmlFor=\"input-invalid\">Invalid Input</Label>\n      <Input aria-invalid id=\"input-invalid\" placeholder=\"Error\" />\n      <Description>This field contains validation errors.</Description>\n    </Field>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

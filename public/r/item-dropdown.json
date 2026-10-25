@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-dropdown",
+  "title": "item-dropdown",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu",
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-dropdown.tsx",
+      "content": "\"use client\"\n\nimport { ChevronDownIcon } from \"lucide-react\"\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\nimport { Button } from \"@/components/ui/button\"\nimport { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from \"@/components/ui/dropdown-menu\"\nimport { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nconst people = [\n  {\n    username: \"shadcn\",\n    avatar: \"https://github.com/shadcn.png\",\n    email: \"shadcn@vercel.com\"\n  },\n  {\n    username: \"maxleiter\",\n    avatar: \"https://github.com/maxleiter.png\",\n    email: \"maxleiter@vercel.com\"\n  },\n  {\n    username: \"evilrabbit\",\n    avatar: \"https://github.com/evilrabbit.png\",\n    email: \"evilrabbit@vercel.com\"\n  }\n]\n\nexport default function ItemDropdown() {\n  return (\n    <DropdownMenu>\n      <Button variant=\"outline\">\n        Select <ChevronDownIcon />\n      </Button>\n      <DropdownMenuContent className=\"w-48\" placement=\"bottom end\">\n        <DropdownMenuGroup>\n          {people.map((person) => (\n            <DropdownMenuItem key={person.username}>\n              <Item className=\"w-full\" size=\"xs\">\n                <ItemMedia>\n                  <Avatar className=\"size-[--spacing(6.5)]\">\n                    <AvatarImage className=\"grayscale\" src={person.avatar} />\n                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>\n                  </Avatar>\n                </ItemMedia>\n                <ItemContent className=\"gap-0\">\n                  <ItemTitle>{person.username}</ItemTitle>\n                  <ItemDescription className=\"leading-none\">{person.email}</ItemDescription>\n                </ItemContent>\n              </Item>\n            </DropdownMenuItem>\n          ))}\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

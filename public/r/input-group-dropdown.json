@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-dropdown",
+  "title": "input-group-dropdown",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/dropdown-menu",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-dropdown.tsx",
+      "content": "import { ChevronDownIcon, MoreHorizontal } from \"lucide-react\"\nimport { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from \"@/components/ui/dropdown-menu\"\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from \"@/components/ui/input\"\n\nexport default function InputGroupDropdown() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"Enter file name\" />\n        <InputGroupAddon align=\"inline-end\">\n          <DropdownMenu>\n            <InputGroupButton aria-label=\"More\" size=\"icon-xs\" variant=\"ghost\">\n              <MoreHorizontal />\n            </InputGroupButton>\n            <DropdownMenuContent placement=\"bottom end\">\n              <DropdownMenuGroup>\n                <DropdownMenuItem>Settings</DropdownMenuItem>\n                <DropdownMenuItem>Copy path</DropdownMenuItem>\n                <DropdownMenuItem>Open location</DropdownMenuItem>\n              </DropdownMenuGroup>\n            </DropdownMenuContent>\n          </DropdownMenu>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup className=\"[--radius:1rem]\">\n        <InputGroupInput placeholder=\"Enter search query\" />\n        <InputGroupAddon align=\"inline-end\">\n          <DropdownMenu>\n            <InputGroupButton className=\"pr-1.5! text-xs\" variant=\"ghost\">\n              Search In... <ChevronDownIcon className=\"size-3\" />\n            </InputGroupButton>\n            <DropdownMenuContent className=\"[--radius:0.95rem]\" placement=\"bottom end\">\n              <DropdownMenuGroup>\n                <DropdownMenuItem>Documentation</DropdownMenuItem>\n                <DropdownMenuItem>Blog Posts</DropdownMenuItem>\n                <DropdownMenuItem>Changelog</DropdownMenuItem>\n              </DropdownMenuGroup>\n            </DropdownMenuContent>\n          </DropdownMenu>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "context-menu-demo",
+  "title": "context-menu-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/context-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/context-menu/context-menu-demo.tsx",
+      "content": "\"use client\"\n\nimport { Pressable } from \"react-aria-components\"\nimport {\n  ContextMenu,\n  ContextMenuContent,\n  ContextMenuGroup,\n  ContextMenuItem,\n  ContextMenuLabel,\n  ContextMenuSeparator,\n  ContextMenuShortcut,\n  ContextMenuSub,\n  ContextMenuSubContent,\n  ContextMenuSubTrigger\n} from \"@/components/ui/context-menu\"\n\nexport default function ContextMenuDemo() {\n  return (\n    <ContextMenu>\n      <Pressable>\n        <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n          <span className=\"pointer-fine:inline-block hidden\">Right click here</span>\n          <span className=\"pointer-coarse:inline-block hidden\">Long press here</span>\n        </div>\n      </Pressable>\n      <ContextMenuContent className=\"w-48\">\n        <ContextMenuGroup>\n          <ContextMenuItem>\n            Back\n            <ContextMenuShortcut>⌘[</ContextMenuShortcut>\n          </ContextMenuItem>\n          <ContextMenuItem isDisabled>\n            Forward\n            <ContextMenuShortcut>⌘]</ContextMenuShortcut>\n          </ContextMenuItem>\n          <ContextMenuItem>\n            Reload\n            <ContextMenuShortcut>⌘R</ContextMenuShortcut>\n          </ContextMenuItem>\n          <ContextMenuSub>\n            <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>\n            <ContextMenuSubContent className=\"w-44\">\n              <ContextMenuGroup>\n                <ContextMenuItem>Save Page...</ContextMenuItem>\n                <ContextMenuItem>Create Shortcut...</ContextMenuItem>\n                <ContextMenuItem>Name Window...</ContextMenuItem>\n              </ContextMenuGroup>\n              <ContextMenuSeparator />\n              <ContextMenuGroup>\n                <ContextMenuItem>Developer Tools</ContextMenuItem>\n              </ContextMenuGroup>\n              <ContextMenuSeparator />\n              <ContextMenuGroup>\n                <ContextMenuItem variant=\"destructive\">Delete</ContextMenuItem>\n              </ContextMenuGroup>\n            </ContextMenuSubContent>\n          </ContextMenuSub>\n        </ContextMenuGroup>\n        <ContextMenuSeparator />\n        <ContextMenuGroup defaultSelectedKeys={[\"bookmarks\"]} selectionMode=\"multiple\">\n          <ContextMenuItem id=\"bookmarks\">Show Bookmarks</ContextMenuItem>\n          <ContextMenuItem id=\"urls\">Show Full URLs</ContextMenuItem>\n        </ContextMenuGroup>\n        <ContextMenuSeparator />\n        <ContextMenuGroup defaultSelectedKeys={[\"pedro\"]} selectionMode=\"single\">\n          <ContextMenuLabel>People</ContextMenuLabel>\n          <ContextMenuItem id=\"pedro\">Pedro Duarte</ContextMenuItem>\n          <ContextMenuItem id=\"colm\">Colm Tuite</ContextMenuItem>\n        </ContextMenuGroup>\n      </ContextMenuContent>\n    </ContextMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

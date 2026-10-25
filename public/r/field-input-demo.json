@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-input-demo",
+  "title": "field-input-demo",
+  "dependencies": [
+    "@tabler/icons-react",
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/text-field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-input-demo.tsx",
+      "content": "\"use client\"\n\nimport { IconMail } from \"@tabler/icons-react\"\nimport { type FormEvent, useState } from \"react\"\nimport { toast } from \"sonner\"\nimport { Button } from \"@/components/ui/button\"\nimport { Description, FieldError, FieldSet, Form, Label, Legend } from \"@/components/ui/field\"\nimport { Input, InputGroup } from \"@/components/ui/input\"\nimport { PasswordInput, TextField } from \"@/components/ui/text-field\"\n\nexport default function FieldInputDemo() {\n  const [username, setUsername] = useState(\"\")\n  const [email, setEmail] = useState(\"\")\n  const [password, setPassword] = useState(\"\")\n  const onSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    toast(\"Form submitted\", {\n      description: JSON.stringify(\n        {\n          username,\n          email,\n          password\n        },\n        null,\n        2\n      )\n    })\n  }\n  return (\n    <Form className=\"w-full\" onSubmit={onSubmit}>\n      <FieldSet>\n        <Legend>Profile</Legend>\n        <Description>Enter your personal information</Description>\n        <TextField isRequired name=\"name\" onChange={setUsername} value={username}>\n          <Label>Username</Label>\n          <Input />\n          <Description>Choose a unique username for your account.</Description>\n          <FieldError />\n        </TextField>\n        <TextField isRequired name=\"email\" onChange={setEmail} type=\"email\" value={email}>\n          <Label>Email</Label>\n          <InputGroup>\n            <InputGroup.Addon>\n              <IconMail />\n            </InputGroup.Addon>\n            <InputGroup.Input />\n          </InputGroup>\n          <FieldError />\n        </TextField>\n        <TextField isRequired name=\"password\" onChange={setPassword} type=\"password\" value={password}>\n          <Label>Password</Label>\n          <Description>Must be at least 8 characters long.</Description>\n          <PasswordInput />\n          <FieldError />\n        </TextField>\n        <Button type=\"submit\">Submit</Button>\n      </FieldSet>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

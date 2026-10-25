@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header",
+  "title": "header",
+  "dependencies": [
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/header.tsx",
+      "content": "import type { ComponentPropsWithRef } from \"react\"\nimport { cn } from \"cn\"\n\ninterface HeaderProps extends ComponentPropsWithRef<\"header\"> {\n  title?: string\n  description?: string\n}\n\nconst Header = ({ title, description, className, children, ...props }: HeaderProps) => (\n  <header\n    className={cn(\n      \"cn-card-header group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]\",\n      className\n    )}\n    slot=\"header\"\n    {...props}\n  >\n    {title && <HeaderTitle>{title}</HeaderTitle>}\n    {description && <HeaderDescription>{description}</HeaderDescription>}\n    {!title && typeof children === \"string\" ? <HeaderTitle>{children}</HeaderTitle> : children}\n  </header>\n)\n\nconst HeaderTitle = ({ className, ...props }: ComponentPropsWithRef<\"h3\">) => (\n  <h3 slot=\"title\" {...props} className={cn(\"cn-card-title cn-font-heading\", className)} />\n)\n\nconst HeaderDescription = ({ className, ...props }: ComponentPropsWithRef<\"div\">) => (\n  <div className={cn(\"cn-card-description\", className)} slot=\"description\" {...props} />\n)\n\nconst HeaderAction = ({ className, ...props }: ComponentPropsWithRef<\"div\">) => (\n  <div\n    className={cn(\"cn-card-action col-start-2 row-span-2 row-start-1 self-start justify-self-end\", className)}\n    slot=\"action\"\n    {...props}\n  />\n)\n\nHeader.Title = HeaderTitle\nHeader.Description = HeaderDescription\nHeader.Action = HeaderAction\n\nexport { Header, HeaderAction, HeaderDescription, HeaderTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

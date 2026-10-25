@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-variant",
+  "title": "item-variant",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-variant.tsx",
+      "content": "import { InboxIcon } from \"lucide-react\"\nimport { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nexport default function ItemVariant() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <Item>\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Default Variant</ItemTitle>\n          <ItemDescription>Transparent background with no border.</ItemDescription>\n        </ItemContent>\n      </Item>\n      <Item variant=\"outline\">\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Outline Variant</ItemTitle>\n          <ItemDescription>Outlined style with a visible border.</ItemDescription>\n        </ItemContent>\n      </Item>\n      <Item variant=\"muted\">\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Muted Variant</ItemTitle>\n          <ItemDescription>Muted background for secondary content.</ItemDescription>\n        </ItemContent>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

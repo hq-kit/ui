@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-size",
+  "title": "item-size",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-size.tsx",
+      "content": "import { InboxIcon } from \"lucide-react\"\nimport { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nexport default function ItemSizeDemo() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <Item variant=\"outline\">\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Default Size</ItemTitle>\n          <ItemDescription>The standard size for most use cases.</ItemDescription>\n        </ItemContent>\n      </Item>\n      <Item size=\"sm\" variant=\"outline\">\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Small Size</ItemTitle>\n          <ItemDescription>A compact size for dense layouts.</ItemDescription>\n        </ItemContent>\n      </Item>\n      <Item size=\"xs\" variant=\"outline\">\n        <ItemMedia variant=\"icon\">\n          <InboxIcon />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Extra Small Size</ItemTitle>\n          <ItemDescription>The most compact size available.</ItemDescription>\n        </ItemContent>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio",
+  "title": "radio",
+  "dependencies": [
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/ui/radio.tsx",
+      "content": "\"use client\"\n\nimport type { VariantProps } from \"class-variance-authority\"\nimport { cn } from \"cn\"\nimport { composeRenderProps } from \"react-aria-components/composeRenderProps\"\nimport {\n  RadioGroup as RACRadioGroup,\n  RadioButton,\n  RadioField,\n  type RadioFieldProps,\n  type RadioGroupProps\n} from \"react-aria-components/RadioGroup\"\nimport { fieldVariants, Label } from \"./field\"\n\nconst RadioGroup = ({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: RadioGroupProps & VariantProps<typeof fieldVariants>) => {\n  return (\n    <RACRadioGroup\n      {...props}\n      className={composeRenderProps(className, (className) =>\n        cn(\n          \"cn-radio-group w-full\",\n          \"has-data-invalid:text-destructive data-invalid:text-destructive\",\n          \"data-[orientation=horizontal]:flex data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:**:data-[slot=field-description]:w-full data-[orientation=horizontal]:**:data-[slot=field-label]:w-full\",\n          className\n        )\n      )}\n      data-orientation={orientation}\n      data-slot=\"field\"\n      orientation={orientation}\n    />\n  )\n}\n\nconst Radio = ({ className, children, ...props }: RadioFieldProps) => {\n  return (\n    <RadioField\n      className={composeRenderProps(className, (className) => cn(\"group/field\", className))}\n      data-slot=\"radio\"\n      {...props}\n    >\n      <RadioButton>\n        {composeRenderProps(children, (children) => (\n          <div\n            className={cn(\n              fieldVariants({\n                orientation: \"horizontal\",\n                className: \"in-data-invalid:text-destructive\"\n              })\n            )}\n          >\n            <div\n              className=\"cn-radio-group-item cn-radio-group-item-aria group/radio-group-item peer relative aspect-square shrink-0 border outline-none group-disabled/field:cursor-not-allowed group-disabled/field:opacity-50\"\n              data-slot=\"radio-group-item\"\n              slot=\"control\"\n            >\n              <div\n                className=\"cn-radio-group-indicator opacity-0 transition-opacity group-data-selected/field:opacity-100\"\n                data-slot=\"radio-group-indicator\"\n              >\n                <span className=\"cn-radio-group-indicator-icon\" />\n              </div>\n            </div>\n            {typeof children === \"string\" ? (\n              <Label elementType=\"span\">{children}</Label>\n            ) : children ? (\n              <div\n                className=\"cn-field-content group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug\"\n                data-slot=\"field-content\"\n              >\n                {children}\n              </div>\n            ) : null}\n          </div>\n        ))}\n      </RadioButton>\n    </RadioField>\n  )\n}\n\nconst RadioGroupItem = Radio\nRadioGroup.Item = Radio\n\nexport { Radio, RadioGroup, RadioGroupItem }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tag-group-controlled-demo",
+  "title": "tag-group-controlled-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/tag"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/tag-group/tag-group-controlled-demo.tsx",
+      "content": "\"use client\"\n\nimport type { Selection } from \"react-aria-components\"\nimport { useState } from \"react\"\nimport { Tag, TagGroup, TagList } from \"@/components/ui/tag\"\n\nconst fruitList = [\n  { id: \"1\", name: \"Apple\", available: false },\n  { id: \"2\", name: \"Banana\", available: true },\n  { id: \"3\", name: \"Cherry\", available: true },\n  { id: \"4\", name: \"Date\", available: false }\n]\n\nexport default function TagGroupControlledDemo() {\n  const [selected, setSelected] = useState<Selection>(new Set([]))\n  return (\n    <div>\n      <TagGroup aria-label=\"Fruite\" onSelectionChange={setSelected} selectedKeys={selected} selectionMode=\"multiple\">\n        <TagList items={fruitList}>{(item) => <Tag>{item.name}</Tag>}</TagList>\n      </TagGroup>\n\n      <p className=\"mt-2 block text-muted-foreground text-xs [&>strong]:text-foreground\">\n        You have selected: <strong>{Array.from(selected).join(\", \")}</strong>\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

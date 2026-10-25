@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "meter-01",
+  "title": "meter-01",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/meter"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/meter/meter-01.tsx",
+      "content": "import { Meter } from \"@/components/ui/meter\"\n\nconst Example = () => (\n  <Meter className=\"w-full max-w-md\" value={60}>\n    <Meter.Label>Usage</Meter.Label>\n    <Meter.Value />\n  </Meter>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

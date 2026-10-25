@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-05",
+  "title": "empty-05",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-05.tsx",
+      "content": "import { IconUpload, IconUserPlus, IconUsers } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"Empty with Stacked Actions\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconUsers />\n      </EmptyMedia>\n      <EmptyTitle>No team members yet</EmptyTitle>\n      <EmptyDescription>Invite team members to collaborate on your projects.</EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button className=\"w-full\">\n        <IconUserPlus />\n        Invite Team Member\n      </Button>\n      <Button className=\"w-full\" variant=\"outline\">\n        <IconUpload />\n        Import from CSV\n      </Button>\n    </EmptyContent>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

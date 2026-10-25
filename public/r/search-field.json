@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-field",
+  "title": "search-field",
+  "dependencies": [
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/ui/search-field.tsx",
+      "content": "\"use client\"\n\nimport type { VariantProps } from \"class-variance-authority\"\nimport { cn } from \"cn\"\nimport { composeRenderProps } from \"react-aria-components/composeRenderProps\"\nimport {\n  type InputProps,\n  SearchField as RACSearchField,\n  type SearchFieldProps\n} from \"react-aria-components/SearchField\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\nimport { fieldVariants } from \"./field\"\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from \"./input\"\n\nconst SearchField = ({\n  className,\n  isPending = false,\n  orientation = \"vertical\",\n  ...props\n}: SearchFieldProps & VariantProps<typeof fieldVariants> & { isPending?: boolean }) => (\n  <RACSearchField\n    className={composeRenderProps(className, (className) => cn(fieldVariants({ orientation }), className))}\n    data-orientation={orientation}\n    data-pending={isPending}\n    data-slot=\"field\"\n    {...props}\n  />\n)\n\nconst SearchInput = (props: Omit<InputProps, \"type\">) => (\n  <InputGroup className={`${props.className}`}>\n    <InputGroupAddon>\n      <IconPlaceholder\n        aria-label=\"Loading\"\n        className=\"pointer-events-none in-data-[pending=true]:block hidden size-4 shrink-0 animate-spin\"\n        data-slot=\"loader\"\n        hugeicons=\"Loading03Icon\"\n        lucide=\"LoaderIcon\"\n        phosphor=\"SpinnerIcon\"\n        remixicon=\"RiLoaderLine\"\n        role=\"status\"\n        tabler=\"IconLoader\"\n      />\n      <IconPlaceholder\n        className=\"in-data-[pending=true]:hidden\"\n        data-slot=\"input-group-addon\"\n        hugeicons=\"SearchIcon\"\n        lucide=\"SearchIcon\"\n        phosphor=\"MagnifyingGlassIcon\"\n        remixicon=\"RiSearchLine\"\n        tabler=\"IconSearch\"\n      />\n    </InputGroupAddon>\n    <InputGroupInput className=\"[&::-webkit-search-cancel-button]:hidden\" {...props} />\n    <InputGroupAddon align=\"inline-end\" className=\"group-data-empty/field:hidden\">\n      <InputGroupButton>\n        <IconPlaceholder\n          hugeicons=\"Cancel01Icon\"\n          lucide=\"XIcon\"\n          phosphor=\"XIcon\"\n          remixicon=\"RiCloseLine\"\n          tabler=\"IconX\"\n        />\n      </InputGroupButton>\n    </InputGroupAddon>\n  </InputGroup>\n)\n\nexport { SearchField, SearchInput }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

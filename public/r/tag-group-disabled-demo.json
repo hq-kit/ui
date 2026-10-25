@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tag-group-disabled-demo",
+  "title": "tag-group-disabled-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/tag"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/tag-group/tag-group-disabled-demo.tsx",
+      "content": "\"use client\"\n\nimport { Label } from \"@/components/ui/field\"\nimport { Tag, TagGroup, TagList } from \"@/components/ui/tag\"\n\nconst androidBrands = [\n  { id: \"1\", name: \"Samsung\", available: false },\n  { id: \"2\", name: \"OnePlus\", available: true },\n  { id: \"3\", name: \"Google\", available: true },\n  { id: \"4\", name: \"Xiaomi\", available: false }\n]\n\nexport default function TagGroupDisabledDemo() {\n  return (\n    <div className=\"space-y-6\">\n      <TagGroup\n        disabledKeys={androidBrands.filter((brand) => !brand.available).map((brand) => brand.id)}\n        selectionMode=\"multiple\"\n      >\n        <Label>Disabled key</Label>\n        <TagList items={androidBrands}>{(item) => <Tag>{item.name}</Tag>}</TagList>\n      </TagGroup>\n\n      <TagGroup selectionMode=\"multiple\">\n        <Label>Disabled by Tag</Label>\n        <TagList items={androidBrands}>{(item) => <Tag isDisabled={item.available}>{item.name}</Tag>}</TagList>\n      </TagGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

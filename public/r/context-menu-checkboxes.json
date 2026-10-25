@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "context-menu-checkboxes",
+  "title": "context-menu-checkboxes",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/context-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/context-menu/context-menu-checkboxes.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { Pressable, type Selection } from \"react-aria-components\"\nimport { ContextMenu, ContextMenuContent, ContextMenuGroup, ContextMenuItem } from \"@/components/ui/context-menu\"\n\nexport default function ContextMenuCheckboxes() {\n  const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([\"bookmarks-bar\", \"developer-tools\"]))\n\n  return (\n    <ContextMenu>\n      <Pressable>\n        <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n          <span className=\"pointer-fine:inline-block hidden\">Right click here</span>\n          <span className=\"pointer-coarse:inline-block hidden\">Long press here</span>\n        </div>\n      </Pressable>\n      <ContextMenuContent>\n        <ContextMenuGroup onSelectionChange={setSelectedKeys} selectedKeys={selectedKeys} selectionMode=\"multiple\">\n          <ContextMenuItem id=\"bookmarks-bar\">Show Bookmarks Bar</ContextMenuItem>\n          <ContextMenuItem>Show Full URLs</ContextMenuItem>\n          <ContextMenuItem id=\"developer-tools\">Show Developer Tools</ContextMenuItem>\n        </ContextMenuGroup>\n      </ContextMenuContent>\n    </ContextMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

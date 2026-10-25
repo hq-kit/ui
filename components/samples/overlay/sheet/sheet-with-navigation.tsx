@@ -1,0 +1,201 @@
+"use client"
+
+import {
+  IconBook,
+  IconCalendar,
+  IconChevronRight,
+  IconCircle,
+  IconHeartPlus,
+  IconHome,
+  IconLayout,
+  IconLayoutNavbar,
+  IconLogin,
+  IconLogout,
+  IconMail,
+  IconMessage,
+  IconShoppingCart,
+  type TablerIcon
+} from "@tabler/icons-react"
+import { Button } from "@/components/ui/button"
+import { Collapsible } from "@/components/ui/collapsible"
+import { Sheet } from "@/components/ui/sheet"
+
+type NavigationItem = {
+  name: string
+  icon: TablerIcon
+} & (
+  | {
+      type: "page"
+      children?: never
+    }
+  | {
+      type: "category"
+      children: NavigationItem[]
+    }
+)
+
+const navigationMenu: NavigationItem[] = [
+  {
+    name: "Dashboard",
+    icon: IconHome,
+    type: "page"
+  },
+  {
+    name: "Layouts",
+    icon: IconLayout,
+    type: "category",
+    children: [
+      {
+        name: "Content Navbar",
+        icon: IconLayout,
+        type: "page"
+      },
+      {
+        name: "Horizontal",
+        icon: IconLayout,
+        type: "page"
+      },
+      {
+        name: "Without Menu",
+        icon: IconLayout,
+        type: "page"
+      }
+    ]
+  },
+  {
+    name: "Front Pages",
+    icon: IconLayoutNavbar,
+    type: "category",
+    children: [
+      {
+        name: "Landing Page",
+        icon: IconLayoutNavbar,
+        type: "page"
+      },
+      {
+        name: "Pricing Page",
+        icon: IconLayoutNavbar,
+        type: "page"
+      },
+      {
+        name: "Checkout Page",
+        icon: IconLayoutNavbar,
+        type: "page"
+      }
+    ]
+  },
+  {
+    name: "Chat",
+    icon: IconMessage,
+    type: "page"
+  },
+  {
+    name: "Email",
+    icon: IconMail,
+    type: "page"
+  },
+  {
+    name: "Calendar",
+    icon: IconCalendar,
+    type: "page"
+  },
+  {
+    name: "Ecommerce",
+    icon: IconShoppingCart,
+    type: "category",
+    children: [
+      {
+        name: "Products",
+        icon: IconShoppingCart,
+        type: "page"
+      },
+      {
+        name: "Categories",
+        icon: IconShoppingCart,
+        type: "page"
+      },
+      {
+        name: "Shopping & Delivery",
+        icon: IconShoppingCart,
+        type: "page"
+      },
+      {
+        name: "Location",
+        icon: IconShoppingCart,
+        type: "page"
+      }
+    ]
+  },
+  {
+    name: "Sign In",
+    icon: IconLogin,
+    type: "page"
+  },
+  {
+    name: "Sign Out",
+    icon: IconLogout,
+    type: "page"
+  },
+  {
+    name: "Support",
+    icon: IconHeartPlus,
+    type: "page"
+  },
+  {
+    name: "Documentation",
+    icon: IconBook,
+    type: "page"
+  }
+]
+
+const NavigationMenu = ({ item, level }: { level: number; item: NavigationItem }) => {
+  if (item.type === "page") {
+    return (
+      <div
+        className="focus-visible:ring-ring/50 flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px] *:[svg]:size-4 *:[svg]:shrink-0"
+        style={{ paddingLeft: `${level === 0 ? 0.25 : 1.75}rem` }}
+      >
+        {level === 0 ? <item.icon /> : <IconCircle />}
+        <span className="text-sm">{item.name}</span>
+      </div>
+    )
+  }
+
+  return (
+    <Collapsible
+      className="flex flex-col gap-0 transition-[gap] data-expanded:gap-1.5"
+      style={{ paddingLeft: `${level === 0 ? 0 : 1.5}rem` }}
+    >
+      <Collapsible.Trigger className="focus-visible:ring-ring/50 group/collapsible flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px] *:[svg]:size-4 *:[svg]:shrink-0">
+        {level === 0 ? <item.icon /> : <IconCircle />}
+        <span className="flex-1 text-start text-sm">{item.name}</span>
+        <IconChevronRight className="size-4 shrink-0 transition-transform group-data-expanded/collapsible:rotate-90" />
+      </Collapsible.Trigger>
+      <Collapsible.Content className="flex flex-col gap-1.5">
+        {item.children.map((item) => (
+          <NavigationMenu item={item} key={item.name} level={level + 1} />
+        ))}
+      </Collapsible.Content>
+    </Collapsible>
+  )
+}
+
+const SheetWithNavigationMenuDemo = () => {
+  return (
+    <Sheet>
+      <Button variant="outline">Navigation Menu</Button>
+      <Sheet.Content position="left">
+        <Sheet.Header>
+          <Sheet.Title className="pl-1">Menu</Sheet.Title>
+        </Sheet.Header>
+        <Sheet.Body className="flex flex-col gap-2.5">
+          {navigationMenu.map((item) => (
+            <NavigationMenu item={item} key={item.name} level={0} />
+          ))}
+        </Sheet.Body>
+      </Sheet.Content>
+    </Sheet>
+  )
+}
+
+export default SheetWithNavigationMenuDemo

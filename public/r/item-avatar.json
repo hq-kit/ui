@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-avatar",
+  "title": "item-avatar",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-avatar.tsx",
+      "content": "import { Plus } from \"lucide-react\"\nimport { Avatar } from \"@/components/ui/avatar\"\nimport { Button } from \"@/components/ui/button\"\nimport { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nexport default function ItemAvatar() {\n  return (\n    <div className=\"flex w-full max-w-lg flex-col gap-6\">\n      <Item variant=\"outline\">\n        <ItemMedia>\n          <Avatar className=\"size-10\">\n            <Avatar.Image src=\"https://github.com/evilrabbit.png\" />\n            <Avatar.Fallback>ER</Avatar.Fallback>\n          </Avatar>\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Evil Rabbit</ItemTitle>\n          <ItemDescription>Last seen 5 months ago</ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button aria-label=\"Invite\" className=\"rounded-full\" size=\"icon-sm\" variant=\"outline\">\n            <Plus />\n          </Button>\n        </ItemActions>\n      </Item>\n      <Item variant=\"outline\">\n        <ItemMedia>\n          <div className=\"flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale\">\n            <Avatar className=\"hidden sm:flex\">\n              <Avatar.Image alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n              <Avatar.Fallback>CN</Avatar.Fallback>\n            </Avatar>\n            <Avatar className=\"hidden sm:flex\">\n              <Avatar.Image alt=\"@maxleiter\" src=\"https://github.com/maxleiter.png\" />\n              <Avatar.Fallback>LR</Avatar.Fallback>\n            </Avatar>\n            <Avatar>\n              <Avatar.Image alt=\"@evilrabbit\" src=\"https://github.com/evilrabbit.png\" />\n              <Avatar.Fallback>ER</Avatar.Fallback>\n            </Avatar>\n          </div>\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>No Team Members</ItemTitle>\n          <ItemDescription>Invite your team to collaborate on this project.</ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button size=\"sm\" variant=\"outline\">\n            Invite\n          </Button>\n        </ItemActions>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

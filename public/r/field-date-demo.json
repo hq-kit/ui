@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-date-demo",
+  "title": "field-date-demo",
+  "dependencies": [
+    "react-aria-components",
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-date-demo.tsx",
+      "content": "\"use client\"\n\nimport type { RangeValue } from \"react-aria-components\"\nimport type { DateValue } from \"react-aria-components/DateField\"\nimport type { TimeValue } from \"react-aria-components/TimeField\"\nimport { Time } from \"@internationalized/date\"\nimport { type FormEvent, useState } from \"react\"\nimport { toast } from \"sonner\"\nimport { Button } from \"@/components/ui/button\"\nimport { Calendar, RangeCalendar } from \"@/components/ui/calendar\"\nimport {\n  type CalendarDate,\n  DateField,\n  DateInput,\n  DatePicker,\n  DatePickerInput,\n  DateRangePicker,\n  DateRangePickerInput,\n  getLocalTimeZone,\n  parseDate,\n  TimeField,\n  today\n} from \"@/components/ui/date-field\"\nimport { FieldError, FieldGroup, Form, Label } from \"@/components/ui/field\"\nimport { PopoverContent } from \"@/components/ui/popover\"\n\nexport default function FieldDateDemo() {\n  const [dob, setDob] = useState<CalendarDate | null>(parseDate(today(getLocalTimeZone()).toString()))\n  const [event, setEvent] = useState<CalendarDate | null>(parseDate(today(getLocalTimeZone()).toString()))\n  const [eventRange, setEventRange] = useState<RangeValue<DateValue> | null>({\n    start: parseDate(today(getLocalTimeZone()).toString()),\n    end: parseDate(today(getLocalTimeZone()).add({ days: 7 }).toString())\n  })\n  const [time, setTime] = useState<TimeValue | null>(new Time(8, 30))\n  const onSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    toast(\"Form submitted\", {\n      description: JSON.stringify(\n        {\n          dob: dob?.toString(),\n          event: event?.toString(),\n          eventRange: `${eventRange?.start?.toString()} - ${eventRange?.end?.toString()}`,\n          time: time?.toString()\n        },\n        null,\n        2\n      )\n    })\n  }\n  return (\n    <Form className=\"w-full\" onSubmit={onSubmit}>\n      <FieldGroup>\n        <DateField isRequired name=\"dob\" onChange={setDob} value={dob}>\n          <Label>DOB</Label>\n          <DateInput />\n          <FieldError />\n        </DateField>\n        <DatePicker isRequired name=\"event\" onChange={setEvent} value={event}>\n          <Label>Event Date</Label>\n          <DatePickerInput />\n          <FieldError />\n          <PopoverContent className=\"w-auto p-0\">\n            <Calendar />\n          </PopoverContent>\n        </DatePicker>\n        <DateRangePicker endName=\"end\" isRequired onChange={setEventRange} startName=\"start\" value={eventRange}>\n          <Label>Event Date</Label>\n          <DateRangePickerInput />\n          <FieldError />\n          <PopoverContent className=\"w-auto p-0\">\n            <RangeCalendar />\n          </PopoverContent>\n        </DateRangePicker>\n        <TimeField isRequired name=\"time\" onChange={setTime} value={time}>\n          <Label>Event time</Label>\n          <DateInput />\n        </TimeField>\n        <Button type=\"submit\">Submit</Button>\n      </FieldGroup>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

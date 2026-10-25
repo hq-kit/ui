@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-field-demo",
+  "title": "color-field-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-field/color-field-demo.tsx",
+      "content": "\"use client\"\n\nimport { ColorField } from \"@/components/ui/colors\"\nimport { Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\n\nexport default function ColorFieldDemo() {\n  return (\n    <ColorField defaultValue=\"#fafafa\">\n      <Label>Color</Label>\n      <Input />\n    </ColorField>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

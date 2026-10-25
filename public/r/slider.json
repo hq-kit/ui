@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "title": "slider",
+  "dependencies": [
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/slider.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\nimport { composeRenderProps } from \"react-aria-components/composeRenderProps\"\nimport {\n  Slider as RACSlider,\n  SliderOutput as RACSliderOutput,\n  SliderFill,\n  type SliderProps,\n  SliderThumb,\n  SliderTrack\n} from \"react-aria-components/Slider\"\n\nconst SliderGroup = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div className=\"flex w-full items-center justify-between gap-x-3 *:data-[slot=icon]:size-5\" {...props} />\n)\n\nconst Slider = ({ className, children, ...props }: SliderProps) => (\n  <RACSlider\n    className={composeRenderProps(className, (className) =>\n      cn(\n        \"group/slider cn-slider relative flex touch-none select-none flex-wrap gap-3 data-disabled:opacity-50\",\n        \"data-[orientation=horizontal]:w-full\",\n        \"data-[orientation=vertical]:h-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center\",\n        className\n      )\n    )}\n    data-slot=\"slider\"\n    {...props}\n  >\n    {({ state }) => (\n      <>\n        {children}\n        <SliderTrack className=\"cn-slider-track relative block grow select-none\" data-slot=\"slider-track\">\n          <SliderFill className=\"cn-slider-range select-none rounded-[inherit]\" data-slot=\"slider-range\" />\n          {state.values.map((_, i) => (\n            <SliderThumb\n              className=\"cn-slider-thumb select-none disabled:pointer-events-none disabled:opacity-50 group-data-[orientation=horizontal]/slider:top-1/2 group-data-[orientation=vertical]/slider:left-1/2\"\n              data-slot=\"slider-thumb\"\n              index={i}\n              key={i}\n            />\n          ))}\n        </SliderTrack>\n      </>\n    )}\n  </RACSlider>\n)\n\nconst SliderOutput = ({ className, ...props }: ComponentProps<typeof RACSliderOutput>) => (\n  <RACSliderOutput\n    className={composeRenderProps(className, (className) =>\n      cn(\"cn-progress-value group-data-[orientation=vertical]/slider:mx-auto\", className)\n    )}\n    {...props}\n  />\n)\n\nSlider.Group = SliderGroup\nSlider.Output = SliderOutput\n\nexport { Slider, SliderGroup, SliderOutput }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

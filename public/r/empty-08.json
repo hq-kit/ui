@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-08",
+  "title": "empty-08",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-08.tsx",
+      "content": "import { IconBell } from \"@tabler/icons-react\"\nimport { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"No Notifications\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconBell />\n      </EmptyMedia>\n      <EmptyTitle>No notifications</EmptyTitle>\n      <EmptyDescription>You're all caught up! We'll notify you when something new happens.</EmptyDescription>\n    </EmptyHeader>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

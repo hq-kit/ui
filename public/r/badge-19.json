@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "badge-19",
+  "title": "badge-19",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/badge/badge-19.tsx",
+      "content": "import { IconAlertCircle } from \"@tabler/icons-react\"\nimport { Badge } from \"@/components/ui/badge\"\n\nconst BadgePendingDemo = () => {\n  return (\n    <Badge\n      className=\"rounded-sm border-amber-600 text-amber-600 dark:border-amber-400 dark:text-amber-400 [a&]:hover:bg-amber-600/10 [a&]:hover:text-amber-600/90 dark:[a&]:hover:bg-amber-400/10 dark:[a&]:hover:text-amber-400/90\"\n      variant=\"outline\"\n    >\n      <IconAlertCircle className=\"size-3\" />\n      Pending\n    </Badge>\n  )\n}\n\nexport default BadgePendingDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

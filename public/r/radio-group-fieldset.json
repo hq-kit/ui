@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "radio-group-fieldset",
+  "title": "radio-group-fieldset",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/radio"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/radio/radio-group-fieldset.tsx",
+      "content": "import { Description, FieldSet, Legend } from \"@/components/ui/field\"\nimport { Radio, RadioGroup } from \"@/components/ui/radio\"\n\nexport default function RadioGroupFieldset() {\n  return (\n    <FieldSet className=\"w-full max-w-xs\">\n      <Legend variant=\"label\">Subscription Plan</Legend>\n      <Description>Yearly and lifetime plans offer significant savings.</Description>\n      <RadioGroup defaultValue=\"monthly\">\n        <Radio id=\"plan-monthly\" value=\"monthly\">\n          Monthly ($9.99/month)\n        </Radio>\n        <Radio id=\"plan-yearly\" value=\"yearly\">\n          Yearly ($99.99/year)\n        </Radio>\n        <Radio id=\"plan-lifetime\" value=\"lifetime\">\n          Lifetime ($299.99)\n        </Radio>\n      </RadioGroup>\n    </FieldSet>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

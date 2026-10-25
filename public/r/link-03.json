@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "link-03",
+  "title": "link-03",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge",
+    "http://localhost:3000/r/link"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/link/link-03.tsx",
+      "content": "import { badgeVariants } from \"@/components/ui/badge\"\nimport { Link } from \"@/components/ui/link\"\n\nexport default function Link03() {\n  return (\n    <Link className={badgeVariants()} href=\"#\">\n      Link Badge\n    </Link>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

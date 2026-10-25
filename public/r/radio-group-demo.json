@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "radio-group-demo",
+  "title": "radio-group-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/radio"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/radio/radio-group-demo.tsx",
+      "content": "import { Radio, RadioGroup } from \"@/components/ui/radio\"\n\nexport default function RadioGroupDemo() {\n  return (\n    <RadioGroup className=\"w-fit\" defaultValue=\"comfortable\">\n      <Radio id=\"r1\" value=\"default\">\n        Default\n      </Radio>\n      <Radio id=\"r2\" value=\"comfortable\">\n        Comfortable\n      </Radio>\n      <Radio id=\"r3\" value=\"compact\">\n        Compact\n      </Radio>\n    </RadioGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

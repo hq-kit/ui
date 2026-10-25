@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "button-icon",
+  "title": "button-icon",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/button/button-icon.tsx",
+      "content": "import { IconBrandNextjs } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default () => {\n  return (\n    <Button size={\"icon\"}>\n      <IconBrandNextjs />\n    </Button>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

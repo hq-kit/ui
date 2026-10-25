@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "radio-group-description",
+  "title": "radio-group-description",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/radio"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/radio/radio-group-description.tsx",
+      "content": "import { Description, Label } from \"@/components/ui/field\"\nimport { Radio, RadioGroup } from \"@/components/ui/radio\"\n\nexport default function RadioGroupDescription() {\n  return (\n    <RadioGroup className=\"w-fit\" defaultValue=\"comfortable\">\n      <Radio value=\"default\">\n        <Label>Default</Label>\n        <Description>Standard spacing for most use cases.</Description>\n      </Radio>\n      <Radio value=\"comfortable\">\n        <Label>Comfortable</Label>\n        <Description>More space between elements.</Description>\n      </Radio>\n      <Radio value=\"compact\">\n        <Label>Compact</Label>\n        <Description>Minimal spacing for dense layouts.</Description>\n      </Radio>\n    </RadioGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

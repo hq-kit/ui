@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "chart-radial-shape",
+  "title": "chart-radial-shape",
+  "dependencies": [
+    "@tabler/icons-react",
+    "recharts"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/chart"
+  ],
+  "files": [
+    {
+      "path": "components/samples/chart/radial-chart/chart-radial-shape.tsx",
+      "content": "\"use client\"\n\nimport { IconTrendingUp } from \"@tabler/icons-react\"\nimport { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from \"recharts\"\nimport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from \"@/components/ui/card\"\nimport { type ChartConfig, ChartContainer } from \"@/components/ui/chart\"\n\nexport const description = \"A radial chart with a custom shape\"\n\nconst chartData = [{ browser: \"safari\", visitors: 1260, fill: \"var(--color-safari)\" }]\n\nconst chartConfig = {\n  visitors: {\n    label: \"Visitors\"\n  },\n  safari: {\n    label: \"Safari\",\n    color: \"var(--chart-2)\"\n  }\n} satisfies ChartConfig\n\nexport default function ChartRadialShape() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Radial Chart - Shape</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer className=\"mx-auto aspect-square max-h-[250px]\" config={chartConfig}>\n          <RadialBarChart data={chartData} endAngle={100} innerRadius={65} outerRadius={95}>\n            <PolarGrid\n              className=\"first:fill-muted last:fill-background\"\n              gridType=\"circle\"\n              polarRadius={[86, 74]}\n              radialLines={false}\n              stroke=\"none\"\n            />\n            <RadialBar background dataKey=\"visitors\" />\n            <PolarRadiusAxis axisLine={false} tick={false} tickLine={false}>\n              <Label\n                content={({ viewBox }) => {\n                  if (viewBox && \"cx\" in viewBox && \"cy\" in viewBox) {\n                    return (\n                      <text dominantBaseline=\"middle\" textAnchor=\"middle\" x={viewBox.cx} y={viewBox.cy}>\n                        <tspan className=\"fill-foreground font-bold text-4xl\" x={viewBox.cx} y={viewBox.cy}>\n                          {chartData[0].visitors.toLocaleString()}\n                        </tspan>\n                        <tspan className=\"fill-muted-foreground\" x={viewBox.cx} y={(viewBox.cy || 0) + 24}>\n                          Visitors\n                        </tspan>\n                      </text>\n                    )\n                  }\n                }}\n              />\n            </PolarRadiusAxis>\n          </RadialBarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <IconTrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">Showing total visitors for the last 6 months</div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

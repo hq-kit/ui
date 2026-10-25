@@ -1,0 +1,53 @@
+---
+title: Input OTP
+description: Accessible one-time password component with copy paste functionality.
+references: ['https://github.com/guilhermerodz/input-otp']
+published: true
+order: 10
+---
+
+## Installation
+<Install component='input-otp' />
+
+
+## Examples
+
+### Separator
+
+Use the `<InputOTPSeparator />` component to add a separator between input groups.
+
+<Demo component='forms/input-otp/input-otp-separator' />
+
+### Disabled
+
+Use the `disabled` prop to disable the input.
+
+<Demo component='forms/input-otp/input-otp-disabled' />
+
+### Controlled
+
+Use the `value` and `onChange` props to control the input value.
+
+<Demo component='forms/input-otp/input-otp-controlled' />
+
+### Invalid
+
+Use `aria-invalid` on the slots to show an error state.
+
+<Demo component='forms/input-otp/input-otp-invalid' />
+
+### Four Digits
+
+A common pattern for PIN codes. This uses the `pattern={REGEXP_ONLY_DIGITS}` prop.
+
+<Demo component='forms/input-otp/input-otp-four-digits' />
+
+### Alphanumeric
+
+Use `REGEXP_ONLY_DIGITS_AND_CHARS` to accept both letters and numbers.
+
+<Demo component='forms/input-otp/input-otp-alphanumeric' />
+
+### Form
+
+<Demo component='forms/input-otp/input-otp-form' />

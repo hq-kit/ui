@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "badge-07",
+  "title": "badge-07",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/badge/badge-07.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\"\n\nconst BadgeNumberDemo = () => {\n  return <Badge className=\"h-5 min-w-5 px-1 tabular-nums\">8</Badge>\n}\n\nexport default BadgeNumberDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

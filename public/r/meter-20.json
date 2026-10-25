@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "meter-20",
+  "title": "meter-20",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/meter"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/meter/meter-20.tsx",
+      "content": "import { Label } from \"@/components/ui/field\"\nimport { Meter } from \"@/components/ui/meter\"\n\nconst Example = () => (\n  <Meter value={35}>\n    <div className=\"space-y-1\">\n      <Label>Project Setup</Label>\n      <p className=\"text-muted-foreground text-xs\">Installing dependencies</p>\n    </div>\n    <Meter.Value />\n  </Meter>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

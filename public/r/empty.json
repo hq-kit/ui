@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "title": "empty",
+  "dependencies": [
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/empty.tsx",
+      "content": "import type { ComponentProps } from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"cn\"\n\nconst Empty = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div\n    className={cn(\n      \"cn-empty flex w-full min-w-0 flex-1 flex-col items-center justify-center text-balance text-center\",\n      className\n    )}\n    data-slot=\"empty\"\n    {...props}\n  />\n)\n\nconst EmptyHeader = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div\n    className={cn(\"cn-empty-header flex max-w-sm flex-col items-center\", className)}\n    data-slot=\"empty-header\"\n    {...props}\n  />\n)\n\nconst emptyMediaVariants = cva(\n  \"cn-empty-media flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"cn-empty-media-default\",\n        icon: \"cn-empty-media-icon\"\n      }\n    },\n    defaultVariants: {\n      variant: \"default\"\n    }\n  }\n)\n\nconst EmptyMedia = ({\n  className,\n  variant = \"default\",\n  ...props\n}: ComponentProps<\"div\"> & VariantProps<typeof emptyMediaVariants>) => (\n  <div\n    className={cn(emptyMediaVariants({ variant, className }))}\n    data-slot=\"empty-icon\"\n    data-variant={variant}\n    {...props}\n  />\n)\n\nconst EmptyTitle = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div className={cn(\"cn-empty-title cn-font-heading\", className)} data-slot=\"empty-title\" {...props} />\n)\n\nconst EmptyDescription = ({ className, ...props }: ComponentProps<\"p\">) => (\n  <div\n    className={cn(\n      \"cn-empty-description text-muted-foreground [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4\",\n      className\n    )}\n    data-slot=\"empty-description\"\n    {...props}\n  />\n)\n\nconst EmptyContent = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div\n    className={cn(\"cn-empty-content flex w-full min-w-0 max-w-sm flex-col items-center text-balance\", className)}\n    data-slot=\"empty-content\"\n    {...props}\n  />\n)\n\nEmpty.Content = EmptyContent\nEmpty.Description = EmptyDescription\nEmpty.Header = EmptyHeader\nEmpty.Media = EmptyMedia\nEmpty.Title = EmptyTitle\n\nexport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

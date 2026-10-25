@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-file",
+  "title": "input-file",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input/input-file.tsx",
+      "content": "import { Description, Field, Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\n\nexport default function InputFile() {\n  return (\n    <Field>\n      <Label htmlFor=\"picture\">Picture</Label>\n      <Input id=\"picture\" type=\"file\" />\n      <Description>Select a picture to upload.</Description>\n    </Field>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

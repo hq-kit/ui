@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "slider-range-demo",
+  "title": "slider-range-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/slider"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/slider/slider-range-demo.tsx",
+      "content": "\"use client\"\n\nimport { Label } from \"@/components/ui/field\"\nimport { Slider, SliderOutput } from \"@/components/ui/slider\"\n\nexport default function SliderRangeDemo() {\n  return (\n    <Slider defaultValue={[25, 75]}>\n      <Label>Distance Range</Label>\n      <SliderOutput />\n    </Slider>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

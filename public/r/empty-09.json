@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-09",
+  "title": "empty-09",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-09.tsx",
+      "content": "import { IconMessage, IconPlus } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"No Messages\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconMessage />\n      </EmptyMedia>\n      <EmptyTitle>No messages yet</EmptyTitle>\n      <EmptyDescription>Start a conversation by sending your first message.</EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button>\n        <IconPlus />\n        New Message\n      </Button>\n    </EmptyContent>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

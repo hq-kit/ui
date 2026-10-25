@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tabs-16",
+  "title": "tabs-16",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/tabs"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/tabs/tabs-16.tsx",
+      "content": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\"\n\nconst tabs = [\n  {\n    name: \"Explore\",\n    value: \"explore\",\n    content: (\n      <>\n        Discover <span className=\"font-semibold text-foreground\">fresh ideas</span>, trending topics, and hidden gems\n        curated just for you. Start exploring and let your curiosity lead the way!\n      </>\n    )\n  },\n  {\n    name: \"Favorites\",\n    value: \"favorites\",\n    content: (\n      <>\n        All your <span className=\"font-semibold text-foreground\">favorites</span> are saved here. Revisit articles,\n        collections, and moments you love, any time you want a little inspiration.\n      </>\n    )\n  },\n  {\n    name: \"Surprise Me\",\n    value: \"surprise\",\n    content: (\n      <>\n        <span className=\"font-semibold text-foreground\">Surprise!</span> Here&apos;s something unexpected—a fun fact, a\n        quirky tip, or a daily challenge. Come back for a new surprise every day!\n      </>\n    )\n  }\n]\n\nconst TabsVerticalUnderlineDemo = () => {\n  return (\n    <div className=\"w-full max-w-md\">\n      <Tabs defaultSelectedKey=\"explore\" orientation=\"vertical\">\n        <TabsList className=\"h-full flex-col rounded-none border-l bg-background p-0\">\n          {tabs.map((tab) => (\n            <TabsTrigger\n              className=\"size-full justify-start data-selected:*:data-[slot=selected-indicator]:border-primary *:data-[slot=selected-indicator]:left-0 *:data-[slot=selected-indicator]:rounded-none *:data-[slot=selected-indicator]:border-l-2 *:data-[slot=selected-indicator]:bg-background *:data-[slot=selected-indicator]:shadow-none dark:*:data-[slot=selected-indicator]:border-primary\"\n              id={tab.value}\n              key={tab.value}\n            >\n              {tab.name}\n            </TabsTrigger>\n          ))}\n        </TabsList>\n\n        {tabs.map((tab) => (\n          <TabsContent id={tab.value} key={tab.value}>\n            <p className=\"text-muted-foreground text-sm\">{tab.content}</p>\n          </TabsContent>\n        ))}\n      </Tabs>\n    </div>\n  )\n}\n\nexport default TabsVerticalUnderlineDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

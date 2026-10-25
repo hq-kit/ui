@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "date-range-picker-validation",
+  "title": "date-range-picker-validation",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/date-range-picker/date-range-picker-validation.tsx",
+      "content": "\"use client\"\n\nimport { Form } from \"react-aria-components\"\nimport { Button } from \"@/components/ui/button\"\nimport { RangeCalendar } from \"@/components/ui/calendar\"\nimport { DateRangePicker, DateRangePickerInput } from \"@/components/ui/date-field\"\nimport { FieldError, Label } from \"@/components/ui/field\"\nimport { PopoverContent } from \"@/components/ui/popover\"\n\nexport default function DateRangePickerValidation() {\n  return (\n    <Form className=\"space-y-3\" onSubmit={(e) => e.preventDefault()}>\n      <DateRangePicker isRequired>\n        <Label>Event date</Label>\n        <DateRangePickerInput />\n        <PopoverContent className=\"w-auto p-0\">\n          <RangeCalendar />\n        </PopoverContent>\n        <FieldError />\n      </DateRangePicker>\n      <Button type=\"submit\">Submit</Button>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

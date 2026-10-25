@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "calendar-time",
+  "title": "calendar-time",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/calendar/calendar-time.tsx",
+      "content": "\"use client\"\n\nimport { Calendar } from \"@/components/ui/calendar\"\nimport { Card, CardContent, CardFooter } from \"@/components/ui/card\"\nimport { DateInput, TimeField } from \"@/components/ui/date-field\"\nimport { FieldGroup, Label } from \"@/components/ui/field\"\n\nexport default function CalendarWithTime() {\n  return (\n    <Card className=\"mx-auto w-fit\" size=\"sm\">\n      <CardContent>\n        <Calendar className=\"p-0\" />\n      </CardContent>\n      <CardFooter className=\"border-t bg-card\">\n        <FieldGroup>\n          <TimeField>\n            <Label>Start Time</Label>\n            <DateInput />\n          </TimeField>\n          <TimeField>\n            <Label>End Time</Label>\n            <DateInput />\n          </TimeField>\n        </FieldGroup>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

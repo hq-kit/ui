@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "switch-disabled",
+  "title": "switch-disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/switch"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/switch/switch-disabled.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\"\n\nexport default function SwitchDisabled() {\n  return (\n    <div className=\"max-w-sm\">\n      <Switch id=\"switch-disabled-unchecked\" isDisabled>\n        Disabled\n      </Switch>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

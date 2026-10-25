@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "separator-14",
+  "title": "separator-14",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/samples/surfaces/separator/separator-14.tsx",
+      "content": "const Example = () => (\n  <div className=\"w-full space-y-4 text-center\">\n    <p className=\"text-sm\">Above</p>\n    <div className=\"h-px w-full bg-linear-to-r from-transparent via-border to-transparent\" />\n    <p className=\"text-sm\">Below</p>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

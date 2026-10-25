@@ -1,0 +1,35 @@
+---
+title: Tag Group
+description: A tag group is a focusable list of labels, categories, keywords, filters, or other items, with support for keyboard navigation, selection, and removal.
+references: ['https://react-aria.adobe.com/TagGroup#api']
+published: true
+order: 11
+---
+
+## Installation
+<Install component='tag' />
+
+
+## Examples
+
+### With remove button
+Tags within the group can include a removal button.
+<Demo component='collections/tag-group/tag-group-with-remove-demo' />
+
+### Controlled
+Manage the values of the tag group through the `value` prop.
+<Demo component='collections/tag-group/tag-group-controlled-demo' />
+
+### Links
+Incorporate a hyperlink within the tag group using the `href` prop.
+<Demo component='collections/tag-group/tag-group-href-demo' />
+
+
+<Note intent="warning">
+  For client-side routing, React Aria recommends using the <code className="font-semibold">onAction</code> event to handle navigation programmatically instead of passing an href prop.
+  This is because some collection items cannot be rendered as native elements due to HTML specification limitations.
+</Note>
+
+### Disabled
+Disable tags either by setting the `isDisabled` prop or using `disabledKeys` on the `TagGroup`.
+<Demo component='collections/tag-group/tag-group-disabled-demo' />

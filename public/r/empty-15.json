@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-15",
+  "title": "empty-15",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-15.tsx",
+      "content": "import { IconFilter, IconRotateClockwise } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"Clear Filters Suggestion\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconFilter />\n      </EmptyMedia>\n      <EmptyTitle>No results with current filters</EmptyTitle>\n      <EmptyDescription>\n        Your current filter combination returned no results. Try removing some filters or starting over.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <div className=\"flex gap-2\">\n        <Button>\n          <IconRotateClockwise />\n          Clear All Filters\n        </Button>\n        <Button variant=\"outline\">Browse All</Button>\n      </div>\n    </EmptyContent>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

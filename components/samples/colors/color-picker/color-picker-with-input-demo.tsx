@@ -1,0 +1,33 @@
+"use client"
+
+import { useState } from "react"
+import { parseColor } from "react-aria-components/ColorArea"
+import { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch } from "@/components/ui/colors"
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input"
+import { Popover, PopoverContent } from "@/components/ui/popover"
+
+export default function ColorPickerDemo() {
+  const [color, setColor] = useState(parseColor("#123456"))
+  return (
+    <ColorPicker defaultValue="rgb(120,140,200)" onChange={setColor} value={color}>
+      <InputGroup>
+        <InputGroupAddon>
+          <Popover>
+            <InputGroupButton size="icon-sm">
+              <ColorSwatch />
+            </InputGroupButton>
+            <PopoverContent>
+              <div className="space-y-2">
+                <ColorArea className="w-full" colorSpace="hsl" xChannel="hue" yChannel="lightness" />
+                <ColorSlider channel="saturation" colorSpace="hsl"></ColorSlider>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </InputGroupAddon>
+        <ColorField aria-label="Color">
+          <InputGroupInput />
+        </ColorField>
+      </InputGroup>
+    </ColorPicker>
+  )
+}

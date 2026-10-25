@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "card-14",
+  "title": "card-14",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card"
+  ],
+  "files": [
+    {
+      "path": "components/samples/surfaces/card/card-14.tsx",
+      "content": "\"use client\"\n\nimport { IconX } from \"@tabler/icons-react\"\nimport { useState } from \"react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\n\nconst CardActionDemo = () => {\n  const [isActive, setIsActive] = useState(true)\n\n  if (!isActive) return <Button onPress={() => setIsActive(true)}>Restore</Button>\n\n  return (\n    <Card className=\"relative max-w-lg shadow-none\">\n      <Button\n        className=\"absolute top-2 right-2 rounded-full\"\n        onPress={() => setIsActive(false)}\n        size=\"icon\"\n        variant=\"ghost\"\n      >\n        <IconX />\n        <span className=\"sr-only\">Close</span>\n      </Button>\n      <CardHeader>\n        <CardTitle className=\"text-center\">Have a project in mind</CardTitle>\n      </CardHeader>\n      <CardContent className=\"flex flex-col gap-4 text-center\">\n        <p>Let&apos;s discuss! Our Assistant team is excited to hear about your projects, ideas and questions. </p>\n        <Button>Contact Our Team</Button>\n      </CardContent>\n    </Card>\n  )\n}\n\nexport default CardActionDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

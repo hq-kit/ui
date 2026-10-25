@@ -1,0 +1,46 @@
+---
+title: List Box
+description: A listbox displays a list of options and allows a user to select one or more of them.
+references: ['https://react-aria.adobe.com/ListBox#api']
+published: true
+order: 8
+---
+
+## Installation
+<Install component='list-box' />
+
+## Examples
+
+### Multiple selection
+To enable multiple selections, set the `selectionMode` prop to `multiple`. This prop has no default value, so it must be explicitly defined.
+<Demo component='collections/list-box/list-box-multiple-demo' />
+
+### Description
+You can enhance list items by providing additional details using the `Listbox.Description` component.
+<Demo component='collections/list-box/list-box-description-demo' />
+
+### Section
+Group items in a ListBox using sections for better organization.
+<Demo component='collections/list-box/list-box-section-demo' />
+
+### Drag and drop
+Enable drag-and-drop functionality in the ListBox by using the `dragAndDropHooks` prop with the `useDragAndDrop` hook. This allows users to rearrange items, insert new entries, or manage data across the list.
+<Demo component='collections/list-box/list-box-rearrange-demo' />
+
+### Infinite scrolling
+ListBox can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user scrolls down, improving performance and user experience.
+<Demo component='collections/list-box/list-box-infinite-scroll-demo' />
+
+### Controlled
+To enable controlled mode, set the `selectionMode` prop to `single`. This allows you to manage the ListBox selection using the `selectedKey` prop.
+<Demo component='collections/list-box/list-box-controlled-demo' />
+
+### Disabled
+Disable specific ListBox items to restrict user interaction.
+<Demo component='collections/list-box/list-box-disabled-demo' />
+
+You can also disable an item directly by passing the `isDisabled` prop to `ListBoxItem`.
+
+```tsx
+<ListBoxItem isDisabled>Disabled</ListBoxItem>
+```

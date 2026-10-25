@@ -1,39 +1,114 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.2/schema.json",
-  "vcs": {
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
     "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
+    "actions": {
+      "preset": "recommended",
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              {
+                "type": true
+              }
+            ]
+          }
+        },
+        "useSortedAttributes": "on",
+        "useSortedProperties": "on"
+      }
+    }
   },
   "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": ["**/*.{js,jsx,ts,tsx,json}", "!node_modules", "!.next", "!.source", "!dist"],
+    "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
+    "bracketSpacing": true,
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "lineWidth": 120
   },
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "enabled": true,
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "quoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentStyle": "space",
+      "trailingCommas": "none"
     }
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
-    },
-    "domains": {
-      "next": "recommended",
-      "react": "recommended"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useSemanticElements": "off",
+        "useValidAnchor": "off"
+      },
+      "complexity": {
+        "useArrowFunction": "error"
+      },
+      "correctness": {
+        "noChildrenProp": "off",
+        "noUnknownFunction": "error",
+        "noUnusedImports": {
+          "fix": "safe",
+          "level": "error"
+        },
+        "useExhaustiveDependencies": "off",
+        "useHookAtTopLevel": "error"
+      },
+      "nursery": {
+        "useTailwindSortedClasses": {
+          "fix": "safe",
+          "level": "info"
+        }
+      },
+      "performance": {
+        "noImgElement": "off"
+      },
+      "preset": "recommended",
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "warn",
+        "useImportType": "error",
+        "useNumberNamespace": "off",
+        "useTemplate": {
+          "level": "warn",
+          "fix": "safe"
+        }
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["assert", "error", "info", "warn"]
+          }
+        },
+        "noExplicitAny": "off"
       }
     }
+  },
+  "tailwind": {
+    "mergeFunctions": ["clsx", "cn", "twMerge"],
+    "variantFunctions": ["cva", "tv"],
+    "attributes": ["class", "className"]
   }
 }

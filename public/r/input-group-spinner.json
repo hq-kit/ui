@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-spinner",
+  "title": "input-group-spinner",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/spinner"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-spinner.tsx",
+      "content": "import { LoaderIcon } from \"lucide-react\"\nimport { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from \"@/components/ui/input\"\nimport { Spinner } from \"@/components/ui/spinner\"\n\nexport default function InputGroupSpinner() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"Searching...\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Processing...\" />\n        <InputGroupAddon>\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Saving changes...\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText>Saving...</InputGroupText>\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Refreshing data...\" />\n        <InputGroupAddon>\n          <LoaderIcon className=\"animate-spin\" />\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText className=\"text-muted-foreground\">Please wait...</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

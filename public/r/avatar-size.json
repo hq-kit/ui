@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "avatar-size",
+  "title": "avatar-size",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar"
+  ],
+  "files": [
+    {
+      "path": "components/samples/media/avatar/avatar-size.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\n\nexport default function AvatarSizeExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2 grayscale\">\n      <Avatar size=\"sm\">\n        <AvatarImage alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"lg\">\n        <AvatarImage alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>{\" \"}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

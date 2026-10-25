@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "switch-demo",
+  "title": "switch-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/switch"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/switch/switch-demo.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\"\n\nexport default function SwitchDemo() {\n  return <Switch id=\"airplane-mode\">Airplane Mode</Switch>\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

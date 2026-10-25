@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "separator-02",
+  "title": "separator-02",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/separator"
+  ],
+  "files": [
+    {
+      "path": "components/samples/surfaces/separator/separator-02.tsx",
+      "content": "import { Separator } from \"@/components/ui/separator\"\n\nconst Example = () => (\n  <div className=\"flex h-20 items-center space-x-4\">\n    <p className=\"text-sm\">Left</p>\n    <Separator orientation=\"vertical\" />\n    <p className=\"text-sm\">Center</p>\n    <Separator orientation=\"vertical\" />\n    <p className=\"text-sm\">Right</p>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

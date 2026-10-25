@@ -1,0 +1,82 @@
+---
+title: Avatar
+description: The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.
+published: true
+order: 1
+---
+
+## Installation
+<Install component='avatar' />
+
+## Examples
+
+### Basic
+
+A basic avatar component with an image and a fallback.
+
+<Demo component='media/avatar/avatar-basic' />
+
+### Badge
+
+Use the `AvatarBadge` component to add a badge to the avatar. The badge is positioned at the bottom right of the avatar.
+
+<Demo component='media/avatar/avatar-badge' />
+
+Use the `className` prop to add custom styles to the badge such as custom colors, sizes, etc.
+
+```tsx showLineNumbers
+<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN">
+  <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+</Avatar>
+```
+
+### Badge with Icon
+
+You can also use an icon inside `<AvatarBadge>`.
+
+<Demo component='media/avatar/avatar-badge-icon' />
+
+### Avatar Group
+
+Use the `AvatarGroup` component to add a group of avatars.
+
+<Demo component='media/avatar/avatar-group' />
+
+### Avatar Group Count
+
+Use `<AvatarGroupCount>` to add a count to the group.
+
+<Demo component='media/avatar/avatar-group-count' />
+
+### Avatar Group with Icon
+
+You can also use an icon inside `<AvatarGroupCount>`.
+
+<Demo component='media/avatar/avatar-group-count-icon' />
+
+### Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+<Demo component='media/avatar/avatar-size' />
+
+### Dropdown
+
+You can use the `Avatar` component as a trigger for a dropdown menu.
+
+<Demo component='media/avatar/avatar-dropdown' />
+
+## API Reference
+
+### Avatar
+
+The `Avatar` component is the root component that wraps the avatar image and fallback.
+
+| Prop        | Type                        | Default       |
+| ----------- | --------------------------- | ------------- |
+| `size`      | `"default" \| "sm" \| "lg"` | `"default"`   |
+| `className` | `string`                    | -             |
+| `src`       | `string`                    | -             |
+| `alt`       | `string`                    | -             |
+| `className` | `string`                    | -             |
+| `fallback`  | `string`                    | `<IconUser/>` |

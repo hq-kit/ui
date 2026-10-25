@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "alert-25",
+  "title": "alert-25",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/alert"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/alert/alert-25.tsx",
+      "content": "import { IconAlertTriangle } from \"@tabler/icons-react\"\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\n\nconst AlertSoftDestructiveDemo = () => {\n  return (\n    <Alert className=\"border-none bg-destructive/10 text-destructive\">\n      <IconAlertTriangle />\n      <AlertTitle>Upload failed</AlertTitle>\n      <AlertDescription className=\"text-destructive/80\">\n        Something went wrong. Please try again or use a different file format.\n      </AlertDescription>\n    </Alert>\n  )\n}\n\nexport default AlertSoftDestructiveDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

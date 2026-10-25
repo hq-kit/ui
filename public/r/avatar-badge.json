@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "avatar-badge",
+  "title": "avatar-badge",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar"
+  ],
+  "files": [
+    {
+      "path": "components/samples/media/avatar/avatar-badge.tsx",
+      "content": "import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\n\nexport default function AvatarWithBadge() {\n  return (\n    <Avatar>\n      <AvatarImage alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n      <AvatarFallback>CN</AvatarFallback>\n      <AvatarBadge className=\"bg-green-600 dark:bg-green-800\" />\n    </Avatar>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

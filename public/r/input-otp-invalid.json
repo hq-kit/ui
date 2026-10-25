@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-otp-invalid",
+  "title": "input-otp-invalid",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/input-otp"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-otp/input-otp-invalid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from \"@/components/ui/input-otp\"\n\nexport default function InputOTPInvalid() {\n  const [value, setValue] = React.useState(\"000000\")\n\n  return (\n    <InputOTP maxLength={6} onChange={setValue} value={value}>\n      <InputOTPGroup>\n        <InputOTPSlot aria-invalid index={0} />\n        <InputOTPSlot aria-invalid index={1} />\n      </InputOTPGroup>\n      <InputOTPSeparator />\n      <InputOTPGroup>\n        <InputOTPSlot aria-invalid index={2} />\n        <InputOTPSlot aria-invalid index={3} />\n      </InputOTPGroup>\n      <InputOTPSeparator />\n      <InputOTPGroup>\n        <InputOTPSlot aria-invalid index={4} />\n        <InputOTPSlot aria-invalid index={5} />\n      </InputOTPGroup>\n    </InputOTP>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "time-field-validation",
+  "title": "time-field-validation",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/time-field/time-field-validation.tsx",
+      "content": "\"use client\"\n\nimport { Form } from \"react-aria-components\"\nimport { Button } from \"@/components/ui/button\"\nimport { DateInput, TimeField } from \"@/components/ui/date-field\"\nimport { FieldError, Label } from \"@/components/ui/field\"\n\nexport default function TimeFieldValidation() {\n  return (\n    <Form onSubmit={(e) => e.preventDefault()}>\n      <TimeField className=\"mb-2\" isRequired>\n        <Label>Event time</Label>\n        <DateInput />\n        <FieldError />\n      </TimeField>\n      <Button type=\"submit\">Submit</Button>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

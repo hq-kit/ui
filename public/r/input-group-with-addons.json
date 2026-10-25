@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-with-addons",
+  "title": "input-group-with-addons",
+  "dependencies": [
+    "lucide-react",
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-with-addons.tsx",
+      "content": "\"use client\"\n\nimport { CopyIcon, EyeOffIcon, InfoIcon, MicIcon, RadioIcon, SearchIcon, StarIcon } from \"lucide-react\"\nimport { toast } from \"sonner\"\nimport { Description, Field, FieldGroup, Label } from \"@/components/ui/field\"\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } from \"@/components/ui/input\"\n\nexport default function InputGroupWithAddons() {\n  return (\n    <FieldGroup>\n      <Field>\n        <Label htmlFor=\"input-icon-left-05\">Addon (inline-start)</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-icon-left-05\" />\n          <InputGroupAddon>\n            <SearchIcon className=\"text-muted-foreground\" />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-icon-right-07\">Addon (inline-end)</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-icon-right-07\" />\n          <InputGroupAddon align=\"inline-end\">\n            <EyeOffIcon />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-icon-both-09\">Addon (inline-start and inline-end)</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-icon-both-09\" />\n          <InputGroupAddon>\n            <MicIcon className=\"text-muted-foreground\" />\n          </InputGroupAddon>\n          <InputGroupAddon align=\"inline-end\">\n            <RadioIcon className=\"animate-pulse text-red-500\" />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-addon-20\">Addon (block-start)</Label>\n        <InputGroup className=\"h-auto\">\n          <InputGroupInput id=\"input-addon-20\" />\n          <InputGroupAddon align=\"block-start\">\n            <InputGroupText>First Name</InputGroupText>\n            <InfoIcon className=\"ml-auto text-muted-foreground\" />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-addon-21\">Addon (block-end)</Label>\n        <InputGroup className=\"h-auto\">\n          <InputGroupInput id=\"input-addon-21\" />\n          <InputGroupAddon align=\"block-end\">\n            <InputGroupText>20/240 characters</InputGroupText>\n            <InfoIcon className=\"ml-auto text-muted-foreground\" />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-icon-both-10\">Multiple Icons</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-icon-both-10\" />\n          <InputGroupAddon align=\"inline-end\">\n            <StarIcon />\n            <InputGroupButton onClick={() => toast(\"Copied to clipboard\")} size=\"icon-xs\">\n              <CopyIcon />\n            </InputGroupButton>\n          </InputGroupAddon>\n          <InputGroupAddon>\n            <RadioIcon className=\"animate-pulse text-red-500\" />\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-description-10\">Description</Label>\n        <InputGroup>\n          <InputGroupInput id=\"input-description-10\" />\n          <InputGroupAddon align=\"inline-end\">\n            <InfoIcon />\n          </InputGroupAddon>\n        </InputGroup>\n        <Description>This is a description of the input group.</Description>\n      </Field>\n      <Field>\n        <Label htmlFor=\"input-label-10\">Label</Label>\n        <InputGroup>\n          <InputGroupAddon>\n            <Label htmlFor=\"input-label-10\">Label</Label>\n          </InputGroupAddon>\n          <InputGroupInput id=\"input-label-10\" />\n        </InputGroup>\n        <InputGroup>\n          <InputGroupInput aria-label=\"Optional\" id=\"input-optional-12\" />\n          <InputGroupAddon align=\"inline-end\">\n            <InputGroupText>(optional)</InputGroupText>\n          </InputGroupAddon>\n        </InputGroup>\n      </Field>\n    </FieldGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

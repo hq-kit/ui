@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "context-menu-sides",
+  "title": "context-menu-sides",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/context-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/context-menu/context-menu-sides.tsx",
+      "content": "\"use client\"\n\nimport { Pressable } from \"react-aria-components\"\nimport { ContextMenu, ContextMenuContent, ContextMenuGroup, ContextMenuItem } from \"@/components/ui/context-menu\"\n\nexport default function ContextMenuSides() {\n  return (\n    <div className=\"grid w-full max-w-sm grid-cols-2 gap-4\">\n      <ContextMenu>\n        <Pressable>\n          <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n            <span className=\"pointer-fine:inline-block hidden\">Right click (top)</span>\n            <span className=\"pointer-coarse:inline-block hidden\">Long press (top)</span>\n          </div>\n        </Pressable>\n        <ContextMenuContent placement=\"top start\">\n          <ContextMenuGroup>\n            <ContextMenuItem>Back</ContextMenuItem>\n            <ContextMenuItem>Forward</ContextMenuItem>\n            <ContextMenuItem>Reload</ContextMenuItem>\n          </ContextMenuGroup>\n        </ContextMenuContent>\n      </ContextMenu>\n      <ContextMenu>\n        <Pressable>\n          <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n            <span className=\"pointer-fine:inline-block hidden\">Right click (right)</span>\n            <span className=\"pointer-coarse:inline-block hidden\">Long press (right)</span>\n          </div>\n        </Pressable>\n        <ContextMenuContent placement=\"right top\">\n          <ContextMenuGroup>\n            <ContextMenuItem>Back</ContextMenuItem>\n            <ContextMenuItem>Forward</ContextMenuItem>\n            <ContextMenuItem>Reload</ContextMenuItem>\n          </ContextMenuGroup>\n        </ContextMenuContent>\n      </ContextMenu>\n      <ContextMenu>\n        <Pressable>\n          <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n            <span className=\"pointer-fine:inline-block hidden\">Right click (bottom)</span>\n            <span className=\"pointer-coarse:inline-block hidden\">Long press (bottom)</span>\n          </div>\n        </Pressable>\n        <ContextMenuContent placement=\"bottom start\">\n          <ContextMenuGroup>\n            <ContextMenuItem>Back</ContextMenuItem>\n            <ContextMenuItem>Forward</ContextMenuItem>\n            <ContextMenuItem>Reload</ContextMenuItem>\n          </ContextMenuGroup>\n        </ContextMenuContent>\n      </ContextMenu>\n      <ContextMenu>\n        <Pressable>\n          <div className=\"flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm\">\n            <span className=\"pointer-fine:inline-block hidden\">Right click (left)</span>\n            <span className=\"pointer-coarse:inline-block hidden\">Long press (left)</span>\n          </div>\n        </Pressable>\n        <ContextMenuContent placement=\"left top\">\n          <ContextMenuGroup>\n            <ContextMenuItem>Back</ContextMenuItem>\n            <ContextMenuItem>Forward</ContextMenuItem>\n            <ContextMenuItem>Reload</ContextMenuItem>\n          </ContextMenuGroup>\n        </ContextMenuContent>\n      </ContextMenu>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-picker-with-input-demo",
+  "title": "color-picker-with-input-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-picker/color-picker-with-input-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { parseColor } from \"react-aria-components/ColorArea\"\nimport { ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch } from \"@/components/ui/colors\"\nimport { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from \"@/components/ui/input\"\nimport { Popover, PopoverContent } from \"@/components/ui/popover\"\n\nexport default function ColorPickerDemo() {\n  const [color, setColor] = useState(parseColor(\"#123456\"))\n  return (\n    <ColorPicker defaultValue=\"rgb(120,140,200)\" onChange={setColor} value={color}>\n      <InputGroup>\n        <InputGroupAddon>\n          <Popover>\n            <InputGroupButton size=\"icon-sm\">\n              <ColorSwatch />\n            </InputGroupButton>\n            <PopoverContent>\n              <div className=\"space-y-2\">\n                <ColorArea className=\"w-full\" colorSpace=\"hsl\" xChannel=\"hue\" yChannel=\"lightness\" />\n                <ColorSlider channel=\"saturation\" colorSpace=\"hsl\"></ColorSlider>\n              </div>\n            </PopoverContent>\n          </Popover>\n        </InputGroupAddon>\n        <ColorField aria-label=\"Color\">\n          <InputGroupInput />\n        </ColorField>\n      </InputGroup>\n    </ColorPicker>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

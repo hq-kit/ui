@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "avatar-dropdown",
+  "title": "avatar-dropdown",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/media/avatar/avatar-dropdown.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuSeparator\n} from \"@/components/ui/dropdown-menu\"\n\nexport default function AvatarDropdown() {\n  return (\n    <DropdownMenu>\n      <Button className=\"rounded-full\" size=\"icon\" variant=\"ghost\">\n        <Avatar>\n          <AvatarImage alt=\"shadcn\" src=\"https://github.com/shadcn.png\" />\n          <AvatarFallback>CN</AvatarFallback>\n        </Avatar>\n      </Button>\n      <DropdownMenuContent className=\"w-32\">\n        <DropdownMenuGroup>\n          <DropdownMenuItem>Profile</DropdownMenuItem>\n          <DropdownMenuItem>Billing</DropdownMenuItem>\n          <DropdownMenuItem>Settings</DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuGroup>\n          <DropdownMenuItem variant=\"destructive\">Log out</DropdownMenuItem>\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

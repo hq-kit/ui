@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-swatch-picker-hex-demo",
+  "title": "color-swatch-picker-hex-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-swatch-picker/color-swatch-picker-hex-demo.tsx",
+      "content": "import { ColorSwatch, ColorSwatchPicker, ColorSwatchPickerItem } from \"@/components/ui/colors\"\n\nexport default function ColorSwatchPickerHexDemo() {\n  return (\n    <ColorSwatchPicker>\n      <ColorSwatchPickerItem color={\"#FF0000\"}>\n        <ColorSwatch />\n      </ColorSwatchPickerItem>\n      <ColorSwatchPickerItem color={\"#00FF00\"}>\n        <ColorSwatch />\n      </ColorSwatchPickerItem>\n      <ColorSwatchPickerItem color={\"#0000FF\"}>\n        <ColorSwatch />\n      </ColorSwatchPickerItem>\n      <ColorSwatchPickerItem color={\"#000000\"}>\n        <ColorSwatch />\n      </ColorSwatchPickerItem>\n      <ColorSwatchPickerItem color={\"#FFFFFF\"}>\n        <ColorSwatch />\n      </ColorSwatchPickerItem>\n    </ColorSwatchPicker>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

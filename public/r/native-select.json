@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "title": "native-select",
+  "dependencies": [
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/native-select.tsx",
+      "content": "import type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\ntype SelectProps = Omit<ComponentProps<\"select\">, \"size\"> & {\n  size?: \"sm\" | \"default\"\n}\n\nconst Select = ({ className, size = \"default\", ...props }: SelectProps) => (\n  <div\n    className={cn(\n      \"cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50\",\n      className\n    )}\n    data-size={size}\n    data-slot=\"native-select-wrapper\"\n  >\n    <select\n      className=\"cn-native-select outline-none disabled:pointer-events-none disabled:cursor-not-allowed\"\n      data-size={size}\n      data-slot=\"native-select\"\n      slot=\"control\"\n      {...props}\n    />\n    <IconPlaceholder\n      aria-hidden=\"true\"\n      className=\"cn-native-select-icon pointer-events-none absolute select-none\"\n      data-slot=\"native-select-icon\"\n      hugeicons=\"UnfoldMoreIcon\"\n      lucide=\"ChevronsUpDownIcon\"\n      phosphor=\"CaretUpDownIcon\"\n      remixicon=\"RiExpandUpDownLine\"\n      tabler=\"IconSelector\"\n    />\n  </div>\n)\n\nconst SelectItem = ({ className, ...props }: ComponentProps<\"option\">) => (\n  <option className={cn(\"bg-[Canvas] text-[CanvasText]\", className)} data-slot=\"native-select-option\" {...props} />\n)\n\nconst SelectGroup = ({ className, ...props }: ComponentProps<\"optgroup\">) => (\n  <optgroup className={cn(\"bg-[Canvas] text-[CanvasText]\", className)} data-slot=\"native-select-optgroup\" {...props} />\n)\n\nSelect.Group = SelectGroup\nSelect.Item = SelectItem\n\nexport { Select, SelectGroup, SelectItem }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

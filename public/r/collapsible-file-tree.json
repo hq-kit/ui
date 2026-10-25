@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "collapsible-file-tree",
+  "title": "collapsible-file-tree",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/collapsible",
+    "http://localhost:3000/r/tabs"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/collapsible/collapsible-file-tree.tsx",
+      "content": "import { ChevronRightIcon, FileIcon, FolderIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Card, CardContent, CardHeader } from \"@/components/ui/card\"\nimport { Collapsible, CollapsibleContent } from \"@/components/ui/collapsible\"\nimport { Tabs, TabsList, TabsTrigger } from \"@/components/ui/tabs\"\n\ntype FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }\n\nexport default function CollapsibleFileTree() {\n  const fileTree: FileTreeItem[] = [\n    {\n      name: \"components\",\n      items: [\n        {\n          name: \"ui\",\n          items: [\n            { name: \"button.tsx\" },\n            { name: \"card.tsx\" },\n            { name: \"dialog.tsx\" },\n            { name: \"input.tsx\" },\n            { name: \"select.tsx\" },\n            { name: \"table.tsx\" }\n          ]\n        },\n        { name: \"login-form.tsx\" },\n        { name: \"register-form.tsx\" }\n      ]\n    },\n    {\n      name: \"lib\",\n      items: [{ name: \"utils.ts\" }, { name: \"cn.ts\" }, { name: \"api.ts\" }]\n    },\n    {\n      name: \"hooks\",\n      items: [{ name: \"use-media-query.ts\" }, { name: \"use-debounce.ts\" }, { name: \"use-local-storage.ts\" }]\n    },\n    {\n      name: \"types\",\n      items: [{ name: \"index.d.ts\" }, { name: \"api.d.ts\" }]\n    },\n    {\n      name: \"public\",\n      items: [{ name: \"favicon.ico\" }, { name: \"logo.svg\" }, { name: \"images\" }]\n    },\n    { name: \"app.tsx\" },\n    { name: \"layout.tsx\" },\n    { name: \"globals.css\" },\n    { name: \"package.json\" },\n    { name: \"tsconfig.json\" },\n    { name: \"README.md\" },\n    { name: \".gitignore\" }\n  ]\n\n  const renderItem = (fileItem: FileTreeItem) => {\n    if (\"items\" in fileItem) {\n      return (\n        <Collapsible key={fileItem.name}>\n          <Button\n            className=\"group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground\"\n            size=\"sm\"\n            slot=\"trigger\"\n            variant=\"ghost\"\n          >\n            <ChevronRightIcon className=\"in-data-expanded:rotate-90 transition-transform\" />\n            <FolderIcon />\n            {fileItem.name}\n          </Button>\n          <CollapsibleContent className=\"mt-1 ml-5 style-lyra:ml-4\">\n            <div className=\"flex flex-col gap-1\">{fileItem.items.map((child) => renderItem(child))}</div>\n          </CollapsibleContent>\n        </Collapsible>\n      )\n    }\n    return (\n      <Button className=\"w-full justify-start gap-2 text-foreground\" key={fileItem.name} size=\"sm\" variant=\"link\">\n        <FileIcon />\n        <span>{fileItem.name}</span>\n      </Button>\n    )\n  }\n\n  return (\n    <Card className=\"mx-auto w-full max-w-[16rem] gap-2\" size=\"sm\">\n      <CardHeader>\n        <Tabs defaultSelectedKey=\"explorer\">\n          <TabsList className=\"w-full\">\n            <TabsTrigger id=\"explorer\">Explorer</TabsTrigger>\n            <TabsTrigger id=\"settings\">Outline</TabsTrigger>\n          </TabsList>\n        </Tabs>\n      </CardHeader>\n      <CardContent>\n        <div className=\"flex flex-col gap-1\">{fileTree.map((item) => renderItem(item))}</div>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

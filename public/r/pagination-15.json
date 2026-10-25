@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "pagination-15",
+  "title": "pagination-15",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/pagination",
+    "http://localhost:3000/r/select",
+    "http://localhost:3000/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/pagination/pagination-15.tsx",
+      "content": "\"use client\"\n\nimport { IconChevronLeft, IconChevronLeftPipe, IconChevronRight, IconChevronRightPipe } from \"@tabler/icons-react\"\nimport { useId } from \"react\"\nimport { Label } from \"@/components/ui/field\"\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink\n} from \"@/components/ui/pagination\"\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from \"@/components/ui/select\"\nimport { Tooltip, TooltipContent } from \"@/components/ui/tooltip\"\n\nconst pages = [1, 2, 3]\n\nconst TablePaginationDemo = () => {\n  const id = useId()\n\n  return (\n    <div className=\"flex w-full flex-wrap items-center justify-between gap-6 max-sm:justify-center\">\n      <div className=\"flex shrink-0 items-center gap-3\">\n        <Label htmlFor={id}>Rows per page</Label>\n        <Select aria-label=\"Show\" defaultValue=\"10\" name=\"show\" placeholder=\"Select number of results\">\n          <SelectTrigger className=\"w-fit whitespace-nowrap\" id={id}>\n            <SelectValue />\n          </SelectTrigger>\n          <SelectContent className=\"[&_*[role=option]>span]:right-2 [&_*[role=option]>span]:left-auto [&_*[role=option]]:pr-8 [&_*[role=option]]:pl-2\">\n            <SelectItem id=\"10\">10</SelectItem>\n            <SelectItem id=\"25\">25</SelectItem>\n            <SelectItem id=\"50\">50</SelectItem>\n          </SelectContent>\n        </Select>\n      </div>\n      <div className=\"flex grow items-center justify-end whitespace-nowrap text-muted-foreground max-sm:justify-center\">\n        <p aria-live=\"polite\" className=\"whitespace-nowrap text-muted-foreground text-sm\">\n          Showing <span className=\"text-foreground\">1</span> to <span className=\"text-foreground\">10</span> of{\" \"}\n          <span className=\"text-foreground\">100</span> products\n        </p>\n      </div>\n      <Pagination className=\"w-fit max-sm:mx-0\">\n        <PaginationContent>\n          <PaginationItem>\n            <PaginationLink aria-label=\"Go to first page\" className=\"rounded-full\" href=\"#\" size=\"icon\">\n              <IconChevronLeftPipe className=\"size-4\" />\n            </PaginationLink>\n          </PaginationItem>\n          <PaginationItem>\n            <PaginationLink aria-label=\"Go to previous page\" className=\"rounded-full\" href=\"#\" size=\"icon\">\n              <IconChevronLeft className=\"size-4\" />\n            </PaginationLink>\n          </PaginationItem>\n          {pages.map((page) => (\n            <PaginationItem key={page}>\n              <PaginationLink className=\"rounded-full\" href={`#${page}`} isActive={page === 2}>\n                {page}\n              </PaginationLink>\n            </PaginationItem>\n          ))}\n          <PaginationItem>\n            <Tooltip>\n              <PaginationEllipsis />\n              <TooltipContent>\n                <p>2 other pages</p>\n              </TooltipContent>\n            </Tooltip>\n          </PaginationItem>\n          <PaginationItem>\n            <PaginationLink aria-label=\"Go to next page\" className=\"rounded-full\" href=\"#\" size=\"icon\">\n              <IconChevronRight className=\"size-4\" />\n            </PaginationLink>\n          </PaginationItem>\n          <PaginationItem>\n            <PaginationLink aria-label=\"Go to last page\" className=\"rounded-full\" href=\"#\" size=\"icon\">\n              <IconChevronRightPipe className=\"size-4\" />\n            </PaginationLink>\n          </PaginationItem>\n        </PaginationContent>\n      </Pagination>\n    </div>\n  )\n}\n\nexport default TablePaginationDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

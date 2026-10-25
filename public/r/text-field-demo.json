@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "text-field-demo",
+  "title": "text-field-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/text-field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/text-field/text-field-demo.tsx",
+      "content": "import { Label } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\nimport { TextField } from \"@/components/ui/text-field\"\n\nexport default function TextFieldDemo() {\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <TextField>\n        <Label>Basic</Label>\n        <Input />\n      </TextField>\n      <TextField isReadOnly>\n        <Label>Readonly</Label>\n        <Input />\n      </TextField>\n      <TextField isInvalid>\n        <Label>Invalid</Label>\n        <Input />\n      </TextField>\n      <TextField isDisabled>\n        <Label>Disabled</Label>\n        <Input />\n      </TextField>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

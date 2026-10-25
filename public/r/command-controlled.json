@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "command-controlled",
+  "title": "command-controlled",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/command"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/command/command-controlled.tsx",
+      "content": "\"use client\"\n\nimport type { Selection } from \"react-aria-components\"\nimport { useState } from \"react\"\nimport { Command, CommandInput, CommandItem, CommandList } from \"@/components/ui/command\"\n\nconst items = [\n  { id: 1, name: \"Ubuntu\" },\n  { id: 2, name: \"Debian\" },\n  { id: 3, name: \"Fedora\" },\n  { id: 4, name: \"Arch\" },\n  { id: 5, name: \"CentOS\" },\n  { id: 6, name: \"Gentoo\" },\n  { id: 7, name: \"OpenSuse\" },\n  { id: 8, name: \"Redhat\" },\n  { id: 9, name: \"FreeBSD\" },\n  { id: 10, name: \"NetBSD\" }\n]\n\nexport default function CommandControlledDemo() {\n  const [selected, setSelected] = useState<Selection>(new Set([1]))\n  return (\n    <div className=\"w-full space-y-4 p-4\">\n      <Command aria-label=\"Linux Distros\">\n        <CommandInput />\n        <CommandList items={items} onSelectionChange={setSelected} selectedKeys={selected} selectionMode=\"multiple\">\n          {(item) => (\n            <CommandItem id={item.id} textValue={item.name}>\n              {item.name}\n            </CommandItem>\n          )}\n        </CommandList>\n      </Command>\n      <pre>\n        <code className=\"text-xs\">{JSON.stringify({ selected: [...selected] })}</code>\n      </pre>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

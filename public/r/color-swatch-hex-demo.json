@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-swatch-hex-demo",
+  "title": "color-swatch-hex-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-swatch/color-swatch-hex-demo.tsx",
+      "content": "import { ColorSwatch } from \"@/components/ui/colors\"\n\nexport default function ColorSwatchHexDemo() {\n  return (\n    <div className=\"flex gap-2\">\n      <ColorSwatch color={\"#FF0000\"} />\n      <ColorSwatch color={\"#00FF00\"} />\n      <ColorSwatch color={\"#0000FF\"} />\n      <ColorSwatch color={\"#000000\"} />\n      <ColorSwatch color={\"#FFFFFF\"} />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

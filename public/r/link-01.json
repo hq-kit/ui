@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "link-01",
+  "title": "link-01",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/link"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/link/link-01.tsx",
+      "content": "import { Link } from \"@/components/ui/link\"\n\nexport default function Link01() {\n  return <Link href=\"#\">Default Link</Link>\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

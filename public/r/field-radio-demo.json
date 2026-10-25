@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-radio-demo",
+  "title": "field-radio-demo",
+  "dependencies": [
+    "react-aria-components",
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/radio"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-radio-demo.tsx",
+      "content": "\"use client\"\nimport { type FormEvent, useState } from \"react\"\nimport { Form } from \"react-aria-components\"\nimport { toast } from \"sonner\"\nimport { Button } from \"@/components/ui/button\"\nimport { Description, FieldGroup, Label } from \"@/components/ui/field\"\nimport { Radio, RadioGroup } from \"@/components/ui/radio\"\n\nexport default function FieldRadioDemo() {\n  const [plan, setPlan] = useState(\"monthly\")\n\n  const onSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    toast(\"Form submitted\", {\n      description: JSON.stringify({ plan }, null, 2)\n    })\n  }\n  return (\n    <Form className=\"w-full\" onSubmit={onSubmit}>\n      <FieldGroup>\n        <RadioGroup defaultValue=\"monthly\" name=\"plan\" onChange={setPlan} value={plan}>\n          <Label>Subscription Plan</Label>\n          <Description>Yearly and lifetime plans offer significant savings.</Description>\n          <Radio value=\"monthly\">Monthly ($9.99/month)</Radio>\n          <Radio value=\"yearly\">Yearly ($99.99/year)</Radio>\n          <Radio value=\"lifetime\">Lifetime ($299.99)</Radio>\n        </RadioGroup>\n        <Button type=\"submit\">Submit</Button>\n      </FieldGroup>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

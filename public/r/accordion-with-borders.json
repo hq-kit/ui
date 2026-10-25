@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "accordion-with-borders",
+  "title": "accordion-with-borders",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/accordion"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/accordion/accordion-with-borders.tsx",
+      "content": "import { Accordion } from \"@/components/ui/accordion\"\n\nconst items = [\n  {\n    value: \"billing\",\n    trigger: \"How does billing work?\",\n    content:\n      \"We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members.\"\n  },\n  {\n    value: \"security\",\n    trigger: \"Is my data secure?\",\n    content:\n      \"Yes. We use end-to-end encryption, SOC 2 Type II compliance, and regular third-party security audits. All data is encrypted at rest and in transit using industry-standard protocols.\"\n  },\n  {\n    value: \"integration\",\n    trigger: \"What integrations do you support?\",\n    content:\n      \"We integrate with 500+ popular tools including Slack, Zapier, Salesforce, HubSpot, and more. You can also build custom integrations using our REST API and webhooks.\"\n  }\n]\n\nexport default function AccordionBorders() {\n  return (\n    <Accordion className=\"max-w-lg rounded-lg border\" defaultExpandedKeys={[\"billing\"]}>\n      {items.map((item) => (\n        <Accordion.Item className=\"border-b px-4 last:border-b-0\" id={item.value} key={item.value}>\n          <Accordion.Trigger>{item.trigger}</Accordion.Trigger>\n          <Accordion.Content>{item.content}</Accordion.Content>\n        </Accordion.Item>\n      ))}\n    </Accordion>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

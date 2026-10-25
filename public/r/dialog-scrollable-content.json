@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "dialog-scrollable-content",
+  "title": "dialog-scrollable-content",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dialog"
+  ],
+  "files": [
+    {
+      "path": "components/samples/overlay/dialog/dialog-scrollable-content.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from \"@/components/ui/dialog\"\n\nexport default function DialogScrollableContent() {\n  return (\n    <Dialog>\n      <Button variant=\"outline\">Scrollable Content</Button>\n      <DialogContent>\n        <DialogHeader>\n          <DialogTitle>Scrollable Content</DialogTitle>\n          <DialogDescription>This is a dialog with scrollable content.</DialogDescription>\n        </DialogHeader>\n        <div className=\"no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4\">\n          {Array.from({ length: 10 }).map((_, index) => (\n            <p className=\"mb-4 leading-normal\" key={index}>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et\n              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex\n              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt\n              mollit anim id est laborum.\n            </p>\n          ))}\n        </div>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

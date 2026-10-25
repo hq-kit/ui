@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tag-group-demo",
+  "title": "tag-group-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/tag"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/tag-group/tag-group-demo.tsx",
+      "content": "\"use client\"\n\nimport { Label } from \"@/components/ui/field\"\nimport { Tag, TagGroup, TagList } from \"@/components/ui/tag\"\n\nconst androidBrands = [\n  { id: \"1\", name: \"Samsung\", available: false },\n  { id: \"2\", name: \"OnePlus\", available: true },\n  { id: \"3\", name: \"Google\", available: true },\n  { id: \"4\", name: \"Xiaomi\", available: false }\n]\n\nexport default function TagGroupDemo() {\n  return (\n    <TagGroup selectionMode=\"multiple\">\n      <Label>Android Brands</Label>\n      <TagList items={androidBrands}>{(item) => <Tag id={item.id}>{item.name}</Tag>}</TagList>\n    </TagGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

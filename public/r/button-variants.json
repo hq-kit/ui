@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "button-variants",
+  "title": "button-variants",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/button/button-variants.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\n\nexport default () => {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-2\">\n      <Button variant={\"primary\"}>Primary</Button>\n      <Button variant={\"secondary\"}>Secondary</Button>\n      <Button variant={\"destructive\"}>Destructive</Button>\n      <Button variant={\"success\"}>Success</Button>\n      <Button variant={\"warning\"}>Warning</Button>\n      <Button variant={\"info\"}>Info</Button>\n      <Button variant={\"outline\"}>Outline</Button>\n      <Button variant={\"ghost\"}>Ghost</Button>\n      <Button variant={\"link\"}>Link</Button>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

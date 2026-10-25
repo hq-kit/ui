@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "progress-18",
+  "title": "progress-18",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/progress"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/progress/progress-18.tsx",
+      "content": "import { Label } from \"@/components/ui/field\"\nimport { Progress } from \"@/components/ui/progress\"\n\nconst Example = () => (\n  <Progress value={65}>\n    <Label>Almost there!</Label>\n  </Progress>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

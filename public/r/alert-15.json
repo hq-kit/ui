@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "alert-15",
+  "title": "alert-15",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/alert"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/alert/alert-15.tsx",
+      "content": "import { IconAlertTriangle } from \"@tabler/icons-react\"\nimport { Alert, AlertTitle } from \"@/components/ui/alert\"\n\nconst AlertPureDestructiveDemo = () => {\n  return (\n    <Alert className=\"border-destructive\" variant=\"destructive\">\n      <IconAlertTriangle />\n      <AlertTitle>Unable to process your payment.</AlertTitle>\n    </Alert>\n  )\n}\n\nexport default AlertPureDestructiveDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

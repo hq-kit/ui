@@ -1,0 +1,28 @@
+"use client"
+
+import type { Key } from "react-aria-components/Collection"
+import type { ColorSpace } from "react-aria-components/ColorArea"
+import { useState } from "react"
+import { ColorArea } from "@/components/ui/colors"
+import { Label } from "@/components/ui/field"
+import { Select } from "@/components/ui/select"
+
+const spaces = ["rgb", "hsb", "hsl"].map((space) => ({ space }))
+
+export default function ColorAreaSpaceDemo() {
+  const [colorSpace, setColorSpace] = useState<Key | null>("rgb")
+  return (
+    <div className="flex flex-col gap-4">
+      <Select className="w-full" onChange={setColorSpace} value={colorSpace}>
+        <Label>Color Space</Label>
+        <Select.Trigger>
+          <Select.Value />
+        </Select.Trigger>
+        <Select.Content items={spaces}>
+          {(item) => <Select.Item id={item.space}>{item.space}</Select.Item>}
+        </Select.Content>
+      </Select>
+      <ColorArea colorSpace={colorSpace as ColorSpace} />
+    </div>
+  )
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "date-time-picker-demo",
+  "title": "date-time-picker-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/date-picker/date-time-picker-demo.tsx",
+      "content": "\"use client\"\n\nimport { getLocalTimeZone, now, parseZonedDateTime } from \"@internationalized/date\"\nimport { useState } from \"react\"\nimport { Calendar } from \"@/components/ui/calendar\"\nimport { DatePicker, DatePickerInput } from \"@/components/ui/date-field\"\nimport { Label } from \"@/components/ui/field\"\nimport { PopoverContent } from \"@/components/ui/popover\"\n\nexport default function DateTimePickerDemo() {\n  const today = parseZonedDateTime(now(getLocalTimeZone()).toString())\n  const [value, setValue] = useState(today)\n\n  return (\n    <DatePicker hideTimeZone hourCycle={24} onChange={(newValue) => setValue(newValue!)} value={value}>\n      <Label>Event date</Label>\n      <DatePickerInput />\n      <PopoverContent className=\"w-auto p-0\">\n        <Calendar />\n      </PopoverContent>\n    </DatePicker>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

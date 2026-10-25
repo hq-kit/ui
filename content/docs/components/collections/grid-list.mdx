@@ -1,0 +1,50 @@
+---
+title: Grid List
+description: A grid list displays a list of interactive items, with support for keyboard navigation, single or multiple selection, and row actions.
+references: ['https://react-aria.adobe.com/GridList#api']
+published: true
+order: 6
+---
+<Demo component='collections/grid-list/grid-list-demo' />
+
+## Installation
+<Install component='grid-list' />
+
+## Examples
+
+### Drag and drop
+The grid list supports drag and drop functionalities if you use the `dragAndDropHooks` prop along with the `useDragAndDrop` hook. You can drop data on the entire list, individual items, add new items between existing ones, or rearrange items.
+<Demo component='collections/grid-list/grid-list-drag-demo' />
+
+### Dragging between items
+You can move items between positions within the grid list.
+<Demo component='collections/grid-list/grid-list-drag-item-demo' />
+
+### Render empty state
+The grid list can display an empty state when no items are available using the `renderEmptyState` prop.
+<Demo component='collections/grid-list/grid-list-empty-demo' />
+
+### Infinite scrolling
+The grid list can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user scrolls down, improving performance and user experience.
+<Demo component='collections/grid-list/grid-list-infinite-demo' />
+
+### Controlled
+The grid list can be controlled, which means the parent component manages the selection state of each item.
+<Demo component='collections/grid-list/grid-list-controlled-demo' />
+
+### Disabled
+Similar to how the [Tag Group](/docs/components/collections/tag-group) component can be disabled using `isDisabled` for children and `disabledKeys` for the parent, the Grid List supports similar functionality. For example, items "Led Zeppelin" and "The Rolling Stones" are disabled.
+<Demo component='collections/grid-list/grid-list-disabled-demo' />
+
+To disable items via the parent component, you can use the `disabledKeys` prop like this:
+```tsx {5}
+<GridList
+  items={items}
+  aria-label="Select your favorite bands"
+  selectionMode="multiple"
+  disabledKeys={[2,5]}
+  className="min-w-64"
+>
+  {(item) => <GridListItem id={item.id}>{item.name}</GridListItem>}
+</GridList>
+```

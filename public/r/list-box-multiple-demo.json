@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "list-box-multiple-demo",
+  "title": "list-box-multiple-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/list-box"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/list-box/list-box-multiple-demo.tsx",
+      "content": "\"use client\"\n\nimport type { Selection } from \"react-aria-components\"\nimport { useState } from \"react\"\nimport { ListBox, ListBoxItem } from \"@/components/ui/list-box\"\n\nexport default function ListBoxMultipleDemo() {\n  const [selected, setSelected] = useState<Selection>(new Set([3]))\n  return (\n    <div>\n      <ListBox\n        aria-label=\"Fruits\"\n        items={fruits}\n        onSelectionChange={setSelected}\n        selectedKeys={selected}\n        selectionMode=\"multiple\"\n      >\n        {(fruit) => (\n          <ListBoxItem id={fruit.id} textValue={fruit.name}>\n            {fruit.name}\n          </ListBoxItem>\n        )}\n      </ListBox>\n\n      {[...selected].length > 0 && (\n        <p className=\"mt-4 block\">Selected: {selected === \"all\" ? \"All selected\" : [...selected].join(\", \")}</p>\n      )}\n    </div>\n  )\n}\n\nconst fruits = [\n  {\n    id: 1,\n    name: \"Apple\"\n  },\n  {\n    id: 2,\n    name: \"Banana\"\n  },\n  {\n    id: 3,\n    name: \"Orange\"\n  },\n  {\n    id: 4,\n    name: \"Strawberry\"\n  },\n  {\n    id: 5,\n    name: \"Grapes\"\n  },\n  {\n    id: 6,\n    name: \"Mango\"\n  },\n  {\n    id: 7,\n    name: \"Pineapple\"\n  }\n]\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

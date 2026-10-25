@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "alert-02",
+  "title": "alert-02",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/alert",
+    "http://localhost:3000/r/avatar"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/alert/alert-02.tsx",
+      "content": "import { IconAlertCircle } from \"@tabler/icons-react\"\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\n\nconst AlertWithAvatarDemo = () => {\n  return (\n    <Alert className=\"flex items-center justify-between\">\n      <Avatar className=\"rounded-sm\">\n        <AvatarImage alt=\"Hallie Richards\" src=\"https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png\" />\n        <AvatarFallback>HR</AvatarFallback>\n      </Avatar>\n      <div className=\"flex-1 flex-col justify-center gap-1\">\n        <AlertTitle className=\"flex-1\">Sara has replied on the uploaded image.</AlertTitle>\n        <AlertDescription>12 unread messages. Tap to see.</AlertDescription>\n      </div>\n      <IconAlertCircle />\n    </Alert>\n  )\n}\n\nexport default AlertWithAvatarDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

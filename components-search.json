@@ -1,0 +1,464 @@
+[
+  {
+    "id": 1,
+    "section": "Getting Started",
+    "children": [
+      {
+        "slug": "/docs/getting-started/introduction",
+        "title": "Introduction",
+        "order": 1
+      },
+      {
+        "slug": "/docs/getting-started/installation",
+        "title": "Installation",
+        "order": 2
+      },
+      {
+        "slug": "/docs/getting-started/client-side-routing",
+        "title": "Client Side Routing",
+        "order": 3
+      },
+      {
+        "slug": "/docs/getting-started/mcp-server",
+        "title": "MCP Server",
+        "order": 4
+      },
+      {
+        "slug": "/llms.txt",
+        "title": "LLMs",
+        "order": 999
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "section": "Framework Guides",
+    "children": [
+      {
+        "slug": "/docs/framework-guides/nextjs",
+        "title": "Nextjs",
+        "order": 1
+      },
+      {
+        "slug": "/docs/framework-guides/laravel",
+        "title": "Laravel",
+        "order": 2
+      },
+      {
+        "slug": "/docs/framework-guides/vite",
+        "title": "Vite",
+        "order": 3
+      },
+      {
+        "slug": "/docs/framework-guides/tanstack-start",
+        "title": "Tanstack Start",
+        "order": 4
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "section": "Components",
+    "children": [
+      {
+        "id": 1,
+        "subsection": "Buttons",
+        "children": [
+          {
+            "slug": "/docs/components/buttons/button",
+            "title": "Button",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/buttons/file-trigger",
+            "title": "File Trigger",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/buttons/toggle",
+            "title": "Toggle",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "subsection": "Charts",
+        "children": [
+          {
+            "slug": "/docs/components/charts/chart",
+            "title": "Chart",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "subsection": "Collections",
+        "children": [
+          {
+            "slug": "/docs/components/collections/accordion",
+            "title": "Accordion",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/collections/bubble",
+            "title": "Bubble",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/collections/collapsible",
+            "title": "Collapsible",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/collections/context-menu",
+            "title": "Context Menu",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/collections/dropdown-menu",
+            "title": "Dropdown Menu",
+            "order": 5
+          },
+          {
+            "slug": "/docs/components/collections/grid-list",
+            "title": "Grid List",
+            "order": 6
+          },
+          {
+            "slug": "/docs/components/collections/item",
+            "title": "Item",
+            "order": 7
+          },
+          {
+            "slug": "/docs/components/collections/list-box",
+            "title": "List Box",
+            "order": 8
+          },
+          {
+            "slug": "/docs/components/collections/message",
+            "title": "Message",
+            "order": 9
+          },
+          {
+            "slug": "/docs/components/collections/table",
+            "title": "Table",
+            "order": 10
+          },
+          {
+            "slug": "/docs/components/collections/tag-group",
+            "title": "Tag Group",
+            "order": 11
+          },
+          {
+            "slug": "/docs/components/collections/tree",
+            "title": "Tree",
+            "order": 12
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "subsection": "Colors",
+        "children": [
+          {
+            "slug": "/docs/components/colors/color",
+            "title": "Color",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "subsection": "Controls",
+        "children": [
+          {
+            "slug": "/docs/components/controls/command",
+            "title": "Command",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/controls/kbd",
+            "title": "Kbd",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/controls/slider",
+            "title": "Slider",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/controls/switch",
+            "title": "Switch",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/controls/toolbar",
+            "title": "Toolbar",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "subsection": "Date And Time",
+        "children": [
+          {
+            "slug": "/docs/components/date-and-time/calendar",
+            "title": "Calendar",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/date-and-time/range-calendar",
+            "title": "Range Calendar",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/date-and-time/date-field",
+            "title": "Date Field",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/date-and-time/date-picker",
+            "title": "Date Picker",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/date-and-time/date-range-picker",
+            "title": "Date Range Picker",
+            "order": 5
+          },
+          {
+            "slug": "/docs/components/date-and-time/time-field",
+            "title": "Time Field",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "subsection": "Drag And Drop",
+        "children": [
+          {
+            "slug": "/docs/components/drag-and-drop/drop-zone",
+            "title": "Drop Zone",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "subsection": "Forms",
+        "children": [
+          {
+            "slug": "/docs/components/forms/field",
+            "title": "Field",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/forms/input",
+            "title": "Input",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/forms/combobox",
+            "title": "Combobox",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/forms/input-group",
+            "title": "Input Group",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/forms/checkbox",
+            "title": "Checkbox",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/forms/radio",
+            "title": "Radio",
+            "order": 5
+          },
+          {
+            "slug": "/docs/components/forms/select",
+            "title": "Select",
+            "order": 6
+          },
+          {
+            "slug": "/docs/components/forms/text-field",
+            "title": "Text Field",
+            "order": 7
+          },
+          {
+            "slug": "/docs/components/forms/number-field",
+            "title": "Number Field",
+            "order": 8
+          },
+          {
+            "slug": "/docs/components/forms/search-field",
+            "title": "Search Field",
+            "order": 9
+          },
+          {
+            "slug": "/docs/components/forms/input-otp",
+            "title": "Input OTP",
+            "order": 10
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "subsection": "Layouts",
+        "children": [
+          {
+            "slug": "/docs/components/layouts/container",
+            "title": "Container",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/layouts/navbar",
+            "title": "Navbar",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/layouts/sidebar",
+            "title": "Sidebar",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "subsection": "Media",
+        "children": [
+          {
+            "slug": "/docs/components/media/avatar",
+            "title": "Avatar",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/media/carousel",
+            "title": "Carousel",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "subsection": "Navigation",
+        "children": [
+          {
+            "slug": "/docs/components/navigation/link",
+            "title": "Link",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/navigation/breadcrumbs",
+            "title": "Breadcrumbs",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/navigation/tabs",
+            "title": "Tabs",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/navigation/pagination",
+            "title": "Pagination",
+            "order": 4
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "subsection": "Overlays",
+        "children": [
+          {
+            "slug": "/docs/components/overlays/dialog",
+            "title": "Dialog",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/overlays/alert-dialog",
+            "title": "Alert Dialog",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/overlays/sheet",
+            "title": "Sheet",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/overlays/popover",
+            "title": "Popover",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/overlays/tooltip",
+            "title": "Tooltip",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "subsection": "Statuses",
+        "children": [
+          {
+            "slug": "/docs/components/statuses/alert",
+            "title": "Alert",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/statuses/badge",
+            "title": "Badge",
+            "order": 2
+          },
+          {
+            "slug": "/docs/components/statuses/empty",
+            "title": "Empty",
+            "order": 3
+          },
+          {
+            "slug": "/docs/components/statuses/meter",
+            "title": "Meter",
+            "order": 4
+          },
+          {
+            "slug": "/docs/components/statuses/progress",
+            "title": "Progress",
+            "order": 5
+          },
+          {
+            "slug": "/docs/components/statuses/skeleton",
+            "title": "Skeleton",
+            "order": 6
+          },
+          {
+            "slug": "/docs/components/statuses/sonner",
+            "title": "Sonner",
+            "order": 7
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "subsection": "Surfaces",
+        "children": [
+          {
+            "slug": "/docs/components/surfaces/card",
+            "title": "Card",
+            "order": 1
+          },
+          {
+            "slug": "/docs/components/surfaces/separator",
+            "title": "Separator",
+            "order": 2
+          }
+        ]
+      }
+    ]
+  }
+]

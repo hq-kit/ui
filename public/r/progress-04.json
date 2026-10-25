@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "progress-04",
+  "title": "progress-04",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/progress"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/progress/progress-04.tsx",
+      "content": "import { Progress } from \"@/components/ui/progress\"\n\nconst Example = () => <Progress className=\"w-full max-w-md\" value={75} />\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

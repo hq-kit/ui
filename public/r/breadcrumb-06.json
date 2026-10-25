@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "breadcrumb-06",
+  "title": "breadcrumb-06",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge",
+    "http://localhost:3000/r/breadcrumb",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/breadcrumb/breadcrumb-06.tsx",
+      "content": "import { IconChevronDown, IconDashboard } from \"@tabler/icons-react\"\nimport { Badge } from \"@/components/ui/badge\"\nimport { Breadcrumb, BreadcrumbItem } from \"@/components/ui/breadcrumb\"\nimport { Button } from \"@/components/ui/button\"\nimport { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from \"@/components/ui/dropdown-menu\"\n\nexport default function Breadcrumb06() {\n  return (\n    <Breadcrumb>\n      <BreadcrumbItem href=\"#\">\n        <Badge variant=\"outline\">\n          <IconDashboard />\n          Dashboard\n        </Badge>\n      </BreadcrumbItem>\n      <BreadcrumbItem href=\"#\">\n        <Badge variant=\"outline\">Settings</Badge>\n      </BreadcrumbItem>\n      <BreadcrumbItem>\n        <DropdownMenu>\n          <Button variant=\"ghost\">\n            <Badge variant=\"outline\">\n              Profile\n              <IconChevronDown />\n            </Badge>\n          </Button>\n          <DropdownMenuContent>\n            <DropdownMenuItem>Security</DropdownMenuItem>\n            <DropdownMenuItem>Preferences</DropdownMenuItem>\n          </DropdownMenuContent>\n        </DropdownMenu>\n      </BreadcrumbItem>\n    </Breadcrumb>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

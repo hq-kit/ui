@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "switch",
+  "dependencies": [
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"cn\"\nimport { composeRenderProps } from \"react-aria-components/composeRenderProps\"\nimport { SwitchButton, SwitchField, type SwitchFieldProps } from \"react-aria-components/Switch\"\nimport { fieldVariants, Label } from \"./field\"\n\nconst Switch = ({\n  children,\n  size = \"default\",\n  className,\n  ...props\n}: SwitchFieldProps & {\n  size?: \"sm\" | \"default\"\n}) => {\n  return (\n    <SwitchField\n      className={composeRenderProps(className, (className) => cn(fieldVariants({ className })))}\n      data-slot=\"switch-field\"\n      {...props}\n    >\n      <SwitchButton className={cn(fieldVariants({ orientation: \"horizontal\" }))} data-slot=\"switch\">\n        {composeRenderProps(children, (children) => (\n          <>\n            <div\n              className={cn(\n                \"cn-switch peer group/switch relative inline-flex items-center outline-none transition-all after:absolute group-data-disabled/field:cursor-not-allowed group-data-disabled/field:opacity-50\",\n                className\n              )}\n              data-size={size}\n              data-slot=\"switch\"\n              slot=\"control\"\n            >\n              <span\n                className=\"cn-switch-thumb pointer-events-none block ring-0 transition-transform\"\n                data-slot=\"switch-thumb\"\n              />\n            </div>\n            {typeof children === \"string\" ? (\n              <Label elementType=\"span\">{children}</Label>\n            ) : children ? (\n              <div\n                className=\"cn-field-content group/field-content flex flex-1 flex-col leading-snug *:data-[slot=field-label]:leading-snug\"\n                data-slot=\"field-content\"\n              >\n                {children}\n              </div>\n            ) : null}\n          </>\n        ))}\n      </SwitchButton>\n    </SwitchField>\n  )\n}\n\nexport { Switch }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

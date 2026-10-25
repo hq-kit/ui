@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "list-box-infinite-scroll-demo",
+  "title": "list-box-infinite-scroll-demo",
+  "dependencies": [
+    "@tabler/icons-react",
+    "react-aria-components",
+    "react-stately"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/list-box"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/list-box/list-box-infinite-scroll-demo.tsx",
+      "content": "\"use client\"\n\nimport { IconLoader } from \"@tabler/icons-react\"\nimport { Collection, ListBoxLoadMoreItem } from \"react-aria-components\"\nimport { useAsyncList } from \"react-stately\"\nimport { Card, CardContent } from \"@/components/ui/card\"\nimport { ListBox, ListBoxItem } from \"@/components/ui/list-box\"\n\ninterface Character {\n  name: string\n}\nexport default function ListBoxInfiniteScrollDemo() {\n  const list = useAsyncList<Character>({\n    async load({ signal, cursor }) {\n      const res = await fetch(cursor || `https://pokeapi.co/api/v2/pokemon`, { signal })\n      const json = await res.json()\n\n      return {\n        items: json.results,\n        cursor: json.next\n      }\n    }\n  })\n\n  return (\n    <Card className=\"max-h-96 overflow-y-auto\">\n      <CardContent>\n        <ListBox aria-label=\"Pick a Pokemon\" items={list.items} selectionMode=\"single\">\n          <Collection items={list.items}>{(item) => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}</Collection>\n          <ListBoxLoadMoreItem isLoading={list.loadingState === \"loadingMore\"} onLoadMore={list.loadMore}>\n            <IconLoader aria-label=\"Loading more...\" className=\"mx-auto mb-4 animate-spin\" />\n          </ListBoxLoadMoreItem>\n        </ListBox>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

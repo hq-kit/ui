@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tooltip-keyboard",
+  "title": "tooltip-keyboard",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/kbd",
+    "http://localhost:3000/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/samples/overlay/tooltip/tooltip-keyboard.tsx",
+      "content": "import { IconDeviceFloppy } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Kbd } from \"@/components/ui/kbd\"\nimport { Tooltip, TooltipContent } from \"@/components/ui/tooltip\"\n\nexport default function TooltipKeyboard() {\n  return (\n    <Tooltip>\n      <Button size=\"icon-sm\" variant=\"outline\">\n        <IconDeviceFloppy />\n      </Button>\n      <TooltipContent>\n        Save Changes <Kbd>S</Kbd>\n      </TooltipContent>\n    </Tooltip>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

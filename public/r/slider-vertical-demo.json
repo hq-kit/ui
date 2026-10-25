@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "slider-vertical-demo",
+  "title": "slider-vertical-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/slider"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/slider/slider-vertical-demo.tsx",
+      "content": "\"use client\"\n\nimport { Label } from \"@/components/ui/field\"\nimport { Slider, SliderOutput } from \"@/components/ui/slider\"\n\nexport default function SliderVerticalDemo() {\n  return (\n    <div className=\"mx-auto flex w-full max-w-xs items-center justify-center gap-6\">\n      <Slider className=\"h-40\" defaultValue={[50]} maxValue={100} orientation=\"vertical\" step={1}>\n        <SliderOutput />\n        <Label>Brightness</Label>\n      </Slider>\n      <Slider className=\"h-40\" defaultValue={[25]} maxValue={100} orientation=\"vertical\" step={1}>\n        <SliderOutput />\n        <Label>Contrast</Label>\n      </Slider>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

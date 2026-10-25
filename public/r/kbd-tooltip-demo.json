@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "kbd-tooltip-demo",
+  "title": "kbd-tooltip-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/button-group",
+    "http://localhost:3000/r/kbd",
+    "http://localhost:3000/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/kbd/kbd-tooltip-demo.tsx",
+      "content": "\"use client\"\nimport { Button } from \"@/components/ui/button\"\nimport { ButtonGroup } from \"@/components/ui/button-group\"\nimport { Kbd, KbdGroup } from \"@/components/ui/kbd\"\nimport { Tooltip, TooltipContent } from \"@/components/ui/tooltip\"\n\nexport default function KbdTooltip() {\n  return (\n    <div className=\"flex flex-wrap gap-4\">\n      <ButtonGroup>\n        <Tooltip>\n          <Button size=\"sm\" variant=\"outline\">\n            Save\n          </Button>\n          <TooltipContent>\n            <div className=\"flex items-center gap-2\">\n              Save Changes <Kbd>S</Kbd>\n            </div>\n          </TooltipContent>\n        </Tooltip>\n        <Tooltip>\n          <Button size=\"sm\" variant=\"outline\">\n            Print\n          </Button>\n          <TooltipContent>\n            <div className=\"flex items-center gap-2\">\n              Print Document{\" \"}\n              <KbdGroup>\n                <Kbd>Ctrl</Kbd>\n                <Kbd>P</Kbd>\n              </KbdGroup>\n            </div>\n          </TooltipContent>\n        </Tooltip>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

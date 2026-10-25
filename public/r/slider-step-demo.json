@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "slider-step-demo",
+  "title": "slider-step-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/slider"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/slider/slider-step-demo.tsx",
+      "content": "\"use client\"\n\nimport { Label } from \"@/components/ui/field\"\nimport { Slider, SliderOutput } from \"@/components/ui/slider\"\n\nexport default function SliderStepDemo() {\n  return (\n    <Slider defaultValue={20} step={10}>\n      <Label>Step in 10</Label>\n      <SliderOutput />\n    </Slider>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

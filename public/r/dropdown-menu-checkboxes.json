@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "dropdown-menu-checkboxes",
+  "title": "dropdown-menu-checkboxes",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/dropdown-menu/dropdown-menu-checkboxes.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/components/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel\n} from \"@/components/ui/dropdown-menu\"\n\nexport default function DropdownMenuCheckboxes() {\n  return (\n    <DropdownMenu>\n      <Button variant=\"outline\">Open</Button>\n      <DropdownMenuContent className=\"w-40\">\n        <DropdownMenuGroup selectionMode=\"multiple\">\n          <DropdownMenuLabel>Appearance</DropdownMenuLabel>\n          <DropdownMenuItem id={\"showStatusBar\"}>Status Bar</DropdownMenuItem>\n          <DropdownMenuItem id={\"showActivityBar\"} isDisabled>\n            Activity Bar\n          </DropdownMenuItem>\n          <DropdownMenuItem id={\"showPanel\"}>Panel</DropdownMenuItem>\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

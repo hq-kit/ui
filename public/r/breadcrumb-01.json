@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "breadcrumb-01",
+  "title": "breadcrumb-01",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/breadcrumb/breadcrumb-01.tsx",
+      "content": "import { Breadcrumb, BreadcrumbItem } from \"@/components/ui/breadcrumb\"\n\nexport default function Breadcrumb01() {\n  return (\n    <Breadcrumb>\n      <BreadcrumbItem href=\"#\">Dashboard</BreadcrumbItem>\n      <BreadcrumbItem href=\"#\">Settings</BreadcrumbItem>\n      <BreadcrumbItem>Profile</BreadcrumbItem>\n    </Breadcrumb>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

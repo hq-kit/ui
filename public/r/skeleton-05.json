@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "skeleton-05",
+  "title": "skeleton-05",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/skeleton"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/skeleton/skeleton-05.tsx",
+      "content": "import { Skeleton } from \"@/components/ui/skeleton\"\n\nconst Example = () => (\n  <div className=\"flex w-full max-w-lg gap-4 rounded-md border p-4\">\n    <Skeleton className=\"h-24 w-24 shrink-0\" />\n    <div className=\"flex flex-1 flex-col gap-2\">\n      <Skeleton className=\"h-5 w-3/4\" />\n      <Skeleton className=\"h-4 w-full\" />\n      <Skeleton className=\"h-4 w-5/6\" />\n      <div className=\"mt-auto flex items-center gap-2\">\n        <Skeleton className=\"h-6 w-16\" />\n        <Skeleton className=\"h-6 w-20\" />\n      </div>\n    </div>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "date-range-picker-controlled",
+  "title": "date-range-picker-controlled",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/date-range-picker/date-range-picker-controlled.tsx",
+      "content": "\"use client\"\n\nimport { getLocalTimeZone, today } from \"@internationalized/date\"\nimport { useState } from \"react\"\nimport { RangeCalendar } from \"@/components/ui/calendar\"\nimport { DateRangePicker, DateRangePickerInput } from \"@/components/ui/date-field\"\nimport { Label } from \"@/components/ui/field\"\nimport { PopoverContent } from \"@/components/ui/popover\"\n\nexport default function DateRangePickerControlled() {\n  const now = today(getLocalTimeZone())\n  const tomorrowWeek = today(getLocalTimeZone()).add({ days: 12 })\n  const [value, setValue] = useState({\n    start: now,\n    end: tomorrowWeek\n  })\n\n  return (\n    <DateRangePicker onChange={(newValue) => setValue(newValue!)} value={value}>\n      <Label>Event date</Label>\n      <DateRangePickerInput />\n      <PopoverContent className=\"w-auto p-0\">\n        <RangeCalendar visibleDuration={{ months: 2 }} />\n      </PopoverContent>\n    </DateRangePicker>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

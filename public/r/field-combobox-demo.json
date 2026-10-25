@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-combobox-demo",
+  "title": "field-combobox-demo",
+  "dependencies": [
+    "@tabler/icons-react",
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/select",
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/combobox",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-combobox-demo.tsx",
+      "content": "\"use client\"\n\nimport type { Key } from \"@/components/ui/select\"\nimport { IconUser } from \"@tabler/icons-react\"\nimport { type FormEvent, useState } from \"react\"\nimport { toast } from \"sonner\"\nimport { Avatar } from \"@/components/ui/avatar\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Combobox,\n  ComboboxChip,\n  ComboboxChips,\n  ComboboxContent,\n  ComboboxInput,\n  ComboboxItem\n} from \"@/components/ui/combobox\"\nimport { Description, FieldError, FieldSet, Form, Label } from \"@/components/ui/field\"\n\nexport default function FieldComboboxDemo() {\n  const [user, setUser] = useState<Key | null>()\n  const [distro, setDistro] = useState<Key[] | undefined>()\n  const onSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    toast(\"Form submitted\", {\n      description: JSON.stringify({ user, distro }, null, 2)\n    })\n  }\n  return (\n    <Form className=\"w-full\" onSubmit={onSubmit}>\n      <FieldSet>\n        <Combobox isRequired onChange={setUser} value={user}>\n          <Label>User</Label>\n          <ComboboxInput placeholder=\"Choose department\" />\n          <ComboboxContent items={options}>\n            {(item) => (\n              <ComboboxItem textValue={item.name}>\n                <Avatar>\n                  <Avatar.Image alt={item.name} src={item.image_url} />\n                  <Avatar.Fallback>\n                    <IconUser />\n                  </Avatar.Fallback>\n                </Avatar>\n                {item.name}\n              </ComboboxItem>\n            )}\n          </ComboboxContent>\n          <Description>Select user for this job</Description>\n          <FieldError />\n        </Combobox>\n        <Combobox\n          allowsEmptyCollection\n          aria-label=\"Distros\"\n          isRequired\n          onChange={setDistro}\n          selectionMode=\"multiple\"\n          value={distro}\n        >\n          <Label>Distros</Label>\n          <ComboboxChips<(typeof distros)[0]>>{(value) => <ComboboxChip>{value.name}</ComboboxChip>}</ComboboxChips>\n          <ComboboxContent items={distros}>{(item) => <ComboboxItem>{item.name}</ComboboxItem>}</ComboboxContent>\n          <FieldError />\n        </Combobox>\n        <Button type=\"submit\">Submit</Button>\n      </FieldSet>\n    </Form>\n  )\n}\n\nconst options = [\n  { id: 1, name: \"Barbara Kirlin Sr.\", image_url: \"https://i.pravatar.cc/150?img=1\" },\n  { id: 2, name: \"Rosemarie Koch\", image_url: \"https://i.pravatar.cc/150?img=2\" },\n  { id: 3, name: \"Mrs. Reva Heaney Jr.\", image_url: \"https://i.pravatar.cc/150?img=3\" },\n  { id: 4, name: \"Ms. Ettie Abshire DVM\", image_url: \"https://i.pravatar.cc/150?img=4\" },\n  { id: 5, name: \"Bria Ziemann\", image_url: \"https://i.pravatar.cc/150?img=5\" },\n  { id: 6, name: \"Heloise Borer Sr.\", image_url: \"https://i.pravatar.cc/150?img=6\" },\n  {\n    id: 7,\n    name: \"Miss Jacinthe Gerlach DVM\",\n    image_url: \"https://i.pravatar.cc/150?img=7\"\n  },\n  {\n    id: 8,\n    name: \"Miss Stephania Schaefer Sr.\",\n    image_url: \"https://i.pravatar.cc/150?img=8\"\n  },\n  { id: 9, name: \"Kevon Hackett MD\", image_url: \"https://i.pravatar.cc/150?img=9\" },\n  { id: 10, name: \"Tom Ledner\", image_url: \"https://i.pravatar.cc/150?img=10\" }\n]\n\nconst distros = [\n  { id: 1, name: \"Ubuntu\" },\n  { id: 2, name: \"Debian\" },\n  { id: 3, name: \"Fedora\" },\n  { id: 4, name: \"Arch\" },\n  { id: 5, name: \"CentOS\" },\n  { id: 6, name: \"Gentoo\" },\n  { id: 7, name: \"OpenSuse\" },\n  { id: 8, name: \"Redhat\" },\n  { id: 9, name: \"FreeBSD\" },\n  { id: 10, name: \"NetBSD\" }\n]\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

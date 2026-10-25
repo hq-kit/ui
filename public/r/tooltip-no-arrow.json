@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tooltip-no-arrow",
+  "title": "tooltip-no-arrow",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/samples/overlay/tooltip/tooltip-no-arrow.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Tooltip, TooltipContent } from \"@/components/ui/tooltip\"\n\nexport default function TooltipNoArrow() {\n  return (\n    <Tooltip>\n      <Button variant=\"outline\">Disabled</Button>\n      <TooltipContent showArrow={false}>\n        <p>This feature is currently unavailable</p>\n      </TooltipContent>\n    </Tooltip>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-set-demo",
+  "title": "field-set-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/text-field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-set-demo.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Description, FieldError, FieldGroup, FieldSet, Form, Label, Legend } from \"@/components/ui/field\"\nimport { Input } from \"@/components/ui/input\"\nimport { TextField } from \"@/components/ui/text-field\"\n\nexport default function FieldFieldsetDemo() {\n  return (\n    <Form onSubmit={(e) => e.preventDefault()}>\n      <FieldSet>\n        <Legend>Address Information</Legend>\n        <Description>We need your address to deliver your order.</Description>\n        <FieldGroup>\n          <TextField isRequired>\n            <Label>Street Address</Label>\n            <Input placeholder=\"123 Main St\" type=\"text\" />\n            <FieldError />\n          </TextField>\n          <div className=\"grid grid-cols-2 gap-4\">\n            <TextField isRequired>\n              <Label>City</Label>\n              <Input placeholder=\"New York\" type=\"text\" />\n              <FieldError />\n            </TextField>\n            <TextField isRequired>\n              <Label>Postal Code</Label>\n              <Input placeholder=\"90502\" type=\"text\" />\n              <FieldError />\n            </TextField>\n          </div>\n        </FieldGroup>\n        <Button type=\"submit\">Save Address</Button>\n      </FieldSet>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

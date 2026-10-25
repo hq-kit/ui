@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "calendar-custom-days",
+  "title": "calendar-custom-days",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/card"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/calendar/calendar-custom-days.tsx",
+      "content": "\"use client\"\n\nimport { Calendar } from \"@/components/ui/calendar\"\nimport { Card, CardContent } from \"@/components/ui/card\"\n\nexport default function CalendarCustomDays() {\n  return (\n    <Card className=\"mx-auto w-fit p-0\">\n      <CardContent className=\"p-0\">\n        <Calendar className=\"[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]\" />\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

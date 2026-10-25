@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "badge-13",
+  "title": "badge-13",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge",
+    "http://localhost:3000/r/checkbox"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/badge/badge-13.tsx",
+      "content": "\"use client\"\n\nimport { IconCircleCheck } from \"@tabler/icons-react\"\nimport { useId, useState } from \"react\"\nimport { Badge } from \"@/components/ui/badge\"\nimport { Checkbox } from \"@/components/ui/checkbox\"\n\nconst BadgeSelectableDemo = () => {\n  const [selected, setSelected] = useState(false)\n\n  const id = useId()\n\n  return (\n    <Badge\n      className=\"relative cursor-pointer rounded-sm outline-none has-focus-visible:border-ring/50 has-focus-visible:ring-2 has-focus-visible:ring-ring/50\"\n      variant={selected ? \"secondary\" : \"outline\"}\n    >\n      <Checkbox\n        className=\"peer sr-only after:absolute after:inset-0\"\n        id={id}\n        isSelected={selected}\n        onChange={(checked) => setSelected(!!checked)}\n      />\n      <IconCircleCheck\n        aria-hidden=\"true\"\n        className=\"hidden size-3 text-green-600 peer-data-[state=checked]:block dark:text-green-400\"\n      />\n      <label className=\"cursor-pointer select-none after:absolute after:inset-0\" htmlFor={id}>\n        {selected ? \"Selected\" : \"Selectable\"}\n      </label>\n    </Badge>\n  )\n}\n\nexport default BadgeSelectableDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

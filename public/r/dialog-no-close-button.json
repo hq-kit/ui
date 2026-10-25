@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "dialog-no-close-button",
+  "title": "dialog-no-close-button",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dialog"
+  ],
+  "files": [
+    {
+      "path": "components/samples/overlay/dialog/dialog-no-close-button.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from \"@/components/ui/dialog\"\n\nexport default function DialogNoCloseButton() {\n  return (\n    <Dialog>\n      <Button variant=\"outline\">No Close Button</Button>\n      <DialogContent showCloseButton={false}>\n        <DialogHeader>\n          <DialogTitle>No Close Button</DialogTitle>\n          <DialogDescription>This dialog doesn&apos;t have a close button in the top-right corner.</DialogDescription>\n        </DialogHeader>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

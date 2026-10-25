@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "chart-radar-lines-only",
+  "title": "chart-radar-lines-only",
+  "dependencies": [
+    "@tabler/icons-react",
+    "recharts"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/chart"
+  ],
+  "files": [
+    {
+      "path": "components/samples/chart/radar-chart/chart-radar-lines-only.tsx",
+      "content": "\"use client\"\n\nimport { IconTrendingUp } from \"@tabler/icons-react\"\nimport { PolarAngleAxis, PolarGrid, Radar, RadarChart } from \"recharts\"\nimport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from \"@/components/ui/card\"\nimport { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from \"@/components/ui/chart\"\n\nexport const description = \"A radar chart with lines only\"\n\nconst chartData = [\n  { month: \"January\", desktop: 186, mobile: 160 },\n  { month: \"February\", desktop: 185, mobile: 170 },\n  { month: \"March\", desktop: 207, mobile: 180 },\n  { month: \"April\", desktop: 173, mobile: 160 },\n  { month: \"May\", desktop: 160, mobile: 190 },\n  { month: \"June\", desktop: 174, mobile: 204 }\n]\n\nconst chartConfig = {\n  desktop: {\n    label: \"Desktop\",\n    color: \"var(--chart-1)\"\n  },\n  mobile: {\n    label: \"Mobile\",\n    color: \"var(--chart-2)\"\n  }\n} satisfies ChartConfig\n\nexport default function ChartRadarLinesOnly() {\n  return (\n    <Card>\n      <CardHeader className=\"items-center pb-4\">\n        <CardTitle>Radar Chart - Lines Only</CardTitle>\n        <CardDescription>Showing total visitors for the last 6 months</CardDescription>\n      </CardHeader>\n      <CardContent className=\"pb-0\">\n        <ChartContainer className=\"mx-auto aspect-square max-h-[250px]\" config={chartConfig}>\n          <RadarChart data={chartData}>\n            <ChartTooltip content={<ChartTooltipContent indicator=\"line\" />} cursor={false} />\n            <PolarAngleAxis dataKey=\"month\" />\n            <PolarGrid radialLines={false} />\n            <Radar\n              dataKey=\"desktop\"\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0}\n              stroke=\"var(--color-desktop)\"\n              strokeWidth={2}\n            />\n            <Radar\n              dataKey=\"mobile\"\n              fill=\"var(--color-mobile)\"\n              fillOpacity={0}\n              stroke=\"var(--color-mobile)\"\n              strokeWidth={2}\n            />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <IconTrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">January - June 2024</div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

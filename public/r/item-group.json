@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-group",
+  "title": "item-group",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-group.tsx",
+      "content": "import { PlusIcon } from \"lucide-react\"\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\nimport { Button } from \"@/components/ui/button\"\nimport { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nconst people = [\n  {\n    username: \"shadcn\",\n    avatar: \"https://github.com/shadcn.png\",\n    email: \"shadcn@vercel.com\"\n  },\n  {\n    username: \"maxleiter\",\n    avatar: \"https://github.com/maxleiter.png\",\n    email: \"maxleiter@vercel.com\"\n  },\n  {\n    username: \"evilrabbit\",\n    avatar: \"https://github.com/evilrabbit.png\",\n    email: \"evilrabbit@vercel.com\"\n  }\n]\n\nexport default function ItemGroupExample() {\n  return (\n    <ItemGroup className=\"max-w-sm\">\n      {people.map((person) => (\n        <Item key={person.username} variant=\"outline\">\n          <ItemMedia>\n            <Avatar>\n              <AvatarImage className=\"grayscale\" src={person.avatar} />\n              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>\n            </Avatar>\n          </ItemMedia>\n          <ItemContent className=\"gap-1\">\n            <ItemTitle>{person.username}</ItemTitle>\n            <ItemDescription>{person.email}</ItemDescription>\n          </ItemContent>\n          <ItemActions>\n            <Button className=\"rounded-full\" size=\"icon\" variant=\"ghost\">\n              <PlusIcon />\n            </Button>\n          </ItemActions>\n        </Item>\n      ))}\n    </ItemGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

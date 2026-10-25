@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "meter-19",
+  "title": "meter-19",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/meter"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/meter/meter-19.tsx",
+      "content": "import { Label } from \"@/components/ui/field\"\nimport { Meter } from \"@/components/ui/meter\"\n\nconst Example = () => {\n  const current = 7\n  const total = 10\n  const value = (current / total) * 100\n\n  return (\n    <Meter value={value}>\n      <Label>Tasks completed</Label>\n      <Meter.Value />\n    </Meter>\n  )\n}\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

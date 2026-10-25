@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-input-group",
+  "title": "input-input-group",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input/input-input-group.tsx",
+      "content": "import { InfoIcon } from \"lucide-react\"\nimport { Field, Label } from \"@/components/ui/field\"\nimport { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from \"@/components/ui/input\"\n\nexport default function InputInputGroup() {\n  return (\n    <Field>\n      <Label htmlFor=\"input-group-url\">Website URL</Label>\n      <InputGroup>\n        <InputGroupInput id=\"input-group-url\" placeholder=\"example.com\" />\n        <InputGroupAddon>\n          <InputGroupText>https://</InputGroupText>\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <InfoIcon />\n        </InputGroupAddon>\n      </InputGroup>\n    </Field>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

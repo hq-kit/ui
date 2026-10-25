@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "badge-17",
+  "title": "badge-17",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/badge/badge-17.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\"\n\nconst BadgeBlockedDemo = () => {\n  return (\n    <Badge className=\"border-none bg-destructive/10 text-destructive focus-visible:outline-none focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/5\">\n      <span aria-hidden=\"true\" className=\"size-1.5 rounded-full bg-destructive\" />\n      Blocked\n    </Badge>\n  )\n}\n\nexport default BadgeBlockedDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

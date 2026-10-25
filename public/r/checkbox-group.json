@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "checkbox-group",
+  "title": "checkbox-group",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/checkbox",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/checkbox/checkbox-group.tsx",
+      "content": "import { Checkbox, CheckboxGroup } from \"@/components/ui/checkbox\"\nimport { Description, FieldGroup, Label } from \"@/components/ui/field\"\n\nexport default function CheckboxGroupDemo() {\n  return (\n    <CheckboxGroup>\n      <Label>Show these items on the desktop:</Label>\n      <Description>Select the items you want to show on the desktop.</Description>\n      <FieldGroup className=\"gap-3\">\n        <Checkbox\n          defaultSelected\n          name=\"finder-pref-9k2-hard-disks-ljj-checkbox\"\n          value=\"finder-pref-9k2-hard-disks-ljj-checkbox\"\n        >\n          Hard disks\n        </Checkbox>\n        <Checkbox\n          defaultSelected\n          name=\"finder-pref-9k2-external-disks-1yg-checkbox\"\n          value=\"finder-pref-9k2-external-disks-1yg-checkbox\"\n        >\n          External disks\n        </Checkbox>\n        <Checkbox name=\"finder-pref-9k2-cds-dvds-fzt-checkbox\" value=\"finder-pref-9k2-cds-dvds-fzt-checkbox\">\n          CDs, DVDs, and iPods\n        </Checkbox>\n        <Checkbox\n          name=\"finder-pref-9k2-connected-servers-6l2-checkbox\"\n          value=\"finder-pref-9k2-connected-servers-6l2-checkbox\"\n        >\n          Connected servers\n        </Checkbox>\n      </FieldGroup>\n    </CheckboxGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

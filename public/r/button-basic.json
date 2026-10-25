@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "button-basic",
+  "title": "button-basic",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/button/button-basic.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\n\nexport default () => {\n  return <Button>Press Me</Button>\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

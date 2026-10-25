@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "dropdown-menu-checkboxes-icons",
+  "title": "dropdown-menu-checkboxes-icons",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/dropdown-menu/dropdown-menu-checkboxes-icons.tsx",
+      "content": "\"use client\"\n\nimport { BellIcon, MailIcon, MessageSquareIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel\n} from \"@/components/ui/dropdown-menu\"\n\nexport default function DropdownMenuCheckboxesIcons() {\n  return (\n    <DropdownMenu>\n      <Button variant=\"outline\">Notifications</Button>\n      <DropdownMenuContent className=\"w-48\" selectionMode=\"multiple\">\n        <DropdownMenuGroup>\n          <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>\n          <DropdownMenuItem id={\"email\"}>\n            <MailIcon />\n            Email notifications\n          </DropdownMenuItem>\n          <DropdownMenuItem id={\"sms\"}>\n            <MessageSquareIcon />\n            SMS notifications\n          </DropdownMenuItem>\n          <DropdownMenuItem id={\"push\"}>\n            <BellIcon />\n            Push notifications\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

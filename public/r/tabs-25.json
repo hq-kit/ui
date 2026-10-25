@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "tabs-25",
+  "title": "tabs-25",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/tabs"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/tabs/tabs-25.tsx",
+      "content": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\"\n\nconst tabs = [\n  {\n    name: \"Explore\",\n    value: \"explore\",\n    content: (\n      <>\n        Discover <span className=\"font-semibold text-foreground\">fresh ideas</span>, trending topics, and hidden gems\n        curated just for you. Start exploring and let your curiosity lead the way!\n      </>\n    )\n  },\n  {\n    name: \"Favorites\",\n    value: \"favorites\",\n    content: (\n      <>\n        All your <span className=\"font-semibold text-foreground\">favorites</span> are saved here. Revisit articles,\n        collections, and moments you love, any time you want a little inspiration.\n      </>\n    )\n  },\n  {\n    name: \"Surprise Me\",\n    value: \"surprise\",\n    content: (\n      <>\n        <span className=\"font-semibold text-foreground\">Surprise!</span> Here&apos;s something unexpected—a fun fact, a\n        quirky tip, or a daily challenge. Come back for a new surprise every day!\n      </>\n    )\n  }\n]\n\nconst TabsCustomDemo = () => {\n  return (\n    <div className=\"w-full max-w-md\">\n      <Tabs className=\"gap-4\" defaultSelectedKey=\"explore\">\n        <TabsList className=\"bg-background\">\n          {tabs.map((tab) => (\n            <TabsTrigger\n              className=\"text-muted-foreground hover:text-foreground data-selected:text-primary-foreground hover:data-selected:text-foreground *:data-[slot=selected-indicator]:bg-primary *:data-[slot=selected-indicator]:duration-300 hover:*:data-[slot=selected-indicator]:border hover:*:data-[slot=selected-indicator]:bg-muted dark:data-selected:text-primary-foreground dark:*:data-[slot=selected-indicator]:border-transparent dark:*:data-[slot=selected-indicator]:bg-primary\"\n              id={tab.value}\n              key={tab.value}\n            >\n              {tab.name}\n            </TabsTrigger>\n          ))}\n        </TabsList>\n\n        {tabs.map((tab) => (\n          <TabsContent id={tab.value} key={tab.value}>\n            <p className=\"text-muted-foreground text-sm\">{tab.content}</p>\n          </TabsContent>\n        ))}\n      </Tabs>\n    </div>\n  )\n}\n\nexport default TabsCustomDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

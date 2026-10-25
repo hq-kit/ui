@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "field-textarea-demo",
+  "title": "field-textarea-demo",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/text-field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/field/field-textarea-demo.tsx",
+      "content": "\"use client\"\n\nimport { type FormEvent, useState } from \"react\"\nimport { toast } from \"sonner\"\nimport { Button } from \"@/components/ui/button\"\nimport { Description, Field, Form, Label } from \"@/components/ui/field\"\nimport { Textarea } from \"@/components/ui/input\"\nimport { TextField } from \"@/components/ui/text-field\"\n\nexport default function FieldTextareaDemo() {\n  const [feedback, setFeedback] = useState(\"\")\n  const onSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    toast(\"Form submitted\", {\n      description: JSON.stringify({ feedback }, null, 2)\n    })\n  }\n  return (\n    <Form className=\"w-full\" onSubmit={onSubmit}>\n      <Field.Group>\n        <TextField isRequired name=\"feedback\" onChange={setFeedback} value={feedback}>\n          <Label>Feedback</Label>\n          <Textarea placeholder=\"Your feedback helps us improve...\" rows={4} />\n          <Description>Share your thoughts about our service.</Description>\n          <Field.Error />\n        </TextField>\n        <Button type=\"submit\">Submit</Button>\n      </Field.Group>\n    </Form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

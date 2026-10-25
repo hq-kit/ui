@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "combobox-demo",
+  "title": "combobox-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/combobox",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/combobox/combobox-demo.tsx",
+      "content": "\"use client\"\nimport { Combobox, ComboboxContent, ComboboxInput, ComboboxItem } from \"@/components/ui/combobox\"\nimport { Label } from \"@/components/ui/field\"\n\nconst options = [\n  { id: \"1\", value: \"Debian\" },\n  { id: \"3\", value: \"Fedora\" },\n  { id: \"4\", value: \"Arch\" },\n  { id: \"5\", value: \"Red Hat\" },\n  { id: \"6\", value: \"openSUSE\" },\n  { id: \"7\", value: \"Gentoo\" },\n  { id: \"8\", value: \"Slackware\" },\n  { id: \"9\", value: \"Void\" },\n  { id: \"10\", value: \"Alpine\" }\n]\n\nexport default function ComboboxDemo() {\n  return (\n    <Combobox>\n      <Label>Choose a distro</Label>\n      <ComboboxInput placeholder=\"Choose a distro\" showClear />\n      <ComboboxContent items={options}>\n        {(option) => <ComboboxItem id={option.id}>{option.value}</ComboboxItem>}\n      </ComboboxContent>\n    </Combobox>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

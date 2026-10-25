@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "breadcrumb-04",
+  "title": "breadcrumb-04",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/breadcrumb"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/breadcrumb/breadcrumb-04.tsx",
+      "content": "import { IconPoint } from \"@tabler/icons-react\"\nimport { Breadcrumb, BreadcrumbItem } from \"@/components/ui/breadcrumb\"\n\nexport default function Breadcrumb04() {\n  return (\n    <Breadcrumb separator={<IconPoint size={16} />}>\n      <BreadcrumbItem href=\"#\">Dashboard</BreadcrumbItem>\n      <BreadcrumbItem href=\"#\">Settings</BreadcrumbItem>\n      <BreadcrumbItem>Profile</BreadcrumbItem>\n    </Breadcrumb>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

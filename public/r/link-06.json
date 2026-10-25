@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "link-06",
+  "title": "link-06",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/link",
+    "http://localhost:3000/r/popover"
+  ],
+  "files": [
+    {
+      "path": "components/samples/navigation/link/link-06.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Link } from \"@/components/ui/link\"\nimport { Popover, PopoverContent } from \"@/components/ui/popover\"\n\nexport default function Link06() {\n  return (\n    <Popover>\n      <Button>Press Me</Button>\n      <PopoverContent>\n        <Link href=\"#\">Link Here</Link>\n      </PopoverContent>\n    </Popover>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

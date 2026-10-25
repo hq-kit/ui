@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-otp-form",
+  "title": "input-otp-form",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input-otp"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-otp/input-otp-form.tsx",
+      "content": "import { RefreshCwIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from \"@/components/ui/card\"\nimport { Description, Field, Label } from \"@/components/ui/field\"\nimport { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from \"@/components/ui/input-otp\"\n\nexport default function InputOTPForm() {\n  return (\n    <Card className=\"mx-auto max-w-md\">\n      <CardHeader>\n        <CardTitle>Verify your login</CardTitle>\n        <CardDescription>\n          Enter the verification code we sent to your email address: <span className=\"font-medium\">m@example.com</span>.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <Field>\n          <div className=\"flex items-center justify-between\">\n            <Label htmlFor=\"otp-verification\">Verification code</Label>\n            <Button size=\"xs\" variant=\"outline\">\n              <RefreshCwIcon />\n              Resend Code\n            </Button>\n          </div>\n          <InputOTP id=\"otp-verification\" maxLength={6} required>\n            <InputOTPGroup className=\"*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl\">\n              <InputOTPSlot index={0} />\n              <InputOTPSlot index={1} />\n              <InputOTPSlot index={2} />\n            </InputOTPGroup>\n            <InputOTPSeparator className=\"mx-2\" />\n            <InputOTPGroup className=\"*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl\">\n              <InputOTPSlot index={3} />\n              <InputOTPSlot index={4} />\n              <InputOTPSlot index={5} />\n            </InputOTPGroup>\n          </InputOTP>\n          <Description>\n            <a href=\"#\">I no longer have access to this email address.</a>\n          </Description>\n        </Field>\n      </CardContent>\n      <CardFooter>\n        <Field>\n          <Button className=\"w-full\" type=\"submit\">\n            Verify\n          </Button>\n          <div className=\"text-muted-foreground text-sm\">\n            Having trouble signing in?{\" \"}\n            <a className=\"underline underline-offset-4 transition-colors hover:text-primary\" href=\"#\">\n              Contact support\n            </a>\n          </div>\n        </Field>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "button-with-icon-data",
+  "title": "button-with-icon-data",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/button/button-with-icon-data.tsx",
+      "content": "import { IconBrandAdobe } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default () => {\n  return (\n    <div className=\"flex flex-col items-center gap-2\">\n      <Button>\n        <IconBrandAdobe data-icon=\"inline-start\" /> Inline Start\n      </Button>\n      <Button>\n        Inline End\n        <IconBrandAdobe data-icon=\"inline-end\" />\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

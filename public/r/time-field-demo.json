@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "time-field-demo",
+  "title": "time-field-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/time-field/time-field-demo.tsx",
+      "content": "\"use client\"\n\nimport { DateInput, TimeField } from \"@/components/ui/date-field\"\nimport { Label } from \"@/components/ui/field\"\n\nexport default function TimeFieldDemo() {\n  return (\n    <TimeField>\n      <Label>Event time</Label>\n      <DateInput />\n    </TimeField>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

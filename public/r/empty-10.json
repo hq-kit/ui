@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-10",
+  "title": "empty-10",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-10.tsx",
+      "content": "import { IconFileText, IconPlus, IconUpload } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"No Files\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconFileText />\n      </EmptyMedia>\n      <EmptyTitle>No files uploaded</EmptyTitle>\n      <EmptyDescription>This folder is empty. Upload files or create new documents to get started.</EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <div className=\"flex gap-2\">\n        <Button>\n          <IconUpload />\n          Upload Files\n        </Button>\n        <Button variant=\"outline\">\n          <IconPlus />\n          Create Document\n        </Button>\n      </div>\n    </EmptyContent>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

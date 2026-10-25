@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "title": "button-group",
+  "dependencies": [
+    "cn"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/separator"
+  ],
+  "files": [
+    {
+      "path": "components/ui/button-group.tsx",
+      "content": "import type { ComponentProps } from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"cn\"\nimport { Separator } from \"./separator\"\n\nconst buttonGroupVariants = cva(\n  \"cn-button-group group/button-group flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1\",\n  {\n    variants: {\n      orientation: {\n        horizontal:\n          \"cn-button-group-orientation-horizontal [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none\",\n        vertical:\n          \"cn-button-group-orientation-vertical flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none\"\n      }\n    },\n    defaultVariants: {\n      orientation: \"horizontal\"\n    }\n  }\n)\n\nconst ButtonGroup = ({\n  className,\n  orientation,\n  ...props\n}: ComponentProps<\"fieldset\"> & VariantProps<typeof buttonGroupVariants>) => (\n  <fieldset\n    className={cn(buttonGroupVariants({ orientation }), className)}\n    data-orientation={orientation}\n    data-slot=\"button-group\"\n    {...props}\n  />\n)\n\nconst ButtonGroupText = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div className={cn(\"cn-button-group-text flex items-center [&_svg]:pointer-events-none\", className)} {...props} />\n)\n\nconst ButtonGroupSeparator = ({ className, orientation = \"vertical\", ...props }: ComponentProps<typeof Separator>) => (\n  <Separator\n    className={cn(\n      \"cn-button-group-separator relative self-stretch data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto\",\n      className\n    )}\n    data-slot=\"button-group-separator\"\n    orientation={orientation}\n    {...props}\n  />\n)\n\nButtonGroup.Text = ButtonGroupText\nButtonGroup.Separator = ButtonGroupSeparator\n\nexport { ButtonGroup, ButtonGroupSeparator, ButtonGroupText }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

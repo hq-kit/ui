@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "switch-choice-card",
+  "title": "switch-choice-card",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/switch"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/switch/switch-choice-card.tsx",
+      "content": "import { Description, Field, FieldGroup, Label, Title } from \"@/components/ui/field\"\nimport { Switch } from \"@/components/ui/switch\"\n\nexport default function SwitchChoiceCard() {\n  return (\n    <FieldGroup className=\"w-full max-w-sm\">\n      <Label htmlFor=\"switch-share\">\n        <Field orientation=\"horizontal\">\n          <Switch id=\"switch-share\">\n            <Title>Share across devices</Title>\n            <Description>Focus is shared across devices, and turns off when you leave the app.</Description>\n          </Switch>\n        </Field>\n      </Label>\n      <Label htmlFor=\"switch-notifications\">\n        <Field orientation=\"horizontal\">\n          <Switch defaultSelected id=\"switch-notifications\">\n            <Title>Enable notifications</Title>\n            <Description>Receive notifications when focus mode is enabled or disabled.</Description>\n          </Switch>\n        </Field>\n      </Label>\n    </FieldGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

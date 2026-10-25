@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "popover",
+  "dependencies": [
+    "cn",
+    "react-aria-components"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/popover.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\nimport { Heading } from \"react-aria-components/Dialog\"\nimport {\n  DialogTrigger,\n  type DialogTriggerProps,\n  Popover as RACPopover,\n  type PopoverProps as RACPopoverProps\n} from \"react-aria-components/Popover\"\n\nconst Popover = ({ children, ...props }: DialogTriggerProps) => (\n  <DialogTrigger data-slot=\"popover-trigger\" {...props}>\n    {children}\n  </DialogTrigger>\n)\n\nconst PopoverContent = ({\n  className,\n  placement = \"bottom\",\n  offset = 4,\n  crossOffset = 0,\n  ...props\n}: Omit<RACPopoverProps, \"className\"> & {\n  className?: string\n}) => (\n  <RACPopover\n    className={cn(\"cn-popover-content-aria z-50 w-72 origin-(--trigger-anchor-point) outline-hidden\", className)}\n    crossOffset={crossOffset}\n    data-slot=\"popover-content\"\n    offset={offset}\n    placement={placement}\n    {...props}\n  />\n)\n\nconst PopoverHeader = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div className={cn(\"cn-popover-header\", className)} data-slot=\"popover-header\" {...props} />\n)\n\nconst PopoverTitle = ({ className, ...props }: ComponentProps<typeof Heading>) => (\n  <Heading className={cn(\"cn-popover-title\", className)} data-slot=\"popover-title\" {...props} />\n)\n\nconst PopoverDescription = ({ className, ...props }: ComponentProps<\"div\">) => (\n  <div className={cn(\"cn-popover-description\", className)} data-slot=\"popover-description\" {...props} />\n)\n\nPopover.Description = PopoverDescription\nPopover.Header = PopoverHeader\nPopover.Title = PopoverTitle\nPopover.Content = PopoverContent\n\nexport { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "number-field-demo",
+  "title": "number-field-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/number-field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/number-field/number-field-demo.tsx",
+      "content": "import { Label } from \"@/components/ui/field\"\nimport { NumberField, NumberInput } from \"@/components/ui/number-field\"\n\nexport default function NumberFieldDemo() {\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <NumberField>\n        <Label>Basic</Label>\n        <NumberInput />\n      </NumberField>\n      <NumberField isReadOnly>\n        <Label>Readonly</Label>\n        <NumberInput />\n      </NumberField>\n      <NumberField isInvalid>\n        <Label>Invalid</Label>\n        <NumberInput />\n      </NumberField>\n      <NumberField isDisabled>\n        <Label>Disabled</Label>\n        <NumberInput />\n      </NumberField>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

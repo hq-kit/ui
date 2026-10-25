@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-area-space-demo",
+  "title": "color-area-space-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/select"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-area/color-area-space-demo.tsx",
+      "content": "\"use client\"\n\nimport type { Key } from \"react-aria-components/Collection\"\nimport type { ColorSpace } from \"react-aria-components/ColorArea\"\nimport { useState } from \"react\"\nimport { ColorArea } from \"@/components/ui/colors\"\nimport { Label } from \"@/components/ui/field\"\nimport { Select } from \"@/components/ui/select\"\n\nconst spaces = [\"rgb\", \"hsb\", \"hsl\"].map((space) => ({ space }))\n\nexport default function ColorAreaSpaceDemo() {\n  const [colorSpace, setColorSpace] = useState<Key | null>(\"rgb\")\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Select className=\"w-full\" onChange={setColorSpace} value={colorSpace}>\n        <Label>Color Space</Label>\n        <Select.Trigger>\n          <Select.Value />\n        </Select.Trigger>\n        <Select.Content items={spaces}>\n          {(item) => <Select.Item id={item.space}>{item.space}</Select.Item>}\n        </Select.Content>\n      </Select>\n      <ColorArea colorSpace={colorSpace as ColorSpace} />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

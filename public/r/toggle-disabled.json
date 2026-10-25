@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "toggle-disabled",
+  "title": "toggle-disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/toggle"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/toggle/toggle-disabled.tsx",
+      "content": "import { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleDisabled() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2\">\n      <Toggle aria-label=\"Toggle disabled\" isDisabled>\n        Disabled\n      </Toggle>\n      <Toggle aria-label=\"Toggle disabled outline\" isDisabled variant=\"outline\">\n        Disabled\n      </Toggle>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

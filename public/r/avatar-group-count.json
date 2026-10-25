@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "avatar-group-count",
+  "title": "avatar-group-count",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/avatar"
+  ],
+  "files": [
+    {
+      "path": "components/samples/media/avatar/avatar-group-count.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage } from \"@/components/ui/avatar\"\n\nexport default function AvatarGroupCountExample() {\n  return (\n    <AvatarGroup className=\"grayscale\">\n      <Avatar>\n        <AvatarImage alt=\"@shadcn\" src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage alt=\"@maxleiter\" src=\"https://github.com/maxleiter.png\" />\n        <AvatarFallback>LR</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage alt=\"@evilrabbit\" src=\"https://github.com/evilrabbit.png\" />\n        <AvatarFallback>ER</AvatarFallback>\n      </Avatar>\n      <AvatarGroupCount>+3</AvatarGroupCount>\n    </AvatarGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

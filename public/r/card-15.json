@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "card-15",
+  "title": "card-15",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card"
+  ],
+  "files": [
+    {
+      "path": "components/samples/surfaces/card/card-15.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from \"@/components/ui/card\"\n\nconst CardGroupDemo = () => {\n  return (\n    <div className=\"flex py-6 *:rounded-none *:shadow-none max-xl:flex-col max-xl:*:not-last:border-b-0 max-xl:*:last:rounded-b-xl max-xl:*:first:rounded-t-xl xl:*:not-last:border-r-0 xl:*:last:rounded-r-xl xl:*:first:rounded-l-xl\">\n      <Card className=\"overflow-hidden pt-0\">\n        <CardContent className=\"px-0\">\n          <img\n            alt=\"Banner\"\n            className=\"aspect-video w-92 object-cover\"\n            src=\"https://cdn.shadcnstudio.com/ss-assets/components/card/image-7.png?width=368&format=auto\"\n          />\n        </CardContent>\n        <CardHeader>\n          <CardTitle>Mystical Blue Swirl</CardTitle>\n          <CardDescription>\n            Dive into the depths of an enchanting swirl where vibrant blues and soft pinks merge seamlessly, creating a\n            mesmerizing flow of colors.\n          </CardDescription>\n        </CardHeader>\n        <CardFooter className=\"gap-3 max-sm:flex-col max-sm:items-stretch\">\n          <Button>Explore More</Button>\n          <Button variant={\"outline\"}>Download Now</Button>\n        </CardFooter>\n      </Card>\n      <Card className=\"overflow-hidden pt-0\">\n        <CardContent className=\"px-0\">\n          <img\n            alt=\"Banner\"\n            className=\"aspect-video w-92 object-cover\"\n            src=\"https://cdn.shadcnstudio.com/ss-assets/components/card/image-5.png?width=368&format=auto\"\n          />\n        </CardContent>\n        <CardHeader>\n          <CardTitle>Cosmic Blue Waves</CardTitle>\n          <CardDescription>\n            Explore the mysteries of the cosmos with deep, swirling waves of blue and purple, evoking a sense of depth\n            and infinite space.\n          </CardDescription>\n        </CardHeader>\n        <CardFooter className=\"gap-3 max-sm:flex-col max-sm:items-stretch\">\n          <Button>Explore More</Button>\n          <Button variant={\"outline\"}>Download Now</Button>\n        </CardFooter>\n      </Card>\n    </div>\n  )\n}\n\nexport default CardGroupDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

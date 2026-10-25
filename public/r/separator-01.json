@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "separator-01",
+  "title": "separator-01",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/separator"
+  ],
+  "files": [
+    {
+      "path": "components/samples/surfaces/separator/separator-01.tsx",
+      "content": "import { Separator } from \"@/components/ui/separator\"\n\nconst Example = () => (\n  <div className=\"space-y-4\">\n    <p className=\"text-sm\">Above the separator</p>\n    <Separator />\n    <p className=\"text-sm\">Below the separator</p>\n  </div>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

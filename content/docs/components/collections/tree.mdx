@@ -1,0 +1,29 @@
+---
+title: Tree
+description: A tree provides users with a way to navigate nested hierarchical information, with support for keyboard navigation and selection.
+references: ['https://react-aria.adobe.com/Tree#api']
+published: true
+order: 12
+---
+
+## Installation
+<Install component='tree' />
+
+
+## Examples
+
+### Multiple selection
+To enable multiple selections, set the `selectionMode` prop to `multiple`. This prop has no default value, so it must be explicitly defined.
+<Demo component='collections/tree/tree-multiple-demo' />
+
+### Like a folder tree
+A tree can be used to represent a folder structure, allowing users to expand and collapse folders to view their contents.
+<Demo component='collections/tree/tree-folder-demo' />
+
+### Infinite scrolling
+The tree can handle large datasets efficiently with infinite scrolling. This allows for loading more data as the user navigates through the tree, improving performance and user experience.
+<Demo component='collections/tree/tree-infinite-scroll-demo' />
+
+### Drag and drop
+The tree supports drag and drop functionalities if you use the `dragAndDropHooks` prop along with the `useDragAndDrop` hook. You can drop data on the entire tree, individual items, add new items between existing ones, or rearrange items.
+<Demo component='collections/tree/tree-drag-demo' />

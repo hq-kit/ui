@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "switch-sizes",
+  "title": "switch-sizes",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/switch"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/switch/switch-sizes.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\"\n\nexport default function SwitchSizes() {\n  return (\n    <div className=\"flex gap-4\">\n      <Switch id=\"switch-size-sm\" size=\"sm\">\n        Small\n      </Switch>\n      <Switch id=\"switch-size-default\" size=\"default\">\n        Default\n      </Switch>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

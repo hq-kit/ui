@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "command-async-loading",
+  "title": "command-async-loading",
+  "dependencies": [
+    "react-stately"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/command"
+  ],
+  "files": [
+    {
+      "path": "components/samples/controls/command/command-async-loading.tsx",
+      "content": "\"use client\"\n\nimport { useAsyncList } from \"react-stately\"\nimport { Command, CommandInput, CommandItem, CommandList } from \"@/components/ui/command\"\n\nexport default function CommandSeparatorDemo() {\n  const list = useAsyncList<{ title: string }>({\n    async load({ signal, filterText }) {\n      const res = await fetch(`https://dummyjson.com/posts/search?q=${filterText}`, {\n        signal\n      }).then((r) => r.json())\n      return {\n        items: res.posts\n      }\n    }\n  })\n  return (\n    <Command inputValue={list.filterText} onInputChange={list.setFilterText}>\n      <CommandInput isPending={list.isLoading} />\n      <CommandList items={list.items}>\n        {(item) => (\n          <CommandItem id={item.title} key={item.title} textValue={item.title}>\n            {item.title}\n          </CommandItem>\n        )}\n      </CommandList>\n    </Command>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "grid-list-infinite-demo",
+  "title": "grid-list-infinite-demo",
+  "dependencies": [
+    "@tabler/icons-react",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/grid-list"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/grid-list/grid-list-infinite-demo.tsx",
+      "content": "\"use client\"\nimport { IconLoader } from \"@tabler/icons-react\"\nimport { Collection, GridListLoadMoreItem } from \"react-aria-components/GridList\"\nimport { useAsyncList } from \"react-aria-components/useAsyncList\"\nimport { Card, CardContent } from \"@/components/ui/card\"\nimport { GridList, GridListItem } from \"@/components/ui/grid-list\"\n\ninterface Character {\n  name: string\n}\n\nexport default function GridListInfiniteScrollDemo() {\n  const list = useAsyncList<Character>({\n    async load({ signal, cursor }) {\n      if (cursor) {\n        cursor = cursor.replace(/^http:\\/\\//i, \"https://\")\n      }\n\n      const res = await fetch(cursor || `https://swapi.py4e.com/api/people/?search=`, {\n        signal\n      })\n      const json = await res.json()\n\n      return {\n        items: json.results,\n        cursor: json.next\n      }\n    }\n  })\n  return (\n    <Card className=\"max-h-56 overflow-y-auto p-0\">\n      <CardContent>\n        <GridList aria-label=\"Async loading ListView example\" selectionMode=\"multiple\">\n          <Collection items={list.items}>\n            {(item) => <GridListItem id={item.name}>{item.name}</GridListItem>}\n          </Collection>\n          <GridListLoadMoreItem isLoading={list.loadingState === \"loadingMore\"} onLoadMore={list.loadMore}>\n            <IconLoader aria-label=\"Loading more...\" className=\"mx-auto mb-4\" />\n          </GridListLoadMoreItem>\n        </GridList>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

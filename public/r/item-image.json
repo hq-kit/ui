@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "item-image",
+  "title": "item-image",
+  "dependencies": [
+    "next/image"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/item"
+  ],
+  "files": [
+    {
+      "path": "components/samples/collections/item/item-image.tsx",
+      "content": "import Image from \"next/image\"\nimport { Item, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from \"@/components/ui/item\"\n\nconst music = [\n  {\n    title: \"Midnight City Lights\",\n    artist: \"Neon Dreams\",\n    album: \"Electric Nights\",\n    duration: \"3:45\"\n  },\n  {\n    title: \"Coffee Shop Conversations\",\n    artist: \"The Morning Brew\",\n    album: \"Urban Stories\",\n    duration: \"4:05\"\n  },\n  {\n    title: \"Digital Rain\",\n    artist: \"Cyber Symphony\",\n    album: \"Binary Beats\",\n    duration: \"3:30\"\n  }\n]\n\nexport default function ItemImage() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <ItemGroup className=\"gap-4\">\n        {music.map((song) => (\n          <Item href=\"#\" key={song.title} role=\"listitem\" variant=\"outline\">\n            <ItemMedia variant=\"image\">\n              <Image\n                alt={song.title}\n                className=\"object-cover grayscale\"\n                height={32}\n                src={`https://avatar.vercel.sh/${song.title}`}\n                width={32}\n              />\n            </ItemMedia>\n            <ItemContent>\n              <ItemTitle className=\"line-clamp-1\">\n                {song.title} - <span className=\"text-muted-foreground\">{song.album}</span>\n              </ItemTitle>\n              <ItemDescription>{song.artist}</ItemDescription>\n            </ItemContent>\n            <ItemContent className=\"flex-none text-center\">\n              <ItemDescription>{song.duration}</ItemDescription>\n            </ItemContent>\n          </Item>\n        ))}\n      </ItemGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

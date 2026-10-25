@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "input-group-in-card",
+  "title": "input-group-in-card",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input"
+  ],
+  "files": [
+    {
+      "path": "components/samples/forms/input-group/input-group-in-card.tsx",
+      "content": "import { ExternalLinkIcon, MailIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from \"@/components/ui/card\"\nimport { Field, FieldGroup, Label } from \"@/components/ui/field\"\nimport { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, InputGroupTextarea } from \"@/components/ui/input\"\n\nexport default function InputGroupInCard() {\n  return (\n    <Card className=\"w-full\">\n      <CardHeader>\n        <CardTitle>Card with Input Group</CardTitle>\n        <CardDescription>This is a card with an input group.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <FieldGroup>\n          <Field>\n            <Label htmlFor=\"email-input\">Email Address</Label>\n            <InputGroup>\n              <InputGroupInput id=\"email-input\" placeholder=\"you@example.com\" type=\"email\" />\n              <InputGroupAddon align=\"inline-end\">\n                <MailIcon />\n              </InputGroupAddon>\n            </InputGroup>\n          </Field>\n          <Field>\n            <Label htmlFor=\"website-input\">Website URL</Label>\n            <InputGroup>\n              <InputGroupAddon>\n                <InputGroupText>https://</InputGroupText>\n              </InputGroupAddon>\n              <InputGroupInput id=\"website-input\" placeholder=\"example.com\" />\n              <InputGroupAddon align=\"inline-end\">\n                <ExternalLinkIcon />\n              </InputGroupAddon>\n            </InputGroup>\n          </Field>\n          <Field>\n            <Label htmlFor=\"feedback-textarea\">Feedback & Comments</Label>\n            <InputGroup>\n              <InputGroupTextarea className=\"min-h-25\" id=\"feedback-textarea\" placeholder=\"Share your thoughts...\" />\n              <InputGroupAddon align=\"block-end\">\n                <InputGroupText>0/500 characters</InputGroupText>\n              </InputGroupAddon>\n            </InputGroup>\n          </Field>\n        </FieldGroup>\n      </CardContent>\n      <CardFooter className=\"justify-end gap-2\">\n        <Button variant=\"outline\">Cancel</Button>\n        <Button>Submit</Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

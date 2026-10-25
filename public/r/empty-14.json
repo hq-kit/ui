@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-14",
+  "title": "empty-14",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-14.tsx",
+      "content": "import { IconSearch } from \"@tabler/icons-react\"\nimport { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"Try Different Keywords\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia>\n        <IconSearch className=\"size-8 text-muted-foreground\" />\n      </EmptyMedia>\n      <EmptyTitle>No results for your search</EmptyTitle>\n      <EmptyDescription>\n        Try using different keywords or check the spelling. You can also browse our categories to find what you're\n        looking for.\n      </EmptyDescription>\n    </EmptyHeader>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "toggle-group-disabled",
+  "title": "toggle-group-disabled",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/toggle"
+  ],
+  "files": [
+    {
+      "path": "components/samples/buttons/toggle/toggle-group-disabled.tsx",
+      "content": "import { Bold, Italic, Underline } from \"lucide-react\"\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\nexport default function ToggleGroupDisabled() {\n  return (\n    <ToggleGroup isDisabled selectionMode=\"multiple\">\n      <ToggleGroupItem aria-label=\"Toggle bold\" id=\"bold\">\n        <Bold />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle italic\" id=\"italic\">\n        <Italic />\n      </ToggleGroupItem>\n      <ToggleGroupItem aria-label=\"Toggle strikethrough\" id=\"strikethrough\">\n        <Underline />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

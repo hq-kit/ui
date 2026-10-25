@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "color-area-channel-demo",
+  "title": "color-area-channel-demo",
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/colors",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/select"
+  ],
+  "files": [
+    {
+      "path": "components/samples/colors/color-area/color-area-channel-demo.tsx",
+      "content": "\"use client\"\n\nimport type { Key } from \"react-aria-components/Collection\"\nimport type { ColorChannel } from \"react-aria-components/ColorArea\"\nimport { useState } from \"react\"\nimport { ColorArea } from \"@/components/ui/colors\"\nimport { Label } from \"@/components/ui/field\"\nimport { Select } from \"@/components/ui/select\"\n\nconst channels = [\"red\", \"green\", \"blue\", \"alpha\"].map((channel) => ({ channel }))\n\nexport default function ColorAreaChannelDemo() {\n  const [xChannel, setXChannel] = useState<Key | null>(\"red\")\n  const [yChannel, setYChannel] = useState<Key | null>(\"blue\")\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <div className=\"flex w-full flex-col gap-2 sm:flex-row\">\n        <Select className=\"w-full\" onChange={(v) => setXChannel(v)} value={xChannel}>\n          <Label>X Channel</Label>\n          <Select.Trigger>\n            <Select.Value />\n          </Select.Trigger>\n          <Select.Content items={channels}>\n            {(item) => <Select.Item id={item.channel}>{item.channel}</Select.Item>}\n          </Select.Content>\n        </Select>\n        <Select className=\"w-full\" onChange={(v) => setYChannel(v)} value={yChannel}>\n          <Label>Y Channel</Label>\n          <Select.Trigger>\n            <Select.Value />\n          </Select.Trigger>\n          <Select.Content items={channels}>\n            {(item) => <Select.Item id={item.channel}>{item.channel}</Select.Item>}\n          </Select.Content>\n        </Select>\n      </div>\n      <ColorArea xChannel={xChannel as ColorChannel} yChannel={yChannel as ColorChannel} />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "empty-03",
+  "title": "empty-03",
+  "dependencies": [
+    "@tabler/icons-react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/empty"
+  ],
+  "files": [
+    {
+      "path": "components/samples/statuses/empty/empty-03.tsx",
+      "content": "import { IconBook, IconExternalLink } from \"@tabler/icons-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from \"@/components/ui/empty\"\n\nexport const title = \"Empty with Link Action\"\n\nconst Example = () => (\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia variant=\"icon\">\n        <IconBook />\n      </EmptyMedia>\n      <EmptyTitle>Get started with our guide</EmptyTitle>\n      <EmptyDescription>Learn how to set up your first project and start building.</EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button className=\"gap-2\" variant=\"link\">\n        Read the documentation\n        <IconExternalLink className=\"h-4 w-4\" />\n      </Button>\n    </EmptyContent>\n  </Empty>\n)\n\nexport default Example\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

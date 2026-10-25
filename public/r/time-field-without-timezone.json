@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "time-field-without-timezone",
+  "title": "time-field-without-timezone",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/date-field",
+    "http://localhost:3000/r/field"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/time-field/time-field-without-timezone.tsx",
+      "content": "\"use client\"\n\nimport { getLocalTimeZone, now, parseZonedDateTime } from \"@internationalized/date\"\nimport { useState } from \"react\"\nimport { DateInput, TimeField } from \"@/components/ui/date-field\"\nimport { Label } from \"@/components/ui/field\"\n\nexport default function TimeFieldDemo() {\n  const today = parseZonedDateTime(now(getLocalTimeZone()).toString())\n  const [value, setValue] = useState(today)\n\n  return (\n    <TimeField hideTimeZone hourCycle={24} onChange={(e) => setValue(e!)} value={value}>\n      <Label>Event date</Label>\n      <DateInput />\n    </TimeField>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

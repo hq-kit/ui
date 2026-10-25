@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "calendar-demo",
+  "title": "calendar-demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "http://localhost:3000/r/calendar"
+  ],
+  "files": [
+    {
+      "path": "components/samples/date-and-time/calendar/calendar-demo.tsx",
+      "content": "\"use client\"\n\nimport { Calendar } from \"@/components/ui/calendar\"\n\nexport default function CalendarDemo() {\n  return <Calendar className=\"rounded-lg border\" />\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}
