@@ -40,7 +40,7 @@ const Tag = ({ children, className, ...props }: TagProps) => {
     <RACTag
       className={composeRenderProps(className, (className, { isSelected }) =>
         cn(
-          badgeVariants({ variant: isSelected ? "default" : "secondary" }),
+          badgeVariants({ variant: isSelected ? "primary" : "secondary" }),
           "data-disabled:opacity-50",
           "href" in props ? "cursor-pointer" : "cursor-default",
           className

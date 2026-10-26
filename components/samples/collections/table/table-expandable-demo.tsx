@@ -223,6 +223,6 @@ function getStatusVariant(status: string) {
   if (status === "Blocked") return "destructive"
   if (status === "In progress") return "secondary"
   if (status === "Planned") return "outline"
-  if (status === "Done") return "default"
-  return "default"
+  if (status === "Done") return "primary"
+  return "primary"
 }

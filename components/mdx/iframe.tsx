@@ -58,9 +58,7 @@ export function Iframe({ component }: { component: string }) {
   return (
     <div className="group/demo bg-card relative overflow-hidden rounded-lg py-0">
       <div className="bg-accent flex h-0 w-full items-center justify-between gap-1 overflow-hidden backdrop-blur-2xl transition-[height,padding] group-hover/demo:h-12 group-hover/demo:p-2">
-        <Badge className="text-xs font-medium" variant="default">
-          {component.split("/").pop()}
-        </Badge>
+        <Badge className="text-xs font-medium">{component.split("/").pop()}</Badge>
         <div className="hidden gap-1 sm:flex">
           <ToggleGroup
             className={"bg-background/60"}
