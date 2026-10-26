@@ -9,8 +9,8 @@
     "react-stately"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/card",
-    "https://hq-ui.vercel.app/r/list-box"
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/list-box"
   ],
   "files": [
     {

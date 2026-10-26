@@ -7,8 +7,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/attachment",
-    "https://hq-ui.vercel.app/r/file-trigger"
+    "http://localhost:3000/r/attachment",
+    "http://localhost:3000/r/file-trigger"
   ],
   "files": [
     {

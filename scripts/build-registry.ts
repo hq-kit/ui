@@ -5,8 +5,9 @@ import { blocks } from "@/scripts/registries/blocks"
 import { cssUtils } from "@/scripts/registries/css-utils"
 import { samples } from "@/scripts/registries/samples"
 import { uiComponents } from "@/scripts/registries/ui"
+import { themeRegistries } from "./registries/themes"
 
-const registries: RegistryItem[] = [...uiComponents, ...samples, ...cssUtils, ...blocks]
+const registries: RegistryItem[] = [...uiComponents, ...samples, ...cssUtils, ...blocks, ...themeRegistries]
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -21,3 +22,4 @@ console.info(`  - UI Components: ${uiComponents.length}`)
 console.info(`  - Samples: ${samples.length}`)
 console.info(`  - Blocks: ${blocks.length}`)
 console.info(`  - CSS Utils: ${cssUtils.length}`)
+console.info(`  - Themes: ${themeRegistries.length}`)

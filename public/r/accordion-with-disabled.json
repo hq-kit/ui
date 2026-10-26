@@ -5,7 +5,7 @@
   "title": "accordion-with-disabled",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/accordion"
+    "http://localhost:3000/r/accordion"
   ],
   "files": [
     {

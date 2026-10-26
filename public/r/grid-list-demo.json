@@ -5,11 +5,11 @@
   "title": "grid-list-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/card",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/grid-list",
-    "https://hq-ui.vercel.app/r/radio",
-    "https://hq-ui.vercel.app/r/toolbar"
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/grid-list",
+    "http://localhost:3000/r/radio",
+    "http://localhost:3000/r/toolbar"
   ],
   "files": [
     {

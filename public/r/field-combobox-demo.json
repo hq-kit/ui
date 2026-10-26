@@ -8,11 +8,11 @@
     "sonner"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/select",
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/combobox",
-    "https://hq-ui.vercel.app/r/field"
+    "http://localhost:3000/r/select",
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/combobox",
+    "http://localhost:3000/r/field"
   ],
   "files": [
     {

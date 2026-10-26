@@ -5,10 +5,10 @@
   "title": "kbd-tooltip-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/button-group",
-    "https://hq-ui.vercel.app/r/kbd",
-    "https://hq-ui.vercel.app/r/tooltip"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/button-group",
+    "http://localhost:3000/r/kbd",
+    "http://localhost:3000/r/tooltip"
   ],
   "files": [
     {

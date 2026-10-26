@@ -5,8 +5,8 @@
   "title": "tooltip-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/tooltip"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/tooltip"
   ],
   "files": [
     {

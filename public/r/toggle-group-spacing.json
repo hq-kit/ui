@@ -5,7 +5,7 @@
   "title": "toggle-group-spacing",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/toggle"
+    "http://localhost:3000/r/toggle"
   ],
   "files": [
     {

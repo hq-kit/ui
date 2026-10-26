@@ -7,10 +7,10 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/colors",
-    "https://hq-ui.vercel.app/r/input",
-    "https://hq-ui.vercel.app/r/popover"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/colors",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/popover"
   ],
   "files": [
     {

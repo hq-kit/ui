@@ -9,10 +9,10 @@
     "sonner"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input",
-    "https://hq-ui.vercel.app/r/number-field"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/number-field"
   ],
   "files": [
     {

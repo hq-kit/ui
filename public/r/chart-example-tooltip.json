@@ -7,7 +7,7 @@
     "recharts"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/chart"
+    "http://localhost:3000/r/chart"
   ],
   "files": [
     {

@@ -5,11 +5,11 @@
   "title": "sheet-no-overlay",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input",
-    "https://hq-ui.vercel.app/r/sheet",
-    "https://hq-ui.vercel.app/r/text-field"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/sheet",
+    "http://localhost:3000/r/text-field"
   ],
   "files": [
     {

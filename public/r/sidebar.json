@@ -8,14 +8,14 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/input",
-    "https://hq-ui.vercel.app/r/link",
-    "https://hq-ui.vercel.app/r/separator",
-    "https://hq-ui.vercel.app/r/sheet",
-    "https://hq-ui.vercel.app/r/skeleton",
-    "https://hq-ui.vercel.app/r/tooltip",
-    "https://hq-ui.vercel.app/r/use-mobile"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/link",
+    "http://localhost:3000/r/separator",
+    "http://localhost:3000/r/sheet",
+    "http://localhost:3000/r/skeleton",
+    "http://localhost:3000/r/tooltip",
+    "http://localhost:3000/r/use-mobile"
   ],
   "files": [
     {

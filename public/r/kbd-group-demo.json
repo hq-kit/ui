@@ -5,7 +5,7 @@
   "title": "kbd-group-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/kbd"
+    "http://localhost:3000/r/kbd"
   ],
   "files": [
     {

@@ -10,9 +10,9 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/drop-zone",
-    "https://hq-ui.vercel.app/r/file-trigger"
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/drop-zone",
+    "http://localhost:3000/r/file-trigger"
   ],
   "files": [
     {

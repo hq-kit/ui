@@ -5,7 +5,7 @@
   "title": "range-calendar-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/calendar"
+    "http://localhost:3000/r/calendar"
   ],
   "files": [
     {

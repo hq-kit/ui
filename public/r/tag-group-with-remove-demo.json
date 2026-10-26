@@ -7,7 +7,7 @@
     "react-stately"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/tag"
+    "http://localhost:3000/r/tag"
   ],
   "files": [
     {

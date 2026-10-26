@@ -8,9 +8,9 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/badge",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/text-field"
+    "http://localhost:3000/r/badge",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/text-field"
   ],
   "files": [
     {

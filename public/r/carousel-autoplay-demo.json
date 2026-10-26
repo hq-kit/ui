@@ -7,7 +7,7 @@
     "embla-carousel-autoplay"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/carousel"
+    "http://localhost:3000/r/carousel"
   ],
   "files": [
     {

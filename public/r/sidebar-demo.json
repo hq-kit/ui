@@ -7,13 +7,13 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/breadcrumb",
-    "https://hq-ui.vercel.app/r/collapsible",
-    "https://hq-ui.vercel.app/r/dropdown-menu",
-    "https://hq-ui.vercel.app/r/separator",
-    "https://hq-ui.vercel.app/r/sidebar",
-    "https://hq-ui.vercel.app/r/skeleton"
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/breadcrumb",
+    "http://localhost:3000/r/collapsible",
+    "http://localhost:3000/r/dropdown-menu",
+    "http://localhost:3000/r/separator",
+    "http://localhost:3000/r/sidebar",
+    "http://localhost:3000/r/skeleton"
   ],
   "files": [
     {

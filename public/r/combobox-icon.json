@@ -7,8 +7,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/combobox",
-    "https://hq-ui.vercel.app/r/field"
+    "http://localhost:3000/r/combobox",
+    "http://localhost:3000/r/field"
   ],
   "files": [
     {

@@ -7,8 +7,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/alert",
-    "https://hq-ui.vercel.app/r/button"
+    "http://localhost:3000/r/alert",
+    "http://localhost:3000/r/button"
   ],
   "files": [
     {

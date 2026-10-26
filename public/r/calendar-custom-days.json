@@ -5,8 +5,8 @@
   "title": "calendar-custom-days",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/calendar",
-    "https://hq-ui.vercel.app/r/card"
+    "http://localhost:3000/r/calendar",
+    "http://localhost:3000/r/card"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "link-01",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/link"
+    "http://localhost:3000/r/link"
   ],
   "files": [
     {

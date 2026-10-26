@@ -5,9 +5,9 @@
   "title": "avatar-dropdown",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/dropdown-menu"
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
   ],
   "files": [
     {

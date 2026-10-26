@@ -9,7 +9,7 @@
     "react-stately"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/tree"
+    "http://localhost:3000/r/tree"
   ],
   "files": [
     {

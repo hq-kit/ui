@@ -8,17 +8,17 @@
     "cn"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/select",
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/breadcrumb",
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/card",
-    "https://hq-ui.vercel.app/r/collapsible",
-    "https://hq-ui.vercel.app/r/dropdown-menu",
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/navbar",
-    "https://hq-ui.vercel.app/r/skeleton",
-    "https://hq-ui.vercel.app/r/switch"
+    "http://localhost:3000/r/select",
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/breadcrumb",
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/collapsible",
+    "http://localhost:3000/r/dropdown-menu",
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/navbar",
+    "http://localhost:3000/r/skeleton",
+    "http://localhost:3000/r/switch"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "checkbox-invalid",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/checkbox"
+    "http://localhost:3000/r/checkbox"
   ],
   "files": [
     {

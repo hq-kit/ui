@@ -5,7 +5,7 @@
   "title": "separator-13",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/separator"
+    "http://localhost:3000/r/separator"
   ],
   "files": [
     {

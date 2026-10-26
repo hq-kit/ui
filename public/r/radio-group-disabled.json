@@ -5,7 +5,7 @@
   "title": "radio-group-disabled",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/radio"
+    "http://localhost:3000/r/radio"
   ],
   "files": [
     {

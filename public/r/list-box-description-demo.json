@@ -7,7 +7,7 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/list-box"
+    "http://localhost:3000/r/list-box"
   ],
   "files": [
     {

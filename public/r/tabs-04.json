@@ -5,8 +5,8 @@
   "title": "tabs-04",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/badge",
-    "https://hq-ui.vercel.app/r/tabs"
+    "http://localhost:3000/r/badge",
+    "http://localhost:3000/r/tabs"
   ],
   "files": [
     {

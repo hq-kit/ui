@@ -5,8 +5,8 @@
   "title": "alert-dialog-small",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/alert-dialog",
-    "https://hq-ui.vercel.app/r/button"
+    "http://localhost:3000/r/alert-dialog",
+    "http://localhost:3000/r/button"
   ],
   "files": [
     {

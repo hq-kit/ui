@@ -8,9 +8,9 @@
     "recharts"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/card",
-    "https://hq-ui.vercel.app/r/chart",
-    "https://hq-ui.vercel.app/r/select"
+    "http://localhost:3000/r/card",
+    "http://localhost:3000/r/chart",
+    "http://localhost:3000/r/select"
   ],
   "files": [
     {

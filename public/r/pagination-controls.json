@@ -5,7 +5,7 @@
   "title": "pagination-controls",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/pagination"
+    "http://localhost:3000/r/pagination"
   ],
   "files": [
     {

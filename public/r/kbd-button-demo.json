@@ -5,8 +5,8 @@
   "title": "kbd-button-demo",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/kbd"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/kbd"
   ],
   "files": [
     {

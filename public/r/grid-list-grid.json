@@ -5,7 +5,7 @@
   "title": "grid-list-grid",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/grid-list"
+    "http://localhost:3000/r/grid-list"
   ],
   "files": [
     {

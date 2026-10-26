@@ -5,8 +5,8 @@
   "title": "dropdown-menu-submenu",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/dropdown-menu"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dropdown-menu"
   ],
   "files": [
     {

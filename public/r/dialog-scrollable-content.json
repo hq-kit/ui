@@ -5,8 +5,8 @@
   "title": "dialog-scrollable-content",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/dialog"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/dialog"
   ],
   "files": [
     {

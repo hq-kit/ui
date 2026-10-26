@@ -5,8 +5,8 @@
   "title": "pagination-complex",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/pagination",
-    "https://hq-ui.vercel.app/r/select"
+    "http://localhost:3000/r/pagination",
+    "http://localhost:3000/r/select"
   ],
   "files": [
     {

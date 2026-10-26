@@ -7,7 +7,7 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/input"
+    "http://localhost:3000/r/input"
   ],
   "files": [
     {

@@ -5,9 +5,9 @@
   "title": "message-avatar",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/avatar",
-    "https://hq-ui.vercel.app/r/bubble",
-    "https://hq-ui.vercel.app/r/message"
+    "http://localhost:3000/r/avatar",
+    "http://localhost:3000/r/bubble",
+    "http://localhost:3000/r/message"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "file-trigger-folder",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/file-trigger"
+    "http://localhost:3000/r/file-trigger"
   ],
   "files": [
     {

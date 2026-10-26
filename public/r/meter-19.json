@@ -5,8 +5,8 @@
   "title": "meter-19",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/meter"
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/meter"
   ],
   "files": [
     {

@@ -7,8 +7,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/item",
-    "https://hq-ui.vercel.app/r/progress"
+    "http://localhost:3000/r/item",
+    "http://localhost:3000/r/progress"
   ],
   "files": [
     {

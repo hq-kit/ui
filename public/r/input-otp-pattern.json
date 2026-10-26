@@ -7,8 +7,8 @@
     "input-otp"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input-otp"
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input-otp"
   ],
   "files": [
     {

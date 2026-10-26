@@ -8,8 +8,8 @@
     "react-aria-components"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/button",
-    "https://hq-ui.vercel.app/r/select"
+    "http://localhost:3000/r/button",
+    "http://localhost:3000/r/select"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "card-16",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/card"
+    "http://localhost:3000/r/card"
   ],
   "files": [
     {

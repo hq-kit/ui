@@ -7,8 +7,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/tabs",
-    "https://hq-ui.vercel.app/r/tooltip"
+    "http://localhost:3000/r/tabs",
+    "http://localhost:3000/r/tooltip"
   ],
   "files": [
     {

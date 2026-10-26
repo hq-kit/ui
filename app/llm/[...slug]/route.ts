@@ -7,7 +7,6 @@ import { getPageBySlug } from "@/lib/source"
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ slug: string[] }> }) {
   const slug = (await params).slug
   const page = getPageBySlug(slug)
-  console.log(slug)
 
   if (!page) {
     notFound()

@@ -5,8 +5,8 @@
   "title": "message-header-footer",
   "dependencies": [],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/bubble",
-    "https://hq-ui.vercel.app/r/message"
+    "http://localhost:3000/r/bubble",
+    "http://localhost:3000/r/message"
   ],
   "files": [
     {

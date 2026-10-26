@@ -7,10 +7,10 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://hq-ui.vercel.app/r/field",
-    "https://hq-ui.vercel.app/r/input",
-    "https://hq-ui.vercel.app/r/kbd",
-    "https://hq-ui.vercel.app/r/spinner"
+    "http://localhost:3000/r/field",
+    "http://localhost:3000/r/input",
+    "http://localhost:3000/r/kbd",
+    "http://localhost:3000/r/spinner"
   ],
   "files": [
     {
