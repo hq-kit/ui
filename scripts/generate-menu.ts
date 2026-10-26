@@ -5,6 +5,7 @@ export interface CollectionComponent {
   title: string
   slug: string
   order?: number
+  status?: "stable" | "alpha" | "beta" | "new"
 }
 
 export interface Component {
@@ -39,7 +40,7 @@ async function getFrontmatterOrder(filePath: string): Promise<number> {
   const raw = await fs.readFile(filePath, "utf-8")
 
   const match = raw.match(/---\n([\s\S]*?)\n---/)
-  if (!match) return 999 // fallback kalau tidak ada order
+  if (!match) return 999
 
   const yaml = match[1]
 
@@ -49,6 +50,22 @@ async function getFrontmatterOrder(filePath: string): Promise<number> {
   }
 
   return 999
+}
+
+async function getFrontmatterStatus(filePath: string): Promise<"stable" | "alpha" | "beta" | "new"> {
+  const raw = await fs.readFile(filePath, "utf-8")
+
+  const match = raw.match(/---\n([\s\S]*?)\n---/)
+  if (!match) return "stable"
+
+  const yaml = match[1]
+
+  for (const line of yaml.split("\n")) {
+    const [key, value] = line.split(":").map((s) => s.trim())
+    if (key === "status") return value as "stable" | "alpha" | "beta" | "new"
+  }
+
+  return "stable"
 }
 
 async function walk(dir: string, basePath: string): Promise<string[]> {
@@ -99,13 +116,14 @@ async function generate() {
     const title = titleize(name)
     const fullPath = path.join(basePath, file)
     const order = await getFrontmatterOrder(fullPath)
+    const status = await getFrontmatterStatus(fullPath)
 
     if (section === "components") {
       const subsection = parts[1]
       const key = String(subsection).toLowerCase()
       if (!componentSubGroups[key]) componentSubGroups[key] = []
 
-      componentSubGroups[key].push({ slug, title, order })
+      componentSubGroups[key].push({ slug, title, order, status })
     } else {
       if (!normalGroups[section]) normalGroups[section] = []
       normalGroups[section].push({ slug, title, order })

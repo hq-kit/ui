@@ -6,6 +6,7 @@ import { Pager } from "@/components/docs/pager"
 import { DocRefs } from "@/components/docs/references"
 import { Toc } from "@/components/docs/toc"
 import { MDXContent } from "@/components/mdx-content"
+import { Badge } from "@/components/ui/badge"
 import { getPageBySlug } from "@/lib/source"
 
 type Props = {
@@ -66,8 +67,16 @@ export default async function DocsPage(props: Props) {
   return (
     <div className="flex w-full items-start">
       {/* Center */}
-      <div className="border-page w-full min-w-0 py-8 sm:pt-10 sm:pb-24 xl:border-x">
+      <div className="w-full min-w-0 py-8 sm:pt-10 sm:pb-24 xl:border-x">
         <div className="mx-auto px-4 sm:px-6 xl:max-w-3xl">
+          {doc.status !== "stable" && (
+            <Badge
+              className="mb-2 rounded-none font-mono"
+              variant={doc.status === "new" ? "success" : doc.status === "alpha" ? "destructive" : "warning"}
+            >
+              {doc.status}
+            </Badge>
+          )}
           <div className="mb-3 flex flex-col justify-between gap-6 sm:mb-12 sm:flex-row sm:items-center">
             <h1 className="flex-1 text-3xl font-normal tracking-tight">{doc.title}</h1>
             <div className="flex items-center gap-x-1.5">

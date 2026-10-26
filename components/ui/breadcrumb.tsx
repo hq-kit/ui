@@ -42,8 +42,8 @@ const BreadcrumbItem = ({ className, ...props }: BreadcrumbsItemProps & Omit<Lin
     <RACBreadcrumb
       className={composeRenderProps(className, (className, { isCurrent }) =>
         cn(
-          "inline-flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-          isCurrent ? "text-foreground" : "text-muted-foreground hover:*:[a]:text-foreground",
+          "inline-flex items-center gap-1 has-[button]:-ml-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+          isCurrent ? "text-accent" : "text-foreground hover:*:[a]:text-accent",
           className
         )
       )}
@@ -52,7 +52,7 @@ const BreadcrumbItem = ({ className, ...props }: BreadcrumbsItemProps & Omit<Lin
     >
       {({ isCurrent }) => (
         <>
-          <Link className="hover:text-foreground flex items-center gap-2 transition-colors" {...props} />
+          <Link className="hover:text-accent flex items-center gap-2 transition-colors" {...props} />
           {!isCurrent && separator}
         </>
       )}

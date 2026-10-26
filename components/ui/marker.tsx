@@ -1,39 +1,73 @@
-import type { ComponentProps, ComponentPropsWithoutRef } from "react"
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
-import { Link, type LinkProps } from "./link"
 
-const markerVariants = cva("cn-marker group/marker relative flex w-full items-center", {
-  variants: {
-    variant: {
-      default: "cn-marker-variant-default",
-      separator: "cn-marker-variant-separator",
-      border: "cn-marker-variant-border"
+const markerVariants = cva(
+  "group/marker text-muted-foreground [a]:hover:text-foreground relative flex min-h-4 w-full items-center gap-2 text-left text-sm [&_svg:not([class*='size-'])]:size-4 [a]:underline [a]:underline-offset-3",
+  {
+    variants: {
+      variant: {
+        default: "",
+        separator:
+          "before:bg-border after:bg-border before:mr-1 before:h-px before:min-w-0 before:flex-1 after:ml-1 after:h-px after:min-w-0 after:flex-1",
+        border: "border-border border-b pb-2"
+      }
     }
   }
-})
+)
 
-const Marker = ({
+function Marker({
   className,
   variant = "default",
+  render,
+  children,
   ...props
-}: Omit<LinkProps, "slot" | "className" | "ref"> &
-  Omit<ComponentPropsWithoutRef<"div">, "style"> &
-  VariantProps<typeof markerVariants>) => {
-  const Comp = "href" in props ? Link : "div"
+}: ComponentProps<"div"> &
+  VariantProps<typeof markerVariants> & {
+    render?: (props: HTMLAttributes<HTMLElement>) => ReactNode
+  }) {
+  if (render) {
+    const renderProps = {
+      ...props,
+      "data-slot": "marker",
+      "data-variant": variant,
+      className: cn(markerVariants({ variant, className })),
+      children
+    }
+
+    return render(renderProps)
+  }
 
   return (
-    <Comp className={cn(markerVariants({ variant, className }))} data-slot="marker" data-variant={variant} {...props} />
+    <div {...props} className={cn(markerVariants({ variant, className }))} data-slot="marker" data-variant={variant}>
+      {children}
+    </div>
   )
 }
 
-const MarkerIcon = ({ className, ...props }: ComponentProps<"span">) => (
-  <span aria-hidden="true" className={cn("cn-marker-icon shrink-0", className)} data-slot="marker-icon" {...props} />
-)
+function MarkerIcon({ className, ...props }: ComponentProps<"span">) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn("size-4 shrink-0 [&_svg:not([class*='size-'])]:size-4", className)}
+      data-slot="marker-icon"
+      {...props}
+    />
+  )
+}
 
-const MarkerContent = ({ className, ...props }: ComponentProps<"span">) => (
-  <span className={cn("cn-marker-content wrap-break-word min-w-0", className)} data-slot="marker-content" {...props} />
-)
+function MarkerContent({ className, ...props }: ComponentProps<"span">) {
+  return (
+    <span
+      className={cn(
+        "*:[a]:hover:text-foreground min-w-0 wrap-break-word group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center *:[a]:underline *:[a]:underline-offset-3",
+        className
+      )}
+      data-slot="marker-content"
+      {...props}
+    />
+  )
+}
 
 Marker.Content = MarkerContent
 Marker.Icon = MarkerIcon

@@ -21,6 +21,7 @@ import { Input, SearchField, type SearchFieldProps } from "react-aria-components
 import { Autocomplete } from "./autocomplete"
 import { Dialog } from "./dialog"
 import { InputGroup, InputGroupAddon } from "./input"
+import { Link, type LinkProps } from "./link"
 
 const Command = ({
   className,
@@ -153,6 +154,9 @@ const CommandItem = <T extends object>({ className, children, textValue, ...prop
       className
     )}
     data-slot="command-item"
+    render={(domProps) =>
+      "href" in props ? <Link {...(domProps as LinkProps)} /> : <div {...(domProps as ComponentProps<"div">)} />
+    }
     textValue={textValue || (typeof children === "string" ? children : undefined)}
   >
     {composeRenderProps(children, (children) => (

@@ -2,7 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
-import { useSyncExternalStore } from "react"
+import { type ComponentProps, useSyncExternalStore } from "react"
 import { composeRenderProps } from "react-aria-components/composeRenderProps"
 import {
   Tab as RACTab,
@@ -17,6 +17,7 @@ import {
   type TabProps,
   type TabsProps
 } from "react-aria-components/Tabs"
+import { Link, type LinkProps } from "./link"
 
 const Tabs = ({ className, ...props }: TabsProps) => (
   <RACTabs
@@ -78,6 +79,9 @@ const TabsTrigger = ({ className, ...props }: TabProps) => {
         )
       )}
       data-slot="tabs-trigger"
+      render={(domProps) =>
+        "href" in props ? <Link {...(domProps as LinkProps)} /> : <div {...(domProps as ComponentProps<"div">)} />
+      }
       {...props}
     >
       {(values) => (

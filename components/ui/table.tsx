@@ -28,6 +28,7 @@ import {
   useTableOptions
 } from "react-aria-components/Table"
 import { Checkbox } from "./checkbox"
+import { Link, type LinkProps } from "./link"
 
 interface TableProps extends Omit<RACTableProps, "className"> {
   allowResize?: boolean
@@ -165,6 +166,9 @@ const TableRow = <T extends object>({ children, className, columns, ref, ...prop
           className
         )
       )}
+      render={(domProps) =>
+        "href" in props ? <Link {...(domProps as LinkProps)} /> : <tr {...(domProps as ComponentProps<"tr">)} />
+      }
     >
       {allowsDragging && (
         <TableCell>

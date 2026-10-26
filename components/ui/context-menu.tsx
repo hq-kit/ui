@@ -17,6 +17,7 @@ import {
   Separator as SeparatorPrimitive,
   SubmenuTrigger as SubmenuTriggerPrimitive
 } from "react-aria-components"
+import { Link, type LinkProps } from "./link"
 
 function ContextMenuContent({
   "data-slot": dataSlot = "context-menu-content",
@@ -112,6 +113,9 @@ function ContextMenuItem({
       data-inset={inset}
       data-slot="context-menu-item"
       data-variant={variant}
+      render={(domProps) =>
+        "href" in props ? <Link {...(domProps as LinkProps)} /> : <div {...(domProps as ComponentProps<"div">)} />
+      }
       textValue={typeof children === "string" ? children : props.textValue}
       {...props}
     >

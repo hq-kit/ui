@@ -3,7 +3,7 @@ import list from "@/components-search.json"
 
 export type MenuItem = {
   section: string
-  children?: { title: string; slug: string }[]
+  children?: { title: string; slug: string; status?: string }[]
 }
 
 export function menus() {

@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import { AsideLink } from "./aside-link"
 import { menus } from "./menus"
 
@@ -27,6 +28,13 @@ export default function Aside() {
               {section.items?.map((item) => (
                 <AsideLink href={item.slug} key={item.slug}>
                   {item.title}
+                  {item.status !== "stable" && (
+                    <Badge
+                      variant={item.status === "new" ? "success" : item.status === "alpha" ? "destructive" : "warning"}
+                    >
+                      {item.status}
+                    </Badge>
+                  )}
                 </AsideLink>
               ))}
             </ul>

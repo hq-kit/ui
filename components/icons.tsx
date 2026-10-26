@@ -311,7 +311,7 @@ export interface ComponentIconProps extends SVGProps<SVGSVGElement> {
     | "sidebar"
     | "skeleton"
     | "slider"
-    | "sonner"
+    | "toast"
     | "spinner"
     | "switch"
     | "table"
@@ -451,7 +451,7 @@ export const ComponentIcon = ({ name, ...props }: ComponentIconProps) => {
       return <IconSquare {...props} />
     case "slider":
       return <IconAdjustments {...props} />
-    case "sonner":
+    case "toast":
       return <IconBell {...props} />
     case "spinner":
       return <IconLoader {...props} />

@@ -97,7 +97,7 @@
 - [Meter](http://localhost:3000/docs/components/statuses/meter.md)
 - [Progress](http://localhost:3000/docs/components/statuses/progress.md)
 - [Skeleton](http://localhost:3000/docs/components/statuses/skeleton.md)
-- [Sonner](http://localhost:3000/docs/components/statuses/sonner.md)
+- [Toast](http://localhost:3000/docs/components/statuses/toast.md)
 
 ### Surfaces
 - [Card](http://localhost:3000/docs/components/surfaces/card.md)

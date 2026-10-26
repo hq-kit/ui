@@ -18,6 +18,7 @@ import {
   SubmenuTrigger
 } from "react-aria-components/Menu"
 import { Separator } from "react-aria-components/Separator"
+import { Link, type LinkProps } from "./link"
 
 const DropdownMenu = ({ ...props }: ComponentProps<typeof MenuTrigger>) => (
   <MenuTrigger data-slot="dropdown-menu-trigger" {...props} />
@@ -106,26 +107,29 @@ const DropdownMenuItem = ({
     data-inset={inset}
     data-slot="dropdown-menu-item"
     data-variant={variant}
+    render={(domProps) =>
+      "href" in props ? <Link {...(domProps as LinkProps)} /> : <div {...(domProps as ComponentProps<"div">)} />
+    }
     textValue={typeof children === "string" ? children : props.textValue}
     {...props}
   >
-    {composeRenderProps(children, (children, { isSelected, selectionMode }) => (
+    {(values) => (
       <>
-        {selectionMode !== "none" ? (
+        {values.selectionMode !== "none" ? (
           <span
             className="pointer-events-none absolute right-2 flex items-center justify-center"
             data-slot={
-              selectionMode === "single"
+              values.selectionMode === "single"
                 ? "dropdown-menu-radio-item-indicator"
                 : "dropdown-menu-checkbox-item-indicator"
             }
           >
-            {isSelected ? <IconCheck /> : null}
+            {values.isSelected ? <IconCheck /> : null}
           </span>
         ) : null}
         {children}
       </>
-    ))}
+    )}
   </MenuItem>
 )
 

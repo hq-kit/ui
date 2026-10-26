@@ -37,7 +37,7 @@ export function AsideLink({ href, ...props }: ComponentProps<typeof Link>) {
     <li className="relative">
       {isActive && (
         <motion.span
-          className="absolute top-1/2 -left-4 hidden h-6 w-0.5 -translate-y-1/2 rounded-full bg-primary md:block"
+          className="bg-primary absolute top-1/2 -left-4 hidden h-6 w-0.5 -translate-y-1/2 rounded-full md:block"
           layoutId="currentIndicator"
           transition={{
             type: "spring",
@@ -51,10 +51,10 @@ export function AsideLink({ href, ...props }: ComponentProps<typeof Link>) {
         prefetch
         {...props}
         className={cn(
-          "group relative flex items-center gap-x-2 rounded-lg px-2 py-1 text-muted-foreground text-sm transition",
+          "group text-muted-foreground relative flex items-center gap-x-2 rounded-lg px-2 py-1 text-sm transition",
           "hover:text-primary focus:outline-hidden",
           "*:[svg]:size-4.5",
-          "data-[active=true]:font-medium data-[active=true]:text-primary"
+          "data-[active=true]:text-primary data-[active=true]:font-medium"
         )}
         data-active={isActive}
         href={href}
@@ -63,7 +63,7 @@ export function AsideLink({ href, ...props }: ComponentProps<typeof Link>) {
         {props.children}
         {props.target === "_blank" && (
           <IconExternalLink
-            className="-mr-1 ml-auto block text-muted-foreground lg:hidden lg:group-hover:block"
+            className="text-muted-foreground -mr-1 ml-auto block lg:hidden lg:group-hover:block"
             style={{
               width: "16px",
               height: "16px"
